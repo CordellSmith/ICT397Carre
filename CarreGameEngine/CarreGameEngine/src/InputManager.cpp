@@ -20,7 +20,14 @@ void InputManager::KeyPressed(InputCodes code)
 		// If the user moved down, move the camera down along the view vector
 		case Down: case S: case s:
 			Camera->MoveCamera(-1 * Camera->GetSpeed() * TimeManager::Instance().DeltaTime);
-			break;		
+			break;
+		// Used to toggle wireframe of vertices
+		case q: case Q:
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+			break;
+		case 101: case E:
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+			break;
 	}
 }
 

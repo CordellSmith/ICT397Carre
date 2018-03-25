@@ -2,6 +2,8 @@
 
 #define GLM_FORCE_RADIANS								// Make sure GLM is using radians instead of degrees
 
+#include <GL\glew.h>
+
 #include <GLM\glm.hpp>									// Used for the GLM math library
 #include <GLM\gtc\matrix_transform.hpp>					// Used for the GLM math library
 #include <GLM\gtx\transform2.hpp>						// Used for the GLM math library

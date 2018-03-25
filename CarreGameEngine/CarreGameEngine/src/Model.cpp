@@ -67,9 +67,9 @@ void Model::Render()
 	modelMatrix = rotate(modelMatrix, Rotation.z, vec3(0, 0, 1));	// z-axis
 
 	// Get the variables from the shader for each matrix
-	GLint modelMatrixId = Shader.GetVariable("modelMatrix");
-	GLint viewMatrixId = Shader.GetVariable("viewMatrix");
-	GLint projectionMatrixId = Shader.GetVariable("projectionMatrix");
+	GLint modelMatrixId = Shader.GetVariable("u_modelMatrix");
+	GLint viewMatrixId = Shader.GetVariable("u_viewMatrix");
+	GLint projectionMatrixId = Shader.GetVariable("u_projectionMatrix");
 	
 	// Set the model, view and projection matrix for the uniform matrices in the Vertex Shader.
 	// To get at a GLM mat4 value, we use the address of the first item [0][0].

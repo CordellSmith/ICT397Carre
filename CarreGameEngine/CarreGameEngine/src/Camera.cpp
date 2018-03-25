@@ -120,8 +120,8 @@ void Camera::SetViewByMouse(float xOffset, float yOffset)
 	// reason though to want to allow that, especially in a scripting camera.  This also can
 	// avoid the "gimbal lock" issue where if you look straight up or down it wigs out.  This
 	// can be avoided with quaternion rotations instead of euler rotations too.
-	if ( Pitch > radians(75.0f) )
-		Pitch = radians(75.0f);
-	if ( Pitch < radians(-75.0f) )
-		Pitch = radians(-75.0f);
+	if ( Pitch > radians(71.0f) )
+		Pitch = radians(71.0f);
+	if ( Pitch < radians(-71.0f) )
+		Pitch = radians(-71.0f);
 }

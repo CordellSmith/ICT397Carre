@@ -118,6 +118,11 @@ bool GLFWManager::ProcessInput(bool continueGame = true)
 		InputManager.KeyPressed(InputCodes::Left);
 	if ( glfwGetKey(Window, GLFW_KEY_RIGHT) || glfwGetKey(Window, GLFW_KEY_D) )
 		InputManager.KeyPressed(InputCodes::Right);
+	// Used to toggle wireframe, Q to toggle on and E to toggle off
+	if (glfwGetKey(Window, GLFW_KEY_Q))
+		InputManager.KeyPressed(InputCodes::q);
+	if (glfwGetKey(Window, GLFW_KEY_E))
+		InputManager.KeyPressed(InputCodes::e);
 	
 	// Create some variables to store the current mouse position
 	double mouseX, mouseY;

@@ -48,48 +48,46 @@ void GLApplication::Initialize()
 	// Notice that we converted our Vertex3 into a struct that uses vec3 and vec4's for
 	// the xyz and rgba values.  This makes it easier to initialize and use going forward.
 	// We set all vertices to position 0 and color 1 (white)
-	Vertex3 vertices[120] = { vec3(0), vec4(1) };
+	Vertex3 vertices[6] = { vec3(0), vec4(1) };
 	
 	// Loop through 20 quads and build them from the ground to the ceiling.  The i is a float
 	// so we can do division with i without having to cast every single one.  It takes 6
 	// vertices to make a quad (2 triangles).  These will be lying flat instead of standing up.
 	// The i/10 added or subtracted to the x and z positions gives the interesting effect of the
 	// quads getting smaller as they go up and then going from smaller to larger again.
-	for ( float i = 0; i < 120; i += 6 )
-	{
-		// The first half of the quad (triangle 1)
+	
+	// The first half of the quad (triangle 1)
 
-		// The back left vertex -- colored yellow
-		vertices[0 + (int)i].xyz = vec3(-5.0f + i / 10, -5.0f + i, -5.0f + i / 10);
-		vertices[0 + (int)i].rgba = vec4(1, 1, 0, 1);
+	// The back left vertex -- colored yellow
+	vertices[0].xyz = vec3(-1.0f, -1.0f, -1.0f);
+	vertices[0].rgba = vec4(1, 1, 0, 1);
 
-		// The back right vertex -- colored red
-		vertices[1 + (int)i].xyz = vec3(5.0f - i / 10, -5.0f + i, -5.0f + i / 10);
-		vertices[1 + (int)i].rgba = vec4(1, 0, 0, 1);
+	// The back right vertex -- colored red
+	vertices[1].xyz = vec3(1.0f, -1.0f, -1.0f);
+	vertices[1].rgba = vec4(1, 0, 0, 1);
 
-		// The front right vertex -- colored cyan
-		vertices[2 + (int)i].xyz = vec3(5.0f - i / 10, -5.0f + i, 5.0f - i / 10);
-		vertices[2 + (int)i].rgba = vec4(0, 1, 1, 1);
+	// The front right vertex -- colored cyan
+	vertices[2].xyz = vec3(1.0f, -1.0f, 1.0f);
+	vertices[2].rgba = vec4(0, 1, 1, 1);
 
-		// The second half of the quad (triangle 2)
+	// The second half of the quad (triangle 2)
 
-		// The front right vertex -- colored cyan
-		vertices[3 + (int)i].xyz = vec3(5.0f - i / 10, -5.0f + i, 5.0f - i / 10);
-		vertices[3 + (int)i].rgba = vec4(0, 1, 1, 1);
+	// The front right vertex -- colored cyan
+	vertices[3].xyz = vec3(1.0f, -1.0f, 1.0f);
+	vertices[3].rgba = vec4(0, 1, 1, 1);
 
-		// The front left vertex -- colored blue
-		vertices[4 + (int)i].xyz = vec3(-5.0f + i / 10, -5.0f + i, 5.0f - i / 10);
-		vertices[4 + (int)i].rgba = vec4(0, 0, 1, 1);
+	// The front left vertex -- colored blue
+	vertices[4].xyz = vec3(-1.0f, -1.0f, 1.0f);
+	vertices[4].rgba = vec4(0, 0, 1, 1);
 
-		// The back left vertex -- colored yellow
-		vertices[5 + (int)i].xyz = vec3(-5.0f + i / 10, -5.0f + i, -5.0f + i / 10);
-		vertices[5 + (int)i].rgba = vec4(1, 1, 0, 1);
-	}
-
+	// The back left vertex -- colored yellow
+	vertices[5].xyz = vec3(-1.0f, -1.0f, -1.0f);
+	vertices[5].rgba = vec4(1, 1, 0, 1);
+	
 	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
 
 	// Initialize the model with the vertex array and give the vertex length of 120
-	g_Model.Initialize(vertices, 120, source.VertexSource, source.FragmentSource);
+	g_Model.Initialize(vertices, 6, source.VertexSource, source.FragmentSource);
 		
 	// Create the projection matrix from our camera and make the near field closer and the far field farther.
 	// This makes it so our tower doesn't get cut off and also doesn't cull geometry right near the camera.
@@ -120,7 +118,17 @@ void GLApplication::GameLoop()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 		// Render the model
-		g_Model.Render();
+		//g_Model.Render();
+
+		// Render a floor on x/z axis (10 x 10)
+		for (int x = 0; x < 15; x++)
+		{
+			for (int z = 0; z < 15; z++)
+			{
+				g_Model.SetPosition(vec3(x * 2, 0, z * 2));
+				g_Model.Render();
+			}
+		}
 
 		// Swap the buffers to display the final rendered image on screen
 		WindowManager->SwapTheBuffers();
