@@ -4,6 +4,10 @@
 
 Model g_Model;										// Our class to handle initializing and drawing our model
 
+/***********************************************/
+//Model sphereModel;
+/***********************************************/
+
 // This is our own main() function which abstracts the required main() function to run this application.
 int GLApplication::GLMain()
 {
@@ -102,6 +106,24 @@ void GLApplication::Initialize()
 	
 	// Set the position of the model to be at the origin
 	g_Model.SetPosition(vec3(0, 0, 0));
+
+
+	/**************************************************************************/
+	// Create static rigid body (floor)
+	physicsWorld.CreateStaticRigidBody();
+	
+	// Create dynamic rigid bodies
+	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 70.0, 13.0));
+	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 15.0, 15.0));
+
+	// Add body positions to array for drawing (initial position)
+	collisionBodyPos.push_back(btVector3(0.0, 1.0, 0.0));
+	collisionBodyPos.push_back(btVector3(15.0, 70.0, 13.0));
+	collisionBodyPos.push_back(btVector3(15.0, 15.0, 15.0));
+
+
+	quad = gluNewQuadric();
+	/**************************************************************************/
 }
 
 
@@ -129,6 +151,27 @@ void GLApplication::GameLoop()
 				g_Model.Render();
 			}
 		}
+
+		/**************************************************************************/
+		// Update physicsWorld
+		physicsWorld.Simulate(collisionBodyPos);
+		
+		// Draw shapes for testing (just planes atm, didn't know how to make spheres using current setup)
+		for (int i = 0; i < 3; i++)
+		{
+			//int a = collisionBodyPos[i].x;
+			vec3 temp = vec3(collisionBodyPos[i].x(), collisionBodyPos[i].y(), collisionBodyPos[i].z());
+
+			/*glPushMatrix();
+			glColor3f(0.0, 0.0, 0.5);
+			glTranslatef(collisionBodyPos[i].x(), collisionBodyPos[i].y(), collisionBodyPos[i].z());
+			gluSphere(quad, 5, 100, 100);
+			glPopMatrix();*/
+
+			g_Model.SetPosition(vec3(temp.x, temp.y, temp.z));
+			g_Model.Render();
+		}
+		/**************************************************************************/
 
 		// Swap the buffers to display the final rendered image on screen
 		WindowManager->SwapTheBuffers();
