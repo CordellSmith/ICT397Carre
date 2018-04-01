@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="res\shaders\Basic.shader" />
+    <None Include="res\shaders\Cube.Shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Camera.h" />
@@ -131,6 +132,7 @@
     <ClInclude Include="headers\InputManager.h" />
     <ClInclude Include="headers\Main.h" />
     <ClInclude Include="headers\Model.h" />
+    <ClInclude Include="headers\ObjLoader.h" />
     <ClInclude Include="headers\PhysicsEngine.h" />
     <ClInclude Include="headers\Shader.h" />
     <ClInclude Include="headers\TimeManager.h" />

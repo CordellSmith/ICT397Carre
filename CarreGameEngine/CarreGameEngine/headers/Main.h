@@ -16,7 +16,7 @@
 #include "..\..\Dependencies\glut\include\glut.h"
 /**************************************************************************/
 
-#pragma comment(lib, "legacy_stdio_definitions.lib")
+//#pragma comment(lib, "legacy_stdio_definitions.lib")
 
 struct ShaderProgramSource
 {

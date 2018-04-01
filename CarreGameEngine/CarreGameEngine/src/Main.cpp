@@ -1,8 +1,125 @@
 ﻿#include "GL/glew.h"									// Include the GLEW library to manage OpenGL extensions
+
+#include "..\headers\ObjLoader.h"
 #include "..\headers\Main.h"							// Include our main header for the application
 
+Model colourPanel;										// Our class to handle initializing and drawing our model
+Model cubeModel;
 
-Model g_Model;										// Our class to handle initializing and drawing our model
+objl::Loader Loader;
+
+Vertex3 panel[6] = { vec3(0), vec4(1) };
+Vertex3 cube[108] = { vec3(0), vec4(1) };
+
+void prepareCube()
+{
+	float cube_vertex_array[] = {
+		-1.0f,-1.0f,-1.0f, // triangle 1 : begin
+		-1.0f,-1.0f, 1.0f,
+		-1.0f, 1.0f, 1.0f, // triangle 1 : end
+		1.0f, 1.0f,-1.0f, // triangle 2 : begin
+		-1.0f,-1.0f,-1.0f,
+		-1.0f, 1.0f,-1.0f, // triangle 2 : end
+		1.0f,-1.0f, 1.0f,
+		-1.0f,-1.0f,-1.0f,
+		1.0f,-1.0f,-1.0f,
+		1.0f, 1.0f,-1.0f,
+		1.0f,-1.0f,-1.0f,
+		-1.0f,-1.0f,-1.0f,
+		-1.0f,-1.0f,-1.0f,
+		-1.0f, 1.0f, 1.0f,
+		-1.0f, 1.0f,-1.0f,
+		1.0f,-1.0f, 1.0f,
+		-1.0f,-1.0f, 1.0f,
+		-1.0f,-1.0f,-1.0f,
+		-1.0f, 1.0f, 1.0f,
+		-1.0f,-1.0f, 1.0f,
+		1.0f,-1.0f, 1.0f,
+		1.0f, 1.0f, 1.0f,
+		1.0f,-1.0f,-1.0f,
+		1.0f, 1.0f,-1.0f,
+		1.0f,-1.0f,-1.0f,
+		1.0f, 1.0f, 1.0f,
+		1.0f,-1.0f, 1.0f,
+		1.0f, 1.0f, 1.0f,
+		1.0f, 1.0f,-1.0f,
+		-1.0f, 1.0f,-1.0f,
+		1.0f, 1.0f, 1.0f,
+		-1.0f, 1.0f,-1.0f,
+		-1.0f, 1.0f, 1.0f,
+		1.0f, 1.0f, 1.0f,
+		-1.0f, 1.0f, 1.0f,
+		1.0f,-1.0f, 1.0f
+	};
+
+	float red = 0.0f, blue = 0.5f, green = 1.0f;
+	int j = 0;
+	int x, y, z;
+	for (int i = 0; i < 36; i++)
+	{
+		x = cube_vertex_array[j];
+		y = cube_vertex_array[j + 1];
+		z = cube_vertex_array[j + 2];
+
+		// Vertices
+		cube[i].xyz = vec3(x, y, z);
+
+		// Colour (random fx)
+		//if (i % 3 == 0)
+		//{
+		//	red = 1.0f;
+		//	blue = 0.0f;
+		//	green = 0.0f;
+		//}
+		//else if (i % 5 == 0)
+		//{
+		//	red = 0.0f;
+		//	blue = 1.0f;
+		//	green = 0.0f;
+		//}
+		//else if (i % 7 == 0)
+		//{
+		//	red = 0.0f;
+		//	blue = 0.0f;
+		//	green = 1.0f;
+		//}
+		cube[i].rgba = vec4(red, green, blue, 1.0);
+
+		j += 3;
+		// Used for testing
+		std::cout << "X:" << cube[i].xyz[0] << " Y:" << cube[i].xyz[1] << " Z:" << cube[i].xyz[2] << std::endl;
+	}	
+}
+
+void preparePanel()
+{
+	// The first half of the quad (triangle 1)
+	// The back left vertex -- colored yellow
+	panel[0].xyz = vec3(-1.0f, -1.0f, -1.0f);
+	panel[0].rgba = vec4(1, 1, 0, 1);
+
+	// The back right vertex -- colored red
+	panel[1].xyz = vec3(1.0f, -1.0f, -1.0f);
+	panel[1].rgba = vec4(1, 0, 0, 1);
+
+	// The front right vertex -- colored cyan
+	panel[2].xyz = vec3(1.0f, -1.0f, 1.0f);
+	panel[2].rgba = vec4(0, 1, 1, 1);
+
+	// The second half of the quad (triangle 2)
+
+	// The front right vertex -- colored cyan
+	panel[3].xyz = vec3(1.0f, -1.0f, 1.0f);
+	panel[3].rgba = vec4(0, 1, 1, 1);
+
+	// The front left vertex -- colored blue
+	panel[4].xyz = vec3(-1.0f, -1.0f, 1.0f);
+	panel[4].rgba = vec4(0, 0, 1, 1);
+
+	// The back left vertex -- colored yellow
+	panel[5].xyz = vec3(-1.0f, -1.0f, -1.0f);
+	panel[5].rgba = vec4(1, 1, 0, 1);
+}
 
 /***********************************************/
 //Model sphereModel;
@@ -40,58 +157,27 @@ void GLApplication::Initialize()
 	
 	// This tells OpenGL that we want depth testing so it renders the order correctly
 	glEnable(GL_DEPTH_TEST);
+	// Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS);
 
-	// Below, instead of drawing triangles we draw 3D rectangles, or quads as they are called.
-	// OpenGL has mostly evolved into just using triangles so quads aren't really supported in
-	// the future, so to make a quad we need to build it from 2 triangles.
+	///////////////////////////////////////////////////////////////////
+	/* OBJ Loader Testing */
+	bool loadout = Loader.LoadFile("res/objects/box_stack.obj");
+	if (loadout)
+		std::cout << "SUCCESS LOADING OBJ FILE" << std::endl;
+	else
+		std::cout << "FAILED TO LOAD OBJ FILE" << std::endl;
+	///////////////////////////////////////////////////////////////////
 
-	// Below there is about 20 quads drawn upwards to form a tower type shape.  I slowly make
-	// each quad smaller and it makes an interesting effect once it goes negative.
-
-	// Initialize enough vertices to make 20 quads (6 verts * 20 quads = 120 vertices).
-	// Notice that we converted our Vertex3 into a struct that uses vec3 and vec4's for
-	// the xyz and rgba values.  This makes it easier to initialize and use going forward.
-	// We set all vertices to position 0 and color 1 (white)
-	Vertex3 vertices[6] = { vec3(0), vec4(1) };
-	
-	// Loop through 20 quads and build them from the ground to the ceiling.  The i is a float
-	// so we can do division with i without having to cast every single one.  It takes 6
-	// vertices to make a quad (2 triangles).  These will be lying flat instead of standing up.
-	// The i/10 added or subtracted to the x and z positions gives the interesting effect of the
-	// quads getting smaller as they go up and then going from smaller to larger again.
-	
-	// The first half of the quad (triangle 1)
-
-	// The back left vertex -- colored yellow
-	vertices[0].xyz = vec3(-1.0f, -1.0f, -1.0f);
-	vertices[0].rgba = vec4(1, 1, 0, 1);
-
-	// The back right vertex -- colored red
-	vertices[1].xyz = vec3(1.0f, -1.0f, -1.0f);
-	vertices[1].rgba = vec4(1, 0, 0, 1);
-
-	// The front right vertex -- colored cyan
-	vertices[2].xyz = vec3(1.0f, -1.0f, 1.0f);
-	vertices[2].rgba = vec4(0, 1, 1, 1);
-
-	// The second half of the quad (triangle 2)
-
-	// The front right vertex -- colored cyan
-	vertices[3].xyz = vec3(1.0f, -1.0f, 1.0f);
-	vertices[3].rgba = vec4(0, 1, 1, 1);
-
-	// The front left vertex -- colored blue
-	vertices[4].xyz = vec3(-1.0f, -1.0f, 1.0f);
-	vertices[4].rgba = vec4(0, 0, 1, 1);
-
-	// The back left vertex -- colored yellow
-	vertices[5].xyz = vec3(-1.0f, -1.0f, -1.0f);
-	vertices[5].rgba = vec4(1, 1, 0, 1);
-	
 	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
+	ShaderProgramSource cubeSource = ParseShader("res/shaders/Cube.shader");
+
+	preparePanel();
+	prepareCube();
 
 	// Initialize the model with the vertex array and give the vertex length of 120
-	g_Model.Initialize(vertices, 6, source.VertexSource, source.FragmentSource);
+	colourPanel.Initialize(panel, 6, source.VertexSource, source.FragmentSource);
+	cubeModel.Initialize(cube, 36, cubeSource.VertexSource, cubeSource.FragmentSource);
 		
 	// Create the projection matrix from our camera and make the near field closer and the far field farther.
 	// This makes it so our tower doesn't get cut off and also doesn't cull geometry right near the camera.
@@ -102,25 +188,30 @@ void GLApplication::Initialize()
 	Camera->PositionCamera(0, 0, 6,		0,		0);
 
 	// We now pass in the camera to have access to the projection and view matrices
-	g_Model.SetCamera(Camera);
+	colourPanel.SetCamera(Camera);
+	cubeModel.SetCamera(Camera);
 	
+	/* Doesnt really need to be called because we are dynamically calling them in the loop */
 	// Set the position of the model to be at the origin
-	g_Model.SetPosition(vec3(0, 0, 0));
-
+	//colourPanel.SetPosition(vec3(0, 0, 0));
+	//cubeModel.SetPosition(vec3(2, 5, 2));
 
 	/**************************************************************************/
 	// Create static rigid body (floor)
 	physicsWorld.CreateStaticRigidBody();
 	
 	// Create dynamic rigid bodies
-	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 70.0, 13.0));
-	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 15.0, 15.0));
+	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 50.0, 13.0));
+	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
 
 	// Add body positions to array for drawing (initial position)
-	collisionBodyPos.push_back(btVector3(0.0, 1.0, 0.0));
-	collisionBodyPos.push_back(btVector3(15.0, 70.0, 13.0));
-	collisionBodyPos.push_back(btVector3(15.0, 15.0, 15.0));
+	collisionBodyPos.push_back(btVector3(0.0, -10.0, 0.0));
 
+	// Position of first object
+	collisionBodyPos.push_back(btVector3(15.0, 30.0, 13.0));
+
+	// Position of second object
+	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
 
 	quad = gluNewQuadric();
 	/**************************************************************************/
@@ -138,19 +229,19 @@ void GLApplication::GameLoop()
 
 		// This clears the screen every frame to black (color can be changed with glClearColor)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-		// Render the model
-		//g_Model.Render();
-
-		// Render a floor on x/z axis (10 x 10)
+				
+		// Render a floor on x/z axis (15 x 15)
 		for (int x = 0; x < 15; x++)
 		{
 			for (int z = 0; z < 15; z++)
 			{
-				g_Model.SetPosition(vec3(x * 2, 0, z * 2));
-				g_Model.Render();
+				colourPanel.SetPosition(vec3(x * 2, 0, z * 2));
+				colourPanel.Render();
 			}
 		}
+
+		cubeModel.SetPosition(vec3(2, 4, 2));
+		cubeModel.Render();
 
 		/**************************************************************************/
 		// Update physicsWorld
@@ -168,8 +259,8 @@ void GLApplication::GameLoop()
 			gluSphere(quad, 5, 100, 100);
 			glPopMatrix();*/
 
-			g_Model.SetPosition(vec3(temp.x, temp.y, temp.z));
-			g_Model.Render();
+			cubeModel.SetPosition(vec3(temp.x, temp.y, temp.z));
+			cubeModel.Render();
 		}
 		/**************************************************************************/
 
@@ -183,7 +274,7 @@ void GLApplication::GameLoop()
 void GLApplication::Destroy()
 {
 	// Free the vertex buffers and array objects
-	g_Model.Destroy();
+	//colourPanel.Destroy();
 
 	// If we have a window manager still allocated then destroy and delete it
 	if ( WindowManager )
