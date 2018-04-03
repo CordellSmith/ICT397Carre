@@ -39,7 +39,7 @@ PhysicsEngine::~PhysicsEngine(){};
 void PhysicsEngine::CreateStaticRigidBody()
 {
 	// Create a floor shape and add to shape array
-	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(100.0), btScalar(1.0), btScalar(100.0)));
+	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(100.0), btScalar(0.0), btScalar(100.0)));
 	collisionShapes.push_back(groundShape);
 
 	// Initialize transform and location
@@ -71,8 +71,8 @@ void PhysicsEngine::CreateStaticRigidBody()
 void PhysicsEngine::CreateDynamicRigidBody(btVector3 &pos)
 {
 	// Create sphere shape and add to shape array
-	btCollisionShape* sphereShape = new btSphereShape(btScalar(5.0));
-	collisionShapes.push_back(sphereShape);
+	btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(1.2), btScalar(1.2), btScalar(1.2)));
+	collisionShapes.push_back(boxShape);
 
 	// Create a dynamic object
 	btTransform startTransform;
@@ -87,14 +87,14 @@ void PhysicsEngine::CreateDynamicRigidBody(btVector3 &pos)
 	btVector3 localInertia(0.0, 0.0, 0.0);
 
 	if (isDynamic)
-		sphereShape->calculateLocalInertia(mass, localInertia);
+		boxShape->calculateLocalInertia(mass, localInertia);
 
 	// Set origin of body
 	startTransform.setOrigin(pos);
 
 	//using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
 	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
-	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, sphereShape, localInertia);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, boxShape, localInertia);
 	btRigidBody* body = new btRigidBody(rbInfo);
 
 	// Add the body to the dynamic world
