@@ -83,6 +83,9 @@
       <AdditionalDependencies>BulletDynamics.lib;BulletCollision.lib;LinearMath.lib;glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
+    <Xdcmake>
+      <AdditionalDocumentFile>%(AdditionalDocumentFile)</AdditionalDocumentFile>
+    </Xdcmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -138,14 +141,12 @@
     <ClInclude Include="headers\Singleton.h" />
     <ClInclude Include="headers\TimeManager.h" />
     <ClInclude Include="headers\WindowManager.h" />
-    <ClInclude Include="resource\IResource.h" />
     <ClInclude Include="Resource\Mesh.h" />
-    <ClInclude Include="resource\Resource.h" />
+    <ClInclude Include="resource\IResource.h" />
     <ClInclude Include="resource\ResourceFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Resource\Mesh.cpp" />
-    <ClCompile Include="resource\Resource.cpp" />
     <ClCompile Include="resource\ResourceFactory.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\GLFWManager.cpp" />

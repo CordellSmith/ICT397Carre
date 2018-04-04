@@ -4,7 +4,8 @@
 #include <map>
 #include <vector>
 
-#include "Resource.h"
+#include "IResource.h"
+#include "Mesh.h"
 
 class ResourceFactory
 {
@@ -12,10 +13,11 @@ public:
 	ResourceFactory() { }
 	~ResourceFactory() { }
 
-	// Implement these
-	Resource* CreateResource(RESOURCE_TYPE resourceType);
+	// Todo: Implement these functions
+	IResource* CreateResource(RESOURCE_TYPE resourceType, std::string filePath);
 
-	Resource* GetResourceById(unsigned int id);
+	IResource* GetResourceById(unsigned int id);
+
 	int TotalResources();
 
 	// This will load all the resources from external files (similar to init)
@@ -25,5 +27,5 @@ public:
 
 protected:
 	// Stores vectors of all the same resources in a map with a corresponding key of RESOURCE_TYPE (see Resource.h)
-	std::map<unsigned int, std::vector<Resource*>> m_resources;
+	//std::map<unsigned int, std::vector<Resource*>> m_resources;
 };

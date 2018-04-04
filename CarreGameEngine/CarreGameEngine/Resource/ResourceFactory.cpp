@@ -1,11 +1,11 @@
 #include "ResourceFactory.h"
 
-Resource* ResourceFactory::CreateResource(RESOURCE_TYPE resourceType)
+IResource* ResourceFactory::CreateResource(RESOURCE_TYPE resourceType, std::string filePath)
 {
 	switch (resourceType)
 	{
 	case RESOURCE_MESH:
-		return new Resource;
+		return new Mesh(filePath);
 		break;
 	//case RESOURCE_MATERIAL:
 	//	return new Material;
@@ -22,7 +22,7 @@ Resource* ResourceFactory::CreateResource(RESOURCE_TYPE resourceType)
 	}
 }
 
-Resource * ResourceFactory::GetResourceById(unsigned int id)
+IResource* ResourceFactory::GetResourceById(unsigned int id)
 {
 	return nullptr;
 }

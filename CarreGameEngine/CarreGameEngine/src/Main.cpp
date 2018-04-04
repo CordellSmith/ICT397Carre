@@ -211,7 +211,8 @@ void GLApplication::Initialize()
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
 
 	// Resource Factory Testing
-	factory.CreateResource(RESOURCE_TEXTURE);
+	std::string filePath = "../obj/testMesh.obj"; // THIS FILE PATH IS MADE UP!
+	IResource* testMesh = factory.CreateResource(RESOURCE_MESH, filePath); 
 }
 
 
