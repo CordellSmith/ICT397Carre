@@ -11,10 +11,11 @@
 #include "Camera.h"							// Include our Camera class for our camera management
 #include "InputManager.h"					// Include our InputManager class definition
 
-/**************************************************************************/
+
 #include "PhysicsEngine.h"					// Physics Engine
-#include "..\..\Dependencies\glut\include\glut.h"
-/**************************************************************************/
+#include "..\..\Dependencies\glut\include\glut.h"	// Do we need this?
+
+#include "..\Resource\ResourceFactory.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
@@ -73,14 +74,13 @@ protected:
 	// Add our camera object to our application
 	Camera *Camera;
 
-	/**************************************************************************/
 	// Physics world
 	PhysicsEngine physicsWorld;
-
 	// Array of collision body positions
 	std::vector<btVector3> collisionBodyPos;
-
 	// Used to draw spheres for testing
 	GLUquadricObj* quad;
-	/**************************************************************************/
+
+	// Resource Factory
+	ResourceFactory factory;
 };

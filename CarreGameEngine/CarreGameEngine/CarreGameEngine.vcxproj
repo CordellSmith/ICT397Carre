@@ -74,12 +74,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glut\include;$(SolutionDir)Dependencies\BulletPhysicsEngine\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW 2.1.0\include;$(SolutionDir)Dependencies\GLM\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glut\include;$(SolutionDir)Dependencies\BulletPhysicsEngine\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW 2.1.0\include;$(SolutionDir)Dependencies\GLM\include;$(SolutionDir)Dependencies\assimp-4.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\glut\lib;$(SolutionDir)Dependencies\BulletPhysicsEngine\lib;$(SolutionDir)Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\GLEW 2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\glut\lib;$(SolutionDir)Dependencies\BulletPhysicsEngine\lib;$(SolutionDir)Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\GLEW 2.1.0\lib\Release\Win32;$(SolutionDir)Dependencies\assimp-4.1.0\include\assimp\Compiler;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>BulletDynamics.lib;BulletCollision.lib;LinearMath.lib;glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
@@ -135,10 +135,18 @@
     <ClInclude Include="headers\ObjLoader.h" />
     <ClInclude Include="headers\PhysicsEngine.h" />
     <ClInclude Include="headers\Shader.h" />
+    <ClInclude Include="headers\Singleton.h" />
     <ClInclude Include="headers\TimeManager.h" />
     <ClInclude Include="headers\WindowManager.h" />
+    <ClInclude Include="resource\IResource.h" />
+    <ClInclude Include="Resource\Mesh.h" />
+    <ClInclude Include="resource\Resource.h" />
+    <ClInclude Include="resource\ResourceFactory.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Resource\Mesh.cpp" />
+    <ClCompile Include="resource\Resource.cpp" />
+    <ClCompile Include="resource\ResourceFactory.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\GLFWManager.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
