@@ -2,17 +2,32 @@
 
 #include "Resource.h"
 
-Resource::Resource(std::string filePath) : _resourceId(0), _type(RESOURCE_NULL)
-{ 
-	SetFilePath(filePath);
-}
-
-const std::string Resource::GetFilePath()
+const std::string& Resource::GetFilePath() const
 {
-	return _filePath;
+	return m_filePath;
 }
 
 void Resource::SetFilePath(const std::string& filePath)
 {
-	_filePath = filePath;
+	m_filePath = filePath;
+}
+
+unsigned int Resource::GetResourceId() const
+{
+	return m_resourceId;
+}
+
+void Resource::SetResourceId(unsigned int id)
+{
+	m_resourceId = id;
+}
+
+RESOURCE_TYPE Resource::GetResourceType() const
+{
+	return m_type;
+}
+
+void Resource::SetResourceType(RESOURCE_TYPE type)
+{
+	m_type = type;
 }

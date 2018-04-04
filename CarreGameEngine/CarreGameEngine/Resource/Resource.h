@@ -4,41 +4,35 @@
 
 #include "IResource.h"
 
-typedef enum 
-{
-	RESOURCE_NULL = 0,
-	RESOURCE_MESH = 1,
-	RESOURCE_MATERIAL = 2,
-	RESOURCE_TERRAIN = 3,
-	RESOURCE_TEXTURE = 4
-}RESOURCE_TYPE;
-
 class Resource : public IResource
 {
 public:
-	Resource() : _resourceId(0), _type(RESOURCE_NULL) { }
-	Resource(std::string filePath) : _resourceId(0), _type(RESOURCE_NULL) { }
+	// Default ctor has assigns a default id and type
+	Resource() : m_resourceId(0), m_type(RESOURCE_NULL) { }
 	~Resource() { }
 
+	Resource(unsigned int resourceId) : m_resourceId(resourceId) { }
+	Resource(RESOURCE_TYPE resourceType) : m_type(resourceType) { }
+
 	// Virtual methods inherited from IResource interface to load resource from file
-	virtual const std::string GetFilePath();
+	virtual const std::string& GetFilePath() const;
 	virtual void SetFilePath(const std::string& filePath);
 
 	// Used to identify a specific resource
-	void SetResourceId(unsigned int id) { _resourceId = id; }
-	unsigned int GetResourceId() const { return _resourceId; }
+	unsigned int GetResourceId() const;
+	void SetResourceId(unsigned int id);
 
 	// Assigns the resource type
-	void SetResourceType(RESOURCE_TYPE type) { _type = type; }
-	RESOURCE_TYPE GetResourceType() const { return _type; }
+	RESOURCE_TYPE GetResourceType() const;
+	void SetResourceType(RESOURCE_TYPE type);
 
 	// Checkers to see whether or not the resource has been loaded
-	bool IsLoaded() const { return _loaded; }
-	void SetLoaded(bool value) { _loaded = value; }
+	bool IsLoaded() const { return m_loaded; }
+	void SetLoaded(bool value) { m_loaded = value; }
 
 protected:
-	unsigned int _resourceId;
-	std::string _filePath;
-	RESOURCE_TYPE _type;
-	bool _loaded;
+	unsigned int m_resourceId;
+	std::string m_filePath;
+	RESOURCE_TYPE m_type;
+	bool m_loaded;
 };
