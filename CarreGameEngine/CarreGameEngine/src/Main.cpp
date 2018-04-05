@@ -182,7 +182,7 @@ void GLApplication::Initialize()
 	// Create the projection matrix from our camera and make the near field closer and the far field farther.
 	// This makes it so our tower doesn't get cut off and also doesn't cull geometry right near the camera.
 	//									 FOV		    Aspect Ratio			   Near / Far Planes
-	Camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 1000);
+	Camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 100);
 
 	//					  Position	  Yaw	 Pitch
 	Camera->PositionCamera(0, 0, 6,		0,		0);
@@ -195,26 +195,23 @@ void GLApplication::Initialize()
 	// Set the position of the model to be at the origin
 	//colourPanel.SetPosition(vec3(0, 0, 0));
 	//cubeModel.SetPosition(vec3(2, 5, 2));
-
-	/**************************************************************************/
+	
+	// Physics Testing
 	// Create static rigid body (floor)
 	physicsWorld.CreateStaticRigidBody();
-	
 	// Create dynamic rigid bodies
-	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 50.0, 13.0));
+	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 30.0, 15.0));
 	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
 
 	// Add body positions to array for drawing (initial position)
-	collisionBodyPos.push_back(btVector3(0.0, -10.0, 0.0));
-
+	collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
 	// Position of first object
 	collisionBodyPos.push_back(btVector3(15.0, 30.0, 13.0));
-
 	// Position of second object
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
 
-	quad = gluNewQuadric();
-	/**************************************************************************/
+	// Resource Factory Testing
+	factory.CreateResource(RESOURCE_TEXTURE);
 }
 
 
@@ -240,15 +237,15 @@ void GLApplication::GameLoop()
 			}
 		}
 
-		cubeModel.SetPosition(vec3(2, 4, 2));
-		cubeModel.Render();
-
 		/**************************************************************************/
 		// Update physicsWorld
 		physicsWorld.Simulate(collisionBodyPos);
 		
 		// Draw shapes for testing (just planes atm, didn't know how to make spheres using current setup)
-		for (int i = 0; i < 3; i++)
+		vec3 temp = vec3(collisionBodyPos[0].x(), collisionBodyPos[0].y(), collisionBodyPos[0].z());
+		colourPanel.SetPosition(vec3(temp.x, temp.y, temp.z));
+
+		for (int i = 1; i < 3; i++)
 		{
 			//int a = collisionBodyPos[i].x;
 			vec3 temp = vec3(collisionBodyPos[i].x(), collisionBodyPos[i].y(), collisionBodyPos[i].z());
