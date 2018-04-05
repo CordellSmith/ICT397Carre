@@ -211,8 +211,10 @@ void GLApplication::Initialize()
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
 
 	// Resource Factory Testing
-	std::string filePath = "../obj/testMesh.obj"; // THIS FILE PATH IS MADE UP!
-	IResource* testMesh = factory.CreateResource(RESOURCE_MESH, filePath); 
+	std::string filePath = "F:\\Uni\\2018\\ICT397 - Adv Games Programming\\Projects\\lambo_model\\Avent.obj"; // THIS FILE PATH IS MADE UP!
+	factory.CreateResource(RESOURCE_MESH, filePath);
+
+	factory.Print();
 }
 
 

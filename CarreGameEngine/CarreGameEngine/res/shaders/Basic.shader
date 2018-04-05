@@ -16,7 +16,6 @@ void main(void)
 	frag_Color = in_Color;
 }
 
-
 #shader fragment
 #version 400
 

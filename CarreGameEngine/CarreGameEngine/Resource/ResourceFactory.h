@@ -14,7 +14,7 @@ public:
 	~ResourceFactory() { }
 
 	// Todo: Implement these functions
-	IResource* CreateResource(RESOURCE_TYPE resourceType, std::string filePath);
+	void CreateResource(RESOURCE_TYPE resourceType, std::string filePath);
 
 	IResource* GetResourceById(unsigned int id);
 
@@ -25,7 +25,13 @@ public:
 	// This will unload all the resources for memory management (similar to delete/destroy)
 	void Unload() const;
 
+	void Print()
+	{
+		for (std::map<unsigned int, IResource*>::iterator itr = m_resources.begin(); itr != m_resources.end(); ++itr)
+			std::cout << itr->first << " => " << itr->second << '\n';
+	}
+
 protected:
 	// Stores vectors of all the same resources in a map with a corresponding key of RESOURCE_TYPE (see Resource.h)
-	//std::map<unsigned int, std::vector<Resource*>> m_resources;
+	std::map<unsigned int, IResource*> m_resources;
 };

@@ -1,11 +1,14 @@
 #include "ResourceFactory.h"
 
-IResource* ResourceFactory::CreateResource(RESOURCE_TYPE resourceType, std::string filePath)
+void ResourceFactory::CreateResource(RESOURCE_TYPE resourceType, std::string filePath)
 {
+	IResource* resource;
+	
 	switch (resourceType)
 	{
 	case RESOURCE_MESH:
-		return new Mesh(filePath);
+		resource = new Mesh(filePath);
+		m_resources.insert(std::pair<RESOURCE_TYPE, IResource*>(resourceType, resource));
 		break;
 	//case RESOURCE_MATERIAL:
 	//	return new Material;
@@ -17,7 +20,6 @@ IResource* ResourceFactory::CreateResource(RESOURCE_TYPE resourceType, std::stri
 	//	return new Texture;
 	//	break;
 	default:
-		return NULL;
 		break;
 	}
 }

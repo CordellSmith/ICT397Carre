@@ -17,6 +17,7 @@
   <ItemGroup>
     <None Include="res\shaders\Basic.shader" />
     <None Include="res\shaders\Cube.Shader" />
+    <None Include="res\shaders\AssimpTest.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Camera.h">
