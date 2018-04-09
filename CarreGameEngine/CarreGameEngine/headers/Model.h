@@ -14,10 +14,8 @@ using namespace glm;
 
 
 // This is our custom class to store attributes for a vertex like the x,y,z values.
-class Vertex3
+struct Vertex3
 {
-public:
-	// NOTE: We changed these to use glm::vec3 and glm:vec4 objects instead of arrays of floats
 	vec3 xyz;											// The x,y,z position
 	vec4 rgba;											// The r,g,b,a (Red, Green, Blue, Alpha) color values
 };

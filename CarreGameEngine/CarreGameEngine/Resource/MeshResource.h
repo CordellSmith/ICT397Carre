@@ -18,33 +18,35 @@
 * the vertices, normals, texture coordinates and indices which are stored in data vectors.
 */
 
-struct Vertex
+struct SingleMesh
 {
-	glm::vec3 m_position;
-	glm::vec3 m_normal;
-	glm::vec2 m_texCoords;
+	std::vector<glm::vec3> m_position;
+	std::vector<glm::vec3> m_normal;
+	std::vector<glm::vec2> m_texCoord;
+	std::vector<unsigned int> m_indices; // To create the faces
+	// Not implemented yet
+	//std::vector<glm::vec3> m_materialIndex;
 };
 
-class Mesh : public IResource
+class MeshResource : public IResource
 {
 public:
-	Mesh() { }
-	~Mesh() { UnloadMesh(); }
+	MeshResource() { }
+	~MeshResource() { UnloadMesh(); }
 
-	Mesh(std::string filePath) : m_resourceType(RESOURCE_MESH), m_filePath(filePath)
-	{
-		CreateMeshFromFile(filePath);
-		SetupMesh();
-	}
+	MeshResource(unsigned int meshCount) : m_resourceType(RESOURCE_MESH), m_meshCount(meshCount), m_resourceId(100) { m_meshBatch.resize(meshCount); }
+	MeshResource(std::string filePath) : m_resourceType(RESOURCE_MESH), m_filePath(filePath) { }
 
 	// Function uses assimp
-	void CreateMeshFromFile(std::string filePath);
+	IResource* CreateMeshFromFile(std::string filePath);
 
 	// Helper functions to load mesh
 	void LoadVertices(unsigned int meshIndex, aiMesh* meshObj);
 	void LoadNormals(unsigned int meshIndex, aiMesh* meshObj);
 	void LoadTextureCoords(unsigned int meshIndex, aiMesh* meshObj);
 	void LoadFaces(unsigned int meshIndex, aiMesh* meshObj);
+
+	int GetMeshCount() const { return m_meshCount; }
 
 	// This function will be called in the Resource Factory
 	//void Draw(Shader shader)
@@ -64,10 +66,8 @@ public:
 	virtual void SetLoaded(bool value);
 
 protected:
-	std::vector<Vertex> m_vertices;
-	std::vector<unsigned int> m_indices; // To create the faces
-	// Not implemented yet
-	//std::vector<glm::vec3> m_materialIndex;
+	std::vector<SingleMesh> m_meshBatch;
+	int m_meshCount;
 
 	unsigned int m_resourceId;
 	std::string m_filePath;
@@ -75,7 +75,7 @@ protected:
 	bool m_loaded;
 
 	unsigned int VAO, VBO, EBO;
-	void SetupMesh();
+	//void SetupMesh();
 
 	// Todo: deallocate m_meshObj
 	void UnloadMesh();

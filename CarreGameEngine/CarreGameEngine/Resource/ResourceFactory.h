@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "IResource.h"
-#include "Mesh.h"
+#include "MeshResource.h"
 
 class ResourceFactory
 {
@@ -28,7 +28,9 @@ public:
 	void Print()
 	{
 		for (std::map<unsigned int, IResource*>::iterator itr = m_resources.begin(); itr != m_resources.end(); ++itr)
+		{
 			std::cout << itr->first << " => " << itr->second << '\n';
+		}
 	}
 
 protected:

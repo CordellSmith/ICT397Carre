@@ -56,10 +56,10 @@
     <ClInclude Include="headers\Singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Resource\Mesh.h">
+    <ClInclude Include="resource\IResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource\IResource.h">
+    <ClInclude Include="Resource\MeshResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -91,7 +91,7 @@
     <ClCompile Include="resource\ResourceFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Resource\Mesh.cpp">
+    <ClCompile Include="Resource\MeshResource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,6 +10,17 @@ objl::Loader Loader;
 
 Vertex3 panel[6] = { vec3(0), vec4(1) };
 Vertex3 cube[108] = { vec3(0), vec4(1) };
+Vertex3 car[] = { vec3(0), vec4(1) };
+
+void prepareCar()
+{
+	ResourceFactory rf;
+	Model carModel;
+
+	objl::Loader carLoad;
+
+	//carLoad.LoadFile("F:\\Uni\\2018\\ICT397 - Adv Games Programming\\Projects\\lambo_model\\Avent.obj");
+}
 
 void prepareCube()
 {
@@ -52,7 +63,6 @@ void prepareCube()
 		1.0f,-1.0f, 1.0f
 	};
 
-	float red = 0.0f, blue = 0.5f, green = 1.0f;
 	int j = 0;
 	int x, y, z;
 	for (int i = 0; i < 36; i++)
@@ -63,32 +73,14 @@ void prepareCube()
 
 		// Vertices
 		cube[i].xyz = vec3(x, y, z);
-
-		// Colour (random fx)
-		//if (i % 3 == 0)
-		//{
-		//	red = 1.0f;
-		//	blue = 0.0f;
-		//	green = 0.0f;
-		//}
-		//else if (i % 5 == 0)
-		//{
-		//	red = 0.0f;
-		//	blue = 1.0f;
-		//	green = 0.0f;
-		//}
-		//else if (i % 7 == 0)
-		//{
-		//	red = 0.0f;
-		//	blue = 0.0f;
-		//	green = 1.0f;
-		//}
-		cube[i].rgba = vec4(red, green, blue, 1.0);
+		cube[i].rgba = vec4(1.0, 0.0, 0.5, 1.0);
 
 		j += 3;
 		// Used for testing
 		std::cout << "X:" << cube[i].xyz[0] << " Y:" << cube[i].xyz[1] << " Z:" << cube[i].xyz[2] << std::endl;
-	}	
+	}
+
+
 }
 
 void preparePanel()
@@ -169,6 +161,9 @@ void GLApplication::Initialize()
 		std::cout << "FAILED TO LOAD OBJ FILE" << std::endl;
 	///////////////////////////////////////////////////////////////////
 
+	// Resource Factory Testing
+	prepareCar();
+
 	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
 	ShaderProgramSource cubeSource = ParseShader("res/shaders/Cube.shader");
 
@@ -209,12 +204,6 @@ void GLApplication::Initialize()
 	collisionBodyPos.push_back(btVector3(15.0, 30.0, 13.0));
 	// Position of second object
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
-
-	// Resource Factory Testing
-	std::string filePath = "F:\\Uni\\2018\\ICT397 - Adv Games Programming\\Projects\\lambo_model\\Avent.obj"; // THIS FILE PATH IS MADE UP!
-	factory.CreateResource(RESOURCE_MESH, filePath);
-
-	factory.Print();
 }
 
 

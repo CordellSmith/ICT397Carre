@@ -142,12 +142,12 @@
     <ClInclude Include="headers\Singleton.h" />
     <ClInclude Include="headers\TimeManager.h" />
     <ClInclude Include="headers\WindowManager.h" />
-    <ClInclude Include="Resource\Mesh.h" />
+    <ClInclude Include="Resource\MeshResource.h" />
     <ClInclude Include="resource\IResource.h" />
     <ClInclude Include="resource\ResourceFactory.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Resource\Mesh.cpp" />
+    <ClCompile Include="Resource\MeshResource.cpp" />
     <ClCompile Include="resource\ResourceFactory.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\GLFWManager.cpp" />
