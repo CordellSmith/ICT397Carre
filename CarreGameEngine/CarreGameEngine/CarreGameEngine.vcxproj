@@ -132,9 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Camera.h" />
+    <ClInclude Include="headers\GameWorld.h" />
     <ClInclude Include="headers\GLFWManager.h" />
     <ClInclude Include="headers\InputManager.h" />
-    <ClInclude Include="headers\Main.h" />
     <ClInclude Include="headers\Model.h" />
     <ClInclude Include="headers\ObjLoader.h" />
     <ClInclude Include="headers\PhysicsEngine.h" />
@@ -150,6 +150,7 @@
     <ClCompile Include="Resource\MeshResource.cpp" />
     <ClCompile Include="resource\ResourceFactory.cpp" />
     <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\GameWorld.cpp" />
     <ClCompile Include="src\GLFWManager.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\Main.cpp" />

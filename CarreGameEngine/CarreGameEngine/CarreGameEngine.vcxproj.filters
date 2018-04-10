@@ -29,9 +29,6 @@
     <ClInclude Include="headers\InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headers\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -60,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Resource\MeshResource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\GameWorld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -92,6 +92,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Resource\MeshResource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameWorld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

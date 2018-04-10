@@ -1,25 +1,15 @@
-﻿#include "GL/glew.h"									// Include the GLEW library to manage OpenGL extensions
+#include "GL/glew.h"									// Include the GLEW library to manage OpenGL extensions
 
-#include "..\headers\GameWorld.h"
+#include "..\headers\ObjLoader.h"
+#include "..\headers\GameWorld.h"							// Include our main header for the application
 
-GLApplication gameWorld;
+Model colourPanel;										// Our class to handle initializing and drawing our model
+Model cubeModel;
 
-<<<<<<< HEAD
 objl::Loader Loader;
 
 Vertex3 panel[6] = { vec3(0), vec4(1) };
 Vertex3 cube[108] = { vec3(0), vec4(1) };
-Vertex3 car[] = { vec3(0), vec4(1) };
-
-void prepareCar()
-{
-	ResourceFactory rf;
-	Model carModel;
-
-	objl::Loader carLoad;
-
-	//carLoad.LoadFile("F:\\Uni\\2018\\ICT397 - Adv Games Programming\\Projects\\lambo_model\\Avent.obj");
-}
 
 void prepareCube()
 {
@@ -62,6 +52,7 @@ void prepareCube()
 		1.0f,-1.0f, 1.0f
 	};
 
+	float red = 0.0f, blue = 0.5f, green = 1.0f;
 	int j = 0;
 	int x, y, z;
 	for (int i = 0; i < 36; i++)
@@ -72,14 +63,32 @@ void prepareCube()
 
 		// Vertices
 		cube[i].xyz = vec3(x, y, z);
-		cube[i].rgba = vec4(1.0, 0.0, 0.5, 1.0);
+
+		// Colour (random fx)
+		//if (i % 3 == 0)
+		//{
+		//	red = 1.0f;
+		//	blue = 0.0f;
+		//	green = 0.0f;
+		//}
+		//else if (i % 5 == 0)
+		//{
+		//	red = 0.0f;
+		//	blue = 1.0f;
+		//	green = 0.0f;
+		//}
+		//else if (i % 7 == 0)
+		//{
+		//	red = 0.0f;
+		//	blue = 0.0f;
+		//	green = 1.0f;
+		//}
+		cube[i].rgba = vec4(red, green, blue, 1.0);
 
 		j += 3;
 		// Used for testing
 		std::cout << "X:" << cube[i].xyz[0] << " Y:" << cube[i].xyz[1] << " Z:" << cube[i].xyz[2] << std::endl;
 	}
-
-
 }
 
 void preparePanel()
@@ -118,22 +127,18 @@ void preparePanel()
 
 // This is our own main() function which abstracts the required main() function to run this application.
 int GLApplication::GLMain()
-=======
-int startGame()
->>>>>>> refs/remotes/origin/master
 {
 	// This calls our Initialize() function below which creates the window and triangle
-	gameWorld.Initialize();
+	Initialize();
 
 	// This is our main game loop which will run until we close the window or hit Escape.
-	gameWorld.GameLoop();
+	GameLoop();
 
 	// Once we hit Escape this will clean up the application's resources.
-	gameWorld.Destroy();
+	Destroy();
 
 	// Return 0 for success
 	return 0;
-<<<<<<< HEAD
 }
 
 
@@ -141,7 +146,7 @@ int startGame()
 void GLApplication::Initialize()
 {
 	// Make sure the window manager is initialized prior to calling this and creates the OpenGL context
-	if ( !WindowManager || WindowManager->Initialize(ScreenWidth, ScreenHeight, "Carre Game Engine", false) != 0 )
+	if (!WindowManager || WindowManager->Initialize(ScreenWidth, ScreenHeight, "Carre Game Engine", false) != 0)
 	{
 		// Quit the application if the window couldn't be created with an OpenGL context
 		exit(-1);
@@ -149,7 +154,7 @@ void GLApplication::Initialize()
 
 	// Tell OpenGL that we want a 3D viewport the same size as the window
 	glViewport(0, 0, ScreenWidth, ScreenHeight);
-	
+
 	// This tells OpenGL that we want depth testing so it renders the order correctly
 	glEnable(GL_DEPTH_TEST);
 	// Accept fragment if it closer to the camera than the former one
@@ -164,9 +169,6 @@ void GLApplication::Initialize()
 		std::cout << "FAILED TO LOAD OBJ FILE" << std::endl;
 	///////////////////////////////////////////////////////////////////
 
-	// Resource Factory Testing
-	prepareCar();
-
 	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
 	ShaderProgramSource cubeSource = ParseShader("res/shaders/Cube.shader");
 
@@ -176,24 +178,24 @@ void GLApplication::Initialize()
 	// Initialize the model with the vertex array and give the vertex length of 120
 	colourPanel.Initialize(panel, 6, source.VertexSource, source.FragmentSource);
 	cubeModel.Initialize(cube, 36, cubeSource.VertexSource, cubeSource.FragmentSource);
-		
+
 	// Create the projection matrix from our camera and make the near field closer and the far field farther.
 	// This makes it so our tower doesn't get cut off and also doesn't cull geometry right near the camera.
 	//									 FOV		    Aspect Ratio			   Near / Far Planes
 	Camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 100);
 
 	//					  Position	  Yaw	 Pitch
-	Camera->PositionCamera(0, 0, 6,		0,		0);
+	Camera->PositionCamera(0, 0, 6, 0, 0);
 
 	// We now pass in the camera to have access to the projection and view matrices
 	colourPanel.SetCamera(Camera);
 	cubeModel.SetCamera(Camera);
-	
+
 	/* Doesnt really need to be called because we are dynamically calling them in the loop */
 	// Set the position of the model to be at the origin
 	//colourPanel.SetPosition(vec3(0, 0, 0));
 	//cubeModel.SetPosition(vec3(2, 5, 2));
-	
+
 	// Physics Testing
 	// Create static rigid body (floor)
 	physicsWorld.CreateStaticRigidBody();
@@ -207,6 +209,9 @@ void GLApplication::Initialize()
 	collisionBodyPos.push_back(btVector3(15.0, 30.0, 13.0));
 	// Position of second object
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
+
+	// Resource Factory Testing
+	factory.CreateResource(RESOURCE_TEXTURE);
 }
 
 
@@ -214,14 +219,14 @@ void GLApplication::Initialize()
 void GLApplication::GameLoop()
 {
 	// Loop until the user hits the Escape key or closes the window
-	while ( WindowManager->ProcessInput(true) )
+	while (WindowManager->ProcessInput(true))
 	{
 		// Use our Singleton to calculate our framerate every frame, passing true to set FPS in titlebar
 		TimeManager::Instance().CalculateFrameRate(true);
 
 		// This clears the screen every frame to black (color can be changed with glClearColor)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-				
+
 		// Render a floor on x/z axis (15 x 15)
 		for (int x = 0; x < 15; x++)
 		{
@@ -235,7 +240,7 @@ void GLApplication::GameLoop()
 		/**************************************************************************/
 		// Update physicsWorld
 		physicsWorld.Simulate(collisionBodyPos);
-		
+
 		// Draw shapes for testing (just planes atm, didn't know how to make spheres using current setup)
 		vec3 temp = vec3(collisionBodyPos[0].x(), collisionBodyPos[0].y(), collisionBodyPos[0].z());
 		colourPanel.SetPosition(vec3(temp.x, temp.y, temp.z));
@@ -269,16 +274,16 @@ void GLApplication::Destroy()
 	//colourPanel.Destroy();
 
 	// If we have a window manager still allocated then destroy and delete it
-	if ( WindowManager )
+	if (WindowManager)
 	{
 		WindowManager->Destroy();
 
 		delete WindowManager;
 		WindowManager = nullptr;
 	}
-	
+
 	// If we have the camera still, delete it
-	if ( Camera )
+	if (Camera)
 	{
 		delete Camera;
 		Camera = nullptr;
@@ -358,6 +363,4 @@ unsigned int GLApplication::CreateShader(const std::string& vertexShader, const 
 	glDeleteShader(fs);
 
 	return program;
-=======
->>>>>>> refs/remotes/origin/master
 }
