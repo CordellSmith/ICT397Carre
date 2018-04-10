@@ -1,6 +1,6 @@
 #include "GL\glew.h"
 #include "..\headers\GLFWManager.h"
-#include "..\headers\Main.h"
+#include "..\headers\GameWorld.h"
 
 // This is the entry point into our application
 int main()
