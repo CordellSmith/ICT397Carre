@@ -6,10 +6,10 @@
 Model colourPanel;										// Our class to handle initializing and drawing our model
 Model cubeModel;
 
-objl::Loader Loader;
+//objl::Loader Loader;
 
 Vertex panel[6] = { vec3(0), vec4(1), vec2(2), vec3(3) };
-Vertex cube[108] = { vec3(0), vec4(1), vec2(2), vec3(3) };
+Vertex cube[36] = { vec3(0), vec4(1), vec2(2), vec3(3) };
 
 void prepareCube(const char* filePath, std::vector<glm::vec3>& out_vertices, std::vector<glm::vec2>& out_uvs, 
 	std::vector<glm::vec3>& out_normals)
@@ -69,6 +69,23 @@ void prepareCube(const char* filePath, std::vector<glm::vec3>& out_vertices, std
 		unsigned int vertexIndex = vertexIndices[i];
 		glm::vec3 vertex = temp_vertices[vertexIndex - 1];
 		out_vertices.push_back(vertex);
+
+		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
+	}
+
+	for (unsigned int i = 0; i < uvIndices.size(); i++) {
+		unsigned int uvIndex = uvIndices[i];
+		glm::vec2 uv = temp_uvs[uvIndex - 1];
+		out_uvs.push_back(uv);
+
+		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
+	}
+
+	for (unsigned int i = 0; i < normalIndices.size(); i++) {
+		unsigned int normalIndex = normalIndices[i];
+		glm::vec3 normal = temp_normals[normalIndex - 1];
+		out_normals.push_back(normal);
+
 		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
 	}
 
@@ -114,37 +131,21 @@ void prepareCube(const char* filePath, std::vector<glm::vec3>& out_vertices, std
 	float red = 0.0f, blue = 0.5f, green = 1.0f;
 	int j = 0;
 	int x, y, z;
-	for (int i = 0; i < 36; i++)
+	for (int i = 0; i < out_vertices.size(); i++)
 	{
-		x = cube_vertex_array[j];
-		y = cube_vertex_array[j + 1];
-		z = cube_vertex_array[j + 2];
+		cube[i].xyz = out_vertices[i];
+		cube[i].rgba = vec4(red, green, blue, 1.0);
+		cube[i].uv = out_uvs[i];
+		cube[i].normal = out_normals[i];
+		//x = cube_vertex_array[j];
+		//y = cube_vertex_array[j + 1];
+		//z = cube_vertex_array[j + 2];
 
 		// Vertices
-		cube[i].xyz = vec3(x, y, z);
+		//cube[i].xyz = vec3(x, y, z);
+		//cube[i].rgba = vec4(red, green, blue, 1.0);
 
-		// Colour (random fx)
-		//if (i % 3 == 0)
-		//{
-		//	red = 1.0f;
-		//	blue = 0.0f;
-		//	green = 0.0f;
-		//}
-		//else if (i % 5 == 0)
-		//{
-		//	red = 0.0f;
-		//	blue = 1.0f;
-		//	green = 0.0f;
-		//}
-		//else if (i % 7 == 0)
-		//{
-		//	red = 0.0f;
-		//	blue = 0.0f;
-		//	green = 1.0f;
-		//}
-		cube[i].rgba = vec4(red, green, blue, 1.0);
-
-		j += 3;
+		//j += 3;
 	}
 }
 
@@ -219,27 +220,32 @@ void GLApplication::Initialize()
 
 	///////////////////////////////////////////////////////////////////
 	/* OBJ Loader Testing */
-	bool loadout = Loader.LoadFile("res/objects/box_stack.obj");
-	if (loadout)
-		std::cout << "SUCCESS LOADING OBJ FILE" << std::endl;
-	else
-		std::cout << "FAILED TO LOAD OBJ FILE" << std::endl;
+	//bool loadout = Loader.LoadFile("res/objects/box_stack.obj");
+	//if (loadout)
+	//	std::cout << "SUCCESS LOADING OBJ FILE" << std::endl;
+	//else
+	//	std::cout << "FAILED TO LOAD OBJ FILE" << std::endl;
 	///////////////////////////////////////////////////////////////////
 
 	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
-	ShaderProgramSource cubeSource = ParseShader("res/shaders/Cube.shader");
+	ShaderProgramSource CubeShaderSource = ParseShader("res/shaders/Cube.shader");
 
-	std::vector< glm::vec3 > vertices;
-	std::vector< glm::vec2 > uvs;
-	std::vector< glm::vec3 > normals; // Won't be used at the moment.
+	std::vector<glm::vec3> vertices;
+	std::vector<glm::vec2> uvs;
+	std::vector<glm::vec3> normals; // Won't be used at the moment.
 
 	preparePanel();
-	prepareCube("F:\\Uni\\2018\\ICT397 - Adv Games Programming\\Projects\\CarreGameEngine\\CarreGameEngine\\res\\objects\\box_stack.obj", 
+	prepareCube("F:\\Uni\\2018\\ICT397 - Adv Games Programming\\Projects\\ICT397Carre\\CarreGameEngine\\CarreGameEngine\\res\\objects\\cube.obj", 
 		vertices, uvs, normals);
+
+	for (int i = 0; i < vertices.size(); i++)
+	{
+		std::cout << "[" << i << "]" << vertices[i].x << " " << vertices[i].y << " " << vertices[i].z << std::endl;
+	}
 
 	// Initialize the model with the vertex array and give the vertex length of 120
 	colourPanel.Initialize(panel, 6, source.VertexSource, source.FragmentSource);
-	cubeModel.Initialize(cube, 36, cubeSource.VertexSource, cubeSource.FragmentSource);
+	cubeModel.Initialize(cube, 36, CubeShaderSource.VertexSource, CubeShaderSource.FragmentSource);
 
 	// Create the projection matrix from our camera and make the near field closer and the far field farther.
 	// This makes it so our tower doesn't get cut off and also doesn't cull geometry right near the camera.

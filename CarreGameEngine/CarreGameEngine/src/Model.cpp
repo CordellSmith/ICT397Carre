@@ -88,24 +88,18 @@ void Model::Render()
 
 	// Tell OpenGL to enable our vertex information within the shaders
 	glEnableVertexAttribArray(kVertexIndex);
-
-	// Tell OpenGL to enable our color information within the shaders
 	glEnableVertexAttribArray(kColorIndex);
-
 	glEnableVertexAttribArray(kTextureIndex);
 	glEnableVertexAttribArray(kNormalIndex);
 
 	// Tell OpenGL to draw the triangles from our VBO
 	glDrawArrays(GL_TRIANGLES, 0, VerticesLength);
 
-	// Disable the color index
-	glDisableVertexAttribArray(kColorIndex);
-
-	// Disable the vertex index
-	glDisableVertexAttribArray(kVertexIndex);
-
-	glDisableVertexAttribArray(kTextureIndex);
+	// Disable indexes in reverse order?
 	glDisableVertexAttribArray(kNormalIndex);
+	glDisableVertexAttribArray(kTextureIndex);
+	glDisableVertexAttribArray(kColorIndex);
+	glDisableVertexAttribArray(kVertexIndex);
 
 	// Next, let's reset the current VAO binding to 0, which clears out any binding
 	glBindVertexArray(0);
