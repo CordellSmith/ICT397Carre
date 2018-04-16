@@ -18,8 +18,19 @@
 * @author Jack Matters
 *
 * @date 29/04/2018
-* @version 01 Initial start. Took ideas from a previous physics engine I worked on that used ReactPhysics3D. Also used HelloWorld example as a guide.
-			  Managed to get 2 spheres (currently shown as floor planes) to collide off each other and a floor.
+* @version 1.0	Initial start. Took ideas from a previous physics engine I worked on that used ReactPhysics3D. Also used HelloWorld example as a guide.
+*				Managed to get 2 spheres (currently shown as floor planes) to collide off each other and a floor.
+*
+* @date 05/04/2018
+* @version 2.0	Altered code to draw a square dynamic rigid body instead of a sphere for testing purposes. Started work on camera collision. 
+*
+* @date 06/04/2018
+* @version 2.1  Tidied up camera (player object) code. Force is now applied in direction camera was moved, calculations are done, then camera is moved to updated
+*				position. Still needs some work, but will do for now.
+* @bug			If camera is not moved for a short period of time, it becomes stuck. Restart application to fix. Will fix this at a later date.
+*
+* @date 16/04/2018
+* @version 3.0	Big gap between versions due to other units requirements. Started work on readin in a heightmap and applying a rigid body to it.
 */
 
 #ifndef PHYSICSENGINE_H
@@ -28,6 +39,16 @@
 /// Includes
 #include "btBulletDynamicsCommon.h"
 #include <vector>
+
+/**
+* @brief Enum for the different types of rigid bodies created.
+*/
+typedef enum
+{
+	CAMERA = 1,
+	BOX = 2,
+	FLOOR = 3
+}RIGID_BODY_TYPE;
 
 class PhysicsEngine
 {
@@ -54,10 +75,17 @@ class PhysicsEngine
 		void CreateDynamicRigidBody(btVector3 &pos);
 
 		/**
+		* @brief Creates dynamic rigid body for a player controlled object
+		* @param playerObj - Object that is player controlled 
+		*/
+		void CreatePlayerControlledRigidBody(btVector3 &playerObj);
+
+		/**
 		* @brief Simulate the dynamic world
 		* @param bodyPos - Update all rigid body positions for drawing
+		* @param playerObj - Sets new player object position
 		*/
-		void Simulate(std::vector<btVector3> &bodyPos);
+		void Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerObj);
 
 	private:
 
@@ -72,6 +100,15 @@ class PhysicsEngine
 
 		/// Mass value of body
 		btScalar mass;
+
+		/// Holds last known player controlled object location
+		btVector3 playerObject;
+
+		/// Old force applied
+		btVector3 oldForce;
+
+		/// New force applied
+		btVector3 newForce;
 
 	protected:
 
