@@ -197,18 +197,25 @@ void GLApplication::Initialize()
 	//cubeModel.SetPosition(vec3(2, 5, 2));
 	
 	// Physics Testing
-	// Create static rigid body (floor)
-	physicsWorld.CreateStaticRigidBody();
-	// Create dynamic rigid bodies
-	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 30.0, 15.0));
-	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
+	vec3 tempCam = Camera->GetPosition();
+	btVector3 tempCamTwo = btVector3(tempCam.x, tempCam.y, tempCam.z);
 
-	// Add body positions to array for drawing (initial position)
-	collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
-	// Position of first object
-	collisionBodyPos.push_back(btVector3(15.0, 30.0, 13.0));
-	// Position of second object
+	// Create cam object
+	physicsWorld.CreatePlayerControlledRigidBody(tempCamTwo);
+	collisionBodyPos.push_back(btVector3(tempCam.x, tempCam.y, tempCam.z));
+	//btVector3(tempCam.x, tempCam.y, tempCam.z);
+
+	// Create floor
+	physicsWorld.CreateStaticRigidBody();
+	collisionBodyPos.push_back(btVector3(0.0, -1.0, 0.0));
+
+	// Create dynamic rigid bodies
+	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 10.0, 15.0));
+	collisionBodyPos.push_back(btVector3(15.0, 10.0, 15.0));
+
+	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
+
 
 	// Resource Factory Testing
 	factory.CreateResource(RESOURCE_TEXTURE);
@@ -227,6 +234,8 @@ void GLApplication::GameLoop()
 		// This clears the screen every frame to black (color can be changed with glClearColor)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 				
+		// TODO: Simulate physics before drawing anything
+
 		// Render a floor on x/z axis (15 x 15)
 		for (int x = 0; x < 15; x++)
 		{
@@ -239,13 +248,21 @@ void GLApplication::GameLoop()
 
 		/**************************************************************************/
 		// Update physicsWorld
-		physicsWorld.Simulate(collisionBodyPos);
+		// TODO: Make this better (Jack)
+		vec3 tempCam = Camera->GetPosition();
+		btVector3 tempCamTwo = btVector3(tempCam.x, tempCam.y, tempCam.z);
+
+		//std::cout << tempCamTwo.x() << " " << tempCamTwo.y() << " " << tempCamTwo.z() << "\n" << std::endl;
+
+		std::cout << tempCamTwo.x() << " " << tempCamTwo.y() << " " << tempCamTwo.z() << "\n" << std::endl;
+		physicsWorld.Simulate(collisionBodyPos, tempCamTwo);
+		Camera->SetPosition(vec3(tempCamTwo.x(), tempCamTwo.y(), tempCamTwo.z()));
 		
 		// Draw shapes for testing (just planes atm, didn't know how to make spheres using current setup)
 		vec3 temp = vec3(collisionBodyPos[0].x(), collisionBodyPos[0].y(), collisionBodyPos[0].z());
 		colourPanel.SetPosition(vec3(temp.x, temp.y, temp.z));
 
-		for (int i = 1; i < 3; i++)
+		for (int i = collisionBodyPos.size() - 1; i > 0; i--)
 		{
 			//int a = collisionBodyPos[i].x;
 			vec3 temp = vec3(collisionBodyPos[i].x(), collisionBodyPos[i].y(), collisionBodyPos[i].z());
