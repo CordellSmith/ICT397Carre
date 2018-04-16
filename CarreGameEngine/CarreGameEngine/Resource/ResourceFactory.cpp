@@ -1,11 +1,11 @@
 #include "ResourceFactory.h"
 
-Resource* ResourceFactory::CreateResource(RESOURCE_TYPE resourceType)
+void ResourceFactory::CreateResource(RESOURCE_TYPE resourceType, std::string filePath)
 {
 	switch (resourceType)
 	{
 	case RESOURCE_MESH:
-		return new Resource;
+		m_resources.insert(std::pair<RESOURCE_TYPE, IResource*>(resourceType, MeshResource().CreateMeshFromFile(filePath)));
 		break;
 	//case RESOURCE_MATERIAL:
 	//	return new Material;
@@ -17,19 +17,28 @@ Resource* ResourceFactory::CreateResource(RESOURCE_TYPE resourceType)
 	//	return new Texture;
 	//	break;
 	default:
-		return NULL;
 		break;
 	}
 }
 
-Resource * ResourceFactory::GetResourceById(unsigned int id)
+IResource* ResourceFactory::GetResourceById(unsigned int id)
 {
-	return nullptr;
+	for (std::map<unsigned int, IResource*>::iterator itr = m_resources.begin(); itr != m_resources.end(); ++itr)
+	{
+		if (itr->second->GetResourceId() == id)
+			return itr->second;
+	}
 }
 
 int ResourceFactory::TotalResources()
 {
-	return 0;
+	int count = 0;
+	for (std::map<unsigned int, IResource*>::iterator itr = m_resources.begin(); itr != m_resources.end(); ++itr)
+	{
+		count++;
+	}
+
+	return count;
 }
 
 void ResourceFactory::Load() const

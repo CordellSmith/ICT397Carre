@@ -6,13 +6,89 @@
 Model colourPanel;										// Our class to handle initializing and drawing our model
 Model cubeModel;
 
-objl::Loader Loader;
+//objl::Loader Loader;
 
-Vertex3 panel[6] = { vec3(0), vec4(1) };
-Vertex3 cube[108] = { vec3(0), vec4(1) };
+Vertex panel[6] = { vec3(0), vec4(1), vec2(2), vec3(3) };
+Vertex cube[36] = { vec3(0), vec4(1), vec2(2), vec3(3) };
 
-void prepareCube()
+void prepareCube(const char* filePath, std::vector<glm::vec3>& out_vertices, std::vector<glm::vec2>& out_uvs, 
+	std::vector<glm::vec3>& out_normals)
 {
+	std::vector<unsigned int> vertexIndices, uvIndices, normalIndices;
+	std::vector<glm::vec3> temp_vertices;
+	std::vector<glm::vec2> temp_uvs;
+	std::vector<glm::vec3> temp_normals;
+
+	FILE* file = fopen(filePath, "r");
+	if (file == NULL) {
+		printf("Impossible to open the file !\n");
+	}
+
+	while (1) {
+		char lineHeader[128];
+		// read the first word of the line
+		int res = fscanf(file, "%s", lineHeader);
+		if (res == EOF)
+			break; // EOF = End Of File. Quit the loop.
+
+		if (strcmp(lineHeader, "v") == 0) {
+			glm::vec3 vertex;
+			fscanf(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z);
+			temp_vertices.push_back(vertex);
+		}
+		else if (strcmp(lineHeader, "vt") == 0) {
+			glm::vec2 uv;
+			fscanf(file, "%f %f\n", &uv.x, &uv.y);
+			temp_uvs.push_back(uv);
+		}
+		else if (strcmp(lineHeader, "vn") == 0) {
+			glm::vec3 normal;
+			fscanf(file, "%f %f %f\n", &normal.x, &normal.y, &normal.z);
+			temp_normals.push_back(normal);
+		}
+		else if (strcmp(lineHeader, "f") == 0) {
+			std::string vertex1, vertex2, vertex3;
+			unsigned int vertexIndex[3], uvIndex[3], normalIndex[3];
+			int matches = fscanf(file, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &uvIndex[0], &normalIndex[0], &vertexIndex[1], &uvIndex[1], &normalIndex[1], &vertexIndex[2], &uvIndex[2], &normalIndex[2]);
+			if (matches != 9) {
+				printf("File can't be read by our simple parser : ( Try exporting with other options\n");
+			}
+			vertexIndices.push_back(vertexIndex[0]);
+			vertexIndices.push_back(vertexIndex[1]);
+			vertexIndices.push_back(vertexIndex[2]);
+			uvIndices.push_back(uvIndex[0]);
+			uvIndices.push_back(uvIndex[1]);
+			uvIndices.push_back(uvIndex[2]);
+			normalIndices.push_back(normalIndex[0]);
+			normalIndices.push_back(normalIndex[1]);
+			normalIndices.push_back(normalIndex[2]);
+		}
+	}
+
+	for (unsigned int i = 0; i < vertexIndices.size(); i++) {
+		unsigned int vertexIndex = vertexIndices[i];
+		glm::vec3 vertex = temp_vertices[vertexIndex - 1];
+		out_vertices.push_back(vertex);
+
+		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
+	}
+
+	for (unsigned int i = 0; i < uvIndices.size(); i++) {
+		unsigned int uvIndex = uvIndices[i];
+		glm::vec2 uv = temp_uvs[uvIndex - 1];
+		out_uvs.push_back(uv);
+
+		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
+	}
+
+	for (unsigned int i = 0; i < normalIndices.size(); i++) {
+		unsigned int normalIndex = normalIndices[i];
+		glm::vec3 normal = temp_normals[normalIndex - 1];
+		out_normals.push_back(normal);
+
+		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
+	}
+
 	float cube_vertex_array[] = {
 		-1.0f,-1.0f,-1.0f, // triangle 1 : begin
 		-1.0f,-1.0f, 1.0f,
@@ -55,39 +131,21 @@ void prepareCube()
 	float red = 0.0f, blue = 0.5f, green = 1.0f;
 	int j = 0;
 	int x, y, z;
-	for (int i = 0; i < 36; i++)
+	for (int i = 0; i < out_vertices.size(); i++)
 	{
-		x = cube_vertex_array[j];
-		y = cube_vertex_array[j + 1];
-		z = cube_vertex_array[j + 2];
+		cube[i].xyz = out_vertices[i];
+		cube[i].rgba = vec4(red, green, blue, 1.0);
+		cube[i].uv = out_uvs[i];
+		cube[i].normal = out_normals[i];
+		//x = cube_vertex_array[j];
+		//y = cube_vertex_array[j + 1];
+		//z = cube_vertex_array[j + 2];
 
 		// Vertices
-		cube[i].xyz = vec3(x, y, z);
+		//cube[i].xyz = vec3(x, y, z);
+		//cube[i].rgba = vec4(red, green, blue, 1.0);
 
-		// Colour (random fx)
-		//if (i % 3 == 0)
-		//{
-		//	red = 1.0f;
-		//	blue = 0.0f;
-		//	green = 0.0f;
-		//}
-		//else if (i % 5 == 0)
-		//{
-		//	red = 0.0f;
-		//	blue = 1.0f;
-		//	green = 0.0f;
-		//}
-		//else if (i % 7 == 0)
-		//{
-		//	red = 0.0f;
-		//	blue = 0.0f;
-		//	green = 1.0f;
-		//}
-		cube[i].rgba = vec4(red, green, blue, 1.0);
-
-		j += 3;
-		// Used for testing
-		std::cout << "X:" << cube[i].xyz[0] << " Y:" << cube[i].xyz[1] << " Z:" << cube[i].xyz[2] << std::endl;
+		//j += 3;
 	}
 }
 
@@ -162,22 +220,32 @@ void GLApplication::Initialize()
 
 	///////////////////////////////////////////////////////////////////
 	/* OBJ Loader Testing */
-	bool loadout = Loader.LoadFile("res/objects/box_stack.obj");
-	if (loadout)
-		std::cout << "SUCCESS LOADING OBJ FILE" << std::endl;
-	else
-		std::cout << "FAILED TO LOAD OBJ FILE" << std::endl;
+	//bool loadout = Loader.LoadFile("res/objects/box_stack.obj");
+	//if (loadout)
+	//	std::cout << "SUCCESS LOADING OBJ FILE" << std::endl;
+	//else
+	//	std::cout << "FAILED TO LOAD OBJ FILE" << std::endl;
 	///////////////////////////////////////////////////////////////////
 
 	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
-	ShaderProgramSource cubeSource = ParseShader("res/shaders/Cube.shader");
+	ShaderProgramSource CubeShaderSource = ParseShader("res/shaders/Cube.shader");
+
+	std::vector<glm::vec3> vertices;
+	std::vector<glm::vec2> uvs;
+	std::vector<glm::vec3> normals; // Won't be used at the moment.
 
 	preparePanel();
-	prepareCube();
+	prepareCube("F:\\Uni\\2018\\ICT397 - Adv Games Programming\\Projects\\ICT397Carre\\CarreGameEngine\\CarreGameEngine\\res\\objects\\cube.obj", 
+		vertices, uvs, normals);
+
+	for (int i = 0; i < vertices.size(); i++)
+	{
+		std::cout << "[" << i << "]" << vertices[i].x << " " << vertices[i].y << " " << vertices[i].z << std::endl;
+	}
 
 	// Initialize the model with the vertex array and give the vertex length of 120
 	colourPanel.Initialize(panel, 6, source.VertexSource, source.FragmentSource);
-	cubeModel.Initialize(cube, 36, cubeSource.VertexSource, cubeSource.FragmentSource);
+	cubeModel.Initialize(cube, 36, CubeShaderSource.VertexSource, CubeShaderSource.FragmentSource);
 
 	// Create the projection matrix from our camera and make the near field closer and the far field farther.
 	// This makes it so our tower doesn't get cut off and also doesn't cull geometry right near the camera.
@@ -212,7 +280,7 @@ void GLApplication::Initialize()
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
 
 	// Resource Factory Testing
-	factory.CreateResource(RESOURCE_TEXTURE);
+	//factory.CreateResource(RESOURCE_TEXTURE);
 }
 
 

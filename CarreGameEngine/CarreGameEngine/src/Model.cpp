@@ -1,7 +1,7 @@
 #include "..\headers\Model.h"
 
 // Initialize the model with vertices, length, and the vertex and fragment shader files
-void Model::Initialize(Vertex3 vertices[], int length, std::string strVertex, std::string strFragment)
+void Model::Initialize(Vertex vertices[], int length, std::string strVertex, std::string strFragment)
 {
 	// Create and compile our GLSL vertex and fragment shaders from the shader text files
 	Shader.Initialize(strVertex, strFragment);
@@ -30,6 +30,12 @@ void Model::Initialize(Vertex3 vertices[], int length, std::string strVertex, st
 	// Add the color attributes to our Vertex Array Object and Vertex Buffer Object
 	glVertexAttribPointer(kColorIndex, 4, GL_FLOAT, GL_FALSE, sizeof(Vertices[0]), (GLvoid*)sizeof(Vertices[0].xyz));
 
+	// Add the UV texture coordinate attributes to our Vertex Array Object
+	glVertexAttribPointer(kTextureIndex, 3, GL_FLOAT, GL_FALSE, sizeof(Vertices[0]), (GLvoid*)sizeof(Vertices[0].uv));
+
+	// Add the normals attributes to our Vertex Array Object
+	glVertexAttribPointer(kNormalIndex, 3, GL_FLOAT, GL_FALSE, sizeof(Vertices[0]), (GLvoid*)sizeof(Vertices[0].normal));
+	
 	// Now check to see if any errors happened in this function
 	ErrorCheckValue = glGetError();
 
@@ -82,17 +88,17 @@ void Model::Render()
 
 	// Tell OpenGL to enable our vertex information within the shaders
 	glEnableVertexAttribArray(kVertexIndex);
-
-	// Tell OpenGL to enable our color information within the shaders
 	glEnableVertexAttribArray(kColorIndex);
+	glEnableVertexAttribArray(kTextureIndex);
+	glEnableVertexAttribArray(kNormalIndex);
 
 	// Tell OpenGL to draw the triangles from our VBO
 	glDrawArrays(GL_TRIANGLES, 0, VerticesLength);
 
-	// Disable the color index
+	// Disable indexes in reverse order?
+	glDisableVertexAttribArray(kNormalIndex);
+	glDisableVertexAttribArray(kTextureIndex);
 	glDisableVertexAttribArray(kColorIndex);
-
-	// Disable the vertex index
 	glDisableVertexAttribArray(kVertexIndex);
 
 	// Next, let's reset the current VAO binding to 0, which clears out any binding
