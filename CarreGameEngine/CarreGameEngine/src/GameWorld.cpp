@@ -197,17 +197,18 @@ void GLApplication::Initialize()
 	//cubeModel.SetPosition(vec3(2, 5, 2));
 
 	// Physics Testing
+	// Create player object (camera)
+	vec3 tempCam(Camera->GetPosition());
+	btVector3 tempCam2(tempCam.x, tempCam.y, tempCam.z);
+	physicsWorld.CreatePlayerControlledRigidBody(tempCam2);
+	collisionBodyPos.push_back(tempCam2);
 	// Create static rigid body (floor)
 	physicsWorld.CreateStaticRigidBody();
-	// Create dynamic rigid bodies
-	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 30.0, 15.0));
-	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
-
-	// Add body positions to array for drawing (initial position)
 	collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
-	// Position of first object
-	collisionBodyPos.push_back(btVector3(15.0, 30.0, 13.0));
-	// Position of second object
+	// Create dynamic rigid bodies
+	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 15.0, 15.0));
+	collisionBodyPos.push_back(btVector3(15.0, 15.0, 15.0));
+	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
 
 	// Resource Factory Testing
@@ -239,13 +240,19 @@ void GLApplication::GameLoop()
 
 		/**************************************************************************/
 		// Update physicsWorld
-		physicsWorld.Simulate(collisionBodyPos);
+		// TODO: Make this better (Jack)
+		vec3 temp1(Camera->GetPosition());
+		btVector3 temp2(temp1.x, temp1.y, temp1.z);
+		physicsWorld.Simulate(collisionBodyPos, temp2);
+
+		// Set updated camera location
+		Camera->SetPosition(vec3(temp2.getX(), temp2.getY(), temp2.getZ()));
 
 		// Draw shapes for testing (just planes atm, didn't know how to make spheres using current setup)
 		vec3 temp = vec3(collisionBodyPos[0].x(), collisionBodyPos[0].y(), collisionBodyPos[0].z());
 		colourPanel.SetPosition(vec3(temp.x, temp.y, temp.z));
 
-		for (int i = 1; i < 3; i++)
+		for (int i = 1; i < collisionBodyPos.size(); i++)
 		{
 			//int a = collisionBodyPos[i].x;
 			vec3 temp = vec3(collisionBodyPos[i].x(), collisionBodyPos[i].y(), collisionBodyPos[i].z());
