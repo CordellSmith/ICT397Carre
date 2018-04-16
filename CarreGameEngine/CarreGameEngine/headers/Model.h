@@ -14,10 +14,12 @@ using namespace glm;
 
 
 // This is our custom class to store attributes for a vertex like the x,y,z values.
-struct Vertex3
+struct Vertex
 {
 	vec3 xyz;											// The x,y,z position
 	vec4 rgba;											// The r,g,b,a (Red, Green, Blue, Alpha) color values
+	vec2 uv;											// The uv coordinates
+	vec3 normal;										// The normal coordinates
 };
 
 // The Model class to handle initializing, rendering and destroying of a 3D object
@@ -37,7 +39,7 @@ public:
 
 	// Takes in a list of x,y,z vertices and vertex length to create the VBO and VAO's from,
 	// as well as the text file locations for the vertex and fragment shaders to load.
-	void Initialize(Vertex3 vertices[], int length, std::string strVertex, std::string strFragment);
+	void Initialize(Vertex vertices[], int length, std::string strVertex, std::string strFragment);
 	
 	// This draws the Model to the backbuffer
 	void Render();
@@ -63,7 +65,7 @@ public:
 
 protected:
 
-	Vertex3 *Vertices;									// The list of the vertices
+	Vertex* Vertices;									// The list of the vertices
 	GLint VerticesLength;								// The length of the vertices
 	GLuint VertexBufferId;								// The VBO Id stored by the VAO
 	GLuint VertexArrayObjectId;							// The VAO Id to bind when drawing
