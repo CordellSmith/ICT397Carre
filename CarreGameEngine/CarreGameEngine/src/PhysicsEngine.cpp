@@ -6,6 +6,7 @@
 
 //Includes
 #include "..\headers\PhysicsEngine.h"
+#include <iostream>
 
 // Default constructor
 PhysicsEngine::PhysicsEngine()
@@ -30,6 +31,12 @@ PhysicsEngine::PhysicsEngine()
 
 	// Initialize all objects to static
 	isDynamic = false;
+
+	// Initialize player object location
+	playerObject.setZero();
+
+	oldForce.setZero();
+	newForce.setZero();
 }
 
 // De-constructor
@@ -63,14 +70,59 @@ void PhysicsEngine::CreateStaticRigidBody()
 	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, groundShape, localInertia);
 	btRigidBody* body = new btRigidBody(rbInfo);
 
+	// Set the index for the type of rigid body that is being created
+	body->setUserIndex(FLOOR);
+
 	// Add the body to the dynamic world
 	dynamicsWorld->addRigidBody(body);
-};
+}
+
+void PhysicsEngine::CreatePlayerControlledRigidBody(btVector3 &playerObj)
+{
+	// Create box shape and add to shape array
+	btCollisionShape* camShape = new btBoxShape(btVector3(btScalar(1.0), btScalar(1.0), btScalar(1.0)));
+	collisionShapes.push_back(camShape);
+
+	// Create a dynamic object
+	btTransform startTransform;
+	startTransform.setIdentity();
+
+	// Set mass (non-zero for dynamic)
+	mass = 2.0f;
+
+	// Set dynamic objects to objects with mass that is non-zero
+	isDynamic = (mass != 0.0f);
+
+	btVector3 localInertia(0.0, 0.0, 0.0);
+
+	if (isDynamic)
+		camShape->calculateLocalInertia(mass, localInertia);
+
+	// Set origin of body
+	startTransform.setOrigin(playerObj);
+
+	//using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
+	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, camShape, localInertia);
+	btRigidBody* body = new btRigidBody(rbInfo);
+
+	// Set the index for the type of rigid body that is being created
+	body->setUserIndex(CAMERA);
+
+	// Add the body to the dynamic world
+	dynamicsWorld->addRigidBody(body);
+
+	// Set new player object coordinates
+	playerObject = playerObj;
+
+	// Disable gravity for this object
+	body->setGravity(btVector3(0.0, 0.0, 0.0));
+}
 
 // Create a dynamic rigid body
 void PhysicsEngine::CreateDynamicRigidBody(btVector3 &pos)
 {
-	// Create sphere shape and add to shape array
+	// Create box shape and add to shape array
 	btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(1.2), btScalar(1.2), btScalar(1.2)));
 	collisionShapes.push_back(boxShape);
 
@@ -97,12 +149,15 @@ void PhysicsEngine::CreateDynamicRigidBody(btVector3 &pos)
 	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, boxShape, localInertia);
 	btRigidBody* body = new btRigidBody(rbInfo);
 
+	// Set the index for the type of rigid body that is being created
+	body->setUserIndex(BOX);
+	
 	// Add the body to the dynamic world
 	dynamicsWorld->addRigidBody(body);
 }
 
 // Simulate the dynamic world
-void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos)
+void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerObj)
 {
 	dynamicsWorld->stepSimulation(1.f / 60.f, 10);
 
@@ -112,6 +167,16 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos)
 		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
 		btRigidBody* body = btRigidBody::upcast(obj);
 		btTransform trans;
+
+		// Reset forces on player object prior to next step simulation
+		if (body->getUserIndex() == CAMERA)
+		{
+			body->clearForces();
+			body->setLinearVelocity(btVector3(0,0,0));
+
+		}
+
+		// Update rigid body positions
 		if (body && body->getMotionState())
 		{
 			body->getMotionState()->getWorldTransform(trans);
@@ -121,10 +186,29 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos)
 			trans = obj->getWorldTransform();
 		}
 		
-		// Update object positions for drawing
-		bodyPos[j].setX(trans.getOrigin().getX());
-		bodyPos[j].setY(trans.getOrigin().getY());
-		bodyPos[j].setZ(trans.getOrigin().getZ());
+		// Check to see if player object
+		if (body->getUserIndex() == CAMERA)
+		{
+			// TODO: Make this better (Jack)
+			// Apply force in direction camera was moved
+			newForce.setX((playerObj.x() - playerObject.x()) * 10000);
+			newForce.setY((playerObj.y() - playerObject.y()) * 10000);
+			newForce.setZ((playerObj.z() - playerObject.z()) * 10000);
+			
+			//std::cout << playerObject.x() << " " << playerObject.y() << " " << playerObject.z() << "\n" << std::endl;
+
+			// Update rigid-body location for drawing
+			body->applyCentralForce(newForce);
+			playerObject = trans.getOrigin();
+			playerObj = playerObject;
+		}
+		else
+		{
+			// Update object positions for drawing
+			bodyPos[j].setX(trans.getOrigin().getX());
+			bodyPos[j].setY(trans.getOrigin().getY());
+			bodyPos[j].setZ(trans.getOrigin().getZ());
+		}	
 	}
 }
 
