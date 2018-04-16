@@ -6,7 +6,7 @@
 Model colourPanel;										// Our class to handle initializing and drawing our model
 Model cubeModel;
 
-objl::Loader Loader;
+//objl::Loader Loader;
 
 Vertex panel[6] = { vec3(0), vec4(1), vec2(2), vec3(3) };
 Vertex cube[108] = { vec3(0), vec4(1), vec2(2), vec3(3) };
@@ -219,23 +219,23 @@ void GLApplication::Initialize()
 
 	///////////////////////////////////////////////////////////////////
 	/* OBJ Loader Testing */
-	bool loadout = Loader.LoadFile("res/objects/box_stack.obj");
-	if (loadout)
-		std::cout << "SUCCESS LOADING OBJ FILE" << std::endl;
-	else
-		std::cout << "FAILED TO LOAD OBJ FILE" << std::endl;
+	//bool loadout = Loader.LoadFile("res/objects/box_stack.obj");
+	//if (loadout)
+	//	std::cout << "SUCCESS LOADING OBJ FILE" << std::endl;
+	//else
+	//	std::cout << "FAILED TO LOAD OBJ FILE" << std::endl;
 	///////////////////////////////////////////////////////////////////
 
 	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
 	ShaderProgramSource cubeSource = ParseShader("res/shaders/Cube.shader");
 
-	std::vector< glm::vec3 > vertices;
-	std::vector< glm::vec2 > uvs;
-	std::vector< glm::vec3 > normals; // Won't be used at the moment.
+	// Shader testing
+	std::vector<glm::vec3> vertices;
+	std::vector<glm::vec2> uvs;
+	std::vector<glm::vec3> normals;
 
 	preparePanel();
-	prepareCube("F:\\Uni\\2018\\ICT397 - Adv Games Programming\\Projects\\CarreGameEngine\\CarreGameEngine\\res\\objects\\box_stack.obj", 
-		vertices, uvs, normals);
+	prepareCube(".\\res\\objects\\cube.obj", vertices, uvs, normals);
 
 	// Initialize the model with the vertex array and give the vertex length of 120
 	colourPanel.Initialize(panel, 6, source.VertexSource, source.FragmentSource);
