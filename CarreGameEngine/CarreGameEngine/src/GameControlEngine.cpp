@@ -2,6 +2,7 @@
 
 #include "..\headers\ObjLoader.h"
 #include "..\headers\GameControlEngine.h"							// Include our main header for the application
+#include "..\headers\ScriptManager.h"
 
 Model colourPanel;										// Our class to handle initializing and drawing our model
 Model cubeModel;
@@ -178,7 +179,10 @@ void GameControlEngine::Initialize()
 	std::vector<glm::vec3> normals;
 
 	preparePanel();
-	prepareCube("res/objects/cube.obj", vertices, uvs, normals);
+	//prepareCube("res/objects/cube.obj", vertices, uvs, normals);
+
+	//Testing script output
+	loadScript();
 
 	// Initialize the model with the vertex array and give the vertex length of 120
 	colourPanel.Initialize(panel, 6, source.VertexSource, source.FragmentSource);
@@ -218,9 +222,9 @@ void GameControlEngine::Initialize()
 
 	// Below is how the code will be initialised in the gameworld
 	// Comment these lines out to run code as normal, havent been implemented yet
-	m_gameWorld.SetTerrain((m_assetFactory.CreateAsset(OBJ_TERRAIN, "res/objects/terrain.obj")));
-	m_gameWorld.AddStaticObject(m_assetFactory.CreateAsset(OBJ_OBJECT, "res/objects/cube.obj"));
-	m_gameWorld.AddNPC(m_assetFactory.CreateAsset(OBJ_NPC, "res/objects/npc.obj"));
+	//m_gameWorld.SetTerrain((m_assetFactory.CreateAsset(OBJ_TERRAIN, "res/objects/terrain.obj")));
+	//m_gameWorld.AddStaticObject(m_assetFactory.CreateAsset(OBJ_OBJECT, "res/objects/cube.obj"));
+	//m_gameWorld.AddNPC(m_assetFactory.CreateAsset(OBJ_NPC, "res/objects/npc.obj"));
 }
 
 
