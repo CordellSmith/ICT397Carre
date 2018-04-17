@@ -222,7 +222,8 @@ void GLApplication::Initialize()
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
 
 	// Resource Factory Testing
-	//factory.CreateResource(RESOURCE_TEXTURE, );
+	factory.CreateResource(RESOURCE_MESH, "res/objects/cube.obj");
+	factory.Load();
 }
 
 
