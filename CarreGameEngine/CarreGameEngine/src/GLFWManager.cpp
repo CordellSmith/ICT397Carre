@@ -1,6 +1,6 @@
 #include "GL\glew.h"
 #include "..\headers\GLFWManager.h"
-#include "..\headers\GameWorld.h"
+#include "..\headers\GameControlEngine.h"
 
 // This is the entry point into our application
 int main()
@@ -11,9 +11,9 @@ int main()
 	// Here we initialize a camera to be used for our application, as opposed to having a global
 	Camera *pCamera = new Camera();
 
-	// Create a local instance of our GLApplication (defined in Main.cpp) and set its
+	// Create a local instance of our GameControlEngine (defined in Main.cpp) and set its
 	// WindowManager implementation (in this case, GLFW).
-	GLApplication application;
+	GameControlEngine application;
 	application.SetWindowManager(pWindowManager);
 
 	// Set the created camera as our main application camera and pass it also to our InputManager

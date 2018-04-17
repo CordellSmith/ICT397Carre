@@ -1,7 +1,7 @@
 #include "GL/glew.h"									// Include the GLEW library to manage OpenGL extensions
 
 #include "..\headers\ObjLoader.h"
-#include "..\headers\GameWorld.h"							// Include our main header for the application
+#include "..\headers\GameControlEngine.h"							// Include our main header for the application
 
 Model colourPanel;										// Our class to handle initializing and drawing our model
 Model cubeModel;
@@ -126,12 +126,7 @@ void preparePanel()
 	panel[5].rgba = vec4(1, 1, 0, 1);
 }
 
-/***********************************************/
-//Model sphereModel;
-/***********************************************/
-
-// This is our own main() function which abstracts the required main() function to run this application.
-int GLApplication::GLMain()
+int GameControlEngine::GLMain()
 {
 	// This calls our Initialize() function below which creates the window and triangle
 	Initialize();
@@ -148,7 +143,7 @@ int GLApplication::GLMain()
 
 
 // This function initializes the window, the shaders and the triangle vertex data.
-void GLApplication::Initialize()
+void GameControlEngine::Initialize()
 {
 	// Make sure the window manager is initialized prior to calling this and creates the OpenGL context
 	if (!WindowManager || WindowManager->Initialize(ScreenWidth, ScreenHeight, "Carre Game Engine", false) != 0)
@@ -221,14 +216,16 @@ void GLApplication::Initialize()
 	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
 
-	// Resource Factory Testing
-	factory.CreateResource(RESOURCE_MESH, "res/objects/cube.obj");
-	factory.Load();
+	// Below is how the code will be initialised in the gameworld
+	// Comment these lines out to run code as normal, havent been implemented yet
+	m_gameWorld.SetTerrain((m_assetFactory.CreateAsset(OBJ_TERRAIN, "res/objects/terrain.obj")));
+	m_gameWorld.AddStaticObject(m_assetFactory.CreateAsset(OBJ_OBJECT, "res/objects/cube.obj"));
+	m_gameWorld.AddNPC(m_assetFactory.CreateAsset(OBJ_NPC, "res/objects/npc.obj"));
 }
 
 
 // This is our game loop where all the magic happens every frame
-void GLApplication::GameLoop()
+void GameControlEngine::GameLoop()
 {
 	// Loop until the user hits the Escape key or closes the window
 	while (WindowManager->ProcessInput(true))
@@ -286,7 +283,7 @@ void GLApplication::GameLoop()
 
 
 // This can be used to free all of our resources in the application.
-void GLApplication::Destroy()
+void GameControlEngine::Destroy()
 {
 	// Free the vertex buffers and array objects
 	//colourPanel.Destroy();
@@ -309,7 +306,7 @@ void GLApplication::Destroy()
 }
 
 // Handles reading in the Basic.shader file containing vertex and fragment shader information and splits it into two strings then returns a struct ShaderProgramSource containing these two strings
-ShaderProgramSource GLApplication::ParseShader(const std::string& filePath)
+ShaderProgramSource GameControlEngine::ParseShader(const std::string& filePath)
 {
 	std::ifstream stream(filePath);
 
@@ -340,7 +337,7 @@ ShaderProgramSource GLApplication::ParseShader(const std::string& filePath)
 }
 
 // Compiles the shader taking its type either GL_VERTEX_SHADER or GL_FRAGMENT_SHADER and a string containing the shader information
-unsigned int GLApplication::CompileShader(unsigned int type, const std::string& source)
+unsigned int GameControlEngine::CompileShader(unsigned int type, const std::string& source)
 {
 	unsigned int id = glCreateShader(type);
 	const char* src = source.c_str();
@@ -366,7 +363,7 @@ unsigned int GLApplication::CompileShader(unsigned int type, const std::string& 
 }
 
 // Creates the shader taking two strings containing vertex shader information and fragment shader information
-unsigned int GLApplication::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
+unsigned int GameControlEngine::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
 {
 	unsigned int program = glCreateProgram();
 	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);

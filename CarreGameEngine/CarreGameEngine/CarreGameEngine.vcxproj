@@ -131,7 +131,13 @@
     <None Include="res\shaders\Cube.Shader" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetFactory\GameAssetFactory.h" />
+    <ClInclude Include="AssetFactory\NPC.h" />
+    <ClInclude Include="AssetFactory\IGameObject.h" />
+    <ClInclude Include="AssetFactory\Object.h" />
+    <ClInclude Include="AssetFactory\Terrain.h" />
     <ClInclude Include="headers\Camera.h" />
+    <ClInclude Include="headers\GameControlEngine.h" />
     <ClInclude Include="headers\GameWorld.h" />
     <ClInclude Include="headers\GLFWManager.h" />
     <ClInclude Include="headers\InputManager.h" />
@@ -147,10 +153,14 @@
     <ClInclude Include="resource\ResourceFactory.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AssetFactory\GameAssetFactory.cpp" />
+    <ClCompile Include="AssetFactory\NPC.cpp" />
+    <ClCompile Include="AssetFactory\Object.cpp" />
+    <ClCompile Include="AssetFactory\Terrain.cpp" />
     <ClCompile Include="Resource\MeshResource.cpp" />
     <ClCompile Include="resource\ResourceFactory.cpp" />
     <ClCompile Include="src\Camera.cpp" />
-    <ClCompile Include="src\GameWorld.cpp" />
+    <ClCompile Include="src\GameControlEngine.cpp" />
     <ClCompile Include="src\GLFWManager.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\Model.cpp" />
