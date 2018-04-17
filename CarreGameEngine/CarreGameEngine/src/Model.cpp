@@ -31,7 +31,7 @@ void Model::Initialize(Vertex vertices[], int length, std::string strVertex, std
 	glVertexAttribPointer(kColorIndex, 4, GL_FLOAT, GL_FALSE, sizeof(Vertices[0]), (GLvoid*)sizeof(Vertices[0].xyz));
 
 	// Add the UV texture coordinate attributes to our Vertex Array Object
-	glVertexAttribPointer(kTextureIndex, 3, GL_FLOAT, GL_FALSE, sizeof(Vertices[0]), (GLvoid*)sizeof(Vertices[0].uv));
+	glVertexAttribPointer(kTextureIndex, 2, GL_FLOAT, GL_FALSE, sizeof(Vertices[2]), (GLvoid*)sizeof(Vertices[0].uv));
 
 	// Add the normals attributes to our Vertex Array Object
 	glVertexAttribPointer(kNormalIndex, 3, GL_FLOAT, GL_FALSE, sizeof(Vertices[0]), (GLvoid*)sizeof(Vertices[0].normal));

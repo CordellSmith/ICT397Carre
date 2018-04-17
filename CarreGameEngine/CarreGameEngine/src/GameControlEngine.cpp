@@ -1,12 +1,12 @@
 #include "GL/glew.h"									// Include the GLEW library to manage OpenGL extensions
 
 #include "..\headers\ObjLoader.h"
-#include "..\headers\GameWorld.h"							// Include our main header for the application
+#include "..\headers\GameControlEngine.h"							// Include our main header for the application
 
 Model colourPanel;										// Our class to handle initializing and drawing our model
 Model cubeModel;
 
-//objl::Loader Loader;
+objl::Loader Loader;
 
 Vertex panel[6] = { vec3(0), vec4(1), vec2(2), vec3(3) };
 Vertex cube[108] = { vec3(0), vec4(1), vec2(2), vec3(3) };
@@ -72,79 +72,27 @@ void prepareCube(const char* filePath, std::vector<glm::vec3>& out_vertices, std
 		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
 	}
 
-	float cube_vertex_array[] = {
-		-1.0f,-1.0f,-1.0f, // triangle 1 : begin
-		-1.0f,-1.0f, 1.0f,
-		-1.0f, 1.0f, 1.0f, // triangle 1 : end
-		1.0f, 1.0f,-1.0f, // triangle 2 : begin
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f,-1.0f, // triangle 2 : end
-		1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f,-1.0f,
-		1.0f,-1.0f,-1.0f,
-		1.0f, 1.0f,-1.0f,
-		1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f,-1.0f,
-		1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		-1.0f,-1.0f, 1.0f,
-		1.0f,-1.0f, 1.0f,
-		1.0f, 1.0f, 1.0f,
-		1.0f,-1.0f,-1.0f,
-		1.0f, 1.0f,-1.0f,
-		1.0f,-1.0f,-1.0f,
-		1.0f, 1.0f, 1.0f,
-		1.0f,-1.0f, 1.0f,
-		1.0f, 1.0f, 1.0f,
-		1.0f, 1.0f,-1.0f,
-		-1.0f, 1.0f,-1.0f,
-		1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f, 1.0f,
-		1.0f,-1.0f, 1.0f
-	};
+	for (unsigned int i = 0; i < uvIndices.size(); i++) {
+		unsigned int uvIndex = uvIndices[i];
+		glm::vec2 uv = temp_uvs[uvIndex - 1];
+		out_uvs.push_back(uv);
+		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
+	}
+
+	for (unsigned int i = 0; i < normalIndices.size(); i++) {
+		unsigned int normalsIndex = normalIndices[i];
+		glm::vec3 normals = temp_normals[normalsIndex - 1];
+		out_normals.push_back(normals);
+		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
+	}
 
 	float red = 0.0f, blue = 0.5f, green = 1.0f;
-	int j = 0;
-	int x, y, z;
-	for (int i = 0; i < 36; i++)
+	for (int i = 0; i < out_vertices.size(); i++)
 	{
-		x = cube_vertex_array[j];
-		y = cube_vertex_array[j + 1];
-		z = cube_vertex_array[j + 2];
-
-		// Vertices
-		cube[i].xyz = vec3(x, y, z);
-
-		// Colour (random fx)
-		//if (i % 3 == 0)
-		//{
-		//	red = 1.0f;
-		//	blue = 0.0f;
-		//	green = 0.0f;
-		//}
-		//else if (i % 5 == 0)
-		//{
-		//	red = 0.0f;
-		//	blue = 1.0f;
-		//	green = 0.0f;
-		//}
-		//else if (i % 7 == 0)
-		//{
-		//	red = 0.0f;
-		//	blue = 0.0f;
-		//	green = 1.0f;
-		//}
+		cube[i].xyz = out_vertices[i];
 		cube[i].rgba = vec4(red, green, blue, 1.0);
-
-		j += 3;
+		cube[i].uv = out_uvs[i];
+		cube[i].normal = out_normals[i];
 	}
 }
 
@@ -178,12 +126,7 @@ void preparePanel()
 	panel[5].rgba = vec4(1, 1, 0, 1);
 }
 
-/***********************************************/
-//Model sphereModel;
-/***********************************************/
-
-// This is our own main() function which abstracts the required main() function to run this application.
-int GLApplication::GLMain()
+int GameControlEngine::GLMain()
 {
 	// This calls our Initialize() function below which creates the window and triangle
 	Initialize();
@@ -200,7 +143,7 @@ int GLApplication::GLMain()
 
 
 // This function initializes the window, the shaders and the triangle vertex data.
-void GLApplication::Initialize()
+void GameControlEngine::Initialize()
 {
 	// Make sure the window manager is initialized prior to calling this and creates the OpenGL context
 	if (!WindowManager || WindowManager->Initialize(ScreenWidth, ScreenHeight, "Carre Game Engine", false) != 0)
@@ -235,11 +178,11 @@ void GLApplication::Initialize()
 	std::vector<glm::vec3> normals;
 
 	preparePanel();
-	prepareCube(".\\res\\objects\\cube.obj", vertices, uvs, normals);
+	prepareCube("res/objects/cube.obj", vertices, uvs, normals);
 
 	// Initialize the model with the vertex array and give the vertex length of 120
 	colourPanel.Initialize(panel, 6, source.VertexSource, source.FragmentSource);
-	cubeModel.Initialize(cube, 36, cubeSource.VertexSource, cubeSource.FragmentSource);
+	cubeModel.Initialize(cube, vertices.size(), cubeSource.VertexSource, cubeSource.FragmentSource);
 
 	// Create the projection matrix from our camera and make the near field closer and the far field farther.
 	// This makes it so our tower doesn't get cut off and also doesn't cull geometry right near the camera.
@@ -273,13 +216,16 @@ void GLApplication::Initialize()
 	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
 
-	// Resource Factory Testing
-	//factory.CreateResource(RESOURCE_TEXTURE);
+	// Below is how the code will be initialised in the gameworld
+	// Comment these lines out to run code as normal, havent been implemented yet
+	m_gameWorld.SetTerrain((m_assetFactory.CreateAsset(OBJ_TERRAIN, "res/objects/terrain.obj")));
+	m_gameWorld.AddStaticObject(m_assetFactory.CreateAsset(OBJ_OBJECT, "res/objects/cube.obj"));
+	m_gameWorld.AddNPC(m_assetFactory.CreateAsset(OBJ_NPC, "res/objects/npc.obj"));
 }
 
 
 // This is our game loop where all the magic happens every frame
-void GLApplication::GameLoop()
+void GameControlEngine::GameLoop()
 {
 	// Loop until the user hits the Escape key or closes the window
 	while (WindowManager->ProcessInput(true))
@@ -337,7 +283,7 @@ void GLApplication::GameLoop()
 
 
 // This can be used to free all of our resources in the application.
-void GLApplication::Destroy()
+void GameControlEngine::Destroy()
 {
 	// Free the vertex buffers and array objects
 	//colourPanel.Destroy();
@@ -360,7 +306,7 @@ void GLApplication::Destroy()
 }
 
 // Handles reading in the Basic.shader file containing vertex and fragment shader information and splits it into two strings then returns a struct ShaderProgramSource containing these two strings
-ShaderProgramSource GLApplication::ParseShader(const std::string& filePath)
+ShaderProgramSource GameControlEngine::ParseShader(const std::string& filePath)
 {
 	std::ifstream stream(filePath);
 
@@ -391,7 +337,7 @@ ShaderProgramSource GLApplication::ParseShader(const std::string& filePath)
 }
 
 // Compiles the shader taking its type either GL_VERTEX_SHADER or GL_FRAGMENT_SHADER and a string containing the shader information
-unsigned int GLApplication::CompileShader(unsigned int type, const std::string& source)
+unsigned int GameControlEngine::CompileShader(unsigned int type, const std::string& source)
 {
 	unsigned int id = glCreateShader(type);
 	const char* src = source.c_str();
@@ -417,7 +363,7 @@ unsigned int GLApplication::CompileShader(unsigned int type, const std::string& 
 }
 
 // Creates the shader taking two strings containing vertex shader information and fragment shader information
-unsigned int GLApplication::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
+unsigned int GameControlEngine::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
 {
 	unsigned int program = glCreateProgram();
 	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);

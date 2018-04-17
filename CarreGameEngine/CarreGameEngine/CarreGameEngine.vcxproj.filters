@@ -59,6 +59,24 @@
     <ClInclude Include="Resource\MeshResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AssetFactory\GameAssetFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetFactory\Terrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetFactory\IGameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetFactory\NPC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetFactory\Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\GameControlEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="headers\GameWorld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -91,7 +109,19 @@
     <ClCompile Include="Resource\MeshResource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameWorld.cpp">
+    <ClCompile Include="AssetFactory\Terrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetFactory\GameAssetFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetFactory\Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetFactory\NPC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameControlEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

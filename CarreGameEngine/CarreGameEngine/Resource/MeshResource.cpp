@@ -1,7 +1,12 @@
 // Assimp implementation guided by https://learnopengl.com/Model-Loading/Assimp
 #include "MeshResource.h"
 
-IResource* MeshResource::CreateMeshFromFile(std::string filePath)
+MeshResource::MeshResource() : m_resourceType(RESOURCE_MESH)
+{
+	SetResourceId(rand() & 100);
+}
+
+IResource* MeshResource::CreateMeshFromFile(const std::string filePath)
 {
 	Assimp::Importer import;
 	const aiScene *scene = import.ReadFile(filePath, aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -12,27 +17,69 @@ IResource* MeshResource::CreateMeshFromFile(std::string filePath)
 		return 0;
 	}
 
-	// Check guide for this function... not implemented but taken code so not traversing through a linked list (scene node)
-	//processNode(scene->mRootNode, scene);
+	ProcessNode(scene->mRootNode, scene);
 
-	MeshResource* meshBatch = new MeshResource(scene->mNumMeshes);
-
-	// Loop through all meshs in the scene if there is any and load data into m_meshBatch
-	for (unsigned int i = 0; i < scene->mNumMeshes; i++)
-	{
-		meshBatch->LoadVertices(i, scene->mMeshes[i]);
-		meshBatch->LoadNormals(i, scene->mMeshes[i]);
-		meshBatch->LoadTextureCoords(i, scene->mMeshes[i]);
-		meshBatch->LoadFaces(i, scene->mMeshes[i]);
-	}
-	
-	import.FreeScene();
-
-	IResource* meshResource = meshBatch;
-
-	return meshResource;
+	return this;
 }
 
+void MeshResource::ProcessNode(aiNode* node, const aiScene* scene)
+{
+	// process all the node's meshes (if any)
+	for (unsigned int i = 0; i < node->mNumMeshes; i++)
+	{
+		aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
+		m_meshBatch.push_back(ProcessMesh(mesh, scene));
+	}
+	// then do the same for each of its children
+	for (unsigned int i = 0; i < node->mNumChildren; i++)
+	{
+		ProcessNode(node->mChildren[i], scene);
+	}
+}
+
+SingleMesh MeshResource::ProcessMesh(aiMesh *mesh, const aiScene *scene)
+{
+	std::vector<Vertex3> vertices;
+	std::vector<unsigned int> indices;
+	//std::vector<Texture> textures;
+
+	// process vertex positions, normals and texture coordinates
+	for (unsigned int i = 0; i < mesh->mNumVertices; i++)
+	{
+		Vertex3 vertex;
+		glm::vec3 vertexPos;
+		glm::vec3 normalCoord;
+		glm::vec2 texCoord;
+
+		vertexPos.x = mesh->mVertices[i].x;
+		vertexPos.y = mesh->mVertices[i].y;
+		vertexPos.z = mesh->mVertices[i].z;
+
+		normalCoord.x = mesh->mNormals[i].x;
+		normalCoord.y = mesh->mNormals[i].y;
+		normalCoord.z = mesh->mNormals[i].z;
+
+		texCoord.x = mesh->mTextureCoords[0][i].x;
+		texCoord.y = mesh->mTextureCoords[0][i].y;
+
+		vertex.m_position = vertexPos;
+		vertex.m_normal = normalCoord;
+		vertex.m_texCoords = texCoord;
+
+		vertices.push_back(vertex);
+	}
+	// process indices
+	for (unsigned int i = 0; i < mesh->mNumFaces; i++)
+	{
+		aiFace face = mesh->mFaces[i];
+		for (unsigned int j = 0; j < face.mNumIndices; j++)
+			indices.push_back(face.mIndices[j]);
+	}
+
+	return SingleMesh(vertices, indices);
+}
+
+/*
 void MeshResource::LoadVertices(unsigned int meshIndex, aiMesh* meshObj)
 {
 	// CONTINUE FROM HERE!
@@ -100,48 +147,77 @@ void MeshResource::LoadFaces(unsigned int meshIndex, aiMesh* meshObj)
 			m_meshBatch[meshIndex].m_indices.push_back(face.mIndices[j]);
 	}
 }
-
-// Private Functions
-/*
-void MeshResource::SetupMesh()
-{
-glGenVertexArrays(1, &VAO);
-glGenBuffers(1, &VBO);
-glGenBuffers(1, &EBO);
-
-glBindVertexArray(VAO);
-glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-// This needs to be looked at! Check guide for reference
-glBufferData(GL_ARRAY_BUFFER, m_vertices.size() * sizeof(Vertex), &m_vertices[0], GL_STATIC_DRAW);
-
-glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indices.size() * sizeof(unsigned int), &m_indices[0], GL_STATIC_DRAW);
-
-// vertex positions
-glEnableVertexAttribArray(0);
-glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
-// vertex normals
-glEnableVertexAttribArray(1);
-glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, m_normal));
-// vertex texture coords
-glEnableVertexAttribArray(2);
-glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, m_texCoords));
-
-glBindVertexArray(0);
-}
-
 */
 
-void MeshResource::UnloadMesh()
+// Private Functions
+const void MeshResource::Load()
 {
-	for (int i = 0; i < m_meshBatch.size(); i++)
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &EBO);
+
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+	// This needs to be looked at! Check guide for reference
+	glBufferData(GL_ARRAY_BUFFER, m_singleMesh.m_vertices.size() * sizeof(Vertex3), &m_singleMesh.m_vertices[0], GL_STATIC_DRAW);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_singleMesh.m_indices.size() * sizeof(unsigned int), &m_singleMesh.m_indices[0], GL_STATIC_DRAW);
+
+	// vertex positions
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex3), (void*)0);
+	// vertex normals
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex3), (void*)offsetof(Vertex3, m_normal));
+	// vertex texture coords
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex3), (void*)offsetof(Vertex3, m_texCoords));
+
+	glBindVertexArray(0);
+	m_loaded = true;
+}
+
+void MeshResource::Draw(Shader shader)
+{
+	/*
+	unsigned int diffuseNr = 1;
+	unsigned int specularNr = 1;
+	for (unsigned int i = 0; i < m_textures.size(); i++)
 	{
-		m_meshBatch[i].m_position.clear();
-		m_meshBatch[i].m_normal.clear();
-		m_meshBatch[i].m_texCoord.clear();
-		m_meshBatch[i].m_indices.clear();
+		glActiveTexture(GL_TEXTURE0 + i); // activate proper texture unit before binding
+										  // retrieve texture number (the N in diffuse_textureN)
+		std::string number;
+		std::string name = m_textures[i].type;
+		if (name == "texture_diffuse")
+			number = std::to_string(diffuseNr++);
+		else if (name == "texture_specular")
+			number = std::to_string(specularNr++);
+
+		//shader.setFloat(("material." + name + number).c_str(), i);
+		glBindTexture(GL_TEXTURE_2D, m_textures[i].id);
 	}
+	glActiveTexture(GL_TEXTURE0);
+	*/
+	// draw mesh
+	glBindVertexArray(VAO);
+	glDrawElements(GL_TRIANGLES, m_singleMesh.m_indices.size(), GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
+}
+
+const void MeshResource::Unload()
+{
+	m_meshBatch.clear();
+	m_loaded = false;
+
+	//for (int i = 0; i < m_meshBatch.size(); i++)
+	//{
+	//	m_meshBatch[i].m_position.clear();
+	//	m_meshBatch[i].m_normal.clear();
+	//	m_meshBatch[i].m_texCoord.clear();
+	//	m_meshBatch[i].m_indices.clear();
+	//}
 }
 
 

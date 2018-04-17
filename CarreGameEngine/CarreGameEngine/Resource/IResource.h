@@ -18,6 +18,9 @@ public:
 	IResource() { }
 	~IResource() { }
 
+	virtual const void Load() = 0;
+	virtual const void Unload() = 0;
+
 	// Virtual methods inherited from IResource interface to load resource from file
 	virtual const std::string& GetFilePath() const = 0;
 	virtual void SetFilePath(const std::string& filePath) = 0;
