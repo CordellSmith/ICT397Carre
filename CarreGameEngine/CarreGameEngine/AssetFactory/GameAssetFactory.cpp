@@ -8,13 +8,14 @@ IGameObject* GameAssetFactory::CreateAsset(OBJ_TYPE type, std::string filePath)
 	switch (type)
 	{
 	case OBJ_TERRAIN:
-		return new Terrain();
+		return new Terrain(filePath);
 		break;
 	case OBJ_OBJECT:
+		return new Object(filePath);
 		break;
-		return new Object();
 	case OBJ_NPC:
-		return new NPC();
+		return new NPC(filePath);
+		break;
 	default:
 		break;
 	}

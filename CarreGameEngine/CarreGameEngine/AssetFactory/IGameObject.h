@@ -15,6 +15,8 @@ public:
 	IGameObject() { }
 	~IGameObject() { }
 
+	virtual void LoadFromFilePath(std::string filePath) = 0;
+
 	virtual const void Load() = 0;
 	virtual const void Unload() = 0;
 
