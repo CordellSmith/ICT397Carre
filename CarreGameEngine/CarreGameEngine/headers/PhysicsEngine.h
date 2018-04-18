@@ -40,6 +40,7 @@
 #include "btBulletDynamicsCommon.h"
 #include "BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h"
 #include <vector>
+#include <fstream>
 
 /**
 * @brief Enum for the different types of rigid bodies created.
@@ -145,6 +146,9 @@ class PhysicsEngine
 		* @param objectData - Data structure containing all data for rigid body creation
 		*/
 		//void CreateHeightFieldTerrainShape(Data &objectData);
+
+		int size;
+		unsigned char *terrainData;
 
 	protected:
 

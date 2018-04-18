@@ -219,6 +219,9 @@ void GameControlEngine::Initialize()
 	collisionBodyPos.push_back(btVector3(15.0, 15.0, 15.0));
 	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
+	// Heightmap terrain shape
+	physicsWorld.CreateHeightfieldTerrainShape();
+	collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
 
 	// Below is how the code will be initialised in the gameworld
 	// Comment these lines out to run code as normal, havent been implemented yet
@@ -279,9 +282,8 @@ void GameControlEngine::GameLoop()
 			cubeModel.Render();
 		}
 		/**************************************************************************/
-
-		// Swap the buffers to display the final rendered image on screen
-		WindowManager->SwapTheBuffers();
+			// Swap the buffers to display the final rendered image on screen
+			WindowManager->SwapTheBuffers();
 	}
 }
 
