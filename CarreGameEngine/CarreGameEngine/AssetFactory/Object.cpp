@@ -1,5 +1,15 @@
 #include "Object.h"
 
+Object::Object(std::string filePath) : m_filePath(filePath)
+{
+	LoadFromFilePath(filePath);
+}
+
+void Object::LoadFromFilePath(std::string filePath)
+{
+	//m_model->LoadModel(filePath);
+}
+
 const void Object::Load()
 {
 	return void();

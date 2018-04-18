@@ -47,16 +47,7 @@
     <ClInclude Include="headers\ObjLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource\ResourceFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headers\Singleton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource\IResource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource\MeshResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AssetFactory\GameAssetFactory.h">
@@ -83,6 +74,12 @@
     <ClInclude Include="headers\ScriptManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AssetFactory\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetFactory\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Camera.cpp">
@@ -106,12 +103,6 @@
     <ClCompile Include="src\PhysicsEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="resource\ResourceFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Resource\MeshResource.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AssetFactory\Terrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -128,6 +119,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ScriptManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetFactory\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

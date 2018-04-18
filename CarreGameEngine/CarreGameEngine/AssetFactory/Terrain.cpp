@@ -1,5 +1,15 @@
 #include "Terrain.h"
 
+Terrain::Terrain(std::string filePath) : m_filePath(filePath)
+{
+	LoadFromFilePath(filePath);
+}
+
+void Terrain::LoadFromFilePath(std::string filePath)
+{
+	//m_model->LoadModel(filePath);
+}
+
 const void Terrain::Load()
 {
 	return void();
