@@ -71,7 +71,7 @@ void PhysicsEngine::CreateStaticRigidBody()
 	btRigidBody* body = new btRigidBody(rbInfo);
 
 	// Set the index for the type of rigid body that is being created
-	body->setUserIndex(FLOOR);
+	body->setUserIndex(PLANE);
 
 	// Add the body to the dynamic world
 	dynamicsWorld->addRigidBody(body);
@@ -211,4 +211,214 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerO
 		}	
 	}
 }
+
+// Testing for creating a heightfield terrain shape
+/*void PhysicsEngine::CreateHeightfieldTerrainShape()
+{
+	btCollisionShape* heightfieldShape = new btHeightfieldTerrainShape(10, 10, heightfield, 1, 0, 255, 1, PHY_UCHAR, true);
+	collisionShapes.push_back(heightfieldShape);
+
+	// Initialize transform and location
+	btTransform startTransform;
+	startTransform.setIdentity();
+	startTransform.setOrigin(btVector3(0.0, 0.0, 0.0));
+
+	// Set mass (non-zero for dynamic)
+	mass = 0.0;
+	isDynamic = (mass != 0.0f);
+
+	// Set initial inertia
+	btVector3 localInertia(0.0, 0.0, 0.0);
+
+	// Using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
+	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, heightfieldShape, localInertia);
+	btRigidBody* body = new btRigidBody(rbInfo);
+
+	// Set the index for the type of rigid body that is being created
+	body->setUserIndex(HEIGHTFIELD);
+
+	// Add the body to the dynamic world
+	dynamicsWorld->addRigidBody(body);
+}*/
+
+// Creates all rigid bodies for all game objects
+/*bool PhysicsEngine::CreateAllRigidBodies(Data &objectData)
+{
+	// Holds current rigid body type to create
+	Data tempDataType;
+
+	// Loop through data structure, creating rigid body for each game object
+	for (int i = 0; i < objectData.length() - 1; i++)
+	{
+		tempDataType = objectData[i].getType();
+
+		// Determine what rigid body type to create, then call that function
+		// Return false if no rigid body type found in data structure
+		switch (tempDataType)
+		{
+		case CAMERA: CreateCameraRigidBody(objectData[i]);
+			break;
+		case BOX: CreateBoxShapeRigidBody(objectData[i]);
+			break;
+		case SPHERE: CreateSphereShapeRigidBody(objectData[i]);
+			break;
+		case HEIGHTFIELD: CreateHeightFieldTerrainShape(objectData[i]);
+			break;
+		default: std::cout << "Error reading game object data into Physics Engine.." << std::endl;
+			return false;
+			break;
+		}
+	}
+
+	// If all data read successfully and rigid bodies created, return true
+	return true;
+}*/
+
+// Create a sphere shape rigid body for the camera
+/*void PhysicsEngine::CreateCameraRigidBody(Data &objectData)
+{
+	// Create box shape and add to shape array
+	btCollisionShape* sphereShape = new btSphereShape(objectData.getRadius());
+	collisionShapes.push_back(sphereShape);
+
+	// Initialize transform and location
+	btTransform startTransform;
+	startTransform.setIdentity();
+	startTransform.setOrigin(objectData.getPos());
+
+	// Set mass (non-zero for dynamic)
+	mass = objectData.getMass();
+	isDynamic = (mass != 0.0f);
+
+	// Set initial inertia
+	btVector3 localInertia(0.0, 0.0, 0.0);
+
+	// If dynamic, calculate local inertia
+	if (isDynamic)
+		sphereShape->calculateLocalInertia(mass, localInertia);
+
+	// Using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
+	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, sphereShape, localInertia);
+	btRigidBody* body = new btRigidBody(rbInfo);
+
+	// Set the index for the type of rigid body that is being created
+	body->setUserIndex(CAMERA);
+
+	// Add the body to the dynamic world
+	dynamicsWorld->addRigidBody(body);
+
+	// Set starting player object/camera coordinates
+	playerObject = objectData.getPos();
+
+	// Disable gravity for this object or not
+	if(objectData.applyGravity())
+		body->setGravity(btVector3(0.0, 0.0, 0.0));
+}*/
+
+// Create a box shape rigid body
+/*void PhysicsEngine::CreateBoxShapeRigidBody(Data &objectData)
+{
+	// Create box shape and add to shape array
+	btCollisionShape* boxShape = new btBoxShape(btVector3(objectData.getScaleX(), objectData.getScaleY(), objectData.getScaleZ()));
+	collisionShapes.push_back(boxShape);
+
+	// Initialize transform and location
+	btTransform startTransform;
+	startTransform.setIdentity();
+	startTransform.setOrigin(objectData.getPos());
+
+	// Set mass (non-zero for dynamic)
+	mass = objectData.getMass();
+	isDynamic = (mass != 0.0f);
+
+	// Set initial inertia
+	btVector3 localInertia(0.0, 0.0, 0.0);
+
+	// If dynamic, calculate local inertia
+	if (isDynamic)
+		boxShape->calculateLocalInertia(mass, localInertia);
+	
+	// Using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
+	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, boxShape, localInertia);
+	btRigidBody* body = new btRigidBody(rbInfo);
+
+	// Set the index for the type of rigid body that is being created
+	body->setUserIndex(BOX);
+
+	// Add the body to the dynamic world
+	dynamicsWorld->addRigidBody(body);
+}*/
+
+// Create a sphere shape rigid body
+/*void PhysicsEngine::CreateSphereShapeRigidBody(Data &objectData)
+{
+	// Create sphere shape and add to shape array
+	btCollisionShape* sphereShape = new btSphereShape(objectData.getRadius());
+	collisionShapes.push_back(sphereShape);
+
+	// Initialize transform and location
+	btTransform startTransform;
+	startTransform.setIdentity();
+	startTransform.setOrigin(objectData.getPos());
+
+	// Set mass (non-zero for dynamic)
+	mass = objectData.getMass();
+	isDynamic = (mass != 0.0f);
+
+	// Set initial inertia
+	btVector3 localInertia(0.0, 0.0, 0.0);
+
+	// If dynamic, calculate local inertia
+	if (isDynamic)
+		sphereShape->calculateLocalInertia(mass, localInertia);
+
+	// Using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
+	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, sphereShape, localInertia);
+	btRigidBody* body = new btRigidBody(rbInfo);
+
+	// Set the index for the type of rigid body that is being created
+	body->setUserIndex(SPHERE);
+
+	// Add the body to the dynamic world
+	dynamicsWorld->addRigidBody(body);
+}*/
+
+// Create a heightfield terrain shape
+/*void PhysicsEngine::CreateHeightFieldTerrainShape(Data &objectData)
+{
+	// Create heightfield terrain shape and add to shape array
+	btCollisionShape* heightfieldShape = new btHeightfieldTerrainShape(objectData.getScaleX(), objectData.getScaleZ(), objectData.getData(), objectData.getHeightScale(), objectData.getMinHeight(), objectData.getMaxHeight(), 1, PHY_UCHAR, true);
+	collisionShapes.push_back(heightfieldShape);
+
+	// Initialize transform and location
+	btTransform startTransform;
+	startTransform.setIdentity();
+	startTransform.setOrigin(objectData.getPos());
+
+	// Set mass (non-zero for dynamic)
+	mass = objectData.getMass();
+	isDynamic = (mass != 0.0f);
+
+	// Set initial inertia
+	btVector3 localInertia(0.0, 0.0, 0.0);
+
+	// If dynamic, calculate local inertia
+	if (isDynamic)
+		heightfieldShape->calculateLocalInertia(mass, localInertia);
+
+	// Using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
+	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, heightfieldShape, localInertia);
+	btRigidBody* body = new btRigidBody(rbInfo);
+
+	// Set the index for the type of rigid body that is being created
+	body->setUserIndex(HEIGHTFIELD);
+
+	// Add the body to the dynamic world
+	dynamicsWorld->addRigidBody(body);
+}*/
 

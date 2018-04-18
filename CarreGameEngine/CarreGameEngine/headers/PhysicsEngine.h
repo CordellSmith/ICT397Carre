@@ -29,8 +29,8 @@
 *				position. Still needs some work, but will do for now.
 * @bug			If camera is not moved for a short period of time, it becomes stuck. Restart application to fix. Will fix this at a later date.
 *
-* @date 16/04/2018
-* @version 3.0	Big gap between versions due to other units requirements. Started work on readin in a heightmap and applying a rigid body to it.
+* @date 18/04/2018
+* @version 3.0	Big gap between versions due to other units requirements. Set up functions for initializing all object rigid bodies. Will need changing.
 */
 
 #ifndef PHYSICSENGINE_H
@@ -38,6 +38,7 @@
 
 /// Includes
 #include "btBulletDynamicsCommon.h"
+#include "BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h"
 #include <vector>
 
 /**
@@ -47,7 +48,9 @@ typedef enum
 {
 	CAMERA = 1,
 	BOX = 2,
-	FLOOR = 3
+	SPHERE = 3,
+	HEIGHTFIELD = 4,
+	PLANE = 5
 }RIGID_BODY_TYPE;
 
 class PhysicsEngine
@@ -87,6 +90,15 @@ class PhysicsEngine
 		*/
 		void Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerObj);
 
+		/*
+		* @brief Public function that calls different private functions for creation of rigid bodies
+		* @param objectData - Data structure containing all game object data
+		* @return True if all game object rigid bodies created, false otherwise
+		*/
+		//bool CreateAllRigidBodies(Data &objectData);
+
+		void CreateHeightfieldTerrainShape();
+
 	private:
 
 		/// Determines if shape is dynamic or not
@@ -109,6 +121,30 @@ class PhysicsEngine
 
 		/// New force applied
 		btVector3 newForce;
+
+		/*
+		* @brief Creates a rigid body for the camera
+		* @param objectData - Data structure containing all data for rigid body creation
+		*/
+		//void CreateCameraRigidBody(Data &objectData);
+
+		/*
+		* @brief Creates a box shape rigid body
+		* @param objectData - Data structure containing all data for rigid body creation
+		*/
+		//void CreateBoxShapeRigidBody(Data &objectData);
+
+		/*
+		* @brief Creates a sphere shape rigid body
+		* @param objectData - Data structure containing all data for rigid body creation
+		*/
+		//void CreateSphereShapeRigidBody(Data &objectData);
+
+		/*
+		* @brief Creates a heightfield terrain shape
+		* @param objectData - Data structure containing all data for rigid body creation
+		*/
+		//void CreateHeightFieldTerrainShape(Data &objectData);
 
 	protected:
 
