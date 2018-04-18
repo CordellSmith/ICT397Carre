@@ -142,7 +142,6 @@ int GameControlEngine::GLMain()
 	return 0;
 }
 
-
 // This function initializes the window, the shaders and the triangle vertex data.
 void GameControlEngine::Initialize()
 {
@@ -220,8 +219,8 @@ void GameControlEngine::Initialize()
 	physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
 	collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
 	// Heightmap terrain shape
-	physicsWorld.CreateHeightfieldTerrainShape();
-	collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
+	//physicsWorld.CreateHeightfieldTerrainShape();
+	//collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
 
 	// Below is how the code will be initialised in the gameworld
 	// Comment these lines out to run code as normal, havent been implemented yet
