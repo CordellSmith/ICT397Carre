@@ -80,7 +80,7 @@ void PhysicsEngine::CreateStaticRigidBody()
 void PhysicsEngine::CreatePlayerControlledRigidBody(btVector3 &playerObj)
 {
 	// Create box shape and add to shape array
-	btCollisionShape* camShape = new btBoxShape(btVector3(btScalar(1.0), btScalar(1.0), btScalar(1.0)));
+	btCollisionShape* camShape = new btSphereShape(0.5);
 	collisionShapes.push_back(camShape);
 
 	// Create a dynamic object
@@ -168,6 +168,13 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerO
 		btRigidBody* body = btRigidBody::upcast(obj);
 		btTransform trans;
 
+
+		// Reset forces on player object prior to next step simulation
+		if (body->getUserIndex() == HEIGHTFIELD)
+		{
+			std::cout << "Heightfield" << std::endl;
+		}
+
 		// Reset forces on player object prior to next step simulation
 		if (body->getUserIndex() == CAMERA)
 		{
@@ -213,9 +220,41 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerO
 }
 
 // Testing for creating a heightfield terrain shape
-/*void PhysicsEngine::CreateHeightfieldTerrainShape()
+void PhysicsEngine::CreateHeightfieldTerrainShape()
 {
-	btCollisionShape* heightfieldShape = new btHeightfieldTerrainShape(10, 10, heightfield, 1, 0, 255, 1, PHY_UCHAR, true);
+	//unsigned char *terrainData;
+	int sizet = 128;
+
+	// Open for binary read, print error if error found
+	std::ifstream infile("res/terrain/height128.raw", std::ios::binary);
+	if (!infile)
+	{
+		exit(0);
+	}
+
+	// Allocate memory, return false if no size = 0
+	if (terrainData)
+		delete[] terrainData;
+	if (sizet>0)
+		terrainData = new unsigned char[sizet*sizet];
+	if (terrainData == NULL)
+		exit(0);
+
+	// Read in heightfield and get length of file
+	infile.seekg(0, std::ios::end);
+	int length = infile.tellg();
+
+	// Read data in as a block, cast to char*, set size, and close file
+	infile.seekg(0, std::ios::beg);
+	infile.read(reinterpret_cast<char *>(terrainData), length);
+	infile.close();
+	this->size = sizet;
+
+
+
+
+
+	btCollisionShape* heightfieldShape = new btHeightfieldTerrainShape(128, 128, &terrainData, 1, 1, 128, 1, PHY_UCHAR, false);
 	collisionShapes.push_back(heightfieldShape);
 
 	// Initialize transform and location
@@ -240,7 +279,7 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerO
 
 	// Add the body to the dynamic world
 	dynamicsWorld->addRigidBody(body);
-}*/
+}
 
 // Creates all rigid bodies for all game objects
 /*bool PhysicsEngine::CreateAllRigidBodies(Data &objectData)
@@ -421,4 +460,3 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerO
 	// Add the body to the dynamic world
 	dynamicsWorld->addRigidBody(body);
 }*/
-
