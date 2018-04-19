@@ -1,17 +1,17 @@
 #shader vertex
 #version 400
 
-layout(location = 0) in vec4 in_Position;
-layout(location = 1) in vec4 in_Color;
-layout(location = 2) in vec2 in_UV;
-layout(location = 3) in vec4 in_Normals;
+layout(location = 0) in glm::vec4 in_Position;
+layout(location = 1) in glm::vec4 in_Color;
+layout(location = 2) in glm::vec2 in_UV;
+layout(location = 3) in glm::vec4 in_Normals;
 
-uniform mat4 u_projectionMatrix;
-uniform mat4 u_viewMatrix;
-uniform mat4 u_modelMatrix;
+uniform glm::mat4 u_projectionMatrix;
+uniform glm::mat4 u_viewMatrix;
+uniform glm::mat4 u_modelMatrix;
 
-out vec4 frag_Color;
-//out vec2 UV;
+out glm::vec4 frag_Color;
+//out glm::vec2 UV;
 
 void main(void)
 {
@@ -23,9 +23,9 @@ void main(void)
 #shader fragment
 #version 400
 
-in vec4 frag_Color;
-layout(location = 0) out vec4 out_Color;
-//in vec2 UV;
+in glm::vec4 frag_Color;
+layout(location = 0) out glm::vec4 out_Color;
+//in glm::vec2 UV;
 //uniform sampler2D myTextureSampler;
 
 void main(void)

@@ -1,53 +1,198 @@
 #pragma once
 
-#include <string>										// Used for our STL string objects
-#include <fstream>										// Used for our ifstream object to load text files
-#include "GL\glew.h"									// Used for the OpenGL types like GLuint, GLfloat, etc.
+#include <string>										
+#include <fstream>										
+#include "GL\glew.h"									
 
-// This is our very basic shader class that we will use to load and turn on/off our shaders
+	/**
+	* @class Shader
+	* @brief Basic shader class
+	*
+	* This shader class is used to load and store our shader information as well as initialize
+	* the shaders with OpenGL.
+	*
+	* @author Cordell Smith
+	* @version 01
+	* @date 29/03/2018 CS
+	*
+	*/
 class Shader
 {
 public:
-	// Create an empty constructor and have the deconstructor release our memory.
-	Shader()	{ }
-	~Shader()	{ Destroy(); }
+		/**
+		* @brief Default constructor
+		*
+		* This is the default constuctor that is empyty.
+		*
+		* @return null
+		*/
+	Shader() { }
 
-	// This loads our text file for each shader and returns it in a string
-	std::string LoadShaderFile(std::string strFile);
+		/**
+		* @brief Destructor
+		*
+		* The destructor calls destroy that will free up any used memory.
+		*
+		* @return null
+		*/
+	~Shader() { Destroy(); }
+
+		/**
+		* @brief Loads the shader from file
+		*
+		* The function takes the file path given as a string parameter, opens up a file
+		* stream to read the file and stores the file as a string in a local variable
+		* that is then returned. It is used to read int and store the Vertex and Fragment 
+		* shaders.
+		* 
+		*
+		* @param std::string filePath
+		* @return std::string
+		*/
+	std::string LoadShaderFile(std::string filePath);
 
 	// This loads a vertex and fragment shader from a text file (relative or full path)
-	void Initialize(std::string strVertexFile, std::string strFragmentFile );
+		/**
+		* @brief Initializes the shader program
+		*
+		* This function takes the vertex and fragment shaders given as string parameters
+		* and creates both shdaders using glCreateShader(). The shader source is then set
+		* and assiged to their respected ids. The shader program is created and assigned
+		* to the m_shaderProgramId member variable and the two shaders are attached to this
+		* program. The program is then linked and it runs a check for any GL errors.
+		*
+		* @return void
+		*/
+	void Initialize(std::string vertFile, std::string fragFile);
 	
-	// This returns an ID for a variable in our shader, to be used with a Set*() function
-	GLint GetVariable(std::string strVariable);
+		/**
+		* @brief Gets the uniform variable
+		*
+		* Returns an ID with the same name as the string parameter in the shader.
+		*
+		* @param std::string variable
+		* @return GLint
+		*/
+	GLint GetVariable(std::string variable);
 
-	// Below are functions to set an integer, a set of floats or a matrix (float[16])
+		/**
+		* @brief Sets uniform value to int
+		*
+		* Calls glUniform1i() taking the id associated to the shader variable and changing
+		* it to the new value set by the second parameter given.
+		*
+		* @param GLint id
+		* @param int newValue
+		* @return void
+		*/
 	void SetInt(GLint id, int newValue)											{ glUniform1i(id, newValue);		}
+	
+		/**
+		* @brief Sets uniform value to float
+		*
+		* Calls glUniform1f() taking the id associated to the shader variable and changing
+		* it to the new value set by the second parameter given.
+		*
+		* @param GLint id
+		* @param GLfloat newValue
+		* @return void
+		*/
 	void SetFloat(GLint id, GLfloat newValue)									{ glUniform1f(id, newValue);		}
+	
+		/**
+		* @brief Selects uniform value to be changed
+		*
+		* Calls glUniform2f() taking the id associated to the shader variable and changing
+		* the value according to the GLfloat parameters specified.
+		*
+		* @param GLint id
+		* @param GLfloat v0
+		* @param GLfloat v1
+		* @return void
+		*/
 	void SetFloat2(GLint id, GLfloat v0, GLfloat v1)							{ glUniform2f(id, v0, v1);			}
+	
+		/**
+		* @brief Selects uniform value to be changed
+		*
+		* Calls glUniform3f() taking the id associated to the shader variable and changing
+		* the value according to the GLfloat parameters specified.
+		*
+		* @param GLint id
+		* @param GLfloat v0
+		* @param GLfloat v1
+		* @param GLfloat v2
+		* @return void
+		*/
 	void SetFloat3(GLint id, GLfloat v0, GLfloat v1, GLfloat v2)				{ glUniform3f(id, v0, v1, v2);		}
+	
+		/**
+		* @brief Selects uniform value to be changed
+		*
+		* Calls glUniform4f() taking the id associated to the shader variable and changing
+		* the value according to the GLfloat parameters specified.
+		*
+		* @param GLint id
+		* @param GLfloat v0
+		* @param GLfloat v1
+		* @param GLfloat v2
+		* @param GLfloat v3
+		* @return void
+		*/
 	void SetFloat4(GLint id, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)	{ glUniform4f(id, v0, v1, v2, v3);	}
 	
-	// This allows us to pass in 4x4 matrix (float array of 16) to a shader by the Id received from GetVariable()
-	void SetMatrix4(GLint id, GLsizei count, GLboolean transpose, const GLfloat *value)
+		/**
+		* @brief Selects uniform value to be changed
+		*
+		* Calls glUniformMatrix4fv() taking the id associated to the shader variable and passing a 4x4 matrix
+		* of size 16 bytes (4 floats).
+		*
+		* @param GLint id
+		* @param GLsizei count
+		* @param GLboolean transpose
+		* @param const GLfloat* value
+		* @return void
+		*/
+	void SetMatrix4(GLint id, GLsizei count, GLboolean transpose, const GLfloat* value)
 	{ 
 		glUniformMatrix4fv(id, count, transpose, value);
 	}
 
-	// These 2 functions turn on and off our shader, which uses the OpenGL glUseProgram() function
-	void TurnOn()		{	glUseProgram(ShaderProgramId);  }
+		/**
+		* @brief Turns shader on
+		*
+		* Calls glUseProgram() turning the shader on.
+		*
+		* @return void
+		*/
+	void TurnOn()		{	glUseProgram(m_shaderProgramId);  }
+
+		/**
+		* @brief Turns shader off
+		*
+		* Calls glUseProgram(0) turning the shader off.
+		*
+		* @return void
+		*/
 	void TurnOff()		{	glUseProgram(0);				}
 	
-	// This releases our memory for our shader
+		/**
+		* @brief Destroys any linked shaders
+		*
+		* Detatches and deletes the shader information. Sets the m_vertexShaderId,
+		* m_fragmentShaderId and m_shaderProgramId to 0.
+		*
+		* @return void
+		*/
 	void Destroy();
 
 private:
-	// This Id stores our vertex shader information
-	GLuint VertexShaderId;
+	// Stores vertex shader information
+	GLuint m_vertexShaderId;
 
-	// This Id stores our fragment shader information
-	GLuint FragmentShaderId;
+	// Stores fragment shader information
+	GLuint m_fragmentShaderId;
 
-	// This Id stores our program information which encompasses our shaders
-	GLuint ShaderProgramId;
+	// Stores the program information 
+	GLuint m_shaderProgramId;
 };

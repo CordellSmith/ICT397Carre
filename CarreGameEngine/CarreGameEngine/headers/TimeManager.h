@@ -1,18 +1,31 @@
 #pragma once
 
-#include <chrono>													// Used for the C++ 11 time functionality
-#include <thread>													// used for the C++ 11 sleep functionality
+#include <chrono>													
+#include <thread>													
 
-
-// This is our TimeManager singleton class to calculate our frame rate and give a time slice.
-// We use the Singleton design pattern so that we don't need to pass in the time slice everywhere.
+	/**
+	* @class TimeManager
+	* @brief Time manager class used to manage anything that uses time
+	*
+	* This singleton class is used to calculate the framerate and provide time calculations.
+	*
+	* @author Cordell Smith
+	* @version 01
+	* @date 29/03/2018 CS
+	*
+	*/
 class TimeManager
 {
 public:
 
-	// The function to get the instance of the manager, or initialize and return the instance.
-	// By creating a static variable of the instance we ensure this only gets created once.
-	// This is also thread-safe in C++ 11 according to the specifications.
+		/**
+		* @brief Singleton instance
+		*
+		* This function returns a singleton instance of the time class so that there is only
+		* one instance of time.
+		*
+		* @return static TimeManager&
+		*/
 	static TimeManager& Instance()
 	{
 		static TimeManager instance;
@@ -20,23 +33,69 @@ public:
 		return instance;
 	}
 
-	// This calculates our current scene's frames per second and displays it in the console
+		/**
+		* @brief Calculates the framerate
+		*
+		* This function calculates the framerate per second and prints it to the console.
+		*
+		* @param bool writeToConsole
+		* @return double
+		*/
 	double CalculateFrameRate(bool writeToConsole);
 
-	// This returns the current time in seconds (since 1/1/1970, call "epoch")
+		/**
+		* @brief Returns the current world time
+		*
+		* This function returns the real time in seconds.
+		*
+		* @return double
+		*/
 	double TimeManager::GetTime();
 
-	// This pauses the current thread for an amount of time in milliseconds
+		/**
+		* @brief Sleeps the current thread
+		*
+		* This function sleeps the current thread for an amount of time given by the
+		* parameter in milliseconds.
+		*
+		* @param int milliseconds
+		* @return void
+		*/
 	void Sleep(int milliseconds);
 
-	// This is the time slice that stores the total time in seconds that has elapsed since the last frame
+protected:
+	// Stores the change in time since the last frame
 	double DeltaTime = 0;
 
-	// This is the current time in seconds
+	// Stores the current time in seconds
 	double CurrentTime = 0;
 
 private:
-	TimeManager(){};								// Private so that it can  not be called
-	TimeManager(TimeManager const&);				// copy constructor is private
-	TimeManager& operator=(TimeManager const&);		// assignment operator is private
+		/**
+		* @brief Default constructor
+		*
+		* This is the default constuctor that is empyty and private so it cannot be accessed.
+		*
+		* @return null
+		*/
+	TimeManager() { }
+
+		/**
+		* @brief Copy constructor
+		*
+		* This is the copy constuctor and is private so it cannot be accessed.
+		*
+		* @return null
+		*/
+	TimeManager(TimeManager const&);
+
+		/**
+		* @brief Overloaded assignment operator
+		*
+		* This is the overloaded assignment operator.
+		*
+		* @param TimeManager const&
+		* @return TimeManager&
+		*/
+	TimeManager& operator=(TimeManager const&);
 };
