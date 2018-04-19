@@ -6,23 +6,23 @@
 int main()
 {
 	// First create our desired WindowManager implementation so we can set it below
-	GLFWManager *pWindowManager = new GLFWManager();
+	GLFWManager* pWindowManager = new GLFWManager();
 
 	// Here we initialize a camera to be used for our application, as opposed to having a global
-	Camera *m_camera = new Camera();
+	Camera* m_camera = new Camera();
 
 	// Create a local instance of our GameControlEngine (defined in Main.cpp) and set its
 	// WindowManager implementation (in this case, GLFW).
-	GameControlEngine application;
-	application.SetWindowManager(pWindowManager);
+	GameControlEngine m_application;
+	m_application.SetWindowManager(pWindowManager);
 
 	// Set the created camera as our main application camera and pass it also to our InputManager
-	application.SetCamera(m_camera);
+	m_application.SetCamera(m_camera);
 	pWindowManager->GetInputManager()->SetCamera(m_camera);
 
 	// Return the GLMain() defined in Main.cpp, which handles the flow of our application
 	// and immediately starts our game loop.
-	return application.GLMain();
+	return m_application.GLMain();
 }
 
 // This initializes our window and creates the OpenGL context
@@ -110,19 +110,19 @@ bool GLFWManager::ProcessInput(bool continueGame = true)
 
 	// Below we check if the UP, DOWN, LEFT, RIGHT or W,A,S,D keys are pressed, and send the InputCode
 	// down to our InputManager so we can know when to move the camera.
-	if ( glfwGetKey(Window, GLFW_KEY_UP) || glfwGetKey(Window, GLFW_KEY_W) )
-		InputManager.KeyPressed(InputCodes::Up);
-	if ( glfwGetKey(Window, GLFW_KEY_DOWN) || glfwGetKey(Window, GLFW_KEY_S) )
-		InputManager.KeyPressed(InputCodes::Down);
-	if ( glfwGetKey(Window, GLFW_KEY_LEFT) || glfwGetKey(Window, GLFW_KEY_A) )
-		InputManager.KeyPressed(InputCodes::Left);
-	if ( glfwGetKey(Window, GLFW_KEY_RIGHT) || glfwGetKey(Window, GLFW_KEY_D) )
-		InputManager.KeyPressed(InputCodes::Right);
+	if (glfwGetKey(Window, GLFW_KEY_UP) || glfwGetKey(Window, GLFW_KEY_W))
+		m_inputManager.KeyPressed(InputCodes::Up);
+	if (glfwGetKey(Window, GLFW_KEY_DOWN) || glfwGetKey(Window, GLFW_KEY_S))
+		m_inputManager.KeyPressed(InputCodes::Down);
+	if (glfwGetKey(Window, GLFW_KEY_LEFT) || glfwGetKey(Window, GLFW_KEY_A))
+		m_inputManager.KeyPressed(InputCodes::Left);
+	if (glfwGetKey(Window, GLFW_KEY_RIGHT) || glfwGetKey(Window, GLFW_KEY_D))
+		m_inputManager.KeyPressed(InputCodes::Right);
 	// Used to toggle wireframe, Q to toggle on and E to toggle off
 	if (glfwGetKey(Window, GLFW_KEY_Q))
-		InputManager.KeyPressed(InputCodes::q);
+		m_inputManager.KeyPressed(InputCodes::q);
 	if (glfwGetKey(Window, GLFW_KEY_E))
-		InputManager.KeyPressed(InputCodes::e);
+		m_inputManager.KeyPressed(InputCodes::e);
 	
 	// Create some variables to store the current mouse position
 	double mouseX, mouseY;
@@ -134,7 +134,7 @@ bool GLFWManager::ProcessInput(bool continueGame = true)
 	if ( mouseX != 0 && mouseY != 0 )
 	{
 		// Send the updated mouse position to our InputManager
-		InputManager.MouseMoved((float)mouseX, (float)mouseY);
+		m_inputManager.MouseMoved((float)mouseX, (float)mouseY);
 	}
 
 	// Set the window's cursor position back to 0,0 (top left corner) so we keep getting a delta

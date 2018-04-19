@@ -8,8 +8,10 @@
 
 /*
 * @class GLFWManager
-* @brief This is our implementation of the abstract base class WindowManager, which uses the
-* GLFW cross-platform library to create a window, handle input and create the OpenGL context.
+* @brief This is our implementation of the abstract base class WindowManager
+*
+* This class uses the GLFW cross-platform library to create a window, handle input and create the OpenGL context
+* by inheriting from the interface class WindowManager.
 *
 * @author Cordell Smith
 * @date 29/04/2018

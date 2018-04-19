@@ -63,7 +63,6 @@ public:
 		*/
 	void Sleep(int milliseconds);
 
-protected:
 	/// Stores the change in time since the last frame
 	double DeltaTime = 0;
 
