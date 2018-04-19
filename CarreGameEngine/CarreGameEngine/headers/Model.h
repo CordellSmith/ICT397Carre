@@ -1,6 +1,6 @@
 #pragma once
 
-// Make sure GLM is using radians instead of degrees
+/// Make sure GLM is using radians instead of degrees
 #define GLM_FORCE_RADIANS							
 
 #include <stdio.h>										
@@ -27,13 +27,13 @@
 	*/
 struct Vertex
 {
-	// The x,y,z position
+	/// The x,y,z position
 	glm::vec3 xyz;
-	// Colour value
+	/// Colour value
 	glm::vec4 rgba;	
-	// Texture coordinates
+	/// Texture coordinates
 	glm::vec2 uv;
-	// Normal coordinates
+	/// Normal coordinates
 	glm::vec3 normal;
 };
 
@@ -182,7 +182,7 @@ public:
 	void Destroy();
 
 protected:
-	// These are used as pointers to each index where each information is stored within the vertex buffer object
+	/// These are used as pointers to each index where each information is stored within the vertex buffer object
 	static const GLuint m_vertexIndex = 0;
 	static const GLuint m_colorIndex = 1;
 	static const GLuint m_textureIndex = 2;
@@ -190,21 +190,21 @@ protected:
 
 	Vertex* m_vertices;
 	GLint m_verticesLength;
-	// VBO id
+	/// VBO id
 	GLuint m_vertexBufferObjectId;
-	// VAO id
+	/// VAO id
 	GLuint m_vertexArrayObjectId;
 
-	// The model's position
+	/// The model's position
 	glm::vec3 m_positon;
-	// The model's rotation
+	/// The model's rotation
 	glm::vec3 m_rotation;
-	// The model's scale
+	/// The model's scale
 	glm::vec3 m_scale;											
 	
-	// Shader object
+	/// Shader object
 	Shader m_shader;
 
-	// Camera object
+	/// Camera object
 	Camera* m_camera;
 };

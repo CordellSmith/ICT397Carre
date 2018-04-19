@@ -144,7 +144,6 @@
     <ClInclude Include="headers\GLFWManager.h" />
     <ClInclude Include="headers\InputManager.h" />
     <ClInclude Include="headers\Model.h" />
-    <ClInclude Include="headers\ObjLoader.h" />
     <ClInclude Include="headers\PhysicsEngine.h" />
     <ClInclude Include="headers\ScriptManager.h" />
     <ClInclude Include="headers\Shader.h" />

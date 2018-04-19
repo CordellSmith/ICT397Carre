@@ -64,10 +64,10 @@ public:
 	void Sleep(int milliseconds);
 
 protected:
-	// Stores the change in time since the last frame
+	/// Stores the change in time since the last frame
 	double DeltaTime = 0;
 
-	// Stores the current time in seconds
+	/// Stores the current time in seconds
 	double CurrentTime = 0;
 
 private:
