@@ -83,9 +83,9 @@ public:
 	Camera *GetCamera() { return Camera; }
 	/**
 	* @brief	Sets the camera for our application
-	* @param	pCamera
+	* @param	m_camera
 	*/
-	void SetCamera(Camera *pCamera) { Camera = pCamera; }
+	void SetCamera(Camera *m_camera) { Camera = m_camera; }
 
 	/**
 	* @brief	This initializes the application

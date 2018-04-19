@@ -1,23 +1,19 @@
-/*
-*
-* @class GLFW Manager
-* @brief This is our implementation of the abstract base class WindowManager, which uses the 
-*	GLFW cross-platform library to create a window, handle input and create the OpenGL
-*	context.  You can go online for to the first OpenGL tutorials page for the Github 
-*	"Gist" which has a Win32 implementation, for those who would rather work with that API.
-*
-* @date 29/04/2018
-*/
-
 #pragma once
 
-#include <string>										// Used for our STL string objects
-#include <fstream>										// Used for fprintf and stderr									
-#include "GLFW\glfw3.h"									// Used to reference the GLFW library
-#include "WindowManager.h"								// Used to reference the abstract base class
+#include <string>										
+#include <fstream>															
+#include "GLFW\glfw3.h"									
+#include "WindowManager.h"								
 
 
-
+/*
+* @class GLFWManager
+* @brief This is our implementation of the abstract base class WindowManager, which uses the
+* GLFW cross-platform library to create a window, handle input and create the OpenGL context.
+*
+* @author Cordell Smith
+* @date 29/04/2018
+*/
 class GLFWManager : public WindowManager
 {
 public:
