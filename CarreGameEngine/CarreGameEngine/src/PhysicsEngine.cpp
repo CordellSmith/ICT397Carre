@@ -24,19 +24,19 @@ PhysicsEngine::PhysicsEngine()
 	btSequentialImpulseConstraintSolver* solver = new btSequentialImpulseConstraintSolver;
 
 	// The dynamic world
-	dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
+	m_dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
 
 	// Set the gravity
-	dynamicsWorld->setGravity(btVector3(0, -2, 0));
+	m_dynamicsWorld->setGravity(btVector3(0, -2, 0));
 
 	// Initialize all objects to static
-	isDynamic = false;
+	m_isDynamic = false;
 
 	// Initialize player object location
-	playerObject.setZero();
+	m_playerObject.setZero();
 
-	oldForce.setZero();
-	newForce.setZero();
+	m_oldForce.setZero();
+	m_newForce.setZero();
 }
 
 // De-constructor (not implemented)
@@ -47,7 +47,7 @@ void PhysicsEngine::CreateStaticRigidBody()
 {
 	// Create a floor shape and add to shape array
 	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(100.0), btScalar(0.0), btScalar(100.0)));
-	collisionShapes.push_back(groundShape);
+	m_collisionShapes.push_back(groundShape);
 
 	// Initialize transform and location
 	btTransform groundTransform;
@@ -55,26 +55,26 @@ void PhysicsEngine::CreateStaticRigidBody()
 	groundTransform.setOrigin(btVector3(0.0, -1.0, 0.0));
 
 	// Set mass (zero for static)
-	mass = 0.0;
+	m_mass = 0.0;
 
 	// Set dynamic objects to objects with mass that is non-zero
-	isDynamic = (mass != 0.0f);
+	m_isDynamic = (m_mass != 0.0f);
 
 	btVector3 localInertia(0.0, 0.0, 0.0);
 
-	if (isDynamic)
-		groundShape->calculateLocalInertia(mass, localInertia);
+	if (m_isDynamic)
+		groundShape->calculateLocalInertia(m_mass, localInertia);
 
 	//using motionstate is optional, it provides interpolation capabilities, and only synchronizes 'active' objects
 	btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
-	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, groundShape, localInertia);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, groundShape, localInertia);
 	btRigidBody* body = new btRigidBody(rbInfo);
 
 	// Set the index for the type of rigid body that is being created
 	body->setUserIndex(PLANE);
 
 	// Add the body to the dynamic world
-	dynamicsWorld->addRigidBody(body);
+	m_dynamicsWorld->addRigidBody(body);
 }
 
 // Create a bounding box for camera or player controlled object
@@ -82,39 +82,39 @@ void PhysicsEngine::CreatePlayerControlledRigidBody(btVector3 &playerObj)
 {
 	// Create box shape and add to shape array
 	btCollisionShape* camShape = new btSphereShape(0.5);
-	collisionShapes.push_back(camShape);
+	m_collisionShapes.push_back(camShape);
 
 	// Create a dynamic object
 	btTransform startTransform;
 	startTransform.setIdentity();
 
 	// Set mass (non-zero for dynamic)
-	mass = 2.0f;
+	m_mass = 2.0f;
 
 	// Set dynamic objects to objects with mass that is non-zero
-	isDynamic = (mass != 0.0f);
+	m_isDynamic = (m_mass != 0.0f);
 
 	btVector3 localInertia(0.0, 0.0, 0.0);
 
-	if (isDynamic)
-		camShape->calculateLocalInertia(mass, localInertia);
+	if (m_isDynamic)
+		camShape->calculateLocalInertia(m_mass, localInertia);
 
 	// Set origin of body
 	startTransform.setOrigin(playerObj);
 
 	//using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
 	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
-	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, camShape, localInertia);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, camShape, localInertia);
 	btRigidBody* body = new btRigidBody(rbInfo);
 
 	// Set the index for the type of rigid body that is being created
 	body->setUserIndex(CAMERA);
 
 	// Add the body to the dynamic world
-	dynamicsWorld->addRigidBody(body);
+	m_dynamicsWorld->addRigidBody(body);
 
 	// Set new player object coordinates
-	playerObject = playerObj;
+	m_playerObject = playerObj;
 
 	// Disable gravity for this object
 	body->setGravity(btVector3(0.0, 0.0, 0.0));
@@ -125,63 +125,55 @@ void PhysicsEngine::CreateDynamicRigidBody(btVector3 &pos)
 {
 	// Create box shape and add to shape array
 	btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(1.2), btScalar(1.2), btScalar(1.2)));
-	collisionShapes.push_back(boxShape);
+	m_collisionShapes.push_back(boxShape);
 
 	// Create a dynamic object
 	btTransform startTransform;
 	startTransform.setIdentity();
 
 	// Set mass (non-zero for dynamic)
-	mass = 1.0f;
+	m_mass = 1.0f;
 
 	// Set dynamic objects to objects with mass that is non-zero
-	isDynamic = (mass != 0.0f);
+	m_isDynamic = (m_mass != 0.0f);
 
 	btVector3 localInertia(0.0, 0.0, 0.0);
 
-	if (isDynamic)
-		boxShape->calculateLocalInertia(mass, localInertia);
+	if (m_isDynamic)
+		boxShape->calculateLocalInertia(m_mass, localInertia);
 
 	// Set origin of body
 	startTransform.setOrigin(pos);
 
 	//using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
 	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
-	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, boxShape, localInertia);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, boxShape, localInertia);
 	btRigidBody* body = new btRigidBody(rbInfo);
 
 	// Set the index for the type of rigid body that is being created
 	body->setUserIndex(BOX);
 	
 	// Add the body to the dynamic world
-	dynamicsWorld->addRigidBody(body);
+	m_dynamicsWorld->addRigidBody(body);
 }
 
 // Simulate the dynamic world
 void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerObj)
 {
-	dynamicsWorld->stepSimulation(1.f / 60.f, 10);
+	m_dynamicsWorld->stepSimulation(1.f / 60.f, 10);
 
 	// Update positions of all dynamic objects
-	for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
+	for (int j = m_dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
 	{
-		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
+		btCollisionObject* obj = m_dynamicsWorld->getCollisionObjectArray()[j];
 		btRigidBody* body = btRigidBody::upcast(obj);
 		btTransform trans;
-
-
-		// Reset forces on player object prior to next step simulation
-		if (body->getUserIndex() == HEIGHTFIELD)
-		{
-			std::cout << "Heightfield" << std::endl;
-		}
 
 		// Reset forces on player object prior to next step simulation
 		if (body->getUserIndex() == CAMERA)
 		{
 			body->clearForces();
 			body->setLinearVelocity(btVector3(0,0,0));
-
 		}
 
 		// Update rigid body positions
@@ -199,16 +191,16 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerO
 		{
 			// TODO: Make this better (Jack)
 			// Apply force in direction camera was moved
-			newForce.setX((playerObj.x() - playerObject.x()) * 10000);
-			newForce.setY((playerObj.y() - playerObject.y()) * 10000);
-			newForce.setZ((playerObj.z() - playerObject.z()) * 10000);
+			m_newForce.setX((playerObj.x() - m_playerObject.x()) * 10000);
+			m_newForce.setY((playerObj.y() - m_playerObject.y()) * 10000);
+			m_newForce.setZ((playerObj.z() - m_playerObject.z()) * 10000);
 			
 			//std::cout << playerObject.x() << " " << playerObject.y() << " " << playerObject.z() << "\n" << std::endl;
 
 			// Update rigid-body location for drawing
-			body->applyCentralForce(newForce);
-			playerObject = trans.getOrigin();
-			playerObj = playerObject;
+			body->applyCentralForce(m_newForce);
+			m_playerObject = trans.getOrigin();
+			playerObj = m_playerObject;
 		}
 		else
 		{
@@ -234,11 +226,11 @@ void PhysicsEngine::CreateHeightfieldTerrainShape()
 	}
 
 	// Allocate memory, return false if no size = 0
-	if (terrainData)
-		delete[] terrainData;
+	if (m_terrainData)
+		delete[] m_terrainData;
 	if (sizet>0)
-		terrainData = new unsigned char[sizet*sizet];
-	if (terrainData == NULL)
+		m_terrainData = new unsigned char[sizet*sizet];
+	if (m_terrainData == NULL)
 		exit(0);
 
 	// Read in heightfield and get length of file
@@ -247,13 +239,13 @@ void PhysicsEngine::CreateHeightfieldTerrainShape()
 
 	// Read data in as a block, cast to char*, set size, and close file
 	infile.seekg(0, std::ios::beg);
-	infile.read(reinterpret_cast<char *>(terrainData), length);
+	infile.read(reinterpret_cast<char *>(m_terrainData), length);
 	infile.close();
-	this->size = sizet;
+	this->m_size = sizet;
 
 	// Create heightfield shape
-	btCollisionShape* heightfieldShape = new btHeightfieldTerrainShape(128, 128, &terrainData, 1, 1, 128, 1, PHY_UCHAR, false);
-	collisionShapes.push_back(heightfieldShape);
+	btCollisionShape* heightfieldShape = new btHeightfieldTerrainShape(128, 128, &m_terrainData, 1, 1, 128, 1, PHY_UCHAR, false);
+	m_collisionShapes.push_back(heightfieldShape);
 
 	// Initialize transform and location
 	btTransform startTransform;
@@ -261,22 +253,22 @@ void PhysicsEngine::CreateHeightfieldTerrainShape()
 	startTransform.setOrigin(btVector3(0.0, 0.0, 0.0));
 
 	// Set mass (non-zero for dynamic)
-	mass = 0.0;
-	isDynamic = (mass != 0.0f);
+	m_mass = 0.0;
+	m_isDynamic = (m_mass != 0.0f);
 
 	// Set initial inertia
 	btVector3 localInertia(0.0, 0.0, 0.0);
 
 	// Using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
 	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
-	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, heightfieldShape, localInertia);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, heightfieldShape, localInertia);
 	btRigidBody* body = new btRigidBody(rbInfo);
 
 	// Set the index for the type of rigid body that is being created
 	body->setUserIndex(HEIGHTFIELD);
 
 	// Add the body to the dynamic world
-	dynamicsWorld->addRigidBody(body);
+	m_dynamicsWorld->addRigidBody(body);
 }
 
 // Creates all rigid bodies for all game objects

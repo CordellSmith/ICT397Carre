@@ -139,11 +139,11 @@ void GameControlEngine::Initialize()
 
 	// Prepare our models
 	PreparePanel();
-	PrepareTestModel("res/objects/cube.obj", modelVertexSize);
+	//PrepareTestModel("res/objects/cube.obj", modelVertexSize);
 
 	// Initialize our models
 	colourPanel.Initialize(panel, 6, source.VertexSource, source.FragmentSource);
-	testModel.Initialize(model, modelVertexSize, cubeSource.VertexSource, cubeSource.FragmentSource);
+	//testModel.Initialize(model, modelVertexSize, cubeSource.VertexSource, cubeSource.FragmentSource);
 
 	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 100);
 	m_camera->PositionCamera(0, 0, 6, 0, 0);
