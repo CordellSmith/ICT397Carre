@@ -6,20 +6,18 @@
 #include <stdlib.h>										// Used for the exit() function
 #include <GL\glew.h>									// Used for the OpenGL types like GLuint
 #include <GLM\glm.hpp>									// Used for the GLM math library
-#include <GLM\gtc\matrix_transform.hpp>					// Used for the GLM math library
-#include <GLM\gtx\transform2.hpp>						// Used for the GLM math library
-#include "Shader.h"										// Used for loading and running our shaders
-#include "Camera.h"										// Used to get access to the view and projection matrices
-using namespace glm;
-
+#include <GLM\gtc\matrix_transform.hpp>					
+#include <GLM\gtx\transform2.hpp>						
+#include "Shader.h"										
+#include "Camera.h"										
 
 // This is our custom class to store attributes for a vertex like the x,y,z values.
 struct Vertex
 {
-	vec3 xyz;											// The x,y,z position
-	vec4 rgba;											// The r,g,b,a (Red, Green, Blue, Alpha) color values
-	vec2 uv;											// The uv coordinates
-	vec3 normal;										// The normal coordinates
+	glm::vec3 xyz;											// The x,y,z position
+	glm::vec4 rgba;											// The r,g,b,a (Red, Green, Blue, Alpha) color values
+	glm::vec2 uv;											// The uv coordinates
+	glm::vec3 normal;										// The normal coordinates
 };
 
 // The Model class to handle initializing, rendering and destroying of a 3D object
@@ -34,7 +32,7 @@ public:
 	static const GLuint kNormalIndex = 3;				// This is for the x,y,z normals
 
 	// Set the scale of our model to 100% by default
-	Model()		{ Scale = vec3(1.0f, 1.0f, 1.0f); }
+	Model()		{ Scale = glm::vec3(1.0f, 1.0f, 1.0f); }
 	~Model()	{ Destroy(); }
 
 	// Takes in a list of x,y,z vertices and vertex length to create the VBO and VAO's from,
@@ -45,16 +43,16 @@ public:
 	void Render();
 
 	// Create the getter and setters for the model's position
-	vec3 GetPosition() { return Position; }
-	void SetPosition(vec3 position) { Position = position; }
+	glm::vec3 GetPosition() { return Position; }
+	void SetPosition(glm::vec3 position) { Position = position; }
 
 	// Create the getter and setters for the model's rotation
-	vec3 GetRotation() { return Rotation; }
-	void SetRotation(vec3 rotation) { Rotation = rotation; }
+	glm::vec3 GetRotation() { return Rotation; }
+	void SetRotation(glm::vec3 rotation) { Rotation = rotation; }
 
 	// Create the getter and setters for the model's scale
-	vec3 GetScale() { return Scale; }
-	void SetScale(vec3 scale) { Scale = scale; }
+	glm::vec3 GetScale() { return Scale; }
+	void SetScale(glm::vec3 scale) { Scale = scale; }
 
 	// This gets and sets the camera to get access to the view and projection matrices
 	Camera *GetCamera() { return Camera; }
@@ -70,9 +68,9 @@ protected:
 	GLuint VertexBufferId;								// The VBO Id stored by the VAO
 	GLuint VertexArrayObjectId;							// The VAO Id to bind when drawing
 	
-	vec3 Position;										// The model's position
-	vec3 Rotation;										// The model's rotation
-	vec3 Scale;											// The model's scale
+	glm::vec3 Position;										// The model's position
+	glm::vec3 Rotation;										// The model's rotation
+	glm::vec3 Scale;											// The model's scale
 	
 	// Our shader object to initialize and run the shaders
 	Shader Shader;

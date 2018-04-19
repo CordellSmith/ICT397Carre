@@ -58,19 +58,19 @@ void Model::Render()
 	Shader.TurnOn();
 
 	// Grab the view and projection matrices from the current camera
-	mat4 projectionMatrix = Camera->GetProjectionMatrix();
-	mat4 viewMatrix = Camera->GetViewMatrix();
+	glm::mat4 projectionMatrix = Camera->GetProjectionMatrix();
+	glm::mat4 viewMatrix = Camera->GetViewMatrix();
 
 	// Create the Model Matrix with the current position
-	mat4 modelMatrix = translate(mat4(1.0f), Position);
+	glm::mat4 modelMatrix = translate(glm::mat4(1.0f), Position);
 
 	// Similar to the Position above, we do the same for the Scale
 	modelMatrix = scale(modelMatrix, Scale);
 
 	// Add any rotation to the Model Matrix for each axis
-	modelMatrix = rotate(modelMatrix, Rotation.x, vec3(1, 0, 0));	// x-axis
-	modelMatrix = rotate(modelMatrix, Rotation.y, vec3(0, 1, 0));	// y-axis
-	modelMatrix = rotate(modelMatrix, Rotation.z, vec3(0, 0, 1));	// z-axis
+	modelMatrix = rotate(modelMatrix, Rotation.x, glm::vec3(1, 0, 0));	// x-axis
+	modelMatrix = rotate(modelMatrix, Rotation.y, glm::vec3(0, 1, 0));	// y-axis
+	modelMatrix = rotate(modelMatrix, Rotation.z, glm::vec3(0, 0, 1));	// z-axis
 
 	// Get the variables from the shader for each matrix
 	GLint modelMatrixId = Shader.GetVariable("u_modelMatrix");
@@ -78,7 +78,7 @@ void Model::Render()
 	GLint projectionMatrixId = Shader.GetVariable("u_projectionMatrix");
 	
 	// Set the model, view and projection matrix for the uniform matrices in the Vertex Shader.
-	// To get at a GLM mat4 value, we use the address of the first item [0][0].
+	// To get at a GLM glm::mat4 value, we use the address of the first item [0][0].
 	Shader.SetMatrix4(modelMatrixId, 1, false, &modelMatrix[0][0]);
 	Shader.SetMatrix4(viewMatrixId, 1, false, &viewMatrix[0][0]);
 	Shader.SetMatrix4(projectionMatrixId, 1, false, &projectionMatrix[0][0]);

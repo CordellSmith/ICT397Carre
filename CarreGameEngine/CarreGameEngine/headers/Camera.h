@@ -11,10 +11,8 @@
 
 #include <fstream>
 #include <GLM\glm.hpp>									// Used for the GLM math library
-#include <GLM\gtc\matrix_transform.hpp>					// Used for the GLM math library
-#include <GLM\gtx\transform2.hpp>						// Used for the GLM math library
-using namespace glm;
-
+#include <GLM\gtc\matrix_transform.hpp>					
+#include <GLM\gtx\transform2.hpp>						
 
 class Camera 
 {
@@ -29,45 +27,45 @@ public:
 	* @param nearPlane - 
 	* @param farPlane -
 	*/
-	mat4 SetPerspective(float fov, float aspectRatio, float nearPlane, float farPlane);
+	glm::mat4 SetPerspective(float fov, float aspectRatio, float nearPlane, float farPlane);
 
 	/**
 	* @brief This builds and returns a rotation matrix from the yaw and pitch rotations
 	*/
-	mat4 GetRotationMatrix();
+	glm::mat4 GetRotationMatrix();
 
 	/**
 	* @brief This returns the current ProjectionMatrix
 	* @return ProjectionMatrix
 	*/
-	mat4 GetProjectionMatrix() { return ProjectionMatrix; }
+	glm::mat4 GetProjectionMatrix() { return ProjectionMatrix; }
 
 	/**
 	* @brief This returns the current view matrix according to the camera's position and rotation
 	*/
-	mat4 GetViewMatrix();
+	glm::mat4 GetViewMatrix();
 
 	/**
 	* @brief This sets the camera's position
 	* @param position - Camera position vector
 	*/
-	void SetPosition(vec3 position)	{ Position = position; }
+	void SetPosition(glm::vec3 position)	{ Position = position; }
 
 	/**
 	* @brief This gets the camera's position
 	* @return Position
 	*/
-	vec3 GetPosition()	{ return Position; }
+	glm::vec3 GetPosition()	{ return Position; }
 
 	/**
 	* @brief This calculates the current view from the position and rotation matrix
 	*/
-	vec3 GetView();
+	glm::vec3 GetView();
 
 	/**
 	* @brief This returns the camera's up vector (the direction pointing up)
 	*/
-	vec3 GetUp();
+	glm::vec3 GetUp();
 
 	/**
 	* @brief This gets the Yaw
@@ -140,11 +138,11 @@ protected:
 	/**
 	* @brief The camera's projection matrix
 	*/
-	mat4 ProjectionMatrix;
+	glm::mat4 ProjectionMatrix;
 	/**
 	* @brief The camera's position
 	*/
-	vec3 Position;		
+	glm::vec3 Position;		
 
 	/**
 	* @brief The camera's speed that is used with a time slice

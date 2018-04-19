@@ -38,15 +38,15 @@ void Shader::Initialize(std::string strVertexFile, std::string strFragmentFile)
 		return;
 
 	// If any of our shader pointers are set, let's free them first
-	if ( VertexShaderId || FragmentShaderId || ShaderProgramId )
+	if ( m_vertexShaderId || m_fragmentShaderId || m_shaderProgramId )
 		Destroy();
 
 	// Reset the last OpenGL error so we can check if down below
 	GLenum ErrorCheckValue = glGetError();
 
 	// Here we get an Id to our vertex and fragment shaders
-	VertexShaderId = glCreateShader(GL_VERTEX_SHADER);
-	FragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
+	m_vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
+	m_fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
 
 	// Now we load the shaders from the respective files and store it in a string
 	strVShader = strVertexFile.c_str();
@@ -57,22 +57,22 @@ void Shader::Initialize(std::string strVertexFile, std::string strFragmentFile)
 	const char *szFShader = strFShader.c_str();
 
 	// Now this assigns the shader text file to each shader pointer
-	glShaderSource(VertexShaderId, 1, &szVShader, nullptr);
-	glShaderSource(FragmentShaderId, 1, &szFShader, nullptr);
+	glShaderSource(m_vertexShaderId, 1, &szVShader, nullptr);
+	glShaderSource(m_fragmentShaderId, 1, &szFShader, nullptr);
 
 	// Now we actually compile the shader code
-	glCompileShader(VertexShaderId);
-	glCompileShader(FragmentShaderId);
+	glCompileShader(m_vertexShaderId);
+	glCompileShader(m_fragmentShaderId);
 
 	// Next we create a program object to represent our shaders
-	ShaderProgramId = glCreateProgram();
+	m_shaderProgramId = glCreateProgram();
 
 	// We attach each shader we just loaded to our program object
-	glAttachShader(ShaderProgramId, VertexShaderId);
-	glAttachShader(ShaderProgramId, FragmentShaderId);
+	glAttachShader(m_shaderProgramId, m_vertexShaderId);
+	glAttachShader(m_shaderProgramId, m_fragmentShaderId);
 
 	// Our last init function is to link our program object with OpenGL
-	glLinkProgram(ShaderProgramId);
+	glLinkProgram(m_shaderProgramId);
 
 	// Now check to see if any errors happened in this function
 	ErrorCheckValue = glGetError();
@@ -92,11 +92,11 @@ void Shader::Initialize(std::string strVertexFile, std::string strFragmentFile)
 GLint Shader::GetVariable(std::string strVariable)
 {
 	// If we don't have an active program object, let's return -1
-	if(!ShaderProgramId)
+	if(!m_shaderProgramId)
 		return -1;
 
 	// This returns the variable Id for a variable in a shader file
-	return glGetUniformLocation(ShaderProgramId, strVariable.c_str());
+	return glGetUniformLocation(m_shaderProgramId, strVariable.c_str());
 }
 
 
@@ -104,25 +104,25 @@ GLint Shader::GetVariable(std::string strVariable)
 void Shader::Destroy()
 {
 	// If our vertex shader pointer is valid, free it
-	if(VertexShaderId)
+	if(m_vertexShaderId)
 	{
-		glDetachShader(ShaderProgramId, VertexShaderId);
-		glDeleteShader(VertexShaderId);
-		VertexShaderId = 0;
+		glDetachShader(m_shaderProgramId, m_vertexShaderId);
+		glDeleteShader(m_vertexShaderId);
+		m_vertexShaderId = 0;
 	}
 
 	// If our fragment shader pointer is valid, free it
-	if(FragmentShaderId)
+	if(m_fragmentShaderId)
 	{
-		glDetachShader(ShaderProgramId, FragmentShaderId);
-		glDeleteShader(FragmentShaderId);
-		FragmentShaderId = 0;
+		glDetachShader(m_shaderProgramId, m_fragmentShaderId);
+		glDeleteShader(m_fragmentShaderId);
+		m_fragmentShaderId = 0;
 	}
 
 	// If our program object pointer is valid, free it
-	if(ShaderProgramId)
+	if(m_shaderProgramId)
 	{
-		glDeleteShader(ShaderProgramId);
-		ShaderProgramId = 0;
+		glDeleteShader(m_shaderProgramId);
+		m_shaderProgramId = 0;
 	}
 }
