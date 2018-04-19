@@ -39,7 +39,7 @@ PhysicsEngine::PhysicsEngine()
 	newForce.setZero();
 }
 
-// De-constructor
+// De-constructor (not implemented)
 PhysicsEngine::~PhysicsEngine(){};
 
 // Create a static rigid body (ground)
@@ -77,6 +77,7 @@ void PhysicsEngine::CreateStaticRigidBody()
 	dynamicsWorld->addRigidBody(body);
 }
 
+// Create a bounding box for camera or player controlled object
 void PhysicsEngine::CreatePlayerControlledRigidBody(btVector3 &playerObj)
 {
 	// Create box shape and add to shape array
@@ -250,10 +251,7 @@ void PhysicsEngine::CreateHeightfieldTerrainShape()
 	infile.close();
 	this->size = sizet;
 
-
-
-
-
+	// Create heightfield shape
 	btCollisionShape* heightfieldShape = new btHeightfieldTerrainShape(128, 128, &terrainData, 1, 1, 128, 1, PHY_UCHAR, false);
 	collisionShapes.push_back(heightfieldShape);
 
