@@ -1,3 +1,10 @@
+/*
+* @class InputManager
+* @brief This manager takes care of any input from the user and sent to the camera. 
+		We are just using the UP and DOWN arrow keys to show moving the camera.
+*
+* @date 29/04/2018
+*/
 #pragma once
 
 #define GLM_FORCE_RADIANS								// Make sure GLM is using radians instead of degrees
@@ -10,7 +17,9 @@
 #include "Camera.h"										// Used to send the input commands to the camera
 using namespace glm;									// Set the glm namespace for our vector/matrix functions
 
-// This is a standardized enum to code for keyboard input, since Win32 and GLFW use some different codes
+/**
+* @brief This is a standardized enum to code for keyboard input, since Win32 and GLFW use some different codes
+*/
 enum InputCodes
 {
 	kEscape = 27,
@@ -47,25 +56,37 @@ enum InputCodes
 	z = 122, Z = 90,
 };
 
-// This manager takes care of any input from the user and sent to the camera.  In this tutorials
-// we just use the UP and DOWN arrow keys to show moving the camera.
+// 
 class InputManager
 {
 public:
-
-	// This takes in a code and sends it to the camera for movement
+	/**
+	* @brief This takes in a code and sends it to the camera for movement
+	* @param code
+	*/
 	void KeyPressed(InputCodes code);
 
-	// Set and get the current camera
+	/**
+	* @brief Set the current camera
+	* @param pCamera
+	*/
 	void SetCamera(Camera *pCamera) { Camera = pCamera; }
+	/**
+	* @brief Get the current camera
+	* @return Camera
+	*/
 	Camera *GetCamera() { return Camera; }
 	
-	// This sends in an updated mouse x and y position that should be a delta from (0, 0)
+	/**
+	* @brief This sends in an updated mouse x and y position that should be a delta from (0, 0)
+	*/
 	void MouseMoved(float mouseX, float mouseY);
 
 
 protected:
 
-	// The pointer to our camera object
+	/**
+	* @brief The pointer to our camera object
+	*/
 	Camera *Camera;
 };

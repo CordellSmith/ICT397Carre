@@ -29,8 +29,12 @@
 *				position. Still needs some work, but will do for now.
 * @bug			If camera is not moved for a short period of time, it becomes stuck. Restart application to fix. Will fix this at a later date.
 *
-* @date 16/04/2018
-* @version 3.0	Big gap between versions due to other units requirements. Started work on readin in a heightmap and applying a rigid body to it.
+* @date 18/04/2018
+* @version 3.0	Big gap between versions due to other units requirements. Set up functions for initializing all object rigid bodies. Will need changing.
+*
+* @date 19/04/2018
+* @version 3.1	Added testing for heightfield terrain shape. Got it loading and working, but without a visual terrain it is not possible to see if it is
+*				working correctly or not. Have commented it out until I am able to keep working on it. Also added some more doxygen comments.
 */
 
 #ifndef PHYSICSENGINE_H
@@ -38,7 +42,9 @@
 
 /// Includes
 #include "btBulletDynamicsCommon.h"
+#include "BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h"
 #include <vector>
+#include <fstream>	// Used for testing of heightfield terrain shape (will be removed later)
 
 /**
 * @brief Enum for the different types of rigid bodies created.
@@ -47,7 +53,9 @@ typedef enum
 {
 	CAMERA = 1,
 	BOX = 2,
-	FLOOR = 3
+	SPHERE = 3,
+	HEIGHTFIELD = 4,
+	PLANE = 5
 }RIGID_BODY_TYPE;
 
 class PhysicsEngine
@@ -60,6 +68,7 @@ class PhysicsEngine
 
 		/**
 		* @brief De-constructor
+		* @note Not implemented yet
 		*/
 		~PhysicsEngine();
 
@@ -87,6 +96,18 @@ class PhysicsEngine
 		*/
 		void Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerObj);
 
+		/*
+		* @brief Public function that calls different private functions for creation of rigid bodies
+		* @param objectData - Data structure containing all game object data
+		* @return True if all game object rigid bodies created, false otherwise
+		*/
+		//bool CreateAllRigidBodies(Data &objectData);
+
+		/**
+		* @brief Test function for creating a heightfield terrain shape
+		*/
+		void CreateHeightfieldTerrainShape();
+
 	private:
 
 		/// Determines if shape is dynamic or not
@@ -104,11 +125,41 @@ class PhysicsEngine
 		/// Holds last known player controlled object location
 		btVector3 playerObject;
 
-		/// Old force applied
+		/// Old force applied (don't think this is needed)
 		btVector3 oldForce;
 
-		/// New force applied
+		/// New force applied (don't think this is needed)
 		btVector3 newForce;
+
+		/*
+		* @brief Creates a rigid body for the camera
+		* @param objectData - Data structure containing all data for rigid body creation
+		*/
+		//void CreateCameraRigidBody(Data &objectData);
+
+		/*
+		* @brief Creates a box shape rigid body
+		* @param objectData - Data structure containing all data for rigid body creation
+		*/
+		//void CreateBoxShapeRigidBody(Data &objectData);
+
+		/*
+		* @brief Creates a sphere shape rigid body
+		* @param objectData - Data structure containing all data for rigid body creation
+		*/
+		//void CreateSphereShapeRigidBody(Data &objectData);
+
+		/*
+		* @brief Creates a heightfield terrain shape
+		* @param objectData - Data structure containing all data for rigid body creation
+		*/
+		//void CreateHeightFieldTerrainShape(Data &objectData);
+
+		/// Size of heightfield data (used for testing)
+		int size;
+
+		/// Holds all heightfield data (used for testing)
+		unsigned char *terrainData;
 
 	protected:
 
