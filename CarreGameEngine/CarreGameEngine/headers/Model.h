@@ -191,9 +191,9 @@ protected:
 	Vertex* m_vertices;
 	GLint m_verticesLength;
 	/// VBO id
-	GLuint m_vertexBufferObjectId;
+	GLuint m_VBO;
 	/// VAO id
-	GLuint m_vertexArrayObjectId;
+	GLuint m_VAO;
 
 	/// The model's position
 	glm::vec3 m_positon;
