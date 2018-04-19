@@ -20,7 +20,7 @@ Camera::Camera()
 glm::mat4 Camera::SetPerspective(float fov, float aspectRatio, float nearPlane, float farPlane)
 {
 	// Create the projection matrix with GLM's perspective function, replacing gluPerspective.
-	ProjectionMatrix = perspective(fov, aspectRatio, nearPlane, farPlane);
+	ProjectionMatrix = glm::perspective(fov, aspectRatio, nearPlane, farPlane);
 
 	return ProjectionMatrix;
 }
@@ -43,10 +43,10 @@ glm::mat4 Camera::GetRotationMatrix()
 	glm::mat4 rotationMatrix(1.0f);
 
 	// Add the Pitch rotation along the x-axis
-	rotationMatrix = rotate(rotationMatrix, Pitch, glm::vec3(1, 0, 0));
+	rotationMatrix = glm::rotate(rotationMatrix, Pitch, glm::vec3(1, 0, 0));
 
 	// Add the Yaw rotation along the y-axis
-	rotationMatrix = rotate(rotationMatrix, Yaw, glm::vec3(0, 1, 0));
+	rotationMatrix = glm::rotate(rotationMatrix, Yaw, glm::vec3(0, 1, 0));
 
 	// Return the final rotation matrix that stores our camera rotations
 	return rotationMatrix;
@@ -57,7 +57,7 @@ glm::mat4 Camera::GetRotationMatrix()
 glm::mat4 Camera::GetViewMatrix()
 {
 	// Return a view matrix by multiplying our rotation matrix by the inverse of a translation matrix
-	return GetRotationMatrix() * inverse(translate(glm::mat4(), Position));
+	return GetRotationMatrix() * glm::inverse(glm::translate(glm::mat4(), Position));
 }
 
 
@@ -66,7 +66,7 @@ glm::vec3 Camera::GetView()
 {
 	// Calculate the view vector by taking the inverse of our rotation matrix multiplied by a vector 
 	// looking down the negative z-axis.
-	glm::vec4 viewVector = inverse(GetRotationMatrix()) * glm::vec4(0, 0, -1, 1);
+	glm::vec4 viewVector = glm::inverse(GetRotationMatrix()) * glm::vec4(0, 0, -1, 1);
 
 	// We are using a 4x4 matrix so our result is a glm::vec4, but just turn it back into a glm::vec3
 	return glm::vec3(viewVector);
@@ -78,7 +78,7 @@ glm::vec3 Camera::GetUp()
 {
 	// Calculate the up vector by taking the inverse of the rotation matrix multiplied by a 
 	// default up vector.
-	glm::vec4 upVector = inverse(GetRotationMatrix()) * glm::vec4(0, 1, 0, 1);
+	glm::vec4 upVector = glm::inverse(GetRotationMatrix()) * glm::vec4(0, 1, 0, 1);
 
 	// We are using a 4x4 matrix so our result is a glm::vec4, but just cast it back to a glm::vec3
 	return glm::vec3(upVector);
@@ -120,8 +120,8 @@ void Camera::SetViewByMouse(float xOffset, float yOffset)
 	// reason though to want to allow that, especially in a scripting camera.  This also can
 	// avoid the "gimbal lock" issue where if you look straight up or down it wigs out.  This
 	// can be avoided with quaternion rotations instead of euler rotations too.
-	if ( Pitch > radians(71.0f) )
-		Pitch = radians(71.0f);
-	if ( Pitch < radians(-71.0f) )
-		Pitch = radians(-71.0f);
+	if ( Pitch > glm::radians(71.0f) )
+		Pitch = glm::radians(71.0f);
+	if ( Pitch < glm::radians(-71.0f) )
+		Pitch = glm::radians(-71.0f);
 }

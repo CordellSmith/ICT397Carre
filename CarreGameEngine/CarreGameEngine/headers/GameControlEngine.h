@@ -70,22 +70,22 @@ public:
 	/**
 	* @brief	This gets the window manager for the application.
 	*/
-	WindowManager *GetWindowManager() { return WindowManager; }
+	WindowManager* GetWindowManager() { return m_windowManager; }
 	/**
 	* @brief	This sets the window manager for the application.  This should be set right
 				after the GameControlEngine is created in the main() function.
 	*/
-	void SetWindowManager(WindowManager *pWindowManager) { WindowManager = pWindowManager; }
+	void SetWindowManager(WindowManager* pWindowManager) { m_windowManager = pWindowManager; }
 
 	/**
 	* @brief	Returns the camera for our application
 	*/
-	Camera *GetCamera() { return Camera; }
+	Camera* GetCamera() { return m_camera; }
 	/**
 	* @brief	Sets the camera for our application
 	* @param	m_camera
 	*/
-	void SetCamera(Camera *m_camera) { Camera = m_camera; }
+	void SetCamera(Camera* camera) { m_camera = camera; }
 
 	/**
 	* @brief	This initializes the application
@@ -113,12 +113,12 @@ protected:
 	environment agnostic.  Our main application shouldn't know if it's Win32 or GLFW.
 	This is instantiated and set in GLFWManager.cpp in the main() function.
 	*/
-	WindowManager *WindowManager;
+	WindowManager* m_windowManager;
 
 	/**
 	* @brief	Add our camera object to our application
 	*/
-	Camera *Camera;
+	Camera* m_camera;
 
 
 	/**

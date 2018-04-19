@@ -69,12 +69,12 @@ public:
 	* @brief Set the current camera
 	* @param m_camera
 	*/
-	void SetCamera(Camera *m_camera) { Camera = m_camera; }
+	void SetCamera(Camera* camera) { m_camera = camera; }
 	/**
 	* @brief Get the current camera
 	* @return Camera
 	*/
-	Camera *GetCamera() { return Camera; }
+	Camera *GetCamera() { return m_camera; }
 	
 	/**
 	* @brief This sends in an updated mouse x and y position that should be a delta from (0, 0)
@@ -83,6 +83,6 @@ public:
 
 
 protected:
-	// Camera object
-	Camera *Camera;
+	/// Camera object
+	Camera* m_camera;
 };

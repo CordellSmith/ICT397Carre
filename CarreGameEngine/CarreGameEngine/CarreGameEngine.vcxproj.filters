@@ -44,9 +44,6 @@
     <ClInclude Include="headers\PhysicsEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\ObjLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headers\Singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
