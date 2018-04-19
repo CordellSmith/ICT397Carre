@@ -3,6 +3,7 @@
 /// Make sure GLM is using radians instead of degrees
 #define GLM_FORCE_RADIANS							
 
+#include <iostream>
 #include <stdio.h>										
 #include <stdlib.h>										
 #include <GL\glew.h>									

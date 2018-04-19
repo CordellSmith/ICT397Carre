@@ -137,7 +137,6 @@
     <ClInclude Include="AssetFactory\IGameObject.h" />
     <ClInclude Include="AssetFactory\Object.h" />
     <ClInclude Include="AssetFactory\Terrain.h" />
-    <ClInclude Include="AssetFactory\Texture.h" />
     <ClInclude Include="headers\Camera.h" />
     <ClInclude Include="headers\GameControlEngine.h" />
     <ClInclude Include="headers\GameWorld.h" />

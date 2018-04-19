@@ -3,11 +3,49 @@
 #include "GL/glew.h"
 #include "..\headers\ScriptManager.h"
 
+/// Struct to hold both vertex and fragment shaders
+struct ShaderSource
+{
+	std::string VertexSource;
+	std::string FragmentSource;
+};
+
+/// Function to read a shader in one string and return a struct containing separated Vertex and Fragment shaders
+ShaderSource ParseShader(const std::string& filePath)
+{
+	std::ifstream stream(filePath);
+
+	enum class ShaderType
+	{
+		NONE = -1, VERTEX = 0, FRAGMENT = 1
+	};
+
+	std::string line;
+	std::stringstream ss[2]; // stack allocated array that will store vertex and fragment strings
+	ShaderType type = ShaderType::NONE; // set to none (-1) by default
+	while (getline(stream, line))
+	{
+		if (line.find("#shader") != std::string::npos)
+		{
+			if (line.find("vertex") != std::string::npos)
+				type = ShaderType::VERTEX;
+			else if (line.find("fragment") != std::string::npos)
+				type = ShaderType::FRAGMENT;
+		}
+		else
+		{
+			ss[(int)type] << line << '\n';
+		}
+	}
+
+	return{ ss[0].str(), ss[1].str() };
+}
+
 Model colourPanel;
 Model testModel;
 
 Vertex panel[6] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
-Vertex model[108] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
+Vertex model[49971] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
 
 void PrepareTestModel(const char* filePath, int& modelVertexSize)
 {
@@ -62,17 +100,40 @@ void PrepareTestModel(const char* filePath, int& modelVertexSize)
 		}
 	}
 
-	float red = 0.0f, blue = 0.5f, green = 1.0f;
+	std::vector<glm::vec3> v;
+	std::vector<glm::vec2> u;
+	std::vector<glm::vec3> n;
+
+	float red = 0.1f, blue = 0.5f, green = 0.4f;
 	for (unsigned int i = 0; i < vertexIndices.size(); i++) {
 		unsigned int vertexIndex = vertexIndices[i];
-
-		model[i].xyz = temp_vertices[vertexIndex - 1];
-		model[i].rgba = glm::vec4(red, green, blue, 1.0);
-		model[i].uv = temp_uvs[vertexIndex - 1];
-		model[i].normal = temp_normals[vertexIndex - 1];
+		glm::vec3 vertex = temp_vertices[vertexIndex - 1];
+		v.push_back(vertex);
 	}
 
-	modelVertexSize = vertexIndices.size();
+	for (unsigned int i = 0; i < uvIndices.size(); i++) {
+		unsigned int uvIndex = uvIndices[i];
+		glm::vec2 uv = temp_uvs[uvIndex - 1];
+		u.push_back(uv);
+	}
+
+	for (unsigned int i = 0; i < normalIndices.size(); i++) {
+		unsigned int normalsIndex = normalIndices[i];
+		glm::vec3 normals = temp_normals[normalsIndex - 1];
+		n.push_back(normals);
+	}
+
+	for (int i = 0; i < v.size(); i++)
+	{
+		unsigned int vertexIndex = vertexIndices[i];
+
+		model[i].xyz = v[vertexIndex - 1];
+		model[i].rgba = glm::vec4(red, green, blue, 1.0);
+		model[i].uv = u[vertexIndex - 1];
+		model[i].normal = n[vertexIndex - 1];
+	}
+
+	modelVertexSize = v.size();
 }
 
 void PreparePanel()
@@ -96,18 +157,14 @@ void PreparePanel()
 	panel[5].rgba = glm::vec4(1, 1, 0, 1);
 }
 
-int GameControlEngine::GLMain()
+const int GameControlEngine::RunEngine()
 {
-	// This calls our Initialize() function below which creates the window and triangle
 	Initialize();
 
-	// This is our main game loop which will run until we close the window or hit Escape.
 	GameLoop();
 
-	// Once we hit Escape this will clean up the application's resources.
 	Destroy();
 
-	// Return 0 for success
 	return 0;
 }
 
@@ -116,38 +173,36 @@ void GameControlEngine::Initialize()
 {
 	// Make sure the window manager is initialized prior to calling this and creates the OpenGL context
 	if (!m_windowManager || m_windowManager->Initialize(ScreenWidth, ScreenHeight, "Carre Game Engine", false) != 0)
-	{
-		// Quit the application if the window couldn't be created with an OpenGL context
 		exit(-1);
-	}
 
-	// Tell OpenGL that we want a 3D viewport the same size as the window
 	glViewport(0, 0, ScreenWidth, ScreenHeight);
 
-	// This tells OpenGL that we want depth testing so it renders the order correctly
 	glEnable(GL_DEPTH_TEST);
-	// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
 
-	//Testing script output
+	// Testing script output
 	loadScript();
 
-	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
-	ShaderProgramSource cubeSource = ParseShader("res/shaders/Cube.shader");
+	// Create shaders to use
+	ShaderSource source = ParseShader("res/shaders/Basic.shader");
+	ShaderSource cubeSource = ParseShader("res/shaders/Cube.shader");
 
+	// Holds test models vertex size
 	int modelVertexSize;
 
 	// Prepare our models
 	PreparePanel();
-	//PrepareTestModel("res/objects/cube.obj", modelVertexSize);
+	PrepareTestModel("res/objects/taxi_model/taxi.obj", modelVertexSize);
 
 	// Initialize our models
 	colourPanel.Initialize(panel, 6, source.VertexSource, source.FragmentSource);
-	//testModel.Initialize(model, modelVertexSize, cubeSource.VertexSource, cubeSource.FragmentSource);
+	testModel.Initialize(model, modelVertexSize, cubeSource.VertexSource, cubeSource.FragmentSource);
 
+	// Set camera perspective and position
 	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 100);
 	m_camera->PositionCamera(0, 0, 6, 0, 0);
 
+	// Pass camera object to models
 	colourPanel.SetCamera(m_camera);
 	testModel.SetCamera(m_camera);
 
@@ -237,35 +292,4 @@ void GameControlEngine::Destroy()
 		delete m_camera;
 		m_camera = nullptr;
 	}
-}
-
-/// Function to read a shader in one string and return a struct containing separated Vertex and Fragment shaders
-ShaderProgramSource GameControlEngine::ParseShader(const std::string& filePath)
-{
-	std::ifstream stream(filePath);
-
-	enum class ShaderType
-	{
-		NONE = -1, VERTEX = 0, FRAGMENT = 1
-	};
-
-	std::string line;
-	std::stringstream ss[2]; // stack allocated array that will store vertex and fragment strings
-	ShaderType type = ShaderType::NONE; // set to none (-1) by default
-	while (getline(stream, line))
-	{
-		if (line.find("#shader") != std::string::npos)
-		{
-			if (line.find("vertex") != std::string::npos)
-				type = ShaderType::VERTEX;
-			else if (line.find("fragment") != std::string::npos)
-				type = ShaderType::FRAGMENT;
-		}
-		else
-		{
-			ss[(int)type] << line << '\n';
-		}
-	}
-
-	return{ ss[0].str(), ss[1].str() };
 }
