@@ -1,16 +1,15 @@
-#include "GL/glew.h"									// Include the GLEW library to manage OpenGL extensions
+#include "..\headers\GameControlEngine.h"
 
-#include "..\headers\GameControlEngine.h"							// Include our main header for the application
+#include "GL/glew.h"
 #include "..\headers\ScriptManager.h"
 
-Model colourPanel;										// Our class to handle initializing and drawing our model
-Model cubeModel;
+Model colourPanel;
+Model testModel;
 
 Vertex panel[6] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
-Vertex cube[108] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
+Vertex model[108] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
 
-void prepareCube(const char* filePath, std::vector<glm::vec3>& out_vertices, std::vector<glm::vec2>& out_uvs, 
-	std::vector<glm::vec3>& out_normals)
+void PrepareTestModel(const char* filePath, int& modelVertexSize)
 {
 	std::vector<unsigned int> vertexIndices, uvIndices, normalIndices;
 	std::vector<glm::vec3> temp_vertices;
@@ -63,63 +62,36 @@ void prepareCube(const char* filePath, std::vector<glm::vec3>& out_vertices, std
 		}
 	}
 
+	float red = 0.0f, blue = 0.5f, green = 1.0f;
 	for (unsigned int i = 0; i < vertexIndices.size(); i++) {
 		unsigned int vertexIndex = vertexIndices[i];
-		glm::vec3 vertex = temp_vertices[vertexIndex - 1];
-		out_vertices.push_back(vertex);
-		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
+
+		model[i].xyz = temp_vertices[vertexIndex - 1];
+		model[i].rgba = glm::vec4(red, green, blue, 1.0);
+		model[i].uv = temp_uvs[vertexIndex - 1];
+		model[i].normal = temp_normals[vertexIndex - 1];
 	}
 
-	for (unsigned int i = 0; i < uvIndices.size(); i++) {
-		unsigned int uvIndex = uvIndices[i];
-		glm::vec2 uv = temp_uvs[uvIndex - 1];
-		out_uvs.push_back(uv);
-		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
-	}
-
-	for (unsigned int i = 0; i < normalIndices.size(); i++) {
-		unsigned int normalsIndex = normalIndices[i];
-		glm::vec3 normals = temp_normals[normalsIndex - 1];
-		out_normals.push_back(normals);
-		//std::cout << "X: " << out_vertices[i].x << " Y: " << out_vertices[i].y << " Z: " << out_vertices[i].z << std::endl;
-	}
-
-	float red = 0.0f, blue = 0.5f, green = 1.0f;
-	for (int i = 0; i < out_vertices.size(); i++)
-	{
-		cube[i].xyz = out_vertices[i];
-		cube[i].rgba = glm::vec4(red, green, blue, 1.0);
-		cube[i].uv = out_uvs[i];
-		cube[i].normal = out_normals[i];
-	}
+	modelVertexSize = vertexIndices.size();
 }
 
-void preparePanel()
+void PreparePanel()
 {
-	// The first half of the quad (triangle 1)
-	// The back left vertex -- colored yellow
 	panel[0].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
 	panel[0].rgba = glm::vec4(1, 1, 0, 1);
 
-	// The back right vertex -- colored red
 	panel[1].xyz = glm::vec3(1.0f, -1.0f, -1.0f);
 	panel[1].rgba = glm::vec4(1, 0, 0, 1);
 
-	// The front right vertex -- colored cyan
 	panel[2].xyz = glm::vec3(1.0f, -1.0f, 1.0f);
 	panel[2].rgba = glm::vec4(0, 1, 1, 1);
 
-	// The second half of the quad (triangle 2)
-
-	// The front right vertex -- colored cyan
 	panel[3].xyz = glm::vec3(1.0f, -1.0f, 1.0f);
 	panel[3].rgba = glm::vec4(0, 1, 1, 1);
 
-	// The front left vertex -- colored blue
 	panel[4].xyz = glm::vec3(-1.0f, -1.0f, 1.0f);
 	panel[4].rgba = glm::vec4(0, 0, 1, 1);
 
-	// The back left vertex -- colored yellow
 	panel[5].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
 	panel[5].rgba = glm::vec4(1, 1, 0, 1);
 }
@@ -157,40 +129,27 @@ void GameControlEngine::Initialize()
 	// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
 
-	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
-	ShaderProgramSource cubeSource = ParseShader("res/shaders/Cube.shader");
-
-	// Shader testing
-	std::vector<glm::vec3> vertices;
-	std::vector<glm::vec2> uvs;
-	std::vector<glm::vec3> normals;
-
-	preparePanel();
-	prepareCube("res/objects/cube.obj", vertices, uvs, normals);
-
 	//Testing script output
 	loadScript();
 
-	// Initialize the model with the vertex array and give the vertex length of 120
+	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
+	ShaderProgramSource cubeSource = ParseShader("res/shaders/Cube.shader");
+
+	int modelVertexSize;
+
+	// Prepare our models
+	PreparePanel();
+	PrepareTestModel("res/objects/cube.obj", modelVertexSize);
+
+	// Initialize our models
 	colourPanel.Initialize(panel, 6, source.VertexSource, source.FragmentSource);
-	cubeModel.Initialize(cube, vertices.size(), cubeSource.VertexSource, cubeSource.FragmentSource);
+	testModel.Initialize(model, modelVertexSize, cubeSource.VertexSource, cubeSource.FragmentSource);
 
-	// Create the projection matrix from our camera and make the near field closer and the far field farther.
-	// This makes it so our tower doesn't get cut off and also doesn't cull geometry right near the camera.
-	//									 FOV		    Aspect Ratio			   Near / Far Planes
 	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 100);
-
-	//					  Position	  Yaw	 Pitch
 	m_camera->PositionCamera(0, 0, 6, 0, 0);
 
-	// We now pass in the camera to have access to the projection and view matrices
 	colourPanel.SetCamera(m_camera);
-	cubeModel.SetCamera(m_camera);
-
-	/* Doesnt really need to be called because we are dynamically calling them in the loop */
-	// Set the position of the model to be at the origin
-	//colourPanel.SetPosition(glm::vec3(0, 0, 0));
-	//cubeModel.SetPosition(glm::vec3(2, 5, 2));
+	testModel.SetCamera(m_camera);
 
 	// Physics Testing
 	// Create player object (camera)
@@ -209,25 +168,15 @@ void GameControlEngine::Initialize()
 	// Heightmap terrain shape
 	//physicsWorld.CreateHeightfieldTerrainShape();
 	//collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
-
-	// Below is how the code will be initialised in the gameworld
-	// Comment these lines out to run code as normal, havent been implemented yet
-	//m_gameWorld.SetTerrain((m_assetFactory.CreateAsset(OBJ_TERRAIN, "res/objects/terrain.obj")));
-	//m_gameWorld.AddStaticObject(m_assetFactory.CreateAsset(OBJ_OBJECT, "res/objects/cube.obj"));
-	//m_gameWorld.AddNPC(m_assetFactory.CreateAsset(OBJ_NPC, "res/objects/npc.obj"));
 }
 
-
-// This is our game loop where all the magic happens every frame
 void GameControlEngine::GameLoop()
 {
-	// Loop until the user hits the Escape key or closes the window
 	while (m_windowManager->ProcessInput(true))
 	{
-		// Use our Singleton to calculate our framerate every frame, passing true to set FPS in titlebar
+		// Use our TimeManager singleton to calculate our framerate every frame
 		TimeManager::Instance().CalculateFrameRate(true);
 
-		// This clears the screen every frame to black (color can be changed with glClearColor)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// Render a floor on x/z axis (15 x 15)
@@ -259,29 +208,21 @@ void GameControlEngine::GameLoop()
 			//int a = collisionBodyPos[i].x;
 			glm::vec3 temp = glm::vec3(collisionBodyPos[i].x(), collisionBodyPos[i].y(), collisionBodyPos[i].z());
 
-			/*glPushMatrix();
-			glColor3f(0.0, 0.0, 0.5);
-			glTranslatef(collisionBodyPos[i].x(), collisionBodyPos[i].y(), collisionBodyPos[i].z());
-			gluSphere(quad, 5, 100, 100);
-			glPopMatrix();*/
-
-			cubeModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
-			cubeModel.Render();
+			testModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
+			testModel.Render();
 		}
 		/**************************************************************************/
-			// Swap the buffers to display the final rendered image on screen
 		m_windowManager->SwapTheBuffers();
 	}
 }
 
-
-// This can be used to free all of our resources in the application.
 void GameControlEngine::Destroy()
 {
-	// Free the vertex buffers and array objects
-	//colourPanel.Destroy();
+	/// Delete models
+	colourPanel.Destroy();
+	testModel.Destroy();
 
-	// If we have a window manager still allocated then destroy and delete it
+	/// Delete window
 	if (m_windowManager)
 	{
 		m_windowManager->Destroy();
@@ -290,7 +231,7 @@ void GameControlEngine::Destroy()
 		m_windowManager = nullptr;
 	}
 
-	// If we have the camera still, delete it
+	/// Delete camera
 	if (m_camera)
 	{
 		delete m_camera;
@@ -298,7 +239,7 @@ void GameControlEngine::Destroy()
 	}
 }
 
-// Handles reading in the Basic.shader file containing vertex and fragment shader information and splits it into two strings then returns a struct ShaderProgramSource containing these two strings
+/// Function to read a shader in one string and return a struct containing separated Vertex and Fragment shaders
 ShaderProgramSource GameControlEngine::ParseShader(const std::string& filePath)
 {
 	std::ifstream stream(filePath);
@@ -327,48 +268,4 @@ ShaderProgramSource GameControlEngine::ParseShader(const std::string& filePath)
 	}
 
 	return{ ss[0].str(), ss[1].str() };
-}
-
-// Compiles the shader taking its type either GL_VERTEX_SHADER or GL_FRAGMENT_SHADER and a string containing the shader information
-unsigned int GameControlEngine::CompileShader(unsigned int type, const std::string& source)
-{
-	unsigned int id = glCreateShader(type);
-	const char* src = source.c_str();
-	glShaderSource(id, 1, &src, nullptr);
-	glCompileShader(id);
-
-	int result;
-	glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-	if (result == GL_FALSE)
-	{
-		int length;
-		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-		char* message = (char*)alloca(length * sizeof(char));
-		glGetShaderInfoLog(id, length, &length, message);
-		std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << std::endl;
-		std::cout << message << std::endl;
-		glDeleteShader(id);
-
-		return 0;
-	}
-
-	return id;
-}
-
-// Creates the shader taking two strings containing vertex shader information and fragment shader information
-unsigned int GameControlEngine::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
-{
-	unsigned int program = glCreateProgram();
-	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
-	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
-
-	glAttachShader(program, vs);
-	glAttachShader(program, fs);
-	glLinkProgram(program);
-	glValidateProgram(program);
-
-	glDeleteShader(vs);
-	glDeleteShader(fs);
-
-	return program;
 }
