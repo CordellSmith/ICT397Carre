@@ -1,10 +1,3 @@
-/*
-* @class InputManager
-* @brief This manager takes care of any input from the user and sent to the camera. 
-		We are just using the UP and DOWN arrow keys to show moving the camera.
-*
-* @date 29/04/2018
-*/
 #pragma once
 
 #define GLM_FORCE_RADIANS								// Make sure GLM is using radians instead of degrees
@@ -55,7 +48,14 @@ enum InputCodes
 	z = 122, Z = 90,
 };
 
-// 
+/*
+* @class InputManager
+* @brief This manager takes care of any input from the user and sent to the camera.
+* We are just using the UP and DOWN arrow keys to show moving the camera.
+*
+* @author Cordell Smith
+* @date 29/04/2018
+*/
 class InputManager
 {
 public:
@@ -67,9 +67,9 @@ public:
 
 	/**
 	* @brief Set the current camera
-	* @param pCamera
+	* @param m_camera
 	*/
-	void SetCamera(Camera *pCamera) { Camera = pCamera; }
+	void SetCamera(Camera *m_camera) { Camera = m_camera; }
 	/**
 	* @brief Get the current camera
 	* @return Camera
@@ -83,9 +83,6 @@ public:
 
 
 protected:
-
-	/**
-	* @brief The pointer to our camera object
-	*/
+	// Camera object
 	Camera *Camera;
 };

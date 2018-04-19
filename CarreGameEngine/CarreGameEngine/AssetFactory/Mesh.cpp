@@ -69,8 +69,8 @@ void Mesh::Draw()
 	//// Create the Model Matrix with the current position
 	//glm::glm::mat4 modelMatrix = glm::translate(glm::glm::mat4(1.0f), m_position);
 
-	//// Similar to the Position above, we do the same for the Scale
-	//modelMatrix = glm::scale(modelMatrix, m_scale);
+	//// Similar to the Position above, we do the same for the m_scale
+	//modelMatrix = glm::m_scale(modelMatrix, m_m_scale);
 
 	//// Add any rotation to the Model Matrix for each axis
 	//modelMatrix = glm::rotate(modelMatrix, m_rotation.x, glm::vec3(1, 0, 0));	// x-axis

@@ -9,7 +9,7 @@ int main()
 	GLFWManager *pWindowManager = new GLFWManager();
 
 	// Here we initialize a camera to be used for our application, as opposed to having a global
-	Camera *pCamera = new Camera();
+	Camera *m_camera = new Camera();
 
 	// Create a local instance of our GameControlEngine (defined in Main.cpp) and set its
 	// WindowManager implementation (in this case, GLFW).
@@ -17,8 +17,8 @@ int main()
 	application.SetWindowManager(pWindowManager);
 
 	// Set the created camera as our main application camera and pass it also to our InputManager
-	application.SetCamera(pCamera);
-	pWindowManager->GetInputManager()->SetCamera(pCamera);
+	application.SetCamera(m_camera);
+	pWindowManager->GetInputManager()->SetCamera(m_camera);
 
 	// Return the GLMain() defined in Main.cpp, which handles the flow of our application
 	// and immediately starts our game loop.
