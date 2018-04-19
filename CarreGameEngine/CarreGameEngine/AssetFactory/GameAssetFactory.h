@@ -1,10 +1,10 @@
-/*
-*
-* @class GameAssetFactory
-* @brief Responsible for creating the assets used within the game world. 	
-*
-* @date 29/04/2018
-*/
+		/*
+		*
+		* @class GameAssetFactory
+		* @brief Responsible for creating the assets used within the game world. 	
+		*
+		* @date 29/04/2018
+		*/
 
 #pragma once
 
@@ -16,20 +16,27 @@
 class GameAssetFactory
 {
 public:
-	/**
-	* @brief Default constructor
-	*/
+		/**
+		* @brief Default constructor
+		*
+		* @return null
+		*/
 	GameAssetFactory() { }
-	/**
-	* @brief Destructor
-	*/
+		/**
+		* @brief Destructor
+		*
+		* @return null
+		*/
 	~GameAssetFactory() { }
 
-	/**
-	* @brief Creates and returns an object depending on type and obj file passed
-	* @param type - defines what type of object it is(Terrain, Object, NPC)
-	* @param filePath - path to the file containing the asset OBJ
-	*/
+		/**
+		* @brief Creates and returns an object depending on type and obj file passed
+		*
+		* @param OBJ_TYPE type 
+		* @param std::string filePath
+		*
+		* @return IGameObject*
+		*/
 	IGameObject* CreateAsset(OBJ_TYPE type, std::string filePath);
 
 protected:

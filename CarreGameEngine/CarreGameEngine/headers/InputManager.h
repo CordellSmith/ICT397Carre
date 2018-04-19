@@ -1,10 +1,10 @@
-/*
-* @class InputManager
-* @brief This manager takes care of any input from the user and sent to the camera. 
-		We are just using the UP and DOWN arrow keys to show moving the camera.
-*
-* @date 29/04/2018
-*/
+		/*
+		* @class InputManager
+		* @brief This manager takes care of any input from the user and sent to the camera. 
+				We are just using the UP and DOWN arrow keys to show moving the camera.
+		*
+		* @date 29/04/2018
+		*/
 #pragma once
 
 #define GLM_FORCE_RADIANS								// Make sure GLM is using radians instead of degrees
@@ -60,33 +60,39 @@ enum InputCodes
 class InputManager
 {
 public:
-	/**
-	* @brief This takes in a code and sends it to the camera for movement
-	* @param code
-	*/
+		/**
+		* @brief This takes in a code and sends it to the camera for movement
+		* @param InputCodes code
+		*
+		* @return void
+		*/
 	void KeyPressed(InputCodes code);
 
-	/**
-	* @brief Set the current camera
-	* @param pCamera
-	*/
+		/**
+		* @brief Set the current camera
+		* @param Camera *pCamera
+		*
+		* @return void
+		*/
 	void SetCamera(Camera *pCamera) { Camera = pCamera; }
-	/**
-	* @brief Get the current camera
-	* @return Camera
-	*/
+		/**
+		* @brief Get the current camera
+		*
+		* @return Camera
+		*/
 	Camera *GetCamera() { return Camera; }
 	
-	/**
-	* @brief This sends in an updated mouse x and y position that should be a delta from (0, 0)
-	*/
+		/**
+		* @brief This sends in an updated mouse x and y position that should be a delta from (0, 0)
+		*
+		* @param float mouseX
+		* @param float mouseY
+		*
+		* @return void
+		*/
 	void MouseMoved(float mouseX, float mouseY);
 
 
 protected:
-
-	/**
-	* @brief The pointer to our camera object
-	*/
 	Camera *Camera;
 };

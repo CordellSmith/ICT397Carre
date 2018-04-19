@@ -1,13 +1,13 @@
-/*
-* @note
-*
-* @class GameControlEngine
-* @brief	Class for initializing the game world, controlling objects, the main 
-*			game loop and responsible for cleanup.
-*
-* @date 29/04/2018
-* @bug
-*/
+		/*
+		*
+		* @class GameControlEngine
+		* @brief	Class for initializing the game world, controlling objects, the main 
+		*			game loop and responsible for cleanup.
+		*
+		* @author
+		* @date 29/04/2018
+		* @version 1.0
+		*/
 #pragma once
 
 #include <iostream>
@@ -36,70 +36,88 @@ struct ShaderProgramSource
 	std::string VertexSource;
 	std::string FragmentSource;
 };
-/**
-* @brief This is our main application class that handles orchestrating the init, game loop and cleanup
-*/
+		/**
+		* @brief Game Control Engine class
+		*
+		* This is our main application class that handles orchestrating the init, game loop and cleanup
+		*/
 class GameControlEngine
 {
 public:
 
-	/**
-	* @brief The width of the application
-	*/
 	static const int ScreenWidth = 1280;
-	/**
-	* @brief The height of the application
-	*/
 	static const int ScreenHeight = 720;
 
-	/**
-	* @brief Default constructor
-	*/
+		/**
+		* @brief Default constructor
+		*
+		* @return null
+		*/
 	GameControlEngine() {}
-	/**
-	* @brief Destructor with clean up function
-	*/
+
+		/**
+		* @brief Destructor with clean up function
+		* 
+		* @return null
+		*/
 	~GameControlEngine() { Destroy(); }
 
-	/**
-	* @brief	This is the main function for our application, which is called by the main() function
-				in the WindowManager.cpp file.  This helps abstract out the environments entry point.
-	*/
+		/**
+		* @brief	This is the main function for our application, which is called by the main() function
+		*			in the WindowManager.cpp file.  This helps abstract out the environments entry point.
+		*
+		* @return int
+		*/
 	int GLMain();
 
-	/**
-	* @brief	This gets the window manager for the application.
-	*/
+		/**
+		* @brief	This gets the window manager for the application.
+		*
+		* @return WindowManager
+		*/
 	WindowManager *GetWindowManager() { return WindowManager; }
-	/**
-	* @brief	This sets the window manager for the application.  This should be set right
-				after the GameControlEngine is created in the main() function.
-	*/
+		/**
+		* @brief	This sets the window manager for the application.  This should be set right
+		*			after the GameControlEngine is created in the main() function.
+		* @param WindowManager *pWindowManager
+		*
+		* @return void
+		*/
 	void SetWindowManager(WindowManager *pWindowManager) { WindowManager = pWindowManager; }
 
-	/**
-	* @brief	Returns the camera for our application
-	*/
+		/**
+		* @brief	Returns the camera for our application
+		*
+		* @return Camera
+		*/
 	Camera *GetCamera() { return Camera; }
-	/**
-	* @brief	Sets the camera for our application
-	* @param	pCamera
-	*/
+		/**
+		* @brief	Sets the camera for our application
+		* @param	Camera *pCamera
+		*
+		* @return void
+		*/
 	void SetCamera(Camera *pCamera) { Camera = pCamera; }
 
-	/**
-	* @brief	This initializes the application
-	*/
+		/**
+		* @brief	This initializes the application
+		*
+		* @return void
+		*/
 	void Initialize();
 
-	/**
-	* @brief	This runs the game loop and only quits when the user hits Escape or closes the window
-	*/
+		/**
+		* @brief	This runs the game loop and only quits when the user hits Escape or closes the window
+		*
+		* @return void
+		*/
 	void GameLoop();
 
-	/**
-	* @brief	This cleans up the application and tells other objects to also cleanup
-	*/
+		/**
+		* @brief	This cleans up the application and tells other objects to also cleanup
+		*
+		* @return void
+		*/
 	void Destroy();
 
 	ShaderProgramSource GameControlEngine::ParseShader(const std::string& filePath);
@@ -108,40 +126,40 @@ public:
 
 protected:
 
-	/**
-	* @brief	 Our abstract window manager to create the window and manage input, which should be
-	environment agnostic.  Our main application shouldn't know if it's Win32 or GLFW.
-	This is instantiated and set in GLFWManager.cpp in the main() function.
-	*/
+		/**
+		* @brief	 Our abstract window manager to create the window and manage input, which should be
+		* environment agnostic.  Our main application shouldn't know if it's Win32 or GLFW.
+		* This is instantiated and set in GLFWManager.cpp in the main() function.
+		*/
 	WindowManager *WindowManager;
 
-	/**
-	* @brief	Add our camera object to our application
-	*/
+		/**
+		* @brief	Add our camera object to our application
+		*/
 	Camera *Camera;
 
 
-	/**
-	* @brief	Physics world
-	*/
+		/**
+		* @brief	Physics world
+		*/
 	PhysicsEngine physicsWorld;
 
-	/**
-	* @brief	Array of collision body positions
-	*/
+		/**
+		* @brief	Array of collision body positions
+		*/
 	std::vector<btVector3> collisionBodyPos;
-	/**
-	* @brief	Used to draw spheres for testing
-	*/
+		/**
+		* @brief	Used to draw spheres for testing
+		*/
 	GLUquadricObj* quad;
 
-	/**
-	* @brief	Game asset factory
-	*/
+		/**
+		* @brief	Game asset factory
+		*/
 	GameAssetFactory m_assetFactory;
 
-	/**
-	* @brief	Our game world instance (singleton this later maybe?)
-	*/
+		/**
+		* @brief	Our game world instance (singleton this later maybe?)
+		*/
 	GameWorld m_gameWorld;
 };

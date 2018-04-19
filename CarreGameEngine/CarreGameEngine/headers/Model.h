@@ -1,3 +1,14 @@
+		/**
+		* @class Model
+		* @brief 
+		*
+		* The Model class to handle initializing, rendering and destroying of a 3D object
+		*
+		* @author
+		* @version 01
+		* @date 29/03/2018 
+		*
+		*/
 #pragma once
 
 #define GLM_FORCE_RADIANS								// Make sure GLM is using radians instead of degrees
@@ -13,7 +24,10 @@
 using namespace glm;
 
 
-// This is our custom class to store attributes for a vertex like the x,y,z values.
+		/**
+		* @brief This is our custom struct to store 
+		* attributes for a vertex like the x,y,z values.
+		*/
 struct Vertex
 {
 	vec3 xyz;											// The x,y,z position
@@ -22,7 +36,10 @@ struct Vertex
 	vec3 normal;										// The normal coordinates
 };
 
-// The Model class to handle initializing, rendering and destroying of a 3D object
+		/**
+		* @brief The Model class to handle initializing, 
+		* rendering and destroying of a 3D object
+		*/
 class Model
 {
 public:
@@ -33,34 +50,106 @@ public:
 	static const GLuint kTextureIndex = 2;				// This is for the u,v texture coordinates
 	static const GLuint kNormalIndex = 3;				// This is for the x,y,z normals
 
-	// Set the scale of our model to 100% by default
+	
+		/**
+		* @brief Default constructor
+		* Set the scale of our model to 100% by default
+		* @param vec3 Scale
+		* 
+		* @return null
+		*/ 
 	Model()		{ Scale = vec3(1.0f, 1.0f, 1.0f); }
+		/**
+		* @brief Destructor
+		*
+		* @return null
+		*/
 	~Model()	{ Destroy(); }
 
-	// Takes in a list of x,y,z vertices and vertex length to create the VBO and VAO's from,
-	// as well as the text file locations for the vertex and fragment shaders to load.
+		/**
+		* @brief Initialize function
+		* Takes in a list of x,y,z vertices and vertex length to create the VBO and VAO's from,
+		* as well as the text file locations for the vertex and fragment shaders to load.
+		*
+		* @param Vertex vertices[]
+		* @param int length
+		* @param std::string strVertex
+		* @param std::string strFragment
+		*
+		* @return void
+		*/
 	void Initialize(Vertex vertices[], int length, std::string strVertex, std::string strFragment);
 	
-	// This draws the Model to the backbuffer
+		/**
+		* @brief This draws the Model to the backbuffer
+		*
+		* @return void
+		*/
 	void Render();
 
-	// Create the getter and setters for the model's position
+		/**
+		* @brief Create the getter for the model's position
+		*
+		* @return vec3
+		*/
 	vec3 GetPosition() { return Position; }
+		/**
+		* @brief Create the setters for the model's position
+		* @param vec3 position
+		*
+		* @return void
+		*/
 	void SetPosition(vec3 position) { Position = position; }
 
-	// Create the getter and setters for the model's rotation
+		/**
+		* @brief Create the setters for the model's rotation
+		*
+		* @return vec3
+		*/
 	vec3 GetRotation() { return Rotation; }
+		/**
+		* @brief Create the setters for the model's rotation
+		* @param vec3 rotation
+		*
+		* @return void
+		*/
 	void SetRotation(vec3 rotation) { Rotation = rotation; }
 
-	// Create the getter and setters for the model's scale
+		/**
+		* @brief Create the setters for the model's scale
+		*
+		* @return vec3
+		*/
 	vec3 GetScale() { return Scale; }
+		/**
+		* @brief Create the getters for the model's scale
+		* @param vec3 scale
+		*
+		* @return void
+		*/
 	void SetScale(vec3 scale) { Scale = scale; }
 
-	// This gets and sets the camera to get access to the view and projection matrices
+		/**
+		* @brief This gets the camera to get 
+		* access to the view and projection matrices
+		*
+		* @return Camera
+		*/
 	Camera *GetCamera() { return Camera; }
+		/**
+		* @brief This sets the camera to get
+		* access to the view and projection matrices
+		* @param Camera *pCamera
+		*
+		* @return void
+		*/
 	void SetCamera(Camera *pCamera) { Camera = pCamera; }
 
-	// This cleans up the VBO and VAO's
+		/**
+		* @brief Destructor function to clean up
+		*
+		* @return void
+		*/
 	void Destroy();
 
 protected:
