@@ -8,7 +8,6 @@
 #include <GLM\gtx\transform2.hpp>						
 #include <GL\glew.h>
 
-//#include "Texture.h"
 #include "..\headers\Shader.h"
 
 struct Vertex3

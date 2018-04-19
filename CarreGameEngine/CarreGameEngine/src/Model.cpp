@@ -29,7 +29,7 @@ void Model::Initialize(Vertex vertices[], int length, std::string vertShaderStri
 
 	if ( ErrorCheckValue != GL_NO_ERROR )
 	{
-		fprintf(stderr, "ERROR: Could not create a VAO and VBO with error Id: %d\n", ErrorCheckValue);
+		std::cout << "ERROR: Could not create a VAO and VBO with error Id: " << ErrorCheckValue << std::endl;
 		exit(-1);
 	}
 }
