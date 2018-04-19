@@ -40,166 +40,160 @@
 #ifndef PHYSICSENGINE_H
 #define PHYSICSENGINE_H
 
-/// Includes
+// Includes
 #include "btBulletDynamicsCommon.h"
 #include "BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h"
 #include <vector>
 #include <fstream>	// Used for testing of heightfield terrain shape (will be removed later)
 
-/**
-* @brief Enum for the different types of rigid bodies created.
-*
-* Enum used to differentiate between the different types of rigid bodies created
-*
-* @param CAMERA - Camera object rigid body
-* @param BOX - Box shape rigid body
-* @param SPHERE - Sphere shape rigid body
-* @param HEIGHTFIELD - Heightfield terrain shape rigid body
-* @param PLANE - Plane shape rigid body
-*/
-typedef enum
-{
-	CAMERA = 1,
-	BOX = 2,
-	SPHERE = 3,
-	HEIGHTFIELD = 4,
-	PLANE = 5
-}RIGID_BODY_TYPE;
-
 class PhysicsEngine
 {
 	public:
 
-		/**
-		* @brief Default constructor
-		* 
-		* This is the default constructor
-		*
-		* @return null
-		*/
+			/**
+			* @brief Enum for the different types of rigid bodies created.
+			*
+			* Enum used to differentiate between the different types of rigid bodies created
+			*/
+		typedef enum
+		{
+			CAMERA = 1,			/**< Camera object rigid body */
+			BOX = 2,			/**< Box shape rigid body */
+			SPHERE = 3,			/**< Sphere shape rigid body */
+			HEIGHTFIELD = 4,	/**< Heightfield terrain shape rigid body */
+			PLANE = 5			/**< Plane shape rigid body */
+		}RIGID_BODY_TYPE;
+
+			/**
+			* @brief Default constructor
+			* 
+			* This is the default constructor
+			*
+			* @return null
+			*/
 		PhysicsEngine();
 
-		/**
-		* @brief De-constructor
-		*
-		* This is the de-constructor
-		*
-		* @note Not implemented yet
-		*
-		* @return null
-		*/
+			/**
+			* @brief De-constructor
+			*
+			* This is the de-constructor
+			*
+			* @note Not implemented yet
+			*
+			* @return null
+			*/
 		~PhysicsEngine();
 
-		/**
-		* @brief Creates static rigid body
-		*
-		* This is a test function that is used to create a static body (as of now, it creates a floor)
-		*
-		* @return void
-		*/
+			/**
+			* @brief Creates static rigid body
+			*
+			* This is a test function that is used to create a static body (as of now, it creates a floor)
+			*
+			* @return void
+			*/
 		void CreateStaticRigidBody();
 
-		/**
-		* @brief Creates dynamic rigid body
-		*
-		* This is a test function that creates dynamic rigid bodies for testing purposes
-		*
-		* @param pos - Position to create dynamic body
-		*
-		* @return void
-		*/
+			/**
+			* @brief Creates dynamic rigid body
+			*
+			* This is a test function that creates dynamic rigid bodies for testing purposes
+			*
+			* @param pos - Position to create dynamic body
+			*
+			* @return void
+			*/
 		void CreateDynamicRigidBody(btVector3 &pos);
 
-		/**
-		* @brief Creates dynamic rigid body for a player controlled object
-		*
-		* This is a test function that creates a dynamic rigid body for the player controlled object (as of now, that is the camera)
-		* 
-		* @param playerObj - Object that is player controlled 
-		*
-		* @return void
-		*/
+			/**
+			* @brief Creates dynamic rigid body for a player controlled object
+			*
+			* This is a test function that creates a dynamic rigid body for the player controlled object (as of now, that is the camera)
+			* 
+			* @param playerObj - Object that is player controlled 
+			*
+			* @return void
+			*/
 		void CreatePlayerControlledRigidBody(btVector3 &playerObj);
 
-		/**
-		* @brief Simulate the dynamic world
-		*
-		* This function simulates the dynamic world by handling all physics calculations each step
-		*
-		* @param bodyPos - Update all rigid body positions for drawing
-		* @param playerObj - Sets new player object position
-		*
-		* @return void
-		*/
+			/**
+			* @brief Simulate the dynamic world
+			*
+			* This function simulates the dynamic world by handling all physics calculations each step
+			*
+			* @param bodyPos - Update all rigid body positions for drawing
+			* @param playerObj - Sets new player object position
+			*
+			* @return void
+			*/
 		void Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerObj);
 
-		/*
-		* @brief Public function that calls different private functions for creation of rigid bodies
-		* @param objectData - Data structure containing all game object data
-		* @return True if all game object rigid bodies created, false otherwise
-		*/
+			/*
+			* @brief Public function that calls different private functions for creation of rigid bodies
+			* @param objectData - Data structure containing all game object data
+			* @return True if all game object rigid bodies created, false otherwise
+			*/
 		//bool CreateAllRigidBodies(Data &objectData);
 
-		/**
-		* @brief Create a heightfield terrain shape
-		*
-		* This is a test function that creates a heightfield terrain shape
-		*
-		* @return void
-		*/
+			/**
+			* @brief Create a heightfield terrain shape
+			*
+			* This is a test function that creates a heightfield terrain shape
+			*
+			* @return void
+			*/
 		void CreateHeightfieldTerrainShape();
 
 	private:
 
-		/// Determines if shape is dynamic or not
+			/// Determines if shape is dynamic or not
 		bool m_isDynamic;
 
-		/// Dynamic world
+			/// Dynamic world
 		btDiscreteDynamicsWorld* m_dynamicsWorld;
 
-		/// Array of collision shapes
+			/// Array of collision shapes
 		btAlignedObjectArray<btCollisionShape*> m_collisionShapes;
 
-		/// Mass value of body
+			/// Mass value of body
 		btScalar m_mass;
 
-		/// Holds last known player controlled object location
+			/// Holds last known player controlled object location
 		btVector3 m_playerObject;
 
-		/// Old force applied to player controlled object (don't think this is needed)
+			/// Old force applied to player controlled object (don't think this is needed)
 		btVector3 m_oldForce;
 
-		/// New force applied to player controlled object (don't think this is needed)
+			/// New force applied to player controlled object (don't think this is needed)
 		btVector3 m_newForce;
 
-		/*
-		* @brief Creates a rigid body for the camera
-		* @param objectData - Data structure containing all data for rigid body creation
-		*/
+			/*
+			* @brief Creates a rigid body for the camera
+			* @param objectData - Data structure containing all data for rigid body creation
+			*/
 		//void CreateCameraRigidBody(Data &objectData);
 
-		/*
-		* @brief Creates a box shape rigid body
-		* @param objectData - Data structure containing all data for rigid body creation
-		*/
+			/*
+			* @brief Creates a box shape rigid body
+			* @param objectData - Data structure containing all data for rigid body creation
+			*/
 		//void CreateBoxShapeRigidBody(Data &objectData);
 
-		/*
-		* @brief Creates a sphere shape rigid body
-		* @param objectData - Data structure containing all data for rigid body creation
-		*/
+			/*
+			* @brief Creates a sphere shape rigid body
+			* @param objectData - Data structure containing all data for rigid body creation
+			*/
 		//void CreateSphereShapeRigidBody(Data &objectData);
 
-		/*
-		* @brief Creates a heightfield terrain shape
-		* @param objectData - Data structure containing all data for rigid body creation
-		*/
+			/*
+			* @brief Creates a heightfield terrain shape
+			* @param objectData - Data structure containing all data for rigid body creation
+			*/
 		//void CreateHeightFieldTerrainShape(Data &objectData);
 
-		/// Size of heightfield data (used for testing)
+			/// Size of heightfield data (used for testing)
 		int m_size;
 
-		/// Holds all heightfield data (used for testing)
+			/// Holds all heightfield data (used for testing)
 		unsigned char *m_terrainData;
 
 	protected:
