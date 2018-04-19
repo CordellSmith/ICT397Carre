@@ -1,36 +1,86 @@
 #pragma once
 
-#include <string>										// Used for our STL string objects
-#include <fstream>										// Used for fprintf and stderr									
-#include "InputManager.h"								// Added for the new InputManager
+#include <string>
+#include <fstream>								
+#include "InputManager.h"
 
-// This is our class definition for managing the creation of the window, input and the
-// creating of the OpenGL context.  This class should be inherited from to create
-// specific implementations like GLFW (i.e. GLFWManager), Win32, GLUT or SDL.
+	/**
+	* @class WindowManager
+	* @brief Interface class to manage the creation of the window. 
+	* 
+	* This class handles input and the creation of the OpenGL context implementing GLFW.
+	*
+	* @author Cordell Smith
+	* @version 01
+	* @date 29/03/2018 CS
+	*
+	*/
 class WindowManager
 {
 public:
+		/**
+		* @brief Destructor
+		*
+		* This function is required for the inheriting class to have its destructor called.
+		*
+		* @return null
+		*/
+	virtual ~WindowManager() { }
 
-	// This is needed so that the class inheriting this will have it's deconstructor called
-	virtual ~WindowManager() {}
-
-	// This initialized the window and creates the OpenGL context
+		/**
+		* @brief Initializes the window
+		*
+		* This function initializes the window taking in its dimensions and creating a new OpenGL
+		* context.
+		*
+		* @param int width, 
+		* @param int height
+		* @param std::string strTitle
+		* @param bool bFullScreen
+		* @return int
+		*/
 	virtual int Initialize(int width, int height, std::string strTitle, bool bFullScreen = false) = 0;
 
-	// This swaps the backbuffer to the front and should be called every frame
+		/**
+		* @brief Swaps the buffers
+		*
+		* This function swaps the backbuffer to the front and is called every frame.
+		*
+		* @return void
+		*/
 	virtual void SwapTheBuffers() = 0;
 
-	// This processes any needed input for the application, like the Escape key
+		/**
+		* @brief Processes the input of the user
+		*
+		* This function processes any needed input for the application such as key
+		* presses like esc to close the window.
+		*
+		* @param bool continueGame
+		* @return bool
+		*/
 	virtual bool ProcessInput(bool continueGame) = 0;
 
-	// This destroys the window and OpenGL context
+		/**
+		* @brief Destroys the window context
+		*
+		* This function destroys the window as well as any existing OpenGL contexts.
+		*
+		* @return void
+		*/
 	virtual void Destroy() = 0;
 
-	// Add a way to access the application's InputManager for camera movements
-	virtual InputManager *GetInputManager() { return &InputManager; }
+		/**
+		* @brief Returns the input manager object
+		*
+		* This function is a getter that retrurns a pointer to the InputManager object
+		* in order to move the camera.
+		*
+		* @return InputManager*
+		*/
+	virtual InputManager* GetInputManager() { return &m_inputManager; }
 
 protected:
-
-	// We created a variable to an InputManager to control camera movements
-	InputManager InputManager;
+	// Used to control the camera movements
+	InputManager m_inputManager;
 };
