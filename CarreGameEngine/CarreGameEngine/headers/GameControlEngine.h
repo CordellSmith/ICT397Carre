@@ -1,3 +1,13 @@
+/*
+* @note
+*
+* @class GameControlEngine
+* @brief	Class for initializing the game world, controlling objects, the main 
+*			game loop and responsible for cleanup.
+*
+* @date 29/04/2018
+* @bug
+*/
 #pragma once
 
 #include <iostream>
@@ -26,40 +36,70 @@ struct ShaderProgramSource
 	std::string VertexSource;
 	std::string FragmentSource;
 };
-
-// This is our main application class that handles orchestrating the init, game loop and cleanup
+/**
+* @brief This is our main application class that handles orchestrating the init, game loop and cleanup
+*/
 class GameControlEngine
 {
 public:
 
-	// The width and height of the application
+	/**
+	* @brief The width of the application
+	*/
 	static const int ScreenWidth = 1280;
+	/**
+	* @brief The height of the application
+	*/
 	static const int ScreenHeight = 720;
 
-	// Create a default constructor and deconstructor which cleans up
+	/**
+	* @brief Default constructor
+	*/
 	GameControlEngine() {}
+	/**
+	* @brief Destructor with clean up function
+	*/
 	~GameControlEngine() { Destroy(); }
 
-	// This is the main function for our application, which is called by the main() function
-	// in the WindowManager.cpp file.  This helps abstract out the environments entry point.
+	/**
+	* @brief	This is the main function for our application, which is called by the main() function
+				in the WindowManager.cpp file.  This helps abstract out the environments entry point.
+	*/
 	int GLMain();
 
-	// This gets and sets the window manager for the application.  This should be set right
-	// after the GameControlEngine is created in the main() function.
+	/**
+	* @brief	This gets the window manager for the application.
+	*/
 	WindowManager *GetWindowManager() { return WindowManager; }
+	/**
+	* @brief	This sets the window manager for the application.  This should be set right
+				after the GameControlEngine is created in the main() function.
+	*/
 	void SetWindowManager(WindowManager *pWindowManager) { WindowManager = pWindowManager; }
 
-	// We now pass in a Camera object to our application
+	/**
+	* @brief	Returns the camera for our application
+	*/
 	Camera *GetCamera() { return Camera; }
+	/**
+	* @brief	Sets the camera for our application
+	* @param	pCamera
+	*/
 	void SetCamera(Camera *pCamera) { Camera = pCamera; }
 
-	// This initializes the application
+	/**
+	* @brief	This initializes the application
+	*/
 	void Initialize();
 
-	// This runs the game loop and only quits when the user hits Escape or closes the window
+	/**
+	* @brief	This runs the game loop and only quits when the user hits Escape or closes the window
+	*/
 	void GameLoop();
 
-	// This cleans up the application and tells other objects to also cleanup
+	/**
+	* @brief	This cleans up the application and tells other objects to also cleanup
+	*/
 	void Destroy();
 
 	ShaderProgramSource GameControlEngine::ParseShader(const std::string& filePath);
@@ -68,24 +108,40 @@ public:
 
 protected:
 
-	// Our abstract window manager to create the window and manage input, which should be
-	// environment agnostic.  Our main application shouldn't know if it's Win32 or GLFW.
-	// This is instantiated and set in GLFWManager.cpp in the main() function.
+	/**
+	* @brief	 Our abstract window manager to create the window and manage input, which should be
+	environment agnostic.  Our main application shouldn't know if it's Win32 or GLFW.
+	This is instantiated and set in GLFWManager.cpp in the main() function.
+	*/
 	WindowManager *WindowManager;
 
-	// Add our camera object to our application
+	/**
+	* @brief	Add our camera object to our application
+	*/
 	Camera *Camera;
 
-	// Physics world
+
+	/**
+	* @brief	Physics world
+	*/
 	PhysicsEngine physicsWorld;
-	// Array of collision body positions
+
+	/**
+	* @brief	Array of collision body positions
+	*/
 	std::vector<btVector3> collisionBodyPos;
-	// Used to draw spheres for testing
+	/**
+	* @brief	Used to draw spheres for testing
+	*/
 	GLUquadricObj* quad;
 
-	// Game asset factory
+	/**
+	* @brief	Game asset factory
+	*/
 	GameAssetFactory m_assetFactory;
 
-	// Our game world instance (singleton this later maybe?)
+	/**
+	* @brief	Our game world instance (singleton this later maybe?)
+	*/
 	GameWorld m_gameWorld;
 };
