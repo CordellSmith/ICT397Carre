@@ -143,7 +143,7 @@ int GameControlEngine::GLMain()
 void GameControlEngine::Initialize()
 {
 	// Make sure the window manager is initialized prior to calling this and creates the OpenGL context
-	if (!WindowManager || WindowManager->Initialize(ScreenWidth, ScreenHeight, "Carre Game Engine", false) != 0)
+	if (!m_windowManager || m_windowManager->Initialize(ScreenWidth, ScreenHeight, "Carre Game Engine", false) != 0)
 	{
 		// Quit the application if the window couldn't be created with an OpenGL context
 		exit(-1);
@@ -157,15 +157,6 @@ void GameControlEngine::Initialize()
 	// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
 
-	///////////////////////////////////////////////////////////////////
-	/* OBJ Loader Testing */
-	//bool loadout = Loader.LoadFile("res/objects/box_stack.obj");
-	//if (loadout)
-	//	std::cout << "SUCCESS LOADING OBJ FILE" << std::endl;
-	//else
-	//	std::cout << "FAILED TO LOAD OBJ FILE" << std::endl;
-	///////////////////////////////////////////////////////////////////
-
 	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
 	ShaderProgramSource cubeSource = ParseShader("res/shaders/Cube.shader");
 
@@ -175,7 +166,7 @@ void GameControlEngine::Initialize()
 	std::vector<glm::vec3> normals;
 
 	preparePanel();
-	//prepareCube("res/objects/cube.obj", vertices, uvs, normals);
+	prepareCube("res/objects/cube.obj", vertices, uvs, normals);
 
 	//Testing script output
 	loadScript();
@@ -187,14 +178,14 @@ void GameControlEngine::Initialize()
 	// Create the projection matrix from our camera and make the near field closer and the far field farther.
 	// This makes it so our tower doesn't get cut off and also doesn't cull geometry right near the camera.
 	//									 FOV		    Aspect Ratio			   Near / Far Planes
-	Camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 100);
+	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 100);
 
 	//					  Position	  Yaw	 Pitch
-	Camera->PositionCamera(0, 0, 6, 0, 0);
+	m_camera->PositionCamera(0, 0, 6, 0, 0);
 
 	// We now pass in the camera to have access to the projection and view matrices
-	colourPanel.SetCamera(Camera);
-	cubeModel.SetCamera(Camera);
+	colourPanel.SetCamera(m_camera);
+	cubeModel.SetCamera(m_camera);
 
 	/* Doesnt really need to be called because we are dynamically calling them in the loop */
 	// Set the position of the model to be at the origin
@@ -203,7 +194,7 @@ void GameControlEngine::Initialize()
 
 	// Physics Testing
 	// Create player object (camera)
-	glm::vec3 tempCam(Camera->GetPosition());
+	glm::vec3 tempCam(m_camera->GetPosition());
 	btVector3 tempCam2(tempCam.x, tempCam.y, tempCam.z);
 	physicsWorld.CreatePlayerControlledRigidBody(tempCam2);
 	collisionBodyPos.push_back(tempCam2);
@@ -231,7 +222,7 @@ void GameControlEngine::Initialize()
 void GameControlEngine::GameLoop()
 {
 	// Loop until the user hits the Escape key or closes the window
-	while (WindowManager->ProcessInput(true))
+	while (m_windowManager->ProcessInput(true))
 	{
 		// Use our Singleton to calculate our framerate every frame, passing true to set FPS in titlebar
 		TimeManager::Instance().CalculateFrameRate(true);
@@ -252,12 +243,12 @@ void GameControlEngine::GameLoop()
 		/**************************************************************************/
 		// Update physicsWorld
 		// TODO: Make this better (Jack)
-		glm::vec3 temp1(Camera->GetPosition());
+		glm::vec3 temp1(m_camera->GetPosition());
 		btVector3 temp2(temp1.x, temp1.y, temp1.z);
 		physicsWorld.Simulate(collisionBodyPos, temp2);
 
 		// Set updated camera location
-		Camera->SetPosition(glm::vec3(temp2.getX(), temp2.getY(), temp2.getZ()));
+		m_camera->SetPosition(glm::vec3(temp2.getX(), temp2.getY(), temp2.getZ()));
 
 		// Draw shapes for testing (just planes atm, didn't know how to make spheres using current setup)
 		glm::vec3 temp = glm::vec3(collisionBodyPos[0].x(), collisionBodyPos[0].y(), collisionBodyPos[0].z());
@@ -279,7 +270,7 @@ void GameControlEngine::GameLoop()
 		}
 		/**************************************************************************/
 			// Swap the buffers to display the final rendered image on screen
-			WindowManager->SwapTheBuffers();
+		m_windowManager->SwapTheBuffers();
 	}
 }
 
@@ -291,19 +282,19 @@ void GameControlEngine::Destroy()
 	//colourPanel.Destroy();
 
 	// If we have a window manager still allocated then destroy and delete it
-	if (WindowManager)
+	if (m_windowManager)
 	{
-		WindowManager->Destroy();
+		m_windowManager->Destroy();
 
-		delete WindowManager;
-		WindowManager = nullptr;
+		delete m_windowManager;
+		m_windowManager = nullptr;
 	}
 
 	// If we have the camera still, delete it
-	if (Camera)
+	if (m_camera)
 	{
-		delete Camera;
-		Camera = nullptr;
+		delete m_camera;
+		m_camera = nullptr;
 	}
 }
 
