@@ -38,5 +38,5 @@ protected:
 
 	glm::vec3 m_position;
 	glm::vec3 m_rotation;
-	glm::vec3 m_m_scale;
+	glm::vec3 m_scale;
 };

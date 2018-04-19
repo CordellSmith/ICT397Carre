@@ -51,7 +51,6 @@ public:
 		*/
 	std::string LoadShaderFile(std::string filePath);
 
-	// This loads a vertex and fragment shader from a text file (relative or full path)
 		/**
 		* @brief Initializes the shader program
 		*
@@ -85,7 +84,7 @@ public:
 		* @param int newValue
 		* @return void
 		*/
-	void SetInt(GLint id, int newValue)											{ glUniform1i(id, newValue);		}
+	void SetInt(GLint id, int newValue) { glUniform1i(id, newValue); }
 	
 		/**
 		* @brief Sets uniform value to float
@@ -97,7 +96,7 @@ public:
 		* @param GLfloat newValue
 		* @return void
 		*/
-	void SetFloat(GLint id, GLfloat newValue)									{ glUniform1f(id, newValue);		}
+	void SetFloat(GLint id, GLfloat newValue) { glUniform1f(id, newValue); }
 	
 		/**
 		* @brief Selects uniform value to be changed
@@ -110,7 +109,7 @@ public:
 		* @param GLfloat v1
 		* @return void
 		*/
-	void SetFloat2(GLint id, GLfloat v0, GLfloat v1)							{ glUniform2f(id, v0, v1);			}
+	void SetFloat2(GLint id, GLfloat v0, GLfloat v1) { glUniform2f(id, v0, v1); }
 	
 		/**
 		* @brief Selects uniform value to be changed
@@ -124,7 +123,7 @@ public:
 		* @param GLfloat v2
 		* @return void
 		*/
-	void SetFloat3(GLint id, GLfloat v0, GLfloat v1, GLfloat v2)				{ glUniform3f(id, v0, v1, v2);		}
+	void SetFloat3(GLint id, GLfloat v0, GLfloat v1, GLfloat v2) { glUniform3f(id, v0, v1, v2);	}
 	
 		/**
 		* @brief Selects uniform value to be changed
@@ -139,7 +138,7 @@ public:
 		* @param GLfloat v3
 		* @return void
 		*/
-	void SetFloat4(GLint id, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)	{ glUniform4f(id, v0, v1, v2, v3);	}
+	void SetFloat4(GLint id, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3) { glUniform4f(id, v0, v1, v2, v3); }
 	
 		/**
 		* @brief Selects uniform value to be changed
@@ -165,7 +164,7 @@ public:
 		*
 		* @return void
 		*/
-	void TurnOn()		{	glUseProgram(m_shaderProgramId);  }
+	void TurnOn() {	glUseProgram(m_shaderProgramId); }
 
 		/**
 		* @brief Turns shader off
@@ -174,7 +173,7 @@ public:
 		*
 		* @return void
 		*/
-	void TurnOff()		{	glUseProgram(0);				}
+	void TurnOff() { glUseProgram(0); }
 	
 		/**
 		* @brief Destroys any linked shaders
@@ -187,12 +186,12 @@ public:
 	void Destroy();
 
 private:
-	// Stores vertex shader information
+	/// Stores vertex shader information
 	GLuint m_vertexShaderId;
 
-	// Stores fragment shader information
+	/// Stores fragment shader information
 	GLuint m_fragmentShaderId;
 
-	// Stores the program information 
+	/// Stores the program information 
 	GLuint m_shaderProgramId;
 };

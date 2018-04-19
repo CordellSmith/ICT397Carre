@@ -6,7 +6,7 @@
 void InputManager::KeyPressed(InputCodes code)
 {
 	// If there isn't a camera specified, just return
-	if ( Camera == nullptr )
+	if (m_camera == nullptr)
 		return;
 
 	// Depending on the code, move the camera back or forward fixed by a speed and time slice
@@ -15,11 +15,11 @@ void InputManager::KeyPressed(InputCodes code)
 	{
 		// If the user moves up, move the camera up along the view vector
 		case Up: case W: case w:
-			Camera->MoveCamera(Camera->GetSpeed() * TimeManager::Instance().DeltaTime);
+			m_camera->MoveCamera(m_camera->GetSpeed() * TimeManager::Instance().DeltaTime);
 			break;
 		// If the user moved down, move the camera down along the view vector
 		case Down: case S: case s:
-			Camera->MoveCamera(-1 * Camera->GetSpeed() * TimeManager::Instance().DeltaTime);
+			m_camera->MoveCamera(-1 * m_camera->GetSpeed() * TimeManager::Instance().DeltaTime);
 			break;
 		// Used to toggle wireframe of vertices
 		case q: case Q:
@@ -35,9 +35,9 @@ void InputManager::KeyPressed(InputCodes code)
 void InputManager::MouseMoved(float mouseX, float mouseY)
 {
 	// Return if we don't have a valid camera assigned
-	if ( Camera == nullptr )
+	if (m_camera == nullptr)
 		return;
 
 	// Have our manager send the mouse x and y deltas to our camera to process the rotations
-	Camera->SetViewByMouse(mouseX, mouseY);
+	m_camera->SetViewByMouse(mouseX, mouseY);
 }
