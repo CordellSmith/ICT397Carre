@@ -31,6 +31,10 @@
 *
 * @date 18/04/2018
 * @version 3.0	Big gap between versions due to other units requirements. Set up functions for initializing all object rigid bodies. Will need changing.
+*
+* @date 19/04/2018
+* @version 3.1	Added testing for heightfield terrain shape. Got it loading and working, but without a visual terrain it is not possible to see if it is
+*				working correctly or not. Have commented it out until I am able to keep working on it. Also added some more doxygen comments.
 */
 
 #ifndef PHYSICSENGINE_H
@@ -40,7 +44,7 @@
 #include "btBulletDynamicsCommon.h"
 #include "BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h"
 #include <vector>
-#include <fstream>
+#include <fstream>	// Used for testing of heightfield terrain shape (will be removed later)
 
 /**
 * @brief Enum for the different types of rigid bodies created.
@@ -64,6 +68,7 @@ class PhysicsEngine
 
 		/**
 		* @brief De-constructor
+		* @note Not implemented yet
 		*/
 		~PhysicsEngine();
 
@@ -98,6 +103,9 @@ class PhysicsEngine
 		*/
 		//bool CreateAllRigidBodies(Data &objectData);
 
+		/**
+		* @brief Test function for creating a heightfield terrain shape
+		*/
 		void CreateHeightfieldTerrainShape();
 
 	private:
@@ -117,10 +125,10 @@ class PhysicsEngine
 		/// Holds last known player controlled object location
 		btVector3 playerObject;
 
-		/// Old force applied
+		/// Old force applied (don't think this is needed)
 		btVector3 oldForce;
 
-		/// New force applied
+		/// New force applied (don't think this is needed)
 		btVector3 newForce;
 
 		/*
@@ -147,7 +155,10 @@ class PhysicsEngine
 		*/
 		//void CreateHeightFieldTerrainShape(Data &objectData);
 
+		/// Size of heightfield data (used for testing)
 		int size;
+
+		/// Holds all heightfield data (used for testing)
 		unsigned char *terrainData;
 
 	protected:
