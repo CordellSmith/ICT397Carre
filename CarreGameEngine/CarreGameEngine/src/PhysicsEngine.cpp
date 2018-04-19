@@ -350,7 +350,7 @@ void PhysicsEngine::CreateHeightfieldTerrainShape()
 /*void PhysicsEngine::CreateBoxShapeRigidBody(Data &objectData)
 {
 	// Create box shape and add to shape array
-	btCollisionShape* boxShape = new btBoxShape(btVector3(objectData.getScaleX(), objectData.getScaleY(), objectData.getScaleZ()));
+	btCollisionShape* boxShape = new btBoxShape(btVector3(objectData.getm_scaleX(), objectData.getm_scaleY(), objectData.getm_scaleZ()));
 	collisionShapes.push_back(boxShape);
 
 	// Initialize transform and location
@@ -420,7 +420,7 @@ void PhysicsEngine::CreateHeightfieldTerrainShape()
 /*void PhysicsEngine::CreateHeightFieldTerrainShape(Data &objectData)
 {
 	// Create heightfield terrain shape and add to shape array
-	btCollisionShape* heightfieldShape = new btHeightfieldTerrainShape(objectData.getScaleX(), objectData.getScaleZ(), objectData.getData(), objectData.getHeightScale(), objectData.getMinHeight(), objectData.getMaxHeight(), 1, PHY_UCHAR, true);
+	btCollisionShape* heightfieldShape = new btHeightfieldTerrainShape(objectData.getm_scaleX(), objectData.getm_scaleZ(), objectData.getData(), objectData.getHeightm_scale(), objectData.getMinHeight(), objectData.getMaxHeight(), 1, PHY_UCHAR, true);
 	collisionShapes.push_back(heightfieldShape);
 
 	// Initialize transform and location
