@@ -1,16 +1,13 @@
 #include "GL/glew.h"									// Include the GLEW library to manage OpenGL extensions
 
-#include "..\headers\ObjLoader.h"
 #include "..\headers\GameControlEngine.h"							// Include our main header for the application
 #include "..\headers\ScriptManager.h"
 
 Model colourPanel;										// Our class to handle initializing and drawing our model
 Model cubeModel;
 
-objl::Loader Loader;
-
-Vertex panel[6] = { vec3(0), vec4(1), vec2(2), vec3(3) };
-Vertex cube[108] = { vec3(0), vec4(1), vec2(2), vec3(3) };
+Vertex panel[6] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
+Vertex cube[108] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
 
 void prepareCube(const char* filePath, std::vector<glm::vec3>& out_vertices, std::vector<glm::vec2>& out_uvs, 
 	std::vector<glm::vec3>& out_normals)
@@ -91,7 +88,7 @@ void prepareCube(const char* filePath, std::vector<glm::vec3>& out_vertices, std
 	for (int i = 0; i < out_vertices.size(); i++)
 	{
 		cube[i].xyz = out_vertices[i];
-		cube[i].rgba = vec4(red, green, blue, 1.0);
+		cube[i].rgba = glm::vec4(red, green, blue, 1.0);
 		cube[i].uv = out_uvs[i];
 		cube[i].normal = out_normals[i];
 	}
@@ -101,30 +98,30 @@ void preparePanel()
 {
 	// The first half of the quad (triangle 1)
 	// The back left vertex -- colored yellow
-	panel[0].xyz = vec3(-1.0f, -1.0f, -1.0f);
-	panel[0].rgba = vec4(1, 1, 0, 1);
+	panel[0].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
+	panel[0].rgba = glm::vec4(1, 1, 0, 1);
 
 	// The back right vertex -- colored red
-	panel[1].xyz = vec3(1.0f, -1.0f, -1.0f);
-	panel[1].rgba = vec4(1, 0, 0, 1);
+	panel[1].xyz = glm::vec3(1.0f, -1.0f, -1.0f);
+	panel[1].rgba = glm::vec4(1, 0, 0, 1);
 
 	// The front right vertex -- colored cyan
-	panel[2].xyz = vec3(1.0f, -1.0f, 1.0f);
-	panel[2].rgba = vec4(0, 1, 1, 1);
+	panel[2].xyz = glm::vec3(1.0f, -1.0f, 1.0f);
+	panel[2].rgba = glm::vec4(0, 1, 1, 1);
 
 	// The second half of the quad (triangle 2)
 
 	// The front right vertex -- colored cyan
-	panel[3].xyz = vec3(1.0f, -1.0f, 1.0f);
-	panel[3].rgba = vec4(0, 1, 1, 1);
+	panel[3].xyz = glm::vec3(1.0f, -1.0f, 1.0f);
+	panel[3].rgba = glm::vec4(0, 1, 1, 1);
 
 	// The front left vertex -- colored blue
-	panel[4].xyz = vec3(-1.0f, -1.0f, 1.0f);
-	panel[4].rgba = vec4(0, 0, 1, 1);
+	panel[4].xyz = glm::vec3(-1.0f, -1.0f, 1.0f);
+	panel[4].rgba = glm::vec4(0, 0, 1, 1);
 
 	// The back left vertex -- colored yellow
-	panel[5].xyz = vec3(-1.0f, -1.0f, -1.0f);
-	panel[5].rgba = vec4(1, 1, 0, 1);
+	panel[5].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
+	panel[5].rgba = glm::vec4(1, 1, 0, 1);
 }
 
 int GameControlEngine::GLMain()
@@ -201,12 +198,12 @@ void GameControlEngine::Initialize()
 
 	/* Doesnt really need to be called because we are dynamically calling them in the loop */
 	// Set the position of the model to be at the origin
-	//colourPanel.SetPosition(vec3(0, 0, 0));
-	//cubeModel.SetPosition(vec3(2, 5, 2));
+	//colourPanel.SetPosition(glm::vec3(0, 0, 0));
+	//cubeModel.SetPosition(glm::vec3(2, 5, 2));
 
 	// Physics Testing
 	// Create player object (camera)
-	vec3 tempCam(Camera->GetPosition());
+	glm::vec3 tempCam(Camera->GetPosition());
 	btVector3 tempCam2(tempCam.x, tempCam.y, tempCam.z);
 	physicsWorld.CreatePlayerControlledRigidBody(tempCam2);
 	collisionBodyPos.push_back(tempCam2);
@@ -247,7 +244,7 @@ void GameControlEngine::GameLoop()
 		{
 			for (int z = 0; z < 15; z++)
 			{
-				colourPanel.SetPosition(vec3(x * 2, 0, z * 2));
+				colourPanel.SetPosition(glm::vec3(x * 2, 0, z * 2));
 				colourPanel.Render();
 			}
 		}
@@ -255,21 +252,21 @@ void GameControlEngine::GameLoop()
 		/**************************************************************************/
 		// Update physicsWorld
 		// TODO: Make this better (Jack)
-		vec3 temp1(Camera->GetPosition());
+		glm::vec3 temp1(Camera->GetPosition());
 		btVector3 temp2(temp1.x, temp1.y, temp1.z);
 		physicsWorld.Simulate(collisionBodyPos, temp2);
 
 		// Set updated camera location
-		Camera->SetPosition(vec3(temp2.getX(), temp2.getY(), temp2.getZ()));
+		Camera->SetPosition(glm::vec3(temp2.getX(), temp2.getY(), temp2.getZ()));
 
 		// Draw shapes for testing (just planes atm, didn't know how to make spheres using current setup)
-		vec3 temp = vec3(collisionBodyPos[0].x(), collisionBodyPos[0].y(), collisionBodyPos[0].z());
-		colourPanel.SetPosition(vec3(temp.x, temp.y, temp.z));
+		glm::vec3 temp = glm::vec3(collisionBodyPos[0].x(), collisionBodyPos[0].y(), collisionBodyPos[0].z());
+		colourPanel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
 
 		for (int i = 1; i < collisionBodyPos.size(); i++)
 		{
 			//int a = collisionBodyPos[i].x;
-			vec3 temp = vec3(collisionBodyPos[i].x(), collisionBodyPos[i].y(), collisionBodyPos[i].z());
+			glm::vec3 temp = glm::vec3(collisionBodyPos[i].x(), collisionBodyPos[i].y(), collisionBodyPos[i].z());
 
 			/*glPushMatrix();
 			glColor3f(0.0, 0.0, 0.5);
@@ -277,7 +274,7 @@ void GameControlEngine::GameLoop()
 			gluSphere(quad, 5, 100, 100);
 			glPopMatrix();*/
 
-			cubeModel.SetPosition(vec3(temp.x, temp.y, temp.z));
+			cubeModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
 			cubeModel.Render();
 		}
 		/**************************************************************************/

@@ -63,11 +63,11 @@ void Mesh::Draw()
 	//m_shader.TurnOn();
 
 	//// Grab the view and projection matrices from the current camera
-	//glm::mat4 projectionMatrix = Camera->GetProjectionMatrix();
-	//glm::mat4 viewMatrix = Camera->GetViewMatrix();
+	//glm::glm::mat4 projectionMatrix = Camera->GetProjectionMatrix();
+	//glm::glm::mat4 viewMatrix = Camera->GetViewMatrix();
 
 	//// Create the Model Matrix with the current position
-	//glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), m_position);
+	//glm::glm::mat4 modelMatrix = glm::translate(glm::glm::mat4(1.0f), m_position);
 
 	//// Similar to the Position above, we do the same for the Scale
 	//modelMatrix = glm::scale(modelMatrix, m_scale);
@@ -83,7 +83,7 @@ void Mesh::Draw()
 	//GLint projectionMatrixId = m_shader.GetVariable("u_projectionMatrix");
 
 	//// Set the model, view and projection matrix for the uniform matrices in the Vertex m_shader.
-	//// To get at a GLM glm::mat4 value, we use the address of the first item [0][0].
+	//// To get at a GLM glm::glm::mat4 value, we use the address of the first item [0][0].
 	//m_shader.SetMatrix4(modelMatrixId, 1, false, &modelMatrix[0][0]);
 	//m_shader.SetMatrix4(viewMatrixId, 1, false, &viewMatrix[0][0]);
 	//m_shader.SetMatrix4(projectionMatrixId, 1, false, &projectionMatrix[0][0]);

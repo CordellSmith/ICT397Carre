@@ -6,7 +6,7 @@
 
 	/**
 	* @class WindowManager
-	* @brief Interface class to manage the creation of the window. 
+	* @brief Interface class to manage the creation of the window 
 	* 
 	* This class handles input and the creation of the OpenGL context implementing GLFW.
 	*
@@ -33,7 +33,7 @@ public:
 		* This function initializes the window taking in its dimensions and creating a new OpenGL
 		* context.
 		*
-		* @param int width, 
+		* @param int width
 		* @param int height
 		* @param std::string strTitle
 		* @param bool bFullScreen
