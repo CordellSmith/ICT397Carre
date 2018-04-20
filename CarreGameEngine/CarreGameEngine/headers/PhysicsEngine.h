@@ -27,7 +27,6 @@
 * @date 06/04/2018
 * @version 2.1  Tidied up camera (player object) code. Force is now applied in direction camera was moved, calculations are done, then camera is moved to updated
 *				position. Still needs some work, but will do for now.
-* @bug			If camera is not moved for a short period of time, it becomes stuck. Restart application to fix. Will fix this at a later date.
 *
 * @date 18/04/2018
 * @version 3.0	Big gap between versions due to other units requirements. Set up functions for initializing all object rigid bodies. Will need changing.
@@ -35,6 +34,10 @@
 * @date 19/04/2018
 * @version 3.1	Added testing for heightfield terrain shape. Got it loading and working, but without a visual terrain it is not possible to see if it is
 *				working correctly or not. Have commented it out until I am able to keep working on it. Also added some more doxygen comments.
+*
+* @date 20/04/2018
+* @version 3.2	Did some research and found out that objects become inactive after a set time of inactivity. Created new function to ensure all objects are always active.
+*				This fixed the camera getting stuck, as well as other objects getting stuck in the air.
 */
 
 #ifndef PHYSICSENGINE_H
@@ -142,6 +145,15 @@ class PhysicsEngine
 			* @return void
 			*/
 		void CreateHeightfieldTerrainShape();
+
+			/**
+			* @brief Activates all objects
+			*
+			* Ensures that every rigid body remains active throughout simulation. Otherwise they can become 'stuck'
+			*
+			* @return void
+			*/
+		void ActivateAllObjects();
 
 	private:
 
