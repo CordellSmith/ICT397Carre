@@ -33,14 +33,15 @@ ShaderSource ParseShader(const std::string& filePath)
 
 Vertex panel[6] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
 Vertex model[49971] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
+std::vector<unsigned int> m_indices;
 
 void GameWorld::Init()
 {
 	PrepareColourPanel();
-	m_colourPanel.Initialize(panel, 6, m_shaderSource2.VertexSource, m_shaderSource2.FragmentSource);
+	m_colourPanel.Initialize(panel, 6, m_indices, m_shaderSource2.VertexSource, m_shaderSource2.FragmentSource);
 
 	PrepareTestModel("res/objects/taxi_model/taxi.obj", m_modelVertexSize);
-	m_testModel.Initialize(model, m_modelVertexSize, m_shaderSource1.VertexSource, m_shaderSource1.FragmentSource);
+	m_testModel.Initialize(model, m_modelVertexSize, m_indices, m_shaderSource1.VertexSource, m_shaderSource1.FragmentSource);
 
 	// Initialize all physics objects
 	InitializePhysics();
@@ -213,6 +214,7 @@ void GameWorld::PrepareTestModel(const char* filePath, int& modelVertexSize)
 		model[i].rgba = glm::vec4(red, green, blue, 1.0);
 		model[i].uv = u[vertexIndex - 1];
 		model[i].normal = n[vertexIndex - 1];
+		m_indices.push_back(vertexIndices[i]);
 	}
 
 	modelVertexSize = v.size();
@@ -240,4 +242,7 @@ void GameWorld::PrepareColourPanel()
 
 	panel[5].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
 	panel[5].rgba = glm::vec4(1, 1, 0, 1);
+
+	for (int i = 1; i < 7; i++)
+		m_indices.push_back(i);
 }

@@ -11,7 +11,7 @@ uniform mat4 u_viewMatrix;
 uniform mat4 u_modelMatrix;
 
 out vec4 frag_Color;
-//out glm::vec2 UV;
+//out vec2 UV;
 
 void main(void)
 {
@@ -25,7 +25,7 @@ void main(void)
 
 in vec4 frag_Color;
 layout(location = 0) out vec4 out_Color;
-//in glm::vec2 UV;
+//in vec2 UV;
 //uniform sampler2D myTextureSampler;
 
 void main(void)

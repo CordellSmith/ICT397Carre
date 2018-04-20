@@ -143,11 +143,9 @@ public:
 	void UpdatePhysics();
 
 protected:
-	Model m_testModel;
-	Model m_colourPanel;
+	Model m_colourPanel, m_testModel;
 	int m_modelVertexSize;
-	ShaderSource m_shaderSource1;
-	ShaderSource m_shaderSource2;
+	ShaderSource m_shaderSource1, m_shaderSource2;
 
 	Camera* m_camera;
 

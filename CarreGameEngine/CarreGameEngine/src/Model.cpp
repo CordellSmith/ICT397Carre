@@ -1,30 +1,42 @@
 #include "..\headers\Model.h"
 
-void Model::Initialize(Vertex vertices[], int length, std::string vertShaderString, std::string fragShaderString)
+void Model::Initialize(Vertex vertices[], int length, std::vector<unsigned int>& indices, std::string vertShaderString, std::string fragShaderString)
 {
 	m_shader.Initialize(vertShaderString, fragShaderString);
 
 	m_vertices = vertices;
 	m_verticesLength = length;
+	m_indices = indices;
+
+	indices.clear();
 
 	GLenum ErrorCheckValue = glGetError();
 	
 	/// Create the Vertex Array Object (VAO)
 	glGenVertexArrays(1, &m_VAO);
+
 	glBindVertexArray(m_VAO);
 
 	/// Create the Vertex Buffer Object (VBO)
 	glGenBuffers(1, &m_VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 
+	/// Create the Element Array Object (EBO)
+	glGenBuffers(1, &m_EBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
+
 	/// Store the vertices in the VBO
-	glBufferData(GL_ARRAY_BUFFER, sizeof(m_vertices[0]) * length, m_vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(m_vertices[0]) * length, &m_vertices[0], GL_STATIC_DRAW);
+
+	/// Store the indices in the EBO
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indices.size() * sizeof(unsigned int), &m_indices[0], GL_STATIC_DRAW);
 
 	glVertexAttribPointer(m_vertexIndex, 3, GL_FLOAT, GL_FALSE, sizeof(m_vertices[0]), 0);
-	glVertexAttribPointer(m_colorIndex, 4, GL_FLOAT, GL_FALSE, sizeof(m_vertices[0]), (GLvoid*)sizeof(m_vertices[0].xyz));
-	glVertexAttribPointer(m_textureIndex, 2, GL_FLOAT, GL_FALSE, sizeof(m_vertices[0]), (GLvoid*)sizeof(m_vertices[0].uv));
-	glVertexAttribPointer(m_normalIndex, 3, GL_FLOAT, GL_FALSE, sizeof(m_vertices[0]), (GLvoid*)sizeof(m_vertices[0].normal));
+	glVertexAttribPointer(m_colorIndex, 4, GL_FLOAT, GL_FALSE, sizeof(m_vertices[0]), (void*)offsetof(Vertex, xyz));
+	glVertexAttribPointer(m_textureIndex, 2, GL_FLOAT, GL_FALSE, sizeof(m_vertices[0]), (void*)offsetof(Vertex, rgba));
+	glVertexAttribPointer(m_normalIndex, 3, GL_FLOAT, GL_FALSE, sizeof(m_vertices[0]), (void*)offsetof(Vertex, uv));
 	
+	glBindVertexArray(0);
 	ErrorCheckValue = glGetError();
 
 	if ( ErrorCheckValue != GL_NO_ERROR )
@@ -74,6 +86,7 @@ void Model::Render()
 
 	/// Draw the information in VBO
 	glDrawArrays(GL_TRIANGLES, 0, m_verticesLength);
+	//glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, 0);
 	
 	/// Disable vertex information
 	glDisableVertexAttribArray(m_normalIndex);
@@ -94,6 +107,13 @@ void Model::Destroy()
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glDeleteBuffers(1, &m_VBO);
 		m_VBO = 0;
+	}
+
+	if (m_EBO)
+	{
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		glDeleteBuffers(1, &m_EBO);
+		m_EBO = 0;
 	}
 
 	if  (m_VAO)
