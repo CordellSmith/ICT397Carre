@@ -134,8 +134,10 @@ public:
 	void Destroy();
 
 protected:
+
 	/// Screen width
 	static const int ScreenWidth = 1280;
+
 	/// Screen height
 	static const int ScreenHeight = 720;
 
@@ -144,12 +146,6 @@ protected:
 	
 	/// Engines camera object
 	Camera* m_camera;
-
-	/// Physics world
-	PhysicsEngine physicsWorld;
-
-	/// Vector of collision objects
-	std::vector<btVector3> collisionBodyPos;
 
 	/// Game asset factory object
 	GameAssetFactory m_assetFactory;
