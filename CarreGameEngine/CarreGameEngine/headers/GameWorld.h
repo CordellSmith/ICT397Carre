@@ -55,34 +55,91 @@ public:
 		*/
 	~GameWorld() { }
 
+		/**
+		* @brief Initialises the game world
+		*
+		* Sets up all the assets of the game world.
+		*
+		* @return void
+		*/
 	void Init();
 
+		/**
+		* @brief Updates the game world
+		*
+		* Recieves any changes that have been made due to input, game logic or
+		* physics and updates the current game instance.
+		*
+		* @return void
+		*/
 	void Update();
 
+		/**
+		* @brief Destroys the game world
+		*
+		* Anything that was created within this current game world context is
+		* destroyed or deleted to free up memory.
+		*
+		* @return void
+		*/
 	void Destroy();
 
+		/**
+		* @brief Prepares the test model
+		*
+		* Used to prepare the test model to be drawn to the screen.
+		*
+		* @param const char* filePath
+		* @param int& modelVertexSize
+		* @return void
+		*/
 	void PrepareTestModel(const char* filePath, int& modelVertexSize);
+
+		/**
+		* @brief Prepares the colour panel
+		*
+		* Used to prepare the test model to be drawn to the screen.
+		*
+		* @return void
+		*/
 	void PrepareColourPanel();
 
-	void SetCamera(Camera* camera) { m_camera = camera; }
+		/**
+		* @brief Gets the camera object
+		*
+		* Returns a pointer to the camera object to access the view and projection matrices.
+		*
+		* @return Camera*
+		*/
 	Camera* GetCamera() { return m_camera; }
 
-	/**
-	* @brief Initialize all physics
-	*
-	* This function creates all rigid bodies for every game object, and adds their locations to a vector for drawing/updating
-	*
-	* @return null
-	*/
+		/**
+		* @brief Sets the camera object
+		*
+		* Sets the camera object to the world camera object to retrieve the view and projection
+		* matrices.
+		*
+		* @param Camera* camera
+		* @return void
+		*/
+	void SetCamera(Camera* camera) { m_camera = camera; }
+
+		/**
+		* @brief Initialize all physics
+		*
+		* This function creates all rigid bodies for every game object, and adds their locations to a vector for drawing/updating
+		*
+		* @return null
+		*/
 	void InitializePhysics();
 
-	/**
-	* @brief Updates all physics
-	*
-	* This function updates all physics bodies, simulating them each step
-	*
-	* @return null
-	*/
+		/**
+		* @brief Updates all physics
+		*
+		* This function updates all physics bodies, simulating them each step
+		*
+		* @return null
+		*/
 	void UpdatePhysics();
 
 protected:

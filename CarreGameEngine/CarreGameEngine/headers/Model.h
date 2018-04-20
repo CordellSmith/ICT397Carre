@@ -169,7 +169,7 @@ public:
 		* @param Camera* pCamera
 		* @return void
 		*/
-	void SetCamera(Camera* pCamera) { m_camera = pCamera; }
+	void SetCamera(Camera* camera) { m_camera = camera; }
 
 		/**
 		* @brief Cleans up the VAO and VBOs
