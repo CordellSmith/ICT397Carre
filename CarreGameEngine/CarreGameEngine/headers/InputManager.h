@@ -1,16 +1,23 @@
 #pragma once
 
-#define GLM_FORCE_RADIANS								// Make sure GLM is using radians instead of degrees
+/// Make sure GLM is using radians instead of degrees
+#define GLM_FORCE_RADIANS								
 
 #include <GL\glew.h>
-
-#include <GLM\glm.hpp>									// Used for the GLM math library
+/// Used for the GLM math library
+#include <GLM\glm.hpp>
 #include <GLM\gtc\matrix_transform.hpp>					
-#include <GLM\gtx\transform2.hpp>						
+#include <GLM\gtx\transform2.hpp>
+
 #include "Camera.h"										
 
+
 /**
-* @brief This is a standardized enum to code for keyboard input, since Win32 and GLFW use some different codes
+* @brief Enumerator for each key value
+*
+* This is a standardized enum to code for keyboard input.
+*
+* @return null
 */
 enum InputCodes
 {
@@ -48,37 +55,56 @@ enum InputCodes
 	z = 122, Z = 90,
 };
 
-/*
-* @class InputManager
-* @brief This manager takes care of any input from the user and sent to the camera.
-* We are just using the UP and DOWN arrow keys to show moving the camera.
-*
-* @author Cordell Smith
-* @date 29/04/2018
-*/
+	/*
+	* @class InputManager
+	* @brief Handles user input
+	* 
+	* This manager takes care of any input from the user and sent to the camera.
+	*
+	* @author Cordell Smith
+	* @version 01
+	* @date 29/03/2018 CS
+	*
+	*/
 class InputManager
 {
 public:
-	/**
-	* @brief This takes in a code and sends it to the camera for movement
-	* @param code
-	*/
+		/**
+		* @brief Enumerator for each key value
+		*
+		* This takes in a code and depending on the value moves the camera or switches
+		* to wireframe mode.
+		*
+		* @param InputCodes code
+		* @return void
+		*/
 	void KeyPressed(InputCodes code);
 
-	/**
-	* @brief Set the current camera
-	* @param m_camera
-	*/
+		/**
+		* @brief Sets the camera
+		*
+		* Sets the camera to the parameter Camera given.
+		*
+		* @return void
+		*/
 	void SetCamera(Camera* camera) { m_camera = camera; }
-	/**
-	* @brief Get the current camera
-	* @return Camera
-	*/
-	Camera *GetCamera() { return m_camera; }
+
+		/**
+		* @brief Gets the camera
+		*
+		* Returns the current camera object.
+		*
+		* @return Camera*
+		*/
+	Camera* GetCamera() { return m_camera; }
 	
-	/**
-	* @brief This sends in an updated mouse x and y position that should be a delta from (0, 0)
-	*/
+		/**
+		* @brief Handles mouse movement
+		*
+		* This sends in an updated mouse x and y position that should be a change from (0, 0).
+		*
+		* @return void
+		*/
 	void MouseMoved(float mouseX, float mouseY);
 
 

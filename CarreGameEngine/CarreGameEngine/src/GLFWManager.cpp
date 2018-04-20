@@ -2,102 +2,75 @@
 #include "..\headers\GLFWManager.h"
 #include "..\headers\GameControlEngine.h"
 
-// This is the entry point into our application
 int main()
 {
-	// First create our desired WindowManager implementation so we can set it below
+	// Create new GLFW window
 	GLFWManager* pWindowManager = new GLFWManager();
 
-	// Here we initialize a camera to be used for our application, as opposed to having a global
-	Camera* m_camera = new Camera();
+	// Create new camera object
+	Camera* camera = new Camera();
 
-	// Create a local instance of our GameControlEngine (defined in Main.cpp) and set its
-	// WindowManager implementation (in this case, GLFW).
-	GameControlEngine m_application;
-	m_application.SetWindowManager(pWindowManager);
+	GameControlEngine engine;
+	engine.SetWindowManager(pWindowManager);
 
-	// Set the created camera as our main application camera and pass it also to our InputManager
-	m_application.SetCamera(m_camera);
-	pWindowManager->GetInputManager()->SetCamera(m_camera);
+	// Pass camera object into engine
+	engine.SetCamera(camera);
+	pWindowManager->GetInputManager()->SetCamera(camera);
 
-	// Return the GLMain() defined in Main.cpp, which handles the flow of our application
-	// and immediately starts our game loop.
-	return m_application.GLMain();
+	return engine.RunEngine();
 }
 
-// This initializes our window and creates the OpenGL context
 int GLFWManager::Initialize(int width, int height, std::string strTitle, bool bFullScreen)
 {
-	// This tries to first init the GLFW library and make sure it is available
-	if ( !glfwInit() )
+	if (!glfwInit()) 
 	{
-		fprintf(stderr, "Failed to initialize GLFW\n");
+		std::cout << "Failed to initialize GLFW!" << std::endl;
 		return -1;
 	}
 
-	// This tells OpenGL that we want a multi-sampling value of 4 (anti-aliasing)
+	// GLFW setup
 	glfwWindowHint(GLFW_SAMPLES, 4);
-
-	// Set our OpenGL version to 4 using the core profile
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	// Create a window either in full screen or not
-	if( bFullScreen )
-		Window = glfwCreateWindow(width, height, strTitle.c_str(), glfwGetPrimaryMonitor(), nullptr);
-	else
-		Window = glfwCreateWindow(width, height, strTitle.c_str(), nullptr, nullptr);
+	// Create a window
+	m_window = glfwCreateWindow(width, height, strTitle.c_str(), nullptr, nullptr);
 
-	// Make sure the window is valid, if not, throw an error.
-	if ( Window == nullptr )
+	// Make sure the window is valid
+	if (m_window == nullptr)
 	{
-		fprintf(stderr, "Failed to create a GLFW window, you might need to download the latest drivers\n");
+		std::cout << "Failed to create a GLFW window!" << std::endl;
 		Destroy();
 
 		return -1;
 	}
 
-	// Create the OpenGL context from the window and settings specified
-	glfwMakeContextCurrent(Window);
+	glfwMakeContextCurrent(m_window);
+	glfwSetInputMode(m_window, GLFW_STICKY_KEYS, GL_TRUE);
 
-	// This turns on STICKY_KEYS for keyboard input
-	glfwSetInputMode(Window, GLFW_STICKY_KEYS, GL_TRUE);
+	// Cursor properties
+	glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetCursorPos(m_window, 0, 0);
 
-	// We want to hide the mouse since it will be used to move the camera's view around
-	// and don't want to see it being pushed up into the top left corner.
-	glfwSetInputMode(Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-	// Set the cursor position of the hidden mouse to be in the top left of the window.
-	// This way we can get a delta of the mouse position from (0, 0) and reset it again.
-	glfwSetCursorPos(Window, 0, 0);
-
-	// This turns off the vertical sync to your monitor so it renders as fast as possible
+	// Turn of V-Sync
 	glfwSwapInterval(0);
 
-	// Tell GLEW to grab all the OpenGL functions and extensions even if "experimental"
 	glewExperimental = GL_TRUE;
 
-	// Initialize the GLEW library and attach all the OpenGL functions and extensions
 	GLenum err = glewInit();
-
-	// If we had an error, return -1.  Be sure to see if glewExperimental isn't true, this worked for me.
 	if ( GLEW_OK != err )
 	{
-		fprintf(stderr, "Failed to initialize glew\n");
+		std::cout << "Failed to initialize glew!" << std::endl;
 		return -1;
 	}
 
-	// Return success
 	return 0;
 }
 
-
-// This swaps the backbuffer with the front buffer to display the content rendered in OpenGL
 void GLFWManager::SwapTheBuffers()
 {
-	// This takes the Window and swaps the backbuffer to the front
-	glfwSwapBuffers(Window);
+	glfwSwapBuffers(m_window);
 }
 
 
@@ -105,52 +78,41 @@ void GLFWManager::SwapTheBuffers()
 bool GLFWManager::ProcessInput(bool continueGame = true)
 {
 	// Use the GLFW function to check for the user pressing the Escape button, as well as a window close event.
-	if ( glfwGetKey(Window, GLFW_KEY_ESCAPE) == GLFW_PRESS || glfwWindowShouldClose(Window) != 0 )
+	if ( glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS || glfwWindowShouldClose(m_window) != 0 )
 		return false;
 
-	// Below we check if the UP, DOWN, LEFT, RIGHT or W,A,S,D keys are pressed, and send the InputCode
-	// down to our InputManager so we can know when to move the camera.
-	if (glfwGetKey(Window, GLFW_KEY_UP) || glfwGetKey(Window, GLFW_KEY_W))
+	if (glfwGetKey(m_window, GLFW_KEY_UP) || glfwGetKey(m_window, GLFW_KEY_W))
 		m_inputManager.KeyPressed(InputCodes::Up);
-	if (glfwGetKey(Window, GLFW_KEY_DOWN) || glfwGetKey(Window, GLFW_KEY_S))
+	if (glfwGetKey(m_window, GLFW_KEY_DOWN) || glfwGetKey(m_window, GLFW_KEY_S))
 		m_inputManager.KeyPressed(InputCodes::Down);
-	if (glfwGetKey(Window, GLFW_KEY_LEFT) || glfwGetKey(Window, GLFW_KEY_A))
+	if (glfwGetKey(m_window, GLFW_KEY_LEFT) || glfwGetKey(m_window, GLFW_KEY_A))
 		m_inputManager.KeyPressed(InputCodes::Left);
-	if (glfwGetKey(Window, GLFW_KEY_RIGHT) || glfwGetKey(Window, GLFW_KEY_D))
+	if (glfwGetKey(m_window, GLFW_KEY_RIGHT) || glfwGetKey(m_window, GLFW_KEY_D))
 		m_inputManager.KeyPressed(InputCodes::Right);
 	// Used to toggle wireframe, Q to toggle on and E to toggle off
-	if (glfwGetKey(Window, GLFW_KEY_Q))
+	if (glfwGetKey(m_window, GLFW_KEY_Q))
 		m_inputManager.KeyPressed(InputCodes::q);
-	if (glfwGetKey(Window, GLFW_KEY_E))
+	if (glfwGetKey(m_window, GLFW_KEY_E))
 		m_inputManager.KeyPressed(InputCodes::e);
 	
-	// Create some variables to store the current mouse position
+	// Mouse position
 	double mouseX, mouseY;
 
-	// Grab the current mouse position from our window
-	glfwGetCursorPos(Window, &mouseX, &mouseY);
-
-	// If the mouse moved then send it to our InputManager to tell the camera
+	// Current mouse position
+	glfwGetCursorPos(m_window, &mouseX, &mouseY);
+	
+	// Tell input manager the mouse moved
 	if ( mouseX != 0 && mouseY != 0 )
-	{
-		// Send the updated mouse position to our InputManager
 		m_inputManager.MouseMoved((float)mouseX, (float)mouseY);
-	}
 
-	// Set the window's cursor position back to 0,0 (top left corner) so we keep getting a delta
-	glfwSetCursorPos(Window, 0, 0);
+	glfwSetCursorPos(m_window, 0, 0);
 
-	// Poll the input events to see if the user quit or closed the window
 	glfwPollEvents();
 
-	// Return the value passed in to tell the game loop that we should continue or not
 	return continueGame;
 }
 
-
-// This destroys the window
 void GLFWManager::Destroy()
 {
-	// This closes the OpenGL window and terminates the application
 	glfwTerminate();
 }
