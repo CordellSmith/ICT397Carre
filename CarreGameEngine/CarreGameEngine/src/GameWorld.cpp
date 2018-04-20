@@ -116,8 +116,8 @@ void GameWorld::UpdatePhysics()
 	{
 		//glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
-		m_testModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
-		m_testModel.Render();
+		//m_testModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
+		//m_testModel.Render();
 	}
 }
 
