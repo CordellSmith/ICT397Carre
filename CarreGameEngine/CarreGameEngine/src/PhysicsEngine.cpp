@@ -81,12 +81,15 @@ void PhysicsEngine::CreateStaticRigidBody()
 void PhysicsEngine::CreatePlayerControlledRigidBody(btVector3 &playerObj)
 {
 	// Create box shape and add to shape array
-	btCollisionShape* camShape = new btSphereShape(0.5);
+	btCollisionShape* camShape = new btSphereShape(1.0);
 	m_collisionShapes.push_back(camShape);
 
 	// Create a dynamic object
 	btTransform startTransform;
 	startTransform.setIdentity();
+
+	// Set origin of body
+	startTransform.setOrigin(playerObj);
 
 	// Set mass (non-zero for dynamic)
 	m_mass = 2.0f;
@@ -98,9 +101,6 @@ void PhysicsEngine::CreatePlayerControlledRigidBody(btVector3 &playerObj)
 
 	if (m_isDynamic)
 		camShape->calculateLocalInertia(m_mass, localInertia);
-
-	// Set origin of body
-	startTransform.setOrigin(playerObj);
 
 	//using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
 	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
@@ -165,6 +165,7 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerO
 	// Update positions of all dynamic objects
 	for (int j = m_dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
 	{
+		// Get the next object, and activate it
 		btCollisionObject* obj = m_dynamicsWorld->getCollisionObjectArray()[j];
 		btRigidBody* body = btRigidBody::upcast(obj);
 		btTransform trans;
@@ -172,7 +173,7 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerO
 		// Reset forces on player object prior to next step simulation
 		if (body->getUserIndex() == CAMERA)
 		{
-			body->clearForces();
+			//body->clearForces();
 			body->setLinearVelocity(btVector3(0,0,0));
 		}
 
@@ -192,12 +193,10 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerO
 			// TODO: Make this better (Jack)
 			// Apply force in direction camera was moved
 			m_newForce.setX((playerObj.x() - m_playerObject.x()) * 10000);
-			m_newForce.setY((playerObj.y() - m_playerObject.y()) * 10000);
+			//m_newForce.setY((playerObj.y() - m_playerObject.y()) * 10000);
 			m_newForce.setZ((playerObj.z() - m_playerObject.z()) * 10000);
-			
-			//std::cout << playerObject.x() << " " << playerObject.y() << " " << playerObject.z() << "\n" << std::endl;
 
-			// Update rigid-body location for drawing
+			// Update rigid body location for drawing
 			body->applyCentralForce(m_newForce);
 			m_playerObject = trans.getOrigin();
 			playerObj = m_playerObject;
@@ -269,6 +268,17 @@ void PhysicsEngine::CreateHeightfieldTerrainShape()
 
 	// Add the body to the dynamic world
 	m_dynamicsWorld->addRigidBody(body);
+}
+
+void PhysicsEngine::ActivateAllObjects()
+{
+	// Loop through every rigid body object
+	for (int j = m_dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
+	{
+		// Get the next object, and activate it
+		btCollisionObject* obj = m_dynamicsWorld->getCollisionObjectArray()[j];
+		obj->forceActivationState(DISABLE_DEACTIVATION);
+	}
 }
 
 // Creates all rigid bodies for all game objects

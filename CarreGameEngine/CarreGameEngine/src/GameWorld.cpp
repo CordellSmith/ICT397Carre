@@ -49,6 +49,9 @@ void GameWorld::Init()
 
 void GameWorld::Update()
 {
+	// Update all physics body locations
+	UpdatePhysics();
+
 	// Render a floor on x/z axis (15 x 15)
 	for (int x = 0; x < 15; x++)
 	{
@@ -58,9 +61,6 @@ void GameWorld::Update()
 			m_colourPanel.Render();
 		}
 	}
-
-	// Update all physics body locations
-	UpdatePhysics();
 }
 
 void GameWorld::Destroy()
@@ -72,7 +72,6 @@ void GameWorld::Destroy()
 // Initialize all physics
 void GameWorld::InitializePhysics()
 {
-	// Initialize all physics objects
 	// Create camera rigid body
 	glm::vec3 tempCam(m_camera->GetPosition());
 	btVector3 tempCam2(tempCam.x, tempCam.y, tempCam.z);
@@ -84,14 +83,17 @@ void GameWorld::InitializePhysics()
 	m_collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
 
 	// Create dynamic rigid bodies
-	m_physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 15.0, 15.0));
-	m_collisionBodyPos.push_back(btVector3(15.0, 15.0, 15.0));
-	m_physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
-	m_collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
+	//m_physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 15.0, 15.0));
+	//m_collisionBodyPos.push_back(btVector3(15.0, 15.0, 15.0));
+	//m_physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
+	//m_collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
 
 	// Create heightmap terrain shape
 	//physicsWorld.CreateHeightfieldTerrainShape();
 	//collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
+
+	// Activate all rigid body objects
+	m_physicsWorld.ActivateAllObjects();
 }
 
 // Update all physics
@@ -107,16 +109,16 @@ void GameWorld::UpdatePhysics()
 	m_camera->SetPosition(glm::vec3(temp2.getX(), temp2.getY(), temp2.getZ()));
 
 	// Draw shapes for testing (just planes atm, didn't know how to make spheres using current setup)
-	glm::vec3 temp = glm::vec3(m_collisionBodyPos[0].x(), m_collisionBodyPos[0].y(), m_collisionBodyPos[0].z());
+	//glm::vec3 temp = glm::vec3(m_collisionBodyPos[0].x(), m_collisionBodyPos[0].y(), m_collisionBodyPos[0].z());
 	//colourPanel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
 
+	// Draw each object at the updated positions based on physics simulation
 	for (int i = 0; i < m_collisionBodyPos.size(); i++)
 	{
-		//int a = collisionBodyPos[i].x;
-		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
+		//glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
-		//testModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
-		//testModel.Render();
+		//m_testModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
+		//m_testModel.Render();
 	}
 }
 
