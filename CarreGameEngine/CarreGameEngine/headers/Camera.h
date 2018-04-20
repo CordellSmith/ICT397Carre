@@ -1,7 +1,7 @@
 #pragma once
 
 /// Define PI for usage in positioning the camera's rotations
-#define PI 3.14159265358979323846264338327950288		
+#define PI 3.1415926	
 #define GLM_FORCE_RADIANS								
 
 #include <fstream>
@@ -17,9 +17,8 @@
 	* This class contains the camera object that will allow us to move around and view the
 	* world.
 	*
-	* @author Cordell Smith
 	* @version 01
-	* @date 29/03/2018 CS
+	* @date 29/03/2018
 	*
 	*/
 class Camera 

@@ -21,9 +21,8 @@
 	* This vertex struct holds the information about a vertex including position (x,y,z),
 	* colour (rgba), texture coordinates (uv) and normals (normal).
 	*
-	* @author Cordell Smith
 	* @version 01
-	* @date 29/03/2018 CS
+	* @date 29/03/2018
 	*
 	*/
 struct Vertex
@@ -45,9 +44,8 @@ struct Vertex
 	* This class is used to store all model information including initializion of the model 
 	* to be rendered and drawn onto the screen using shaders.
 	* 
-	* @author Cordell Smith
 	* @version 01
-	* @date 29/03/2018 CS
+	* @date 29/03/2018
 	*
 	*/
 class Model
@@ -171,7 +169,7 @@ public:
 		* @param Camera* pCamera
 		* @return void
 		*/
-	void SetCamera(Camera* pCamera) { m_camera = pCamera; }
+	void SetCamera(Camera* camera) { m_camera = camera; }
 
 		/**
 		* @brief Cleans up the VAO and VBOs

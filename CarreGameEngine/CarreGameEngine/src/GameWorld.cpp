@@ -39,9 +39,8 @@ void GameWorld::Init()
 	PrepareColourPanel();
 	m_colourPanel.Initialize(panel, 6, m_shaderSource2.VertexSource, m_shaderSource2.FragmentSource);
 
-	//PrepareTestModel("res/objects/taxi_model/taxi.obj", m_modelVertexSize);
-	//PrepareTestModel("res/shaders/Cube.shader", m_modelVertexSize);
-	//m_testModel.Initialize(model, m_modelVertexSize, m_shaderSource1.VertexSource, m_shaderSource1.FragmentSource);
+	PrepareTestModel("res/objects/taxi_model/taxi.obj", m_modelVertexSize);
+	m_testModel.Initialize(model, m_modelVertexSize, m_shaderSource1.VertexSource, m_shaderSource1.FragmentSource);
 
 	// Initialize all physics objects
 	InitializePhysics();
@@ -117,8 +116,8 @@ void GameWorld::UpdatePhysics()
 	{
 		//glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
-		//m_testModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
-		//m_testModel.Render();
+		m_testModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
+		m_testModel.Render();
 	}
 }
 
@@ -135,12 +134,11 @@ void GameWorld::PrepareTestModel(const char* filePath, int& modelVertexSize)
 	errno_t err;
 
 	FILE* file;
-	if (err = fopen_s(&file, filePath, "r") != 0)
+	if (err = fopen_s(&file, filePath, "r") == 0)
 	{
 		if (file == NULL) {
-			printf("Impossible to open the file !\n");
+			std::cout << "Impossible to open the file !\n" << std::endl;
 		}
-
 		while (1) {
 			char lineHeader[128];
 			// read the first word of the line

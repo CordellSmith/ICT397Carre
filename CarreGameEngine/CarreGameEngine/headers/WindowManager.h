@@ -10,9 +10,8 @@
 	* 
 	* This class handles input and the creation of the OpenGL context implementing GLFW.
 	*
-	* @author Cordell Smith
 	* @version 01
-	* @date 29/03/2018 CS
+	* @date 29/03/2018
 	*
 	*/
 class WindowManager

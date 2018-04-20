@@ -20,6 +20,7 @@ void GameControlEngine::Initialize()
 
 	glViewport(0, 0, ScreenWidth, ScreenHeight);
 
+	// Enable depth testing
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 
