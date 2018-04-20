@@ -10,6 +10,7 @@
 #include <GLM\glm.hpp>
 #include <GLM\gtc\matrix_transform.hpp>					
 #include <GLM\gtx\transform2.hpp>
+#include "PhysicsEngine.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
@@ -67,6 +68,24 @@ public:
 	void SetCamera(Camera* camera) { m_camera = camera; }
 	Camera* GetCamera() { return m_camera; }
 
+	/**
+	* @brief Initialize all physics
+	*
+	* This function creates all rigid bodies for every game object, and adds their locations to a vector for drawing/updating
+	*
+	* @return null
+	*/
+	void InitializePhysics();
+
+	/**
+	* @brief Updates all physics
+	*
+	* This function updates all physics bodies, simulating them each step
+	*
+	* @return null
+	*/
+	void UpdatePhysics();
+
 protected:
 	Model m_testModel;
 	Model m_colourPanel;
@@ -75,4 +94,10 @@ protected:
 	ShaderSource m_shaderSource2;
 
 	Camera* m_camera;
+
+	/// Physics world
+	PhysicsEngine m_physicsWorld;
+
+	/// Vector of all collision objects (static and dynamic)
+	std::vector<btVector3> m_collisionBodyPos;
 };
