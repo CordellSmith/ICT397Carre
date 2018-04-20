@@ -39,8 +39,12 @@ void GameWorld::Init()
 	PrepareColourPanel();
 	m_colourPanel.Initialize(panel, 6, m_shaderSource2.VertexSource, m_shaderSource2.FragmentSource);
 
-	PrepareTestModel("res/objects/taxi_model/taxi.obj", m_modelVertexSize);
-	m_testModel.Initialize(model, m_modelVertexSize, m_shaderSource1.VertexSource, m_shaderSource1.FragmentSource);
+	//PrepareTestModel("res/objects/taxi_model/taxi.obj", m_modelVertexSize);
+	//PrepareTestModel("res/shaders/Cube.shader", m_modelVertexSize);
+	//m_testModel.Initialize(model, m_modelVertexSize, m_shaderSource1.VertexSource, m_shaderSource1.FragmentSource);
+
+	// Initialize all physics objects
+	InitializePhysics();
 }
 
 void GameWorld::Update()
@@ -54,12 +58,66 @@ void GameWorld::Update()
 			m_colourPanel.Render();
 		}
 	}
+
+	// Update all physics body locations
+	UpdatePhysics();
 }
 
 void GameWorld::Destroy()
 {
 	m_colourPanel.Destroy();
 	m_testModel.Destroy();
+}
+
+// Initialize all physics
+void GameWorld::InitializePhysics()
+{
+	// Initialize all physics objects
+	// Create camera rigid body
+	glm::vec3 tempCam(m_camera->GetPosition());
+	btVector3 tempCam2(tempCam.x, tempCam.y, tempCam.z);
+	m_physicsWorld.CreatePlayerControlledRigidBody(tempCam2);
+	m_collisionBodyPos.push_back(tempCam2);
+
+	// Create static rigid body (floor)
+	m_physicsWorld.CreateStaticRigidBody();
+	m_collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
+
+	// Create dynamic rigid bodies
+	m_physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 15.0, 15.0));
+	m_collisionBodyPos.push_back(btVector3(15.0, 15.0, 15.0));
+	m_physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
+	m_collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
+
+	// Create heightmap terrain shape
+	//physicsWorld.CreateHeightfieldTerrainShape();
+	//collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
+}
+
+// Update all physics
+void GameWorld::UpdatePhysics()
+{
+	// Update physicsWorld
+	// TODO: Make this better (Jack)
+	glm::vec3 temp1(m_camera->GetPosition());
+	btVector3 temp2(temp1.x, temp1.y, temp1.z);
+	m_physicsWorld.Simulate(m_collisionBodyPos, temp2);
+
+	// Set updated camera location
+	m_camera->SetPosition(glm::vec3(temp2.getX(), temp2.getY(), temp2.getZ()));
+
+	// Draw shapes for testing (just planes atm, didn't know how to make spheres using current setup)
+	glm::vec3 temp = glm::vec3(m_collisionBodyPos[0].x(), m_collisionBodyPos[0].y(), m_collisionBodyPos[0].z());
+	//colourPanel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
+
+	for (int i = 0; i < m_collisionBodyPos.size(); i++)
+	{
+		//int a = collisionBodyPos[i].x;
+		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
+
+		//testModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
+		//testModel.Render();
+	}
 }
 
 void GameWorld::PrepareTestModel(const char* filePath, int& modelVertexSize)

@@ -14,7 +14,7 @@
 #include "GameWorld.h"
 #include "..\headers\ScriptManager.h"
 
-#include "PhysicsEngine.h"
+//#include "PhysicsEngine.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
@@ -147,6 +147,7 @@ protected:
 
 	/// Physics world
 	PhysicsEngine physicsWorld;
+
 	/// Vector of collision objects
 	std::vector<btVector3> collisionBodyPos;
 
