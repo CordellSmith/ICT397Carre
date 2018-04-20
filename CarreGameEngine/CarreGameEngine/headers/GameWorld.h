@@ -30,9 +30,8 @@ struct ShaderSource
 	*
 	* @note Currently not entirely implemented.
 	*
-	* @author Cordell Smith
 	* @version 01
-	* @date 29/03/2018 CS
+	* @date 29/03/2018
 	*
 	*/
 class GameWorld
