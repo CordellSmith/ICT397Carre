@@ -114,10 +114,10 @@ void GameWorld::UpdatePhysics()
 	// Draw each object at the updated positions based on physics simulation
 	for (int i = 0; i < m_collisionBodyPos.size(); i++)
 	{
-		//glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
+		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
-		//m_testModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
-		//m_testModel.Render();
+		m_testModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
+		m_testModel.Render();
 	}
 }
 
