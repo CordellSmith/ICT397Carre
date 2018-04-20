@@ -8,11 +8,9 @@
 	* @class TimeManager
 	* @brief Time manager class used to manage anything that uses time
 	*
-	* This singleton class is used to calculate the framerate and provide time calculations.
+	* This class uses a singleton to calculate the framerate and provide time calculations.
 	*
-	* @author Cordell Smith
-	* @version 01
-	* @date 29/03/2018 CS
+	* @date 29/03/2018
 	*
 	*/
 class TimeManager

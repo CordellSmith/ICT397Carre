@@ -6,9 +6,8 @@
 	*
 	* This singleton class is used to create single instances of a given type.
 	*
-	* @author Cordell Smith
 	* @version 01
-	* @date 29/03/2018 CS
+	* @date 29/03/2018
 	*
 	*/
 template<class T>

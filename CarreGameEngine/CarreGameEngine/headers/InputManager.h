@@ -11,7 +11,6 @@
 
 #include "Camera.h"										
 
-
 /**
 * @brief Enumerator for each key value
 *
@@ -61,9 +60,8 @@ enum InputCodes
 	* 
 	* This manager takes care of any input from the user and sent to the camera.
 	*
-	* @author Cordell Smith
 	* @version 01
-	* @date 29/03/2018 CS
+	* @date 29/03/2018
 	*
 	*/
 class InputManager

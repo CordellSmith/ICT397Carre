@@ -2,18 +2,18 @@
 
 #include <iostream>
 
-/**
-* @brief Enumerator for object types
-*
-* This enumerator is used to assign different types of objects to
-* a corresponding value. Used in creation of objects.
-*
-* @note Currently not entirely implemented.
-*
-* @author Cordell Smith
-* @version 01
-* @date 29/03/2018 CS
-*/
+	/**
+	* @brief Enumerator for object types
+	*
+	* This enumerator is used to assign different types of objects to
+	* a corresponding value. Used in creation of objects.
+	*
+	* @note Currently not entirely implemented.
+	*
+	* @author Cordell Smith
+	* @version 01
+	* @date 29/03/2018 CS
+	*/
 typedef enum
 {
 	OBJ_TERRAIN = 0,

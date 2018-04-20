@@ -12,9 +12,8 @@
 	* This shader class is used to load and store our shader information as well as initialize
 	* the shaders with OpenGL.
 	*
-	* @author Cordell Smith
 	* @version 01
-	* @date 29/03/2018 CS
+	* @date 29/03/2018 
 	*
 	*/
 class Shader
