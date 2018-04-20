@@ -1,6 +1,24 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
+
+#include "Camera.h"
+#include "Model.h"
+#include <GLM\glm.hpp>
+#include <GLM\gtc\matrix_transform.hpp>					
+#include <GLM\gtx\transform2.hpp>
+
+//#pragma comment(lib, "legacy_stdio_definitions.lib")
+
+/// Struct to hold both vertex and fragment shaders (needs to be moved)
+struct ShaderSource
+{
+	std::string VertexSource;
+	std::string FragmentSource;
+};
 
 	/*
 	* @class GameWorld
@@ -37,6 +55,24 @@ public:
 		*/
 	~GameWorld() { }
 
-protected:
+	void Init();
 
+	void Update();
+
+	void Destroy();
+
+	void PrepareTestModel(const char* filePath, int& modelVertexSize);
+	void PrepareColourPanel();
+
+	void SetCamera(Camera* camera) { m_camera = camera; }
+	Camera* GetCamera() { return m_camera; }
+
+protected:
+	Model m_testModel;
+	Model m_colourPanel;
+	int m_modelVertexSize;
+	ShaderSource m_shaderSource1;
+	ShaderSource m_shaderSource2;
+
+	Camera* m_camera;
 };

@@ -12,6 +12,7 @@
 #include "InputManager.h"
 #include "..\AssetFactory\GameAssetFactory.h"
 #include "GameWorld.h"
+#include "..\headers\ScriptManager.h"
 
 #include "PhysicsEngine.h"
 
@@ -25,8 +26,10 @@
 	* aspect including physics, input and resource storing / loading.
 	*
 	* @author Cordell Smith
+	* @author Jack Matters
+	* @author Michael Bell
 	* @version 01
-	* @date 29/03/2018 CS
+	* @date 29/03/2018
 	*
 	*/
 class GameControlEngine
@@ -151,5 +154,5 @@ protected:
 	GameAssetFactory m_assetFactory;
 
 	/// Game world object
-	GameWorld* m_gameWorld;
+	GameWorld m_gameWorld;
 };
