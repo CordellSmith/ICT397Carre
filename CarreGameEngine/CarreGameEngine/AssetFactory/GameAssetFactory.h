@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 
 #include "IGameObject.h"
 
@@ -53,4 +54,6 @@ public:
 	IGameObject* CreateAsset(OBJ_TYPE type, std::string filePath);
 
 protected:
+	/// Data structure to hold assets
+	std::map<OBJ_TYPE, IGameObject*> m_assets;
 };

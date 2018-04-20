@@ -77,6 +77,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\lua\include;$(SolutionDir)Dependencies\glut\include;$(SolutionDir)Dependencies\BulletPhysicsEngine\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW 2.1.0\include;$(SolutionDir)Dependencies\GLM\include;$(SolutionDir)Dependencies\assimp-4.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\assimp-4.1.0\lib;$(SolutionDir)Dependencies\lua\lib;$(SolutionDir)Dependencies\glut\lib;$(SolutionDir)Dependencies\BulletPhysicsEngine\lib;$(SolutionDir)Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\GLEW 2.1.0\lib\Release\Win32;$(SolutionDir)Dependencies\assimp-4.1.0\code\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -156,6 +157,7 @@
     <ClCompile Include="AssetFactory\NPC.cpp" />
     <ClCompile Include="AssetFactory\Object.cpp" />
     <ClCompile Include="AssetFactory\Terrain.cpp" />
+    <ClCompile Include="src\GameWorld.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\GameControlEngine.cpp" />
     <ClCompile Include="src\GLFWManager.cpp" />

@@ -12,8 +12,9 @@
 #include "InputManager.h"
 #include "..\AssetFactory\GameAssetFactory.h"
 #include "GameWorld.h"
+#include "..\headers\ScriptManager.h"
 
-#include "PhysicsEngine.h"
+//#include "PhysicsEngine.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
@@ -25,8 +26,10 @@
 	* aspect including physics, input and resource storing / loading.
 	*
 	* @author Cordell Smith
+	* @author Jack Matters
+	* @author Michael Bell
 	* @version 01
-	* @date 29/03/2018 CS
+	* @date 29/03/2018
 	*
 	*/
 class GameControlEngine
@@ -144,6 +147,7 @@ protected:
 
 	/// Physics world
 	PhysicsEngine physicsWorld;
+
 	/// Vector of collision objects
 	std::vector<btVector3> collisionBodyPos;
 
@@ -151,5 +155,5 @@ protected:
 	GameAssetFactory m_assetFactory;
 
 	/// Game world object
-	GameWorld* m_gameWorld;
+	GameWorld m_gameWorld;
 };
