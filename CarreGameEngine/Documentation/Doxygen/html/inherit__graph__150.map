@@ -1,0 +1,4 @@
+<area shape="rect" href="$classbt_g_impact_shape_interface.html" title="Base class for gimpact shapes." alt="" coords="5,56,173,83">
+<area shape="rect" href="$classbt_g_impact_compound_shape.html" title="btGImpactCompoundShape allows to handle multiple btCollisionShape objects at once..." alt="" coords="223,5,401,32">
+<area shape="rect" href="$classbt_g_impact_mesh_shape.html" title="This class manages a mesh supplied by the btStridingMeshInterface interface." alt="" coords="237,56,387,83">
+<area shape="rect" href="$classbt_g_impact_mesh_shape_part.html" title="This class manages a sub part of a mesh supplied by the btStridingMeshInterface interface..." alt="" coords="225,107,399,133">

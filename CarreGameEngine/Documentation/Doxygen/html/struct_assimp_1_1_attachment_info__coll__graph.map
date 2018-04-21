@@ -1,0 +1,25 @@
+<area shape="rect" href="$structai_node.html" title="aiNode" alt="" coords="596,448,657,475">
+<area shape="rect" href="$structai_scene.html" title="aiScene" alt="" coords="804,304,871,331">
+<area shape="rect" href="$structai_string.html" title="aiString" alt="" coords="35,440,99,467">
+<area shape="rect" href="$structai_metadata.html" title="aiMetadata" alt="" coords="292,491,377,517">
+<area shape="rect" href="$structai_mesh.html" title="enum aiMorphingMethod" alt="" coords="595,227,659,253">
+<area shape="rect" href="$structai_bone.html" title="A single bone of a mesh." alt="" coords="304,160,365,187">
+<area shape="rect" href="$structai_camera.html" title="aiCamera" alt="" coords="453,361,528,388">
+<area shape="rect" href="$structai_light.html" title="aiLight" alt="" coords="305,59,364,85">
+<area shape="rect" href="$structai_animation.html" title="aiAnimation" alt="" coords="583,595,671,621">
+<area shape="rect" href="$structai_node_anim.html" title="aiNodeAnim" alt="" coords="289,789,380,816">
+<area shape="rect" href="$structai_mesh_anim.html" title="aiMeshAnim" alt="" coords="288,677,381,704">
+<area shape="rect" href="$structai_mesh_morph_anim.html" title="aiMeshMorphAnim" alt="" coords="271,541,399,568">
+<area shape="rect" href="$structai_metadata_entry.html" title="aiMetadataEntry" alt="" coords="9,551,124,577">
+<area shape="rect" href="$structai_material.html" title="Data structure for a material." alt="" coords="588,277,665,304">
+<area shape="rect" href="$structai_anim_mesh.html" title="NOT CURRENTLY IN USE. An AnimMesh is an attachment to an aiMesh stores per&#45;vertex..." alt="" coords="288,211,381,237">
+<area shape="rect" href="$structai_face.html" title="A single face in a mesh, referring to multiple vertices." alt="" coords="305,261,364,288">
+<area shape="rect" href="$structai_vertex_weight.html" title="A single influence of a bone on a vertex." alt="" coords="12,160,121,187">
+<area shape="rect" href="$structai_vector2_d.html" title="aiVector2D" alt="" coords="24,5,109,32">
+<area shape="rect" href="$structai_color3_d.html" title="aiColor3D" alt="" coords="28,84,105,111">
+<area shape="rect" href="$structai_quat_key.html" title="aiQuatKey" alt="" coords="25,820,108,847">
+<area shape="rect" href="$structai_vector_key.html" title="aiVectorKey" alt="" coords="21,881,112,908">
+<area shape="rect" href="$structai_mesh_key.html" title="aiMeshKey" alt="" coords="24,769,109,796">
+<area shape="rect" href="$structai_mesh_morph_key.html" title="aiMeshMorphKey" alt="" coords="5,631,128,657">
+<area shape="rect" href="$structai_texture.html" title="aiTexture" alt="" coords="589,144,664,171">
+<area shape="rect" href="$structai_texel.html" title="Helper structure to represent a texel in a ARGB8888 format." alt="" coords="304,109,365,136">

@@ -1,0 +1,52 @@
+\hypertarget{structai_file_i_o}{
+\section{aiFileIO Struct Reference}
+\label{structai_file_i_o}\index{aiFileIO@{aiFileIO}}
+}
+C-API: File system callbacks.  
+
+
+{\tt \#include $<$cfileio.h$>$}
+
+Collaboration diagram for aiFileIO:\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+aiFileOpenProc \hyperlink{structai_file_i_o_819d9c7823039294125068d06949a6df}{OpenProc}
+\item 
+aiFileCloseProc \hyperlink{structai_file_i_o_7ec702672712b5a02dc49cb17f980a14}{CloseProc}
+\item 
+aiUserData \hyperlink{structai_file_i_o_9c62b7f3d70fbb2f41e33ad0b9933139}{UserData}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+C-API: File system callbacks. 
+
+Provided are functions to open and close files. Supply a custom structure to the import function. If you don't, a default implementation is used. Use custom file systems to enable reading from other sources, such as ZIPs or memory locations. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_file_i_o_819d9c7823039294125068d06949a6df}{
+\index{aiFileIO@{aiFileIO}!OpenProc@{OpenProc}}
+\index{OpenProc@{OpenProc}!aiFileIO@{aiFileIO}}
+\subsubsection[OpenProc]{\setlength{\rightskip}{0pt plus 5cm}aiFileOpenProc {\bf aiFileIO::OpenProc}}}
+\label{structai_file_i_o_819d9c7823039294125068d06949a6df}
+
+
+Function used to open a new file \hypertarget{structai_file_i_o_7ec702672712b5a02dc49cb17f980a14}{
+\index{aiFileIO@{aiFileIO}!CloseProc@{CloseProc}}
+\index{CloseProc@{CloseProc}!aiFileIO@{aiFileIO}}
+\subsubsection[CloseProc]{\setlength{\rightskip}{0pt plus 5cm}aiFileCloseProc {\bf aiFileIO::CloseProc}}}
+\label{structai_file_i_o_7ec702672712b5a02dc49cb17f980a14}
+
+
+Function used to close an existing file \hypertarget{structai_file_i_o_9c62b7f3d70fbb2f41e33ad0b9933139}{
+\index{aiFileIO@{aiFileIO}!UserData@{UserData}}
+\index{UserData@{UserData}!aiFileIO@{aiFileIO}}
+\subsubsection[UserData]{\setlength{\rightskip}{0pt plus 5cm}aiUserData {\bf aiFileIO::UserData}}}
+\label{structai_file_i_o_9c62b7f3d70fbb2f41e33ad0b9933139}
+
+
+User-defined, opaque data 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{cfileio_8h}{cfileio.h}\end{CompactItemize}

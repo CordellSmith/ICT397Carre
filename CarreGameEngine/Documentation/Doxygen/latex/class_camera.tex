@@ -1,0 +1,413 @@
+\hypertarget{class_camera}{
+\section{Camera Struct Reference}
+\label{class_camera}\index{Camera@{Camera}}
+}
+Used for the GLM math library.  
+
+
+{\tt \#include $<$Camera.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_camera_01f94c3543f56ede7af49dc778f19331}{Camera} ()
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g7dcd2365c2e368e6af5b7adeb6a9c8df}{glm::mat4} \hyperlink{class_camera_621b0ca0ddcab43fb95ee754c443dfa4}{SetPerspective} (float fov, float aspectRatio, float nearPlane, float farPlane)
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g7dcd2365c2e368e6af5b7adeb6a9c8df}{glm::mat4} \hyperlink{class_camera_3518233b244af839db6eefe59e7002de}{GetRotationMatrix} ()
+\begin{CompactList}\small\item\em Gets the rotation matrix. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g7dcd2365c2e368e6af5b7adeb6a9c8df}{glm::mat4} \hyperlink{class_camera_b0a4bf5a65d45f25529e3cffda1c361b}{GetProjectionMatrix} ()
+\begin{CompactList}\small\item\em Gets the projection matrix. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g7dcd2365c2e368e6af5b7adeb6a9c8df}{glm::mat4} \hyperlink{class_camera_ffa333055635aed96518c4c66be9a70c}{GetViewMatrix} ()
+\begin{CompactList}\small\item\em Gets the view matrix. \item\end{CompactList}\item 
+void \hyperlink{class_camera_513c43647fdc22a1f1f2ce75d67e6c43}{SetPosition} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} position)
+\begin{CompactList}\small\item\em Sets camera position. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_camera_7166b8466c94d0b5c127fc74c7881beb}{GetPosition} ()
+\begin{CompactList}\small\item\em Gets the camera position. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_camera_338c5baf20b57652828c53e0791adf9a}{GetView} ()
+\begin{CompactList}\small\item\em Gets the camera view. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_camera_ff61f06284cca3216accdf556dfbd3c1}{GetUp} ()
+\begin{CompactList}\small\item\em Gets the camera position. \item\end{CompactList}\item 
+float \hyperlink{class_camera_6318f73a8c7364eb477b7b5aa0ee930e}{GetYaw} ()
+\begin{CompactList}\small\item\em Gets the camera yaw. \item\end{CompactList}\item 
+void \hyperlink{class_camera_0f3853ee0b4a1c1fcf3c136decbbe056}{SetYaw} (float yaw)
+\begin{CompactList}\small\item\em Sets the yaw. \item\end{CompactList}\item 
+float \hyperlink{class_camera_498895884e11402ffaf248c32aa31856}{GetPitch} ()
+\begin{CompactList}\small\item\em Gets the camera pitch. \item\end{CompactList}\item 
+void \hyperlink{class_camera_bd3daba04eb01231eec1d5fdbe862d52}{SetPitch} (float pitch)
+\begin{CompactList}\small\item\em Sets the camera pitch. \item\end{CompactList}\item 
+void \hyperlink{class_camera_8cb555aeca85fcd988978105178cc0f3}{SetSpeed} (double speed)
+\begin{CompactList}\small\item\em Sets the camera movement speed. \item\end{CompactList}\item 
+double \hyperlink{class_camera_6d305ab5442a489253a321b2a45b11b6}{GetSpeed} ()
+\begin{CompactList}\small\item\em Gets the camera speed. \item\end{CompactList}\item 
+void \hyperlink{class_camera_bce25d2360c703fb5ac6da02d3991bda}{SetRotationSpeed} (double speed)
+\begin{CompactList}\small\item\em Sets the camera rotation speed. \item\end{CompactList}\item 
+double \hyperlink{class_camera_eebe84aaf8b615505ef2ad7f7bbffbb9}{GetRotationSpeed} ()
+\begin{CompactList}\small\item\em Gets the camera rotation speed. \item\end{CompactList}\item 
+void \hyperlink{class_camera_05c4a137b939bfdee2b7efea6d67d0e7}{SetViewByMouse} (float mouseX, float mouseY)
+\begin{CompactList}\small\item\em Sets the view of the camera according to the mouse movement. \item\end{CompactList}\item 
+void \hyperlink{class_camera_e32a72f519739a0b4dce07433cfbe9ef}{PositionCamera} (float positionX, float positionY, float positionZ, float yaw, float pitch)
+\begin{CompactList}\small\item\em Sets up the camera. \item\end{CompactList}\item 
+void \hyperlink{class_camera_ec3a27aa4de4ad2d10d421ee2fa54223}{MoveCamera} (float speed)
+\begin{CompactList}\small\item\em Moves the camera. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_camera_26d7567bf34d14260f887a0382aeae29}{
+\hyperlink{group__core__types_g7dcd2365c2e368e6af5b7adeb6a9c8df}{glm::mat4} \hyperlink{class_camera_26d7567bf34d14260f887a0382aeae29}{m\_\-projectionMatrix}}
+\label{class_camera_26d7567bf34d14260f887a0382aeae29}
+
+\begin{CompactList}\small\item\em The camera's projection matrix. \item\end{CompactList}\item 
+\hypertarget{class_camera_a4d06d49524248f81823444fa2544da0}{
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_camera_a4d06d49524248f81823444fa2544da0}{m\_\-position}}
+\label{class_camera_a4d06d49524248f81823444fa2544da0}
+
+\begin{CompactList}\small\item\em The camera's position. \item\end{CompactList}\item 
+\hypertarget{class_camera_809774c9955a53755048ea80d934e912}{
+float \hyperlink{class_camera_809774c9955a53755048ea80d934e912}{m\_\-speed} = 5.0}
+\label{class_camera_809774c9955a53755048ea80d934e912}
+
+\begin{CompactList}\small\item\em The camera's speed that is used with a time slice. \item\end{CompactList}\item 
+\hypertarget{class_camera_0b1c75781c142e6bb28761224d0b67ce}{
+float \hyperlink{class_camera_0b1c75781c142e6bb28761224d0b67ce}{m\_\-rotationSpeed} = 2}
+\label{class_camera_0b1c75781c142e6bb28761224d0b67ce}
+
+\begin{CompactList}\small\item\em The rotation speed for the camera. \item\end{CompactList}\item 
+\hypertarget{class_camera_800e33ab274f130f97e5e51d821476ac}{
+double \hyperlink{class_camera_800e33ab274f130f97e5e51d821476ac}{m\_\-mouseSpeed} = 0.001}
+\label{class_camera_800e33ab274f130f97e5e51d821476ac}
+
+\begin{CompactList}\small\item\em The speed for the mouse rotations. \item\end{CompactList}\item 
+\hypertarget{class_camera_0f8807da02d4a1bb695be51793279873}{
+float \hyperlink{class_camera_0f8807da02d4a1bb695be51793279873}{m\_\-yaw} = 0}
+\label{class_camera_0f8807da02d4a1bb695be51793279873}
+
+\begin{CompactList}\small\item\em The horizontal rotation angle (in radians) y-axis. \item\end{CompactList}\item 
+\hypertarget{class_camera_2202e419e9440bbb26e6997248268b0b}{
+float \hyperlink{class_camera_2202e419e9440bbb26e6997248268b0b}{m\_\-pitch} = 0}
+\label{class_camera_2202e419e9440bbb26e6997248268b0b}
+
+\begin{CompactList}\small\item\em The vertical rotation angle (in radians) x-axis. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Used for the GLM math library. 
+
+Basic camera class This class contains the camera object that will allow us to move around and view the world.
+
+\begin{Desc}
+\item[Version:]01 \end{Desc}
+\begin{Desc}
+\item[Date:]29/03/2018 \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_camera_01f94c3543f56ede7af49dc778f19331}{
+\index{Camera@{Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Camera@{Camera}}
+\subsubsection[Camera]{\setlength{\rightskip}{0pt plus 5cm}Camera::Camera ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_01f94c3543f56ede7af49dc778f19331}
+
+
+Default constructor. 
+
+Constructor sets the default origin of the camera at 0,0,0.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_camera_621b0ca0ddcab43fb95ee754c443dfa4}{
+\index{Camera@{Camera}!SetPerspective@{SetPerspective}}
+\index{SetPerspective@{SetPerspective}!Camera@{Camera}}
+\subsubsection[SetPerspective]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::mat4} Camera::SetPerspective (float {\em fov}, \/  float {\em aspectRatio}, \/  float {\em nearPlane}, \/  float {\em farPlane})}}
+\label{class_camera_621b0ca0ddcab43fb95ee754c443dfa4}
+
+
+Default constructor. 
+
+This sets the perspective matrix that is built from the field of fiew, aspect ratio and near/far planes
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em float}]fov \item[{\em float}]aspectRatio \item[{\em float}]nearPlane \item[{\em float}]farPlane \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g7dcd2365c2e368e6af5b7adeb6a9c8df}{glm::mat4} \end{Desc}
+\hypertarget{class_camera_3518233b244af839db6eefe59e7002de}{
+\index{Camera@{Camera}!GetRotationMatrix@{GetRotationMatrix}}
+\index{GetRotationMatrix@{GetRotationMatrix}!Camera@{Camera}}
+\subsubsection[GetRotationMatrix]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::mat4} Camera::GetRotationMatrix ()}}
+\label{class_camera_3518233b244af839db6eefe59e7002de}
+
+
+Gets the rotation matrix. 
+
+This function builds and returns a rotation matrix from the yaw and pitch rotations.
+
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g7dcd2365c2e368e6af5b7adeb6a9c8df}{glm::mat4} \end{Desc}
+\hypertarget{class_camera_b0a4bf5a65d45f25529e3cffda1c361b}{
+\index{Camera@{Camera}!GetProjectionMatrix@{GetProjectionMatrix}}
+\index{GetProjectionMatrix@{GetProjectionMatrix}!Camera@{Camera}}
+\subsubsection[GetProjectionMatrix]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::mat4} Camera::GetProjectionMatrix ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_b0a4bf5a65d45f25529e3cffda1c361b}
+
+
+Gets the projection matrix. 
+
+This function returns the current projection matrix.
+
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g7dcd2365c2e368e6af5b7adeb6a9c8df}{glm::mat4} \end{Desc}
+\hypertarget{class_camera_ffa333055635aed96518c4c66be9a70c}{
+\index{Camera@{Camera}!GetViewMatrix@{GetViewMatrix}}
+\index{GetViewMatrix@{GetViewMatrix}!Camera@{Camera}}
+\subsubsection[GetViewMatrix]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::mat4} Camera::GetViewMatrix ()}}
+\label{class_camera_ffa333055635aed96518c4c66be9a70c}
+
+
+Gets the view matrix. 
+
+This function returns the current view matrix.
+
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g7dcd2365c2e368e6af5b7adeb6a9c8df}{glm::mat4} \end{Desc}
+\hypertarget{class_camera_513c43647fdc22a1f1f2ce75d67e6c43}{
+\index{Camera@{Camera}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Camera@{Camera}}
+\subsubsection[SetPosition]{\setlength{\rightskip}{0pt plus 5cm}void Camera::SetPosition ({\bf glm::vec3} {\em position})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_513c43647fdc22a1f1f2ce75d67e6c43}
+
+
+Sets camera position. 
+
+This function sets the camera's position to the parameter given vec3.
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_camera_7166b8466c94d0b5c127fc74c7881beb}{
+\index{Camera@{Camera}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Camera@{Camera}}
+\subsubsection[GetPosition]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3} Camera::GetPosition ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_7166b8466c94d0b5c127fc74c7881beb}
+
+
+Gets the camera position. 
+
+This function returns the cameras position in a vec3.
+
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
+\hypertarget{class_camera_338c5baf20b57652828c53e0791adf9a}{
+\index{Camera@{Camera}!GetView@{GetView}}
+\index{GetView@{GetView}!Camera@{Camera}}
+\subsubsection[GetView]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3} Camera::GetView ()}}
+\label{class_camera_338c5baf20b57652828c53e0791adf9a}
+
+
+Gets the camera view. 
+
+This function returns the cameras position in a vec3.
+
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
+\hypertarget{class_camera_ff61f06284cca3216accdf556dfbd3c1}{
+\index{Camera@{Camera}!GetUp@{GetUp}}
+\index{GetUp@{GetUp}!Camera@{Camera}}
+\subsubsection[GetUp]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3} Camera::GetUp ()}}
+\label{class_camera_ff61f06284cca3216accdf556dfbd3c1}
+
+
+Gets the camera position. 
+
+This function returns the camera's up vector (the direction pointing up) from the rotation matrix.
+
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
+\hypertarget{class_camera_6318f73a8c7364eb477b7b5aa0ee930e}{
+\index{Camera@{Camera}!GetYaw@{GetYaw}}
+\index{GetYaw@{GetYaw}!Camera@{Camera}}
+\subsubsection[GetYaw]{\setlength{\rightskip}{0pt plus 5cm}float Camera::GetYaw ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_6318f73a8c7364eb477b7b5aa0ee930e}
+
+
+Gets the camera yaw. 
+
+This function returns the yaw of the camera.
+
+\begin{Desc}
+\item[Returns:]float \end{Desc}
+\hypertarget{class_camera_0f3853ee0b4a1c1fcf3c136decbbe056}{
+\index{Camera@{Camera}!SetYaw@{SetYaw}}
+\index{SetYaw@{SetYaw}!Camera@{Camera}}
+\subsubsection[SetYaw]{\setlength{\rightskip}{0pt plus 5cm}void Camera::SetYaw (float {\em yaw})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_0f3853ee0b4a1c1fcf3c136decbbe056}
+
+
+Sets the yaw. 
+
+This function sets the yaw of the camera to the float parameter given.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em float}]yaw \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_camera_498895884e11402ffaf248c32aa31856}{
+\index{Camera@{Camera}!GetPitch@{GetPitch}}
+\index{GetPitch@{GetPitch}!Camera@{Camera}}
+\subsubsection[GetPitch]{\setlength{\rightskip}{0pt plus 5cm}float Camera::GetPitch ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_498895884e11402ffaf248c32aa31856}
+
+
+Gets the camera pitch. 
+
+This function returns the pitch of the camera.
+
+\begin{Desc}
+\item[Returns:]float \end{Desc}
+\hypertarget{class_camera_bd3daba04eb01231eec1d5fdbe862d52}{
+\index{Camera@{Camera}!SetPitch@{SetPitch}}
+\index{SetPitch@{SetPitch}!Camera@{Camera}}
+\subsubsection[SetPitch]{\setlength{\rightskip}{0pt plus 5cm}void Camera::SetPitch (float {\em pitch})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_bd3daba04eb01231eec1d5fdbe862d52}
+
+
+Sets the camera pitch. 
+
+This function sets the pitch of the camera to the float parameter given.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em float}]pitch \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_camera_8cb555aeca85fcd988978105178cc0f3}{
+\index{Camera@{Camera}!SetSpeed@{SetSpeed}}
+\index{SetSpeed@{SetSpeed}!Camera@{Camera}}
+\subsubsection[SetSpeed]{\setlength{\rightskip}{0pt plus 5cm}void Camera::SetSpeed (double {\em speed})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_8cb555aeca85fcd988978105178cc0f3}
+
+
+Sets the camera movement speed. 
+
+This function sets the movement speed of the camera to the double parameter given.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em double}]speed \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_camera_6d305ab5442a489253a321b2a45b11b6}{
+\index{Camera@{Camera}!GetSpeed@{GetSpeed}}
+\index{GetSpeed@{GetSpeed}!Camera@{Camera}}
+\subsubsection[GetSpeed]{\setlength{\rightskip}{0pt plus 5cm}double Camera::GetSpeed ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_6d305ab5442a489253a321b2a45b11b6}
+
+
+Gets the camera speed. 
+
+This function returns the speed of the camera.
+
+\begin{Desc}
+\item[Returns:]double \end{Desc}
+\hypertarget{class_camera_bce25d2360c703fb5ac6da02d3991bda}{
+\index{Camera@{Camera}!SetRotationSpeed@{SetRotationSpeed}}
+\index{SetRotationSpeed@{SetRotationSpeed}!Camera@{Camera}}
+\subsubsection[SetRotationSpeed]{\setlength{\rightskip}{0pt plus 5cm}void Camera::SetRotationSpeed (double {\em speed})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_bce25d2360c703fb5ac6da02d3991bda}
+
+
+Sets the camera rotation speed. 
+
+This function sets the rotation speed of the camera to the double parameter given.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em double}]speed \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_camera_eebe84aaf8b615505ef2ad7f7bbffbb9}{
+\index{Camera@{Camera}!GetRotationSpeed@{GetRotationSpeed}}
+\index{GetRotationSpeed@{GetRotationSpeed}!Camera@{Camera}}
+\subsubsection[GetRotationSpeed]{\setlength{\rightskip}{0pt plus 5cm}double Camera::GetRotationSpeed ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_camera_eebe84aaf8b615505ef2ad7f7bbffbb9}
+
+
+Gets the camera rotation speed. 
+
+This function returns the rotation speed of the camera.
+
+\begin{Desc}
+\item[Returns:]double \end{Desc}
+\hypertarget{class_camera_05c4a137b939bfdee2b7efea6d67d0e7}{
+\index{Camera@{Camera}!SetViewByMouse@{SetViewByMouse}}
+\index{SetViewByMouse@{SetViewByMouse}!Camera@{Camera}}
+\subsubsection[SetViewByMouse]{\setlength{\rightskip}{0pt plus 5cm}void Camera::SetViewByMouse (float {\em mouseX}, \/  float {\em mouseY})}}
+\label{class_camera_05c4a137b939bfdee2b7efea6d67d0e7}
+
+
+Sets the view of the camera according to the mouse movement. 
+
+This sets the pitch and yaw of our camera from the mouse x and y deltas from the last frame.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em float}]mouseX \item[{\em float}]mouseY \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_camera_e32a72f519739a0b4dce07433cfbe9ef}{
+\index{Camera@{Camera}!PositionCamera@{PositionCamera}}
+\index{PositionCamera@{PositionCamera}!Camera@{Camera}}
+\subsubsection[PositionCamera]{\setlength{\rightskip}{0pt plus 5cm}void Camera::PositionCamera (float {\em positionX}, \/  float {\em positionY}, \/  float {\em positionZ}, \/  float {\em yaw}, \/  float {\em pitch})}}
+\label{class_camera_e32a72f519739a0b4dce07433cfbe9ef}
+
+
+Sets up the camera. 
+
+This sets the Position and the yaw and pitch rotations (in radians).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em float}]positionX \item[{\em float}]positionY \item[{\em float}]positionZ \item[{\em float}]yaw \item[{\em float}]pitch \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_camera_ec3a27aa4de4ad2d10d421ee2fa54223}{
+\index{Camera@{Camera}!MoveCamera@{MoveCamera}}
+\index{MoveCamera@{MoveCamera}!Camera@{Camera}}
+\subsubsection[MoveCamera]{\setlength{\rightskip}{0pt plus 5cm}void Camera::MoveCamera (float {\em speed})}}
+\label{class_camera_ec3a27aa4de4ad2d10d421ee2fa54223}
+
+
+Moves the camera. 
+
+This function will move the camera forward or backwards depending on the speed (negative for backwards).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em float}]speed \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+The documentation for this struct was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/Camera.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/src/Camera.cpp\end{CompactItemize}

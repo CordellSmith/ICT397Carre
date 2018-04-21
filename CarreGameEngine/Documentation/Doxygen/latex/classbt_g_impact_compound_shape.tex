@@ -1,0 +1,124 @@
+\hypertarget{classbt_g_impact_compound_shape}{
+\section{btGImpactCompoundShape Class Reference}
+\label{classbt_g_impact_compound_shape}\index{btGImpactCompoundShape@{btGImpactCompoundShape}}
+}
+\hyperlink{classbt_g_impact_compound_shape}{btGImpactCompoundShape} allows to handle multiple btCollisionShape objects at once  
+
+
+{\tt \#include $<$btGImpactShape.h$>$}
+
+Inheritance diagram for btGImpactCompoundShape:Collaboration diagram for btGImpactCompoundShape:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_g_impact_compound_shape_ba1553b4463a14eb56a6d5cdccca4ead}{
+virtual bool \hyperlink{classbt_g_impact_compound_shape_ba1553b4463a14eb56a6d5cdccca4ead}{childrenHasTransform} () const }
+\label{classbt_g_impact_compound_shape_ba1553b4463a14eb56a6d5cdccca4ead}
+
+\begin{CompactList}\small\item\em if true, then its children must get transforms. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_56d7a7369cd905893fa61a766c6ae2f5}{
+virtual const \hyperlink{classbt_primitive_manager_base}{btPrimitiveManagerBase} $\ast$ \hyperlink{classbt_g_impact_compound_shape_56d7a7369cd905893fa61a766c6ae2f5}{getPrimitiveManager} () const }
+\label{classbt_g_impact_compound_shape_56d7a7369cd905893fa61a766c6ae2f5}
+
+\begin{CompactList}\small\item\em Obtains the primitive manager. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_5608f37c18454c3e82504120e053f67a}{
+SIMD\_\-FORCE\_\-INLINE \hyperlink{classbt_g_impact_compound_shape_1_1_compound_primitive_manager}{CompoundPrimitiveManager} $\ast$ \hyperlink{classbt_g_impact_compound_shape_5608f37c18454c3e82504120e053f67a}{getCompoundPrimitiveManager} ()}
+\label{classbt_g_impact_compound_shape_5608f37c18454c3e82504120e053f67a}
+
+\begin{CompactList}\small\item\em Obtains the compopund primitive manager. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_1e48017b7d2f2cf2498606e2084c01e1}{
+virtual int \hyperlink{classbt_g_impact_compound_shape_1e48017b7d2f2cf2498606e2084c01e1}{getNumChildShapes} () const }
+\label{classbt_g_impact_compound_shape_1e48017b7d2f2cf2498606e2084c01e1}
+
+\begin{CompactList}\small\item\em Gets the number of children. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_3c97aab1f6511033df73007096ed4c8a}{
+void \hyperlink{classbt_g_impact_compound_shape_3c97aab1f6511033df73007096ed4c8a}{addChildShape} (const btTransform \&localTransform, btCollisionShape $\ast$shape)}
+\label{classbt_g_impact_compound_shape_3c97aab1f6511033df73007096ed4c8a}
+
+\begin{CompactList}\small\item\em Use this method for adding children. Only Convex shapes are allowed. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_106e3d9999c847a9748c962378ab3f46}{
+void \hyperlink{classbt_g_impact_compound_shape_106e3d9999c847a9748c962378ab3f46}{addChildShape} (btCollisionShape $\ast$shape)}
+\label{classbt_g_impact_compound_shape_106e3d9999c847a9748c962378ab3f46}
+
+\begin{CompactList}\small\item\em Use this method for adding children. Only Convex shapes are allowed. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_91310884e33cfa7dc25d803ffb577ac0}{
+virtual btCollisionShape $\ast$ \hyperlink{classbt_g_impact_compound_shape_91310884e33cfa7dc25d803ffb577ac0}{getChildShape} (int index)}
+\label{classbt_g_impact_compound_shape_91310884e33cfa7dc25d803ffb577ac0}
+
+\begin{CompactList}\small\item\em Gets the children. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_d4edd755e27e6ff3fdf99b9bc811c749}{
+virtual const btCollisionShape $\ast$ \hyperlink{classbt_g_impact_compound_shape_d4edd755e27e6ff3fdf99b9bc811c749}{getChildShape} (int index) const }
+\label{classbt_g_impact_compound_shape_d4edd755e27e6ff3fdf99b9bc811c749}
+
+\begin{CompactList}\small\item\em Gets the children. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_9f43948dab925a6e75cd6062d084c27e}{
+virtual void \hyperlink{classbt_g_impact_compound_shape_9f43948dab925a6e75cd6062d084c27e}{getChildAabb} (int child\_\-index, const btTransform \&t, btVector3 \&aabbMin, btVector3 \&aabbMax) const }
+\label{classbt_g_impact_compound_shape_9f43948dab925a6e75cd6062d084c27e}
+
+\begin{CompactList}\small\item\em Retrieves the bound from a child. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_9fa7a1a4793231951d76ad9cb7e13f40}{
+virtual btTransform \hyperlink{classbt_g_impact_compound_shape_9fa7a1a4793231951d76ad9cb7e13f40}{getChildTransform} (int index) const }
+\label{classbt_g_impact_compound_shape_9fa7a1a4793231951d76ad9cb7e13f40}
+
+\begin{CompactList}\small\item\em Gets the children transform. \item\end{CompactList}\item 
+virtual void \hyperlink{classbt_g_impact_compound_shape_560410e20842ad73227d7712a574385c}{setChildTransform} (int index, const btTransform \&transform)
+\begin{CompactList}\small\item\em Sets the children transform. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_41a26228c6b7e9125a9fe1d7725b3e83}{
+virtual bool \hyperlink{classbt_g_impact_compound_shape_41a26228c6b7e9125a9fe1d7725b3e83}{needsRetrieveTriangles} () const }
+\label{classbt_g_impact_compound_shape_41a26228c6b7e9125a9fe1d7725b3e83}
+
+\begin{CompactList}\small\item\em Determines if this shape has triangles. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_cc105ecae2f0c117f861aa939c978748}{
+virtual bool \hyperlink{classbt_g_impact_compound_shape_cc105ecae2f0c117f861aa939c978748}{needsRetrieveTetrahedrons} () const }
+\label{classbt_g_impact_compound_shape_cc105ecae2f0c117f861aa939c978748}
+
+\begin{CompactList}\small\item\em Determines if this shape has tetrahedrons. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_compound_shape_64f0a70cf342e6bbbcc9721f2a121450}{
+virtual void \hyperlink{classbt_g_impact_compound_shape_64f0a70cf342e6bbbcc9721f2a121450}{calculateLocalInertia} (btScalar mass, btVector3 \&inertia) const }
+\label{classbt_g_impact_compound_shape_64f0a70cf342e6bbbcc9721f2a121450}
+
+\begin{CompactList}\small\item\em Calculates the exact inertia tensor for this shape. \item\end{CompactList}\item 
+virtual eGIMPACT\_\-SHAPE\_\-TYPE \hyperlink{classbt_g_impact_compound_shape_861967c52cb52a358b8d99aa4c65e306}{getGImpactShapeType} () const 
+\begin{CompactList}\small\item\em Base method for determinig which kind of GIMPACT shape we get. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classbt_g_impact_compound_shape_1_1_compound_primitive_manager}{CompoundPrimitiveManager}
+\begin{CompactList}\small\item\em compound primitive manager \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classbt_g_impact_compound_shape}{btGImpactCompoundShape} allows to handle multiple btCollisionShape objects at once 
+
+This class only can manage Convex subshapes 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_g_impact_compound_shape_560410e20842ad73227d7712a574385c}{
+\index{btGImpactCompoundShape@{btGImpactCompoundShape}!setChildTransform@{setChildTransform}}
+\index{setChildTransform@{setChildTransform}!btGImpactCompoundShape@{btGImpactCompoundShape}}
+\subsubsection[setChildTransform]{\setlength{\rightskip}{0pt plus 5cm}virtual void btGImpactCompoundShape::setChildTransform (int {\em index}, \/  const btTransform \& {\em transform})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classbt_g_impact_compound_shape_560410e20842ad73227d7712a574385c}
+
+
+Sets the children transform. 
+
+\begin{Desc}
+\item[Postcondition:]You must call \hyperlink{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{updateBound()} for update the box set. \end{Desc}
+
+
+Implements \hyperlink{classbt_g_impact_shape_interface_83392f97bd7dfeb71ccdce6913a465b0}{btGImpactShapeInterface}.\hypertarget{classbt_g_impact_compound_shape_861967c52cb52a358b8d99aa4c65e306}{
+\index{btGImpactCompoundShape@{btGImpactCompoundShape}!getGImpactShapeType@{getGImpactShapeType}}
+\index{getGImpactShapeType@{getGImpactShapeType}!btGImpactCompoundShape@{btGImpactCompoundShape}}
+\subsubsection[getGImpactShapeType]{\setlength{\rightskip}{0pt plus 5cm}virtual eGIMPACT\_\-SHAPE\_\-TYPE btGImpactCompoundShape::getGImpactShapeType () const\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classbt_g_impact_compound_shape_861967c52cb52a358b8d99aa4c65e306}
+
+
+Base method for determinig which kind of GIMPACT shape we get. 
+
+Subshape member functions 
+
+Implements \hyperlink{classbt_g_impact_shape_interface_25cacbe448997e3f8ec99cb2d4952859}{btGImpactShapeInterface}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_g_impact_shape_8h}{btGImpactShape.h}\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactShape.cpp\end{CompactItemize}

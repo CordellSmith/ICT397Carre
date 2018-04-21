@@ -1,0 +1,227 @@
+\hypertarget{group__core__func__packing}{
+\section{Floating-Point Pack and Unpack Functions}
+\label{group__core__func__packing}\index{Floating-Point Pack and Unpack Functions@{Floating-Point Pack and Unpack Functions}}
+}
+
+
+Collaboration diagram for Floating-Point Pack and Unpack Functions:\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+GLM\_\-FUNC\_\-DECL uint \hyperlink{group__core__func__packing_g0659ddaf09727551c7bf51655d2a65cf}{glm::packUnorm2x16} (vec2 const \&v)
+\item 
+GLM\_\-FUNC\_\-DECL uint \hyperlink{group__core__func__packing_g0c8005de240d6c4ca3d16c7bee25c622}{glm::packSnorm2x16} (vec2 const \&v)
+\item 
+GLM\_\-FUNC\_\-DECL uint \hyperlink{group__core__func__packing_g834ee9a9e73dcb0a7c1fc88143f3edb8}{glm::packUnorm4x8} (vec4 const \&v)
+\item 
+GLM\_\-FUNC\_\-DECL uint \hyperlink{group__core__func__packing_gfcf25acc0d361c6c696a433aa5dfd16b}{glm::packSnorm4x8} (vec4 const \&v)
+\item 
+GLM\_\-FUNC\_\-DECL vec2 \hyperlink{group__core__func__packing_gff327a2fca8abfe31b74b914b68ac5ec}{glm::unpackUnorm2x16} (uint const \&p)
+\item 
+GLM\_\-FUNC\_\-DECL vec2 \hyperlink{group__core__func__packing_ga3f9bd6a71d7bdfab090b9626f2466aa}{glm::unpackSnorm2x16} (uint const \&p)
+\item 
+GLM\_\-FUNC\_\-DECL vec4 \hyperlink{group__core__func__packing_g5d3c4d354b48a317935349dd62a8b8a5}{glm::unpackUnorm4x8} (uint const \&p)
+\item 
+GLM\_\-FUNC\_\-DECL vec4 \hyperlink{group__core__func__packing_g126a0deffef1f2d10dd67237981a870b}{glm::unpackSnorm4x8} (uint const \&p)
+\item 
+GLM\_\-FUNC\_\-DECL double \hyperlink{group__core__func__packing_gf728fdfb98ce34da6f968d9f6bf154d7}{glm::packDouble2x32} (uvec2 const \&v)
+\item 
+GLM\_\-FUNC\_\-DECL uvec2 \hyperlink{group__core__func__packing_g7e8cf88c278c18969c99af83bceed024}{glm::unpackDouble2x32} (double const \&v)
+\item 
+GLM\_\-FUNC\_\-DECL uint \hyperlink{group__core__func__packing_g082f6dd65f73a547ed3067ef00be036f}{glm::packHalf2x16} (vec2 const \&v)
+\item 
+GLM\_\-FUNC\_\-DECL vec2 \hyperlink{group__core__func__packing_g4051804cc2c930ba4ca73382b79edf1d}{glm::unpackHalf2x16} (uint const \&v)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+These functions do not operate component-wise, rather as described in each case. 
+
+\subsection{Function Documentation}
+\hypertarget{group__core__func__packing_gf728fdfb98ce34da6f968d9f6bf154d7}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!packDouble2x32@{packDouble2x32}}
+\index{packDouble2x32@{packDouble2x32}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[packDouble2x32]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER double glm::packDouble2x32 (uvec2 const \& {\em v})}}
+\label{group__core__func__packing_gf728fdfb98ce34da6f968d9f6bf154d7}
+
+
+Returns a double-precision value obtained by packing the components of v into a 64-bit value. If an IEEE 754 Inf or NaN is created, it will not signal, and the resulting floating point value is unspecified. Otherwise, the bit- level representation of v is preserved. The first vector component specifies the 32 least significant bits; the second component specifies the 32 most significant bits.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packDouble2x32.xml}{\tt GLSL packDouble2x32 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+\hypertarget{group__core__func__packing_g082f6dd65f73a547ed3067ef00be036f}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!packHalf2x16@{packHalf2x16}}
+\index{packHalf2x16@{packHalf2x16}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[packHalf2x16]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint glm::packHalf2x16 (vec2 const \& {\em v})}}
+\label{group__core__func__packing_g082f6dd65f73a547ed3067ef00be036f}
+
+
+Returns an unsigned integer obtained by converting the components of a two-component floating-point vector to the 16-bit floating-point representation found in the OpenGL Specification, and then packing these two 16- bit integers into a 32-bit unsigned integer. The first vector component specifies the 16 least-significant bits of the result; the second component specifies the 16 most-significant bits.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packHalf2x16.xml}{\tt GLSL packHalf2x16 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+\hypertarget{group__core__func__packing_g0c8005de240d6c4ca3d16c7bee25c622}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!packSnorm2x16@{packSnorm2x16}}
+\index{packSnorm2x16@{packSnorm2x16}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[packSnorm2x16]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint glm::packSnorm2x16 (vec2 const \& {\em v})}}
+\label{group__core__func__packing_g0c8005de240d6c4ca3d16c7bee25c622}
+
+
+First, converts each component of the normalized floating-point value v into 8- or 16-bit integer values. Then, the results are packed into the returned 32-bit unsigned integer.
+
+The conversion for component c of v to fixed point is done as follows: packSnorm2x16: round(clamp(v, -1, +1) $\ast$ 32767.0)
+
+The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packSnorm2x16.xml}{\tt GLSL packSnorm2x16 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+\hypertarget{group__core__func__packing_gfcf25acc0d361c6c696a433aa5dfd16b}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!packSnorm4x8@{packSnorm4x8}}
+\index{packSnorm4x8@{packSnorm4x8}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[packSnorm4x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint glm::packSnorm4x8 (vec4 const \& {\em v})}}
+\label{group__core__func__packing_gfcf25acc0d361c6c696a433aa5dfd16b}
+
+
+First, converts each component of the normalized floating-point value v into 8- or 16-bit integer values. Then, the results are packed into the returned 32-bit unsigned integer.
+
+The conversion for component c of v to fixed point is done as follows: packSnorm4x8: round(clamp(c, -1, +1) $\ast$ 127.0)
+
+The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packSnorm4x8.xml}{\tt GLSL packSnorm4x8 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+\hypertarget{group__core__func__packing_g0659ddaf09727551c7bf51655d2a65cf}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!packUnorm2x16@{packUnorm2x16}}
+\index{packUnorm2x16@{packUnorm2x16}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[packUnorm2x16]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint glm::packUnorm2x16 (vec2 const \& {\em v})}}
+\label{group__core__func__packing_g0659ddaf09727551c7bf51655d2a65cf}
+
+
+First, converts each component of the normalized floating-point value v into 8- or 16-bit integer values. Then, the results are packed into the returned 32-bit unsigned integer.
+
+The conversion for component c of v to fixed point is done as follows: packUnorm2x16: round(clamp(c, 0, +1) $\ast$ 65535.0)
+
+The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packUnorm2x16.xml}{\tt GLSL packUnorm2x16 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+\hypertarget{group__core__func__packing_g834ee9a9e73dcb0a7c1fc88143f3edb8}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!packUnorm4x8@{packUnorm4x8}}
+\index{packUnorm4x8@{packUnorm4x8}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[packUnorm4x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint glm::packUnorm4x8 (vec4 const \& {\em v})}}
+\label{group__core__func__packing_g834ee9a9e73dcb0a7c1fc88143f3edb8}
+
+
+First, converts each component of the normalized floating-point value v into 8- or 16-bit integer values. Then, the results are packed into the returned 32-bit unsigned integer.
+
+The conversion for component c of v to fixed point is done as follows: packUnorm4x8: round(clamp(c, 0, +1) $\ast$ 255.0)
+
+The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packUnorm4x8.xml}{\tt GLSL packUnorm4x8 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+\hypertarget{group__core__func__packing_g7e8cf88c278c18969c99af83bceed024}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackDouble2x32@{unpackDouble2x32}}
+\index{unpackDouble2x32@{unpackDouble2x32}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[unpackDouble2x32]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uvec2 glm::unpackDouble2x32 (double const \& {\em v})}}
+\label{group__core__func__packing_g7e8cf88c278c18969c99af83bceed024}
+
+
+Returns a two-component unsigned integer vector representation of v. The bit-level representation of v is preserved. The first component of the vector contains the 32 least significant bits of the double; the second component consists the 32 most significant bits.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackDouble2x32.xml}{\tt GLSL unpackDouble2x32 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+\hypertarget{group__core__func__packing_g4051804cc2c930ba4ca73382b79edf1d}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackHalf2x16@{unpackHalf2x16}}
+\index{unpackHalf2x16@{unpackHalf2x16}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[unpackHalf2x16]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER vec2 glm::unpackHalf2x16 (uint const \& {\em v})}}
+\label{group__core__func__packing_g4051804cc2c930ba4ca73382b79edf1d}
+
+
+Returns a two-component floating-point vector with components obtained by unpacking a 32-bit unsigned integer into a pair of 16-bit values, interpreting those values as 16-bit floating-point numbers according to the OpenGL Specification, and converting them to 32-bit floating-point values. The first component of the vector is obtained from the 16 least-significant bits of v; the second component is obtained from the 16 most-significant bits of v.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackHalf2x16.xml}{\tt GLSL unpackHalf2x16 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+\hypertarget{group__core__func__packing_ga3f9bd6a71d7bdfab090b9626f2466aa}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackSnorm2x16@{unpackSnorm2x16}}
+\index{unpackSnorm2x16@{unpackSnorm2x16}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[unpackSnorm2x16]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER vec2 glm::unpackSnorm2x16 (uint const \& {\em p})}}
+\label{group__core__func__packing_ga3f9bd6a71d7bdfab090b9626f2466aa}
+
+
+First, unpacks a single 32-bit unsigned integer p into a pair of 16-bit unsigned integers, four 8-bit unsigned integers, or four 8-bit signed integers. Then, each component is converted to a normalized floating-point value to generate the returned two- or four-component vector.
+
+The conversion for unpacked fixed-point value f to floating point is done as follows: unpackSnorm2x16: clamp(f / 32767.0, -1, +1)
+
+The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackSnorm2x16.xml}{\tt GLSL unpackSnorm2x16 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+\hypertarget{group__core__func__packing_g126a0deffef1f2d10dd67237981a870b}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackSnorm4x8@{unpackSnorm4x8}}
+\index{unpackSnorm4x8@{unpackSnorm4x8}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[unpackSnorm4x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER {\bf glm::vec4} glm::unpackSnorm4x8 (uint const \& {\em p})}}
+\label{group__core__func__packing_g126a0deffef1f2d10dd67237981a870b}
+
+
+First, unpacks a single 32-bit unsigned integer p into a pair of 16-bit unsigned integers, four 8-bit unsigned integers, or four 8-bit signed integers. Then, each component is converted to a normalized floating-point value to generate the returned two- or four-component vector.
+
+The conversion for unpacked fixed-point value f to floating point is done as follows: unpackSnorm4x8: clamp(f / 127.0, -1, +1)
+
+The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackSnorm4x8.xml}{\tt GLSL unpackSnorm4x8 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+\hypertarget{group__core__func__packing_gff327a2fca8abfe31b74b914b68ac5ec}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackUnorm2x16@{unpackUnorm2x16}}
+\index{unpackUnorm2x16@{unpackUnorm2x16}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[unpackUnorm2x16]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER vec2 glm::unpackUnorm2x16 (uint const \& {\em p})}}
+\label{group__core__func__packing_gff327a2fca8abfe31b74b914b68ac5ec}
+
+
+First, unpacks a single 32-bit unsigned integer p into a pair of 16-bit unsigned integers, four 8-bit unsigned integers, or four 8-bit signed integers. Then, each component is converted to a normalized floating-point value to generate the returned two- or four-component vector.
+
+The conversion for unpacked fixed-point value f to floating point is done as follows: unpackUnorm2x16: f / 65535.0
+
+The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackUnorm2x16.xml}{\tt GLSL unpackUnorm2x16 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+\hypertarget{group__core__func__packing_g5d3c4d354b48a317935349dd62a8b8a5}{
+\index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackUnorm4x8@{unpackUnorm4x8}}
+\index{unpackUnorm4x8@{unpackUnorm4x8}!core_func_packing@{core\_\-func\_\-packing}}
+\subsubsection[unpackUnorm4x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER vec4 glm::unpackUnorm4x8 (uint const \& {\em p})}}
+\label{group__core__func__packing_g5d3c4d354b48a317935349dd62a8b8a5}
+
+
+First, unpacks a single 32-bit unsigned integer p into a pair of 16-bit unsigned integers, four 8-bit unsigned integers, or four 8-bit signed integers. Then, each component is converted to a normalized floating-point value to generate the returned two- or four-component vector.
+
+The conversion for unpacked fixed-point value f to floating point is done as follows: unpackUnorm4x8: f / 255.0
+
+The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackUnorm4x8.xml}{\tt GLSL unpackUnorm4x8 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}

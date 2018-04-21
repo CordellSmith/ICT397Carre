@@ -1,0 +1,66 @@
+\hypertarget{class_assimp_1_1_default_i_o_stream}{
+\section{Assimp::DefaultIOStream Class Reference}
+\label{class_assimp_1_1_default_i_o_stream}\index{Assimp::DefaultIOStream@{Assimp::DefaultIOStream}}
+}
+Default IO implementation, use standard IO operations.  
+
+
+{\tt \#include $<$DefaultIOStream.h$>$}
+
+Inheritance diagram for Assimp::DefaultIOStream:Collaboration diagram for Assimp::DefaultIOStream:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_assimp_1_1_default_i_o_stream_d21769a2e865f8522ba2ebd97b75beda}{$\sim$DefaultIOStream} ()
+\item 
+\hypertarget{class_assimp_1_1_default_i_o_stream_a45b659531f179122c7e7852ad6f5f14}{
+size\_\-t \hyperlink{class_assimp_1_1_default_i_o_stream_a45b659531f179122c7e7852ad6f5f14}{Read} (void $\ast$pvBuffer, size\_\-t pSize, size\_\-t pCount)}
+\label{class_assimp_1_1_default_i_o_stream_a45b659531f179122c7e7852ad6f5f14}
+
+\begin{CompactList}\small\item\em Read from stream. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_default_i_o_stream_05de25f9ac717801fbd0aad06499657a}{
+size\_\-t \hyperlink{class_assimp_1_1_default_i_o_stream_05de25f9ac717801fbd0aad06499657a}{Write} (const void $\ast$pvBuffer, size\_\-t pSize, size\_\-t pCount)}
+\label{class_assimp_1_1_default_i_o_stream_05de25f9ac717801fbd0aad06499657a}
+
+\begin{CompactList}\small\item\em Write to stream. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_default_i_o_stream_1f4b8aa9afaaa2b300d6cee6165a6a6d}{
+\hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe711}{aiReturn} \hyperlink{class_assimp_1_1_default_i_o_stream_1f4b8aa9afaaa2b300d6cee6165a6a6d}{Seek} (size\_\-t pOffset, \hyperlink{types_8h_c50fbaa57d78776ca99e42104d9b2786}{aiOrigin} pOrigin)}
+\label{class_assimp_1_1_default_i_o_stream_1f4b8aa9afaaa2b300d6cee6165a6a6d}
+
+\begin{CompactList}\small\item\em Seek specific position. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_default_i_o_stream_561a6cce1927a760e2d04fab87df38f9}{
+size\_\-t \hyperlink{class_assimp_1_1_default_i_o_stream_561a6cce1927a760e2d04fab87df38f9}{Tell} () const }
+\label{class_assimp_1_1_default_i_o_stream_561a6cce1927a760e2d04fab87df38f9}
+
+\begin{CompactList}\small\item\em Get current seek position. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_default_i_o_stream_53d6541777999a551c026b020f39475f}{
+size\_\-t \hyperlink{class_assimp_1_1_default_i_o_stream_53d6541777999a551c026b020f39475f}{FileSize} () const }
+\label{class_assimp_1_1_default_i_o_stream_53d6541777999a551c026b020f39475f}
+
+\begin{CompactList}\small\item\em Get size of file. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_default_i_o_stream_ebb62f6522d15c0b194a6ef1b32f46e0}{
+void \hyperlink{class_assimp_1_1_default_i_o_stream_ebb62f6522d15c0b194a6ef1b32f46e0}{Flush} ()}
+\label{class_assimp_1_1_default_i_o_stream_ebb62f6522d15c0b194a6ef1b32f46e0}
+
+\begin{CompactList}\small\item\em Flush file contents. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Default IO implementation, use standard IO operations. 
+
+\begin{Desc}
+\item[Note:]An instance of this class can exist without a valid file handle attached to it. All calls fail, but the instance can nevertheless be used with no restrictions. \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_assimp_1_1_default_i_o_stream_d21769a2e865f8522ba2ebd97b75beda}{
+\index{Assimp::DefaultIOStream@{Assimp::DefaultIOStream}!$\sim$DefaultIOStream@{$\sim$DefaultIOStream}}
+\index{$\sim$DefaultIOStream@{$\sim$DefaultIOStream}!Assimp::DefaultIOStream@{Assimp::DefaultIOStream}}
+\subsubsection[$\sim$DefaultIOStream]{\setlength{\rightskip}{0pt plus 5cm}Assimp::DefaultIOStream::$\sim$DefaultIOStream ()}}
+\label{class_assimp_1_1_default_i_o_stream_d21769a2e865f8522ba2ebd97b75beda}
+
+
+Destructor public to allow simple deletion to close the file. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/DefaultIOStream.h\end{CompactItemize}

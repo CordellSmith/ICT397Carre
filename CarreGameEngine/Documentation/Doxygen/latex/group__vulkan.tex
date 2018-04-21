@@ -1,0 +1,101 @@
+\hypertarget{group__vulkan}{
+\section{Vulkan reference}
+\label{group__vulkan}\index{Vulkan reference@{Vulkan reference}}
+}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{group__vulkan_g4d98d00a0ef73bcfd6cc46f261955975}{GLFWvkproc} )(void)
+\begin{CompactList}\small\item\em Vulkan API function pointer type. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+GLFWAPI int \hyperlink{group__vulkan_g72e7c3757d9ff2333181a5569bb7c403}{glfwVulkanSupported} (void)
+\begin{CompactList}\small\item\em Returns whether the Vulkan loader has been found. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$$\ast$ \hyperlink{group__vulkan_g70adaf0cfc99adc484c49ea99e17c2cf}{glfwGetRequiredInstanceExtensions} (uint32\_\-t $\ast$count)
+\begin{CompactList}\small\item\em Returns the Vulkan instance extensions required by GLFW. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This is the reference documentation for Vulkan related functions and types. For more task-oriented information, see the vulkan\_\-guide. 
+
+\subsection{Typedef Documentation}
+\hypertarget{group__vulkan_g4d98d00a0ef73bcfd6cc46f261955975}{
+\index{vulkan@{vulkan}!GLFWvkproc@{GLFWvkproc}}
+\index{GLFWvkproc@{GLFWvkproc}!vulkan@{vulkan}}
+\subsubsection[GLFWvkproc]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf GLFWvkproc})(void)}}
+\label{group__vulkan_g4d98d00a0ef73bcfd6cc46f261955975}
+
+
+Vulkan API function pointer type. 
+
+Generic function pointer used for returning Vulkan API function pointers without forcing a cast from a regular pointer.
+
+\begin{Desc}
+\item[See also:]vulkan\_\-proc 
+
+glfwGetInstanceProcAddress\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__vulkan_g70adaf0cfc99adc484c49ea99e17c2cf}{
+\index{vulkan@{vulkan}!glfwGetRequiredInstanceExtensions@{glfwGetRequiredInstanceExtensions}}
+\index{glfwGetRequiredInstanceExtensions@{glfwGetRequiredInstanceExtensions}!vulkan@{vulkan}}
+\subsubsection[glfwGetRequiredInstanceExtensions]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI const char$\ast$$\ast$ glfwGetRequiredInstanceExtensions (uint32\_\-t $\ast$ {\em count})}}
+\label{group__vulkan_g70adaf0cfc99adc484c49ea99e17c2cf}
+
+
+Returns the Vulkan instance extensions required by GLFW. 
+
+This function returns an array of names of Vulkan instance extensions required by GLFW for creating Vulkan surfaces for GLFW windows. If successful, the list will always contains `VK\_\-KHR\_\-surface`, so if you don't require any additional extensions you can pass this list directly to the `VkInstanceCreateInfo` struct.
+
+If Vulkan is not available on the machine, this function returns `NULL` and generates a \hyperlink{group__errors_g56882b290db23261cc6c053c40c2d08e}{GLFW\_\-API\_\-UNAVAILABLE} error. Call \hyperlink{group__vulkan_g72e7c3757d9ff2333181a5569bb7c403}{glfwVulkanSupported} to check whether Vulkan is available.
+
+If Vulkan is available but no set of extensions allowing window surface creation was found, this function returns `NULL`. You may still use Vulkan for off-screen rendering and compute work.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em count}]Where to store the number of extensions in the returned array. This is set to zero if an error occurred. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An array of ASCII encoded extension names, or `NULL` if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_g56882b290db23261cc6c053c40c2d08e}{GLFW\_\-API\_\-UNAVAILABLE}.
+
+\begin{Desc}
+\item[Remarks:]Additional extensions may be required by future versions of GLFW. You should check if any extensions you wish to enable are already in the returned array, as it is an error to specify an extension more than once in the `VkInstanceCreateInfo` struct.\end{Desc}
+The returned array is allocated and freed by GLFW. You should not free it yourself. It is guaranteed to be valid only until the library is terminated.
+
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]vulkan\_\-ext 
+
+glfwCreateWindowSurface\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__vulkan_g72e7c3757d9ff2333181a5569bb7c403}{
+\index{vulkan@{vulkan}!glfwVulkanSupported@{glfwVulkanSupported}}
+\index{glfwVulkanSupported@{glfwVulkanSupported}!vulkan@{vulkan}}
+\subsubsection[glfwVulkanSupported]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI int glfwVulkanSupported (void)}}
+\label{group__vulkan_g72e7c3757d9ff2333181a5569bb7c403}
+
+
+Returns whether the Vulkan loader has been found. 
+
+This function returns whether the Vulkan loader has been found. This check is performed by \hyperlink{group__init_gb41771f0215a2e0afb4cf1cf98082d40}{glfwInit}.
+
+The availability of a Vulkan loader does not by itself guarantee that window surface creation or even device creation is possible. Call \hyperlink{group__vulkan_g70adaf0cfc99adc484c49ea99e17c2cf}{glfwGetRequiredInstanceExtensions} to check whether the extensions necessary for Vulkan surface creation are available and glfwGetPhysicalDevicePresentationSupport to check whether a queue family of a physical device supports image presentation.
+
+\begin{Desc}
+\item[Returns:]`GLFW\_\-TRUE` if Vulkan is available, or `GLFW\_\-FALSE` otherwise.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]vulkan\_\-support\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}

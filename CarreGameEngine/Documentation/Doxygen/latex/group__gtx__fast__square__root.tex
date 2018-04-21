@@ -1,0 +1,77 @@
+\hypertarget{group__gtx__fast__square__root}{
+\section{GLM\_\-GTX\_\-fast\_\-square\_\-root}
+\label{group__gtx__fast__square__root}\index{GLM\_\-GTX\_\-fast\_\-square\_\-root@{GLM\_\-GTX\_\-fast\_\-square\_\-root}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-fast\_\-square\_\-root:Fast but less accurate implementations of square root based functions.\begin{itemize}
+\item Sqrt optimisation based on Newton's method, www.gamedev.net/community/forums/topic.asp?topic id=139956. \end{itemize}
+ 
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__gtx__fast__square__root_g4a192efe46a74d13ab40067f7e3714e3}{glm::fastSqrt} (genType const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__gtx__fast__square__root_g38b3acc3e6a37b2e6f78e2bb29585047}{glm::fastInverseSqrt} (genType const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL vecType$<$ T, P $>$ \hyperlink{group__gtx__fast__square__root_ge34c9d81e02deb1042789aa4dc98cfc9}{glm::fastInverseSqrt} (vecType$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType::value\_\-type \hyperlink{group__gtx__fast__square__root_g49395da3932ad3f2b33d6b874aa1de0d}{glm::fastLength} (genType const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType::value\_\-type \hyperlink{group__gtx__fast__square__root_g38aff4a231786efed3482b015da34b66}{glm::fastDistance} (genType const \&x, genType const \&y)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__gtx__fast__square__root_g06fee9a90e853107e9d70d690dccf478}{glm::fastNormalize} (genType const \&x)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Fast but less accurate implementations of square root based functions.\begin{itemize}
+\item Sqrt optimisation based on Newton's method, www.gamedev.net/community/forums/topic.asp?topic id=139956. \end{itemize}
+
+
+$<$glm/gtx/fast\_\-square\_\-root.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__fast__square__root_g38aff4a231786efed3482b015da34b66}{
+\index{gtx\_\-fast\_\-square\_\-root@{gtx\_\-fast\_\-square\_\-root}!fastDistance@{fastDistance}}
+\index{fastDistance@{fastDistance}!gtx_fast_square_root@{gtx\_\-fast\_\-square\_\-root}}
+\subsubsection[fastDistance]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::fastDistance (genType const \& {\em x}, \/  genType const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__fast__square__root_g38aff4a231786efed3482b015da34b66}
+
+
+Faster than the common distance function but less accurate. From GLM\_\-GTX\_\-fast\_\-square\_\-root extension. \hypertarget{group__gtx__fast__square__root_ge34c9d81e02deb1042789aa4dc98cfc9}{
+\index{gtx\_\-fast\_\-square\_\-root@{gtx\_\-fast\_\-square\_\-root}!fastInverseSqrt@{fastInverseSqrt}}
+\index{fastInverseSqrt@{fastInverseSqrt}!gtx_fast_square_root@{gtx\_\-fast\_\-square\_\-root}}
+\subsubsection[fastInverseSqrt]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ T, P $>$ glm::fastInverseSqrt (vecType$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__fast__square__root_ge34c9d81e02deb1042789aa4dc98cfc9}
+
+
+Faster than the common inversesqrt function but less accurate. From GLM\_\-GTX\_\-fast\_\-square\_\-root extension. \hypertarget{group__gtx__fast__square__root_g38b3acc3e6a37b2e6f78e2bb29585047}{
+\index{gtx\_\-fast\_\-square\_\-root@{gtx\_\-fast\_\-square\_\-root}!fastInverseSqrt@{fastInverseSqrt}}
+\index{fastInverseSqrt@{fastInverseSqrt}!gtx_fast_square_root@{gtx\_\-fast\_\-square\_\-root}}
+\subsubsection[fastInverseSqrt]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::fastInverseSqrt (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__fast__square__root_g38b3acc3e6a37b2e6f78e2bb29585047}
+
+
+Faster than the common inversesqrt function but less accurate. From GLM\_\-GTX\_\-fast\_\-square\_\-root extension. \hypertarget{group__gtx__fast__square__root_g49395da3932ad3f2b33d6b874aa1de0d}{
+\index{gtx\_\-fast\_\-square\_\-root@{gtx\_\-fast\_\-square\_\-root}!fastLength@{fastLength}}
+\index{fastLength@{fastLength}!gtx_fast_square_root@{gtx\_\-fast\_\-square\_\-root}}
+\subsubsection[fastLength]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::fastLength (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__fast__square__root_g49395da3932ad3f2b33d6b874aa1de0d}
+
+
+Faster than the common length function but less accurate. From GLM\_\-GTX\_\-fast\_\-square\_\-root extension. \hypertarget{group__gtx__fast__square__root_g06fee9a90e853107e9d70d690dccf478}{
+\index{gtx\_\-fast\_\-square\_\-root@{gtx\_\-fast\_\-square\_\-root}!fastNormalize@{fastNormalize}}
+\index{fastNormalize@{fastNormalize}!gtx_fast_square_root@{gtx\_\-fast\_\-square\_\-root}}
+\subsubsection[fastNormalize]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::fastNormalize (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__fast__square__root_g06fee9a90e853107e9d70d690dccf478}
+
+
+Faster than the common normalize function but less accurate. From GLM\_\-GTX\_\-fast\_\-square\_\-root extension. \hypertarget{group__gtx__fast__square__root_g4a192efe46a74d13ab40067f7e3714e3}{
+\index{gtx\_\-fast\_\-square\_\-root@{gtx\_\-fast\_\-square\_\-root}!fastSqrt@{fastSqrt}}
+\index{fastSqrt@{fastSqrt}!gtx_fast_square_root@{gtx\_\-fast\_\-square\_\-root}}
+\subsubsection[fastSqrt]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::fastSqrt (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__fast__square__root_g4a192efe46a74d13ab40067f7e3714e3}
+
+
+Faster than the common sqrt function but less accurate. From GLM\_\-GTX\_\-fast\_\-square\_\-root extension. 

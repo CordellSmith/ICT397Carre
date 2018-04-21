@@ -1,0 +1,18 @@
+digraph structs
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=8,labelfontname="FreeSans",labelfontsize=8];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="Keyboard keys",height=0.2,width=0.4,color="black",URL="$group__keys.html"];
+  Node2 [label="Modifier key flags",height=0.2,width=0.4,color="black",URL="$group__mods.html"];
+  Node3 [label="Mouse buttons",height=0.2,width=0.4,color="black",URL="$group__buttons.html"];
+  Node5 [label="Standard cursor shapes",height=0.2,width=0.4,color="black",URL="$group__shapes.html"];
+  Node4 [label="Joysticks",height=0.2,width=0.4,color="black",URL="$group__joysticks.html"];
+  Node0 [label="Input reference",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node0->Node1 [shape=plaintext, color="midnightblue", dir="back", style="solid"];
+  Node0->Node2 [shape=plaintext, color="midnightblue", dir="back", style="solid"];
+  Node0->Node3 [shape=plaintext, color="midnightblue", dir="back", style="solid"];
+  Node0->Node4 [shape=plaintext, color="midnightblue", dir="back", style="solid"];
+  Node0->Node5 [shape=plaintext, color="midnightblue", dir="back", style="solid"];
+}

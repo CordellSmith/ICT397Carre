@@ -1,0 +1,40 @@
+\hypertarget{classb3_sorted_overlapping_pair_cache}{
+\section{b3SortedOverlappingPairCache Class Reference}
+\label{classb3_sorted_overlapping_pair_cache}\index{b3SortedOverlappingPairCache@{b3SortedOverlappingPairCache}}
+}
+{\tt \#include $<$b3OverlappingPairCache.h$>$}
+
+Inheritance diagram for b3SortedOverlappingPairCache:Collaboration diagram for b3SortedOverlappingPairCache:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+b3BroadphasePair $\ast$ \hyperlink{classb3_sorted_overlapping_pair_cache_d24f6d5bfc4b9e378ace06bcb10519ea}{findPair} (int proxy0, int proxy1)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{classb3_sorted_overlapping_pair_cache_ebe6abcf2a675cda50246430a4e5cea4}{
+bool \hyperlink{classb3_sorted_overlapping_pair_cache_ebe6abcf2a675cda50246430a4e5cea4}{m\_\-hasDeferredRemoval}}
+\label{classb3_sorted_overlapping_pair_cache_ebe6abcf2a675cda50246430a4e5cea4}
+
+\begin{CompactList}\small\item\em by default, do the removal during the pair traversal \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classb3_sorted_overlapping_pair_cache}{b3SortedOverlappingPairCache} maintains the objects with overlapping AABB Typically managed by the Broadphase, Axis3Sweep or b3SimpleBroadphase 
+
+\subsection{Member Function Documentation}
+\hypertarget{classb3_sorted_overlapping_pair_cache_d24f6d5bfc4b9e378ace06bcb10519ea}{
+\index{b3SortedOverlappingPairCache@{b3SortedOverlappingPairCache}!findPair@{findPair}}
+\index{findPair@{findPair}!b3SortedOverlappingPairCache@{b3SortedOverlappingPairCache}}
+\subsubsection[findPair]{\setlength{\rightskip}{0pt plus 5cm}b3BroadphasePair $\ast$ b3SortedOverlappingPairCache::findPair (int {\em proxy0}, \/  int {\em proxy1})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classb3_sorted_overlapping_pair_cache_d24f6d5bfc4b9e378ace06bcb10519ea}
+
+
+this findPair becomes really slow. Either sort the list to speedup the query, or use a different solution. It is mainly used for Removing overlapping pairs. Removal could be delayed. we could keep a linked list in each proxy, and store pair in one of the proxies (with lowest memory address) Also we can use a 2D bitmap, which can be useful for a future GPU implementation 
+
+Implements \hyperlink{classb3_overlapping_pair_cache}{b3OverlappingPairCache}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3OverlappingPairCache.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3OverlappingPairCache.cpp\end{CompactItemize}

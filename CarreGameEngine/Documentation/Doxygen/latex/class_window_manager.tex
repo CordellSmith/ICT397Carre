@@ -1,0 +1,144 @@
+\hypertarget{class_window_manager}{
+\section{WindowManager Class Reference}
+\label{class_window_manager}\index{WindowManager@{WindowManager}}
+}
+Interface class to manage the creation of the window.  
+
+
+{\tt \#include $<$WindowManager.h$>$}
+
+Inherited by GLFWManager.
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual \hyperlink{class_window_manager_d2c42494d2d9045b18a3a09e5920290f}{$\sim$WindowManager} ()
+\begin{CompactList}\small\item\em Destructor. \item\end{CompactList}\item 
+virtual int \hyperlink{class_window_manager_b389ab7ab5fab8add272fb6e6d139a2a}{Initialize} (int width, int height, std::string strTitle, bool bFullScreen=false)=0
+\begin{CompactList}\small\item\em Initializes the window. \item\end{CompactList}\item 
+virtual void \hyperlink{class_window_manager_bc3dfc535171f18eda134734e6d546ef}{SwapTheBuffers} ()=0
+\begin{CompactList}\small\item\em Swaps the buffers. \item\end{CompactList}\item 
+virtual bool \hyperlink{class_window_manager_78beede37e932a7917c7748659af5973}{ProcessInput} (bool continueGame)=0
+\begin{CompactList}\small\item\em Processes the input of the user. \item\end{CompactList}\item 
+virtual void \hyperlink{class_window_manager_fdb17ba07b6589824282386dc8707b79}{Destroy} ()=0
+\begin{CompactList}\small\item\em Destroys the window context. \item\end{CompactList}\item 
+virtual InputManager $\ast$ \hyperlink{class_window_manager_a76f8df60f629cc88d98ab60e69278ed}{GetInputManager} ()
+\begin{CompactList}\small\item\em Returns the input manager object. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_window_manager_df17f87e4722c2a30b80a25081901dbd}{
+InputManager \hyperlink{class_window_manager_df17f87e4722c2a30b80a25081901dbd}{m\_\-inputManager}}
+\label{class_window_manager_df17f87e4722c2a30b80a25081901dbd}
+
+\begin{CompactList}\small\item\em Used to control the camera movements. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Interface class to manage the creation of the window. 
+
+This class handles input and the creation of the OpenGL context implementing GLFW.
+
+\begin{Desc}
+\item[Version:]01 \end{Desc}
+\begin{Desc}
+\item[Date:]29/03/2018 \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_window_manager_d2c42494d2d9045b18a3a09e5920290f}{
+\index{WindowManager@{WindowManager}!$\sim$WindowManager@{$\sim$WindowManager}}
+\index{$\sim$WindowManager@{$\sim$WindowManager}!WindowManager@{WindowManager}}
+\subsubsection[$\sim$WindowManager]{\setlength{\rightskip}{0pt plus 5cm}virtual WindowManager::$\sim$WindowManager ()\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{class_window_manager_d2c42494d2d9045b18a3a09e5920290f}
+
+
+Destructor. 
+
+This function is required for the inheriting class to have its destructor called.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_window_manager_b389ab7ab5fab8add272fb6e6d139a2a}{
+\index{WindowManager@{WindowManager}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!WindowManager@{WindowManager}}
+\subsubsection[Initialize]{\setlength{\rightskip}{0pt plus 5cm}virtual int WindowManager::Initialize (int {\em width}, \/  int {\em height}, \/  std::string {\em strTitle}, \/  bool {\em bFullScreen} = {\tt false})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_window_manager_b389ab7ab5fab8add272fb6e6d139a2a}
+
+
+Initializes the window. 
+
+This function initializes the window taking in its dimensions and creating a new OpenGL context.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em int}]width \item[{\em int}]height \item[{\em std::string}]strTitle \item[{\em bool}]bFullScreen \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int \end{Desc}
+\hypertarget{class_window_manager_bc3dfc535171f18eda134734e6d546ef}{
+\index{WindowManager@{WindowManager}!SwapTheBuffers@{SwapTheBuffers}}
+\index{SwapTheBuffers@{SwapTheBuffers}!WindowManager@{WindowManager}}
+\subsubsection[SwapTheBuffers]{\setlength{\rightskip}{0pt plus 5cm}virtual void WindowManager::SwapTheBuffers ()\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_window_manager_bc3dfc535171f18eda134734e6d546ef}
+
+
+Swaps the buffers. 
+
+This function swaps the backbuffer to the front and is called every frame.
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_window_manager_78beede37e932a7917c7748659af5973}{
+\index{WindowManager@{WindowManager}!ProcessInput@{ProcessInput}}
+\index{ProcessInput@{ProcessInput}!WindowManager@{WindowManager}}
+\subsubsection[ProcessInput]{\setlength{\rightskip}{0pt plus 5cm}virtual bool WindowManager::ProcessInput (bool {\em continueGame})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_window_manager_78beede37e932a7917c7748659af5973}
+
+
+Processes the input of the user. 
+
+This function processes any needed input for the application such as key presses like esc to close the window.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em bool}]continueGame \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]bool \end{Desc}
+\hypertarget{class_window_manager_fdb17ba07b6589824282386dc8707b79}{
+\index{WindowManager@{WindowManager}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!WindowManager@{WindowManager}}
+\subsubsection[Destroy]{\setlength{\rightskip}{0pt plus 5cm}virtual void WindowManager::Destroy ()\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_window_manager_fdb17ba07b6589824282386dc8707b79}
+
+
+Destroys the window context. 
+
+This function destroys the window as well as any existing OpenGL contexts.
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_window_manager_a76f8df60f629cc88d98ab60e69278ed}{
+\index{WindowManager@{WindowManager}!GetInputManager@{GetInputManager}}
+\index{GetInputManager@{GetInputManager}!WindowManager@{WindowManager}}
+\subsubsection[GetInputManager]{\setlength{\rightskip}{0pt plus 5cm}virtual InputManager$\ast$ WindowManager::GetInputManager ()\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{class_window_manager_a76f8df60f629cc88d98ab60e69278ed}
+
+
+Returns the input manager object. 
+
+This function is a getter that retrurns a pointer to the InputManager object in order to move the camera.
+
+\begin{Desc}
+\item[Returns:]InputManager$\ast$ \end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/WindowManager.h\end{CompactItemize}

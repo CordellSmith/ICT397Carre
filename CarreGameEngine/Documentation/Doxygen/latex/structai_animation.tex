@@ -1,0 +1,101 @@
+\hypertarget{structai_animation}{
+\section{aiAnimation Struct Reference}
+\label{structai_animation}\index{aiAnimation@{aiAnimation}}
+}
+{\tt \#include $<$anim.h$>$}
+
+Collaboration diagram for aiAnimation:\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+C\_\-STRUCT \hyperlink{structai_string}{aiString} \hyperlink{structai_animation_1be7d78d88694173a7ceef658fea77f1}{mName}
+\item 
+double \hyperlink{structai_animation_e2bbc49320b4b75c05e23e0ab704ece7}{mDuration}
+\item 
+double \hyperlink{structai_animation_fd26a40c3f16b6aa6e150effa3eaeab1}{mTicksPerSecond}
+\item 
+unsigned int \hyperlink{structai_animation_ebfccf9a9aefa6084566d21e8a30b7e5}{mNumChannels}
+\item 
+C\_\-STRUCT \hyperlink{structai_node_anim}{aiNodeAnim} $\ast$$\ast$ \hyperlink{structai_animation_89244bb68b725ffbb85137174c28e757}{mChannels}
+\item 
+unsigned int \hyperlink{structai_animation_c43aacd8502020174e553501f0b6bf5f}{mNumMeshChannels}
+\item 
+C\_\-STRUCT \hyperlink{structai_mesh_anim}{aiMeshAnim} $\ast$$\ast$ \hyperlink{structai_animation_f05138121dbde8b31aa031505b454c85}{mMeshChannels}
+\item 
+unsigned int \hyperlink{structai_animation_ed9aa50bdf38c9f6064f79f5aab38d59}{mNumMorphMeshChannels}
+\item 
+C\_\-STRUCT \hyperlink{structai_mesh_morph_anim}{aiMeshMorphAnim} $\ast$$\ast$ \hyperlink{structai_animation_bcc055a00bed8ce3329fdf4a9c22ec9c}{mMorphMeshChannels}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+An animation consists of key-frame data for a number of nodes. For each node affected by the animation a separate series of data is given. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_animation_1be7d78d88694173a7ceef658fea77f1}{
+\index{aiAnimation@{aiAnimation}!mName@{mName}}
+\index{mName@{mName}!aiAnimation@{aiAnimation}}
+\subsubsection[mName]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiString} {\bf aiAnimation::mName}}}
+\label{structai_animation_1be7d78d88694173a7ceef658fea77f1}
+
+
+The name of the animation. If the modeling package this data was exported from does support only a single animation channel, this name is usually empty (length is zero). \hypertarget{structai_animation_e2bbc49320b4b75c05e23e0ab704ece7}{
+\index{aiAnimation@{aiAnimation}!mDuration@{mDuration}}
+\index{mDuration@{mDuration}!aiAnimation@{aiAnimation}}
+\subsubsection[mDuration]{\setlength{\rightskip}{0pt plus 5cm}double {\bf aiAnimation::mDuration}}}
+\label{structai_animation_e2bbc49320b4b75c05e23e0ab704ece7}
+
+
+Duration of the animation in ticks. \hypertarget{structai_animation_fd26a40c3f16b6aa6e150effa3eaeab1}{
+\index{aiAnimation@{aiAnimation}!mTicksPerSecond@{mTicksPerSecond}}
+\index{mTicksPerSecond@{mTicksPerSecond}!aiAnimation@{aiAnimation}}
+\subsubsection[mTicksPerSecond]{\setlength{\rightskip}{0pt plus 5cm}double {\bf aiAnimation::mTicksPerSecond}}}
+\label{structai_animation_fd26a40c3f16b6aa6e150effa3eaeab1}
+
+
+Ticks per second. 0 if not specified in the imported file \hypertarget{structai_animation_ebfccf9a9aefa6084566d21e8a30b7e5}{
+\index{aiAnimation@{aiAnimation}!mNumChannels@{mNumChannels}}
+\index{mNumChannels@{mNumChannels}!aiAnimation@{aiAnimation}}
+\subsubsection[mNumChannels]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiAnimation::mNumChannels}}}
+\label{structai_animation_ebfccf9a9aefa6084566d21e8a30b7e5}
+
+
+The number of bone animation channels. Each channel affects a single node. \hypertarget{structai_animation_89244bb68b725ffbb85137174c28e757}{
+\index{aiAnimation@{aiAnimation}!mChannels@{mChannels}}
+\index{mChannels@{mChannels}!aiAnimation@{aiAnimation}}
+\subsubsection[mChannels]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiNodeAnim}$\ast$$\ast$ {\bf aiAnimation::mChannels}}}
+\label{structai_animation_89244bb68b725ffbb85137174c28e757}
+
+
+The node animation channels. Each channel affects a single node. The array is mNumChannels in size. \hypertarget{structai_animation_c43aacd8502020174e553501f0b6bf5f}{
+\index{aiAnimation@{aiAnimation}!mNumMeshChannels@{mNumMeshChannels}}
+\index{mNumMeshChannels@{mNumMeshChannels}!aiAnimation@{aiAnimation}}
+\subsubsection[mNumMeshChannels]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiAnimation::mNumMeshChannels}}}
+\label{structai_animation_c43aacd8502020174e553501f0b6bf5f}
+
+
+The number of mesh animation channels. Each channel affects a single mesh and defines vertex-based animation. \hypertarget{structai_animation_f05138121dbde8b31aa031505b454c85}{
+\index{aiAnimation@{aiAnimation}!mMeshChannels@{mMeshChannels}}
+\index{mMeshChannels@{mMeshChannels}!aiAnimation@{aiAnimation}}
+\subsubsection[mMeshChannels]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiMeshAnim}$\ast$$\ast$ {\bf aiAnimation::mMeshChannels}}}
+\label{structai_animation_f05138121dbde8b31aa031505b454c85}
+
+
+The mesh animation channels. Each channel affects a single mesh. The array is mNumMeshChannels in size. \hypertarget{structai_animation_ed9aa50bdf38c9f6064f79f5aab38d59}{
+\index{aiAnimation@{aiAnimation}!mNumMorphMeshChannels@{mNumMorphMeshChannels}}
+\index{mNumMorphMeshChannels@{mNumMorphMeshChannels}!aiAnimation@{aiAnimation}}
+\subsubsection[mNumMorphMeshChannels]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiAnimation::mNumMorphMeshChannels}}}
+\label{structai_animation_ed9aa50bdf38c9f6064f79f5aab38d59}
+
+
+The number of mesh animation channels. Each channel affects a single mesh and defines morphing animation. \hypertarget{structai_animation_bcc055a00bed8ce3329fdf4a9c22ec9c}{
+\index{aiAnimation@{aiAnimation}!mMorphMeshChannels@{mMorphMeshChannels}}
+\index{mMorphMeshChannels@{mMorphMeshChannels}!aiAnimation@{aiAnimation}}
+\subsubsection[mMorphMeshChannels]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiMeshMorphAnim}$\ast$$\ast$ {\bf aiAnimation::mMorphMeshChannels}}}
+\label{structai_animation_bcc055a00bed8ce3329fdf4a9c22ec9c}
+
+
+The morph mesh animation channels. Each channel affects a single mesh. The array is mNumMorphMeshChannels in size. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{anim_8h}{anim.h}\end{CompactItemize}

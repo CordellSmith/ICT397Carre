@@ -1,0 +1,45 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btSoftBodyTriangleCallback",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btTriangleCallback",height=0.2,width=0.4,color="black",URL="$classbt_triangle_callback.html"];
+  Node3 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_shapeCache"];
+  Node3 [label="btHashMap\< btHashKey\< btTriIndex \>, btTriIndex \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node4 -> Node3 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_keyArray"];
+  Node4 [label="btAlignedObjectArray\< btHashKey\< btTriIndex \> \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node5 -> Node4 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node5 [label="btAlignedAllocator\< btHashKey\< btTriIndex \>, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node6 -> Node3 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_valueArray"];
+  Node6 [label="btAlignedObjectArray\< btTriIndex \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node7 -> Node6 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node7 [label="btAlignedAllocator\< btTriIndex, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node8 -> Node3 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_next\nm_hashTable"];
+  Node8 [label="btAlignedObjectArray\< int \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node9 -> Node8 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node9 [label="btAlignedAllocator\< int, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node10 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_softBody"];
+  Node10 [label="btSoftBody",height=0.2,width=0.4,color="black",URL="$classbt_soft_body.html"];
+  Node8 -> Node10 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_userIndexMapping"];
+  Node11 -> Node10 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_clusterConnectivity"];
+  Node11 [label="btAlignedObjectArray\< bool \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node12 -> Node11 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node12 [label="btAlignedAllocator\< bool, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node13 -> Node10 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_cdbvt\nm_fdbvt\nm_ndbvt"];
+  Node13 [label="btDbvt",height=0.2,width=0.4,color="black",URL="$structbt_dbvt.html"];
+  Node14 -> Node10 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_links"];
+  Node14 [label="btAlignedObjectArray\< Link \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node15 -> Node14 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node15 [label="btAlignedAllocator\< Link, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node16 -> Node10 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_collisionDisabledObjects"];
+  Node16 [label="btAlignedObjectArray\< const class btCollisionObject * \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node17 -> Node16 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node17 [label="btAlignedAllocator\< const class btCollisionObject *, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node18 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_resultOut"];
+  Node18 [label="btManifoldResult",height=0.2,width=0.4,color="black",URL="$classbt_manifold_result.html",tooltip="btManifoldResult is a helper class to manage contact results."];
+  Node19 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_dispatcher"];
+  Node19 [label="btDispatcher",height=0.2,width=0.4,color="black",URL="$classbt_dispatcher.html"];
+}

@@ -1,0 +1,79 @@
+\hypertarget{class_g_i_m___a_a_b_b}{
+\section{GIM\_\-AABB Class Reference}
+\label{class_g_i_m___a_a_b_b}\index{GIM\_\-AABB@{GIM\_\-AABB}}
+}
+Axis aligned box.  
+
+
+{\tt \#include $<$gim\_\-box\_\-collision.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_g_i_m___a_a_b_b_deb95bf6a8b4d0281b35adf33fbbfbdc}{
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{class_g_i_m___a_a_b_b_deb95bf6a8b4d0281b35adf33fbbfbdc}{appy\_\-transform} (const btTransform \&trans)}
+\label{class_g_i_m___a_a_b_b_deb95bf6a8b4d0281b35adf33fbbfbdc}
+
+\begin{CompactList}\small\item\em Apply a transform to an AABB. \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___a_a_b_b_75e41aceb9b1e8f4b90e702dcec19c13}{
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{class_g_i_m___a_a_b_b_75e41aceb9b1e8f4b90e702dcec19c13}{merge} (const \hyperlink{class_g_i_m___a_a_b_b}{GIM\_\-AABB} \&box)}
+\label{class_g_i_m___a_a_b_b_75e41aceb9b1e8f4b90e702dcec19c13}
+
+\begin{CompactList}\small\item\em Merges a Box. \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___a_a_b_b_435ac5e5cacf99c60baf01f9a113a798}{
+{\footnotesize template$<$typename CLASS\_\-POINT$>$ }\\SIMD\_\-FORCE\_\-INLINE void \hyperlink{class_g_i_m___a_a_b_b_435ac5e5cacf99c60baf01f9a113a798}{merge\_\-point} (const CLASS\_\-POINT \&point)}
+\label{class_g_i_m___a_a_b_b_435ac5e5cacf99c60baf01f9a113a798}
+
+\begin{CompactList}\small\item\em Merges a point. \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___a_a_b_b_75140c87ffca65c98ae0391161768ecf}{
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{class_g_i_m___a_a_b_b_75140c87ffca65c98ae0391161768ecf}{get\_\-center\_\-extend} (btVector3 \&center, btVector3 \&extend) const }
+\label{class_g_i_m___a_a_b_b_75140c87ffca65c98ae0391161768ecf}
+
+\begin{CompactList}\small\item\em Gets the extend and center. \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___a_a_b_b_61a5dc7c0f802b2f4ef782b6bed04938}{
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{class_g_i_m___a_a_b_b_61a5dc7c0f802b2f4ef782b6bed04938}{find\_\-intersection} (const \hyperlink{class_g_i_m___a_a_b_b}{GIM\_\-AABB} \&other, \hyperlink{class_g_i_m___a_a_b_b}{GIM\_\-AABB} \&intersection) const }
+\label{class_g_i_m___a_a_b_b_61a5dc7c0f802b2f4ef782b6bed04938}
+
+\begin{CompactList}\small\item\em Finds the intersecting box between this box and the other. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___a_a_b_b_1fafc37703d288fd0fe862b861829287}{collide\_\-ray} (const btVector3 \&vorigin, const btVector3 \&vdir)
+\begin{CompactList}\small\item\em Finds the Ray intersection parameter. \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___a_a_b_b_f4c6c48e03d316e74e00b2ab261fd125}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___a_a_b_b_f4c6c48e03d316e74e00b2ab261fd125}{overlapping\_\-trans\_\-cache} (const \hyperlink{class_g_i_m___a_a_b_b}{GIM\_\-AABB} \&box, const \hyperlink{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e}{GIM\_\-BOX\_\-BOX\_\-TRANSFORM\_\-CACHE} \&transcache, bool fulltest)}
+\label{class_g_i_m___a_a_b_b_f4c6c48e03d316e74e00b2ab261fd125}
+
+\begin{CompactList}\small\item\em transcache is the transformation cache from box to this AABB \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___a_a_b_b_05940e89bdd3fa59cc8cd3af6e1b876c}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___a_a_b_b_05940e89bdd3fa59cc8cd3af6e1b876c}{collide\_\-plane} (const btVector4 \&plane)}
+\label{class_g_i_m___a_a_b_b_05940e89bdd3fa59cc8cd3af6e1b876c}
+
+\begin{CompactList}\small\item\em Simple test for planes. \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___a_a_b_b_4a1ffa196d3981313fccf9e01aa383f9}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___a_a_b_b_4a1ffa196d3981313fccf9e01aa383f9}{collide\_\-triangle\_\-exact} (const btVector3 \&p1, const btVector3 \&p2, const btVector3 \&p3, const btVector4 \&triangle\_\-plane)}
+\label{class_g_i_m___a_a_b_b_4a1ffa196d3981313fccf9e01aa383f9}
+
+\begin{CompactList}\small\item\em test for a triangle, with edges \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Axis aligned box. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_g_i_m___a_a_b_b_1fafc37703d288fd0fe862b861829287}{
+\index{GIM\_\-AABB@{GIM\_\-AABB}!collide\_\-ray@{collide\_\-ray}}
+\index{collide\_\-ray@{collide\_\-ray}!GIM_AABB@{GIM\_\-AABB}}
+\subsubsection[collide\_\-ray]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE bool GIM\_\-AABB::collide\_\-ray (const btVector3 \& {\em vorigin}, \/  const btVector3 \& {\em vdir})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_g_i_m___a_a_b_b_1fafc37703d288fd0fe862b861829287}
+
+
+Finds the Ray intersection parameter. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aabb}]Aligned box \item[{\em vorigin}]A vec3f with the origin of the ray \item[{\em vdir}]A vec3f with the direction of the ray \end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__box__collision_8h}{gim\_\-box\_\-collision.h}\end{CompactItemize}

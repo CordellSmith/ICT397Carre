@@ -1,0 +1,106 @@
+\hypertarget{group__core__func__matrix}{
+\section{Matrix functions}
+\label{group__core__func__matrix}\index{Matrix functions@{Matrix functions}}
+}
+
+
+Collaboration diagram for Matrix functions:\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ }\\GLM\_\-FUNC\_\-DECL matType$<$ T, P $>$ \hyperlink{group__core__func__matrix_g30bbe46a821497b9ae0c63a2d27db0b2}{glm::matrixCompMult} (matType$<$ T, P $>$ const \&x, matType$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class vecTypeA, template$<$ typename, precision $>$ class vecTypeB$>$ }\\GLM\_\-FUNC\_\-DECL detail::outerProduct\_\-trait$<$ T, P, vecTypeA, vecTypeB $>$::type \hyperlink{group__core__func__matrix_g47818f9809502f7a975a2c43a61fedb3}{glm::outerProduct} (vecTypeA$<$ T, P $>$ const \&c, vecTypeB$<$ T, P $>$ const \&r)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__core__func__matrix_g704c9bfebc2533c6715691de6473f90b}{glm::determinant} (matType$<$ T, P $>$ const \&m)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ }\\GLM\_\-FUNC\_\-DECL matType$<$ T, P $>$ \hyperlink{group__core__func__matrix_g4b56decdc6560a13b616c6312bdcc17e}{glm::inverse} (matType$<$ T, P $>$ const \&m)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+For each of the following built-in matrix functions, there is both a single-precision floating point version, where all arguments and return values are single precision, and a double-precision floating version, where all arguments and return values are double precision. Only the single-precision floating point version is shown. 
+
+\subsection{Function Documentation}
+\hypertarget{group__core__func__matrix_g704c9bfebc2533c6715691de6473f90b}{
+\index{core\_\-func\_\-matrix@{core\_\-func\_\-matrix}!determinant@{determinant}}
+\index{determinant@{determinant}!core_func_matrix@{core\_\-func\_\-matrix}}
+\subsubsection[determinant]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::determinant (matType$<$ T, P $>$ const \& {\em m})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__matrix_g704c9bfebc2533c6715691de6473f90b}
+
+
+Returns the transposed matrix of x
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em matType}]Floating-point matrix types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/transpose.xml}{\tt GLSL transpose man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.6 Matrix Functions} Return the \hyperlink{group__core__func__matrix_g704c9bfebc2533c6715691de6473f90b}{determinant} of a squared matrix.\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em valType}]Floating-point scalar types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/determinant.xml}{\tt GLSL determinant man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.6 Matrix Functions} \end{Desc}
+\hypertarget{group__core__func__matrix_g4b56decdc6560a13b616c6312bdcc17e}{
+\index{core\_\-func\_\-matrix@{core\_\-func\_\-matrix}!inverse@{inverse}}
+\index{inverse@{inverse}!core_func_matrix@{core\_\-func\_\-matrix}}
+\subsubsection[inverse]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ GLM\_\-FUNC\_\-QUALIFIER matType$<$ T, P $>$ glm::inverse (matType$<$ T, P $>$ const \& {\em m})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__matrix_g4b56decdc6560a13b616c6312bdcc17e}
+
+
+Return the inverse of a squared matrix.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em valType}]Floating-point scalar types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/inverse.xml}{\tt GLSL inverse man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.6 Matrix Functions} \end{Desc}
+\hypertarget{group__core__func__matrix_g30bbe46a821497b9ae0c63a2d27db0b2}{
+\index{core\_\-func\_\-matrix@{core\_\-func\_\-matrix}!matrixCompMult@{matrixCompMult}}
+\index{matrixCompMult@{matrixCompMult}!core_func_matrix@{core\_\-func\_\-matrix}}
+\subsubsection[matrixCompMult]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ GLM\_\-FUNC\_\-QUALIFIER matType$<$ T, P $>$ glm::matrixCompMult (matType$<$ T, P $>$ const \& {\em x}, \/  matType$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__matrix_g30bbe46a821497b9ae0c63a2d27db0b2}
+
+
+Multiply matrix x by matrix y component-wise, i.e., result\mbox{[}i\mbox{]}\mbox{[}j\mbox{]} is the scalar product of x\mbox{[}i\mbox{]}\mbox{[}j\mbox{]} and y\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em matType}]Floating-point matrix types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/matrixCompMult.xml}{\tt GLSL matrixCompMult man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.6 Matrix Functions} \end{Desc}
+\hypertarget{group__core__func__matrix_g47818f9809502f7a975a2c43a61fedb3}{
+\index{core\_\-func\_\-matrix@{core\_\-func\_\-matrix}!outerProduct@{outerProduct}}
+\index{outerProduct@{outerProduct}!core_func_matrix@{core\_\-func\_\-matrix}}
+\subsubsection[outerProduct]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecTypeA, template$<$ typename, precision $>$ class vecTypeB$>$ GLM\_\-FUNC\_\-QUALIFIER detail::outerProduct\_\-trait$<$ T, P, vecTypeA, vecTypeB $>$::type glm::outerProduct (vecTypeA$<$ T, P $>$ const \& {\em c}, \/  vecTypeB$<$ T, P $>$ const \& {\em r})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__matrix_g47818f9809502f7a975a2c43a61fedb3}
+
+
+Treats the first parameter c as a column vector and the second parameter r as a row vector and does a linear algebraic matrix multiply c $\ast$ r.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em matType}]Floating-point matrix types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/outerProduct.xml}{\tt GLSL outerProduct man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.6 Matrix Functions}\end{Desc}
+\begin{Desc}
+\item[\hyperlink{todo__todo000048}{Todo}]Clarify the declaration to specify that matType doesn't have to be provided when used. \end{Desc}

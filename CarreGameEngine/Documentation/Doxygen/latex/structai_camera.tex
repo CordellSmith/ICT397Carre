@@ -1,0 +1,141 @@
+\hypertarget{structai_camera}{
+\section{aiCamera Struct Reference}
+\label{structai_camera}\index{aiCamera@{aiCamera}}
+}
+{\tt \#include $<$camera.h$>$}
+
+Collaboration diagram for aiCamera:\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+C\_\-STRUCT \hyperlink{structai_string}{aiString} \hyperlink{structai_camera_a6a5fe5e04b3db1b23f69eb9910c6816}{mName}
+\item 
+C\_\-STRUCT aiVector3D \hyperlink{structai_camera_518617ea192ca0698e748a4399e7c3a5}{mPosition}
+\item 
+C\_\-STRUCT aiVector3D \hyperlink{structai_camera_7fb42b287389b4f99c883098268d6d1a}{mUp}
+\item 
+C\_\-STRUCT aiVector3D \hyperlink{structai_camera_f9463249ac870e030fa435b1186cef23}{mLookAt}
+\item 
+float \hyperlink{structai_camera_dcdea73ece19ea0a9068f5544ec23592}{mHorizontalFOV}
+\item 
+float \hyperlink{structai_camera_720e8c94c036dcefe4b13cc1c69c521e}{mClipPlaneNear}
+\item 
+float \hyperlink{structai_camera_a9ccf77e3d7ca3dc8f46df931b65172f}{mClipPlaneFar}
+\item 
+float \hyperlink{structai_camera_e414556eaa6f910b5927f465d97bf70c}{mAspect}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Helper structure to describe a virtual camera.
+
+Cameras have a representation in the node graph and can be animated. An important aspect is that the camera itself is also part of the scenegraph. This means, any values such as the look-at vector are not $\ast$absolute$\ast$, they're {\bf relative} to the coordinate system defined by the node which corresponds to the camera. This allows for camera animations. For static cameras parameters like the 'look-at' or 'up' vectors are usually specified directly in \hyperlink{structai_camera}{aiCamera}, but beware, they could also be encoded in the node transformation. The following (pseudo)code sample shows how to do it: \par
+\par
+ 
+
+\begin{Code}\begin{verbatim} // Get the camera matrix for a camera at a specific time
+ // if the node hierarchy for the camera does not contain
+ // at least one animated node this is a static computation
+ get-camera-matrix (node sceneRoot, camera cam) : matrix
+ {
+    node   cnd = find-node-for-camera(cam)
+    matrix cmt = identity()
+
+    // as usual - get the absolute camera transformation for this frame
+    for each node nd in hierarchy from sceneRoot to cnd
+      matrix cur
+      if (is-animated(nd))
+         cur = eval-animation(nd)
+      else cur = nd->mTransformation;
+      cmt = mult-matrices( cmt, cur )
+    end for
+
+    // now multiply with the camera's own local transform
+    cam = mult-matrices (cam, get-camera-matrix(cmt) )
+ }
+\end{verbatim}
+\end{Code}
+
+
+
+\begin{Desc}
+\item[Note:]some file formats (such as 3DS, ASE) export a \char`\"{}target point\char`\"{} - the point the camera is looking at (it can even be animated). \hyperlink{namespace_assimp}{Assimp} writes the target point as a subnode of the camera's main node, called \char`\"{}$<$camName$>$.Target\char`\"{}. However this is just additional information then the transformation tracks of the camera main node make the camera already look in the right direction. \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_camera_a6a5fe5e04b3db1b23f69eb9910c6816}{
+\index{aiCamera@{aiCamera}!mName@{mName}}
+\index{mName@{mName}!aiCamera@{aiCamera}}
+\subsubsection[mName]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiString} {\bf aiCamera::mName}}}
+\label{structai_camera_a6a5fe5e04b3db1b23f69eb9910c6816}
+
+
+The name of the camera.
+
+There must be a node in the scenegraph with the same name. This node specifies the position of the camera in the scene hierarchy and can be animated. \hypertarget{structai_camera_518617ea192ca0698e748a4399e7c3a5}{
+\index{aiCamera@{aiCamera}!mPosition@{mPosition}}
+\index{mPosition@{mPosition}!aiCamera@{aiCamera}}
+\subsubsection[mPosition]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D {\bf aiCamera::mPosition}}}
+\label{structai_camera_518617ea192ca0698e748a4399e7c3a5}
+
+
+Position of the camera relative to the coordinate space defined by the corresponding node.
+
+The default value is 0$|$0$|$0. \hypertarget{structai_camera_7fb42b287389b4f99c883098268d6d1a}{
+\index{aiCamera@{aiCamera}!mUp@{mUp}}
+\index{mUp@{mUp}!aiCamera@{aiCamera}}
+\subsubsection[mUp]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D {\bf aiCamera::mUp}}}
+\label{structai_camera_7fb42b287389b4f99c883098268d6d1a}
+
+
+'Up' - vector of the camera coordinate system relative to the coordinate space defined by the corresponding node.
+
+The 'right' vector of the camera coordinate system is the cross product of the up and lookAt vectors. The default value is 0$|$1$|$0. The vector may be normalized, but it needn't. \hypertarget{structai_camera_f9463249ac870e030fa435b1186cef23}{
+\index{aiCamera@{aiCamera}!mLookAt@{mLookAt}}
+\index{mLookAt@{mLookAt}!aiCamera@{aiCamera}}
+\subsubsection[mLookAt]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D {\bf aiCamera::mLookAt}}}
+\label{structai_camera_f9463249ac870e030fa435b1186cef23}
+
+
+'LookAt' - vector of the camera coordinate system relative to the coordinate space defined by the corresponding node.
+
+This is the viewing direction of the user. The default value is 0$|$0$|$1. The vector may be normalized, but it needn't. \hypertarget{structai_camera_dcdea73ece19ea0a9068f5544ec23592}{
+\index{aiCamera@{aiCamera}!mHorizontalFOV@{mHorizontalFOV}}
+\index{mHorizontalFOV@{mHorizontalFOV}!aiCamera@{aiCamera}}
+\subsubsection[mHorizontalFOV]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aiCamera::mHorizontalFOV}}}
+\label{structai_camera_dcdea73ece19ea0a9068f5544ec23592}
+
+
+Half horizontal field of view angle, in radians.
+
+The field of view angle is the angle between the center line of the screen and the left or right border. The default value is 1/4PI. \hypertarget{structai_camera_720e8c94c036dcefe4b13cc1c69c521e}{
+\index{aiCamera@{aiCamera}!mClipPlaneNear@{mClipPlaneNear}}
+\index{mClipPlaneNear@{mClipPlaneNear}!aiCamera@{aiCamera}}
+\subsubsection[mClipPlaneNear]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aiCamera::mClipPlaneNear}}}
+\label{structai_camera_720e8c94c036dcefe4b13cc1c69c521e}
+
+
+Distance of the near clipping plane from the camera.
+
+The value may not be 0.f (for arithmetic reasons to prevent a division through zero). The default value is 0.1f. \hypertarget{structai_camera_a9ccf77e3d7ca3dc8f46df931b65172f}{
+\index{aiCamera@{aiCamera}!mClipPlaneFar@{mClipPlaneFar}}
+\index{mClipPlaneFar@{mClipPlaneFar}!aiCamera@{aiCamera}}
+\subsubsection[mClipPlaneFar]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aiCamera::mClipPlaneFar}}}
+\label{structai_camera_a9ccf77e3d7ca3dc8f46df931b65172f}
+
+
+Distance of the far clipping plane from the camera.
+
+The far clipping plane must, of course, be further away than the near clipping plane. The default value is 1000.f. The ratio between the near and the far plane should not be too large (between 1000-10000 should be ok) to avoid floating-point inaccuracies which could lead to z-fighting. \hypertarget{structai_camera_e414556eaa6f910b5927f465d97bf70c}{
+\index{aiCamera@{aiCamera}!mAspect@{mAspect}}
+\index{mAspect@{mAspect}!aiCamera@{aiCamera}}
+\subsubsection[mAspect]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aiCamera::mAspect}}}
+\label{structai_camera_e414556eaa6f910b5927f465d97bf70c}
+
+
+Screen aspect ratio.
+
+This is the ration between the width and the height of the screen. Typical values are 4/3, 1/2 or 1/1. This value is 0 if the aspect ratio is not defined in the source file. 0 is also the default value. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/camera.h\end{CompactItemize}

@@ -1,0 +1,113 @@
+\hypertarget{version_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/version.h File Reference}
+\label{version_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/version.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/version.h}}
+}
+Functions to query the version of the \hyperlink{namespace_assimp}{Assimp} runtime, check compile flags, ... 
+
+{\tt \#include \char`\"{}defs.h\char`\"{}}\par
+
+
+Include dependency graph for version.h:\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{version_8h_8a8c659a20a5df0d3800ad5af79a763d}{
+\#define \hyperlink{version_8h_8a8c659a20a5df0d3800ad5af79a763d}{ASSIMP\_\-CFLAGS\_\-SHARED}~0x1}
+\label{version_8h_8a8c659a20a5df0d3800ad5af79a763d}
+
+\begin{CompactList}\small\item\em \hyperlink{namespace_assimp}{Assimp} was compiled as a shared object (Windows: DLL). \item\end{CompactList}\item 
+\hypertarget{version_8h_54bfd06fb81e44854813dd9ce29fa2bd}{
+\#define \hyperlink{version_8h_54bfd06fb81e44854813dd9ce29fa2bd}{ASSIMP\_\-CFLAGS\_\-STLPORT}~0x2}
+\label{version_8h_54bfd06fb81e44854813dd9ce29fa2bd}
+
+\begin{CompactList}\small\item\em \hyperlink{namespace_assimp}{Assimp} was compiled against STLport. \item\end{CompactList}\item 
+\hypertarget{version_8h_83a4c4d9c344bc3bd80a3c31c027c079}{
+\#define \hyperlink{version_8h_83a4c4d9c344bc3bd80a3c31c027c079}{ASSIMP\_\-CFLAGS\_\-DEBUG}~0x4}
+\label{version_8h_83a4c4d9c344bc3bd80a3c31c027c079}
+
+\begin{CompactList}\small\item\em \hyperlink{namespace_assimp}{Assimp} was compiled as a debug build. \item\end{CompactList}\item 
+\hypertarget{version_8h_4246a70502fdc483b02c47beabd99dde}{
+\#define \hyperlink{version_8h_4246a70502fdc483b02c47beabd99dde}{ASSIMP\_\-CFLAGS\_\-NOBOOST}~0x8}
+\label{version_8h_4246a70502fdc483b02c47beabd99dde}
+
+\begin{CompactList}\small\item\em \hyperlink{namespace_assimp}{Assimp} was compiled with ASSIMP\_\-BUILD\_\-BOOST\_\-WORKAROUND defined. \item\end{CompactList}\item 
+\hypertarget{version_8h_53c3bace283262b93fbd962ecf0b0e5b}{
+\#define \hyperlink{version_8h_53c3bace283262b93fbd962ecf0b0e5b}{ASSIMP\_\-CFLAGS\_\-SINGLETHREADED}~0x10}
+\label{version_8h_53c3bace283262b93fbd962ecf0b0e5b}
+
+\begin{CompactList}\small\item\em \hyperlink{namespace_assimp}{Assimp} was compiled with ASSIMP\_\-BUILD\_\-SINGLETHREADED defined. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+ASSIMP\_\-API const char $\ast$ \hyperlink{version_8h_ae8020339846d0d9e7e5d2756148c87c}{aiGetLegalString} (void)
+\begin{CompactList}\small\item\em Returns a string with legal copyright and licensing information about \hyperlink{namespace_assimp}{Assimp}. The string may include multiple lines. \item\end{CompactList}\item 
+ASSIMP\_\-API unsigned int \hyperlink{version_8h_875b57215e9763ffaf075cf9950ae4c5}{aiGetVersionMinor} (void)
+\begin{CompactList}\small\item\em Returns the current minor version number of \hyperlink{namespace_assimp}{Assimp}. \item\end{CompactList}\item 
+ASSIMP\_\-API unsigned int \hyperlink{version_8h_4e3809928b7b55d303af0f01f379667a}{aiGetVersionMajor} (void)
+\begin{CompactList}\small\item\em Returns the current major version number of \hyperlink{namespace_assimp}{Assimp}. \item\end{CompactList}\item 
+ASSIMP\_\-API unsigned int \hyperlink{version_8h_8865df81b23f4978fc06e4401c5ea4f5}{aiGetVersionRevision} (void)
+\begin{CompactList}\small\item\em Returns the repository revision of the \hyperlink{namespace_assimp}{Assimp} runtime. \item\end{CompactList}\item 
+ASSIMP\_\-API unsigned int \hyperlink{version_8h_c914a32bb053cb6572032668562873f2}{aiGetCompileFlags} (void)
+\begin{CompactList}\small\item\em Returns assimp's compile flags. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to query the version of the \hyperlink{namespace_assimp}{Assimp} runtime, check compile flags, ... 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{version_8h_c914a32bb053cb6572032668562873f2}{
+\index{version.h@{version.h}!aiGetCompileFlags@{aiGetCompileFlags}}
+\index{aiGetCompileFlags@{aiGetCompileFlags}!version.h@{version.h}}
+\subsubsection[aiGetCompileFlags]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API unsigned int aiGetCompileFlags (void)}}
+\label{version_8h_c914a32bb053cb6572032668562873f2}
+
+
+Returns assimp's compile flags. 
+
+\begin{Desc}
+\item[Returns:]Any bitwise combination of the ASSIMP\_\-CFLAGS\_\-xxx constants. \end{Desc}
+\hypertarget{version_8h_ae8020339846d0d9e7e5d2756148c87c}{
+\index{version.h@{version.h}!aiGetLegalString@{aiGetLegalString}}
+\index{aiGetLegalString@{aiGetLegalString}!version.h@{version.h}}
+\subsubsection[aiGetLegalString]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API const char$\ast$ aiGetLegalString (void)}}
+\label{version_8h_ae8020339846d0d9e7e5d2756148c87c}
+
+
+Returns a string with legal copyright and licensing information about \hyperlink{namespace_assimp}{Assimp}. The string may include multiple lines. 
+
+\begin{Desc}
+\item[Returns:]Pointer to static string. \end{Desc}
+\hypertarget{version_8h_4e3809928b7b55d303af0f01f379667a}{
+\index{version.h@{version.h}!aiGetVersionMajor@{aiGetVersionMajor}}
+\index{aiGetVersionMajor@{aiGetVersionMajor}!version.h@{version.h}}
+\subsubsection[aiGetVersionMajor]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API unsigned int aiGetVersionMajor (void)}}
+\label{version_8h_4e3809928b7b55d303af0f01f379667a}
+
+
+Returns the current major version number of \hyperlink{namespace_assimp}{Assimp}. 
+
+\begin{Desc}
+\item[Returns:]Major version of the \hyperlink{namespace_assimp}{Assimp} runtime the application was linked/built against \end{Desc}
+\hypertarget{version_8h_875b57215e9763ffaf075cf9950ae4c5}{
+\index{version.h@{version.h}!aiGetVersionMinor@{aiGetVersionMinor}}
+\index{aiGetVersionMinor@{aiGetVersionMinor}!version.h@{version.h}}
+\subsubsection[aiGetVersionMinor]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API unsigned int aiGetVersionMinor (void)}}
+\label{version_8h_875b57215e9763ffaf075cf9950ae4c5}
+
+
+Returns the current minor version number of \hyperlink{namespace_assimp}{Assimp}. 
+
+\begin{Desc}
+\item[Returns:]Minor version of the \hyperlink{namespace_assimp}{Assimp} runtime the application was linked/built against \end{Desc}
+\hypertarget{version_8h_8865df81b23f4978fc06e4401c5ea4f5}{
+\index{version.h@{version.h}!aiGetVersionRevision@{aiGetVersionRevision}}
+\index{aiGetVersionRevision@{aiGetVersionRevision}!version.h@{version.h}}
+\subsubsection[aiGetVersionRevision]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API unsigned int aiGetVersionRevision (void)}}
+\label{version_8h_8865df81b23f4978fc06e4401c5ea4f5}
+
+
+Returns the repository revision of the \hyperlink{namespace_assimp}{Assimp} runtime. 
+
+\begin{Desc}
+\item[Returns:]SVN Repository revision number of the \hyperlink{namespace_assimp}{Assimp} runtime the application was linked/built against. \end{Desc}

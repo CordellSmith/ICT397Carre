@@ -1,0 +1,4 @@
+<area shape="rect" href="$structbt_triangle_mesh_shape_data.html" title="do not change those serialization structures, it requires an updated sBulletDNAstr/sBulletDNAstr64..." alt="" coords="77,187,251,213">
+<area shape="rect" href="$structbt_collision_shape_data.html" title="do not change those serialization structures, it requires an updated sBulletDNAstr/sBulletDNAstr64..." alt="" coords="5,96,149,123">
+<area shape="rect" href="$structbt_striding_mesh_interface_data.html" title="do not change those serialization structures, it requires an updated sBulletDNAstr/sBulletDNAstr64..." alt="" coords="173,96,357,123">
+<area shape="rect" href="$structbt_mesh_part_data.html" title="do not change those serialization structures, it requires an updated sBulletDNAstr/sBulletDNAstr64..." alt="" coords="208,5,323,32">

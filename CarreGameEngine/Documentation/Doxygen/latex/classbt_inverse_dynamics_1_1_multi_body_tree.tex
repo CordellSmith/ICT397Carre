@@ -1,0 +1,669 @@
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree}{
+\section{btInverseDynamics::MultiBodyTree Class Reference}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree}\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+}
+{\tt \#include $<$MultiBodyTree.hpp$>$}
+
+Collaboration diagram for btInverseDynamics::MultiBodyTree:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_75c5f172165331d0c64f7fc02301b12a}{MultiBodyTree} ()
+\item 
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_4029fa0c6dc19ee5f4ebfb19fed8821b}{
+\hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_4029fa0c6dc19ee5f4ebfb19fed8821b}{$\sim$MultiBodyTree} ()}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_4029fa0c6dc19ee5f4ebfb19fed8821b}
+
+\begin{CompactList}\small\item\em the destructor. This also deallocates all memory \item\end{CompactList}\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_d1f6d18e60ec7be3ec03b5aa9b8875b6}{addBody} (int body\_\-index, int parent\_\-index, JointType joint\_\-type, const \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} \&parent\_\-r\_\-parent\_\-body\_\-ref, const mat33 \&body\_\-T\_\-parent\_\-ref, const \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} \&body\_\-axis\_\-of\_\-motion, idScalar mass, const \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} \&body\_\-r\_\-body\_\-com, const mat33 \&body\_\-I\_\-body, const int user\_\-int, void $\ast$user\_\-ptr)
+\item 
+void \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_5ba35645225ad53584dcd0908d26c8ea}{setAcceptInvalidMassParameters} (bool flag)
+\item 
+bool \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_ea23f21f50889b30dbf41ad57957dcee}{getAcceptInvalidMassProperties} () const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_c82772ed5bebb1edd6513c03ebd719c2}{finalize} ()
+\item 
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1927127806e1211de9324504feae8bc7}{
+void \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1927127806e1211de9324504feae8bc7}{printTree} ()}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1927127806e1211de9324504feae8bc7}
+
+\begin{CompactList}\small\item\em pretty print ascii description of tree to stdout \item\end{CompactList}\item 
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_f1b892a77455293f6fe3a0d1594f2548}{
+void \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_f1b892a77455293f6fe3a0d1594f2548}{printTreeData} ()}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_f1b892a77455293f6fe3a0d1594f2548}
+
+\begin{CompactList}\small\item\em print tree data to stdout \item\end{CompactList}\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_20e281422ee7504a25357275c08d5690}{calculateInverseDynamics} (const vecx \&q, const vecx \&u, const vecx \&dot\_\-u, vecx $\ast$joint\_\-forces)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_0a767d639bb90ad3b1cb529eb26baa75}{calculateMassMatrix} (const vecx \&q, const bool update\_\-kinematics, const bool initialize\_\-matrix, const bool set\_\-lower\_\-triangular\_\-matrix, matxx $\ast$mass\_\-matrix)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_07b710ad4cbbe4cdadd8e2b5ad7c854a}{calculateMassMatrix} (const vecx \&q, matxx $\ast$mass\_\-matrix)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_fa6df6ee25f28a4de404d82c6bbf78ff}{calculateKinematics} (const vecx \&q, const vecx \&u, const vecx \&dot\_\-u)
+\item 
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_4bc4655645713c44425ce3bcb01d63ca}{
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_4bc4655645713c44425ce3bcb01d63ca}{calculatePositionKinematics} (const vecx \&q)}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_4bc4655645713c44425ce3bcb01d63ca}
+
+\begin{CompactList}\small\item\em Calculate position kinematics. \item\end{CompactList}\item 
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_843255f7b29f4c65dc1201d122373a13}{
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_843255f7b29f4c65dc1201d122373a13}{calculatePositionAndVelocityKinematics} (const vecx \&q, const vecx \&u)}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_843255f7b29f4c65dc1201d122373a13}
+
+\begin{CompactList}\small\item\em Calculate position and velocity kinematics. \item\end{CompactList}\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_b28d924ffc2226b224e2046497162227}{calculateJacobians} (const vecx \&q, const vecx \&u)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_d036684dcd9a68f732bc37ba2a4ed894}{calculateJacobians} (const vecx \&q)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_103b593ab2c8759489fbf6673f664288}{setGravityInWorldFrame} (const \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} \&gravity)
+\item 
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_bfc83ec7cbf274ba67c4fe234bca2041}{
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_bfc83ec7cbf274ba67c4fe234bca2041}{numBodies} () const }
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_bfc83ec7cbf274ba67c4fe234bca2041}
+
+\begin{CompactList}\small\item\em returns number of bodies in tree \item\end{CompactList}\item 
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_84caec9630c1db03d88c068bf39be9df}{
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_84caec9630c1db03d88c068bf39be9df}{numDoFs} () const }
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_84caec9630c1db03d88c068bf39be9df}
+
+\begin{CompactList}\small\item\em returns number of mechanical degrees of freedom (dimension of q-vector) \item\end{CompactList}\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_14722e25a8c6cc0cb0d1ba848577e174}{getBodyOrigin} (const int body\_\-index, \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} $\ast$world\_\-origin) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_86d4152e8487c354a725e71e92851002}{getBodyCoM} (const int body\_\-index, \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} $\ast$world\_\-com) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_582514119940a8dcc10d06cd97019143}{getBodyTransform} (const int body\_\-index, mat33 $\ast$world\_\-T\_\-body) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_441236989196e2c5f7219f420ddc6620}{getBodyAngularVelocity} (const int body\_\-index, \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} $\ast$world\_\-omega) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_c8076ba03722eb2744d1cccd09bfeb41}{getBodyLinearVelocity} (const int body\_\-index, \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} $\ast$world\_\-velocity) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_0e3e87b9f2531a8771fa7193449ca26d}{getBodyLinearVelocityCoM} (const int body\_\-index, \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} $\ast$world\_\-velocity) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1f216eaec9b229133a1a59ac0b415d13}{getBodyAngularAcceleration} (const int body\_\-index, \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} $\ast$world\_\-dot\_\-omega) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_07aeba9ee7505e1c2a4c8a5f317bcf22}{getBodyLinearAcceleration} (const int body\_\-index, \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} $\ast$world\_\-acceleration) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_fc4f7fc8066ceaa8f666fbad2fcbd33d}{getParentIndex} (const int body\_\-index, int $\ast$parent\_\-index) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_364bd17e226b15ab6615de4bf8de110d}{getJointType} (const int body\_\-index, JointType $\ast$joint\_\-type) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_6591655d73601c531baed6121f89add5}{getJointTypeStr} (const int body\_\-index, const char $\ast$$\ast$joint\_\-type) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_d7b1596a98a55cd32c3af072a82dcade}{getParentRParentBodyRef} (const int body\_\-index, \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} $\ast$r) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_3781cd90824117bc9f483b4f13b26f1c}{getBodyTParentRef} (const int body\_\-index, mat33 $\ast$T) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_07d19dbfe7c35c0b455b7d58e9f4b014}{getBodyAxisOfMotion} (const int body\_\-index, \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} $\ast$axis) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_fd9a288177719c951a7b851a6491f308}{getDoFOffset} (const int body\_\-index, int $\ast$q\_\-offset) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_65a04485f338b3c3c1ace010d460a453}{getUserInt} (const int body\_\-index, int $\ast$user\_\-int) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_32df6e169921b17d1bce944dc83918e9}{getUserPtr} (const int body\_\-index, void $\ast$$\ast$user\_\-ptr) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_f93f698a6d22d8f735f162c326649342}{setUserInt} (const int body\_\-index, const int user\_\-int)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_d2c37fb7a6cb73b1af87e0b7884717c0}{setUserPtr} (const int body\_\-index, void $\ast$const user\_\-ptr)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_aec1f7c8093f74529f49e7b36bc59ed7}{setBodyMass} (const int body\_\-index, const idScalar mass)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_5d8c853cf45160f049977e16175fa288}{setBodyFirstMassMoment} (const int body\_\-index, const \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} \&first\_\-mass\_\-moment)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_f3c9c78481d8ee170e00946c8499c433}{setBodySecondMassMoment} (const int body\_\-index, const mat33 \&second\_\-mass\_\-moment)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_ca41d87e7d3717d7d621eb20ce968b23}{getBodyMass} (const int body\_\-index, idScalar $\ast$mass) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_65cf073d371fb6c028649964d21fedce}{getBodyFirstMassMoment} (const int body\_\-index, \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} $\ast$first\_\-mass\_\-moment) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_be2ffbd34157198fed40e005f7b154ee}{getBodySecondMassMoment} (const int body\_\-index, mat33 $\ast$second\_\-mass\_\-moment) const 
+\item 
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_66402f51ab131c39a4d309196ff7c743}{
+void \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_66402f51ab131c39a4d309196ff7c743}{clearAllUserForcesAndMoments} ()}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_66402f51ab131c39a4d309196ff7c743}
+
+\begin{CompactList}\small\item\em set all user forces and moments to zero \item\end{CompactList}\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_629ed5024a2d1cb7500ebe935231f5e8}{addUserForce} (const int body\_\-index, const \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} \&body\_\-force)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_63096d466e1def1657da8eb3a99850fa}{addUserMoment} (const int body\_\-index, const \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} \&body\_\-moment)
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache}{InitCache}
+\item 
+class \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl}{MultiBodyImpl}
+\begin{CompactList}\small\item\em The MBS implements a tree structured multibody system. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Interface class for calculating inverse dynamics for tree structured multibody systems
+
+Note on degrees of freedom The q vector contains the generalized coordinate set defining the tree's configuration. Every joint adds elements that define the corresponding link's frame pose relative to its parent. For the joint types that is:\begin{itemize}
+\item FIXED: none\item REVOLUTE: angle of rotation \mbox{[}rad\mbox{]}\item PRISMATIC: displacement \mbox{[}m\mbox{]}\item FLOATING: Euler x-y-z angles \mbox{[}rad\mbox{]} and displacement in body-fixed frame of parent \mbox{[}m\mbox{]} (in that order) The u vector contains the generalized speeds, which are\item FIXED: none\item REVOLUTE: time derivative of angle of rotation \mbox{[}rad/s\mbox{]}\item PRISMATIC: time derivative of displacement \mbox{[}m/s\mbox{]}\item FLOATING: angular velocity \mbox{[}rad/s\mbox{]} ($\ast$not$\ast$ time derivative of rpy angles) and time derivative of displacement in parent frame \mbox{[}m/s\mbox{]}\end{itemize}
+
+
+The q and u vectors are obtained by stacking contributions of all bodies in one vector in the order of body indices.
+
+Note on generalized forces: analogous to u, i.e.,\begin{itemize}
+\item FIXED: none\item REVOLUTE: moment \mbox{[}Nm\mbox{]}, about joint axis\item PRISMATIC: force \mbox{[}N\mbox{]}, along joint axis\item FLOATING: moment vector \mbox{[}Nm\mbox{]} and force vector \mbox{[}N\mbox{]}, both in body-fixed frame (in that order)\end{itemize}
+
+
+TODO - force element interface (friction, springs, dampers, etc)\begin{itemize}
+\item gears and motor inertia \end{itemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_75c5f172165331d0c64f7fc02301b12a}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!MultiBodyTree@{MultiBodyTree}}
+\index{MultiBodyTree@{MultiBodyTree}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[MultiBodyTree]{\setlength{\rightskip}{0pt plus 5cm}btInverseDynamics::MultiBodyTree::MultiBodyTree ()}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_75c5f172165331d0c64f7fc02301b12a}
+
+
+The contructor. Initialization \& allocation is via addBody and buildSystem calls. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_d1f6d18e60ec7be3ec03b5aa9b8875b6}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!addBody@{addBody}}
+\index{addBody@{addBody}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[addBody]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::addBody (int {\em body\_\-index}, \/  int {\em parent\_\-index}, \/  JointType {\em joint\_\-type}, \/  const {\bf vec3} \& {\em parent\_\-r\_\-parent\_\-body\_\-ref}, \/  const mat33 \& {\em body\_\-T\_\-parent\_\-ref}, \/  const {\bf vec3} \& {\em body\_\-axis\_\-of\_\-motion}, \/  idScalar {\em mass}, \/  const {\bf vec3} \& {\em body\_\-r\_\-body\_\-com}, \/  const mat33 \& {\em body\_\-I\_\-body}, \/  const int {\em user\_\-int}, \/  void $\ast$ {\em user\_\-ptr})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_d1f6d18e60ec7be3ec03b5aa9b8875b6}
+
+
+Add body to the system. this allocates memory and not real-time safe. This only adds the data to an initial cache. After all bodies have been added, the system is setup using the buildSystem call \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body to be added. Must $>$=0, $<$number of bodies, and index of parent must be $<$ index of body \item[{\em parent\_\-index}]index of the parent body The root of the tree has index 0 and its parent (the world frame) is assigned index -1 the rotation and translation relative to the parent are taken as pose of the root body relative to the world frame. Other parameters are ignored \item[{\em JointType}]type of joint connecting the body to the parent \item[{\em mass}]the mass of the body \item[{\em body\_\-r\_\-body\_\-com}]the center of mass of the body relative to and described in the body fixed frame, which is located in the joint axis connecting the body to its parent \item[{\em body\_\-I\_\-body}]the moment of inertia of the body w.r.t the body-fixed frame (ie, the reference point is the origin of the body-fixed frame and the matrix is written w.r.t. those unit vectors) \item[{\em parent\_\-r\_\-parent\_\-body\_\-ref}]position of joint relative to the parent body's reference frame for q=0, written in the parent bodies reference frame \item[{\em body\_\-axis\_\-of\_\-motion}]translation/rotation axis in body-fixed frame. Ignored for joints that are not revolute or prismatic. must be a unit vector. \item[{\em body\_\-T\_\-parent\_\-ref}]transform matrix from parent to body reference frame for q=0. This is the matrix transforming a vector represented in the parent's reference frame into one represented in this body's reference frame. ie, if parent\_\-vec is a vector in R$^\wedge$3 whose components are w.r.t to the parent's reference frame, then the same vector written w.r.t. this body's frame (for q=0) is given by body\_\-vec = parent\_\-R\_\-body\_\-ref $\ast$ parent\_\-vec \item[{\em user\_\-ptr}]pointer to user data \item[{\em user\_\-int}]pointer to user integer \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_5ba35645225ad53584dcd0908d26c8ea}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setAcceptInvalidMassParameters@{setAcceptInvalidMassParameters}}
+\index{setAcceptInvalidMassParameters@{setAcceptInvalidMassParameters}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[setAcceptInvalidMassParameters]{\setlength{\rightskip}{0pt plus 5cm}void btInverseDynamics::MultiBodyTree::setAcceptInvalidMassParameters (bool {\em flag})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_5ba35645225ad53584dcd0908d26c8ea}
+
+
+set policy for invalid mass properties \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em flag}]if true, invalid mass properties are accepted, the default is false \end{description}
+\end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_ea23f21f50889b30dbf41ad57957dcee}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getAcceptInvalidMassProperties@{getAcceptInvalidMassProperties}}
+\index{getAcceptInvalidMassProperties@{getAcceptInvalidMassProperties}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getAcceptInvalidMassProperties]{\setlength{\rightskip}{0pt plus 5cm}bool btInverseDynamics::MultiBodyTree::getAcceptInvalidMassProperties () const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_ea23f21f50889b30dbf41ad57957dcee}
+
+
+\begin{Desc}
+\item[Returns:]the mass properties policy flag \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_c82772ed5bebb1edd6513c03ebd719c2}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!finalize@{finalize}}
+\index{finalize@{finalize}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[finalize]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::finalize ()}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_c82772ed5bebb1edd6513c03ebd719c2}
+
+
+build internal data structures call this after all bodies have been added via addBody \begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_20e281422ee7504a25357275c08d5690}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateInverseDynamics@{calculateInverseDynamics}}
+\index{calculateInverseDynamics@{calculateInverseDynamics}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[calculateInverseDynamics]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateInverseDynamics (const vecx \& {\em q}, \/  const vecx \& {\em u}, \/  const vecx \& {\em dot\_\-u}, \/  vecx $\ast$ {\em joint\_\-forces})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_20e281422ee7504a25357275c08d5690}
+
+
+Calculate joint forces for given generalized state \& derivatives. This also updates kinematic terms computed in calculateKinematics. If gravity is not set to zero, acceleration terms will contain gravitational acceleration. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]generalized coordinates \item[{\em u}]generalized velocities. In the general case, u=T(q)$\ast$dot(q) and dim(q)$>$=dim(u) \item[{\em dot\_\-u}]time derivative of u \item[{\em joint\_\-forces}]this is where the resulting joint forces will be stored. dim(joint\_\-forces) = dim(u) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_0a767d639bb90ad3b1cb529eb26baa75}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateMassMatrix@{calculateMassMatrix}}
+\index{calculateMassMatrix@{calculateMassMatrix}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[calculateMassMatrix]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateMassMatrix (const vecx \& {\em q}, \/  const bool {\em update\_\-kinematics}, \/  const bool {\em initialize\_\-matrix}, \/  const bool {\em set\_\-lower\_\-triangular\_\-matrix}, \/  matxx $\ast$ {\em mass\_\-matrix})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_0a767d639bb90ad3b1cb529eb26baa75}
+
+
+Calculate joint space mass matrix \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]generalized coordinates \item[{\em initialize\_\-matrix}]if true, initialize mass matrix with zero. If mass\_\-matrix is initialized to zero externally and only used for mass matrix computations for the same system, it is safe to set this to false. \item[{\em set\_\-lower\_\-triangular\_\-matrix}]if true, the lower triangular section of mass\_\-matrix is also populated, otherwise not. \item[{\em mass\_\-matrix}]matrix for storing the output (should be dim(q)xdim(q)) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]-1 on error, 0 on success \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_07b710ad4cbbe4cdadd8e2b5ad7c854a}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateMassMatrix@{calculateMassMatrix}}
+\index{calculateMassMatrix@{calculateMassMatrix}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[calculateMassMatrix]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateMassMatrix (const vecx \& {\em q}, \/  matxx $\ast$ {\em mass\_\-matrix})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_07b710ad4cbbe4cdadd8e2b5ad7c854a}
+
+
+Calculate joint space mass matrix. This version will update kinematics, initialize all mass\_\-matrix elements to zero and populate all mass matrix entries. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]generalized coordinates \item[{\em mass\_\-matrix}]matrix for storing the output (should be dim(q)xdim(q)) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]-1 on error, 0 on success \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_fa6df6ee25f28a4de404d82c6bbf78ff}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateKinematics@{calculateKinematics}}
+\index{calculateKinematics@{calculateKinematics}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[calculateKinematics]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateKinematics (const vecx \& {\em q}, \/  const vecx \& {\em u}, \/  const vecx \& {\em dot\_\-u})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_fa6df6ee25f28a4de404d82c6bbf78ff}
+
+
+Calculates kinematics also calculated in calculateInverseDynamics, but not dynamics. This function ensures that correct accelerations are computed that do not contain gravitational acceleration terms. Does not calculate Jacobians, but only vector quantities (positions, velocities \& accelerations) \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_b28d924ffc2226b224e2046497162227}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateJacobians@{calculateJacobians}}
+\index{calculateJacobians@{calculateJacobians}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[calculateJacobians]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateJacobians (const vecx \& {\em q}, \/  const vecx \& {\em u})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_b28d924ffc2226b224e2046497162227}
+
+
+Calculate Jacobians (dvel/du), as well as velocity-dependent accelearation components d(Jacobian)/dt$\ast$u This function assumes that calculateInverseDynamics was called, or calculateKinematics, or calculatePositionAndVelocityKinematics \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_d036684dcd9a68f732bc37ba2a4ed894}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateJacobians@{calculateJacobians}}
+\index{calculateJacobians@{calculateJacobians}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[calculateJacobians]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateJacobians (const vecx \& {\em q})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_d036684dcd9a68f732bc37ba2a4ed894}
+
+
+Calculate Jacobians (dvel/du) This function assumes that calculateInverseDynamics was called, or one of the calculateKineamtics functions \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_103b593ab2c8759489fbf6673f664288}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setGravityInWorldFrame@{setGravityInWorldFrame}}
+\index{setGravityInWorldFrame@{setGravityInWorldFrame}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[setGravityInWorldFrame]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setGravityInWorldFrame (const {\bf vec3} \& {\em gravity})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_103b593ab2c8759489fbf6673f664288}
+
+
+set gravitational acceleration the default is \mbox{[}0;0;-9.8\mbox{]} in the world frame \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em gravity}]the gravitational acceleration in world frame \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_14722e25a8c6cc0cb0d1ba848577e174}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyOrigin@{getBodyOrigin}}
+\index{getBodyOrigin@{getBodyOrigin}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyOrigin]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyOrigin (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-origin}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_14722e25a8c6cc0cb0d1ba848577e174}
+
+
+get origin of a body-fixed frame, represented in world frame \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index for frame/body \item[{\em world\_\-origin}]pointer for return data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_86d4152e8487c354a725e71e92851002}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyCoM@{getBodyCoM}}
+\index{getBodyCoM@{getBodyCoM}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyCoM]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyCoM (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-com}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_86d4152e8487c354a725e71e92851002}
+
+
+get center of mass of a body, represented in world frame \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index for frame/body \item[{\em world\_\-com}]pointer for return data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_582514119940a8dcc10d06cd97019143}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyTransform@{getBodyTransform}}
+\index{getBodyTransform@{getBodyTransform}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyTransform]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyTransform (const int {\em body\_\-index}, \/  mat33 $\ast$ {\em world\_\-T\_\-body}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_582514119940a8dcc10d06cd97019143}
+
+
+get transform from of a body-fixed frame to the world frame \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index for frame/body \item[{\em world\_\-T\_\-body}]pointer for return data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_441236989196e2c5f7219f420ddc6620}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyAngularVelocity@{getBodyAngularVelocity}}
+\index{getBodyAngularVelocity@{getBodyAngularVelocity}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyAngularVelocity]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyAngularVelocity (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-omega}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_441236989196e2c5f7219f420ddc6620}
+
+
+get absolute angular velocity for a body, represented in the world frame \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index for frame/body \item[{\em world\_\-omega}]pointer for return data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_c8076ba03722eb2744d1cccd09bfeb41}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyLinearVelocity@{getBodyLinearVelocity}}
+\index{getBodyLinearVelocity@{getBodyLinearVelocity}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyLinearVelocity]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyLinearVelocity (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-velocity}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_c8076ba03722eb2744d1cccd09bfeb41}
+
+
+get linear velocity of a body, represented in world frame \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index for frame/body \item[{\em world\_\-velocity}]pointer for return data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_0e3e87b9f2531a8771fa7193449ca26d}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyLinearVelocityCoM@{getBodyLinearVelocityCoM}}
+\index{getBodyLinearVelocityCoM@{getBodyLinearVelocityCoM}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyLinearVelocityCoM]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyLinearVelocityCoM (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-velocity}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_0e3e87b9f2531a8771fa7193449ca26d}
+
+
+get linear velocity of a body's CoM, represented in world frame (not required for inverse dynamics, provided for convenience) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index for frame/body \item[{\em world\_\-vel\_\-com}]pointer for return data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1f216eaec9b229133a1a59ac0b415d13}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyAngularAcceleration@{getBodyAngularAcceleration}}
+\index{getBodyAngularAcceleration@{getBodyAngularAcceleration}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyAngularAcceleration]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyAngularAcceleration (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-dot\_\-omega}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1f216eaec9b229133a1a59ac0b415d13}
+
+
+get origin of a body-fixed frame, represented in world frame \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index for frame/body \item[{\em world\_\-origin}]pointer for return data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_07aeba9ee7505e1c2a4c8a5f317bcf22}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyLinearAcceleration@{getBodyLinearAcceleration}}
+\index{getBodyLinearAcceleration@{getBodyLinearAcceleration}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyLinearAcceleration]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyLinearAcceleration (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-acceleration}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_07aeba9ee7505e1c2a4c8a5f317bcf22}
+
+
+get origin of a body-fixed frame, represented in world frame NOTE: this will include the gravitational acceleration, so the actual acceleration is obtainened by setting gravitational acceleration to zero, or subtracting it. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index for frame/body \item[{\em world\_\-origin}]pointer for return data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_fc4f7fc8066ceaa8f666fbad2fcbd33d}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getParentIndex@{getParentIndex}}
+\index{getParentIndex@{getParentIndex}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getParentIndex]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getParentIndex (const int {\em body\_\-index}, \/  int $\ast$ {\em parent\_\-index}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_fc4f7fc8066ceaa8f666fbad2fcbd33d}
+
+
+returns the (internal) index of body \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]is the index of a body \item[{\em parent\_\-index}]pointer to where parent index will be stored \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_364bd17e226b15ab6615de4bf8de110d}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getJointType@{getJointType}}
+\index{getJointType@{getJointType}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getJointType]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getJointType (const int {\em body\_\-index}, \/  JointType $\ast$ {\em joint\_\-type}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_364bd17e226b15ab6615de4bf8de110d}
+
+
+get joint type \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em joint\_\-type}]the corresponding joint type \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_6591655d73601c531baed6121f89add5}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getJointTypeStr@{getJointTypeStr}}
+\index{getJointTypeStr@{getJointTypeStr}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getJointTypeStr]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getJointTypeStr (const int {\em body\_\-index}, \/  const char $\ast$$\ast$ {\em joint\_\-type}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_6591655d73601c531baed6121f89add5}
+
+
+get joint type as string \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em joint\_\-type}]string naming the corresponding joint type \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_d7b1596a98a55cd32c3af072a82dcade}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getParentRParentBodyRef@{getParentRParentBodyRef}}
+\index{getParentRParentBodyRef@{getParentRParentBodyRef}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getParentRParentBodyRef]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getParentRParentBodyRef (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em r}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_d7b1596a98a55cd32c3af072a82dcade}
+
+
+get offset translation to parent body (see addBody) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em r}]the offset translation (see above) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_3781cd90824117bc9f483b4f13b26f1c}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyTParentRef@{getBodyTParentRef}}
+\index{getBodyTParentRef@{getBodyTParentRef}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyTParentRef]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyTParentRef (const int {\em body\_\-index}, \/  mat33 $\ast$ {\em T}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_3781cd90824117bc9f483b4f13b26f1c}
+
+
+get offset rotation to parent body (see addBody) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em T}]the transform (see above) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_07d19dbfe7c35c0b455b7d58e9f4b014}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyAxisOfMotion@{getBodyAxisOfMotion}}
+\index{getBodyAxisOfMotion@{getBodyAxisOfMotion}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyAxisOfMotion]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyAxisOfMotion (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em axis}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_07d19dbfe7c35c0b455b7d58e9f4b014}
+
+
+get axis of motion (see addBody) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em axis}]the axis (see above) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_fd9a288177719c951a7b851a6491f308}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getDoFOffset@{getDoFOffset}}
+\index{getDoFOffset@{getDoFOffset}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getDoFOffset]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getDoFOffset (const int {\em body\_\-index}, \/  int $\ast$ {\em q\_\-offset}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_fd9a288177719c951a7b851a6491f308}
+
+
+get offset for degrees of freedom of this body into the q-vector \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em q\_\-offset}]offset the q vector \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]-1 on error, 0 on success \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_65a04485f338b3c3c1ace010d460a453}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getUserInt@{getUserInt}}
+\index{getUserInt@{getUserInt}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getUserInt]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getUserInt (const int {\em body\_\-index}, \/  int $\ast$ {\em user\_\-int}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_65a04485f338b3c3c1ace010d460a453}
+
+
+get user integer. not used by the library. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em user\_\-int}]the user integer \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_32df6e169921b17d1bce944dc83918e9}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getUserPtr@{getUserPtr}}
+\index{getUserPtr@{getUserPtr}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getUserPtr]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getUserPtr (const int {\em body\_\-index}, \/  void $\ast$$\ast$ {\em user\_\-ptr}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_32df6e169921b17d1bce944dc83918e9}
+
+
+get user pointer. not used by the library. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em user\_\-ptr}]the user pointer \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_f93f698a6d22d8f735f162c326649342}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setUserInt@{setUserInt}}
+\index{setUserInt@{setUserInt}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[setUserInt]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setUserInt (const int {\em body\_\-index}, \/  const int {\em user\_\-int})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_f93f698a6d22d8f735f162c326649342}
+
+
+set user integer. not used by the library. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em user\_\-int}]the user integer \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_d2c37fb7a6cb73b1af87e0b7884717c0}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setUserPtr@{setUserPtr}}
+\index{setUserPtr@{setUserPtr}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[setUserPtr]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setUserPtr (const int {\em body\_\-index}, \/  void $\ast$const  {\em user\_\-ptr})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_d2c37fb7a6cb73b1af87e0b7884717c0}
+
+
+set user pointer. not used by the library. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em user\_\-ptr}]the user pointer \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_aec1f7c8093f74529f49e7b36bc59ed7}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setBodyMass@{setBodyMass}}
+\index{setBodyMass@{setBodyMass}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[setBodyMass]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setBodyMass (const int {\em body\_\-index}, \/  const idScalar {\em mass})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_aec1f7c8093f74529f49e7b36bc59ed7}
+
+
+set mass for a body \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em mass}]the mass to set \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_5d8c853cf45160f049977e16175fa288}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setBodyFirstMassMoment@{setBodyFirstMassMoment}}
+\index{setBodyFirstMassMoment@{setBodyFirstMassMoment}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[setBodyFirstMassMoment]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setBodyFirstMassMoment (const int {\em body\_\-index}, \/  const {\bf vec3} \& {\em first\_\-mass\_\-moment})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_5d8c853cf45160f049977e16175fa288}
+
+
+set first moment of mass for a body (mass $\ast$ center of mass, in body fixed frame, relative to joint) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em first\_\-mass\_\-moment}]the vector to set \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_f3c9c78481d8ee170e00946c8499c433}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setBodySecondMassMoment@{setBodySecondMassMoment}}
+\index{setBodySecondMassMoment@{setBodySecondMassMoment}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[setBodySecondMassMoment]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setBodySecondMassMoment (const int {\em body\_\-index}, \/  const mat33 \& {\em second\_\-mass\_\-moment})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_f3c9c78481d8ee170e00946c8499c433}
+
+
+set second moment of mass for a body (moment of inertia, in body fixed frame, relative to joint) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em second\_\-mass\_\-moment}]the inertia matrix \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_ca41d87e7d3717d7d621eb20ce968b23}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyMass@{getBodyMass}}
+\index{getBodyMass@{getBodyMass}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyMass]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyMass (const int {\em body\_\-index}, \/  idScalar $\ast$ {\em mass}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_ca41d87e7d3717d7d621eb20ce968b23}
+
+
+get mass for a body \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em mass}]the mass \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_65cf073d371fb6c028649964d21fedce}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyFirstMassMoment@{getBodyFirstMassMoment}}
+\index{getBodyFirstMassMoment@{getBodyFirstMassMoment}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodyFirstMassMoment]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyFirstMassMoment (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em first\_\-mass\_\-moment}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_65cf073d371fb6c028649964d21fedce}
+
+
+get first moment of mass for a body (mass $\ast$ center of mass, in body fixed frame, relative to joint) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em first\_\-moment}]the vector \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_be2ffbd34157198fed40e005f7b154ee}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodySecondMassMoment@{getBodySecondMassMoment}}
+\index{getBodySecondMassMoment@{getBodySecondMassMoment}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[getBodySecondMassMoment]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodySecondMassMoment (const int {\em body\_\-index}, \/  mat33 $\ast$ {\em second\_\-mass\_\-moment}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_be2ffbd34157198fed40e005f7b154ee}
+
+
+get second moment of mass for a body (moment of inertia, in body fixed frame, relative to joint) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body \item[{\em second\_\-mass\_\-moment}]the inertia matrix \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_629ed5024a2d1cb7500ebe935231f5e8}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!addUserForce@{addUserForce}}
+\index{addUserForce@{addUserForce}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[addUserForce]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::addUserForce (const int {\em body\_\-index}, \/  const {\bf vec3} \& {\em body\_\-force})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_629ed5024a2d1cb7500ebe935231f5e8}
+
+
+Add an external force to a body, acting at the origin of the body-fixed frame. Calls to addUserForce are cumulative. Set the user force and moment to zero via \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_66402f51ab131c39a4d309196ff7c743}{clearAllUserForcesAndMoments()} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-force}]the force represented in the body-fixed frame of reference \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_63096d466e1def1657da8eb3a99850fa}{
+\index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!addUserMoment@{addUserMoment}}
+\index{addUserMoment@{addUserMoment}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
+\subsubsection[addUserMoment]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::addUserMoment (const int {\em body\_\-index}, \/  const {\bf vec3} \& {\em body\_\-moment})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_63096d466e1def1657da8eb3a99850fa}
+
+
+Add an external moment to a body. Calls to addUserMoment are cumulative. Set the user force and moment to zero via \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_66402f51ab131c39a4d309196ff7c743}{clearAllUserForcesAndMoments()} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-moment}]the moment represented in the body-fixed frame of reference \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/MultiBodyTree.hpp\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/MultiBodyTree.cpp\end{CompactItemize}

@@ -1,0 +1,17 @@
+<area shape="rect" href="$_logger_8hpp.html" title="Abstract base class &#39;Logger&#39;, base of the logging system." alt="" coords="533,155,619,181">
+<area shape="rect" href="$_log_stream_8hpp.html" title="Abstract base class &#39;LogStream&#39;, representing an output log stream." alt="" coords="643,155,752,181">
+<area shape="rect" href="$_null_logger_8hpp.html" title="Dummy logger." alt="" coords="553,80,660,107">
+<area shape="rect" href="$types_8h.html" title="types.h" alt="" coords="604,229,668,256">
+<area shape="rect" href="$defs_8h.html" title="Assimp build configuration setup. See the notes in the comment blocks to find out..." alt="" coords="557,453,613,480">
+<area shape="rect" href="$vector3_8h.html" title="3D vector structure, including operators when compiling in C++" alt="" coords="451,379,523,405">
+<area shape="rect" href="$vector2_8h.html" title="2D vector structure, including operators when compiling in C++" alt="" coords="355,379,427,405">
+<area shape="rect" href="$color4_8h.html" title="RGBA color structure, including operators when compiling in C++." alt="" coords="648,379,715,405">
+<area shape="rect" href="$matrix3x3_8h.html" title="Definition of a 3x3 matrix, including operators when compiling in C++." alt="" coords="739,379,827,405">
+<area shape="rect" href="$matrix4x4_8h.html" title="4x4 matrix structure, including operators when compiling in C++" alt="" coords="485,304,573,331">
+<area shape="rect" href="$quaternion_8h.html" title="Quaternion structure, including operators when compiling in C++." alt="" coords="749,304,840,331">
+<area shape="rect" href="$vector2_8inl.html" title="Inline implementation of aiVector2t&lt;TReal&gt; operators." alt="" coords="864,304,944,331">
+<area shape="rect" href="$vector3_8inl.html" title="Inline implementation of aiVector3t&lt;TReal&gt; operators." alt="" coords="968,304,1048,331">
+<area shape="rect" href="$color4_8inl.html" title="Inline implementation of aiColor4t&lt;TReal&gt; operators." alt="" coords="1072,304,1144,331">
+<area shape="rect" href="$matrix3x3_8inl.html" title="Inline implementation of the 3x3 matrix operators." alt="" coords="1168,304,1264,331">
+<area shape="rect" href="$matrix4x4_8inl.html" title="Inline implementation of the 4x4 matrix operators." alt="" coords="1288,304,1384,331">
+<area shape="rect" href="$config_8h.html" title="Defines constants for configurable properties for the library." alt="" coords="529,528,641,555">

@@ -1,0 +1,15 @@
+\hypertarget{group__keys}{
+\section{Keyboard keys}
+\label{group__keys}\index{Keyboard keys@{Keyboard keys}}
+}
+
+
+Collaboration diagram for Keyboard keys:
+
+\subsection{Detailed Description}
+See \mbox{[}key input\mbox{]}(input\_\-key) for how these are used.
+
+These key codes are inspired by the \_\-USB HID Usage Tables v1.12\_\- (p. 53-60), but re-arranged to map to 7-bit ASCII for printable keys (function keys are put in the 256+ range).
+
+The naming of the key codes follow these rules:\begin{itemize}
+\item The US keyboard layout is used\item Names of printable alpha-numeric characters are used (e.g. \char`\"{}A\char`\"{}, \char`\"{}R\char`\"{}, \char`\"{}3\char`\"{}, etc.)\item For non-alphanumeric characters, Unicode:ish names are used (e.g. \char`\"{}COMMA\char`\"{}, \char`\"{}LEFT\_\-SQUARE\_\-BRACKET\char`\"{}, etc.). Note that some names do not correspond to the Unicode standard (usually for brevity)\item Keys that lack a clear US mapping are named \char`\"{}WORLD\_\-x\char`\"{}\item For non-printable keys, custom names are used (e.g. \char`\"{}F4\char`\"{}, \char`\"{}BACKSPACE\char`\"{}, etc.) \end{itemize}

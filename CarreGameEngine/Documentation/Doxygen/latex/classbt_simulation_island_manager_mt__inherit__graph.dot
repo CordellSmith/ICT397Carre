@@ -1,0 +1,9 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  Node1 [label="btSimulationIslandManagerMt",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btSimulationIslandManager",height=0.2,width=0.4,color="black",URL="$classbt_simulation_island_manager.html",tooltip="SimulationIslandManager creates and handles simulation islands, using btUnionFind..."];
+}

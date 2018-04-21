@@ -1,0 +1,62 @@
+\hypertarget{namespace_assimp}{
+\section{Assimp Namespace Reference}
+\label{namespace_assimp}\index{Assimp@{Assimp}}
+}
+
+
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_assimp_1_1_default_i_o_stream}{DefaultIOStream}
+\begin{CompactList}\small\item\em Default IO implementation, use standard IO operations. \item\end{CompactList}\item 
+class \hyperlink{class_assimp_1_1_default_i_o_system}{DefaultIOSystem}
+\item 
+class \hyperlink{class_assimp_1_1_default_logger}{DefaultLogger}
+\begin{CompactList}\small\item\em CPP-API: Primary logging facility of \hyperlink{namespace_assimp}{Assimp}. \item\end{CompactList}\item 
+class \hyperlink{class_assimp_1_1_importer}{Importer}
+\item 
+class \hyperlink{class_assimp_1_1_i_o_stream}{IOStream}
+\begin{CompactList}\small\item\em CPP-API: Class to handle file I/O for C++. \item\end{CompactList}\item 
+class \hyperlink{class_assimp_1_1_i_o_system}{IOSystem}
+\begin{CompactList}\small\item\em CPP-API: Interface to the file system. \item\end{CompactList}\item 
+class \hyperlink{class_assimp_1_1_logger}{Logger}
+\begin{CompactList}\small\item\em CPP-API: Abstract interface for logger implementations. \hyperlink{namespace_assimp}{Assimp} provides a default implementation and uses it for almost all logging stuff ('DefaultLogger'). This class defines just basic logging behaviour and is not of interest for you. Instead, take a look at DefaultLogger. \item\end{CompactList}\item 
+class \hyperlink{class_assimp_1_1_log_stream}{LogStream}
+\begin{CompactList}\small\item\em CPP-API: Abstract interface for log stream implementations. \item\end{CompactList}\item 
+class \hyperlink{class_assimp_1_1_null_logger}{NullLogger}
+\begin{CompactList}\small\item\em CPP-API: Empty logging implementation. \item\end{CompactList}\item 
+class \hyperlink{class_assimp_1_1_progress_handler}{ProgressHandler}
+\begin{CompactList}\small\item\em CPP-API: Abstract interface for custom progress report receivers. \item\end{CompactList}\item 
+struct \hyperlink{struct_assimp_1_1_attachment_info}{AttachmentInfo}
+\begin{CompactList}\small\item\em Helper data structure for \hyperlink{class_assimp_1_1_scene_combiner}{SceneCombiner}. \item\end{CompactList}\item 
+struct \hyperlink{struct_assimp_1_1_bone_with_hash}{BoneWithHash}
+\begin{CompactList}\small\item\em Helper data structure for \hyperlink{class_assimp_1_1_scene_combiner_a42d5370510db89cbdd739617a617d4e}{SceneCombiner::MergeBones}. \item\end{CompactList}\item 
+struct \hyperlink{struct_assimp_1_1_scene_helper}{SceneHelper}
+\begin{CompactList}\small\item\em Utility for \hyperlink{class_assimp_1_1_scene_combiner}{SceneCombiner}. \item\end{CompactList}\item 
+class \hyperlink{class_assimp_1_1_scene_combiner}{SceneCombiner}
+\begin{CompactList}\small\item\em Static helper class providing various utilities to merge two scenes. It is intended as internal utility and NOT for use by applications. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+class ASSIMP\_\-API \hyperlink{namespace_assimp_81d358b0d2907db3ffe185d60f41aa83}{ExportProperties}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Assimp's CPP-API and all internal APIs 
+
+\subsection{Variable Documentation}
+\hypertarget{namespace_assimp_81d358b0d2907db3ffe185d60f41aa83}{
+\index{Assimp@{Assimp}!ExportProperties@{ExportProperties}}
+\index{ExportProperties@{ExportProperties}!Assimp@{Assimp}}
+\subsubsection[ExportProperties]{\setlength{\rightskip}{0pt plus 5cm}class ASSIMP\_\-API {\bf Assimp::ExportProperties}}}
+\label{namespace_assimp_81d358b0d2907db3ffe185d60f41aa83}
+
+
+CPP-API: The Exporter class forms an C++ interface to the export functionality of the Open Asset Import Library. Note that the export interface is available only if \hyperlink{namespace_assimp}{Assimp} has been built with ASSIMP\_\-BUILD\_\-NO\_\-EXPORT not defined.
+
+The interface is modeled after the importer interface and mostly symmetric. The same rules for threading etc. apply.
+
+In a nutshell, there are two export interfaces: Export, which writes the output file(s) either to the regular file system or to a user-supplied IOSystem, and ExportToBlob which returns a linked list of memory buffers (blob), each referring to one output file (in most cases there will be only one output file of course, but this extra complexity is needed since \hyperlink{namespace_assimp}{Assimp} aims at supporting a wide range of file formats).
+
+ExportToBlob is especially useful if you intend to work with the data in-memory. 

@@ -1,0 +1,114 @@
+\hypertarget{class_assimp_1_1_default_i_o_system}{
+\section{Assimp::DefaultIOSystem Class Reference}
+\label{class_assimp_1_1_default_i_o_system}\index{Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}}
+}
+{\tt \#include $<$DefaultIOSystem.h$>$}
+
+Inheritance diagram for Assimp::DefaultIOSystem:Collaboration diagram for Assimp::DefaultIOSystem:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_assimp_1_1_default_i_o_system_8d1b0591ff59be2823f8aaea9fb322e6}{DefaultIOSystem} ()
+\item 
+\hyperlink{class_assimp_1_1_default_i_o_system_25d4b5ee7d9eff449cca8ce5889b91cc}{$\sim$DefaultIOSystem} ()
+\item 
+bool \hyperlink{class_assimp_1_1_default_i_o_system_f8b310025faaed12c6d65c586e935255}{Exists} (const char $\ast$pFile) const 
+\item 
+char \hyperlink{class_assimp_1_1_default_i_o_system_154a94adf38921d9fce50ef598f0a50c}{getOsSeparator} () const 
+\item 
+\hyperlink{class_assimp_1_1_i_o_stream}{IOStream} $\ast$ \hyperlink{class_assimp_1_1_default_i_o_system_9c8da3d63312f47b2dec83ec90aa2c4d}{Open} (const char $\ast$pFile, const char $\ast$pMode=\char`\"{}rb\char`\"{})
+\item 
+void \hyperlink{class_assimp_1_1_default_i_o_system_a164cf18562082effde576752377bea3}{Close} (\hyperlink{class_assimp_1_1_i_o_stream}{IOStream} $\ast$pFile)
+\item 
+bool \hyperlink{class_assimp_1_1_default_i_o_system_0eb1be0b288bdad621f9036bd5290fe7}{ComparePaths} (const char $\ast$one, const char $\ast$second) const 
+\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_default_i_o_system_a01ea34e60ed8a3920979b5b4e2927ee}{
+static std::string \hyperlink{class_assimp_1_1_default_i_o_system_a01ea34e60ed8a3920979b5b4e2927ee}{fileName} (const std::string \&path)}
+\label{class_assimp_1_1_default_i_o_system_a01ea34e60ed8a3920979b5b4e2927ee}
+
+\begin{CompactList}\small\item\em get the file name of a full filepath example: /tmp/archive.tar.gz -$>$ archive.tar.gz \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_default_i_o_system_fa9e12ddf8f7aa1a33935309b917a142}{
+static std::string \hyperlink{class_assimp_1_1_default_i_o_system_fa9e12ddf8f7aa1a33935309b917a142}{completeBaseName} (const std::string \&path)}
+\label{class_assimp_1_1_default_i_o_system_fa9e12ddf8f7aa1a33935309b917a142}
+
+\begin{CompactList}\small\item\em get the complete base name of a full filepath example: /tmp/archive.tar.gz -$>$ archive.tar \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_default_i_o_system_f95ec2cff042a580082d463613cfe407}{
+static std::string \hyperlink{class_assimp_1_1_default_i_o_system_f95ec2cff042a580082d463613cfe407}{absolutePath} (const std::string \&path)}
+\label{class_assimp_1_1_default_i_o_system_f95ec2cff042a580082d463613cfe407}
+
+\begin{CompactList}\small\item\em get the path of a full filepath example: /tmp/archive.tar.gz -$>$ /tmp/ \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Default implementation of \hyperlink{class_assimp_1_1_i_o_system}{IOSystem} using the standard C file functions 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_assimp_1_1_default_i_o_system_8d1b0591ff59be2823f8aaea9fb322e6}{
+\index{Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}!DefaultIOSystem@{DefaultIOSystem}}
+\index{DefaultIOSystem@{DefaultIOSystem}!Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}}
+\subsubsection[DefaultIOSystem]{\setlength{\rightskip}{0pt plus 5cm}Assimp::DefaultIOSystem::DefaultIOSystem ()}}
+\label{class_assimp_1_1_default_i_o_system_8d1b0591ff59be2823f8aaea9fb322e6}
+
+
+Constructor. \hypertarget{class_assimp_1_1_default_i_o_system_25d4b5ee7d9eff449cca8ce5889b91cc}{
+\index{Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}!$\sim$DefaultIOSystem@{$\sim$DefaultIOSystem}}
+\index{$\sim$DefaultIOSystem@{$\sim$DefaultIOSystem}!Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}}
+\subsubsection[$\sim$DefaultIOSystem]{\setlength{\rightskip}{0pt plus 5cm}Assimp::DefaultIOSystem::$\sim$DefaultIOSystem ()}}
+\label{class_assimp_1_1_default_i_o_system_25d4b5ee7d9eff449cca8ce5889b91cc}
+
+
+Destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_default_i_o_system_f8b310025faaed12c6d65c586e935255}{
+\index{Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}!Exists@{Exists}}
+\index{Exists@{Exists}!Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}}
+\subsubsection[Exists]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::DefaultIOSystem::Exists (const char $\ast$ {\em pFile}) const\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_default_i_o_system_f8b310025faaed12c6d65c586e935255}
+
+
+Tests for the existence of a file at the given path. 
+
+Implements \hyperlink{class_assimp_1_1_i_o_system_79f5fe8d2dbe1056c9418f7de9a72445}{Assimp::IOSystem}.\hypertarget{class_assimp_1_1_default_i_o_system_154a94adf38921d9fce50ef598f0a50c}{
+\index{Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}!getOsSeparator@{getOsSeparator}}
+\index{getOsSeparator@{getOsSeparator}!Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}}
+\subsubsection[getOsSeparator]{\setlength{\rightskip}{0pt plus 5cm}char Assimp::DefaultIOSystem::getOsSeparator () const\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_default_i_o_system_154a94adf38921d9fce50ef598f0a50c}
+
+
+Returns the directory separator. 
+
+Implements \hyperlink{class_assimp_1_1_i_o_system_40e412875b985bdb638f00ef0f20fff6}{Assimp::IOSystem}.\hypertarget{class_assimp_1_1_default_i_o_system_9c8da3d63312f47b2dec83ec90aa2c4d}{
+\index{Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}!Open@{Open}}
+\index{Open@{Open}!Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}}
+\subsubsection[Open]{\setlength{\rightskip}{0pt plus 5cm}{\bf IOStream}$\ast$ Assimp::DefaultIOSystem::Open (const char $\ast$ {\em pFile}, \/  const char $\ast$ {\em pMode} = {\tt \char`\"{}rb\char`\"{}})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_default_i_o_system_9c8da3d63312f47b2dec83ec90aa2c4d}
+
+
+Open a new file with a given path. 
+
+Implements \hyperlink{class_assimp_1_1_i_o_system_c512ece3b0701de5682553007a4c0816}{Assimp::IOSystem}.\hypertarget{class_assimp_1_1_default_i_o_system_a164cf18562082effde576752377bea3}{
+\index{Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}!Close@{Close}}
+\index{Close@{Close}!Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}}
+\subsubsection[Close]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::DefaultIOSystem::Close ({\bf IOStream} $\ast$ {\em pFile})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_default_i_o_system_a164cf18562082effde576752377bea3}
+
+
+Closes the given file and releases all resources associated with it. 
+
+Implements \hyperlink{class_assimp_1_1_i_o_system_8c334d60f04bceeb6bd0157d21723f3e}{Assimp::IOSystem}.\hypertarget{class_assimp_1_1_default_i_o_system_0eb1be0b288bdad621f9036bd5290fe7}{
+\index{Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}!ComparePaths@{ComparePaths}}
+\index{ComparePaths@{ComparePaths}!Assimp::DefaultIOSystem@{Assimp::DefaultIOSystem}}
+\subsubsection[ComparePaths]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::DefaultIOSystem::ComparePaths (const char $\ast$ {\em one}, \/  const char $\ast$ {\em second}) const\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_default_i_o_system_0eb1be0b288bdad621f9036bd5290fe7}
+
+
+Compare two paths 
+
+Reimplemented from \hyperlink{class_assimp_1_1_i_o_system_11349a65b353ed62f655c3dd802b9062}{Assimp::IOSystem}.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/DefaultIOSystem.h\end{CompactItemize}

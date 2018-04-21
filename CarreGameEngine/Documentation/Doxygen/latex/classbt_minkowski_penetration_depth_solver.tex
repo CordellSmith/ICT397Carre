@@ -1,0 +1,34 @@
+\hypertarget{classbt_minkowski_penetration_depth_solver}{
+\section{btMinkowskiPenetrationDepthSolver Class Reference}
+\label{classbt_minkowski_penetration_depth_solver}\index{btMinkowskiPenetrationDepthSolver@{btMinkowskiPenetrationDepthSolver}}
+}
+{\tt \#include $<$btMinkowskiPenetrationDepthSolver.h$>$}
+
+Inheritance diagram for btMinkowskiPenetrationDepthSolver:Collaboration diagram for btMinkowskiPenetrationDepthSolver:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual bool \hyperlink{classbt_minkowski_penetration_depth_solver_da75e93337af3d895f0f33f3140361c7}{calcPenDepth} (btSimplexSolverInterface \&simplexSolver, const btConvexShape $\ast$convexA, const btConvexShape $\ast$convexB, const btTransform \&transA, const btTransform \&transB, btVector3 \&v, btVector3 \&pa, btVector3 \&pb, class \hyperlink{classbt_i_debug_draw}{btIDebugDraw} $\ast$debugDraw)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+MinkowskiPenetrationDepthSolver implements bruteforce penetration depth estimation. Implementation is based on sampling the depth using support mapping, and using GJK step to get the witness points. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_minkowski_penetration_depth_solver_da75e93337af3d895f0f33f3140361c7}{
+\index{btMinkowskiPenetrationDepthSolver@{btMinkowskiPenetrationDepthSolver}!calcPenDepth@{calcPenDepth}}
+\index{calcPenDepth@{calcPenDepth}!btMinkowskiPenetrationDepthSolver@{btMinkowskiPenetrationDepthSolver}}
+\subsubsection[calcPenDepth]{\setlength{\rightskip}{0pt plus 5cm}bool btMinkowskiPenetrationDepthSolver::calcPenDepth (btSimplexSolverInterface \& {\em simplexSolver}, \/  const btConvexShape $\ast$ {\em convexA}, \/  const btConvexShape $\ast$ {\em convexB}, \/  const btTransform \& {\em transA}, \/  const btTransform \& {\em transB}, \/  btVector3 \& {\em v}, \/  btVector3 \& {\em pa}, \/  btVector3 \& {\em pb}, \/  class {\bf btIDebugDraw} $\ast$ {\em debugDraw})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_minkowski_penetration_depth_solver_da75e93337af3d895f0f33f3140361c7}
+
+
+
+
+scale dependent 
+
+Implements \hyperlink{classbt_convex_penetration_depth_solver}{btConvexPenetrationDepthSolver}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.cpp\end{CompactItemize}

@@ -1,0 +1,91 @@
+\hypertarget{group__gtx__matrix__query}{
+\section{GLM\_\-GTX\_\-matrix\_\-query}
+\label{group__gtx__matrix__query}\index{GLM\_\-GTX\_\-matrix\_\-query@{GLM\_\-GTX\_\-matrix\_\-query}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-matrix\_\-query:Query to evaluate matrix properties.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__matrix__query_g54401e84073257d2bab8680e207ef405}{glm::isNull} (detail::tmat2x2$<$ T, P $>$ const \&m, T const \&epsilon)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__matrix__query_ge3db03e8b4aea5dc381bc45d1d3935eb}{glm::isNull} (detail::tmat3x3$<$ T, P $>$ const \&m, T const \&epsilon)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__matrix__query_g227812585b9411f506b157afcda55e9c}{glm::isNull} (detail::tmat4x4$<$ T, P $>$ const \&m, T const \&epsilon)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__matrix__query_gb4ab3ce59ca59a610875732215027cc3}{glm::isIdentity} (matType$<$ T, P $>$ const \&m, T const \&epsilon)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__matrix__query_g08507235ac0ddb0a274ac1e1b10cbf39}{glm::isNormalized} (detail::tmat2x2$<$ T, P $>$ const \&m, T const \&epsilon)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__matrix__query_g31396988209969ac17b2764cff154c36}{glm::isNormalized} (detail::tmat3x3$<$ T, P $>$ const \&m, T const \&epsilon)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__matrix__query_g0005612df8bcf46d6dda35d373a61fbb}{glm::isNormalized} (detail::tmat4x4$<$ T, P $>$ const \&m, T const \&epsilon)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__matrix__query_gbaeee016acd42f7a58bd1de063a3061b}{glm::isOrthogonal} (matType$<$ T, P $>$ const \&m, T const \&epsilon)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Query to evaluate matrix properties. 
+
+$<$glm/gtx/matrix\_\-query.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__matrix__query_gb4ab3ce59ca59a610875732215027cc3}{
+\index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isIdentity@{isIdentity}}
+\index{isIdentity@{isIdentity}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
+\subsubsection[isIdentity]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isIdentity (matType$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__query_gb4ab3ce59ca59a610875732215027cc3}
+
+
+Return whether a matrix is an identity matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_g0005612df8bcf46d6dda35d373a61fbb}{
+\index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNormalized@{isNormalized}}
+\index{isNormalized@{isNormalized}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
+\subsubsection[isNormalized]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNormalized (detail::tmat4x4$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__query_g0005612df8bcf46d6dda35d373a61fbb}
+
+
+Return whether a matrix is a normalized matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_g31396988209969ac17b2764cff154c36}{
+\index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNormalized@{isNormalized}}
+\index{isNormalized@{isNormalized}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
+\subsubsection[isNormalized]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNormalized (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__query_g31396988209969ac17b2764cff154c36}
+
+
+Return whether a matrix is a normalized matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_g08507235ac0ddb0a274ac1e1b10cbf39}{
+\index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNormalized@{isNormalized}}
+\index{isNormalized@{isNormalized}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
+\subsubsection[isNormalized]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNormalized (detail::tmat2x2$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__query_g08507235ac0ddb0a274ac1e1b10cbf39}
+
+
+Return whether a matrix is a normalized matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_g227812585b9411f506b157afcda55e9c}{
+\index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNull@{isNull}}
+\index{isNull@{isNull}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
+\subsubsection[isNull]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNull (detail::tmat4x4$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__query_g227812585b9411f506b157afcda55e9c}
+
+
+Return whether a matrix is a null matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_ge3db03e8b4aea5dc381bc45d1d3935eb}{
+\index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNull@{isNull}}
+\index{isNull@{isNull}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
+\subsubsection[isNull]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNull (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__query_ge3db03e8b4aea5dc381bc45d1d3935eb}
+
+
+Return whether a matrix a null matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_g54401e84073257d2bab8680e207ef405}{
+\index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNull@{isNull}}
+\index{isNull@{isNull}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
+\subsubsection[isNull]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNull (detail::tmat2x2$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__query_g54401e84073257d2bab8680e207ef405}
+
+
+Return whether a matrix a null matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_gbaeee016acd42f7a58bd1de063a3061b}{
+\index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isOrthogonal@{isOrthogonal}}
+\index{isOrthogonal@{isOrthogonal}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
+\subsubsection[isOrthogonal]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isOrthogonal (matType$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__query_gbaeee016acd42f7a58bd1de063a3061b}
+
+
+Return whether a matrix is an orthonormalized matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. 

@@ -1,0 +1,48 @@
+\hypertarget{structai_face}{
+\section{aiFace Struct Reference}
+\label{structai_face}\index{aiFace@{aiFace}}
+}
+A single face in a mesh, referring to multiple vertices.  
+
+
+{\tt \#include $<$mesh.h$>$}
+
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+unsigned int \hyperlink{structai_face_dda2698cec0ebfe651572f4a5701360b}{mNumIndices}
+\item 
+\hypertarget{structai_face_2026b434c40cf1636f9f464a592ec36c}{
+unsigned int $\ast$ \hyperlink{structai_face_2026b434c40cf1636f9f464a592ec36c}{mIndices}}
+\label{structai_face_2026b434c40cf1636f9f464a592ec36c}
+
+\begin{CompactList}\small\item\em Pointer to the indices array. Size of the array is given in numIndices. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+A single face in a mesh, referring to multiple vertices. 
+
+If mNumIndices is 3, we call the face 'triangle', for mNumIndices $>$ 3 it's called 'polygon' (hey, that's just a definition!). \par
+ \hyperlink{structai_mesh_99d66ac0a444068c1b252b30265cbf53}{aiMesh::mPrimitiveTypes} can be queried to quickly examine which types of primitive are actually present in a mesh. The \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410b4484f73635d633cd79973bac1431ed6}{aiProcess\_\-SortByPType} flag executes a special post-processing algorithm which splits meshes with $\ast$different$\ast$ primitive types mixed up (e.g. lines and triangles) in several 'clean' submeshes. Furthermore there is a configuration option ( \hyperlink{config_8h_971e337cb0d526861142586b8341cb98}{AI\_\-CONFIG\_\-PP\_\-SBP\_\-REMOVE}) to force \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410b4484f73635d633cd79973bac1431ed6}{aiProcess\_\-SortByPType} to remove specific kinds of primitives from the imported scene, completely and forever. In many cases you'll probably want to set this setting to 
+
+\begin{Code}\begin{verbatim} aiPrimitiveType_LINE|aiPrimitiveType_POINT
+\end{verbatim}
+\end{Code}
+
+ Together with the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e4109c3de834f0307f31fa2b1b6d05dd592b}{aiProcess\_\-Triangulate} flag you can then be sure that \hyperlink{structai_face_dda2698cec0ebfe651572f4a5701360b}{aiFace::mNumIndices} is always 3. \begin{Desc}
+\item[Note:]Take a look at the \hyperlink{}{Data Structures page } for more information on the layout and winding order of a face. \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_face_dda2698cec0ebfe651572f4a5701360b}{
+\index{aiFace@{aiFace}!mNumIndices@{mNumIndices}}
+\index{mNumIndices@{mNumIndices}!aiFace@{aiFace}}
+\subsubsection[mNumIndices]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiFace::mNumIndices}}}
+\label{structai_face_dda2698cec0ebfe651572f4a5701360b}
+
+
+Number of indices defining this face. The maximum value for this member is AI\_\-MAX\_\-FACE\_\-INDICES. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/mesh.h\end{CompactItemize}

@@ -1,0 +1,48 @@
+\hypertarget{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e}{
+\section{GIM\_\-BOX\_\-BOX\_\-TRANSFORM\_\-CACHE Class Reference}
+\label{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e}\index{GIM\_\-BOX\_\-BOX\_\-TRANSFORM\_\-CACHE@{GIM\_\-BOX\_\-BOX\_\-TRANSFORM\_\-CACHE}}
+}
+Class for transforming a model1 to the space of model0.  
+
+
+{\tt \#include $<$gim\_\-box\_\-collision.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_bdaefe67a2f2bbf2b89d0ad74fb9a4a5}{
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_bdaefe67a2f2bbf2b89d0ad74fb9a4a5}{calc\_\-from\_\-homogenic} (const btTransform \&trans0, const btTransform \&trans1)}
+\label{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_bdaefe67a2f2bbf2b89d0ad74fb9a4a5}
+
+\begin{CompactList}\small\item\em Calc the transformation relative 1 to 0. Inverts matrics by transposing. \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_29e5ec39ed30a8bc7180a90cba68dc43}{
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_29e5ec39ed30a8bc7180a90cba68dc43}{calc\_\-from\_\-full\_\-invert} (const btTransform \&trans0, const btTransform \&trans1)}
+\label{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_29e5ec39ed30a8bc7180a90cba68dc43}
+
+\begin{CompactList}\small\item\em Calcs the full invertion of the matrices. Useful for scaling matrices. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_f6aacf8817de360554f57799db41c8b4}{
+btVector3 \hyperlink{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_f6aacf8817de360554f57799db41c8b4}{m\_\-T1to0}}
+\label{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_f6aacf8817de360554f57799db41c8b4}
+
+\begin{CompactList}\small\item\em Transforms translation of model1 to model 0. \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_97597f0d242e71eb8ad458838428aa09}{
+btMatrix3x3 \hyperlink{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_97597f0d242e71eb8ad458838428aa09}{m\_\-R1to0}}
+\label{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_97597f0d242e71eb8ad458838428aa09}
+
+\begin{CompactList}\small\item\em Transforms Rotation of model1 to model 0, equal to R0' $\ast$ R1. \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_c6241a28e1c1c1e4a581ba547e30409e}{
+btMatrix3x3 \hyperlink{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_c6241a28e1c1c1e4a581ba547e30409e}{m\_\-AR}}
+\label{class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e_c6241a28e1c1c1e4a581ba547e30409e}
+
+\begin{CompactList}\small\item\em Absolute value of m\_\-R1to0. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class for transforming a model1 to the space of model0. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__box__collision_8h}{gim\_\-box\_\-collision.h}\end{CompactItemize}

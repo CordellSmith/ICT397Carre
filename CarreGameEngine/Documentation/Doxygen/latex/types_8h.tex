@@ -1,0 +1,159 @@
+\hypertarget{types_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/types.h File Reference}
+\label{types_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/types.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/types.h}}
+}
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$stddef.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$limits.h$>$}\par
+{\tt \#include \char`\"{}defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vector3.h\char`\"{}}\par
+{\tt \#include \char`\"{}vector2.h\char`\"{}}\par
+{\tt \#include \char`\"{}color4.h\char`\"{}}\par
+{\tt \#include \char`\"{}matrix3x3.h\char`\"{}}\par
+{\tt \#include \char`\"{}matrix4x4.h\char`\"{}}\par
+{\tt \#include \char`\"{}quaternion.h\char`\"{}}\par
+{\tt \#include \char`\"{}vector2.inl\char`\"{}}\par
+{\tt \#include \char`\"{}vector3.inl\char`\"{}}\par
+{\tt \#include \char`\"{}color4.inl\char`\"{}}\par
+{\tt \#include \char`\"{}quaternion.inl\char`\"{}}\par
+{\tt \#include \char`\"{}matrix3x3.inl\char`\"{}}\par
+{\tt \#include \char`\"{}matrix4x4.inl\char`\"{}}\par
+
+
+Include dependency graph for types.h:
+
+This graph shows which files directly or indirectly include this file:\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structai_plane}{aiPlane}
+\item 
+struct \hyperlink{structai_ray}{aiRay}
+\item 
+struct \hyperlink{structai_color3_d}{aiColor3D}
+\item 
+struct \hyperlink{structai_string}{aiString}
+\item 
+struct \hyperlink{structai_memory_info}{aiMemoryInfo}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{types_8h_e6648cd71a8bd49d58ae8ed33ba910d1}{MAXLEN}~1024
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe711}{aiReturn} \{ \hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe7117bde061360634cbb833c7b5199cc9a86}{aiReturn\_\-SUCCESS} =  0x0, 
+\hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe7112c3ac03541b60141d29673edd7220e76}{aiReturn\_\-FAILURE} =  -0x1, 
+\hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe711ec066535964aaa165dd72815ade727f1}{aiReturn\_\-OUTOFMEMORY} =  -0x3
+ \}
+\item 
+enum \hyperlink{types_8h_c50fbaa57d78776ca99e42104d9b2786}{aiOrigin} \{ \hyperlink{types_8h_c50fbaa57d78776ca99e42104d9b278694a44e681b6c891e39767c518b64b56f}{aiOrigin\_\-SET} =  0x0, 
+\hyperlink{types_8h_c50fbaa57d78776ca99e42104d9b278634f9f30078835fdb09212bf69d5ebb36}{aiOrigin\_\-CUR} =  0x1, 
+\hyperlink{types_8h_c50fbaa57d78776ca99e42104d9b278688929c7834e2026ab642fd84bea2fec7}{aiOrigin\_\-END} =  0x2
+ \}
+\item 
+enum \hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6}{aiDefaultLogStream} \{ \hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c653f81f9d36437ced72e67b297dc17815}{aiDefaultLogStream\_\-FILE} =  0x1, 
+\hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6215b1796e410eed0b7ce1944ac54e72e}{aiDefaultLogStream\_\-STDOUT} =  0x2, 
+\hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c63e0052f70e0098160739ee06c7f59048}{aiDefaultLogStream\_\-STDERR} =  0x4, 
+\hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6424869369b939e649decec5cea6bb52c}{aiDefaultLogStream\_\-DEBUGGER} =  0x8
+ \}
+\begin{CompactList}\small\item\em Enumerates predefined log streaming destinations. Logging to these streams can be enabled with a single call to LogStream::createDefaultStream. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Basic data types and primitives, such as vectors or colors. 
+
+\subsection{Define Documentation}
+\hypertarget{types_8h_e6648cd71a8bd49d58ae8ed33ba910d1}{
+\index{types.h@{types.h}!MAXLEN@{MAXLEN}}
+\index{MAXLEN@{MAXLEN}!types.h@{types.h}}
+\subsubsection[MAXLEN]{\setlength{\rightskip}{0pt plus 5cm}\#define MAXLEN~1024}}
+\label{types_8h_e6648cd71a8bd49d58ae8ed33ba910d1}
+
+
+Maximum dimension for strings, ASSIMP strings are zero terminated. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6}{
+\index{types.h@{types.h}!aiDefaultLogStream@{aiDefaultLogStream}}
+\index{aiDefaultLogStream@{aiDefaultLogStream}!types.h@{types.h}}
+\subsubsection[aiDefaultLogStream]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiDefaultLogStream}}}
+\label{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6}
+
+
+Enumerates predefined log streaming destinations. Logging to these streams can be enabled with a single call to LogStream::createDefaultStream. 
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiDefaultLogStream\_\-FILE@{aiDefaultLogStream\_\-FILE}!types.h@{types.h}}\index{types.h@{types.h}!aiDefaultLogStream\_\-FILE@{aiDefaultLogStream\_\-FILE}}\item[{\em 
+\hypertarget{types_8h_e4271f61a7c06cd4770fc3e11f58f9c653f81f9d36437ced72e67b297dc17815}{
+aiDefaultLogStream\_\-FILE}
+\label{types_8h_e4271f61a7c06cd4770fc3e11f58f9c653f81f9d36437ced72e67b297dc17815}
+}]Stream the log to a file \index{aiDefaultLogStream\_\-STDOUT@{aiDefaultLogStream\_\-STDOUT}!types.h@{types.h}}\index{types.h@{types.h}!aiDefaultLogStream\_\-STDOUT@{aiDefaultLogStream\_\-STDOUT}}\item[{\em 
+\hypertarget{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6215b1796e410eed0b7ce1944ac54e72e}{
+aiDefaultLogStream\_\-STDOUT}
+\label{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6215b1796e410eed0b7ce1944ac54e72e}
+}]Stream the log to std::cout \index{aiDefaultLogStream\_\-STDERR@{aiDefaultLogStream\_\-STDERR}!types.h@{types.h}}\index{types.h@{types.h}!aiDefaultLogStream\_\-STDERR@{aiDefaultLogStream\_\-STDERR}}\item[{\em 
+\hypertarget{types_8h_e4271f61a7c06cd4770fc3e11f58f9c63e0052f70e0098160739ee06c7f59048}{
+aiDefaultLogStream\_\-STDERR}
+\label{types_8h_e4271f61a7c06cd4770fc3e11f58f9c63e0052f70e0098160739ee06c7f59048}
+}]Stream the log to std::cerr \index{aiDefaultLogStream\_\-DEBUGGER@{aiDefaultLogStream\_\-DEBUGGER}!types.h@{types.h}}\index{types.h@{types.h}!aiDefaultLogStream\_\-DEBUGGER@{aiDefaultLogStream\_\-DEBUGGER}}\item[{\em 
+\hypertarget{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6424869369b939e649decec5cea6bb52c}{
+aiDefaultLogStream\_\-DEBUGGER}
+\label{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6424869369b939e649decec5cea6bb52c}
+}]MSVC only: Stream the log the the debugger (this relies on OutputDebugString from the Win32 SDK) \end{description}
+\end{Desc}
+
+\hypertarget{types_8h_c50fbaa57d78776ca99e42104d9b2786}{
+\index{types.h@{types.h}!aiOrigin@{aiOrigin}}
+\index{aiOrigin@{aiOrigin}!types.h@{types.h}}
+\subsubsection[aiOrigin]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiOrigin}}}
+\label{types_8h_c50fbaa57d78776ca99e42104d9b2786}
+
+
+Seek origins (for the virtual file system API). Much cooler than using SEEK\_\-SET, SEEK\_\-CUR or SEEK\_\-END. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiOrigin\_\-SET@{aiOrigin\_\-SET}!types.h@{types.h}}\index{types.h@{types.h}!aiOrigin\_\-SET@{aiOrigin\_\-SET}}\item[{\em 
+\hypertarget{types_8h_c50fbaa57d78776ca99e42104d9b278694a44e681b6c891e39767c518b64b56f}{
+aiOrigin\_\-SET}
+\label{types_8h_c50fbaa57d78776ca99e42104d9b278694a44e681b6c891e39767c518b64b56f}
+}]Beginning of the file \index{aiOrigin\_\-CUR@{aiOrigin\_\-CUR}!types.h@{types.h}}\index{types.h@{types.h}!aiOrigin\_\-CUR@{aiOrigin\_\-CUR}}\item[{\em 
+\hypertarget{types_8h_c50fbaa57d78776ca99e42104d9b278634f9f30078835fdb09212bf69d5ebb36}{
+aiOrigin\_\-CUR}
+\label{types_8h_c50fbaa57d78776ca99e42104d9b278634f9f30078835fdb09212bf69d5ebb36}
+}]Current position of the file pointer \index{aiOrigin\_\-END@{aiOrigin\_\-END}!types.h@{types.h}}\index{types.h@{types.h}!aiOrigin\_\-END@{aiOrigin\_\-END}}\item[{\em 
+\hypertarget{types_8h_c50fbaa57d78776ca99e42104d9b278688929c7834e2026ab642fd84bea2fec7}{
+aiOrigin\_\-END}
+\label{types_8h_c50fbaa57d78776ca99e42104d9b278688929c7834e2026ab642fd84bea2fec7}
+}]End of the file, offsets must be negative \end{description}
+\end{Desc}
+
+\hypertarget{types_8h_1f78dfb65090aa930cabb984c8abe711}{
+\index{types.h@{types.h}!aiReturn@{aiReturn}}
+\index{aiReturn@{aiReturn}!types.h@{types.h}}
+\subsubsection[aiReturn]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiReturn}}}
+\label{types_8h_1f78dfb65090aa930cabb984c8abe711}
+
+
+Standard return type for some library functions. Rarely used, and if, mostly in the C API. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiReturn\_\-SUCCESS@{aiReturn\_\-SUCCESS}!types.h@{types.h}}\index{types.h@{types.h}!aiReturn\_\-SUCCESS@{aiReturn\_\-SUCCESS}}\item[{\em 
+\hypertarget{types_8h_1f78dfb65090aa930cabb984c8abe7117bde061360634cbb833c7b5199cc9a86}{
+aiReturn\_\-SUCCESS}
+\label{types_8h_1f78dfb65090aa930cabb984c8abe7117bde061360634cbb833c7b5199cc9a86}
+}]Indicates that a function was successful \index{aiReturn\_\-FAILURE@{aiReturn\_\-FAILURE}!types.h@{types.h}}\index{types.h@{types.h}!aiReturn\_\-FAILURE@{aiReturn\_\-FAILURE}}\item[{\em 
+\hypertarget{types_8h_1f78dfb65090aa930cabb984c8abe7112c3ac03541b60141d29673edd7220e76}{
+aiReturn\_\-FAILURE}
+\label{types_8h_1f78dfb65090aa930cabb984c8abe7112c3ac03541b60141d29673edd7220e76}
+}]Indicates that a function failed \index{aiReturn\_\-OUTOFMEMORY@{aiReturn\_\-OUTOFMEMORY}!types.h@{types.h}}\index{types.h@{types.h}!aiReturn\_\-OUTOFMEMORY@{aiReturn\_\-OUTOFMEMORY}}\item[{\em 
+\hypertarget{types_8h_1f78dfb65090aa930cabb984c8abe711ec066535964aaa165dd72815ade727f1}{
+aiReturn\_\-OUTOFMEMORY}
+\label{types_8h_1f78dfb65090aa930cabb984c8abe711ec066535964aaa165dd72815ade727f1}
+}]Indicates that not enough memory was available to perform the requested operation \end{description}
+\end{Desc}
+

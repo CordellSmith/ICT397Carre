@@ -1,0 +1,74 @@
+\hypertarget{classbt_m_l_c_p_solver}{
+\section{btMLCPSolver Class Reference}
+\label{classbt_m_l_c_p_solver}\index{btMLCPSolver@{btMLCPSolver}}
+}
+original version written by Erwin Coumans, October 2013  
+
+
+{\tt \#include $<$btMLCPSolver.h$>$}
+
+Collaboration diagram for btMLCPSolver:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_m_l_c_p_solver_c699f0a59f0b730ac39658ee2903b042}{
+\hyperlink{classbt_m_l_c_p_solver_c699f0a59f0b730ac39658ee2903b042}{btMLCPSolver} (\hyperlink{classbt_m_l_c_p_solver_interface}{btMLCPSolverInterface} $\ast$solver)}
+\label{classbt_m_l_c_p_solver_c699f0a59f0b730ac39658ee2903b042}
+
+\begin{CompactList}\small\item\em original version written by Erwin Coumans, October 2013 \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+virtual btScalar \hyperlink{classbt_m_l_c_p_solver_a465e167537eceb89f7125d3bb2d5321}{solveGroupCacheFriendlySetup} (btCollisionObject $\ast$$\ast$bodies, int numBodies, btPersistentManifold $\ast$$\ast$manifoldPtr, int numManifolds, btTypedConstraint $\ast$$\ast$constraints, int numConstraints, const btContactSolverInfo \&infoGlobal, \hyperlink{classbt_i_debug_draw}{btIDebugDraw} $\ast$debugDrawer)
+\item 
+virtual void \hyperlink{classbt_m_l_c_p_solver_b36b9b3bf2bbbd1de7db27ba109e0a8a}{createMLCPFast} (const btContactSolverInfo \&infoGlobal)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_m_l_c_p_solver_9c1feb6855fa296c8ca582842f8e4fe3}{
+btVectorXu \hyperlink{classbt_m_l_c_p_solver_9c1feb6855fa296c8ca582842f8e4fe3}{m\_\-bSplit}}
+\label{classbt_m_l_c_p_solver_9c1feb6855fa296c8ca582842f8e4fe3}
+
+\begin{CompactList}\small\item\em when using 'split impulse' we solve two separate (M)LCPs \item\end{CompactList}\item 
+btMatrixXu \hyperlink{classbt_m_l_c_p_solver_8430698267e9572498e04e8dba3cda3b}{m\_\-scratchJ3}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+original version written by Erwin Coumans, October 2013 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_m_l_c_p_solver_a465e167537eceb89f7125d3bb2d5321}{
+\index{btMLCPSolver@{btMLCPSolver}!solveGroupCacheFriendlySetup@{solveGroupCacheFriendlySetup}}
+\index{solveGroupCacheFriendlySetup@{solveGroupCacheFriendlySetup}!btMLCPSolver@{btMLCPSolver}}
+\subsubsection[solveGroupCacheFriendlySetup]{\setlength{\rightskip}{0pt plus 5cm}btScalar btMLCPSolver::solveGroupCacheFriendlySetup (btCollisionObject $\ast$$\ast$ {\em bodies}, \/  int {\em numBodies}, \/  btPersistentManifold $\ast$$\ast$ {\em manifoldPtr}, \/  int {\em numManifolds}, \/  btTypedConstraint $\ast$$\ast$ {\em constraints}, \/  int {\em numConstraints}, \/  const btContactSolverInfo \& {\em infoGlobal}, \/  {\bf btIDebugDraw} $\ast$ {\em debugDrawer})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{classbt_m_l_c_p_solver_a465e167537eceb89f7125d3bb2d5321}
+
+
+
+
+The btSequentialImpulseConstraintSolver moves all friction constraints at the very end, we can also interleave them instead \hypertarget{classbt_m_l_c_p_solver_b36b9b3bf2bbbd1de7db27ba109e0a8a}{
+\index{btMLCPSolver@{btMLCPSolver}!createMLCPFast@{createMLCPFast}}
+\index{createMLCPFast@{createMLCPFast}!btMLCPSolver@{btMLCPSolver}}
+\subsubsection[createMLCPFast]{\setlength{\rightskip}{0pt plus 5cm}void btMLCPSolver::createMLCPFast (const btContactSolverInfo \& {\em infoGlobal})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{classbt_m_l_c_p_solver_b36b9b3bf2bbbd1de7db27ba109e0a8a}
+
+
+
+
+fill the upper triangle of the matrix, to make it symmetric 
+
+\subsection{Member Data Documentation}
+\hypertarget{classbt_m_l_c_p_solver_8430698267e9572498e04e8dba3cda3b}{
+\index{btMLCPSolver@{btMLCPSolver}!m\_\-scratchJ3@{m\_\-scratchJ3}}
+\index{m\_\-scratchJ3@{m\_\-scratchJ3}!btMLCPSolver@{btMLCPSolver}}
+\subsubsection[m\_\-scratchJ3]{\setlength{\rightskip}{0pt plus 5cm}btMatrixXu {\bf btMLCPSolver::m\_\-scratchJ3}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classbt_m_l_c_p_solver_8430698267e9572498e04e8dba3cda3b}
+
+
+The following scratch variables are not stateful -- contents are cleared prior to each use. They are only cached here to avoid extra memory allocations and deallocations and to ensure that multiple instances of the solver can be run in parallel. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/MLCPSolvers/btMLCPSolver.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/MLCPSolvers/btMLCPSolver.cpp\end{CompactItemize}

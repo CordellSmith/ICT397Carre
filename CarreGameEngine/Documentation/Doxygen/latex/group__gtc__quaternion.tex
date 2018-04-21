@@ -1,0 +1,430 @@
+\hypertarget{group__gtc__quaternion}{
+\section{GLM\_\-GTC\_\-quaternion}
+\label{group__gtc__quaternion}\index{GLM\_\-GTC\_\-quaternion@{GLM\_\-GTC\_\-quaternion}}
+}
+
+
+Collaboration diagram for GLM\_\-GTC\_\-quaternion:Defines a templated quaternion type and several quaternion operations.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtc__quaternion_g286560b01bedb4e046ffb71de22464f4}{glm::length} (detail::tquat$<$ T, P $>$ const \&q)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tquat$<$ T, P $>$ \hyperlink{group__gtc__quaternion_g396b587a47d7e611895b2c95892a2e17}{glm::normalize} (detail::tquat$<$ T, P $>$ const \&q)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class quatType$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtc__quaternion_g4ce8bce2b7dc8206a31cfb8e7b779b76}{glm::dot} (quatType$<$ T, P $>$ const \&x, quatType$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tquat$<$ T, P $>$ \hyperlink{group__gtc__quaternion_gd53916e67eedc8bb259548504b713350}{glm::mix} (detail::tquat$<$ T, P $>$ const \&x, detail::tquat$<$ T, P $>$ const \&y, T const \&a)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tquat$<$ T, P $>$ \hyperlink{group__gtc__quaternion_g7bdb11ee6bfad4eafe2cb71337353ca4}{glm::lerp} (detail::tquat$<$ T, P $>$ const \&x, detail::tquat$<$ T, P $>$ const \&y, T const \&a)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tquat$<$ T, P $>$ \hyperlink{group__gtc__quaternion_ga75cee4315cd8e7f15eaac3ea944106a}{glm::slerp} (detail::tquat$<$ T, P $>$ const \&x, detail::tquat$<$ T, P $>$ const \&y, T const \&a)
+\begin{CompactList}\small\item\em Returns the slurp interpolation between two quaternions. \item\end{CompactList}\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tquat$<$ T, P $>$ \hyperlink{group__gtc__quaternion_gdbb01a11c8e4f4e0602f6cc649896066}{glm::conjugate} (detail::tquat$<$ T, P $>$ const \&q)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tquat$<$ T, P $>$ \hyperlink{group__gtc__quaternion_g105dc7d1f84cc6cf4ba6e3634c671688}{glm::inverse} (detail::tquat$<$ T, P $>$ const \&q)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tquat$<$ T, P $>$ \hyperlink{group__gtc__quaternion_gca43bc964b553c2bde6a60499c1f2b50}{glm::rotate} (detail::tquat$<$ T, P $>$ const \&q, T const \&angle, detail::tvec3$<$ T, P $>$ const \&axis)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec3$<$ T, P $>$ \hyperlink{group__gtc__quaternion_gb7f90472a816598e7bc7b3606dbadcac}{glm::eulerAngles} (detail::tquat$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtc__quaternion_g3f58a75c69ff56cb9c83ea237abc1414}{glm::roll} (detail::tquat$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtc__quaternion_g091250a9d0674463c4c9342563184bcd}{glm::pitch} (detail::tquat$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtc__quaternion_g36e24dea9793778d8b1093daed17eba1}{glm::yaw} (detail::tquat$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat3x3$<$ T, P $>$ \hyperlink{group__gtc__quaternion_gbbfeeb474bc34d9c73cfdc8af78cfb8b}{glm::mat3\_\-cast} (detail::tquat$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$ T, P $>$ \hyperlink{group__gtc__quaternion_gbe87795cddd91732acb07830f8125a2d}{glm::mat4\_\-cast} (detail::tquat$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tquat$<$ T, P $>$ \hyperlink{group__gtc__quaternion_ga615768cdd09816fd42da38f484fb4c0}{glm::quat\_\-cast} (detail::tmat3x3$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tquat$<$ T, P $>$ \hyperlink{group__gtc__quaternion_ge2011ef54746786bc5a93314dfcf54b5}{glm::quat\_\-cast} (detail::tmat4x4$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtc__quaternion_g48c100d72c9c3295b75c9133ddbb83d1}{glm::angle} (detail::tquat$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec3$<$ T, P $>$ \hyperlink{group__gtc__quaternion_g5c243b588291c790bf1b5ec3f0f08d1b}{glm::axis} (detail::tquat$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tquat$<$ T, P $>$ \hyperlink{group__gtc__quaternion_g96dbce7a48d76fa63e65c4ba949a3bc4}{glm::angleAxis} (T const \&angle, detail::tvec3$<$ T, P $>$ const \&axis)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec4$<$ bool, P $>$ \hyperlink{group__gtc__quaternion_gf0ab4cfbc0f3e16f060fa4dd501b5dc1}{glm::lessThan} (detail::tquat$<$ T, P $>$ const \&x, detail::tquat$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec4$<$ bool, P $>$ \hyperlink{group__gtc__quaternion_g43f2f8f0e9b252966c72f357fc834184}{glm::lessThanEqual} (detail::tquat$<$ T, P $>$ const \&x, detail::tquat$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec4$<$ bool, P $>$ \hyperlink{group__gtc__quaternion_g1ee107eeb1b58dcc19bd56b119b7e14e}{glm::greaterThan} (detail::tquat$<$ T, P $>$ const \&x, detail::tquat$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec4$<$ bool, P $>$ \hyperlink{group__gtc__quaternion_ge52fe15caa6daaf39c02a5d5827f8473}{glm::greaterThanEqual} (detail::tquat$<$ T, P $>$ const \&x, detail::tquat$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec4$<$ bool, P $>$ \hyperlink{group__gtc__quaternion_gd867dac3fe25c96ee0cc95a141acd4db}{glm::equal} (detail::tquat$<$ T, P $>$ const \&x, detail::tquat$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec4$<$ bool, P $>$ \hyperlink{group__gtc__quaternion_g5299d50f9c7692d388f1275cff4e89ce}{glm::notEqual} (detail::tquat$<$ T, P $>$ const \&x, detail::tquat$<$ T, P $>$ const \&y)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Defines a templated quaternion type and several quaternion operations. 
+
+$<$glm/gtc/quaternion.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtc__quaternion_g48c100d72c9c3295b75c9133ddbb83d1}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!angle@{angle}}
+\index{angle@{angle}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[angle]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::angle (detail::tquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g48c100d72c9c3295b75c9133ddbb83d1}
+
+
+Returns the quaternion rotation angle.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g96dbce7a48d76fa63e65c4ba949a3bc4}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!angleAxis@{angleAxis}}
+\index{angleAxis@{angleAxis}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[angleAxis]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::angleAxis (T const \& {\em angle}, \/  detail::tvec3$<$ T, P $>$ const \& {\em axis})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g96dbce7a48d76fa63e65c4ba949a3bc4}
+
+
+Build a quaternion from an angle and a normalized axis.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em angle}]Angle expressed in radians if GLM\_\-FORCE\_\-RADIANS is define or degrees otherwise. \item[{\em axis}]Axis of the quaternion, must be normalized.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g5c243b588291c790bf1b5ec3f0f08d1b}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!axis@{axis}}
+\index{axis@{axis}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[axis]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::axis (detail::tquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g5c243b588291c790bf1b5ec3f0f08d1b}
+
+
+Returns the q rotation axis.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_gdbb01a11c8e4f4e0602f6cc649896066}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!conjugate@{conjugate}}
+\index{conjugate@{conjugate}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[conjugate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::conjugate (detail::tquat$<$ T, P $>$ const \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_gdbb01a11c8e4f4e0602f6cc649896066}
+
+
+Returns the q conjugate.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g4ce8bce2b7dc8206a31cfb8e7b779b76}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!dot@{dot}}
+\index{dot@{dot}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[dot]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class quatType$>$ GLM\_\-FUNC\_\-DECL T glm::dot (quatType$<$ T, P $>$ const \& {\em x}, \/  quatType$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g4ce8bce2b7dc8206a31cfb8e7b779b76}
+
+
+Returns dot product of q1 and q2, i.e., q1\mbox{[}0\mbox{]} $\ast$ q2\mbox{[}0\mbox{]} + q1\mbox{[}1\mbox{]} $\ast$ q2\mbox{[}1\mbox{]} + ...
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_gd867dac3fe25c96ee0cc95a141acd4db}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!equal@{equal}}
+\index{equal@{equal}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[equal]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ bool, P $>$ glm::equal (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  detail::tquat$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_gd867dac3fe25c96ee0cc95a141acd4db}
+
+
+Returns the component-wise comparison of result x == y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em quatType}]Floating-point quaternion types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_gb7f90472a816598e7bc7b3606dbadcac}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!eulerAngles@{eulerAngles}}
+\index{eulerAngles@{eulerAngles}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[eulerAngles]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::eulerAngles (detail::tquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_gb7f90472a816598e7bc7b3606dbadcac}
+
+
+Returns euler angles, yitch as x, yaw as y, roll as z. The result is expressed in radians if GLM\_\-FORCE\_\-RADIANS is defined or degrees otherwise.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g1ee107eeb1b58dcc19bd56b119b7e14e}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!greaterThan@{greaterThan}}
+\index{greaterThan@{greaterThan}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[greaterThan]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ bool, P $>$ glm::greaterThan (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  detail::tquat$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g1ee107eeb1b58dcc19bd56b119b7e14e}
+
+
+Returns the component-wise comparison of result x $>$ y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em quatType}]Floating-point quaternion types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_ge52fe15caa6daaf39c02a5d5827f8473}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!greaterThanEqual@{greaterThanEqual}}
+\index{greaterThanEqual@{greaterThanEqual}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[greaterThanEqual]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ bool, P $>$ glm::greaterThanEqual (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  detail::tquat$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_ge52fe15caa6daaf39c02a5d5827f8473}
+
+
+Returns the component-wise comparison of result x $>$= y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em quatType}]Floating-point quaternion types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g105dc7d1f84cc6cf4ba6e3634c671688}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!inverse@{inverse}}
+\index{inverse@{inverse}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[inverse]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::inverse (detail::tquat$<$ T, P $>$ const \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g105dc7d1f84cc6cf4ba6e3634c671688}
+
+
+Returns the q inverse.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g286560b01bedb4e046ffb71de22464f4}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!length@{length}}
+\index{length@{length}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[length]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::length (detail::tquat$<$ T, P $>$ const \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g286560b01bedb4e046ffb71de22464f4}
+
+
+Returns the length of the quaternion.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g7bdb11ee6bfad4eafe2cb71337353ca4}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!lerp@{lerp}}
+\index{lerp@{lerp}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[lerp]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::lerp (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  detail::tquat$<$ T, P $>$ const \& {\em y}, \/  T const \& {\em a})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g7bdb11ee6bfad4eafe2cb71337353ca4}
+
+
+Linear interpolation of two quaternions. The interpolation is oriented.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]A quaternion \item[{\em y}]A quaternion \item[{\em a}]Interpolation factor. The interpolation is defined in the range \mbox{[}0, 1\mbox{]}. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em T}]Value type used to build the quaternion. Supported: half, float or double. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_gf0ab4cfbc0f3e16f060fa4dd501b5dc1}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!lessThan@{lessThan}}
+\index{lessThan@{lessThan}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[lessThan]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ bool, P $>$ glm::lessThan (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  detail::tquat$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_gf0ab4cfbc0f3e16f060fa4dd501b5dc1}
+
+
+Returns the component-wise comparison result of x $<$ y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em quatType}]Floating-point quaternion types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g43f2f8f0e9b252966c72f357fc834184}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!lessThanEqual@{lessThanEqual}}
+\index{lessThanEqual@{lessThanEqual}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[lessThanEqual]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ bool, P $>$ glm::lessThanEqual (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  detail::tquat$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g43f2f8f0e9b252966c72f357fc834184}
+
+
+Returns the component-wise comparison of result x $<$= y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em quatType}]Floating-point quaternion types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_gbbfeeb474bc34d9c73cfdc8af78cfb8b}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!mat3\_\-cast@{mat3\_\-cast}}
+\index{mat3\_\-cast@{mat3\_\-cast}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[mat3\_\-cast]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::mat3\_\-cast (detail::tquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_gbbfeeb474bc34d9c73cfdc8af78cfb8b}
+
+
+Converts a quaternion to a 3 $\ast$ 3 matrix.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_gbe87795cddd91732acb07830f8125a2d}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!mat4\_\-cast@{mat4\_\-cast}}
+\index{mat4\_\-cast@{mat4\_\-cast}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[mat4\_\-cast]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::mat4\_\-cast (detail::tquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_gbe87795cddd91732acb07830f8125a2d}
+
+
+Converts a quaternion to a 4 $\ast$ 4 matrix.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_gd53916e67eedc8bb259548504b713350}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!mix@{mix}}
+\index{mix@{mix}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[mix]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::mix (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  detail::tquat$<$ T, P $>$ const \& {\em y}, \/  T const \& {\em a})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_gd53916e67eedc8bb259548504b713350}
+
+
+Spherical linear interpolation of two quaternions. The interpolation is oriented and the rotation is performed at constant speed. For short path spherical linear interpolation, use the slerp function.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]A quaternion \item[{\em y}]A quaternion \item[{\em a}]Interpolation factor. The interpolation is defined beyond the range \mbox{[}0, 1\mbox{]}. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em T}]Value type used to build the quaternion. Supported: half, float or double. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} 
+
+- \hyperlink{group__gtc__quaternion_ga75cee4315cd8e7f15eaac3ea944106a}{slerp(detail::tquat$<$T, P$>$ const \& x, detail::tquat$<$T, P$>$ const \& y, T const \& a)} \end{Desc}
+\hypertarget{group__gtc__quaternion_g396b587a47d7e611895b2c95892a2e17}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!normalize@{normalize}}
+\index{normalize@{normalize}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[normalize]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::normalize (detail::tquat$<$ T, P $>$ const \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g396b587a47d7e611895b2c95892a2e17}
+
+
+Returns the normalized quaternion.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g5299d50f9c7692d388f1275cff4e89ce}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!notEqual@{notEqual}}
+\index{notEqual@{notEqual}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[notEqual]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ bool, P $>$ glm::notEqual (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  detail::tquat$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g5299d50f9c7692d388f1275cff4e89ce}
+
+
+Returns the component-wise comparison of result x != y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em quatType}]Floating-point quaternion types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g091250a9d0674463c4c9342563184bcd}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!pitch@{pitch}}
+\index{pitch@{pitch}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[pitch]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::pitch (detail::tquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g091250a9d0674463c4c9342563184bcd}
+
+
+Returns pitch value of euler angles expressed in radians if GLM\_\-FORCE\_\-RADIANS is defined or degrees otherwise.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_ge2011ef54746786bc5a93314dfcf54b5}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!quat\_\-cast@{quat\_\-cast}}
+\index{quat\_\-cast@{quat\_\-cast}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[quat\_\-cast]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::quat\_\-cast (detail::tmat4x4$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_ge2011ef54746786bc5a93314dfcf54b5}
+
+
+Converts a 4 $\ast$ 4 matrix to a quaternion.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_ga615768cdd09816fd42da38f484fb4c0}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!quat\_\-cast@{quat\_\-cast}}
+\index{quat\_\-cast@{quat\_\-cast}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[quat\_\-cast]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::quat\_\-cast (detail::tmat3x3$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_ga615768cdd09816fd42da38f484fb4c0}
+
+
+Converts a 3 $\ast$ 3 matrix to a quaternion.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g3f58a75c69ff56cb9c83ea237abc1414}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!roll@{roll}}
+\index{roll@{roll}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[roll]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::roll (detail::tquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g3f58a75c69ff56cb9c83ea237abc1414}
+
+
+Returns roll value of euler angles expressed in radians if GLM\_\-FORCE\_\-RADIANS is defined or degrees otherwise.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_gca43bc964b553c2bde6a60499c1f2b50}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!rotate@{rotate}}
+\index{rotate@{rotate}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[rotate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::rotate (detail::tquat$<$ T, P $>$ const \& {\em q}, \/  T const \& {\em angle}, \/  detail::tvec3$<$ T, P $>$ const \& {\em axis})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_gca43bc964b553c2bde6a60499c1f2b50}
+
+
+Rotates a quaternion from a vector of 3 components axis and an angle.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]Source orientation \item[{\em angle}]Angle expressed in radians if GLM\_\-FORCE\_\-RADIANS is define or degrees otherwise. \item[{\em axis}]Axis of the rotation\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_ga75cee4315cd8e7f15eaac3ea944106a}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!slerp@{slerp}}
+\index{slerp@{slerp}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[slerp]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::slerp (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  detail::tquat$<$ T, P $>$ const \& {\em y}, \/  T const \& {\em a})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_ga75cee4315cd8e7f15eaac3ea944106a}
+
+
+Returns the slurp interpolation between two quaternions. 
+
+Spherical linear interpolation of two quaternions. The interpolation always take the short path and the rotation is performed at constant speed.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]A quaternion \item[{\em y}]A quaternion \item[{\em a}]Interpolation factor. The interpolation is defined beyond the range \mbox{[}0, 1\mbox{]}. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em T}]Value type used to build the quaternion. Supported: half, float or double. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__quaternion}{GLM\_\-GTC\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__quaternion_g36e24dea9793778d8b1093daed17eba1}{
+\index{gtc\_\-quaternion@{gtc\_\-quaternion}!yaw@{yaw}}
+\index{yaw@{yaw}!gtc_quaternion@{gtc\_\-quaternion}}
+\subsubsection[yaw]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::yaw (detail::tquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__quaternion_g36e24dea9793778d8b1093daed17eba1}
+
+
+Returns yaw value of euler angles expressed in radians if GLM\_\-FORCE\_\-RADIANS is defined or degrees otherwise.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}

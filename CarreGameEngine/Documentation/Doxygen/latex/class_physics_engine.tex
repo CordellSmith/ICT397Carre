@@ -1,0 +1,248 @@
+\hypertarget{class_physics_engine}{
+\section{PhysicsEngine Class Reference}
+\label{class_physics_engine}\index{PhysicsEngine@{PhysicsEngine}}
+}
+Physics engine that handles all object collisions and physics based movement.  
+
+
+{\tt \#include $<$PhysicsEngine.h$>$}
+
+Collaboration diagram for PhysicsEngine:\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+enum \hyperlink{class_physics_engine_f9cf664e8df4f9a518448aa122957077}{RIGID\_\-BODY\_\-TYPE} \{ \par
+\hyperlink{class_physics_engine_f9cf664e8df4f9a518448aa1229570775b12039b51b36d92231a67695ea07e28}{CAMERA} =  1, 
+\hyperlink{class_physics_engine_f9cf664e8df4f9a518448aa122957077219567afcdbe1eb7fe073c81b43dd5c0}{BOX} =  2, 
+\hyperlink{class_physics_engine_f9cf664e8df4f9a518448aa122957077d3a5fc2a81d07760aa5d18bb1b79cd9b}{SPHERE} =  3, 
+\hyperlink{class_physics_engine_f9cf664e8df4f9a518448aa122957077504250562f6fb421a154714f65c870ad}{HEIGHTFIELD} =  4, 
+\par
+\hyperlink{class_physics_engine_f9cf664e8df4f9a518448aa122957077c9cfd25eead0581ed6bd4050b3cfbe13}{PLANE} =  5
+ \}
+\begin{CompactList}\small\item\em Enum for the different types of rigid bodies created. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_physics_engine_7fc9180ea453680df0b863fa157c5b92}{PhysicsEngine} ()
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+\hyperlink{class_physics_engine_e5f076ee99bbfdbc79ab2d27366d8476}{$\sim$PhysicsEngine} ()
+\begin{CompactList}\small\item\em De-constructor. \item\end{CompactList}\item 
+void \hyperlink{class_physics_engine_758fafb4fe8d295b3710644de4d22d4a}{CreateStaticRigidBody} ()
+\begin{CompactList}\small\item\em Creates static rigid body. \item\end{CompactList}\item 
+void \hyperlink{class_physics_engine_549c7e9116d06e8f7599497c3c4f6fd1}{CreateDynamicRigidBody} (btVector3 \&pos)
+\begin{CompactList}\small\item\em Creates dynamic rigid body. \item\end{CompactList}\item 
+void \hyperlink{class_physics_engine_6096d332305e50fba86f377c00ec27e0}{CreatePlayerControlledRigidBody} (btVector3 \&playerObj)
+\begin{CompactList}\small\item\em Creates dynamic rigid body for a player controlled object. \item\end{CompactList}\item 
+void \hyperlink{class_physics_engine_9d6bec05e95efd4b9168b507a90883b9}{Simulate} (std::vector$<$ btVector3 $>$ \&bodyPos, btVector3 \&playerObj)
+\begin{CompactList}\small\item\em Simulate the dynamic world. \item\end{CompactList}\item 
+void \hyperlink{class_physics_engine_f951fe2e462f4b487b653199298a1bb3}{CreateHeightfieldTerrainShape} ()
+\begin{CompactList}\small\item\em Create a heightfield terrain shape. \item\end{CompactList}\item 
+void \hyperlink{class_physics_engine_2e877a86ca85b2ec58b3c046af057d76}{ActivateAllObjects} ()
+\begin{CompactList}\small\item\em Activates all objects. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Physics engine that handles all object collisions and physics based movement. 
+
+\begin{Desc}
+\item[Note:]Bullet Continuous Collision Detection and Physics Library Copyright (c) 2003-2007 Erwin Coumans \href{http://continuousphysics.com/Bullet/}{\tt http://continuousphysics.com/Bullet/}\end{Desc}
+This software is provided 'as-is', without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software. Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required. 2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software. 3. This notice may not be removed or altered from any source distribution.
+
+\begin{Desc}
+\item[Author:]Jack Matters\end{Desc}
+\begin{Desc}
+\item[Date:]29/04/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.0 Initial start. Took ideas from a previous physics engine I worked on that used ReactPhysics3D. Also used HelloWorld example as a guide. Managed to get 2 spheres (currently shown as floor planes) to collide off each other and a floor.\end{Desc}
+\begin{Desc}
+\item[Date:]05/04/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]2.0 Altered code to draw a square dynamic rigid body instead of a sphere for testing purposes. Started work on camera collision.\end{Desc}
+\begin{Desc}
+\item[Date:]06/04/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]2.1 Tidied up camera (player object) code. Force is now applied in direction camera was moved, calculations are done, then camera is moved to updated position. Still needs some work, but will do for now.\end{Desc}
+\begin{Desc}
+\item[Date:]18/04/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]3.0 Big gap between versions due to other units requirements. Set up functions for initializing all object rigid bodies. Will need changing.\end{Desc}
+\begin{Desc}
+\item[Date:]19/04/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]3.1 Added testing for heightfield terrain shape. Got it loading and working, but without a visual terrain it is not possible to see if it is working correctly or not. Have commented it out until I am able to keep working on it. Also added some more doxygen comments.\end{Desc}
+\begin{Desc}
+\item[Date:]20/04/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]3.2 Did some research and found out that objects become inactive after a set time of inactivity. Created new function to ensure all objects are always active. This fixed the camera getting stuck, as well as other objects getting stuck in the air. \end{Desc}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_physics_engine_f9cf664e8df4f9a518448aa122957077}{
+\index{PhysicsEngine@{PhysicsEngine}!RIGID\_\-BODY\_\-TYPE@{RIGID\_\-BODY\_\-TYPE}}
+\index{RIGID\_\-BODY\_\-TYPE@{RIGID\_\-BODY\_\-TYPE}!PhysicsEngine@{PhysicsEngine}}
+\subsubsection[RIGID\_\-BODY\_\-TYPE]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PhysicsEngine::RIGID\_\-BODY\_\-TYPE}}}
+\label{class_physics_engine_f9cf664e8df4f9a518448aa122957077}
+
+
+Enum for the different types of rigid bodies created. 
+
+Enum used to differentiate between the different types of rigid bodies created \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{CAMERA@{CAMERA}!PhysicsEngine@{PhysicsEngine}}\index{PhysicsEngine@{PhysicsEngine}!CAMERA@{CAMERA}}\item[{\em 
+\hypertarget{class_physics_engine_f9cf664e8df4f9a518448aa1229570775b12039b51b36d92231a67695ea07e28}{
+CAMERA}
+\label{class_physics_engine_f9cf664e8df4f9a518448aa1229570775b12039b51b36d92231a67695ea07e28}
+}]\hyperlink{class_camera}{Camera} object rigid body \index{BOX@{BOX}!PhysicsEngine@{PhysicsEngine}}\index{PhysicsEngine@{PhysicsEngine}!BOX@{BOX}}\item[{\em 
+\hypertarget{class_physics_engine_f9cf664e8df4f9a518448aa122957077219567afcdbe1eb7fe073c81b43dd5c0}{
+BOX}
+\label{class_physics_engine_f9cf664e8df4f9a518448aa122957077219567afcdbe1eb7fe073c81b43dd5c0}
+}]Box shape rigid body \index{SPHERE@{SPHERE}!PhysicsEngine@{PhysicsEngine}}\index{PhysicsEngine@{PhysicsEngine}!SPHERE@{SPHERE}}\item[{\em 
+\hypertarget{class_physics_engine_f9cf664e8df4f9a518448aa122957077d3a5fc2a81d07760aa5d18bb1b79cd9b}{
+SPHERE}
+\label{class_physics_engine_f9cf664e8df4f9a518448aa122957077d3a5fc2a81d07760aa5d18bb1b79cd9b}
+}]Sphere shape rigid body \index{HEIGHTFIELD@{HEIGHTFIELD}!PhysicsEngine@{PhysicsEngine}}\index{PhysicsEngine@{PhysicsEngine}!HEIGHTFIELD@{HEIGHTFIELD}}\item[{\em 
+\hypertarget{class_physics_engine_f9cf664e8df4f9a518448aa122957077504250562f6fb421a154714f65c870ad}{
+HEIGHTFIELD}
+\label{class_physics_engine_f9cf664e8df4f9a518448aa122957077504250562f6fb421a154714f65c870ad}
+}]Heightfield terrain shape rigid body \index{PLANE@{PLANE}!PhysicsEngine@{PhysicsEngine}}\index{PhysicsEngine@{PhysicsEngine}!PLANE@{PLANE}}\item[{\em 
+\hypertarget{class_physics_engine_f9cf664e8df4f9a518448aa122957077c9cfd25eead0581ed6bd4050b3cfbe13}{
+PLANE}
+\label{class_physics_engine_f9cf664e8df4f9a518448aa122957077c9cfd25eead0581ed6bd4050b3cfbe13}
+}]Plane shape rigid body \end{description}
+\end{Desc}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_physics_engine_7fc9180ea453680df0b863fa157c5b92}{
+\index{PhysicsEngine@{PhysicsEngine}!PhysicsEngine@{PhysicsEngine}}
+\index{PhysicsEngine@{PhysicsEngine}!PhysicsEngine@{PhysicsEngine}}
+\subsubsection[PhysicsEngine]{\setlength{\rightskip}{0pt plus 5cm}PhysicsEngine::PhysicsEngine ()}}
+\label{class_physics_engine_7fc9180ea453680df0b863fa157c5b92}
+
+
+Default constructor. 
+
+This is the default constructor
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+\hypertarget{class_physics_engine_e5f076ee99bbfdbc79ab2d27366d8476}{
+\index{PhysicsEngine@{PhysicsEngine}!$\sim$PhysicsEngine@{$\sim$PhysicsEngine}}
+\index{$\sim$PhysicsEngine@{$\sim$PhysicsEngine}!PhysicsEngine@{PhysicsEngine}}
+\subsubsection[$\sim$PhysicsEngine]{\setlength{\rightskip}{0pt plus 5cm}PhysicsEngine::$\sim$PhysicsEngine ()}}
+\label{class_physics_engine_e5f076ee99bbfdbc79ab2d27366d8476}
+
+
+De-constructor. 
+
+This is the de-constructor
+
+\begin{Desc}
+\item[Note:]Not implemented yet\end{Desc}
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_physics_engine_758fafb4fe8d295b3710644de4d22d4a}{
+\index{PhysicsEngine@{PhysicsEngine}!CreateStaticRigidBody@{CreateStaticRigidBody}}
+\index{CreateStaticRigidBody@{CreateStaticRigidBody}!PhysicsEngine@{PhysicsEngine}}
+\subsubsection[CreateStaticRigidBody]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::CreateStaticRigidBody ()}}
+\label{class_physics_engine_758fafb4fe8d295b3710644de4d22d4a}
+
+
+Creates static rigid body. 
+
+This is a test function that is used to create a static body (as of now, it creates a floor)
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_physics_engine_549c7e9116d06e8f7599497c3c4f6fd1}{
+\index{PhysicsEngine@{PhysicsEngine}!CreateDynamicRigidBody@{CreateDynamicRigidBody}}
+\index{CreateDynamicRigidBody@{CreateDynamicRigidBody}!PhysicsEngine@{PhysicsEngine}}
+\subsubsection[CreateDynamicRigidBody]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::CreateDynamicRigidBody (btVector3 \& {\em pos})}}
+\label{class_physics_engine_549c7e9116d06e8f7599497c3c4f6fd1}
+
+
+Creates dynamic rigid body. 
+
+This is a test function that creates dynamic rigid bodies for testing purposes
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]- Position to create dynamic body\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_physics_engine_6096d332305e50fba86f377c00ec27e0}{
+\index{PhysicsEngine@{PhysicsEngine}!CreatePlayerControlledRigidBody@{CreatePlayerControlledRigidBody}}
+\index{CreatePlayerControlledRigidBody@{CreatePlayerControlledRigidBody}!PhysicsEngine@{PhysicsEngine}}
+\subsubsection[CreatePlayerControlledRigidBody]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::CreatePlayerControlledRigidBody (btVector3 \& {\em playerObj})}}
+\label{class_physics_engine_6096d332305e50fba86f377c00ec27e0}
+
+
+Creates dynamic rigid body for a player controlled object. 
+
+This is a test function that creates a dynamic rigid body for the player controlled object (as of now, that is the camera)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em playerObj}]- Object that is player controlled\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_physics_engine_9d6bec05e95efd4b9168b507a90883b9}{
+\index{PhysicsEngine@{PhysicsEngine}!Simulate@{Simulate}}
+\index{Simulate@{Simulate}!PhysicsEngine@{PhysicsEngine}}
+\subsubsection[Simulate]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::Simulate (std::vector$<$ btVector3 $>$ \& {\em bodyPos}, \/  btVector3 \& {\em playerObj})}}
+\label{class_physics_engine_9d6bec05e95efd4b9168b507a90883b9}
+
+
+Simulate the dynamic world. 
+
+This function simulates the dynamic world by handling all physics calculations each step
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em bodyPos}]- Update all rigid body positions for drawing \item[{\em playerObj}]- Sets new player object position\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_physics_engine_f951fe2e462f4b487b653199298a1bb3}{
+\index{PhysicsEngine@{PhysicsEngine}!CreateHeightfieldTerrainShape@{CreateHeightfieldTerrainShape}}
+\index{CreateHeightfieldTerrainShape@{CreateHeightfieldTerrainShape}!PhysicsEngine@{PhysicsEngine}}
+\subsubsection[CreateHeightfieldTerrainShape]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::CreateHeightfieldTerrainShape ()}}
+\label{class_physics_engine_f951fe2e462f4b487b653199298a1bb3}
+
+
+Create a heightfield terrain shape. 
+
+This is a test function that creates a heightfield terrain shape
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_physics_engine_2e877a86ca85b2ec58b3c046af057d76}{
+\index{PhysicsEngine@{PhysicsEngine}!ActivateAllObjects@{ActivateAllObjects}}
+\index{ActivateAllObjects@{ActivateAllObjects}!PhysicsEngine@{PhysicsEngine}}
+\subsubsection[ActivateAllObjects]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::ActivateAllObjects ()}}
+\label{class_physics_engine_2e877a86ca85b2ec58b3c046af057d76}
+
+
+Activates all objects. 
+
+Ensures that every rigid body remains active throughout simulation. Otherwise they can become 'stuck'
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/PhysicsEngine.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/src/PhysicsEngine.cpp\end{CompactItemize}

@@ -1,0 +1,44 @@
+\hypertarget{structb3_dynamic_bvh}{
+\section{b3DynamicBvh Struct Reference}
+\label{structb3_dynamic_bvh}\index{b3DynamicBvh@{b3DynamicBvh}}
+}
+{\tt \#include $<$b3DynamicBvh.h$>$}
+
+Collaboration diagram for b3DynamicBvh:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+B3\_\-DBVT\_\-PREFIX void \hyperlink{structb3_dynamic_bvh_164303efd5eac767e608b09526734b59}{rayTestInternal} (const b3DbvtNode $\ast$root, const b3Vector3 \&rayFrom, const b3Vector3 \&rayTo, const b3Vector3 \&rayDirectionInverse, unsigned int signs\mbox{[}3\mbox{]}, b3Scalar lambda\_\-max, const b3Vector3 \&aabbMin, const b3Vector3 \&aabbMax, B3\_\-DBVT\_\-IPOLICY) const 
+\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static B3\_\-DBVT\_\-PREFIX void \hyperlink{structb3_dynamic_bvh_b913761020aef36751217a877fcf7e6d}{rayTest} (const b3DbvtNode $\ast$root, const b3Vector3 \&rayFrom, const b3Vector3 \&rayTo, B3\_\-DBVT\_\-IPOLICY)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{structb3_dynamic_bvh}{b3DynamicBvh} class implements a fast dynamic bounding volume tree based on axis aligned bounding boxes (aabb tree). This \hyperlink{structb3_dynamic_bvh}{b3DynamicBvh} is used for soft body collision detection and for the \hyperlink{structb3_dynamic_bvh_broadphase}{b3DynamicBvhBroadphase}. It has a fast insert, remove and update of nodes. Unlike the b3QuantizedBvh, nodes can be dynamically moved around, which allows for change in topology of the underlying data structure. 
+
+\subsection{Member Function Documentation}
+\hypertarget{structb3_dynamic_bvh_b913761020aef36751217a877fcf7e6d}{
+\index{b3DynamicBvh@{b3DynamicBvh}!rayTest@{rayTest}}
+\index{rayTest@{rayTest}!b3DynamicBvh@{b3DynamicBvh}}
+\subsubsection[rayTest]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-DBVT\_\-PREFIX void b3DynamicBvh::rayTest (const b3DbvtNode $\ast$ {\em root}, \/  const b3Vector3 \& {\em rayFrom}, \/  const b3Vector3 \& {\em rayTo}, \/  B3\_\-DBVT\_\-IPOLICY)\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{structb3_dynamic_bvh_b913761020aef36751217a877fcf7e6d}
+
+
+rayTest is a re-entrant ray test, and can be called in parallel as long as the b3AlignedAlloc is thread-safe (uses locking etc) rayTest is slower than rayTestInternal, because it builds a local stack, using memory allocations, and it recomputes signs/rayDirectionInverses each time 
+
+what about division by zero? --$>$ just set rayDirection\mbox{[}i\mbox{]} to INF/B3\_\-LARGE\_\-FLOAT \hypertarget{structb3_dynamic_bvh_164303efd5eac767e608b09526734b59}{
+\index{b3DynamicBvh@{b3DynamicBvh}!rayTestInternal@{rayTestInternal}}
+\index{rayTestInternal@{rayTestInternal}!b3DynamicBvh@{b3DynamicBvh}}
+\subsubsection[rayTestInternal]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-DBVT\_\-PREFIX void b3DynamicBvh::rayTestInternal (const b3DbvtNode $\ast$ {\em root}, \/  const b3Vector3 \& {\em rayFrom}, \/  const b3Vector3 \& {\em rayTo}, \/  const b3Vector3 \& {\em rayDirectionInverse}, \/  unsigned int {\em signs}\mbox{[}3\mbox{]}, \/  b3Scalar {\em lambda\_\-max}, \/  const b3Vector3 \& {\em aabbMin}, \/  const b3Vector3 \& {\em aabbMax}, \/  B3\_\-DBVT\_\-IPOLICY) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{structb3_dynamic_bvh_164303efd5eac767e608b09526734b59}
+
+
+rayTestInternal is faster than rayTest, because it uses a persistent stack (to reduce dynamic memory allocations to a minimum) and it uses precomputed signs/rayInverseDirections rayTestInternal is used by \hyperlink{structb3_dynamic_bvh_broadphase}{b3DynamicBvhBroadphase} to accelerate world ray casts 
+
+The documentation for this struct was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3DynamicBvh.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3DynamicBvh.cpp\end{CompactItemize}

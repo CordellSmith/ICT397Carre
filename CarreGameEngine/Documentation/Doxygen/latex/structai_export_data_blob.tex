@@ -1,0 +1,52 @@
+\hypertarget{structai_export_data_blob}{
+\section{aiExportDataBlob Struct Reference}
+\label{structai_export_data_blob}\index{aiExportDataBlob@{aiExportDataBlob}}
+}
+{\tt \#include $<$cexport.h$>$}
+
+Collaboration diagram for aiExportDataBlob:\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{structai_export_data_blob_339bfaacc70396b2f99f94c1bc3b808f}{
+size\_\-t \hyperlink{structai_export_data_blob_339bfaacc70396b2f99f94c1bc3b808f}{size}}
+\label{structai_export_data_blob_339bfaacc70396b2f99f94c1bc3b808f}
+
+\begin{CompactList}\small\item\em Size of the data in bytes. \item\end{CompactList}\item 
+\hypertarget{structai_export_data_blob_c080c780dad92077b42447d77a1a9ed1}{
+void $\ast$ \hyperlink{structai_export_data_blob_c080c780dad92077b42447d77a1a9ed1}{data}}
+\label{structai_export_data_blob_c080c780dad92077b42447d77a1a9ed1}
+
+\begin{CompactList}\small\item\em The data. \item\end{CompactList}\item 
+C\_\-STRUCT \hyperlink{structai_string}{aiString} \hyperlink{structai_export_data_blob_f7f006ac5ad818c0d81d520a84f74c3e}{name}
+\item 
+C\_\-STRUCT \hyperlink{structai_export_data_blob}{aiExportDataBlob} $\ast$ \hyperlink{structai_export_data_blob_3e98fa760f45983ff1bccec6715f3817}{next}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Describes a blob of exported scene data. Use \hyperlink{cexport_8h_33b02f2dbfd79980bf29e62f3a64139f}{aiExportSceneToBlob()} to create a blob containing an exported scene. The memory referred by this structure is owned by \hyperlink{namespace_assimp}{Assimp}. to free its resources. Don't try to free the memory on your side - it will crash for most build configurations due to conflicting heaps.
+
+Blobs can be nested - each blob may reference another blob, which may in turn reference another blob and so on. This is used when exporters write more than one output file for a given \hyperlink{structai_scene}{aiScene}. See the remarks for \hyperlink{structai_export_data_blob_f7f006ac5ad818c0d81d520a84f74c3e}{aiExportDataBlob::name} for more information. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_export_data_blob_f7f006ac5ad818c0d81d520a84f74c3e}{
+\index{aiExportDataBlob@{aiExportDataBlob}!name@{name}}
+\index{name@{name}!aiExportDataBlob@{aiExportDataBlob}}
+\subsubsection[name]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiString} {\bf aiExportDataBlob::name}}}
+\label{structai_export_data_blob_f7f006ac5ad818c0d81d520a84f74c3e}
+
+
+Name of the blob. An empty string always indicates the first (and primary) blob, which contains the actual file data. Any other blobs are auxiliary files produced by exporters (i.e. material files). Existence of such files depends on the file format. Most formats don't split assets across multiple files.
+
+If used, blob names usually contain the file extension that should be used when writing the data to disc. \hypertarget{structai_export_data_blob_3e98fa760f45983ff1bccec6715f3817}{
+\index{aiExportDataBlob@{aiExportDataBlob}!next@{next}}
+\index{next@{next}!aiExportDataBlob@{aiExportDataBlob}}
+\subsubsection[next]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiExportDataBlob}$\ast$ {\bf aiExportDataBlob::next}}}
+\label{structai_export_data_blob_3e98fa760f45983ff1bccec6715f3817}
+
+
+Pointer to the next blob in the chain or NULL if there is none. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{cexport_8h}{cexport.h}\end{CompactItemize}

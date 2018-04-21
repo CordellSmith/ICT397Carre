@@ -1,0 +1,65 @@
+\hypertarget{group__gtx__rotate__normalized__axis}{
+\section{GLM\_\-GTX\_\-rotate\_\-normalized\_\-axis}
+\label{group__gtx__rotate__normalized__axis}\index{GLM\_\-GTX\_\-rotate\_\-normalized\_\-axis@{GLM\_\-GTX\_\-rotate\_\-normalized\_\-axis}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-rotate\_\-normalized\_\-axis:Quaternions and matrices rotations around normalized axis.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$ T, P $>$ \hyperlink{group__gtx__rotate__normalized__axis_g9fc93bb16dd6719fc660a506cb833fb0}{glm::rotateNormalizedAxis} (detail::tmat4x4$<$ T, P $>$ const \&m, T const \&angle, detail::tvec3$<$ T, P $>$ const \&axis)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tquat$<$ T, P $>$ \hyperlink{group__gtx__rotate__normalized__axis_g34cc3bc3287bc3f56bac3c3a70cea353}{glm::rotateNormalizedAxis} (detail::tquat$<$ T, P $>$ const \&q, T const \&angle, detail::tvec3$<$ T, P $>$ const \&axis)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Quaternions and matrices rotations around normalized axis. 
+
+$<$glm/gtx/rotate\_\-normalized\_\-axis.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__rotate__normalized__axis_g34cc3bc3287bc3f56bac3c3a70cea353}{
+\index{gtx\_\-rotate\_\-normalized\_\-axis@{gtx\_\-rotate\_\-normalized\_\-axis}!rotateNormalizedAxis@{rotateNormalizedAxis}}
+\index{rotateNormalizedAxis@{rotateNormalizedAxis}!gtx_rotate_normalized_axis@{gtx\_\-rotate\_\-normalized\_\-axis}}
+\subsubsection[rotateNormalizedAxis]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::rotateNormalizedAxis (detail::tquat$<$ T, P $>$ const \& {\em q}, \/  T const \& {\em angle}, \/  detail::tvec3$<$ T, P $>$ const \& {\em axis})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__rotate__normalized__axis_g34cc3bc3287bc3f56bac3c3a70cea353}
+
+
+Rotates a quaternion from a vector of 3 components normalized axis and an angle.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]Source orientation \item[{\em angle}]Angle expressed in radians if GLM\_\-FORCE\_\-RADIANS is define or degrees otherwise. \item[{\em axis}]Normalized axis of the rotation, must be normalized.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtx__rotate__normalized__axis}{GLM\_\-GTX\_\-rotate\_\-normalized\_\-axis} \end{Desc}
+\hypertarget{group__gtx__rotate__normalized__axis_g9fc93bb16dd6719fc660a506cb833fb0}{
+\index{gtx\_\-rotate\_\-normalized\_\-axis@{gtx\_\-rotate\_\-normalized\_\-axis}!rotateNormalizedAxis@{rotateNormalizedAxis}}
+\index{rotateNormalizedAxis@{rotateNormalizedAxis}!gtx_rotate_normalized_axis@{gtx\_\-rotate\_\-normalized\_\-axis}}
+\subsubsection[rotateNormalizedAxis]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::rotateNormalizedAxis (detail::tmat4x4$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em angle}, \/  detail::tvec3$<$ T, P $>$ const \& {\em axis})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__rotate__normalized__axis_g9fc93bb16dd6719fc660a506cb833fb0}
+
+
+Builds a rotation 4 $\ast$ 4 matrix created from a normalized axis and an angle.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em m}]Input matrix multiplied by this rotation matrix. \item[{\em angle}]Rotation angle expressed in radians if GLM\_\-FORCE\_\-RADIANS is define or degrees otherwise. \item[{\em axis}]Rotation axis, must be normalized. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em T}]Value type used to build the matrix. Currently supported: half (not recommanded), float or double.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtx__rotate__normalized__axis}{GLM\_\-GTX\_\-rotate\_\-normalized\_\-axis} 
+
+- rotate(T angle, T x, T y, T z) 
+
+- rotate(detail::tmat4x4$<$T, P$>$ const \& m, T angle, T x, T y, T z) 
+
+- \hyperlink{group__gtx__transform_g52e753e0ad1cb6ae700855cc9ca921ca}{rotate(T angle, detail::tvec3$<$T, P$>$ const \& v)} \end{Desc}

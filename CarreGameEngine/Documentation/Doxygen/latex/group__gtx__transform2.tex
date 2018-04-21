@@ -1,0 +1,100 @@
+\hypertarget{group__gtx__transform2}{
+\section{GLM\_\-GTX\_\-transform2}
+\label{group__gtx__transform2}\index{GLM\_\-GTX\_\-transform2@{GLM\_\-GTX\_\-transform2}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-transform2:Add extra transformation matrices.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat3x3$<$ T, P $>$ \hyperlink{group__gtx__transform2_gb571921ddab480d5cd402b5f3e325fb7}{glm::shearX2D} (detail::tmat3x3$<$ T, P $>$ const \&m, T y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat3x3$<$ T, P $>$ \hyperlink{group__gtx__transform2_g17fa300cd87fdaadb7b40970d1efc515}{glm::shearY2D} (detail::tmat3x3$<$ T, P $>$ const \&m, T x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$ T, P $>$ \hyperlink{group__gtx__transform2_ga091ba9f8bd59949adaf8ed5d4ec52ed}{glm::shearX3D} (const detail::tmat4x4$<$ T, P $>$ \&m, T y, T z)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$ T, P $>$ \hyperlink{group__gtx__transform2_g9f9bb8a5e641eb978f4ed24e980bd898}{glm::shearY3D} (const detail::tmat4x4$<$ T, P $>$ \&m, T x, T z)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$ T, P $>$ \hyperlink{group__gtx__transform2_ge94300dc2220af5a0d4afa13c912d1a1}{glm::shearZ3D} (const detail::tmat4x4$<$ T, P $>$ \&m, T x, T y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat3x3$<$ T, P $>$ \hyperlink{group__gtx__transform2_gcee3ec4d06d03a1cf9f4037c4effc2e4}{glm::proj2D} (const detail::tmat3x3$<$ T, P $>$ \&m, const detail::tvec3$<$ T, P $>$ \&normal)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$ T, P $>$ \hyperlink{group__gtx__transform2_gea404ce6c1541825232f418242bff9fb}{glm::proj3D} (const detail::tmat4x4$<$ T, P $>$ \&m, const detail::tvec3$<$ T, P $>$ \&normal)
+\item 
+{\footnotesize template$<$typename valType, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$ valType, P $>$ \hyperlink{group__gtx__transform2_gd75c85daca353804c161589fe32ce107}{glm::scaleBias} (valType scale, valType bias)
+\item 
+{\footnotesize template$<$typename valType, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$ valType, P $>$ \hyperlink{group__gtx__transform2_g235e65153daa1bdc12fcc07c8019931b}{glm::scaleBias} (detail::tmat4x4$<$ valType, P $>$ const \&m, valType scale, valType bias)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Add extra transformation matrices. 
+
+$<$glm/gtx/transform2.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__transform2_gcee3ec4d06d03a1cf9f4037c4effc2e4}{
+\index{gtx\_\-transform2@{gtx\_\-transform2}!proj2D@{proj2D}}
+\index{proj2D@{proj2D}!gtx_transform2@{gtx\_\-transform2}}
+\subsubsection[proj2D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::proj2D (const detail::tmat3x3$<$ T, P $>$ \& {\em m}, \/  const detail::tvec3$<$ T, P $>$ \& {\em normal})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__transform2_gcee3ec4d06d03a1cf9f4037c4effc2e4}
+
+
+Build planar projection matrix along normal axis. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_gea404ce6c1541825232f418242bff9fb}{
+\index{gtx\_\-transform2@{gtx\_\-transform2}!proj3D@{proj3D}}
+\index{proj3D@{proj3D}!gtx_transform2@{gtx\_\-transform2}}
+\subsubsection[proj3D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::proj3D (const detail::tmat4x4$<$ T, P $>$ \& {\em m}, \/  const detail::tvec3$<$ T, P $>$ \& {\em normal})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__transform2_gea404ce6c1541825232f418242bff9fb}
+
+
+Build planar projection matrix along normal axis. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_g235e65153daa1bdc12fcc07c8019931b}{
+\index{gtx\_\-transform2@{gtx\_\-transform2}!scaleBias@{scaleBias}}
+\index{scaleBias@{scaleBias}!gtx_transform2@{gtx\_\-transform2}}
+\subsubsection[scaleBias]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename valType, precision P$>$ GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$valType, P$>$ glm::scaleBias (detail::tmat4x4$<$ valType, P $>$ const \& {\em m}, \/  valType {\em scale}, \/  valType {\em bias})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__transform2_g235e65153daa1bdc12fcc07c8019931b}
+
+
+Build a scale bias matrix. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_gd75c85daca353804c161589fe32ce107}{
+\index{gtx\_\-transform2@{gtx\_\-transform2}!scaleBias@{scaleBias}}
+\index{scaleBias@{scaleBias}!gtx_transform2@{gtx\_\-transform2}}
+\subsubsection[scaleBias]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename valType, precision P$>$ GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$valType, P$>$ glm::scaleBias (valType {\em scale}, \/  valType {\em bias})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__transform2_gd75c85daca353804c161589fe32ce107}
+
+
+Build a scale bias matrix. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_gb571921ddab480d5cd402b5f3e325fb7}{
+\index{gtx\_\-transform2@{gtx\_\-transform2}!shearX2D@{shearX2D}}
+\index{shearX2D@{shearX2D}!gtx_transform2@{gtx\_\-transform2}}
+\subsubsection[shearX2D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::shearX2D (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  T {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__transform2_gb571921ddab480d5cd402b5f3e325fb7}
+
+
+Transforms a matrix with a shearing on X axis. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_ga091ba9f8bd59949adaf8ed5d4ec52ed}{
+\index{gtx\_\-transform2@{gtx\_\-transform2}!shearX3D@{shearX3D}}
+\index{shearX3D@{shearX3D}!gtx_transform2@{gtx\_\-transform2}}
+\subsubsection[shearX3D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::shearX3D (const detail::tmat4x4$<$ T, P $>$ \& {\em m}, \/  T {\em y}, \/  T {\em z})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__transform2_ga091ba9f8bd59949adaf8ed5d4ec52ed}
+
+
+Transforms a matrix with a shearing on X axis From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_g17fa300cd87fdaadb7b40970d1efc515}{
+\index{gtx\_\-transform2@{gtx\_\-transform2}!shearY2D@{shearY2D}}
+\index{shearY2D@{shearY2D}!gtx_transform2@{gtx\_\-transform2}}
+\subsubsection[shearY2D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::shearY2D (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  T {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__transform2_g17fa300cd87fdaadb7b40970d1efc515}
+
+
+Transforms a matrix with a shearing on Y axis. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_g9f9bb8a5e641eb978f4ed24e980bd898}{
+\index{gtx\_\-transform2@{gtx\_\-transform2}!shearY3D@{shearY3D}}
+\index{shearY3D@{shearY3D}!gtx_transform2@{gtx\_\-transform2}}
+\subsubsection[shearY3D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::shearY3D (const detail::tmat4x4$<$ T, P $>$ \& {\em m}, \/  T {\em x}, \/  T {\em z})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__transform2_g9f9bb8a5e641eb978f4ed24e980bd898}
+
+
+Transforms a matrix with a shearing on Y axis. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_ge94300dc2220af5a0d4afa13c912d1a1}{
+\index{gtx\_\-transform2@{gtx\_\-transform2}!shearZ3D@{shearZ3D}}
+\index{shearZ3D@{shearZ3D}!gtx_transform2@{gtx\_\-transform2}}
+\subsubsection[shearZ3D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::shearZ3D (const detail::tmat4x4$<$ T, P $>$ \& {\em m}, \/  T {\em x}, \/  T {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__transform2_ge94300dc2220af5a0d4afa13c912d1a1}
+
+
+Transforms a matrix with a shearing on Z axis. From GLM\_\-GTX\_\-transform2 extension. 

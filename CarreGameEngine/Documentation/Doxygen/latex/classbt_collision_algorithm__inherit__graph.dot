@@ -1,0 +1,40 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btCollisionAlgorithm",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btActivatingCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_activating_collision_algorithm.html",tooltip="This class is not enabled yet (work-in-progress) to more aggressively activate objects..."];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btBox2dBox2dCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_box2d_box2d_collision_algorithm.html",tooltip="box-box collision detection"];
+  Node2 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="btBoxBoxCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_box_box_collision_algorithm.html",tooltip="box-box collision detection"];
+  Node2 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="btCompoundCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_compound_collision_algorithm.html",tooltip="btCompoundCollisionAlgorithm supports collision between CompoundCollisionShapes and..."];
+  Node5 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="btCompoundCompoundCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_compound_compound_collision_algorithm.html",tooltip="btCompoundCompoundCollisionAlgorithm supports collision between two btCompoundCollisionShape..."];
+  Node2 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="btConvex2dConvex2dAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_convex2d_convex2d_algorithm.html"];
+  Node2 -> Node8 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="btConvexConvexAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_convex_convex_algorithm.html"];
+  Node2 -> Node9 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="btGImpactCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_collision_algorithm.html",tooltip="Collision Algorithm for GImpact Shapes."];
+  Node2 -> Node10 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="btSphereBoxCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_sphere_box_collision_algorithm.html"];
+  Node2 -> Node11 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="btSphereSphereCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_sphere_sphere_collision_algorithm.html"];
+  Node2 -> Node12 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node12 [label="btSphereTriangleCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_sphere_triangle_collision_algorithm.html"];
+  Node1 -> Node13 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node13 [label="btConvexPlaneCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_convex_plane_collision_algorithm.html"];
+  Node1 -> Node14 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node14 [label="btEmptyAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_empty_algorithm.html"];
+  Node1 -> Node15 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node15 [label="btSoftBodyConcaveCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_soft_body_concave_collision_algorithm.html",tooltip="btSoftBodyConcaveCollisionAlgorithm supports collision between soft body shapes and..."];
+  Node1 -> Node16 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node16 [label="btSoftRigidCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_soft_rigid_collision_algorithm.html",tooltip="btSoftRigidCollisionAlgorithm provides collision detection between btSoftBody and..."];
+  Node1 -> Node17 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node17 [label="btSoftSoftCollisionAlgorithm",height=0.2,width=0.4,color="black",URL="$classbt_soft_soft_collision_algorithm.html",tooltip="collision detection between two btSoftBody shapes"];
+}

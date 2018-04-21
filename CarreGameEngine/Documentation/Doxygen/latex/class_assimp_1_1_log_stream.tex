@@ -1,0 +1,76 @@
+\hypertarget{class_assimp_1_1_log_stream}{
+\section{Assimp::LogStream Class Reference}
+\label{class_assimp_1_1_log_stream}\index{Assimp::LogStream@{Assimp::LogStream}}
+}
+CPP-API: Abstract interface for log stream implementations.  
+
+
+{\tt \#include $<$LogStream.hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_log_stream_2cf7080efeb4999a02689f2a31843da2}{
+virtual \hyperlink{class_assimp_1_1_log_stream_2cf7080efeb4999a02689f2a31843da2}{$\sim$LogStream} ()}
+\label{class_assimp_1_1_log_stream_2cf7080efeb4999a02689f2a31843da2}
+
+\begin{CompactList}\small\item\em Virtual destructor. \item\end{CompactList}\item 
+virtual void \hyperlink{class_assimp_1_1_log_stream_b0bfcb5ab9988ef65d7222a50f6e8d37}{write} (const char $\ast$message)=0
+\begin{CompactList}\small\item\em Overwrite this for your own output methods. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static \hyperlink{class_assimp_1_1_log_stream}{LogStream} $\ast$ \hyperlink{class_assimp_1_1_log_stream_6b358a4a79b2e9ba2025e10d3e9405e3}{createDefaultStream} (\hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6}{aiDefaultLogStream} stream, const char $\ast$name=\char`\"{}AssimpLog.txt\char`\"{}, IOSystem $\ast$io=NULL)
+\begin{CompactList}\small\item\em Creates a default log stream. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_log_stream_c6863075fc4a6fcffd76ad6af80c18bc}{
+\hyperlink{class_assimp_1_1_log_stream_c6863075fc4a6fcffd76ad6af80c18bc}{LogStream} ()}
+\label{class_assimp_1_1_log_stream_c6863075fc4a6fcffd76ad6af80c18bc}
+
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+CPP-API: Abstract interface for log stream implementations. 
+
+Several default implementations are provided, see \hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6}{aiDefaultLogStream} for more details. Writing your own implementation of \hyperlink{class_assimp_1_1_log_stream}{LogStream} is just necessary if these are not enough for your purpose. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_log_stream_b0bfcb5ab9988ef65d7222a50f6e8d37}{
+\index{Assimp::LogStream@{Assimp::LogStream}!write@{write}}
+\index{write@{write}!Assimp::LogStream@{Assimp::LogStream}}
+\subsubsection[write]{\setlength{\rightskip}{0pt plus 5cm}virtual void Assimp::LogStream::write (const char $\ast$ {\em message})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_log_stream_b0bfcb5ab9988ef65d7222a50f6e8d37}
+
+
+Overwrite this for your own output methods. 
+
+Log messages $\ast$may$\ast$ consist of multiple lines and you shouldn't expect a consistent formatting. If you want custom formatting (e.g. generate HTML), supply a custom instance of \hyperlink{class_assimp_1_1_logger}{Logger} to DefaultLogger:set(). Usually you can $\ast$expect$\ast$ that a log message is exactly one line and terminated with a single \par
+ character. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em message}]Message to be written \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_log_stream_6b358a4a79b2e9ba2025e10d3e9405e3}{
+\index{Assimp::LogStream@{Assimp::LogStream}!createDefaultStream@{createDefaultStream}}
+\index{createDefaultStream@{createDefaultStream}!Assimp::LogStream@{Assimp::LogStream}}
+\subsubsection[createDefaultStream]{\setlength{\rightskip}{0pt plus 5cm}static {\bf LogStream}$\ast$ Assimp::LogStream::createDefaultStream ({\bf aiDefaultLogStream} {\em stream}, \/  const char $\ast$ {\em name} = {\tt \char`\"{}AssimpLog.txt\char`\"{}}, \/  {\bf IOSystem} $\ast$ {\em io} = {\tt NULL})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_log_stream_6b358a4a79b2e9ba2025e10d3e9405e3}
+
+
+Creates a default log stream. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em streams}]Type of the default stream \item[{\em name}]For aiDefaultLogStream\_\-FILE: name of the output file \item[{\em io}]For aiDefaultLogStream\_\-FILE: \hyperlink{class_assimp_1_1_i_o_system}{IOSystem} to be used to open the output file. Pass NULL for the default implementation. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]New \hyperlink{class_assimp_1_1_log_stream}{LogStream} instance. \end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_log_stream_8hpp}{LogStream.hpp}\end{CompactItemize}

@@ -1,0 +1,90 @@
+\hypertarget{structai_file}{
+\section{aiFile Struct Reference}
+\label{structai_file}\index{aiFile@{aiFile}}
+}
+C-API: File callbacks.  
+
+
+{\tt \#include $<$cfileio.h$>$}
+
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+aiFileReadProc \hyperlink{structai_file_52287e81ca67b9d43cc1ce6142f781fa}{ReadProc}
+\item 
+aiFileWriteProc \hyperlink{structai_file_b9fca3a62e34a33592c13a6f31db7d1d}{WriteProc}
+\item 
+aiFileTellProc \hyperlink{structai_file_af2d88a3b2fcbdacf51119658283d27e}{TellProc}
+\item 
+aiFileTellProc \hyperlink{structai_file_ff2fff8c0458e7ec71f7de217c3a3033}{FileSizeProc}
+\item 
+aiFileSeek \hyperlink{structai_file_7a07b499be4ad433669246479a4d4ad2}{SeekProc}
+\item 
+aiFileFlushProc \hyperlink{structai_file_1102d28d1c0be68ffed20476669bdb0d}{FlushProc}
+\item 
+aiUserData \hyperlink{structai_file_ec528fa18f4755fe4f28d604fde28aad}{UserData}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+C-API: File callbacks. 
+
+Actually, it's a data structure to wrap a set of fXXXX (e.g fopen) replacement functions.
+
+The default implementation of the functions utilizes the fXXX functions from the CRT. However, you can supply a custom implementation to \hyperlink{namespace_assimp}{Assimp} by delivering a custom \hyperlink{structai_file_i_o}{aiFileIO}. Use this to enable reading from other sources, such as ZIP archives or memory locations. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_file_52287e81ca67b9d43cc1ce6142f781fa}{
+\index{aiFile@{aiFile}!ReadProc@{ReadProc}}
+\index{ReadProc@{ReadProc}!aiFile@{aiFile}}
+\subsubsection[ReadProc]{\setlength{\rightskip}{0pt plus 5cm}aiFileReadProc {\bf aiFile::ReadProc}}}
+\label{structai_file_52287e81ca67b9d43cc1ce6142f781fa}
+
+
+Callback to read from a file \hypertarget{structai_file_b9fca3a62e34a33592c13a6f31db7d1d}{
+\index{aiFile@{aiFile}!WriteProc@{WriteProc}}
+\index{WriteProc@{WriteProc}!aiFile@{aiFile}}
+\subsubsection[WriteProc]{\setlength{\rightskip}{0pt plus 5cm}aiFileWriteProc {\bf aiFile::WriteProc}}}
+\label{structai_file_b9fca3a62e34a33592c13a6f31db7d1d}
+
+
+Callback to write to a file \hypertarget{structai_file_af2d88a3b2fcbdacf51119658283d27e}{
+\index{aiFile@{aiFile}!TellProc@{TellProc}}
+\index{TellProc@{TellProc}!aiFile@{aiFile}}
+\subsubsection[TellProc]{\setlength{\rightskip}{0pt plus 5cm}aiFileTellProc {\bf aiFile::TellProc}}}
+\label{structai_file_af2d88a3b2fcbdacf51119658283d27e}
+
+
+Callback to retrieve the current position of the file cursor (ftell()) \hypertarget{structai_file_ff2fff8c0458e7ec71f7de217c3a3033}{
+\index{aiFile@{aiFile}!FileSizeProc@{FileSizeProc}}
+\index{FileSizeProc@{FileSizeProc}!aiFile@{aiFile}}
+\subsubsection[FileSizeProc]{\setlength{\rightskip}{0pt plus 5cm}aiFileTellProc {\bf aiFile::FileSizeProc}}}
+\label{structai_file_ff2fff8c0458e7ec71f7de217c3a3033}
+
+
+Callback to retrieve the size of the file, in bytes \hypertarget{structai_file_7a07b499be4ad433669246479a4d4ad2}{
+\index{aiFile@{aiFile}!SeekProc@{SeekProc}}
+\index{SeekProc@{SeekProc}!aiFile@{aiFile}}
+\subsubsection[SeekProc]{\setlength{\rightskip}{0pt plus 5cm}aiFileSeek {\bf aiFile::SeekProc}}}
+\label{structai_file_7a07b499be4ad433669246479a4d4ad2}
+
+
+Callback to set the current position of the file cursor (fseek()) \hypertarget{structai_file_1102d28d1c0be68ffed20476669bdb0d}{
+\index{aiFile@{aiFile}!FlushProc@{FlushProc}}
+\index{FlushProc@{FlushProc}!aiFile@{aiFile}}
+\subsubsection[FlushProc]{\setlength{\rightskip}{0pt plus 5cm}aiFileFlushProc {\bf aiFile::FlushProc}}}
+\label{structai_file_1102d28d1c0be68ffed20476669bdb0d}
+
+
+Callback to flush the file contents \hypertarget{structai_file_ec528fa18f4755fe4f28d604fde28aad}{
+\index{aiFile@{aiFile}!UserData@{UserData}}
+\index{UserData@{UserData}!aiFile@{aiFile}}
+\subsubsection[UserData]{\setlength{\rightskip}{0pt plus 5cm}aiUserData {\bf aiFile::UserData}}}
+\label{structai_file_ec528fa18f4755fe4f28d604fde28aad}
+
+
+User-defined, opaque data 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{cfileio_8h}{cfileio.h}\end{CompactItemize}

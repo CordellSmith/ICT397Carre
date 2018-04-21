@@ -1,0 +1,190 @@
+\hypertarget{group__core__func__exponential}{
+\section{Exponential functions}
+\label{group__core__func__exponential}\index{Exponential functions@{Exponential functions}}
+}
+
+
+Collaboration diagram for Exponential functions:\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__core__func__exponential_gfdaffc3606f4ee7f415cd64ada108356}{glm::pow} (genType const \&base, genType const \&exponent)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__core__func__exponential_g0e7e69c5497cbbfe4afe08ee5449c553}{glm::exp} (genType const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__core__func__exponential_gce8148db3949f9260f6f883f8dbae808}{glm::log} (genType const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__core__func__exponential_g85f6efedaa47799e8f406481baca2171}{glm::exp2} (genType const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__core__func__exponential_g501534b7328bab23128aa15b316e483d}{glm::log2} (genType x)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL vecType$<$ T, P $>$ \hyperlink{group__core__func__exponential_gfe49b7b63045b6ab94bffbcd7e7a7bc8}{glm::sqrt} (vecType$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__core__func__exponential_ga190c750b7eefaeb15431987d41177d1}{glm::inversesqrt} (genType const \&x)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+These all operate component-wise. The description is per component. 
+
+\subsection{Function Documentation}
+\hypertarget{group__core__func__exponential_g0e7e69c5497cbbfe4afe08ee5449c553}{
+\index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!exp@{exp}}
+\index{exp@{exp}!core_func_exponential@{core\_\-func\_\-exponential}}
+\subsubsection[exp]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::exp (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__exponential_g0e7e69c5497cbbfe4afe08ee5449c553}
+
+
+Returns the natural exponentiation of x, i.e., e$^\wedge$x.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]exp function is defined for input values of x defined in the range (inf-, inf+) in the limit of the type precision. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/exp.xml}{\tt GLSL exp man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
+\hypertarget{group__core__func__exponential_g85f6efedaa47799e8f406481baca2171}{
+\index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!exp2@{exp2}}
+\index{exp2@{exp2}!core_func_exponential@{core\_\-func\_\-exponential}}
+\subsubsection[exp2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::exp2 (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__exponential_g85f6efedaa47799e8f406481baca2171}
+
+
+Returns 2 raised to the x power.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]exp2 function is defined for input values of x defined in the range (inf-, inf+) in the limit of the type precision. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/exp2.xml}{\tt GLSL exp2 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
+\hypertarget{group__core__func__exponential_ga190c750b7eefaeb15431987d41177d1}{
+\index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!inversesqrt@{inversesqrt}}
+\index{inversesqrt@{inversesqrt}!core_func_exponential@{core\_\-func\_\-exponential}}
+\subsubsection[inversesqrt]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::inversesqrt (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__exponential_ga190c750b7eefaeb15431987d41177d1}
+
+
+Returns the reciprocal of the positive square root of x.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]inversesqrt function is defined for input values of x defined in the range \mbox{[}0, inf+) in the limit of the type precision. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/inversesqrt.xml}{\tt GLSL inversesqrt man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
+\hypertarget{group__core__func__exponential_gce8148db3949f9260f6f883f8dbae808}{
+\index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!log@{log}}
+\index{log@{log}!core_func_exponential@{core\_\-func\_\-exponential}}
+\subsubsection[log]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::log (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__exponential_gce8148db3949f9260f6f883f8dbae808}
+
+
+Returns the natural logarithm of x, i.e., returns the value y which satisfies the equation x = e$^\wedge$y. Results are undefined if x $<$= 0.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]log function is defined for input values of x defined in the range (0, inf+) in the limit of the type precision. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/log.xml}{\tt GLSL log man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
+\hypertarget{group__core__func__exponential_g501534b7328bab23128aa15b316e483d}{
+\index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!log2@{log2}}
+\index{log2@{log2}!core_func_exponential@{core\_\-func\_\-exponential}}
+\subsubsection[log2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::log2 (genType {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__exponential_g501534b7328bab23128aa15b316e483d}
+
+
+Returns the base 2 log of x, i.e., returns the value y, which satisfies the equation x = 2 $^\wedge$ y.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]log2 function is defined for input values of x defined in the range (0, inf+) in the limit of the type precision. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/log2.xml}{\tt GLSL log2 man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
+\hypertarget{group__core__func__exponential_gfdaffc3606f4ee7f415cd64ada108356}{
+\index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!pow@{pow}}
+\index{pow@{pow}!core_func_exponential@{core\_\-func\_\-exponential}}
+\subsubsection[pow]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::pow (genType const \& {\em base}, \/  genType const \& {\em exponent})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__exponential_gfdaffc3606f4ee7f415cd64ada108356}
+
+
+Returns 'base' raised to the power 'exponent'.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em base}]Floating point value. pow function is defined for input values of x defined in the range (inf-, inf+) in the limit of the type precision. \item[{\em exponent}]Floating point value representing the 'exponent'. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/pow.xml}{\tt GLSL pow man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
+\hypertarget{group__core__func__exponential_gfe49b7b63045b6ab94bffbcd7e7a7bc8}{
+\index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!sqrt@{sqrt}}
+\index{sqrt@{sqrt}!core_func_exponential@{core\_\-func\_\-exponential}}
+\subsubsection[sqrt]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ T, P $>$ glm::sqrt (vecType$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__exponential_gfe49b7b63045b6ab94bffbcd7e7a7bc8}
+
+
+Returns the positive square root of x.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]sqrt function is defined for input values of x defined in the range \mbox{[}0, inf+) in the limit of the type precision. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/sqrt.xml}{\tt GLSL sqrt man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}

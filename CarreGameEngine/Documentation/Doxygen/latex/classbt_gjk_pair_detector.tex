@@ -1,0 +1,42 @@
+\hypertarget{classbt_gjk_pair_detector}{
+\section{btGjkPairDetector Class Reference}
+\label{classbt_gjk_pair_detector}\index{btGjkPairDetector@{btGjkPairDetector}}
+}
+\hyperlink{classbt_gjk_pair_detector}{btGjkPairDetector} uses GJK to implement the \hyperlink{structbt_discrete_collision_detector_interface}{btDiscreteCollisionDetectorInterface}  
+
+
+{\tt \#include $<$btGjkPairDetector.h$>$}
+
+Inheritance diagram for btGjkPairDetector:Collaboration diagram for btGjkPairDetector:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classbt_gjk_pair_detector_bc29953dd7aee59e9ca887963c26c8c2}{getClosestPointsNonVirtual} (const ClosestPointInput \&input, Result \&output, class \hyperlink{classbt_i_debug_draw}{btIDebugDraw} $\ast$debugDraw)
+\item 
+\hypertarget{classbt_gjk_pair_detector_93e9752920c57c39faca247fc005750e}{
+void \hyperlink{classbt_gjk_pair_detector_93e9752920c57c39faca247fc005750e}{setIgnoreMargin} (bool ignoreMargin)}
+\label{classbt_gjk_pair_detector_93e9752920c57c39faca247fc005750e}
+
+\begin{CompactList}\small\item\em don't use setIgnoreMargin, it's for Bullet's internal use \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classbt_gjk_pair_detector}{btGjkPairDetector} uses GJK to implement the \hyperlink{structbt_discrete_collision_detector_interface}{btDiscreteCollisionDetectorInterface} 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_gjk_pair_detector_bc29953dd7aee59e9ca887963c26c8c2}{
+\index{btGjkPairDetector@{btGjkPairDetector}!getClosestPointsNonVirtual@{getClosestPointsNonVirtual}}
+\index{getClosestPointsNonVirtual@{getClosestPointsNonVirtual}!btGjkPairDetector@{btGjkPairDetector}}
+\subsubsection[getClosestPointsNonVirtual]{\setlength{\rightskip}{0pt plus 5cm}void btGjkPairDetector::getClosestPointsNonVirtual (const ClosestPointInput \& {\em input}, \/  Result \& {\em output}, \/  class {\bf btIDebugDraw} $\ast$ {\em debugDraw})}}
+\label{classbt_gjk_pair_detector_bc29953dd7aee59e9ca887963c26c8c2}
+
+
+
+
+this is another degenerate case, where the initial GJK calculation reports a degenerate case EPA reports no penetration, and the second GJK (using the supporting vector without margin) reports a valid positive distance. Use the results of the second GJK instead of failing. thanks to Jacob.Langford for the reproduction case \href{http://code.google.com/p/bullet/issues/detail?id=250}{\tt http://code.google.com/p/bullet/issues/detail?id=250}
+
+todo: need to track down this EPA penetration solver degeneracy the penetration solver reports penetration but the contact normal connecting the contact points is pointing in the opposite direction until then, detect the issue and revert the normal 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.cpp\end{CompactItemize}

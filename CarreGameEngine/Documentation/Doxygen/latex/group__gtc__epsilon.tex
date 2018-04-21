@@ -1,0 +1,70 @@
+\hypertarget{group__gtc__epsilon}{
+\section{GLM\_\-GTC\_\-epsilon}
+\label{group__gtc__epsilon}\index{GLM\_\-GTC\_\-epsilon@{GLM\_\-GTC\_\-epsilon}}
+}
+
+
+Collaboration diagram for GLM\_\-GTC\_\-epsilon:Comparison functions for a user defined epsilon values.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL vecType$<$ bool, P $>$ \hyperlink{group__gtc__epsilon_g7051ff93341ffb11d864e88d4bc0e3d8}{glm::epsilonEqual} (vecType$<$ T, P $>$ const \&x, vecType$<$ T, P $>$ const \&y, T const \&epsilon)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtc__epsilon_g98e0b3362c11f76fc16f5fa9b27435d8}{glm::epsilonEqual} (genType const \&x, genType const \&y, genType const \&epsilon)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType::boolType \hyperlink{group__gtc__epsilon_g3958ccc0b5aa101c4b6eea41a2f2d51a}{glm::epsilonNotEqual} (genType const \&x, genType const \&y, typename genType::value\_\-type const \&epsilon)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtc__epsilon_gcdfcf5e1180e8147b0619c0743e3eb7d}{glm::epsilonNotEqual} (genType const \&x, genType const \&y, genType const \&epsilon)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Comparison functions for a user defined epsilon values. 
+
+$<$glm/gtc/epsilon.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtc__epsilon_g98e0b3362c11f76fc16f5fa9b27435d8}{
+\index{gtc\_\-epsilon@{gtc\_\-epsilon}!epsilonEqual@{epsilonEqual}}
+\index{epsilonEqual@{epsilonEqual}!gtc_epsilon@{gtc\_\-epsilon}}
+\subsubsection[epsilonEqual]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL bool glm::epsilonEqual (genType const \& {\em x}, \/  genType const \& {\em y}, \/  genType const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__epsilon_g98e0b3362c11f76fc16f5fa9b27435d8}
+
+
+Returns the component-wise comparison of $|$x - y$|$ $<$ epsilon. True if this expression is satisfied.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__epsilon}{GLM\_\-GTC\_\-epsilon} \end{Desc}
+\hypertarget{group__gtc__epsilon_g7051ff93341ffb11d864e88d4bc0e3d8}{
+\index{gtc\_\-epsilon@{gtc\_\-epsilon}!epsilonEqual@{epsilonEqual}}
+\index{epsilonEqual@{epsilonEqual}!gtc_epsilon@{gtc\_\-epsilon}}
+\subsubsection[epsilonEqual]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ bool, P $>$ glm::epsilonEqual (vecType$<$ T, P $>$ const \& {\em x}, \/  vecType$<$ T, P $>$ const \& {\em y}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__epsilon_g7051ff93341ffb11d864e88d4bc0e3d8}
+
+
+Returns the component-wise comparison of $|$x - y$|$ $<$ epsilon. True if this expression is satisfied.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__epsilon}{GLM\_\-GTC\_\-epsilon} \end{Desc}
+\hypertarget{group__gtc__epsilon_gcdfcf5e1180e8147b0619c0743e3eb7d}{
+\index{gtc\_\-epsilon@{gtc\_\-epsilon}!epsilonNotEqual@{epsilonNotEqual}}
+\index{epsilonNotEqual@{epsilonNotEqual}!gtc_epsilon@{gtc\_\-epsilon}}
+\subsubsection[epsilonNotEqual]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL bool glm::epsilonNotEqual (genType const \& {\em x}, \/  genType const \& {\em y}, \/  genType const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__epsilon_gcdfcf5e1180e8147b0619c0743e3eb7d}
+
+
+Returns the component-wise comparison of $|$x - y$|$ $>$= epsilon. True if this expression is not satisfied.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__epsilon}{GLM\_\-GTC\_\-epsilon} \end{Desc}
+\hypertarget{group__gtc__epsilon_g3958ccc0b5aa101c4b6eea41a2f2d51a}{
+\index{gtc\_\-epsilon@{gtc\_\-epsilon}!epsilonNotEqual@{epsilonNotEqual}}
+\index{epsilonNotEqual@{epsilonNotEqual}!gtc_epsilon@{gtc\_\-epsilon}}
+\subsubsection[epsilonNotEqual]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType::boolType glm::epsilonNotEqual (genType const \& {\em x}, \/  genType const \& {\em y}, \/  typename genType::value\_\-type const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__epsilon_g3958ccc0b5aa101c4b6eea41a2f2d51a}
+
+
+Returns the component-wise comparison of $|$x - y$|$ $<$ epsilon. True if this expression is not satisfied.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__epsilon}{GLM\_\-GTC\_\-epsilon} \end{Desc}

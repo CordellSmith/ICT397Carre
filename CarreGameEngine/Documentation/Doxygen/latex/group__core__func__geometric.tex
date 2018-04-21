@@ -1,0 +1,190 @@
+\hypertarget{group__core__func__geometric}{
+\section{Geometric functions}
+\label{group__core__func__geometric}\index{Geometric functions@{Geometric functions}}
+}
+
+
+Collaboration diagram for Geometric functions:\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType::value\_\-type \hyperlink{group__core__func__geometric_gd73a94d9c967e619e670156356e93b7e}{glm::length} (genType const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType::value\_\-type \hyperlink{group__core__func__geometric_gd21e00cab9f8b4eb6d1214a16dee06c7}{glm::distance} (genType const \&p0, genType const \&p1)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__core__func__geometric_gc64a3b29d01336161a668d328cac97eb}{glm::dot} (vecType$<$ T, P $>$ const \&x, vecType$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__core__func__geometric_g93acafc6005a3433ccf1dc3fa4230d51}{glm::dot} (genType const \&x, genType const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec3$<$ T, P $>$ \hyperlink{group__core__func__geometric_g9a325364ff3650c4a85c33704c646e76}{glm::cross} (detail::tvec3$<$ T, P $>$ const \&x, detail::tvec3$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__core__func__geometric_g0feb2bb89ee2743677ad2cb84544bd83}{glm::normalize} (genType const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__core__func__geometric_ga4cdf87f6fd660e7086776d9abb6cbae}{glm::faceforward} (genType const \&N, genType const \&I, genType const \&Nref)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__core__func__geometric_gc973ce2bc49f749a469d3ed2e2ac5a54}{glm::reflect} (genType const \&I, genType const \&N)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL vecType$<$ T, P $>$ \hyperlink{group__core__func__geometric_g2020e01c134ebe03c1690306ff93af53}{glm::refract} (vecType$<$ T, P $>$ const \&I, vecType$<$ T, P $>$ const \&N, T const \&eta)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+These operate on vectors as vectors, not component-wise. 
+
+\subsection{Function Documentation}
+\hypertarget{group__core__func__geometric_g9a325364ff3650c4a85c33704c646e76}{
+\index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!cross@{cross}}
+\index{cross@{cross}!core_func_geometric@{core\_\-func\_\-geometric}}
+\subsubsection[cross]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::cross (detail::tvec3$<$ T, P $>$ const \& {\em x}, \/  detail::tvec3$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__geometric_g9a325364ff3650c4a85c33704c646e76}
+
+
+Returns the cross product of x and y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em valType}]Floating-point scalar types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/cross.xml}{\tt GLSL cross man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
+\hypertarget{group__core__func__geometric_gd21e00cab9f8b4eb6d1214a16dee06c7}{
+\index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!distance@{distance}}
+\index{distance@{distance}!core_func_geometric@{core\_\-func\_\-geometric}}
+\subsubsection[distance]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::distance (genType const \& {\em p0}, \/  genType const \& {\em p1})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__geometric_gd21e00cab9f8b4eb6d1214a16dee06c7}
+
+
+Returns the distance betwwen p0 and p1, i.e., length(p0 - p1).
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/distance.xml}{\tt GLSL distance man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
+\hypertarget{group__core__func__geometric_g93acafc6005a3433ccf1dc3fa4230d51}{
+\index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!dot@{dot}}
+\index{dot@{dot}!core_func_geometric@{core\_\-func\_\-geometric}}
+\subsubsection[dot]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::dot (genType const \& {\em x}, \/  genType const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__geometric_g93acafc6005a3433ccf1dc3fa4230d51}
+
+
+Returns the dot product of x and y, i.e., result = x $\ast$ y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/dot.xml}{\tt GLSL dot man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
+\hypertarget{group__core__func__geometric_gc64a3b29d01336161a668d328cac97eb}{
+\index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!dot@{dot}}
+\index{dot@{dot}!core_func_geometric@{core\_\-func\_\-geometric}}
+\subsubsection[dot]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::dot (vecType$<$ T, P $>$ const \& {\em x}, \/  vecType$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__geometric_gc64a3b29d01336161a668d328cac97eb}
+
+
+Returns the dot product of x and y, i.e., result = x $\ast$ y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/dot.xml}{\tt GLSL dot man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
+\hypertarget{group__core__func__geometric_ga4cdf87f6fd660e7086776d9abb6cbae}{
+\index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!faceforward@{faceforward}}
+\index{faceforward@{faceforward}!core_func_geometric@{core\_\-func\_\-geometric}}
+\subsubsection[faceforward]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::faceforward (genType const \& {\em N}, \/  genType const \& {\em I}, \/  genType const \& {\em Nref})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__geometric_ga4cdf87f6fd660e7086776d9abb6cbae}
+
+
+If dot(Nref, I) $<$ 0.0, return N, otherwise, return -N.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/faceforward.xml}{\tt GLSL faceforward man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
+\hypertarget{group__core__func__geometric_gd73a94d9c967e619e670156356e93b7e}{
+\index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!length@{length}}
+\index{length@{length}!core_func_geometric@{core\_\-func\_\-geometric}}
+\subsubsection[length]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::length (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__geometric_gd73a94d9c967e619e670156356e93b7e}
+
+
+Returns the length of x, i.e., sqrt(x $\ast$ x).
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/length.xml}{\tt GLSL length man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
+\hypertarget{group__core__func__geometric_g0feb2bb89ee2743677ad2cb84544bd83}{
+\index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!normalize@{normalize}}
+\index{normalize@{normalize}!core_func_geometric@{core\_\-func\_\-geometric}}
+\subsubsection[normalize]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::normalize (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__geometric_g0feb2bb89ee2743677ad2cb84544bd83}
+
+
+Returns a vector in the same direction as x but with length of 1.
+
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/normalize.xml}{\tt GLSL normalize man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
+\hypertarget{group__core__func__geometric_gc973ce2bc49f749a469d3ed2e2ac5a54}{
+\index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!reflect@{reflect}}
+\index{reflect@{reflect}!core_func_geometric@{core\_\-func\_\-geometric}}
+\subsubsection[reflect]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::reflect (genType const \& {\em I}, \/  genType const \& {\em N})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__geometric_gc973ce2bc49f749a469d3ed2e2ac5a54}
+
+
+For the incident vector I and surface orientation N, returns the reflection direction : result = I - 2.0 $\ast$ dot(N, I) $\ast$ N.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/reflect.xml}{\tt GLSL reflect man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
+\hypertarget{group__core__func__geometric_g2020e01c134ebe03c1690306ff93af53}{
+\index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!refract@{refract}}
+\index{refract@{refract}!core_func_geometric@{core\_\-func\_\-geometric}}
+\subsubsection[refract]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ T, P $>$ glm::refract (vecType$<$ T, P $>$ const \& {\em I}, \/  vecType$<$ T, P $>$ const \& {\em N}, \/  T const \& {\em eta})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__geometric_g2020e01c134ebe03c1690306ff93af53}
+
+
+For the incident vector I and surface normal N, and the ratio of indices of refraction eta, return the refraction vector.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Floating-point vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/refract.xml}{\tt GLSL refract man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}

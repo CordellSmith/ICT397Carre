@@ -1,0 +1,175 @@
+\hypertarget{group__core__func__vector__relational}{
+\section{Vector Relational Functions}
+\label{group__core__func__vector__relational}\index{Vector Relational Functions@{Vector Relational Functions}}
+}
+
+
+Collaboration diagram for Vector Relational Functions:\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL vecType$<$ T, P $>$::bool\_\-type \hyperlink{group__core__func__vector__relational_g9792ee46fa6f48a7f750984128c24d03}{glm::lessThanEqual} (vecType$<$ T, P $>$ const \&x, vecType$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL vecType$<$ T, P $>$::bool\_\-type \hyperlink{group__core__func__vector__relational_g752f4c03f55a280172de9ceff7a02b51}{glm::greaterThan} (vecType$<$ T, P $>$ const \&x, vecType$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL vecType$<$ T, P $>$::bool\_\-type \hyperlink{group__core__func__vector__relational_ga384b9c124d40d56bf5bd02ea9b04926}{glm::greaterThanEqual} (vecType$<$ T, P $>$ const \&x, vecType$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL vecType$<$ T, P $>$::bool\_\-type \hyperlink{group__core__func__vector__relational_g520b77f15b84fffa9131cfa39db6c766}{glm::notEqual} (vecType$<$ T, P $>$ const \&x, vecType$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__core__func__vector__relational_ge1073be2b9f4c5ffa77eec25400e8121}{glm::any} (vecType$<$ bool, P $>$ const \&v)
+\item 
+{\footnotesize template$<$precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__core__func__vector__relational_gabd60ec747e12c78e2d5c6e6c2ede230}{glm::all} (vecType$<$ bool, P $>$ const \&v)
+\item 
+{\footnotesize template$<$precision P, template$<$ typename, precision $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL vecType$<$ bool, P $>$ \hyperlink{group__core__func__vector__relational_g3f686b22d487d7d06447b15d3c621d2f}{glm::not\_\-} (vecType$<$ bool, P $>$ const \&v)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Relational and equality operators ($<$, $<$=, $>$, $>$=, ==, !=) are defined to operate on scalars and produce scalar Boolean results. For vector results, use the following built-in functions.
+
+In all cases, the sizes of all the input and return vectors for any particular call must match. 
+
+\subsection{Function Documentation}
+\hypertarget{group__core__func__vector__relational_gabd60ec747e12c78e2d5c6e6c2ede230}{
+\index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!all@{all}}
+\index{all@{all}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
+\subsubsection[all]{\setlength{\rightskip}{0pt plus 5cm}template$<$precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::all (vecType$<$ bool, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__vector__relational_gabd60ec747e12c78e2d5c6e6c2ede230}
+
+
+Returns true if all components of x are true.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em vecType}]Boolean vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/all.xml}{\tt GLSL all man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+\hypertarget{group__core__func__vector__relational_ge1073be2b9f4c5ffa77eec25400e8121}{
+\index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!any@{any}}
+\index{any@{any}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
+\subsubsection[any]{\setlength{\rightskip}{0pt plus 5cm}template$<$precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::any (vecType$<$ bool, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__vector__relational_ge1073be2b9f4c5ffa77eec25400e8121}
+
+
+Returns true if any component of x is true.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em vecType}]Boolean vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/any.xml}{\tt GLSL any man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+\hypertarget{group__core__func__vector__relational_g752f4c03f55a280172de9ceff7a02b51}{
+\index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!greaterThan@{greaterThan}}
+\index{greaterThan@{greaterThan}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
+\subsubsection[greaterThan]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ T, P $>$::bool\_\-type glm::greaterThan (vecType$<$ T, P $>$ const \& {\em x}, \/  vecType$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__vector__relational_g752f4c03f55a280172de9ceff7a02b51}
+
+
+Returns the component-wise comparison of result x $>$ y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em vecType}]Floating-point or integer vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/greaterThan.xml}{\tt GLSL greaterThan man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+\hypertarget{group__core__func__vector__relational_ga384b9c124d40d56bf5bd02ea9b04926}{
+\index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!greaterThanEqual@{greaterThanEqual}}
+\index{greaterThanEqual@{greaterThanEqual}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
+\subsubsection[greaterThanEqual]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ T, P $>$::bool\_\-type glm::greaterThanEqual (vecType$<$ T, P $>$ const \& {\em x}, \/  vecType$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__vector__relational_ga384b9c124d40d56bf5bd02ea9b04926}
+
+
+Returns the component-wise comparison of result x $>$= y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em vecType}]Floating-point or integer vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/greaterThanEqual.xml}{\tt GLSL greaterThanEqual man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+\hypertarget{group__core__func__vector__relational_g9792ee46fa6f48a7f750984128c24d03}{
+\index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!lessThanEqual@{lessThanEqual}}
+\index{lessThanEqual@{lessThanEqual}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
+\subsubsection[lessThanEqual]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ T, P $>$::bool\_\-type glm::lessThanEqual (vecType$<$ T, P $>$ const \& {\em x}, \/  vecType$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__vector__relational_g9792ee46fa6f48a7f750984128c24d03}
+
+
+Returns the component-wise comparison result of x $<$ y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em vecType}]Floating-point or integer vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/lessThan.xml}{\tt GLSL lessThan man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} Returns the component-wise comparison of result x $<$= y.\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em vecType}]Floating-point or integer vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/lessThanEqual.xml}{\tt GLSL lessThanEqual man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+\hypertarget{group__core__func__vector__relational_g3f686b22d487d7d06447b15d3c621d2f}{
+\index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!not\_\-@{not\_\-}}
+\index{not\_\-@{not\_\-}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
+\subsubsection[not\_\-]{\setlength{\rightskip}{0pt plus 5cm}template$<$precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ bool, P $>$ glm::not\_\- (vecType$<$ bool, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__vector__relational_g3f686b22d487d7d06447b15d3c621d2f}
+
+
+Returns the component-wise logical complement of x. /!$\backslash$ Because of language incompatibilities between C++ and GLSL, GLM defines the function not but not\_\- instead.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em vecType}]Boolean vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/not.xml}{\tt GLSL not man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+\hypertarget{group__core__func__vector__relational_g520b77f15b84fffa9131cfa39db6c766}{
+\index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!notEqual@{notEqual}}
+\index{notEqual@{notEqual}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
+\subsubsection[notEqual]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ T, P $>$::bool\_\-type glm::notEqual (vecType$<$ T, P $>$ const \& {\em x}, \/  vecType$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__vector__relational_g520b77f15b84fffa9131cfa39db6c766}
+
+
+Returns the component-wise comparison of result x == y.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em vecType}]Floating-point, integer or boolean vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/equal.xml}{\tt GLSL equal man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} Returns the component-wise comparison of result x != y.\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em vecType}]Floating-point, integer or boolean vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/notEqual.xml}{\tt GLSL notEqual man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}

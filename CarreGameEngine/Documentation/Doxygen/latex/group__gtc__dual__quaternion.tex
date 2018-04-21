@@ -1,0 +1,271 @@
+\hypertarget{group__gtc__dual__quaternion}{
+\section{GLM\_\-GTX\_\-dual\_\-quaternion}
+\label{group__gtc__dual__quaternion}\index{GLM\_\-GTX\_\-dual\_\-quaternion@{GLM\_\-GTX\_\-dual\_\-quaternion}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-dual\_\-quaternion:Defines a templated dual-quaternion type and several dual-quaternion operations.  
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef detail::tdualquat$<$ float, lowp $>$ \hyperlink{group__gtc__dual__quaternion_ge1772179edc60f4e8b46c8772eeeccee}{glm::lowp\_\-dualquat}
+\item 
+typedef detail::tdualquat$<$ float, mediump $>$ \hyperlink{group__gtc__dual__quaternion_g71fc1c10a382330c1fee55ce29703405}{glm::mediump\_\-dualquat}
+\item 
+typedef detail::tdualquat$<$ float, highp $>$ \hyperlink{group__gtc__dual__quaternion_gf3a01deb502f53ca555ee1d45e6d6776}{glm::highp\_\-dualquat}
+\item 
+typedef detail::tdualquat$<$ float, lowp $>$ \hyperlink{group__gtc__dual__quaternion_ge62c636c63c9eb3c1ea6d10f4b7d7c81}{glm::lowp\_\-fdualquat}
+\item 
+typedef detail::tdualquat$<$ float, mediump $>$ \hyperlink{group__gtc__dual__quaternion_gb211d24786158490e57dfa57d7744f71}{glm::mediump\_\-fdualquat}
+\item 
+typedef detail::tdualquat$<$ float, highp $>$ \hyperlink{group__gtc__dual__quaternion_g2ed3283c09d3ffaf52a0e0a4b248eab6}{glm::highp\_\-fdualquat}
+\item 
+typedef detail::tdualquat$<$ double, lowp $>$ \hyperlink{group__gtc__dual__quaternion_g29461fddd543ffdf65a199fc28c42458}{glm::lowp\_\-ddualquat}
+\item 
+typedef detail::tdualquat$<$ double, mediump $>$ \hyperlink{group__gtc__dual__quaternion_g62d8cbf30e2afd0b1044204268a69066}{glm::mediump\_\-ddualquat}
+\item 
+typedef detail::tdualquat$<$ double, highp $>$ \hyperlink{group__gtc__dual__quaternion_g61b654c21f080135aedcf23461eb1037}{glm::highp\_\-ddualquat}
+\item 
+typedef highp\_\-fdualquat \hyperlink{group__gtc__dual__quaternion_g2f6227b5f9dc08a2e7682065a84b3aa9}{glm::dualquat}
+\item 
+typedef highp\_\-fdualquat \hyperlink{group__gtc__dual__quaternion_g436906129bc69ca5059555cafcbac9fd}{glm::fdualquat}
+\item 
+typedef highp\_\-ddualquat \hyperlink{group__gtc__dual__quaternion_g373431ffdd82d5c03c258217a9e1f1a6}{glm::ddualquat}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tdualquat$<$ T, P $>$ \hyperlink{group__gtc__dual__quaternion_g861508468b4982401f1ae5b4919c5678}{glm::normalize} (detail::tdualquat$<$ T, P $>$ const \&q)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tdualquat$<$ T, P $>$ \hyperlink{group__gtc__dual__quaternion_gfbbdf3bd28dbfe656af3d86b9c7e0cd3}{glm::lerp} (detail::tdualquat$<$ T, P $>$ const \&x, detail::tdualquat$<$ T, P $>$ const \&y, T const \&a)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tdualquat$<$ T, P $>$ \hyperlink{group__gtc__dual__quaternion_g793733e8cc7644ec2ff32a1007e85282}{glm::inverse} (detail::tdualquat$<$ T, P $>$ const \&q)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat2x4$<$ T, P $>$ \hyperlink{group__gtc__dual__quaternion_g5dbb18f30b7a8d6646efd9e765e04535}{glm::mat2x4\_\-cast} (detail::tdualquat$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat3x4$<$ T, P $>$ \hyperlink{group__gtc__dual__quaternion_gbd9f9dad6fbec2e89d5b239b8dc37096}{glm::mat3x4\_\-cast} (detail::tdualquat$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tdualquat$<$ T, P $>$ \hyperlink{group__gtc__dual__quaternion_gacea24f869d7e991fafcee55641595ec}{glm::dualquat\_\-cast} (detail::tmat2x4$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tdualquat$<$ T, P $>$ \hyperlink{group__gtc__dual__quaternion_ge10828b8a3ab80fa7e9e429ebaefb9e0}{glm::dualquat\_\-cast} (detail::tmat3x4$<$ T, P $>$ const \&x)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Defines a templated dual-quaternion type and several dual-quaternion operations. 
+
+$<$glm/gtx/dual\_\-quaternion.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Typedef Documentation}
+\hypertarget{group__gtc__dual__quaternion_g373431ffdd82d5c03c258217a9e1f1a6}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!ddualquat@{ddualquat}}
+\index{ddualquat@{ddualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[ddualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef highp\_\-ddualquat {\bf glm::ddualquat}}}
+\label{group__gtc__dual__quaternion_g373431ffdd82d5c03c258217a9e1f1a6}
+
+
+Dual-quaternion of default double-precision floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_g2f6227b5f9dc08a2e7682065a84b3aa9}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!dualquat@{dualquat}}
+\index{dualquat@{dualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[dualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef highp\_\-fdualquat {\bf glm::dualquat}}}
+\label{group__gtc__dual__quaternion_g2f6227b5f9dc08a2e7682065a84b3aa9}
+
+
+Dual-quaternion of floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_g436906129bc69ca5059555cafcbac9fd}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!fdualquat@{fdualquat}}
+\index{fdualquat@{fdualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[fdualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef highp\_\-fdualquat {\bf glm::fdualquat}}}
+\label{group__gtc__dual__quaternion_g436906129bc69ca5059555cafcbac9fd}
+
+
+Dual-quaternion of single-precision floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_g61b654c21f080135aedcf23461eb1037}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!highp\_\-ddualquat@{highp\_\-ddualquat}}
+\index{highp\_\-ddualquat@{highp\_\-ddualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[highp\_\-ddualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef detail::tdualquat$<$double, highp$>$ {\bf glm::highp\_\-ddualquat}}}
+\label{group__gtc__dual__quaternion_g61b654c21f080135aedcf23461eb1037}
+
+
+Dual-quaternion of high double-precision floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_gf3a01deb502f53ca555ee1d45e6d6776}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!highp\_\-dualquat@{highp\_\-dualquat}}
+\index{highp\_\-dualquat@{highp\_\-dualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[highp\_\-dualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef detail::tdualquat$<$float, highp$>$ {\bf glm::highp\_\-dualquat}}}
+\label{group__gtc__dual__quaternion_gf3a01deb502f53ca555ee1d45e6d6776}
+
+
+Dual-quaternion of high single-precision floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_g2ed3283c09d3ffaf52a0e0a4b248eab6}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!highp\_\-fdualquat@{highp\_\-fdualquat}}
+\index{highp\_\-fdualquat@{highp\_\-fdualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[highp\_\-fdualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef detail::tdualquat$<$float, highp$>$ {\bf glm::highp\_\-fdualquat}}}
+\label{group__gtc__dual__quaternion_g2ed3283c09d3ffaf52a0e0a4b248eab6}
+
+
+Dual-quaternion of high single-precision floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_g29461fddd543ffdf65a199fc28c42458}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!lowp\_\-ddualquat@{lowp\_\-ddualquat}}
+\index{lowp\_\-ddualquat@{lowp\_\-ddualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[lowp\_\-ddualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef detail::tdualquat$<$double, lowp$>$ {\bf glm::lowp\_\-ddualquat}}}
+\label{group__gtc__dual__quaternion_g29461fddd543ffdf65a199fc28c42458}
+
+
+Dual-quaternion of low double-precision floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_ge1772179edc60f4e8b46c8772eeeccee}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!lowp\_\-dualquat@{lowp\_\-dualquat}}
+\index{lowp\_\-dualquat@{lowp\_\-dualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[lowp\_\-dualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef detail::tdualquat$<$float, lowp$>$ {\bf glm::lowp\_\-dualquat}}}
+\label{group__gtc__dual__quaternion_ge1772179edc60f4e8b46c8772eeeccee}
+
+
+Dual-quaternion of low single-precision floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_ge62c636c63c9eb3c1ea6d10f4b7d7c81}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!lowp\_\-fdualquat@{lowp\_\-fdualquat}}
+\index{lowp\_\-fdualquat@{lowp\_\-fdualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[lowp\_\-fdualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef detail::tdualquat$<$float, lowp$>$ {\bf glm::lowp\_\-fdualquat}}}
+\label{group__gtc__dual__quaternion_ge62c636c63c9eb3c1ea6d10f4b7d7c81}
+
+
+Dual-quaternion of low single-precision floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_g62d8cbf30e2afd0b1044204268a69066}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!mediump\_\-ddualquat@{mediump\_\-ddualquat}}
+\index{mediump\_\-ddualquat@{mediump\_\-ddualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[mediump\_\-ddualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef detail::tdualquat$<$double, mediump$>$ {\bf glm::mediump\_\-ddualquat}}}
+\label{group__gtc__dual__quaternion_g62d8cbf30e2afd0b1044204268a69066}
+
+
+Dual-quaternion of medium double-precision floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_g71fc1c10a382330c1fee55ce29703405}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!mediump\_\-dualquat@{mediump\_\-dualquat}}
+\index{mediump\_\-dualquat@{mediump\_\-dualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[mediump\_\-dualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef detail::tdualquat$<$float, mediump$>$ {\bf glm::mediump\_\-dualquat}}}
+\label{group__gtc__dual__quaternion_g71fc1c10a382330c1fee55ce29703405}
+
+
+Dual-quaternion of medium single-precision floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_gb211d24786158490e57dfa57d7744f71}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!mediump\_\-fdualquat@{mediump\_\-fdualquat}}
+\index{mediump\_\-fdualquat@{mediump\_\-fdualquat}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[mediump\_\-fdualquat]{\setlength{\rightskip}{0pt plus 5cm}typedef detail::tdualquat$<$float, mediump$>$ {\bf glm::mediump\_\-fdualquat}}}
+\label{group__gtc__dual__quaternion_gb211d24786158490e57dfa57d7744f71}
+
+
+Dual-quaternion of medium single-precision floating-point numbers.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__gtc__dual__quaternion_ge10828b8a3ab80fa7e9e429ebaefb9e0}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!dualquat\_\-cast@{dualquat\_\-cast}}
+\index{dualquat\_\-cast@{dualquat\_\-cast}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[dualquat\_\-cast]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tdualquat$<$ T, P $>$ glm::dualquat\_\-cast (detail::tmat3x4$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__dual__quaternion_ge10828b8a3ab80fa7e9e429ebaefb9e0}
+
+
+Converts a 3 $\ast$ 4 matrix (augmented matrix rotation + translation) to a quaternion.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_gacea24f869d7e991fafcee55641595ec}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!dualquat\_\-cast@{dualquat\_\-cast}}
+\index{dualquat\_\-cast@{dualquat\_\-cast}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[dualquat\_\-cast]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tdualquat$<$ T, P $>$ glm::dualquat\_\-cast (detail::tmat2x4$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__dual__quaternion_gacea24f869d7e991fafcee55641595ec}
+
+
+Converts a 2 $\ast$ 4 matrix (matrix which holds real and dual parts) to a quaternion.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_g793733e8cc7644ec2ff32a1007e85282}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!inverse@{inverse}}
+\index{inverse@{inverse}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[inverse]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tdualquat$<$ T, P $>$ glm::inverse (detail::tdualquat$<$ T, P $>$ const \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__dual__quaternion_g793733e8cc7644ec2ff32a1007e85282}
+
+
+Returns the q inverse.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_gfbbdf3bd28dbfe656af3d86b9c7e0cd3}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!lerp@{lerp}}
+\index{lerp@{lerp}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[lerp]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tdualquat$<$ T, P $>$ glm::lerp (detail::tdualquat$<$ T, P $>$ const \& {\em x}, \/  detail::tdualquat$<$ T, P $>$ const \& {\em y}, \/  T const \& {\em a})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__dual__quaternion_gfbbdf3bd28dbfe656af3d86b9c7e0cd3}
+
+
+Returns the linear interpolation of two dual quaternion.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_g5dbb18f30b7a8d6646efd9e765e04535}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!mat2x4\_\-cast@{mat2x4\_\-cast}}
+\index{mat2x4\_\-cast@{mat2x4\_\-cast}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[mat2x4\_\-cast]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat2x4$<$ T, P $>$ glm::mat2x4\_\-cast (detail::tdualquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__dual__quaternion_g5dbb18f30b7a8d6646efd9e765e04535}
+
+
+Converts a quaternion to a 2 $\ast$ 4 matrix.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_gbd9f9dad6fbec2e89d5b239b8dc37096}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!mat3x4\_\-cast@{mat3x4\_\-cast}}
+\index{mat3x4\_\-cast@{mat3x4\_\-cast}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[mat3x4\_\-cast]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x4$<$ T, P $>$ glm::mat3x4\_\-cast (detail::tdualquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__dual__quaternion_gbd9f9dad6fbec2e89d5b239b8dc37096}
+
+
+Converts a quaternion to a 3 $\ast$ 4 matrix.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}
+\hypertarget{group__gtc__dual__quaternion_g861508468b4982401f1ae5b4919c5678}{
+\index{gtc\_\-dual\_\-quaternion@{gtc\_\-dual\_\-quaternion}!normalize@{normalize}}
+\index{normalize@{normalize}!gtc_dual_quaternion@{gtc\_\-dual\_\-quaternion}}
+\subsubsection[normalize]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tdualquat$<$ T, P $>$ glm::normalize (detail::tdualquat$<$ T, P $>$ const \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__dual__quaternion_g861508468b4982401f1ae5b4919c5678}
+
+
+Returns the normalized quaternion.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__dual__quaternion}{GLM\_\-GTX\_\-dual\_\-quaternion} \end{Desc}

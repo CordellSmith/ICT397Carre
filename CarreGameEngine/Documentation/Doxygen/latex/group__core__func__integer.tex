@@ -1,0 +1,225 @@
+\hypertarget{group__core__func__integer}{
+\section{Integer functions}
+\label{group__core__func__integer}\index{Integer functions@{Integer functions}}
+}
+
+
+Collaboration diagram for Integer functions:\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename genUType$>$ }\\GLM\_\-FUNC\_\-DECL genUType \hyperlink{group__core__func__integer_gcb5031847f80c2e28151a687e57bd4b8}{glm::uaddCarry} (genUType const \&x, genUType const \&y, genUType \&carry)
+\item 
+{\footnotesize template$<$typename genUType$>$ }\\GLM\_\-FUNC\_\-DECL genUType \hyperlink{group__core__func__integer_ge13e6c290847ba577bdd0b82b2527ce2}{glm::usubBorrow} (genUType const \&x, genUType const \&y, genUType \&borrow)
+\item 
+{\footnotesize template$<$typename genUType$>$ }\\GLM\_\-FUNC\_\-DECL void \hyperlink{group__core__func__integer_g74e6492619a6a79d3130b56f7b6eb6a8}{glm::umulExtended} (genUType const \&x, genUType const \&y, genUType \&msb, genUType \&lsb)
+\item 
+{\footnotesize template$<$typename genIType$>$ }\\GLM\_\-FUNC\_\-DECL void \hyperlink{group__core__func__integer_g2f837b25b019b4dfacc4091a3a45c4b9}{glm::imulExtended} (genIType const \&x, genIType const \&y, genIType \&msb, genIType \&lsb)
+\item 
+{\footnotesize template$<$typename genIUType$>$ }\\GLM\_\-FUNC\_\-DECL genIUType \hyperlink{group__core__func__integer_gcd29b1963983f03da4de38aaffac6dbd}{glm::bitfieldExtract} (genIUType const \&Value, int const \&Offset, int const \&Bits)
+\item 
+{\footnotesize template$<$typename genIUType$>$ }\\GLM\_\-FUNC\_\-DECL genIUType \hyperlink{group__core__func__integer_g33b112990d40ef4c8bf91591dc7d9cd9}{glm::bitfieldInsert} (genIUType const \&Base, genIUType const \&Insert, int const \&Offset, int const \&Bits)
+\item 
+{\footnotesize template$<$typename genIUType$>$ }\\GLM\_\-FUNC\_\-DECL genIUType \hyperlink{group__core__func__integer_ge55354ee3125593fc17f4cff052e6a10}{glm::bitfieldReverse} (genIUType const \&Value)
+\item 
+{\footnotesize template$<$typename T, template$<$ typename $>$ class genIUType$>$ }\\GLM\_\-FUNC\_\-DECL genIUType$<$ T $>$::signed\_\-type \hyperlink{group__core__func__integer_gccacb39d16885cc32fd8d5c95ab49da8}{glm::bitCount} (genIUType$<$ T $>$ const \&Value)
+\item 
+{\footnotesize template$<$typename T, template$<$ typename $>$ class genIUType$>$ }\\GLM\_\-FUNC\_\-DECL genIUType$<$ T $>$::signed\_\-type \hyperlink{group__core__func__integer_gdda1c11511dea60cd3f0b414d8baa9c2}{glm::findLSB} (genIUType$<$ T $>$ const \&Value)
+\item 
+{\footnotesize template$<$typename T, template$<$ typename $>$ class genIUType$>$ }\\GLM\_\-FUNC\_\-DECL genIUType$<$ T $>$::signed\_\-type \hyperlink{group__core__func__integer_g13ed58e71232a63dbc132b1be0f0ee9a}{glm::findMSB} (genIUType$<$ T $>$ const \&Value)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+These all operate component-wise. The description is per component. The notation \mbox{[}a, b\mbox{]} means the set of bits from bit-number a through bit-number b, inclusive. The lowest-order bit is bit 0. 
+
+\subsection{Function Documentation}
+\hypertarget{group__core__func__integer_gccacb39d16885cc32fd8d5c95ab49da8}{
+\index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!bitCount@{bitCount}}
+\index{bitCount@{bitCount}!core_func_integer@{core\_\-func\_\-integer}}
+\subsubsection[bitCount]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, template$<$ typename $>$ class genIUType$>$ GLM\_\-FUNC\_\-DECL genIUType$<$T$>$::signed\_\-type glm::bitCount (genIUType$<$ T $>$ const \& {\em Value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__integer_gccacb39d16885cc32fd8d5c95ab49da8}
+
+
+Returns the number of bits set to 1 in the binary representation of value.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genIUType}]Signed or unsigned integer scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/bitCount.xml}{\tt GLSL bitCount man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions}\end{Desc}
+\begin{Desc}
+\item[\hyperlink{todo__todo000045}{Todo}]Clarify the declaration to specify that scalars are suported. \end{Desc}
+\hypertarget{group__core__func__integer_gcd29b1963983f03da4de38aaffac6dbd}{
+\index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!bitfieldExtract@{bitfieldExtract}}
+\index{bitfieldExtract@{bitfieldExtract}!core_func_integer@{core\_\-func\_\-integer}}
+\subsubsection[bitfieldExtract]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genIUType$>$ GLM\_\-FUNC\_\-QUALIFIER genIUType glm::bitfieldExtract (genIUType const \& {\em Value}, \/  int const \& {\em Offset}, \/  int const \& {\em Bits})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__integer_gcd29b1963983f03da4de38aaffac6dbd}
+
+
+Extracts bits \mbox{[}offset, offset + bits - 1\mbox{]} from value, returning them in the least significant bits of the result. For unsigned data types, the most significant bits of the result will be set to zero. For signed data types, the most significant bits will be set to the value of bit offset + base - 1.
+
+If bits is zero, the result will be zero. The result will be undefined if offset or bits is negative, or if the sum of offset and bits is greater than the number of bits used to store the operand.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genIUType}]Signed or unsigned integer scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/bitfieldExtract.xml}{\tt GLSL bitfieldExtract man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions} \end{Desc}
+\hypertarget{group__core__func__integer_g33b112990d40ef4c8bf91591dc7d9cd9}{
+\index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!bitfieldInsert@{bitfieldInsert}}
+\index{bitfieldInsert@{bitfieldInsert}!core_func_integer@{core\_\-func\_\-integer}}
+\subsubsection[bitfieldInsert]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genIUType$>$ GLM\_\-FUNC\_\-QUALIFIER genIUType glm::bitfieldInsert (genIUType const \& {\em Base}, \/  genIUType const \& {\em Insert}, \/  int const \& {\em Offset}, \/  int const \& {\em Bits})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__integer_g33b112990d40ef4c8bf91591dc7d9cd9}
+
+
+Returns the insertion the bits least-significant bits of insert into base.
+
+The result will have bits \mbox{[}offset, offset + bits - 1\mbox{]} taken from bits \mbox{[}0, bits - 1\mbox{]} of insert, and all other bits taken directly from the corresponding bits of base. If bits is zero, the result will simply be base. The result will be undefined if offset or bits is negative, or if the sum of offset and bits is greater than the number of bits used to store the operand.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genIUType}]Signed or unsigned integer scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/bitfieldInsert.xml}{\tt GLSL bitfieldInsert man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions} \end{Desc}
+\hypertarget{group__core__func__integer_ge55354ee3125593fc17f4cff052e6a10}{
+\index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!bitfieldReverse@{bitfieldReverse}}
+\index{bitfieldReverse@{bitfieldReverse}!core_func_integer@{core\_\-func\_\-integer}}
+\subsubsection[bitfieldReverse]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genIUType$>$ GLM\_\-FUNC\_\-QUALIFIER genIUType glm::bitfieldReverse (genIUType const \& {\em Value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__integer_ge55354ee3125593fc17f4cff052e6a10}
+
+
+Returns the reversal of the bits of value. The bit numbered n of the result will be taken from bit (bits - 1) - n of value, where bits is the total number of bits used to represent value.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genIUType}]Signed or unsigned integer scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/bitfieldReverse.xml}{\tt GLSL bitfieldReverse man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions} \end{Desc}
+\hypertarget{group__core__func__integer_gdda1c11511dea60cd3f0b414d8baa9c2}{
+\index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!findLSB@{findLSB}}
+\index{findLSB@{findLSB}!core_func_integer@{core\_\-func\_\-integer}}
+\subsubsection[findLSB]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, template$<$ typename $>$ class genIUType$>$ GLM\_\-FUNC\_\-DECL genIUType$<$T$>$::signed\_\-type glm::findLSB (genIUType$<$ T $>$ const \& {\em Value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__integer_gdda1c11511dea60cd3f0b414d8baa9c2}
+
+
+Returns the bit number of the least significant bit set to 1 in the binary representation of value. If value is zero, -1 will be returned.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genIUType}]Signed or unsigned integer scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/findLSB.xml}{\tt GLSL findLSB man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions}\end{Desc}
+\begin{Desc}
+\item[\hyperlink{todo__todo000046}{Todo}]Clarify the declaration to specify that scalars are suported. \end{Desc}
+\hypertarget{group__core__func__integer_g13ed58e71232a63dbc132b1be0f0ee9a}{
+\index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!findMSB@{findMSB}}
+\index{findMSB@{findMSB}!core_func_integer@{core\_\-func\_\-integer}}
+\subsubsection[findMSB]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, template$<$ typename $>$ class genIUType$>$ GLM\_\-FUNC\_\-DECL genIUType$<$T$>$::signed\_\-type glm::findMSB (genIUType$<$ T $>$ const \& {\em Value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__integer_g13ed58e71232a63dbc132b1be0f0ee9a}
+
+
+Returns the bit number of the most significant bit in the binary representation of value. For positive integers, the result will be the bit number of the most significant bit set to 1. For negative integers, the result will be the bit number of the most significant bit set to 0. For a value of zero or negative one, -1 will be returned.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genIUType}]Signed or unsigned integer scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/findMSB.xml}{\tt GLSL findMSB man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions}\end{Desc}
+\begin{Desc}
+\item[\hyperlink{todo__todo000047}{Todo}]Clarify the declaration to specify that scalars are suported. \end{Desc}
+\hypertarget{group__core__func__integer_g2f837b25b019b4dfacc4091a3a45c4b9}{
+\index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!imulExtended@{imulExtended}}
+\index{imulExtended@{imulExtended}!core_func_integer@{core\_\-func\_\-integer}}
+\subsubsection[imulExtended]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genIType$>$ GLM\_\-FUNC\_\-DECL void glm::imulExtended (genIType const \& {\em x}, \/  genIType const \& {\em y}, \/  genIType \& {\em msb}, \/  genIType \& {\em lsb})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__integer_g2f837b25b019b4dfacc4091a3a45c4b9}
+
+
+Multiplies 32-bit integers x and y, producing a 64-bit result. The 32 least-significant bits are returned in lsb. The 32 most-significant bits are returned in msb.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genIType}]Signed integer scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/imulExtended.xml}{\tt GLSL imulExtended man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions} \end{Desc}
+\hypertarget{group__core__func__integer_gcb5031847f80c2e28151a687e57bd4b8}{
+\index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!uaddCarry@{uaddCarry}}
+\index{uaddCarry@{uaddCarry}!core_func_integer@{core\_\-func\_\-integer}}
+\subsubsection[uaddCarry]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genUType$>$ GLM\_\-FUNC\_\-DECL genUType glm::uaddCarry (genUType const \& {\em x}, \/  genUType const \& {\em y}, \/  genUType \& {\em carry})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__integer_gcb5031847f80c2e28151a687e57bd4b8}
+
+
+Adds 32-bit unsigned integer x and y, returning the sum modulo pow(2, 32). The value carry is set to 0 if the sum was less than pow(2, 32), or to 1 otherwise.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genUType}]Unsigned integer scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/uaddCarry.xml}{\tt GLSL uaddCarry man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions} \end{Desc}
+\hypertarget{group__core__func__integer_g74e6492619a6a79d3130b56f7b6eb6a8}{
+\index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!umulExtended@{umulExtended}}
+\index{umulExtended@{umulExtended}!core_func_integer@{core\_\-func\_\-integer}}
+\subsubsection[umulExtended]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genUType$>$ GLM\_\-FUNC\_\-DECL void glm::umulExtended (genUType const \& {\em x}, \/  genUType const \& {\em y}, \/  genUType \& {\em msb}, \/  genUType \& {\em lsb})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__integer_g74e6492619a6a79d3130b56f7b6eb6a8}
+
+
+Multiplies 32-bit integers x and y, producing a 64-bit result. The 32 least-significant bits are returned in lsb. The 32 most-significant bits are returned in msb.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genUType}]Unsigned integer scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/umulExtended.xml}{\tt GLSL umulExtended man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions} \end{Desc}
+\hypertarget{group__core__func__integer_ge13e6c290847ba577bdd0b82b2527ce2}{
+\index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!usubBorrow@{usubBorrow}}
+\index{usubBorrow@{usubBorrow}!core_func_integer@{core\_\-func\_\-integer}}
+\subsubsection[usubBorrow]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genUType$>$ GLM\_\-FUNC\_\-DECL genUType glm::usubBorrow (genUType const \& {\em x}, \/  genUType const \& {\em y}, \/  genUType \& {\em borrow})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__core__func__integer_ge13e6c290847ba577bdd0b82b2527ce2}
+
+
+Subtracts the 32-bit unsigned integer y from x, returning the difference if non-negative, or pow(2, 32) plus the difference otherwise. The value borrow is set to 0 if x $>$= y, or to 1 otherwise.
+
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genUType}]Unsigned integer scalar or vector types.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/usubBorrow.xml}{\tt GLSL usubBorrow man page} 
+
+\href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions} \end{Desc}
