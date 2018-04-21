@@ -4,6 +4,7 @@
 #define GLM_FORCE_RADIANS							
 
 #include <iostream>
+#include <vector>
 #include <stdio.h>										
 #include <stdlib.h>										
 #include <GL\glew.h>									
@@ -81,7 +82,7 @@ public:
 		* @param std::string fragShaderString
 		* @return void
 		*/
-	void Initialize(Vertex vertices[], int length, std::string vertShaderString, std::string fragShaderString);
+	void Initialize(Vertex vertices[], int length, std::vector<unsigned int>& indices, std::string vertShaderString, std::string fragShaderString);
 	
 		/**
 		* @brief Renders the model
@@ -189,10 +190,14 @@ protected:
 
 	Vertex* m_vertices;
 	GLint m_verticesLength;
-	/// VBO id
-	GLuint m_VBO;
+	std::vector<unsigned int> m_indices;
+
 	/// VAO id
 	GLuint m_VAO;
+	/// VBO id
+	GLuint m_VBO;
+	/// EBO id
+	GLuint m_EBO;
 
 	/// The model's position
 	glm::vec3 m_positon;
