@@ -52,7 +52,7 @@ void PhysicsEngine::CreateStaticRigidBody()
 	// Initialize transform and location
 	btTransform groundTransform;
 	groundTransform.setIdentity();
-	groundTransform.setOrigin(btVector3(0.0, -2.0, 0.0));
+	groundTransform.setOrigin(btVector3(0.0, -1.0, 0.0));
 
 	// Set mass (zero for static)
 	m_mass = 0.0;
@@ -117,14 +117,14 @@ void PhysicsEngine::CreatePlayerControlledRigidBody(btVector3 &playerObj)
 	m_playerObject = playerObj;
 
 	// Disable gravity for this object
-	body->setGravity(btVector3(0.0, 0.0, 0.0));
+	//body->setGravity(btVector3(0.0, 0.0, 0.0));
 }
 
 // Create a dynamic rigid body
 void PhysicsEngine::CreateDynamicRigidBody(btVector3 &pos)
 {
 	// Create box shape and add to shape array
-	btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(1.2), btScalar(1.2), btScalar(1.2)));
+	btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(1.5), btScalar(0.5), btScalar(1.5)));
 	m_collisionShapes.push_back(boxShape);
 
 	// Create a dynamic object
@@ -132,7 +132,7 @@ void PhysicsEngine::CreateDynamicRigidBody(btVector3 &pos)
 	startTransform.setIdentity();
 
 	// Set mass (non-zero for dynamic)
-	m_mass = 1.0f;
+	m_mass = 5.0f;
 
 	// Set dynamic objects to objects with mass that is non-zero
 	m_isDynamic = (m_mass != 0.0f);
@@ -174,7 +174,8 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerO
 		if (body->getUserIndex() == CAMERA)
 		{
 			//body->clearForces();
-			body->setLinearVelocity(btVector3(0,0,0));
+			btVector3 tempVel = body->getLinearVelocity();
+			body->setLinearVelocity(btVector3(0,tempVel.getY(),0));
 		}
 
 		// Update rigid body positions

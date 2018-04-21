@@ -91,8 +91,8 @@ void GameWorld::InitializePhysics()
 			m_collisionBodyPos.push_back(btVector3(15.0, 15.0, 15.0));
 			continue;
 		}
-		m_physicsWorld.CreateDynamicRigidBody(btVector3(rand() % 30, -1.5, rand() % 30));
-		m_collisionBodyPos.push_back(btVector3(rand() % 30, -1.5, rand() % 30));
+		m_physicsWorld.CreateDynamicRigidBody(btVector3(rand() % 30, 0.0, rand() % 30));
+		m_collisionBodyPos.push_back(btVector3(rand() % 30, 0.0, rand() % 30));
 	}
 
 	// Create heightmap terrain shape
@@ -124,8 +124,8 @@ void GameWorld::UpdatePhysics()
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
-		// First collision body is the static ground plane, so draw a colour panel instead of a car
-		if (i == 0)
+		// First collision body is camera, second is the the static ground plane, so draw a colour panel instead of a car
+		if (i == 0 || i == 1)
 		{
 			m_colourPanel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
 			m_colourPanel.Render();
