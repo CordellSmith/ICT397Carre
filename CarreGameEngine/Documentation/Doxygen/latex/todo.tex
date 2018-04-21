@@ -1,0 +1,178 @@
+\label{todo__todo000002}
+\hypertarget{todo__todo000002}{}
+ \begin{description}
+\item[Member \hyperlink{classb3_quaternion_388e68921f4749a5641df37449076db0}{b3Quaternion::farthest}(const \hyperlink{classb3_quaternion}{b3Quaternion} \&qd) const  ]document this and it's use \end{description}
+
+
+\label{todo__todo000003}
+\hypertarget{todo__todo000003}{}
+ \begin{description}
+\item[Member \hyperlink{classb3_quaternion_c257faeb2bf5a223870603face96f002}{b3Quaternion::nearest}(const \hyperlink{classb3_quaternion}{b3Quaternion} \&qd) const  ]document this and it's use \end{description}
+
+
+\label{todo__todo000008}
+\hypertarget{todo__todo000008}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_axis_sweep3_internal_4e26f4f8acf63f26451f6396223001bb}{btAxisSweep3Internal::removeHandle}(BP\_\-FP\_\-INT\_\-TYPE handle, \hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher) ]: compare performance \end{description}
+
+
+\label{todo__todo000010}
+\hypertarget{todo__todo000010}{}
+ \begin{description}
+\item[Class \hyperlink{classbt_collision_configuration}{btCollisionConfiguration} ]: describe the meaning \end{description}
+
+
+\label{todo__todo000011}
+\hypertarget{todo__todo000011}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_collision_world_c1ca6489c220005798069152c3df0d08}{btCollisionWorld::debugDrawObject}(const btTransform \&worldTransform, const btCollisionShape $\ast$shape, const btVector3 \&color) ]pass camera, for some culling? no -$>$ we are not a graphics lib \end{description}
+
+
+\label{todo__todo000012}
+\hypertarget{todo__todo000012}{}
+ \begin{description}
+\item[Class \hyperlink{classbt_default_collision_configuration}{btDefaultCollisionConfiguration} ]: describe the meaning \end{description}
+
+
+\label{todo__todo000013}
+\hypertarget{todo__todo000013}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_default_collision_configuration_39a173eedf0e8d55dd89ef3b637925a9}{btDefaultCollisionConfiguration::setConvexConvexMultipointIterations}(int numPerturbationIterations=3, int minimumPointsPerturbationThreshold=3) ]we could add a per-object setting of those parameters, for level-of-detail collision detection. \end{description}
+
+
+\label{todo__todo000027}
+\hypertarget{todo__todo000027}{}
+ \begin{description}
+\item[Class \hyperlink{classbt_kinematic_closest_not_me_ray_result_callback}{btKinematicClosestNotMeRayResultCallback} ]Interact with dynamic objects, Ride kinematicly animated platforms properly More realistic (or maybe just a config option) falling -$>$ Should integrate falling velocity manually and use that in stepDown() Support jumping Support ducking \end{description}
+
+
+\label{todo__todo000015}
+\hypertarget{todo__todo000015}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_manifold_result_ebe32f0c202d988d0458e88d768602c6}{btManifoldResult::addContactPoint}(const btVector3 \&normalOnBInWorld, const btVector3 \&pointInWorld, btScalar depth) ], check this for any side effects \end{description}
+
+
+\label{todo__todo000042}
+\hypertarget{todo__todo000042}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_quaternion_deda27273475435a9e3223abeea73992}{btQuaternion::farthest}(const \hyperlink{classbt_quaternion}{btQuaternion} \&qd) const  ]document this and it's use \end{description}
+
+
+\label{todo__todo000043}
+\hypertarget{todo__todo000043}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_quaternion_821a38604c6333b95d954867315d8716}{btQuaternion::nearest}(const \hyperlink{classbt_quaternion}{btQuaternion} \&qd) const  ]document this and it's use \end{description}
+
+
+\label{todo__todo000038}
+\hypertarget{todo__todo000038}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_raycast_vehicle_53451c4e3495561f3f078b2041ef04be}{btRaycastVehicle::rayCast}(\hyperlink{structbt_wheel_info}{btWheelInfo} \&wheel) ]for driving on dynamic/movable objects!; \end{description}
+
+
+\label{todo__todo000028}
+\hypertarget{todo__todo000028}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_rotational_limit_motor_d52e9b1c402c7bdd47fb1a9de28afb7e}{btRotationalLimitMotor::solveAngularLimits}(btScalar timeStep, btVector3 \&axis, btScalar jacDiagABInv, \hyperlink{classbt_rigid_body}{btRigidBody} $\ast$body0, \hyperlink{classbt_rigid_body}{btRigidBody} $\ast$body1) ]: should clip against accumulated impulse \end{description}
+
+
+\label{todo__todo000034}
+\hypertarget{todo__todo000034}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824}{btSimpleDynamicsWorld::synchronizeMotionStates}() ]: iterate over awake simulation islands! \end{description}
+
+
+\label{todo__todo000033}
+\hypertarget{todo__todo000033}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a}{btSimpleDynamicsWorld::clearForces}() ]: iterate over awake simulation islands! \end{description}
+
+
+\label{todo__todo000017}
+\hypertarget{todo__todo000017}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_simulation_island_manager_b0f52dc46bc01c6754f4cb32ba26c99a}{btSimulationIslandManager::buildAndProcessIslands}(\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher, \hyperlink{classbt_collision_world}{btCollisionWorld} $\ast$collisionWorld, IslandCallback $\ast$callback) ]: this is random access, it can be walked 'cache friendly'! \end{description}
+
+
+\label{todo__todo000016}
+\hypertarget{todo__todo000016}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_simulation_island_manager_ea0b5869eca2d034ac9c643e149a5e01}{btSimulationIslandManager::buildIslands}(\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher, \hyperlink{classbt_collision_world}{btCollisionWorld} $\ast$colWorld) ]: check sleeping conditions! \end{description}
+
+
+\label{todo__todo000035}
+\hypertarget{todo__todo000035}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_simulation_island_manager_mt_77eadf262f5a0e63053e3efcc9ccfec9}{btSimulationIslandManagerMt::addManifoldsToIslands}(\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher) ]: check sleeping conditions! \end{description}
+
+
+\label{todo__todo000036}
+\hypertarget{todo__todo000036}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_simulation_island_manager_mt_9be20c991c57ec972eb33a160d6276fd}{btSimulationIslandManagerMt::buildAndProcessIslands}(\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher, \hyperlink{classbt_collision_world}{btCollisionWorld} $\ast$collisionWorld, \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray$<$ btTypedConstraint $\ast$ $>$} \&constraints, IslandCallback $\ast$callback) ]: this is random access, it can be walked 'cache friendly'! \end{description}
+
+
+\label{todo__todo000036}
+\hypertarget{todo__todo000036}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_simulation_island_manager_mt_9be20c991c57ec972eb33a160d6276fd}{btSimulationIslandManagerMt::buildAndProcessIslands}(\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher, \hyperlink{classbt_collision_world}{btCollisionWorld} $\ast$collisionWorld, \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray$<$ btTypedConstraint $\ast$ $>$} \&constraints, IslandCallback $\ast$callback) ]: check sleeping conditions! \end{description}
+
+
+\label{todo__todo000039}
+\hypertarget{todo__todo000039}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_soft_body_ced0f5421eeb1491a3fd77bb91e2e5af}{btSoftBody::setCollisionShape}(btCollisionShape $\ast$collisionShape) ]: avoid internal softbody shape hack and move collision code to collision library \end{description}
+
+
+\label{todo__todo000018}
+\hypertarget{todo__todo000018}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_sphere_triangle_collision_algorithm_f6de517d0a45abb91df4f61c5867c8f1}{btSphereTriangleCollisionAlgorithm::processCollision}(const btCollisionObjectWrapper $\ast$body0Wrap, const btCollisionObjectWrapper $\ast$body1Wrap, const btDispatcherInfo \&dispatchInfo, \hyperlink{classbt_manifold_result}{btManifoldResult} $\ast$resultOut) ]: tighter bounds \end{description}
+
+
+\label{todo__todo000024}
+\hypertarget{todo__todo000024}{}
+ \begin{description}
+\item[Member \hyperlink{classbt_triangle_mesh_3b521a1faa5862a818d9f983230749a2}{btTriangleMesh::findOrAddVertex}(const btVector3 \&vertex, bool removeDuplicateVertices) ]: could use acceleration structure for this \end{description}
+
+
+\label{todo__todo000025}
+\hypertarget{todo__todo000025}{}
+ \begin{description}
+\item[Class \hyperlink{class_g_i_m___c_o_n_t_a_c_t}{GIM\_\-CONTACT} ]: remove and replace \hyperlink{class_g_i_m___c_o_n_t_a_c_t}{GIM\_\-CONTACT} by \hyperlink{classbt_manifold_point}{btManifoldPoint}. \end{description}
+
+
+\label{todo__todo000045}
+\hypertarget{todo__todo000045}{}
+ \begin{description}
+\item[Member \hyperlink{group__core__func__integer_gccacb39d16885cc32fd8d5c95ab49da8}{glm::bitCount}(genIUType$<$ T $>$ const \&Value) ]Clarify the declaration to specify that scalars are suported. \end{description}
+
+
+\label{todo__todo000046}
+\hypertarget{todo__todo000046}{}
+ \begin{description}
+\item[Member \hyperlink{group__core__func__integer_gdda1c11511dea60cd3f0b414d8baa9c2}{glm::findLSB}(genIUType$<$ T $>$ const \&Value) ]Clarify the declaration to specify that scalars are suported. \end{description}
+
+
+\label{todo__todo000047}
+\hypertarget{todo__todo000047}{}
+ \begin{description}
+\item[Member \hyperlink{group__core__func__integer_g13ed58e71232a63dbc132b1be0f0ee9a}{glm::findMSB}(genIUType$<$ T $>$ const \&Value) ]Clarify the declaration to specify that scalars are suported. \end{description}
+
+
+\label{todo__todo000048}
+\hypertarget{todo__todo000048}{}
+ \begin{description}
+\item[Member \hyperlink{group__core__func__matrix_g47818f9809502f7a975a2c43a61fedb3}{glm::outerProduct}(vecTypeA$<$ T, P $>$ const \&c, vecTypeB$<$ T, P $>$ const \&r) ]Clarify the declaration to specify that matType doesn't have to be provided when used. \end{description}
+
+
+\label{todo__todo000051}
+\hypertarget{todo__todo000051}{}
+ \begin{description}
+\item[Member \hyperlink{group__gtc__constants_g136c74927d8ab624f3c008bcd8c4445b}{glm::epsilon}() ]Implement epsilon for half-precision floating point type. \end{description}
+
+
+\label{todo__todo000052}
+\hypertarget{todo__todo000052}{}
+ \begin{description}
+\item[Member \hyperlink{group__gtx__vector__angle_gfd969749b953f7a58da4a2563d06ea36}{glm::orientedAngle}(detail::tvec2$<$ T, P $>$ const \&x, detail::tvec2$<$ T, P $>$ const \&y) ]epsilon is hard coded to 0.01 \end{description}

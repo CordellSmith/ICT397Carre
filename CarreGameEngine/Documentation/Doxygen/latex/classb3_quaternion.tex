@@ -1,0 +1,386 @@
+\hypertarget{classb3_quaternion}{
+\section{b3Quaternion Class Reference}
+\label{classb3_quaternion}\index{b3Quaternion@{b3Quaternion}}
+}
+The \hyperlink{classb3_quaternion}{b3Quaternion} implements quaternion to perform linear algebra rotations in combination with b3Matrix3x3, b3Vector3 and b3Transform.  
+
+
+{\tt \#include $<$b3Quaternion.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classb3_quaternion_e4b6e029b2e987e463249e4e14f5da4d}{
+\hyperlink{classb3_quaternion_e4b6e029b2e987e463249e4e14f5da4d}{b3Quaternion} ()}
+\label{classb3_quaternion_e4b6e029b2e987e463249e4e14f5da4d}
+
+\begin{CompactList}\small\item\em No initialization constructor. \item\end{CompactList}\item 
+\hypertarget{classb3_quaternion_0f440961db46489c88d5624b9865402b}{
+\hyperlink{classb3_quaternion_0f440961db46489c88d5624b9865402b}{b3Quaternion} (const b3Scalar \&\_\-x, const b3Scalar \&\_\-y, const b3Scalar \&\_\-z, const b3Scalar \&\_\-w)}
+\label{classb3_quaternion_0f440961db46489c88d5624b9865402b}
+
+\begin{CompactList}\small\item\em Constructor from scalars. \item\end{CompactList}\item 
+\hyperlink{classb3_quaternion_e9b2568fec426fbb4574bdcbd1bad418}{b3Quaternion} (const b3Vector3 \&\_\-axis, const b3Scalar \&\_\-angle)
+\begin{CompactList}\small\item\em Axis angle Constructor. \item\end{CompactList}\item 
+\hyperlink{classb3_quaternion_05b0b4abc7eaf5cb9ba00ea3b2353908}{b3Quaternion} (const b3Scalar \&yaw, const b3Scalar \&pitch, const b3Scalar \&roll)
+\begin{CompactList}\small\item\em Constructor from Euler angles. \item\end{CompactList}\item 
+void \hyperlink{classb3_quaternion_af98a2aed426d63aacf993c354bb4571}{setRotation} (const b3Vector3 \&axis, const b3Scalar \&\_\-angle)
+\begin{CompactList}\small\item\em Set the rotation using axis angle notation. \item\end{CompactList}\item 
+void \hyperlink{classb3_quaternion_497ec9be887735d3655eb5f64bfb45bb}{setEuler} (const b3Scalar \&yaw, const b3Scalar \&pitch, const b3Scalar \&roll)
+\begin{CompactList}\small\item\em Set the quaternion using Euler angles. \item\end{CompactList}\item 
+void \hyperlink{classb3_quaternion_78e3817a97a72fd1e32d4d17e40be362}{setEulerZYX} (const b3Scalar \&yawZ, const b3Scalar \&pitchY, const b3Scalar \&rollX)
+\begin{CompactList}\small\item\em Set the quaternion using euler angles. \item\end{CompactList}\item 
+void \hyperlink{classb3_quaternion_6d11b2745e4a668ef7a1d6dd9d97f621}{getEulerZYX} (b3Scalar \&yawZ, b3Scalar \&pitchY, b3Scalar \&rollX) const 
+\begin{CompactList}\small\item\em Get the euler angles from this quaternion. \item\end{CompactList}\item 
+B3\_\-FORCE\_\-INLINE \hyperlink{classb3_quaternion}{b3Quaternion} \& \hyperlink{classb3_quaternion_558450afdbe170892934fa936d085b1b}{operator+=} (const \hyperlink{classb3_quaternion}{b3Quaternion} \&q)
+\begin{CompactList}\small\item\em Add two quaternions. \item\end{CompactList}\item 
+\hyperlink{classb3_quaternion}{b3Quaternion} \& \hyperlink{classb3_quaternion_76087565cf44b29f38d8d2b5ac3cc268}{operator-=} (const \hyperlink{classb3_quaternion}{b3Quaternion} \&q)
+\begin{CompactList}\small\item\em Subtract out a quaternion. \item\end{CompactList}\item 
+\hyperlink{classb3_quaternion}{b3Quaternion} \& \hyperlink{classb3_quaternion_b21bc07cb139b5f1f604432666a28deb}{operator$\ast$=} (const b3Scalar \&s)
+\begin{CompactList}\small\item\em Scale this quaternion. \item\end{CompactList}\item 
+\hyperlink{classb3_quaternion}{b3Quaternion} \& \hyperlink{classb3_quaternion_756f3ae0fbbdf018fb3d63b95f4ddcaa}{operator$\ast$=} (const \hyperlink{classb3_quaternion}{b3Quaternion} \&q)
+\begin{CompactList}\small\item\em Multiply this quaternion by q on the right. \item\end{CompactList}\item 
+b3Scalar \hyperlink{classb3_quaternion_747537c86fc2d63a6fc43db811952634}{dot} (const \hyperlink{classb3_quaternion}{b3Quaternion} \&q) const 
+\begin{CompactList}\small\item\em Return the dot product between this quaternion and another. \item\end{CompactList}\item 
+\hypertarget{classb3_quaternion_a8d3d563ea89e36794d63bd289934509}{
+b3Scalar \hyperlink{classb3_quaternion_a8d3d563ea89e36794d63bd289934509}{length2} () const }
+\label{classb3_quaternion_a8d3d563ea89e36794d63bd289934509}
+
+\begin{CompactList}\small\item\em Return the length squared of the quaternion. \item\end{CompactList}\item 
+\hypertarget{classb3_quaternion_d008f8dd2f6dbd5ac86f3b02a10ef4a6}{
+b3Scalar \hyperlink{classb3_quaternion_d008f8dd2f6dbd5ac86f3b02a10ef4a6}{length} () const }
+\label{classb3_quaternion_d008f8dd2f6dbd5ac86f3b02a10ef4a6}
+
+\begin{CompactList}\small\item\em Return the length of the quaternion. \item\end{CompactList}\item 
+\hypertarget{classb3_quaternion_96d3f4aedcb4b645115ab5a7897fa0d1}{
+\hyperlink{classb3_quaternion}{b3Quaternion} \& \hyperlink{classb3_quaternion_96d3f4aedcb4b645115ab5a7897fa0d1}{normalize} ()}
+\label{classb3_quaternion_96d3f4aedcb4b645115ab5a7897fa0d1}
+
+\begin{CompactList}\small\item\em Normalize the quaternion Such that x$^\wedge$2 + y$^\wedge$2 + z$^\wedge$2 +w$^\wedge$2 = 1. \item\end{CompactList}\item 
+B3\_\-FORCE\_\-INLINE \hyperlink{classb3_quaternion}{b3Quaternion} \hyperlink{classb3_quaternion_ad2b1b2ec07bc16942c47eb5c7750016}{operator$\ast$} (const b3Scalar \&s) const 
+\begin{CompactList}\small\item\em Return a scaled version of this quaternion. \item\end{CompactList}\item 
+\hyperlink{classb3_quaternion}{b3Quaternion} \hyperlink{classb3_quaternion_4774d113abff51d66af8cf4da7cccc26}{operator/} (const b3Scalar \&s) const 
+\begin{CompactList}\small\item\em Return an inversely scaled versionof this quaternion. \item\end{CompactList}\item 
+\hyperlink{classb3_quaternion}{b3Quaternion} \& \hyperlink{classb3_quaternion_293d5a2d8e103d5577a83baa18d4b2b7}{operator/=} (const b3Scalar \&s)
+\begin{CompactList}\small\item\em Inversely scale this quaternion. \item\end{CompactList}\item 
+\hypertarget{classb3_quaternion_91d2ea964b6c93fc2c61cc678610bd8f}{
+\hyperlink{classb3_quaternion}{b3Quaternion} \hyperlink{classb3_quaternion_91d2ea964b6c93fc2c61cc678610bd8f}{normalized} () const }
+\label{classb3_quaternion_91d2ea964b6c93fc2c61cc678610bd8f}
+
+\begin{CompactList}\small\item\em Return a normalized version of this quaternion. \item\end{CompactList}\item 
+b3Scalar \hyperlink{classb3_quaternion_cbdc532e53c4319bd2b8c760764a9452}{angle} (const \hyperlink{classb3_quaternion}{b3Quaternion} \&q) const 
+\begin{CompactList}\small\item\em Return the angle between this quaternion and the other. \item\end{CompactList}\item 
+\hypertarget{classb3_quaternion_b5c827a4e5e0733a2c93d0856cf86a47}{
+b3Scalar \hyperlink{classb3_quaternion_b5c827a4e5e0733a2c93d0856cf86a47}{getAngle} () const }
+\label{classb3_quaternion_b5c827a4e5e0733a2c93d0856cf86a47}
+
+\begin{CompactList}\small\item\em Return the angle of rotation represented by this quaternion. \item\end{CompactList}\item 
+\hypertarget{classb3_quaternion_c1e86b0233a4c2f31232b6bd4033f14f}{
+b3Vector3 \hyperlink{classb3_quaternion_c1e86b0233a4c2f31232b6bd4033f14f}{getAxis} () const }
+\label{classb3_quaternion_c1e86b0233a4c2f31232b6bd4033f14f}
+
+\begin{CompactList}\small\item\em Return the axis of the rotation represented by this quaternion. \item\end{CompactList}\item 
+\hypertarget{classb3_quaternion_d56a29d87fd23ff2a72124f101adc863}{
+\hyperlink{classb3_quaternion}{b3Quaternion} \hyperlink{classb3_quaternion_d56a29d87fd23ff2a72124f101adc863}{inverse} () const }
+\label{classb3_quaternion_d56a29d87fd23ff2a72124f101adc863}
+
+\begin{CompactList}\small\item\em Return the inverse of this quaternion. \item\end{CompactList}\item 
+B3\_\-FORCE\_\-INLINE \hyperlink{classb3_quaternion}{b3Quaternion} \hyperlink{classb3_quaternion_67190e0235b14f9d062f8616221665cf}{operator+} (const \hyperlink{classb3_quaternion}{b3Quaternion} \&q2) const 
+\begin{CompactList}\small\item\em Return the sum of this quaternion and the other. \item\end{CompactList}\item 
+B3\_\-FORCE\_\-INLINE \hyperlink{classb3_quaternion}{b3Quaternion} \hyperlink{classb3_quaternion_67a697c45563268c8ff6da91bb4d6fea}{operator-} (const \hyperlink{classb3_quaternion}{b3Quaternion} \&q2) const 
+\begin{CompactList}\small\item\em Return the difference between this quaternion and the other. \item\end{CompactList}\item 
+\hypertarget{classb3_quaternion_6444b48c137763cd1ebca17dadd2ea2a}{
+B3\_\-FORCE\_\-INLINE \hyperlink{classb3_quaternion}{b3Quaternion} \hyperlink{classb3_quaternion_6444b48c137763cd1ebca17dadd2ea2a}{operator-} () const }
+\label{classb3_quaternion_6444b48c137763cd1ebca17dadd2ea2a}
+
+\begin{CompactList}\small\item\em Return the negative of this quaternion This simply negates each element. \item\end{CompactList}\item 
+B3\_\-FORCE\_\-INLINE \hyperlink{classb3_quaternion}{b3Quaternion} \hyperlink{classb3_quaternion_388e68921f4749a5641df37449076db0}{farthest} (const \hyperlink{classb3_quaternion}{b3Quaternion} \&qd) const 
+\item 
+B3\_\-FORCE\_\-INLINE \hyperlink{classb3_quaternion}{b3Quaternion} \hyperlink{classb3_quaternion_c257faeb2bf5a223870603face96f002}{nearest} (const \hyperlink{classb3_quaternion}{b3Quaternion} \&qd) const 
+\item 
+\hyperlink{classb3_quaternion}{b3Quaternion} \hyperlink{classb3_quaternion_9b64bb67f4ece30723d963132478049c}{slerp} (const \hyperlink{classb3_quaternion}{b3Quaternion} \&q, const b3Scalar \&t) const 
+\begin{CompactList}\small\item\em Return the quaternion which is the result of Spherical Linear Interpolation between this and the other quaternion. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classb3_quaternion}{b3Quaternion} implements quaternion to perform linear algebra rotations in combination with b3Matrix3x3, b3Vector3 and b3Transform. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classb3_quaternion_e9b2568fec426fbb4574bdcbd1bad418}{
+\index{b3Quaternion@{b3Quaternion}!b3Quaternion@{b3Quaternion}}
+\index{b3Quaternion@{b3Quaternion}!b3Quaternion@{b3Quaternion}}
+\subsubsection[b3Quaternion]{\setlength{\rightskip}{0pt plus 5cm}b3Quaternion::b3Quaternion (const b3Vector3 \& {\em \_\-axis}, \/  const b3Scalar \& {\em \_\-angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_e9b2568fec426fbb4574bdcbd1bad418}
+
+
+Axis angle Constructor. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em axis}]The axis which the rotation is around \item[{\em angle}]The magnitude of the rotation around the angle (Radians) \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_05b0b4abc7eaf5cb9ba00ea3b2353908}{
+\index{b3Quaternion@{b3Quaternion}!b3Quaternion@{b3Quaternion}}
+\index{b3Quaternion@{b3Quaternion}!b3Quaternion@{b3Quaternion}}
+\subsubsection[b3Quaternion]{\setlength{\rightskip}{0pt plus 5cm}b3Quaternion::b3Quaternion (const b3Scalar \& {\em yaw}, \/  const b3Scalar \& {\em pitch}, \/  const b3Scalar \& {\em roll})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_05b0b4abc7eaf5cb9ba00ea3b2353908}
+
+
+Constructor from Euler angles. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em yaw}]Angle around Y unless B3\_\-EULER\_\-DEFAULT\_\-ZYX defined then Z \item[{\em pitch}]Angle around X unless B3\_\-EULER\_\-DEFAULT\_\-ZYX defined then Y \item[{\em roll}]Angle around Z unless B3\_\-EULER\_\-DEFAULT\_\-ZYX defined then X \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classb3_quaternion_af98a2aed426d63aacf993c354bb4571}{
+\index{b3Quaternion@{b3Quaternion}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!b3Quaternion@{b3Quaternion}}
+\subsubsection[setRotation]{\setlength{\rightskip}{0pt plus 5cm}void b3Quaternion::setRotation (const b3Vector3 \& {\em axis}, \/  const b3Scalar \& {\em \_\-angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_af98a2aed426d63aacf993c354bb4571}
+
+
+Set the rotation using axis angle notation. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em axis}]The axis around which to rotate \item[{\em angle}]The magnitude of the rotation in Radians \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_497ec9be887735d3655eb5f64bfb45bb}{
+\index{b3Quaternion@{b3Quaternion}!setEuler@{setEuler}}
+\index{setEuler@{setEuler}!b3Quaternion@{b3Quaternion}}
+\subsubsection[setEuler]{\setlength{\rightskip}{0pt plus 5cm}void b3Quaternion::setEuler (const b3Scalar \& {\em yaw}, \/  const b3Scalar \& {\em pitch}, \/  const b3Scalar \& {\em roll})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_497ec9be887735d3655eb5f64bfb45bb}
+
+
+Set the quaternion using Euler angles. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em yaw}]Angle around Y \item[{\em pitch}]Angle around X \item[{\em roll}]Angle around Z \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_78e3817a97a72fd1e32d4d17e40be362}{
+\index{b3Quaternion@{b3Quaternion}!setEulerZYX@{setEulerZYX}}
+\index{setEulerZYX@{setEulerZYX}!b3Quaternion@{b3Quaternion}}
+\subsubsection[setEulerZYX]{\setlength{\rightskip}{0pt plus 5cm}void b3Quaternion::setEulerZYX (const b3Scalar \& {\em yawZ}, \/  const b3Scalar \& {\em pitchY}, \/  const b3Scalar \& {\em rollX})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_78e3817a97a72fd1e32d4d17e40be362}
+
+
+Set the quaternion using euler angles. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em yaw}]Angle around Z \item[{\em pitch}]Angle around Y \item[{\em roll}]Angle around X \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_6d11b2745e4a668ef7a1d6dd9d97f621}{
+\index{b3Quaternion@{b3Quaternion}!getEulerZYX@{getEulerZYX}}
+\index{getEulerZYX@{getEulerZYX}!b3Quaternion@{b3Quaternion}}
+\subsubsection[getEulerZYX]{\setlength{\rightskip}{0pt plus 5cm}void b3Quaternion::getEulerZYX (b3Scalar \& {\em yawZ}, \/  b3Scalar \& {\em pitchY}, \/  b3Scalar \& {\em rollX}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_6d11b2745e4a668ef7a1d6dd9d97f621}
+
+
+Get the euler angles from this quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em yaw}]Angle around Z \item[{\em pitch}]Angle around Y \item[{\em roll}]Angle around X \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_558450afdbe170892934fa936d085b1b}{
+\index{b3Quaternion@{b3Quaternion}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!b3Quaternion@{b3Quaternion}}
+\subsubsection[operator+=]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-FORCE\_\-INLINE {\bf b3Quaternion}\& b3Quaternion::operator+= (const {\bf b3Quaternion} \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_558450afdbe170892934fa936d085b1b}
+
+
+Add two quaternions. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The quaternion to add to this one \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_76087565cf44b29f38d8d2b5ac3cc268}{
+\index{b3Quaternion@{b3Quaternion}!operator-=@{operator-=}}
+\index{operator-=@{operator-=}!b3Quaternion@{b3Quaternion}}
+\subsubsection[operator-=]{\setlength{\rightskip}{0pt plus 5cm}{\bf b3Quaternion}\& b3Quaternion::operator-= (const {\bf b3Quaternion} \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_76087565cf44b29f38d8d2b5ac3cc268}
+
+
+Subtract out a quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The quaternion to subtract from this one \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_b21bc07cb139b5f1f604432666a28deb}{
+\index{b3Quaternion@{b3Quaternion}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!b3Quaternion@{b3Quaternion}}
+\subsubsection[operator$\ast$=]{\setlength{\rightskip}{0pt plus 5cm}{\bf b3Quaternion}\& b3Quaternion::operator$\ast$= (const b3Scalar \& {\em s})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_b21bc07cb139b5f1f604432666a28deb}
+
+
+Scale this quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]The scalar to scale by \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_756f3ae0fbbdf018fb3d63b95f4ddcaa}{
+\index{b3Quaternion@{b3Quaternion}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!b3Quaternion@{b3Quaternion}}
+\subsubsection[operator$\ast$=]{\setlength{\rightskip}{0pt plus 5cm}{\bf b3Quaternion}\& b3Quaternion::operator$\ast$= (const {\bf b3Quaternion} \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_756f3ae0fbbdf018fb3d63b95f4ddcaa}
+
+
+Multiply this quaternion by q on the right. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The other quaternion Equivilant to this = this $\ast$ q \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_747537c86fc2d63a6fc43db811952634}{
+\index{b3Quaternion@{b3Quaternion}!dot@{dot}}
+\index{dot@{dot}!b3Quaternion@{b3Quaternion}}
+\subsubsection[dot]{\setlength{\rightskip}{0pt plus 5cm}b3Scalar b3Quaternion::dot (const {\bf b3Quaternion} \& {\em q}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_747537c86fc2d63a6fc43db811952634}
+
+
+Return the dot product between this quaternion and another. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The other quaternion \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_ad2b1b2ec07bc16942c47eb5c7750016}{
+\index{b3Quaternion@{b3Quaternion}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!b3Quaternion@{b3Quaternion}}
+\subsubsection[operator$\ast$]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-FORCE\_\-INLINE {\bf b3Quaternion} b3Quaternion::operator$\ast$ (const b3Scalar \& {\em s}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_ad2b1b2ec07bc16942c47eb5c7750016}
+
+
+Return a scaled version of this quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]The scale factor \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_4774d113abff51d66af8cf4da7cccc26}{
+\index{b3Quaternion@{b3Quaternion}!operator/@{operator/}}
+\index{operator/@{operator/}!b3Quaternion@{b3Quaternion}}
+\subsubsection[operator/]{\setlength{\rightskip}{0pt plus 5cm}{\bf b3Quaternion} b3Quaternion::operator/ (const b3Scalar \& {\em s}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_4774d113abff51d66af8cf4da7cccc26}
+
+
+Return an inversely scaled versionof this quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]The inverse scale factor \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_293d5a2d8e103d5577a83baa18d4b2b7}{
+\index{b3Quaternion@{b3Quaternion}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!b3Quaternion@{b3Quaternion}}
+\subsubsection[operator/=]{\setlength{\rightskip}{0pt plus 5cm}{\bf b3Quaternion}\& b3Quaternion::operator/= (const b3Scalar \& {\em s})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_293d5a2d8e103d5577a83baa18d4b2b7}
+
+
+Inversely scale this quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]The scale factor \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_cbdc532e53c4319bd2b8c760764a9452}{
+\index{b3Quaternion@{b3Quaternion}!angle@{angle}}
+\index{angle@{angle}!b3Quaternion@{b3Quaternion}}
+\subsubsection[angle]{\setlength{\rightskip}{0pt plus 5cm}b3Scalar b3Quaternion::angle (const {\bf b3Quaternion} \& {\em q}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_cbdc532e53c4319bd2b8c760764a9452}
+
+
+Return the angle between this quaternion and the other. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The other quaternion \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_67190e0235b14f9d062f8616221665cf}{
+\index{b3Quaternion@{b3Quaternion}!operator+@{operator+}}
+\index{operator+@{operator+}!b3Quaternion@{b3Quaternion}}
+\subsubsection[operator+]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-FORCE\_\-INLINE {\bf b3Quaternion} b3Quaternion::operator+ (const {\bf b3Quaternion} \& {\em q2}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_67190e0235b14f9d062f8616221665cf}
+
+
+Return the sum of this quaternion and the other. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q2}]The other quaternion \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_67a697c45563268c8ff6da91bb4d6fea}{
+\index{b3Quaternion@{b3Quaternion}!operator-@{operator-}}
+\index{operator-@{operator-}!b3Quaternion@{b3Quaternion}}
+\subsubsection[operator-]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-FORCE\_\-INLINE {\bf b3Quaternion} b3Quaternion::operator- (const {\bf b3Quaternion} \& {\em q2}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_67a697c45563268c8ff6da91bb4d6fea}
+
+
+Return the difference between this quaternion and the other. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q2}]The other quaternion \end{description}
+\end{Desc}
+\hypertarget{classb3_quaternion_388e68921f4749a5641df37449076db0}{
+\index{b3Quaternion@{b3Quaternion}!farthest@{farthest}}
+\index{farthest@{farthest}!b3Quaternion@{b3Quaternion}}
+\subsubsection[farthest]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-FORCE\_\-INLINE {\bf b3Quaternion} b3Quaternion::farthest (const {\bf b3Quaternion} \& {\em qd}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_388e68921f4749a5641df37449076db0}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000002}{Todo}]document this and it's use \end{Desc}
+\hypertarget{classb3_quaternion_c257faeb2bf5a223870603face96f002}{
+\index{b3Quaternion@{b3Quaternion}!nearest@{nearest}}
+\index{nearest@{nearest}!b3Quaternion@{b3Quaternion}}
+\subsubsection[nearest]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-FORCE\_\-INLINE {\bf b3Quaternion} b3Quaternion::nearest (const {\bf b3Quaternion} \& {\em qd}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_c257faeb2bf5a223870603face96f002}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000003}{Todo}]document this and it's use \end{Desc}
+\hypertarget{classb3_quaternion_9b64bb67f4ece30723d963132478049c}{
+\index{b3Quaternion@{b3Quaternion}!slerp@{slerp}}
+\index{slerp@{slerp}!b3Quaternion@{b3Quaternion}}
+\subsubsection[slerp]{\setlength{\rightskip}{0pt plus 5cm}{\bf b3Quaternion} b3Quaternion::slerp (const {\bf b3Quaternion} \& {\em q}, \/  const b3Scalar \& {\em t}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classb3_quaternion_9b64bb67f4ece30723d963132478049c}
+
+
+Return the quaternion which is the result of Spherical Linear Interpolation between this and the other quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The other quaternion to interpolate with \item[{\em t}]The ratio between this and q to interpolate. If t = 0 the result is this, if t=1 the result is q. Slerp interpolates assuming constant velocity. \end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Common/b3Quaternion.h\end{CompactItemize}

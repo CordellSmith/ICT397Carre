@@ -1,0 +1,72 @@
+\hypertarget{classb3_gpu_parallel_linear_bvh}{
+\section{b3GpuParallelLinearBvh Class Reference}
+\label{classb3_gpu_parallel_linear_bvh}\index{b3GpuParallelLinearBvh@{b3GpuParallelLinearBvh}}
+}
+GPU Parallel Linearized Bounding Volume Heirarchy(LBVH) that is reconstructed every frame.  
+
+
+{\tt \#include $<$b3GpuParallelLinearBvh.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classb3_gpu_parallel_linear_bvh_c6e619d22cc2bd9c979900cf83d59143}{
+void \hyperlink{classb3_gpu_parallel_linear_bvh_c6e619d22cc2bd9c979900cf83d59143}{build} (const b3OpenCLArray$<$ b3SapAabb $>$ \&worldSpaceAabbs, const b3OpenCLArray$<$ int $>$ \&smallAabbIndices, const b3OpenCLArray$<$ int $>$ \&largeAabbIndices)}
+\label{classb3_gpu_parallel_linear_bvh_c6e619d22cc2bd9c979900cf83d59143}
+
+\begin{CompactList}\small\item\em Must be called before any other function. \item\end{CompactList}\item 
+void \hyperlink{classb3_gpu_parallel_linear_bvh_c0208fca9279bdfd66eabd321d98420b}{calculateOverlappingPairs} (b3OpenCLArray$<$ b3Int4 $>$ \&out\_\-overlappingPairs)
+\item 
+void \hyperlink{classb3_gpu_parallel_linear_bvh_a2e73543c39fe8a8ba65394fbc33e8bb}{testRaysAgainstBvhAabbs} (const b3OpenCLArray$<$ b3RayInfo $>$ \&rays, b3OpenCLArray$<$ int $>$ \&out\_\-numRayRigidPairs, b3OpenCLArray$<$ b3Int2 $>$ \&out\_\-rayRigidPairs)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+GPU Parallel Linearized Bounding Volume Heirarchy(LBVH) that is reconstructed every frame. 
+
+\begin{Desc}
+\item[Remarks:]See presentation in docs/b3GpuParallelLinearBvh.pdf for algorithm details. \end{Desc}
+\begin{Desc}
+\item[]Related papers: \par
+ \char`\"{}Fast BVH Construction on GPUs\char`\"{} \mbox{[}Lauterbach et al. 2009\mbox{]} \par
+ \char`\"{}Maximizing Parallelism in the Construction of BVHs, Octrees, and k-d trees\char`\"{} \mbox{[}Karras 2012\mbox{]} \par
+ \end{Desc}
+\begin{Desc}
+\item[]The basic algorithm for building the BVH as presented in \mbox{[}Lauterbach et al. 2009\mbox{]} consists of 4 stages:\begin{itemize}
+\item \mbox{[}fully parallel\mbox{]} Assign morton codes for each AABB using its center (after quantizing the AABB centers into a virtual grid)\item \mbox{[}fully parallel\mbox{]} Sort morton codes\item \mbox{[}somewhat parallel\mbox{]} Build binary radix tree (assign parent/child pointers for internal nodes of the BVH)\item \mbox{[}somewhat parallel\mbox{]} Set internal node AABBs \end{itemize}
+\end{Desc}
+\begin{Desc}
+\item[]\mbox{[}Karras 2012\mbox{]} improves on the algorithm by introducing fully parallel methods for the last 2 stages. The BVH implementation here shares many concepts with \mbox{[}Karras 2012\mbox{]}, but a different method is used for constructing the tree. Instead of searching for the child nodes of each internal node, we search for the parent node of each node. Additionally, a non-atomic traversal that starts from the leaf nodes and moves towards the root node is used to set the AABBs. \end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classb3_gpu_parallel_linear_bvh_c0208fca9279bdfd66eabd321d98420b}{
+\index{b3GpuParallelLinearBvh@{b3GpuParallelLinearBvh}!calculateOverlappingPairs@{calculateOverlappingPairs}}
+\index{calculateOverlappingPairs@{calculateOverlappingPairs}!b3GpuParallelLinearBvh@{b3GpuParallelLinearBvh}}
+\subsubsection[calculateOverlappingPairs]{\setlength{\rightskip}{0pt plus 5cm}void b3GpuParallelLinearBvh::calculateOverlappingPairs (b3OpenCLArray$<$ b3Int4 $>$ \& {\em out\_\-overlappingPairs})}}
+\label{classb3_gpu_parallel_linear_bvh_c0208fca9279bdfd66eabd321d98420b}
+
+
+\hyperlink{classb3_gpu_parallel_linear_bvh_c0208fca9279bdfd66eabd321d98420b}{calculateOverlappingPairs()} uses the worldSpaceAabbs parameter of \hyperlink{classb3_gpu_parallel_linear_bvh_c6e619d22cc2bd9c979900cf83d59143}{b3GpuParallelLinearBvh::build()} as the query AABBs. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em out\_\-overlappingPairs}]The size() of this array is used to determine the max number of pairs. If the number of overlapping pairs is $<$ out\_\-overlappingPairs.size(), out\_\-overlappingPairs is resized. \end{description}
+\end{Desc}
+\hypertarget{classb3_gpu_parallel_linear_bvh_a2e73543c39fe8a8ba65394fbc33e8bb}{
+\index{b3GpuParallelLinearBvh@{b3GpuParallelLinearBvh}!testRaysAgainstBvhAabbs@{testRaysAgainstBvhAabbs}}
+\index{testRaysAgainstBvhAabbs@{testRaysAgainstBvhAabbs}!b3GpuParallelLinearBvh@{b3GpuParallelLinearBvh}}
+\subsubsection[testRaysAgainstBvhAabbs]{\setlength{\rightskip}{0pt plus 5cm}void b3GpuParallelLinearBvh::testRaysAgainstBvhAabbs (const b3OpenCLArray$<$ b3RayInfo $>$ \& {\em rays}, \/  b3OpenCLArray$<$ int $>$ \& {\em out\_\-numRayRigidPairs}, \/  b3OpenCLArray$<$ b3Int2 $>$ \& {\em out\_\-rayRigidPairs})}}
+\label{classb3_gpu_parallel_linear_bvh_a2e73543c39fe8a8ba65394fbc33e8bb}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em out\_\-numRigidRayPairs}]Array of length 1; contains the number of detected ray-rigid AABB intersections; this value may be greater than out\_\-rayRigidPairs.size() if out\_\-rayRigidPairs is not large enough. \item[{\em out\_\-rayRigidPairs}]Contains an array of rays intersecting rigid AABBs; x == ray index, y == rigid body index. If the size of this array is insufficient to hold all ray-rigid AABB intersections, additional intersections are discarded. \end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3OpenCL/BroadphaseCollision/b3GpuParallelLinearBvh.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3OpenCL/BroadphaseCollision/b3GpuParallelLinearBvh.cpp\end{CompactItemize}

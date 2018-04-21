@@ -1,0 +1,53 @@
+\hypertarget{group__gtx__vector__angle}{
+\section{GLM\_\-GTX\_\-vector\_\-angle}
+\label{group__gtx__vector__angle}\index{GLM\_\-GTX\_\-vector\_\-angle@{GLM\_\-GTX\_\-vector\_\-angle}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-vector\_\-angle:Compute angle between vectors.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename vecType$>$ }\\GLM\_\-FUNC\_\-DECL vecType::value\_\-type \hyperlink{group__gtx__vector__angle_gb57ebeaf612eb26ab8e47e80b9af2678}{glm::angle} (vecType const \&x, vecType const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtx__vector__angle_gfd969749b953f7a58da4a2563d06ea36}{glm::orientedAngle} (detail::tvec2$<$ T, P $>$ const \&x, detail::tvec2$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtx__vector__angle_gc56a6bdc5d430b476514d64cb185b772}{glm::orientedAngle} (detail::tvec3$<$ T, P $>$ const \&x, detail::tvec3$<$ T, P $>$ const \&y, detail::tvec3$<$ T, P $>$ const \&ref)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Compute angle between vectors. 
+
+$<$glm/gtx/vector\_\-angle.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__vector__angle_gb57ebeaf612eb26ab8e47e80b9af2678}{
+\index{gtx\_\-vector\_\-angle@{gtx\_\-vector\_\-angle}!angle@{angle}}
+\index{angle@{angle}!gtx_vector_angle@{gtx\_\-vector\_\-angle}}
+\subsubsection[angle]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename vecType$>$ GLM\_\-FUNC\_\-DECL vecType::value\_\-type glm::angle (vecType const \& {\em x}, \/  vecType const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__vector__angle_gb57ebeaf612eb26ab8e47e80b9af2678}
+
+
+Returns the absolute angle between two vectors Parameters need to be normalized. \begin{Desc}
+\item[See also:]\hyperlink{group__gtx__vector__angle}{GLM\_\-GTX\_\-vector\_\-angle} extension \end{Desc}
+\hypertarget{group__gtx__vector__angle_gc56a6bdc5d430b476514d64cb185b772}{
+\index{gtx\_\-vector\_\-angle@{gtx\_\-vector\_\-angle}!orientedAngle@{orientedAngle}}
+\index{orientedAngle@{orientedAngle}!gtx_vector_angle@{gtx\_\-vector\_\-angle}}
+\subsubsection[orientedAngle]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::orientedAngle (detail::tvec3$<$ T, P $>$ const \& {\em x}, \/  detail::tvec3$<$ T, P $>$ const \& {\em y}, \/  detail::tvec3$<$ T, P $>$ const \& {\em ref})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__vector__angle_gc56a6bdc5d430b476514d64cb185b772}
+
+
+Returns the oriented angle between two 3d vectors based from a reference axis. Parameters need to be normalized. \begin{Desc}
+\item[See also:]\hyperlink{group__gtx__vector__angle}{GLM\_\-GTX\_\-vector\_\-angle} extension. \end{Desc}
+\hypertarget{group__gtx__vector__angle_gfd969749b953f7a58da4a2563d06ea36}{
+\index{gtx\_\-vector\_\-angle@{gtx\_\-vector\_\-angle}!orientedAngle@{orientedAngle}}
+\index{orientedAngle@{orientedAngle}!gtx_vector_angle@{gtx\_\-vector\_\-angle}}
+\subsubsection[orientedAngle]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::orientedAngle (detail::tvec2$<$ T, P $>$ const \& {\em x}, \/  detail::tvec2$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__vector__angle_gfd969749b953f7a58da4a2563d06ea36}
+
+
+Returns the oriented angle between two 2d vectors Parameters need to be normalized. \begin{Desc}
+\item[See also:]\hyperlink{group__gtx__vector__angle}{GLM\_\-GTX\_\-vector\_\-angle} extension.\end{Desc}
+\begin{Desc}
+\item[\hyperlink{todo__todo000052}{Todo}]epsilon is hard coded to 0.01 \end{Desc}

@@ -1,0 +1,63 @@
+\hypertarget{classbt_soft_body_rigid_body_collision_configuration}{
+\section{btSoftBodyRigidBodyCollisionConfiguration Class Reference}
+\label{classbt_soft_body_rigid_body_collision_configuration}\index{btSoftBodyRigidBodyCollisionConfiguration@{btSoftBodyRigidBodyCollisionConfiguration}}
+}
+\hyperlink{classbt_soft_body_rigid_body_collision_configuration}{btSoftBodyRigidBodyCollisionConfiguration} add softbody interaction on top of \hyperlink{classbt_default_collision_configuration}{btDefaultCollisionConfiguration}  
+
+
+{\tt \#include $<$btSoftBodyRigidBodyCollisionConfiguration.h$>$}
+
+Inheritance diagram for btSoftBodyRigidBodyCollisionConfiguration:Collaboration diagram for btSoftBodyRigidBodyCollisionConfiguration:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classbt_soft_body_rigid_body_collision_configuration_ed032b3ffc351d036e28b503d3cdc801}{btSoftBodyRigidBodyCollisionConfiguration} (const btDefaultCollisionConstructionInfo \&constructionInfo=btDefaultCollisionConstructionInfo())
+\item 
+virtual \hyperlink{structbt_collision_algorithm_create_func}{btCollisionAlgorithmCreateFunc} $\ast$ \hyperlink{classbt_soft_body_rigid_body_collision_configuration_81be88bc433469b4703fc0fb9d504a50}{getCollisionAlgorithmCreateFunc} (int proxyType0, int proxyType1)
+\begin{CompactList}\small\item\em creation of soft-soft and soft-rigid, and otherwise fallback to base class implementation \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classbt_soft_body_rigid_body_collision_configuration}{btSoftBodyRigidBodyCollisionConfiguration} add softbody interaction on top of \hyperlink{classbt_default_collision_configuration}{btDefaultCollisionConfiguration} 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classbt_soft_body_rigid_body_collision_configuration_ed032b3ffc351d036e28b503d3cdc801}{
+\index{btSoftBodyRigidBodyCollisionConfiguration@{btSoftBodyRigidBodyCollisionConfiguration}!btSoftBodyRigidBodyCollisionConfiguration@{btSoftBodyRigidBodyCollisionConfiguration}}
+\index{btSoftBodyRigidBodyCollisionConfiguration@{btSoftBodyRigidBodyCollisionConfiguration}!btSoftBodyRigidBodyCollisionConfiguration@{btSoftBodyRigidBodyCollisionConfiguration}}
+\subsubsection[btSoftBodyRigidBodyCollisionConfiguration]{\setlength{\rightskip}{0pt plus 5cm}btSoftBodyRigidBodyCollisionConfiguration::btSoftBodyRigidBodyCollisionConfiguration (const btDefaultCollisionConstructionInfo \& {\em constructionInfo} = {\tt btDefaultCollisionConstructionInfo()})}}
+\label{classbt_soft_body_rigid_body_collision_configuration_ed032b3ffc351d036e28b503d3cdc801}
+
+
+
+
+calculate maximum element size, big enough to fit any collision algorithm in the memory pool 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_soft_body_rigid_body_collision_configuration_81be88bc433469b4703fc0fb9d504a50}{
+\index{btSoftBodyRigidBodyCollisionConfiguration@{btSoftBodyRigidBodyCollisionConfiguration}!getCollisionAlgorithmCreateFunc@{getCollisionAlgorithmCreateFunc}}
+\index{getCollisionAlgorithmCreateFunc@{getCollisionAlgorithmCreateFunc}!btSoftBodyRigidBodyCollisionConfiguration@{btSoftBodyRigidBodyCollisionConfiguration}}
+\subsubsection[getCollisionAlgorithmCreateFunc]{\setlength{\rightskip}{0pt plus 5cm}{\bf btCollisionAlgorithmCreateFunc} $\ast$ btSoftBodyRigidBodyCollisionConfiguration::getCollisionAlgorithmCreateFunc (int {\em proxyType0}, \/  int {\em proxyType1})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_soft_body_rigid_body_collision_configuration_81be88bc433469b4703fc0fb9d504a50}
+
+
+creation of soft-soft and soft-rigid, and otherwise fallback to base class implementation 
+
+
+
+try to handle the softbody interactions first
+
+softbody versus convex
+
+convex versus soft body
+
+softbody versus convex
+
+convex versus soft body
+
+fallback to the regular rigid collision shape 
+
+Reimplemented from \hyperlink{classbt_default_collision_configuration}{btDefaultCollisionConfiguration}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.cpp\end{CompactItemize}

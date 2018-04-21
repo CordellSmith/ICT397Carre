@@ -1,0 +1,98 @@
+\hypertarget{group__gtx__matrix__transform__2d}{
+\section{GLM\_\-GTX\_\-matrix\_\-transform\_\-2d}
+\label{group__gtx__matrix__transform__2d}\index{GLM\_\-GTX\_\-matrix\_\-transform\_\-2d@{GLM\_\-GTX\_\-matrix\_\-transform\_\-2d}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-matrix\_\-transform\_\-2d:Defines functions that generate common 2d transformation matrices.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ \hyperlink{group__gtx__matrix__transform__2d_g307934204fead7ff8ec86bd4499c0adc}{glm::translate} (detail::tmat3x3$<$ T, P $>$ const \&m, detail::tvec2$<$ T, P $>$ const \&v)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ \hyperlink{group__gtx__matrix__transform__2d_gcfd972a1747f367837d62e00be5d841e}{glm::rotate} (detail::tmat3x3$<$ T, P $>$ const \&m, T const \&angle)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ \hyperlink{group__gtx__matrix__transform__2d_g275b188a11797f386aeda153a17afcdc}{glm::scale} (detail::tmat3x3$<$ T, P $>$ const \&m, detail::tvec2$<$ T, P $>$ const \&v)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ \hyperlink{group__gtx__matrix__transform__2d_g921a7ae4b10ba6cc7422be200cf3afd5}{glm::shearX} (detail::tmat3x3$<$ T, P $>$ const \&m, T const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ \hyperlink{group__gtx__matrix__transform__2d_g5f6d0ef99f6be6ff1151ca174261004d}{glm::shearY} (detail::tmat3x3$<$ T, P $>$ const \&m, T const \&x)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Defines functions that generate common 2d transformation matrices. 
+
+$<$glm/gtx/matrix\_\-transform\_\-2d.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__matrix__transform__2d_gcfd972a1747f367837d62e00be5d841e}{
+\index{gtx\_\-matrix\_\-transform\_\-2d@{gtx\_\-matrix\_\-transform\_\-2d}!rotate@{rotate}}
+\index{rotate@{rotate}!gtx_matrix_transform_2d@{gtx\_\-matrix\_\-transform\_\-2d}}
+\subsubsection[rotate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::rotate (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__transform__2d_gcfd972a1747f367837d62e00be5d841e}
+
+
+Builds a rotation 3 $\ast$ 3 matrix created from an angle.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em m}]Input matrix multiplied by this translation matrix. \item[{\em angle}]Rotation angle expressed in radians if GLM\_\-FORCE\_\-RADIANS is defined or degrees otherwise. \end{description}
+\end{Desc}
+\hypertarget{group__gtx__matrix__transform__2d_g275b188a11797f386aeda153a17afcdc}{
+\index{gtx\_\-matrix\_\-transform\_\-2d@{gtx\_\-matrix\_\-transform\_\-2d}!scale@{scale}}
+\index{scale@{scale}!gtx_matrix_transform_2d@{gtx\_\-matrix\_\-transform\_\-2d}}
+\subsubsection[scale]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::scale (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  detail::tvec2$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__transform__2d_g275b188a11797f386aeda153a17afcdc}
+
+
+Builds a scale 3 $\ast$ 3 matrix created from a vector of 2 components.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em m}]Input matrix multiplied by this translation matrix. \item[{\em v}]Coordinates of a scale vector. \end{description}
+\end{Desc}
+\hypertarget{group__gtx__matrix__transform__2d_g921a7ae4b10ba6cc7422be200cf3afd5}{
+\index{gtx\_\-matrix\_\-transform\_\-2d@{gtx\_\-matrix\_\-transform\_\-2d}!shearX@{shearX}}
+\index{shearX@{shearX}!gtx_matrix_transform_2d@{gtx\_\-matrix\_\-transform\_\-2d}}
+\subsubsection[shearX]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::shearX (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__transform__2d_g921a7ae4b10ba6cc7422be200cf3afd5}
+
+
+Builds an horizontal (parallel to the x axis) shear 3 $\ast$ 3 matrix.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em m}]Input matrix multiplied by this translation matrix. \item[{\em y}]Shear factor. \end{description}
+\end{Desc}
+\hypertarget{group__gtx__matrix__transform__2d_g5f6d0ef99f6be6ff1151ca174261004d}{
+\index{gtx\_\-matrix\_\-transform\_\-2d@{gtx\_\-matrix\_\-transform\_\-2d}!shearY@{shearY}}
+\index{shearY@{shearY}!gtx_matrix_transform_2d@{gtx\_\-matrix\_\-transform\_\-2d}}
+\subsubsection[shearY]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::shearY (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__transform__2d_g5f6d0ef99f6be6ff1151ca174261004d}
+
+
+Builds a vertical (parallel to the y axis) shear 3 $\ast$ 3 matrix.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em m}]Input matrix multiplied by this translation matrix. \item[{\em x}]Shear factor. \end{description}
+\end{Desc}
+\hypertarget{group__gtx__matrix__transform__2d_g307934204fead7ff8ec86bd4499c0adc}{
+\index{gtx\_\-matrix\_\-transform\_\-2d@{gtx\_\-matrix\_\-transform\_\-2d}!translate@{translate}}
+\index{translate@{translate}!gtx_matrix_transform_2d@{gtx\_\-matrix\_\-transform\_\-2d}}
+\subsubsection[translate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::translate (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  detail::tvec2$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__matrix__transform__2d_g307934204fead7ff8ec86bd4499c0adc}
+
+
+Builds a translation 3 $\ast$ 3 matrix created from a vector of 2 components.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em m}]Input matrix multiplied by this translation matrix. \item[{\em v}]Coordinates of a translation vector. \end{description}
+\end{Desc}

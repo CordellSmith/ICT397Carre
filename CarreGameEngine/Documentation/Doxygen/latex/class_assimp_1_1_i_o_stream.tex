@@ -1,0 +1,109 @@
+\hypertarget{class_assimp_1_1_i_o_stream}{
+\section{Assimp::IOStream Class Reference}
+\label{class_assimp_1_1_i_o_stream}\index{Assimp::IOStream@{Assimp::IOStream}}
+}
+CPP-API: Class to handle file I/O for C++.  
+
+
+{\tt \#include $<$IOStream.hpp$>$}
+
+Inheritance diagram for Assimp::IOStream:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_i_o_stream_6cedc5033bf531bf14b97d1c9b788de8}{
+virtual \hyperlink{class_assimp_1_1_i_o_stream_6cedc5033bf531bf14b97d1c9b788de8}{$\sim$IOStream} ()}
+\label{class_assimp_1_1_i_o_stream_6cedc5033bf531bf14b97d1c9b788de8}
+
+\begin{CompactList}\small\item\em Destructor. Deleting the object closes the underlying file, alternatively you may use \hyperlink{class_assimp_1_1_i_o_system_8c334d60f04bceeb6bd0157d21723f3e}{IOSystem::Close()} to release the file. \item\end{CompactList}\item 
+virtual size\_\-t \hyperlink{class_assimp_1_1_i_o_stream_e376f641020989d61863b9c6f55c7abf}{Read} (void $\ast$pvBuffer, size\_\-t pSize, size\_\-t pCount)=0
+\begin{CompactList}\small\item\em Read from the file. \item\end{CompactList}\item 
+virtual size\_\-t \hyperlink{class_assimp_1_1_i_o_stream_d0ca4aae1b8c4d00db391ac3a4171f7b}{Write} (const void $\ast$pvBuffer, size\_\-t pSize, size\_\-t pCount)=0
+\begin{CompactList}\small\item\em Write to the file. \item\end{CompactList}\item 
+virtual \hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe711}{aiReturn} \hyperlink{class_assimp_1_1_i_o_stream_5ed0dddf418ab08cf3fc21f3f3032220}{Seek} (size\_\-t pOffset, \hyperlink{types_8h_c50fbaa57d78776ca99e42104d9b2786}{aiOrigin} pOrigin)=0
+\begin{CompactList}\small\item\em Set the read/write cursor of the file. \item\end{CompactList}\item 
+virtual size\_\-t \hyperlink{class_assimp_1_1_i_o_stream_316ac6cd16b5a493d1313f792c806194}{Tell} () const =0
+\begin{CompactList}\small\item\em Get the current position of the read/write cursor. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_i_o_stream_aa01183d197fb714f28d6c611b6fa058}{
+virtual size\_\-t \hyperlink{class_assimp_1_1_i_o_stream_aa01183d197fb714f28d6c611b6fa058}{FileSize} () const =0}
+\label{class_assimp_1_1_i_o_stream_aa01183d197fb714f28d6c611b6fa058}
+
+\begin{CompactList}\small\item\em Returns filesize Returns the filesize. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_i_o_stream_7c19952446ece90924b246f087417899}{
+virtual void \hyperlink{class_assimp_1_1_i_o_stream_7c19952446ece90924b246f087417899}{Flush} ()=0}
+\label{class_assimp_1_1_i_o_stream_7c19952446ece90924b246f087417899}
+
+\begin{CompactList}\small\item\em Flush the contents of the file buffer (for writers) See fflush() for more details. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_assimp_1_1_i_o_stream_f5ae78123b6c6f7afc31b2a52dc9192e}{IOStream} (void)
+\begin{CompactList}\small\item\em class \hyperlink{class_assimp_1_1_i_o_stream}{IOStream} \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+CPP-API: Class to handle file I/O for C++. 
+
+Derive an own implementation from this interface to provide custom IO handling to the \hyperlink{class_assimp_1_1_importer}{Importer}. If you implement this interface, be sure to also provide an implementation for \hyperlink{class_assimp_1_1_i_o_system}{IOSystem} that creates instances of your custom IO class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_assimp_1_1_i_o_stream_f5ae78123b6c6f7afc31b2a52dc9192e}{
+\index{Assimp::IOStream@{Assimp::IOStream}!IOStream@{IOStream}}
+\index{IOStream@{IOStream}!Assimp::IOStream@{Assimp::IOStream}}
+\subsubsection[IOStream]{\setlength{\rightskip}{0pt plus 5cm}Assimp::IOStream::IOStream (void)\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+\label{class_assimp_1_1_i_o_stream_f5ae78123b6c6f7afc31b2a52dc9192e}
+
+
+class \hyperlink{class_assimp_1_1_i_o_stream}{IOStream} 
+
+Constructor protected, use \hyperlink{class_assimp_1_1_i_o_system_c512ece3b0701de5682553007a4c0816}{IOSystem::Open()} to create an instance. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_i_o_stream_e376f641020989d61863b9c6f55c7abf}{
+\index{Assimp::IOStream@{Assimp::IOStream}!Read@{Read}}
+\index{Read@{Read}!Assimp::IOStream@{Assimp::IOStream}}
+\subsubsection[Read]{\setlength{\rightskip}{0pt plus 5cm}virtual size\_\-t Assimp::IOStream::Read (void $\ast$ {\em pvBuffer}, \/  size\_\-t {\em pSize}, \/  size\_\-t {\em pCount})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_stream_e376f641020989d61863b9c6f55c7abf}
+
+
+Read from the file. 
+
+See fread() for more details This fails for write-only files 
+
+Implemented in \hyperlink{class_assimp_1_1_default_i_o_stream_a45b659531f179122c7e7852ad6f5f14}{Assimp::DefaultIOStream}.\hypertarget{class_assimp_1_1_i_o_stream_d0ca4aae1b8c4d00db391ac3a4171f7b}{
+\index{Assimp::IOStream@{Assimp::IOStream}!Write@{Write}}
+\index{Write@{Write}!Assimp::IOStream@{Assimp::IOStream}}
+\subsubsection[Write]{\setlength{\rightskip}{0pt plus 5cm}virtual size\_\-t Assimp::IOStream::Write (const void $\ast$ {\em pvBuffer}, \/  size\_\-t {\em pSize}, \/  size\_\-t {\em pCount})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_stream_d0ca4aae1b8c4d00db391ac3a4171f7b}
+
+
+Write to the file. 
+
+See fwrite() for more details This fails for read-only files 
+
+Implemented in \hyperlink{class_assimp_1_1_default_i_o_stream_05de25f9ac717801fbd0aad06499657a}{Assimp::DefaultIOStream}.\hypertarget{class_assimp_1_1_i_o_stream_5ed0dddf418ab08cf3fc21f3f3032220}{
+\index{Assimp::IOStream@{Assimp::IOStream}!Seek@{Seek}}
+\index{Seek@{Seek}!Assimp::IOStream@{Assimp::IOStream}}
+\subsubsection[Seek]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf aiReturn} Assimp::IOStream::Seek (size\_\-t {\em pOffset}, \/  {\bf aiOrigin} {\em pOrigin})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_stream_5ed0dddf418ab08cf3fc21f3f3032220}
+
+
+Set the read/write cursor of the file. 
+
+Note that the offset is \_\-negative\_\- for aiOrigin\_\-END. See fseek() for more details 
+
+Implemented in \hyperlink{class_assimp_1_1_default_i_o_stream_1f4b8aa9afaaa2b300d6cee6165a6a6d}{Assimp::DefaultIOStream}.\hypertarget{class_assimp_1_1_i_o_stream_316ac6cd16b5a493d1313f792c806194}{
+\index{Assimp::IOStream@{Assimp::IOStream}!Tell@{Tell}}
+\index{Tell@{Tell}!Assimp::IOStream@{Assimp::IOStream}}
+\subsubsection[Tell]{\setlength{\rightskip}{0pt plus 5cm}virtual size\_\-t Assimp::IOStream::Tell () const\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_stream_316ac6cd16b5a493d1313f792c806194}
+
+
+Get the current position of the read/write cursor. 
+
+See ftell() for more details 
+
+Implemented in \hyperlink{class_assimp_1_1_default_i_o_stream_561a6cce1927a760e2d04fab87df38f9}{Assimp::DefaultIOStream}.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_i_o_stream_8hpp}{IOStream.hpp}\end{CompactItemize}

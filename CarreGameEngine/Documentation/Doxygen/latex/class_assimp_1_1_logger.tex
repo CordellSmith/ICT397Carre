@@ -1,0 +1,335 @@
+\hypertarget{class_assimp_1_1_logger}{
+\section{Assimp::Logger Class Reference}
+\label{class_assimp_1_1_logger}\index{Assimp::Logger@{Assimp::Logger}}
+}
+CPP-API: Abstract interface for logger implementations. \hyperlink{namespace_assimp}{Assimp} provides a default implementation and uses it for almost all logging stuff ('DefaultLogger'). This class defines just basic logging behaviour and is not of interest for you. Instead, take a look at DefaultLogger.  
+
+
+{\tt \#include $<$Logger.hpp$>$}
+
+Inheritance diagram for Assimp::Logger:\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+enum \hyperlink{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6}{LogSeverity} \{ \hyperlink{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e679d16f85dc21486ee489f300027e8eda}{NORMAL}, 
+\hyperlink{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6fc9d1d86aa82fdb80e00c99b3c1ce486}{VERBOSE}
+ \}
+\begin{CompactList}\small\item\em Log severity to describe the granularity of logging. \item\end{CompactList}\item 
+enum \hyperlink{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b6}{ErrorSeverity} \{ \hyperlink{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b60cb475014d27098c3423738c571d857f}{Debugging} =  1, 
+\hyperlink{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b6a3377a574928b86f7de55c5df154f461}{Info} =  2, 
+\hyperlink{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b61279c77aaee5a3d7df835a9b9305a697}{Warn} =  4, 
+\hyperlink{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b671054d0b1323abcea46d050d69013d27}{Err} =  8
+ \}
+\begin{CompactList}\small\item\em Description for severity of a log message. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_logger_27dd2bd4fd3b9cde0635ed22aad687c3}{
+virtual \hyperlink{class_assimp_1_1_logger_27dd2bd4fd3b9cde0635ed22aad687c3}{$\sim$Logger} ()}
+\label{class_assimp_1_1_logger_27dd2bd4fd3b9cde0635ed22aad687c3}
+
+\begin{CompactList}\small\item\em Virtual destructor. \item\end{CompactList}\item 
+void \hyperlink{class_assimp_1_1_logger_3b10454ab4c0949f251062376d9c4161}{debug} (const char $\ast$message)
+\begin{CompactList}\small\item\em Writes a debug message. \item\end{CompactList}\item 
+void \hyperlink{class_assimp_1_1_logger_12b8a125083c47ac0bb6056f00761e52}{info} (const char $\ast$message)
+\begin{CompactList}\small\item\em Writes a info message. \item\end{CompactList}\item 
+void \hyperlink{class_assimp_1_1_logger_32bc5ee4b23df13551b83b925907f1b1}{warn} (const char $\ast$message)
+\begin{CompactList}\small\item\em Writes a warning message. \item\end{CompactList}\item 
+void \hyperlink{class_assimp_1_1_logger_a8b7c3f56dc4cecfdacc8bb36ba3fac1}{error} (const char $\ast$message)
+\begin{CompactList}\small\item\em Writes an error message. \item\end{CompactList}\item 
+void \hyperlink{class_assimp_1_1_logger_8fb4fa4c2c329a36ac39bc9c743925f1}{setLogSeverity} (\hyperlink{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6}{LogSeverity} log\_\-severity)
+\begin{CompactList}\small\item\em Set a new log severity. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_logger_2b4cee0d7f1f8948308ab6a8ee1a3dc7}{
+\hyperlink{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6}{LogSeverity} \hyperlink{class_assimp_1_1_logger_2b4cee0d7f1f8948308ab6a8ee1a3dc7}{getLogSeverity} () const }
+\label{class_assimp_1_1_logger_2b4cee0d7f1f8948308ab6a8ee1a3dc7}
+
+\begin{CompactList}\small\item\em Get the current log severity. \item\end{CompactList}\item 
+virtual bool \hyperlink{class_assimp_1_1_logger_af32a42b02a7e227076013d01e349871}{attachStream} (\hyperlink{class_assimp_1_1_log_stream}{LogStream} $\ast$pStream, unsigned int severity=Debugging$|$Err$|$Warn$|$Info)=0
+\begin{CompactList}\small\item\em Attach a new log-stream. \item\end{CompactList}\item 
+virtual bool \hyperlink{class_assimp_1_1_logger_9489263727f29fecbd705d5c8d2590c0}{detatchStream} (\hyperlink{class_assimp_1_1_log_stream}{LogStream} $\ast$pStream, unsigned int severity=Debugging$|$Err$|$Warn$|$Info)=0
+\begin{CompactList}\small\item\em Detach a still attached stream from the logger (or modify the filter flags bits). \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8}{Logger} ()
+\item 
+\hyperlink{class_assimp_1_1_logger_ccc0ffea63ddf0982d8c2ba7e07f0716}{Logger} (\hyperlink{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6}{LogSeverity} severity)
+\item 
+virtual void \hyperlink{class_assimp_1_1_logger_ded6996d20f14204877097b88bd5eac6}{OnDebug} (const char $\ast$message)=0
+\begin{CompactList}\small\item\em Called as a request to write a specific debug message. \item\end{CompactList}\item 
+virtual void \hyperlink{class_assimp_1_1_logger_ba81c4562ff8db83f06c6b62f2eb7983}{OnInfo} (const char $\ast$message)=0
+\begin{CompactList}\small\item\em Called as a request to write a specific info message. \item\end{CompactList}\item 
+virtual void \hyperlink{class_assimp_1_1_logger_b8066978dd37992f711d75d49cf4607b}{OnWarn} (const char $\ast$essage)=0
+\begin{CompactList}\small\item\em Called as a request to write a specific warn message. \item\end{CompactList}\item 
+virtual void \hyperlink{class_assimp_1_1_logger_e2ea0790aba6125b90af0f2768b0759d}{OnError} (const char $\ast$message)=0
+\begin{CompactList}\small\item\em Called as a request to write a specific error message. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_logger_e1c96711eb927a5b33745a6211e93f56}{
+\hyperlink{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6}{LogSeverity} \hyperlink{class_assimp_1_1_logger_e1c96711eb927a5b33745a6211e93f56}{m\_\-Severity}}
+\label{class_assimp_1_1_logger_e1c96711eb927a5b33745a6211e93f56}
+
+\begin{CompactList}\small\item\em \hyperlink{class_assimp_1_1_logger}{Logger} severity. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+CPP-API: Abstract interface for logger implementations. \hyperlink{namespace_assimp}{Assimp} provides a default implementation and uses it for almost all logging stuff ('DefaultLogger'). This class defines just basic logging behaviour and is not of interest for you. Instead, take a look at DefaultLogger. 
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6}{
+\index{Assimp::Logger@{Assimp::Logger}!LogSeverity@{LogSeverity}}
+\index{LogSeverity@{LogSeverity}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[LogSeverity]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Assimp::Logger::LogSeverity}}}
+\label{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6}
+
+
+Log severity to describe the granularity of logging. 
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{NORMAL@{NORMAL}!Assimp::Logger@{Assimp::Logger}}\index{Assimp::Logger@{Assimp::Logger}!NORMAL@{NORMAL}}\item[{\em 
+\hypertarget{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e679d16f85dc21486ee489f300027e8eda}{
+NORMAL}
+\label{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e679d16f85dc21486ee489f300027e8eda}
+}]Normal granularity of logging. \index{VERBOSE@{VERBOSE}!Assimp::Logger@{Assimp::Logger}}\index{Assimp::Logger@{Assimp::Logger}!VERBOSE@{VERBOSE}}\item[{\em 
+\hypertarget{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6fc9d1d86aa82fdb80e00c99b3c1ce486}{
+VERBOSE}
+\label{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6fc9d1d86aa82fdb80e00c99b3c1ce486}
+}]Debug infos will be logged, too. \end{description}
+\end{Desc}
+
+\hypertarget{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b6}{
+\index{Assimp::Logger@{Assimp::Logger}!ErrorSeverity@{ErrorSeverity}}
+\index{ErrorSeverity@{ErrorSeverity}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[ErrorSeverity]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Assimp::Logger::ErrorSeverity}}}
+\label{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b6}
+
+
+Description for severity of a log message. 
+
+Every \hyperlink{class_assimp_1_1_log_stream}{LogStream} has a bitwise combination of these flags. A \hyperlink{class_assimp_1_1_log_stream}{LogStream} doesn't receive any messages of a specific type if it doesn't specify the corresponding ErrorSeverity flag. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{Debugging@{Debugging}!Assimp::Logger@{Assimp::Logger}}\index{Assimp::Logger@{Assimp::Logger}!Debugging@{Debugging}}\item[{\em 
+\hypertarget{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b60cb475014d27098c3423738c571d857f}{
+Debugging}
+\label{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b60cb475014d27098c3423738c571d857f}
+}]Debug log message. \index{Info@{Info}!Assimp::Logger@{Assimp::Logger}}\index{Assimp::Logger@{Assimp::Logger}!Info@{Info}}\item[{\em 
+\hypertarget{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b6a3377a574928b86f7de55c5df154f461}{
+Info}
+\label{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b6a3377a574928b86f7de55c5df154f461}
+}]Info log message. \index{Warn@{Warn}!Assimp::Logger@{Assimp::Logger}}\index{Assimp::Logger@{Assimp::Logger}!Warn@{Warn}}\item[{\em 
+\hypertarget{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b61279c77aaee5a3d7df835a9b9305a697}{
+Warn}
+\label{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b61279c77aaee5a3d7df835a9b9305a697}
+}]Warn log message. \index{Err@{Err}!Assimp::Logger@{Assimp::Logger}}\index{Assimp::Logger@{Assimp::Logger}!Err@{Err}}\item[{\em 
+\hypertarget{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b671054d0b1323abcea46d050d69013d27}{
+Err}
+\label{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b671054d0b1323abcea46d050d69013d27}
+}]Error log message. \end{description}
+\end{Desc}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8}{
+\index{Assimp::Logger@{Assimp::Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[Logger]{\setlength{\rightskip}{0pt plus 5cm}Assimp::Logger::Logger ()\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+\label{class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8}
+
+
+Default constructor \hypertarget{class_assimp_1_1_logger_ccc0ffea63ddf0982d8c2ba7e07f0716}{
+\index{Assimp::Logger@{Assimp::Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[Logger]{\setlength{\rightskip}{0pt plus 5cm}Assimp::Logger::Logger ({\bf LogSeverity} {\em severity})\hspace{0.3cm}{\tt  \mbox{[}inline, explicit, protected\mbox{]}}}}
+\label{class_assimp_1_1_logger_ccc0ffea63ddf0982d8c2ba7e07f0716}
+
+
+Construction with a given log severity 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_logger_3b10454ab4c0949f251062376d9c4161}{
+\index{Assimp::Logger@{Assimp::Logger}!debug@{debug}}
+\index{debug@{debug}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[debug]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Logger::debug (const char $\ast$ {\em message})}}
+\label{class_assimp_1_1_logger_3b10454ab4c0949f251062376d9c4161}
+
+
+Writes a debug message. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em message}]Debug message \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_logger_12b8a125083c47ac0bb6056f00761e52}{
+\index{Assimp::Logger@{Assimp::Logger}!info@{info}}
+\index{info@{info}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[info]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Logger::info (const char $\ast$ {\em message})}}
+\label{class_assimp_1_1_logger_12b8a125083c47ac0bb6056f00761e52}
+
+
+Writes a info message. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em message}]Info message \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_logger_32bc5ee4b23df13551b83b925907f1b1}{
+\index{Assimp::Logger@{Assimp::Logger}!warn@{warn}}
+\index{warn@{warn}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[warn]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Logger::warn (const char $\ast$ {\em message})}}
+\label{class_assimp_1_1_logger_32bc5ee4b23df13551b83b925907f1b1}
+
+
+Writes a warning message. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em message}]Warn message \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_logger_a8b7c3f56dc4cecfdacc8bb36ba3fac1}{
+\index{Assimp::Logger@{Assimp::Logger}!error@{error}}
+\index{error@{error}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[error]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Logger::error (const char $\ast$ {\em message})}}
+\label{class_assimp_1_1_logger_a8b7c3f56dc4cecfdacc8bb36ba3fac1}
+
+
+Writes an error message. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em message}]Error message \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_logger_8fb4fa4c2c329a36ac39bc9c743925f1}{
+\index{Assimp::Logger@{Assimp::Logger}!setLogSeverity@{setLogSeverity}}
+\index{setLogSeverity@{setLogSeverity}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[setLogSeverity]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Logger::setLogSeverity ({\bf LogSeverity} {\em log\_\-severity})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_assimp_1_1_logger_8fb4fa4c2c329a36ac39bc9c743925f1}
+
+
+Set a new log severity. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em log\_\-severity}]New severity for logging \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_logger_af32a42b02a7e227076013d01e349871}{
+\index{Assimp::Logger@{Assimp::Logger}!attachStream@{attachStream}}
+\index{attachStream@{attachStream}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[attachStream]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Assimp::Logger::attachStream ({\bf LogStream} $\ast$ {\em pStream}, \/  unsigned int {\em severity} = {\tt Debugging$|$Err$|$Warn$|$Info})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_logger_af32a42b02a7e227076013d01e349871}
+
+
+Attach a new log-stream. 
+
+The logger takes ownership of the stream and is responsible for its destruction (which is done using delete when the logger itself is destroyed). Call detachStream to detach a stream and to gain ownership of it again. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pStream}]Log-stream to attach \item[{\em severity}]Message filter, specified which types of log messages are dispatched to the stream. Provide a bitwise combination of the ErrorSeverity flags. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if the stream has been attached, false otherwise. \end{Desc}
+
+
+Implemented in \hyperlink{class_assimp_1_1_default_logger_bc0ca7a337f8c3e38eca0eb45bb1ccf0}{Assimp::DefaultLogger}, and \hyperlink{class_assimp_1_1_null_logger_31c05ecaee392b5fd34fd2dfd1cca559}{Assimp::NullLogger}.\hypertarget{class_assimp_1_1_logger_9489263727f29fecbd705d5c8d2590c0}{
+\index{Assimp::Logger@{Assimp::Logger}!detatchStream@{detatchStream}}
+\index{detatchStream@{detatchStream}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[detatchStream]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Assimp::Logger::detatchStream ({\bf LogStream} $\ast$ {\em pStream}, \/  unsigned int {\em severity} = {\tt Debugging$|$Err$|$Warn$|$Info})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_logger_9489263727f29fecbd705d5c8d2590c0}
+
+
+Detach a still attached stream from the logger (or modify the filter flags bits). 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pStream}]Log-stream instance for detaching \item[{\em severity}]Provide a bitwise combination of the ErrorSeverity flags. This value is \&$\sim$ed with the current flags of the stream, if the result is 0 the stream is detached from the \hyperlink{class_assimp_1_1_logger}{Logger} and the caller retakes the possession of the stream. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if the stream has been detached, false otherwise. \end{Desc}
+
+
+Implemented in \hyperlink{class_assimp_1_1_default_logger_2615f1d1624f1d742d0cf2dd4a5cccc8}{Assimp::DefaultLogger}, and \hyperlink{class_assimp_1_1_null_logger_b49b14a0045aab73b813a448b5aa77b4}{Assimp::NullLogger}.\hypertarget{class_assimp_1_1_logger_ded6996d20f14204877097b88bd5eac6}{
+\index{Assimp::Logger@{Assimp::Logger}!OnDebug@{OnDebug}}
+\index{OnDebug@{OnDebug}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[OnDebug]{\setlength{\rightskip}{0pt plus 5cm}virtual void Assimp::Logger::OnDebug (const char $\ast$ {\em message})\hspace{0.3cm}{\tt  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_logger_ded6996d20f14204877097b88bd5eac6}
+
+
+Called as a request to write a specific debug message. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em message}]Debug message. Never longer than MAX\_\-LOG\_\-MESSAGE\_\-LENGTH characters (excluding the '0'). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]The message string is only valid until the scope of the function is left. \end{Desc}
+
+
+Implemented in \hyperlink{class_assimp_1_1_null_logger_f354ebbd382b7097a55d364794a45631}{Assimp::NullLogger}.\hypertarget{class_assimp_1_1_logger_ba81c4562ff8db83f06c6b62f2eb7983}{
+\index{Assimp::Logger@{Assimp::Logger}!OnInfo@{OnInfo}}
+\index{OnInfo@{OnInfo}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[OnInfo]{\setlength{\rightskip}{0pt plus 5cm}virtual void Assimp::Logger::OnInfo (const char $\ast$ {\em message})\hspace{0.3cm}{\tt  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_logger_ba81c4562ff8db83f06c6b62f2eb7983}
+
+
+Called as a request to write a specific info message. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em message}]Info message. Never longer than MAX\_\-LOG\_\-MESSAGE\_\-LENGTH characters (ecxluding the '0'). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]The message string is only valid until the scope of the function is left. \end{Desc}
+
+
+Implemented in \hyperlink{class_assimp_1_1_null_logger_12d2b0048d17a819c8c00277ad1394c5}{Assimp::NullLogger}.\hypertarget{class_assimp_1_1_logger_b8066978dd37992f711d75d49cf4607b}{
+\index{Assimp::Logger@{Assimp::Logger}!OnWarn@{OnWarn}}
+\index{OnWarn@{OnWarn}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[OnWarn]{\setlength{\rightskip}{0pt plus 5cm}virtual void Assimp::Logger::OnWarn (const char $\ast$ {\em essage})\hspace{0.3cm}{\tt  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_logger_b8066978dd37992f711d75d49cf4607b}
+
+
+Called as a request to write a specific warn message. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em message}]Warn message. Never longer than MAX\_\-LOG\_\-MESSAGE\_\-LENGTH characters (exluding the '0'). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]The message string is only valid until the scope of the function is left. \end{Desc}
+
+
+Implemented in \hyperlink{class_assimp_1_1_null_logger_9a04c2b9e3d4bc9eec8f693ed8115f24}{Assimp::NullLogger}.\hypertarget{class_assimp_1_1_logger_e2ea0790aba6125b90af0f2768b0759d}{
+\index{Assimp::Logger@{Assimp::Logger}!OnError@{OnError}}
+\index{OnError@{OnError}!Assimp::Logger@{Assimp::Logger}}
+\subsubsection[OnError]{\setlength{\rightskip}{0pt plus 5cm}virtual void Assimp::Logger::OnError (const char $\ast$ {\em message})\hspace{0.3cm}{\tt  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_logger_e2ea0790aba6125b90af0f2768b0759d}
+
+
+Called as a request to write a specific error message. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em message}]Error message. Never longer than MAX\_\-LOG\_\-MESSAGE\_\-LENGTH characters (exluding the '0'). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]The message string is only valid until the scope of the function is left. \end{Desc}
+
+
+Implemented in \hyperlink{class_assimp_1_1_null_logger_4fbf66103757fafcff891fb04b4ee714}{Assimp::NullLogger}.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_logger_8hpp}{Logger.hpp}\end{CompactItemize}

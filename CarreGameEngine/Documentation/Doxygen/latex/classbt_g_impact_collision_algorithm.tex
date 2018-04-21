@@ -1,0 +1,72 @@
+\hypertarget{classbt_g_impact_collision_algorithm}{
+\section{btGImpactCollisionAlgorithm Class Reference}
+\label{classbt_g_impact_collision_algorithm}\index{btGImpactCollisionAlgorithm@{btGImpactCollisionAlgorithm}}
+}
+Collision Algorithm for GImpact Shapes.  
+
+
+{\tt \#include $<$btGImpactCollisionAlgorithm.h$>$}
+
+Inheritance diagram for btGImpactCollisionAlgorithm:Collaboration diagram for btGImpactCollisionAlgorithm:\begin{CompactItemize}
+\item 
+void \hyperlink{classbt_g_impact_collision_algorithm_1cc907bcb394f7a95d609b1b56a5490e}{collide\_\-gjk\_\-triangles} (const btCollisionObjectWrapper $\ast$body0Wrap, const btCollisionObjectWrapper $\ast$body1Wrap, const \hyperlink{classbt_g_impact_mesh_shape_part}{btGImpactMeshShapePart} $\ast$shape0, const \hyperlink{classbt_g_impact_mesh_shape_part}{btGImpactMeshShapePart} $\ast$shape1, const int $\ast$pairs, int pair\_\-count)
+\item 
+void \hyperlink{classbt_g_impact_collision_algorithm_2a6bd5ca4d26e3578d2613543e85429b}{gimpact\_\-vs\_\-gimpact} (const btCollisionObjectWrapper $\ast$body0Wrap, const btCollisionObjectWrapper $\ast$body1Wrap, const \hyperlink{classbt_g_impact_shape_interface}{btGImpactShapeInterface} $\ast$shape0, const \hyperlink{classbt_g_impact_shape_interface}{btGImpactShapeInterface} $\ast$shape1)
+\begin{CompactList}\small\item\em Collides two gimpact shapes. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_collision_algorithm_10e8bcaf1a0b97b227f37fbda2d50403}{
+void \hyperlink{classbt_g_impact_collision_algorithm_10e8bcaf1a0b97b227f37fbda2d50403}{setFace0} (int value)}
+\label{classbt_g_impact_collision_algorithm_10e8bcaf1a0b97b227f37fbda2d50403}
+
+\begin{CompactList}\small\item\em Accessor/Mutator pairs for Part and triangleID. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_collision_algorithm_8ddef653ddc1afa7c976abb1ecaf0b98}{
+static void \hyperlink{classbt_g_impact_collision_algorithm_8ddef653ddc1afa7c976abb1ecaf0b98}{registerAlgorithm} (\hyperlink{classbt_collision_dispatcher}{btCollisionDispatcher} $\ast$dispatcher)}
+\label{classbt_g_impact_collision_algorithm_8ddef653ddc1afa7c976abb1ecaf0b98}
+
+\begin{CompactList}\small\item\em Use this function for register the algorithm externally. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_g_impact_collision_algorithm_39b6aae298182026902401b138ebd716}{
+SIMD\_\-FORCE\_\-INLINE btPersistentManifold $\ast$ \hyperlink{classbt_g_impact_collision_algorithm_39b6aae298182026902401b138ebd716}{newContactManifold} (const btCollisionObject $\ast$body0, const btCollisionObject $\ast$body1)}
+\label{classbt_g_impact_collision_algorithm_39b6aae298182026902401b138ebd716}
+
+\begin{CompactList}\small\item\em Creates a new contact point. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Collision Algorithm for GImpact Shapes. 
+
+For register this algorithm in Bullet, proceed as following: 
+
+\begin{Code}\begin{verbatim}btCollisionDispatcher * dispatcher = static_cast<btCollisionDispatcher *>(m_dynamicsWorld ->getDispatcher());
+btGImpactCollisionAlgorithm::registerAlgorithm(dispatcher);
+\end{verbatim}
+\end{Code}
+
+ 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_g_impact_collision_algorithm_1cc907bcb394f7a95d609b1b56a5490e}{
+\index{btGImpactCollisionAlgorithm@{btGImpactCollisionAlgorithm}!collide\_\-gjk\_\-triangles@{collide\_\-gjk\_\-triangles}}
+\index{collide\_\-gjk\_\-triangles@{collide\_\-gjk\_\-triangles}!btGImpactCollisionAlgorithm@{btGImpactCollisionAlgorithm}}
+\subsubsection[collide\_\-gjk\_\-triangles]{\setlength{\rightskip}{0pt plus 5cm}void btGImpactCollisionAlgorithm::collide\_\-gjk\_\-triangles (const btCollisionObjectWrapper $\ast$ {\em body0Wrap}, \/  const btCollisionObjectWrapper $\ast$ {\em body1Wrap}, \/  const {\bf btGImpactMeshShapePart} $\ast$ {\em shape0}, \/  const {\bf btGImpactMeshShapePart} $\ast$ {\em shape1}, \/  const int $\ast$ {\em pairs}, \/  int {\em pair\_\-count})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classbt_g_impact_collision_algorithm_1cc907bcb394f7a95d609b1b56a5490e}
+
+
+Collision routines \hypertarget{classbt_g_impact_collision_algorithm_2a6bd5ca4d26e3578d2613543e85429b}{
+\index{btGImpactCollisionAlgorithm@{btGImpactCollisionAlgorithm}!gimpact\_\-vs\_\-gimpact@{gimpact\_\-vs\_\-gimpact}}
+\index{gimpact\_\-vs\_\-gimpact@{gimpact\_\-vs\_\-gimpact}!btGImpactCollisionAlgorithm@{btGImpactCollisionAlgorithm}}
+\subsubsection[gimpact\_\-vs\_\-gimpact]{\setlength{\rightskip}{0pt plus 5cm}void btGImpactCollisionAlgorithm::gimpact\_\-vs\_\-gimpact (const btCollisionObjectWrapper $\ast$ {\em body0Wrap}, \/  const btCollisionObjectWrapper $\ast$ {\em body1Wrap}, \/  const {\bf btGImpactShapeInterface} $\ast$ {\em shape0}, \/  const {\bf btGImpactShapeInterface} $\ast$ {\em shape1})}}
+\label{classbt_g_impact_collision_algorithm_2a6bd5ca4d26e3578d2613543e85429b}
+
+
+Collides two gimpact shapes. 
+
+\begin{Desc}
+\item[Precondition:]shape0 and shape1 couldn't be \hyperlink{classbt_g_impact_mesh_shape}{btGImpactMeshShape} objects \end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.cpp\end{CompactItemize}

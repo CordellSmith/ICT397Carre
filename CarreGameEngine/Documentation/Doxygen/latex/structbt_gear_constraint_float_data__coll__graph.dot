@@ -1,0 +1,20 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  Node1 [label="btGearConstraintFloatData",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_typeConstraintData"];
+  Node2 [label="btTypedConstraintFloatData",height=0.2,width=0.4,color="black",URL="$structbt_typed_constraint_float_data.html",tooltip="do not change those serialization structures, it requires an updated sBulletDNAstr/sBulletDNAstr64..."];
+  Node3 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_rbA\nm_rbB"];
+  Node3 [label="btRigidBodyFloatData",height=0.2,width=0.4,color="black",URL="$structbt_rigid_body_float_data.html",tooltip="do not change those serialization structures, it requires an updated sBulletDNAstr/sBulletDNAstr64..."];
+  Node4 -> Node3 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_collisionObjectData"];
+  Node4 [label="btCollisionObjectFloatData",height=0.2,width=0.4,color="black",URL="$structbt_collision_object_float_data.html",tooltip="do not change those serialization structures, it requires an updated sBulletDNAstr/sBulletDNAstr64..."];
+  Node5 -> Node4 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_rootCollisionShape"];
+  Node5 [label="btCollisionShapeData",height=0.2,width=0.4,color="black",URL="$structbt_collision_shape_data.html",tooltip="do not change those serialization structures, it requires an updated sBulletDNAstr/sBulletDNAstr64..."];
+  Node6 -> Node4 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_worldTransform\nm_interpolationWorldTransform"];
+  Node6 [label="btTransformFloatData",height=0.2,width=0.4,color="black",URL="$structbt_transform_float_data.html",tooltip="for serialization"];
+  Node7 -> Node6 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_basis"];
+  Node7 [label="btMatrix3x3FloatData",height=0.2,width=0.4,color="black",URL="$structbt_matrix3x3_float_data.html",tooltip="for serialization"];
+  Node7 -> Node3 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_invInertiaTensorWorld"];
+}

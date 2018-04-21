@@ -1,0 +1,385 @@
+\hypertarget{glfw3_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/GLFW/include/GLFW/glfw3.h File Reference}
+\label{glfw3_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/GLFW/include/GLFW/glfw3.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/GLFW/include/GLFW/glfw3.h}}
+}
+The header of the GLFW 3 API. 
+
+{\tt \#include $<$stddef.h$>$}\par
+{\tt \#include $<$stdint.h$>$}\par
+{\tt \#include $<$GL/gl.h$>$}\par
+
+
+Include dependency graph for glfw3.h:\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}
+\begin{CompactList}\small\item\em Video mode type. \item\end{CompactList}\item 
+struct \hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}
+\begin{CompactList}\small\item\em Gamma ramp. \item\end{CompactList}\item 
+struct \hyperlink{struct_g_l_f_wimage}{GLFWimage}
+\begin{CompactList}\small\item\em Image data. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{group__mods_g14994d3196c290aaa347248e51740274}{
+\#define \hyperlink{group__mods_g14994d3196c290aaa347248e51740274}{GLFW\_\-MOD\_\-SHIFT}~0x0001}
+\label{group__mods_g14994d3196c290aaa347248e51740274}
+
+\begin{CompactList}\small\item\em If this bit is set one or more Shift keys were held down. \item\end{CompactList}\item 
+\hypertarget{group__mods_g6ed94871c3208eefd85713fa929d45aa}{
+\#define \hyperlink{group__mods_g6ed94871c3208eefd85713fa929d45aa}{GLFW\_\-MOD\_\-CONTROL}~0x0002}
+\label{group__mods_g6ed94871c3208eefd85713fa929d45aa}
+
+\begin{CompactList}\small\item\em If this bit is set one or more Control keys were held down. \item\end{CompactList}\item 
+\hypertarget{group__mods_gd2acd5633463c29e07008687ea73c0f4}{
+\#define \hyperlink{group__mods_gd2acd5633463c29e07008687ea73c0f4}{GLFW\_\-MOD\_\-ALT}~0x0004}
+\label{group__mods_gd2acd5633463c29e07008687ea73c0f4}
+
+\begin{CompactList}\small\item\em If this bit is set one or more Alt keys were held down. \item\end{CompactList}\item 
+\hypertarget{group__mods_g6b64ba10ea0227cf6f42efd0a220aba1}{
+\#define \hyperlink{group__mods_g6b64ba10ea0227cf6f42efd0a220aba1}{GLFW\_\-MOD\_\-SUPER}~0x0008}
+\label{group__mods_g6b64ba10ea0227cf6f42efd0a220aba1}
+
+\begin{CompactList}\small\item\em If this bit is set one or more Super keys were held down. \item\end{CompactList}\item 
+\#define \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}~0x00010001
+\begin{CompactList}\small\item\em GLFW has not been initialized. \item\end{CompactList}\item 
+\#define \hyperlink{group__errors_ga8290386e9528ccb9e42a3a4e16fc0d0}{GLFW\_\-NO\_\-CURRENT\_\-CONTEXT}~0x00010002
+\begin{CompactList}\small\item\em No context is current for this thread. \item\end{CompactList}\item 
+\#define \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM}~0x00010003
+\begin{CompactList}\small\item\em One of the arguments to the function was an invalid enum value. \item\end{CompactList}\item 
+\#define \hyperlink{group__errors_gaf2ef9aa8202c2b82ac2d921e554c687}{GLFW\_\-INVALID\_\-VALUE}~0x00010004
+\begin{CompactList}\small\item\em One of the arguments to the function was an invalid value. \item\end{CompactList}\item 
+\#define \hyperlink{group__errors_g9023953a2bcb98c2906afd071d21ee7f}{GLFW\_\-OUT\_\-OF\_\-MEMORY}~0x00010005
+\begin{CompactList}\small\item\em A memory allocation failed. \item\end{CompactList}\item 
+\#define \hyperlink{group__errors_g56882b290db23261cc6c053c40c2d08e}{GLFW\_\-API\_\-UNAVAILABLE}~0x00010006
+\begin{CompactList}\small\item\em GLFW could not find support for the requested API on the system. \item\end{CompactList}\item 
+\#define \hyperlink{group__errors_gd16c5565b4a69f9c2a9ac2c0dbc89462}{GLFW\_\-VERSION\_\-UNAVAILABLE}~0x00010007
+\begin{CompactList}\small\item\em The requested OpenGL or OpenGL ES version is not available. \item\end{CompactList}\item 
+\#define \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}~0x00010008
+\begin{CompactList}\small\item\em A platform-specific error occurred that does not match any of the more specific categories. \item\end{CompactList}\item 
+\#define \hyperlink{group__errors_g196e125ef261d94184e2b55c05762f14}{GLFW\_\-FORMAT\_\-UNAVAILABLE}~0x00010009
+\begin{CompactList}\small\item\em The requested format is not supported or available. \item\end{CompactList}\item 
+\#define \hyperlink{group__errors_gcff24d2757da752ae4c80bf452356487}{GLFW\_\-NO\_\-WINDOW\_\-CONTEXT}~0x0001000A
+\begin{CompactList}\small\item\em The specified window does not have an OpenGL or OpenGL ES context. \item\end{CompactList}\item 
+\#define \hyperlink{group__shapes_g8ab0e717245b85506cb0eaefdea39d0a}{GLFW\_\-ARROW\_\-CURSOR}~0x00036001
+\begin{CompactList}\small\item\em The regular arrow cursor shape. \item\end{CompactList}\item 
+\#define \hyperlink{group__shapes_g36185f4375eaada1b04e431244774c86}{GLFW\_\-IBEAM\_\-CURSOR}~0x00036002
+\begin{CompactList}\small\item\em The text input I-beam cursor shape. \item\end{CompactList}\item 
+\#define \hyperlink{group__shapes_g8af88c0ea05ab9e8f9ac1530e8873c22}{GLFW\_\-CROSSHAIR\_\-CURSOR}~0x00036003
+\begin{CompactList}\small\item\em The crosshair shape. \item\end{CompactList}\item 
+\#define \hyperlink{group__shapes_g1db35e20849e0837c82e3dc1fd797263}{GLFW\_\-HAND\_\-CURSOR}~0x00036004
+\begin{CompactList}\small\item\em The hand shape. \item\end{CompactList}\item 
+\#define \hyperlink{group__shapes_gbb3eb0109f11bb808fc34659177ca962}{GLFW\_\-HRESIZE\_\-CURSOR}~0x00036005
+\begin{CompactList}\small\item\em The horizontal resize arrow shape. \item\end{CompactList}\item 
+\#define \hyperlink{group__shapes_gf024f0e1ff8366fb2b5c260509a1fce5}{GLFW\_\-VRESIZE\_\-CURSOR}~0x00036006
+\begin{CompactList}\small\item\em The vertical resize arrow shape. \item\end{CompactList}\end{CompactItemize}
+\begin{Indent}{\bf GLFW version macros}\par
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{group__init_g6337d9ea43b22fc529b2bba066b4a576}{GLFW\_\-VERSION\_\-MAJOR}~3
+\begin{CompactList}\small\item\em The major version number of the GLFW library. \item\end{CompactList}\item 
+\#define \hyperlink{group__init_gf80d40f0aea7088ff337606e9c48f7a3}{GLFW\_\-VERSION\_\-MINOR}~2
+\begin{CompactList}\small\item\em The minor version number of the GLFW library. \item\end{CompactList}\item 
+\#define \hyperlink{group__init_gb72ae2e2035d9ea461abc3495eac0502}{GLFW\_\-VERSION\_\-REVISION}~1
+\begin{CompactList}\small\item\em The revision number of the GLFW library. \item\end{CompactList}\end{CompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Boolean values}\par
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{glfw3_8h_2744fbb29b5631bb28802dbe0cf36eba}{GLFW\_\-TRUE}~1
+\begin{CompactList}\small\item\em One. \item\end{CompactList}\item 
+\#define \hyperlink{glfw3_8h_c877fe3b627d21ef3a0a23e0a73ba8c5}{GLFW\_\-FALSE}~0
+\begin{CompactList}\small\item\em Zero. \item\end{CompactList}\end{CompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Key and button actions}\par
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{group__input_gda11d965c4da13090ad336e030e4d11f}{GLFW\_\-RELEASE}~0
+\begin{CompactList}\small\item\em The key or mouse button was released. \item\end{CompactList}\item 
+\#define \hyperlink{group__input_g2485743d0b59df3791c45951c4195265}{GLFW\_\-PRESS}~1
+\begin{CompactList}\small\item\em The key or mouse button was pressed. \item\end{CompactList}\item 
+\#define \hyperlink{group__input_gc96fd3b9fc66c6f0eebaf6532595338f}{GLFW\_\-REPEAT}~2
+\begin{CompactList}\small\item\em The key was held down until it repeated. \item\end{CompactList}\end{CompactItemize}
+\end{Indent}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{group__context_gbf42b10edde1c4fc71e212e576b9f811}{GLFWglproc} )(void)
+\begin{CompactList}\small\item\em Client API function pointer type. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__vulkan_g4d98d00a0ef73bcfd6cc46f261955975}{GLFWvkproc} )(void)
+\begin{CompactList}\small\item\em Vulkan API function pointer type. \item\end{CompactList}\item 
+typedef struct \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}
+\begin{CompactList}\small\item\em Opaque monitor object. \item\end{CompactList}\item 
+typedef struct \hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} \hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}
+\begin{CompactList}\small\item\em Opaque window object. \item\end{CompactList}\item 
+typedef struct \hyperlink{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}{GLFWcursor} \hyperlink{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}{GLFWcursor}
+\begin{CompactList}\small\item\em Opaque cursor object. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__init_g6f2c8574259246a83b1d0c3baf23046f}{GLFWerrorfun} )(int, const char $\ast$)
+\begin{CompactList}\small\item\em The function signature for error callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_g1c36e52549efd47790eb3f324da71924}{GLFWwindowposfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, int)
+\begin{CompactList}\small\item\em The function signature for window position callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_gaca1c2715759d03da9834eac19323d4a}{GLFWwindowsizefun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, int)
+\begin{CompactList}\small\item\em The function signature for window resize callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_g07cff8bd3b3d573ecf49bb02d7669c1f}{GLFWwindowclosefun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$)
+\begin{CompactList}\small\item\em The function signature for window close callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_g16764f89bf2060e6fa477f0943e1412b}{GLFWwindowrefreshfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$)
+\begin{CompactList}\small\item\em The function signature for window content refresh callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_g6b5f973531ea91663ad707ba4f2ac104}{GLFWwindowfocusfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int)
+\begin{CompactList}\small\item\em The function signature for window focus/defocus callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_ge47ae066eea9fe6050a62360928ae524}{GLFWwindowiconifyfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int)
+\begin{CompactList}\small\item\em The function signature for window iconify/restore callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_g311bb32e578aa240b6464af494debffc}{GLFWframebuffersizefun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, int)
+\begin{CompactList}\small\item\em The function signature for framebuffer resize callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g1e008c7a8751cea648c8f42cc91104cf}{GLFWmousebuttonfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, int, int)
+\begin{CompactList}\small\item\em The function signature for mouse button callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g592fbfef76d88f027cb1bc4c36ebd437}{GLFWcursorposfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, double, double)
+\begin{CompactList}\small\item\em The function signature for cursor position callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g762d898d9b0241d7e3e3b767c6cf318f}{GLFWcursorenterfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int)
+\begin{CompactList}\small\item\em The function signature for cursor enter/leave callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g6228cdf94d28fbd3a9a1fbb0e5922a8a}{GLFWscrollfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, double, double)
+\begin{CompactList}\small\item\em The function signature for scroll callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g592dd1919f8a1dc7576b13cdd8b7b695}{GLFWkeyfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, int, int, int)
+\begin{CompactList}\small\item\em The function signature for keyboard key callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g1103f1876518acecb5976f6b307c51d1}{GLFWcharfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, unsigned int)
+\begin{CompactList}\small\item\em The function signature for Unicode character callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g3826e9cf33f760c1480d6ce873f9d002}{GLFWcharmodsfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, unsigned int, int)
+\begin{CompactList}\small\item\em The function signature for Unicode character with modifiers callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_gcc95e259ad21d4f666faa6280d4018fd}{GLFWdropfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, const char $\ast$$\ast$)
+\begin{CompactList}\small\item\em The function signature for file drop callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__monitor_g67b74af6cecfdbccc7e57a6319a57210}{GLFWmonitorfun} )(\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$, int)
+\begin{CompactList}\small\item\em The function signature for monitor configuration callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g488fd02f577e56f908a8f305dd226dbf}{GLFWjoystickfun} )(int, int)
+\begin{CompactList}\small\item\em The function signature for joystick configuration callbacks. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+GLFWAPI int \hyperlink{group__init_gb41771f0215a2e0afb4cf1cf98082d40}{glfwInit} (void)
+\begin{CompactList}\small\item\em Initializes the GLFW library. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__init_gfd90e6fd4819ea9e22e5e739519a6504}{glfwTerminate} (void)
+\begin{CompactList}\small\item\em Terminates the GLFW library. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__init_g2402c7824ac0194c13722790ff9559ff}{glfwGetVersion} (int $\ast$major, int $\ast$minor, int $\ast$rev)
+\begin{CompactList}\small\item\em Retrieves the version of the GLFW library. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$ \hyperlink{group__init_g4b9092ac5eace57d94d3cd551d6b8ded}{glfwGetVersionString} (void)
+\begin{CompactList}\small\item\em Returns a string describing the compile-time configuration. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__init_g6f2c8574259246a83b1d0c3baf23046f}{GLFWerrorfun} \hyperlink{group__init_g5919096b958c47102126061fb5a6f9c3}{glfwSetErrorCallback} (\hyperlink{group__init_g6f2c8574259246a83b1d0c3baf23046f}{GLFWerrorfun} cbfun)
+\begin{CompactList}\small\item\em Sets the error callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$$\ast$ \hyperlink{group__monitor_gb4d483284c57e28837bc2cd9639e9665}{glfwGetMonitors} (int $\ast$count)
+\begin{CompactList}\small\item\em Returns the currently connected monitors. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$ \hyperlink{group__monitor_g59ea49f377fe701dd76764183e64d9f4}{glfwGetPrimaryMonitor} (void)
+\begin{CompactList}\small\item\em Returns the primary monitor. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__monitor_g45b5481a614ad7beb2aade9746d07563}{glfwGetMonitorPos} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, int $\ast$xpos, int $\ast$ypos)
+\begin{CompactList}\small\item\em Returns the position of the monitor's viewport on the virtual screen. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__monitor_gd0e93a9e42b32394369cabbbdc1ab702}{glfwGetMonitorPhysicalSize} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, int $\ast$widthMM, int $\ast$heightMM)
+\begin{CompactList}\small\item\em Returns the physical size of the monitor. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$ \hyperlink{group__monitor_g22f62011bae33ea8d2974eff5d14f9b8}{glfwGetMonitorName} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor)
+\begin{CompactList}\small\item\em Returns the name of the specified monitor. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__monitor_g67b74af6cecfdbccc7e57a6319a57210}{GLFWmonitorfun} \hyperlink{group__monitor_gcfa9978e57c73670577d530df23bf275}{glfwSetMonitorCallback} (\hyperlink{group__monitor_g67b74af6cecfdbccc7e57a6319a57210}{GLFWmonitorfun} cbfun)
+\begin{CompactList}\small\item\em Sets the monitor configuration callback. \item\end{CompactList}\item 
+GLFWAPI const \hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode} $\ast$ \hyperlink{group__monitor_g811c28d61595e630774389985947c665}{glfwGetVideoModes} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, int $\ast$count)
+\begin{CompactList}\small\item\em Returns the available video modes for the specified monitor. \item\end{CompactList}\item 
+GLFWAPI const \hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode} $\ast$ \hyperlink{group__monitor_gc234b63ec525c70d7e18ac84aca088c6}{glfwGetVideoMode} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor)
+\begin{CompactList}\small\item\em Returns the current mode of the specified monitor. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__monitor_g3e4ab484476c935b4cd0bf49a5c429d6}{glfwSetGamma} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, float gamma)
+\begin{CompactList}\small\item\em Generates a gamma ramp and sets it for the specified monitor. \item\end{CompactList}\item 
+GLFWAPI const \hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp} $\ast$ \hyperlink{group__monitor_geeac9198f3c91b83440eed679441f76b}{glfwGetGammaRamp} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor)
+\begin{CompactList}\small\item\em Returns the current gamma ramp for the specified monitor. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__monitor_gc9f36a1cfa10eab191d3029ea8bc9558}{glfwSetGammaRamp} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, const \hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp} $\ast$ramp)
+\begin{CompactList}\small\item\em Sets the current gamma ramp for the specified monitor. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g8050ddceed9dc6bd9d3aa35666195cd4}{glfwDefaultWindowHints} (void)
+\begin{CompactList}\small\item\em Resets all window hints to their default values. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g69c40728499720bef8a49aa925ea0efa}{glfwWindowHint} (int hint, int value)
+\begin{CompactList}\small\item\em Sets the specified window hint to the desired value. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$ \hyperlink{group__window_g680a02abe0e4494b6759d5703240713e}{glfwCreateWindow} (int width, int height, const char $\ast$title, \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, \hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$share)
+\begin{CompactList}\small\item\em Creates a window and its associated context. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g806747476b7247d292be3711c323ea10}{glfwDestroyWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Destroys the specified window and its context. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__window_ga6162f67dfa38b8beda2fea623649332}{glfwWindowShouldClose} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Checks the close flag of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g1cadeda7a1e2f224e06a8415d30741aa}{glfwSetWindowShouldClose} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int value)
+\begin{CompactList}\small\item\em Sets the close flag of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g861ed3414ab8120e2f74151a666ed1dc}{glfwSetWindowTitle} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, const char $\ast$title)
+\begin{CompactList}\small\item\em Sets the title of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g182987a1a62a41a924842b9473d560df}{glfwSetWindowIcon} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int count, const \hyperlink{struct_g_l_f_wimage}{GLFWimage} $\ast$images)
+\begin{CompactList}\small\item\em Sets the icon for the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g0076a8591ef7494d359730cf2250b45b}{glfwGetWindowPos} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int $\ast$xpos, int $\ast$ypos)
+\begin{CompactList}\small\item\em Retrieves the position of the client area of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g0dc8d880a0d87be16d3ea8114561f6f0}{glfwSetWindowPos} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int xpos, int ypos)
+\begin{CompactList}\small\item\em Sets the position of the client area of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g7feb769ebb3f3d21579b5a3fb07be76e}{glfwGetWindowSize} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int $\ast$width, int $\ast$height)
+\begin{CompactList}\small\item\em Retrieves the size of the client area of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g8af814fc98d786d1de2505b40b707de8}{glfwSetWindowSizeLimits} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int minwidth, int minheight, int maxwidth, int maxheight)
+\begin{CompactList}\small\item\em Sets the size limits of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gd2ae94a2c5ee1c46a36e13a8f4ac68ac}{glfwSetWindowAspectRatio} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int numer, int denom)
+\begin{CompactList}\small\item\em Sets the aspect ratio of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_ge54d1f4915ded15e267ddd3f41496cd2}{glfwSetWindowSize} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int width, int height)
+\begin{CompactList}\small\item\em Sets the size of the client area of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gf7d17f3534b4b6dc9a6f905e3a240b7e}{glfwGetFramebufferSize} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int $\ast$width, int $\ast$height)
+\begin{CompactList}\small\item\em Retrieves the size of the framebuffer of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gad46cdaae2eb732f68d3a1499a7c5409}{glfwGetWindowFrameSize} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int $\ast$left, int $\ast$top, int $\ast$right, int $\ast$bottom)
+\begin{CompactList}\small\item\em Retrieves the size of the frame of the window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g24274e3c6ecd44e11fec5e6b66e4d7f3}{glfwIconifyWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Iconifies the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g1e29caf0b819f578b04db52fff17256c}{glfwRestoreWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Restores the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g4f825a55367d3fabde3d06e7f30128e8}{glfwMaximizeWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Maximizes the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g7945bcdff9e5e058cf36505d6873ed8c}{glfwShowWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Makes the specified window visible. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_ga17e287d521544bdeceafa09ac036e20}{glfwHideWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Hides the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g0da0e3daaa2d100f44a115c09077b510}{glfwFocusWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Brings the specified window to front and sets input focus. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$ \hyperlink{group__window_gf1525cb3bccd5789c702cc9676ef3403}{glfwGetWindowMonitor} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Returns the monitor that the window uses for full screen mode. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g12fabf78575e59c00f822f323ae0b6ae}{glfwSetWindowMonitor} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, int xpos, int ypos, int width, int height, int refreshRate)
+\begin{CompactList}\small\item\em Sets the mode, monitor, video mode and placement of a window. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__window_g1bb0c7e100418e284dbb800789c63d40}{glfwGetWindowAttrib} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int attrib)
+\begin{CompactList}\small\item\em Returns an attribute of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gcc9e68faee3c1763b54cd9bc405cf43e}{glfwSetWindowUserPointer} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, void $\ast$pointer)
+\begin{CompactList}\small\item\em Sets the user pointer of the specified window. \item\end{CompactList}\item 
+GLFWAPI void $\ast$ \hyperlink{group__window_g0a9ff3b4bf8589e9518e8816d06a8f50}{glfwGetWindowUserPointer} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Returns the user pointer of the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g1c36e52549efd47790eb3f324da71924}{GLFWwindowposfun} \hyperlink{group__window_gea610899c4cb070dcd655c6de1fe1d2c}{glfwSetWindowPosCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_g1c36e52549efd47790eb3f324da71924}{GLFWwindowposfun} cbfun)
+\begin{CompactList}\small\item\em Sets the position callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_gaca1c2715759d03da9834eac19323d4a}{GLFWwindowsizefun} \hyperlink{group__window_g150dad5f364425916c5816074cffa5e7}{glfwSetWindowSizeCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_gaca1c2715759d03da9834eac19323d4a}{GLFWwindowsizefun} cbfun)
+\begin{CompactList}\small\item\em Sets the size callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g07cff8bd3b3d573ecf49bb02d7669c1f}{GLFWwindowclosefun} \hyperlink{group__window_g5b827da350141c789acd64f5c4f7a0e1}{glfwSetWindowCloseCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_g07cff8bd3b3d573ecf49bb02d7669c1f}{GLFWwindowclosefun} cbfun)
+\begin{CompactList}\small\item\em Sets the close callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g16764f89bf2060e6fa477f0943e1412b}{GLFWwindowrefreshfun} \hyperlink{group__window_g9d2621fbc271a0cdc0ce91f9749f46e3}{glfwSetWindowRefreshCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_g16764f89bf2060e6fa477f0943e1412b}{GLFWwindowrefreshfun} cbfun)
+\begin{CompactList}\small\item\em Sets the refresh callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g6b5f973531ea91663ad707ba4f2ac104}{GLFWwindowfocusfun} \hyperlink{group__window_gc89c6534ba7fbab6f6c68b855656c0d4}{glfwSetWindowFocusCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_g6b5f973531ea91663ad707ba4f2ac104}{GLFWwindowfocusfun} cbfun)
+\begin{CompactList}\small\item\em Sets the focus callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_ge47ae066eea9fe6050a62360928ae524}{GLFWwindowiconifyfun} \hyperlink{group__window_g17cd86946117b56c76397530900519db}{glfwSetWindowIconifyCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_ge47ae066eea9fe6050a62360928ae524}{GLFWwindowiconifyfun} cbfun)
+\begin{CompactList}\small\item\em Sets the iconify callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g311bb32e578aa240b6464af494debffc}{GLFWframebuffersizefun} \hyperlink{group__window_gd766bcdb4465f9c6c62e5d8ca7cfba56}{glfwSetFramebufferSizeCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_g311bb32e578aa240b6464af494debffc}{GLFWframebuffersizefun} cbfun)
+\begin{CompactList}\small\item\em Sets the framebuffer resize callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g872d16e4c77f58c0436f356255920cfc}{glfwPollEvents} (void)
+\begin{CompactList}\small\item\em Processes all pending events. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g6e042d05823c11e11c7339b81a237738}{glfwWaitEvents} (void)
+\begin{CompactList}\small\item\em Waits until events are queued and processes them. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g05223a0a4c5e50f10f289e60398153aa}{glfwWaitEventsTimeout} (double timeout)
+\begin{CompactList}\small\item\em Waits with timeout until events are queued and processes them. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gd6f6b997278c91c43b35970eb9713d7e}{glfwPostEmptyEvent} (void)
+\begin{CompactList}\small\item\em Posts an empty event to the event queue. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__input_g1248dd5b1e566b2817e71547564d6af9}{glfwGetInputMode} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int mode)
+\begin{CompactList}\small\item\em Returns the value of an input option for the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_ge1eb729d2dd91dc33fd60e150a6e1684}{glfwSetInputMode} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int mode, int value)
+\begin{CompactList}\small\item\em Sets an input option for the specified window. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$ \hyperlink{group__input_g9323a397832dd03faa2a88534847c984}{glfwGetKeyName} (int key, int scancode)
+\begin{CompactList}\small\item\em Returns the localized name of the specified printable key. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__input_g7d8ad8ffaf272808f04e1d5d33ec8859}{glfwGetKey} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int key)
+\begin{CompactList}\small\item\em Returns the last reported state of a keyboard key for the specified window. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__input_g6da5efb04f700c312a57a169fa9393a0}{glfwGetMouseButton} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int button)
+\begin{CompactList}\small\item\em Returns the last reported state of a mouse button for the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_gd289438eb7cf53d11eca685373f44105}{glfwGetCursorPos} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, double $\ast$xpos, double $\ast$ypos)
+\begin{CompactList}\small\item\em Retrieves the position of the cursor relative to the client area of the window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_gaf152cc93418acb0ba342e3f4af922bc}{glfwSetCursorPos} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, double xpos, double ypos)
+\begin{CompactList}\small\item\em Sets the position of the cursor, relative to the client area of the window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}{GLFWcursor} $\ast$ \hyperlink{group__input_gc0f0f691f2d110f9acfb4bfe07f1216c}{glfwCreateCursor} (const \hyperlink{struct_g_l_f_wimage}{GLFWimage} $\ast$image, int xhot, int yhot)
+\begin{CompactList}\small\item\em Creates a custom cursor. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}{GLFWcursor} $\ast$ \hyperlink{group__input_g969dd87ad2ddbf3e1086cc40f235eed1}{glfwCreateStandardCursor} (int shape)
+\begin{CompactList}\small\item\em Creates a cursor with a standard shape. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_g27556b7122117bc1bbb4bb3cc003ea43}{glfwDestroyCursor} (\hyperlink{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}{GLFWcursor} $\ast$cursor)
+\begin{CompactList}\small\item\em Destroys a cursor. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_gfaf103cea2f43530cff7de4e01126a4f}{glfwSetCursor} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}{GLFWcursor} $\ast$cursor)
+\begin{CompactList}\small\item\em Sets the cursor for the window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g592dd1919f8a1dc7576b13cdd8b7b695}{GLFWkeyfun} \hyperlink{group__input_ga73bb92f628a2a0be9c132d56f19362c}{glfwSetKeyCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g592dd1919f8a1dc7576b13cdd8b7b695}{GLFWkeyfun} cbfun)
+\begin{CompactList}\small\item\em Sets the key callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g1103f1876518acecb5976f6b307c51d1}{GLFWcharfun} \hyperlink{group__input_g07b2959b23dc3e466ce7475746021002}{glfwSetCharCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g1103f1876518acecb5976f6b307c51d1}{GLFWcharfun} cbfun)
+\begin{CompactList}\small\item\em Sets the Unicode character callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g3826e9cf33f760c1480d6ce873f9d002}{GLFWcharmodsfun} \hyperlink{group__input_ge6eee0bda7429bfe8028615847cf6795}{glfwSetCharModsCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g3826e9cf33f760c1480d6ce873f9d002}{GLFWcharmodsfun} cbfun)
+\begin{CompactList}\small\item\em Sets the Unicode character with modifiers callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g1e008c7a8751cea648c8f42cc91104cf}{GLFWmousebuttonfun} \hyperlink{group__input_g20e5ba1ce4e086aedd48a06dc311c95f}{glfwSetMouseButtonCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g1e008c7a8751cea648c8f42cc91104cf}{GLFWmousebuttonfun} cbfun)
+\begin{CompactList}\small\item\em Sets the mouse button callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g592fbfef76d88f027cb1bc4c36ebd437}{GLFWcursorposfun} \hyperlink{group__input_g9c49c0d3d3c775c3124726f1d902124d}{glfwSetCursorPosCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g592fbfef76d88f027cb1bc4c36ebd437}{GLFWcursorposfun} cbfun)
+\begin{CompactList}\small\item\em Sets the cursor position callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g762d898d9b0241d7e3e3b767c6cf318f}{GLFWcursorenterfun} \hyperlink{group__input_ga20014985561efeb2c53f1956f727830}{glfwSetCursorEnterCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g762d898d9b0241d7e3e3b767c6cf318f}{GLFWcursorenterfun} cbfun)
+\begin{CompactList}\small\item\em Sets the cursor enter/exit callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g6228cdf94d28fbd3a9a1fbb0e5922a8a}{GLFWscrollfun} \hyperlink{group__input_g29011514e93368712a3063a28707ced3}{glfwSetScrollCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g6228cdf94d28fbd3a9a1fbb0e5922a8a}{GLFWscrollfun} cbfun)
+\begin{CompactList}\small\item\em Sets the scroll callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_gcc95e259ad21d4f666faa6280d4018fd}{GLFWdropfun} \hyperlink{group__input_gd4fc40df63a5d0441ab06de9a585cc04}{glfwSetDropCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_gcc95e259ad21d4f666faa6280d4018fd}{GLFWdropfun} cbfun)
+\begin{CompactList}\small\item\em Sets the file drop callback. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__input_g7f81f22f355f4b7d315caf73cdfd9906}{glfwJoystickPresent} (int joy)
+\begin{CompactList}\small\item\em Returns whether the specified joystick is present. \item\end{CompactList}\item 
+GLFWAPI const float $\ast$ \hyperlink{group__input_gab9e573d808b088c5079c0f577d39448}{glfwGetJoystickAxes} (int joy, int $\ast$count)
+\begin{CompactList}\small\item\em Returns the values of all axes of the specified joystick. \item\end{CompactList}\item 
+GLFWAPI const unsigned char $\ast$ \hyperlink{group__input_g3951bea72b5fb4870b1aa0e5c2e9c903}{glfwGetJoystickButtons} (int joy, int $\ast$count)
+\begin{CompactList}\small\item\em Returns the state of all buttons of the specified joystick. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$ \hyperlink{group__input_gc50a4fd9b01886cf9fa2c45f19191fb8}{glfwGetJoystickName} (int joy)
+\begin{CompactList}\small\item\em Returns the name of the specified joystick. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g488fd02f577e56f908a8f305dd226dbf}{GLFWjoystickfun} \hyperlink{group__input_g07524a1122a03642b1d28822ea931094}{glfwSetJoystickCallback} (\hyperlink{group__input_g488fd02f577e56f908a8f305dd226dbf}{GLFWjoystickfun} cbfun)
+\begin{CompactList}\small\item\em Sets the joystick configuration callback. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_g7a580309bbc185a0459c3559021d2fd7}{glfwSetClipboardString} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, const char $\ast$string)
+\begin{CompactList}\small\item\em Sets the clipboard to the specified string. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$ \hyperlink{group__input_g3ac90c8bbaf0b46063bb02b574f3b6f7}{glfwGetClipboardString} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Returns the contents of the clipboard as a string. \item\end{CompactList}\item 
+GLFWAPI double \hyperlink{group__input_g03d4a1039b8662c71eeb40beea8cb622}{glfwGetTime} (void)
+\begin{CompactList}\small\item\em Returns the value of the GLFW timer. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_g94360a3628a09f32708f83cc3fa48590}{glfwSetTime} (double time)
+\begin{CompactList}\small\item\em Sets the GLFW timer. \item\end{CompactList}\item 
+GLFWAPI uint64\_\-t \hyperlink{group__input_ga00c3e32227eb70b3968fca0bfe4ae26}{glfwGetTimerValue} (void)
+\begin{CompactList}\small\item\em Returns the current value of the raw timer. \item\end{CompactList}\item 
+GLFWAPI uint64\_\-t \hyperlink{group__input_ga92d10b10013372778efbf6367714371}{glfwGetTimerFrequency} (void)
+\begin{CompactList}\small\item\em Returns the frequency, in Hz, of the raw timer. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__context_gfd76c93e15ec8b0b90506a9936a46185}{glfwMakeContextCurrent} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Makes the context of the specified window current for the calling thread. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$ \hyperlink{group__context_gc28d98c655377d81a516bf5ef90780c8}{glfwGetCurrentContext} (void)
+\begin{CompactList}\small\item\em Returns the window whose context is current on the calling thread. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gfb827800eedbfcbc97b1e5408df668d7}{glfwSwapBuffers} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Swaps the front and back buffers of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__context_g12a595c06947cec4967c6e1f14210a8a}{glfwSwapInterval} (int interval)
+\begin{CompactList}\small\item\em Sets the swap interval for the current context. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__context_g9a28c712d35f9e43534e1d03b051c04c}{glfwExtensionSupported} (const char $\ast$extension)
+\begin{CompactList}\small\item\em Returns whether the specified extension is available. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__context_gbf42b10edde1c4fc71e212e576b9f811}{GLFWglproc} \hyperlink{group__context_g0e8af175218929615c16e74938c10f2a}{glfwGetProcAddress} (const char $\ast$procname)
+\begin{CompactList}\small\item\em Returns the address of the specified function for the current context. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__vulkan_g72e7c3757d9ff2333181a5569bb7c403}{glfwVulkanSupported} (void)
+\begin{CompactList}\small\item\em Returns whether the Vulkan loader has been found. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$$\ast$ \hyperlink{group__vulkan_g70adaf0cfc99adc484c49ea99e17c2cf}{glfwGetRequiredInstanceExtensions} (uint32\_\-t $\ast$count)
+\begin{CompactList}\small\item\em Returns the Vulkan instance extensions required by GLFW. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The header of the GLFW 3 API. 
+
+This is the header file of the GLFW 3 API. It defines all its types and declares all its functions.
+
+For more information about how to use this file, see build\_\-include. 
+
+\subsection{Define Documentation}
+\hypertarget{glfw3_8h_c877fe3b627d21ef3a0a23e0a73ba8c5}{
+\index{glfw3.h@{glfw3.h}!GLFW\_\-FALSE@{GLFW\_\-FALSE}}
+\index{GLFW\_\-FALSE@{GLFW\_\-FALSE}!glfw3.h@{glfw3.h}}
+\subsubsection[GLFW\_\-FALSE]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-FALSE~0}}
+\label{glfw3_8h_c877fe3b627d21ef3a0a23e0a73ba8c5}
+
+
+Zero. 
+
+Zero. Seriously. You don't \_\-need\_\- to use this symbol in your code. It's just just semantic sugar for the number 0. You can use `0` or `false` or `\_\-False` or `GL\_\-FALSE` or whatever you want. \hypertarget{glfw3_8h_2744fbb29b5631bb28802dbe0cf36eba}{
+\index{glfw3.h@{glfw3.h}!GLFW\_\-TRUE@{GLFW\_\-TRUE}}
+\index{GLFW\_\-TRUE@{GLFW\_\-TRUE}!glfw3.h@{glfw3.h}}
+\subsubsection[GLFW\_\-TRUE]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-TRUE~1}}
+\label{glfw3_8h_2744fbb29b5631bb28802dbe0cf36eba}
+
+
+One. 
+
+One. Seriously. You don't \_\-need\_\- to use this symbol in your code. It's just semantic sugar for the number 1. You can use `1` or `true` or `\_\-True` or `GL\_\-TRUE` or whatever you want. 
+
+\subsection{Typedef Documentation}
+\hypertarget{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}{
+\index{glfw3.h@{glfw3.h}!GLFWcursor@{GLFWcursor}}
+\index{GLFWcursor@{GLFWcursor}!glfw3.h@{glfw3.h}}
+\subsubsection[GLFWcursor]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf GLFWcursor} {\bf GLFWcursor}}}
+\label{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}
+
+
+Opaque cursor object. 
+
+Opaque cursor object.
+
+\begin{Desc}
+\item[See also:]cursor\_\-object\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.1. \end{Desc}

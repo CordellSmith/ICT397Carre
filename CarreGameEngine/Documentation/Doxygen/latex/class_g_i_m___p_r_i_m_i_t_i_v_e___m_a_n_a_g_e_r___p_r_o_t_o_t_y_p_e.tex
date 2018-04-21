@@ -1,0 +1,27 @@
+\hypertarget{class_g_i_m___p_r_i_m_i_t_i_v_e___m_a_n_a_g_e_r___p_r_o_t_o_t_y_p_e}{
+\section{GIM\_\-PRIMITIVE\_\-MANAGER\_\-PROTOTYPE Class Reference}
+\label{class_g_i_m___p_r_i_m_i_t_i_v_e___m_a_n_a_g_e_r___p_r_o_t_o_t_y_p_e}\index{GIM\_\-PRIMITIVE\_\-MANAGER\_\-PROTOTYPE@{GIM\_\-PRIMITIVE\_\-MANAGER\_\-PROTOTYPE}}
+}
+Prototype Base class for primitive classification.  
+
+
+{\tt \#include $<$gim\_\-box\_\-set.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_g_i_m___p_r_i_m_i_t_i_v_e___m_a_n_a_g_e_r___p_r_o_t_o_t_y_p_e_aad51538aaf2c2652c7e202a9f2d57a5}{
+virtual bool \hyperlink{class_g_i_m___p_r_i_m_i_t_i_v_e___m_a_n_a_g_e_r___p_r_o_t_o_t_y_p_e_aad51538aaf2c2652c7e202a9f2d57a5}{is\_\-trimesh} ()=0}
+\label{class_g_i_m___p_r_i_m_i_t_i_v_e___m_a_n_a_g_e_r___p_r_o_t_o_t_y_p_e_aad51538aaf2c2652c7e202a9f2d57a5}
+
+\begin{CompactList}\small\item\em determines if this manager consist on only triangles, which special case will be optimized \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Prototype Base class for primitive classification. 
+
+This class is a wrapper for primitive collections. This tells relevant info for the Bounding Box set classes, which take care of space classification. This class can manage Compound shapes and trimeshes, and if it is managing trimesh then the Hierarchy Bounding Box classes will take advantage of primitive Vs Box overlapping tests for getting optimal results and less Per Box compairisons. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__box__set_8h}{gim\_\-box\_\-set.h}\end{CompactItemize}

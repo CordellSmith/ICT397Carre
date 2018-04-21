@@ -1,0 +1,15 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  Node1 [label="btOverlappingPairCallback",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btGhostPairCallback",height=0.2,width=0.4,color="black",URL="$classbt_ghost_pair_callback.html",tooltip="The btGhostPairCallback interfaces and forwards adding and removal of overlapping..."];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btOverlappingPairCache",height=0.2,width=0.4,color="black",URL="$classbt_overlapping_pair_cache.html"];
+  Node3 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="btNullPairCache",height=0.2,width=0.4,color="black",URL="$classbt_null_pair_cache.html",tooltip="btNullPairCache skips add/removal of overlapping pairs. Userful for benchmarking..."];
+  Node3 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="btSortedOverlappingPairCache",height=0.2,width=0.4,color="black",URL="$classbt_sorted_overlapping_pair_cache.html"];
+}

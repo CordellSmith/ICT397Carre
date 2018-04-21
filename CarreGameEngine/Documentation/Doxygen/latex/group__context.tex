@@ -1,0 +1,209 @@
+\hypertarget{group__context}{
+\section{Context reference}
+\label{group__context}\index{Context reference@{Context reference}}
+}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{group__context_gbf42b10edde1c4fc71e212e576b9f811}{GLFWglproc} )(void)
+\begin{CompactList}\small\item\em Client API function pointer type. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+GLFWAPI void \hyperlink{group__context_gfd76c93e15ec8b0b90506a9936a46185}{glfwMakeContextCurrent} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Makes the context of the specified window current for the calling thread. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$ \hyperlink{group__context_gc28d98c655377d81a516bf5ef90780c8}{glfwGetCurrentContext} (void)
+\begin{CompactList}\small\item\em Returns the window whose context is current on the calling thread. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__context_g12a595c06947cec4967c6e1f14210a8a}{glfwSwapInterval} (int interval)
+\begin{CompactList}\small\item\em Sets the swap interval for the current context. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__context_g9a28c712d35f9e43534e1d03b051c04c}{glfwExtensionSupported} (const char $\ast$extension)
+\begin{CompactList}\small\item\em Returns whether the specified extension is available. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__context_gbf42b10edde1c4fc71e212e576b9f811}{GLFWglproc} \hyperlink{group__context_g0e8af175218929615c16e74938c10f2a}{glfwGetProcAddress} (const char $\ast$procname)
+\begin{CompactList}\small\item\em Returns the address of the specified function for the current context. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This is the reference documentation for OpenGL and OpenGL ES context related functions. For more task-oriented information, see the context\_\-guide. 
+
+\subsection{Typedef Documentation}
+\hypertarget{group__context_gbf42b10edde1c4fc71e212e576b9f811}{
+\index{context@{context}!GLFWglproc@{GLFWglproc}}
+\index{GLFWglproc@{GLFWglproc}!context@{context}}
+\subsubsection[GLFWglproc]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf GLFWglproc})(void)}}
+\label{group__context_gbf42b10edde1c4fc71e212e576b9f811}
+
+
+Client API function pointer type. 
+
+Generic function pointer used for returning client API function pointers without forcing a cast from a regular pointer.
+
+\begin{Desc}
+\item[See also:]context\_\-glext 
+
+\hyperlink{group__context_g0e8af175218929615c16e74938c10f2a}{glfwGetProcAddress}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__context_g9a28c712d35f9e43534e1d03b051c04c}{
+\index{context@{context}!glfwExtensionSupported@{glfwExtensionSupported}}
+\index{glfwExtensionSupported@{glfwExtensionSupported}!context@{context}}
+\subsubsection[glfwExtensionSupported]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI int glfwExtensionSupported (const char $\ast$ {\em extension})}}
+\label{group__context_g9a28c712d35f9e43534e1d03b051c04c}
+
+
+Returns whether the specified extension is available. 
+
+This function returns whether the specified \mbox{[}API extension\mbox{]}(context\_\-glext) is supported by the current OpenGL or OpenGL ES context. It searches both for client API extension and context creation API extensions.
+
+A context must be current on the calling thread. Calling this function without a current context will cause a \hyperlink{group__errors_ga8290386e9528ccb9e42a3a4e16fc0d0}{GLFW\_\-NO\_\-CURRENT\_\-CONTEXT} error.
+
+As this functions retrieves and searches one or more extension strings each call, it is recommended that you cache its results if it is going to be used frequently. The extension strings will not change during the lifetime of a context, so there is no danger in doing this.
+
+This function does not apply to Vulkan. If you are using Vulkan, see \hyperlink{group__vulkan_g70adaf0cfc99adc484c49ea99e17c2cf}{glfwGetRequiredInstanceExtensions}, `vkEnumerateInstanceExtensionProperties` and `vkEnumerateDeviceExtensionProperties` instead.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em extension}]The ASCII encoded name of the extension. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]`GLFW\_\-TRUE` if the extension is available, or `GLFW\_\-FALSE` otherwise.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_ga8290386e9528ccb9e42a3a4e16fc0d0}{GLFW\_\-NO\_\-CURRENT\_\-CONTEXT}, \hyperlink{group__errors_gaf2ef9aa8202c2b82ac2d921e554c687}{GLFW\_\-INVALID\_\-VALUE} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]context\_\-glext 
+
+\hyperlink{group__context_g0e8af175218929615c16e74938c10f2a}{glfwGetProcAddress}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0. \end{Desc}
+\hypertarget{group__context_gc28d98c655377d81a516bf5ef90780c8}{
+\index{context@{context}!glfwGetCurrentContext@{glfwGetCurrentContext}}
+\index{glfwGetCurrentContext@{glfwGetCurrentContext}!context@{context}}
+\subsubsection[glfwGetCurrentContext]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWwindow}$\ast$ glfwGetCurrentContext (void)}}
+\label{group__context_gc28d98c655377d81a516bf5ef90780c8}
+
+
+Returns the window whose context is current on the calling thread. 
+
+This function returns the window whose OpenGL or OpenGL ES context is current on the calling thread.
+
+\begin{Desc}
+\item[Returns:]The window whose context is current, or `NULL` if no window's context is current.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]context\_\-current 
+
+\hyperlink{group__context_gfd76c93e15ec8b0b90506a9936a46185}{glfwMakeContextCurrent}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__context_g0e8af175218929615c16e74938c10f2a}{
+\index{context@{context}!glfwGetProcAddress@{glfwGetProcAddress}}
+\index{glfwGetProcAddress@{glfwGetProcAddress}!context@{context}}
+\subsubsection[glfwGetProcAddress]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWglproc} glfwGetProcAddress (const char $\ast$ {\em procname})}}
+\label{group__context_g0e8af175218929615c16e74938c10f2a}
+
+
+Returns the address of the specified function for the current context. 
+
+This function returns the address of the specified OpenGL or OpenGL ES \mbox{[}core or extension function\mbox{]}(context\_\-glext), if it is supported by the current context.
+
+A context must be current on the calling thread. Calling this function without a current context will cause a \hyperlink{group__errors_ga8290386e9528ccb9e42a3a4e16fc0d0}{GLFW\_\-NO\_\-CURRENT\_\-CONTEXT} error.
+
+This function does not apply to Vulkan. If you are rendering with Vulkan, see glfwGetInstanceProcAddress, `vkGetInstanceProcAddr` and `vkGetDeviceProcAddr` instead.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em procname}]The ASCII encoded name of the function. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The address of the function, or `NULL` if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_ga8290386e9528ccb9e42a3a4e16fc0d0}{GLFW\_\-NO\_\-CURRENT\_\-CONTEXT} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Remarks:]The address of a given function is not guaranteed to be the same between contexts.
+
+This function may return a non-`NULL` address despite the associated version or extension not being available. Always check the context version or extension string first.\end{Desc}
+The returned function pointer is valid until the context is destroyed or the library is terminated.
+
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]context\_\-glext 
+
+\hyperlink{group__context_g9a28c712d35f9e43534e1d03b051c04c}{glfwExtensionSupported}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0. \end{Desc}
+\hypertarget{group__context_gfd76c93e15ec8b0b90506a9936a46185}{
+\index{context@{context}!glfwMakeContextCurrent@{glfwMakeContextCurrent}}
+\index{glfwMakeContextCurrent@{glfwMakeContextCurrent}!context@{context}}
+\subsubsection[glfwMakeContextCurrent]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwMakeContextCurrent ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__context_gfd76c93e15ec8b0b90506a9936a46185}
+
+
+Makes the context of the specified window current for the calling thread. 
+
+This function makes the OpenGL or OpenGL ES context of the specified window current on the calling thread. A context can only be made current on a single thread at a time and each thread can have only a single current context at a time.
+
+By default, making a context non-current implicitly forces a pipeline flush. On machines that support `GL\_\-KHR\_\-context\_\-flush\_\-control`, you can control whether a context performs this flush by setting the \mbox{[}GLFW\_\-CONTEXT\_\-RELEASE\_\-BEHAVIOR\mbox{]}(window\_\-hints\_\-ctx) window hint.
+
+The specified window must have an OpenGL or OpenGL ES context. Specifying a window without a context will generate a \hyperlink{group__errors_gcff24d2757da752ae4c80bf452356487}{GLFW\_\-NO\_\-WINDOW\_\-CONTEXT} error.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose context to make current, or `NULL` to detach the current context.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_gcff24d2757da752ae4c80bf452356487}{GLFW\_\-NO\_\-WINDOW\_\-CONTEXT} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]context\_\-current 
+
+\hyperlink{group__context_gc28d98c655377d81a516bf5ef90780c8}{glfwGetCurrentContext}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__context_g12a595c06947cec4967c6e1f14210a8a}{
+\index{context@{context}!glfwSwapInterval@{glfwSwapInterval}}
+\index{glfwSwapInterval@{glfwSwapInterval}!context@{context}}
+\subsubsection[glfwSwapInterval]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSwapInterval (int {\em interval})}}
+\label{group__context_g12a595c06947cec4967c6e1f14210a8a}
+
+
+Sets the swap interval for the current context. 
+
+This function sets the swap interval for the current OpenGL or OpenGL ES context, i.e. the number of screen updates to wait from the time \hyperlink{group__window_gfb827800eedbfcbc97b1e5408df668d7}{glfwSwapBuffers} was called before swapping the buffers and returning. This is sometimes called \_\-vertical synchronization\_\-, \_\-vertical retrace synchronization\_\- or just \_\-vsync\_\-.
+
+Contexts that support either of the `WGL\_\-EXT\_\-swap\_\-control\_\-tear` and `GLX\_\-EXT\_\-swap\_\-control\_\-tear` extensions also accept negative swap intervals, which allow the driver to swap even if a frame arrives a little bit late. You can check for the presence of these extensions using \hyperlink{group__context_g9a28c712d35f9e43534e1d03b051c04c}{glfwExtensionSupported}. For more information about swap tearing, see the extension specifications.
+
+A context must be current on the calling thread. Calling this function without a current context will cause a \hyperlink{group__errors_ga8290386e9528ccb9e42a3a4e16fc0d0}{GLFW\_\-NO\_\-CURRENT\_\-CONTEXT} error.
+
+This function does not apply to Vulkan. If you are rendering with Vulkan, see the present mode of your swapchain instead.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em interval}]The minimum number of screen updates to wait for until the buffers are swapped by \hyperlink{group__window_gfb827800eedbfcbc97b1e5408df668d7}{glfwSwapBuffers}.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_ga8290386e9528ccb9e42a3a4e16fc0d0}{GLFW\_\-NO\_\-CURRENT\_\-CONTEXT} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Remarks:]This function is not called during context creation, leaving the swap interval set to whatever is the default on that platform. This is done because some swap interval extensions used by GLFW do not allow the swap interval to be reset to zero once it has been set to a non-zero value.
+
+Some GPU drivers do not honor the requested swap interval, either because of a user setting that overrides the application's request or due to bugs in the driver.\end{Desc}
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]buffer\_\-swap 
+
+\hyperlink{group__window_gfb827800eedbfcbc97b1e5408df668d7}{glfwSwapBuffers}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0. \end{Desc}

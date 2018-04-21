@@ -1,0 +1,48 @@
+\hypertarget{structbt_rigid_body_1_1bt_rigid_body_construction_info}{
+\section{btRigidBody::btRigidBodyConstructionInfo Struct Reference}
+\label{structbt_rigid_body_1_1bt_rigid_body_construction_info}\index{btRigidBody::btRigidBodyConstructionInfo@{btRigidBody::btRigidBodyConstructionInfo}}
+}
+{\tt \#include $<$btRigidBody.h$>$}
+
+Collaboration diagram for btRigidBody::btRigidBodyConstructionInfo:\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hyperlink{classbt_motion_state}{btMotionState} $\ast$ \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info_729b0b79412f36ac983d4adafbffa429}{m\_\-motionState}
+\item 
+\hypertarget{structbt_rigid_body_1_1bt_rigid_body_construction_info_096d36f8308c4ca9b225d7c7ad43a0bf}{
+btScalar \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info_096d36f8308c4ca9b225d7c7ad43a0bf}{m\_\-friction}}
+\label{structbt_rigid_body_1_1bt_rigid_body_construction_info_096d36f8308c4ca9b225d7c7ad43a0bf}
+
+\begin{CompactList}\small\item\em best simulation results when friction is non-zero \item\end{CompactList}\item 
+btScalar \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info_bb72d0a00d035d2224a927810e9ed972}{m\_\-rollingFriction}
+\item 
+\hypertarget{structbt_rigid_body_1_1bt_rigid_body_construction_info_4cee9df6cc734b50e0ef7c7a4eeb43d8}{
+btScalar \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info_4cee9df6cc734b50e0ef7c7a4eeb43d8}{m\_\-restitution}}
+\label{structbt_rigid_body_1_1bt_rigid_body_construction_info_4cee9df6cc734b50e0ef7c7a4eeb43d8}
+
+\begin{CompactList}\small\item\em best simulation results using zero restitution. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info}{btRigidBodyConstructionInfo} structure provides information to create a rigid body. Setting mass to zero creates a fixed (non-dynamic) rigid body. For dynamic objects, you can use the collision shape to approximate the local inertia tensor, otherwise use the zero vector (default argument) You can use the motion state to synchronize the world transform between physics and graphics objects. And if the motion state is provided, the rigid body will initialize its initial world transform from the motion state, m\_\-startWorldTransform is only used when you don't provide a motion state. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structbt_rigid_body_1_1bt_rigid_body_construction_info_729b0b79412f36ac983d4adafbffa429}{
+\index{btRigidBody::btRigidBodyConstructionInfo@{btRigidBody::btRigidBodyConstructionInfo}!m\_\-motionState@{m\_\-motionState}}
+\index{m\_\-motionState@{m\_\-motionState}!btRigidBody::btRigidBodyConstructionInfo@{btRigidBody::btRigidBodyConstructionInfo}}
+\subsubsection[m\_\-motionState]{\setlength{\rightskip}{0pt plus 5cm}{\bf btMotionState}$\ast$ {\bf btRigidBody::btRigidBodyConstructionInfo::m\_\-motionState}}}
+\label{structbt_rigid_body_1_1bt_rigid_body_construction_info_729b0b79412f36ac983d4adafbffa429}
+
+
+When a motionState is provided, the rigid body will initialize its world transform from the motion state In this case, m\_\-startWorldTransform is ignored. \hypertarget{structbt_rigid_body_1_1bt_rigid_body_construction_info_bb72d0a00d035d2224a927810e9ed972}{
+\index{btRigidBody::btRigidBodyConstructionInfo@{btRigidBody::btRigidBodyConstructionInfo}!m\_\-rollingFriction@{m\_\-rollingFriction}}
+\index{m\_\-rollingFriction@{m\_\-rollingFriction}!btRigidBody::btRigidBodyConstructionInfo@{btRigidBody::btRigidBodyConstructionInfo}}
+\subsubsection[m\_\-rollingFriction]{\setlength{\rightskip}{0pt plus 5cm}btScalar {\bf btRigidBody::btRigidBodyConstructionInfo::m\_\-rollingFriction}}}
+\label{structbt_rigid_body_1_1bt_rigid_body_construction_info_bb72d0a00d035d2224a927810e9ed972}
+
+
+the m\_\-rollingFriction prevents rounded shapes, such as spheres, cylinders and capsules from rolling forever. See Bullet/Demos/RollingFrictionDemo for usage 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.h\end{CompactItemize}

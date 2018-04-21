@@ -1,0 +1,135 @@
+\hypertarget{class_assimp_1_1_default_logger}{
+\section{Assimp::DefaultLogger Class Reference}
+\label{class_assimp_1_1_default_logger}\index{Assimp::DefaultLogger@{Assimp::DefaultLogger}}
+}
+CPP-API: Primary logging facility of \hyperlink{namespace_assimp}{Assimp}.  
+
+
+{\tt \#include $<$DefaultLogger.hpp$>$}
+
+Inheritance diagram for Assimp::DefaultLogger:Collaboration diagram for Assimp::DefaultLogger:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{class_assimp_1_1_default_logger_bc0ca7a337f8c3e38eca0eb45bb1ccf0}{attachStream} (\hyperlink{class_assimp_1_1_log_stream}{LogStream} $\ast$pStream, unsigned int severity)
+\item 
+bool \hyperlink{class_assimp_1_1_default_logger_2615f1d1624f1d742d0cf2dd4a5cccc8}{detatchStream} (\hyperlink{class_assimp_1_1_log_stream}{LogStream} $\ast$pStream, unsigned int severity)
+\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static \hyperlink{class_assimp_1_1_logger}{Logger} $\ast$ \hyperlink{class_assimp_1_1_default_logger_dccb11f85f8b0ef226c382e11ba665c3}{create} (const char $\ast$name=ASSIMP\_\-DEFAULT\_\-LOG\_\-NAME, \hyperlink{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6}{LogSeverity} severity=NORMAL, unsigned int defStreams=aiDefaultLogStream\_\-DEBUGGER$|$aiDefaultLogStream\_\-FILE, \hyperlink{class_assimp_1_1_i_o_system}{IOSystem} $\ast$io=NULL)
+\begin{CompactList}\small\item\em Creates a logging instance. \item\end{CompactList}\item 
+static void \hyperlink{class_assimp_1_1_default_logger_9daba548026045b99813c760c2842ed2}{set} (\hyperlink{class_assimp_1_1_logger}{Logger} $\ast$logger)
+\begin{CompactList}\small\item\em Setup a custom \hyperlink{class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8}{Logger} implementation. \item\end{CompactList}\item 
+static \hyperlink{class_assimp_1_1_logger}{Logger} $\ast$ \hyperlink{class_assimp_1_1_default_logger_7d0a53f2db66945ade30094330a77ba4}{get} ()
+\begin{CompactList}\small\item\em Getter for singleton instance. \item\end{CompactList}\item 
+static bool \hyperlink{class_assimp_1_1_default_logger_bebc7ee702a2a2dde765e771948400c6}{isNullLogger} ()
+\begin{CompactList}\small\item\em Return whether a NullLogger is currently active. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_default_logger_0b1da096d7442af5a4a4cb5ebb2540f7}{
+static void \hyperlink{class_assimp_1_1_default_logger_0b1da096d7442af5a4a4cb5ebb2540f7}{kill} ()}
+\label{class_assimp_1_1_default_logger_0b1da096d7442af5a4a4cb5ebb2540f7}
+
+\begin{CompactList}\small\item\em Kills the current singleton logger and replaces it with a NullLogger instance. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+CPP-API: Primary logging facility of \hyperlink{namespace_assimp}{Assimp}. 
+
+The library stores its primary \hyperlink{class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8}{Logger} as a static member of this class. \hyperlink{class_assimp_1_1_default_logger_7d0a53f2db66945ade30094330a77ba4}{get()} returns this primary logger. By default the underlying implementation is just a NullLogger which rejects all log messages. By calling \hyperlink{class_assimp_1_1_default_logger_dccb11f85f8b0ef226c382e11ba665c3}{create()}, logging is turned on. To capture the log output multiple log streams (LogStream) can be attach to the logger. Some default streams for common streaming locations (such as a file, std::cout, OutputDebugString()) are also provided.
+
+If you wish to customize the logging at an even deeper level supply your own implementation of \hyperlink{class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8}{Logger} to \hyperlink{class_assimp_1_1_default_logger_9daba548026045b99813c760c2842ed2}{set()}. \begin{Desc}
+\item[Note:]The whole logging stuff causes a small extra overhead for all imports. \end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_default_logger_dccb11f85f8b0ef226c382e11ba665c3}{
+\index{Assimp::DefaultLogger@{Assimp::DefaultLogger}!create@{create}}
+\index{create@{create}!Assimp::DefaultLogger@{Assimp::DefaultLogger}}
+\subsubsection[create]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Logger}$\ast$ Assimp::DefaultLogger::create (const char $\ast$ {\em name} = {\tt ASSIMP\_\-DEFAULT\_\-LOG\_\-NAME}, \/  {\bf LogSeverity} {\em severity} = {\tt NORMAL}, \/  unsigned int {\em defStreams} = {\tt aiDefaultLogStream\_\-DEBUGGER$|$aiDefaultLogStream\_\-FILE}, \/  {\bf IOSystem} $\ast$ {\em io} = {\tt NULL})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_default_logger_dccb11f85f8b0ef226c382e11ba665c3}
+
+
+Creates a logging instance. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]Name for log file. Only valid in combination with the aiDefaultLogStream\_\-FILE flag. \item[{\em severity}]Log severity, VERBOSE turns on debug messages \item[{\em defStreams}]Default log streams to be attached. Any bitwise combination of the aiDefaultLogStream enumerated values. If \hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c653f81f9d36437ced72e67b297dc17815}{aiDefaultLogStream\_\-FILE} is specified but an empty string is passed for 'name', no log file is created at all. \item[{\em io}]\hyperlink{class_assimp_1_1_i_o_system}{IOSystem} to be used to open external files (such as the log file). Pass NULL to rely on the default implementation. This replaces the default NullLogger with a DefaultLogger instance. \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_default_logger_9daba548026045b99813c760c2842ed2}{
+\index{Assimp::DefaultLogger@{Assimp::DefaultLogger}!set@{set}}
+\index{set@{set}!Assimp::DefaultLogger@{Assimp::DefaultLogger}}
+\subsubsection[set]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::DefaultLogger::set ({\bf Logger} $\ast$ {\em logger})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_default_logger_9daba548026045b99813c760c2842ed2}
+
+
+Setup a custom \hyperlink{class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8}{Logger} implementation. 
+
+Use this if the provided DefaultLogger class doesn't fit into your needs. If the provided message formatting is OK for you, it's much easier to use \hyperlink{class_assimp_1_1_default_logger_dccb11f85f8b0ef226c382e11ba665c3}{create()} and to attach your own custom output streams to it. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em logger}]Pass NULL to setup a default \hyperlink{class_assimp_1_1_null_logger}{NullLogger} \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_default_logger_7d0a53f2db66945ade30094330a77ba4}{
+\index{Assimp::DefaultLogger@{Assimp::DefaultLogger}!get@{get}}
+\index{get@{get}!Assimp::DefaultLogger@{Assimp::DefaultLogger}}
+\subsubsection[get]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Logger}$\ast$ Assimp::DefaultLogger::get ()\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_default_logger_7d0a53f2db66945ade30094330a77ba4}
+
+
+Getter for singleton instance. 
+
+\begin{Desc}
+\item[Returns:]Only instance. This is never null, but it could be a \hyperlink{class_assimp_1_1_null_logger}{NullLogger}. Use isNullLogger to check this. \end{Desc}
+\hypertarget{class_assimp_1_1_default_logger_bebc7ee702a2a2dde765e771948400c6}{
+\index{Assimp::DefaultLogger@{Assimp::DefaultLogger}!isNullLogger@{isNullLogger}}
+\index{isNullLogger@{isNullLogger}!Assimp::DefaultLogger@{Assimp::DefaultLogger}}
+\subsubsection[isNullLogger]{\setlength{\rightskip}{0pt plus 5cm}static bool Assimp::DefaultLogger::isNullLogger ()\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_default_logger_bebc7ee702a2a2dde765e771948400c6}
+
+
+Return whether a NullLogger is currently active. 
+
+\begin{Desc}
+\item[Returns:]true if the current logger is a NullLogger. Use \hyperlink{class_assimp_1_1_default_logger_dccb11f85f8b0ef226c382e11ba665c3}{create()} or \hyperlink{class_assimp_1_1_default_logger_9daba548026045b99813c760c2842ed2}{set()} to setup a logger that does actually do something else than just rejecting all log messages. \end{Desc}
+\hypertarget{class_assimp_1_1_default_logger_bc0ca7a337f8c3e38eca0eb45bb1ccf0}{
+\index{Assimp::DefaultLogger@{Assimp::DefaultLogger}!attachStream@{attachStream}}
+\index{attachStream@{attachStream}!Assimp::DefaultLogger@{Assimp::DefaultLogger}}
+\subsubsection[attachStream]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::DefaultLogger::attachStream ({\bf LogStream} $\ast$ {\em pStream}, \/  unsigned int {\em severity})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_default_logger_bc0ca7a337f8c3e38eca0eb45bb1ccf0}
+
+
+Attach a new log-stream. 
+
+The logger takes ownership of the stream and is responsible for its destruction (which is done using delete when the logger itself is destroyed). Call detachStream to detach a stream and to gain ownership of it again. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pStream}]Log-stream to attach \item[{\em severity}]Message filter, specified which types of log messages are dispatched to the stream. Provide a bitwise combination of the ErrorSeverity flags. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if the stream has been attached, false otherwise. \end{Desc}
+ 
+
+Implements \hyperlink{class_assimp_1_1_logger_af32a42b02a7e227076013d01e349871}{Assimp::Logger}.\hypertarget{class_assimp_1_1_default_logger_2615f1d1624f1d742d0cf2dd4a5cccc8}{
+\index{Assimp::DefaultLogger@{Assimp::DefaultLogger}!detatchStream@{detatchStream}}
+\index{detatchStream@{detatchStream}!Assimp::DefaultLogger@{Assimp::DefaultLogger}}
+\subsubsection[detatchStream]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::DefaultLogger::detatchStream ({\bf LogStream} $\ast$ {\em pStream}, \/  unsigned int {\em severity})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_default_logger_2615f1d1624f1d742d0cf2dd4a5cccc8}
+
+
+Detach a still attached stream from the logger (or modify the filter flags bits). 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pStream}]Log-stream instance for detaching \item[{\em severity}]Provide a bitwise combination of the ErrorSeverity flags. This value is \&$\sim$ed with the current flags of the stream, if the result is 0 the stream is detached from the \hyperlink{class_assimp_1_1_logger}{Logger} and the caller retakes the possession of the stream. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if the stream has been detached, false otherwise. \end{Desc}
+ 
+
+Implements \hyperlink{class_assimp_1_1_logger_9489263727f29fecbd705d5c8d2590c0}{Assimp::Logger}.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_default_logger_8hpp}{DefaultLogger.hpp}\end{CompactItemize}

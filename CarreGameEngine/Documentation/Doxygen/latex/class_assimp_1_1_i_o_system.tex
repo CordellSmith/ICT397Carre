@@ -1,0 +1,283 @@
+\hypertarget{class_assimp_1_1_i_o_system}{
+\section{Assimp::IOSystem Class Reference}
+\label{class_assimp_1_1_i_o_system}\index{Assimp::IOSystem@{Assimp::IOSystem}}
+}
+CPP-API: Interface to the file system.  
+
+
+{\tt \#include $<$IOSystem.hpp$>$}
+
+Inheritance diagram for Assimp::IOSystem:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_assimp_1_1_i_o_system_f8ba1ee2dc0686da8fc9e3dad49af801}{IOSystem} ()
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+virtual \hyperlink{class_assimp_1_1_i_o_system_617417f1c5125770606fea3b41068b36}{$\sim$IOSystem} ()
+\begin{CompactList}\small\item\em Virtual destructor. \item\end{CompactList}\item 
+AI\_\-FORCE\_\-INLINE bool \hyperlink{class_assimp_1_1_i_o_system_7ae6cfaea4957408967463bfc3b84b27}{Exists} (const std::string \&pFile) const 
+\begin{CompactList}\small\item\em For backward compatibility. \item\end{CompactList}\item 
+virtual bool \hyperlink{class_assimp_1_1_i_o_system_79f5fe8d2dbe1056c9418f7de9a72445}{Exists} (const char $\ast$pFile) const =0
+\begin{CompactList}\small\item\em Tests for the existence of a file at the given path. \item\end{CompactList}\item 
+virtual char \hyperlink{class_assimp_1_1_i_o_system_40e412875b985bdb638f00ef0f20fff6}{getOsSeparator} () const =0
+\begin{CompactList}\small\item\em Returns the system specific directory separator. \item\end{CompactList}\item 
+virtual \hyperlink{class_assimp_1_1_i_o_stream}{IOStream} $\ast$ \hyperlink{class_assimp_1_1_i_o_system_c512ece3b0701de5682553007a4c0816}{Open} (const char $\ast$pFile, const char $\ast$pMode=\char`\"{}rb\char`\"{})=0
+\begin{CompactList}\small\item\em Open a new file with a given path. \item\end{CompactList}\item 
+\hyperlink{class_assimp_1_1_i_o_stream}{IOStream} $\ast$ \hyperlink{class_assimp_1_1_i_o_system_ef35fabc9bd49fb83bfd4f12a94083c3}{Open} (const std::string \&pFile, const std::string \&pMode=std::string(\char`\"{}rb\char`\"{}))
+\begin{CompactList}\small\item\em For backward compatibility. \item\end{CompactList}\item 
+virtual void \hyperlink{class_assimp_1_1_i_o_system_8c334d60f04bceeb6bd0157d21723f3e}{Close} (\hyperlink{class_assimp_1_1_i_o_stream}{IOStream} $\ast$pFile)=0
+\begin{CompactList}\small\item\em Closes the given file and releases all resources associated with it. \item\end{CompactList}\item 
+virtual bool \hyperlink{class_assimp_1_1_i_o_system_11349a65b353ed62f655c3dd802b9062}{ComparePaths} (const char $\ast$one, const char $\ast$second) const 
+\begin{CompactList}\small\item\em Compares two paths and check whether the point to identical files. \item\end{CompactList}\item 
+bool \hyperlink{class_assimp_1_1_i_o_system_39a29f6ee6b76deaa59aed2b7494b182}{ComparePaths} (const std::string \&one, const std::string \&second) const 
+\begin{CompactList}\small\item\em For backward compatibility. \item\end{CompactList}\item 
+virtual bool \hyperlink{class_assimp_1_1_i_o_system_07c2c93fac300df44c756174fcea71e8}{PushDirectory} (const std::string \&path)
+\begin{CompactList}\small\item\em Pushes a new directory onto the directory stack. \item\end{CompactList}\item 
+virtual const std::string \& \hyperlink{class_assimp_1_1_i_o_system_9b30a76a279c6559488bdef10d5c2315}{CurrentDirectory} () const 
+\begin{CompactList}\small\item\em Returns the top directory from the stack. \item\end{CompactList}\item 
+virtual size\_\-t \hyperlink{class_assimp_1_1_i_o_system_439587c95c2ff6307e075b2437a12176}{StackSize} () const 
+\begin{CompactList}\small\item\em Returns the number of directories stored on the stack. \item\end{CompactList}\item 
+virtual bool \hyperlink{class_assimp_1_1_i_o_system_a00f3ee1c44576364e8ce00206fb9dd2}{PopDirectory} ()
+\begin{CompactList}\small\item\em Pops the top directory from the stack. \item\end{CompactList}\item 
+virtual bool \hyperlink{class_assimp_1_1_i_o_system_3fc1316fdb4168cde052c95f96364d41}{CreateDirectory} (const std::string \&path)
+\begin{CompactList}\small\item\em CReates an new directory at the given path. \item\end{CompactList}\item 
+virtual bool \hyperlink{class_assimp_1_1_i_o_system_93e80760bd5d5239ba8eab3bd31efa6b}{ChangeDirectory} (const std::string \&path)
+\begin{CompactList}\small\item\em Will change the current directory to the given path. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+CPP-API: Interface to the file system. 
+
+Derive an own implementation from this interface to supply custom file handling to the importer library. If you implement this interface, you also want to supply a custom implementation for \hyperlink{class_assimp_1_1_i_o_stream}{IOStream}.
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_assimp_1_1_importer_1161f46318af18bb86dfe0fc3edea4df}{Importer::SetIOHandler()} \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_assimp_1_1_i_o_system_f8ba1ee2dc0686da8fc9e3dad49af801}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!IOSystem@{IOSystem}}
+\index{IOSystem@{IOSystem}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[IOSystem]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE Assimp::IOSystem::IOSystem ()}}
+\label{class_assimp_1_1_i_o_system_f8ba1ee2dc0686da8fc9e3dad49af801}
+
+
+Default constructor. 
+
+Create an instance of your derived class and assign it to an \hyperlink{class_assimp_1_1_importer}{Assimp::Importer} instance by calling \hyperlink{class_assimp_1_1_importer_1161f46318af18bb86dfe0fc3edea4df}{Importer::SetIOHandler()}. \hypertarget{class_assimp_1_1_i_o_system_617417f1c5125770606fea3b41068b36}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!$\sim$IOSystem@{$\sim$IOSystem}}
+\index{$\sim$IOSystem@{$\sim$IOSystem}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[$\sim$IOSystem]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE Assimp::IOSystem::$\sim$IOSystem ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_617417f1c5125770606fea3b41068b36}
+
+
+Virtual destructor. 
+
+It is safe to be called from within DLL \hyperlink{namespace_assimp}{Assimp}, we're constructed on Assimp's heap. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_i_o_system_7ae6cfaea4957408967463bfc3b84b27}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!Exists@{Exists}}
+\index{Exists@{Exists}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[Exists]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE bool Assimp::IOSystem::Exists (const std::string \& {\em pFile}) const}}
+\label{class_assimp_1_1_i_o_system_7ae6cfaea4957408967463bfc3b84b27}
+
+
+For backward compatibility. 
+
+\begin{Desc}
+\item[See also:]Exists(const char$\ast$) \end{Desc}
+\hypertarget{class_assimp_1_1_i_o_system_79f5fe8d2dbe1056c9418f7de9a72445}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!Exists@{Exists}}
+\index{Exists@{Exists}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[Exists]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Assimp::IOSystem::Exists (const char $\ast$ {\em pFile}) const\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_79f5fe8d2dbe1056c9418f7de9a72445}
+
+
+Tests for the existence of a file at the given path. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pFile}]Path to the file \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if there is a file with this path, else false. \end{Desc}
+
+
+Implemented in \hyperlink{class_assimp_1_1_default_i_o_system_f8b310025faaed12c6d65c586e935255}{Assimp::DefaultIOSystem}.\hypertarget{class_assimp_1_1_i_o_system_40e412875b985bdb638f00ef0f20fff6}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!getOsSeparator@{getOsSeparator}}
+\index{getOsSeparator@{getOsSeparator}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[getOsSeparator]{\setlength{\rightskip}{0pt plus 5cm}virtual char Assimp::IOSystem::getOsSeparator () const\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_40e412875b985bdb638f00ef0f20fff6}
+
+
+Returns the system specific directory separator. 
+
+\begin{Desc}
+\item[Returns:]System specific directory separator \end{Desc}
+
+
+Implemented in \hyperlink{class_assimp_1_1_default_i_o_system_154a94adf38921d9fce50ef598f0a50c}{Assimp::DefaultIOSystem}.\hypertarget{class_assimp_1_1_i_o_system_c512ece3b0701de5682553007a4c0816}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!Open@{Open}}
+\index{Open@{Open}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[Open]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf IOStream}$\ast$ Assimp::IOSystem::Open (const char $\ast$ {\em pFile}, \/  const char $\ast$ {\em pMode} = {\tt \char`\"{}rb\char`\"{}})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_c512ece3b0701de5682553007a4c0816}
+
+
+Open a new file with a given path. 
+
+When the access to the file is finished, call \hyperlink{class_assimp_1_1_i_o_system_8c334d60f04bceeb6bd0157d21723f3e}{Close()} to release all associated resources (or the virtual dtor of the \hyperlink{class_assimp_1_1_i_o_stream}{IOStream}).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pFile}]Path to the file \item[{\em pMode}]Desired file I/O mode. Required are: \char`\"{}wb\char`\"{}, \char`\"{}w\char`\"{}, \char`\"{}wt\char`\"{}, \char`\"{}rb\char`\"{}, \char`\"{}r\char`\"{}, \char`\"{}rt\char`\"{}.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]New \hyperlink{class_assimp_1_1_i_o_stream}{IOStream} interface allowing the lib to access the underlying file. \end{Desc}
+\begin{Desc}
+\item[Note:]When implementing this class to provide custom IO handling, you probably have to supply an own implementation of \hyperlink{class_assimp_1_1_i_o_stream}{IOStream} as well. \end{Desc}
+
+
+Implemented in \hyperlink{class_assimp_1_1_default_i_o_system_9c8da3d63312f47b2dec83ec90aa2c4d}{Assimp::DefaultIOSystem}.\hypertarget{class_assimp_1_1_i_o_system_ef35fabc9bd49fb83bfd4f12a94083c3}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!Open@{Open}}
+\index{Open@{Open}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[Open]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE {\bf IOStream} $\ast$ Assimp::IOSystem::Open (const std::string \& {\em pFile}, \/  const std::string \& {\em pMode} = {\tt std::string(\char`\"{}rb\char`\"{})})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_ef35fabc9bd49fb83bfd4f12a94083c3}
+
+
+For backward compatibility. 
+
+\begin{Desc}
+\item[See also:]\hyperlink{class_assimp_1_1_i_o_system_c512ece3b0701de5682553007a4c0816}{Open(const char$\ast$, const char$\ast$)} \end{Desc}
+\hypertarget{class_assimp_1_1_i_o_system_8c334d60f04bceeb6bd0157d21723f3e}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!Close@{Close}}
+\index{Close@{Close}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[Close]{\setlength{\rightskip}{0pt plus 5cm}virtual void Assimp::IOSystem::Close ({\bf IOStream} $\ast$ {\em pFile})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_8c334d60f04bceeb6bd0157d21723f3e}
+
+
+Closes the given file and releases all resources associated with it. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pFile}]The file instance previously created by \hyperlink{class_assimp_1_1_i_o_system_c512ece3b0701de5682553007a4c0816}{Open()}. \end{description}
+\end{Desc}
+
+
+Implemented in \hyperlink{class_assimp_1_1_default_i_o_system_a164cf18562082effde576752377bea3}{Assimp::DefaultIOSystem}.\hypertarget{class_assimp_1_1_i_o_system_11349a65b353ed62f655c3dd802b9062}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!ComparePaths@{ComparePaths}}
+\index{ComparePaths@{ComparePaths}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[ComparePaths]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Assimp::IOSystem::ComparePaths (const char $\ast$ {\em one}, \/  const char $\ast$ {\em second}) const\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_11349a65b353ed62f655c3dd802b9062}
+
+
+Compares two paths and check whether the point to identical files. 
+
+The dummy implementation of this virtual member performs a case-insensitive comparison of the given strings. The default IO system implementation uses OS mechanisms to convert relative into absolute paths, so the result can be trusted. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em one}]First file \item[{\em second}]Second file \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if the paths point to the same file. The file needn't be existing, however. \end{Desc}
+
+
+Reimplemented in \hyperlink{class_assimp_1_1_default_i_o_system_0eb1be0b288bdad621f9036bd5290fe7}{Assimp::DefaultIOSystem}.\hypertarget{class_assimp_1_1_i_o_system_39a29f6ee6b76deaa59aed2b7494b182}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!ComparePaths@{ComparePaths}}
+\index{ComparePaths@{ComparePaths}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[ComparePaths]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE bool Assimp::IOSystem::ComparePaths (const std::string \& {\em one}, \/  const std::string \& {\em second}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_39a29f6ee6b76deaa59aed2b7494b182}
+
+
+For backward compatibility. 
+
+\begin{Desc}
+\item[See also:]ComparePaths(const char$\ast$, const char$\ast$) \end{Desc}
+\hypertarget{class_assimp_1_1_i_o_system_07c2c93fac300df44c756174fcea71e8}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!PushDirectory@{PushDirectory}}
+\index{PushDirectory@{PushDirectory}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[PushDirectory]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE bool Assimp::IOSystem::PushDirectory (const std::string \& {\em path})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_07c2c93fac300df44c756174fcea71e8}
+
+
+Pushes a new directory onto the directory stack. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em path}]Path to push onto the stack. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]True, when push was successful, false if path is empty. \end{Desc}
+\hypertarget{class_assimp_1_1_i_o_system_9b30a76a279c6559488bdef10d5c2315}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!CurrentDirectory@{CurrentDirectory}}
+\index{CurrentDirectory@{CurrentDirectory}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[CurrentDirectory]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE const std::string \& Assimp::IOSystem::CurrentDirectory () const\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_9b30a76a279c6559488bdef10d5c2315}
+
+
+Returns the top directory from the stack. 
+
+\begin{Desc}
+\item[Returns:]The directory on the top of the stack. Returns empty when no directory was pushed to the stack. \end{Desc}
+\hypertarget{class_assimp_1_1_i_o_system_439587c95c2ff6307e075b2437a12176}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!StackSize@{StackSize}}
+\index{StackSize@{StackSize}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[StackSize]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE size\_\-t Assimp::IOSystem::StackSize () const\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_439587c95c2ff6307e075b2437a12176}
+
+
+Returns the number of directories stored on the stack. 
+
+\begin{Desc}
+\item[Returns:]The number of directories of the stack. \end{Desc}
+\hypertarget{class_assimp_1_1_i_o_system_a00f3ee1c44576364e8ce00206fb9dd2}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!PopDirectory@{PopDirectory}}
+\index{PopDirectory@{PopDirectory}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[PopDirectory]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE bool Assimp::IOSystem::PopDirectory ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_a00f3ee1c44576364e8ce00206fb9dd2}
+
+
+Pops the top directory from the stack. 
+
+\begin{Desc}
+\item[Returns:]True, when a directory was on the stack. False if no directory was on the stack. \end{Desc}
+\hypertarget{class_assimp_1_1_i_o_system_3fc1316fdb4168cde052c95f96364d41}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!CreateDirectory@{CreateDirectory}}
+\index{CreateDirectory@{CreateDirectory}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[CreateDirectory]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE bool Assimp::IOSystem::CreateDirectory (const std::string \& {\em path})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_3fc1316fdb4168cde052c95f96364d41}
+
+
+CReates an new directory at the given path. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em path}]\mbox{[}in\mbox{]} The path to create. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]True, when a directory was created. False if the directory cannot be created. \end{Desc}
+\hypertarget{class_assimp_1_1_i_o_system_93e80760bd5d5239ba8eab3bd31efa6b}{
+\index{Assimp::IOSystem@{Assimp::IOSystem}!ChangeDirectory@{ChangeDirectory}}
+\index{ChangeDirectory@{ChangeDirectory}!Assimp::IOSystem@{Assimp::IOSystem}}
+\subsubsection[ChangeDirectory]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE bool Assimp::IOSystem::ChangeDirectory (const std::string \& {\em path})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_assimp_1_1_i_o_system_93e80760bd5d5239ba8eab3bd31efa6b}
+
+
+Will change the current directory to the given path. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em path}]\mbox{[}in\mbox{]} The path to change to. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]True, when the directory has changed successfully. \end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_i_o_system_8hpp}{IOSystem.hpp}\end{CompactItemize}

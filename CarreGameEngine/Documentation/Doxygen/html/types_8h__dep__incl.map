@@ -1,0 +1,18 @@
+<area shape="rect" href="$anim_8h.html" title="Defines the data structures in which the imported animations are returned." alt="" coords="5479,80,6551,107">
+<area shape="rect" href="$scene_8h.html" title="Defines the data structures in which the imported scene is returned." alt="" coords="10023,155,11100,181">
+<area shape="rect" href="$cexport_8h.html" title="Defines the C&#45;API for the Assimp export interface." alt="" coords="433,80,1519,107">
+<area shape="rect" href="$cfileio_8h.html" title="Defines generic C routines to access memory&#45;mapped files." alt="" coords="3271,80,4345,107">
+<area shape="rect" href="$cimport_8h.html" title="Defines the C&#45;API to the Open Asset Import Library." alt="" coords="4369,80,5455,107">
+<area shape="rect" href="$_logger_8hpp.html" title="Abstract base class &#39;Logger&#39;, base of the logging system." alt="" coords="2151,80,3247,107">
+<area shape="rect" href="$_log_stream_8hpp.html" title="Abstract base class &#39;LogStream&#39;, representing an output log stream." alt="" coords="1136,155,2256,181">
+<area shape="rect" href="$_importer_8hpp.html" title="Defines the C++&#45;API to the Open Asset Import Library." alt="" coords="6625,80,7729,107">
+<area shape="rect" href="$_i_o_stream_8hpp.html" title="File I/O wrappers for C++." alt="" coords="7753,80,8865,107">
+<area shape="rect" href="$_i_o_system_8hpp.html" title="File system wrapper for C++. Inherit this class to supply custom file handling logic..." alt="" coords="8889,80,10004,107">
+<area shape="rect" href="$light_8h.html" title="Defines the aiLight data structure." alt="" coords="10028,80,11095,107">
+<area shape="rect" href="$material_8h.html" title="Defines the material system of the library." alt="" coords="11119,80,12207,107">
+<area shape="rect" href="$postprocess_8h.html" title="Definitions for import post processing steps." alt="" coords="12231,80,13345,107">
+<area shape="rect" href="$_progress_handler_8hpp.html" title="Abstract base class &#39;ProgressHandler&#39;." alt="" coords="13369,80,14521,107">
+<area shape="rect" href="$texture_8h.html" title="Defines texture helper structures for the library." alt="" coords="14545,80,15628,107">
+<area shape="rect" href="$_exporter_8hpp.html" title="Defines the CPP&#45;API for the Assimp export interface." alt="" coords="5,155,1112,181">
+<area shape="rect" href="$_default_logger_8hpp.html" title="C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp&#45;4.1.0/include/assimp/DefaultLogger.hpp" alt="" coords="2271,229,3407,256">
+<area shape="rect" href="$_null_logger_8hpp.html" title="Dummy logger." alt="" coords="2280,155,3397,181">

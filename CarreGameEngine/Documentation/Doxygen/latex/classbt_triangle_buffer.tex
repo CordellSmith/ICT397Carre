@@ -1,0 +1,15 @@
+\hypertarget{classbt_triangle_buffer}{
+\section{btTriangleBuffer Class Reference}
+\label{classbt_triangle_buffer}\index{btTriangleBuffer@{btTriangleBuffer}}
+}
+{\tt \#include $<$btTriangleBuffer.h$>$}
+
+Inheritance diagram for btTriangleBuffer:Collaboration diagram for btTriangleBuffer:
+
+\subsection{Detailed Description}
+The \hyperlink{classbt_triangle_buffer}{btTriangleBuffer} callback can be useful to collect and store overlapping triangles between AABB and concave objects that support 'processAllTriangles' Example usage of this class: \hyperlink{classbt_triangle_buffer}{btTriangleBuffer} triBuf; concaveShape-$>$processAllTriangles(\&triBuf,aabbMin, aabbMax); for (int i=0;i$<$triBuf.getNumTriangles();i++) \{ const btTriangle\& tri = triBuf.getTriangle(i); do something useful here with the triangle \} 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionShapes/btTriangleBuffer.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionShapes/btTriangleBuffer.cpp\end{CompactItemize}

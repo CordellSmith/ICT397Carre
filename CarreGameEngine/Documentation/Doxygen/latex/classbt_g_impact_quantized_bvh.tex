@@ -1,0 +1,89 @@
+\hypertarget{classbt_g_impact_quantized_bvh}{
+\section{btGImpactQuantizedBvh Class Reference}
+\label{classbt_g_impact_quantized_bvh}\index{btGImpactQuantizedBvh@{btGImpactQuantizedBvh}}
+}
+Structure for containing Boxes.  
+
+
+{\tt \#include $<$btGImpactQuantizedBvh.h$>$}
+
+Collaboration diagram for btGImpactQuantizedBvh:\begin{CompactItemize}
+\item 
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{classbt_g_impact_quantized_bvh_71665f5245b8f7de1c54f107ef262cd0}{update} ()
+\begin{CompactList}\small\item\em this attemps to refit the box set. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_quantized_bvh_2f061fbf0c6d8a81438861be4add7968}{
+void \hyperlink{classbt_g_impact_quantized_bvh_2f061fbf0c6d8a81438861be4add7968}{buildSet} ()}
+\label{classbt_g_impact_quantized_bvh_2f061fbf0c6d8a81438861be4add7968}
+
+\begin{CompactList}\small\item\em this rebuild the entire set \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_quantized_bvh_b265ffaec21d729bb4d148e843de938c}{
+bool \hyperlink{classbt_g_impact_quantized_bvh_b265ffaec21d729bb4d148e843de938c}{boxQuery} (const btAABB \&box, \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray}$<$ int $>$ \&collided\_\-results) const }
+\label{classbt_g_impact_quantized_bvh_b265ffaec21d729bb4d148e843de938c}
+
+\begin{CompactList}\small\item\em returns the indices of the primitives in the m\_\-primitive\_\-manager \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_quantized_bvh_7ba1ab66201f211706f1605581a004a4}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{classbt_g_impact_quantized_bvh_7ba1ab66201f211706f1605581a004a4}{boxQueryTrans} (const btAABB \&box, const btTransform \&transform, \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray}$<$ int $>$ \&collided\_\-results) const }
+\label{classbt_g_impact_quantized_bvh_7ba1ab66201f211706f1605581a004a4}
+
+\begin{CompactList}\small\item\em returns the indices of the primitives in the m\_\-primitive\_\-manager \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_quantized_bvh_284ae5b0d5e813bb0bcc02d76cff8b1b}{
+bool \hyperlink{classbt_g_impact_quantized_bvh_284ae5b0d5e813bb0bcc02d76cff8b1b}{rayQuery} (const btVector3 \&ray\_\-dir, const btVector3 \&ray\_\-origin, \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray}$<$ int $>$ \&collided\_\-results) const }
+\label{classbt_g_impact_quantized_bvh_284ae5b0d5e813bb0bcc02d76cff8b1b}
+
+\begin{CompactList}\small\item\em returns the indices of the primitives in the m\_\-primitive\_\-manager \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_quantized_bvh_6abb937a9e61b3f1c2c4a74ac21f6441}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{classbt_g_impact_quantized_bvh_6abb937a9e61b3f1c2c4a74ac21f6441}{hasHierarchy} () const }
+\label{classbt_g_impact_quantized_bvh_6abb937a9e61b3f1c2c4a74ac21f6441}
+
+\begin{CompactList}\small\item\em tells if this set has hierarcht \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_quantized_bvh_248ff485a71d70ccdaf1a910026cfed1}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{classbt_g_impact_quantized_bvh_248ff485a71d70ccdaf1a910026cfed1}{isTrimesh} () const }
+\label{classbt_g_impact_quantized_bvh_248ff485a71d70ccdaf1a910026cfed1}
+
+\begin{CompactList}\small\item\em tells if this set is a trimesh \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_quantized_bvh_5ffe3a11330ab3bce0d6eaffb9b3f689}{
+SIMD\_\-FORCE\_\-INLINE int \hyperlink{classbt_g_impact_quantized_bvh_5ffe3a11330ab3bce0d6eaffb9b3f689}{getNodeCount} () const }
+\label{classbt_g_impact_quantized_bvh_5ffe3a11330ab3bce0d6eaffb9b3f689}
+
+\begin{CompactList}\small\item\em node count \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_quantized_bvh_2c4d9b99bc0e575b3f02e9cefda1fb18}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{classbt_g_impact_quantized_bvh_2c4d9b99bc0e575b3f02e9cefda1fb18}{isLeafNode} (int nodeindex) const }
+\label{classbt_g_impact_quantized_bvh_2c4d9b99bc0e575b3f02e9cefda1fb18}
+
+\begin{CompactList}\small\item\em tells if the node is a leaf \item\end{CompactList}\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_g_impact_quantized_bvh_3adf6c64b003214564e045326e4fabb7}{
+\hyperlink{classbt_g_impact_quantized_bvh_3adf6c64b003214564e045326e4fabb7}{btGImpactQuantizedBvh} ()}
+\label{classbt_g_impact_quantized_bvh_3adf6c64b003214564e045326e4fabb7}
+
+\begin{CompactList}\small\item\em this constructor doesn't build the tree. you must call buildSet \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_quantized_bvh_567d06bf430c21fe4887f1b996bb6ba4}{
+\hyperlink{classbt_g_impact_quantized_bvh_567d06bf430c21fe4887f1b996bb6ba4}{btGImpactQuantizedBvh} (\hyperlink{classbt_primitive_manager_base}{btPrimitiveManagerBase} $\ast$primitive\_\-manager)}
+\label{classbt_g_impact_quantized_bvh_567d06bf430c21fe4887f1b996bb6ba4}
+
+\begin{CompactList}\small\item\em this constructor doesn't build the tree. you must call buildSet \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Structure for containing Boxes. 
+
+This class offers an structure for managing a box tree of primitives. Requires a Primitive prototype (like \hyperlink{classbt_primitive_manager_base}{btPrimitiveManagerBase} ) 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_g_impact_quantized_bvh_71665f5245b8f7de1c54f107ef262cd0}{
+\index{btGImpactQuantizedBvh@{btGImpactQuantizedBvh}!update@{update}}
+\index{update@{update}!btGImpactQuantizedBvh@{btGImpactQuantizedBvh}}
+\subsubsection[update]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void btGImpactQuantizedBvh::update ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_g_impact_quantized_bvh_71665f5245b8f7de1c54f107ef262cd0}
+
+
+this attemps to refit the box set. 
+
+node manager prototype functions 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_g_impact_quantized_bvh_8h}{btGImpactQuantizedBvh.h}\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactQuantizedBvh.cpp\end{CompactItemize}

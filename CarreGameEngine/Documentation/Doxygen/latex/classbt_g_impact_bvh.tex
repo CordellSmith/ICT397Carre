@@ -1,0 +1,89 @@
+\hypertarget{classbt_g_impact_bvh}{
+\section{btGImpactBvh Class Reference}
+\label{classbt_g_impact_bvh}\index{btGImpactBvh@{btGImpactBvh}}
+}
+Structure for containing Boxes.  
+
+
+{\tt \#include $<$btGImpactBvh.h$>$}
+
+Collaboration diagram for btGImpactBvh:\begin{CompactItemize}
+\item 
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{classbt_g_impact_bvh_c0511b84c8722348fe4295b2a8f40c81}{update} ()
+\begin{CompactList}\small\item\em this attemps to refit the box set. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_bvh_09c889dd33db157383fb5bdb17d58d51}{
+void \hyperlink{classbt_g_impact_bvh_09c889dd33db157383fb5bdb17d58d51}{buildSet} ()}
+\label{classbt_g_impact_bvh_09c889dd33db157383fb5bdb17d58d51}
+
+\begin{CompactList}\small\item\em this rebuild the entire set \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_bvh_783a6189f8237a27a7f9255379eda48f}{
+bool \hyperlink{classbt_g_impact_bvh_783a6189f8237a27a7f9255379eda48f}{boxQuery} (const btAABB \&box, \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray}$<$ int $>$ \&collided\_\-results) const }
+\label{classbt_g_impact_bvh_783a6189f8237a27a7f9255379eda48f}
+
+\begin{CompactList}\small\item\em returns the indices of the primitives in the m\_\-primitive\_\-manager \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_bvh_78ffbcc96d7bcb3998bac7eff4f816b4}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{classbt_g_impact_bvh_78ffbcc96d7bcb3998bac7eff4f816b4}{boxQueryTrans} (const btAABB \&box, const btTransform \&transform, \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray}$<$ int $>$ \&collided\_\-results) const }
+\label{classbt_g_impact_bvh_78ffbcc96d7bcb3998bac7eff4f816b4}
+
+\begin{CompactList}\small\item\em returns the indices of the primitives in the m\_\-primitive\_\-manager \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_bvh_370a3ad672c83a0fee3afe16c4428b16}{
+bool \hyperlink{classbt_g_impact_bvh_370a3ad672c83a0fee3afe16c4428b16}{rayQuery} (const btVector3 \&ray\_\-dir, const btVector3 \&ray\_\-origin, \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray}$<$ int $>$ \&collided\_\-results) const }
+\label{classbt_g_impact_bvh_370a3ad672c83a0fee3afe16c4428b16}
+
+\begin{CompactList}\small\item\em returns the indices of the primitives in the m\_\-primitive\_\-manager \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_bvh_ae41f199ec288b51dc4882c39603c349}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{classbt_g_impact_bvh_ae41f199ec288b51dc4882c39603c349}{hasHierarchy} () const }
+\label{classbt_g_impact_bvh_ae41f199ec288b51dc4882c39603c349}
+
+\begin{CompactList}\small\item\em tells if this set has hierarcht \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_bvh_b4c32987d962f62a97ae3082bdfef147}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{classbt_g_impact_bvh_b4c32987d962f62a97ae3082bdfef147}{isTrimesh} () const }
+\label{classbt_g_impact_bvh_b4c32987d962f62a97ae3082bdfef147}
+
+\begin{CompactList}\small\item\em tells if this set is a trimesh \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_bvh_c0309a1e5cb9d087c8e39b1c44c76f5b}{
+SIMD\_\-FORCE\_\-INLINE int \hyperlink{classbt_g_impact_bvh_c0309a1e5cb9d087c8e39b1c44c76f5b}{getNodeCount} () const }
+\label{classbt_g_impact_bvh_c0309a1e5cb9d087c8e39b1c44c76f5b}
+
+\begin{CompactList}\small\item\em node count \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_bvh_6580f9e8fa175957b66a7bbe87adcf42}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{classbt_g_impact_bvh_6580f9e8fa175957b66a7bbe87adcf42}{isLeafNode} (int nodeindex) const }
+\label{classbt_g_impact_bvh_6580f9e8fa175957b66a7bbe87adcf42}
+
+\begin{CompactList}\small\item\em tells if the node is a leaf \item\end{CompactList}\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_g_impact_bvh_b305fcdbd3faf585e253433b7193587e}{
+\hyperlink{classbt_g_impact_bvh_b305fcdbd3faf585e253433b7193587e}{btGImpactBvh} ()}
+\label{classbt_g_impact_bvh_b305fcdbd3faf585e253433b7193587e}
+
+\begin{CompactList}\small\item\em this constructor doesn't build the tree. you must call buildSet \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_bvh_fbb8405cc5348fc66dc09819bfc60969}{
+\hyperlink{classbt_g_impact_bvh_fbb8405cc5348fc66dc09819bfc60969}{btGImpactBvh} (\hyperlink{classbt_primitive_manager_base}{btPrimitiveManagerBase} $\ast$primitive\_\-manager)}
+\label{classbt_g_impact_bvh_fbb8405cc5348fc66dc09819bfc60969}
+
+\begin{CompactList}\small\item\em this constructor doesn't build the tree. you must call buildSet \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Structure for containing Boxes. 
+
+This class offers an structure for managing a box tree of primitives. Requires a Primitive prototype (like \hyperlink{classbt_primitive_manager_base}{btPrimitiveManagerBase} ) 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_g_impact_bvh_c0511b84c8722348fe4295b2a8f40c81}{
+\index{btGImpactBvh@{btGImpactBvh}!update@{update}}
+\index{update@{update}!btGImpactBvh@{btGImpactBvh}}
+\subsubsection[update]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void btGImpactBvh::update ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_g_impact_bvh_c0511b84c8722348fe4295b2a8f40c81}
+
+
+this attemps to refit the box set. 
+
+node manager prototype functions 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactBvh.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactBvh.cpp\end{CompactItemize}

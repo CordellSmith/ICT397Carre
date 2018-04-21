@@ -1,0 +1,45 @@
+\hypertarget{classbt_simple_broadphase}{
+\section{btSimpleBroadphase Class Reference}
+\label{classbt_simple_broadphase}\index{btSimpleBroadphase@{btSimpleBroadphase}}
+}
+{\tt \#include $<$btSimpleBroadphase.h$>$}
+
+Inheritance diagram for btSimpleBroadphase:Collaboration diagram for btSimpleBroadphase:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_simple_broadphase_c899d483e888fa132677125c88991de8}{
+virtual void \hyperlink{classbt_simple_broadphase_c899d483e888fa132677125c88991de8}{calculateOverlappingPairs} (\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher)}
+\label{classbt_simple_broadphase_c899d483e888fa132677125c88991de8}
+
+\begin{CompactList}\small\item\em calculateOverlappingPairs is optional: incremental algorithms (sweep and prune) might do it during the set aabb \item\end{CompactList}\item 
+virtual void \hyperlink{classbt_simple_broadphase_8753363773ebbfeb48f8cf5594429dc2}{getBroadphaseAabb} (btVector3 \&aabbMin, btVector3 \&aabbMax) const 
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_simple_broadphase_65c387ba0fa8690716296ee9d5f7550a}{
+virtual void \hyperlink{classbt_simple_broadphase_65c387ba0fa8690716296ee9d5f7550a}{resetPool} (\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher)}
+\label{classbt_simple_broadphase_65c387ba0fa8690716296ee9d5f7550a}
+
+\begin{CompactList}\small\item\em reset broadphase internal structures, to ensure determinism/reproducability \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The SimpleBroadphase is just a unit-test for \hyperlink{classbt_axis_sweep3}{btAxisSweep3}, \hyperlink{classbt32_bit_axis_sweep3}{bt32BitAxisSweep3}, or \hyperlink{structbt_dbvt_broadphase}{btDbvtBroadphase}, so use those classes instead. It is a brute force aabb culling broadphase based on O(n$^\wedge$2) aabb checks 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_simple_broadphase_8753363773ebbfeb48f8cf5594429dc2}{
+\index{btSimpleBroadphase@{btSimpleBroadphase}!getBroadphaseAabb@{getBroadphaseAabb}}
+\index{getBroadphaseAabb@{getBroadphaseAabb}!btSimpleBroadphase@{btSimpleBroadphase}}
+\subsubsection[getBroadphaseAabb]{\setlength{\rightskip}{0pt plus 5cm}virtual void btSimpleBroadphase::getBroadphaseAabb (btVector3 \& {\em aabbMin}, \/  btVector3 \& {\em aabbMax}) const\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classbt_simple_broadphase_8753363773ebbfeb48f8cf5594429dc2}
+
+
+getAabb returns the axis aligned bounding box in the 'global' coordinate frame will add some transform later 
+
+Implements \hyperlink{classbt_broadphase_interface_b5af9e26414f5a72a76040b8fab4d9e2}{btBroadphaseInterface}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btSimpleBroadphase.cpp\end{CompactItemize}

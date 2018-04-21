@@ -1,0 +1,1448 @@
+\hypertarget{group__window}{
+\section{Window reference}
+\label{group__window}\index{Window reference@{Window reference}}
+}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef struct \hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} \hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}
+\begin{CompactList}\small\item\em Opaque window object. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_g1c36e52549efd47790eb3f324da71924}{GLFWwindowposfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, int)
+\begin{CompactList}\small\item\em The function signature for window position callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_gaca1c2715759d03da9834eac19323d4a}{GLFWwindowsizefun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, int)
+\begin{CompactList}\small\item\em The function signature for window resize callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_g07cff8bd3b3d573ecf49bb02d7669c1f}{GLFWwindowclosefun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$)
+\begin{CompactList}\small\item\em The function signature for window close callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_g16764f89bf2060e6fa477f0943e1412b}{GLFWwindowrefreshfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$)
+\begin{CompactList}\small\item\em The function signature for window content refresh callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_g6b5f973531ea91663ad707ba4f2ac104}{GLFWwindowfocusfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int)
+\begin{CompactList}\small\item\em The function signature for window focus/defocus callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_ge47ae066eea9fe6050a62360928ae524}{GLFWwindowiconifyfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int)
+\begin{CompactList}\small\item\em The function signature for window iconify/restore callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__window_g311bb32e578aa240b6464af494debffc}{GLFWframebuffersizefun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, int)
+\begin{CompactList}\small\item\em The function signature for framebuffer resize callbacks. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+GLFWAPI void \hyperlink{group__window_g8050ddceed9dc6bd9d3aa35666195cd4}{glfwDefaultWindowHints} (void)
+\begin{CompactList}\small\item\em Resets all window hints to their default values. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g69c40728499720bef8a49aa925ea0efa}{glfwWindowHint} (int hint, int value)
+\begin{CompactList}\small\item\em Sets the specified window hint to the desired value. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$ \hyperlink{group__window_g680a02abe0e4494b6759d5703240713e}{glfwCreateWindow} (int width, int height, const char $\ast$title, \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, \hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$share)
+\begin{CompactList}\small\item\em Creates a window and its associated context. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g806747476b7247d292be3711c323ea10}{glfwDestroyWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Destroys the specified window and its context. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__window_ga6162f67dfa38b8beda2fea623649332}{glfwWindowShouldClose} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Checks the close flag of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g1cadeda7a1e2f224e06a8415d30741aa}{glfwSetWindowShouldClose} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int value)
+\begin{CompactList}\small\item\em Sets the close flag of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g861ed3414ab8120e2f74151a666ed1dc}{glfwSetWindowTitle} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, const char $\ast$title)
+\begin{CompactList}\small\item\em Sets the title of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g182987a1a62a41a924842b9473d560df}{glfwSetWindowIcon} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int count, const \hyperlink{struct_g_l_f_wimage}{GLFWimage} $\ast$images)
+\begin{CompactList}\small\item\em Sets the icon for the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g0076a8591ef7494d359730cf2250b45b}{glfwGetWindowPos} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int $\ast$xpos, int $\ast$ypos)
+\begin{CompactList}\small\item\em Retrieves the position of the client area of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g0dc8d880a0d87be16d3ea8114561f6f0}{glfwSetWindowPos} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int xpos, int ypos)
+\begin{CompactList}\small\item\em Sets the position of the client area of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g7feb769ebb3f3d21579b5a3fb07be76e}{glfwGetWindowSize} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int $\ast$width, int $\ast$height)
+\begin{CompactList}\small\item\em Retrieves the size of the client area of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g8af814fc98d786d1de2505b40b707de8}{glfwSetWindowSizeLimits} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int minwidth, int minheight, int maxwidth, int maxheight)
+\begin{CompactList}\small\item\em Sets the size limits of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gd2ae94a2c5ee1c46a36e13a8f4ac68ac}{glfwSetWindowAspectRatio} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int numer, int denom)
+\begin{CompactList}\small\item\em Sets the aspect ratio of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_ge54d1f4915ded15e267ddd3f41496cd2}{glfwSetWindowSize} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int width, int height)
+\begin{CompactList}\small\item\em Sets the size of the client area of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gf7d17f3534b4b6dc9a6f905e3a240b7e}{glfwGetFramebufferSize} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int $\ast$width, int $\ast$height)
+\begin{CompactList}\small\item\em Retrieves the size of the framebuffer of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gad46cdaae2eb732f68d3a1499a7c5409}{glfwGetWindowFrameSize} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int $\ast$left, int $\ast$top, int $\ast$right, int $\ast$bottom)
+\begin{CompactList}\small\item\em Retrieves the size of the frame of the window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g24274e3c6ecd44e11fec5e6b66e4d7f3}{glfwIconifyWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Iconifies the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g1e29caf0b819f578b04db52fff17256c}{glfwRestoreWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Restores the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g4f825a55367d3fabde3d06e7f30128e8}{glfwMaximizeWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Maximizes the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g7945bcdff9e5e058cf36505d6873ed8c}{glfwShowWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Makes the specified window visible. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_ga17e287d521544bdeceafa09ac036e20}{glfwHideWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Hides the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g0da0e3daaa2d100f44a115c09077b510}{glfwFocusWindow} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Brings the specified window to front and sets input focus. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$ \hyperlink{group__window_gf1525cb3bccd5789c702cc9676ef3403}{glfwGetWindowMonitor} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Returns the monitor that the window uses for full screen mode. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g12fabf78575e59c00f822f323ae0b6ae}{glfwSetWindowMonitor} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, int xpos, int ypos, int width, int height, int refreshRate)
+\begin{CompactList}\small\item\em Sets the mode, monitor, video mode and placement of a window. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__window_g1bb0c7e100418e284dbb800789c63d40}{glfwGetWindowAttrib} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int attrib)
+\begin{CompactList}\small\item\em Returns an attribute of the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gcc9e68faee3c1763b54cd9bc405cf43e}{glfwSetWindowUserPointer} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, void $\ast$pointer)
+\begin{CompactList}\small\item\em Sets the user pointer of the specified window. \item\end{CompactList}\item 
+GLFWAPI void $\ast$ \hyperlink{group__window_g0a9ff3b4bf8589e9518e8816d06a8f50}{glfwGetWindowUserPointer} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Returns the user pointer of the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g1c36e52549efd47790eb3f324da71924}{GLFWwindowposfun} \hyperlink{group__window_gea610899c4cb070dcd655c6de1fe1d2c}{glfwSetWindowPosCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_g1c36e52549efd47790eb3f324da71924}{GLFWwindowposfun} cbfun)
+\begin{CompactList}\small\item\em Sets the position callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_gaca1c2715759d03da9834eac19323d4a}{GLFWwindowsizefun} \hyperlink{group__window_g150dad5f364425916c5816074cffa5e7}{glfwSetWindowSizeCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_gaca1c2715759d03da9834eac19323d4a}{GLFWwindowsizefun} cbfun)
+\begin{CompactList}\small\item\em Sets the size callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g07cff8bd3b3d573ecf49bb02d7669c1f}{GLFWwindowclosefun} \hyperlink{group__window_g5b827da350141c789acd64f5c4f7a0e1}{glfwSetWindowCloseCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_g07cff8bd3b3d573ecf49bb02d7669c1f}{GLFWwindowclosefun} cbfun)
+\begin{CompactList}\small\item\em Sets the close callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g16764f89bf2060e6fa477f0943e1412b}{GLFWwindowrefreshfun} \hyperlink{group__window_g9d2621fbc271a0cdc0ce91f9749f46e3}{glfwSetWindowRefreshCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_g16764f89bf2060e6fa477f0943e1412b}{GLFWwindowrefreshfun} cbfun)
+\begin{CompactList}\small\item\em Sets the refresh callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g6b5f973531ea91663ad707ba4f2ac104}{GLFWwindowfocusfun} \hyperlink{group__window_gc89c6534ba7fbab6f6c68b855656c0d4}{glfwSetWindowFocusCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_g6b5f973531ea91663ad707ba4f2ac104}{GLFWwindowfocusfun} cbfun)
+\begin{CompactList}\small\item\em Sets the focus callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_ge47ae066eea9fe6050a62360928ae524}{GLFWwindowiconifyfun} \hyperlink{group__window_g17cd86946117b56c76397530900519db}{glfwSetWindowIconifyCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_ge47ae066eea9fe6050a62360928ae524}{GLFWwindowiconifyfun} cbfun)
+\begin{CompactList}\small\item\em Sets the iconify callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__window_g311bb32e578aa240b6464af494debffc}{GLFWframebuffersizefun} \hyperlink{group__window_gd766bcdb4465f9c6c62e5d8ca7cfba56}{glfwSetFramebufferSizeCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__window_g311bb32e578aa240b6464af494debffc}{GLFWframebuffersizefun} cbfun)
+\begin{CompactList}\small\item\em Sets the framebuffer resize callback for the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g872d16e4c77f58c0436f356255920cfc}{glfwPollEvents} (void)
+\begin{CompactList}\small\item\em Processes all pending events. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g6e042d05823c11e11c7339b81a237738}{glfwWaitEvents} (void)
+\begin{CompactList}\small\item\em Waits until events are queued and processes them. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_g05223a0a4c5e50f10f289e60398153aa}{glfwWaitEventsTimeout} (double timeout)
+\begin{CompactList}\small\item\em Waits with timeout until events are queued and processes them. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gd6f6b997278c91c43b35970eb9713d7e}{glfwPostEmptyEvent} (void)
+\begin{CompactList}\small\item\em Posts an empty event to the event queue. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__window_gfb827800eedbfcbc97b1e5408df668d7}{glfwSwapBuffers} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Swaps the front and back buffers of the specified window. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This is the reference documentation for window related functions and types, including creation, deletion and event polling. For more task-oriented information, see the window\_\-guide. 
+
+\subsection{Typedef Documentation}
+\hypertarget{group__window_g311bb32e578aa240b6464af494debffc}{
+\index{window@{window}!GLFWframebuffersizefun@{GLFWframebuffersizefun}}
+\index{GLFWframebuffersizefun@{GLFWframebuffersizefun}!window@{window}}
+\subsubsection[GLFWframebuffersizefun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWframebuffersizefun})({\bf GLFWwindow} $\ast$, int, int)}}
+\label{group__window_g311bb32e578aa240b6464af494debffc}
+
+
+The function signature for framebuffer resize callbacks. 
+
+This is the function signature for framebuffer resize callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose framebuffer was resized. \item[\mbox{$\leftarrow$} {\em width}]The new width, in pixels, of the framebuffer. \item[\mbox{$\leftarrow$} {\em height}]The new height, in pixels, of the framebuffer.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]window\_\-fbsize 
+
+\hyperlink{group__window_gd766bcdb4465f9c6c62e5d8ca7cfba56}{glfwSetFramebufferSizeCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g3c96d80d363e67d13a41b5d1821f3242}{
+\index{window@{window}!GLFWwindow@{GLFWwindow}}
+\index{GLFWwindow@{GLFWwindow}!window@{window}}
+\subsubsection[GLFWwindow]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf GLFWwindow} {\bf GLFWwindow}}}
+\label{group__window_g3c96d80d363e67d13a41b5d1821f3242}
+
+
+Opaque window object. 
+
+Opaque window object.
+
+\begin{Desc}
+\item[See also:]window\_\-object\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g07cff8bd3b3d573ecf49bb02d7669c1f}{
+\index{window@{window}!GLFWwindowclosefun@{GLFWwindowclosefun}}
+\index{GLFWwindowclosefun@{GLFWwindowclosefun}!window@{window}}
+\subsubsection[GLFWwindowclosefun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWwindowclosefun})({\bf GLFWwindow} $\ast$)}}
+\label{group__window_g07cff8bd3b3d573ecf49bb02d7669c1f}
+
+
+The function signature for window close callbacks. 
+
+This is the function signature for window close callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that the user attempted to close.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]window\_\-close 
+
+\hyperlink{group__window_g5b827da350141c789acd64f5c4f7a0e1}{glfwSetWindowCloseCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 2.5.  Added window handle parameter. \end{Desc}
+\hypertarget{group__window_g6b5f973531ea91663ad707ba4f2ac104}{
+\index{window@{window}!GLFWwindowfocusfun@{GLFWwindowfocusfun}}
+\index{GLFWwindowfocusfun@{GLFWwindowfocusfun}!window@{window}}
+\subsubsection[GLFWwindowfocusfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWwindowfocusfun})({\bf GLFWwindow} $\ast$, int)}}
+\label{group__window_g6b5f973531ea91663ad707ba4f2ac104}
+
+
+The function signature for window focus/defocus callbacks. 
+
+This is the function signature for window focus callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that gained or lost input focus. \item[\mbox{$\leftarrow$} {\em focused}]`GLFW\_\-TRUE` if the window was given input focus, or `GLFW\_\-FALSE` if it lost it.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]window\_\-focus 
+
+\hyperlink{group__window_gc89c6534ba7fbab6f6c68b855656c0d4}{glfwSetWindowFocusCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_ge47ae066eea9fe6050a62360928ae524}{
+\index{window@{window}!GLFWwindowiconifyfun@{GLFWwindowiconifyfun}}
+\index{GLFWwindowiconifyfun@{GLFWwindowiconifyfun}!window@{window}}
+\subsubsection[GLFWwindowiconifyfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWwindowiconifyfun})({\bf GLFWwindow} $\ast$, int)}}
+\label{group__window_ge47ae066eea9fe6050a62360928ae524}
+
+
+The function signature for window iconify/restore callbacks. 
+
+This is the function signature for window iconify/restore callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that was iconified or restored. \item[\mbox{$\leftarrow$} {\em iconified}]`GLFW\_\-TRUE` if the window was iconified, or `GLFW\_\-FALSE` if it was restored.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]window\_\-iconify 
+
+\hyperlink{group__window_g17cd86946117b56c76397530900519db}{glfwSetWindowIconifyCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g1c36e52549efd47790eb3f324da71924}{
+\index{window@{window}!GLFWwindowposfun@{GLFWwindowposfun}}
+\index{GLFWwindowposfun@{GLFWwindowposfun}!window@{window}}
+\subsubsection[GLFWwindowposfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWwindowposfun})({\bf GLFWwindow} $\ast$, int, int)}}
+\label{group__window_g1c36e52549efd47790eb3f324da71924}
+
+
+The function signature for window position callbacks. 
+
+This is the function signature for window position callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that was moved. \item[\mbox{$\leftarrow$} {\em xpos}]The new x-coordinate, in screen coordinates, of the upper-left corner of the client area of the window. \item[\mbox{$\leftarrow$} {\em ypos}]The new y-coordinate, in screen coordinates, of the upper-left corner of the client area of the window.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]window\_\-pos 
+
+\hyperlink{group__window_gea610899c4cb070dcd655c6de1fe1d2c}{glfwSetWindowPosCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g16764f89bf2060e6fa477f0943e1412b}{
+\index{window@{window}!GLFWwindowrefreshfun@{GLFWwindowrefreshfun}}
+\index{GLFWwindowrefreshfun@{GLFWwindowrefreshfun}!window@{window}}
+\subsubsection[GLFWwindowrefreshfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWwindowrefreshfun})({\bf GLFWwindow} $\ast$)}}
+\label{group__window_g16764f89bf2060e6fa477f0943e1412b}
+
+
+The function signature for window content refresh callbacks. 
+
+This is the function signature for window refresh callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose content needs to be refreshed.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]window\_\-refresh 
+
+\hyperlink{group__window_g9d2621fbc271a0cdc0ce91f9749f46e3}{glfwSetWindowRefreshCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 2.5.  Added window handle parameter. \end{Desc}
+\hypertarget{group__window_gaca1c2715759d03da9834eac19323d4a}{
+\index{window@{window}!GLFWwindowsizefun@{GLFWwindowsizefun}}
+\index{GLFWwindowsizefun@{GLFWwindowsizefun}!window@{window}}
+\subsubsection[GLFWwindowsizefun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWwindowsizefun})({\bf GLFWwindow} $\ast$, int, int)}}
+\label{group__window_gaca1c2715759d03da9834eac19323d4a}
+
+
+The function signature for window resize callbacks. 
+
+This is the function signature for window size callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that was resized. \item[\mbox{$\leftarrow$} {\em width}]The new width, in screen coordinates, of the window. \item[\mbox{$\leftarrow$} {\em height}]The new height, in screen coordinates, of the window.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]window\_\-size 
+
+\hyperlink{group__window_g150dad5f364425916c5816074cffa5e7}{glfwSetWindowSizeCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle parameter. \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__window_g680a02abe0e4494b6759d5703240713e}{
+\index{window@{window}!glfwCreateWindow@{glfwCreateWindow}}
+\index{glfwCreateWindow@{glfwCreateWindow}!window@{window}}
+\subsubsection[glfwCreateWindow]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWwindow}$\ast$ glfwCreateWindow (int {\em width}, \/  int {\em height}, \/  const char $\ast$ {\em title}, \/  {\bf GLFWmonitor} $\ast$ {\em monitor}, \/  {\bf GLFWwindow} $\ast$ {\em share})}}
+\label{group__window_g680a02abe0e4494b6759d5703240713e}
+
+
+Creates a window and its associated context. 
+
+This function creates a window and its associated OpenGL or OpenGL ES context. Most of the options controlling how the window and its context should be created are specified with \mbox{[}window hints\mbox{]}(window\_\-hints).
+
+Successful creation does not change which context is current. Before you can use the newly created context, you need to \mbox{[}make it current\mbox{]}(context\_\-current). For information about the `share` parameter, see context\_\-sharing.
+
+The created window, framebuffer and context may differ from what you requested, as not all parameters and hints are \mbox{[}hard constraints\mbox{]}(window\_\-hints\_\-hard). This includes the size of the window, especially for full screen windows. To query the actual attributes of the created window, framebuffer and context, see \hyperlink{group__window_g1bb0c7e100418e284dbb800789c63d40}{glfwGetWindowAttrib}, \hyperlink{group__window_g7feb769ebb3f3d21579b5a3fb07be76e}{glfwGetWindowSize} and \hyperlink{group__window_gf7d17f3534b4b6dc9a6f905e3a240b7e}{glfwGetFramebufferSize}.
+
+To create a full screen window, you need to specify the monitor the window will cover. If no monitor is specified, the window will be windowed mode. Unless you have a way for the user to choose a specific monitor, it is recommended that you pick the primary monitor. For more information on how to query connected monitors, see monitor\_\-monitors.
+
+For full screen windows, the specified size becomes the resolution of the window's \_\-desired video mode\_\-. As long as a full screen window is not iconified, the supported video mode most closely matching the desired video mode is set for the specified monitor. For more information about full screen windows, including the creation of so called \_\-windowed full screen\_\- or \_\-borderless full screen\_\- windows, see window\_\-windowed\_\-full\_\-screen.
+
+Once you have created the window, you can switch it between windowed and full screen mode with \hyperlink{group__window_g12fabf78575e59c00f822f323ae0b6ae}{glfwSetWindowMonitor}. If the window has an OpenGL or OpenGL ES context, it will be unaffected.
+
+By default, newly created windows use the placement recommended by the window system. To create the window at a specific position, make it initially invisible using the \mbox{[}GLFW\_\-VISIBLE\mbox{]}(window\_\-hints\_\-wnd) window hint, set its \mbox{[}position\mbox{]}(window\_\-pos) and then \mbox{[}show\mbox{]}(window\_\-hide) it.
+
+As long as at least one full screen window is not iconified, the screensaver is prohibited from starting.
+
+Window systems put limits on window sizes. Very large or very small window dimensions may be overridden by the window system on creation. Check the actual \mbox{[}size\mbox{]}(window\_\-size) after creation.
+
+The \mbox{[}swap interval\mbox{]}(buffer\_\-swap) is not set during window creation and the initial value may vary depending on driver settings and defaults.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em width}]The desired width, in screen coordinates, of the window. This must be greater than zero. \item[\mbox{$\leftarrow$} {\em height}]The desired height, in screen coordinates, of the window. This must be greater than zero. \item[\mbox{$\leftarrow$} {\em title}]The initial, UTF-8 encoded window title. \item[\mbox{$\leftarrow$} {\em monitor}]The monitor to use for full screen mode, or `NULL` for windowed mode. \item[\mbox{$\leftarrow$} {\em share}]The window whose context to share resources with, or `NULL` to not share resources. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The handle of the created window, or `NULL` if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM}, \hyperlink{group__errors_gaf2ef9aa8202c2b82ac2d921e554c687}{GLFW\_\-INVALID\_\-VALUE}, \hyperlink{group__errors_g56882b290db23261cc6c053c40c2d08e}{GLFW\_\-API\_\-UNAVAILABLE}, \hyperlink{group__errors_gd16c5565b4a69f9c2a9ac2c0dbc89462}{GLFW\_\-VERSION\_\-UNAVAILABLE}, \hyperlink{group__errors_g196e125ef261d94184e2b55c05762f14}{GLFW\_\-FORMAT\_\-UNAVAILABLE} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Remarks:]Window creation will fail if the Microsoft GDI software OpenGL implementation is the only one available.
+
+If the executable has an icon resource named `GLFW\_\-ICON,` it will be set as the initial icon for the window. If no such icon is present, the `IDI\_\-WINLOGO` icon will be used instead. To set a different icon, see \hyperlink{group__window_g182987a1a62a41a924842b9473d560df}{glfwSetWindowIcon}.
+
+The context to share resources with must not be current on any other thread.
+
+The GLFW window has no icon, as it is not a document window, but the dock icon will be the same as the application bundle's icon. For more information on bundles, see the \mbox{[}Bundle Programming Guide\mbox{]}(\href{https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/}{\tt https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/}) in the Mac Developer Library.
+
+The first time a window is created the menu bar is populated with common commands like Hide, Quit and About. The About entry opens a minimal about dialog with information from the application's bundle. The menu bar can be disabled with a \mbox{[}compile-time option\mbox{]}(compile\_\-options\_\-osx).
+
+On OS X 10.10 and later the window frame will not be rendered at full resolution on Retina displays unless the `NSHighResolutionCapable` key is enabled in the application bundle's `Info.plist`. For more information, see \mbox{[}High Resolution Guidelines for OS X\mbox{]}(\href{https://developer.apple.com/library/mac/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Explained/Explained.html}{\tt https://developer.apple.com/library/mac/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Explained/Explained.html}) in the Mac Developer Library. The GLFW test and example programs use a custom `Info.plist` template for this, which can be found as `CMake/MacOSXBundleInfo.plist.in` in the source tree.
+
+Some window managers will not respect the placement of initially hidden windows.
+
+Due to the asynchronous nature of X11, it may take a moment for a window to reach its requested state. This means you may not be able to query the final size, position or other attributes directly after window creation.\end{Desc}
+This function must not be called from a callback.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-creation 
+
+\hyperlink{group__window_g806747476b7247d292be3711c323ea10}{glfwDestroyWindow}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwOpenWindow`. \end{Desc}
+\hypertarget{group__window_g8050ddceed9dc6bd9d3aa35666195cd4}{
+\index{window@{window}!glfwDefaultWindowHints@{glfwDefaultWindowHints}}
+\index{glfwDefaultWindowHints@{glfwDefaultWindowHints}!window@{window}}
+\subsubsection[glfwDefaultWindowHints]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwDefaultWindowHints (void)}}
+\label{group__window_g8050ddceed9dc6bd9d3aa35666195cd4}
+
+
+Resets all window hints to their default values. 
+
+This function resets all window hints to their \mbox{[}default values\mbox{]}(window\_\-hints\_\-values).
+
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-hints 
+
+\hyperlink{group__window_g69c40728499720bef8a49aa925ea0efa}{glfwWindowHint}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g806747476b7247d292be3711c323ea10}{
+\index{window@{window}!glfwDestroyWindow@{glfwDestroyWindow}}
+\index{glfwDestroyWindow@{glfwDestroyWindow}!window@{window}}
+\subsubsection[glfwDestroyWindow]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwDestroyWindow ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__window_g806747476b7247d292be3711c323ea10}
+
+
+Destroys the specified window and its context. 
+
+This function destroys the specified window and its context. On calling this function, no further callbacks will be called for that window.
+
+If the context of the specified window is current on the main thread, it is detached before being destroyed.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to destroy.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Note:]The context of the specified window must not be current on any other thread when this function is called.\end{Desc}
+This function must not be called from a callback.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-creation 
+
+\hyperlink{group__window_g680a02abe0e4494b6759d5703240713e}{glfwCreateWindow}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwCloseWindow`. \end{Desc}
+\hypertarget{group__window_g0da0e3daaa2d100f44a115c09077b510}{
+\index{window@{window}!glfwFocusWindow@{glfwFocusWindow}}
+\index{glfwFocusWindow@{glfwFocusWindow}!window@{window}}
+\subsubsection[glfwFocusWindow]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwFocusWindow ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__window_g0da0e3daaa2d100f44a115c09077b510}
+
+
+Brings the specified window to front and sets input focus. 
+
+This function brings the specified window to front and sets input focus. The window should already be visible and not iconified.
+
+By default, both windowed and full screen mode windows are focused when initially created. Set the \mbox{[}GLFW\_\-FOCUSED\mbox{]}(window\_\-hints\_\-wnd) to disable this behavior.
+
+\_\-\_\-Do not use this function\_\-\_\- to steal focus from other applications unless you are certain that is what the user wants. Focus stealing can be extremely disruptive.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to give input focus.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-focus\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__window_gf7d17f3534b4b6dc9a6f905e3a240b7e}{
+\index{window@{window}!glfwGetFramebufferSize@{glfwGetFramebufferSize}}
+\index{glfwGetFramebufferSize@{glfwGetFramebufferSize}!window@{window}}
+\subsubsection[glfwGetFramebufferSize]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwGetFramebufferSize ({\bf GLFWwindow} $\ast$ {\em window}, \/  int $\ast$ {\em width}, \/  int $\ast$ {\em height})}}
+\label{group__window_gf7d17f3534b4b6dc9a6f905e3a240b7e}
+
+
+Retrieves the size of the framebuffer of the specified window. 
+
+This function retrieves the size, in pixels, of the framebuffer of the specified window. If you wish to retrieve the size of the window in screen coordinates, see \hyperlink{group__window_g7feb769ebb3f3d21579b5a3fb07be76e}{glfwGetWindowSize}.
+
+Any or all of the size arguments may be `NULL`. If an error occurs, all non-`NULL` size arguments will be set to zero.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose framebuffer to query. \item[\mbox{$\rightarrow$} {\em width}]Where to store the width, in pixels, of the framebuffer, or `NULL`. \item[\mbox{$\rightarrow$} {\em height}]Where to store the height, in pixels, of the framebuffer, or `NULL`.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-fbsize 
+
+\hyperlink{group__window_gd766bcdb4465f9c6c62e5d8ca7cfba56}{glfwSetFramebufferSizeCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g1bb0c7e100418e284dbb800789c63d40}{
+\index{window@{window}!glfwGetWindowAttrib@{glfwGetWindowAttrib}}
+\index{glfwGetWindowAttrib@{glfwGetWindowAttrib}!window@{window}}
+\subsubsection[glfwGetWindowAttrib]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI int glfwGetWindowAttrib ({\bf GLFWwindow} $\ast$ {\em window}, \/  int {\em attrib})}}
+\label{group__window_g1bb0c7e100418e284dbb800789c63d40}
+
+
+Returns an attribute of the specified window. 
+
+This function returns the value of an attribute of the specified window or its OpenGL or OpenGL ES context.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to query. \item[\mbox{$\leftarrow$} {\em attrib}]The \mbox{[}window attribute\mbox{]}(window\_\-attribs) whose value to return. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The value of the attribute, or zero if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Remarks:]Framebuffer related hints are not window attributes. See window\_\-attribs\_\-fb for more information.
+
+Zero is a valid value for many window and context related attributes so you cannot use a return value of zero as an indication of errors. However, this function should not fail as long as it is passed valid arguments and the library has been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-attribs\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwGetWindowParam` and `glfwGetGLVersion`. \end{Desc}
+\hypertarget{group__window_gad46cdaae2eb732f68d3a1499a7c5409}{
+\index{window@{window}!glfwGetWindowFrameSize@{glfwGetWindowFrameSize}}
+\index{glfwGetWindowFrameSize@{glfwGetWindowFrameSize}!window@{window}}
+\subsubsection[glfwGetWindowFrameSize]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwGetWindowFrameSize ({\bf GLFWwindow} $\ast$ {\em window}, \/  int $\ast$ {\em left}, \/  int $\ast$ {\em top}, \/  int $\ast$ {\em right}, \/  int $\ast$ {\em bottom})}}
+\label{group__window_gad46cdaae2eb732f68d3a1499a7c5409}
+
+
+Retrieves the size of the frame of the window. 
+
+This function retrieves the size, in screen coordinates, of each edge of the frame of the specified window. This size includes the title bar, if the window has one. The size of the frame may vary depending on the \mbox{[}window-related hints\mbox{]}(window\_\-hints\_\-wnd) used to create it.
+
+Because this function retrieves the size of each window frame edge and not the offset along a particular coordinate axis, the retrieved values will always be zero or positive.
+
+Any or all of the size arguments may be `NULL`. If an error occurs, all non-`NULL` size arguments will be set to zero.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose frame size to query. \item[\mbox{$\rightarrow$} {\em left}]Where to store the size, in screen coordinates, of the left edge of the window frame, or `NULL`. \item[\mbox{$\rightarrow$} {\em top}]Where to store the size, in screen coordinates, of the top edge of the window frame, or `NULL`. \item[\mbox{$\rightarrow$} {\em right}]Where to store the size, in screen coordinates, of the right edge of the window frame, or `NULL`. \item[\mbox{$\rightarrow$} {\em bottom}]Where to store the size, in screen coordinates, of the bottom edge of the window frame, or `NULL`.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-size\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.1. \end{Desc}
+\hypertarget{group__window_gf1525cb3bccd5789c702cc9676ef3403}{
+\index{window@{window}!glfwGetWindowMonitor@{glfwGetWindowMonitor}}
+\index{glfwGetWindowMonitor@{glfwGetWindowMonitor}!window@{window}}
+\subsubsection[glfwGetWindowMonitor]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWmonitor}$\ast$ glfwGetWindowMonitor ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__window_gf1525cb3bccd5789c702cc9676ef3403}
+
+
+Returns the monitor that the window uses for full screen mode. 
+
+This function returns the handle of the monitor that the specified window is in full screen on.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to query. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The monitor, or `NULL` if the window is in windowed mode or an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-monitor 
+
+\hyperlink{group__window_g12fabf78575e59c00f822f323ae0b6ae}{glfwSetWindowMonitor}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g0076a8591ef7494d359730cf2250b45b}{
+\index{window@{window}!glfwGetWindowPos@{glfwGetWindowPos}}
+\index{glfwGetWindowPos@{glfwGetWindowPos}!window@{window}}
+\subsubsection[glfwGetWindowPos]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwGetWindowPos ({\bf GLFWwindow} $\ast$ {\em window}, \/  int $\ast$ {\em xpos}, \/  int $\ast$ {\em ypos})}}
+\label{group__window_g0076a8591ef7494d359730cf2250b45b}
+
+
+Retrieves the position of the client area of the specified window. 
+
+This function retrieves the position, in screen coordinates, of the upper-left corner of the client area of the specified window.
+
+Any or all of the position arguments may be `NULL`. If an error occurs, all non-`NULL` position arguments will be set to zero.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to query. \item[\mbox{$\rightarrow$} {\em xpos}]Where to store the x-coordinate of the upper-left corner of the client area, or `NULL`. \item[\mbox{$\rightarrow$} {\em ypos}]Where to store the y-coordinate of the upper-left corner of the client area, or `NULL`.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-pos 
+
+\hyperlink{group__window_g0dc8d880a0d87be16d3ea8114561f6f0}{glfwSetWindowPos}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g7feb769ebb3f3d21579b5a3fb07be76e}{
+\index{window@{window}!glfwGetWindowSize@{glfwGetWindowSize}}
+\index{glfwGetWindowSize@{glfwGetWindowSize}!window@{window}}
+\subsubsection[glfwGetWindowSize]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwGetWindowSize ({\bf GLFWwindow} $\ast$ {\em window}, \/  int $\ast$ {\em width}, \/  int $\ast$ {\em height})}}
+\label{group__window_g7feb769ebb3f3d21579b5a3fb07be76e}
+
+
+Retrieves the size of the client area of the specified window. 
+
+This function retrieves the size, in screen coordinates, of the client area of the specified window. If you wish to retrieve the size of the framebuffer of the window in pixels, see \hyperlink{group__window_gf7d17f3534b4b6dc9a6f905e3a240b7e}{glfwGetFramebufferSize}.
+
+Any or all of the size arguments may be `NULL`. If an error occurs, all non-`NULL` size arguments will be set to zero.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose size to retrieve. \item[\mbox{$\rightarrow$} {\em width}]Where to store the width, in screen coordinates, of the client area, or `NULL`. \item[\mbox{$\rightarrow$} {\em height}]Where to store the height, in screen coordinates, of the client area, or `NULL`.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-size 
+
+\hyperlink{group__window_ge54d1f4915ded15e267ddd3f41496cd2}{glfwSetWindowSize}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle parameter. \end{Desc}
+\hypertarget{group__window_g0a9ff3b4bf8589e9518e8816d06a8f50}{
+\index{window@{window}!glfwGetWindowUserPointer@{glfwGetWindowUserPointer}}
+\index{glfwGetWindowUserPointer@{glfwGetWindowUserPointer}!window@{window}}
+\subsubsection[glfwGetWindowUserPointer]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void$\ast$ glfwGetWindowUserPointer ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__window_g0a9ff3b4bf8589e9518e8816d06a8f50}
+
+
+Returns the user pointer of the specified window. 
+
+This function returns the current value of the user-defined pointer of the specified window. The initial value is `NULL`.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose pointer to return.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function may be called from any thread. Access is not synchronized.
+
+\begin{Desc}
+\item[See also:]window\_\-userptr 
+
+\hyperlink{group__window_gcc9e68faee3c1763b54cd9bc405cf43e}{glfwSetWindowUserPointer}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_ga17e287d521544bdeceafa09ac036e20}{
+\index{window@{window}!glfwHideWindow@{glfwHideWindow}}
+\index{glfwHideWindow@{glfwHideWindow}!window@{window}}
+\subsubsection[glfwHideWindow]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwHideWindow ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__window_ga17e287d521544bdeceafa09ac036e20}
+
+
+Hides the specified window. 
+
+This function hides the specified window if it was previously visible. If the window is already hidden or is in full screen mode, this function does nothing.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to hide.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-hide 
+
+\hyperlink{group__window_g7945bcdff9e5e058cf36505d6873ed8c}{glfwShowWindow}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g24274e3c6ecd44e11fec5e6b66e4d7f3}{
+\index{window@{window}!glfwIconifyWindow@{glfwIconifyWindow}}
+\index{glfwIconifyWindow@{glfwIconifyWindow}!window@{window}}
+\subsubsection[glfwIconifyWindow]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwIconifyWindow ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__window_g24274e3c6ecd44e11fec5e6b66e4d7f3}
+
+
+Iconifies the specified window. 
+
+This function iconifies (minimizes) the specified window if it was previously restored. If the window is already iconified, this function does nothing.
+
+If the specified window is a full screen window, the original monitor resolution is restored until the window is restored.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to iconify.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-iconify 
+
+\hyperlink{group__window_g1e29caf0b819f578b04db52fff17256c}{glfwRestoreWindow} 
+
+\hyperlink{group__window_g4f825a55367d3fabde3d06e7f30128e8}{glfwMaximizeWindow}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 2.1.  Added window handle parameter. \end{Desc}
+\hypertarget{group__window_g4f825a55367d3fabde3d06e7f30128e8}{
+\index{window@{window}!glfwMaximizeWindow@{glfwMaximizeWindow}}
+\index{glfwMaximizeWindow@{glfwMaximizeWindow}!window@{window}}
+\subsubsection[glfwMaximizeWindow]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwMaximizeWindow ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__window_g4f825a55367d3fabde3d06e7f30128e8}
+
+
+Maximizes the specified window. 
+
+This function maximizes the specified window if it was previously not maximized. If the window is already maximized, this function does nothing.
+
+If the specified window is a full screen window, this function does nothing.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to maximize.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Thread Safety]This function may only be called from the main thread.\end{Desc}
+\begin{Desc}
+\item[See also:]window\_\-iconify 
+
+\hyperlink{group__window_g24274e3c6ecd44e11fec5e6b66e4d7f3}{glfwIconifyWindow} 
+
+\hyperlink{group__window_g1e29caf0b819f578b04db52fff17256c}{glfwRestoreWindow}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in GLFW 3.2. \end{Desc}
+\hypertarget{group__window_g872d16e4c77f58c0436f356255920cfc}{
+\index{window@{window}!glfwPollEvents@{glfwPollEvents}}
+\index{glfwPollEvents@{glfwPollEvents}!window@{window}}
+\subsubsection[glfwPollEvents]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwPollEvents (void)}}
+\label{group__window_g872d16e4c77f58c0436f356255920cfc}
+
+
+Processes all pending events. 
+
+This function processes only those events that are already in the event queue and then returns immediately. Processing events will cause the window and input callbacks associated with those events to be called.
+
+On some platforms, a window move, resize or menu operation will cause event processing to block. This is due to how event processing is designed on those platforms. You can use the \mbox{[}window refresh callback\mbox{]}(window\_\-refresh) to redraw the contents of your window when necessary during such operations.
+
+On some platforms, certain events are sent directly to the application without going through the event queue, causing callbacks to be called outside of a call to one of the event processing functions.
+
+Event processing is not required for joystick input to work.
+
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must not be called from a callback.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]events 
+
+\hyperlink{group__window_g6e042d05823c11e11c7339b81a237738}{glfwWaitEvents} 
+
+\hyperlink{group__window_g05223a0a4c5e50f10f289e60398153aa}{glfwWaitEventsTimeout}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0. \end{Desc}
+\hypertarget{group__window_gd6f6b997278c91c43b35970eb9713d7e}{
+\index{window@{window}!glfwPostEmptyEvent@{glfwPostEmptyEvent}}
+\index{glfwPostEmptyEvent@{glfwPostEmptyEvent}!window@{window}}
+\subsubsection[glfwPostEmptyEvent]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwPostEmptyEvent (void)}}
+\label{group__window_gd6f6b997278c91c43b35970eb9713d7e}
+
+
+Posts an empty event to the event queue. 
+
+This function posts an empty event from the current thread to the event queue, causing \hyperlink{group__window_g6e042d05823c11e11c7339b81a237738}{glfwWaitEvents} or \hyperlink{group__window_g05223a0a4c5e50f10f289e60398153aa}{glfwWaitEventsTimeout} to return.
+
+If no windows exist, this function returns immediately. For synchronization of threads in applications that do not create windows, use your threading library of choice.
+
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]events 
+
+\hyperlink{group__window_g6e042d05823c11e11c7339b81a237738}{glfwWaitEvents} 
+
+\hyperlink{group__window_g05223a0a4c5e50f10f289e60398153aa}{glfwWaitEventsTimeout}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.1. \end{Desc}
+\hypertarget{group__window_g1e29caf0b819f578b04db52fff17256c}{
+\index{window@{window}!glfwRestoreWindow@{glfwRestoreWindow}}
+\index{glfwRestoreWindow@{glfwRestoreWindow}!window@{window}}
+\subsubsection[glfwRestoreWindow]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwRestoreWindow ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__window_g1e29caf0b819f578b04db52fff17256c}
+
+
+Restores the specified window. 
+
+This function restores the specified window if it was previously iconified (minimized) or maximized. If the window is already restored, this function does nothing.
+
+If the specified window is a full screen window, the resolution chosen for the window is restored on the selected monitor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to restore.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-iconify 
+
+\hyperlink{group__window_g24274e3c6ecd44e11fec5e6b66e4d7f3}{glfwIconifyWindow} 
+
+\hyperlink{group__window_g4f825a55367d3fabde3d06e7f30128e8}{glfwMaximizeWindow}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 2.1.  Added window handle parameter. \end{Desc}
+\hypertarget{group__window_gd766bcdb4465f9c6c62e5d8ca7cfba56}{
+\index{window@{window}!glfwSetFramebufferSizeCallback@{glfwSetFramebufferSizeCallback}}
+\index{glfwSetFramebufferSizeCallback@{glfwSetFramebufferSizeCallback}!window@{window}}
+\subsubsection[glfwSetFramebufferSizeCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWframebuffersizefun} glfwSetFramebufferSizeCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWframebuffersizefun} {\em cbfun})}}
+\label{group__window_gd766bcdb4465f9c6c62e5d8ca7cfba56}
+
+
+Sets the framebuffer resize callback for the specified window. 
+
+This function sets the framebuffer resize callback of the specified window, which is called when the framebuffer of the specified window is resized.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-fbsize\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_gd2ae94a2c5ee1c46a36e13a8f4ac68ac}{
+\index{window@{window}!glfwSetWindowAspectRatio@{glfwSetWindowAspectRatio}}
+\index{glfwSetWindowAspectRatio@{glfwSetWindowAspectRatio}!window@{window}}
+\subsubsection[glfwSetWindowAspectRatio]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetWindowAspectRatio ({\bf GLFWwindow} $\ast$ {\em window}, \/  int {\em numer}, \/  int {\em denom})}}
+\label{group__window_gd2ae94a2c5ee1c46a36e13a8f4ac68ac}
+
+
+Sets the aspect ratio of the specified window. 
+
+This function sets the required aspect ratio of the client area of the specified window. If the window is full screen, the aspect ratio only takes effect once it is made windowed. If the window is not resizable, this function does nothing.
+
+The aspect ratio is specified as a numerator and a denominator and both values must be greater than zero. For example, the common 16:9 aspect ratio is specified as 16 and 9, respectively.
+
+If the numerator and denominator is set to `GLFW\_\-DONT\_\-CARE` then the aspect ratio limit is disabled.
+
+The aspect ratio is applied immediately to a windowed mode window and may cause it to be resized.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to set limits for. \item[\mbox{$\leftarrow$} {\em numer}]The numerator of the desired aspect ratio, or `GLFW\_\-DONT\_\-CARE`. \item[\mbox{$\leftarrow$} {\em denom}]The denominator of the desired aspect ratio, or `GLFW\_\-DONT\_\-CARE`.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_gaf2ef9aa8202c2b82ac2d921e554c687}{GLFW\_\-INVALID\_\-VALUE} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Remarks:]If you set size limits and an aspect ratio that conflict, the results are undefined.\end{Desc}
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-sizelimits 
+
+\hyperlink{group__window_g8af814fc98d786d1de2505b40b707de8}{glfwSetWindowSizeLimits}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__window_g5b827da350141c789acd64f5c4f7a0e1}{
+\index{window@{window}!glfwSetWindowCloseCallback@{glfwSetWindowCloseCallback}}
+\index{glfwSetWindowCloseCallback@{glfwSetWindowCloseCallback}!window@{window}}
+\subsubsection[glfwSetWindowCloseCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWwindowclosefun} glfwSetWindowCloseCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWwindowclosefun} {\em cbfun})}}
+\label{group__window_g5b827da350141c789acd64f5c4f7a0e1}
+
+
+Sets the close callback for the specified window. 
+
+This function sets the close callback of the specified window, which is called when the user attempts to close the window, for example by clicking the close widget in the title bar.
+
+The close flag is set before this callback is called, but you can modify it at any time with \hyperlink{group__window_g1cadeda7a1e2f224e06a8415d30741aa}{glfwSetWindowShouldClose}.
+
+The close callback is not triggered by \hyperlink{group__window_g806747476b7247d292be3711c323ea10}{glfwDestroyWindow}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+\begin{Desc}
+\item[Remarks:]Selecting Quit from the application menu will trigger the close callback for all windows.\end{Desc}
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-close\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 2.5.  Added window handle parameter and return value. \end{Desc}
+\hypertarget{group__window_gc89c6534ba7fbab6f6c68b855656c0d4}{
+\index{window@{window}!glfwSetWindowFocusCallback@{glfwSetWindowFocusCallback}}
+\index{glfwSetWindowFocusCallback@{glfwSetWindowFocusCallback}!window@{window}}
+\subsubsection[glfwSetWindowFocusCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWwindowfocusfun} glfwSetWindowFocusCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWwindowfocusfun} {\em cbfun})}}
+\label{group__window_gc89c6534ba7fbab6f6c68b855656c0d4}
+
+
+Sets the focus callback for the specified window. 
+
+This function sets the focus callback of the specified window, which is called when the window gains or loses input focus.
+
+After the focus callback is called for a window that lost input focus, synthetic key and mouse button release events will be generated for all such that had been pressed. For more information, see \hyperlink{group__input_ga73bb92f628a2a0be9c132d56f19362c}{glfwSetKeyCallback} and \hyperlink{group__input_g20e5ba1ce4e086aedd48a06dc311c95f}{glfwSetMouseButtonCallback}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-focus\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g182987a1a62a41a924842b9473d560df}{
+\index{window@{window}!glfwSetWindowIcon@{glfwSetWindowIcon}}
+\index{glfwSetWindowIcon@{glfwSetWindowIcon}!window@{window}}
+\subsubsection[glfwSetWindowIcon]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetWindowIcon ({\bf GLFWwindow} $\ast$ {\em window}, \/  int {\em count}, \/  const {\bf GLFWimage} $\ast$ {\em images})}}
+\label{group__window_g182987a1a62a41a924842b9473d560df}
+
+
+Sets the icon for the specified window. 
+
+This function sets the icon of the specified window. If passed an array of candidate images, those of or closest to the sizes desired by the system are selected. If no images are specified, the window reverts to its default icon.
+
+The desired image sizes varies depending on platform and system settings. The selected images will be rescaled as needed. Good sizes include 16x16, 32x32 and 48x48.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose icon to set. \item[\mbox{$\leftarrow$} {\em count}]The number of images in the specified array, or zero to revert to the default window icon. \item[\mbox{$\leftarrow$} {\em images}]The images to create the icon from. This is ignored if count is zero.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+The specified image data is copied before this function returns.
+
+\begin{Desc}
+\item[Remarks:]The GLFW window has no icon, as it is not a document window, so this function does nothing. The dock icon will be the same as the application bundle's icon. For more information on bundles, see the \mbox{[}Bundle Programming Guide\mbox{]}(\href{https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/}{\tt https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/}) in the Mac Developer Library.\end{Desc}
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-icon\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__window_g17cd86946117b56c76397530900519db}{
+\index{window@{window}!glfwSetWindowIconifyCallback@{glfwSetWindowIconifyCallback}}
+\index{glfwSetWindowIconifyCallback@{glfwSetWindowIconifyCallback}!window@{window}}
+\subsubsection[glfwSetWindowIconifyCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWwindowiconifyfun} glfwSetWindowIconifyCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWwindowiconifyfun} {\em cbfun})}}
+\label{group__window_g17cd86946117b56c76397530900519db}
+
+
+Sets the iconify callback for the specified window. 
+
+This function sets the iconification callback of the specified window, which is called when the window is iconified or restored.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-iconify\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g12fabf78575e59c00f822f323ae0b6ae}{
+\index{window@{window}!glfwSetWindowMonitor@{glfwSetWindowMonitor}}
+\index{glfwSetWindowMonitor@{glfwSetWindowMonitor}!window@{window}}
+\subsubsection[glfwSetWindowMonitor]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetWindowMonitor ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWmonitor} $\ast$ {\em monitor}, \/  int {\em xpos}, \/  int {\em ypos}, \/  int {\em width}, \/  int {\em height}, \/  int {\em refreshRate})}}
+\label{group__window_g12fabf78575e59c00f822f323ae0b6ae}
+
+
+Sets the mode, monitor, video mode and placement of a window. 
+
+This function sets the monitor that the window uses for full screen mode or, if the monitor is `NULL`, makes it windowed mode.
+
+When setting a monitor, this function updates the width, height and refresh rate of the desired video mode and switches to the video mode closest to it. The window position is ignored when setting a monitor.
+
+When the monitor is `NULL`, the position, width and height are used to place the window client area. The refresh rate is ignored when no monitor is specified.
+
+If you only wish to update the resolution of a full screen window or the size of a windowed mode window, see \hyperlink{group__window_ge54d1f4915ded15e267ddd3f41496cd2}{glfwSetWindowSize}.
+
+When a window transitions from full screen to windowed mode, this function restores any previous window settings such as whether it is decorated, floating, resizable, has size or aspect ratio limits, etc..
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose monitor, size or video mode to set. \item[\mbox{$\leftarrow$} {\em monitor}]The desired monitor, or `NULL` to set windowed mode. \item[\mbox{$\leftarrow$} {\em xpos}]The desired x-coordinate of the upper-left corner of the client area. \item[\mbox{$\leftarrow$} {\em ypos}]The desired y-coordinate of the upper-left corner of the client area. \item[\mbox{$\leftarrow$} {\em width}]The desired with, in screen coordinates, of the client area or video mode. \item[\mbox{$\leftarrow$} {\em height}]The desired height, in screen coordinates, of the client area or video mode. \item[\mbox{$\leftarrow$} {\em refreshRate}]The desired refresh rate, in Hz, of the video mode, or `GLFW\_\-DONT\_\-CARE`.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-monitor 
+
+window\_\-full\_\-screen 
+
+\hyperlink{group__window_gf1525cb3bccd5789c702cc9676ef3403}{glfwGetWindowMonitor} 
+
+\hyperlink{group__window_ge54d1f4915ded15e267ddd3f41496cd2}{glfwSetWindowSize}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__window_g0dc8d880a0d87be16d3ea8114561f6f0}{
+\index{window@{window}!glfwSetWindowPos@{glfwSetWindowPos}}
+\index{glfwSetWindowPos@{glfwSetWindowPos}!window@{window}}
+\subsubsection[glfwSetWindowPos]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetWindowPos ({\bf GLFWwindow} $\ast$ {\em window}, \/  int {\em xpos}, \/  int {\em ypos})}}
+\label{group__window_g0dc8d880a0d87be16d3ea8114561f6f0}
+
+
+Sets the position of the client area of the specified window. 
+
+This function sets the position, in screen coordinates, of the upper-left corner of the client area of the specified windowed mode window. If the window is a full screen window, this function does nothing.
+
+\_\-\_\-Do not use this function\_\-\_\- to move an already visible window unless you have very good reasons for doing so, as it will confuse and annoy the user.
+
+The window manager may put limits on what positions are allowed. GLFW cannot and should not override these limits.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to query. \item[\mbox{$\leftarrow$} {\em xpos}]The x-coordinate of the upper-left corner of the client area. \item[\mbox{$\leftarrow$} {\em ypos}]The y-coordinate of the upper-left corner of the client area.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-pos 
+
+\hyperlink{group__window_g0076a8591ef7494d359730cf2250b45b}{glfwGetWindowPos}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle parameter. \end{Desc}
+\hypertarget{group__window_gea610899c4cb070dcd655c6de1fe1d2c}{
+\index{window@{window}!glfwSetWindowPosCallback@{glfwSetWindowPosCallback}}
+\index{glfwSetWindowPosCallback@{glfwSetWindowPosCallback}!window@{window}}
+\subsubsection[glfwSetWindowPosCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWwindowposfun} glfwSetWindowPosCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWwindowposfun} {\em cbfun})}}
+\label{group__window_gea610899c4cb070dcd655c6de1fe1d2c}
+
+
+Sets the position callback for the specified window. 
+
+This function sets the position callback of the specified window, which is called when the window is moved. The callback is provided with the screen position of the upper-left corner of the client area of the window.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-pos\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g9d2621fbc271a0cdc0ce91f9749f46e3}{
+\index{window@{window}!glfwSetWindowRefreshCallback@{glfwSetWindowRefreshCallback}}
+\index{glfwSetWindowRefreshCallback@{glfwSetWindowRefreshCallback}!window@{window}}
+\subsubsection[glfwSetWindowRefreshCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWwindowrefreshfun} glfwSetWindowRefreshCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWwindowrefreshfun} {\em cbfun})}}
+\label{group__window_g9d2621fbc271a0cdc0ce91f9749f46e3}
+
+
+Sets the refresh callback for the specified window. 
+
+This function sets the refresh callback of the specified window, which is called when the client area of the window needs to be redrawn, for example if the window has been exposed after having been covered by another window.
+
+On compositing window systems such as Aero, Compiz or Aqua, where the window contents are saved off-screen, this callback may be called only very infrequently or never at all.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-refresh\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 2.5.  Added window handle parameter and return value. \end{Desc}
+\hypertarget{group__window_g1cadeda7a1e2f224e06a8415d30741aa}{
+\index{window@{window}!glfwSetWindowShouldClose@{glfwSetWindowShouldClose}}
+\index{glfwSetWindowShouldClose@{glfwSetWindowShouldClose}!window@{window}}
+\subsubsection[glfwSetWindowShouldClose]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetWindowShouldClose ({\bf GLFWwindow} $\ast$ {\em window}, \/  int {\em value})}}
+\label{group__window_g1cadeda7a1e2f224e06a8415d30741aa}
+
+
+Sets the close flag of the specified window. 
+
+This function sets the value of the close flag of the specified window. This can be used to override the user's attempt to close the window, or to signal that it should be closed.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose flag to change. \item[\mbox{$\leftarrow$} {\em value}]The new value.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function may be called from any thread. Access is not synchronized.
+
+\begin{Desc}
+\item[See also:]window\_\-close\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_ge54d1f4915ded15e267ddd3f41496cd2}{
+\index{window@{window}!glfwSetWindowSize@{glfwSetWindowSize}}
+\index{glfwSetWindowSize@{glfwSetWindowSize}!window@{window}}
+\subsubsection[glfwSetWindowSize]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetWindowSize ({\bf GLFWwindow} $\ast$ {\em window}, \/  int {\em width}, \/  int {\em height})}}
+\label{group__window_ge54d1f4915ded15e267ddd3f41496cd2}
+
+
+Sets the size of the client area of the specified window. 
+
+This function sets the size, in screen coordinates, of the client area of the specified window.
+
+For full screen windows, this function updates the resolution of its desired video mode and switches to the video mode closest to it, without affecting the window's context. As the context is unaffected, the bit depths of the framebuffer remain unchanged.
+
+If you wish to update the refresh rate of the desired video mode in addition to its resolution, see \hyperlink{group__window_g12fabf78575e59c00f822f323ae0b6ae}{glfwSetWindowMonitor}.
+
+The window manager may put limits on what sizes are allowed. GLFW cannot and should not override these limits.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to resize. \item[\mbox{$\leftarrow$} {\em width}]The desired width, in screen coordinates, of the window client area. \item[\mbox{$\leftarrow$} {\em height}]The desired height, in screen coordinates, of the window client area.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-size 
+
+\hyperlink{group__window_g7feb769ebb3f3d21579b5a3fb07be76e}{glfwGetWindowSize} 
+
+\hyperlink{group__window_g12fabf78575e59c00f822f323ae0b6ae}{glfwSetWindowMonitor}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle parameter. \end{Desc}
+\hypertarget{group__window_g150dad5f364425916c5816074cffa5e7}{
+\index{window@{window}!glfwSetWindowSizeCallback@{glfwSetWindowSizeCallback}}
+\index{glfwSetWindowSizeCallback@{glfwSetWindowSizeCallback}!window@{window}}
+\subsubsection[glfwSetWindowSizeCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWwindowsizefun} glfwSetWindowSizeCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWwindowsizefun} {\em cbfun})}}
+\label{group__window_g150dad5f364425916c5816074cffa5e7}
+
+
+Sets the size callback for the specified window. 
+
+This function sets the size callback of the specified window, which is called when the window is resized. The callback is provided with the size, in screen coordinates, of the client area of the window.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-size\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle parameter and return value. \end{Desc}
+\hypertarget{group__window_g8af814fc98d786d1de2505b40b707de8}{
+\index{window@{window}!glfwSetWindowSizeLimits@{glfwSetWindowSizeLimits}}
+\index{glfwSetWindowSizeLimits@{glfwSetWindowSizeLimits}!window@{window}}
+\subsubsection[glfwSetWindowSizeLimits]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetWindowSizeLimits ({\bf GLFWwindow} $\ast$ {\em window}, \/  int {\em minwidth}, \/  int {\em minheight}, \/  int {\em maxwidth}, \/  int {\em maxheight})}}
+\label{group__window_g8af814fc98d786d1de2505b40b707de8}
+
+
+Sets the size limits of the specified window. 
+
+This function sets the size limits of the client area of the specified window. If the window is full screen, the size limits only take effect once it is made windowed. If the window is not resizable, this function does nothing.
+
+The size limits are applied immediately to a windowed mode window and may cause it to be resized.
+
+The maximum dimensions must be greater than or equal to the minimum dimensions and all must be greater than or equal to zero.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to set limits for. \item[\mbox{$\leftarrow$} {\em minwidth}]The minimum width, in screen coordinates, of the client area, or `GLFW\_\-DONT\_\-CARE`. \item[\mbox{$\leftarrow$} {\em minheight}]The minimum height, in screen coordinates, of the client area, or `GLFW\_\-DONT\_\-CARE`. \item[\mbox{$\leftarrow$} {\em maxwidth}]The maximum width, in screen coordinates, of the client area, or `GLFW\_\-DONT\_\-CARE`. \item[\mbox{$\leftarrow$} {\em maxheight}]The maximum height, in screen coordinates, of the client area, or `GLFW\_\-DONT\_\-CARE`.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_gaf2ef9aa8202c2b82ac2d921e554c687}{GLFW\_\-INVALID\_\-VALUE} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Remarks:]If you set size limits and an aspect ratio that conflict, the results are undefined.\end{Desc}
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-sizelimits 
+
+\hyperlink{group__window_gd2ae94a2c5ee1c46a36e13a8f4ac68ac}{glfwSetWindowAspectRatio}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__window_g861ed3414ab8120e2f74151a666ed1dc}{
+\index{window@{window}!glfwSetWindowTitle@{glfwSetWindowTitle}}
+\index{glfwSetWindowTitle@{glfwSetWindowTitle}!window@{window}}
+\subsubsection[glfwSetWindowTitle]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetWindowTitle ({\bf GLFWwindow} $\ast$ {\em window}, \/  const char $\ast$ {\em title})}}
+\label{group__window_g861ed3414ab8120e2f74151a666ed1dc}
+
+
+Sets the title of the specified window. 
+
+This function sets the window title, encoded as UTF-8, of the specified window.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose title to change. \item[\mbox{$\leftarrow$} {\em title}]The UTF-8 encoded window title.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Remarks:]The window title will not be updated until the next time you process events.\end{Desc}
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-title\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle parameter. \end{Desc}
+\hypertarget{group__window_gcc9e68faee3c1763b54cd9bc405cf43e}{
+\index{window@{window}!glfwSetWindowUserPointer@{glfwSetWindowUserPointer}}
+\index{glfwSetWindowUserPointer@{glfwSetWindowUserPointer}!window@{window}}
+\subsubsection[glfwSetWindowUserPointer]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetWindowUserPointer ({\bf GLFWwindow} $\ast$ {\em window}, \/  void $\ast$ {\em pointer})}}
+\label{group__window_gcc9e68faee3c1763b54cd9bc405cf43e}
+
+
+Sets the user pointer of the specified window. 
+
+This function sets the user-defined pointer of the specified window. The current value is retained until the window is destroyed. The initial value is `NULL`.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose pointer to set. \item[\mbox{$\leftarrow$} {\em pointer}]The new value.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function may be called from any thread. Access is not synchronized.
+
+\begin{Desc}
+\item[See also:]window\_\-userptr 
+
+\hyperlink{group__window_g0a9ff3b4bf8589e9518e8816d06a8f50}{glfwGetWindowUserPointer}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_g7945bcdff9e5e058cf36505d6873ed8c}{
+\index{window@{window}!glfwShowWindow@{glfwShowWindow}}
+\index{glfwShowWindow@{glfwShowWindow}!window@{window}}
+\subsubsection[glfwShowWindow]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwShowWindow ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__window_g7945bcdff9e5e058cf36505d6873ed8c}
+
+
+Makes the specified window visible. 
+
+This function makes the specified window visible if it was previously hidden. If the window is already visible or is in full screen mode, this function does nothing.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to make visible.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-hide 
+
+\hyperlink{group__window_ga17e287d521544bdeceafa09ac036e20}{glfwHideWindow}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__window_gfb827800eedbfcbc97b1e5408df668d7}{
+\index{window@{window}!glfwSwapBuffers@{glfwSwapBuffers}}
+\index{glfwSwapBuffers@{glfwSwapBuffers}!window@{window}}
+\subsubsection[glfwSwapBuffers]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSwapBuffers ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__window_gfb827800eedbfcbc97b1e5408df668d7}
+
+
+Swaps the front and back buffers of the specified window. 
+
+This function swaps the front and back buffers of the specified window when rendering with OpenGL or OpenGL ES. If the swap interval is greater than zero, the GPU driver waits the specified number of screen updates before swapping the buffers.
+
+The specified window must have an OpenGL or OpenGL ES context. Specifying a window without a context will generate a \hyperlink{group__errors_gcff24d2757da752ae4c80bf452356487}{GLFW\_\-NO\_\-WINDOW\_\-CONTEXT} error.
+
+This function does not apply to Vulkan. If you are rendering with Vulkan, see `vkQueuePresentKHR` instead.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose buffers to swap.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_gcff24d2757da752ae4c80bf452356487}{GLFW\_\-NO\_\-WINDOW\_\-CONTEXT} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Remarks:]\_\-\_\-EGL:\_\-\_\- The context of the specified window must be current on the calling thread.\end{Desc}
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]buffer\_\-swap 
+
+\hyperlink{group__context_g12a595c06947cec4967c6e1f14210a8a}{glfwSwapInterval}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle parameter. \end{Desc}
+\hypertarget{group__window_g6e042d05823c11e11c7339b81a237738}{
+\index{window@{window}!glfwWaitEvents@{glfwWaitEvents}}
+\index{glfwWaitEvents@{glfwWaitEvents}!window@{window}}
+\subsubsection[glfwWaitEvents]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwWaitEvents (void)}}
+\label{group__window_g6e042d05823c11e11c7339b81a237738}
+
+
+Waits until events are queued and processes them. 
+
+This function puts the calling thread to sleep until at least one event is available in the event queue. Once one or more events are available, it behaves exactly like \hyperlink{group__window_g872d16e4c77f58c0436f356255920cfc}{glfwPollEvents}, i.e. the events in the queue are processed and the function then returns immediately. Processing events will cause the window and input callbacks associated with those events to be called.
+
+Since not all events are associated with callbacks, this function may return without a callback having been called even if you are monitoring all callbacks.
+
+On some platforms, a window move, resize or menu operation will cause event processing to block. This is due to how event processing is designed on those platforms. You can use the \mbox{[}window refresh callback\mbox{]}(window\_\-refresh) to redraw the contents of your window when necessary during such operations.
+
+On some platforms, certain callbacks may be called outside of a call to one of the event processing functions.
+
+If no windows exist, this function returns immediately. For synchronization of threads in applications that do not create windows, use your threading library of choice.
+
+Event processing is not required for joystick input to work.
+
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must not be called from a callback.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]events 
+
+\hyperlink{group__window_g872d16e4c77f58c0436f356255920cfc}{glfwPollEvents} 
+
+\hyperlink{group__window_g05223a0a4c5e50f10f289e60398153aa}{glfwWaitEventsTimeout}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 2.5. \end{Desc}
+\hypertarget{group__window_g05223a0a4c5e50f10f289e60398153aa}{
+\index{window@{window}!glfwWaitEventsTimeout@{glfwWaitEventsTimeout}}
+\index{glfwWaitEventsTimeout@{glfwWaitEventsTimeout}!window@{window}}
+\subsubsection[glfwWaitEventsTimeout]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwWaitEventsTimeout (double {\em timeout})}}
+\label{group__window_g05223a0a4c5e50f10f289e60398153aa}
+
+
+Waits with timeout until events are queued and processes them. 
+
+This function puts the calling thread to sleep until at least one event is available in the event queue, or until the specified timeout is reached. If one or more events are available, it behaves exactly like \hyperlink{group__window_g872d16e4c77f58c0436f356255920cfc}{glfwPollEvents}, i.e. the events in the queue are processed and the function then returns immediately. Processing events will cause the window and input callbacks associated with those events to be called.
+
+The timeout value must be a positive finite number.
+
+Since not all events are associated with callbacks, this function may return without a callback having been called even if you are monitoring all callbacks.
+
+On some platforms, a window move, resize or menu operation will cause event processing to block. This is due to how event processing is designed on those platforms. You can use the \mbox{[}window refresh callback\mbox{]}(window\_\-refresh) to redraw the contents of your window when necessary during such operations.
+
+On some platforms, certain callbacks may be called outside of a call to one of the event processing functions.
+
+If no windows exist, this function returns immediately. For synchronization of threads in applications that do not create windows, use your threading library of choice.
+
+Event processing is not required for joystick input to work.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em timeout}]The maximum amount of time, in seconds, to wait.\end{description}
+\end{Desc}
+This function must not be called from a callback.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]events 
+
+\hyperlink{group__window_g872d16e4c77f58c0436f356255920cfc}{glfwPollEvents} 
+
+\hyperlink{group__window_g6e042d05823c11e11c7339b81a237738}{glfwWaitEvents}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__window_g69c40728499720bef8a49aa925ea0efa}{
+\index{window@{window}!glfwWindowHint@{glfwWindowHint}}
+\index{glfwWindowHint@{glfwWindowHint}!window@{window}}
+\subsubsection[glfwWindowHint]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwWindowHint (int {\em hint}, \/  int {\em value})}}
+\label{group__window_g69c40728499720bef8a49aa925ea0efa}
+
+
+Sets the specified window hint to the desired value. 
+
+This function sets hints for the next call to \hyperlink{group__window_g680a02abe0e4494b6759d5703240713e}{glfwCreateWindow}. The hints, once set, retain their values until changed by a call to \hyperlink{group__window_g69c40728499720bef8a49aa925ea0efa}{glfwWindowHint} or \hyperlink{group__window_g8050ddceed9dc6bd9d3aa35666195cd4}{glfwDefaultWindowHints}, or until the library is terminated.
+
+This function does not check whether the specified hint values are valid. If you set hints to invalid values this will instead be reported by the next call to \hyperlink{group__window_g680a02abe0e4494b6759d5703240713e}{glfwCreateWindow}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em hint}]The \mbox{[}window hint\mbox{]}(window\_\-hints) to set. \item[\mbox{$\leftarrow$} {\em value}]The new value of the window hint.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]window\_\-hints 
+
+\hyperlink{group__window_g8050ddceed9dc6bd9d3aa35666195cd4}{glfwDefaultWindowHints}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwOpenWindowHint`. \end{Desc}
+\hypertarget{group__window_ga6162f67dfa38b8beda2fea623649332}{
+\index{window@{window}!glfwWindowShouldClose@{glfwWindowShouldClose}}
+\index{glfwWindowShouldClose@{glfwWindowShouldClose}!window@{window}}
+\subsubsection[glfwWindowShouldClose]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI int glfwWindowShouldClose ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__window_ga6162f67dfa38b8beda2fea623649332}
+
+
+Checks the close flag of the specified window. 
+
+This function returns the value of the close flag of the specified window.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to query. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The value of the close flag.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function may be called from any thread. Access is not synchronized.
+
+\begin{Desc}
+\item[See also:]window\_\-close\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}

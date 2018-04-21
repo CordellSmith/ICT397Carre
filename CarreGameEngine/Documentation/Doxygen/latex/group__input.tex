@@ -1,0 +1,1210 @@
+\hypertarget{group__input}{
+\section{Input reference}
+\label{group__input}\index{Input reference@{Input reference}}
+}
+
+
+Collaboration diagram for Input reference:\subsection*{Modules}
+\begin{CompactItemize}
+\item 
+\hyperlink{group__keys}{Keyboard keys}
+\item 
+\hyperlink{group__mods}{Modifier key flags}
+\item 
+\hyperlink{group__buttons}{Mouse buttons}
+\item 
+\hyperlink{group__joysticks}{Joysticks}
+\item 
+\hyperlink{group__shapes}{Standard cursor shapes}
+\end{CompactItemize}
+\subsection*{Key and button actions}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{group__input_gda11d965c4da13090ad336e030e4d11f}{GLFW\_\-RELEASE}~0
+\begin{CompactList}\small\item\em The key or mouse button was released. \item\end{CompactList}\item 
+\#define \hyperlink{group__input_g2485743d0b59df3791c45951c4195265}{GLFW\_\-PRESS}~1
+\begin{CompactList}\small\item\em The key or mouse button was pressed. \item\end{CompactList}\item 
+\#define \hyperlink{group__input_gc96fd3b9fc66c6f0eebaf6532595338f}{GLFW\_\-REPEAT}~2
+\begin{CompactList}\small\item\em The key was held down until it repeated. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{group__input_g1e008c7a8751cea648c8f42cc91104cf}{GLFWmousebuttonfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, int, int)
+\begin{CompactList}\small\item\em The function signature for mouse button callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g592fbfef76d88f027cb1bc4c36ebd437}{GLFWcursorposfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, double, double)
+\begin{CompactList}\small\item\em The function signature for cursor position callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g762d898d9b0241d7e3e3b767c6cf318f}{GLFWcursorenterfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int)
+\begin{CompactList}\small\item\em The function signature for cursor enter/leave callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g6228cdf94d28fbd3a9a1fbb0e5922a8a}{GLFWscrollfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, double, double)
+\begin{CompactList}\small\item\em The function signature for scroll callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g592dd1919f8a1dc7576b13cdd8b7b695}{GLFWkeyfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, int, int, int)
+\begin{CompactList}\small\item\em The function signature for keyboard key callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g1103f1876518acecb5976f6b307c51d1}{GLFWcharfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, unsigned int)
+\begin{CompactList}\small\item\em The function signature for Unicode character callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g3826e9cf33f760c1480d6ce873f9d002}{GLFWcharmodsfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, unsigned int, int)
+\begin{CompactList}\small\item\em The function signature for Unicode character with modifiers callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_gcc95e259ad21d4f666faa6280d4018fd}{GLFWdropfun} )(\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$, int, const char $\ast$$\ast$)
+\begin{CompactList}\small\item\em The function signature for file drop callbacks. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_g488fd02f577e56f908a8f305dd226dbf}{GLFWjoystickfun} )(int, int)
+\begin{CompactList}\small\item\em The function signature for joystick configuration callbacks. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+GLFWAPI int \hyperlink{group__input_g1248dd5b1e566b2817e71547564d6af9}{glfwGetInputMode} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int mode)
+\begin{CompactList}\small\item\em Returns the value of an input option for the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_ge1eb729d2dd91dc33fd60e150a6e1684}{glfwSetInputMode} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int mode, int value)
+\begin{CompactList}\small\item\em Sets an input option for the specified window. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$ \hyperlink{group__input_g9323a397832dd03faa2a88534847c984}{glfwGetKeyName} (int key, int scancode)
+\begin{CompactList}\small\item\em Returns the localized name of the specified printable key. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__input_g7d8ad8ffaf272808f04e1d5d33ec8859}{glfwGetKey} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int key)
+\begin{CompactList}\small\item\em Returns the last reported state of a keyboard key for the specified window. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__input_g6da5efb04f700c312a57a169fa9393a0}{glfwGetMouseButton} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, int button)
+\begin{CompactList}\small\item\em Returns the last reported state of a mouse button for the specified window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_gd289438eb7cf53d11eca685373f44105}{glfwGetCursorPos} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, double $\ast$xpos, double $\ast$ypos)
+\begin{CompactList}\small\item\em Retrieves the position of the cursor relative to the client area of the window. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_gaf152cc93418acb0ba342e3f4af922bc}{glfwSetCursorPos} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, double xpos, double ypos)
+\begin{CompactList}\small\item\em Sets the position of the cursor, relative to the client area of the window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}{GLFWcursor} $\ast$ \hyperlink{group__input_gc0f0f691f2d110f9acfb4bfe07f1216c}{glfwCreateCursor} (const \hyperlink{struct_g_l_f_wimage}{GLFWimage} $\ast$image, int xhot, int yhot)
+\begin{CompactList}\small\item\em Creates a custom cursor. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}{GLFWcursor} $\ast$ \hyperlink{group__input_g969dd87ad2ddbf3e1086cc40f235eed1}{glfwCreateStandardCursor} (int shape)
+\begin{CompactList}\small\item\em Creates a cursor with a standard shape. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_g27556b7122117bc1bbb4bb3cc003ea43}{glfwDestroyCursor} (\hyperlink{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}{GLFWcursor} $\ast$cursor)
+\begin{CompactList}\small\item\em Destroys a cursor. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_gfaf103cea2f43530cff7de4e01126a4f}{glfwSetCursor} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{glfw3_8h_89261ae18c75e863aaf2656ecdd238f4}{GLFWcursor} $\ast$cursor)
+\begin{CompactList}\small\item\em Sets the cursor for the window. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g592dd1919f8a1dc7576b13cdd8b7b695}{GLFWkeyfun} \hyperlink{group__input_ga73bb92f628a2a0be9c132d56f19362c}{glfwSetKeyCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g592dd1919f8a1dc7576b13cdd8b7b695}{GLFWkeyfun} cbfun)
+\begin{CompactList}\small\item\em Sets the key callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g1103f1876518acecb5976f6b307c51d1}{GLFWcharfun} \hyperlink{group__input_g07b2959b23dc3e466ce7475746021002}{glfwSetCharCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g1103f1876518acecb5976f6b307c51d1}{GLFWcharfun} cbfun)
+\begin{CompactList}\small\item\em Sets the Unicode character callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g3826e9cf33f760c1480d6ce873f9d002}{GLFWcharmodsfun} \hyperlink{group__input_ge6eee0bda7429bfe8028615847cf6795}{glfwSetCharModsCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g3826e9cf33f760c1480d6ce873f9d002}{GLFWcharmodsfun} cbfun)
+\begin{CompactList}\small\item\em Sets the Unicode character with modifiers callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g1e008c7a8751cea648c8f42cc91104cf}{GLFWmousebuttonfun} \hyperlink{group__input_g20e5ba1ce4e086aedd48a06dc311c95f}{glfwSetMouseButtonCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g1e008c7a8751cea648c8f42cc91104cf}{GLFWmousebuttonfun} cbfun)
+\begin{CompactList}\small\item\em Sets the mouse button callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g592fbfef76d88f027cb1bc4c36ebd437}{GLFWcursorposfun} \hyperlink{group__input_g9c49c0d3d3c775c3124726f1d902124d}{glfwSetCursorPosCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g592fbfef76d88f027cb1bc4c36ebd437}{GLFWcursorposfun} cbfun)
+\begin{CompactList}\small\item\em Sets the cursor position callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g762d898d9b0241d7e3e3b767c6cf318f}{GLFWcursorenterfun} \hyperlink{group__input_ga20014985561efeb2c53f1956f727830}{glfwSetCursorEnterCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g762d898d9b0241d7e3e3b767c6cf318f}{GLFWcursorenterfun} cbfun)
+\begin{CompactList}\small\item\em Sets the cursor enter/exit callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g6228cdf94d28fbd3a9a1fbb0e5922a8a}{GLFWscrollfun} \hyperlink{group__input_g29011514e93368712a3063a28707ced3}{glfwSetScrollCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_g6228cdf94d28fbd3a9a1fbb0e5922a8a}{GLFWscrollfun} cbfun)
+\begin{CompactList}\small\item\em Sets the scroll callback. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_gcc95e259ad21d4f666faa6280d4018fd}{GLFWdropfun} \hyperlink{group__input_gd4fc40df63a5d0441ab06de9a585cc04}{glfwSetDropCallback} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, \hyperlink{group__input_gcc95e259ad21d4f666faa6280d4018fd}{GLFWdropfun} cbfun)
+\begin{CompactList}\small\item\em Sets the file drop callback. \item\end{CompactList}\item 
+GLFWAPI int \hyperlink{group__input_g7f81f22f355f4b7d315caf73cdfd9906}{glfwJoystickPresent} (int joy)
+\begin{CompactList}\small\item\em Returns whether the specified joystick is present. \item\end{CompactList}\item 
+GLFWAPI const float $\ast$ \hyperlink{group__input_gab9e573d808b088c5079c0f577d39448}{glfwGetJoystickAxes} (int joy, int $\ast$count)
+\begin{CompactList}\small\item\em Returns the values of all axes of the specified joystick. \item\end{CompactList}\item 
+GLFWAPI const unsigned char $\ast$ \hyperlink{group__input_g3951bea72b5fb4870b1aa0e5c2e9c903}{glfwGetJoystickButtons} (int joy, int $\ast$count)
+\begin{CompactList}\small\item\em Returns the state of all buttons of the specified joystick. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$ \hyperlink{group__input_gc50a4fd9b01886cf9fa2c45f19191fb8}{glfwGetJoystickName} (int joy)
+\begin{CompactList}\small\item\em Returns the name of the specified joystick. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__input_g488fd02f577e56f908a8f305dd226dbf}{GLFWjoystickfun} \hyperlink{group__input_g07524a1122a03642b1d28822ea931094}{glfwSetJoystickCallback} (\hyperlink{group__input_g488fd02f577e56f908a8f305dd226dbf}{GLFWjoystickfun} cbfun)
+\begin{CompactList}\small\item\em Sets the joystick configuration callback. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_g7a580309bbc185a0459c3559021d2fd7}{glfwSetClipboardString} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window, const char $\ast$string)
+\begin{CompactList}\small\item\em Sets the clipboard to the specified string. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$ \hyperlink{group__input_g3ac90c8bbaf0b46063bb02b574f3b6f7}{glfwGetClipboardString} (\hyperlink{group__window_g3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow} $\ast$window)
+\begin{CompactList}\small\item\em Returns the contents of the clipboard as a string. \item\end{CompactList}\item 
+GLFWAPI double \hyperlink{group__input_g03d4a1039b8662c71eeb40beea8cb622}{glfwGetTime} (void)
+\begin{CompactList}\small\item\em Returns the value of the GLFW timer. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__input_g94360a3628a09f32708f83cc3fa48590}{glfwSetTime} (double time)
+\begin{CompactList}\small\item\em Sets the GLFW timer. \item\end{CompactList}\item 
+GLFWAPI uint64\_\-t \hyperlink{group__input_ga00c3e32227eb70b3968fca0bfe4ae26}{glfwGetTimerValue} (void)
+\begin{CompactList}\small\item\em Returns the current value of the raw timer. \item\end{CompactList}\item 
+GLFWAPI uint64\_\-t \hyperlink{group__input_ga92d10b10013372778efbf6367714371}{glfwGetTimerFrequency} (void)
+\begin{CompactList}\small\item\em Returns the frequency, in Hz, of the raw timer. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This is the reference documentation for input related functions and types. For more task-oriented information, see the input\_\-guide. 
+
+\subsection{Define Documentation}
+\hypertarget{group__input_g2485743d0b59df3791c45951c4195265}{
+\index{input@{input}!GLFW\_\-PRESS@{GLFW\_\-PRESS}}
+\index{GLFW\_\-PRESS@{GLFW\_\-PRESS}!input@{input}}
+\subsubsection[GLFW\_\-PRESS]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-PRESS~1}}
+\label{group__input_g2485743d0b59df3791c45951c4195265}
+
+
+The key or mouse button was pressed. 
+
+The key or mouse button was pressed. \hypertarget{group__input_gda11d965c4da13090ad336e030e4d11f}{
+\index{input@{input}!GLFW\_\-RELEASE@{GLFW\_\-RELEASE}}
+\index{GLFW\_\-RELEASE@{GLFW\_\-RELEASE}!input@{input}}
+\subsubsection[GLFW\_\-RELEASE]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-RELEASE~0}}
+\label{group__input_gda11d965c4da13090ad336e030e4d11f}
+
+
+The key or mouse button was released. 
+
+The key or mouse button was released. \hypertarget{group__input_gc96fd3b9fc66c6f0eebaf6532595338f}{
+\index{input@{input}!GLFW\_\-REPEAT@{GLFW\_\-REPEAT}}
+\index{GLFW\_\-REPEAT@{GLFW\_\-REPEAT}!input@{input}}
+\subsubsection[GLFW\_\-REPEAT]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-REPEAT~2}}
+\label{group__input_gc96fd3b9fc66c6f0eebaf6532595338f}
+
+
+The key was held down until it repeated. 
+
+The key was held down until it repeated. 
+
+\subsection{Typedef Documentation}
+\hypertarget{group__input_g1103f1876518acecb5976f6b307c51d1}{
+\index{input@{input}!GLFWcharfun@{GLFWcharfun}}
+\index{GLFWcharfun@{GLFWcharfun}!input@{input}}
+\subsubsection[GLFWcharfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWcharfun})({\bf GLFWwindow} $\ast$, unsigned int)}}
+\label{group__input_g1103f1876518acecb5976f6b307c51d1}
+
+
+The function signature for Unicode character callbacks. 
+
+This is the function signature for Unicode character callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that received the event. \item[\mbox{$\leftarrow$} {\em codepoint}]The Unicode code point of the character.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]input\_\-char 
+
+\hyperlink{group__input_g07b2959b23dc3e466ce7475746021002}{glfwSetCharCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 2.4.  Added window handle parameter. \end{Desc}
+\hypertarget{group__input_g3826e9cf33f760c1480d6ce873f9d002}{
+\index{input@{input}!GLFWcharmodsfun@{GLFWcharmodsfun}}
+\index{GLFWcharmodsfun@{GLFWcharmodsfun}!input@{input}}
+\subsubsection[GLFWcharmodsfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWcharmodsfun})({\bf GLFWwindow} $\ast$, unsigned int, int)}}
+\label{group__input_g3826e9cf33f760c1480d6ce873f9d002}
+
+
+The function signature for Unicode character with modifiers callbacks. 
+
+This is the function signature for Unicode character with modifiers callback functions. It is called for each input character, regardless of what modifier keys are held down.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that received the event. \item[\mbox{$\leftarrow$} {\em codepoint}]The Unicode code point of the character. \item[\mbox{$\leftarrow$} {\em mods}]Bit field describing which \mbox{[}modifier keys\mbox{]}(\hyperlink{group__mods}{Modifier key flags}) were held down.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]input\_\-char 
+
+\hyperlink{group__input_ge6eee0bda7429bfe8028615847cf6795}{glfwSetCharModsCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.1. \end{Desc}
+\hypertarget{group__input_g762d898d9b0241d7e3e3b767c6cf318f}{
+\index{input@{input}!GLFWcursorenterfun@{GLFWcursorenterfun}}
+\index{GLFWcursorenterfun@{GLFWcursorenterfun}!input@{input}}
+\subsubsection[GLFWcursorenterfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWcursorenterfun})({\bf GLFWwindow} $\ast$, int)}}
+\label{group__input_g762d898d9b0241d7e3e3b767c6cf318f}
+
+
+The function signature for cursor enter/leave callbacks. 
+
+This is the function signature for cursor enter/leave callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that received the event. \item[\mbox{$\leftarrow$} {\em entered}]`GLFW\_\-TRUE` if the cursor entered the window's client area, or `GLFW\_\-FALSE` if it left it.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]cursor\_\-enter 
+
+\hyperlink{group__input_ga20014985561efeb2c53f1956f727830}{glfwSetCursorEnterCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__input_g592fbfef76d88f027cb1bc4c36ebd437}{
+\index{input@{input}!GLFWcursorposfun@{GLFWcursorposfun}}
+\index{GLFWcursorposfun@{GLFWcursorposfun}!input@{input}}
+\subsubsection[GLFWcursorposfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWcursorposfun})({\bf GLFWwindow} $\ast$, double, double)}}
+\label{group__input_g592fbfef76d88f027cb1bc4c36ebd437}
+
+
+The function signature for cursor position callbacks. 
+
+This is the function signature for cursor position callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that received the event. \item[\mbox{$\leftarrow$} {\em xpos}]The new cursor x-coordinate, relative to the left edge of the client area. \item[\mbox{$\leftarrow$} {\em ypos}]The new cursor y-coordinate, relative to the top edge of the client area.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]cursor\_\-pos 
+
+\hyperlink{group__input_g9c49c0d3d3c775c3124726f1d902124d}{glfwSetCursorPosCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `GLFWmouseposfun`. \end{Desc}
+\hypertarget{group__input_gcc95e259ad21d4f666faa6280d4018fd}{
+\index{input@{input}!GLFWdropfun@{GLFWdropfun}}
+\index{GLFWdropfun@{GLFWdropfun}!input@{input}}
+\subsubsection[GLFWdropfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWdropfun})({\bf GLFWwindow} $\ast$, int, const char $\ast$$\ast$)}}
+\label{group__input_gcc95e259ad21d4f666faa6280d4018fd}
+
+
+The function signature for file drop callbacks. 
+
+This is the function signature for file drop callbacks.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that received the event. \item[\mbox{$\leftarrow$} {\em count}]The number of dropped files. \item[\mbox{$\leftarrow$} {\em paths}]The UTF-8 encoded file and/or directory path names.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]path\_\-drop 
+
+\hyperlink{group__input_gd4fc40df63a5d0441ab06de9a585cc04}{glfwSetDropCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.1. \end{Desc}
+\hypertarget{group__input_g488fd02f577e56f908a8f305dd226dbf}{
+\index{input@{input}!GLFWjoystickfun@{GLFWjoystickfun}}
+\index{GLFWjoystickfun@{GLFWjoystickfun}!input@{input}}
+\subsubsection[GLFWjoystickfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWjoystickfun})(int, int)}}
+\label{group__input_g488fd02f577e56f908a8f305dd226dbf}
+
+
+The function signature for joystick configuration callbacks. 
+
+This is the function signature for joystick configuration callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em joy}]The joystick that was connected or disconnected. \item[\mbox{$\leftarrow$} {\em event}]One of `GLFW\_\-CONNECTED` or `GLFW\_\-DISCONNECTED`.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]joystick\_\-event 
+
+\hyperlink{group__input_g07524a1122a03642b1d28822ea931094}{glfwSetJoystickCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__input_g592dd1919f8a1dc7576b13cdd8b7b695}{
+\index{input@{input}!GLFWkeyfun@{GLFWkeyfun}}
+\index{GLFWkeyfun@{GLFWkeyfun}!input@{input}}
+\subsubsection[GLFWkeyfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWkeyfun})({\bf GLFWwindow} $\ast$, int, int, int, int)}}
+\label{group__input_g592dd1919f8a1dc7576b13cdd8b7b695}
+
+
+The function signature for keyboard key callbacks. 
+
+This is the function signature for keyboard key callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that received the event. \item[\mbox{$\leftarrow$} {\em key}]The \mbox{[}keyboard key\mbox{]}(\hyperlink{group__keys}{Keyboard keys}) that was pressed or released. \item[\mbox{$\leftarrow$} {\em scancode}]The system-specific scancode of the key. \item[\mbox{$\leftarrow$} {\em action}]`GLFW\_\-PRESS`, `GLFW\_\-RELEASE` or `GLFW\_\-REPEAT`. \item[\mbox{$\leftarrow$} {\em mods}]Bit field describing which \mbox{[}modifier keys\mbox{]}(\hyperlink{group__mods}{Modifier key flags}) were held down.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]input\_\-key 
+
+\hyperlink{group__input_ga73bb92f628a2a0be9c132d56f19362c}{glfwSetKeyCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle, scancode and modifier mask parameters. \end{Desc}
+\hypertarget{group__input_g1e008c7a8751cea648c8f42cc91104cf}{
+\index{input@{input}!GLFWmousebuttonfun@{GLFWmousebuttonfun}}
+\index{GLFWmousebuttonfun@{GLFWmousebuttonfun}!input@{input}}
+\subsubsection[GLFWmousebuttonfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWmousebuttonfun})({\bf GLFWwindow} $\ast$, int, int, int)}}
+\label{group__input_g1e008c7a8751cea648c8f42cc91104cf}
+
+
+The function signature for mouse button callbacks. 
+
+This is the function signature for mouse button callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that received the event. \item[\mbox{$\leftarrow$} {\em button}]The \mbox{[}mouse button\mbox{]}(\hyperlink{group__buttons}{Mouse buttons}) that was pressed or released. \item[\mbox{$\leftarrow$} {\em action}]One of `GLFW\_\-PRESS` or `GLFW\_\-RELEASE`. \item[\mbox{$\leftarrow$} {\em mods}]Bit field describing which \mbox{[}modifier keys\mbox{]}(\hyperlink{group__mods}{Modifier key flags}) were held down.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]input\_\-mouse\_\-button 
+
+\hyperlink{group__input_g20e5ba1ce4e086aedd48a06dc311c95f}{glfwSetMouseButtonCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle and modifier mask parameters. \end{Desc}
+\hypertarget{group__input_g6228cdf94d28fbd3a9a1fbb0e5922a8a}{
+\index{input@{input}!GLFWscrollfun@{GLFWscrollfun}}
+\index{GLFWscrollfun@{GLFWscrollfun}!input@{input}}
+\subsubsection[GLFWscrollfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWscrollfun})({\bf GLFWwindow} $\ast$, double, double)}}
+\label{group__input_g6228cdf94d28fbd3a9a1fbb0e5922a8a}
+
+
+The function signature for scroll callbacks. 
+
+This is the function signature for scroll callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that received the event. \item[\mbox{$\leftarrow$} {\em xoffset}]The scroll offset along the x-axis. \item[\mbox{$\leftarrow$} {\em yoffset}]The scroll offset along the y-axis.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]scrolling 
+
+\hyperlink{group__input_g29011514e93368712a3063a28707ced3}{glfwSetScrollCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `GLFWmousewheelfun`. \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__input_gc0f0f691f2d110f9acfb4bfe07f1216c}{
+\index{input@{input}!glfwCreateCursor@{glfwCreateCursor}}
+\index{glfwCreateCursor@{glfwCreateCursor}!input@{input}}
+\subsubsection[glfwCreateCursor]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWcursor}$\ast$ glfwCreateCursor (const {\bf GLFWimage} $\ast$ {\em image}, \/  int {\em xhot}, \/  int {\em yhot})}}
+\label{group__input_gc0f0f691f2d110f9acfb4bfe07f1216c}
+
+
+Creates a custom cursor. 
+
+Creates a new custom cursor image that can be set for a window with \hyperlink{group__input_gfaf103cea2f43530cff7de4e01126a4f}{glfwSetCursor}. The cursor can be destroyed with \hyperlink{group__input_g27556b7122117bc1bbb4bb3cc003ea43}{glfwDestroyCursor}. Any remaining cursors are destroyed by \hyperlink{group__init_gfd90e6fd4819ea9e22e5e739519a6504}{glfwTerminate}.
+
+The pixels are 32-bit, little-endian, non-premultiplied RGBA, i.e. eight bits per channel. They are arranged canonically as packed sequential rows, starting from the top-left corner.
+
+The cursor hotspot is specified in pixels, relative to the upper-left corner of the cursor image. Like all other coordinate systems in GLFW, the X-axis points to the right and the Y-axis points down.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em image}]The desired cursor image. \item[\mbox{$\leftarrow$} {\em xhot}]The desired x-coordinate, in pixels, of the cursor hotspot. \item[\mbox{$\leftarrow$} {\em yhot}]The desired y-coordinate, in pixels, of the cursor hotspot. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The handle of the created cursor, or `NULL` if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+The specified image data is copied before this function returns.
+
+This function must not be called from a callback.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]cursor\_\-object 
+
+\hyperlink{group__input_g27556b7122117bc1bbb4bb3cc003ea43}{glfwDestroyCursor} 
+
+\hyperlink{group__input_g969dd87ad2ddbf3e1086cc40f235eed1}{glfwCreateStandardCursor}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.1. \end{Desc}
+\hypertarget{group__input_g969dd87ad2ddbf3e1086cc40f235eed1}{
+\index{input@{input}!glfwCreateStandardCursor@{glfwCreateStandardCursor}}
+\index{glfwCreateStandardCursor@{glfwCreateStandardCursor}!input@{input}}
+\subsubsection[glfwCreateStandardCursor]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWcursor}$\ast$ glfwCreateStandardCursor (int {\em shape})}}
+\label{group__input_g969dd87ad2ddbf3e1086cc40f235eed1}
+
+
+Creates a cursor with a standard shape. 
+
+Returns a cursor with a \mbox{[}standard shape\mbox{]}(\hyperlink{group__shapes}{Standard cursor shapes}), that can be set for a window with \hyperlink{group__input_gfaf103cea2f43530cff7de4e01126a4f}{glfwSetCursor}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em shape}]One of the \mbox{[}standard shapes\mbox{]}(\hyperlink{group__shapes}{Standard cursor shapes}). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A new cursor ready to use or `NULL` if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must not be called from a callback.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]cursor\_\-object 
+
+\hyperlink{group__input_gc0f0f691f2d110f9acfb4bfe07f1216c}{glfwCreateCursor}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.1. \end{Desc}
+\hypertarget{group__input_g27556b7122117bc1bbb4bb3cc003ea43}{
+\index{input@{input}!glfwDestroyCursor@{glfwDestroyCursor}}
+\index{glfwDestroyCursor@{glfwDestroyCursor}!input@{input}}
+\subsubsection[glfwDestroyCursor]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwDestroyCursor ({\bf GLFWcursor} $\ast$ {\em cursor})}}
+\label{group__input_g27556b7122117bc1bbb4bb3cc003ea43}
+
+
+Destroys a cursor. 
+
+This function destroys a cursor previously created with \hyperlink{group__input_gc0f0f691f2d110f9acfb4bfe07f1216c}{glfwCreateCursor}. Any remaining cursors will be destroyed by \hyperlink{group__init_gfd90e6fd4819ea9e22e5e739519a6504}{glfwTerminate}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em cursor}]The cursor object to destroy.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must not be called from a callback.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]cursor\_\-object 
+
+\hyperlink{group__input_gc0f0f691f2d110f9acfb4bfe07f1216c}{glfwCreateCursor}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.1. \end{Desc}
+\hypertarget{group__input_g3ac90c8bbaf0b46063bb02b574f3b6f7}{
+\index{input@{input}!glfwGetClipboardString@{glfwGetClipboardString}}
+\index{glfwGetClipboardString@{glfwGetClipboardString}!input@{input}}
+\subsubsection[glfwGetClipboardString]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI const char$\ast$ glfwGetClipboardString ({\bf GLFWwindow} $\ast$ {\em window})}}
+\label{group__input_g3ac90c8bbaf0b46063bb02b574f3b6f7}
+
+
+Returns the contents of the clipboard as a string. 
+
+This function returns the contents of the system clipboard, if it contains or is convertible to a UTF-8 encoded string. If the clipboard is empty or if its contents cannot be converted, `NULL` is returned and a \hyperlink{group__errors_g196e125ef261d94184e2b55c05762f14}{GLFW\_\-FORMAT\_\-UNAVAILABLE} error is generated.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that will request the clipboard contents. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The contents of the clipboard as a UTF-8 encoded string, or `NULL` if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+The returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the next call to \hyperlink{group__input_g3ac90c8bbaf0b46063bb02b574f3b6f7}{glfwGetClipboardString} or \hyperlink{group__input_g7a580309bbc185a0459c3559021d2fd7}{glfwSetClipboardString}, or until the library is terminated.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]clipboard 
+
+\hyperlink{group__input_g7a580309bbc185a0459c3559021d2fd7}{glfwSetClipboardString}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__input_gd289438eb7cf53d11eca685373f44105}{
+\index{input@{input}!glfwGetCursorPos@{glfwGetCursorPos}}
+\index{glfwGetCursorPos@{glfwGetCursorPos}!input@{input}}
+\subsubsection[glfwGetCursorPos]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwGetCursorPos ({\bf GLFWwindow} $\ast$ {\em window}, \/  double $\ast$ {\em xpos}, \/  double $\ast$ {\em ypos})}}
+\label{group__input_gd289438eb7cf53d11eca685373f44105}
+
+
+Retrieves the position of the cursor relative to the client area of the window. 
+
+This function returns the position of the cursor, in screen coordinates, relative to the upper-left corner of the client area of the specified window.
+
+If the cursor is disabled (with `GLFW\_\-CURSOR\_\-DISABLED`) then the cursor position is unbounded and limited only by the minimum and maximum values of a `double`.
+
+The coordinate can be converted to their integer equivalents with the `floor` function. Casting directly to an integer type works for positive coordinates, but fails for negative ones.
+
+Any or all of the position arguments may be `NULL`. If an error occurs, all non-`NULL` position arguments will be set to zero.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The desired window. \item[\mbox{$\rightarrow$} {\em xpos}]Where to store the cursor x-coordinate, relative to the left edge of the client area, or `NULL`. \item[\mbox{$\rightarrow$} {\em ypos}]Where to store the cursor y-coordinate, relative to the to top edge of the client area, or `NULL`.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]cursor\_\-pos 
+
+\hyperlink{group__input_gaf152cc93418acb0ba342e3f4af922bc}{glfwSetCursorPos}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwGetMousePos`. \end{Desc}
+\hypertarget{group__input_g1248dd5b1e566b2817e71547564d6af9}{
+\index{input@{input}!glfwGetInputMode@{glfwGetInputMode}}
+\index{glfwGetInputMode@{glfwGetInputMode}!input@{input}}
+\subsubsection[glfwGetInputMode]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI int glfwGetInputMode ({\bf GLFWwindow} $\ast$ {\em window}, \/  int {\em mode})}}
+\label{group__input_g1248dd5b1e566b2817e71547564d6af9}
+
+
+Returns the value of an input option for the specified window. 
+
+This function returns the value of an input option for the specified window. The mode must be one of `GLFW\_\-CURSOR`, `GLFW\_\-STICKY\_\-KEYS` or `GLFW\_\-STICKY\_\-MOUSE\_\-BUTTONS`.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to query. \item[\mbox{$\leftarrow$} {\em mode}]One of `GLFW\_\-CURSOR`, `GLFW\_\-STICKY\_\-KEYS` or `GLFW\_\-STICKY\_\-MOUSE\_\-BUTTONS`.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__input_ge1eb729d2dd91dc33fd60e150a6e1684}{glfwSetInputMode}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__input_gab9e573d808b088c5079c0f577d39448}{
+\index{input@{input}!glfwGetJoystickAxes@{glfwGetJoystickAxes}}
+\index{glfwGetJoystickAxes@{glfwGetJoystickAxes}!input@{input}}
+\subsubsection[glfwGetJoystickAxes]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI const float$\ast$ glfwGetJoystickAxes (int {\em joy}, \/  int $\ast$ {\em count})}}
+\label{group__input_gab9e573d808b088c5079c0f577d39448}
+
+
+Returns the values of all axes of the specified joystick. 
+
+This function returns the values of all axes of the specified joystick. Each element in the array is a value between -1.0 and 1.0.
+
+Querying a joystick slot with no device present is not an error, but will cause this function to return `NULL`. Call \hyperlink{group__input_g7f81f22f355f4b7d315caf73cdfd9906}{glfwJoystickPresent} to check device presence.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em joy}]The \mbox{[}joystick\mbox{]}(\hyperlink{group__joysticks}{Joysticks}) to query. \item[\mbox{$\rightarrow$} {\em count}]Where to store the number of axis values in the returned array. This is set to zero if the joystick is not present or an error occurred. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An array of axis values, or `NULL` if the joystick is not present or an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+The returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified joystick is disconnected, this function is called again for that joystick or the library is terminated.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]joystick\_\-axis\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwGetJoystickPos`. \end{Desc}
+\hypertarget{group__input_g3951bea72b5fb4870b1aa0e5c2e9c903}{
+\index{input@{input}!glfwGetJoystickButtons@{glfwGetJoystickButtons}}
+\index{glfwGetJoystickButtons@{glfwGetJoystickButtons}!input@{input}}
+\subsubsection[glfwGetJoystickButtons]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI const unsigned char$\ast$ glfwGetJoystickButtons (int {\em joy}, \/  int $\ast$ {\em count})}}
+\label{group__input_g3951bea72b5fb4870b1aa0e5c2e9c903}
+
+
+Returns the state of all buttons of the specified joystick. 
+
+This function returns the state of all buttons of the specified joystick. Each element in the array is either `GLFW\_\-PRESS` or `GLFW\_\-RELEASE`.
+
+Querying a joystick slot with no device present is not an error, but will cause this function to return `NULL`. Call \hyperlink{group__input_g7f81f22f355f4b7d315caf73cdfd9906}{glfwJoystickPresent} to check device presence.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em joy}]The \mbox{[}joystick\mbox{]}(\hyperlink{group__joysticks}{Joysticks}) to query. \item[\mbox{$\rightarrow$} {\em count}]Where to store the number of button states in the returned array. This is set to zero if the joystick is not present or an error occurred. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An array of button states, or `NULL` if the joystick is not present or an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+The returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified joystick is disconnected, this function is called again for that joystick or the library is terminated.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]joystick\_\-button\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 2.2.  Changed to return a dynamic array. \end{Desc}
+\hypertarget{group__input_gc50a4fd9b01886cf9fa2c45f19191fb8}{
+\index{input@{input}!glfwGetJoystickName@{glfwGetJoystickName}}
+\index{glfwGetJoystickName@{glfwGetJoystickName}!input@{input}}
+\subsubsection[glfwGetJoystickName]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI const char$\ast$ glfwGetJoystickName (int {\em joy})}}
+\label{group__input_gc50a4fd9b01886cf9fa2c45f19191fb8}
+
+
+Returns the name of the specified joystick. 
+
+This function returns the name, encoded as UTF-8, of the specified joystick. The returned string is allocated and freed by GLFW. You should not free it yourself.
+
+Querying a joystick slot with no device present is not an error, but will cause this function to return `NULL`. Call \hyperlink{group__input_g7f81f22f355f4b7d315caf73cdfd9906}{glfwJoystickPresent} to check device presence.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em joy}]The \mbox{[}joystick\mbox{]}(\hyperlink{group__joysticks}{Joysticks}) to query. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The UTF-8 encoded name of the joystick, or `NULL` if the joystick is not present or an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+The returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified joystick is disconnected, this function is called again for that joystick or the library is terminated.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]joystick\_\-name\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__input_g7d8ad8ffaf272808f04e1d5d33ec8859}{
+\index{input@{input}!glfwGetKey@{glfwGetKey}}
+\index{glfwGetKey@{glfwGetKey}!input@{input}}
+\subsubsection[glfwGetKey]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI int glfwGetKey ({\bf GLFWwindow} $\ast$ {\em window}, \/  int {\em key})}}
+\label{group__input_g7d8ad8ffaf272808f04e1d5d33ec8859}
+
+
+Returns the last reported state of a keyboard key for the specified window. 
+
+This function returns the last state reported for the specified key to the specified window. The returned state is one of `GLFW\_\-PRESS` or `GLFW\_\-RELEASE`. The higher-level action `GLFW\_\-REPEAT` is only reported to the key callback.
+
+If the `GLFW\_\-STICKY\_\-KEYS` input mode is enabled, this function returns `GLFW\_\-PRESS` the first time you call it for a key that was pressed, even if that key has already been released.
+
+The key functions deal with physical keys, with \mbox{[}key tokens\mbox{]}(\hyperlink{group__keys}{Keyboard keys}) named after their use on the standard US keyboard layout. If you want to input text, use the Unicode character callback instead.
+
+The \mbox{[}modifier key bit masks\mbox{]}(\hyperlink{group__mods}{Modifier key flags}) are not key tokens and cannot be used with this function.
+
+\_\-\_\-Do not use this function\_\-\_\- to implement \mbox{[}text input\mbox{]}(input\_\-char).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The desired window. \item[\mbox{$\leftarrow$} {\em key}]The desired \mbox{[}keyboard key\mbox{]}(\hyperlink{group__keys}{Keyboard keys}). `GLFW\_\-KEY\_\-UNKNOWN` is not a valid key for this function. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]One of `GLFW\_\-PRESS` or `GLFW\_\-RELEASE`.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]input\_\-key\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle parameter. \end{Desc}
+\hypertarget{group__input_g9323a397832dd03faa2a88534847c984}{
+\index{input@{input}!glfwGetKeyName@{glfwGetKeyName}}
+\index{glfwGetKeyName@{glfwGetKeyName}!input@{input}}
+\subsubsection[glfwGetKeyName]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI const char$\ast$ glfwGetKeyName (int {\em key}, \/  int {\em scancode})}}
+\label{group__input_g9323a397832dd03faa2a88534847c984}
+
+
+Returns the localized name of the specified printable key. 
+
+This function returns the localized name of the specified printable key. This is intended for displaying key bindings to the user.
+
+If the key is `GLFW\_\-KEY\_\-UNKNOWN`, the scancode is used instead, otherwise the scancode is ignored. If a non-printable key or (if the key is `GLFW\_\-KEY\_\-UNKNOWN`) a scancode that maps to a non-printable key is specified, this function returns `NULL`.
+
+This behavior allows you to pass in the arguments passed to the \mbox{[}key callback\mbox{]}(input\_\-key) without modification.
+
+The printable keys are:\begin{itemize}
+\item `GLFW\_\-KEY\_\-APOSTROPHE`\item `GLFW\_\-KEY\_\-COMMA`\item `GLFW\_\-KEY\_\-MINUS`\item `GLFW\_\-KEY\_\-PERIOD`\item `GLFW\_\-KEY\_\-SLASH`\item `GLFW\_\-KEY\_\-SEMICOLON`\item `GLFW\_\-KEY\_\-EQUAL`\item `GLFW\_\-KEY\_\-LEFT\_\-BRACKET`\item `GLFW\_\-KEY\_\-RIGHT\_\-BRACKET`\item `GLFW\_\-KEY\_\-BACKSLASH`\item `GLFW\_\-KEY\_\-WORLD\_\-1`\item `GLFW\_\-KEY\_\-WORLD\_\-2`\item `GLFW\_\-KEY\_\-0` to `GLFW\_\-KEY\_\-9`\item `GLFW\_\-KEY\_\-A` to `GLFW\_\-KEY\_\-Z`\item `GLFW\_\-KEY\_\-KP\_\-0` to `GLFW\_\-KEY\_\-KP\_\-9`\item `GLFW\_\-KEY\_\-KP\_\-DECIMAL`\item `GLFW\_\-KEY\_\-KP\_\-DIVIDE`\item `GLFW\_\-KEY\_\-KP\_\-MULTIPLY`\item `GLFW\_\-KEY\_\-KP\_\-SUBTRACT`\item `GLFW\_\-KEY\_\-KP\_\-ADD`\item `GLFW\_\-KEY\_\-KP\_\-EQUAL`\end{itemize}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em key}]The key to query, or `GLFW\_\-KEY\_\-UNKNOWN`. \item[\mbox{$\leftarrow$} {\em scancode}]The scancode of the key to query. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The localized name of the key, or `NULL`.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+The returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the next call to \hyperlink{group__input_g9323a397832dd03faa2a88534847c984}{glfwGetKeyName}, or until the library is terminated.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]input\_\-key\_\-name\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__input_g6da5efb04f700c312a57a169fa9393a0}{
+\index{input@{input}!glfwGetMouseButton@{glfwGetMouseButton}}
+\index{glfwGetMouseButton@{glfwGetMouseButton}!input@{input}}
+\subsubsection[glfwGetMouseButton]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI int glfwGetMouseButton ({\bf GLFWwindow} $\ast$ {\em window}, \/  int {\em button})}}
+\label{group__input_g6da5efb04f700c312a57a169fa9393a0}
+
+
+Returns the last reported state of a mouse button for the specified window. 
+
+This function returns the last state reported for the specified mouse button to the specified window. The returned state is one of `GLFW\_\-PRESS` or `GLFW\_\-RELEASE`.
+
+If the `GLFW\_\-STICKY\_\-MOUSE\_\-BUTTONS` input mode is enabled, this function `GLFW\_\-PRESS` the first time you call it for a mouse button that was pressed, even if that mouse button has already been released.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The desired window. \item[\mbox{$\leftarrow$} {\em button}]The desired \mbox{[}mouse button\mbox{]}(\hyperlink{group__buttons}{Mouse buttons}). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]One of `GLFW\_\-PRESS` or `GLFW\_\-RELEASE`.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]input\_\-mouse\_\-button\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle parameter. \end{Desc}
+\hypertarget{group__input_g03d4a1039b8662c71eeb40beea8cb622}{
+\index{input@{input}!glfwGetTime@{glfwGetTime}}
+\index{glfwGetTime@{glfwGetTime}!input@{input}}
+\subsubsection[glfwGetTime]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI double glfwGetTime (void)}}
+\label{group__input_g03d4a1039b8662c71eeb40beea8cb622}
+
+
+Returns the value of the GLFW timer. 
+
+This function returns the value of the GLFW timer. Unless the timer has been set using \hyperlink{group__input_g94360a3628a09f32708f83cc3fa48590}{glfwSetTime}, the timer measures time elapsed since GLFW was initialized.
+
+The resolution of the timer is system dependent, but is usually on the order of a few micro- or nanoseconds. It uses the highest-resolution monotonic time source on each supported platform.
+
+\begin{Desc}
+\item[Returns:]The current value, in seconds, or zero if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function may be called from any thread. Reading and writing of the internal timer offset is not atomic, so it needs to be externally synchronized with calls to \hyperlink{group__input_g94360a3628a09f32708f83cc3fa48590}{glfwSetTime}.
+
+\begin{Desc}
+\item[See also:]time\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0. \end{Desc}
+\hypertarget{group__input_ga92d10b10013372778efbf6367714371}{
+\index{input@{input}!glfwGetTimerFrequency@{glfwGetTimerFrequency}}
+\index{glfwGetTimerFrequency@{glfwGetTimerFrequency}!input@{input}}
+\subsubsection[glfwGetTimerFrequency]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI uint64\_\-t glfwGetTimerFrequency (void)}}
+\label{group__input_ga92d10b10013372778efbf6367714371}
+
+
+Returns the frequency, in Hz, of the raw timer. 
+
+This function returns the frequency, in Hz, of the raw timer.
+
+\begin{Desc}
+\item[Returns:]The frequency of the timer, in Hz, or zero if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]time 
+
+\hyperlink{group__input_ga00c3e32227eb70b3968fca0bfe4ae26}{glfwGetTimerValue}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__input_ga00c3e32227eb70b3968fca0bfe4ae26}{
+\index{input@{input}!glfwGetTimerValue@{glfwGetTimerValue}}
+\index{glfwGetTimerValue@{glfwGetTimerValue}!input@{input}}
+\subsubsection[glfwGetTimerValue]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI uint64\_\-t glfwGetTimerValue (void)}}
+\label{group__input_ga00c3e32227eb70b3968fca0bfe4ae26}
+
+
+Returns the current value of the raw timer. 
+
+This function returns the current value of the raw timer, measured in 1~/~frequency seconds. To get the frequency, call \hyperlink{group__input_ga92d10b10013372778efbf6367714371}{glfwGetTimerFrequency}.
+
+\begin{Desc}
+\item[Returns:]The value of the timer, or zero if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]time 
+
+\hyperlink{group__input_ga92d10b10013372778efbf6367714371}{glfwGetTimerFrequency}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__input_g7f81f22f355f4b7d315caf73cdfd9906}{
+\index{input@{input}!glfwJoystickPresent@{glfwJoystickPresent}}
+\index{glfwJoystickPresent@{glfwJoystickPresent}!input@{input}}
+\subsubsection[glfwJoystickPresent]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI int glfwJoystickPresent (int {\em joy})}}
+\label{group__input_g7f81f22f355f4b7d315caf73cdfd9906}
+
+
+Returns whether the specified joystick is present. 
+
+This function returns whether the specified joystick is present.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em joy}]The \mbox{[}joystick\mbox{]}(\hyperlink{group__joysticks}{Joysticks}) to query. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]`GLFW\_\-TRUE` if the joystick is present, or `GLFW\_\-FALSE` otherwise.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]joystick\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwGetJoystickParam`. \end{Desc}
+\hypertarget{group__input_g07b2959b23dc3e466ce7475746021002}{
+\index{input@{input}!glfwSetCharCallback@{glfwSetCharCallback}}
+\index{glfwSetCharCallback@{glfwSetCharCallback}!input@{input}}
+\subsubsection[glfwSetCharCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWcharfun} glfwSetCharCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWcharfun} {\em cbfun})}}
+\label{group__input_g07b2959b23dc3e466ce7475746021002}
+
+
+Sets the Unicode character callback. 
+
+This function sets the character callback of the specified window, which is called when a Unicode character is input.
+
+The character callback is intended for Unicode text input. As it deals with characters, it is keyboard layout dependent, whereas the \mbox{[}key callback\mbox{]}(\hyperlink{group__input_ga73bb92f628a2a0be9c132d56f19362c}{glfwSetKeyCallback}) is not. Characters do not map 1:1 to physical keys, as a key may produce zero, one or more characters. If you want to know whether a specific physical key was pressed or released, see the key callback instead.
+
+The character callback behaves as system text input normally does and will not be called if modifier keys are held down that would prevent normal text input on that platform, for example a Super (Command) key on OS X or Alt key on Windows. There is a \mbox{[}character with modifiers callback\mbox{]}(\hyperlink{group__input_ge6eee0bda7429bfe8028615847cf6795}{glfwSetCharModsCallback}) that receives these events.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]input\_\-char\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 2.4.  Added window handle parameter and return value. \end{Desc}
+\hypertarget{group__input_ge6eee0bda7429bfe8028615847cf6795}{
+\index{input@{input}!glfwSetCharModsCallback@{glfwSetCharModsCallback}}
+\index{glfwSetCharModsCallback@{glfwSetCharModsCallback}!input@{input}}
+\subsubsection[glfwSetCharModsCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWcharmodsfun} glfwSetCharModsCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWcharmodsfun} {\em cbfun})}}
+\label{group__input_ge6eee0bda7429bfe8028615847cf6795}
+
+
+Sets the Unicode character with modifiers callback. 
+
+This function sets the character with modifiers callback of the specified window, which is called when a Unicode character is input regardless of what modifier keys are used.
+
+The character with modifiers callback is intended for implementing custom Unicode character input. For regular Unicode text input, see the \mbox{[}character callback\mbox{]}(\hyperlink{group__input_g07b2959b23dc3e466ce7475746021002}{glfwSetCharCallback}). Like the character callback, the character with modifiers callback deals with characters and is keyboard layout dependent. Characters do not map 1:1 to physical keys, as a key may produce zero, one or more characters. If you want to know whether a specific physical key was pressed or released, see the \mbox{[}key callback\mbox{]}(\hyperlink{group__input_ga73bb92f628a2a0be9c132d56f19362c}{glfwSetKeyCallback}) instead.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]input\_\-char\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.1. \end{Desc}
+\hypertarget{group__input_g7a580309bbc185a0459c3559021d2fd7}{
+\index{input@{input}!glfwSetClipboardString@{glfwSetClipboardString}}
+\index{glfwSetClipboardString@{glfwSetClipboardString}!input@{input}}
+\subsubsection[glfwSetClipboardString]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetClipboardString ({\bf GLFWwindow} $\ast$ {\em window}, \/  const char $\ast$ {\em string})}}
+\label{group__input_g7a580309bbc185a0459c3559021d2fd7}
+
+
+Sets the clipboard to the specified string. 
+
+This function sets the system clipboard to the specified, UTF-8 encoded string.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window that will own the clipboard contents. \item[\mbox{$\leftarrow$} {\em string}]A UTF-8 encoded string.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+The specified string is copied before this function returns.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]clipboard 
+
+\hyperlink{group__input_g3ac90c8bbaf0b46063bb02b574f3b6f7}{glfwGetClipboardString}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__input_gfaf103cea2f43530cff7de4e01126a4f}{
+\index{input@{input}!glfwSetCursor@{glfwSetCursor}}
+\index{glfwSetCursor@{glfwSetCursor}!input@{input}}
+\subsubsection[glfwSetCursor]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetCursor ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWcursor} $\ast$ {\em cursor})}}
+\label{group__input_gfaf103cea2f43530cff7de4e01126a4f}
+
+
+Sets the cursor for the window. 
+
+This function sets the cursor image to be used when the cursor is over the client area of the specified window. The set cursor will only be visible when the \mbox{[}cursor mode\mbox{]}(cursor\_\-mode) of the window is `GLFW\_\-CURSOR\_\-NORMAL`.
+
+On some platforms, the set cursor may not be visible unless the window also has input focus.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window to set the cursor for. \item[\mbox{$\leftarrow$} {\em cursor}]The cursor to set, or `NULL` to switch back to the default arrow cursor.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]cursor\_\-object\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.1. \end{Desc}
+\hypertarget{group__input_ga20014985561efeb2c53f1956f727830}{
+\index{input@{input}!glfwSetCursorEnterCallback@{glfwSetCursorEnterCallback}}
+\index{glfwSetCursorEnterCallback@{glfwSetCursorEnterCallback}!input@{input}}
+\subsubsection[glfwSetCursorEnterCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWcursorenterfun} glfwSetCursorEnterCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWcursorenterfun} {\em cbfun})}}
+\label{group__input_ga20014985561efeb2c53f1956f727830}
+
+
+Sets the cursor enter/exit callback. 
+
+This function sets the cursor boundary crossing callback of the specified window, which is called when the cursor enters or leaves the client area of the window.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]cursor\_\-enter\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__input_gaf152cc93418acb0ba342e3f4af922bc}{
+\index{input@{input}!glfwSetCursorPos@{glfwSetCursorPos}}
+\index{glfwSetCursorPos@{glfwSetCursorPos}!input@{input}}
+\subsubsection[glfwSetCursorPos]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetCursorPos ({\bf GLFWwindow} $\ast$ {\em window}, \/  double {\em xpos}, \/  double {\em ypos})}}
+\label{group__input_gaf152cc93418acb0ba342e3f4af922bc}
+
+
+Sets the position of the cursor, relative to the client area of the window. 
+
+This function sets the position, in screen coordinates, of the cursor relative to the upper-left corner of the client area of the specified window. The window must have input focus. If the window does not have input focus when this function is called, it fails silently.
+
+\_\-\_\-Do not use this function\_\-\_\- to implement things like camera controls. GLFW already provides the `GLFW\_\-CURSOR\_\-DISABLED` cursor mode that hides the cursor, transparently re-centers it and provides unconstrained cursor motion. See \hyperlink{group__input_ge1eb729d2dd91dc33fd60e150a6e1684}{glfwSetInputMode} for more information.
+
+If the cursor mode is `GLFW\_\-CURSOR\_\-DISABLED` then the cursor position is unconstrained and limited only by the minimum and maximum values of a `double`.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The desired window. \item[\mbox{$\leftarrow$} {\em xpos}]The desired x-coordinate, relative to the left edge of the client area. \item[\mbox{$\leftarrow$} {\em ypos}]The desired y-coordinate, relative to the top edge of the client area.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]cursor\_\-pos 
+
+\hyperlink{group__input_gd289438eb7cf53d11eca685373f44105}{glfwGetCursorPos}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwSetMousePos`. \end{Desc}
+\hypertarget{group__input_g9c49c0d3d3c775c3124726f1d902124d}{
+\index{input@{input}!glfwSetCursorPosCallback@{glfwSetCursorPosCallback}}
+\index{glfwSetCursorPosCallback@{glfwSetCursorPosCallback}!input@{input}}
+\subsubsection[glfwSetCursorPosCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWcursorposfun} glfwSetCursorPosCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWcursorposfun} {\em cbfun})}}
+\label{group__input_g9c49c0d3d3c775c3124726f1d902124d}
+
+
+Sets the cursor position callback. 
+
+This function sets the cursor position callback of the specified window, which is called when the cursor is moved. The callback is provided with the position, in screen coordinates, relative to the upper-left corner of the client area of the window.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]cursor\_\-pos\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwSetMousePosCallback`. \end{Desc}
+\hypertarget{group__input_gd4fc40df63a5d0441ab06de9a585cc04}{
+\index{input@{input}!glfwSetDropCallback@{glfwSetDropCallback}}
+\index{glfwSetDropCallback@{glfwSetDropCallback}!input@{input}}
+\subsubsection[glfwSetDropCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWdropfun} glfwSetDropCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWdropfun} {\em cbfun})}}
+\label{group__input_gd4fc40df63a5d0441ab06de9a585cc04}
+
+
+Sets the file drop callback. 
+
+This function sets the file drop callback of the specified window, which is called when one or more dragged files are dropped on the window.
+
+Because the path array and its strings may have been generated specifically for that event, they are not guaranteed to be valid after the callback has returned. If you wish to use them after the callback returns, you need to make a deep copy.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new file drop callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]path\_\-drop\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.1. \end{Desc}
+\hypertarget{group__input_ge1eb729d2dd91dc33fd60e150a6e1684}{
+\index{input@{input}!glfwSetInputMode@{glfwSetInputMode}}
+\index{glfwSetInputMode@{glfwSetInputMode}!input@{input}}
+\subsubsection[glfwSetInputMode]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetInputMode ({\bf GLFWwindow} $\ast$ {\em window}, \/  int {\em mode}, \/  int {\em value})}}
+\label{group__input_ge1eb729d2dd91dc33fd60e150a6e1684}
+
+
+Sets an input option for the specified window. 
+
+This function sets an input mode option for the specified window. The mode must be one of `GLFW\_\-CURSOR`, `GLFW\_\-STICKY\_\-KEYS` or `GLFW\_\-STICKY\_\-MOUSE\_\-BUTTONS`.
+
+If the mode is `GLFW\_\-CURSOR`, the value must be one of the following cursor modes:\begin{itemize}
+\item `GLFW\_\-CURSOR\_\-NORMAL` makes the cursor visible and behaving normally.\item `GLFW\_\-CURSOR\_\-HIDDEN` makes the cursor invisible when it is over the client area of the window but does not restrict the cursor from leaving.\item `GLFW\_\-CURSOR\_\-DISABLED` hides and grabs the cursor, providing virtual and unlimited cursor movement. This is useful for implementing for example 3D camera controls.\end{itemize}
+
+
+If the mode is `GLFW\_\-STICKY\_\-KEYS`, the value must be either `GLFW\_\-TRUE` to enable sticky keys, or `GLFW\_\-FALSE` to disable it. If sticky keys are enabled, a key press will ensure that \hyperlink{group__input_g7d8ad8ffaf272808f04e1d5d33ec8859}{glfwGetKey} returns `GLFW\_\-PRESS` the next time it is called even if the key had been released before the call. This is useful when you are only interested in whether keys have been pressed but not when or in which order.
+
+If the mode is `GLFW\_\-STICKY\_\-MOUSE\_\-BUTTONS`, the value must be either `GLFW\_\-TRUE` to enable sticky mouse buttons, or `GLFW\_\-FALSE` to disable it. If sticky mouse buttons are enabled, a mouse button press will ensure that \hyperlink{group__input_g6da5efb04f700c312a57a169fa9393a0}{glfwGetMouseButton} returns `GLFW\_\-PRESS` the next time it is called even if the mouse button had been released before the call. This is useful when you are only interested in whether mouse buttons have been pressed but not when or in which order.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose input mode to set. \item[\mbox{$\leftarrow$} {\em mode}]One of `GLFW\_\-CURSOR`, `GLFW\_\-STICKY\_\-KEYS` or `GLFW\_\-STICKY\_\-MOUSE\_\-BUTTONS`. \item[\mbox{$\leftarrow$} {\em value}]The new value of the specified input mode.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_g76f6bb9c4eea73db675f096b404593ce}{GLFW\_\-INVALID\_\-ENUM} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__input_g1248dd5b1e566b2817e71547564d6af9}{glfwGetInputMode}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwEnable` and `glfwDisable`. \end{Desc}
+\hypertarget{group__input_g07524a1122a03642b1d28822ea931094}{
+\index{input@{input}!glfwSetJoystickCallback@{glfwSetJoystickCallback}}
+\index{glfwSetJoystickCallback@{glfwSetJoystickCallback}!input@{input}}
+\subsubsection[glfwSetJoystickCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWjoystickfun} glfwSetJoystickCallback ({\bf GLFWjoystickfun} {\em cbfun})}}
+\label{group__input_g07524a1122a03642b1d28822ea931094}
+
+
+Sets the joystick configuration callback. 
+
+This function sets the joystick configuration callback, or removes the currently set callback. This is called when a joystick is connected to or disconnected from the system.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]joystick\_\-event\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.2. \end{Desc}
+\hypertarget{group__input_ga73bb92f628a2a0be9c132d56f19362c}{
+\index{input@{input}!glfwSetKeyCallback@{glfwSetKeyCallback}}
+\index{glfwSetKeyCallback@{glfwSetKeyCallback}!input@{input}}
+\subsubsection[glfwSetKeyCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWkeyfun} glfwSetKeyCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWkeyfun} {\em cbfun})}}
+\label{group__input_ga73bb92f628a2a0be9c132d56f19362c}
+
+
+Sets the key callback. 
+
+This function sets the key callback of the specified window, which is called when a key is pressed, repeated or released.
+
+The key functions deal with physical keys, with layout independent \mbox{[}key tokens\mbox{]}(\hyperlink{group__keys}{Keyboard keys}) named after their values in the standard US keyboard layout. If you want to input text, use the \mbox{[}character callback\mbox{]}(\hyperlink{group__input_g07b2959b23dc3e466ce7475746021002}{glfwSetCharCallback}) instead.
+
+When a window loses input focus, it will generate synthetic key release events for all pressed keys. You can tell these events from user-generated events by the fact that the synthetic ones are generated after the focus loss event has been processed, i.e. after the \mbox{[}window focus callback\mbox{]}(\hyperlink{group__window_gc89c6534ba7fbab6f6c68b855656c0d4}{glfwSetWindowFocusCallback}) has been called.
+
+The scancode of a key is specific to that platform or sometimes even to that machine. Scancodes are intended to allow users to bind keys that don't have a GLFW key token. Such keys have `key` set to `GLFW\_\-KEY\_\-UNKNOWN`, their state is not saved and so it cannot be queried with \hyperlink{group__input_g7d8ad8ffaf272808f04e1d5d33ec8859}{glfwGetKey}.
+
+Sometimes GLFW needs to generate synthetic key events, in which case the scancode may be zero.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new key callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]input\_\-key\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle parameter and return value. \end{Desc}
+\hypertarget{group__input_g20e5ba1ce4e086aedd48a06dc311c95f}{
+\index{input@{input}!glfwSetMouseButtonCallback@{glfwSetMouseButtonCallback}}
+\index{glfwSetMouseButtonCallback@{glfwSetMouseButtonCallback}!input@{input}}
+\subsubsection[glfwSetMouseButtonCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWmousebuttonfun} glfwSetMouseButtonCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWmousebuttonfun} {\em cbfun})}}
+\label{group__input_g20e5ba1ce4e086aedd48a06dc311c95f}
+
+
+Sets the mouse button callback. 
+
+This function sets the mouse button callback of the specified window, which is called when a mouse button is pressed or released.
+
+When a window loses input focus, it will generate synthetic mouse button release events for all pressed mouse buttons. You can tell these events from user-generated events by the fact that the synthetic ones are generated after the focus loss event has been processed, i.e. after the \mbox{[}window focus callback\mbox{]}(\hyperlink{group__window_gc89c6534ba7fbab6f6c68b855656c0d4}{glfwSetWindowFocusCallback}) has been called.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]input\_\-mouse\_\-button\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Added window handle parameter and return value. \end{Desc}
+\hypertarget{group__input_g29011514e93368712a3063a28707ced3}{
+\index{input@{input}!glfwSetScrollCallback@{glfwSetScrollCallback}}
+\index{glfwSetScrollCallback@{glfwSetScrollCallback}!input@{input}}
+\subsubsection[glfwSetScrollCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWscrollfun} glfwSetScrollCallback ({\bf GLFWwindow} $\ast$ {\em window}, \/  {\bf GLFWscrollfun} {\em cbfun})}}
+\label{group__input_g29011514e93368712a3063a28707ced3}
+
+
+Sets the scroll callback. 
+
+This function sets the scroll callback of the specified window, which is called when a scrolling device is used, such as a mouse wheel or scrolling area of a touchpad.
+
+The scroll callback receives all scrolling input, like that from a mouse wheel or a touchpad scrolling area.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em window}]The window whose callback to set. \item[\mbox{$\leftarrow$} {\em cbfun}]The new scroll callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]scrolling\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwSetMouseWheelCallback`. \end{Desc}
+\hypertarget{group__input_g94360a3628a09f32708f83cc3fa48590}{
+\index{input@{input}!glfwSetTime@{glfwSetTime}}
+\index{glfwSetTime@{glfwSetTime}!input@{input}}
+\subsubsection[glfwSetTime]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetTime (double {\em time})}}
+\label{group__input_g94360a3628a09f32708f83cc3fa48590}
+
+
+Sets the GLFW timer. 
+
+This function sets the value of the GLFW timer. It then continues to count up from that value. The value must be a positive finite number less than or equal to 18446744073.0, which is approximately 584.5 years.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em time}]The new value, in seconds.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gaf2ef9aa8202c2b82ac2d921e554c687}{GLFW\_\-INVALID\_\-VALUE}.
+
+\begin{Desc}
+\item[Remarks:]The upper limit of the timer is calculated as floor((2$^{\mbox{64}}$  - 1) / 10$^{\mbox{9}}$ ) and is due to implementations storing nanoseconds in 64 bits. The limit may be increased in the future.\end{Desc}
+This function may be called from any thread. Reading and writing of the internal timer offset is not atomic, so it needs to be externally synchronized with calls to \hyperlink{group__input_g03d4a1039b8662c71eeb40beea8cb622}{glfwGetTime}.
+
+\begin{Desc}
+\item[See also:]time\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 2.2. \end{Desc}

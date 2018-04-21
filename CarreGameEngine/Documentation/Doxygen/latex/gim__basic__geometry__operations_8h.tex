@@ -1,0 +1,173 @@
+\hypertarget{gim__basic__geometry__operations_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-basic\_\-geometry\_\-operations.h File Reference}
+\label{gim__basic__geometry__operations_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-basic\_\-geometry\_\-operations.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-basic\_\-geometry\_\-operations.h}}
+}
+{\tt \#include \char`\"{}gim\_\-linear\_\-math.h\char`\"{}}\par
+
+
+Include dependency graph for gim\_\-basic\_\-geometry\_\-operations.h:
+
+This graph shows which files directly or indirectly include this file:\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{gim__basic__geometry__operations_8h_3a555c6ce6f2cba54d48cf5397616975}{
+\#define \hyperlink{gim__basic__geometry__operations_8h_3a555c6ce6f2cba54d48cf5397616975}{TRIANGLE\_\-PLANE}(v1, v2, v3, plane)}
+\label{gim__basic__geometry__operations_8h_3a555c6ce6f2cba54d48cf5397616975}
+
+\begin{CompactList}\small\item\em plane is a vec4f \item\end{CompactList}\item 
+\hypertarget{gim__basic__geometry__operations_8h_488bb318b2847ded4f0d7d5ca9f6f62e}{
+\#define \hyperlink{gim__basic__geometry__operations_8h_488bb318b2847ded4f0d7d5ca9f6f62e}{TRIANGLE\_\-PLANE\_\-FAST}(v1, v2, v3, plane)}
+\label{gim__basic__geometry__operations_8h_488bb318b2847ded4f0d7d5ca9f6f62e}
+
+\begin{CompactList}\small\item\em plane is a vec4f \item\end{CompactList}\item 
+\hypertarget{gim__basic__geometry__operations_8h_4f359987a785fce8ab0f3be33335f9d9}{
+\#define \hyperlink{gim__basic__geometry__operations_8h_4f359987a785fce8ab0f3be33335f9d9}{EDGE\_\-PLANE}(e1, e2, n, plane)}
+\label{gim__basic__geometry__operations_8h_4f359987a785fce8ab0f3be33335f9d9}
+
+\begin{CompactList}\small\item\em Calc a plane from an edge an a normal. plane is a vec4f. \item\end{CompactList}\item 
+\hypertarget{gim__basic__geometry__operations_8h_c5e074cfe96be68f9c9f17174243ff20}{
+\#define \hyperlink{gim__basic__geometry__operations_8h_c5e074cfe96be68f9c9f17174243ff20}{PLANE\_\-MINOR\_\-AXES}(plane, i0, i1)~VEC\_\-MINOR\_\-AXES(plane, i0, i1)}
+\label{gim__basic__geometry__operations_8h_c5e074cfe96be68f9c9f17174243ff20}
+
+\begin{CompactList}\small\item\em Finds the 2 smallest cartesian coordinates of a plane normal. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{gim__basic__geometry__operations_8h_bbba9933965e587594244b81ceb32c04}{
+{\footnotesize template$<$typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ }\\SIMD\_\-FORCE\_\-INLINE bool \hyperlink{gim__basic__geometry__operations_8h_bbba9933965e587594244b81ceb32c04}{POINT\_\-IN\_\-HULL} (const CLASS\_\-POINT \&point, const CLASS\_\-PLANE $\ast$planes, GUINT plane\_\-count)}
+\label{gim__basic__geometry__operations_8h_bbba9933965e587594244b81ceb32c04}
+
+\begin{CompactList}\small\item\em Verifies if a point is in the plane hull. \item\end{CompactList}\item 
+{\footnotesize template$<$typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ }\\SIMD\_\-FORCE\_\-INLINE eLINE\_\-PLANE\_\-INTERSECTION\_\-TYPE \hyperlink{gim__basic__geometry__operations_8h_c1357f9a99f5709463c3c11874c993c4}{PLANE\_\-CLIP\_\-SEGMENT2} (const CLASS\_\-POINT \&s1, const CLASS\_\-POINT \&s2, const CLASS\_\-PLANE \&plane, CLASS\_\-POINT \&clipped)
+\begin{CompactList}\small\item\em Confirms if the plane intersect the edge or nor. \item\end{CompactList}\item 
+{\footnotesize template$<$typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ }\\SIMD\_\-FORCE\_\-INLINE eLINE\_\-PLANE\_\-INTERSECTION\_\-TYPE \hyperlink{gim__basic__geometry__operations_8h_a931e17a661df001eaa717335ae537ec}{PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST} (const CLASS\_\-POINT \&s1, const CLASS\_\-POINT \&s2, const CLASS\_\-PLANE \&plane, CLASS\_\-POINT \&clipped1, CLASS\_\-POINT \&clipped2)
+\begin{CompactList}\small\item\em Confirms if the plane intersect the edge or not. \item\end{CompactList}\item 
+{\footnotesize template$<$typename T, typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ }\\SIMD\_\-FORCE\_\-INLINE bool \hyperlink{gim__basic__geometry__operations_8h_76424e5fa2f0f7697652e0088e296397}{RAY\_\-PLANE\_\-COLLISION} (const CLASS\_\-PLANE \&plane, const CLASS\_\-POINT \&vDir, const CLASS\_\-POINT \&vPoint, CLASS\_\-POINT \&pout, T \&tparam)
+\begin{CompactList}\small\item\em Ray plane collision in one way. \item\end{CompactList}\item 
+{\footnotesize template$<$typename T, typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ }\\SIMD\_\-FORCE\_\-INLINE GUINT \hyperlink{gim__basic__geometry__operations_8h_e039e4c642dd58adc8e99d774db9342d}{LINE\_\-PLANE\_\-COLLISION} (const CLASS\_\-PLANE \&plane, const CLASS\_\-POINT \&vDir, const CLASS\_\-POINT \&vPoint, CLASS\_\-POINT \&pout, T \&tparam, T tmin, T tmax)
+\begin{CompactList}\small\item\em line collision \item\end{CompactList}\item 
+{\footnotesize template$<$typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ }\\SIMD\_\-FORCE\_\-INLINE bool \hyperlink{gim__basic__geometry__operations_8h_27491c62dc80b8efd8be348f6b41f5cb}{INTERSECT\_\-PLANES} (const CLASS\_\-PLANE \&p1, const CLASS\_\-PLANE \&p2, CLASS\_\-POINT \&p, CLASS\_\-POINT \&d)
+\begin{CompactList}\small\item\em Returns the Ray on which 2 planes intersect if they do. Written by Rodrigo Hernandez on ODE convex collision. \item\end{CompactList}\item 
+{\footnotesize template$<$typename CLASS\_\-POINT$>$ }\\SIMD\_\-FORCE\_\-INLINE void \hyperlink{gim__basic__geometry__operations_8h_b66e93d424a6170788e539099622709d}{CLOSEST\_\-POINT\_\-ON\_\-SEGMENT} (CLASS\_\-POINT \&cp, const CLASS\_\-POINT \&v, const CLASS\_\-POINT \&e1, const CLASS\_\-POINT \&e2)
+\item 
+{\footnotesize template$<$typename T, typename CLASS\_\-POINT$>$ }\\SIMD\_\-FORCE\_\-INLINE bool \hyperlink{gim__basic__geometry__operations_8h_1e7d4f2ec752876cb69dbfc273aa808b}{LINE\_\-INTERSECTION\_\-PARAMS} (const CLASS\_\-POINT \&dir1, CLASS\_\-POINT \&point1, const CLASS\_\-POINT \&dir2, CLASS\_\-POINT \&point2, T \&t1, T \&t2)
+\begin{CompactList}\small\item\em Finds the line params where these lines intersect. \item\end{CompactList}\item 
+\hypertarget{gim__basic__geometry__operations_8h_8a9e46c990cbb6a4aa3e85e4c75aad85}{
+{\footnotesize template$<$typename CLASS\_\-POINT$>$ }\\SIMD\_\-FORCE\_\-INLINE void \hyperlink{gim__basic__geometry__operations_8h_8a9e46c990cbb6a4aa3e85e4c75aad85}{SEGMENT\_\-COLLISION} (const CLASS\_\-POINT \&vA1, const CLASS\_\-POINT \&vA2, const CLASS\_\-POINT \&vB1, const CLASS\_\-POINT \&vB2, CLASS\_\-POINT \&vPointA, CLASS\_\-POINT \&vPointB)}
+\label{gim__basic__geometry__operations_8h_8a9e46c990cbb6a4aa3e85e4c75aad85}
+
+\begin{CompactList}\small\item\em Find closest points on segments. \item\end{CompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\SIMD\_\-FORCE\_\-INLINE bool \hyperlink{gim__basic__geometry__operations_8h_263c8b6948964b535bc3ea3e095a7bdf}{BOX\_\-AXIS\_\-INTERSECT} (T pos, T dir, T bmin, T bmax, T \&tfirst, T \&tlast)
+\begin{CompactList}\small\item\em Line box intersection in one dimension. \item\end{CompactList}\item 
+\hypertarget{gim__basic__geometry__operations_8h_fe4f0bb3d7ff5247cdd216dd723da675}{
+{\footnotesize template$<$typename T$>$ }\\SIMD\_\-FORCE\_\-INLINE void \hyperlink{gim__basic__geometry__operations_8h_fe4f0bb3d7ff5247cdd216dd723da675}{SORT\_\-3\_\-INDICES} (const T $\ast$values, GUINT $\ast$order\_\-indices)}
+\label{gim__basic__geometry__operations_8h_fe4f0bb3d7ff5247cdd216dd723da675}
+
+\begin{CompactList}\small\item\em Sorts 3 componets. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Author:]Francisco Leon Najera type independant geometry routines \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{gim__basic__geometry__operations_8h_263c8b6948964b535bc3ea3e095a7bdf}{
+\index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!BOX\_\-AXIS\_\-INTERSECT@{BOX\_\-AXIS\_\-INTERSECT}}
+\index{BOX\_\-AXIS\_\-INTERSECT@{BOX\_\-AXIS\_\-INTERSECT}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
+\subsubsection[BOX\_\-AXIS\_\-INTERSECT]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ SIMD\_\-FORCE\_\-INLINE bool BOX\_\-AXIS\_\-INTERSECT (T {\em pos}, \/  T {\em dir}, \/  T {\em bmin}, \/  T {\em bmax}, \/  T \& {\em tfirst}, \/  T \& {\em tlast})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__basic__geometry__operations_8h_263c8b6948964b535bc3ea3e095a7bdf}
+
+
+Line box intersection in one dimension. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]Position of the ray \item[{\em dir}]Projection of the Direction of the ray \item[{\em bmin}]Minimum bound of the box \item[{\em bmax}]Maximum bound of the box \item[{\em tfirst}]the minimum projection. Assign to 0 at first. \item[{\em tlast}]the maximum projection. Assign to INFINITY at first. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if there is an intersection. \end{Desc}
+\hypertarget{gim__basic__geometry__operations_8h_b66e93d424a6170788e539099622709d}{
+\index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!CLOSEST\_\-POINT\_\-ON\_\-SEGMENT@{CLOSEST\_\-POINT\_\-ON\_\-SEGMENT}}
+\index{CLOSEST\_\-POINT\_\-ON\_\-SEGMENT@{CLOSEST\_\-POINT\_\-ON\_\-SEGMENT}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
+\subsubsection[CLOSEST\_\-POINT\_\-ON\_\-SEGMENT]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename CLASS\_\-POINT$>$ SIMD\_\-FORCE\_\-INLINE void CLOSEST\_\-POINT\_\-ON\_\-SEGMENT (CLASS\_\-POINT \& {\em cp}, \/  const CLASS\_\-POINT \& {\em v}, \/  const CLASS\_\-POINT \& {\em e1}, \/  const CLASS\_\-POINT \& {\em e2})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__basic__geometry__operations_8h_b66e93d424a6170788e539099622709d}
+
+
+Finds the closest point(cp) to (v) on a segment (e1,e2) \hypertarget{gim__basic__geometry__operations_8h_27491c62dc80b8efd8be348f6b41f5cb}{
+\index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!INTERSECT\_\-PLANES@{INTERSECT\_\-PLANES}}
+\index{INTERSECT\_\-PLANES@{INTERSECT\_\-PLANES}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
+\subsubsection[INTERSECT\_\-PLANES]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ SIMD\_\-FORCE\_\-INLINE bool INTERSECT\_\-PLANES (const CLASS\_\-PLANE \& {\em p1}, \/  const CLASS\_\-PLANE \& {\em p2}, \/  CLASS\_\-POINT \& {\em p}, \/  CLASS\_\-POINT \& {\em d})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__basic__geometry__operations_8h_27491c62dc80b8efd8be348f6b41f5cb}
+
+
+Returns the Ray on which 2 planes intersect if they do. Written by Rodrigo Hernandez on ODE convex collision. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em p1}]Plane 1 \item[{\em p2}]Plane 2 \item[{\em p}]Contains the origin of the ray upon returning if planes intersect \item[{\em d}]Contains the direction of the ray upon returning if planes intersect \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if the planes intersect, 0 if paralell. \end{Desc}
+\hypertarget{gim__basic__geometry__operations_8h_1e7d4f2ec752876cb69dbfc273aa808b}{
+\index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!LINE\_\-INTERSECTION\_\-PARAMS@{LINE\_\-INTERSECTION\_\-PARAMS}}
+\index{LINE\_\-INTERSECTION\_\-PARAMS@{LINE\_\-INTERSECTION\_\-PARAMS}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
+\subsubsection[LINE\_\-INTERSECTION\_\-PARAMS]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename CLASS\_\-POINT$>$ SIMD\_\-FORCE\_\-INLINE bool LINE\_\-INTERSECTION\_\-PARAMS (const CLASS\_\-POINT \& {\em dir1}, \/  CLASS\_\-POINT \& {\em point1}, \/  const CLASS\_\-POINT \& {\em dir2}, \/  CLASS\_\-POINT \& {\em point2}, \/  T \& {\em t1}, \/  T \& {\em t2})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__basic__geometry__operations_8h_1e7d4f2ec752876cb69dbfc273aa808b}
+
+
+Finds the line params where these lines intersect. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dir1}]Direction of line 1 \item[{\em point1}]Point of line 1 \item[{\em dir2}]Direction of line 2 \item[{\em point2}]Point of line 2 \item[{\em t1}]Result Parameter for line 1 \item[{\em t2}]Result Parameter for line 2 \item[{\em dointersect}]0 if the lines won't intersect, else 1 \end{description}
+\end{Desc}
+\hypertarget{gim__basic__geometry__operations_8h_e039e4c642dd58adc8e99d774db9342d}{
+\index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!LINE\_\-PLANE\_\-COLLISION@{LINE\_\-PLANE\_\-COLLISION}}
+\index{LINE\_\-PLANE\_\-COLLISION@{LINE\_\-PLANE\_\-COLLISION}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
+\subsubsection[LINE\_\-PLANE\_\-COLLISION]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ SIMD\_\-FORCE\_\-INLINE GUINT LINE\_\-PLANE\_\-COLLISION (const CLASS\_\-PLANE \& {\em plane}, \/  const CLASS\_\-POINT \& {\em vDir}, \/  const CLASS\_\-POINT \& {\em vPoint}, \/  CLASS\_\-POINT \& {\em pout}, \/  T \& {\em tparam}, \/  T {\em tmin}, \/  T {\em tmax})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__basic__geometry__operations_8h_e039e4c642dd58adc8e99d774db9342d}
+
+
+line collision 
+
+\begin{Desc}
+\item[Returns:]-0 if the ray never intersects -1 if the ray collides in front -2 if the ray collides in back \end{Desc}
+\hypertarget{gim__basic__geometry__operations_8h_c1357f9a99f5709463c3c11874c993c4}{
+\index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!PLANE\_\-CLIP\_\-SEGMENT2@{PLANE\_\-CLIP\_\-SEGMENT2}}
+\index{PLANE\_\-CLIP\_\-SEGMENT2@{PLANE\_\-CLIP\_\-SEGMENT2}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
+\subsubsection[PLANE\_\-CLIP\_\-SEGMENT2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ SIMD\_\-FORCE\_\-INLINE eLINE\_\-PLANE\_\-INTERSECTION\_\-TYPE PLANE\_\-CLIP\_\-SEGMENT2 (const CLASS\_\-POINT \& {\em s1}, \/  const CLASS\_\-POINT \& {\em s2}, \/  const CLASS\_\-PLANE \& {\em plane}, \/  CLASS\_\-POINT \& {\em clipped})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__basic__geometry__operations_8h_c1357f9a99f5709463c3c11874c993c4}
+
+
+Confirms if the plane intersect the edge or nor. 
+
+intersection type must have the following values \begin{itemize}
+\item 0 : Segment in front of plane, s1 closest \item 1 : Segment in front of plane, s2 closest \item 2 : Segment in back of plane, s1 closest \item 3 : Segment in back of plane, s2 closest \item 4 : Segment collides plane, s1 in back \item 5 : Segment collides plane, s2 in back \end{itemize}
+\hypertarget{gim__basic__geometry__operations_8h_a931e17a661df001eaa717335ae537ec}{
+\index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST@{PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST}}
+\index{PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST@{PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
+\subsubsection[PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ SIMD\_\-FORCE\_\-INLINE eLINE\_\-PLANE\_\-INTERSECTION\_\-TYPE PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST (const CLASS\_\-POINT \& {\em s1}, \/  const CLASS\_\-POINT \& {\em s2}, \/  const CLASS\_\-PLANE \& {\em plane}, \/  CLASS\_\-POINT \& {\em clipped1}, \/  CLASS\_\-POINT \& {\em clipped2})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__basic__geometry__operations_8h_a931e17a661df001eaa717335ae537ec}
+
+
+Confirms if the plane intersect the edge or not. 
+
+clipped1 and clipped2 are the vertices behind the plane. clipped1 is the closest
+
+intersection\_\-type must have the following values \begin{itemize}
+\item 0 : Segment in front of plane, s1 closest \item 1 : Segment in front of plane, s2 closest \item 2 : Segment in back of plane, s1 closest \item 3 : Segment in back of plane, s2 closest \item 4 : Segment collides plane, s1 in back \item 5 : Segment collides plane, s2 in back \end{itemize}
+\hypertarget{gim__basic__geometry__operations_8h_76424e5fa2f0f7697652e0088e296397}{
+\index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!RAY\_\-PLANE\_\-COLLISION@{RAY\_\-PLANE\_\-COLLISION}}
+\index{RAY\_\-PLANE\_\-COLLISION@{RAY\_\-PLANE\_\-COLLISION}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
+\subsubsection[RAY\_\-PLANE\_\-COLLISION]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ SIMD\_\-FORCE\_\-INLINE bool RAY\_\-PLANE\_\-COLLISION (const CLASS\_\-PLANE \& {\em plane}, \/  const CLASS\_\-POINT \& {\em vDir}, \/  const CLASS\_\-POINT \& {\em vPoint}, \/  CLASS\_\-POINT \& {\em pout}, \/  T \& {\em tparam})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__basic__geometry__operations_8h_76424e5fa2f0f7697652e0088e296397}
+
+
+Ray plane collision in one way. 
+
+Intersects plane in one way only. The ray must face the plane (normals must be in opossite directions).\par
+ It uses the PLANEDIREPSILON constant. 

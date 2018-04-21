@@ -1,0 +1,4 @@
+<area shape="rect" href="$structbt_collision_object_float_data.html" title="do not change those serialization structures, it requires an updated sBulletDNAstr/sBulletDNAstr64..." alt="" coords="147,203,323,229">
+<area shape="rect" href="$structbt_collision_shape_data.html" title="do not change those serialization structures, it requires an updated sBulletDNAstr/sBulletDNAstr64..." alt="" coords="5,96,149,123">
+<area shape="rect" href="$structbt_transform_float_data.html" title="for serialization" alt="" coords="219,96,363,123">
+<area shape="rect" href="$structbt_matrix3x3_float_data.html" title="for serialization" alt="" coords="316,5,460,32">

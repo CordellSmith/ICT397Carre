@@ -1,0 +1,10 @@
+digraph structs
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=8,labelfontname="FreeSans",labelfontsize=8];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node0 [label="Floating-Point Pack and Unpack Functions",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 [label="GLM Core",height=0.2,width=0.4,color="black",URL="$group__core.html",tooltip="The core of GLM, which implements exactly and only the GLSL specification to the..."];
+  Node1->Node0 [shape=plaintext, color="midnightblue", dir="back", style="solid"];
+}

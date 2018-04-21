@@ -1,0 +1,129 @@
+\hypertarget{classbt_soft_body}{
+\section{btSoftBody Class Reference}
+\label{classbt_soft_body}\index{btSoftBody@{btSoftBody}}
+}
+{\tt \#include $<$btSoftBody.h$>$}
+
+Collaboration diagram for btSoftBody:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_soft_body_842480e0f75b82a50f0e5e606e2ac40b}{
+\hyperlink{classbt_soft_body_842480e0f75b82a50f0e5e606e2ac40b}{btSoftBody} (btSoftBodyWorldInfo $\ast$worldInfo, int node\_\-count, const btVector3 $\ast$x, const btScalar $\ast$m)}
+\label{classbt_soft_body_842480e0f75b82a50f0e5e606e2ac40b}
+
+\begin{CompactList}\small\item\em \hyperlink{classbt_soft_body}{btSoftBody} implementation by Nathanael Presson \item\end{CompactList}\item 
+void \hyperlink{classbt_soft_body_e07c09d9c2937897c3690c1a3970bf61}{initDefaults} ()
+\item 
+virtual void \hyperlink{classbt_soft_body_ced0f5421eeb1491a3fd77bb91e2e5af}{setCollisionShape} (btCollisionShape $\ast$collisionShape)
+\item 
+int \hyperlink{classbt_soft_body_f31b03f0ff5eecec1ec9eee5a7582d20}{generateBendingConstraints} (int distance, Material $\ast$mat=0)
+\item 
+int \hyperlink{classbt_soft_body_9915ca0d99dbeb9f39221dab218d5208}{generateClusters} (int k, int maxiterations=8192)
+\item 
+\hypertarget{classbt_soft_body_3133d790dcff71b8e8a43eb966097485}{
+bool \hyperlink{classbt_soft_body_3133d790dcff71b8e8a43eb966097485}{rayTest} (const btVector3 \&rayFrom, const btVector3 \&rayTo, sRayCast \&results)}
+\label{classbt_soft_body_3133d790dcff71b8e8a43eb966097485}
+
+\begin{CompactList}\small\item\em Ray casting using rayFrom and rayTo in worldspace, (not direction!). \item\end{CompactList}\item 
+void \hyperlink{classbt_soft_body_ee9ac69662731fa96ae2357522972ef9}{setWindVelocity} (const btVector3 \&velocity)
+\item 
+const btVector3 \& \hyperlink{classbt_soft_body_71de05c3c56952a4d76e09ca9ca9cce0}{getWindVelocity} ()
+\item 
+\hypertarget{classbt_soft_body_c24b1fbdcc3ed3d26b3dae6380303c77}{
+virtual const char $\ast$ \hyperlink{classbt_soft_body_c24b1fbdcc3ed3d26b3dae6380303c77}{serialize} (void $\ast$dataBuffer, class btSerializer $\ast$serializer) const }
+\label{classbt_soft_body_c24b1fbdcc3ed3d26b3dae6380303c77}
+
+\begin{CompactList}\small\item\em fills the dataBuffer and returns the struct name (and 0 on failure) \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static void \hyperlink{classbt_soft_body_e8a2fc459b2afc985fbb03c1b0203bec}{solveCommonConstraints} (\hyperlink{classbt_soft_body}{btSoftBody} $\ast$$\ast$bodies, int count, int iterations)
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structbt_soft_body_1_1e_aero_model}{eAeroModel}
+\begin{CompactList}\small\item\em \hyperlink{structbt_soft_body_1_1e_aero_model}{eAeroModel} \item\end{CompactList}\item 
+struct \hyperlink{structbt_soft_body_1_1e_feature}{eFeature}
+\begin{CompactList}\small\item\em \hyperlink{structbt_soft_body_1_1e_feature}{eFeature} \item\end{CompactList}\item 
+struct \hyperlink{structbt_soft_body_1_1e_p_solver}{ePSolver}
+\begin{CompactList}\small\item\em \hyperlink{structbt_soft_body_1_1e_p_solver}{ePSolver} : positions solvers \item\end{CompactList}\item 
+struct \hyperlink{structbt_soft_body_1_1e_solver_presets}{eSolverPresets}
+\begin{CompactList}\small\item\em \hyperlink{structbt_soft_body_1_1e_solver_presets}{eSolverPresets} \item\end{CompactList}\item 
+struct \hyperlink{structbt_soft_body_1_1e_v_solver}{eVSolver}
+\begin{CompactList}\small\item\em \hyperlink{structbt_soft_body_1_1e_v_solver}{eVSolver} : velocities solvers \item\end{CompactList}\item 
+struct \hyperlink{structbt_soft_body_1_1f_collision}{fCollision}
+\begin{CompactList}\small\item\em \hyperlink{structbt_soft_body_1_1f_collision}{fCollision} \item\end{CompactList}\item 
+struct \hyperlink{structbt_soft_body_1_1f_material}{fMaterial}
+\begin{CompactList}\small\item\em \hyperlink{structbt_soft_body_1_1f_material}{fMaterial} \item\end{CompactList}\item 
+struct \hyperlink{structbt_soft_body_1_1_ray_from_to_caster}{RayFromToCaster}
+\begin{CompactList}\small\item\em \hyperlink{structbt_soft_body_1_1_ray_from_to_caster}{RayFromToCaster} takes a ray from, ray to (instead of direction!). \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classbt_soft_body}{btSoftBody} is an class to simulate cloth and volumetric soft bodies. There is two-way interaction between \hyperlink{classbt_soft_body}{btSoftBody} and btRigidBody/btCollisionObject. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_soft_body_e07c09d9c2937897c3690c1a3970bf61}{
+\index{btSoftBody@{btSoftBody}!initDefaults@{initDefaults}}
+\index{initDefaults@{initDefaults}!btSoftBody@{btSoftBody}}
+\subsubsection[initDefaults]{\setlength{\rightskip}{0pt plus 5cm}void btSoftBody::initDefaults ()}}
+\label{classbt_soft_body_e07c09d9c2937897c3690c1a3970bf61}
+
+
+
+
+for now, create a collision shape internally \hypertarget{classbt_soft_body_ced0f5421eeb1491a3fd77bb91e2e5af}{
+\index{btSoftBody@{btSoftBody}!setCollisionShape@{setCollisionShape}}
+\index{setCollisionShape@{setCollisionShape}!btSoftBody@{btSoftBody}}
+\subsubsection[setCollisionShape]{\setlength{\rightskip}{0pt plus 5cm}virtual void btSoftBody::setCollisionShape (btCollisionShape $\ast$ {\em collisionShape})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classbt_soft_body_ced0f5421eeb1491a3fd77bb91e2e5af}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000039}{Todo}]: avoid internal softbody shape hack and move collision code to collision library \end{Desc}
+\hypertarget{classbt_soft_body_f31b03f0ff5eecec1ec9eee5a7582d20}{
+\index{btSoftBody@{btSoftBody}!generateBendingConstraints@{generateBendingConstraints}}
+\index{generateBendingConstraints@{generateBendingConstraints}!btSoftBody@{btSoftBody}}
+\subsubsection[generateBendingConstraints]{\setlength{\rightskip}{0pt plus 5cm}int btSoftBody::generateBendingConstraints (int {\em distance}, \/  Material $\ast$ {\em mat} = {\tt 0})}}
+\label{classbt_soft_body_f31b03f0ff5eecec1ec9eee5a7582d20}
+
+
+
+
+generic Floyd's algorithm \hypertarget{classbt_soft_body_9915ca0d99dbeb9f39221dab218d5208}{
+\index{btSoftBody@{btSoftBody}!generateClusters@{generateClusters}}
+\index{generateClusters@{generateClusters}!btSoftBody@{btSoftBody}}
+\subsubsection[generateClusters]{\setlength{\rightskip}{0pt plus 5cm}int btSoftBody::generateClusters (int {\em k}, \/  int {\em maxiterations} = {\tt 8192})}}
+\label{classbt_soft_body_9915ca0d99dbeb9f39221dab218d5208}
+
+
+generateClusters with k=0 will create a convex cluster for each tetrahedron or triangle otherwise an approximation will be used (better performance) \hypertarget{classbt_soft_body_e8a2fc459b2afc985fbb03c1b0203bec}{
+\index{btSoftBody@{btSoftBody}!solveCommonConstraints@{solveCommonConstraints}}
+\index{solveCommonConstraints@{solveCommonConstraints}!btSoftBody@{btSoftBody}}
+\subsubsection[solveCommonConstraints]{\setlength{\rightskip}{0pt plus 5cm}void btSoftBody::solveCommonConstraints ({\bf btSoftBody} $\ast$$\ast$ {\em bodies}, \/  int {\em count}, \/  int {\em iterations})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classbt_soft_body_e8a2fc459b2afc985fbb03c1b0203bec}
+
+
+
+
+placeholder \hypertarget{classbt_soft_body_ee9ac69662731fa96ae2357522972ef9}{
+\index{btSoftBody@{btSoftBody}!setWindVelocity@{setWindVelocity}}
+\index{setWindVelocity@{setWindVelocity}!btSoftBody@{btSoftBody}}
+\subsubsection[setWindVelocity]{\setlength{\rightskip}{0pt plus 5cm}void btSoftBody::setWindVelocity (const btVector3 \& {\em velocity})}}
+\label{classbt_soft_body_ee9ac69662731fa96ae2357522972ef9}
+
+
+Set a wind velocity for interaction with the air. \hypertarget{classbt_soft_body_71de05c3c56952a4d76e09ca9ca9cce0}{
+\index{btSoftBody@{btSoftBody}!getWindVelocity@{getWindVelocity}}
+\index{getWindVelocity@{getWindVelocity}!btSoftBody@{btSoftBody}}
+\subsubsection[getWindVelocity]{\setlength{\rightskip}{0pt plus 5cm}const btVector3 \& btSoftBody::getWindVelocity ()}}
+\label{classbt_soft_body_71de05c3c56952a4d76e09ca9ca9cce0}
+
+
+Return the wind velocity for interaction with the air. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBody.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBody.cpp\end{CompactItemize}

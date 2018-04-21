@@ -1,0 +1,44 @@
+\hypertarget{group__gtx__polar__coordinates}{
+\section{GLM\_\-GTX\_\-polar\_\-coordinates}
+\label{group__gtx__polar__coordinates}\index{GLM\_\-GTX\_\-polar\_\-coordinates@{GLM\_\-GTX\_\-polar\_\-coordinates}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-polar\_\-coordinates:Conversion from Euclidean space to polar space and revert.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec3$<$ T, P $>$ \hyperlink{group__gtx__polar__coordinates_g65a075c52ee1c699d77c4a98dd266006}{glm::polar} (detail::tvec3$<$ T, P $>$ const \&euclidean)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec3$<$ T, P $>$ \hyperlink{group__gtx__polar__coordinates_g3bd21c0f1b1d99a2f8e9cfc85bca488e}{glm::euclidean} (detail::tvec2$<$ T, P $>$ const \&polar)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Conversion from Euclidean space to polar space and revert. 
+
+$<$glm/gtx/polar\_\-coordinates.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__polar__coordinates_g3bd21c0f1b1d99a2f8e9cfc85bca488e}{
+\index{gtx\_\-polar\_\-coordinates@{gtx\_\-polar\_\-coordinates}!euclidean@{euclidean}}
+\index{euclidean@{euclidean}!gtx_polar_coordinates@{gtx\_\-polar\_\-coordinates}}
+\subsubsection[euclidean]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::euclidean (detail::tvec2$<$ T, P $>$ const \& {\em polar})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__polar__coordinates_g3bd21c0f1b1d99a2f8e9cfc85bca488e}
+
+
+Convert Polar to Euclidean coordinates.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtx__polar__coordinates}{GLM\_\-GTX\_\-polar\_\-coordinates} \end{Desc}
+\hypertarget{group__gtx__polar__coordinates_g65a075c52ee1c699d77c4a98dd266006}{
+\index{gtx\_\-polar\_\-coordinates@{gtx\_\-polar\_\-coordinates}!polar@{polar}}
+\index{polar@{polar}!gtx_polar_coordinates@{gtx\_\-polar\_\-coordinates}}
+\subsubsection[polar]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::polar (detail::tvec3$<$ T, P $>$ const \& {\em euclidean})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__polar__coordinates_g65a075c52ee1c699d77c4a98dd266006}
+
+
+Convert Euclidean to Polar coordinates, x is the xz distance, y, the latitude and z the longitude.
+
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtx__polar__coordinates}{GLM\_\-GTX\_\-polar\_\-coordinates} \end{Desc}

@@ -1,0 +1,123 @@
+\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e}{
+\section{GIM\_\-TRIANGLE Class Reference}
+\label{class_g_i_m___t_r_i_a_n_g_l_e}\index{GIM\_\-TRIANGLE@{GIM\_\-TRIANGLE}}
+}
+Class for colliding triangles.  
+
+
+{\tt \#include $<$gim\_\-tri\_\-collision.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{class_g_i_m___t_r_i_a_n_g_l_e_500db747a4c740b3de1756336263a53d}{get\_\-triangle\_\-transform} (btTransform \&triangle\_\-transform) const 
+\begin{CompactList}\small\item\em Gets the relative transformation of this triangle. \item\end{CompactList}\item 
+bool \hyperlink{class_g_i_m___t_r_i_a_n_g_l_e_0ec3d21ba17dec3cfecbe8ff34b85072}{collide\_\-triangle\_\-hard\_\-test} (const \hyperlink{class_g_i_m___t_r_i_a_n_g_l_e}{GIM\_\-TRIANGLE} \&other, \hyperlink{struct_g_i_m___t_r_i_a_n_g_l_e___c_o_n_t_a_c_t___d_a_t_a}{GIM\_\-TRIANGLE\_\-CONTACT\_\-DATA} \&contact\_\-data) const 
+\begin{CompactList}\small\item\em Test triangles by finding separating axis. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___t_r_i_a_n_g_l_e_42749c17088408842a97534559b9d1f2}{collide\_\-triangle} (const \hyperlink{class_g_i_m___t_r_i_a_n_g_l_e}{GIM\_\-TRIANGLE} \&other, \hyperlink{struct_g_i_m___t_r_i_a_n_g_l_e___c_o_n_t_a_c_t___d_a_t_a}{GIM\_\-TRIANGLE\_\-CONTACT\_\-DATA} \&contact\_\-data) const 
+\begin{CompactList}\small\item\em Test boxes before doing hard test. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___t_r_i_a_n_g_l_e_cbd27931f5431435ecce5576de18924b}{get\_\-uv\_\-parameters} (const btVector3 \&point, const btVector3 \&tri\_\-plane, GREAL \&u, GREAL \&v) const 
+\item 
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___t_r_i_a_n_g_l_e_921acb2a97263653fce72384f177a953}{is\_\-point\_\-inside} (const btVector3 \&point, const btVector3 \&tri\_\-normal) const 
+\begin{CompactList}\small\item\em is point in triangle beam? \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_2942ca686a994c2d112ad356c2a4e7ad}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___t_r_i_a_n_g_l_e_2942ca686a994c2d112ad356c2a4e7ad}{ray\_\-collision} (const btVector3 \&vPoint, const btVector3 \&vDir, btVector3 \&pout, btVector3 \&triangle\_\-normal, GREAL \&tparam, GREAL tmax=G\_\-REAL\_\-INFINITY)}
+\label{class_g_i_m___t_r_i_a_n_g_l_e_2942ca686a994c2d112ad356c2a4e7ad}
+
+\begin{CompactList}\small\item\em Bidireccional ray collision. \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_2b333284fd573994acf89b9085a61927}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___t_r_i_a_n_g_l_e_2b333284fd573994acf89b9085a61927}{ray\_\-collision\_\-front\_\-side} (const btVector3 \&vPoint, const btVector3 \&vDir, btVector3 \&pout, btVector3 \&triangle\_\-normal, GREAL \&tparam, GREAL tmax=G\_\-REAL\_\-INFINITY)}
+\label{class_g_i_m___t_r_i_a_n_g_l_e_2b333284fd573994acf89b9085a61927}
+
+\begin{CompactList}\small\item\em one direccion ray collision \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class for colliding triangles. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_500db747a4c740b3de1756336263a53d}{
+\index{GIM\_\-TRIANGLE@{GIM\_\-TRIANGLE}!get\_\-triangle\_\-transform@{get\_\-triangle\_\-transform}}
+\index{get\_\-triangle\_\-transform@{get\_\-triangle\_\-transform}!GIM_TRIANGLE@{GIM\_\-TRIANGLE}}
+\subsubsection[get\_\-triangle\_\-transform]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void GIM\_\-TRIANGLE::get\_\-triangle\_\-transform (btTransform \& {\em triangle\_\-transform}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_g_i_m___t_r_i_a_n_g_l_e_500db747a4c740b3de1756336263a53d}
+
+
+Gets the relative transformation of this triangle. 
+
+The transformation is oriented to the triangle normal , and aligned to the 1st edge of this triangle. The position corresponds to vertice 0:\begin{itemize}
+\item triangle normal corresponds to Z axis.\item 1st normalized edge corresponds to X axis, \end{itemize}
+\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_0ec3d21ba17dec3cfecbe8ff34b85072}{
+\index{GIM\_\-TRIANGLE@{GIM\_\-TRIANGLE}!collide\_\-triangle\_\-hard\_\-test@{collide\_\-triangle\_\-hard\_\-test}}
+\index{collide\_\-triangle\_\-hard\_\-test@{collide\_\-triangle\_\-hard\_\-test}!GIM_TRIANGLE@{GIM\_\-TRIANGLE}}
+\subsubsection[collide\_\-triangle\_\-hard\_\-test]{\setlength{\rightskip}{0pt plus 5cm}bool GIM\_\-TRIANGLE::collide\_\-triangle\_\-hard\_\-test (const {\bf GIM\_\-TRIANGLE} \& {\em other}, \/  {\bf GIM\_\-TRIANGLE\_\-CONTACT\_\-DATA} \& {\em contact\_\-data}) const}}
+\label{class_g_i_m___t_r_i_a_n_g_l_e_0ec3d21ba17dec3cfecbe8ff34b85072}
+
+
+Test triangles by finding separating axis. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]Triangle for collide \item[{\em contact\_\-data}]Structure for holding contact points, normal and penetration depth; The normal is pointing toward this triangle from the other triangle \end{description}
+\end{Desc}
+\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_42749c17088408842a97534559b9d1f2}{
+\index{GIM\_\-TRIANGLE@{GIM\_\-TRIANGLE}!collide\_\-triangle@{collide\_\-triangle}}
+\index{collide\_\-triangle@{collide\_\-triangle}!GIM_TRIANGLE@{GIM\_\-TRIANGLE}}
+\subsubsection[collide\_\-triangle]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE bool GIM\_\-TRIANGLE::collide\_\-triangle (const {\bf GIM\_\-TRIANGLE} \& {\em other}, \/  {\bf GIM\_\-TRIANGLE\_\-CONTACT\_\-DATA} \& {\em contact\_\-data}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_g_i_m___t_r_i_a_n_g_l_e_42749c17088408842a97534559b9d1f2}
+
+
+Test boxes before doing hard test. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em other}]Triangle for collide \item[{\em contact\_\-data}]Structure for holding contact points, normal and penetration depth; The normal is pointing toward this triangle from the other triangle $\backslash$ \end{description}
+\end{Desc}
+\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_cbd27931f5431435ecce5576de18924b}{
+\index{GIM\_\-TRIANGLE@{GIM\_\-TRIANGLE}!get\_\-uv\_\-parameters@{get\_\-uv\_\-parameters}}
+\index{get\_\-uv\_\-parameters@{get\_\-uv\_\-parameters}!GIM_TRIANGLE@{GIM\_\-TRIANGLE}}
+\subsubsection[get\_\-uv\_\-parameters]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE bool GIM\_\-TRIANGLE::get\_\-uv\_\-parameters (const btVector3 \& {\em point}, \/  const btVector3 \& {\em tri\_\-plane}, \/  GREAL \& {\em u}, \/  GREAL \& {\em v}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_g_i_m___t_r_i_a_n_g_l_e_cbd27931f5431435ecce5576de18924b}
+
+
+Solve the System for u,v parameters:
+
+u$\ast$axe1\mbox{[}i1\mbox{]} + v$\ast$axe2\mbox{[}i1\mbox{]} = vecproj\mbox{[}i1\mbox{]} u$\ast$axe1\mbox{[}i2\mbox{]} + v$\ast$axe2\mbox{[}i2\mbox{]} = vecproj\mbox{[}i2\mbox{]}
+
+sustitute: v = (vecproj\mbox{[}i2\mbox{]} - u$\ast$axe1\mbox{[}i2\mbox{]})/axe2\mbox{[}i2\mbox{]}
+
+then the first equation in terms of 'u':
+
+--$>$ u$\ast$axe1\mbox{[}i1\mbox{]} + ((vecproj\mbox{[}i2\mbox{]} - u$\ast$axe1\mbox{[}i2\mbox{]})/axe2\mbox{[}i2\mbox{]})$\ast$axe2\mbox{[}i1\mbox{]} = vecproj\mbox{[}i1\mbox{]}
+
+--$>$ u$\ast$axe1\mbox{[}i1\mbox{]} + vecproj\mbox{[}i2\mbox{]}$\ast$axe2\mbox{[}i1\mbox{]}/axe2\mbox{[}i2\mbox{]} - u$\ast$axe1\mbox{[}i2\mbox{]}$\ast$axe2\mbox{[}i1\mbox{]}/axe2\mbox{[}i2\mbox{]} = vecproj\mbox{[}i1\mbox{]}
+
+--$>$ u$\ast$(axe1\mbox{[}i1\mbox{]} - axe1\mbox{[}i2\mbox{]}$\ast$axe2\mbox{[}i1\mbox{]}/axe2\mbox{[}i2\mbox{]}) = vecproj\mbox{[}i1\mbox{]} - vecproj\mbox{[}i2\mbox{]}$\ast$axe2\mbox{[}i1\mbox{]}/axe2\mbox{[}i2\mbox{]}
+
+--$>$ u$\ast$((axe1\mbox{[}i1\mbox{]}$\ast$axe2\mbox{[}i2\mbox{]} - axe1\mbox{[}i2\mbox{]}$\ast$axe2\mbox{[}i1\mbox{]})/axe2\mbox{[}i2\mbox{]}) = (vecproj\mbox{[}i1\mbox{]}$\ast$axe2\mbox{[}i2\mbox{]} - vecproj\mbox{[}i2\mbox{]}$\ast$axe2\mbox{[}i1\mbox{]})/axe2\mbox{[}i2\mbox{]}
+
+--$>$ u$\ast$(axe1\mbox{[}i1\mbox{]}$\ast$axe2\mbox{[}i2\mbox{]} - axe1\mbox{[}i2\mbox{]}$\ast$axe2\mbox{[}i1\mbox{]}) = vecproj\mbox{[}i1\mbox{]}$\ast$axe2\mbox{[}i2\mbox{]} - vecproj\mbox{[}i2\mbox{]}$\ast$axe2\mbox{[}i1\mbox{]}
+
+--$>$ u = (vecproj\mbox{[}i1\mbox{]}$\ast$axe2\mbox{[}i2\mbox{]} - vecproj\mbox{[}i2\mbox{]}$\ast$axe2\mbox{[}i1\mbox{]}) /(axe1\mbox{[}i1\mbox{]}$\ast$axe2\mbox{[}i2\mbox{]} - axe1\mbox{[}i2\mbox{]}$\ast$axe2\mbox{[}i1\mbox{]})
+
+if 0.0$<$= u+v $<$=1.0 then they are inside of triangle
+
+\begin{Desc}
+\item[Returns:]false if the point is outside of triangle.This function doesn't take the margin \end{Desc}
+\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_921acb2a97263653fce72384f177a953}{
+\index{GIM\_\-TRIANGLE@{GIM\_\-TRIANGLE}!is\_\-point\_\-inside@{is\_\-point\_\-inside}}
+\index{is\_\-point\_\-inside@{is\_\-point\_\-inside}!GIM_TRIANGLE@{GIM\_\-TRIANGLE}}
+\subsubsection[is\_\-point\_\-inside]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE bool GIM\_\-TRIANGLE::is\_\-point\_\-inside (const btVector3 \& {\em point}, \/  const btVector3 \& {\em tri\_\-normal}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_g_i_m___t_r_i_a_n_g_l_e_921acb2a97263653fce72384f177a953}
+
+
+is point in triangle beam? 
+
+Test if point is in triangle, with m\_\-margin tolerance 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__tri__collision_8h}{gim\_\-tri\_\-collision.h}\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-tri\_\-collision.cpp\end{CompactItemize}

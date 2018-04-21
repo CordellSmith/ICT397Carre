@@ -1,0 +1,221 @@
+\hypertarget{class_assimp_1_1_scene_combiner}{
+\section{Assimp::SceneCombiner Class Reference}
+\label{class_assimp_1_1_scene_combiner}\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+}
+Static helper class providing various utilities to merge two scenes. It is intended as internal utility and NOT for use by applications.  
+
+
+{\tt \#include $<$SceneCombiner.h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_b399fdea5846bc969a021a39f5a11276}{MergeScenes} (\hyperlink{structai_scene}{aiScene} $\ast$$\ast$dest, std::vector$<$ \hyperlink{structai_scene}{aiScene} $\ast$ $>$ \&src, unsigned int flags=0)
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_49af3c46e42d4da59bb1a488e517618c}{MergeScenes} (\hyperlink{structai_scene}{aiScene} $\ast$$\ast$dest, \hyperlink{structai_scene}{aiScene} $\ast$master, std::vector$<$ \hyperlink{struct_assimp_1_1_attachment_info}{AttachmentInfo} $>$ \&src, unsigned int flags=0)
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_3486044d9e2213bb8c408d8e8ef906f4}{MergeMeshes} (\hyperlink{structai_mesh}{aiMesh} $\ast$$\ast$dest, unsigned int flags, std::vector$<$ \hyperlink{structai_mesh}{aiMesh} $\ast$ $>$::const\_\-iterator begin, std::vector$<$ \hyperlink{structai_mesh}{aiMesh} $\ast$ $>$::const\_\-iterator end)
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_a42d5370510db89cbdd739617a617d4e}{MergeBones} (\hyperlink{structai_mesh}{aiMesh} $\ast$out, std::vector$<$ \hyperlink{structai_mesh}{aiMesh} $\ast$ $>$::const\_\-iterator it, std::vector$<$ \hyperlink{structai_mesh}{aiMesh} $\ast$ $>$::const\_\-iterator end)
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_9ebdb2b454f84032f2cfb51ebd7d5716}{MergeMaterials} (\hyperlink{structai_material}{aiMaterial} $\ast$$\ast$dest, std::vector$<$ \hyperlink{structai_material}{aiMaterial} $\ast$ $>$::const\_\-iterator begin, std::vector$<$ \hyperlink{structai_material}{aiMaterial} $\ast$ $>$::const\_\-iterator end)
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_9bfbbbab2ece2925fc3628c587ea9dcc}{BuildUniqueBoneList} (std::list$<$ \hyperlink{struct_assimp_1_1_bone_with_hash}{BoneWithHash} $>$ \&asBones, std::vector$<$ \hyperlink{structai_mesh}{aiMesh} $\ast$ $>$::const\_\-iterator it, std::vector$<$ \hyperlink{structai_mesh}{aiMesh} $\ast$ $>$::const\_\-iterator end)
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_5e4ec755bb270b894e37d20938a4a88b}{AddNodePrefixes} (\hyperlink{structai_node}{aiNode} $\ast$node, const char $\ast$prefix, unsigned int len)
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_0c52e873dfdd0c71f7f2bae06bcbb865}{OffsetNodeMeshIndices} (\hyperlink{structai_node}{aiNode} $\ast$node, unsigned int offset)
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_1672dc80009a8183edbabc4ef262b5c5}{AttachToGraph} (\hyperlink{structai_scene}{aiScene} $\ast$master, std::vector$<$ NodeAttachmentInfo $>$ \&srcList)
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_855a472e4848d737ef1ff091363f3a7c}{CopyScene} (\hyperlink{structai_scene}{aiScene} $\ast$$\ast$dest, const \hyperlink{structai_scene}{aiScene} $\ast$source, bool allocate=true)
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_fd836d513bc02da4c40d1432bf687f3e}{CopySceneFlat} (\hyperlink{structai_scene}{aiScene} $\ast$$\ast$dest, const \hyperlink{structai_scene}{aiScene} $\ast$source)
+\item 
+static void \hyperlink{class_assimp_1_1_scene_combiner_abed196fdfb16f82873ec811c6a64bfc}{Copy} (\hyperlink{structai_mesh}{aiMesh} $\ast$$\ast$dest, const \hyperlink{structai_mesh}{aiMesh} $\ast$src)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Static helper class providing various utilities to merge two scenes. It is intended as internal utility and NOT for use by applications. 
+
+The class is currently being used by various postprocessing steps and loaders (ie. LWS). 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_scene_combiner_b399fdea5846bc969a021a39f5a11276}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!MergeScenes@{MergeScenes}}
+\index{MergeScenes@{MergeScenes}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[MergeScenes]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::MergeScenes ({\bf aiScene} $\ast$$\ast$ {\em dest}, \/  std::vector$<$ {\bf aiScene} $\ast$ $>$ \& {\em src}, \/  unsigned int {\em flags} = {\tt 0})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_b399fdea5846bc969a021a39f5a11276}
+
+
+Merges two or more scenes.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest}]Receives a pointer to the destination scene. If the pointer doesn't point to NULL when the function is called, the existing scene is cleared and refilled. \item[{\em src}]Non-empty list of scenes to be merged. The function deletes the input scenes afterwards. There may be duplicate scenes. \item[{\em flags}]Combination of the AI\_\-INT\_\-MERGE\_\-SCENE flags defined above \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_scene_combiner_49af3c46e42d4da59bb1a488e517618c}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!MergeScenes@{MergeScenes}}
+\index{MergeScenes@{MergeScenes}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[MergeScenes]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::MergeScenes ({\bf aiScene} $\ast$$\ast$ {\em dest}, \/  {\bf aiScene} $\ast$ {\em master}, \/  std::vector$<$ {\bf AttachmentInfo} $>$ \& {\em src}, \/  unsigned int {\em flags} = {\tt 0})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_49af3c46e42d4da59bb1a488e517618c}
+
+
+Merges two or more scenes and attaches all scenes to a specific position in the node graph of the master scene.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest}]Receives a pointer to the destination scene. If the pointer doesn't point to NULL when the function is called, the existing scene is cleared and refilled. \item[{\em master}]Master scene. It will be deleted afterwards. All other scenes will be inserted in its node graph. \item[{\em src}]Non-empty list of scenes to be merged along with their corresponding attachment points in the master scene. The function deletes the input scenes afterwards. There may be duplicate scenes. \item[{\em flags}]Combination of the AI\_\-INT\_\-MERGE\_\-SCENE flags defined above \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_scene_combiner_3486044d9e2213bb8c408d8e8ef906f4}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!MergeMeshes@{MergeMeshes}}
+\index{MergeMeshes@{MergeMeshes}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[MergeMeshes]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::MergeMeshes ({\bf aiMesh} $\ast$$\ast$ {\em dest}, \/  unsigned int {\em flags}, \/  std::vector$<$ {\bf aiMesh} $\ast$ $>$::const\_\-iterator {\em begin}, \/  std::vector$<$ {\bf aiMesh} $\ast$ $>$::const\_\-iterator {\em end})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_3486044d9e2213bb8c408d8e8ef906f4}
+
+
+Merges two or more meshes
+
+The meshes should have equal vertex formats. Only components that are provided by ALL meshes will be present in the output mesh. An exception is made for VColors - they are set to black. The meshes should have the same material indices, too. The output material index is always the material index of the first mesh.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest}]Destination mesh. Must be empty. \item[{\em flags}]Currently no parameters \item[{\em begin}]First mesh to be processed \item[{\em end}]Points to the mesh after the last mesh to be processed \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_scene_combiner_a42d5370510db89cbdd739617a617d4e}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!MergeBones@{MergeBones}}
+\index{MergeBones@{MergeBones}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[MergeBones]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::MergeBones ({\bf aiMesh} $\ast$ {\em out}, \/  std::vector$<$ {\bf aiMesh} $\ast$ $>$::const\_\-iterator {\em it}, \/  std::vector$<$ {\bf aiMesh} $\ast$ $>$::const\_\-iterator {\em end})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_a42d5370510db89cbdd739617a617d4e}
+
+
+Merges two or more bones
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em out}]Mesh to receive the output bone list \item[{\em flags}]Currently no parameters \item[{\em begin}]First mesh to be processed \item[{\em end}]Points to the mesh after the last mesh to be processed \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_scene_combiner_9ebdb2b454f84032f2cfb51ebd7d5716}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!MergeMaterials@{MergeMaterials}}
+\index{MergeMaterials@{MergeMaterials}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[MergeMaterials]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::MergeMaterials ({\bf aiMaterial} $\ast$$\ast$ {\em dest}, \/  std::vector$<$ {\bf aiMaterial} $\ast$ $>$::const\_\-iterator {\em begin}, \/  std::vector$<$ {\bf aiMaterial} $\ast$ $>$::const\_\-iterator {\em end})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_9ebdb2b454f84032f2cfb51ebd7d5716}
+
+
+Merges two or more materials
+
+The materials should be complementary as much as possible. In case of a property present in different materials, the first occurrence is used.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest}]Destination material. Must be empty. \item[{\em begin}]First material to be processed \item[{\em end}]Points to the material after the last material to be processed \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_scene_combiner_9bfbbbab2ece2925fc3628c587ea9dcc}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!BuildUniqueBoneList@{BuildUniqueBoneList}}
+\index{BuildUniqueBoneList@{BuildUniqueBoneList}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[BuildUniqueBoneList]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::BuildUniqueBoneList (std::list$<$ {\bf BoneWithHash} $>$ \& {\em asBones}, \/  std::vector$<$ {\bf aiMesh} $\ast$ $>$::const\_\-iterator {\em it}, \/  std::vector$<$ {\bf aiMesh} $\ast$ $>$::const\_\-iterator {\em end})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_9bfbbbab2ece2925fc3628c587ea9dcc}
+
+
+Builds a list of uniquely named bones in a mesh list
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em asBones}]Receives the output list \item[{\em it}]First mesh to be processed \item[{\em end}]Last mesh to be processed \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_scene_combiner_5e4ec755bb270b894e37d20938a4a88b}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!AddNodePrefixes@{AddNodePrefixes}}
+\index{AddNodePrefixes@{AddNodePrefixes}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[AddNodePrefixes]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::AddNodePrefixes ({\bf aiNode} $\ast$ {\em node}, \/  const char $\ast$ {\em prefix}, \/  unsigned int {\em len})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_5e4ec755bb270b894e37d20938a4a88b}
+
+
+Add a name prefix to all nodes in a scene.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Current}]node. This function is called recursively. \item[{\em prefix}]Prefix to be added to all nodes \item[{\em len}]STring length \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_scene_combiner_0c52e873dfdd0c71f7f2bae06bcbb865}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!OffsetNodeMeshIndices@{OffsetNodeMeshIndices}}
+\index{OffsetNodeMeshIndices@{OffsetNodeMeshIndices}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[OffsetNodeMeshIndices]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::OffsetNodeMeshIndices ({\bf aiNode} $\ast$ {\em node}, \/  unsigned int {\em offset})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_0c52e873dfdd0c71f7f2bae06bcbb865}
+
+
+Add an offset to all mesh indices in a node graph
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Current}]node. This function is called recursively. \item[{\em offset}]Offset to be added to all mesh indices \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_scene_combiner_1672dc80009a8183edbabc4ef262b5c5}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!AttachToGraph@{AttachToGraph}}
+\index{AttachToGraph@{AttachToGraph}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[AttachToGraph]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::AttachToGraph ({\bf aiScene} $\ast$ {\em master}, \/  std::vector$<$ NodeAttachmentInfo $>$ \& {\em srcList})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_1672dc80009a8183edbabc4ef262b5c5}
+
+
+Attach a list of node graphs to well-defined nodes in a master graph. This is a helper for \hyperlink{class_assimp_1_1_scene_combiner_b399fdea5846bc969a021a39f5a11276}{MergeScenes()}
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em master}]Master scene \item[{\em srcList}]List of source scenes along with their attachment points. If an attachment point is NULL (or does not exist in the master graph), a scene is attached to the root of the master graph (as an additional child node)  List of duplicates. If elem\mbox{[}n\mbox{]} == n the scene is not a duplicate. Otherwise elem\mbox{[}n\mbox{]} links scene n to its first occurrence. \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_scene_combiner_855a472e4848d737ef1ff091363f3a7c}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!CopyScene@{CopyScene}}
+\index{CopyScene@{CopyScene}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[CopyScene]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::CopyScene ({\bf aiScene} $\ast$$\ast$ {\em dest}, \/  const {\bf aiScene} $\ast$ {\em source}, \/  bool {\em allocate} = {\tt true})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_855a472e4848d737ef1ff091363f3a7c}
+
+
+Get a deep copy of a scene
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest}]Receives a pointer to the destination scene \item[{\em src}]Source scene - remains unmodified. \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_scene_combiner_fd836d513bc02da4c40d1432bf687f3e}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!CopySceneFlat@{CopySceneFlat}}
+\index{CopySceneFlat@{CopySceneFlat}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[CopySceneFlat]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::CopySceneFlat ({\bf aiScene} $\ast$$\ast$ {\em dest}, \/  const {\bf aiScene} $\ast$ {\em source})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_fd836d513bc02da4c40d1432bf687f3e}
+
+
+Get a flat copy of a scene
+
+Only the first hierarchy layer is copied. All pointer members of \hyperlink{structai_scene}{aiScene} are shared by source and destination scene. If the pointer doesn't point to NULL when the function is called, the existing scene is cleared and refilled. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest}]Receives a pointer to the destination scene \item[{\em src}]Source scene - remains unmodified. \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_scene_combiner_abed196fdfb16f82873ec811c6a64bfc}{
+\index{Assimp::SceneCombiner@{Assimp::SceneCombiner}!Copy@{Copy}}
+\index{Copy@{Copy}!Assimp::SceneCombiner@{Assimp::SceneCombiner}}
+\subsubsection[Copy]{\setlength{\rightskip}{0pt plus 5cm}static void Assimp::SceneCombiner::Copy ({\bf aiMesh} $\ast$$\ast$ {\em dest}, \/  const {\bf aiMesh} $\ast$ {\em src})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{class_assimp_1_1_scene_combiner_abed196fdfb16f82873ec811c6a64bfc}
+
+
+Get a deep copy of a mesh
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dest}]Receives a pointer to the destination mesh \item[{\em src}]Source mesh - remains unmodified. \end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/SceneCombiner.h\end{CompactItemize}

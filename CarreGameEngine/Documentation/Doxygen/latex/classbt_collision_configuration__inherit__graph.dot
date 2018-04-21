@@ -1,0 +1,11 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  Node1 [label="btCollisionConfiguration",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btDefaultCollisionConfiguration",height=0.2,width=0.4,color="black",URL="$classbt_default_collision_configuration.html"];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btSoftBodyRigidBodyCollisionConfiguration",height=0.2,width=0.4,color="black",URL="$classbt_soft_body_rigid_body_collision_configuration.html",tooltip="btSoftBodyRigidBodyCollisionConfiguration add softbody interaction on top of btDefaultCollisionConfi..."];
+}

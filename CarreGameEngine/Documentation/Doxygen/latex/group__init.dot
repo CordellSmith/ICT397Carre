@@ -1,0 +1,10 @@
+digraph structs
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=8,labelfontname="FreeSans",labelfontsize=8];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="Error codes",height=0.2,width=0.4,color="black",URL="$group__errors.html"];
+  Node0 [label="Initialization, version and error reference",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node0->Node1 [shape=plaintext, color="midnightblue", dir="back", style="solid"];
+}

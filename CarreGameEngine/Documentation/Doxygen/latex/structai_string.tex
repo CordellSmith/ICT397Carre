@@ -1,0 +1,46 @@
+\hypertarget{structai_string}{
+\section{aiString Struct Reference}
+\label{structai_string}\index{aiString@{aiString}}
+}
+{\tt \#include $<$types.h$>$}
+
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+size\_\-t \hyperlink{structai_string_7d77c2031ff0340746aa046f7fbcf313}{length}
+\item 
+char \hyperlink{structai_string_a90b1da7d347a3dcca0a95061e6ea41d}{data} \mbox{[}MAXLEN\mbox{]}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Represents an UTF-8 string, zero byte terminated.
+
+The character set of an \hyperlink{structai_string}{aiString} is explicitly defined to be UTF-8. This Unicode transformation was chosen in the belief that most strings in 3d files are limited to ASCII, thus the character set needed to be strictly ASCII compatible.
+
+Most text file loaders provide proper Unicode input file handling, special unicode characters are correctly transcoded to UTF8 and are kept throughout the libraries' import pipeline.
+
+For most applications, it will be absolutely sufficient to interpret the \hyperlink{structai_string}{aiString} as ASCII data and work with it as one would work with a plain char$\ast$. Windows users in need of proper support for i.e asian characters can use the MultiByteToWideChar(), WideCharToMultiByte() WinAPI functionality to convert the UTF-8 strings to their working character set (i.e. MBCS, WideChar).
+
+We use this representation instead of std::string to be C-compatible. The (binary) length of such a string is limited to MAXLEN characters (including the the terminating zero). 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_string_7d77c2031ff0340746aa046f7fbcf313}{
+\index{aiString@{aiString}!length@{length}}
+\index{length@{length}!aiString@{aiString}}
+\subsubsection[length]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t {\bf aiString::length}}}
+\label{structai_string_7d77c2031ff0340746aa046f7fbcf313}
+
+
+Binary length of the string excluding the terminal 0. This is NOT the logical length of strings containing UTF-8 multibyte sequences! It's the number of bytes from the beginning of the string to its end. \hypertarget{structai_string_a90b1da7d347a3dcca0a95061e6ea41d}{
+\index{aiString@{aiString}!data@{data}}
+\index{data@{data}!aiString@{aiString}}
+\subsubsection[data]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aiString::data}\mbox{[}MAXLEN\mbox{]}}}
+\label{structai_string_a90b1da7d347a3dcca0a95061e6ea41d}
+
+
+String buffer. Size limit is MAXLEN 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{types_8h}{types.h}\end{CompactItemize}

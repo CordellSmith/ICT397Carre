@@ -1,0 +1,171 @@
+\hypertarget{structai_scene}{
+\section{aiScene Struct Reference}
+\label{structai_scene}\index{aiScene@{aiScene}}
+}
+{\tt \#include $<$scene.h$>$}
+
+Collaboration diagram for aiScene:\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+unsigned int \hyperlink{structai_scene_4091f10bb81e05db00ebc34f40c48f38}{mFlags}
+\item 
+C\_\-STRUCT \hyperlink{structai_node}{aiNode} $\ast$ \hyperlink{structai_scene_d0e9a7e68f2ed6b3120a7c19ef20307a}{mRootNode}
+\item 
+unsigned int \hyperlink{structai_scene_1a6c1abca994c54381a28cc151e5fa4f}{mNumMeshes}
+\item 
+C\_\-STRUCT \hyperlink{structai_mesh}{aiMesh} $\ast$$\ast$ \hyperlink{structai_scene_d1c7000f0f28ea747868db9f94d32a3d}{mMeshes}
+\item 
+unsigned int \hyperlink{structai_scene_4277d8bffe8b8f568098af6c31d042b7}{mNumMaterials}
+\item 
+C\_\-STRUCT \hyperlink{structai_material}{aiMaterial} $\ast$$\ast$ \hyperlink{structai_scene_52bc7089a5b943ad7c7c386e616df35e}{mMaterials}
+\item 
+unsigned int \hyperlink{structai_scene_a2af030ec218ead0dc062b6a96a7471a}{mNumAnimations}
+\item 
+C\_\-STRUCT \hyperlink{structai_animation}{aiAnimation} $\ast$$\ast$ \hyperlink{structai_scene_b76fb8f38c2e7365ccce42d565b62b25}{mAnimations}
+\item 
+unsigned int \hyperlink{structai_scene_0d61a5439edd7223097b48aea57c47dd}{mNumTextures}
+\item 
+C\_\-STRUCT \hyperlink{structai_texture}{aiTexture} $\ast$$\ast$ \hyperlink{structai_scene_0fd0d29fbc439e3715b4975ccb68d2d3}{mTextures}
+\item 
+unsigned int \hyperlink{structai_scene_0c90fc5f15b979e0bb0d3e8f1e246307}{mNumLights}
+\item 
+C\_\-STRUCT \hyperlink{structai_light}{aiLight} $\ast$$\ast$ \hyperlink{structai_scene_2e64a69ade81cae0b3901bea90b6bb47}{mLights}
+\item 
+unsigned int \hyperlink{structai_scene_4abc432e1b22a7e01553f33c79c0592f}{mNumCameras}
+\item 
+C\_\-STRUCT \hyperlink{structai_camera}{aiCamera} $\ast$$\ast$ \hyperlink{structai_scene_71e7d204d96969ca4f5a931f4d636f1e}{mCameras}
+\item 
+char $\ast$ \hyperlink{structai_scene_dc5fcf5c4ef86a45f721560d6c1a4923}{mPrivate}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The root structure of the imported data.
+
+Everything that was imported from the given file can be accessed from here. Objects of this class are generally maintained and owned by \hyperlink{namespace_assimp}{Assimp}, not by the caller. You shouldn't want to instance it, nor should you ever try to delete a given scene on your own. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_scene_4091f10bb81e05db00ebc34f40c48f38}{
+\index{aiScene@{aiScene}!mFlags@{mFlags}}
+\index{mFlags@{mFlags}!aiScene@{aiScene}}
+\subsubsection[mFlags]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiScene::mFlags}}}
+\label{structai_scene_4091f10bb81e05db00ebc34f40c48f38}
+
+
+Any combination of the AI\_\-SCENE\_\-FLAGS\_\-XXX flags. By default this value is 0, no flags are set. Most applications will want to reject all scenes with the AI\_\-SCENE\_\-FLAGS\_\-INCOMPLETE bit set. \hypertarget{structai_scene_d0e9a7e68f2ed6b3120a7c19ef20307a}{
+\index{aiScene@{aiScene}!mRootNode@{mRootNode}}
+\index{mRootNode@{mRootNode}!aiScene@{aiScene}}
+\subsubsection[mRootNode]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiNode}$\ast$ {\bf aiScene::mRootNode}}}
+\label{structai_scene_d0e9a7e68f2ed6b3120a7c19ef20307a}
+
+
+The root node of the hierarchy.
+
+There will always be at least the root node if the import was successful (and no special flags have been set). Presence of further nodes depends on the format and content of the imported file. \hypertarget{structai_scene_1a6c1abca994c54381a28cc151e5fa4f}{
+\index{aiScene@{aiScene}!mNumMeshes@{mNumMeshes}}
+\index{mNumMeshes@{mNumMeshes}!aiScene@{aiScene}}
+\subsubsection[mNumMeshes]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiScene::mNumMeshes}}}
+\label{structai_scene_1a6c1abca994c54381a28cc151e5fa4f}
+
+
+The number of meshes in the scene. \hypertarget{structai_scene_d1c7000f0f28ea747868db9f94d32a3d}{
+\index{aiScene@{aiScene}!mMeshes@{mMeshes}}
+\index{mMeshes@{mMeshes}!aiScene@{aiScene}}
+\subsubsection[mMeshes]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiMesh}$\ast$$\ast$ {\bf aiScene::mMeshes}}}
+\label{structai_scene_d1c7000f0f28ea747868db9f94d32a3d}
+
+
+The array of meshes.
+
+Use the indices given in the \hyperlink{structai_node}{aiNode} structure to access this array. The array is mNumMeshes in size. If the AI\_\-SCENE\_\-FLAGS\_\-INCOMPLETE flag is not set there will always be at least ONE material. \hypertarget{structai_scene_4277d8bffe8b8f568098af6c31d042b7}{
+\index{aiScene@{aiScene}!mNumMaterials@{mNumMaterials}}
+\index{mNumMaterials@{mNumMaterials}!aiScene@{aiScene}}
+\subsubsection[mNumMaterials]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiScene::mNumMaterials}}}
+\label{structai_scene_4277d8bffe8b8f568098af6c31d042b7}
+
+
+The number of materials in the scene. \hypertarget{structai_scene_52bc7089a5b943ad7c7c386e616df35e}{
+\index{aiScene@{aiScene}!mMaterials@{mMaterials}}
+\index{mMaterials@{mMaterials}!aiScene@{aiScene}}
+\subsubsection[mMaterials]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiMaterial}$\ast$$\ast$ {\bf aiScene::mMaterials}}}
+\label{structai_scene_52bc7089a5b943ad7c7c386e616df35e}
+
+
+The array of materials.
+
+Use the index given in each \hyperlink{structai_mesh}{aiMesh} structure to access this array. The array is mNumMaterials in size. If the AI\_\-SCENE\_\-FLAGS\_\-INCOMPLETE flag is not set there will always be at least ONE material. \hypertarget{structai_scene_a2af030ec218ead0dc062b6a96a7471a}{
+\index{aiScene@{aiScene}!mNumAnimations@{mNumAnimations}}
+\index{mNumAnimations@{mNumAnimations}!aiScene@{aiScene}}
+\subsubsection[mNumAnimations]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiScene::mNumAnimations}}}
+\label{structai_scene_a2af030ec218ead0dc062b6a96a7471a}
+
+
+The number of animations in the scene. \hypertarget{structai_scene_b76fb8f38c2e7365ccce42d565b62b25}{
+\index{aiScene@{aiScene}!mAnimations@{mAnimations}}
+\index{mAnimations@{mAnimations}!aiScene@{aiScene}}
+\subsubsection[mAnimations]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiAnimation}$\ast$$\ast$ {\bf aiScene::mAnimations}}}
+\label{structai_scene_b76fb8f38c2e7365ccce42d565b62b25}
+
+
+The array of animations.
+
+All animations imported from the given file are listed here. The array is mNumAnimations in size. \hypertarget{structai_scene_0d61a5439edd7223097b48aea57c47dd}{
+\index{aiScene@{aiScene}!mNumTextures@{mNumTextures}}
+\index{mNumTextures@{mNumTextures}!aiScene@{aiScene}}
+\subsubsection[mNumTextures]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiScene::mNumTextures}}}
+\label{structai_scene_0d61a5439edd7223097b48aea57c47dd}
+
+
+The number of textures embedded into the file \hypertarget{structai_scene_0fd0d29fbc439e3715b4975ccb68d2d3}{
+\index{aiScene@{aiScene}!mTextures@{mTextures}}
+\index{mTextures@{mTextures}!aiScene@{aiScene}}
+\subsubsection[mTextures]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiTexture}$\ast$$\ast$ {\bf aiScene::mTextures}}}
+\label{structai_scene_0fd0d29fbc439e3715b4975ccb68d2d3}
+
+
+The array of embedded textures.
+
+Not many file formats embed their textures into the file. An example is Quake's MDL format (which is also used by some GameStudio versions) \hypertarget{structai_scene_0c90fc5f15b979e0bb0d3e8f1e246307}{
+\index{aiScene@{aiScene}!mNumLights@{mNumLights}}
+\index{mNumLights@{mNumLights}!aiScene@{aiScene}}
+\subsubsection[mNumLights]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiScene::mNumLights}}}
+\label{structai_scene_0c90fc5f15b979e0bb0d3e8f1e246307}
+
+
+The number of light sources in the scene. Light sources are fully optional, in most cases this attribute will be 0 \hypertarget{structai_scene_2e64a69ade81cae0b3901bea90b6bb47}{
+\index{aiScene@{aiScene}!mLights@{mLights}}
+\index{mLights@{mLights}!aiScene@{aiScene}}
+\subsubsection[mLights]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiLight}$\ast$$\ast$ {\bf aiScene::mLights}}}
+\label{structai_scene_2e64a69ade81cae0b3901bea90b6bb47}
+
+
+The array of light sources.
+
+All light sources imported from the given file are listed here. The array is mNumLights in size. \hypertarget{structai_scene_4abc432e1b22a7e01553f33c79c0592f}{
+\index{aiScene@{aiScene}!mNumCameras@{mNumCameras}}
+\index{mNumCameras@{mNumCameras}!aiScene@{aiScene}}
+\subsubsection[mNumCameras]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiScene::mNumCameras}}}
+\label{structai_scene_4abc432e1b22a7e01553f33c79c0592f}
+
+
+The number of cameras in the scene. Cameras are fully optional, in most cases this attribute will be 0 \hypertarget{structai_scene_71e7d204d96969ca4f5a931f4d636f1e}{
+\index{aiScene@{aiScene}!mCameras@{mCameras}}
+\index{mCameras@{mCameras}!aiScene@{aiScene}}
+\subsubsection[mCameras]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiCamera}$\ast$$\ast$ {\bf aiScene::mCameras}}}
+\label{structai_scene_71e7d204d96969ca4f5a931f4d636f1e}
+
+
+The array of cameras.
+
+All cameras imported from the given file are listed here. The array is mNumCameras in size. The first camera in the array (if existing) is the default camera view into the scene. \hypertarget{structai_scene_dc5fcf5c4ef86a45f721560d6c1a4923}{
+\index{aiScene@{aiScene}!mPrivate@{mPrivate}}
+\index{mPrivate@{mPrivate}!aiScene@{aiScene}}
+\subsubsection[mPrivate]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf aiScene::mPrivate}}}
+\label{structai_scene_dc5fcf5c4ef86a45f721560d6c1a4923}
+
+
+Internal data, do not touch 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{scene_8h}{scene.h}\end{CompactItemize}

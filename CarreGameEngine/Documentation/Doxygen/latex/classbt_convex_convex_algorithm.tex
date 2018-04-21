@@ -1,0 +1,75 @@
+\hypertarget{classbt_convex_convex_algorithm}{
+\section{btConvexConvexAlgorithm Class Reference}
+\label{classbt_convex_convex_algorithm}\index{btConvexConvexAlgorithm@{btConvexConvexAlgorithm}}
+}
+{\tt \#include $<$btConvexConvexAlgorithm.h$>$}
+
+Inheritance diagram for btConvexConvexAlgorithm:Collaboration diagram for btConvexConvexAlgorithm:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_convex_convex_algorithm_70134c01925ca835c4e29ab1bb0a049c}{
+\hyperlink{classbt_convex_convex_algorithm_70134c01925ca835c4e29ab1bb0a049c}{btConvexConvexAlgorithm} (btPersistentManifold $\ast$mf, const btCollisionAlgorithmConstructionInfo \&ci, const btCollisionObjectWrapper $\ast$body0Wrap, const btCollisionObjectWrapper $\ast$body1Wrap, \hyperlink{classbt_convex_penetration_depth_solver}{btConvexPenetrationDepthSolver} $\ast$pdSolver, int numPerturbationIterations, int minimumPointsPerturbationThreshold)}
+\label{classbt_convex_convex_algorithm_70134c01925ca835c4e29ab1bb0a049c}
+
+\begin{CompactList}\small\item\em cache separating vector to speedup collision detection \item\end{CompactList}\item 
+virtual void \hyperlink{classbt_convex_convex_algorithm_b566631355a17f7a4bcbddf9454eb9e5}{processCollision} (const btCollisionObjectWrapper $\ast$body0Wrap, const btCollisionObjectWrapper $\ast$body1Wrap, const btDispatcherInfo \&dispatchInfo, \hyperlink{classbt_manifold_result}{btManifoldResult} $\ast$resultOut)
+\item 
+virtual btScalar \hyperlink{classbt_convex_convex_algorithm_55f817b690c4e858d2b02607b382ce6b}{calculateTimeOfImpact} (btCollisionObject $\ast$body0, btCollisionObject $\ast$body1, const btDispatcherInfo \&dispatchInfo, \hyperlink{classbt_manifold_result}{btManifoldResult} $\ast$resultOut)
+\item 
+virtual void \hyperlink{classbt_convex_convex_algorithm_a2a195cdd3b45c169c15ea2de85c4038}{getAllContactManifolds} (\hyperlink{classbt_aligned_object_array}{btManifoldArray} \&manifoldArray)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Enabling USE\_\-SEPDISTANCE\_\-UTIL2 requires 100\% reliable distance computation. However, when using large size ratios GJK can be imprecise so the distance is not conservative. In that case, enabling this USE\_\-SEPDISTANCE\_\-UTIL2 would result in failing/missing collisions. Either improve GJK for large size ratios (testing a 100 units versus a 0.1 unit object) or only enable the util for certain pairs that have a small size ratio The convexConvexAlgorithm collision algorithm implements time of impact, convex closest points and penetration depth calculations between two convex objects. Multiple contact points are calculated by perturbing the orientation of the smallest object orthogonal to the separating normal. This idea was described by Gino van den Bergen in this forum topic \href{http://www.bulletphysics.com/Bullet/phpBB3/viewtopic.php?f=4&t=288&p=888#p888}{\tt http://www.bulletphysics.com/Bullet/phpBB3/viewtopic.php?f=4\&t=288\&p=888\#p888} 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_convex_convex_algorithm_b566631355a17f7a4bcbddf9454eb9e5}{
+\index{btConvexConvexAlgorithm@{btConvexConvexAlgorithm}!processCollision@{processCollision}}
+\index{processCollision@{processCollision}!btConvexConvexAlgorithm@{btConvexConvexAlgorithm}}
+\subsubsection[processCollision]{\setlength{\rightskip}{0pt plus 5cm}void btConvexConvexAlgorithm::processCollision (const btCollisionObjectWrapper $\ast$ {\em body0Wrap}, \/  const btCollisionObjectWrapper $\ast$ {\em body1Wrap}, \/  const btDispatcherInfo \& {\em dispatchInfo}, \/  {\bf btManifoldResult} $\ast$ {\em resultOut})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_convex_convex_algorithm_b566631355a17f7a4bcbddf9454eb9e5}
+
+
+
+
+btBoxShape is an exception: its vertices are created WITH margin so don't subtract it 
+
+Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.\hypertarget{classbt_convex_convex_algorithm_55f817b690c4e858d2b02607b382ce6b}{
+\index{btConvexConvexAlgorithm@{btConvexConvexAlgorithm}!calculateTimeOfImpact@{calculateTimeOfImpact}}
+\index{calculateTimeOfImpact@{calculateTimeOfImpact}!btConvexConvexAlgorithm@{btConvexConvexAlgorithm}}
+\subsubsection[calculateTimeOfImpact]{\setlength{\rightskip}{0pt plus 5cm}btScalar btConvexConvexAlgorithm::calculateTimeOfImpact (btCollisionObject $\ast$ {\em body0}, \/  btCollisionObject $\ast$ {\em body1}, \/  const btDispatcherInfo \& {\em dispatchInfo}, \/  {\bf btManifoldResult} $\ast$ {\em resultOut})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_convex_convex_algorithm_55f817b690c4e858d2b02607b382ce6b}
+
+
+
+
+Rather then checking ALL pairs, only calculate TOI when motion exceeds threshold
+
+Linear motion for one of objects needs to exceed m\_\-ccdSquareMotionThreshold col0-$>$m\_\-worldTransform,
+
+Convex0 against sphere for Convex1
+
+Simplification, one object is simplified as a sphere
+
+Sphere (for convex0) against Convex1
+
+Simplification, one object is simplified as a sphere 
+
+Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.\hypertarget{classbt_convex_convex_algorithm_a2a195cdd3b45c169c15ea2de85c4038}{
+\index{btConvexConvexAlgorithm@{btConvexConvexAlgorithm}!getAllContactManifolds@{getAllContactManifolds}}
+\index{getAllContactManifolds@{getAllContactManifolds}!btConvexConvexAlgorithm@{btConvexConvexAlgorithm}}
+\subsubsection[getAllContactManifolds]{\setlength{\rightskip}{0pt plus 5cm}virtual void btConvexConvexAlgorithm::getAllContactManifolds ({\bf btManifoldArray} \& {\em manifoldArray})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classbt_convex_convex_algorithm_a2a195cdd3b45c169c15ea2de85c4038}
+
+
+
+
+should we use m\_\-ownManifold to avoid adding duplicates? 
+
+Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btConvexConvexAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btConvexConvexAlgorithm.cpp\end{CompactItemize}

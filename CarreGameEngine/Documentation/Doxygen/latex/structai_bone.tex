@@ -1,0 +1,49 @@
+\hypertarget{structai_bone}{
+\section{aiBone Struct Reference}
+\label{structai_bone}\index{aiBone@{aiBone}}
+}
+A single bone of a mesh.  
+
+
+{\tt \#include $<$mesh.h$>$}
+
+Collaboration diagram for aiBone:\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{structai_bone_cfb9bfd2a2c6302181d7c3cc1bb8bbf0}{
+C\_\-STRUCT \hyperlink{structai_string}{aiString} \hyperlink{structai_bone_cfb9bfd2a2c6302181d7c3cc1bb8bbf0}{mName}}
+\label{structai_bone_cfb9bfd2a2c6302181d7c3cc1bb8bbf0}
+
+\begin{CompactList}\small\item\em The name of the bone. \item\end{CompactList}\item 
+unsigned int \hyperlink{structai_bone_87a79d42a0132753aac66397ad6f9b71}{mNumWeights}
+\item 
+\hypertarget{structai_bone_de36319714b58c03ad46aae30a2724a4}{
+C\_\-STRUCT \hyperlink{structai_vertex_weight}{aiVertexWeight} $\ast$ \hyperlink{structai_bone_de36319714b58c03ad46aae30a2724a4}{mWeights}}
+\label{structai_bone_de36319714b58c03ad46aae30a2724a4}
+
+\begin{CompactList}\small\item\em The vertices affected by this bone. \item\end{CompactList}\item 
+\hypertarget{structai_bone_1dd6c4f24a1384c05da281692be3e78d}{
+C\_\-STRUCT aiMatrix4x4 \hyperlink{structai_bone_1dd6c4f24a1384c05da281692be3e78d}{mOffsetMatrix}}
+\label{structai_bone_1dd6c4f24a1384c05da281692be3e78d}
+
+\begin{CompactList}\small\item\em Matrix that transforms from mesh space to bone space in bind pose. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+A single bone of a mesh. 
+
+A bone has a name by which it can be found in the frame hierarchy and by which it can be addressed by animations. In addition it has a number of influences on vertices. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_bone_87a79d42a0132753aac66397ad6f9b71}{
+\index{aiBone@{aiBone}!mNumWeights@{mNumWeights}}
+\index{mNumWeights@{mNumWeights}!aiBone@{aiBone}}
+\subsubsection[mNumWeights]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiBone::mNumWeights}}}
+\label{structai_bone_87a79d42a0132753aac66397ad6f9b71}
+
+
+The number of vertices affected by this bone The maximum value for this member is AI\_\-MAX\_\-BONE\_\-WEIGHTS. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/mesh.h\end{CompactItemize}

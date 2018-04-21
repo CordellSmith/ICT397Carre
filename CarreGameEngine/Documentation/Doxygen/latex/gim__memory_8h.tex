@@ -1,0 +1,77 @@
+\hypertarget{gim__memory_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-memory.h File Reference}
+\label{gim__memory_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-memory.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-memory.h}}
+}
+{\tt \#include \char`\"{}gim\_\-math.h\char`\"{}}\par
+{\tt \#include $<$string.h$>$}\par
+
+
+Include dependency graph for gim\_\-memory.h:
+
+This graph shows which files directly or indirectly include this file:\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{gim__memory_8h_a7421a08567e946189db67fbebfb88e0}{
+\#define \hyperlink{gim__memory_8h_a7421a08567e946189db67fbebfb88e0}{pf}(\_\-x, \_\-i)}
+\label{gim__memory_8h_a7421a08567e946189db67fbebfb88e0}
+
+\begin{CompactList}\small\item\em Prefetch 64. \item\end{CompactList}\item 
+\hypertarget{gim__memory_8h_6ce5894c6a3a65ce7e8fcbc8eaef6074}{
+\#define \hyperlink{gim__memory_8h_6ce5894c6a3a65ce7e8fcbc8eaef6074}{pf2}(\_\-x, \_\-i)}
+\label{gim__memory_8h_6ce5894c6a3a65ce7e8fcbc8eaef6074}
+
+\begin{CompactList}\small\item\em Prefetch 128. \item\end{CompactList}\item 
+\hypertarget{gim__memory_8h_ca0752036bd69632cd86981add4145d2}{
+\#define \hyperlink{gim__memory_8h_ca0752036bd69632cd86981add4145d2}{GIM\_\-COPY\_\-ARRAYS}(dest\_\-array, source\_\-array, element\_\-count)}
+\label{gim__memory_8h_ca0752036bd69632cd86981add4145d2}
+
+\begin{CompactList}\small\item\em Functions for manip packed arrays of numbers. \item\end{CompactList}\item 
+\hypertarget{gim__memory_8h_11f233ae5c2aec3c3e23efddcc9ee446}{
+\#define \hyperlink{gim__memory_8h_11f233ae5c2aec3c3e23efddcc9ee446}{SIMD\_\-T}~GUINT64}
+\label{gim__memory_8h_11f233ae5c2aec3c3e23efddcc9ee446}
+
+\begin{CompactList}\small\item\em SIMD POINTER INTEGER. \item\end{CompactList}\item 
+\hypertarget{gim__memory_8h_62011a6b5f9fc8704da53e7287566f63}{
+\#define \hyperlink{gim__memory_8h_62011a6b5f9fc8704da53e7287566f63}{SIMD\_\-T\_\-SIZE}~sizeof(SIMD\_\-T)}
+\label{gim__memory_8h_62011a6b5f9fc8704da53e7287566f63}
+
+\begin{CompactList}\small\item\em SIMD INTEGER SIZE. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+\hypertarget{gim__memory_8h_75b96c337a421f8e07358673044c49eb}{
+typedef void $\ast$ \hyperlink{gim__memory_8h_75b96c337a421f8e07358673044c49eb}{gim\_\-alloc\_\-function} (size\_\-t size)}
+\label{gim__memory_8h_75b96c337a421f8e07358673044c49eb}
+
+\begin{CompactList}\small\item\em Function prototypes to allocate and free memory. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{gim__memory_8h_b06620a60a4e323cc9ad65a0a9ec7223}{gim\_\-set\_\-alloc\_\-handler} (\hyperlink{gim__memory_8h_75b96c337a421f8e07358673044c49eb}{gim\_\-alloc\_\-function} $\ast$fn)
+\item 
+\hypertarget{gim__memory_8h_f2a9dffc9a5aa9be9c1655761d3a5e60}{
+\hyperlink{gim__memory_8h_75b96c337a421f8e07358673044c49eb}{gim\_\-alloc\_\-function} $\ast$ \hyperlink{gim__memory_8h_f2a9dffc9a5aa9be9c1655761d3a5e60}{gim\_\-get\_\-alloc\_\-handler} (void)}
+\label{gim__memory_8h_f2a9dffc9a5aa9be9c1655761d3a5e60}
+
+\begin{CompactList}\small\item\em get current memory management functions. \item\end{CompactList}\item 
+\hypertarget{gim__memory_8h_bbd1086b0e4b8c13c44b9404b052ae56}{
+void $\ast$ \hyperlink{gim__memory_8h_bbd1086b0e4b8c13c44b9404b052ae56}{gim\_\-alloc} (size\_\-t size)}
+\label{gim__memory_8h_bbd1086b0e4b8c13c44b9404b052ae56}
+
+\begin{CompactList}\small\item\em Standar Memory functions. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Author:]Francisco Leon Najera \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{gim__memory_8h_b06620a60a4e323cc9ad65a0a9ec7223}{
+\index{gim\_\-memory.h@{gim\_\-memory.h}!gim\_\-set\_\-alloc\_\-handler@{gim\_\-set\_\-alloc\_\-handler}}
+\index{gim\_\-set\_\-alloc\_\-handler@{gim\_\-set\_\-alloc\_\-handler}!gim_memory.h@{gim\_\-memory.h}}
+\subsubsection[gim\_\-set\_\-alloc\_\-handler]{\setlength{\rightskip}{0pt plus 5cm}void gim\_\-set\_\-alloc\_\-handler ({\bf gim\_\-alloc\_\-function} $\ast$ {\em fn})}}
+\label{gim__memory_8h_b06620a60a4e323cc9ad65a0a9ec7223}
+
+
+Memory Function Handlers set new memory management functions. if fn is 0, the default handlers are used. 

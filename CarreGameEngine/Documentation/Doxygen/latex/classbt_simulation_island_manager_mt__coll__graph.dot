@@ -1,0 +1,24 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btSimulationIslandManagerMt",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btSimulationIslandManager",height=0.2,width=0.4,color="black",URL="$classbt_simulation_island_manager.html",tooltip="SimulationIslandManager creates and handles simulation islands, using btUnionFind..."];
+  Node3 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_islandBodies"];
+  Node3 [label="btAlignedObjectArray\< btCollisionObject * \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node4 -> Node3 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node4 [label="btAlignedAllocator\< btCollisionObject *, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node5 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_unionFind"];
+  Node5 [label="btUnionFind",height=0.2,width=0.4,color="black",URL="$classbt_union_find.html",tooltip="UnionFind calculates connected subsets."];
+  Node6 -> Node5 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_elements"];
+  Node6 [label="btAlignedObjectArray\< btElement \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node7 -> Node6 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node7 [label="btAlignedAllocator\< btElement, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node8 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_islandmanifold"];
+  Node8 [label="btAlignedObjectArray\< btPersistentManifold * \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node9 -> Node8 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node9 [label="btAlignedAllocator\< btPersistentManifold *, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+}

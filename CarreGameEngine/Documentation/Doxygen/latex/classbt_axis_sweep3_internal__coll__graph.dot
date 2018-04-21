@@ -1,0 +1,21 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btAxisSweep3Internal\< BP_FP_INT_TYPE \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btBroadphaseInterface",height=0.2,width=0.4,color="black",URL="$classbt_broadphase_interface.html"];
+  Node3 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_userPairCallback"];
+  Node3 [label="btOverlappingPairCallback",height=0.2,width=0.4,color="black",URL="$classbt_overlapping_pair_callback.html",tooltip="The btOverlappingPairCallback class is an additional optional broadphase user callback..."];
+  Node4 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_pairCache\nm_nullPairCache"];
+  Node4 [label="btOverlappingPairCache",height=0.2,width=0.4,color="black",URL="$classbt_overlapping_pair_cache.html"];
+  Node3 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_raycastAccelerator"];
+  Node5 [label="btDbvtBroadphase",height=0.2,width=0.4,color="black",URL="$structbt_dbvt_broadphase.html"];
+  Node2 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 -> Node5 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_paircache"];
+  Node6 -> Node5 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_sets"];
+  Node6 [label="btDbvt",height=0.2,width=0.4,color="black",URL="$structbt_dbvt.html"];
+}

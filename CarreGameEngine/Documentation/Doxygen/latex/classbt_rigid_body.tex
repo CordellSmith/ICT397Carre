@@ -1,0 +1,117 @@
+\hypertarget{classbt_rigid_body}{
+\section{btRigidBody Class Reference}
+\label{classbt_rigid_body}\index{btRigidBody@{btRigidBody}}
+}
+{\tt \#include $<$btRigidBody.h$>$}
+
+Collaboration diagram for btRigidBody:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_rigid_body_66a55c268281f64e849851a929449ffd}{
+\hyperlink{classbt_rigid_body_66a55c268281f64e849851a929449ffd}{btRigidBody} (const \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info}{btRigidBodyConstructionInfo} \&constructionInfo)}
+\label{classbt_rigid_body_66a55c268281f64e849851a929449ffd}
+
+\begin{CompactList}\small\item\em \hyperlink{classbt_rigid_body}{btRigidBody} constructor using construction info \item\end{CompactList}\item 
+\hyperlink{classbt_rigid_body_ac9b7d050bc87644d38e9ffe4fe4c5ab}{btRigidBody} (btScalar mass, \hyperlink{classbt_motion_state}{btMotionState} $\ast$motionState, btCollisionShape $\ast$collisionShape, const btVector3 \&localInertia=btVector3(0, 0, 0))
+\item 
+\hypertarget{classbt_rigid_body_f7f9b40d0abcfe9927d2e9c011947cec}{
+void \hyperlink{classbt_rigid_body_f7f9b40d0abcfe9927d2e9c011947cec}{predictIntegratedTransform} (btScalar step, btTransform \&predictedTransform)}
+\label{classbt_rigid_body_f7f9b40d0abcfe9927d2e9c011947cec}
+
+\begin{CompactList}\small\item\em continuous collision detection needs prediction \item\end{CompactList}\item 
+\hypertarget{classbt_rigid_body_3fecb8c50d734095f33e2c7624bfba2c}{
+void \hyperlink{classbt_rigid_body_3fecb8c50d734095f33e2c7624bfba2c}{applyDamping} (btScalar timeStep)}
+\label{classbt_rigid_body_3fecb8c50d734095f33e2c7624bfba2c}
+
+\begin{CompactList}\small\item\em applyDamping damps the velocity, using the given m\_\-linearDamping and m\_\-angularDamping \item\end{CompactList}\item 
+void \hyperlink{classbt_rigid_body_16029bc5aabcbb33aaf7e6e6e819283a}{integrateVelocities} (btScalar step)
+\item 
+void \hyperlink{classbt_rigid_body_1c89df31d2a10f06cc81da0e4b573297}{addConstraintRef} (btTypedConstraint $\ast$c)
+\item 
+\hypertarget{classbt_rigid_body_23d5467c62d5647a6a75eb5f60182786}{
+btVector3 \hyperlink{classbt_rigid_body_23d5467c62d5647a6a75eb5f60182786}{computeGyroscopicImpulseImplicit\_\-World} (btScalar dt) const }
+\label{classbt_rigid_body_23d5467c62d5647a6a75eb5f60182786}
+
+\begin{CompactList}\small\item\em perform implicit force computation in world space \item\end{CompactList}\item 
+\hypertarget{classbt_rigid_body_0ec4663c4ac2a614fa03cf93d4d533d6}{
+btVector3 \hyperlink{classbt_rigid_body_0ec4663c4ac2a614fa03cf93d4d533d6}{computeGyroscopicImpulseImplicit\_\-Body} (btScalar step) const }
+\label{classbt_rigid_body_0ec4663c4ac2a614fa03cf93d4d533d6}
+
+\begin{CompactList}\small\item\em perform implicit force computation in body space (inertial frame) \item\end{CompactList}\item 
+\hypertarget{classbt_rigid_body_3beda468b8cc2953b8aad44c96426cd5}{
+btVector3 \hyperlink{classbt_rigid_body_3beda468b8cc2953b8aad44c96426cd5}{computeGyroscopicForceExplicit} (btScalar maxGyroscopicForce) const }
+\label{classbt_rigid_body_3beda468b8cc2953b8aad44c96426cd5}
+
+\begin{CompactList}\small\item\em explicit version is best avoided, it gains energy \item\end{CompactList}\item 
+\hypertarget{classbt_rigid_body_9b1b5b688a59958aabcdf1fbc359182d}{
+virtual const char $\ast$ \hyperlink{classbt_rigid_body_9b1b5b688a59958aabcdf1fbc359182d}{serialize} (void $\ast$dataBuffer, class btSerializer $\ast$serializer) const }
+\label{classbt_rigid_body_9b1b5b688a59958aabcdf1fbc359182d}
+
+\begin{CompactList}\small\item\em fills the dataBuffer and returns the struct name (and 0 on failure) \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static const \hyperlink{classbt_rigid_body}{btRigidBody} $\ast$ \hyperlink{classbt_rigid_body_59077fce3d2efd193a3fd7d7de2c97e8}{upcast} (const btCollisionObject $\ast$colObj)
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_rigid_body_daa57210b4f5388b63a11db376358dd0}{
+void \hyperlink{classbt_rigid_body_daa57210b4f5388b63a11db376358dd0}{setupRigidBody} (const \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info}{btRigidBodyConstructionInfo} \&constructionInfo)}
+\label{classbt_rigid_body_daa57210b4f5388b63a11db376358dd0}
+
+\begin{CompactList}\small\item\em setupRigidBody is only used internally by the constructor \item\end{CompactList}\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info}{btRigidBodyConstructionInfo}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classbt_rigid_body}{btRigidBody} is the main class for rigid body objects. It is derived from btCollisionObject, so it keeps a pointer to a btCollisionShape. It is recommended for performance and memory use to share btCollisionShape objects whenever possible. There are 3 types of rigid bodies:\begin{itemize}
+\item A) Dynamic rigid bodies, with positive mass. Motion is controlled by rigid body dynamics.\item B) Fixed objects with zero mass. They are not moving (basically collision objects)\item C) Kinematic objects, which are objects without mass, but the user can move them. There is on-way interaction, and Bullet calculates a velocity based on the timestep and previous and current world transform. Bullet automatically deactivates dynamic rigid bodies, when the velocity is below a threshold for a given time. Deactivated (sleeping) rigid bodies don't take any processing time, except a minor broadphase collision detection impact (to allow active objects to activate/wake up sleeping objects) \end{itemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classbt_rigid_body_ac9b7d050bc87644d38e9ffe4fe4c5ab}{
+\index{btRigidBody@{btRigidBody}!btRigidBody@{btRigidBody}}
+\index{btRigidBody@{btRigidBody}!btRigidBody@{btRigidBody}}
+\subsubsection[btRigidBody]{\setlength{\rightskip}{0pt plus 5cm}btRigidBody::btRigidBody (btScalar {\em mass}, \/  {\bf btMotionState} $\ast$ {\em motionState}, \/  btCollisionShape $\ast$ {\em collisionShape}, \/  const btVector3 \& {\em localInertia} = {\tt btVector3(0,0,0)})}}
+\label{classbt_rigid_body_ac9b7d050bc87644d38e9ffe4fe4c5ab}
+
+
+\hyperlink{classbt_rigid_body}{btRigidBody} constructor for backwards compatibility. To specify friction (etc) during rigid body construction, please use the other constructor (using \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info}{btRigidBodyConstructionInfo}) 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_rigid_body_59077fce3d2efd193a3fd7d7de2c97e8}{
+\index{btRigidBody@{btRigidBody}!upcast@{upcast}}
+\index{upcast@{upcast}!btRigidBody@{btRigidBody}}
+\subsubsection[upcast]{\setlength{\rightskip}{0pt plus 5cm}static const {\bf btRigidBody}$\ast$ btRigidBody::upcast (const btCollisionObject $\ast$ {\em colObj})\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{classbt_rigid_body_59077fce3d2efd193a3fd7d7de2c97e8}
+
+
+to keep collision detection and dynamics separate we don't store a rigidbody pointer but a rigidbody is derived from btCollisionObject, so we can safely perform an upcast \hypertarget{classbt_rigid_body_16029bc5aabcbb33aaf7e6e6e819283a}{
+\index{btRigidBody@{btRigidBody}!integrateVelocities@{integrateVelocities}}
+\index{integrateVelocities@{integrateVelocities}!btRigidBody@{btRigidBody}}
+\subsubsection[integrateVelocities]{\setlength{\rightskip}{0pt plus 5cm}void btRigidBody::integrateVelocities (btScalar {\em step})}}
+\label{classbt_rigid_body_16029bc5aabcbb33aaf7e6e6e819283a}
+
+
+
+
+clamp angular velocity. collision calculations will fail on higher angular velocities \hypertarget{classbt_rigid_body_1c89df31d2a10f06cc81da0e4b573297}{
+\index{btRigidBody@{btRigidBody}!addConstraintRef@{addConstraintRef}}
+\index{addConstraintRef@{addConstraintRef}!btRigidBody@{btRigidBody}}
+\subsubsection[addConstraintRef]{\setlength{\rightskip}{0pt plus 5cm}void btRigidBody::addConstraintRef (btTypedConstraint $\ast$ {\em c})}}
+\label{classbt_rigid_body_1c89df31d2a10f06cc81da0e4b573297}
+
+
+
+
+disable collision with the 'other' body 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.cpp\end{CompactItemize}

@@ -1,0 +1,159 @@
+\hypertarget{cexport_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/cexport.h File Reference}
+\label{cexport_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/cexport.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/cexport.h}}
+}
+Defines the C-API for the \hyperlink{namespace_assimp}{Assimp} export interface. 
+
+{\tt \#include $<$assimp/types.h$>$}\par
+
+
+Include dependency graph for cexport.h:
+
+This graph shows which files directly or indirectly include this file:\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structai_export_format_desc}{aiExportFormatDesc}
+\item 
+struct \hyperlink{structai_export_data_blob}{aiExportDataBlob}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+ASSIMP\_\-API size\_\-t \hyperlink{cexport_8h_59cfffbc5b436da8ed8542108102b502}{aiGetExportFormatCount} (void)
+\item 
+ASSIMP\_\-API const C\_\-STRUCT \hyperlink{structai_export_format_desc}{aiExportFormatDesc} $\ast$ \hyperlink{cexport_8h_dda7f2e6611f719af6c8a4a0bef0a0a2}{aiGetExportFormatDescription} (size\_\-t pIndex)
+\item 
+ASSIMP\_\-API void \hyperlink{cexport_8h_aac746cd3f93f8d46b047b21b5d51d99}{aiReleaseExportFormatDescription} (const C\_\-STRUCT \hyperlink{structai_export_format_desc}{aiExportFormatDesc} $\ast$desc)
+\item 
+ASSIMP\_\-API void \hyperlink{cexport_8h_3b462a882e970cd7f492e293e5dee4fe}{aiCopyScene} (const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$pIn, C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$$\ast$pOut)
+\item 
+ASSIMP\_\-API void \hyperlink{cexport_8h_59c30a6f75b024ae2da8bd4c4854320c}{aiFreeScene} (const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$pIn)
+\item 
+ASSIMP\_\-API \hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe711}{aiReturn} \hyperlink{cexport_8h_9615510b8430a9da4f435a72148128dd}{aiExportScene} (const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$pScene, const char $\ast$pFormatId, const char $\ast$pFileName, unsigned int pPreprocessing)
+\item 
+ASSIMP\_\-API \hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe711}{aiReturn} \hyperlink{cexport_8h_94fe06ba0fe03e934d387f2ed6e407d2}{aiExportSceneEx} (const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$pScene, const char $\ast$pFormatId, const char $\ast$pFileName, C\_\-STRUCT \hyperlink{structai_file_i_o}{aiFileIO} $\ast$pIO, unsigned int pPreprocessing)
+\item 
+ASSIMP\_\-API const C\_\-STRUCT \hyperlink{structai_export_data_blob}{aiExportDataBlob} $\ast$ \hyperlink{cexport_8h_33b02f2dbfd79980bf29e62f3a64139f}{aiExportSceneToBlob} (const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$pScene, const char $\ast$pFormatId, unsigned int pPreprocessing)
+\item 
+ASSIMP\_\-API void \hyperlink{cexport_8h_0998064849f2ef5544f6fd30cda0b964}{aiReleaseExportBlob} (const C\_\-STRUCT \hyperlink{structai_export_data_blob}{aiExportDataBlob} $\ast$pData)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the C-API for the \hyperlink{namespace_assimp}{Assimp} export interface. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{cexport_8h_3b462a882e970cd7f492e293e5dee4fe}{
+\index{cexport.h@{cexport.h}!aiCopyScene@{aiCopyScene}}
+\index{aiCopyScene@{aiCopyScene}!cexport.h@{cexport.h}}
+\subsubsection[aiCopyScene]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiCopyScene (const C\_\-STRUCT {\bf aiScene} $\ast$ {\em pIn}, \/  C\_\-STRUCT {\bf aiScene} $\ast$$\ast$ {\em pOut})}}
+\label{cexport_8h_3b462a882e970cd7f492e293e5dee4fe}
+
+
+Create a modifiable copy of a scene. This is useful to import files via \hyperlink{namespace_assimp}{Assimp}, change their topology and export them again. Since the scene returned by the various importer functions is const, a modifiable copy is needed. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pIn}]Valid scene to be copied \item[{\em pOut}]Receives a modifyable copy of the scene. Use \hyperlink{cexport_8h_59c30a6f75b024ae2da8bd4c4854320c}{aiFreeScene()} to delete it again. \end{description}
+\end{Desc}
+\hypertarget{cexport_8h_9615510b8430a9da4f435a72148128dd}{
+\index{cexport.h@{cexport.h}!aiExportScene@{aiExportScene}}
+\index{aiExportScene@{aiExportScene}!cexport.h@{cexport.h}}
+\subsubsection[aiExportScene]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API {\bf aiReturn} aiExportScene (const C\_\-STRUCT {\bf aiScene} $\ast$ {\em pScene}, \/  const char $\ast$ {\em pFormatId}, \/  const char $\ast$ {\em pFileName}, \/  unsigned int {\em pPreprocessing})}}
+\label{cexport_8h_9615510b8430a9da4f435a72148128dd}
+
+
+Exports the given scene to a chosen file format and writes the result file(s) to disk. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pScene}]The scene to export. Stays in possession of the caller, is not changed by the function. The scene is expected to conform to Assimp's Importer output format as specified in the \hyperlink{}{Data Structures Page }. In short, this means the model data should use a right-handed coordinate systems, face winding should be counter-clockwise and the UV coordinate origin is assumed to be in the upper left. If your input data uses different conventions, have a look at the last parameter. \item[{\em pFormatId}]ID string to specify to which format you want to export to. Use \hyperlink{cexport_8h_59cfffbc5b436da8ed8542108102b502}{aiGetExportFormatCount()} / \hyperlink{cexport_8h_dda7f2e6611f719af6c8a4a0bef0a0a2}{aiGetExportFormatDescription()} to learn which export formats are available. \item[{\em pFileName}]Output file to write \item[{\em pPreprocessing}]Accepts any choice of the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410}{aiPostProcessSteps} enumerated flags, but in reality only a subset of them makes sense here. Specifying 'preprocessing' flags is useful if the input scene does not conform to Assimp's default conventions as specified in the \hyperlink{}{Data Structures Page }. In short, this means the geometry data should use a right-handed coordinate systems, face winding should be counter-clockwise and the UV coordinate origin is assumed to be in the upper left. The \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410133fd1162674e68bf8cd17070898a936}{aiProcess\_\-MakeLeftHanded}, \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e41006922b6a1f1cd8186f9fdafb471c813e}{aiProcess\_\-FlipUVs} and \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410429a11bf7ace46f039f55de895505d4a}{aiProcess\_\-FlipWindingOrder} flags are used in the import side to allow users to have those defaults automatically adapted to their conventions. Specifying those flags for exporting has the opposite effect, respectively. Some other of the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410}{aiPostProcessSteps} enumerated values may be useful as well, but you'll need to try out what their effect on the exported file is. Many formats impose their own restrictions on the structure of the geometry stored therein, so some preprocessing may have little or no effect at all, or may be redundant as exporters would apply them anyhow. A good example is triangulation - whilst you can enforce it by specifying the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e4109c3de834f0307f31fa2b1b6d05dd592b}{aiProcess\_\-Triangulate} flag, most export formats support only triangulate data so they would run the step anyway.\end{description}
+\end{Desc}
+If assimp detects that the input scene was directly taken from the importer side of the library (i.e. not copied using aiCopyScene and potetially modified afterwards), any postprocessing steps already applied to the scene will not be applied again, unless they show non-idempotent behaviour (\hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410133fd1162674e68bf8cd17070898a936}{aiProcess\_\-MakeLeftHanded}, \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e41006922b6a1f1cd8186f9fdafb471c813e}{aiProcess\_\-FlipUVs} and \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410429a11bf7ace46f039f55de895505d4a}{aiProcess\_\-FlipWindingOrder}). \begin{Desc}
+\item[Returns:]a status code indicating the result of the export \end{Desc}
+\begin{Desc}
+\item[Note:]Use \hyperlink{cexport_8h_3b462a882e970cd7f492e293e5dee4fe}{aiCopyScene()} to get a modifiable copy of a previously imported scene. \end{Desc}
+\hypertarget{cexport_8h_94fe06ba0fe03e934d387f2ed6e407d2}{
+\index{cexport.h@{cexport.h}!aiExportSceneEx@{aiExportSceneEx}}
+\index{aiExportSceneEx@{aiExportSceneEx}!cexport.h@{cexport.h}}
+\subsubsection[aiExportSceneEx]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API {\bf aiReturn} aiExportSceneEx (const C\_\-STRUCT {\bf aiScene} $\ast$ {\em pScene}, \/  const char $\ast$ {\em pFormatId}, \/  const char $\ast$ {\em pFileName}, \/  C\_\-STRUCT {\bf aiFileIO} $\ast$ {\em pIO}, \/  unsigned int {\em pPreprocessing})}}
+\label{cexport_8h_94fe06ba0fe03e934d387f2ed6e407d2}
+
+
+Exports the given scene to a chosen file format using custom IO logic supplied by you. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pScene}]The scene to export. Stays in possession of the caller, is not changed by the function. \item[{\em pFormatId}]ID string to specify to which format you want to export to. Use \hyperlink{cexport_8h_59cfffbc5b436da8ed8542108102b502}{aiGetExportFormatCount()} / \hyperlink{cexport_8h_dda7f2e6611f719af6c8a4a0bef0a0a2}{aiGetExportFormatDescription()} to learn which export formats are available. \item[{\em pFileName}]Output file to write \item[{\em pIO}]custom IO implementation to be used. Use this if you use your own storage methods. If none is supplied, a default implementation using standard file IO is used. Note that \hyperlink{cexport_8h_33b02f2dbfd79980bf29e62f3a64139f}{aiExportSceneToBlob} is provided as convenience function to export to memory buffers. \item[{\em pPreprocessing}]Please see the documentation for \hyperlink{cexport_8h_9615510b8430a9da4f435a72148128dd}{aiExportScene} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]a status code indicating the result of the export \end{Desc}
+\begin{Desc}
+\item[Note:]Include $<$aiFileIO.h$>$ for the definition of \hyperlink{structai_file_i_o}{aiFileIO}. 
+
+Use \hyperlink{cexport_8h_3b462a882e970cd7f492e293e5dee4fe}{aiCopyScene()} to get a modifiable copy of a previously imported scene. \end{Desc}
+\hypertarget{cexport_8h_33b02f2dbfd79980bf29e62f3a64139f}{
+\index{cexport.h@{cexport.h}!aiExportSceneToBlob@{aiExportSceneToBlob}}
+\index{aiExportSceneToBlob@{aiExportSceneToBlob}!cexport.h@{cexport.h}}
+\subsubsection[aiExportSceneToBlob]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API const C\_\-STRUCT {\bf aiExportDataBlob}$\ast$ aiExportSceneToBlob (const C\_\-STRUCT {\bf aiScene} $\ast$ {\em pScene}, \/  const char $\ast$ {\em pFormatId}, \/  unsigned int {\em pPreprocessing})}}
+\label{cexport_8h_33b02f2dbfd79980bf29e62f3a64139f}
+
+
+Exports the given scene to a chosen file format. Returns the exported data as a binary blob which you can write into a file or something. When you're done with the data, use \hyperlink{cexport_8h_0998064849f2ef5544f6fd30cda0b964}{aiReleaseExportBlob()} to free the resources associated with the export. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pScene}]The scene to export. Stays in possession of the caller, is not changed by the function. \item[{\em pFormatId}]ID string to specify to which format you want to export to. Use \hyperlink{cexport_8h_59cfffbc5b436da8ed8542108102b502}{aiGetExportFormatCount()} / \hyperlink{cexport_8h_dda7f2e6611f719af6c8a4a0bef0a0a2}{aiGetExportFormatDescription()} to learn which export formats are available. \item[{\em pPreprocessing}]Please see the documentation for \hyperlink{cexport_8h_9615510b8430a9da4f435a72148128dd}{aiExportScene} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the exported data or NULL in case of error \end{Desc}
+\hypertarget{cexport_8h_59c30a6f75b024ae2da8bd4c4854320c}{
+\index{cexport.h@{cexport.h}!aiFreeScene@{aiFreeScene}}
+\index{aiFreeScene@{aiFreeScene}!cexport.h@{cexport.h}}
+\subsubsection[aiFreeScene]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiFreeScene (const C\_\-STRUCT {\bf aiScene} $\ast$ {\em pIn})}}
+\label{cexport_8h_59c30a6f75b024ae2da8bd4c4854320c}
+
+
+Frees a scene copy created using \hyperlink{cexport_8h_3b462a882e970cd7f492e293e5dee4fe}{aiCopyScene()} \hypertarget{cexport_8h_59cfffbc5b436da8ed8542108102b502}{
+\index{cexport.h@{cexport.h}!aiGetExportFormatCount@{aiGetExportFormatCount}}
+\index{aiGetExportFormatCount@{aiGetExportFormatCount}!cexport.h@{cexport.h}}
+\subsubsection[aiGetExportFormatCount]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API size\_\-t aiGetExportFormatCount (void)}}
+\label{cexport_8h_59cfffbc5b436da8ed8542108102b502}
+
+
+Returns the number of export file formats available in the current \hyperlink{namespace_assimp}{Assimp} build. Use \hyperlink{cexport_8h_dda7f2e6611f719af6c8a4a0bef0a0a2}{aiGetExportFormatDescription()} to retrieve infos of a specific export format. \hypertarget{cexport_8h_dda7f2e6611f719af6c8a4a0bef0a0a2}{
+\index{cexport.h@{cexport.h}!aiGetExportFormatDescription@{aiGetExportFormatDescription}}
+\index{aiGetExportFormatDescription@{aiGetExportFormatDescription}!cexport.h@{cexport.h}}
+\subsubsection[aiGetExportFormatDescription]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API const C\_\-STRUCT {\bf aiExportFormatDesc}$\ast$ aiGetExportFormatDescription (size\_\-t {\em pIndex})}}
+\label{cexport_8h_dda7f2e6611f719af6c8a4a0bef0a0a2}
+
+
+Returns a description of the nth export file format. Use \hyperlink{cexport_8h_59cfffbc5b436da8ed8542108102b502}{aiGetExportFormatCount()} to learn how many export formats are supported. The description must be released by calling aiReleaseExportFormatDescription afterwards. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pIndex}]Index of the export format to retrieve information for. Valid range is 0 to \hyperlink{cexport_8h_59cfffbc5b436da8ed8542108102b502}{aiGetExportFormatCount()} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A description of that specific export format. NULL if pIndex is out of range. \end{Desc}
+\hypertarget{cexport_8h_0998064849f2ef5544f6fd30cda0b964}{
+\index{cexport.h@{cexport.h}!aiReleaseExportBlob@{aiReleaseExportBlob}}
+\index{aiReleaseExportBlob@{aiReleaseExportBlob}!cexport.h@{cexport.h}}
+\subsubsection[aiReleaseExportBlob]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiReleaseExportBlob (const C\_\-STRUCT {\bf aiExportDataBlob} $\ast$ {\em pData})}}
+\label{cexport_8h_0998064849f2ef5544f6fd30cda0b964}
+
+
+Releases the memory associated with the given exported data. Use this function to free a data blob returned by \hyperlink{cexport_8h_9615510b8430a9da4f435a72148128dd}{aiExportScene()}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pData}]the data blob returned by \hyperlink{cexport_8h_33b02f2dbfd79980bf29e62f3a64139f}{aiExportSceneToBlob} \end{description}
+\end{Desc}
+\hypertarget{cexport_8h_aac746cd3f93f8d46b047b21b5d51d99}{
+\index{cexport.h@{cexport.h}!aiReleaseExportFormatDescription@{aiReleaseExportFormatDescription}}
+\index{aiReleaseExportFormatDescription@{aiReleaseExportFormatDescription}!cexport.h@{cexport.h}}
+\subsubsection[aiReleaseExportFormatDescription]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiReleaseExportFormatDescription (const C\_\-STRUCT {\bf aiExportFormatDesc} $\ast$ {\em desc})}}
+\label{cexport_8h_aac746cd3f93f8d46b047b21b5d51d99}
+
+
+Release a description of the nth export file format. Must be returned by aiGetExportFormatDescription \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em desc}]Pointer to the description \end{description}
+\end{Desc}

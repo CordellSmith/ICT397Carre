@@ -1,0 +1,73 @@
+\hypertarget{group__gtx__intersect}{
+\section{GLM\_\-GTX\_\-intersect}
+\label{group__gtx__intersect}\index{GLM\_\-GTX\_\-intersect@{GLM\_\-GTX\_\-intersect}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-intersect:Add intersection functions.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__intersect_g1699af184f5244ebe224fd653dd0bfc0}{glm::intersectRayPlane} (genType const \&orig, genType const \&dir, genType const \&planeOrig, genType const \&planeNormal, typename genType::value\_\-type \&intersectionDistance)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__intersect_gbf48f0fca6a10a8edb001b3d546de5fe}{glm::intersectRayTriangle} (genType const \&orig, genType const \&dir, genType const \&vert0, genType const \&vert1, genType const \&vert2, genType \&baryPosition)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__intersect_g1aa5d241478d1493ff4d8c22b8d9e293}{glm::intersectLineTriangle} (genType const \&orig, genType const \&dir, genType const \&vert0, genType const \&vert1, genType const \&vert2, genType \&position)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__intersect_g95b17f6f08015c92fc8ac3e83010492d}{glm::intersectRaySphere} (genType const \&rayStarting, genType const \&rayNormalizedDirection, genType const \&sphereCenter, typename genType::value\_\-type const sphereRadiusSquered, typename genType::value\_\-type \&intersectionDistance)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__intersect_g2e6a97dd3fcdbf83c24dd3499f81014b}{glm::intersectRaySphere} (genType const \&rayStarting, genType const \&rayNormalizedDirection, genType const \&sphereCenter, const typename genType::value\_\-type sphereRadius, genType \&intersectionPosition, genType \&intersectionNormal)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL bool \hyperlink{group__gtx__intersect_g28b9b80acf2ea35780709e01b27ab60f}{glm::intersectLineSphere} (genType const \&point0, genType const \&point1, genType const \&sphereCenter, typename genType::value\_\-type sphereRadius, genType \&intersectionPosition1, genType \&intersectionNormal1, genType \&intersectionPosition2=genType(), genType \&intersectionNormal2=genType())
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Add intersection functions. 
+
+$<$glm/gtx/intersect.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__intersect_g28b9b80acf2ea35780709e01b27ab60f}{
+\index{gtx\_\-intersect@{gtx\_\-intersect}!intersectLineSphere@{intersectLineSphere}}
+\index{intersectLineSphere@{intersectLineSphere}!gtx_intersect@{gtx\_\-intersect}}
+\subsubsection[intersectLineSphere]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::intersectLineSphere (genType const \& {\em point0}, \/  genType const \& {\em point1}, \/  genType const \& {\em sphereCenter}, \/  typename genType::value\_\-type {\em sphereRadius}, \/  genType \& {\em intersectionPosition1}, \/  genType \& {\em intersectionNormal1}, \/  genType \& {\em intersectionPosition2} = {\tt genType()}, \/  genType \& {\em intersectionNormal2} = {\tt genType()})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__intersect_g28b9b80acf2ea35780709e01b27ab60f}
+
+
+Compute the intersection of a line and a sphere. From GLM\_\-GTX\_\-intersect extension \hypertarget{group__gtx__intersect_g1aa5d241478d1493ff4d8c22b8d9e293}{
+\index{gtx\_\-intersect@{gtx\_\-intersect}!intersectLineTriangle@{intersectLineTriangle}}
+\index{intersectLineTriangle@{intersectLineTriangle}!gtx_intersect@{gtx\_\-intersect}}
+\subsubsection[intersectLineTriangle]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::intersectLineTriangle (genType const \& {\em orig}, \/  genType const \& {\em dir}, \/  genType const \& {\em vert0}, \/  genType const \& {\em vert1}, \/  genType const \& {\em vert2}, \/  genType \& {\em position})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__intersect_g1aa5d241478d1493ff4d8c22b8d9e293}
+
+
+Compute the intersection of a line and a triangle. From GLM\_\-GTX\_\-intersect extension. \hypertarget{group__gtx__intersect_g1699af184f5244ebe224fd653dd0bfc0}{
+\index{gtx\_\-intersect@{gtx\_\-intersect}!intersectRayPlane@{intersectRayPlane}}
+\index{intersectRayPlane@{intersectRayPlane}!gtx_intersect@{gtx\_\-intersect}}
+\subsubsection[intersectRayPlane]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::intersectRayPlane (genType const \& {\em orig}, \/  genType const \& {\em dir}, \/  genType const \& {\em planeOrig}, \/  genType const \& {\em planeNormal}, \/  typename genType::value\_\-type \& {\em intersectionDistance})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__intersect_g1699af184f5244ebe224fd653dd0bfc0}
+
+
+Compute the intersection of a ray and a triangle. Ray direction and plane normal must be unit length. From GLM\_\-GTX\_\-intersect extension. \hypertarget{group__gtx__intersect_g2e6a97dd3fcdbf83c24dd3499f81014b}{
+\index{gtx\_\-intersect@{gtx\_\-intersect}!intersectRaySphere@{intersectRaySphere}}
+\index{intersectRaySphere@{intersectRaySphere}!gtx_intersect@{gtx\_\-intersect}}
+\subsubsection[intersectRaySphere]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::intersectRaySphere (genType const \& {\em rayStarting}, \/  genType const \& {\em rayNormalizedDirection}, \/  genType const \& {\em sphereCenter}, \/  const typename genType::value\_\-type {\em sphereRadius}, \/  genType \& {\em intersectionPosition}, \/  genType \& {\em intersectionNormal})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__intersect_g2e6a97dd3fcdbf83c24dd3499f81014b}
+
+
+Compute the intersection of a ray and a sphere. From GLM\_\-GTX\_\-intersect extension. \hypertarget{group__gtx__intersect_g95b17f6f08015c92fc8ac3e83010492d}{
+\index{gtx\_\-intersect@{gtx\_\-intersect}!intersectRaySphere@{intersectRaySphere}}
+\index{intersectRaySphere@{intersectRaySphere}!gtx_intersect@{gtx\_\-intersect}}
+\subsubsection[intersectRaySphere]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::intersectRaySphere (genType const \& {\em rayStarting}, \/  genType const \& {\em rayNormalizedDirection}, \/  genType const \& {\em sphereCenter}, \/  typename genType::value\_\-type const {\em sphereRadiusSquered}, \/  typename genType::value\_\-type \& {\em intersectionDistance})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__intersect_g95b17f6f08015c92fc8ac3e83010492d}
+
+
+Compute the intersection distance of a ray and a sphere. The ray direction vector is unit length. From GLM\_\-GTX\_\-intersect extension. \hypertarget{group__gtx__intersect_gbf48f0fca6a10a8edb001b3d546de5fe}{
+\index{gtx\_\-intersect@{gtx\_\-intersect}!intersectRayTriangle@{intersectRayTriangle}}
+\index{intersectRayTriangle@{intersectRayTriangle}!gtx_intersect@{gtx\_\-intersect}}
+\subsubsection[intersectRayTriangle]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::intersectRayTriangle (genType const \& {\em orig}, \/  genType const \& {\em dir}, \/  genType const \& {\em vert0}, \/  genType const \& {\em vert1}, \/  genType const \& {\em vert2}, \/  genType \& {\em baryPosition})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__intersect_gbf48f0fca6a10a8edb001b3d546de5fe}
+
+
+Compute the intersection of a ray and a triangle. From GLM\_\-GTX\_\-intersect extension. 

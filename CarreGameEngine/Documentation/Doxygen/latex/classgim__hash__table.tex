@@ -1,0 +1,253 @@
+\hypertarget{classgim__hash__table}{
+\section{gim\_\-hash\_\-table$<$ T $>$ Class Template Reference}
+\label{classgim__hash__table}\index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}}
+}
+A compact hash table implementation.  
+
+
+{\tt \#include $<$gim\_\-hash\_\-table.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classgim__hash__table_efe21c907c69c8077ec0886aaa778f6f}{gim\_\-hash\_\-table} (GUINT reserve\_\-size=GIM\_\-DEFAULT\_\-HASH\_\-TABLE\_\-SIZE, GUINT node\_\-size=GIM\_\-DEFAULT\_\-HASH\_\-TABLE\_\-NODE\_\-SIZE, GUINT min\_\-hash\_\-table\_\-size=GIM\_\-INVALID\_\-HASH)
+\item 
+\hypertarget{classgim__hash__table_ba33eeb9b5aa00b0d8a002c549b71ed3}{
+bool \hyperlink{classgim__hash__table_ba33eeb9b5aa00b0d8a002c549b71ed3}{check\_\-for\_\-switching\_\-to\_\-hashtable} ()}
+\label{classgim__hash__table_ba33eeb9b5aa00b0d8a002c549b71ed3}
+
+\begin{CompactList}\small\item\em If the container reaches the. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_a24edf41f1a5f7ee28f6d1f12e3922c3}{
+GUINT \hyperlink{classgim__hash__table_a24edf41f1a5f7ee28f6d1f12e3922c3}{size} () const }
+\label{classgim__hash__table_a24edf41f1a5f7ee28f6d1f12e3922c3}
+
+\begin{CompactList}\small\item\em Retrieves the amount of keys. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_d735b8794a51eca1caee6de5bbc4cf90}{
+GUINT \hyperlink{classgim__hash__table_d735b8794a51eca1caee6de5bbc4cf90}{get\_\-key} (GUINT index) const }
+\label{classgim__hash__table_d735b8794a51eca1caee6de5bbc4cf90}
+
+\begin{CompactList}\small\item\em Retrieves the hash key. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_b5ec54c3096e790e8c7ae570300df95d}{
+T $\ast$ \hyperlink{classgim__hash__table_b5ec54c3096e790e8c7ae570300df95d}{get\_\-value\_\-by\_\-index} (GUINT index)}
+\label{classgim__hash__table_b5ec54c3096e790e8c7ae570300df95d}
+
+\begin{CompactList}\small\item\em Retrieves the value by index. \item\end{CompactList}\item 
+GUINT \hyperlink{classgim__hash__table_14261b2d7de34188f8bc5179e4d60760}{find} (GUINT hashkey)
+\begin{CompactList}\small\item\em Finds the index of the element with the key. \item\end{CompactList}\item 
+T $\ast$ \hyperlink{classgim__hash__table_40b5c46a0117da3948cd1b093f185321}{get\_\-value} (GUINT hashkey)
+\begin{CompactList}\small\item\em Retrieves the value associated with the index. \item\end{CompactList}\item 
+GUINT \hyperlink{classgim__hash__table_ff0e9bdb5bd6aacf9272db6789c514f7}{insert} (GUINT hashkey, const T \&element)
+\begin{CompactList}\small\item\em Insert an element into the hash. \item\end{CompactList}\item 
+GUINT \hyperlink{classgim__hash__table_83987136757654921c71b183de8ec55e}{insert\_\-override} (GUINT hashkey, const T \&element)
+\begin{CompactList}\small\item\em Insert an element into the hash, and could overrite an existing object with the same hash. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_be9a629ec7dfe612065ed9d161adc7e8}{
+GUINT \hyperlink{classgim__hash__table_be9a629ec7dfe612065ed9d161adc7e8}{insert\_\-unsorted} (GUINT hashkey, const T \&element)}
+\label{classgim__hash__table_be9a629ec7dfe612065ed9d161adc7e8}
+
+\begin{CompactList}\small\item\em Insert an element into the hash,But if this container is a sorted array, this inserts it unsorted. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classgim__hash__table_aaff4cea9e6b86276d364041e651605f}{
+GUINT \hyperlink{classgim__hash__table_aaff4cea9e6b86276d364041e651605f}{\_\-find\_\-cell} (GUINT hashkey)}
+\label{classgim__hash__table_aaff4cea9e6b86276d364041e651605f}
+
+\begin{CompactList}\small\item\em Returns the cell index. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_cc2d3d29a0190232386fb155ec9e5d8f}{
+GUINT \hyperlink{classgim__hash__table_cc2d3d29a0190232386fb155ec9e5d8f}{\_\-find\_\-avaliable\_\-cell} (GUINT hashkey)}
+\label{classgim__hash__table_cc2d3d29a0190232386fb155ec9e5d8f}
+
+\begin{CompactList}\small\item\em Find the avaliable cell for the hashkey, and return an existing cell if it has the same hash key. \item\end{CompactList}\item 
+void \hyperlink{classgim__hash__table_4d9347e131c0e17ac2d4966c092817f8}{\_\-reserve\_\-table\_\-memory} (GUINT newtablesize)
+\begin{CompactList}\small\item\em reserves the memory for the hash table. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_06933fdb198971dcd753564d1d6e9424}{
+void \hyperlink{classgim__hash__table_06933fdb198971dcd753564d1d6e9424}{\_\-clear\_\-table\_\-memory} ()}
+\label{classgim__hash__table_06933fdb198971dcd753564d1d6e9424}
+
+\begin{CompactList}\small\item\em Clear all memory for the hash table. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_a33115e75d8cc5c489fa6ce8b1a23654}{
+void \hyperlink{classgim__hash__table_a33115e75d8cc5c489fa6ce8b1a23654}{\_\-rehash} ()}
+\label{classgim__hash__table_a33115e75d8cc5c489fa6ce8b1a23654}
+
+\begin{CompactList}\small\item\em Invalidates the keys (Assigning GIM\_\-INVALID\_\-HASH to all) Reorders the hash keys. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_51905040dee4c41954f5de1634c090dd}{
+void \hyperlink{classgim__hash__table_51905040dee4c41954f5de1634c090dd}{\_\-resize\_\-table} (GUINT newsize)}
+\label{classgim__hash__table_51905040dee4c41954f5de1634c090dd}
+
+\begin{CompactList}\small\item\em Resize hash table indices. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_2b7a2b3eb817edf8af93a85ce910a5ca}{
+void \hyperlink{classgim__hash__table_2b7a2b3eb817edf8af93a85ce910a5ca}{\_\-destroy} ()}
+\label{classgim__hash__table_2b7a2b3eb817edf8af93a85ce910a5ca}
+
+\begin{CompactList}\small\item\em Destroy hash table memory. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_93e5bf5c573a39e21e9bd0a4aec38e1a}{
+GUINT \hyperlink{classgim__hash__table_93e5bf5c573a39e21e9bd0a4aec38e1a}{\_\-assign\_\-hash\_\-table\_\-cell} (GUINT hashkey)}
+\label{classgim__hash__table_93e5bf5c573a39e21e9bd0a4aec38e1a}
+
+\begin{CompactList}\small\item\em Finds an avaliable hash table cell, and resizes the table if there isn't space. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_fbaacd523281706f94476ae60917856e}{
+bool \hyperlink{classgim__hash__table_fbaacd523281706f94476ae60917856e}{\_\-erase\_\-by\_\-index\_\-hash\_\-table} (GUINT index)}
+\label{classgim__hash__table_fbaacd523281706f94476ae60917856e}
+
+\begin{CompactList}\small\item\em erase by index in hash table \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_f03ef67dcf7b0e805e34df6a5de4425f}{
+bool \hyperlink{classgim__hash__table_f03ef67dcf7b0e805e34df6a5de4425f}{\_\-erase\_\-hash\_\-table} (GUINT hashkey)}
+\label{classgim__hash__table_f03ef67dcf7b0e805e34df6a5de4425f}
+
+\begin{CompactList}\small\item\em erase by key in hash table \item\end{CompactList}\item 
+GUINT \hyperlink{classgim__hash__table_4339a279d721d1e687b8d8063332bac8}{\_\-insert\_\-hash\_\-table} (GUINT hashkey, const T \&value)
+\begin{CompactList}\small\item\em insert an element in hash table \item\end{CompactList}\item 
+GUINT \hyperlink{classgim__hash__table_6ebfb7415bd946855ec5730651f7c191}{\_\-insert\_\-hash\_\-table\_\-replace} (GUINT hashkey, const T \&value)
+\begin{CompactList}\small\item\em insert an element in hash table. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_e347a062b1b5907b81127e6bacbbb10e}{
+bool \hyperlink{classgim__hash__table_e347a062b1b5907b81127e6bacbbb10e}{\_\-erase\_\-sorted} (GUINT index)}
+\label{classgim__hash__table_e347a062b1b5907b81127e6bacbbb10e}
+
+\begin{CompactList}\small\item\em Sorted array data management. The hash table has the indices to the corresponding m\_\-nodes array. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_0b68afa191499a10ac7d7c34230a7d89}{
+bool \hyperlink{classgim__hash__table_0b68afa191499a10ac7d7c34230a7d89}{\_\-erase\_\-unsorted} (GUINT index)}
+\label{classgim__hash__table_0b68afa191499a10ac7d7c34230a7d89}
+
+\begin{CompactList}\small\item\em faster, but unsorted \item\end{CompactList}\item 
+void \hyperlink{classgim__hash__table_3eacaf88e1b18815c0b89d368d77a93a}{\_\-insert\_\-in\_\-pos} (GUINT hashkey, const T \&value, GUINT pos)
+\begin{CompactList}\small\item\em Insert in position ordered. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_66d18cb60b0628a9aa759304395f4825}{
+GUINT \hyperlink{classgim__hash__table_66d18cb60b0628a9aa759304395f4825}{\_\-insert\_\-sorted} (GUINT hashkey, const T \&value)}
+\label{classgim__hash__table_66d18cb60b0628a9aa759304395f4825}
+
+\begin{CompactList}\small\item\em Insert an element in an ordered array. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_95f93f63d75663f494388dc03423332f}{
+GUINT \hyperlink{classgim__hash__table_95f93f63d75663f494388dc03423332f}{\_\-insert\_\-unsorted} (GUINT hashkey, const T \&value)}
+\label{classgim__hash__table_95f93f63d75663f494388dc03423332f}
+
+\begin{CompactList}\small\item\em Fast insertion in m\_\-nodes array. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{classgim__hash__table_da83cac38bcf3fd282287f463def04e4}{
+\hyperlink{classgim__array}{gim\_\-array}$<$ \_\-node\_\-type $>$ \hyperlink{classgim__hash__table_da83cac38bcf3fd282287f463def04e4}{m\_\-nodes}}
+\label{classgim__hash__table_da83cac38bcf3fd282287f463def04e4}
+
+\begin{CompactList}\small\item\em The nodes. \item\end{CompactList}\item 
+\hypertarget{classgim__hash__table_35f6b0d640222067b9c76e61887e0354}{
+GUINT $\ast$ \hyperlink{classgim__hash__table_35f6b0d640222067b9c76e61887e0354}{m\_\-hash\_\-table}}
+\label{classgim__hash__table_35f6b0d640222067b9c76e61887e0354}
+
+\begin{CompactList}\small\item\em Hash table data management. The hash table has the indices to the corresponding m\_\-nodes array. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class gim\_\-hash\_\-table$<$ T $>$}
+
+A compact hash table implementation. 
+
+A memory aligned compact hash table that coud be treated as an array. It could be a simple sorted array without the overhead of the hash key bucked, or could be a formely hash table with an array of keys. You can use switch\_\-to\_\-hashtable() and switch\_\-to\_\-sorted\_\-array for saving space or increase speed. 
+
+\begin{itemize}
+\item if node\_\-size = 0, then this container becomes a simple sorted array allocator. reserve\_\-size is used for reserve memory in m\_\-nodes. When the array size reaches the size equivalent to 'min\_\-hash\_\-table\_\-size', then it becomes a hash table by calling check\_\-for\_\-switching\_\-to\_\-hashtable. \item If node\_\-size != 0, then this container becomes a hash table for ever \end{itemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classgim__hash__table_efe21c907c69c8077ec0886aaa778f6f}{
+\index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!gim\_\-hash\_\-table@{gim\_\-hash\_\-table}}
+\index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!gim_hash_table@{gim\_\-hash\_\-table}}
+\subsubsection[gim\_\-hash\_\-table]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf gim\_\-hash\_\-table}$<$ T $>$::{\bf gim\_\-hash\_\-table} (GUINT {\em reserve\_\-size} = {\tt GIM\_\-DEFAULT\_\-HASH\_\-TABLE\_\-SIZE}, \/  GUINT {\em node\_\-size} = {\tt GIM\_\-DEFAULT\_\-HASH\_\-TABLE\_\-NODE\_\-SIZE}, \/  GUINT {\em min\_\-hash\_\-table\_\-size} = {\tt GIM\_\-INVALID\_\-HASH})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classgim__hash__table_efe21c907c69c8077ec0886aaa778f6f}
+
+
+if node\_\-size = 0, then this container becomes a simple sorted array allocator. reserve\_\-size is used for reserve memory in m\_\-nodes. When the array size reaches the size equivalent to 'min\_\-hash\_\-table\_\-size', then it becomes a hash table by calling check\_\-for\_\-switching\_\-to\_\-hashtable.  If node\_\-size != 0, then this container becomes a hash table for ever  
+
+\subsection{Member Function Documentation}
+\hypertarget{classgim__hash__table_4d9347e131c0e17ac2d4966c092817f8}{
+\index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!\_\-reserve\_\-table\_\-memory@{\_\-reserve\_\-table\_\-memory}}
+\index{\_\-reserve\_\-table\_\-memory@{\_\-reserve\_\-table\_\-memory}!gim_hash_table@{gim\_\-hash\_\-table}}
+\subsubsection[\_\-reserve\_\-table\_\-memory]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf gim\_\-hash\_\-table}$<$ T $>$::\_\-reserve\_\-table\_\-memory (GUINT {\em newtablesize})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+\label{classgim__hash__table_4d9347e131c0e17ac2d4966c092817f8}
+
+
+reserves the memory for the hash table. 
+
+\begin{Desc}
+\item[Precondition:]hash table must be empty \end{Desc}
+\begin{Desc}
+\item[Postcondition:]reserves the memory for the hash table, an initializes all elements to GIM\_\-INVALID\_\-HASH. \end{Desc}
+\hypertarget{classgim__hash__table_4339a279d721d1e687b8d8063332bac8}{
+\index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!\_\-insert\_\-hash\_\-table@{\_\-insert\_\-hash\_\-table}}
+\index{\_\-insert\_\-hash\_\-table@{\_\-insert\_\-hash\_\-table}!gim_hash_table@{gim\_\-hash\_\-table}}
+\subsubsection[\_\-insert\_\-hash\_\-table]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ GUINT {\bf gim\_\-hash\_\-table}$<$ T $>$::\_\-insert\_\-hash\_\-table (GUINT {\em hashkey}, \/  const T \& {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+\label{classgim__hash__table_4339a279d721d1e687b8d8063332bac8}
+
+
+insert an element in hash table 
+
+If the element exists, this won't insert the element \begin{Desc}
+\item[Returns:]the index in the array of the existing element,or GIM\_\-INVALID\_\-HASH if the element has been inserted If so, the element has been inserted at the last position of the array. \end{Desc}
+\hypertarget{classgim__hash__table_6ebfb7415bd946855ec5730651f7c191}{
+\index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!\_\-insert\_\-hash\_\-table\_\-replace@{\_\-insert\_\-hash\_\-table\_\-replace}}
+\index{\_\-insert\_\-hash\_\-table\_\-replace@{\_\-insert\_\-hash\_\-table\_\-replace}!gim_hash_table@{gim\_\-hash\_\-table}}
+\subsubsection[\_\-insert\_\-hash\_\-table\_\-replace]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ GUINT {\bf gim\_\-hash\_\-table}$<$ T $>$::\_\-insert\_\-hash\_\-table\_\-replace (GUINT {\em hashkey}, \/  const T \& {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+\label{classgim__hash__table_6ebfb7415bd946855ec5730651f7c191}
+
+
+insert an element in hash table. 
+
+If the element exists, this replaces the element. \begin{Desc}
+\item[Returns:]the index in the array of the existing element,or GIM\_\-INVALID\_\-HASH if the element has been inserted If so, the element has been inserted at the last position of the array. \end{Desc}
+\hypertarget{classgim__hash__table_3eacaf88e1b18815c0b89d368d77a93a}{
+\index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!\_\-insert\_\-in\_\-pos@{\_\-insert\_\-in\_\-pos}}
+\index{\_\-insert\_\-in\_\-pos@{\_\-insert\_\-in\_\-pos}!gim_hash_table@{gim\_\-hash\_\-table}}
+\subsubsection[\_\-insert\_\-in\_\-pos]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf gim\_\-hash\_\-table}$<$ T $>$::\_\-insert\_\-in\_\-pos (GUINT {\em hashkey}, \/  const T \& {\em value}, \/  GUINT {\em pos})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
+\label{classgim__hash__table_3eacaf88e1b18815c0b89d368d77a93a}
+
+
+Insert in position ordered. 
+
+Also checks if it is needed to transform this container to a hash table, by calling check\_\-for\_\-switching\_\-to\_\-hashtable \hypertarget{classgim__hash__table_14261b2d7de34188f8bc5179e4d60760}{
+\index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!find@{find}}
+\index{find@{find}!gim_hash_table@{gim\_\-hash\_\-table}}
+\subsubsection[find]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ GUINT {\bf gim\_\-hash\_\-table}$<$ T $>$::find (GUINT {\em hashkey})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classgim__hash__table_14261b2d7de34188f8bc5179e4d60760}
+
+
+Finds the index of the element with the key. 
+
+\begin{Desc}
+\item[Returns:]the index in the array of the existing element,or GIM\_\-INVALID\_\-HASH if the element has been inserted If so, the element has been inserted at the last position of the array. \end{Desc}
+\hypertarget{classgim__hash__table_40b5c46a0117da3948cd1b093f185321}{
+\index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!get\_\-value@{get\_\-value}}
+\index{get\_\-value@{get\_\-value}!gim_hash_table@{gim\_\-hash\_\-table}}
+\subsubsection[get\_\-value]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T$\ast$ {\bf gim\_\-hash\_\-table}$<$ T $>$::get\_\-value (GUINT {\em hashkey})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classgim__hash__table_40b5c46a0117da3948cd1b093f185321}
+
+
+Retrieves the value associated with the index. 
+
+\begin{Desc}
+\item[Returns:]the found element, or null \end{Desc}
+\hypertarget{classgim__hash__table_ff0e9bdb5bd6aacf9272db6789c514f7}{
+\index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!insert@{insert}}
+\index{insert@{insert}!gim_hash_table@{gim\_\-hash\_\-table}}
+\subsubsection[insert]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ GUINT {\bf gim\_\-hash\_\-table}$<$ T $>$::insert (GUINT {\em hashkey}, \/  const T \& {\em element})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classgim__hash__table_ff0e9bdb5bd6aacf9272db6789c514f7}
+
+
+Insert an element into the hash. 
+
+\begin{Desc}
+\item[Returns:]If GIM\_\-INVALID\_\-HASH, the object has been inserted succesfully. Else it returns the position of the existing element. \end{Desc}
+\hypertarget{classgim__hash__table_83987136757654921c71b183de8ec55e}{
+\index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!insert\_\-override@{insert\_\-override}}
+\index{insert\_\-override@{insert\_\-override}!gim_hash_table@{gim\_\-hash\_\-table}}
+\subsubsection[insert\_\-override]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ GUINT {\bf gim\_\-hash\_\-table}$<$ T $>$::insert\_\-override (GUINT {\em hashkey}, \/  const T \& {\em element})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classgim__hash__table_83987136757654921c71b183de8ec55e}
+
+
+Insert an element into the hash, and could overrite an existing object with the same hash. 
+
+\begin{Desc}
+\item[Returns:]If GIM\_\-INVALID\_\-HASH, the object has been inserted succesfully. Else it returns the position of the replaced element. \end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-hash\_\-table.h\end{CompactItemize}

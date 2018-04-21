@@ -1,0 +1,92 @@
+\hypertarget{class_assimp_1_1_progress_handler}{
+\section{Assimp::ProgressHandler Class Reference}
+\label{class_assimp_1_1_progress_handler}\index{Assimp::ProgressHandler@{Assimp::ProgressHandler}}
+}
+CPP-API: Abstract interface for custom progress report receivers.  
+
+
+{\tt \#include $<$ProgressHandler.hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_progress_handler_3ec465a62e1feaae00f585ca0cffb81e}{
+virtual \hyperlink{class_assimp_1_1_progress_handler_3ec465a62e1feaae00f585ca0cffb81e}{$\sim$ProgressHandler} ()}
+\label{class_assimp_1_1_progress_handler_3ec465a62e1feaae00f585ca0cffb81e}
+
+\begin{CompactList}\small\item\em Virtual destructor. \item\end{CompactList}\item 
+virtual bool \hyperlink{class_assimp_1_1_progress_handler_b08a1d300d434f6dd86ca41747cba448}{Update} (float percentage=-1.f)=0
+\begin{CompactList}\small\item\em Progress callback. \item\end{CompactList}\item 
+virtual void \hyperlink{class_assimp_1_1_progress_handler_0c867692ee9d1e25dec1e2f08fb5e20d}{UpdateFileRead} (int currentStep, int numberOfSteps)
+\begin{CompactList}\small\item\em Progress callback for file loading steps. \item\end{CompactList}\item 
+virtual void \hyperlink{class_assimp_1_1_progress_handler_57b30d2a9b2ae1f932918f18c30196ed}{UpdatePostProcess} (int currentStep, int numberOfSteps)
+\begin{CompactList}\small\item\em Progress callback for post-processing steps. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_progress_handler_53b192913e9904c674b851c46e1ea9e8}{
+\hyperlink{class_assimp_1_1_progress_handler_53b192913e9904c674b851c46e1ea9e8}{ProgressHandler} ()}
+\label{class_assimp_1_1_progress_handler_53b192913e9904c674b851c46e1ea9e8}
+
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+CPP-API: Abstract interface for custom progress report receivers. 
+
+Each Importer instance maintains its own \hyperlink{class_assimp_1_1_progress_handler_53b192913e9904c674b851c46e1ea9e8}{ProgressHandler}. The default implementation provided by \hyperlink{namespace_assimp}{Assimp} doesn't do anything at all. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_progress_handler_b08a1d300d434f6dd86ca41747cba448}{
+\index{Assimp::ProgressHandler@{Assimp::ProgressHandler}!Update@{Update}}
+\index{Update@{Update}!Assimp::ProgressHandler@{Assimp::ProgressHandler}}
+\subsubsection[Update]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Assimp::ProgressHandler::Update (float {\em percentage} = {\tt -1.f})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_assimp_1_1_progress_handler_b08a1d300d434f6dd86ca41747cba448}
+
+
+Progress callback. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em percentage}]An estimate of the current loading progress, in percent. Or -1.f if such an estimate is not available.\end{description}
+\end{Desc}
+There are restriction on what you may do from within your implementation of this method: no exceptions may be thrown and no non-const Importer methods may be called. It is not generally possible to predict the number of callbacks fired during a single import.
+
+\begin{Desc}
+\item[Returns:]Return false to abort loading at the next possible occasion (loaders and \hyperlink{namespace_assimp}{Assimp} are generally allowed to perform all needed cleanup tasks prior to returning control to the caller). If the loading is aborted, Importer::ReadFile() returns always NULL. \end{Desc}
+\hypertarget{class_assimp_1_1_progress_handler_0c867692ee9d1e25dec1e2f08fb5e20d}{
+\index{Assimp::ProgressHandler@{Assimp::ProgressHandler}!UpdateFileRead@{UpdateFileRead}}
+\index{UpdateFileRead@{UpdateFileRead}!Assimp::ProgressHandler@{Assimp::ProgressHandler}}
+\subsubsection[UpdateFileRead]{\setlength{\rightskip}{0pt plus 5cm}virtual void Assimp::ProgressHandler::UpdateFileRead (int {\em currentStep}, \/  int {\em numberOfSteps})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{class_assimp_1_1_progress_handler_0c867692ee9d1e25dec1e2f08fb5e20d}
+
+
+Progress callback for file loading steps. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em numberOfSteps}]The number of total post-processing steps \item[{\em currentStep}]The index of the current post-processing step that will run, or equal to numberOfSteps if all of them has finished. This number is always strictly monotone increasing, although not necessarily linearly.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]This is currently only used at the start and the end of the file parsing. \end{Desc}
+\hypertarget{class_assimp_1_1_progress_handler_57b30d2a9b2ae1f932918f18c30196ed}{
+\index{Assimp::ProgressHandler@{Assimp::ProgressHandler}!UpdatePostProcess@{UpdatePostProcess}}
+\index{UpdatePostProcess@{UpdatePostProcess}!Assimp::ProgressHandler@{Assimp::ProgressHandler}}
+\subsubsection[UpdatePostProcess]{\setlength{\rightskip}{0pt plus 5cm}virtual void Assimp::ProgressHandler::UpdatePostProcess (int {\em currentStep}, \/  int {\em numberOfSteps})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{class_assimp_1_1_progress_handler_57b30d2a9b2ae1f932918f18c30196ed}
+
+
+Progress callback for post-processing steps. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em numberOfSteps}]The number of total post-processing steps \item[{\em currentStep}]The index of the current post-processing step that will run, or equal to numberOfSteps if all of them has finished. This number is always strictly monotone increasing, although not necessarily linearly. \end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_progress_handler_8hpp}{ProgressHandler.hpp}\end{CompactItemize}

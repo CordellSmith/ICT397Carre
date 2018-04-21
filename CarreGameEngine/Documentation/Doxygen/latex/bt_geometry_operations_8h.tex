@@ -1,0 +1,48 @@
+\hypertarget{bt_geometry_operations_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGeometryOperations.h File Reference}
+\label{bt_geometry_operations_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGeometryOperations.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGeometryOperations.h}}
+}
+{\tt \#include \char`\"{}btBoxCollision.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{bt_geometry_operations_8h_8ef83f3444ff4b984beb7c1c593cb0eb}{
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{bt_geometry_operations_8h_8ef83f3444ff4b984beb7c1c593cb0eb}{bt\_\-edge\_\-plane} (const btVector3 \&e1, const btVector3 \&e2, const btVector3 \&normal, btVector4 \&plane)}
+\label{bt_geometry_operations_8h_8ef83f3444ff4b984beb7c1c593cb0eb}
+
+\begin{CompactList}\small\item\em Calc a plane from a triangle edge an a normal. plane is a vec4f. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{bt_geometry_operations_8h_db1d2624b7fc6f880aee1f590fe7e3b4}{bt\_\-closest\_\-point\_\-on\_\-segment} (btVector3 \&cp, const btVector3 \&v, const btVector3 \&e1, const btVector3 \&e2)
+\item 
+SIMD\_\-FORCE\_\-INLINE int \hyperlink{bt_geometry_operations_8h_8da4cf7fec1c05beb975ac1ea64009e4}{bt\_\-line\_\-plane\_\-collision} (const btVector4 \&plane, const btVector3 \&vDir, const btVector3 \&vPoint, btVector3 \&pout, btScalar \&tparam, btScalar tmin, btScalar tmax)
+\begin{CompactList}\small\item\em line plane collision \item\end{CompactList}\item 
+\hypertarget{bt_geometry_operations_8h_ae15cd5c84602688921b973fc88b60ef}{
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{bt_geometry_operations_8h_ae15cd5c84602688921b973fc88b60ef}{bt\_\-segment\_\-collision} (const btVector3 \&vA1, const btVector3 \&vA2, const btVector3 \&vB1, const btVector3 \&vB2, btVector3 \&vPointA, btVector3 \&vPointB)}
+\label{bt_geometry_operations_8h_ae15cd5c84602688921b973fc88b60ef}
+
+\begin{CompactList}\small\item\em Find closest points on segments. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Author:]Francisco Leon Najera \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{bt_geometry_operations_8h_db1d2624b7fc6f880aee1f590fe7e3b4}{
+\index{btGeometryOperations.h@{btGeometryOperations.h}!bt\_\-closest\_\-point\_\-on\_\-segment@{bt\_\-closest\_\-point\_\-on\_\-segment}}
+\index{bt\_\-closest\_\-point\_\-on\_\-segment@{bt\_\-closest\_\-point\_\-on\_\-segment}!btGeometryOperations.h@{btGeometryOperations.h}}
+\subsubsection[bt\_\-closest\_\-point\_\-on\_\-segment]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void bt\_\-closest\_\-point\_\-on\_\-segment (btVector3 \& {\em cp}, \/  const btVector3 \& {\em v}, \/  const btVector3 \& {\em e1}, \/  const btVector3 \& {\em e2})}}
+\label{bt_geometry_operations_8h_db1d2624b7fc6f880aee1f590fe7e3b4}
+
+
+Finds the closest point(cp) to (v) on a segment (e1,e2) \hypertarget{bt_geometry_operations_8h_8da4cf7fec1c05beb975ac1ea64009e4}{
+\index{btGeometryOperations.h@{btGeometryOperations.h}!bt\_\-line\_\-plane\_\-collision@{bt\_\-line\_\-plane\_\-collision}}
+\index{bt\_\-line\_\-plane\_\-collision@{bt\_\-line\_\-plane\_\-collision}!btGeometryOperations.h@{btGeometryOperations.h}}
+\subsubsection[bt\_\-line\_\-plane\_\-collision]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE int bt\_\-line\_\-plane\_\-collision (const btVector4 \& {\em plane}, \/  const btVector3 \& {\em vDir}, \/  const btVector3 \& {\em vPoint}, \/  btVector3 \& {\em pout}, \/  btScalar \& {\em tparam}, \/  btScalar {\em tmin}, \/  btScalar {\em tmax})}}
+\label{bt_geometry_operations_8h_8da4cf7fec1c05beb975ac1ea64009e4}
+
+
+line plane collision 
+
+\begin{Desc}
+\item[Returns:]-0 if the ray never intersects -1 if the ray collides in front -2 if the ray collides in back \end{Desc}

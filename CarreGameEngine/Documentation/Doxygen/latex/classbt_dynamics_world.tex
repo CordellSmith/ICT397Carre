@@ -1,0 +1,59 @@
+\hypertarget{classbt_dynamics_world}{
+\section{btDynamicsWorld Class Reference}
+\label{classbt_dynamics_world}\index{btDynamicsWorld@{btDynamicsWorld}}
+}
+The \hyperlink{classbt_dynamics_world}{btDynamicsWorld} is the interface class for several dynamics implementation, basic, discrete, parallel, and continuous etc.  
+
+
+{\tt \#include $<$btDynamicsWorld.h$>$}
+
+Inheritance diagram for btDynamicsWorld:Collaboration diagram for btDynamicsWorld:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual int \hyperlink{classbt_dynamics_world_5ab26a0d6e8b2b21fbde2ed8f8dd6294}{stepSimulation} (btScalar timeStep, int maxSubSteps=1, btScalar fixedTimeStep=btScalar(1.)/btScalar(60.))=0
+\item 
+\hypertarget{classbt_dynamics_world_6974c869e196322377e2d8c078db5805}{
+void \hyperlink{classbt_dynamics_world_6974c869e196322377e2d8c078db5805}{setInternalTickCallback} (btInternalTickCallback cb, void $\ast$worldUserInfo=0, bool isPreTick=false)}
+\label{classbt_dynamics_world_6974c869e196322377e2d8c078db5805}
+
+\begin{CompactList}\small\item\em Set the callback for when an internal tick (simulation substep) happens, optional user info. \item\end{CompactList}\item 
+\hypertarget{classbt_dynamics_world_b897455739081304249e7af787cafa19}{
+virtual void \hyperlink{classbt_dynamics_world_b897455739081304249e7af787cafa19}{addVehicle} (\hyperlink{classbt_action_interface}{btActionInterface} $\ast$vehicle)}
+\label{classbt_dynamics_world_b897455739081304249e7af787cafa19}
+
+\begin{CompactList}\small\item\em obsolete, use addAction instead. \item\end{CompactList}\item 
+\hypertarget{classbt_dynamics_world_bb361ed4e22766cd79d22ece3f5869e6}{
+virtual void \hyperlink{classbt_dynamics_world_bb361ed4e22766cd79d22ece3f5869e6}{removeVehicle} (\hyperlink{classbt_action_interface}{btActionInterface} $\ast$vehicle)}
+\label{classbt_dynamics_world_bb361ed4e22766cd79d22ece3f5869e6}
+
+\begin{CompactList}\small\item\em obsolete, use removeAction instead \item\end{CompactList}\item 
+\hypertarget{classbt_dynamics_world_56e16159fdff1311706d4b73e0999e02}{
+virtual void \hyperlink{classbt_dynamics_world_56e16159fdff1311706d4b73e0999e02}{addCharacter} (\hyperlink{classbt_action_interface}{btActionInterface} $\ast$character)}
+\label{classbt_dynamics_world_56e16159fdff1311706d4b73e0999e02}
+
+\begin{CompactList}\small\item\em obsolete, use addAction instead. \item\end{CompactList}\item 
+\hypertarget{classbt_dynamics_world_e4daeac0b98e39a80bb960c5b995fd2a}{
+virtual void \hyperlink{classbt_dynamics_world_e4daeac0b98e39a80bb960c5b995fd2a}{removeCharacter} (\hyperlink{classbt_action_interface}{btActionInterface} $\ast$character)}
+\label{classbt_dynamics_world_e4daeac0b98e39a80bb960c5b995fd2a}
+
+\begin{CompactList}\small\item\em obsolete, use removeAction instead \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classbt_dynamics_world}{btDynamicsWorld} is the interface class for several dynamics implementation, basic, discrete, parallel, and continuous etc. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_dynamics_world_5ab26a0d6e8b2b21fbde2ed8f8dd6294}{
+\index{btDynamicsWorld@{btDynamicsWorld}!stepSimulation@{stepSimulation}}
+\index{stepSimulation@{stepSimulation}!btDynamicsWorld@{btDynamicsWorld}}
+\subsubsection[stepSimulation]{\setlength{\rightskip}{0pt plus 5cm}virtual int btDynamicsWorld::stepSimulation (btScalar {\em timeStep}, \/  int {\em maxSubSteps} = {\tt 1}, \/  btScalar {\em fixedTimeStep} = {\tt btScalar(1.)/btScalar(60.)})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{classbt_dynamics_world_5ab26a0d6e8b2b21fbde2ed8f8dd6294}
+
+
+stepSimulation proceeds the simulation over 'timeStep', units in preferably in seconds. By default, Bullet will subdivide the timestep in constant substeps of each 'fixedTimeStep'. in order to keep the simulation real-time, the maximum number of substeps can be clamped to 'maxSubSteps'. You can disable subdividing the timestep/substepping by passing maxSubSteps=0 as second argument to stepSimulation, but in that case you have to keep the timeStep constant. 
+
+Implemented in \hyperlink{classbt_simple_dynamics_world_f6b4810b5018cbaf09f82839111a243d}{btSimpleDynamicsWorld}.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btDynamicsWorld.h\end{CompactItemize}

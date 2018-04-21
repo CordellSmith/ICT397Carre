@@ -1,0 +1,37 @@
+\hypertarget{group__gtx__normalize__dot}{
+\section{GLM\_\-GTX\_\-normalize\_\-dot}
+\label{group__gtx__normalize__dot}\index{GLM\_\-GTX\_\-normalize\_\-dot@{GLM\_\-GTX\_\-normalize\_\-dot}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-normalize\_\-dot:Dot product of vectors that need to be normalize with a single square root.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType::value\_\-type \hyperlink{group__gtx__normalize__dot_g068b0c92713a438533628dd5d0b581d4}{glm::normalizeDot} (genType const \&x, genType const \&y)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType::value\_\-type \hyperlink{group__gtx__normalize__dot_gb3967681366216d96699232dd5e86d31}{glm::fastNormalizeDot} (genType const \&x, genType const \&y)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Dot product of vectors that need to be normalize with a single square root. 
+
+$<$glm/gtx/normalized\_\-dot.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__normalize__dot_gb3967681366216d96699232dd5e86d31}{
+\index{gtx\_\-normalize\_\-dot@{gtx\_\-normalize\_\-dot}!fastNormalizeDot@{fastNormalizeDot}}
+\index{fastNormalizeDot@{fastNormalizeDot}!gtx_normalize_dot@{gtx\_\-normalize\_\-dot}}
+\subsubsection[fastNormalizeDot]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::fastNormalizeDot (genType const \& {\em x}, \/  genType const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__normalize__dot_gb3967681366216d96699232dd5e86d31}
+
+
+Normalize parameters and returns the dot product of x and y. Faster that dot(fastNormalize(x), fastNormalize(y)). From GLM\_\-GTX\_\-normalize\_\-dot extension. \hypertarget{group__gtx__normalize__dot_g068b0c92713a438533628dd5d0b581d4}{
+\index{gtx\_\-normalize\_\-dot@{gtx\_\-normalize\_\-dot}!normalizeDot@{normalizeDot}}
+\index{normalizeDot@{normalizeDot}!gtx_normalize_dot@{gtx\_\-normalize\_\-dot}}
+\subsubsection[normalizeDot]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::normalizeDot (genType const \& {\em x}, \/  genType const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__normalize__dot_g068b0c92713a438533628dd5d0b581d4}
+
+
+Normalize parameters and returns the dot product of x and y. It's faster that dot(normalize(x), normalize(y)). From GLM\_\-GTX\_\-normalize\_\-dot extension. 

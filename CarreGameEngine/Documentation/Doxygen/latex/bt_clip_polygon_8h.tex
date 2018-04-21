@@ -1,0 +1,63 @@
+\hypertarget{bt_clip_polygon_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btClipPolygon.h File Reference}
+\label{bt_clip_polygon_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btClipPolygon.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btClipPolygon.h}}
+}
+{\tt \#include \char`\"{}LinearMath/btTransform.h\char`\"{}}\par
+{\tt \#include \char`\"{}LinearMath/btGeometryUtil.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{bt_clip_polygon_8h_1f80a57f63e11130a715c2bf42c389cb}{bt\_\-vec\_\-blend} (btVector3 \&vr, const btVector3 \&va, const btVector3 \&vb, btScalar blend\_\-factor)
+\item 
+\hypertarget{bt_clip_polygon_8h_5d0b14854a98ea3902f6c914a292f83d}{
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{bt_clip_polygon_8h_5d0b14854a98ea3902f6c914a292f83d}{bt\_\-plane\_\-clip\_\-polygon\_\-collect} (const btVector3 \&point0, const btVector3 \&point1, btScalar dist0, btScalar dist1, btVector3 $\ast$clipped, int \&clipped\_\-count)}
+\label{bt_clip_polygon_8h_5d0b14854a98ea3902f6c914a292f83d}
+
+\begin{CompactList}\small\item\em This function calcs the distance from a 3D plane. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE int \hyperlink{bt_clip_polygon_8h_afbc2084e879509f77c833957061ba5c}{bt\_\-plane\_\-clip\_\-polygon} (const btVector4 \&plane, const btVector3 $\ast$polygon\_\-points, int polygon\_\-point\_\-count, btVector3 $\ast$clipped)
+\begin{CompactList}\small\item\em Clips a polygon by a plane. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE int \hyperlink{bt_clip_polygon_8h_42c9a19345a31093d177bde5692d39e9}{bt\_\-plane\_\-clip\_\-triangle} (const btVector4 \&plane, const btVector3 \&point0, const btVector3 \&point1, const btVector3 \&point2, btVector3 $\ast$clipped)
+\begin{CompactList}\small\item\em Clips a polygon by a plane. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Author:]Francisco Leon Najera \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{bt_clip_polygon_8h_afbc2084e879509f77c833957061ba5c}{
+\index{btClipPolygon.h@{btClipPolygon.h}!bt\_\-plane\_\-clip\_\-polygon@{bt\_\-plane\_\-clip\_\-polygon}}
+\index{bt\_\-plane\_\-clip\_\-polygon@{bt\_\-plane\_\-clip\_\-polygon}!btClipPolygon.h@{btClipPolygon.h}}
+\subsubsection[bt\_\-plane\_\-clip\_\-polygon]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE int bt\_\-plane\_\-clip\_\-polygon (const btVector4 \& {\em plane}, \/  const btVector3 $\ast$ {\em polygon\_\-points}, \/  int {\em polygon\_\-point\_\-count}, \/  btVector3 $\ast$ {\em clipped})}}
+\label{bt_clip_polygon_8h_afbc2084e879509f77c833957061ba5c}
+
+
+Clips a polygon by a plane. 
+
+\begin{Desc}
+\item[Returns:]The count of the clipped counts \end{Desc}
+\hypertarget{bt_clip_polygon_8h_42c9a19345a31093d177bde5692d39e9}{
+\index{btClipPolygon.h@{btClipPolygon.h}!bt\_\-plane\_\-clip\_\-triangle@{bt\_\-plane\_\-clip\_\-triangle}}
+\index{bt\_\-plane\_\-clip\_\-triangle@{bt\_\-plane\_\-clip\_\-triangle}!btClipPolygon.h@{btClipPolygon.h}}
+\subsubsection[bt\_\-plane\_\-clip\_\-triangle]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE int bt\_\-plane\_\-clip\_\-triangle (const btVector4 \& {\em plane}, \/  const btVector3 \& {\em point0}, \/  const btVector3 \& {\em point1}, \/  const btVector3 \& {\em point2}, \/  btVector3 $\ast$ {\em clipped})}}
+\label{bt_clip_polygon_8h_42c9a19345a31093d177bde5692d39e9}
+
+
+Clips a polygon by a plane. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em clipped}]must be an array of 16 points. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The count of the clipped counts \end{Desc}
+\hypertarget{bt_clip_polygon_8h_1f80a57f63e11130a715c2bf42c389cb}{
+\index{btClipPolygon.h@{btClipPolygon.h}!bt\_\-vec\_\-blend@{bt\_\-vec\_\-blend}}
+\index{bt\_\-vec\_\-blend@{bt\_\-vec\_\-blend}!btClipPolygon.h@{btClipPolygon.h}}
+\subsubsection[bt\_\-vec\_\-blend]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void bt\_\-vec\_\-blend (btVector3 \& {\em vr}, \/  const btVector3 \& {\em va}, \/  const btVector3 \& {\em vb}, \/  btScalar {\em blend\_\-factor})}}
+\label{bt_clip_polygon_8h_1f80a57f63e11130a715c2bf42c389cb}
+
+
+Vector blending Takes two vectors a, b, blends them together 

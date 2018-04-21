@@ -1,0 +1,27 @@
+\hypertarget{classbt_constraint_solver_pool_mt}{
+\section{btConstraintSolverPoolMt Class Reference}
+\label{classbt_constraint_solver_pool_mt}\index{btConstraintSolverPoolMt@{btConstraintSolverPoolMt}}
+}
+{\tt \#include $<$btDiscreteDynamicsWorldMt.h$>$}
+
+Inherits btConstraintSolver.
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_constraint_solver_pool_mt_9ec644111717d8455042b606181f7883}{
+virtual btScalar \hyperlink{classbt_constraint_solver_pool_mt_9ec644111717d8455042b606181f7883}{solveGroup} (btCollisionObject $\ast$$\ast$bodies, int numBodies, btPersistentManifold $\ast$$\ast$manifolds, int numManifolds, btTypedConstraint $\ast$$\ast$constraints, int numConstraints, const btContactSolverInfo \&info, \hyperlink{classbt_i_debug_draw}{btIDebugDraw} $\ast$debugDrawer, \hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher) BT\_\-OVERRIDE}
+\label{classbt_constraint_solver_pool_mt_9ec644111717d8455042b606181f7883}
+
+\begin{CompactList}\small\item\em solve a group of constraints \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classbt_constraint_solver_pool_mt}{btConstraintSolverPoolMt} - masquerades as a constraint solver, but really it is a threadsafe pool of them.
+
+Each solver in the pool is protected by a mutex. When solveGroup is called from a thread, the pool looks for a solver that isn't being used by another thread, locks it, and dispatches the call to the solver. So long as there are at least as many solvers as there are hardware threads, it should never need to spin wait. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btDiscreteDynamicsWorldMt.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btDiscreteDynamicsWorldMt.cpp\end{CompactItemize}

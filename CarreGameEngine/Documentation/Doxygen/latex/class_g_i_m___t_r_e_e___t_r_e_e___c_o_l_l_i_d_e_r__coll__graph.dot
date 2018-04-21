@@ -1,0 +1,19 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  Node1 [label="GIM_TREE_TREE_COLLIDER\< BOX_SET_CLASS0, BOX_SET_CLASS1 \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="trans_cache_1to0"];
+  Node2 [label="GIM_BOX_BOX_TRANSFORM_CACHE",height=0.2,width=0.4,color="black",URL="$class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e.html",tooltip="Class for transforming a model1 to the space of model0."];
+  Node3 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_collision_pairs"];
+  Node3 [label="gim_pair_set",height=0.2,width=0.4,color="black",URL="$classgim__pair__set.html",tooltip="A pairset array."];
+  Node4 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="gim_array\< GIM_PAIR \>",height=0.2,width=0.4,color="black",URL="$classgim__array.html"];
+  Node5 -> Node4 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_data"];
+  Node5 [label="GIM_PAIR",height=0.2,width=0.4,color="black",URL="$struct_g_i_m___p_a_i_r.html",tooltip="Overlapping pair."];
+  Node6 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_tri0\nm_tri1"];
+  Node6 [label="GIM_TRIANGLE",height=0.2,width=0.4,color="black",URL="$class_g_i_m___t_r_i_a_n_g_l_e.html",tooltip="Class for colliding triangles."];
+  Node7 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_box0\nm_box1"];
+  Node7 [label="GIM_AABB",height=0.2,width=0.4,color="black",URL="$class_g_i_m___a_a_b_b.html",tooltip="Axis aligned box."];
+}

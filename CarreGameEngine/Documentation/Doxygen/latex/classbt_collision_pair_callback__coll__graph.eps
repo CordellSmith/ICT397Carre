@@ -1,0 +1,604 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Creator: Graphviz version 2.20.2 (Wed Jul  9 19:59:08 GMT 2008)
+%%For: New
+%%Title: G
+%%Pages: (atend)
+%%BoundingBox: (atend)
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+EncodingVector 45 /hyphen put
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+       dup 1 exch div /InvScaleFactor exch def
+       scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw text fitted to its expected width
+/alignedtext {			% width text
+	/text exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			[] 0 setdash
+			text stringwidth pop width exch sub text length div 0 text ashow
+		} if
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+setupLatin1
+%%Page: 1 1
+%%PageBoundingBox: 36 36 1084 281
+%%PageOrientation: Portrait
+0 0 1 beginpage
+gsave
+36 36 1048 245 boxprim clip newpath
+1 1 set_scale 0 rotate 40 40 translate
+% Node1
+gsave
+0.000 0.000 0.749 nodecolor
+newpath 924 107 moveto
+924 127 lineto
+1040 127 lineto
+1040 107 lineto
+closepath fill
+1 setlinewidth
+filled
+0.000 0.000 0.000 nodecolor
+newpath 924 107 moveto
+924 127 lineto
+1040 127 lineto
+1040 107 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+932 114 moveto 100 (btCollisionPairCallback) alignedtext
+grestore
+% Node2
+gsave
+[ /Rect [ 720 107 828 127 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_collision_dispatcher.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 720 107 moveto
+720 127 lineto
+828 127 lineto
+828 107 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+728 114 moveto 92 (btCollisionDispatcher) alignedtext
+grestore
+% Node2->Node1
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 838 117 moveto
+866 117 897 117 924 117 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 838 113.5 moveto
+828 117 lineto
+838 120.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 838 113.5 moveto
+828 117 lineto
+838 120.5 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+846.5 120 moveto 59 (m_dispatcher) alignedtext
+grestore
+% Node3
+gsave
+[ /Rect [ 388 216 458 236 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_dispatcher.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 388 216 moveto
+388 236 lineto
+459 236 lineto
+459 216 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+395.5 223 moveto 55 (btDispatcher) alignedtext
+grestore
+% Node3->Node2
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 469 232 moveto
+527 236 628 238 702 200 curveto
+735 183 759 145 769 127 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 469.3 228.51 moveto
+459 231 lineto
+468.6 235.48 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 469.3 228.51 moveto
+459 231 lineto
+468.6 235.48 lineto
+closepath stroke
+grestore
+% Node4
+gsave
+[ /Rect [ 365 178 481 198 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_collision_configuration.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 365 178 moveto
+365 198 lineto
+482 198 lineto
+482 178 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+372.5 185 moveto 101 (btCollisionConfiguration) alignedtext
+grestore
+% Node4->Node2
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 492 188 moveto
+550 186 633 180 702 158 curveto
+724 151 746 137 760 127 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 492 184.5 moveto
+482 188 lineto
+492 191.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 492 184.5 moveto
+482 188 lineto
+492 191.5 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+574.5 187 moveto 105 (m_collisionConfiguration) alignedtext
+grestore
+% Node5
+gsave
+[ /Rect [ 382 131 464 151 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_pool_allocator.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 382 131 moveto
+382 151 lineto
+464 151 lineto
+464 131 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+390 138 moveto 66 (btPoolAllocator) alignedtext
+grestore
+% Node5->Node2
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 474 137 moveto
+540 133 653 126 720 121 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 473.6 133.52 moveto
+464 138 lineto
+474.3 140.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 473.6 133.52 moveto
+464 138 lineto
+474.3 140.49 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+553 145 moveto 148 (m_collisionAlgorithmPoolAllocator) alignedtext
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+552 133 moveto 150 (m_persistentManifoldPoolAllocator) alignedtext
+grestore
+% Node6
+gsave
+[ /Rect [ 78 131 148 151 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_spin_mutex.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 78 131 moveto
+78 151 lineto
+149 151 lineto
+149 131 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+85.5 138 moveto 55 (btSpinMutex) alignedtext
+grestore
+% Node6->Node5
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 159 141 moveto
+219 141 324 141 382 141 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 159 137.5 moveto
+149 141 lineto
+159 144.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 159 137.5 moveto
+149 141 lineto
+159 144.5 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+248.5 144 moveto 41 (m_mutex) alignedtext
+grestore
+% Node7
+gsave
+[ /Rect [ 347 86 499 106 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($structbt_collision_algorithm_create_func.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 347 86 moveto
+347 106 lineto
+500 106 lineto
+500 86 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+354.5 93 moveto 137 (btCollisionAlgorithmCreateFunc) alignedtext
+grestore
+% Node7->Node2
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 510 88 moveto
+565 86 639 85 702 95 curveto
+718 97 736 102 749 107 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 509.6 84.52 moveto
+500 89 lineto
+510.3 91.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 509.6 84.52 moveto
+500 89 lineto
+510.3 91.49 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+556.5 110 moveto 141 (m_doubleDispatchClosestPoints) alignedtext
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+556 98 moveto 142 (m_doubleDispatchContactPoints) alignedtext
+grestore
+% Node8
+gsave
+[ /Rect [ 379 48 467 68 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_manifold_result.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 379 48 moveto
+379 68 lineto
+467 68 lineto
+467 48 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+387 55 moveto 72 (btManifoldResult) alignedtext
+grestore
+% Node8->Node2
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 477 51 moveto
+535 47 627 45 702 69 curveto
+727 76 750 95 763 107 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 476.6 47.52 moveto
+467 52 lineto
+477.3 54.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 476.6 47.52 moveto
+467 52 lineto
+477.3 54.49 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+574 72 moveto 106 (m_defaultManifoldResult) alignedtext
+grestore
+% Node9
+gsave
+[ /Rect [ 312 10 534 30 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_aligned_object_array.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 312 10 moveto
+312 30 lineto
+534 30 lineto
+534 10 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+320 17 moveto 206 (btAlignedObjectArray< btPersistentManifold * >) alignedtext
+grestore
+% Node9->Node2
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 487 9 moveto
+546 1 634 -2 702 31 curveto
+736 47 760 88 769 107 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 486.6 5.52 moveto
+477 10 lineto
+487.3 12.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 486.6 5.52 moveto
+477 10 lineto
+487.3 12.49 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+593 34 moveto 68 (m_manifoldsPtr) alignedtext
+grestore
+% Node10
+gsave
+[ /Rect [ 1 10 225 30 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_aligned_allocator.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 1 10 moveto
+1 30 lineto
+226 30 lineto
+226 10 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+8.5 17 moveto 209 (btAlignedAllocator< btPersistentManifold *, 16 >) alignedtext
+grestore
+% Node10->Node9
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 236 20 moveto
+261 20 287 20 312 20 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 236 16.5 moveto
+226 20 lineto
+236 23.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 236 16.5 moveto
+226 20 lineto
+236 23.5 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+244 23 moveto 50 (m_allocator) alignedtext
+grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+%%BoundingBox: 36 36 1084 281
+end
+restore
+%%EOF

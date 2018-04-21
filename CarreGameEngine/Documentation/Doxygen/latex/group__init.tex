@@ -1,0 +1,250 @@
+\hypertarget{group__init}{
+\section{Initialization, version and error reference}
+\label{group__init}\index{Initialization, version and error reference@{Initialization, version and error reference}}
+}
+
+
+Collaboration diagram for Initialization, version and error reference:\subsection*{Modules}
+\begin{CompactItemize}
+\item 
+\hyperlink{group__errors}{Error codes}
+\end{CompactItemize}
+\subsection*{GLFW version macros}
+\begin{CompactItemize}
+\item 
+\#define \hyperlink{group__init_g6337d9ea43b22fc529b2bba066b4a576}{GLFW\_\-VERSION\_\-MAJOR}~3
+\begin{CompactList}\small\item\em The major version number of the GLFW library. \item\end{CompactList}\item 
+\#define \hyperlink{group__init_gf80d40f0aea7088ff337606e9c48f7a3}{GLFW\_\-VERSION\_\-MINOR}~2
+\begin{CompactList}\small\item\em The minor version number of the GLFW library. \item\end{CompactList}\item 
+\#define \hyperlink{group__init_gb72ae2e2035d9ea461abc3495eac0502}{GLFW\_\-VERSION\_\-REVISION}~1
+\begin{CompactList}\small\item\em The revision number of the GLFW library. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{group__init_g6f2c8574259246a83b1d0c3baf23046f}{GLFWerrorfun} )(int, const char $\ast$)
+\begin{CompactList}\small\item\em The function signature for error callbacks. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+GLFWAPI int \hyperlink{group__init_gb41771f0215a2e0afb4cf1cf98082d40}{glfwInit} (void)
+\begin{CompactList}\small\item\em Initializes the GLFW library. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__init_gfd90e6fd4819ea9e22e5e739519a6504}{glfwTerminate} (void)
+\begin{CompactList}\small\item\em Terminates the GLFW library. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__init_g2402c7824ac0194c13722790ff9559ff}{glfwGetVersion} (int $\ast$major, int $\ast$minor, int $\ast$rev)
+\begin{CompactList}\small\item\em Retrieves the version of the GLFW library. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$ \hyperlink{group__init_g4b9092ac5eace57d94d3cd551d6b8ded}{glfwGetVersionString} (void)
+\begin{CompactList}\small\item\em Returns a string describing the compile-time configuration. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__init_g6f2c8574259246a83b1d0c3baf23046f}{GLFWerrorfun} \hyperlink{group__init_g5919096b958c47102126061fb5a6f9c3}{glfwSetErrorCallback} (\hyperlink{group__init_g6f2c8574259246a83b1d0c3baf23046f}{GLFWerrorfun} cbfun)
+\begin{CompactList}\small\item\em Sets the error callback. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This is the reference documentation for initialization and termination of the library, version management and error handling. For more task-oriented information, see the intro\_\-guide. 
+
+\subsection{Define Documentation}
+\hypertarget{group__init_g6337d9ea43b22fc529b2bba066b4a576}{
+\index{init@{init}!GLFW\_\-VERSION\_\-MAJOR@{GLFW\_\-VERSION\_\-MAJOR}}
+\index{GLFW\_\-VERSION\_\-MAJOR@{GLFW\_\-VERSION\_\-MAJOR}!init@{init}}
+\subsubsection[GLFW\_\-VERSION\_\-MAJOR]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-VERSION\_\-MAJOR~3}}
+\label{group__init_g6337d9ea43b22fc529b2bba066b4a576}
+
+
+The major version number of the GLFW library. 
+
+This is incremented when the API is changed in non-compatible ways. \hypertarget{group__init_gf80d40f0aea7088ff337606e9c48f7a3}{
+\index{init@{init}!GLFW\_\-VERSION\_\-MINOR@{GLFW\_\-VERSION\_\-MINOR}}
+\index{GLFW\_\-VERSION\_\-MINOR@{GLFW\_\-VERSION\_\-MINOR}!init@{init}}
+\subsubsection[GLFW\_\-VERSION\_\-MINOR]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-VERSION\_\-MINOR~2}}
+\label{group__init_gf80d40f0aea7088ff337606e9c48f7a3}
+
+
+The minor version number of the GLFW library. 
+
+This is incremented when features are added to the API but it remains backward-compatible. \hypertarget{group__init_gb72ae2e2035d9ea461abc3495eac0502}{
+\index{init@{init}!GLFW\_\-VERSION\_\-REVISION@{GLFW\_\-VERSION\_\-REVISION}}
+\index{GLFW\_\-VERSION\_\-REVISION@{GLFW\_\-VERSION\_\-REVISION}!init@{init}}
+\subsubsection[GLFW\_\-VERSION\_\-REVISION]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-VERSION\_\-REVISION~1}}
+\label{group__init_gb72ae2e2035d9ea461abc3495eac0502}
+
+
+The revision number of the GLFW library. 
+
+This is incremented when a bug fix release is made that does not contain any API changes. 
+
+\subsection{Typedef Documentation}
+\hypertarget{group__init_g6f2c8574259246a83b1d0c3baf23046f}{
+\index{init@{init}!GLFWerrorfun@{GLFWerrorfun}}
+\index{GLFWerrorfun@{GLFWerrorfun}!init@{init}}
+\subsubsection[GLFWerrorfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWerrorfun})(int, const char $\ast$)}}
+\label{group__init_g6f2c8574259246a83b1d0c3baf23046f}
+
+
+The function signature for error callbacks. 
+
+This is the function signature for error callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em error}]An \mbox{[}error code\mbox{]}(\hyperlink{group__errors}{Error codes}). \item[\mbox{$\leftarrow$} {\em description}]A UTF-8 encoded string describing the error.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]error\_\-handling 
+
+\hyperlink{group__init_g5919096b958c47102126061fb5a6f9c3}{glfwSetErrorCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__init_g2402c7824ac0194c13722790ff9559ff}{
+\index{init@{init}!glfwGetVersion@{glfwGetVersion}}
+\index{glfwGetVersion@{glfwGetVersion}!init@{init}}
+\subsubsection[glfwGetVersion]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwGetVersion (int $\ast$ {\em major}, \/  int $\ast$ {\em minor}, \/  int $\ast$ {\em rev})}}
+\label{group__init_g2402c7824ac0194c13722790ff9559ff}
+
+
+Retrieves the version of the GLFW library. 
+
+This function retrieves the major, minor and revision numbers of the GLFW library. It is intended for when you are using GLFW as a shared library and want to ensure that you are using the minimum required version.
+
+Any or all of the version arguments may be `NULL`.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em major}]Where to store the major version number, or `NULL`. \item[\mbox{$\rightarrow$} {\em minor}]Where to store the minor version number, or `NULL`. \item[\mbox{$\rightarrow$} {\em rev}]Where to store the revision number, or `NULL`.\end{description}
+\end{Desc}
+None.
+
+\begin{Desc}
+\item[Remarks:]This function may be called before \hyperlink{group__init_gb41771f0215a2e0afb4cf1cf98082d40}{glfwInit}.\end{Desc}
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]intro\_\-version 
+
+\hyperlink{group__init_g4b9092ac5eace57d94d3cd551d6b8ded}{glfwGetVersionString}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0. \end{Desc}
+\hypertarget{group__init_g4b9092ac5eace57d94d3cd551d6b8ded}{
+\index{init@{init}!glfwGetVersionString@{glfwGetVersionString}}
+\index{glfwGetVersionString@{glfwGetVersionString}!init@{init}}
+\subsubsection[glfwGetVersionString]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI const char$\ast$ glfwGetVersionString (void)}}
+\label{group__init_g4b9092ac5eace57d94d3cd551d6b8ded}
+
+
+Returns a string describing the compile-time configuration. 
+
+This function returns the compile-time generated \mbox{[}version string\mbox{]}(intro\_\-version\_\-string) of the GLFW library binary. It describes the version, platform, compiler and any platform-specific compile-time options. It should not be confused with the OpenGL or OpenGL ES version string, queried with `glGetString`.
+
+\_\-\_\-Do not use the version string\_\-\_\- to parse the GLFW library version. The \hyperlink{group__init_g2402c7824ac0194c13722790ff9559ff}{glfwGetVersion} function provides the version of the running library binary in numerical format.
+
+\begin{Desc}
+\item[Returns:]The ASCII encoded GLFW version string.\end{Desc}
+None.
+
+\begin{Desc}
+\item[Remarks:]This function may be called before \hyperlink{group__init_gb41771f0215a2e0afb4cf1cf98082d40}{glfwInit}.\end{Desc}
+The returned string is static and compile-time generated.
+
+This function may be called from any thread.
+
+\begin{Desc}
+\item[See also:]intro\_\-version 
+
+\hyperlink{group__init_g2402c7824ac0194c13722790ff9559ff}{glfwGetVersion}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__init_gb41771f0215a2e0afb4cf1cf98082d40}{
+\index{init@{init}!glfwInit@{glfwInit}}
+\index{glfwInit@{glfwInit}!init@{init}}
+\subsubsection[glfwInit]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI int glfwInit (void)}}
+\label{group__init_gb41771f0215a2e0afb4cf1cf98082d40}
+
+
+Initializes the GLFW library. 
+
+This function initializes the GLFW library. Before most GLFW functions can be used, GLFW must be initialized, and before an application terminates GLFW should be terminated in order to free any resources allocated during or after initialization.
+
+If this function fails, it calls \hyperlink{group__init_gfd90e6fd4819ea9e22e5e739519a6504}{glfwTerminate} before returning. If it succeeds, you should call \hyperlink{group__init_gfd90e6fd4819ea9e22e5e739519a6504}{glfwTerminate} before the application exits.
+
+Additional calls to this function after successful initialization but before termination will return `GLFW\_\-TRUE` immediately.
+
+\begin{Desc}
+\item[Returns:]`GLFW\_\-TRUE` if successful, or `GLFW\_\-FALSE` if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Remarks:]This function will change the current directory of the application to the `Contents/Resources` subdirectory of the application's bundle, if present. This can be disabled with a \mbox{[}compile-time option\mbox{]}(compile\_\-options\_\-osx).\end{Desc}
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]intro\_\-init 
+
+\hyperlink{group__init_gfd90e6fd4819ea9e22e5e739519a6504}{glfwTerminate}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0. \end{Desc}
+\hypertarget{group__init_g5919096b958c47102126061fb5a6f9c3}{
+\index{init@{init}!glfwSetErrorCallback@{glfwSetErrorCallback}}
+\index{glfwSetErrorCallback@{glfwSetErrorCallback}!init@{init}}
+\subsubsection[glfwSetErrorCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWerrorfun} glfwSetErrorCallback ({\bf GLFWerrorfun} {\em cbfun})}}
+\label{group__init_g5919096b958c47102126061fb5a6f9c3}
+
+
+Sets the error callback. 
+
+This function sets the error callback, which is called with an error code and a human-readable description each time a GLFW error occurs.
+
+The error callback is called on the thread where the error occurred. If you are using GLFW from multiple threads, your error callback needs to be written accordingly.
+
+Because the description string may have been generated specifically for that error, it is not guaranteed to be valid after the callback has returned. If you wish to use it after the callback returns, you need to make a copy.
+
+Once set, the error callback remains set even after the library has been terminated.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set.\end{Desc}
+None.
+
+\begin{Desc}
+\item[Remarks:]This function may be called before \hyperlink{group__init_gb41771f0215a2e0afb4cf1cf98082d40}{glfwInit}.\end{Desc}
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]error\_\-handling\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__init_gfd90e6fd4819ea9e22e5e739519a6504}{
+\index{init@{init}!glfwTerminate@{glfwTerminate}}
+\index{glfwTerminate@{glfwTerminate}!init@{init}}
+\subsubsection[glfwTerminate]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwTerminate (void)}}
+\label{group__init_gfd90e6fd4819ea9e22e5e739519a6504}
+
+
+Terminates the GLFW library. 
+
+This function destroys all remaining windows and cursors, restores any modified gamma ramps and frees any other allocated resources. Once this function is called, you must again call \hyperlink{group__init_gb41771f0215a2e0afb4cf1cf98082d40}{glfwInit} successfully before you will be able to use most GLFW functions.
+
+If GLFW has been successfully initialized, this function should be called before the application exits. If initialization fails, there is no need to call this function, as it is called by \hyperlink{group__init_gb41771f0215a2e0afb4cf1cf98082d40}{glfwInit} before it returns failure.
+
+Possible errors include \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Remarks:]This function may be called before \hyperlink{group__init_gb41771f0215a2e0afb4cf1cf98082d40}{glfwInit}.\end{Desc}
+\begin{Desc}
+\item[Warning:]The contexts of any remaining windows must not be current on any other thread when this function is called.\end{Desc}
+This function must not be called from a callback.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]intro\_\-init 
+
+\hyperlink{group__init_gb41771f0215a2e0afb4cf1cf98082d40}{glfwInit}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0. \end{Desc}

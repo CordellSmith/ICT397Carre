@@ -1,0 +1,440 @@
+\hypertarget{classbt_quaternion}{
+\section{btQuaternion Class Reference}
+\label{classbt_quaternion}\index{btQuaternion@{btQuaternion}}
+}
+The \hyperlink{classbt_quaternion}{btQuaternion} implements quaternion to perform linear algebra rotations in combination with btMatrix3x3, btVector3 and btTransform.  
+
+
+{\tt \#include $<$btQuaternion.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_quaternion_3b5e50d610ee8cdda2aa78e092825675}{
+\hyperlink{classbt_quaternion_3b5e50d610ee8cdda2aa78e092825675}{btQuaternion} ()}
+\label{classbt_quaternion_3b5e50d610ee8cdda2aa78e092825675}
+
+\begin{CompactList}\small\item\em No initialization constructor. \item\end{CompactList}\item 
+\hypertarget{classbt_quaternion_6a50bf861ae5fa4ad5ea2b7da231847c}{
+\hyperlink{classbt_quaternion_6a50bf861ae5fa4ad5ea2b7da231847c}{btQuaternion} (const btScalar \&\_\-x, const btScalar \&\_\-y, const btScalar \&\_\-z, const btScalar \&\_\-w)}
+\label{classbt_quaternion_6a50bf861ae5fa4ad5ea2b7da231847c}
+
+\begin{CompactList}\small\item\em Constructor from scalars. \item\end{CompactList}\item 
+\hyperlink{classbt_quaternion_2b2e9ed0014eb26ed076808fb76e9d69}{btQuaternion} (const btVector3 \&\_\-axis, const btScalar \&\_\-angle)
+\begin{CompactList}\small\item\em Axis angle Constructor. \item\end{CompactList}\item 
+\hyperlink{classbt_quaternion_8bd5d699377ba585749d325076616ffb}{btQuaternion} (const btScalar \&yaw, const btScalar \&pitch, const btScalar \&roll)
+\begin{CompactList}\small\item\em Constructor from Euler angles. \item\end{CompactList}\item 
+void \hyperlink{classbt_quaternion_de840b704d06ad0092b996b432b8a8a6}{setRotation} (const btVector3 \&axis, const btScalar \&\_\-angle)
+\begin{CompactList}\small\item\em Set the rotation using axis angle notation. \item\end{CompactList}\item 
+void \hyperlink{classbt_quaternion_ed0a6469d6c6c1e379f1143ad62b3439}{setEuler} (const btScalar \&yaw, const btScalar \&pitch, const btScalar \&roll)
+\begin{CompactList}\small\item\em Set the quaternion using Euler angles. \item\end{CompactList}\item 
+void \hyperlink{classbt_quaternion_df15384cff65f630b0537f1b8aeee622}{setEulerZYX} (const btScalar \&yawZ, const btScalar \&pitchY, const btScalar \&rollX)
+\begin{CompactList}\small\item\em Set the quaternion using euler angles. \item\end{CompactList}\item 
+void \hyperlink{classbt_quaternion_9aef6f3c621a0a8493d1545c7043f075}{getEulerZYX} (btScalar \&yawZ, btScalar \&pitchY, btScalar \&rollX) const 
+\begin{CompactList}\small\item\em Get the euler angles from this quaternion. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE \hyperlink{classbt_quaternion}{btQuaternion} \& \hyperlink{classbt_quaternion_1212e4cbaa71da187984d3c174a4cc04}{operator+=} (const \hyperlink{classbt_quaternion}{btQuaternion} \&q)
+\begin{CompactList}\small\item\em Add two quaternions. \item\end{CompactList}\item 
+\hyperlink{classbt_quaternion}{btQuaternion} \& \hyperlink{classbt_quaternion_c942e70c62d09538e3f6d9c42bc42c5c}{operator-=} (const \hyperlink{classbt_quaternion}{btQuaternion} \&q)
+\begin{CompactList}\small\item\em Subtract out a quaternion. \item\end{CompactList}\item 
+\hyperlink{classbt_quaternion}{btQuaternion} \& \hyperlink{classbt_quaternion_bd260487e98defbd77618f04d51fcc92}{operator$\ast$=} (const btScalar \&s)
+\begin{CompactList}\small\item\em Scale this quaternion. \item\end{CompactList}\item 
+\hyperlink{classbt_quaternion}{btQuaternion} \& \hyperlink{classbt_quaternion_bfc6dee30a6f56e69343a31368713f95}{operator$\ast$=} (const \hyperlink{classbt_quaternion}{btQuaternion} \&q)
+\begin{CompactList}\small\item\em Multiply this quaternion by q on the right. \item\end{CompactList}\item 
+btScalar \hyperlink{classbt_quaternion_37e450f3206a7b6f3f55049e297fb403}{dot} (const \hyperlink{classbt_quaternion}{btQuaternion} \&q) const 
+\begin{CompactList}\small\item\em Return the dot product between this quaternion and another. \item\end{CompactList}\item 
+\hypertarget{classbt_quaternion_59cc2f3a2c732aba98cd43764165b8cd}{
+btScalar \hyperlink{classbt_quaternion_59cc2f3a2c732aba98cd43764165b8cd}{length2} () const }
+\label{classbt_quaternion_59cc2f3a2c732aba98cd43764165b8cd}
+
+\begin{CompactList}\small\item\em Return the length squared of the quaternion. \item\end{CompactList}\item 
+\hypertarget{classbt_quaternion_9041c1885648f81009f41fc2aa6c17df}{
+btScalar \hyperlink{classbt_quaternion_9041c1885648f81009f41fc2aa6c17df}{length} () const }
+\label{classbt_quaternion_9041c1885648f81009f41fc2aa6c17df}
+
+\begin{CompactList}\small\item\em Return the length of the quaternion. \item\end{CompactList}\item 
+\hypertarget{classbt_quaternion_db5cd1eb8145a906f9f47857c498d3d6}{
+\hyperlink{classbt_quaternion}{btQuaternion} \& \hyperlink{classbt_quaternion_db5cd1eb8145a906f9f47857c498d3d6}{normalize} ()}
+\label{classbt_quaternion_db5cd1eb8145a906f9f47857c498d3d6}
+
+\begin{CompactList}\small\item\em Normalize the quaternion Such that x$^\wedge$2 + y$^\wedge$2 + z$^\wedge$2 +w$^\wedge$2 = 1. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE \hyperlink{classbt_quaternion}{btQuaternion} \hyperlink{classbt_quaternion_cc3942c106bc598c0d4550d30128a7d1}{operator$\ast$} (const btScalar \&s) const 
+\begin{CompactList}\small\item\em Return a scaled version of this quaternion. \item\end{CompactList}\item 
+\hyperlink{classbt_quaternion}{btQuaternion} \hyperlink{classbt_quaternion_4208a1ae41ae01d4dfa0d25792441213}{operator/} (const btScalar \&s) const 
+\begin{CompactList}\small\item\em Return an inversely scaled versionof this quaternion. \item\end{CompactList}\item 
+\hyperlink{classbt_quaternion}{btQuaternion} \& \hyperlink{classbt_quaternion_294fe99e7e5a8e0d45d111334e2e1552}{operator/=} (const btScalar \&s)
+\begin{CompactList}\small\item\em Inversely scale this quaternion. \item\end{CompactList}\item 
+\hypertarget{classbt_quaternion_b74af1c81fd04a63c1697b25a063e507}{
+\hyperlink{classbt_quaternion}{btQuaternion} \hyperlink{classbt_quaternion_b74af1c81fd04a63c1697b25a063e507}{normalized} () const }
+\label{classbt_quaternion_b74af1c81fd04a63c1697b25a063e507}
+
+\begin{CompactList}\small\item\em Return a normalized version of this quaternion. \item\end{CompactList}\item 
+btScalar \hyperlink{classbt_quaternion_6398a143dbe4bbf6211d90bc8c2dd2bc}{angle} (const \hyperlink{classbt_quaternion}{btQuaternion} \&q) const 
+\begin{CompactList}\small\item\em Return the $\ast$$\ast$$\ast$half$\ast$$\ast$$\ast$ angle between this quaternion and the other. \item\end{CompactList}\item 
+btScalar \hyperlink{classbt_quaternion_3160453535401db05d3926d7bc0ca5de}{angleShortestPath} (const \hyperlink{classbt_quaternion}{btQuaternion} \&q) const 
+\begin{CompactList}\small\item\em Return the angle between this quaternion and the other along the shortest path. \item\end{CompactList}\item 
+\hypertarget{classbt_quaternion_4071aa455c5850f651be8d49d3db7133}{
+btScalar \hyperlink{classbt_quaternion_4071aa455c5850f651be8d49d3db7133}{getAngle} () const }
+\label{classbt_quaternion_4071aa455c5850f651be8d49d3db7133}
+
+\begin{CompactList}\small\item\em Return the angle \mbox{[}0, 2Pi\mbox{]} of rotation represented by this quaternion. \item\end{CompactList}\item 
+\hypertarget{classbt_quaternion_d6a6022b5b0d3ec7d900e01c367ced05}{
+btScalar \hyperlink{classbt_quaternion_d6a6022b5b0d3ec7d900e01c367ced05}{getAngleShortestPath} () const }
+\label{classbt_quaternion_d6a6022b5b0d3ec7d900e01c367ced05}
+
+\begin{CompactList}\small\item\em Return the angle \mbox{[}0, Pi\mbox{]} of rotation represented by this quaternion along the shortest path. \item\end{CompactList}\item 
+\hypertarget{classbt_quaternion_465718d2a4eb88eb0bd1ab98e73140c3}{
+btVector3 \hyperlink{classbt_quaternion_465718d2a4eb88eb0bd1ab98e73140c3}{getAxis} () const }
+\label{classbt_quaternion_465718d2a4eb88eb0bd1ab98e73140c3}
+
+\begin{CompactList}\small\item\em Return the axis of the rotation represented by this quaternion. \item\end{CompactList}\item 
+\hypertarget{classbt_quaternion_a8894800b346577a9a568048d10e09d0}{
+\hyperlink{classbt_quaternion}{btQuaternion} \hyperlink{classbt_quaternion_a8894800b346577a9a568048d10e09d0}{inverse} () const }
+\label{classbt_quaternion_a8894800b346577a9a568048d10e09d0}
+
+\begin{CompactList}\small\item\em Return the inverse of this quaternion. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE \hyperlink{classbt_quaternion}{btQuaternion} \hyperlink{classbt_quaternion_e59598d8706cfaaf716509f93846010e}{operator+} (const \hyperlink{classbt_quaternion}{btQuaternion} \&q2) const 
+\begin{CompactList}\small\item\em Return the sum of this quaternion and the other. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE \hyperlink{classbt_quaternion}{btQuaternion} \hyperlink{classbt_quaternion_10ee93d7c0a20d0630fa8e8de85bad0c}{operator-} (const \hyperlink{classbt_quaternion}{btQuaternion} \&q2) const 
+\begin{CompactList}\small\item\em Return the difference between this quaternion and the other. \item\end{CompactList}\item 
+\hypertarget{classbt_quaternion_77ad84755dacf77b05210907a42ca8c3}{
+SIMD\_\-FORCE\_\-INLINE \hyperlink{classbt_quaternion}{btQuaternion} \hyperlink{classbt_quaternion_77ad84755dacf77b05210907a42ca8c3}{operator-} () const }
+\label{classbt_quaternion_77ad84755dacf77b05210907a42ca8c3}
+
+\begin{CompactList}\small\item\em Return the negative of this quaternion This simply negates each element. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE \hyperlink{classbt_quaternion}{btQuaternion} \hyperlink{classbt_quaternion_deda27273475435a9e3223abeea73992}{farthest} (const \hyperlink{classbt_quaternion}{btQuaternion} \&qd) const 
+\item 
+SIMD\_\-FORCE\_\-INLINE \hyperlink{classbt_quaternion}{btQuaternion} \hyperlink{classbt_quaternion_821a38604c6333b95d954867315d8716}{nearest} (const \hyperlink{classbt_quaternion}{btQuaternion} \&qd) const 
+\item 
+\hyperlink{classbt_quaternion}{btQuaternion} \hyperlink{classbt_quaternion_c95a27feda1c165b2ce359e7415fec6f}{slerp} (const \hyperlink{classbt_quaternion}{btQuaternion} \&q, const btScalar \&t) const 
+\begin{CompactList}\small\item\em Return the quaternion which is the result of Spherical Linear Interpolation between this and the other quaternion. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{classbt_quaternion_8bc3a5908e5863652549ac6cf8830ee5}{serialize} (struct btQuaternionData \&dataOut) const 
+\item 
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{classbt_quaternion_239a6d8a3dc3904adc6ec07151895a85}{serializeFloat} (struct btQuaternionFloatData \&dataOut) const 
+\item 
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{classbt_quaternion_23f1203633c7afb3750a9e95fae30f40}{serializeDouble} (struct btQuaternionDoubleData \&dataOut) const 
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classbt_quaternion}{btQuaternion} implements quaternion to perform linear algebra rotations in combination with btMatrix3x3, btVector3 and btTransform. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classbt_quaternion_2b2e9ed0014eb26ed076808fb76e9d69}{
+\index{btQuaternion@{btQuaternion}!btQuaternion@{btQuaternion}}
+\index{btQuaternion@{btQuaternion}!btQuaternion@{btQuaternion}}
+\subsubsection[btQuaternion]{\setlength{\rightskip}{0pt plus 5cm}btQuaternion::btQuaternion (const btVector3 \& {\em \_\-axis}, \/  const btScalar \& {\em \_\-angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_2b2e9ed0014eb26ed076808fb76e9d69}
+
+
+Axis angle Constructor. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em axis}]The axis which the rotation is around \item[{\em angle}]The magnitude of the rotation around the angle (Radians) \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_8bd5d699377ba585749d325076616ffb}{
+\index{btQuaternion@{btQuaternion}!btQuaternion@{btQuaternion}}
+\index{btQuaternion@{btQuaternion}!btQuaternion@{btQuaternion}}
+\subsubsection[btQuaternion]{\setlength{\rightskip}{0pt plus 5cm}btQuaternion::btQuaternion (const btScalar \& {\em yaw}, \/  const btScalar \& {\em pitch}, \/  const btScalar \& {\em roll})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_8bd5d699377ba585749d325076616ffb}
+
+
+Constructor from Euler angles. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em yaw}]Angle around Y unless BT\_\-EULER\_\-DEFAULT\_\-ZYX defined then Z \item[{\em pitch}]Angle around X unless BT\_\-EULER\_\-DEFAULT\_\-ZYX defined then Y \item[{\em roll}]Angle around Z unless BT\_\-EULER\_\-DEFAULT\_\-ZYX defined then X \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_quaternion_de840b704d06ad0092b996b432b8a8a6}{
+\index{btQuaternion@{btQuaternion}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!btQuaternion@{btQuaternion}}
+\subsubsection[setRotation]{\setlength{\rightskip}{0pt plus 5cm}void btQuaternion::setRotation (const btVector3 \& {\em axis}, \/  const btScalar \& {\em \_\-angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_de840b704d06ad0092b996b432b8a8a6}
+
+
+Set the rotation using axis angle notation. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em axis}]The axis around which to rotate \item[{\em angle}]The magnitude of the rotation in Radians \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_ed0a6469d6c6c1e379f1143ad62b3439}{
+\index{btQuaternion@{btQuaternion}!setEuler@{setEuler}}
+\index{setEuler@{setEuler}!btQuaternion@{btQuaternion}}
+\subsubsection[setEuler]{\setlength{\rightskip}{0pt plus 5cm}void btQuaternion::setEuler (const btScalar \& {\em yaw}, \/  const btScalar \& {\em pitch}, \/  const btScalar \& {\em roll})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_ed0a6469d6c6c1e379f1143ad62b3439}
+
+
+Set the quaternion using Euler angles. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em yaw}]Angle around Y \item[{\em pitch}]Angle around X \item[{\em roll}]Angle around Z \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_df15384cff65f630b0537f1b8aeee622}{
+\index{btQuaternion@{btQuaternion}!setEulerZYX@{setEulerZYX}}
+\index{setEulerZYX@{setEulerZYX}!btQuaternion@{btQuaternion}}
+\subsubsection[setEulerZYX]{\setlength{\rightskip}{0pt plus 5cm}void btQuaternion::setEulerZYX (const btScalar \& {\em yawZ}, \/  const btScalar \& {\em pitchY}, \/  const btScalar \& {\em rollX})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_df15384cff65f630b0537f1b8aeee622}
+
+
+Set the quaternion using euler angles. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em yaw}]Angle around Z \item[{\em pitch}]Angle around Y \item[{\em roll}]Angle around X \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_9aef6f3c621a0a8493d1545c7043f075}{
+\index{btQuaternion@{btQuaternion}!getEulerZYX@{getEulerZYX}}
+\index{getEulerZYX@{getEulerZYX}!btQuaternion@{btQuaternion}}
+\subsubsection[getEulerZYX]{\setlength{\rightskip}{0pt plus 5cm}void btQuaternion::getEulerZYX (btScalar \& {\em yawZ}, \/  btScalar \& {\em pitchY}, \/  btScalar \& {\em rollX}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_9aef6f3c621a0a8493d1545c7043f075}
+
+
+Get the euler angles from this quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em yaw}]Angle around Z \item[{\em pitch}]Angle around Y \item[{\em roll}]Angle around X \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_1212e4cbaa71da187984d3c174a4cc04}{
+\index{btQuaternion@{btQuaternion}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!btQuaternion@{btQuaternion}}
+\subsubsection[operator+=]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE {\bf btQuaternion}\& btQuaternion::operator+= (const {\bf btQuaternion} \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_1212e4cbaa71da187984d3c174a4cc04}
+
+
+Add two quaternions. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The quaternion to add to this one \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_c942e70c62d09538e3f6d9c42bc42c5c}{
+\index{btQuaternion@{btQuaternion}!operator-=@{operator-=}}
+\index{operator-=@{operator-=}!btQuaternion@{btQuaternion}}
+\subsubsection[operator-=]{\setlength{\rightskip}{0pt plus 5cm}{\bf btQuaternion}\& btQuaternion::operator-= (const {\bf btQuaternion} \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_c942e70c62d09538e3f6d9c42bc42c5c}
+
+
+Subtract out a quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The quaternion to subtract from this one \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_bd260487e98defbd77618f04d51fcc92}{
+\index{btQuaternion@{btQuaternion}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!btQuaternion@{btQuaternion}}
+\subsubsection[operator$\ast$=]{\setlength{\rightskip}{0pt plus 5cm}{\bf btQuaternion}\& btQuaternion::operator$\ast$= (const btScalar \& {\em s})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_bd260487e98defbd77618f04d51fcc92}
+
+
+Scale this quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]The scalar to scale by \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_bfc6dee30a6f56e69343a31368713f95}{
+\index{btQuaternion@{btQuaternion}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!btQuaternion@{btQuaternion}}
+\subsubsection[operator$\ast$=]{\setlength{\rightskip}{0pt plus 5cm}{\bf btQuaternion}\& btQuaternion::operator$\ast$= (const {\bf btQuaternion} \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_bfc6dee30a6f56e69343a31368713f95}
+
+
+Multiply this quaternion by q on the right. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The other quaternion Equivilant to this = this $\ast$ q \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_37e450f3206a7b6f3f55049e297fb403}{
+\index{btQuaternion@{btQuaternion}!dot@{dot}}
+\index{dot@{dot}!btQuaternion@{btQuaternion}}
+\subsubsection[dot]{\setlength{\rightskip}{0pt plus 5cm}btScalar btQuaternion::dot (const {\bf btQuaternion} \& {\em q}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_37e450f3206a7b6f3f55049e297fb403}
+
+
+Return the dot product between this quaternion and another. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The other quaternion \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_cc3942c106bc598c0d4550d30128a7d1}{
+\index{btQuaternion@{btQuaternion}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!btQuaternion@{btQuaternion}}
+\subsubsection[operator$\ast$]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE {\bf btQuaternion} btQuaternion::operator$\ast$ (const btScalar \& {\em s}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_cc3942c106bc598c0d4550d30128a7d1}
+
+
+Return a scaled version of this quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]The scale factor \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_4208a1ae41ae01d4dfa0d25792441213}{
+\index{btQuaternion@{btQuaternion}!operator/@{operator/}}
+\index{operator/@{operator/}!btQuaternion@{btQuaternion}}
+\subsubsection[operator/]{\setlength{\rightskip}{0pt plus 5cm}{\bf btQuaternion} btQuaternion::operator/ (const btScalar \& {\em s}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_4208a1ae41ae01d4dfa0d25792441213}
+
+
+Return an inversely scaled versionof this quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]The inverse scale factor \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_294fe99e7e5a8e0d45d111334e2e1552}{
+\index{btQuaternion@{btQuaternion}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!btQuaternion@{btQuaternion}}
+\subsubsection[operator/=]{\setlength{\rightskip}{0pt plus 5cm}{\bf btQuaternion}\& btQuaternion::operator/= (const btScalar \& {\em s})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_294fe99e7e5a8e0d45d111334e2e1552}
+
+
+Inversely scale this quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]The scale factor \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_6398a143dbe4bbf6211d90bc8c2dd2bc}{
+\index{btQuaternion@{btQuaternion}!angle@{angle}}
+\index{angle@{angle}!btQuaternion@{btQuaternion}}
+\subsubsection[angle]{\setlength{\rightskip}{0pt plus 5cm}btScalar btQuaternion::angle (const {\bf btQuaternion} \& {\em q}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_6398a143dbe4bbf6211d90bc8c2dd2bc}
+
+
+Return the $\ast$$\ast$$\ast$half$\ast$$\ast$$\ast$ angle between this quaternion and the other. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The other quaternion \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_3160453535401db05d3926d7bc0ca5de}{
+\index{btQuaternion@{btQuaternion}!angleShortestPath@{angleShortestPath}}
+\index{angleShortestPath@{angleShortestPath}!btQuaternion@{btQuaternion}}
+\subsubsection[angleShortestPath]{\setlength{\rightskip}{0pt plus 5cm}btScalar btQuaternion::angleShortestPath (const {\bf btQuaternion} \& {\em q}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_3160453535401db05d3926d7bc0ca5de}
+
+
+Return the angle between this quaternion and the other along the shortest path. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The other quaternion \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_e59598d8706cfaaf716509f93846010e}{
+\index{btQuaternion@{btQuaternion}!operator+@{operator+}}
+\index{operator+@{operator+}!btQuaternion@{btQuaternion}}
+\subsubsection[operator+]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE {\bf btQuaternion} btQuaternion::operator+ (const {\bf btQuaternion} \& {\em q2}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_e59598d8706cfaaf716509f93846010e}
+
+
+Return the sum of this quaternion and the other. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q2}]The other quaternion \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_10ee93d7c0a20d0630fa8e8de85bad0c}{
+\index{btQuaternion@{btQuaternion}!operator-@{operator-}}
+\index{operator-@{operator-}!btQuaternion@{btQuaternion}}
+\subsubsection[operator-]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE {\bf btQuaternion} btQuaternion::operator- (const {\bf btQuaternion} \& {\em q2}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_10ee93d7c0a20d0630fa8e8de85bad0c}
+
+
+Return the difference between this quaternion and the other. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q2}]The other quaternion \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_deda27273475435a9e3223abeea73992}{
+\index{btQuaternion@{btQuaternion}!farthest@{farthest}}
+\index{farthest@{farthest}!btQuaternion@{btQuaternion}}
+\subsubsection[farthest]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE {\bf btQuaternion} btQuaternion::farthest (const {\bf btQuaternion} \& {\em qd}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_deda27273475435a9e3223abeea73992}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000042}{Todo}]document this and it's use \end{Desc}
+\hypertarget{classbt_quaternion_821a38604c6333b95d954867315d8716}{
+\index{btQuaternion@{btQuaternion}!nearest@{nearest}}
+\index{nearest@{nearest}!btQuaternion@{btQuaternion}}
+\subsubsection[nearest]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE {\bf btQuaternion} btQuaternion::nearest (const {\bf btQuaternion} \& {\em qd}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_821a38604c6333b95d954867315d8716}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000043}{Todo}]document this and it's use \end{Desc}
+\hypertarget{classbt_quaternion_c95a27feda1c165b2ce359e7415fec6f}{
+\index{btQuaternion@{btQuaternion}!slerp@{slerp}}
+\index{slerp@{slerp}!btQuaternion@{btQuaternion}}
+\subsubsection[slerp]{\setlength{\rightskip}{0pt plus 5cm}{\bf btQuaternion} btQuaternion::slerp (const {\bf btQuaternion} \& {\em q}, \/  const btScalar \& {\em t}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_quaternion_c95a27feda1c165b2ce359e7415fec6f}
+
+
+Return the quaternion which is the result of Spherical Linear Interpolation between this and the other quaternion. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em q}]The other quaternion to interpolate with \item[{\em t}]The ratio between this and q to interpolate. If t = 0 the result is this, if t=1 the result is q. Slerp interpolates assuming constant velocity. \end{description}
+\end{Desc}
+\hypertarget{classbt_quaternion_8bc3a5908e5863652549ac6cf8830ee5}{
+\index{btQuaternion@{btQuaternion}!serialize@{serialize}}
+\index{serialize@{serialize}!btQuaternion@{btQuaternion}}
+\subsubsection[serialize]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void btQuaternion::serialize (struct btQuaternionData \& {\em dataOut}) const}}
+\label{classbt_quaternion_8bc3a5908e5863652549ac6cf8830ee5}
+
+
+
+
+could also do a memcpy, check if it is worth it \hypertarget{classbt_quaternion_239a6d8a3dc3904adc6ec07151895a85}{
+\index{btQuaternion@{btQuaternion}!serializeFloat@{serializeFloat}}
+\index{serializeFloat@{serializeFloat}!btQuaternion@{btQuaternion}}
+\subsubsection[serializeFloat]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void btQuaternion::serializeFloat (struct btQuaternionFloatData \& {\em dataOut}) const}}
+\label{classbt_quaternion_239a6d8a3dc3904adc6ec07151895a85}
+
+
+
+
+could also do a memcpy, check if it is worth it \hypertarget{classbt_quaternion_23f1203633c7afb3750a9e95fae30f40}{
+\index{btQuaternion@{btQuaternion}!serializeDouble@{serializeDouble}}
+\index{serializeDouble@{serializeDouble}!btQuaternion@{btQuaternion}}
+\subsubsection[serializeDouble]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void btQuaternion::serializeDouble (struct btQuaternionDoubleData \& {\em dataOut}) const}}
+\label{classbt_quaternion_23f1203633c7afb3750a9e95fae30f40}
+
+
+
+
+could also do a memcpy, check if it is worth it 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btQuaternion.h\end{CompactItemize}

@@ -1,0 +1,20 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btDynamicsWorld",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btCollisionWorld",height=0.2,width=0.4,color="black",URL="$classbt_collision_world.html",tooltip="CollisionWorld is interface and container for the collision detection."];
+  Node3 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_collisionObjects"];
+  Node3 [label="btAlignedObjectArray\< btCollisionObject * \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node4 -> Node3 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node4 [label="btAlignedAllocator\< btCollisionObject *, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node5 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_dispatcher1"];
+  Node5 [label="btDispatcher",height=0.2,width=0.4,color="black",URL="$classbt_dispatcher.html"];
+  Node6 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_broadphasePairCache"];
+  Node6 [label="btBroadphaseInterface",height=0.2,width=0.4,color="black",URL="$classbt_broadphase_interface.html"];
+  Node7 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_debugDrawer"];
+  Node7 [label="btIDebugDraw",height=0.2,width=0.4,color="black",URL="$classbt_i_debug_draw.html"];
+}

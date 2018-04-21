@@ -1,0 +1,81 @@
+\hypertarget{classbt_axis_sweep3_internal}{
+\section{btAxisSweep3Internal$<$ BP\_\-FP\_\-INT\_\-TYPE $>$ Class Template Reference}
+\label{classbt_axis_sweep3_internal}\index{btAxisSweep3Internal@{btAxisSweep3Internal}}
+}
+{\tt \#include $<$btAxisSweep3Internal.h$>$}
+
+Inheritance diagram for btAxisSweep3Internal$<$ BP\_\-FP\_\-INT\_\-TYPE $>$:Collaboration diagram for btAxisSweep3Internal$<$ BP\_\-FP\_\-INT\_\-TYPE $>$:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_axis_sweep3_internal_b89835d4ecb51e2dadc7e3b6e7c29adb}{
+virtual void \hyperlink{classbt_axis_sweep3_internal_b89835d4ecb51e2dadc7e3b6e7c29adb}{calculateOverlappingPairs} (\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher)}
+\label{classbt_axis_sweep3_internal_b89835d4ecb51e2dadc7e3b6e7c29adb}
+
+\begin{CompactList}\small\item\em calculateOverlappingPairs is optional: incremental algorithms (sweep and prune) might do it during the set aabb \item\end{CompactList}\item 
+void \hyperlink{classbt_axis_sweep3_internal_4e26f4f8acf63f26451f6396223001bb}{removeHandle} (BP\_\-FP\_\-INT\_\-TYPE handle, \hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher)
+\item 
+\hypertarget{classbt_axis_sweep3_internal_eecfcc066ca77ec8b9bf2c8d422716ee}{
+virtual void \hyperlink{classbt_axis_sweep3_internal_eecfcc066ca77ec8b9bf2c8d422716ee}{resetPool} (\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher)}
+\label{classbt_axis_sweep3_internal_eecfcc066ca77ec8b9bf2c8d422716ee}
+
+\begin{CompactList}\small\item\em reset broadphase internal structures, to ensure determinism/reproducability \item\end{CompactList}\item 
+\hypertarget{classbt_axis_sweep3_internal_72c4adb519fe1be273fa767828952e79}{
+void \hyperlink{classbt_axis_sweep3_internal_72c4adb519fe1be273fa767828952e79}{unQuantize} (btBroadphaseProxy $\ast$proxy, btVector3 \&aabbMin, btVector3 \&aabbMax) const }
+\label{classbt_axis_sweep3_internal_72c4adb519fe1be273fa767828952e79}
+
+\begin{CompactList}\small\item\em unQuantize should be conservative: aabbMin/aabbMax should be larger then 'getAabb' result \item\end{CompactList}\item 
+virtual void \hyperlink{classbt_axis_sweep3_internal_5f343e29ce818d0b96cb11260bca2a68}{getBroadphaseAabb} (btVector3 \&aabbMin, btVector3 \&aabbMax) const 
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_axis_sweep3_internal_d26657cfc4245f099042178daf885563}{
+\hyperlink{classbt_overlapping_pair_callback}{btOverlappingPairCallback} $\ast$ \hyperlink{classbt_axis_sweep3_internal_d26657cfc4245f099042178daf885563}{m\_\-userPairCallback}}
+\label{classbt_axis_sweep3_internal_d26657cfc4245f099042178daf885563}
+
+\begin{CompactList}\small\item\em \hyperlink{classbt_overlapping_pair_callback}{btOverlappingPairCallback} is an additional optional user callback for adding/removing overlapping pairs, similar interface to \hyperlink{classbt_overlapping_pair_cache}{btOverlappingPairCache}. \item\end{CompactList}\item 
+\hyperlink{structbt_dbvt_broadphase}{btDbvtBroadphase} $\ast$ \hyperlink{classbt_axis_sweep3_internal_a0c964a27cd6722bdd231890b1239528}{m\_\-raycastAccelerator}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename BP\_\-FP\_\-INT\_\-TYPE$>$ class btAxisSweep3Internal$<$ BP\_\-FP\_\-INT\_\-TYPE $>$}
+
+The internal templace class \hyperlink{classbt_axis_sweep3_internal}{btAxisSweep3Internal} implements the sweep and prune broadphase. It uses quantized integers to represent the begin and end points for each of the 3 axis. Dont use this class directly, use \hyperlink{classbt_axis_sweep3}{btAxisSweep3} or \hyperlink{classbt32_bit_axis_sweep3}{bt32BitAxisSweep3} instead. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_axis_sweep3_internal_4e26f4f8acf63f26451f6396223001bb}{
+\index{btAxisSweep3Internal@{btAxisSweep3Internal}!removeHandle@{removeHandle}}
+\index{removeHandle@{removeHandle}!btAxisSweep3Internal@{btAxisSweep3Internal}}
+\subsubsection[removeHandle]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename BP\_\-FP\_\-INT\_\-TYPE$>$ void {\bf btAxisSweep3Internal}$<$ BP\_\-FP\_\-INT\_\-TYPE $>$::removeHandle (BP\_\-FP\_\-INT\_\-TYPE {\em handle}, \/  {\bf btDispatcher} $\ast$ {\em dispatcher})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_axis_sweep3_internal_4e26f4f8acf63f26451f6396223001bb}
+
+
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000008}{Todo}]: compare performance \end{Desc}
+\hypertarget{classbt_axis_sweep3_internal_5f343e29ce818d0b96cb11260bca2a68}{
+\index{btAxisSweep3Internal@{btAxisSweep3Internal}!getBroadphaseAabb@{getBroadphaseAabb}}
+\index{getBroadphaseAabb@{getBroadphaseAabb}!btAxisSweep3Internal@{btAxisSweep3Internal}}
+\subsubsection[getBroadphaseAabb]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename BP\_\-FP\_\-INT\_\-TYPE$>$ virtual void {\bf btAxisSweep3Internal}$<$ BP\_\-FP\_\-INT\_\-TYPE $>$::getBroadphaseAabb (btVector3 \& {\em aabbMin}, \/  btVector3 \& {\em aabbMax}) const\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classbt_axis_sweep3_internal_5f343e29ce818d0b96cb11260bca2a68}
+
+
+getAabb returns the axis aligned bounding box in the 'global' coordinate frame will add some transform later 
+
+Implements \hyperlink{classbt_broadphase_interface_b5af9e26414f5a72a76040b8fab4d9e2}{btBroadphaseInterface}.
+
+\subsection{Member Data Documentation}
+\hypertarget{classbt_axis_sweep3_internal_a0c964a27cd6722bdd231890b1239528}{
+\index{btAxisSweep3Internal@{btAxisSweep3Internal}!m\_\-raycastAccelerator@{m\_\-raycastAccelerator}}
+\index{m\_\-raycastAccelerator@{m\_\-raycastAccelerator}!btAxisSweep3Internal@{btAxisSweep3Internal}}
+\subsubsection[m\_\-raycastAccelerator]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename BP\_\-FP\_\-INT\_\-TYPE$>$ {\bf btDbvtBroadphase}$\ast$ {\bf btAxisSweep3Internal}$<$ BP\_\-FP\_\-INT\_\-TYPE $>$::{\bf m\_\-raycastAccelerator}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classbt_axis_sweep3_internal_a0c964a27cd6722bdd231890b1239528}
+
+
+additional dynamic aabb structure, used to accelerate ray cast queries. can be disabled using a optional argument in the constructor 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btAxisSweep3Internal.h\end{CompactItemize}

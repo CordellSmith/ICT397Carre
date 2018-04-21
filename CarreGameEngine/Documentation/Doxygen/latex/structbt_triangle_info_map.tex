@@ -1,0 +1,58 @@
+\hypertarget{structbt_triangle_info_map}{
+\section{btTriangleInfoMap Struct Reference}
+\label{structbt_triangle_info_map}\index{btTriangleInfoMap@{btTriangleInfoMap}}
+}
+The \hyperlink{structbt_triangle_info_map}{btTriangleInfoMap} stores edge angle information for some triangles. You can compute this information yourself or using btGenerateInternalEdgeInfo.  
+
+
+{\tt \#include $<$btTriangleInfoMap.h$>$}
+
+Inheritance diagram for btTriangleInfoMap:Collaboration diagram for btTriangleInfoMap:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{structbt_triangle_info_map_60e9096e47e52a03e29004e77d9dd572}{
+\hyperlink{structbt_triangle_info_map_60e9096e47e52a03e29004e77d9dd572}{btTriangleInfoMap} ()}
+\label{structbt_triangle_info_map_60e9096e47e52a03e29004e77d9dd572}
+
+\begin{CompactList}\small\item\em used to determine if a triangle is degenerate (length squared of cross product of 2 triangle edges $<$ threshold) \item\end{CompactList}\item 
+\hypertarget{structbt_triangle_info_map_04271020827a5cf802def85945d65028}{
+virtual const char $\ast$ \hyperlink{structbt_triangle_info_map_04271020827a5cf802def85945d65028}{serialize} (void $\ast$dataBuffer, btSerializer $\ast$serializer) const }
+\label{structbt_triangle_info_map_04271020827a5cf802def85945d65028}
+
+\begin{CompactList}\small\item\em fills the dataBuffer and returns the struct name (and 0 on failure) \item\end{CompactList}\item 
+\hypertarget{structbt_triangle_info_map_729483561a5100a27dae3f92fe57ebca}{
+void \hyperlink{structbt_triangle_info_map_729483561a5100a27dae3f92fe57ebca}{deSerialize} (struct btTriangleInfoMapData \&data)}
+\label{structbt_triangle_info_map_729483561a5100a27dae3f92fe57ebca}
+
+\begin{CompactList}\small\item\em fills the dataBuffer and returns the struct name (and 0 on failure) \item\end{CompactList}\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{structbt_triangle_info_map_7516c96369cd0eef22286b7e5ad537e8}{
+btScalar \hyperlink{structbt_triangle_info_map_7516c96369cd0eef22286b7e5ad537e8}{m\_\-planarEpsilon}}
+\label{structbt_triangle_info_map_7516c96369cd0eef22286b7e5ad537e8}
+
+\begin{CompactList}\small\item\em used to determine if an edge or contact normal is convex, using the dot product \item\end{CompactList}\item 
+\hypertarget{structbt_triangle_info_map_a980d33e5be082442a128f0ba2efb064}{
+btScalar \hyperlink{structbt_triangle_info_map_a980d33e5be082442a128f0ba2efb064}{m\_\-equalVertexThreshold}}
+\label{structbt_triangle_info_map_a980d33e5be082442a128f0ba2efb064}
+
+\begin{CompactList}\small\item\em used to determine if a triangle edge is planar with zero angle \item\end{CompactList}\item 
+\hypertarget{structbt_triangle_info_map_521c0769aefc5c02b8394f924127dfc5}{
+btScalar \hyperlink{structbt_triangle_info_map_521c0769aefc5c02b8394f924127dfc5}{m\_\-edgeDistanceThreshold}}
+\label{structbt_triangle_info_map_521c0769aefc5c02b8394f924127dfc5}
+
+\begin{CompactList}\small\item\em used to compute connectivity: if the distance between two vertices is smaller than m\_\-equalVertexThreshold, they are considered to be 'shared' \item\end{CompactList}\item 
+\hypertarget{structbt_triangle_info_map_3fca61db63fe0db431044d0eba95107a}{
+btScalar \hyperlink{structbt_triangle_info_map_3fca61db63fe0db431044d0eba95107a}{m\_\-maxEdgeAngleThreshold}}
+\label{structbt_triangle_info_map_3fca61db63fe0db431044d0eba95107a}
+
+\begin{CompactList}\small\item\em used to determine edge contacts: if the closest distance between a contact point and an edge is smaller than this distance threshold it is considered to \char`\"{}hit the edge\char`\"{} \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{structbt_triangle_info_map}{btTriangleInfoMap} stores edge angle information for some triangles. You can compute this information yourself or using btGenerateInternalEdgeInfo. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionShapes/btTriangleInfoMap.h\end{CompactItemize}

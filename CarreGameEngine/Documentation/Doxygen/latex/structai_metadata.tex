@@ -1,0 +1,49 @@
+\hypertarget{structai_metadata}{
+\section{aiMetadata Struct Reference}
+\label{structai_metadata}\index{aiMetadata@{aiMetadata}}
+}
+{\tt \#include $<$metadata.h$>$}
+
+Collaboration diagram for aiMetadata:\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+unsigned int \hyperlink{structai_metadata_32c4587c53dd402a5878ffc94088e528}{mNumProperties}
+\item 
+C\_\-STRUCT \hyperlink{structai_string}{aiString} $\ast$ \hyperlink{structai_metadata_a8c77a263443658737ee51a74e3c292e}{mKeys}
+\item 
+C\_\-STRUCT \hyperlink{structai_metadata_entry}{aiMetadataEntry} $\ast$ \hyperlink{structai_metadata_34b515fcb5b806c471d3c6ce7bc76beb}{mValues}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Container for holding metadata.
+
+Metadata is a key-value store using string keys and values. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_metadata_32c4587c53dd402a5878ffc94088e528}{
+\index{aiMetadata@{aiMetadata}!mNumProperties@{mNumProperties}}
+\index{mNumProperties@{mNumProperties}!aiMetadata@{aiMetadata}}
+\subsubsection[mNumProperties]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiMetadata::mNumProperties}}}
+\label{structai_metadata_32c4587c53dd402a5878ffc94088e528}
+
+
+Length of the mKeys and mValues arrays, respectively \hypertarget{structai_metadata_a8c77a263443658737ee51a74e3c292e}{
+\index{aiMetadata@{aiMetadata}!mKeys@{mKeys}}
+\index{mKeys@{mKeys}!aiMetadata@{aiMetadata}}
+\subsubsection[mKeys]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiString}$\ast$ {\bf aiMetadata::mKeys}}}
+\label{structai_metadata_a8c77a263443658737ee51a74e3c292e}
+
+
+Arrays of keys, may not be NULL. Entries in this array may not be NULL as well. \hypertarget{structai_metadata_34b515fcb5b806c471d3c6ce7bc76beb}{
+\index{aiMetadata@{aiMetadata}!mValues@{mValues}}
+\index{mValues@{mValues}!aiMetadata@{aiMetadata}}
+\subsubsection[mValues]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiMetadataEntry}$\ast$ {\bf aiMetadata::mValues}}}
+\label{structai_metadata_34b515fcb5b806c471d3c6ce7bc76beb}
+
+
+Arrays of values, may not be NULL. Entries in this array may be NULL if the corresponding property key has no assigned value. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{metadata_8h}{metadata.h}\end{CompactItemize}
