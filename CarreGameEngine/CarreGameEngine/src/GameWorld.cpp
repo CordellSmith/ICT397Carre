@@ -234,6 +234,7 @@ void GameWorld::PrepareTestModel(const char* filePath, int& modelVertexSize)
 	}
 
 	modelVertexSize = temp_vertices.size();
+	m_testModel.SetScale(glm::vec3(0.75, 0.75, 0.75));
 }
 
 void GameWorld::PrepareColourPanel()
