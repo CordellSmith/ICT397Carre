@@ -52,7 +52,7 @@ void PhysicsEngine::CreateStaticRigidBody()
 	// Initialize transform and location
 	btTransform groundTransform;
 	groundTransform.setIdentity();
-	groundTransform.setOrigin(btVector3(0.0, -1.0, 0.0));
+	groundTransform.setOrigin(btVector3(0.0, -2.0, 0.0));
 
 	// Set mass (zero for static)
 	m_mass = 0.0;

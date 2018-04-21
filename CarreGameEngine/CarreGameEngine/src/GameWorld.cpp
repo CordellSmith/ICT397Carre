@@ -82,11 +82,18 @@ void GameWorld::InitializePhysics()
 	m_physicsWorld.CreateStaticRigidBody();
 	m_collisionBodyPos.push_back(btVector3(0.0, 0.0, 0.0));
 
-	// Create dynamic rigid bodies
-	//m_physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 15.0, 15.0));
-	//m_collisionBodyPos.push_back(btVector3(15.0, 15.0, 15.0));
-	//m_physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 0.0, 15.0));
-	//m_collisionBodyPos.push_back(btVector3(15.0, 0.0, 15.0));
+	// Create 15 randomly places dynamic rigid bodies
+	for (int i = 0; i < 15; i++)
+	{
+		if (i == 0)
+		{
+			m_physicsWorld.CreateDynamicRigidBody(btVector3(15.0, 15.0, 15.0));
+			m_collisionBodyPos.push_back(btVector3(15.0, 15.0, 15.0));
+			continue;
+		}
+		m_physicsWorld.CreateDynamicRigidBody(btVector3(rand() % 30, -1.5, rand() % 30));
+		m_collisionBodyPos.push_back(btVector3(rand() % 30, -1.5, rand() % 30));
+	}
 
 	// Create heightmap terrain shape
 	//physicsWorld.CreateHeightfieldTerrainShape();
@@ -117,6 +124,13 @@ void GameWorld::UpdatePhysics()
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
+		// First collision body is the static ground plane, so draw a colour panel instead of a car
+		if (i == 0)
+		{
+			m_colourPanel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
+			m_colourPanel.Render();
+			continue;
+		}
 		m_testModel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
 		m_testModel.Render();
 	}
@@ -183,41 +197,43 @@ void GameWorld::PrepareTestModel(const char* filePath, int& modelVertexSize)
 		}
 	}
 
-	std::vector<glm::vec3> v;
-	std::vector<glm::vec2> u;
-	std::vector<glm::vec3> n;
-
+	// Populate temporary attribute vectors
 	float red = 0.1f, blue = 0.5f, green = 0.4f;
-	for (unsigned int i = 0; i < vertexIndices.size(); i++) {
+	for (unsigned int i = 0; i < temp_vertices.size(); i++) {
 		unsigned int vertexIndex = vertexIndices[i];
 		glm::vec3 vertex = temp_vertices[vertexIndex - 1];
-		v.push_back(vertex);
-	}
 
-	for (unsigned int i = 0; i < uvIndices.size(); i++) {
-		unsigned int uvIndex = uvIndices[i];
-		glm::vec2 uv = temp_uvs[uvIndex - 1];
-		u.push_back(uv);
-	}
-
-	for (unsigned int i = 0; i < normalIndices.size(); i++) {
-		unsigned int normalsIndex = normalIndices[i];
-		glm::vec3 normals = temp_normals[normalsIndex - 1];
-		n.push_back(normals);
-	}
-
-	for (int i = 0; i < v.size(); i++)
-	{
-		unsigned int vertexIndex = vertexIndices[i];
-
-		model[i].xyz = v[vertexIndex - 1];
+		model[i].xyz = vertex;
 		model[i].rgba = glm::vec4(red, green, blue, 1.0);
-		model[i].uv = u[vertexIndex - 1];
-		model[i].normal = n[vertexIndex - 1];
 		m_indices.push_back(vertexIndices[i]);
 	}
 
-	modelVertexSize = v.size();
+	for (unsigned int i = 0; i < temp_uvs.size(); i++) {
+		unsigned int uvIndex = uvIndices[i];
+		glm::vec2 uv = temp_uvs[uvIndex - 1];
+
+		model[i].uv = uv;
+	}
+
+	for (unsigned int i = 0; i < temp_normals.size(); i++) {
+		unsigned int normalsIndex = normalIndices[i];
+		glm::vec3 normals = temp_normals[normalsIndex - 1];
+
+		model[i].normal = normals;
+	}
+
+	for (unsigned int i = 0; i < vertexIndices.size(); i++) {
+		unsigned int vertexIndex = vertexIndices[i];
+		unsigned int uvIndex = uvIndices[i];
+		unsigned int normalsIndex = normalIndices[i];
+
+		m_indices.push_back(vertexIndices[i]);
+		m_indices.push_back(vertexIndices[i]);
+		m_indices.push_back(vertexIndices[i]);
+
+	}
+
+	modelVertexSize = temp_vertices.size();
 }
 
 void GameWorld::PrepareColourPanel()
@@ -226,22 +242,22 @@ void GameWorld::PrepareColourPanel()
 	m_colourPanel.SetCamera(m_camera);
 
 	panel[0].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
-	panel[0].rgba = glm::vec4(1, 1, 0, 1);
+	panel[0].rgba = glm::vec4(0.5, 0.5, 0.0, 1);
 
 	panel[1].xyz = glm::vec3(1.0f, -1.0f, -1.0f);
-	panel[1].rgba = glm::vec4(1, 0, 0, 1);
+	panel[1].rgba = glm::vec4(0.4, 0.0, 1.0, 1);
 
 	panel[2].xyz = glm::vec3(1.0f, -1.0f, 1.0f);
-	panel[2].rgba = glm::vec4(0, 1, 1, 1);
+	panel[2].rgba = glm::vec4(0.5, 0.6, 1.0, 1);
 
 	panel[3].xyz = glm::vec3(1.0f, -1.0f, 1.0f);
-	panel[3].rgba = glm::vec4(0, 1, 1, 1);
+	panel[3].rgba = glm::vec4(1.0, 0.4, 0.4, 1);
 
 	panel[4].xyz = glm::vec3(-1.0f, -1.0f, 1.0f);
-	panel[4].rgba = glm::vec4(0, 0, 1, 1);
+	panel[4].rgba = glm::vec4(0.3, 1.0, 0.1, 1);
 
 	panel[5].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
-	panel[5].rgba = glm::vec4(1, 1, 0, 1);
+	panel[5].rgba = glm::vec4(1.0, 1.0, 0.4, 1);
 
 	for (int i = 1; i < 7; i++)
 		m_indices.push_back(i);

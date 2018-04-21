@@ -143,10 +143,14 @@ public:
 	void UpdatePhysics();
 
 protected:
+	/// Models to load
 	Model m_colourPanel, m_testModel;
 	int m_modelVertexSize;
+
+	/// Shader sources
 	ShaderSource m_shaderSource1, m_shaderSource2;
 
+	/// Camera object
 	Camera* m_camera;
 
 	/// Physics world
