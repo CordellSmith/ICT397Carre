@@ -37,7 +37,9 @@ std::vector<unsigned int> m_indices;
 
 void GameWorld::Init(std::multimap<OBJ_TYPE, IGameObject*> gameAssets)
 {
-
+	// Sets this game contexts assets to the  loaded game assets from the control engine
+	SetGameAssets(gameAssets);
+	
 	/* TODO
 	Call render on all game assets using multimap iterator
 	Something like
@@ -75,6 +77,13 @@ void GameWorld::Update()
 			m_colourPanel.SetPosition(glm::vec3(x * 2, 0, z * 2));
 			m_colourPanel.Render();
 		}
+	}
+
+	// Testing rendering of objects from multimap
+	std::multimap<OBJ_TYPE, IGameObject*>::iterator itr;
+	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
+	{
+		itr->second->Render();
 	}
 }
 

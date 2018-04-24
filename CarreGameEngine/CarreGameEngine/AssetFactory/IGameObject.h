@@ -85,6 +85,15 @@ public:
 	virtual const void Unload() = 0;
 
 		/**
+		* @brief Render function
+		*
+		* Virtual render function to draw object to screen depending on type.
+		*
+		* @return void
+		*/
+	virtual const void Render() = 0;
+
+		/**
 		* @brief Gets file path
 		*
 		* Virtual function to return a file path.

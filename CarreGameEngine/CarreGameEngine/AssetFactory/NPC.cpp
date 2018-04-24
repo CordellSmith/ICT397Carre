@@ -21,6 +21,12 @@ const void NPC::Unload()
 	return void();
 }
 
+const void NPC::Render()
+{
+	// Needs to be implemented
+	return void();
+}
+
 const std::string & NPC::GetFilePath() const
 {
 	return m_filePath;

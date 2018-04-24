@@ -34,12 +34,14 @@ void GameControlEngine::Initialize()
 	// Pass camera into gameworld
 	m_gameWorld.SetCamera(m_camera);
 
-	m_assetFactory.AddAsset(m_assetFactory.CreateAsset(OBJ_OBJECT, "res/objects/cube.obj"));
-	m_assetFactory.AddAsset(m_assetFactory.CreateAsset(OBJ_OBJECT, "res/objects/cube_stack.obj"));
-	m_assetFactory.AddAsset(m_assetFactory.CreateAsset(OBJ_OBJECT, "res/objects/taxi_model/taxi.obj"));
+	m_assetFactory = new GameAssetFactory();
+
+	m_assetFactory->AddAsset(m_assetFactory->CreateAsset(OBJ_OBJECT, "res/objects/cube.obj"));
+	//m_assetFactory->AddAsset(m_assetFactory->CreateAsset(OBJ_OBJECT, "res/objects/cube_stack.obj"));
+	//m_assetFactory->AddAsset(m_assetFactory->CreateAsset(OBJ_OBJECT, "res/objects/taxi_model/taxi.obj"));
 
 	// Initialize the game world, pass in assets
-	m_gameWorld.Init(m_assetFactory);
+	m_gameWorld.Init(m_assetFactory->GetAssets());
 }
 
 void GameControlEngine::GameLoop()

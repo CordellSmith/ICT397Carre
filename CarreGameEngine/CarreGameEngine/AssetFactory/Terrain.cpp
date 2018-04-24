@@ -21,6 +21,12 @@ const void Terrain::Unload()
 	return void();
 }
 
+const void Terrain::Render()
+{
+	// Needs to be implemented
+	return void();
+}
+
 const std::string & Terrain::GetFilePath() const
 {
 	return m_filePath;

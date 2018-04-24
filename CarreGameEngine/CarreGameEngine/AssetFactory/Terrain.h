@@ -81,6 +81,15 @@ public:
 	virtual const void Unload();
 
 		/**
+		* @brief Renders
+		*
+		* Renders the Terrain.
+		*
+		* @return void
+		*/
+	virtual const void Render();
+
+		/**
 		* @brief Gets the file path
 		*
 		* Returns the file path containing the object information.
@@ -103,5 +112,5 @@ protected:
 	/// Stores the file path containing the data
 	std::string m_filePath;
 	/// Model object
-	Model m_model;
+	Model* m_model;
 };

@@ -144,6 +144,8 @@ public:
 		*/
 	void UpdatePhysics();
 
+	void SetGameAssets(std::multimap<OBJ_TYPE, IGameObject*> gameAssets) { m_gameAssets = gameAssets; }
+
 protected:
 	/// Models to load
 	Model m_colourPanel, m_testModel;
@@ -160,4 +162,6 @@ protected:
 
 	/// Vector of all collision objects (static and dynamic)
 	std::vector<btVector3> m_collisionBodyPos;
+
+	std::multimap<OBJ_TYPE, IGameObject*> m_gameAssets;
 };
