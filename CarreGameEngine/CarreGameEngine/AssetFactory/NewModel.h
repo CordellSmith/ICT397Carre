@@ -15,7 +15,8 @@
 class NewModel
 {
 public:
-	NewModel() { }
+	// Must initialise shader
+	NewModel() { m_shader = new Shader(); }
 	~NewModel() { }
 
 	void LoadModel(std::string filePath);
@@ -23,19 +24,43 @@ public:
 	void ProcessNode(aiNode* node, const aiScene* scene);
 	Mesh ProcessMesh(aiMesh *mesh, const aiScene *scene);
 
-	void Draw();
+	void Draw(std::string vertShader, std::string fragShader);
 
 	glm::vec3 GetPosition() { return m_position; }
-	void SetPosition(glm::vec3 position) { m_position = position; }
+
+	// CONTINUE FROM HERE!
+	void SetPosition(glm::vec3 position)
+	{
+		for (int i = 0; i < m_meshBatch.size(); i++)
+		{
+			m_meshBatch[i].SetPosition(position);
+		}
+	}
+
 	glm::vec3 GetRotation() { return m_rotation; }
 	void SetRotation(glm::vec3 rotation) { m_rotation = rotation; }
 	glm::vec3 GetScale() { return m_scale; }
 	void SetScale(glm::vec3 scale) { m_scale = scale; }
 
+		/**
+		* @brief Sets the camera object
+		*
+		* Sets the camera object to the world camera object to retrieve the view and projection
+		* matrices.
+		*
+		* @param Camera* camera
+		* @return void
+		*/
+	void SetCamera(Camera* camera) { m_camera = camera; }
+
 protected:
 	std::vector<Mesh> m_meshBatch;
+
+	Shader* m_shader;
 
 	glm::vec3 m_position;
 	glm::vec3 m_rotation;
 	glm::vec3 m_scale;
+
+	Camera* m_camera;
 };

@@ -87,7 +87,7 @@ public:
 		*
 		* @return void
 		*/
-	virtual const void Render();
+	virtual const void Render(std::string vertShader, std::string fragShader);
 
 		/**
 		* @brief Gets the file path
@@ -107,6 +107,8 @@ public:
 		* @return void
 		*/
 	virtual void SetFilePath(const std::string& filePath);
+
+	virtual void SetObjectPosition(glm::vec3 position) { m_model->SetPosition(position); }
 
 protected:
 	/// Stores the file path containing the data

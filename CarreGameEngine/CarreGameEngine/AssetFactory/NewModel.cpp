@@ -31,6 +31,7 @@ void NewModel::ProcessNode(aiNode* node, const aiScene* scene)
 Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 {
 	std::vector<Vertex3> vertices;
+	int numOfVertexs = 0;
 	std::vector<unsigned int> indices;
 	//std::vector<Texture> textures;
 
@@ -39,12 +40,15 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 	{
 		Vertex3 vertex;
 		glm::vec3 vertexPos;
+		glm::vec4 color;
 		glm::vec3 normalCoord;
 		glm::vec2 texCoord;
 
 		vertexPos.x = mesh->mVertices[i].x;
 		vertexPos.y = mesh->mVertices[i].y;
 		vertexPos.z = mesh->mVertices[i].z;
+
+		color = glm::vec4(0.0, 0.7, 0.5, 1.0);
 
 		normalCoord.x = mesh->mNormals[i].x;
 		normalCoord.y = mesh->mNormals[i].y;
@@ -54,10 +58,12 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		texCoord.y = mesh->mTextureCoords[0][i].y;
 
 		vertex.m_position = vertexPos;
+		vertex.m_colour = color;
 		vertex.m_normal = normalCoord;
 		vertex.m_texCoords = texCoord;
 
 		vertices.push_back(vertex);
+		numOfVertexs++;
 	}
 	// process indices
 	for (unsigned int i = 0; i < mesh->mNumFaces; i++)
@@ -67,11 +73,17 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 			indices.push_back(face.mIndices[j]);
 	}
 
-	return Mesh(vertices, indices);
+	return Mesh(vertices, numOfVertexs, indices);
 }
 
-void NewModel::Draw()
+void NewModel::Draw(std::string vertShader, std::string fragShader)
 {
+	m_shader->Initialize(vertShader, fragShader);
+
 	for (unsigned int i = 0; i < m_meshBatch.size(); i++)
-		m_meshBatch[i].Draw();
+	{
+		// Pass camera object to retrieve projection/view matrices
+		m_meshBatch[i].SetCamera(m_camera);
+		m_meshBatch[i].Draw(m_shader);
+	}
 }

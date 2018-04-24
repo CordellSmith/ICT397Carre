@@ -53,29 +53,29 @@ void GameWorld::Init(std::multimap<OBJ_TYPE, IGameObject*> gameAssets)
 		// Rendering occurs in the update function
 	}
 	*/
+	m_assimpShaderSource = ParseShader("res/shaders/AssimpTest.shader");
+	//PrepareColourPanel();
+	//m_colourPanel.Initialize(panel, 6, m_indices, m_shaderSource2.VertexSource, m_shaderSource2.FragmentSource);
 
-	PrepareColourPanel();
-	m_colourPanel.Initialize(panel, 6, m_indices, m_shaderSource2.VertexSource, m_shaderSource2.FragmentSource);
-
-	PrepareTestModel("res/objects/taxi_model/taxi.obj", m_modelVertexSize);
-	m_testModel.Initialize(model, m_modelVertexSize, m_indices, m_shaderSource1.VertexSource, m_shaderSource1.FragmentSource);
+	//PrepareTestModel("res/objects/taxi_model/taxi.obj", m_modelVertexSize);
+	//m_testModel.Initialize(model, m_modelVertexSize, m_indices, m_shaderSource1.VertexSource, m_shaderSource1.FragmentSource);
 
 	// Initialize all physics objects
-	InitializePhysics();
+	//InitializePhysics();
 }
 
 void GameWorld::Update()
 {
 	// Update all physics body locations
-	UpdatePhysics();
+	//UpdatePhysics();
 
 	// Render a floor on x/z axis (15 x 15)
 	for (int x = 0; x < 15; x++)
 	{
 		for (int z = 0; z < 15; z++)
 		{
-			m_colourPanel.SetPosition(glm::vec3(x * 2, 0, z * 2));
-			m_colourPanel.Render();
+			//m_colourPanel.SetPosition(glm::vec3(x * 2, 0, z * 2));
+			//m_colourPanel.Render();
 		}
 	}
 
@@ -83,7 +83,9 @@ void GameWorld::Update()
 	std::multimap<OBJ_TYPE, IGameObject*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		itr->second->Render();
+		itr->second->SetCamera(m_camera);
+		itr->second->SetObjectPosition(glm::vec3(0.0, 0.0, 2.0));
+		itr->second->Render(m_assimpShaderSource.VertexSource, m_assimpShaderSource.FragmentSource);
 	}
 }
 

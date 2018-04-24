@@ -152,7 +152,7 @@ protected:
 	int m_modelVertexSize;
 
 	/// Shader sources
-	ShaderSource m_shaderSource1, m_shaderSource2;
+	ShaderSource m_assimpShaderSource, m_shaderSource1, m_shaderSource2;
 
 	/// Camera object
 	Camera* m_camera;

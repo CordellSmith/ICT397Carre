@@ -62,7 +62,7 @@ public:
 		*
 		* @return void
 		*/
-	void Initialize(std::string vertFile, std::string fragFile);
+	void Initialize(std::string vertShader, std::string fragShader);
 	
 		/**
 		* @brief Gets the uniform variable
@@ -185,7 +185,7 @@ public:
 		*/
 	void Destroy();
 
-private:
+protected:
 	/// Stores vertex shader information
 	GLuint m_vertexShaderId;
 

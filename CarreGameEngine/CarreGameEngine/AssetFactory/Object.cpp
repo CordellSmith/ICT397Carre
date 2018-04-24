@@ -10,6 +10,7 @@ Object::Object(std::string filePath) : m_filePath(filePath)
 void Object::LoadFromFilePath(std::string filePath)
 {
 	m_model->LoadModel(filePath);
+	m_model->SetCamera(m_camera);
 }
 
 const void Object::Load()
@@ -22,9 +23,9 @@ const void Object::Unload()
 	return void();
 }
 
-const void Object::Render()
+const void Object::Render(std::string vertShader, std::string fragShader)
 {
-	m_model->Draw();
+	m_model->Draw(vertShader, fragShader);
 }
 
 const std::string & Object::GetFilePath() const

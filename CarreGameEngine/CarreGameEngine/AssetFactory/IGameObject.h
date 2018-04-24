@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "..\headers\Camera.h"
+
 	/**
 	* @brief Enumerator for object types
 	*
@@ -45,7 +47,7 @@ public:
 		*
 		* @return null
 		*/
-	IGameObject() { }
+	IGameObject() { m_camera = new Camera(); }
 
 		/**
 		* @brief Default constructor
@@ -91,7 +93,7 @@ public:
 		*
 		* @return void
 		*/
-	virtual const void Render() = 0;
+	virtual const void Render(std::string vertShader, std::string fragShader) = 0;
 
 		/**
 		* @brief Gets file path
@@ -114,6 +116,20 @@ public:
 
 	virtual const OBJ_TYPE GetOBJType() const { return m_objType; }
 
+		/**
+		* @brief Sets the camera object
+		*
+		* Sets the camera object to the world camera object to retrieve the view and projection
+		* matrices.
+		*
+		* @param Camera* camera
+		* @return void
+		*/
+	virtual void SetCamera(Camera* camera) { m_camera = camera; }
+
+	virtual void SetObjectPosition(glm::vec3 position) = 0;
+
 protected:
 	OBJ_TYPE m_objType;
+	Camera* m_camera;
 };
