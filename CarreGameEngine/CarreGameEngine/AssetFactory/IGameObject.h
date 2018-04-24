@@ -102,4 +102,9 @@ public:
 		* @return void
 		*/
 	virtual void SetFilePath(const std::string& filePath) = 0;
+
+	virtual const OBJ_TYPE GetOBJType() const { return m_objType; }
+
+protected:
+	OBJ_TYPE m_objType;
 };

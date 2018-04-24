@@ -2,6 +2,7 @@
 
 Terrain::Terrain(std::string filePath) : m_filePath(filePath)
 {
+	m_objType = OBJ_TERRAIN;
 	LoadFromFilePath(filePath);
 }
 

@@ -12,11 +12,11 @@
 #include "Mesh.h"
 #include "..\headers\Shader.h"
 
-class Model
+class NewModel
 {
 public:
-	Model() { }
-	~Model() { }
+	NewModel() { }
+	~NewModel() { }
 
 	void LoadModel(std::string filePath);
 

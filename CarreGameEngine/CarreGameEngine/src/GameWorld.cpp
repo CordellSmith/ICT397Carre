@@ -35,8 +35,23 @@ Vertex panel[6] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
 Vertex model[49971] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
 std::vector<unsigned int> m_indices;
 
-void GameWorld::Init()
+void GameWorld::Init(std::multimap<OBJ_TYPE, IGameObject*> gameAssets)
 {
+
+	/* TODO
+	Call render on all game assets using multimap iterator
+	Something like
+	std::multimap::iterator itr
+	for (itr = multimap.begin(); itr != multimap.end(); itr++)
+	{
+		// Access the second item in pair which is the asset
+		// Prepare function should create the link between the models VAO, VBO (and EBO if used)
+		itr->second.Prepare();
+		
+		// Rendering occurs in the update function
+	}
+	*/
+
 	PrepareColourPanel();
 	m_colourPanel.Initialize(panel, 6, m_indices, m_shaderSource2.VertexSource, m_shaderSource2.FragmentSource);
 

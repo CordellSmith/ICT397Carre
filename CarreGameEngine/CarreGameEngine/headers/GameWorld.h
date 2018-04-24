@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <map>
 
 #include "Camera.h"
 #include "Model.h"
@@ -11,6 +12,7 @@
 #include <GLM\gtc\matrix_transform.hpp>					
 #include <GLM\gtx\transform2.hpp>
 #include "PhysicsEngine.h"
+#include "..\AssetFactory\IGameObject.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
@@ -62,7 +64,7 @@ public:
 		*
 		* @return void
 		*/
-	void Init();
+	void Init(std::multimap<OBJ_TYPE, IGameObject*> gameAssets);
 
 		/**
 		* @brief Updates the game world

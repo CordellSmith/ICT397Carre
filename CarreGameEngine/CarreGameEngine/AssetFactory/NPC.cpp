@@ -2,6 +2,7 @@
 
 NPC::NPC(std::string filePath) : m_filePath(filePath)
 {
+	m_objType = OBJ_NPC;
 	LoadFromFilePath(filePath);
 }
 

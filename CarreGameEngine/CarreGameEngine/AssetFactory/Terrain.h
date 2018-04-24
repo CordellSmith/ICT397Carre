@@ -98,10 +98,10 @@ public:
 		* @return void
 		*/
 	virtual void SetFilePath(const std::string & filePath);
-
+	
 protected:
 	/// Stores the file path containing the data
 	std::string m_filePath;
 	/// Model object
-	Model* m_model;
+	Model m_model;
 };

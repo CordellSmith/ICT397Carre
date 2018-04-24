@@ -2,12 +2,13 @@
 
 Object::Object(std::string filePath) : m_filePath(filePath)
 {
+	m_objType = OBJ_OBJECT;
 	LoadFromFilePath(filePath);
 }
 
 void Object::LoadFromFilePath(std::string filePath)
 {
-	//m_model->LoadModel(filePath);
+	m_model.LoadModel(filePath);
 }
 
 const void Object::Load()

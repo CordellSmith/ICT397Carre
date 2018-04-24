@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IGameObject.h"
-#include "..\headers\Model.h"
+#include "NewModel.h"
 
 	/*
 	* @class Object
@@ -103,5 +103,5 @@ protected:
 	/// Stores the file path containing the data
 	std::string m_filePath;
 	/// Model object
-	Model* m_model;
+	NewModel m_model;
 };

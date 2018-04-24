@@ -53,7 +53,9 @@ public:
 		*/
 	IGameObject* CreateAsset(OBJ_TYPE type, std::string filePath);
 
+	const void AddAsset(IGameObject* assetToAdd);
+
 protected:
 	/// Data structure to hold assets
-	std::map<OBJ_TYPE, IGameObject*> m_assets;
+	std::multimap<OBJ_TYPE, IGameObject*> m_assets;
 };

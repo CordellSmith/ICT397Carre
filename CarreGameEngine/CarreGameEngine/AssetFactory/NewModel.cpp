@@ -1,6 +1,6 @@
-#include "Model.h"
+#include "NewModel.h"
 
-void Model::LoadModel(std::string filePath)
+void NewModel::LoadModel(std::string filePath)
 {
 	Assimp::Importer import;
 	const aiScene *scene = import.ReadFile(filePath, aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -13,7 +13,7 @@ void Model::LoadModel(std::string filePath)
 		ProcessNode(scene->mRootNode, scene);
 }
 
-void Model::ProcessNode(aiNode* node, const aiScene* scene)
+void NewModel::ProcessNode(aiNode* node, const aiScene* scene)
 {
 	// process all the node's meshes (if any)
 	for (unsigned int i = 0; i < node->mNumMeshes; i++)
@@ -28,7 +28,7 @@ void Model::ProcessNode(aiNode* node, const aiScene* scene)
 	}
 }
 
-Mesh Model::ProcessMesh(aiMesh *mesh, const aiScene *scene)
+Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 {
 	std::vector<Vertex3> vertices;
 	std::vector<unsigned int> indices;
@@ -70,7 +70,7 @@ Mesh Model::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 	return Mesh(vertices, indices);
 }
 
-void Model::Draw()
+void NewModel::Draw()
 {
 	for (unsigned int i = 0; i < m_meshBatch.size(); i++)
 		m_meshBatch[i].Draw();
