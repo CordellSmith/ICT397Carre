@@ -1,0 +1,80 @@
+\hypertarget{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t}{
+\section{GIM\_\-BOX\_\-TREE\_\-TEMPLATE\_\-SET$<$ \_\-GIM\_\-PRIMITIVE\_\-MANAGER\_\-PROTOTYPE, \_\-GIM\_\-BOX\_\-TREE\_\-PROTOTYPE $>$ Class Template Reference}
+\label{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t}\index{GIM\_\-BOX\_\-TREE\_\-TEMPLATE\_\-SET@{GIM\_\-BOX\_\-TREE\_\-TEMPLATE\_\-SET}}
+}
+Generic Box Tree Template.  
+
+
+{\tt \#include $<$gim\_\-box\_\-set.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf }\par
+\begin{CompactItemize}
+\item 
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_0f5f2b683e561a4e05d912cb4973dac4}{update} ()
+\begin{CompactList}\small\item\em this attemps to refit the box set. \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_ada2fc55c2e11a4aa5c3ae0c852f4950}{
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_ada2fc55c2e11a4aa5c3ae0c852f4950}{buildSet} ()}
+\label{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_ada2fc55c2e11a4aa5c3ae0c852f4950}
+
+\begin{CompactList}\small\item\em this rebuild the entire set \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_5863549e9a3390f9ef1c0883734481ee}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_5863549e9a3390f9ef1c0883734481ee}{boxQuery} (const \hyperlink{class_g_i_m___a_a_b_b}{GIM\_\-AABB} \&box, \hyperlink{classgim__array}{gim\_\-array}$<$ GUINT $>$ \&collided\_\-results) const }
+\label{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_5863549e9a3390f9ef1c0883734481ee}
+
+\begin{CompactList}\small\item\em returns the indices of the primitives in the m\_\-primitive\_\-manager \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_21ac3e2b0030e1cfc1a6ddb8376eff2d}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_21ac3e2b0030e1cfc1a6ddb8376eff2d}{boxQueryTrans} (const \hyperlink{class_g_i_m___a_a_b_b}{GIM\_\-AABB} \&box, const btTransform \&transform, \hyperlink{classgim__array}{gim\_\-array}$<$ GUINT $>$ \&collided\_\-results) const }
+\label{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_21ac3e2b0030e1cfc1a6ddb8376eff2d}
+
+\begin{CompactList}\small\item\em returns the indices of the primitives in the m\_\-primitive\_\-manager \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_41bdfb53e019a173fbfb157029db11b4}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_41bdfb53e019a173fbfb157029db11b4}{rayQuery} (const btVector3 \&ray\_\-dir, const btVector3 \&ray\_\-origin, \hyperlink{classgim__array}{gim\_\-array}$<$ GUINT $>$ \&collided\_\-results) const }
+\label{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_41bdfb53e019a173fbfb157029db11b4}
+
+\begin{CompactList}\small\item\em returns the indices of the primitives in the m\_\-primitive\_\-manager \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_4582ba1e2cee36d653aae235de9e2562}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_4582ba1e2cee36d653aae235de9e2562}{hasHierarchy} () const }
+\label{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_4582ba1e2cee36d653aae235de9e2562}
+
+\begin{CompactList}\small\item\em tells if this set has hierarcht \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_db73fde6e00a979c38b2240b7b706a8d}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_db73fde6e00a979c38b2240b7b706a8d}{isTrimesh} () const }
+\label{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_db73fde6e00a979c38b2240b7b706a8d}
+
+\begin{CompactList}\small\item\em tells if this set is a trimesh \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_d46fb05b667c4f79c9d599dfb04d5566}{
+SIMD\_\-FORCE\_\-INLINE GUINT \hyperlink{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_d46fb05b667c4f79c9d599dfb04d5566}{getNodeCount} () const }
+\label{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_d46fb05b667c4f79c9d599dfb04d5566}
+
+\begin{CompactList}\small\item\em node count \item\end{CompactList}\item 
+\hypertarget{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_509b1d5bf9af2486aae90e8d56993092}{
+SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_509b1d5bf9af2486aae90e8d56993092}{isLeafNode} (GUINT nodeindex) const }
+\label{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_509b1d5bf9af2486aae90e8d56993092}
+
+\begin{CompactList}\small\item\em tells if the node is a leaf \item\end{CompactList}\end{CompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename \_\-GIM\_\-PRIMITIVE\_\-MANAGER\_\-PROTOTYPE, typename \_\-GIM\_\-BOX\_\-TREE\_\-PROTOTYPE$>$ class GIM\_\-BOX\_\-TREE\_\-TEMPLATE\_\-SET$<$ \_\-GIM\_\-PRIMITIVE\_\-MANAGER\_\-PROTOTYPE, \_\-GIM\_\-BOX\_\-TREE\_\-PROTOTYPE $>$}
+
+Generic Box Tree Template. 
+
+This class offers an structure for managing a box tree of primitives. Requires a Primitive prototype (like \hyperlink{class_g_i_m___p_r_i_m_i_t_i_v_e___m_a_n_a_g_e_r___p_r_o_t_o_t_y_p_e}{GIM\_\-PRIMITIVE\_\-MANAGER\_\-PROTOTYPE} ) and a Box tree structure ( like \hyperlink{class_g_i_m___b_o_x___t_r_e_e}{GIM\_\-BOX\_\-TREE}). 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_0f5f2b683e561a4e05d912cb4973dac4}{
+\index{GIM\_\-BOX\_\-TREE\_\-TEMPLATE\_\-SET@{GIM\_\-BOX\_\-TREE\_\-TEMPLATE\_\-SET}!update@{update}}
+\index{update@{update}!GIM_BOX_TREE_TEMPLATE_SET@{GIM\_\-BOX\_\-TREE\_\-TEMPLATE\_\-SET}}
+\subsubsection[update]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename \_\-GIM\_\-PRIMITIVE\_\-MANAGER\_\-PROTOTYPE, typename \_\-GIM\_\-BOX\_\-TREE\_\-PROTOTYPE$>$ SIMD\_\-FORCE\_\-INLINE void {\bf GIM\_\-BOX\_\-TREE\_\-TEMPLATE\_\-SET}$<$ \_\-GIM\_\-PRIMITIVE\_\-MANAGER\_\-PROTOTYPE, \_\-GIM\_\-BOX\_\-TREE\_\-PROTOTYPE $>$::update ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t_0f5f2b683e561a4e05d912cb4973dac4}
+
+
+this attemps to refit the box set. 
+
+node manager prototype functions 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__box__set_8h}{gim\_\-box\_\-set.h}\end{CompactItemize}

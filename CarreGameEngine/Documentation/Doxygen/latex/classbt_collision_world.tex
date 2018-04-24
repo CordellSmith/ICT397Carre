@@ -1,0 +1,170 @@
+\hypertarget{classbt_collision_world}{
+\section{btCollisionWorld Class Reference}
+\label{classbt_collision_world}\index{btCollisionWorld@{btCollisionWorld}}
+}
+CollisionWorld is interface and container for the collision detection.  
+
+
+{\tt \#include $<$btCollisionWorld.h$>$}
+
+Inheritance diagram for btCollisionWorld:Collaboration diagram for btCollisionWorld:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_collision_world_6d2c3ec40c17296308c2b229ae3962ea}{
+\hyperlink{classbt_collision_world_6d2c3ec40c17296308c2b229ae3962ea}{btCollisionWorld} (\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher, \hyperlink{classbt_broadphase_interface}{btBroadphaseInterface} $\ast$broadphasePairCache, \hyperlink{classbt_collision_configuration}{btCollisionConfiguration} $\ast$collisionConfiguration)}
+\label{classbt_collision_world_6d2c3ec40c17296308c2b229ae3962ea}
+
+\begin{CompactList}\small\item\em for debug drawing \item\end{CompactList}\item 
+virtual void \hyperlink{classbt_collision_world_fb32fb7ecb40aa6247fd3df18ba81098}{computeOverlappingPairs} ()
+\item 
+virtual void \hyperlink{classbt_collision_world_c1ca6489c220005798069152c3df0d08}{debugDrawObject} (const btTransform \&worldTransform, const btCollisionShape $\ast$shape, const btVector3 \&color)
+\item 
+virtual void \hyperlink{classbt_collision_world_aac6675c8134f6695fecb431c72b0a6a}{rayTest} (const btVector3 \&rayFromWorld, const btVector3 \&rayToWorld, \hyperlink{structbt_collision_world_1_1_ray_result_callback}{RayResultCallback} \&resultCallback) const 
+\item 
+void \hyperlink{classbt_collision_world_eeee096b94a5eb31e8c88a29b6c69d37}{convexSweepTest} (const btConvexShape $\ast$castShape, const btTransform \&from, const btTransform \&to, \hyperlink{structbt_collision_world_1_1_convex_result_callback}{ConvexResultCallback} \&resultCallback, btScalar allowedCcdPenetration=btScalar(0.)) const 
+\item 
+void \hyperlink{classbt_collision_world_e1d167b53de82d4f97a47118f8480999}{contactTest} (btCollisionObject $\ast$colObj, \hyperlink{structbt_collision_world_1_1_contact_result_callback}{ContactResultCallback} \&resultCallback)
+\item 
+void \hyperlink{classbt_collision_world_abbec542dcd348041db6d07b36a640c8}{contactPairTest} (btCollisionObject $\ast$colObjA, btCollisionObject $\ast$colObjB, \hyperlink{structbt_collision_world_1_1_contact_result_callback}{ContactResultCallback} \&resultCallback)
+\item 
+\hypertarget{classbt_collision_world_152b79ca83fdb13ed7f1cc86ac214f66}{
+virtual void \hyperlink{classbt_collision_world_152b79ca83fdb13ed7f1cc86ac214f66}{serialize} (btSerializer $\ast$serializer)}
+\label{classbt_collision_world_152b79ca83fdb13ed7f1cc86ac214f66}
+
+\begin{CompactList}\small\item\em Preliminary serialization test for Bullet 2.76. Loading those files requires a separate parser (Bullet/Demos/SerializeDemo). \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static void \hyperlink{classbt_collision_world_ca2a9413508b4a2449fe83ff93ea564e}{rayTestSingle} (const btTransform \&rayFromTrans, const btTransform \&rayToTrans, btCollisionObject $\ast$collisionObject, const btCollisionShape $\ast$collisionShape, const btTransform \&colObjWorldTransform, \hyperlink{structbt_collision_world_1_1_ray_result_callback}{RayResultCallback} \&resultCallback)
+\item 
+static void \hyperlink{classbt_collision_world_84bbeea09de9dc5c68e49826e58f7114}{rayTestSingleInternal} (const btTransform \&rayFromTrans, const btTransform \&rayToTrans, const btCollisionObjectWrapper $\ast$collisionObjectWrap, \hyperlink{structbt_collision_world_1_1_ray_result_callback}{RayResultCallback} \&resultCallback)
+\item 
+\hypertarget{classbt_collision_world_a63de55ff9451a80c8c825cafd64d9ba}{
+static void \hyperlink{classbt_collision_world_a63de55ff9451a80c8c825cafd64d9ba}{objectQuerySingle} (const btConvexShape $\ast$castShape, const btTransform \&rayFromTrans, const btTransform \&rayToTrans, btCollisionObject $\ast$collisionObject, const btCollisionShape $\ast$collisionShape, const btTransform \&colObjWorldTransform, \hyperlink{structbt_collision_world_1_1_convex_result_callback}{ConvexResultCallback} \&resultCallback, btScalar allowedPenetration)}
+\label{classbt_collision_world_a63de55ff9451a80c8c825cafd64d9ba}
+
+\begin{CompactList}\small\item\em objectQuerySingle performs a collision detection query and calls the resultCallback. It is used internally by rayTest. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classbt_collision_world_eed5861d66035fa72f40e27b04bdc056}{serializeCollisionObjects} (btSerializer $\ast$serializer)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{classbt_collision_world_91b110fc2501b965cdcaa2a6e1d89999}{m\_\-forceUpdateAllAabbs}
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structbt_collision_world_1_1_contact_result_callback}{ContactResultCallback}
+\begin{CompactList}\small\item\em \hyperlink{structbt_collision_world_1_1_contact_result_callback}{ContactResultCallback} is used to report contact points. \item\end{CompactList}\item 
+struct \hyperlink{structbt_collision_world_1_1_convex_result_callback}{ConvexResultCallback}
+\begin{CompactList}\small\item\em \hyperlink{structbt_collision_world_1_1_ray_result_callback}{RayResultCallback} is used to report new raycast results. \item\end{CompactList}\item 
+struct \hyperlink{structbt_collision_world_1_1_local_shape_info}{LocalShapeInfo}
+\item 
+struct \hyperlink{structbt_collision_world_1_1_ray_result_callback}{RayResultCallback}
+\begin{CompactList}\small\item\em \hyperlink{structbt_collision_world_1_1_ray_result_callback}{RayResultCallback} is used to report new raycast results. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+CollisionWorld is interface and container for the collision detection. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_collision_world_eed5861d66035fa72f40e27b04bdc056}{
+\index{btCollisionWorld@{btCollisionWorld}!serializeCollisionObjects@{serializeCollisionObjects}}
+\index{serializeCollisionObjects@{serializeCollisionObjects}!btCollisionWorld@{btCollisionWorld}}
+\subsubsection[serializeCollisionObjects]{\setlength{\rightskip}{0pt plus 5cm}void btCollisionWorld::serializeCollisionObjects (btSerializer $\ast$ {\em serializer})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classbt_collision_world_eed5861d66035fa72f40e27b04bdc056}
+
+
+
+
+keep track of shapes already serialized \hypertarget{classbt_collision_world_fb32fb7ecb40aa6247fd3df18ba81098}{
+\index{btCollisionWorld@{btCollisionWorld}!computeOverlappingPairs@{computeOverlappingPairs}}
+\index{computeOverlappingPairs@{computeOverlappingPairs}!btCollisionWorld@{btCollisionWorld}}
+\subsubsection[computeOverlappingPairs]{\setlength{\rightskip}{0pt plus 5cm}void btCollisionWorld::computeOverlappingPairs ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_collision_world_fb32fb7ecb40aa6247fd3df18ba81098}
+
+
+the computeOverlappingPairs is usually already called by performDiscreteCollisionDetection (or stepSimulation) it can be useful to use if you perform ray tests without collision detection/simulation \hypertarget{classbt_collision_world_c1ca6489c220005798069152c3df0d08}{
+\index{btCollisionWorld@{btCollisionWorld}!debugDrawObject@{debugDrawObject}}
+\index{debugDrawObject@{debugDrawObject}!btCollisionWorld@{btCollisionWorld}}
+\subsubsection[debugDrawObject]{\setlength{\rightskip}{0pt plus 5cm}void btCollisionWorld::debugDrawObject (const btTransform \& {\em worldTransform}, \/  const btCollisionShape $\ast$ {\em shape}, \/  const btVector3 \& {\em color})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_collision_world_c1ca6489c220005798069152c3df0d08}
+
+
+
+
+for polyhedral shapes
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000011}{Todo}]pass camera, for some culling? no -$>$ we are not a graphics lib \end{Desc}
+\hypertarget{classbt_collision_world_aac6675c8134f6695fecb431c72b0a6a}{
+\index{btCollisionWorld@{btCollisionWorld}!rayTest@{rayTest}}
+\index{rayTest@{rayTest}!btCollisionWorld@{btCollisionWorld}}
+\subsubsection[rayTest]{\setlength{\rightskip}{0pt plus 5cm}void btCollisionWorld::rayTest (const btVector3 \& {\em rayFromWorld}, \/  const btVector3 \& {\em rayToWorld}, \/  {\bf RayResultCallback} \& {\em resultCallback}) const\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_collision_world_aac6675c8134f6695fecb431c72b0a6a}
+
+
+rayTest performs a raycast on all objects in the \hyperlink{classbt_collision_world}{btCollisionWorld}, and calls the resultCallback This allows for several queries: first hit, all hits, any hit, dependent on the value returned by the callback. 
+
+use the broadphase to accelerate the search for objects, based on their aabb and for each object with ray-aabb overlap, perform an exact ray test \hypertarget{classbt_collision_world_eeee096b94a5eb31e8c88a29b6c69d37}{
+\index{btCollisionWorld@{btCollisionWorld}!convexSweepTest@{convexSweepTest}}
+\index{convexSweepTest@{convexSweepTest}!btCollisionWorld@{btCollisionWorld}}
+\subsubsection[convexSweepTest]{\setlength{\rightskip}{0pt plus 5cm}void btCollisionWorld::convexSweepTest (const btConvexShape $\ast$ {\em castShape}, \/  const btTransform \& {\em from}, \/  const btTransform \& {\em to}, \/  {\bf ConvexResultCallback} \& {\em resultCallback}, \/  btScalar {\em allowedCcdPenetration} = {\tt btScalar(0.)}) const}}
+\label{classbt_collision_world_eeee096b94a5eb31e8c88a29b6c69d37}
+
+
+convexTest performs a swept convex cast on all objects in the \hyperlink{classbt_collision_world}{btCollisionWorld}, and calls the resultCallback This allows for several queries: first hit, all hits, any hit, dependent on the value return by the callback. 
+
+use the broadphase to accelerate the search for objects, based on their aabb and for each object with ray-aabb overlap, perform an exact ray test unfortunately the implementation for rayTest and convexSweepTest duplicated, albeit practically identical \hypertarget{classbt_collision_world_e1d167b53de82d4f97a47118f8480999}{
+\index{btCollisionWorld@{btCollisionWorld}!contactTest@{contactTest}}
+\index{contactTest@{contactTest}!btCollisionWorld@{btCollisionWorld}}
+\subsubsection[contactTest]{\setlength{\rightskip}{0pt plus 5cm}void btCollisionWorld::contactTest (btCollisionObject $\ast$ {\em colObj}, \/  {\bf ContactResultCallback} \& {\em resultCallback})}}
+\label{classbt_collision_world_e1d167b53de82d4f97a47118f8480999}
+
+
+contactTest performs a discrete collision test between colObj against all objects in the \hyperlink{classbt_collision_world}{btCollisionWorld}, and calls the resultCallback. it reports one or more contact points for every overlapping object (including the one with deepest penetration)
+
+contactTest performs a discrete collision test against all objects in the \hyperlink{classbt_collision_world}{btCollisionWorld}, and calls the resultCallback. it reports one or more contact points for every overlapping object (including the one with deepest penetration) \hypertarget{classbt_collision_world_abbec542dcd348041db6d07b36a640c8}{
+\index{btCollisionWorld@{btCollisionWorld}!contactPairTest@{contactPairTest}}
+\index{contactPairTest@{contactPairTest}!btCollisionWorld@{btCollisionWorld}}
+\subsubsection[contactPairTest]{\setlength{\rightskip}{0pt plus 5cm}void btCollisionWorld::contactPairTest (btCollisionObject $\ast$ {\em colObjA}, \/  btCollisionObject $\ast$ {\em colObjB}, \/  {\bf ContactResultCallback} \& {\em resultCallback})}}
+\label{classbt_collision_world_abbec542dcd348041db6d07b36a640c8}
+
+
+contactTest performs a discrete collision test between two collision objects and calls the resultCallback if overlap if detected. it reports one or more contact points (including the one with deepest penetration)
+
+contactTest performs a discrete collision test between two collision objects and calls the resultCallback if overlap if detected. it reports one or more contact points (including the one with deepest penetration) \hypertarget{classbt_collision_world_ca2a9413508b4a2449fe83ff93ea564e}{
+\index{btCollisionWorld@{btCollisionWorld}!rayTestSingle@{rayTestSingle}}
+\index{rayTestSingle@{rayTestSingle}!btCollisionWorld@{btCollisionWorld}}
+\subsubsection[rayTestSingle]{\setlength{\rightskip}{0pt plus 5cm}void btCollisionWorld::rayTestSingle (const btTransform \& {\em rayFromTrans}, \/  const btTransform \& {\em rayToTrans}, \/  btCollisionObject $\ast$ {\em collisionObject}, \/  const btCollisionShape $\ast$ {\em collisionShape}, \/  const btTransform \& {\em colObjWorldTransform}, \/  {\bf RayResultCallback} \& {\em resultCallback})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classbt_collision_world_ca2a9413508b4a2449fe83ff93ea564e}
+
+
+rayTestSingle performs a raycast call and calls the resultCallback. It is used internally by rayTest. In a future implementation, we consider moving the ray test as a virtual method in btCollisionShape. This allows more customization. \hypertarget{classbt_collision_world_84bbeea09de9dc5c68e49826e58f7114}{
+\index{btCollisionWorld@{btCollisionWorld}!rayTestSingleInternal@{rayTestSingleInternal}}
+\index{rayTestSingleInternal@{rayTestSingleInternal}!btCollisionWorld@{btCollisionWorld}}
+\subsubsection[rayTestSingleInternal]{\setlength{\rightskip}{0pt plus 5cm}void btCollisionWorld::rayTestSingleInternal (const btTransform \& {\em rayFromTrans}, \/  const btTransform \& {\em rayToTrans}, \/  const btCollisionObjectWrapper $\ast$ {\em collisionObjectWrap}, \/  {\bf RayResultCallback} \& {\em resultCallback})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classbt_collision_world_84bbeea09de9dc5c68e49826e58f7114}
+
+
+
+
+optimized version for btBvhTriangleMeshShape 
+
+\subsection{Member Data Documentation}
+\hypertarget{classbt_collision_world_91b110fc2501b965cdcaa2a6e1d89999}{
+\index{btCollisionWorld@{btCollisionWorld}!m\_\-forceUpdateAllAabbs@{m\_\-forceUpdateAllAabbs}}
+\index{m\_\-forceUpdateAllAabbs@{m\_\-forceUpdateAllAabbs}!btCollisionWorld@{btCollisionWorld}}
+\subsubsection[m\_\-forceUpdateAllAabbs]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf btCollisionWorld::m\_\-forceUpdateAllAabbs}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classbt_collision_world_91b110fc2501b965cdcaa2a6e1d89999}
+
+
+m\_\-forceUpdateAllAabbs can be set to false as an optimization to only update active object AABBs it is true by default, because it is error-prone (setting the position of static objects wouldn't update their AABB) 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCollisionWorld.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCollisionWorld.cpp\end{CompactItemize}

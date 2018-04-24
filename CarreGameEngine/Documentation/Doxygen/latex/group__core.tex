@@ -1,0 +1,50 @@
+\hypertarget{group__core}{
+\section{GLM Core}
+\label{group__core}\index{GLM Core@{GLM Core}}
+}
+
+
+Collaboration diagram for GLM Core:The core of GLM, which implements exactly and only the GLSL specification to the degree possible.  
+\subsection*{Modules}
+\begin{CompactItemize}
+\item 
+\hyperlink{group__core__func__common}{Common functions}
+\item 
+\hyperlink{group__core__func__exponential}{Exponential functions}
+\item 
+\hyperlink{group__core__func__geometric}{Geometric functions}
+\item 
+\hyperlink{group__core__func__integer}{Integer functions}
+\item 
+\hyperlink{group__core__func__matrix}{Matrix functions}
+\item 
+\hyperlink{group__core__func__noise}{Noise functions}
+\item 
+\hyperlink{group__core__func__packing}{Floating-Point Pack and Unpack Functions}
+\item 
+\hyperlink{group__core__func__trigonometric}{Angle and Trigonometry Functions}
+\item 
+\hyperlink{group__core__func__vector__relational}{Vector Relational Functions}
+\item 
+\hyperlink{group__core__types}{Types}
+\begin{CompactList}\small\item\em The standard types defined by the specification. \item\end{CompactList}
+
+\item 
+\hyperlink{group__core__precision}{Precision types}
+\begin{CompactList}\small\item\em Non-GLSL types that are used to define precision-based types. \item\end{CompactList}
+
+\item 
+\hyperlink{group__core__template}{Template types}
+\begin{CompactList}\small\item\em The generic template types used as the basis for the core types. \item\end{CompactList}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The core of GLM, which implements exactly and only the GLSL specification to the degree possible. 
+
+The GLM core consists of \hyperlink{group__core__types}{C++ types that mirror GLSL types} and C++ functions that mirror the GLSL functions. It also includes \hyperlink{group__core__precision}{a set of precision-based types} that can be used in the appropriate functions. The C++ types are all based on a basic set of \hyperlink{group__core__template}{template types}.
+
+The best documentation for GLM Core is the current GLSL specification, \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.clean.pdf}{\tt version 4.2 (pdf file)}. There are a few differences between GLM core and GLSL.
+
+GLM core functionnalities require $<$glm/glm.hpp$>$ to be included to be used. 

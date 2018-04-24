@@ -1,0 +1,71 @@
+\hypertarget{classbt_polar_decomposition}{
+\section{btPolarDecomposition Class Reference}
+\label{classbt_polar_decomposition}\index{btPolarDecomposition@{btPolarDecomposition}}
+}
+{\tt \#include $<$btPolarDecomposition.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classbt_polar_decomposition_10bfe3fb4d9163c9dce603bf77c0e1a0}{btPolarDecomposition} (btScalar tolerance=btScalar(0.0001), unsigned int maxIterations=16)
+\item 
+unsigned int \hyperlink{classbt_polar_decomposition_6ab0c88b30522ab42b6202a2f7a17eab}{decompose} (const btMatrix3x3 \&a, btMatrix3x3 \&u, btMatrix3x3 \&h) const 
+\item 
+unsigned int \hyperlink{classbt_polar_decomposition_c999bd3afdcc94a43ddbea028b5d4867}{maxIterations} () const 
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This class is used to compute the polar decomposition of a matrix. In general, the polar decomposition factorizes a matrix, A, into two parts: a unitary matrix (U) and a positive, semi-definite Hermitian matrix (H). However, in this particular implementation the original matrix, A, is required to be a square 3x3 matrix with real elements. This means that U will be an orthogonal matrix and H with be a positive-definite, symmetric matrix. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classbt_polar_decomposition_10bfe3fb4d9163c9dce603bf77c0e1a0}{
+\index{btPolarDecomposition@{btPolarDecomposition}!btPolarDecomposition@{btPolarDecomposition}}
+\index{btPolarDecomposition@{btPolarDecomposition}!btPolarDecomposition@{btPolarDecomposition}}
+\subsubsection[btPolarDecomposition]{\setlength{\rightskip}{0pt plus 5cm}btPolarDecomposition::btPolarDecomposition (btScalar {\em tolerance} = {\tt btScalar(0.0001)}, \/  unsigned int {\em maxIterations} = {\tt 16})}}
+\label{classbt_polar_decomposition_10bfe3fb4d9163c9dce603bf77c0e1a0}
+
+
+Creates an instance with optional parameters.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em tolerance}]- the tolerance used to determine convergence of the algorithm \item[{\em maxIterations}]- the maximum number of iterations used to achieve convergence \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_polar_decomposition_6ab0c88b30522ab42b6202a2f7a17eab}{
+\index{btPolarDecomposition@{btPolarDecomposition}!decompose@{decompose}}
+\index{decompose@{decompose}!btPolarDecomposition@{btPolarDecomposition}}
+\subsubsection[decompose]{\setlength{\rightskip}{0pt plus 5cm}unsigned int btPolarDecomposition::decompose (const btMatrix3x3 \& {\em a}, \/  btMatrix3x3 \& {\em u}, \/  btMatrix3x3 \& {\em h}) const}}
+\label{classbt_polar_decomposition_6ab0c88b30522ab42b6202a2f7a17eab}
+
+
+Decomposes a matrix into orthogonal and symmetric, positive-definite parts. If the number of iterations returned by this function is equal to the maximum number of iterations, the algorithm has failed to converge.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a}]- the original matrix \item[{\em u}]- the resulting orthogonal matrix \item[{\em h}]- the resulting symmetric matrix\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the number of iterations performed by the algorithm. \end{Desc}
+\hypertarget{classbt_polar_decomposition_c999bd3afdcc94a43ddbea028b5d4867}{
+\index{btPolarDecomposition@{btPolarDecomposition}!maxIterations@{maxIterations}}
+\index{maxIterations@{maxIterations}!btPolarDecomposition@{btPolarDecomposition}}
+\subsubsection[maxIterations]{\setlength{\rightskip}{0pt plus 5cm}unsigned int btPolarDecomposition::maxIterations () const}}
+\label{classbt_polar_decomposition_c999bd3afdcc94a43ddbea028b5d4867}
+
+
+Returns the maximum number of iterations that this algorithm will perform to achieve convergence.
+
+\begin{Desc}
+\item[Returns:]maximum number of iterations \end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btPolarDecomposition.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btPolarDecomposition.cpp\end{CompactItemize}

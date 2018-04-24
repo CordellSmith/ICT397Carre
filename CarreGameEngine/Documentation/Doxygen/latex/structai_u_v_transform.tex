@@ -1,0 +1,60 @@
+\hypertarget{structai_u_v_transform}{
+\section{aiUVTransform Struct Reference}
+\label{structai_u_v_transform}\index{aiUVTransform@{aiUVTransform}}
+}
+Defines how an UV channel is transformed.  
+
+
+{\tt \#include $<$material.h$>$}
+
+Collaboration diagram for aiUVTransform:\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+C\_\-STRUCT \hyperlink{structai_vector2_d}{aiVector2D} \hyperlink{structai_u_v_transform_8c7f35959aa342bf0cef670246fbb813}{mTranslation}
+\item 
+C\_\-STRUCT \hyperlink{structai_vector2_d}{aiVector2D} \hyperlink{structai_u_v_transform_89429a027cbf914e7212e48149a957c8}{mScaling}
+\item 
+ai\_\-real \hyperlink{structai_u_v_transform_157005aadfdd145a56c7831c7b24f1ea}{mRotation}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Defines how an UV channel is transformed. 
+
+This is just a helper structure for the AI\_\-MATKEY\_\-UVTRANSFORM key. See its documentation for more details.
+
+Typically you'll want to build a matrix of this information. However, we keep separate scaling/translation/rotation values to make it easier to process and optimize UV transformations internally. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_u_v_transform_8c7f35959aa342bf0cef670246fbb813}{
+\index{aiUVTransform@{aiUVTransform}!mTranslation@{mTranslation}}
+\index{mTranslation@{mTranslation}!aiUVTransform@{aiUVTransform}}
+\subsubsection[mTranslation]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiVector2D} {\bf aiUVTransform::mTranslation}}}
+\label{structai_u_v_transform_8c7f35959aa342bf0cef670246fbb813}
+
+
+Translation on the u and v axes.
+
+The default value is (0$|$0). \hypertarget{structai_u_v_transform_89429a027cbf914e7212e48149a957c8}{
+\index{aiUVTransform@{aiUVTransform}!mScaling@{mScaling}}
+\index{mScaling@{mScaling}!aiUVTransform@{aiUVTransform}}
+\subsubsection[mScaling]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiVector2D} {\bf aiUVTransform::mScaling}}}
+\label{structai_u_v_transform_89429a027cbf914e7212e48149a957c8}
+
+
+Scaling on the u and v axes.
+
+The default value is (1$|$1). \hypertarget{structai_u_v_transform_157005aadfdd145a56c7831c7b24f1ea}{
+\index{aiUVTransform@{aiUVTransform}!mRotation@{mRotation}}
+\index{mRotation@{mRotation}!aiUVTransform@{aiUVTransform}}
+\subsubsection[mRotation]{\setlength{\rightskip}{0pt plus 5cm}ai\_\-real {\bf aiUVTransform::mRotation}}}
+\label{structai_u_v_transform_157005aadfdd145a56c7831c7b24f1ea}
+
+
+Rotation - in counter-clockwise direction.
+
+The rotation angle is specified in radians. The rotation center is 0.5f$|$0.5f. The default value 0.f. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{material_8h}{material.h}\end{CompactItemize}

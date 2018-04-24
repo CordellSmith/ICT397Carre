@@ -1,0 +1,4 @@
+<area shape="rect" href="$classbt_activating_collision_algorithm.html" title="This class is not enabled yet (work&#45;in&#45;progress) to more aggressively activate objects..." alt="" coords="148,173,340,200">
+<area shape="rect" href="$classbt_collision_algorithm.html" title="btCollisionAlgorithm" alt="" coords="5,96,141,123">
+<area shape="rect" href="$classbt_dispatcher.html" title="btDispatcher" alt="" coords="27,5,120,32">
+<area shape="rect" href="$classbt_manifold_result.html" title="btManifoldResult is a helper class to manage contact results." alt="" coords="364,173,481,200">

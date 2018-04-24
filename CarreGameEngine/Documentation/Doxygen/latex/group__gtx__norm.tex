@@ -1,0 +1,109 @@
+\hypertarget{group__gtx__norm}{
+\section{GLM\_\-GTX\_\-norm}
+\label{group__gtx__norm}\index{GLM\_\-GTX\_\-norm@{GLM\_\-GTX\_\-norm}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-norm:Various ways to compute vector norms.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtx__norm_g6f970aba05e1299ed89d2ec3a410b7a9}{glm::length2} (T const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType::value\_\-type \hyperlink{group__gtx__norm_g2dfcdff0cc9119aa37c501d2c7a45020}{glm::length2} (genType const \&x)
+\item 
+{\footnotesize template$<$typename T$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtx__norm_gaf6befa643aa9616f3c19e5548b11b54}{glm::distance2} (T const \&p0, T const \&p1)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType::value\_\-type \hyperlink{group__gtx__norm_g205e08f24b9e35f9f892b563f2b8dd94}{glm::distance2} (genType const \&p0, genType const \&p1)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtx__norm_gf20fc187dfe66a474ecdba26e32ce4c6}{glm::l1Norm} (detail::tvec3$<$ T, P $>$ const \&x, detail::tvec3$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtx__norm_g5a6d616a6e0340b9329d5018f04c1aca}{glm::l1Norm} (detail::tvec3$<$ T, P $>$ const \&v)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtx__norm_g2c87568b2888f01baf0133320c09b8ca}{glm::l2Norm} (detail::tvec3$<$ T, P $>$ const \&x, detail::tvec3$<$ T, P $>$ const \&y)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtx__norm_g17bb46915f9694cbae612a7bae4c5116}{glm::l2Norm} (detail::tvec3$<$ T, P $>$ const \&x)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtx__norm_g2f42190c8743abab279d0a8f5a321692}{glm::lxNorm} (detail::tvec3$<$ T, P $>$ const \&x, detail::tvec3$<$ T, P $>$ const \&y, unsigned int Depth)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtx__norm_g955869c61ab902e4e3cf061303efdaef}{glm::lxNorm} (detail::tvec3$<$ T, P $>$ const \&x, unsigned int Depth)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Various ways to compute vector norms. 
+
+$<$glm/gtx/norm.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__norm_g205e08f24b9e35f9f892b563f2b8dd94}{
+\index{gtx\_\-norm@{gtx\_\-norm}!distance2@{distance2}}
+\index{distance2@{distance2}!gtx_norm@{gtx\_\-norm}}
+\subsubsection[distance2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType::value\_\-type glm::distance2 (genType const \& {\em p0}, \/  genType const \& {\em p1})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__norm_g205e08f24b9e35f9f892b563f2b8dd94}
+
+
+Returns the squared distance between p0 and p1, i.e., length(p0 - p1). From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_gaf6befa643aa9616f3c19e5548b11b54}{
+\index{gtx\_\-norm@{gtx\_\-norm}!distance2@{distance2}}
+\index{distance2@{distance2}!gtx_norm@{gtx\_\-norm}}
+\subsubsection[distance2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::distance2 (T const \& {\em p0}, \/  T const \& {\em p1})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__norm_gaf6befa643aa9616f3c19e5548b11b54}
+
+
+Returns the squared distance between p0 and p1, i.e., length(p0 - p1). From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g5a6d616a6e0340b9329d5018f04c1aca}{
+\index{gtx\_\-norm@{gtx\_\-norm}!l1Norm@{l1Norm}}
+\index{l1Norm@{l1Norm}!gtx_norm@{gtx\_\-norm}}
+\subsubsection[l1Norm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::l1Norm (detail::tvec3$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__norm_g5a6d616a6e0340b9329d5018f04c1aca}
+
+
+Returns the L1 norm of v. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_gf20fc187dfe66a474ecdba26e32ce4c6}{
+\index{gtx\_\-norm@{gtx\_\-norm}!l1Norm@{l1Norm}}
+\index{l1Norm@{l1Norm}!gtx_norm@{gtx\_\-norm}}
+\subsubsection[l1Norm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::l1Norm (detail::tvec3$<$ T, P $>$ const \& {\em x}, \/  detail::tvec3$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__norm_gf20fc187dfe66a474ecdba26e32ce4c6}
+
+
+Returns the L1 norm between x and y. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g17bb46915f9694cbae612a7bae4c5116}{
+\index{gtx\_\-norm@{gtx\_\-norm}!l2Norm@{l2Norm}}
+\index{l2Norm@{l2Norm}!gtx_norm@{gtx\_\-norm}}
+\subsubsection[l2Norm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::l2Norm (detail::tvec3$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__norm_g17bb46915f9694cbae612a7bae4c5116}
+
+
+Returns the L2 norm of v. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g2c87568b2888f01baf0133320c09b8ca}{
+\index{gtx\_\-norm@{gtx\_\-norm}!l2Norm@{l2Norm}}
+\index{l2Norm@{l2Norm}!gtx_norm@{gtx\_\-norm}}
+\subsubsection[l2Norm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::l2Norm (detail::tvec3$<$ T, P $>$ const \& {\em x}, \/  detail::tvec3$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__norm_g2c87568b2888f01baf0133320c09b8ca}
+
+
+Returns the L2 norm between x and y. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g2dfcdff0cc9119aa37c501d2c7a45020}{
+\index{gtx\_\-norm@{gtx\_\-norm}!length2@{length2}}
+\index{length2@{length2}!gtx_norm@{gtx\_\-norm}}
+\subsubsection[length2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType::value\_\-type glm::length2 (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__norm_g2dfcdff0cc9119aa37c501d2c7a45020}
+
+
+Returns the squared length of x. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g6f970aba05e1299ed89d2ec3a410b7a9}{
+\index{gtx\_\-norm@{gtx\_\-norm}!length2@{length2}}
+\index{length2@{length2}!gtx_norm@{gtx\_\-norm}}
+\subsubsection[length2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::length2 (T const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__norm_g6f970aba05e1299ed89d2ec3a410b7a9}
+
+
+Returns the squared length of x. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g955869c61ab902e4e3cf061303efdaef}{
+\index{gtx\_\-norm@{gtx\_\-norm}!lxNorm@{lxNorm}}
+\index{lxNorm@{lxNorm}!gtx_norm@{gtx\_\-norm}}
+\subsubsection[lxNorm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::lxNorm (detail::tvec3$<$ T, P $>$ const \& {\em x}, \/  unsigned int {\em Depth})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__norm_g955869c61ab902e4e3cf061303efdaef}
+
+
+Returns the L norm of v. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g2f42190c8743abab279d0a8f5a321692}{
+\index{gtx\_\-norm@{gtx\_\-norm}!lxNorm@{lxNorm}}
+\index{lxNorm@{lxNorm}!gtx_norm@{gtx\_\-norm}}
+\subsubsection[lxNorm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::lxNorm (detail::tvec3$<$ T, P $>$ const \& {\em x}, \/  detail::tvec3$<$ T, P $>$ const \& {\em y}, \/  unsigned int {\em Depth})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__norm_g2f42190c8743abab279d0a8f5a321692}
+
+
+Returns the L norm between x and y. From GLM\_\-GTX\_\-norm extension. 

@@ -1,0 +1,308 @@
+\hypertarget{class_model}{
+\section{Model Class Reference}
+\label{class_model}\index{Model@{Model}}
+}
+\hyperlink{class_model}{Model} class to create a 3D model.  
+
+
+{\tt \#include $<$Model.h$>$}
+
+Collaboration diagram for Model:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_model_e3b375de5f6df4faf74a95d64748e048}{Model} ()
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+\hyperlink{class_model_d6ebd2062a0b823db841a0b88baac4c0}{$\sim$Model} ()
+\begin{CompactList}\small\item\em Destructor. \item\end{CompactList}\item 
+void \hyperlink{class_model_bb9bbb4050349e0c775dd383474aca37}{Initialize} (\hyperlink{struct_vertex}{Vertex} vertices\mbox{[}$\,$\mbox{]}, int length, std::vector$<$ unsigned int $>$ \&indices, std::string vertShaderString, std::string fragShaderString)
+\begin{CompactList}\small\item\em Initializes the model. \item\end{CompactList}\item 
+void \hyperlink{class_model_0a3de8a969bada5a82ffa727f8c216b5}{Render} ()
+\begin{CompactList}\small\item\em Renders the model. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_5fe059a355fdb0531110696dafcec43b}{GetPosition} ()
+\begin{CompactList}\small\item\em Gets the models position. \item\end{CompactList}\item 
+void \hyperlink{class_model_3a615a604e26270bd0849462718703b2}{SetPosition} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} position)
+\begin{CompactList}\small\item\em Sets the models position. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_4000e7bcd78069bc4584da37d2bf3d66}{GetRotation} ()
+\begin{CompactList}\small\item\em Gets the models rotation. \item\end{CompactList}\item 
+void \hyperlink{class_model_71aa61e54f3f12bc86175fa359079d23}{SetRotation} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} rotation)
+\begin{CompactList}\small\item\em Sets the models rotation. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_1b61b8298674542ad929bf582b4de262}{GetScale} ()
+\begin{CompactList}\small\item\em Gets the models scale. \item\end{CompactList}\item 
+void \hyperlink{class_model_76860d36c983eb38250588899775aab7}{SetScale} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} scale)
+\begin{CompactList}\small\item\em Sets the models scale. \item\end{CompactList}\item 
+\hyperlink{class_camera}{Camera} $\ast$ \hyperlink{class_model_8c6429a35a1376657357e6e770470f13}{GetCamera} ()
+\begin{CompactList}\small\item\em Gets the camera object. \item\end{CompactList}\item 
+void \hyperlink{class_model_19b6689d4a5e80e187df85a5ab6f03b8}{SetCamera} (\hyperlink{class_camera}{Camera} $\ast$camera)
+\begin{CompactList}\small\item\em Sets the camera object. \item\end{CompactList}\item 
+void \hyperlink{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}{Destroy} ()
+\begin{CompactList}\small\item\em Cleans up the VAO and VBOs. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_model_5cacbaf83f7abedb413670a877ca0342}{
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_5cacbaf83f7abedb413670a877ca0342}{m\_\-rotation}}
+\label{class_model_5cacbaf83f7abedb413670a877ca0342}
+
+\begin{CompactList}\small\item\em The model's rotation. \item\end{CompactList}\item 
+\hypertarget{class_model_bc23ecdbd0ec986ed2ccd00fe20b817a}{
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_bc23ecdbd0ec986ed2ccd00fe20b817a}{m\_\-scale}}
+\label{class_model_bc23ecdbd0ec986ed2ccd00fe20b817a}
+
+\begin{CompactList}\small\item\em The model's scale. \item\end{CompactList}\item 
+\hypertarget{class_model_b3675205d8830c998e19f00497429f20}{
+GLuint \hyperlink{class_model_b3675205d8830c998e19f00497429f20}{m\_\-VAO}}
+\label{class_model_b3675205d8830c998e19f00497429f20}
+
+\begin{CompactList}\small\item\em VAO id. \item\end{CompactList}\item 
+\hypertarget{class_model_20a4832d570e33d3a1868d92ac81cc49}{
+GLuint \hyperlink{class_model_20a4832d570e33d3a1868d92ac81cc49}{m\_\-VBO}}
+\label{class_model_20a4832d570e33d3a1868d92ac81cc49}
+
+\begin{CompactList}\small\item\em VBO id. \item\end{CompactList}\item 
+\hypertarget{class_model_cc674d063b027e3fdfb687b0e72d9322}{
+GLuint \hyperlink{class_model_cc674d063b027e3fdfb687b0e72d9322}{m\_\-EBO}}
+\label{class_model_cc674d063b027e3fdfb687b0e72d9322}
+
+\begin{CompactList}\small\item\em EBO id. \item\end{CompactList}\item 
+\hypertarget{class_model_427b7834b2b4a8e3f41aec118fbb8e58}{
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_427b7834b2b4a8e3f41aec118fbb8e58}{m\_\-positon}}
+\label{class_model_427b7834b2b4a8e3f41aec118fbb8e58}
+
+\begin{CompactList}\small\item\em The model's position. \item\end{CompactList}\item 
+\hypertarget{class_model_02e541e1a8ad04eb05e0729abcc7e0d5}{
+\hyperlink{class_shader}{Shader} \hyperlink{class_model_02e541e1a8ad04eb05e0729abcc7e0d5}{m\_\-shader}}
+\label{class_model_02e541e1a8ad04eb05e0729abcc7e0d5}
+
+\begin{CompactList}\small\item\em \hyperlink{class_shader}{Shader} object. \item\end{CompactList}\item 
+\hypertarget{class_model_7dae1bc84476979aa5c44335c63054b8}{
+\hyperlink{class_camera}{Camera} $\ast$ \hyperlink{class_model_7dae1bc84476979aa5c44335c63054b8}{m\_\-camera}}
+\label{class_model_7dae1bc84476979aa5c44335c63054b8}
+
+\begin{CompactList}\small\item\em \hyperlink{class_camera}{Camera} object. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_model_7ee034d94e2f05fb2a48712bcfa8e4dd}{
+static const GLuint \hyperlink{class_model_7ee034d94e2f05fb2a48712bcfa8e4dd}{m\_\-vertexIndex} = 0}
+\label{class_model_7ee034d94e2f05fb2a48712bcfa8e4dd}
+
+\begin{CompactList}\small\item\em These are used as pointers to each index where each information is stored within the vertex buffer object. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_model}{Model} class to create a 3D model. 
+
+This class is used to store all model information including initializion of the model to be rendered and drawn onto the screen using shaders.
+
+\begin{Desc}
+\item[Version:]01 \end{Desc}
+\begin{Desc}
+\item[Date:]29/03/2018 \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_model_e3b375de5f6df4faf74a95d64748e048}{
+\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\subsubsection[Model]{\setlength{\rightskip}{0pt plus 5cm}Model::Model ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_e3b375de5f6df4faf74a95d64748e048}
+
+
+Default constructor. 
+
+This is the default constuctor that sets the scale value of the model to 1.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+\hypertarget{class_model_d6ebd2062a0b823db841a0b88baac4c0}{
+\index{Model@{Model}!$\sim$Model@{$\sim$Model}}
+\index{$\sim$Model@{$\sim$Model}!Model@{Model}}
+\subsubsection[$\sim$Model]{\setlength{\rightskip}{0pt plus 5cm}Model::$\sim$Model ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_d6ebd2062a0b823db841a0b88baac4c0}
+
+
+Destructor. 
+
+This is the destructor that calls \hyperlink{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}{Destroy()} to free up the used memory.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_model_bb9bbb4050349e0c775dd383474aca37}{
+\index{Model@{Model}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Model@{Model}}
+\subsubsection[Initialize]{\setlength{\rightskip}{0pt plus 5cm}void Model::Initialize ({\bf Vertex} {\em vertices}\mbox{[}$\,$\mbox{]}, \/  int {\em length}, \/  std::vector$<$ unsigned int $>$ \& {\em indices}, \/  std::string {\em vertShaderString}, \/  std::string {\em fragShaderString})}}
+\label{class_model_bb9bbb4050349e0c775dd383474aca37}
+
+
+Initializes the model. 
+
+This function takes a list of x, y, z vertices and its length to create a vertex buffer object (VBO) and vertex array object (VBO) as well as the corresponding vertex and fragment shaders as strings.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{struct_vertex}{Vertex}}]vertices\mbox{[}\mbox{]} \item[{\em int}]length \item[{\em std::string}]vertShaderString \item[{\em std::string}]fragShaderString \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_model_0a3de8a969bada5a82ffa727f8c216b5}{
+\index{Model@{Model}!Render@{Render}}
+\index{Render@{Render}!Model@{Model}}
+\subsubsection[Render]{\setlength{\rightskip}{0pt plus 5cm}void Model::Render ()}}
+\label{class_model_0a3de8a969bada5a82ffa727f8c216b5}
+
+
+Renders the model. 
+
+This function draws the model to the backbuffer by first initializing the shader, turning it on and binding the vertex array. Each vertex attribute is enabled and glDrawArrays() function is called to draw the vertices to the screen. The attributes are disabled and the shader is then turned off.
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_model_5fe059a355fdb0531110696dafcec43b}{
+\index{Model@{Model}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Model@{Model}}
+\subsubsection[GetPosition]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3} Model::GetPosition ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_5fe059a355fdb0531110696dafcec43b}
+
+
+Gets the models position. 
+
+Returns the position of the model as a \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}.
+
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
+\hypertarget{class_model_3a615a604e26270bd0849462718703b2}{
+\index{Model@{Model}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Model@{Model}}
+\subsubsection[SetPosition]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetPosition ({\bf glm::vec3} {\em position})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_3a615a604e26270bd0849462718703b2}
+
+
+Sets the models position. 
+
+Sets the position of the model using the parameter given.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]position \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_model_4000e7bcd78069bc4584da37d2bf3d66}{
+\index{Model@{Model}!GetRotation@{GetRotation}}
+\index{GetRotation@{GetRotation}!Model@{Model}}
+\subsubsection[GetRotation]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3} Model::GetRotation ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_4000e7bcd78069bc4584da37d2bf3d66}
+
+
+Gets the models rotation. 
+
+Returns the rotation of the model as a \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}.
+
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
+\hypertarget{class_model_71aa61e54f3f12bc86175fa359079d23}{
+\index{Model@{Model}!SetRotation@{SetRotation}}
+\index{SetRotation@{SetRotation}!Model@{Model}}
+\subsubsection[SetRotation]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetRotation ({\bf glm::vec3} {\em rotation})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_71aa61e54f3f12bc86175fa359079d23}
+
+
+Sets the models rotation. 
+
+Sets the rotation of the model using the parameter given.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]rotation \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_model_1b61b8298674542ad929bf582b4de262}{
+\index{Model@{Model}!GetScale@{GetScale}}
+\index{GetScale@{GetScale}!Model@{Model}}
+\subsubsection[GetScale]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3} Model::GetScale ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_1b61b8298674542ad929bf582b4de262}
+
+
+Gets the models scale. 
+
+Returns the scale of the model as a \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}.
+
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
+\hypertarget{class_model_76860d36c983eb38250588899775aab7}{
+\index{Model@{Model}!SetScale@{SetScale}}
+\index{SetScale@{SetScale}!Model@{Model}}
+\subsubsection[SetScale]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetScale ({\bf glm::vec3} {\em scale})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_76860d36c983eb38250588899775aab7}
+
+
+Sets the models scale. 
+
+Sets the rotation of the model using the parameter given.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]scale \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_model_8c6429a35a1376657357e6e770470f13}{
+\index{Model@{Model}!GetCamera@{GetCamera}}
+\index{GetCamera@{GetCamera}!Model@{Model}}
+\subsubsection[GetCamera]{\setlength{\rightskip}{0pt plus 5cm}{\bf Camera}$\ast$ Model::GetCamera ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_8c6429a35a1376657357e6e770470f13}
+
+
+Gets the camera object. 
+
+Returns a pointer to the camera object to access the view and projection matrices.
+
+\begin{Desc}
+\item[Returns:]Camera$\ast$ \end{Desc}
+\hypertarget{class_model_19b6689d4a5e80e187df85a5ab6f03b8}{
+\index{Model@{Model}!SetCamera@{SetCamera}}
+\index{SetCamera@{SetCamera}!Model@{Model}}
+\subsubsection[SetCamera]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetCamera ({\bf Camera} $\ast$ {\em camera})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_19b6689d4a5e80e187df85a5ab6f03b8}
+
+
+Sets the camera object. 
+
+Sets the camera object to the world camera object to retrieve the view and projection matrices.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Camera$\ast$}]pCamera \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}{
+\index{Model@{Model}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!Model@{Model}}
+\subsubsection[Destroy]{\setlength{\rightskip}{0pt plus 5cm}void Model::Destroy ()}}
+\label{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}
+
+
+Cleans up the VAO and VBOs. 
+
+Unbinds any VAO and VBOs and frees up any memory used.
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Model.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/Model.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Model.cpp\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/src/Model.cpp\end{CompactItemize}

@@ -1,0 +1,23 @@
+\hypertarget{classbt_continuous_convex_collision}{
+\section{btContinuousConvexCollision Class Reference}
+\label{classbt_continuous_convex_collision}\index{btContinuousConvexCollision@{btContinuousConvexCollision}}
+}
+{\tt \#include $<$btContinuousConvexCollision.h$>$}
+
+Inheritance diagram for btContinuousConvexCollision:Collaboration diagram for btContinuousConvexCollision:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_continuous_convex_collision_fc75a57bddfeded52781bbd65ee16f37}{
+virtual bool \hyperlink{classbt_continuous_convex_collision_fc75a57bddfeded52781bbd65ee16f37}{calcTimeOfImpact} (const btTransform \&fromA, const btTransform \&toA, const btTransform \&fromB, const btTransform \&toB, \hyperlink{structbt_convex_cast_1_1_cast_result}{CastResult} \&result)}
+\label{classbt_continuous_convex_collision_fc75a57bddfeded52781bbd65ee16f37}
+
+\begin{CompactList}\small\item\em cast a convex against another convex object \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classbt_continuous_convex_collision}{btContinuousConvexCollision} implements angular and linear time of impact for convex objects. Based on Brian Mirtich's Conservative Advancement idea (PhD thesis). Algorithm operates in worldspace, in order to keep inbetween motion globally consistent. It uses GJK at the moment. Future improvement would use minkowski sum / supporting vertex, merging innerloops 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.cpp\end{CompactItemize}

@@ -1,0 +1,82 @@
+\hypertarget{classbt_simple_dynamics_world}{
+\section{btSimpleDynamicsWorld Class Reference}
+\label{classbt_simple_dynamics_world}\index{btSimpleDynamicsWorld@{btSimpleDynamicsWorld}}
+}
+{\tt \#include $<$btSimpleDynamicsWorld.h$>$}
+
+Inheritance diagram for btSimpleDynamicsWorld:Collaboration diagram for btSimpleDynamicsWorld:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_simple_dynamics_world_7a82e6d27693ee39d4d2cdf44788ecc8}{
+\hyperlink{classbt_simple_dynamics_world_7a82e6d27693ee39d4d2cdf44788ecc8}{btSimpleDynamicsWorld} (\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher, \hyperlink{classbt_broadphase_interface}{btBroadphaseInterface} $\ast$pairCache, btConstraintSolver $\ast$constraintSolver, \hyperlink{classbt_collision_configuration}{btCollisionConfiguration} $\ast$collisionConfiguration)}
+\label{classbt_simple_dynamics_world_7a82e6d27693ee39d4d2cdf44788ecc8}
+
+\begin{CompactList}\small\item\em this \hyperlink{classbt_simple_dynamics_world}{btSimpleDynamicsWorld} constructor creates dispatcher, broadphase pairCache and constraintSolver \item\end{CompactList}\item 
+virtual int \hyperlink{classbt_simple_dynamics_world_f6b4810b5018cbaf09f82839111a243d}{stepSimulation} (btScalar timeStep, int maxSubSteps=1, btScalar fixedTimeStep=btScalar(1.)/btScalar(60.))
+\begin{CompactList}\small\item\em maxSubSteps/fixedTimeStep for interpolation is currently ignored for \hyperlink{classbt_simple_dynamics_world}{btSimpleDynamicsWorld}, use btDiscreteDynamicsWorld instead \item\end{CompactList}\item 
+\hypertarget{classbt_simple_dynamics_world_7c9255653135c9117d6a27738a3077ab}{
+virtual void \hyperlink{classbt_simple_dynamics_world_7c9255653135c9117d6a27738a3077ab}{removeCollisionObject} (btCollisionObject $\ast$collisionObject)}
+\label{classbt_simple_dynamics_world_7c9255653135c9117d6a27738a3077ab}
+
+\begin{CompactList}\small\item\em removeCollisionObject will first check if it is a rigid body, if so call removeRigidBody otherwise call btCollisionWorld::removeCollisionObject \item\end{CompactList}\item 
+virtual void \hyperlink{classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824}{synchronizeMotionStates} ()
+\item 
+virtual void \hyperlink{classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a}{clearForces} ()
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classbt_simple_dynamics_world}{btSimpleDynamicsWorld} serves as unit-test and to verify more complicated and optimized dynamics worlds. Please use btDiscreteDynamicsWorld instead 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_simple_dynamics_world_f6b4810b5018cbaf09f82839111a243d}{
+\index{btSimpleDynamicsWorld@{btSimpleDynamicsWorld}!stepSimulation@{stepSimulation}}
+\index{stepSimulation@{stepSimulation}!btSimpleDynamicsWorld@{btSimpleDynamicsWorld}}
+\subsubsection[stepSimulation]{\setlength{\rightskip}{0pt plus 5cm}int btSimpleDynamicsWorld::stepSimulation (btScalar {\em timeStep}, \/  int {\em maxSubSteps} = {\tt 1}, \/  btScalar {\em fixedTimeStep} = {\tt btScalar(1.)/btScalar(60.)})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_simple_dynamics_world_f6b4810b5018cbaf09f82839111a243d}
+
+
+maxSubSteps/fixedTimeStep for interpolation is currently ignored for \hyperlink{classbt_simple_dynamics_world}{btSimpleDynamicsWorld}, use btDiscreteDynamicsWorld instead 
+
+
+
+apply gravity, predict motion
+
+perform collision detection
+
+solve contact constraints
+
+integrate transforms 
+
+Implements \hyperlink{classbt_dynamics_world_5ab26a0d6e8b2b21fbde2ed8f8dd6294}{btDynamicsWorld}.\hypertarget{classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824}{
+\index{btSimpleDynamicsWorld@{btSimpleDynamicsWorld}!synchronizeMotionStates@{synchronizeMotionStates}}
+\index{synchronizeMotionStates@{synchronizeMotionStates}!btSimpleDynamicsWorld@{btSimpleDynamicsWorld}}
+\subsubsection[synchronizeMotionStates]{\setlength{\rightskip}{0pt plus 5cm}void btSimpleDynamicsWorld::synchronizeMotionStates ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824}
+
+
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000034}{Todo}]: iterate over awake simulation islands! \end{Desc}
+
+
+Implements \hyperlink{classbt_dynamics_world}{btDynamicsWorld}.\hypertarget{classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a}{
+\index{btSimpleDynamicsWorld@{btSimpleDynamicsWorld}!clearForces@{clearForces}}
+\index{clearForces@{clearForces}!btSimpleDynamicsWorld@{btSimpleDynamicsWorld}}
+\subsubsection[clearForces]{\setlength{\rightskip}{0pt plus 5cm}void btSimpleDynamicsWorld::clearForces ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a}
+
+
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000033}{Todo}]: iterate over awake simulation islands! \end{Desc}
+
+
+Implements \hyperlink{classbt_dynamics_world}{btDynamicsWorld}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimpleDynamicsWorld.cpp\end{CompactItemize}

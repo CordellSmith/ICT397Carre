@@ -1,0 +1,8 @@
+<area shape="rect" href="$structai_string.html" title="aiString" alt="" coords="463,5,527,32">
+<area shape="rect" href="$structai_node_anim.html" title="aiNodeAnim" alt="" coords="159,112,249,139">
+<area shape="rect" href="$structai_mesh_anim.html" title="aiMeshAnim" alt="" coords="364,112,457,139">
+<area shape="rect" href="$structai_mesh_morph_anim.html" title="aiMeshMorphAnim" alt="" coords="597,112,725,139">
+<area shape="rect" href="$structai_quat_key.html" title="aiQuatKey" alt="" coords="5,5,88,32">
+<area shape="rect" href="$structai_vector_key.html" title="aiVectorKey" alt="" coords="121,5,212,32">
+<area shape="rect" href="$structai_mesh_key.html" title="aiMeshKey" alt="" coords="243,5,328,32">
+<area shape="rect" href="$structai_mesh_morph_key.html" title="aiMeshMorphKey" alt="" coords="600,5,723,32">

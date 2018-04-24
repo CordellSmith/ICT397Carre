@@ -1,0 +1,24 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btCollisionDispatcher",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btDispatcher",height=0.2,width=0.4,color="black",URL="$classbt_dispatcher.html"];
+  Node3 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_collisionConfiguration"];
+  Node3 [label="btCollisionConfiguration",height=0.2,width=0.4,color="black",URL="$classbt_collision_configuration.html"];
+  Node4 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_collisionAlgorithmPoolAllocator\nm_persistentManifoldPoolAllocator"];
+  Node4 [label="btPoolAllocator",height=0.2,width=0.4,color="black",URL="$classbt_pool_allocator.html",tooltip="The btPoolAllocator class allows to efficiently allocate a large pool of objects..."];
+  Node5 -> Node4 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_mutex"];
+  Node5 [label="btSpinMutex",height=0.2,width=0.4,color="black",URL="$classbt_spin_mutex.html"];
+  Node6 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_doubleDispatchClosestPoints\nm_doubleDispatchContactPoints"];
+  Node6 [label="btCollisionAlgorithmCreateFunc",height=0.2,width=0.4,color="black",URL="$structbt_collision_algorithm_create_func.html",tooltip="Used by the btCollisionDispatcher to register and create instances for btCollisionAlgorithm..."];
+  Node7 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_defaultManifoldResult"];
+  Node7 [label="btManifoldResult",height=0.2,width=0.4,color="black",URL="$classbt_manifold_result.html",tooltip="btManifoldResult is a helper class to manage contact results."];
+  Node8 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_manifoldsPtr"];
+  Node8 [label="btAlignedObjectArray\< btPersistentManifold * \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node9 -> Node8 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node9 [label="btAlignedAllocator\< btPersistentManifold *, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+}

@@ -1,0 +1,84 @@
+\hypertarget{group__gtc__ulp}{
+\section{GLM\_\-GTC\_\-ulp}
+\label{group__gtc__ulp}\index{GLM\_\-GTC\_\-ulp@{GLM\_\-GTC\_\-ulp}}
+}
+
+
+Collaboration diagram for GLM\_\-GTC\_\-ulp:Allow the measurement of the accuracy of a function against a reference implementation. This extension works on floating-point data and provide results in ULP. $<$glm/gtc/ulp.hpp$>$ need to be included to use these features.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__gtc__ulp_g5ec4457d254b7b960db32f10d219fd6f}{glm::next\_\-float} (genType const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__gtc__ulp_gf1c61fb2a0092a4222dae424dd96aeb0}{glm::prev\_\-float} (genType const \&x)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__gtc__ulp_g686013928fd7c76c5f100b84483b1f51}{glm::next\_\-float} (genType const \&x, uint const \&Distance)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__gtc__ulp_ge55d449df292398361ccecad1cc5ead4}{glm::prev\_\-float} (genType const \&x, uint const \&Distance)
+\item 
+{\footnotesize template$<$typename T$>$ }\\GLM\_\-FUNC\_\-DECL uint \hyperlink{group__gtc__ulp_g4cb4468c9654077d40266d039158206b}{glm::float\_\-distance} (T const \&x, T const \&y)
+\item 
+{\footnotesize template$<$typename T, template$<$ typename $>$ class vecType$>$ }\\GLM\_\-FUNC\_\-DECL vecType$<$ uint $>$ \hyperlink{group__gtc__ulp_g421b0584182815a9e9e64d74361e7409}{glm::float\_\-distance} (vecType$<$ T $>$ const \&x, vecType$<$ T $>$ const \&y)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Allow the measurement of the accuracy of a function against a reference implementation. This extension works on floating-point data and provide results in ULP. $<$glm/gtc/ulp.hpp$>$ need to be included to use these features. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{group__gtc__ulp_g421b0584182815a9e9e64d74361e7409}{
+\index{gtc\_\-ulp@{gtc\_\-ulp}!float\_\-distance@{float\_\-distance}}
+\index{float\_\-distance@{float\_\-distance}!gtc_ulp@{gtc\_\-ulp}}
+\subsubsection[float\_\-distance]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, template$<$ typename $>$ class vecType$>$ GLM\_\-FUNC\_\-DECL vecType$<$uint$>$ glm::float\_\-distance (vecType$<$ T $>$ const \& {\em x}, \/  vecType$<$ T $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__ulp_g421b0584182815a9e9e64d74361e7409}
+
+
+Return the distance in the number of ULP between 2 vectors. \begin{Desc}
+\item[See also:]\hyperlink{group__gtc__ulp}{GLM\_\-GTC\_\-ulp} \end{Desc}
+\hypertarget{group__gtc__ulp_g4cb4468c9654077d40266d039158206b}{
+\index{gtc\_\-ulp@{gtc\_\-ulp}!float\_\-distance@{float\_\-distance}}
+\index{float\_\-distance@{float\_\-distance}!gtc_ulp@{gtc\_\-ulp}}
+\subsubsection[float\_\-distance]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER uint glm::float\_\-distance (T const \& {\em x}, \/  T const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__ulp_g4cb4468c9654077d40266d039158206b}
+
+
+Return the distance in the number of ULP between 2 scalars. \begin{Desc}
+\item[See also:]\hyperlink{group__gtc__ulp}{GLM\_\-GTC\_\-ulp} \end{Desc}
+\hypertarget{group__gtc__ulp_g686013928fd7c76c5f100b84483b1f51}{
+\index{gtc\_\-ulp@{gtc\_\-ulp}!next\_\-float@{next\_\-float}}
+\index{next\_\-float@{next\_\-float}!gtc_ulp@{gtc\_\-ulp}}
+\subsubsection[next\_\-float]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::next\_\-float (genType const \& {\em x}, \/  uint const \& {\em Distance})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__ulp_g686013928fd7c76c5f100b84483b1f51}
+
+
+Return the value(s) ULP distance after the input value(s). \begin{Desc}
+\item[See also:]\hyperlink{group__gtc__ulp}{GLM\_\-GTC\_\-ulp} \end{Desc}
+\hypertarget{group__gtc__ulp_g5ec4457d254b7b960db32f10d219fd6f}{
+\index{gtc\_\-ulp@{gtc\_\-ulp}!next\_\-float@{next\_\-float}}
+\index{next\_\-float@{next\_\-float}!gtc_ulp@{gtc\_\-ulp}}
+\subsubsection[next\_\-float]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::next\_\-float (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__ulp_g5ec4457d254b7b960db32f10d219fd6f}
+
+
+Return the next ULP value(s) after the input value(s). \begin{Desc}
+\item[See also:]\hyperlink{group__gtc__ulp}{GLM\_\-GTC\_\-ulp} \end{Desc}
+\hypertarget{group__gtc__ulp_ge55d449df292398361ccecad1cc5ead4}{
+\index{gtc\_\-ulp@{gtc\_\-ulp}!prev\_\-float@{prev\_\-float}}
+\index{prev\_\-float@{prev\_\-float}!gtc_ulp@{gtc\_\-ulp}}
+\subsubsection[prev\_\-float]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::prev\_\-float (genType const \& {\em x}, \/  uint const \& {\em Distance})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__ulp_ge55d449df292398361ccecad1cc5ead4}
+
+
+Return the value(s) ULP distance before the input value(s). \begin{Desc}
+\item[See also:]\hyperlink{group__gtc__ulp}{GLM\_\-GTC\_\-ulp} \end{Desc}
+\hypertarget{group__gtc__ulp_gf1c61fb2a0092a4222dae424dd96aeb0}{
+\index{gtc\_\-ulp@{gtc\_\-ulp}!prev\_\-float@{prev\_\-float}}
+\index{prev\_\-float@{prev\_\-float}!gtc_ulp@{gtc\_\-ulp}}
+\subsubsection[prev\_\-float]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::prev\_\-float (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__ulp_gf1c61fb2a0092a4222dae424dd96aeb0}
+
+
+Return the previous ULP value(s) before the input value(s). \begin{Desc}
+\item[See also:]\hyperlink{group__gtc__ulp}{GLM\_\-GTC\_\-ulp} \end{Desc}

@@ -1,0 +1,54 @@
+\hypertarget{classbt_manifold_result}{
+\section{btManifoldResult Class Reference}
+\label{classbt_manifold_result}\index{btManifoldResult@{btManifoldResult}}
+}
+\hyperlink{classbt_manifold_result}{btManifoldResult} is a helper class to manage contact results.  
+
+
+{\tt \#include $<$btManifoldResult.h$>$}
+
+Inherits btDiscreteCollisionDetectorInterface::Result.
+
+Inherited by btBridgedManifoldResult, and btPerturbedContactResult.
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual void \hyperlink{classbt_manifold_result_ebe32f0c202d988d0458e88d768602c6}{addContactPoint} (const btVector3 \&normalOnBInWorld, const btVector3 \&pointInWorld, btScalar depth)
+\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_manifold_result_a4419fc3b0d13ccc2cbfd7739b047c04}{
+static btScalar \hyperlink{classbt_manifold_result_a4419fc3b0d13ccc2cbfd7739b047c04}{calculateCombinedRestitution} (const btCollisionObject $\ast$body0, const btCollisionObject $\ast$body1)}
+\label{classbt_manifold_result_a4419fc3b0d13ccc2cbfd7739b047c04}
+
+\begin{CompactList}\small\item\em in the future we can let the user override the methods to combine restitution and friction \item\end{CompactList}\item 
+\hypertarget{classbt_manifold_result_162717dce3ef3a756ae55ec04a179ed5}{
+static btScalar \hyperlink{classbt_manifold_result_162717dce3ef3a756ae55ec04a179ed5}{calculateCombinedFriction} (const btCollisionObject $\ast$body0, const btCollisionObject $\ast$body1)}
+\label{classbt_manifold_result_162717dce3ef3a756ae55ec04a179ed5}
+
+\begin{CompactList}\small\item\em User can override this material combiner by implementing gContactAddedCallback and setting body0-$>$m\_\-collisionFlags $|$= btCollisionObject::customMaterialCallback;. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classbt_manifold_result}{btManifoldResult} is a helper class to manage contact results. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_manifold_result_ebe32f0c202d988d0458e88d768602c6}{
+\index{btManifoldResult@{btManifoldResult}!addContactPoint@{addContactPoint}}
+\index{addContactPoint@{addContactPoint}!btManifoldResult@{btManifoldResult}}
+\subsubsection[addContactPoint]{\setlength{\rightskip}{0pt plus 5cm}void btManifoldResult::addContactPoint (const btVector3 \& {\em normalOnBInWorld}, \/  const btVector3 \& {\em pointInWorld}, \/  btScalar {\em depth})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_manifold_result_ebe32f0c202d988d0458e88d768602c6}
+
+
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000015}{Todo}], check this for any side effects \end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btManifoldResult.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btManifoldResult.cpp\end{CompactItemize}

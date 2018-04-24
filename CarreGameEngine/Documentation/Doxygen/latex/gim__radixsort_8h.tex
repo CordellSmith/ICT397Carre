@@ -1,0 +1,110 @@
+\hypertarget{gim__radixsort_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-radixsort.h File Reference}
+\label{gim__radixsort_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-radixsort.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-radixsort.h}}
+}
+{\tt \#include \char`\"{}gim\_\-memory.h\char`\"{}}\par
+
+
+Include dependency graph for gim\_\-radixsort.h:
+
+This graph shows which files directly or indirectly include this file:\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{classless__comparator}{less\_\-comparator}
+\item 
+class \hyperlink{classinteger__comparator}{integer\_\-comparator}
+\begin{CompactList}\small\item\em Prototype for comparators. \item\end{CompactList}\item 
+class \hyperlink{classuint__key__func}{uint\_\-key\_\-func}
+\begin{CompactList}\small\item\em Prototype for getting the integer representation of an object. \item\end{CompactList}\item 
+class \hyperlink{classcopy__elements__func}{copy\_\-elements\_\-func}
+\begin{CompactList}\small\item\em Prototype for copying elements. \item\end{CompactList}\item 
+class \hyperlink{classmemcopy__elements__func}{memcopy\_\-elements\_\-func}
+\begin{CompactList}\small\item\em Prototype for copying elements. \item\end{CompactList}\item 
+class \hyperlink{class_g_i_m___r_s_o_r_t___t_o_k_e_n___c_o_m_p_a_r_a_t_o_r}{GIM\_\-RSORT\_\-TOKEN\_\-COMPARATOR}
+\begin{CompactList}\small\item\em Prototype for comparators. \item\end{CompactList}\end{CompactItemize}
+\begin{CompactItemize}
+\item 
+\hypertarget{gim__radixsort_8h_7465b49642a34b13aaaf84bc5b38ab67}{
+void \hyperlink{gim__radixsort_8h_7465b49642a34b13aaaf84bc5b38ab67}{gim\_\-radix\_\-sort\_\-rtokens} (GIM\_\-RSORT\_\-TOKEN $\ast$array, GIM\_\-RSORT\_\-TOKEN $\ast$sorted, GUINT element\_\-count)}
+\label{gim__radixsort_8h_7465b49642a34b13aaaf84bc5b38ab67}
+
+\begin{CompactList}\small\item\em Radix sort for unsigned integer keys. \item\end{CompactList}\item 
+{\footnotesize template$<$typename T, class GETKEY\_\-CLASS$>$ }\\void \hyperlink{gim__radixsort_8h_dc804c6eb5898638d59eeed4b400f1d5}{gim\_\-radix\_\-sort\_\-array\_\-tokens} (T $\ast$array, GIM\_\-RSORT\_\-TOKEN $\ast$sorted\_\-tokens, GUINT element\_\-count, GETKEY\_\-CLASS uintkey\_\-macro)
+\begin{CompactList}\small\item\em Get the sorted tokens from an array. For generic use. Tokens are IRR\_\-RSORT\_\-TOKEN. \item\end{CompactList}\item 
+{\footnotesize template$<$typename T, class GETKEY\_\-CLASS, class COPY\_\-CLASS$>$ }\\void \hyperlink{gim__radixsort_8h_41009ea63c51a0a22ff221b583dc391d}{gim\_\-radix\_\-sort} (T $\ast$array, GUINT element\_\-count, GETKEY\_\-CLASS get\_\-uintkey\_\-macro, COPY\_\-CLASS copy\_\-elements\_\-macro)
+\begin{CompactList}\small\item\em Sorts array in place. For generic use. \item\end{CompactList}\item 
+{\footnotesize template$<$class T, typename KEYCLASS, typename COMP\_\-CLASS$>$ }\\bool \hyperlink{gim__radixsort_8h_7be883eaa7e11dab454089d654537e35}{gim\_\-binary\_\-search\_\-ex} (const T $\ast$\_\-array, GUINT \_\-start\_\-i, GUINT \_\-end\_\-i, GUINT \&\_\-result\_\-index, const KEYCLASS \&\_\-search\_\-key, COMP\_\-CLASS \_\-comp\_\-macro)
+\begin{CompactList}\small\item\em Failsafe Iterative binary search,. \item\end{CompactList}\item 
+{\footnotesize template$<$class T$>$ }\\bool \hyperlink{gim__radixsort_8h_f8659fc44c5ded1334ef6957654bc76b}{gim\_\-binary\_\-search} (const T $\ast$\_\-array, GUINT \_\-start\_\-i, GUINT \_\-end\_\-i, const T \&\_\-search\_\-key, GUINT \&\_\-result\_\-index)
+\begin{CompactList}\small\item\em Failsafe Iterative binary search,Template version. \item\end{CompactList}\item 
+\hypertarget{gim__radixsort_8h_e14d8ed5dd848db8f3623db9d6e2b3c5}{
+{\footnotesize template$<$typename T, typename COMP\_\-CLASS$>$ }\\void \hyperlink{gim__radixsort_8h_e14d8ed5dd848db8f3623db9d6e2b3c5}{gim\_\-down\_\-heap} (T $\ast$pArr, GUINT k, GUINT n, COMP\_\-CLASS CompareFunc)}
+\label{gim__radixsort_8h_e14d8ed5dd848db8f3623db9d6e2b3c5}
+
+\begin{CompactList}\small\item\em heap sort from \href{http://www.csse.monash.edu.au/~lloyd/tildeAlgDS/Sort/Heap/}{\tt http://www.csse.monash.edu.au/$\sim$lloyd/tildeAlgDS/Sort/Heap/} \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Author:]Francisco Leon Najera. Based on the work of Michael Herf : \char`\"{}fast floating-point radix sort\char`\"{} Avaliable on \href{http://www.stereopsis.com/radix.html}{\tt http://www.stereopsis.com/radix.html} \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{gim__radixsort_8h_f8659fc44c5ded1334ef6957654bc76b}{
+\index{gim\_\-radixsort.h@{gim\_\-radixsort.h}!gim\_\-binary\_\-search@{gim\_\-binary\_\-search}}
+\index{gim\_\-binary\_\-search@{gim\_\-binary\_\-search}!gim_radixsort.h@{gim\_\-radixsort.h}}
+\subsubsection[gim\_\-binary\_\-search]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool gim\_\-binary\_\-search (const T $\ast$ {\em \_\-array}, \/  GUINT {\em \_\-start\_\-i}, \/  GUINT {\em \_\-end\_\-i}, \/  const T \& {\em \_\-search\_\-key}, \/  GUINT \& {\em \_\-result\_\-index})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__radixsort_8h_f8659fc44c5ded1334ef6957654bc76b}
+
+
+Failsafe Iterative binary search,Template version. 
+
+If the element is not found, it returns the nearest upper element position, may be the further position after the last element. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \_\-array}]\item[{\em \_\-start\_\-i}]the beginning of the array \item[{\em \_\-end\_\-i}]the ending index of the array \item[{\em \_\-search\_\-key}]Value to find \item[{\em \_\-result\_\-index}]the index of the found element, or if not found then it will get the index of the closest bigger value \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if found, else false \end{Desc}
+\hypertarget{gim__radixsort_8h_7be883eaa7e11dab454089d654537e35}{
+\index{gim\_\-radixsort.h@{gim\_\-radixsort.h}!gim\_\-binary\_\-search\_\-ex@{gim\_\-binary\_\-search\_\-ex}}
+\index{gim\_\-binary\_\-search\_\-ex@{gim\_\-binary\_\-search\_\-ex}!gim_radixsort.h@{gim\_\-radixsort.h}}
+\subsubsection[gim\_\-binary\_\-search\_\-ex]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, typename KEYCLASS, typename COMP\_\-CLASS$>$ bool gim\_\-binary\_\-search\_\-ex (const T $\ast$ {\em \_\-array}, \/  GUINT {\em \_\-start\_\-i}, \/  GUINT {\em \_\-end\_\-i}, \/  GUINT \& {\em \_\-result\_\-index}, \/  const KEYCLASS \& {\em \_\-search\_\-key}, \/  COMP\_\-CLASS {\em \_\-comp\_\-macro})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__radixsort_8h_7be883eaa7e11dab454089d654537e35}
+
+
+Failsafe Iterative binary search,. 
+
+If the element is not found, it returns the nearest upper element position, may be the further position after the last element. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \_\-array}]\item[{\em \_\-start\_\-i}]the beginning of the array \item[{\em \_\-end\_\-i}]the ending index of the array \item[{\em \_\-search\_\-key}]Value to find \item[{\em \_\-comp\_\-macro}]macro for comparing elements \item[{\em \_\-found}]If true the value has found. Boolean \item[{\em \_\-result\_\-index}]the index of the found element, or if not found then it will get the index of the closest bigger value \end{description}
+\end{Desc}
+\hypertarget{gim__radixsort_8h_41009ea63c51a0a22ff221b583dc391d}{
+\index{gim\_\-radixsort.h@{gim\_\-radixsort.h}!gim\_\-radix\_\-sort@{gim\_\-radix\_\-sort}}
+\index{gim\_\-radix\_\-sort@{gim\_\-radix\_\-sort}!gim_radixsort.h@{gim\_\-radixsort.h}}
+\subsubsection[gim\_\-radix\_\-sort]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, class GETKEY\_\-CLASS, class COPY\_\-CLASS$>$ void gim\_\-radix\_\-sort (T $\ast$ {\em array}, \/  GUINT {\em element\_\-count}, \/  GETKEY\_\-CLASS {\em get\_\-uintkey\_\-macro}, \/  COPY\_\-CLASS {\em copy\_\-elements\_\-macro})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__radixsort_8h_41009ea63c51a0a22ff221b583dc391d}
+
+
+Sorts array in place. For generic use. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em type}]Type of the array \item[{\em array}]\item[{\em element\_\-count}]\item[{\em get\_\-uintkey\_\-macro}]Macro for extract the Integer value of the element. Similar to SIMPLE\_\-GET\_\-UINTKEY \item[{\em copy\_\-elements\_\-macro}]Macro for copy elements, similar to SIMPLE\_\-COPY\_\-ELEMENTS \end{description}
+\end{Desc}
+\hypertarget{gim__radixsort_8h_dc804c6eb5898638d59eeed4b400f1d5}{
+\index{gim\_\-radixsort.h@{gim\_\-radixsort.h}!gim\_\-radix\_\-sort\_\-array\_\-tokens@{gim\_\-radix\_\-sort\_\-array\_\-tokens}}
+\index{gim\_\-radix\_\-sort\_\-array\_\-tokens@{gim\_\-radix\_\-sort\_\-array\_\-tokens}!gim_radixsort.h@{gim\_\-radixsort.h}}
+\subsubsection[gim\_\-radix\_\-sort\_\-array\_\-tokens]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, class GETKEY\_\-CLASS$>$ void gim\_\-radix\_\-sort\_\-array\_\-tokens (T $\ast$ {\em array}, \/  GIM\_\-RSORT\_\-TOKEN $\ast$ {\em sorted\_\-tokens}, \/  GUINT {\em element\_\-count}, \/  GETKEY\_\-CLASS {\em uintkey\_\-macro})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{gim__radixsort_8h_dc804c6eb5898638d59eeed4b400f1d5}
+
+
+Get the sorted tokens from an array. For generic use. Tokens are IRR\_\-RSORT\_\-TOKEN. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em array}]Array of elements to sort \item[{\em sorted\_\-tokens}]Tokens of sorted elements \item[{\em element\_\-count}]element count \item[{\em uintkey\_\-macro}]Functor which retrieves the integer representation of an array element \end{description}
+\end{Desc}

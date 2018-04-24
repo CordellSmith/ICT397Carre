@@ -1,0 +1,74 @@
+\hypertarget{light_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/light.h File Reference}
+\label{light_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/light.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/light.h}}
+}
+Defines the \hyperlink{structai_light}{aiLight} data structure. 
+
+{\tt \#include \char`\"{}types.h\char`\"{}}\par
+
+
+Include dependency graph for light.h:
+
+This graph shows which files directly or indirectly include this file:\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structai_light}{aiLight}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \hyperlink{light_8h_7a75cb224d903e71e8daede432449766}{aiLightSourceType} \{ , \par
+\hyperlink{light_8h_7a75cb224d903e71e8daede432449766b2dd8e6f09a9ca0efcf22457da2e8724}{aiLightSource\_\-DIRECTIONAL} =  0x1, 
+\hyperlink{light_8h_7a75cb224d903e71e8daede4324497660f5bf9437cd16516e15c095309476d37}{aiLightSource\_\-POINT} =  0x2, 
+\hyperlink{light_8h_7a75cb224d903e71e8daede43244976605ef88df7bae63499a8ed950c995e392}{aiLightSource\_\-SPOT} =  0x3, 
+\hyperlink{light_8h_7a75cb224d903e71e8daede432449766586dc7f849733364cb5b28c403759bf3}{aiLightSource\_\-AMBIENT} =  0x4, 
+\par
+\hyperlink{light_8h_7a75cb224d903e71e8daede432449766835d706047f460d4a70bf6a4b5b334b1}{aiLightSource\_\-AREA} =  0x5, 
+\hyperlink{light_8h_7a75cb224d903e71e8daede432449766110c3b047ed41a1656849921d75e83a1}{\_\-aiLightSource\_\-Force32Bit} =  INT\_\-MAX
+ \}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the \hyperlink{structai_light}{aiLight} data structure. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{light_8h_7a75cb224d903e71e8daede432449766}{
+\index{light.h@{light.h}!aiLightSourceType@{aiLightSourceType}}
+\index{aiLightSourceType@{aiLightSourceType}!light.h@{light.h}}
+\subsubsection[aiLightSourceType]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiLightSourceType}}}
+\label{light_8h_7a75cb224d903e71e8daede432449766}
+
+
+Enumerates all supported types of light sources. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiLightSource\_\-DIRECTIONAL@{aiLightSource\_\-DIRECTIONAL}!light.h@{light.h}}\index{light.h@{light.h}!aiLightSource\_\-DIRECTIONAL@{aiLightSource\_\-DIRECTIONAL}}\item[{\em 
+\hypertarget{light_8h_7a75cb224d903e71e8daede432449766b2dd8e6f09a9ca0efcf22457da2e8724}{
+aiLightSource\_\-DIRECTIONAL}
+\label{light_8h_7a75cb224d903e71e8daede432449766b2dd8e6f09a9ca0efcf22457da2e8724}
+}]A directional light source has a well-defined direction but is infinitely far away. That's quite a good approximation for sun light. \index{aiLightSource\_\-POINT@{aiLightSource\_\-POINT}!light.h@{light.h}}\index{light.h@{light.h}!aiLightSource\_\-POINT@{aiLightSource\_\-POINT}}\item[{\em 
+\hypertarget{light_8h_7a75cb224d903e71e8daede4324497660f5bf9437cd16516e15c095309476d37}{
+aiLightSource\_\-POINT}
+\label{light_8h_7a75cb224d903e71e8daede4324497660f5bf9437cd16516e15c095309476d37}
+}]A point light source has a well-defined position in space but no direction - it emits light in all directions. A normal bulb is a point light. \index{aiLightSource\_\-SPOT@{aiLightSource\_\-SPOT}!light.h@{light.h}}\index{light.h@{light.h}!aiLightSource\_\-SPOT@{aiLightSource\_\-SPOT}}\item[{\em 
+\hypertarget{light_8h_7a75cb224d903e71e8daede43244976605ef88df7bae63499a8ed950c995e392}{
+aiLightSource\_\-SPOT}
+\label{light_8h_7a75cb224d903e71e8daede43244976605ef88df7bae63499a8ed950c995e392}
+}]A spot light source emits light in a specific angle. It has a position and a direction it is pointing to. A good example for a spot light is a light spot in sport arenas. \index{aiLightSource\_\-AMBIENT@{aiLightSource\_\-AMBIENT}!light.h@{light.h}}\index{light.h@{light.h}!aiLightSource\_\-AMBIENT@{aiLightSource\_\-AMBIENT}}\item[{\em 
+\hypertarget{light_8h_7a75cb224d903e71e8daede432449766586dc7f849733364cb5b28c403759bf3}{
+aiLightSource\_\-AMBIENT}
+\label{light_8h_7a75cb224d903e71e8daede432449766586dc7f849733364cb5b28c403759bf3}
+}]The generic light level of the world, including the bounces of all other light sources. Typically, there's at most one ambient light in a scene. This light type doesn't have a valid position, direction, or other properties, just a color. \index{aiLightSource\_\-AREA@{aiLightSource\_\-AREA}!light.h@{light.h}}\index{light.h@{light.h}!aiLightSource\_\-AREA@{aiLightSource\_\-AREA}}\item[{\em 
+\hypertarget{light_8h_7a75cb224d903e71e8daede432449766835d706047f460d4a70bf6a4b5b334b1}{
+aiLightSource\_\-AREA}
+\label{light_8h_7a75cb224d903e71e8daede432449766835d706047f460d4a70bf6a4b5b334b1}
+}]An area light is a rectangle with predefined size that uniformly emits light from one of its sides. The position is center of the rectangle and direction is its normal vector. \index{\_\-aiLightSource\_\-Force32Bit@{\_\-aiLightSource\_\-Force32Bit}!light.h@{light.h}}\index{light.h@{light.h}!\_\-aiLightSource\_\-Force32Bit@{\_\-aiLightSource\_\-Force32Bit}}\item[{\em 
+\hypertarget{light_8h_7a75cb224d903e71e8daede432449766110c3b047ed41a1656849921d75e83a1}{
+\_\-aiLightSource\_\-Force32Bit}
+\label{light_8h_7a75cb224d903e71e8daede432449766110c3b047ed41a1656849921d75e83a1}
+}]This value is not used. It is just there to force the compiler to map this enum to a 32 Bit integer. \end{description}
+\end{Desc}
+

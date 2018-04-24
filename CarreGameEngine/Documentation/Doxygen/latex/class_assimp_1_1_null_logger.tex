@@ -1,0 +1,52 @@
+\hypertarget{class_assimp_1_1_null_logger}{
+\section{Assimp::NullLogger Class Reference}
+\label{class_assimp_1_1_null_logger}\index{Assimp::NullLogger@{Assimp::NullLogger}}
+}
+CPP-API: Empty logging implementation.  
+
+
+{\tt \#include $<$NullLogger.hpp$>$}
+
+Inheritance diagram for Assimp::NullLogger:Collaboration diagram for Assimp::NullLogger:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_null_logger_f354ebbd382b7097a55d364794a45631}{
+void \hyperlink{class_assimp_1_1_null_logger_f354ebbd382b7097a55d364794a45631}{OnDebug} (const char $\ast$message)}
+\label{class_assimp_1_1_null_logger_f354ebbd382b7097a55d364794a45631}
+
+\begin{CompactList}\small\item\em Logs a debug message. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_null_logger_12d2b0048d17a819c8c00277ad1394c5}{
+void \hyperlink{class_assimp_1_1_null_logger_12d2b0048d17a819c8c00277ad1394c5}{OnInfo} (const char $\ast$message)}
+\label{class_assimp_1_1_null_logger_12d2b0048d17a819c8c00277ad1394c5}
+
+\begin{CompactList}\small\item\em Logs an info message. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_null_logger_9a04c2b9e3d4bc9eec8f693ed8115f24}{
+void \hyperlink{class_assimp_1_1_null_logger_9a04c2b9e3d4bc9eec8f693ed8115f24}{OnWarn} (const char $\ast$message)}
+\label{class_assimp_1_1_null_logger_9a04c2b9e3d4bc9eec8f693ed8115f24}
+
+\begin{CompactList}\small\item\em Logs a warning message. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_null_logger_4fbf66103757fafcff891fb04b4ee714}{
+void \hyperlink{class_assimp_1_1_null_logger_4fbf66103757fafcff891fb04b4ee714}{OnError} (const char $\ast$message)}
+\label{class_assimp_1_1_null_logger_4fbf66103757fafcff891fb04b4ee714}
+
+\begin{CompactList}\small\item\em Logs an error message. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_null_logger_31c05ecaee392b5fd34fd2dfd1cca559}{
+bool \hyperlink{class_assimp_1_1_null_logger_31c05ecaee392b5fd34fd2dfd1cca559}{attachStream} (\hyperlink{class_assimp_1_1_log_stream}{LogStream} $\ast$pStream, unsigned int severity)}
+\label{class_assimp_1_1_null_logger_31c05ecaee392b5fd34fd2dfd1cca559}
+
+\begin{CompactList}\small\item\em Detach a still attached stream from logger. \item\end{CompactList}\item 
+\hypertarget{class_assimp_1_1_null_logger_b49b14a0045aab73b813a448b5aa77b4}{
+bool \hyperlink{class_assimp_1_1_null_logger_b49b14a0045aab73b813a448b5aa77b4}{detatchStream} (\hyperlink{class_assimp_1_1_log_stream}{LogStream} $\ast$pStream, unsigned int severity)}
+\label{class_assimp_1_1_null_logger_b49b14a0045aab73b813a448b5aa77b4}
+
+\begin{CompactList}\small\item\em Detach a still attached stream from logger. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+CPP-API: Empty logging implementation. 
+
+Does nothing! Used by default if the application hasn't requested a custom logger via DefaultLogger::set() or DefaultLogger::create(); 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_null_logger_8hpp}{NullLogger.hpp}\end{CompactItemize}

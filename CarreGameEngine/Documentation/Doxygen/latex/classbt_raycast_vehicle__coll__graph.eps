@@ -1,0 +1,687 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Creator: Graphviz version 2.20.2 (Wed Jul  9 19:59:08 GMT 2008)
+%%For: New
+%%Title: G
+%%Pages: (atend)
+%%BoundingBox: (atend)
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+EncodingVector 45 /hyphen put
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+       dup 1 exch div /InvScaleFactor exch def
+       scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw text fitted to its expected width
+/alignedtext {			% width text
+	/text exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			[] 0 setdash
+			text stringwidth pop width exch sub text length div 0 text ashow
+		} if
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+setupLatin1
+%%Page: 1 1
+%%PageBoundingBox: 36 36 1090 240
+%%PageOrientation: Portrait
+0 0 1 beginpage
+gsave
+36 36 1054 204 boxprim clip newpath
+1 1 set_scale 0 rotate 40 40 translate
+% Node1
+gsave
+0.000 0.000 0.749 nodecolor
+newpath 953 92 moveto
+953 112 lineto
+1046 112 lineto
+1046 92 lineto
+closepath fill
+1 setlinewidth
+filled
+0.000 0.000 0.000 nodecolor
+newpath 953 92 moveto
+953 112 lineto
+1046 112 lineto
+1046 92 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+960.5 99 moveto 77 (btRaycastVehicle) alignedtext
+grestore
+% Node2
+gsave
+[ /Rect [ 695 175 783 195 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_action_interface.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 695 175 moveto
+695 195 lineto
+784 195 lineto
+784 175 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+702.5 182 moveto 73 (btActionInterface) alignedtext
+grestore
+% Node2->Node1
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 794 186 moveto
+835 185 890 179 934 159 curveto
+958 149 980 126 991 112 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 794 182.5 moveto
+784 186 lineto
+794 189.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 794 182.5 moveto
+784 186 lineto
+794 189.5 lineto
+closepath stroke
+grestore
+% Node3
+gsave
+[ /Rect [ 705 137 773 157 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_rigid_body.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 705 137 moveto
+705 157 lineto
+774 157 lineto
+774 137 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+712.5 144 moveto 53 (btRigidBody) alignedtext
+grestore
+% Node3->Node1
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 784 146 moveto
+824 144 884 140 934 127 curveto
+949 124 965 117 978 112 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 784 142.5 moveto
+774 146 lineto
+784 149.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 784 142.5 moveto
+774 146 lineto
+784 149.5 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+855 146 moveto 70 (m_chassisBody) alignedtext
+grestore
+% Node4
+gsave
+[ /Rect [ 302 174 514 194 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_aligned_object_array.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 302 174 moveto
+302 194 lineto
+514 194 lineto
+514 174 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+310 181 moveto 196 (btAlignedObjectArray< btTypedConstraint * >) alignedtext
+grestore
+% Node4->Node3
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 513 173 moveto
+551 169 593 165 632 160 curveto
+657 157 684 154 705 151 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 512.6 169.52 moveto
+503 174 lineto
+513.3 176.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 512.6 169.52 moveto
+503 174 lineto
+513.3 176.49 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+544 172 moveto 76 (m_constraintRefs) alignedtext
+grestore
+% Node5
+gsave
+[ /Rect [ 1 174 215 194 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_aligned_allocator.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 1 174 moveto
+1 194 lineto
+216 194 lineto
+216 174 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+8.5 181 moveto 199 (btAlignedAllocator< btTypedConstraint *, 16 >) alignedtext
+grestore
+% Node5->Node4
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 226 184 moveto
+251 184 277 184 302 184 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 226 180.5 moveto
+216 184 lineto
+226 187.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 226 180.5 moveto
+216 184 lineto
+226 187.5 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+234 187 moveto 50 (m_allocator) alignedtext
+grestore
+% Node6
+gsave
+[ /Rect [ 370 136 446 156 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_motion_state.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 370 136 moveto
+370 156 lineto
+447 156 lineto
+447 136 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+377.5 143 moveto 61 (btMotionState) alignedtext
+grestore
+% Node6->Node3
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 457 146 moveto
+526 146 646 147 705 147 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 457 142.5 moveto
+447 146 lineto
+457 149.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 457 142.5 moveto
+447 146 lineto
+457 149.5 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+532 150 moveto 100 (m_optionalMotionState) alignedtext
+grestore
+% Node7
+gsave
+[ /Rect [ 655 95 823 115 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_aligned_object_array.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 655 95 moveto
+655 115 lineto
+823 115 lineto
+823 95 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+663 102 moveto 152 (btAlignedObjectArray< btVector3 >) alignedtext
+grestore
+% Node7->Node1
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 833 103 moveto
+838 103 842 103 846 103 curveto
+882 103 922 103 953 102 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 833 99.5 moveto
+823 103 lineto
+833 106.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 833 99.5 moveto
+823 103 lineto
+833 106.5 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+874 120 moveto 32 (m_axle) alignedtext
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+859.5 108 moveto 61 (m_forwardWS) alignedtext
+grestore
+% Node8
+gsave
+[ /Rect [ 323 95 493 115 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_aligned_allocator.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 323 95 moveto
+323 115 lineto
+494 115 lineto
+494 95 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+330.5 102 moveto 155 (btAlignedAllocator< btVector3, 16 >) alignedtext
+grestore
+% Node8->Node7
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 504 105 moveto
+552 105 609 105 655 105 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 504 101.5 moveto
+494 105 lineto
+504 108.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 504 101.5 moveto
+494 105 lineto
+504 108.5 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+557 108 moveto 50 (m_allocator) alignedtext
+grestore
+% Node9
+gsave
+[ /Rect [ 689 57 789 77 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($structbt_vehicle_raycaster.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 689 57 moveto
+689 77 lineto
+790 77 lineto
+790 57 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+696.5 64 moveto 85 (btVehicleRaycaster) alignedtext
+grestore
+% Node9->Node1
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 800 72 moveto
+839 75 890 80 934 87 curveto
+942 88 951 90 959 92 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 800.3 68.51 moveto
+790 71 lineto
+799.6 75.48 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 800.3 68.51 moveto
+790 71 lineto
+799.6 75.48 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+846.5 90 moveto 87 (m_vehicleRaycaster) alignedtext
+grestore
+% Node10
+gsave
+[ /Rect [ 651 19 827 39 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_aligned_object_array.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 651 19 moveto
+651 39 lineto
+828 39 lineto
+828 19 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+658.5 26 moveto 161 (btAlignedObjectArray< btWheelInfo >) alignedtext
+grestore
+% Node10->Node1
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 838 37 moveto
+870 41 904 48 934 60 curveto
+954 68 974 82 987 92 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 838.49 33.53 moveto
+828 35 lineto
+837.12 40.39 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 838.49 33.53 moveto
+828 35 lineto
+837.12 40.39 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+863.5 63 moveto 53 (m_wheelInfo) alignedtext
+grestore
+% Node11
+gsave
+[ /Rect [ 375 38 441 58 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($structbt_wheel_info.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 375 38 moveto
+375 58 lineto
+442 58 lineto
+442 38 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+382.5 45 moveto 51 (btWheelInfo) alignedtext
+grestore
+% Node11->Node10
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 452 45 moveto
+503 42 587 38 651 34 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 451.6 41.52 moveto
+442 46 lineto
+452.3 48.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 451.6 41.52 moveto
+442 46 lineto
+452.3 48.49 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+566 45 moveto 32 (m_data) alignedtext
+grestore
+% Node12
+gsave
+[ /Rect [ 318 0 498 20 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classbt_aligned_allocator.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 318 0 moveto
+318 20 lineto
+498 20 lineto
+498 0 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+326 7 moveto 164 (btAlignedAllocator< btWheelInfo, 16 >) alignedtext
+grestore
+% Node12->Node10
+gsave
+1 setlinewidth
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 508 14 moveto
+547 16 592 18 632 21 curveto
+638 21 645 22 651 22 curveto
+stroke
+0.776 0.753 0.804 edgecolor
+newpath 508 10.5 moveto
+498 14 lineto
+508 17.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.776 0.753 0.804 edgecolor
+newpath 508 10.5 moveto
+498 14 lineto
+508 17.5 lineto
+closepath stroke
+0.000 0.000 0.000 edgecolor
+10 /FreeSans set_font
+557 24 moveto 50 (m_allocator) alignedtext
+grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+%%BoundingBox: 36 36 1090 240
+end
+restore
+%%EOF

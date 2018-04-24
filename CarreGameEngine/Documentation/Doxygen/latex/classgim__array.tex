@@ -1,0 +1,81 @@
+\hypertarget{classgim__array}{
+\section{gim\_\-array$<$ T $>$ Class Template Reference}
+\label{classgim__array}\index{gim\_\-array@{gim\_\-array}}
+}
+Very simple array container with fast access and simd memory.  
+
+
+{\tt \#include $<$gim\_\-array.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf }\par
+\begin{CompactItemize}
+\item 
+void \hyperlink{classgim__array_a7a9dca42674415635846cd077cb4a97}{destroyData} ()
+\end{CompactItemize}
+\end{Indent}
+\begin{Indent}{\bf }\par
+\begin{CompactItemize}
+\item 
+bool \hyperlink{classgim__array_572f94b5b67d505335150a2dea8a7e3d}{reserve} (GUINT size)
+\item 
+\hypertarget{classgim__array_cbd3ad9a6756d0b91e42549a0e7107f0}{
+void \hyperlink{classgim__array_cbd3ad9a6756d0b91e42549a0e7107f0}{push\_\-back\_\-mem} ()}
+\label{classgim__array_cbd3ad9a6756d0b91e42549a0e7107f0}
+
+\begin{CompactList}\small\item\em Simply increase the m\_\-size, doesn't call the new element constructor. \item\end{CompactList}\item 
+\hypertarget{classgim__array_a15906909f6f824e559864359096db63}{
+void \hyperlink{classgim__array_a15906909f6f824e559864359096db63}{pop\_\-back\_\-mem} ()}
+\label{classgim__array_a15906909f6f824e559864359096db63}
+
+\begin{CompactList}\small\item\em Simply decrease the m\_\-size, doesn't call the deleted element destructor. \item\end{CompactList}\item 
+\hypertarget{classgim__array_0de98d5b161c18568c7bc3a13e90df51}{
+void \hyperlink{classgim__array_0de98d5b161c18568c7bc3a13e90df51}{erase} (GUINT index)}
+\label{classgim__array_0de98d5b161c18568c7bc3a13e90df51}
+
+\begin{CompactList}\small\item\em fast erase \item\end{CompactList}\end{CompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{Indent}{\bf }\par
+\begin{CompactItemize}
+\item 
+T $\ast$ \hyperlink{classgim__array_afb886b0fb48bed8c878d8a82dc4099c}{m\_\-data}
+\end{CompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$ class gim\_\-array$<$ T $>$}
+
+Very simple array container with fast access and simd memory. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classgim__array_a7a9dca42674415635846cd077cb4a97}{
+\index{gim\_\-array@{gim\_\-array}!destroyData@{destroyData}}
+\index{destroyData@{destroyData}!gim_array@{gim\_\-array}}
+\subsubsection[destroyData]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf gim\_\-array}$<$ T $>$::destroyData ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classgim__array_a7a9dca42674415635846cd077cb4a97}
+
+
+protected operations \hypertarget{classgim__array_572f94b5b67d505335150a2dea8a7e3d}{
+\index{gim\_\-array@{gim\_\-array}!reserve@{reserve}}
+\index{reserve@{reserve}!gim_array@{gim\_\-array}}
+\subsubsection[reserve]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf gim\_\-array}$<$ T $>$::reserve (GUINT {\em size})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classgim__array_572f94b5b67d505335150a2dea8a7e3d}
+
+
+public operations 
+
+\subsection{Member Data Documentation}
+\hypertarget{classgim__array_afb886b0fb48bed8c878d8a82dc4099c}{
+\index{gim\_\-array@{gim\_\-array}!m\_\-data@{m\_\-data}}
+\index{m\_\-data@{m\_\-data}!gim_array@{gim\_\-array}}
+\subsubsection[m\_\-data]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T$\ast$ {\bf gim\_\-array}$<$ T $>$::{\bf m\_\-data}}}
+\label{classgim__array_afb886b0fb48bed8c878d8a82dc4099c}
+
+
+properties 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__array_8h}{gim\_\-array.h}\end{CompactItemize}

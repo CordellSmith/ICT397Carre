@@ -1,0 +1,44 @@
+\hypertarget{structbt_dbvt}{
+\section{btDbvt Struct Reference}
+\label{structbt_dbvt}\index{btDbvt@{btDbvt}}
+}
+{\tt \#include $<$btDbvt.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+DBVT\_\-PREFIX void \hyperlink{structbt_dbvt_f8f2ca01be7eadc4732464272f580028}{rayTestInternal} (const btDbvtNode $\ast$root, const btVector3 \&rayFrom, const btVector3 \&rayTo, const btVector3 \&rayDirectionInverse, unsigned int signs\mbox{[}3\mbox{]}, btScalar lambda\_\-max, const btVector3 \&aabbMin, const btVector3 \&aabbMax, \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray}$<$ const btDbvtNode $\ast$ $>$ \&stack, DBVT\_\-IPOLICY) const 
+\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static DBVT\_\-PREFIX void \hyperlink{structbt_dbvt_8e316ee3bc9bd7b7354086c0c558cfb5}{rayTest} (const btDbvtNode $\ast$root, const btVector3 \&rayFrom, const btVector3 \&rayTo, DBVT\_\-IPOLICY)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{structbt_dbvt}{btDbvt} class implements a fast dynamic bounding volume tree based on axis aligned bounding boxes (aabb tree). This \hyperlink{structbt_dbvt}{btDbvt} is used for soft body collision detection and for the \hyperlink{structbt_dbvt_broadphase}{btDbvtBroadphase}. It has a fast insert, remove and update of nodes. Unlike the btQuantizedBvh, nodes can be dynamically moved around, which allows for change in topology of the underlying data structure. 
+
+\subsection{Member Function Documentation}
+\hypertarget{structbt_dbvt_8e316ee3bc9bd7b7354086c0c558cfb5}{
+\index{btDbvt@{btDbvt}!rayTest@{rayTest}}
+\index{rayTest@{rayTest}!btDbvt@{btDbvt}}
+\subsubsection[rayTest]{\setlength{\rightskip}{0pt plus 5cm}DBVT\_\-PREFIX void btDbvt::rayTest (const btDbvtNode $\ast$ {\em root}, \/  const btVector3 \& {\em rayFrom}, \/  const btVector3 \& {\em rayTo}, \/  DBVT\_\-IPOLICY)\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{structbt_dbvt_8e316ee3bc9bd7b7354086c0c558cfb5}
+
+
+rayTest is a re-entrant ray test, and can be called in parallel as long as the btAlignedAlloc is thread-safe (uses locking etc) rayTest is slower than rayTestInternal, because it builds a local stack, using memory allocations, and it recomputes signs/rayDirectionInverses each time 
+
+what about division by zero? --$>$ just set rayDirection\mbox{[}i\mbox{]} to INF/BT\_\-LARGE\_\-FLOAT \hypertarget{structbt_dbvt_f8f2ca01be7eadc4732464272f580028}{
+\index{btDbvt@{btDbvt}!rayTestInternal@{rayTestInternal}}
+\index{rayTestInternal@{rayTestInternal}!btDbvt@{btDbvt}}
+\subsubsection[rayTestInternal]{\setlength{\rightskip}{0pt plus 5cm}DBVT\_\-PREFIX void btDbvt::rayTestInternal (const btDbvtNode $\ast$ {\em root}, \/  const btVector3 \& {\em rayFrom}, \/  const btVector3 \& {\em rayTo}, \/  const btVector3 \& {\em rayDirectionInverse}, \/  unsigned int {\em signs}\mbox{[}3\mbox{]}, \/  btScalar {\em lambda\_\-max}, \/  const btVector3 \& {\em aabbMin}, \/  const btVector3 \& {\em aabbMax}, \/  {\bf btAlignedObjectArray}$<$ const btDbvtNode $\ast$ $>$ \& {\em stack}, \/  DBVT\_\-IPOLICY) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{structbt_dbvt_f8f2ca01be7eadc4732464272f580028}
+
+
+rayTestInternal is faster than rayTest, because it uses a persistent stack (to reduce dynamic memory allocations to a minimum) and it uses precomputed signs/rayInverseDirections rayTestInternal is used by \hyperlink{structbt_dbvt_broadphase}{btDbvtBroadphase} to accelerate world ray casts 
+
+The documentation for this struct was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvt.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvt.cpp\end{CompactItemize}

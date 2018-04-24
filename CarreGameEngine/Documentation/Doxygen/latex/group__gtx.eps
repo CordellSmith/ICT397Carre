@@ -1,0 +1,2255 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Creator: Graphviz version 2.20.2 (Wed Jul  9 19:59:08 GMT 2008)
+%%For: New
+%%Title: structs
+%%Pages: (atend)
+%%BoundingBox: (atend)
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+EncodingVector 45 /hyphen put
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+       dup 1 exch div /InvScaleFactor exch def
+       scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw text fitted to its expected width
+/alignedtext {			% width text
+	/text exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			[] 0 setdash
+			text stringwidth pop width exch sub text length div 0 text ashow
+		} if
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+setupLatin1
+%%Page: 1 1
+%%PageBoundingBox: 36 36 412 1964
+%%PageOrientation: Portrait
+0 0 1 beginpage
+gsave
+36 36 376 1928 boxprim clip newpath
+1 1 set_scale 0 rotate 40 40 translate
+% Node22
+gsave
+[ /Rect [ 203 1900 353 1920 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__matrix__interpolation.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 203 1900 moveto
+203 1920 lineto
+353 1920 lineto
+353 1900 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+211 1907 moveto 134 (GLM_GTX_matrix_interpolation) alignedtext
+grestore
+% Node23
+gsave
+[ /Rect [ 199 1862 357 1882 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__matrix__major__storage.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 199 1862 moveto
+199 1882 lineto
+358 1882 lineto
+358 1862 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+206.5 1869 moveto 143 (GLM_GTX_matrix_major_storage) alignedtext
+grestore
+% Node4
+gsave
+[ /Rect [ 219 1824 337 1844 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__color__space.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 219 1824 moveto
+219 1844 lineto
+337 1844 lineto
+337 1824 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+227 1831 moveto 102 (GLM_GTX_color_space) alignedtext
+grestore
+% Node36
+gsave
+[ /Rect [ 207 1786 349 1806 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__polar__coordinates.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 207 1786 moveto
+207 1806 lineto
+349 1806 lineto
+349 1786 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+215 1793 moveto 126 (GLM_GTX_polar_coordinates) alignedtext
+grestore
+% Node0
+gsave
+0.000 0.000 0.749 nodecolor
+newpath 0 950 moveto
+0 970 lineto
+152 970 lineto
+152 950 lineto
+closepath fill
+1 setlinewidth
+filled
+0.000 0.000 0.000 nodecolor
+newpath 0 950 moveto
+0 970 lineto
+152 970 lineto
+152 950 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+8 957 moveto 136 (GTX Extensions \(Experimental\)) alignedtext
+grestore
+% Node0->Node22
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 980 moveto
+84 1110 125 1821 188 1891 curveto
+192 1896 197 1899 203 1902 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath stroke
+grestore
+% Node0->Node23
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 980 moveto
+85 1107 127 1786 188 1853 curveto
+191 1857 195 1859 199 1862 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath stroke
+grestore
+% Node0->Node4
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 980 moveto
+85 1104 129 1751 188 1815 curveto
+196 1824 207 1829 219 1832 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath stroke
+grestore
+% Node0->Node36
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 980 moveto
+86 1101 132 1716 188 1777 curveto
+193 1782 200 1787 207 1790 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath stroke
+grestore
+% Node30
+gsave
+[ /Rect [ 231 1748 325 1768 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__normal.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 231 1748 moveto
+231 1768 lineto
+326 1768 lineto
+326 1748 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+238.5 1755 moveto 79 (GLM_GTX_normal) alignedtext
+grestore
+% Node0->Node30
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 980 moveto
+86 1097 135 1682 188 1739 curveto
+199 1750 215 1756 231 1758 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath stroke
+grestore
+% Node48
+gsave
+[ /Rect [ 236 1710 320 1730 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__vec1.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 236 1710 moveto
+236 1730 lineto
+321 1730 lineto
+321 1710 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+243.5 1717 moveto 69 (GLM_GTX_vec1) alignedtext
+grestore
+% Node0->Node48
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 980 moveto
+87 1094 137 1646 188 1701 curveto
+200 1713 219 1719 236 1721 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath stroke
+grestore
+% Node41
+gsave
+[ /Rect [ 221 1672 335 1692 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__simd__mat4.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 221 1672 moveto
+221 1692 lineto
+335 1692 lineto
+335 1672 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+229 1679 moveto 98 (GLM_GTX_simd_mat4) alignedtext
+grestore
+% Node0->Node41
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 76 980 moveto
+78 1085 92 1561 188 1663 curveto
+197 1672 209 1677 221 1680 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 79.5 980 moveto
+76 970 lineto
+72.5 980 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 79.5 980 moveto
+76 970 lineto
+72.5 980 lineto
+closepath stroke
+grestore
+% Node18
+gsave
+[ /Rect [ 227 1634 329 1654 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__intersect.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 227 1634 moveto
+227 1654 lineto
+330 1654 lineto
+330 1634 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+234.5 1641 moveto 87 (GLM_GTX_intersect) alignedtext
+grestore
+% Node0->Node18
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 76 980 moveto
+79 1081 97 1529 188 1625 curveto
+198 1635 213 1641 227 1643 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 79.5 980 moveto
+76 970 lineto
+72.5 980 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 79.5 980 moveto
+76 970 lineto
+72.5 980 lineto
+closepath stroke
+grestore
+% Node3
+gsave
+[ /Rect [ 217 1596 339 1616 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__closest__point.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 217 1596 moveto
+217 1616 lineto
+340 1616 lineto
+340 1596 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+224.5 1603 moveto 107 (GLM_GTX_closest_point) alignedtext
+grestore
+% Node0->Node3
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 76 980 moveto
+81 1078 102 1497 188 1587 curveto
+196 1595 206 1600 217 1603 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 79.5 980 moveto
+76 970 lineto
+72.5 980 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 79.5 980 moveto
+76 970 lineto
+72.5 980 lineto
+closepath stroke
+grestore
+% Node19
+gsave
+[ /Rect [ 242 1558 314 1578 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__io.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 242 1558 moveto
+242 1578 lineto
+315 1578 lineto
+315 1558 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+249.5 1565 moveto 57 (GLM_GTX_io) alignedtext
+grestore
+% Node0->Node19
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 77 980 moveto
+82 1074 106 1464 188 1549 curveto
+202 1563 223 1568 242 1569 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 80.48 979.6 moveto
+76 970 lineto
+73.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 80.48 979.6 moveto
+76 970 lineto
+73.51 980.3 lineto
+closepath stroke
+grestore
+% Node27
+gsave
+[ /Rect [ 211 1520 345 1540 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__mixed__product.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 211 1520 moveto
+211 1540 lineto
+346 1540 lineto
+346 1520 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+218.5 1527 moveto 119 (GLM_GTX_mixed_producte) alignedtext
+grestore
+% Node0->Node27
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 980 moveto
+83 1070 111 1433 188 1511 curveto
+194 1517 202 1522 211 1525 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath stroke
+grestore
+% Node14
+gsave
+[ /Rect [ 215 1482 341 1502 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__gradient__paint.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 215 1482 moveto
+215 1502 lineto
+341 1502 lineto
+341 1482 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+223 1489 moveto 110 (GLM_GTX_gradient_paint) alignedtext
+grestore
+% Node0->Node14
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 980 moveto
+85 1067 117 1401 188 1473 curveto
+195 1480 205 1485 215 1488 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath stroke
+grestore
+% Node17
+gsave
+[ /Rect [ 231 1444 325 1464 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__integer.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 231 1444 moveto
+231 1464 lineto
+326 1464 lineto
+326 1444 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+238.5 1451 moveto 79 (GLM_GTX_integer) alignedtext
+grestore
+% Node0->Node17
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 980 moveto
+86 1062 121 1369 188 1435 curveto
+199 1446 215 1451 231 1453 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath stroke
+grestore
+% Node2
+gsave
+[ /Rect [ 240 1406 316 1426 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__bit.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 240 1406 moveto
+240 1426 lineto
+316 1426 lineto
+316 1406 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+248 1413 moveto 60 (GLM_GTX_bit) alignedtext
+grestore
+% Node0->Node2
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 980 moveto
+88 1058 126 1337 188 1397 curveto
+202 1410 222 1415 240 1417 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath stroke
+grestore
+% Node45
+gsave
+[ /Rect [ 221 1368 335 1388 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__string__cast.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 221 1368 moveto
+221 1388 lineto
+335 1388 lineto
+335 1368 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+229 1375 moveto 98 (GLM_GTX_string_cast) alignedtext
+grestore
+% Node0->Node45
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 79 980 moveto
+90 1054 131 1306 188 1359 curveto
+197 1367 209 1372 221 1375 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 82.39 979.12 moveto
+77 970 lineto
+75.53 980.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 82.39 979.12 moveto
+77 970 lineto
+75.53 980.49 lineto
+closepath stroke
+grestore
+% Node10
+gsave
+[ /Rect [ 204 1330 352 1350 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__extented__min__max.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 204 1330 moveto
+204 1350 lineto
+352 1350 lineto
+352 1330 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+212 1337 moveto 132 (GLM_GTX_extented_min_max) alignedtext
+grestore
+% Node0->Node10
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 80 980 moveto
+92 1049 136 1273 188 1321 curveto
+193 1325 198 1328 204 1331 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 83.39 979.12 moveto
+78 970 lineto
+76.53 980.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 83.39 979.12 moveto
+78 970 lineto
+76.53 980.49 lineto
+closepath stroke
+grestore
+% Node29
+gsave
+[ /Rect [ 235 1292 321 1312 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__norm.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 235 1292 moveto
+235 1312 lineto
+322 1312 lineto
+322 1292 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+242.5 1299 moveto 71 (GLM_GTX_norm) alignedtext
+grestore
+% Node0->Node29
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 80 980 moveto
+95 1044 141 1241 188 1283 curveto
+201 1294 218 1299 235 1302 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 83.39 979.12 moveto
+78 970 lineto
+76.53 980.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 83.39 979.12 moveto
+78 970 lineto
+76.53 980.49 lineto
+closepath stroke
+grestore
+% Node44
+gsave
+[ /Rect [ 211 1254 345 1274 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__std__based__type.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 211 1254 moveto
+211 1274 lineto
+346 1274 lineto
+346 1254 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+218.5 1261 moveto 119 (GLM_GTX_std_based_type) alignedtext
+grestore
+% Node0->Node44
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 980 moveto
+83 1033 105 1174 188 1245 curveto
+195 1250 203 1255 211 1257 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 81.48 979.6 moveto
+77 970 lineto
+74.51 980.3 lineto
+closepath stroke
+grestore
+% Node32
+gsave
+[ /Rect [ 207 1216 349 1236 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__number__precision.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 207 1216 moveto
+207 1236 lineto
+349 1236 lineto
+349 1216 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+215 1223 moveto 126 (GLM_GTX_number_precision) alignedtext
+grestore
+% Node0->Node32
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 79 980 moveto
+87 1028 115 1147 188 1207 curveto
+194 1211 200 1215 207 1218 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 82.39 979.12 moveto
+77 970 lineto
+75.53 980.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 82.39 979.12 moveto
+77 970 lineto
+75.53 980.49 lineto
+closepath stroke
+grestore
+% Node46
+gsave
+[ /Rect [ 225 1178 331 1198 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__transform.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 225 1178 moveto
+225 1198 lineto
+331 1198 lineto
+331 1178 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+233 1185 moveto 90 (GLM_GTX_transform) alignedtext
+grestore
+% Node0->Node46
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 80 980 moveto
+91 1022 123 1119 188 1169 curveto
+199 1177 212 1182 225 1184 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 83.39 979.12 moveto
+78 970 lineto
+76.53 980.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 83.39 979.12 moveto
+78 970 lineto
+76.53 980.49 lineto
+closepath stroke
+grestore
+% Node21
+gsave
+[ /Rect [ 199 1140 357 1160 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__matrix__cross__product.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 199 1140 moveto
+199 1160 lineto
+358 1160 lineto
+358 1140 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+206.5 1147 moveto 143 (GLM_GTX_matrix_cross_product) alignedtext
+grestore
+% Node0->Node21
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 83 979 moveto
+97 1015 132 1092 188 1131 curveto
+193 1135 199 1138 205 1140 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 86.26 977.72 moveto
+79 970 lineto
+79.86 980.56 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 86.26 977.72 moveto
+79 970 lineto
+79.86 980.56 lineto
+closepath stroke
+grestore
+% Node51
+gsave
+[ /Rect [ 235 1102 321 1122 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__wrap.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 235 1102 moveto
+235 1122 lineto
+321 1122 lineto
+321 1102 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+243 1109 moveto 70 (GLM_GTX_wrap) alignedtext
+grestore
+% Node0->Node51
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 86 979 moveto
+104 1008 140 1064 188 1093 curveto
+202 1101 219 1106 235 1109 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 88.92 977.04 moveto
+81 970 lineto
+82.8 980.44 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 88.92 977.04 moveto
+81 970 lineto
+82.8 980.44 lineto
+closepath stroke
+grestore
+% Node50
+gsave
+[ /Rect [ 218 1064 338 1084 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__vector__query.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 218 1064 moveto
+218 1084 lineto
+338 1084 lineto
+338 1064 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+226 1071 moveto 104 (GLM_GTX_vector_query) alignedtext
+grestore
+% Node0->Node50
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 92 978 moveto
+112 999 149 1035 188 1055 curveto
+197 1059 207 1063 218 1065 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 94.22 975.22 moveto
+85 970 lineto
+88.95 979.83 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 94.22 975.22 moveto
+85 970 lineto
+88.95 979.83 lineto
+closepath stroke
+grestore
+% Node24
+gsave
+[ /Rect [ 209 1026 347 1046 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__matrix__operation.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 209 1026 moveto
+209 1046 lineto
+347 1046 lineto
+347 1026 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+217 1033 moveto 122 (GLM_GTX_matrix_operation) alignedtext
+grestore
+% Node0->Node24
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 102 975 moveto
+124 988 157 1006 188 1017 curveto
+198 1020 210 1023 220 1026 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 103.44 971.8 moveto
+93 970 lineto
+100.04 977.92 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 103.44 971.8 moveto
+93 970 lineto
+100.04 977.92 lineto
+closepath stroke
+grestore
+% Node25
+gsave
+[ /Rect [ 217 988 339 1008 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__matrix__query.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 217 988 moveto
+217 1008 lineto
+339 1008 lineto
+339 988 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+225 995 moveto 106 (GLM_GTX_matrix_query) alignedtext
+grestore
+% Node0->Node25
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 139 972 moveto
+167 977 199 983 225 988 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 139.49 968.53 moveto
+129 970 lineto
+138.12 975.39 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 139.49 968.53 moveto
+129 970 lineto
+138.12 975.39 lineto
+closepath stroke
+grestore
+% Node7
+gsave
+[ /Rect [ 209 950 347 970 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__component__wise.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 209 950 moveto
+209 970 lineto
+347 970 lineto
+347 950 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+217 957 moveto 122 (GLM_GTX_component_wise) alignedtext
+grestore
+% Node0->Node7
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 162 960 moveto
+178 960 193 960 209 960 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 162 956.5 moveto
+152 960 lineto
+162 963.5 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 162 956.5 moveto
+152 960 lineto
+162 963.5 lineto
+closepath stroke
+grestore
+% Node16
+gsave
+[ /Rect [ 232 912 324 932 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__inertia.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 232 912 moveto
+232 932 lineto
+324 932 lineto
+324 912 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+240 919 moveto 76 (GLM_GTX_inertia) alignedtext
+grestore
+% Node0->Node16
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 139 948 moveto
+169 943 204 936 232 931 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 138.12 944.61 moveto
+129 950 lineto
+139.49 951.47 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 138.12 944.61 moveto
+129 950 lineto
+139.49 951.47 lineto
+closepath stroke
+grestore
+% Node12
+gsave
+[ /Rect [ 209 874 347 894 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__fast__square__root.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 209 874 moveto
+209 894 lineto
+347 894 lineto
+347 874 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+217 881 moveto 122 (GLM_GTX_fast_square_root) alignedtext
+grestore
+% Node0->Node12
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 101 945 moveto
+123 932 157 914 188 903 curveto
+198 899 209 896 219 894 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 99.04 942.08 moveto
+92 950 lineto
+102.44 948.2 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 99.04 942.08 moveto
+92 950 lineto
+102.44 948.2 lineto
+closepath stroke
+grestore
+% Node8
+gsave
+[ /Rect [ 218 836 338 856 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__euler__angles.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 218 836 moveto
+218 856 lineto
+338 856 lineto
+338 836 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+226 843 moveto 104 (GLM_GTX_euler_angles) alignedtext
+grestore
+% Node0->Node8
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 92 942 moveto
+112 920 149 884 188 865 curveto
+197 861 207 857 218 854 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 88.95 940.17 moveto
+85 950 lineto
+94.22 944.78 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 88.95 940.17 moveto
+85 950 lineto
+94.22 944.78 lineto
+closepath stroke
+grestore
+% Node47
+gsave
+[ /Rect [ 223 798 333 818 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__transform2.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 223 798 moveto
+223 818 lineto
+334 818 lineto
+334 798 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+230.5 805 moveto 95 (GLM_GTX_transform2) alignedtext
+grestore
+% Node0->Node47
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 86 941 moveto
+103 912 140 855 188 827 curveto
+199 820 211 816 223 813 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 82.8 939.56 moveto
+81 950 lineto
+88.92 942.96 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 82.8 939.56 moveto
+81 950 lineto
+88.92 942.96 lineto
+closepath stroke
+grestore
+% Node5
+gsave
+[ /Rect [ 201 760 355 780 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__color__space___y_co_cg.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 201 760 moveto
+201 780 lineto
+355 780 lineto
+355 760 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+209 767 moveto 138 (GLM_GTX_color_space_YCoCg) alignedtext
+grestore
+% Node0->Node5
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 83 941 moveto
+97 904 132 827 188 789 curveto
+193 785 199 783 204 780 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 79.86 939.44 moveto
+79 950 lineto
+86.26 942.28 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 79.86 939.44 moveto
+79 950 lineto
+86.26 942.28 lineto
+closepath stroke
+grestore
+% Node9
+gsave
+[ /Rect [ 231 722 325 742 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__extend.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 231 722 moveto
+231 742 lineto
+326 742 lineto
+326 722 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+238.5 729 moveto 79 (GLM_GTX_extend) alignedtext
+grestore
+% Node0->Node9
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 80 940 moveto
+91 898 123 800 188 751 curveto
+200 742 216 737 231 734 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 76.53 939.51 moveto
+78 950 lineto
+83.39 940.88 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 76.53 939.51 moveto
+78 950 lineto
+83.39 940.88 lineto
+closepath stroke
+grestore
+% Node43
+gsave
+[ /Rect [ 233 684 323 704 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__spline.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 233 684 moveto
+233 704 lineto
+324 704 lineto
+324 684 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+240.5 691 moveto 75 (GLM_GTX_spline) alignedtext
+grestore
+% Node0->Node43
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 79 940 moveto
+87 892 115 772 188 713 curveto
+201 703 217 698 233 695 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 75.53 939.51 moveto
+77 950 lineto
+82.39 940.88 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 75.53 939.51 moveto
+77 950 lineto
+82.39 940.88 lineto
+closepath stroke
+grestore
+% Node39
+gsave
+[ /Rect [ 226 646 330 666 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__raw__data.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 226 646 moveto
+226 666 lineto
+331 666 lineto
+331 646 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+233.5 653 moveto 89 (GLM_GTX_raw_data) alignedtext
+grestore
+% Node0->Node39
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 940 moveto
+83 888 105 745 188 675 curveto
+199 666 212 661 226 658 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath stroke
+grestore
+% Node11
+gsave
+[ /Rect [ 210 608 346 628 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__fast__exponential.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 210 608 moveto
+210 628 lineto
+346 628 lineto
+346 608 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+218 615 moveto 120 (GLM_GTX_fast_exponential) alignedtext
+grestore
+% Node0->Node11
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 80 940 moveto
+95 876 141 679 188 637 curveto
+194 631 202 627 210 624 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 76.53 939.51 moveto
+78 950 lineto
+83.39 940.88 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 76.53 939.51 moveto
+78 950 lineto
+83.39 940.88 lineto
+closepath stroke
+grestore
+% Node20
+gsave
+[ /Rect [ 226 570 330 590 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__log__base.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 226 570 moveto
+226 590 lineto
+331 590 lineto
+331 570 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+233.5 577 moveto 89 (GLM_GTX_log_base) alignedtext
+grestore
+% Node0->Node20
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 80 940 moveto
+92 870 136 646 188 599 curveto
+199 589 212 584 226 581 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 76.53 939.51 moveto
+78 950 lineto
+83.39 940.88 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 76.53 939.51 moveto
+78 950 lineto
+83.39 940.88 lineto
+closepath stroke
+grestore
+% Node6
+gsave
+[ /Rect [ 218 532 338 552 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__compatibility.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 218 532 moveto
+218 552 lineto
+338 552 lineto
+338 532 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+226 539 moveto 104 (GLM_GTX_compatibility) alignedtext
+grestore
+% Node0->Node6
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 79 940 moveto
+90 866 131 614 188 561 curveto
+196 553 207 548 218 545 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 75.53 939.51 moveto
+77 950 lineto
+82.39 940.88 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 75.53 939.51 moveto
+77 950 lineto
+82.39 940.88 lineto
+closepath stroke
+grestore
+% Node1
+gsave
+[ /Rect [ 199 494 357 514 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__associated__min__max.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 199 494 moveto
+199 514 lineto
+357 514 lineto
+357 494 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+207 501 moveto 142 (GLM_GTX_associated_min_max) alignedtext
+grestore
+% Node0->Node1
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 940 moveto
+88 862 126 582 188 523 curveto
+192 519 196 517 200 514 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath stroke
+grestore
+% Node33
+gsave
+[ /Rect [ 215 456 341 476 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__optimum__pow.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 215 456 moveto
+215 476 lineto
+341 476 lineto
+341 456 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+223 463 moveto 110 (GLM_GTX_optimum_pow) alignedtext
+grestore
+% Node0->Node33
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 940 moveto
+86 857 121 550 188 485 curveto
+195 478 205 473 215 470 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath stroke
+grestore
+% Node15
+gsave
+[ /Rect [ 189 418 367 438 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__handed__coordinate__space.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 189 418 moveto
+189 438 lineto
+368 438 lineto
+368 418 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+196.5 425 moveto 163 (GLM_GTX_handed_coordinate_space) alignedtext
+grestore
+% Node0->Node15
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 940 moveto
+85 853 117 518 188 447 curveto
+192 443 196 441 200 438 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath stroke
+grestore
+% Node31
+gsave
+[ /Rect [ 215 380 341 400 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__normalize__dot.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 215 380 moveto
+215 400 lineto
+341 400 lineto
+341 380 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+223 387 moveto 110 (GLM_GTX_normalize_dot) alignedtext
+grestore
+% Node0->Node31
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 940 moveto
+83 850 111 486 188 409 curveto
+195 401 205 396 215 393 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath stroke
+grestore
+% Node38
+gsave
+[ /Rect [ 223 342 333 362 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__quaternion.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 223 342 moveto
+223 362 lineto
+334 362 lineto
+334 342 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+230.5 349 moveto 95 (GLM_GTX_quaternion) alignedtext
+grestore
+% Node0->Node38
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 77 940 moveto
+82 846 106 455 188 371 curveto
+197 361 210 356 223 353 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 73.51 939.7 moveto
+76 950 lineto
+80.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 73.51 939.7 moveto
+76 950 lineto
+80.48 940.4 lineto
+closepath stroke
+grestore
+% Node49
+gsave
+[ /Rect [ 218 304 338 324 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__vector__angle.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 218 304 moveto
+218 324 lineto
+338 324 lineto
+338 304 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+226 311 moveto 104 (GLM_GTX_vector_angle) alignedtext
+grestore
+% Node0->Node49
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 76 940 moveto
+81 842 102 422 188 333 curveto
+196 325 207 319 218 316 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 72.5 940 moveto
+76 950 lineto
+79.5 940 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 72.5 940 moveto
+76 950 lineto
+79.5 940 lineto
+closepath stroke
+grestore
+% Node35
+gsave
+[ /Rect [ 217 266 339 286 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__perpendicular.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 217 266 moveto
+217 286 lineto
+340 286 lineto
+340 266 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+224.5 273 moveto 107 (GLM_GTX_perpendicular) alignedtext
+grestore
+% Node0->Node35
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 76 940 moveto
+79 839 97 390 188 295 curveto
+196 287 206 282 217 279 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 72.5 940 moveto
+76 950 lineto
+79.5 940 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 72.5 940 moveto
+76 950 lineto
+79.5 940 lineto
+closepath stroke
+grestore
+% Node34
+gsave
+[ /Rect [ 214 228 342 248 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__orthonormalize.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 214 228 moveto
+214 248 lineto
+343 248 lineto
+343 228 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+221.5 235 moveto 113 (GLM_GTX_orthonormalize) alignedtext
+grestore
+% Node0->Node34
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 76 940 moveto
+78 835 92 358 188 257 curveto
+195 250 204 245 214 242 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 72.5 940 moveto
+76 950 lineto
+79.5 940 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 72.5 940 moveto
+76 950 lineto
+79.5 940 lineto
+closepath stroke
+grestore
+% Node28
+gsave
+[ /Rect [ 229 190 327 210 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__multiple.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 229 190 moveto
+229 210 lineto
+328 210 lineto
+328 190 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+236.5 197 moveto 83 (GLM_GTX_multiple) alignedtext
+grestore
+% Node0->Node28
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 940 moveto
+87 826 137 273 188 219 curveto
+199 208 214 202 229 200 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath stroke
+grestore
+% Node42
+gsave
+[ /Rect [ 223 152 333 172 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__simd__vec4.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 223 152 moveto
+223 172 lineto
+334 172 lineto
+334 152 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+230.5 159 moveto 95 (GLM_GTX_simd_quat) alignedtext
+grestore
+% Node0->Node42
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 940 moveto
+86 823 135 238 188 181 curveto
+197 171 210 166 223 163 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath stroke
+grestore
+% Node37
+gsave
+[ /Rect [ 224 114 332 134 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__projection.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 224 114 moveto
+224 134 lineto
+332 134 lineto
+332 114 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+232 121 moveto 92 (GLM_GTX_projection) alignedtext
+grestore
+% Node0->Node37
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 940 moveto
+86 819 132 203 188 143 curveto
+197 133 210 128 224 125 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath stroke
+grestore
+% Node26
+gsave
+[ /Rect [ 201 76 355 96 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__matrix__transform__2d.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 201 76 moveto
+201 96 lineto
+355 96 lineto
+355 76 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+209 83 moveto 138 (GLM_GTX_matrix_transform_2d) alignedtext
+grestore
+% Node0->Node26
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 940 moveto
+85 816 129 168 188 105 curveto
+192 101 196 98 201 95 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath stroke
+grestore
+% Node13
+gsave
+[ /Rect [ 208 38 348 58 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__fast__trigonometry.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 208 38 moveto
+208 58 lineto
+349 58 lineto
+349 38 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+215.5 45 moveto 125 (GLM_GTX_fast_trigonometry) alignedtext
+grestore
+% Node0->Node13
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 940 moveto
+85 813 127 133 188 67 curveto
+193 61 200 57 208 53 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath stroke
+grestore
+% Node40
+gsave
+[ /Rect [ 218 0 338 20 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($group__gtx__rotate__vector.html) >>
+  /Subtype /Link
+/ANN pdfmark
+1 setlinewidth
+0.000 0.000 0.000 nodecolor
+newpath 218 0 moveto
+218 20 lineto
+339 20 lineto
+339 0 lineto
+closepath stroke
+0.000 0.000 0.000 nodecolor
+10 /FreeSans set_font
+225.5 7 moveto 105 (GLM_GTX_rotate_vector) alignedtext
+grestore
+% Node0->Node40
+gsave
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 78 940 moveto
+84 809 125 98 188 29 curveto
+196 21 206 15 218 12 curveto
+stroke
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.667 0.776 0.439 edgecolor
+newpath 74.51 939.7 moveto
+77 950 lineto
+81.48 940.4 lineto
+closepath stroke
+grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+%%BoundingBox: 36 36 412 1964
+end
+restore
+%%EOF

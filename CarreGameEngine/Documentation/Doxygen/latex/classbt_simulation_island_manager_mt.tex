@@ -1,0 +1,52 @@
+\hypertarget{classbt_simulation_island_manager_mt}{
+\section{btSimulationIslandManagerMt Class Reference}
+\label{classbt_simulation_island_manager_mt}\index{btSimulationIslandManagerMt@{btSimulationIslandManagerMt}}
+}
+{\tt \#include $<$btSimulationIslandManagerMt.h$>$}
+
+Inheritance diagram for btSimulationIslandManagerMt:Collaboration diagram for btSimulationIslandManagerMt:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual void \hyperlink{classbt_simulation_island_manager_mt_9be20c991c57ec972eb33a160d6276fd}{buildAndProcessIslands} (\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher, \hyperlink{classbt_collision_world}{btCollisionWorld} $\ast$collisionWorld, \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray}$<$ btTypedConstraint $\ast$ $>$ \&constraints, IslandCallback $\ast$callback)
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+virtual void \hyperlink{classbt_simulation_island_manager_mt_77eadf262f5a0e63053e3efcc9ccfec9}{addManifoldsToIslands} (\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+SimulationIslandManagerMt -- Multithread capable version of SimulationIslandManager Splits the world up into islands which can be solved in parallel. In order to solve islands in parallel, an IslandDispatch function must be provided which will dispatch calls to multiple threads. The amount of parallelism that can be achieved depends on the number of islands. If only a single island exists, then no parallelism is possible. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_simulation_island_manager_mt_77eadf262f5a0e63053e3efcc9ccfec9}{
+\index{btSimulationIslandManagerMt@{btSimulationIslandManagerMt}!addManifoldsToIslands@{addManifoldsToIslands}}
+\index{addManifoldsToIslands@{addManifoldsToIslands}!btSimulationIslandManagerMt@{btSimulationIslandManagerMt}}
+\subsubsection[addManifoldsToIslands]{\setlength{\rightskip}{0pt plus 5cm}void btSimulationIslandManagerMt::addManifoldsToIslands ({\bf btDispatcher} $\ast$ {\em dispatcher})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
+\label{classbt_simulation_island_manager_mt_77eadf262f5a0e63053e3efcc9ccfec9}
+
+
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000035}{Todo}]: check sleeping conditions! \end{Desc}
+\hypertarget{classbt_simulation_island_manager_mt_9be20c991c57ec972eb33a160d6276fd}{
+\index{btSimulationIslandManagerMt@{btSimulationIslandManagerMt}!buildAndProcessIslands@{buildAndProcessIslands}}
+\index{buildAndProcessIslands@{buildAndProcessIslands}!btSimulationIslandManagerMt@{btSimulationIslandManagerMt}}
+\subsubsection[buildAndProcessIslands]{\setlength{\rightskip}{0pt plus 5cm}void btSimulationIslandManagerMt::buildAndProcessIslands ({\bf btDispatcher} $\ast$ {\em dispatcher}, \/  {\bf btCollisionWorld} $\ast$ {\em collisionWorld}, \/  {\bf btAlignedObjectArray}$<$ btTypedConstraint $\ast$ $>$ \& {\em constraints}, \/  IslandCallback $\ast$ {\em callback})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_simulation_island_manager_mt_9be20c991c57ec972eb33a160d6276fd}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000036}{Todo}]: this is random access, it can be walked 'cache friendly'! \end{Desc}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000036}{Todo}]: check sleeping conditions! \end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimulationIslandManagerMt.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimulationIslandManagerMt.cpp\end{CompactItemize}

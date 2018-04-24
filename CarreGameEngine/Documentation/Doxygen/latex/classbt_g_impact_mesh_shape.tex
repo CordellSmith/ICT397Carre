@@ -1,0 +1,172 @@
+\hypertarget{classbt_g_impact_mesh_shape}{
+\section{btGImpactMeshShape Class Reference}
+\label{classbt_g_impact_mesh_shape}\index{btGImpactMeshShape@{btGImpactMeshShape}}
+}
+This class manages a mesh supplied by the btStridingMeshInterface interface.  
+
+
+{\tt \#include $<$btGImpactShape.h$>$}
+
+Inheritance diagram for btGImpactMeshShape:Collaboration diagram for btGImpactMeshShape:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual void \hyperlink{classbt_g_impact_mesh_shape_ed8d5e4b2e75538109909d44b244bc35}{setLocalScaling} (const btVector3 \&scaling)
+\item 
+\hypertarget{classbt_g_impact_mesh_shape_fbf7ae3408bc0ab975c46ed65820a4b2}{
+virtual void \hyperlink{classbt_g_impact_mesh_shape_fbf7ae3408bc0ab975c46ed65820a4b2}{postUpdate} ()}
+\label{classbt_g_impact_mesh_shape_fbf7ae3408bc0ab975c46ed65820a4b2}
+
+\begin{CompactList}\small\item\em Tells to this object that is needed to refit all the meshes. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_af65a0a643eab8dce1b2f0a89880bcd7}{
+virtual const \hyperlink{classbt_primitive_manager_base}{btPrimitiveManagerBase} $\ast$ \hyperlink{classbt_g_impact_mesh_shape_af65a0a643eab8dce1b2f0a89880bcd7}{getPrimitiveManager} () const }
+\label{classbt_g_impact_mesh_shape_af65a0a643eab8dce1b2f0a89880bcd7}
+
+\begin{CompactList}\small\item\em Obtains the primitive manager. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_ec0f4ed6bed09ef67349eed0a05921c1}{
+virtual int \hyperlink{classbt_g_impact_mesh_shape_ec0f4ed6bed09ef67349eed0a05921c1}{getNumChildShapes} () const }
+\label{classbt_g_impact_mesh_shape_ec0f4ed6bed09ef67349eed0a05921c1}
+
+\begin{CompactList}\small\item\em Gets the number of children. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_5693f6e8b6288091ed4bfd445fed1f3e}{
+virtual bool \hyperlink{classbt_g_impact_mesh_shape_5693f6e8b6288091ed4bfd445fed1f3e}{childrenHasTransform} () const }
+\label{classbt_g_impact_mesh_shape_5693f6e8b6288091ed4bfd445fed1f3e}
+
+\begin{CompactList}\small\item\em if true, then its children must get transforms. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_946835fca3b128e784ae150a4a4d3abd}{
+virtual bool \hyperlink{classbt_g_impact_mesh_shape_946835fca3b128e784ae150a4a4d3abd}{needsRetrieveTriangles} () const }
+\label{classbt_g_impact_mesh_shape_946835fca3b128e784ae150a4a4d3abd}
+
+\begin{CompactList}\small\item\em Determines if this shape has triangles. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_732b818ef16f33c57f0fe13dcfe2e1a3}{
+virtual bool \hyperlink{classbt_g_impact_mesh_shape_732b818ef16f33c57f0fe13dcfe2e1a3}{needsRetrieveTetrahedrons} () const }
+\label{classbt_g_impact_mesh_shape_732b818ef16f33c57f0fe13dcfe2e1a3}
+
+\begin{CompactList}\small\item\em Determines if this shape has tetrahedrons. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_569599b4c909a948c3489ca351ce3b89}{
+virtual void \hyperlink{classbt_g_impact_mesh_shape_569599b4c909a948c3489ca351ce3b89}{lockChildShapes} () const }
+\label{classbt_g_impact_mesh_shape_569599b4c909a948c3489ca351ce3b89}
+
+\begin{CompactList}\small\item\em call when reading child shapes \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_92be12fb67279fcb6f8bf47c9d6608a9}{
+virtual void \hyperlink{classbt_g_impact_mesh_shape_92be12fb67279fcb6f8bf47c9d6608a9}{getChildAabb} (int child\_\-index, const btTransform \&t, btVector3 \&aabbMin, btVector3 \&aabbMax) const }
+\label{classbt_g_impact_mesh_shape_92be12fb67279fcb6f8bf47c9d6608a9}
+
+\begin{CompactList}\small\item\em Retrieves the bound from a child. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_e268fb9f2813b1fa4171d87e201c37a7}{
+virtual btCollisionShape $\ast$ \hyperlink{classbt_g_impact_mesh_shape_e268fb9f2813b1fa4171d87e201c37a7}{getChildShape} (int index)}
+\label{classbt_g_impact_mesh_shape_e268fb9f2813b1fa4171d87e201c37a7}
+
+\begin{CompactList}\small\item\em Gets the children. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_476d81e3da36410bb96da37599dfdbb0}{
+virtual const btCollisionShape $\ast$ \hyperlink{classbt_g_impact_mesh_shape_476d81e3da36410bb96da37599dfdbb0}{getChildShape} (int index) const }
+\label{classbt_g_impact_mesh_shape_476d81e3da36410bb96da37599dfdbb0}
+
+\begin{CompactList}\small\item\em Gets the child. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_40f77ee9ac94d20af03c068a76b231ec}{
+virtual btTransform \hyperlink{classbt_g_impact_mesh_shape_40f77ee9ac94d20af03c068a76b231ec}{getChildTransform} (int index) const }
+\label{classbt_g_impact_mesh_shape_40f77ee9ac94d20af03c068a76b231ec}
+
+\begin{CompactList}\small\item\em Gets the children transform. \item\end{CompactList}\item 
+virtual void \hyperlink{classbt_g_impact_mesh_shape_274feed3c9a38a6af5c9f1141ae9ac1a}{setChildTransform} (int index, const btTransform \&transform)
+\begin{CompactList}\small\item\em Sets the children transform. \item\end{CompactList}\item 
+virtual eGIMPACT\_\-SHAPE\_\-TYPE \hyperlink{classbt_g_impact_mesh_shape_cd958461b4f7802e5bceed2db87c4ff0}{getGImpactShapeType} () const 
+\begin{CompactList}\small\item\em Base method for determinig which kind of GIMPACT shape we get. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_219d87a155aa1cb9af6df7a2413fde47}{
+virtual void \hyperlink{classbt_g_impact_mesh_shape_219d87a155aa1cb9af6df7a2413fde47}{rayTest} (const btVector3 \&rayFrom, const btVector3 \&rayTo, \hyperlink{structbt_collision_world_1_1_ray_result_callback}{btCollisionWorld::RayResultCallback} \&resultCallback) const }
+\label{classbt_g_impact_mesh_shape_219d87a155aa1cb9af6df7a2413fde47}
+
+\begin{CompactList}\small\item\em virtual method for ray collision \item\end{CompactList}\item 
+virtual void \hyperlink{classbt_g_impact_mesh_shape_0b3a0f7b06feb5e2e1fa94f2b5fcd4c7}{processAllTriangles} (\hyperlink{classbt_triangle_callback}{btTriangleCallback} $\ast$callback, const btVector3 \&aabbMin, const btVector3 \&aabbMax) const 
+\begin{CompactList}\small\item\em Function for retrieve triangles. \item\end{CompactList}\item 
+virtual void \hyperlink{classbt_g_impact_mesh_shape_80b60d4ca87b2739b2389258e901900d}{processAllTrianglesRay} (\hyperlink{classbt_triangle_callback}{btTriangleCallback} $\ast$callback, const btVector3 \&rayFrom, const btVector3 \&rayTo) const 
+\begin{CompactList}\small\item\em Function for retrieve triangles. \item\end{CompactList}\item 
+\hypertarget{classbt_g_impact_mesh_shape_52fb7b4c6cbb81e7041e88b04cd3e89c}{
+virtual const char $\ast$ \hyperlink{classbt_g_impact_mesh_shape_52fb7b4c6cbb81e7041e88b04cd3e89c}{serialize} (void $\ast$dataBuffer, btSerializer $\ast$serializer) const }
+\label{classbt_g_impact_mesh_shape_52fb7b4c6cbb81e7041e88b04cd3e89c}
+
+\begin{CompactList}\small\item\em fills the dataBuffer and returns the struct name (and 0 on failure) \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_g_impact_mesh_shape_a9273d609f4872c7a4c05e9873edbda8}{
+virtual void \hyperlink{classbt_g_impact_mesh_shape_a9273d609f4872c7a4c05e9873edbda8}{calcLocalAABB} ()}
+\label{classbt_g_impact_mesh_shape_a9273d609f4872c7a4c05e9873edbda8}
+
+\begin{CompactList}\small\item\em use this function for perfofm refit in bounding boxes \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This class manages a mesh supplied by the btStridingMeshInterface interface. 
+
+Set of \hyperlink{classbt_g_impact_mesh_shape_part}{btGImpactMeshShapePart} parts\begin{itemize}
+\item Simply create this shape by passing the btStridingMeshInterface to the constructor \hyperlink{classbt_g_impact_mesh_shape}{btGImpactMeshShape}, then you must call \hyperlink{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{updateBound()} after creating the mesh\end{itemize}
+
+
+\begin{itemize}
+\item You can handle deformable meshes with this shape, by calling \hyperlink{classbt_g_impact_mesh_shape_fbf7ae3408bc0ab975c46ed65820a4b2}{postUpdate()} every time when changing the mesh vertices. \end{itemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_g_impact_mesh_shape_ed8d5e4b2e75538109909d44b244bc35}{
+\index{btGImpactMeshShape@{btGImpactMeshShape}!setLocalScaling@{setLocalScaling}}
+\index{setLocalScaling@{setLocalScaling}!btGImpactMeshShape@{btGImpactMeshShape}}
+\subsubsection[setLocalScaling]{\setlength{\rightskip}{0pt plus 5cm}virtual void btGImpactMeshShape::setLocalScaling (const btVector3 \& {\em scaling})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classbt_g_impact_mesh_shape_ed8d5e4b2e75538109909d44b244bc35}
+
+
+\begin{Desc}
+\item[Postcondition:]You must call \hyperlink{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{updateBound()} for update the box set. \end{Desc}
+
+
+Reimplemented from \hyperlink{classbt_g_impact_shape_interface_dec0bd43cd0105b1d0dc172bc7db50d8}{btGImpactShapeInterface}.\hypertarget{classbt_g_impact_mesh_shape_274feed3c9a38a6af5c9f1141ae9ac1a}{
+\index{btGImpactMeshShape@{btGImpactMeshShape}!setChildTransform@{setChildTransform}}
+\index{setChildTransform@{setChildTransform}!btGImpactMeshShape@{btGImpactMeshShape}}
+\subsubsection[setChildTransform]{\setlength{\rightskip}{0pt plus 5cm}virtual void btGImpactMeshShape::setChildTransform (int {\em index}, \/  const btTransform \& {\em transform})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classbt_g_impact_mesh_shape_274feed3c9a38a6af5c9f1141ae9ac1a}
+
+
+Sets the children transform. 
+
+\begin{Desc}
+\item[Postcondition:]You must call \hyperlink{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{updateBound()} for update the box set. \end{Desc}
+
+
+Implements \hyperlink{classbt_g_impact_shape_interface_83392f97bd7dfeb71ccdce6913a465b0}{btGImpactShapeInterface}.\hypertarget{classbt_g_impact_mesh_shape_cd958461b4f7802e5bceed2db87c4ff0}{
+\index{btGImpactMeshShape@{btGImpactMeshShape}!getGImpactShapeType@{getGImpactShapeType}}
+\index{getGImpactShapeType@{getGImpactShapeType}!btGImpactMeshShape@{btGImpactMeshShape}}
+\subsubsection[getGImpactShapeType]{\setlength{\rightskip}{0pt plus 5cm}virtual eGIMPACT\_\-SHAPE\_\-TYPE btGImpactMeshShape::getGImpactShapeType () const\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classbt_g_impact_mesh_shape_cd958461b4f7802e5bceed2db87c4ff0}
+
+
+Base method for determinig which kind of GIMPACT shape we get. 
+
+Subshape member functions 
+
+Implements \hyperlink{classbt_g_impact_shape_interface_25cacbe448997e3f8ec99cb2d4952859}{btGImpactShapeInterface}.\hypertarget{classbt_g_impact_mesh_shape_0b3a0f7b06feb5e2e1fa94f2b5fcd4c7}{
+\index{btGImpactMeshShape@{btGImpactMeshShape}!processAllTriangles@{processAllTriangles}}
+\index{processAllTriangles@{processAllTriangles}!btGImpactMeshShape@{btGImpactMeshShape}}
+\subsubsection[processAllTriangles]{\setlength{\rightskip}{0pt plus 5cm}void btGImpactMeshShape::processAllTriangles ({\bf btTriangleCallback} $\ast$ {\em callback}, \/  const btVector3 \& {\em aabbMin}, \/  const btVector3 \& {\em aabbMax}) const\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_g_impact_mesh_shape_0b3a0f7b06feb5e2e1fa94f2b5fcd4c7}
+
+
+Function for retrieve triangles. 
+
+It gives the triangles in local space 
+
+Reimplemented from \hyperlink{classbt_g_impact_shape_interface_2faf9adce39854a9a66dd658f646be25}{btGImpactShapeInterface}.\hypertarget{classbt_g_impact_mesh_shape_80b60d4ca87b2739b2389258e901900d}{
+\index{btGImpactMeshShape@{btGImpactMeshShape}!processAllTrianglesRay@{processAllTrianglesRay}}
+\index{processAllTrianglesRay@{processAllTrianglesRay}!btGImpactMeshShape@{btGImpactMeshShape}}
+\subsubsection[processAllTrianglesRay]{\setlength{\rightskip}{0pt plus 5cm}void btGImpactMeshShape::processAllTrianglesRay ({\bf btTriangleCallback} $\ast$, \/  const btVector3 \&, \/  const btVector3 \&) const\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_g_impact_mesh_shape_80b60d4ca87b2739b2389258e901900d}
+
+
+Function for retrieve triangles. 
+
+It gives the triangles in local space 
+
+Reimplemented from \hyperlink{classbt_g_impact_shape_interface_646ad13b4aa116d58df110c2f407e5a8}{btGImpactShapeInterface}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_g_impact_shape_8h}{btGImpactShape.h}\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactShape.cpp\end{CompactItemize}

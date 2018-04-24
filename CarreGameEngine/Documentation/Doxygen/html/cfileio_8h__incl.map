@@ -1,0 +1,14 @@
+<area shape="rect" href="$types_8h.html" title="assimp/types.h" alt="" coords="581,80,691,107">
+<area shape="rect" href="$defs_8h.html" title="Assimp build configuration setup. See the notes in the comment blocks to find out..." alt="" coords="557,304,613,331">
+<area shape="rect" href="$vector3_8h.html" title="3D vector structure, including operators when compiling in C++" alt="" coords="451,229,523,256">
+<area shape="rect" href="$vector2_8h.html" title="2D vector structure, including operators when compiling in C++" alt="" coords="355,229,427,256">
+<area shape="rect" href="$color4_8h.html" title="RGBA color structure, including operators when compiling in C++." alt="" coords="648,229,715,256">
+<area shape="rect" href="$matrix3x3_8h.html" title="Definition of a 3x3 matrix, including operators when compiling in C++." alt="" coords="739,229,827,256">
+<area shape="rect" href="$matrix4x4_8h.html" title="4x4 matrix structure, including operators when compiling in C++" alt="" coords="485,155,573,181">
+<area shape="rect" href="$quaternion_8h.html" title="Quaternion structure, including operators when compiling in C++." alt="" coords="749,155,840,181">
+<area shape="rect" href="$vector2_8inl.html" title="Inline implementation of aiVector2t&lt;TReal&gt; operators." alt="" coords="864,155,944,181">
+<area shape="rect" href="$vector3_8inl.html" title="Inline implementation of aiVector3t&lt;TReal&gt; operators." alt="" coords="968,155,1048,181">
+<area shape="rect" href="$color4_8inl.html" title="Inline implementation of aiColor4t&lt;TReal&gt; operators." alt="" coords="1072,155,1144,181">
+<area shape="rect" href="$matrix3x3_8inl.html" title="Inline implementation of the 3x3 matrix operators." alt="" coords="1168,155,1264,181">
+<area shape="rect" href="$matrix4x4_8inl.html" title="Inline implementation of the 4x4 matrix operators." alt="" coords="1288,155,1384,181">
+<area shape="rect" href="$config_8h.html" title="Defines constants for configurable properties for the library." alt="" coords="529,379,641,405">

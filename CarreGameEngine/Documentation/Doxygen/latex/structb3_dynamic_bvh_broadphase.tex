@@ -1,0 +1,35 @@
+\hypertarget{structb3_dynamic_bvh_broadphase}{
+\section{b3DynamicBvhBroadphase Struct Reference}
+\label{structb3_dynamic_bvh_broadphase}\index{b3DynamicBvhBroadphase@{b3DynamicBvhBroadphase}}
+}
+{\tt \#include $<$b3DynamicBvhBroadphase.h$>$}
+
+Collaboration diagram for b3DynamicBvhBroadphase:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{structb3_dynamic_bvh_broadphase_a14412970c0f564d3a659710c6d7a4dd}{
+virtual void \hyperlink{structb3_dynamic_bvh_broadphase_a14412970c0f564d3a659710c6d7a4dd}{resetPool} (b3Dispatcher $\ast$dispatcher)}
+\label{structb3_dynamic_bvh_broadphase_a14412970c0f564d3a659710c6d7a4dd}
+
+\begin{CompactList}\small\item\em reset broadphase internal structures, to ensure determinism/reproducability \item\end{CompactList}\item 
+void \hyperlink{structb3_dynamic_bvh_broadphase_c18c206ccd45e8e2f0c817381d6840a0}{setAabbForceUpdate} (b3BroadphaseProxy $\ast$absproxy, const b3Vector3 \&aabbMin, const b3Vector3 \&aabbMax, b3Dispatcher $\ast$)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{structb3_dynamic_bvh_broadphase}{b3DynamicBvhBroadphase} implements a broadphase using two dynamic AABB bounding volume hierarchies/trees (see \hyperlink{structb3_dynamic_bvh}{b3DynamicBvh}). One tree is used for static/non-moving objects, and another tree is used for dynamic objects. Objects can move from one tree to the other. This is a very fast broadphase, especially for very dynamic worlds where many objects are moving. Its insert/add and remove of objects is generally faster than the sweep and prune broadphases b3AxisSweep3 and b332BitAxisSweep3. 
+
+\subsection{Member Function Documentation}
+\hypertarget{structb3_dynamic_bvh_broadphase_c18c206ccd45e8e2f0c817381d6840a0}{
+\index{b3DynamicBvhBroadphase@{b3DynamicBvhBroadphase}!setAabbForceUpdate@{setAabbForceUpdate}}
+\index{setAabbForceUpdate@{setAabbForceUpdate}!b3DynamicBvhBroadphase@{b3DynamicBvhBroadphase}}
+\subsubsection[setAabbForceUpdate]{\setlength{\rightskip}{0pt plus 5cm}void b3DynamicBvhBroadphase::setAabbForceUpdate (b3BroadphaseProxy $\ast$ {\em absproxy}, \/  const b3Vector3 \& {\em aabbMin}, \/  const b3Vector3 \& {\em aabbMax}, \/  b3Dispatcher $\ast$)}}
+\label{structb3_dynamic_bvh_broadphase_c18c206ccd45e8e2f0c817381d6840a0}
+
+
+this setAabbForceUpdate is similar to setAabb but always forces the aabb update. it is not part of the b3BroadphaseInterface but specific to \hyperlink{structb3_dynamic_bvh_broadphase}{b3DynamicBvhBroadphase}. it bypasses certain optimizations that prevent aabb updates (when the aabb shrinks), see \href{http://code.google.com/p/bullet/issues/detail?id=223}{\tt http://code.google.com/p/bullet/issues/detail?id=223} 
+
+The documentation for this struct was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3DynamicBvhBroadphase.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3DynamicBvhBroadphase.cpp\end{CompactItemize}

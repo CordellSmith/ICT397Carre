@@ -1,0 +1,61 @@
+\hypertarget{classbt_aligned_object_array}{
+\section{btAlignedObjectArray$<$ T $>$ Class Template Reference}
+\label{classbt_aligned_object_array}\index{btAlignedObjectArray@{btAlignedObjectArray}}
+}
+{\tt \#include $<$btAlignedObjectArray.h$>$}
+
+Collaboration diagram for btAlignedObjectArray$<$ T $>$:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_aligned_object_array_e91d1383db8069a02d23caf915bc2ce3}{
+\hyperlink{classbt_aligned_object_array_e91d1383db8069a02d23caf915bc2ce3}{btAlignedObjectArray} (const \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray} \&otherArray)}
+\label{classbt_aligned_object_array_e91d1383db8069a02d23caf915bc2ce3}
+
+\begin{CompactList}\small\item\em Generally it is best to avoid using the copy constructor of an \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray}, and use a (const) reference to the array instead. \item\end{CompactList}\item 
+\hypertarget{classbt_aligned_object_array_6bdd14c7599ecb95e8d83dd5a715f9b7}{
+SIMD\_\-FORCE\_\-INLINE int \hyperlink{classbt_aligned_object_array_6bdd14c7599ecb95e8d83dd5a715f9b7}{size} () const }
+\label{classbt_aligned_object_array_6bdd14c7599ecb95e8d83dd5a715f9b7}
+
+\begin{CompactList}\small\item\em return the number of elements in the array \item\end{CompactList}\item 
+\hypertarget{classbt_aligned_object_array_12123db01dda7758f0df5e3bba10cc0a}{
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{classbt_aligned_object_array_12123db01dda7758f0df5e3bba10cc0a}{clear} ()}
+\label{classbt_aligned_object_array_12123db01dda7758f0df5e3bba10cc0a}
+
+\begin{CompactList}\small\item\em clear the array, deallocated memory. Generally it is better to use array.resize(0), to reduce performance overhead of run-time memory (de)allocations. \item\end{CompactList}\item 
+SIMD\_\-FORCE\_\-INLINE void \hyperlink{classbt_aligned_object_array_2cc58c74534181a7a10e5c6ab8b21227}{resizeNoInitialize} (int newsize)
+\item 
+\hypertarget{classbt_aligned_object_array_fcfda91263ff04e1efcbe62bf68e2d1d}{
+SIMD\_\-FORCE\_\-INLINE int \hyperlink{classbt_aligned_object_array_fcfda91263ff04e1efcbe62bf68e2d1d}{capacity} () const }
+\label{classbt_aligned_object_array_fcfda91263ff04e1efcbe62bf68e2d1d}
+
+\begin{CompactList}\small\item\em return the pre-allocated (reserved) elements, this is at least as large as the total number of elements,see \hyperlink{classbt_aligned_object_array_6bdd14c7599ecb95e8d83dd5a715f9b7}{size()} and reserve() \item\end{CompactList}\item 
+\hypertarget{classbt_aligned_object_array_81c857b52a4f6bcf8f3a6a53bc91889a}{
+{\footnotesize template$<$typename L$>$ }\\void \hyperlink{classbt_aligned_object_array_81c857b52a4f6bcf8f3a6a53bc91889a}{downHeap} (T $\ast$pArr, int k, int n, const L \&CompareFunc)}
+\label{classbt_aligned_object_array_81c857b52a4f6bcf8f3a6a53bc91889a}
+
+\begin{CompactList}\small\item\em heap sort from \href{http://www.csse.monash.edu.au/~lloyd/tildeAlgDS/Sort/Heap/}{\tt http://www.csse.monash.edu.au/$\sim$lloyd/tildeAlgDS/Sort/Heap/} \item\end{CompactList}\item 
+\hypertarget{classbt_aligned_object_array_9c72e0a8fa512a04e11fe8c31b09260a}{
+int \hyperlink{classbt_aligned_object_array_9c72e0a8fa512a04e11fe8c31b09260a}{findBinarySearch} (const T \&key) const }
+\label{classbt_aligned_object_array_9c72e0a8fa512a04e11fe8c31b09260a}
+
+\begin{CompactList}\small\item\em non-recursive binary search, assumes sorted array \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$ class btAlignedObjectArray$<$ T $>$}
+
+The \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray} template class uses a subset of the stl::vector interface for its methods It is developed to replace stl::vector to avoid portability issues, including STL alignment issues to add SIMD/SSE data 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_aligned_object_array_2cc58c74534181a7a10e5c6ab8b21227}{
+\index{btAlignedObjectArray@{btAlignedObjectArray}!resizeNoInitialize@{resizeNoInitialize}}
+\index{resizeNoInitialize@{resizeNoInitialize}!btAlignedObjectArray@{btAlignedObjectArray}}
+\subsubsection[resizeNoInitialize]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ SIMD\_\-FORCE\_\-INLINE void {\bf btAlignedObjectArray}$<$ T $>$::resizeNoInitialize (int {\em newsize})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_aligned_object_array_2cc58c74534181a7a10e5c6ab8b21227}
+
+
+resize changes the number of elements in the array. If the new size is larger, the new elements will be constructed using the optional second argument. when the new number of elements is smaller, the destructor will be called, but memory will not be freed, to reduce performance overhead of run-time memory (de)allocations. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btAlignedObjectArray.h\end{CompactItemize}

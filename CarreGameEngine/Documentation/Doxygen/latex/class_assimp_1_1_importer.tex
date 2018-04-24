@@ -1,0 +1,676 @@
+\hypertarget{class_assimp_1_1_importer}{
+\section{Assimp::Importer Class Reference}
+\label{class_assimp_1_1_importer}\index{Assimp::Importer@{Assimp::Importer}}
+}
+{\tt \#include $<$Importer.hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_assimp_1_1_importer_2c207299ed05f1db1ad1e6dab005f719}{Importer} ()
+\item 
+\hyperlink{class_assimp_1_1_importer_69743664b5a7a8c195be48265144317b}{Importer} (const \hyperlink{class_assimp_1_1_importer}{Importer} \&other)
+\item 
+\hyperlink{class_assimp_1_1_importer_3d65af5286ba22f46220a72a6eb2a1c9}{$\sim$Importer} ()
+\item 
+\hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe711}{aiReturn} \hyperlink{class_assimp_1_1_importer_3846294ffe76d91a1d3096d22d7c6b7d}{RegisterLoader} (BaseImporter $\ast$pImp)
+\item 
+\hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe711}{aiReturn} \hyperlink{class_assimp_1_1_importer_3b1f5af2c763b13aca0f324b19001722}{UnregisterLoader} (BaseImporter $\ast$pImp)
+\item 
+\hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe711}{aiReturn} \hyperlink{class_assimp_1_1_importer_102650d3648c0e414a1e73bdad9bed35}{RegisterPPStep} (BaseProcess $\ast$pImp)
+\item 
+\hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe711}{aiReturn} \hyperlink{class_assimp_1_1_importer_3a683671c7c40638b1103c5d3648d86c}{UnregisterPPStep} (BaseProcess $\ast$pImp)
+\item 
+bool \hyperlink{class_assimp_1_1_importer_2542eed3d5f491025c4095b4e55fa068}{SetPropertyInteger} (const char $\ast$szName, int iValue)
+\item 
+bool \hyperlink{class_assimp_1_1_importer_4af22a88eddf464d949a761149c72825}{SetPropertyBool} (const char $\ast$szName, bool value)
+\item 
+bool \hyperlink{class_assimp_1_1_importer_d38af78d6fe4b1f132d2534d8a84deea}{SetPropertyFloat} (const char $\ast$szName, ai\_\-real fValue)
+\item 
+bool \hyperlink{class_assimp_1_1_importer_854087b213981108e3e464cf4d293fed}{SetPropertyString} (const char $\ast$szName, const std::string \&sValue)
+\item 
+bool \hyperlink{class_assimp_1_1_importer_cd128e5fb5777ef238b8bd1454a9c3ad}{SetPropertyMatrix} (const char $\ast$szName, const aiMatrix4x4 \&sValue)
+\item 
+int \hyperlink{class_assimp_1_1_importer_3e796a0758a9f10f13107f44c542ad41}{GetPropertyInteger} (const char $\ast$szName, int iErrorReturn=0xffffffff) const 
+\item 
+bool \hyperlink{class_assimp_1_1_importer_90f5d35d25e5d2a0ef8bc0c6545b2010}{GetPropertyBool} (const char $\ast$szName, bool bErrorReturn=false) const 
+\item 
+ai\_\-real \hyperlink{class_assimp_1_1_importer_dfe1387ccc837fd59bf620e8216637fa}{GetPropertyFloat} (const char $\ast$szName, ai\_\-real fErrorReturn=10e10) const 
+\item 
+const std::string \hyperlink{class_assimp_1_1_importer_a31cc1aa8f83056fe097b149354ddfd3}{GetPropertyString} (const char $\ast$szName, const std::string \&sErrorReturn=\char`\"{}\char`\"{}) const 
+\item 
+const aiMatrix4x4 \hyperlink{class_assimp_1_1_importer_1b2e36eab7155233846b24ec30e7e273}{GetPropertyMatrix} (const char $\ast$szName, const aiMatrix4x4 \&sErrorReturn=aiMatrix4x4()) const 
+\item 
+void \hyperlink{class_assimp_1_1_importer_1161f46318af18bb86dfe0fc3edea4df}{SetIOHandler} (\hyperlink{class_assimp_1_1_i_o_system}{IOSystem} $\ast$pIOHandler)
+\item 
+\hyperlink{class_assimp_1_1_i_o_system}{IOSystem} $\ast$ \hyperlink{class_assimp_1_1_importer_be3af30f4c5eae2e875b0f32068be44d}{GetIOHandler} () const 
+\item 
+bool \hyperlink{class_assimp_1_1_importer_e3f26466cf7756594216ffedbc247563}{IsDefaultIOHandler} () const 
+\item 
+void \hyperlink{class_assimp_1_1_importer_6a4d830ffb3f77a3c7c919e0af006920}{SetProgressHandler} (\hyperlink{class_assimp_1_1_progress_handler}{ProgressHandler} $\ast$pHandler)
+\item 
+\hyperlink{class_assimp_1_1_progress_handler}{ProgressHandler} $\ast$ \hyperlink{class_assimp_1_1_importer_1fa669f0edc504fdf9178e8e22c728ad}{GetProgressHandler} () const 
+\item 
+bool \hyperlink{class_assimp_1_1_importer_2d60d970eddf8f9d35b6e9b54214cedd}{IsDefaultProgressHandler} () const 
+\item 
+bool \hyperlink{class_assimp_1_1_importer_780329e2dd0406e930291cf8ab9deb99}{ValidateFlags} (unsigned int pFlags) const 
+\begin{CompactList}\small\item\em Check whether a given set of post-processing flags is supported. \item\end{CompactList}\item 
+const \hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile} (const char $\ast$pFile, unsigned int pFlags)
+\item 
+const \hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{class_assimp_1_1_importer_9b3c5e8b1042702f449e84a95b3324f6}{ReadFileFromMemory} (const void $\ast$pBuffer, size\_\-t pLength, unsigned int pFlags, const char $\ast$pHint=\char`\"{}\char`\"{})
+\item 
+const \hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{class_assimp_1_1_importer_5872e749c1451fee64183fc14f1fc81d}{ApplyPostProcessing} (unsigned int pFlags)
+\item 
+const \hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{class_assimp_1_1_importer_339882c7acb47d5b5110bbd078d870a9}{ReadFile} (const std::string \&pFile, unsigned int pFlags)
+\begin{CompactList}\small\item\em Reads the given file and returns its contents if successful. \item\end{CompactList}\item 
+void \hyperlink{class_assimp_1_1_importer_53dafc3046abc33365a07c605716c5d4}{FreeScene} ()
+\item 
+const char $\ast$ \hyperlink{class_assimp_1_1_importer_23bab5ba8cb9b6886c690a610766668b}{GetErrorString} () const 
+\item 
+const \hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{class_assimp_1_1_importer_26fd479a6a955969c1377fa59f92db66}{GetScene} () const 
+\item 
+\hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{class_assimp_1_1_importer_60eb9042fb85bfbd61a863e131a56ecd}{GetOrphanedScene} ()
+\item 
+bool \hyperlink{class_assimp_1_1_importer_9146ea75c33c0aac0310195346877388}{IsExtensionSupported} (const char $\ast$szExtension) const 
+\item 
+bool \hyperlink{class_assimp_1_1_importer_5b01905366f5bf8d1f89d51f755bf7d2}{IsExtensionSupported} (const std::string \&szExtension) const 
+\begin{CompactList}\small\item\em Returns whether a given file extension is supported by ASSIMP. \item\end{CompactList}\item 
+void \hyperlink{class_assimp_1_1_importer_23c85647f7977012d9fef20b36c2d579}{GetExtensionList} (\hyperlink{structai_string}{aiString} \&szOut) const 
+\item 
+void \hyperlink{class_assimp_1_1_importer_6ab684351c55e170de3c5b7d730b306d}{GetExtensionList} (std::string \&szOut) const 
+\begin{CompactList}\small\item\em Get a full list of all file extensions supported by ASSIMP. \item\end{CompactList}\item 
+size\_\-t \hyperlink{class_assimp_1_1_importer_fe982451f1a1c9b0b59c788f9329ccc1}{GetImporterCount} () const 
+\item 
+const \hyperlink{structai_importer_desc}{aiImporterDesc} $\ast$ \hyperlink{class_assimp_1_1_importer_857dd22e071521c7747dc909f6a8f6f9}{GetImporterInfo} (size\_\-t index) const 
+\item 
+BaseImporter $\ast$ \hyperlink{class_assimp_1_1_importer_712a0545a11c9d198392867552ba6646}{GetImporter} (size\_\-t index) const 
+\item 
+BaseImporter $\ast$ \hyperlink{class_assimp_1_1_importer_18921ab411273fa95961f60848ad6007}{GetImporter} (const char $\ast$szExtension) const 
+\item 
+size\_\-t \hyperlink{class_assimp_1_1_importer_ee103460f66b9cbe3143400ec92ffc56}{GetImporterIndex} (const char $\ast$szExtension) const 
+\item 
+void \hyperlink{class_assimp_1_1_importer_ba2eacd0b627cb481b6d66d9ca55eac9}{GetMemoryRequirements} (\hyperlink{structai_memory_info}{aiMemoryInfo} \&in) const 
+\item 
+void \hyperlink{class_assimp_1_1_importer_9bb793072c84c784279d0f6e870bb42d}{SetExtraVerbose} (bool bDo)
+\item 
+ImporterPimpl $\ast$ \hyperlink{class_assimp_1_1_importer_c112839f323a630f83395acb74746827}{Pimpl} ()
+\end{CompactItemize}
+\subsection*{Static Public Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_assimp_1_1_importer_3affe8f98fc9a3b75fc3cb4c4415b37c}{
+static const unsigned int \hyperlink{class_assimp_1_1_importer_3affe8f98fc9a3b75fc3cb4c4415b37c}{MaxLenHint} = 200}
+\label{class_assimp_1_1_importer_3affe8f98fc9a3b75fc3cb4c4415b37c}
+
+\begin{CompactList}\small\item\em The upper limit for hints. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+CPP-API: The \hyperlink{class_assimp_1_1_importer}{Importer} class forms an C++ interface to the functionality of the Open Asset Import Library.
+
+Create an object of this class and call \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()} to import a file. If the import succeeds, the function returns a pointer to the imported data. The data remains property of the object, it is intended to be accessed read-only. The imported data will be destroyed along with the \hyperlink{class_assimp_1_1_importer}{Importer} object. If the import fails, \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()} returns a NULL pointer. In this case you can retrieve a human-readable error description be calling \hyperlink{class_assimp_1_1_importer_23bab5ba8cb9b6886c690a610766668b}{GetErrorString()}. You can call \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()} multiple times with a single \hyperlink{class_assimp_1_1_importer}{Importer} instance. Actually, constructing \hyperlink{class_assimp_1_1_importer}{Importer} objects involves quite many allocations and may take some time, so it's better to reuse them as often as possible.
+
+If you need the \hyperlink{class_assimp_1_1_importer}{Importer} to do custom file handling to access the files, implement \hyperlink{class_assimp_1_1_i_o_system}{IOSystem} and \hyperlink{class_assimp_1_1_i_o_stream}{IOStream} and supply an instance of your custom \hyperlink{class_assimp_1_1_i_o_system}{IOSystem} implementation by calling \hyperlink{class_assimp_1_1_importer_1161f46318af18bb86dfe0fc3edea4df}{SetIOHandler()} before calling \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()}. If you do not assign a custion IO handler, a default handler using the standard C++ IO logic will be used.
+
+\begin{Desc}
+\item[Note:]One \hyperlink{class_assimp_1_1_importer}{Importer} instance is not thread-safe. If you use multiple threads for loading, each thread should maintain its own \hyperlink{class_assimp_1_1_importer}{Importer} instance. \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_assimp_1_1_importer_2c207299ed05f1db1ad1e6dab005f719}{
+\index{Assimp::Importer@{Assimp::Importer}!Importer@{Importer}}
+\index{Importer@{Importer}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[Importer]{\setlength{\rightskip}{0pt plus 5cm}Assimp::Importer::Importer ()}}
+\label{class_assimp_1_1_importer_2c207299ed05f1db1ad1e6dab005f719}
+
+
+Constructor. Creates an empty importer object.
+
+Call \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()} to start the import process. The configuration property table is initially empty. \hypertarget{class_assimp_1_1_importer_69743664b5a7a8c195be48265144317b}{
+\index{Assimp::Importer@{Assimp::Importer}!Importer@{Importer}}
+\index{Importer@{Importer}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[Importer]{\setlength{\rightskip}{0pt plus 5cm}Assimp::Importer::Importer (const {\bf Importer} \& {\em other})}}
+\label{class_assimp_1_1_importer_69743664b5a7a8c195be48265144317b}
+
+
+Copy constructor.
+
+This copies the configuration properties of another \hyperlink{class_assimp_1_1_importer}{Importer}. If this \hyperlink{class_assimp_1_1_importer}{Importer} owns a scene it won't be copied. Call \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()} to start the import process. \hypertarget{class_assimp_1_1_importer_3d65af5286ba22f46220a72a6eb2a1c9}{
+\index{Assimp::Importer@{Assimp::Importer}!$\sim$Importer@{$\sim$Importer}}
+\index{$\sim$Importer@{$\sim$Importer}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[$\sim$Importer]{\setlength{\rightskip}{0pt plus 5cm}Assimp::Importer::$\sim$Importer ()}}
+\label{class_assimp_1_1_importer_3d65af5286ba22f46220a72a6eb2a1c9}
+
+
+Destructor. The object kept ownership of the imported data, which now will be destroyed along with the object. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_assimp_1_1_importer_3846294ffe76d91a1d3096d22d7c6b7d}{
+\index{Assimp::Importer@{Assimp::Importer}!RegisterLoader@{RegisterLoader}}
+\index{RegisterLoader@{RegisterLoader}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[RegisterLoader]{\setlength{\rightskip}{0pt plus 5cm}{\bf aiReturn} Assimp::Importer::RegisterLoader (BaseImporter $\ast$ {\em pImp})}}
+\label{class_assimp_1_1_importer_3846294ffe76d91a1d3096d22d7c6b7d}
+
+
+Registers a new loader.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pImp}]\hyperlink{class_assimp_1_1_importer}{Importer} to be added. The \hyperlink{class_assimp_1_1_importer}{Importer} instance takes ownership of the pointer, so it will be automatically deleted with the \hyperlink{class_assimp_1_1_importer}{Importer} instance. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]AI\_\-SUCCESS if the loader has been added. The registration fails if there is already a loader for a specific file extension. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_3b1f5af2c763b13aca0f324b19001722}{
+\index{Assimp::Importer@{Assimp::Importer}!UnregisterLoader@{UnregisterLoader}}
+\index{UnregisterLoader@{UnregisterLoader}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[UnregisterLoader]{\setlength{\rightskip}{0pt plus 5cm}{\bf aiReturn} Assimp::Importer::UnregisterLoader (BaseImporter $\ast$ {\em pImp})}}
+\label{class_assimp_1_1_importer_3b1f5af2c763b13aca0f324b19001722}
+
+
+Unregisters a loader.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pImp}]\hyperlink{class_assimp_1_1_importer}{Importer} to be unregistered. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]AI\_\-SUCCESS if the loader has been removed. The function fails if the loader is currently in use (this could happen if the \hyperlink{class_assimp_1_1_importer_2c207299ed05f1db1ad1e6dab005f719}{Importer} instance is used by more than one thread) or if it has not yet been registered. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_102650d3648c0e414a1e73bdad9bed35}{
+\index{Assimp::Importer@{Assimp::Importer}!RegisterPPStep@{RegisterPPStep}}
+\index{RegisterPPStep@{RegisterPPStep}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[RegisterPPStep]{\setlength{\rightskip}{0pt plus 5cm}{\bf aiReturn} Assimp::Importer::RegisterPPStep (BaseProcess $\ast$ {\em pImp})}}
+\label{class_assimp_1_1_importer_102650d3648c0e414a1e73bdad9bed35}
+
+
+Registers a new post-process step.
+
+At the moment, there's a small limitation: new post processing steps are added to end of the list, or in other words, executed last, after all built-in steps. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pImp}]Post-process step to be added. The \hyperlink{class_assimp_1_1_importer}{Importer} instance takes ownership of the pointer, so it will be automatically deleted with the \hyperlink{class_assimp_1_1_importer}{Importer} instance. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]AI\_\-SUCCESS if the step has been added correctly. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_3a683671c7c40638b1103c5d3648d86c}{
+\index{Assimp::Importer@{Assimp::Importer}!UnregisterPPStep@{UnregisterPPStep}}
+\index{UnregisterPPStep@{UnregisterPPStep}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[UnregisterPPStep]{\setlength{\rightskip}{0pt plus 5cm}{\bf aiReturn} Assimp::Importer::UnregisterPPStep (BaseProcess $\ast$ {\em pImp})}}
+\label{class_assimp_1_1_importer_3a683671c7c40638b1103c5d3648d86c}
+
+
+Unregisters a post-process step.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pImp}]Step to be unregistered. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]AI\_\-SUCCESS if the step has been removed. The function fails if the step is currently in use (this could happen if the \hyperlink{class_assimp_1_1_importer_2c207299ed05f1db1ad1e6dab005f719}{Importer} instance is used by more than one thread) or if it has not yet been registered. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_2542eed3d5f491025c4095b4e55fa068}{
+\index{Assimp::Importer@{Assimp::Importer}!SetPropertyInteger@{SetPropertyInteger}}
+\index{SetPropertyInteger@{SetPropertyInteger}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[SetPropertyInteger]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::Importer::SetPropertyInteger (const char $\ast$ {\em szName}, \/  int {\em iValue})}}
+\label{class_assimp_1_1_importer_2542eed3d5f491025c4095b4e55fa068}
+
+
+Set an integer configuration property. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em szName}]Name of the property. All supported properties are defined in the aiConfig.g header (all constants share the prefix AI\_\-CONFIG\_\-XXX and are simple strings). \item[{\em iValue}]New value of the property \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if the property was set before. The new value replaces the previous value in this case. \end{Desc}
+\begin{Desc}
+\item[Note:]Property of different types (float, int, string ..) are kept on different stacks, so calling \hyperlink{class_assimp_1_1_importer_2542eed3d5f491025c4095b4e55fa068}{SetPropertyInteger()} for a floating-point property has no effect - the loader will call \hyperlink{class_assimp_1_1_importer_dfe1387ccc837fd59bf620e8216637fa}{GetPropertyFloat()} to read the property, but it won't be there. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_4af22a88eddf464d949a761149c72825}{
+\index{Assimp::Importer@{Assimp::Importer}!SetPropertyBool@{SetPropertyBool}}
+\index{SetPropertyBool@{SetPropertyBool}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[SetPropertyBool]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::Importer::SetPropertyBool (const char $\ast$ {\em szName}, \/  bool {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_assimp_1_1_importer_4af22a88eddf464d949a761149c72825}
+
+
+Set a boolean configuration property. Boolean properties are stored on the integer stack internally so it's possible to set them via \hyperlink{class_assimp_1_1_importer_4af22a88eddf464d949a761149c72825}{SetPropertyBool} and query them with \hyperlink{class_assimp_1_1_importer_90f5d35d25e5d2a0ef8bc0c6545b2010}{GetPropertyBool} and vice versa. \begin{Desc}
+\item[See also:]\hyperlink{class_assimp_1_1_importer_2542eed3d5f491025c4095b4e55fa068}{SetPropertyInteger()} \end{Desc}
+\hypertarget{class_assimp_1_1_importer_d38af78d6fe4b1f132d2534d8a84deea}{
+\index{Assimp::Importer@{Assimp::Importer}!SetPropertyFloat@{SetPropertyFloat}}
+\index{SetPropertyFloat@{SetPropertyFloat}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[SetPropertyFloat]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::Importer::SetPropertyFloat (const char $\ast$ {\em szName}, \/  ai\_\-real {\em fValue})}}
+\label{class_assimp_1_1_importer_d38af78d6fe4b1f132d2534d8a84deea}
+
+
+Set a floating-point configuration property. \begin{Desc}
+\item[See also:]\hyperlink{class_assimp_1_1_importer_2542eed3d5f491025c4095b4e55fa068}{SetPropertyInteger()} \end{Desc}
+\hypertarget{class_assimp_1_1_importer_854087b213981108e3e464cf4d293fed}{
+\index{Assimp::Importer@{Assimp::Importer}!SetPropertyString@{SetPropertyString}}
+\index{SetPropertyString@{SetPropertyString}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[SetPropertyString]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::Importer::SetPropertyString (const char $\ast$ {\em szName}, \/  const std::string \& {\em sValue})}}
+\label{class_assimp_1_1_importer_854087b213981108e3e464cf4d293fed}
+
+
+Set a string configuration property. \begin{Desc}
+\item[See also:]\hyperlink{class_assimp_1_1_importer_2542eed3d5f491025c4095b4e55fa068}{SetPropertyInteger()} \end{Desc}
+\hypertarget{class_assimp_1_1_importer_cd128e5fb5777ef238b8bd1454a9c3ad}{
+\index{Assimp::Importer@{Assimp::Importer}!SetPropertyMatrix@{SetPropertyMatrix}}
+\index{SetPropertyMatrix@{SetPropertyMatrix}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[SetPropertyMatrix]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::Importer::SetPropertyMatrix (const char $\ast$ {\em szName}, \/  const aiMatrix4x4 \& {\em sValue})}}
+\label{class_assimp_1_1_importer_cd128e5fb5777ef238b8bd1454a9c3ad}
+
+
+Set a matrix configuration property. \begin{Desc}
+\item[See also:]\hyperlink{class_assimp_1_1_importer_2542eed3d5f491025c4095b4e55fa068}{SetPropertyInteger()} \end{Desc}
+\hypertarget{class_assimp_1_1_importer_3e796a0758a9f10f13107f44c542ad41}{
+\index{Assimp::Importer@{Assimp::Importer}!GetPropertyInteger@{GetPropertyInteger}}
+\index{GetPropertyInteger@{GetPropertyInteger}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetPropertyInteger]{\setlength{\rightskip}{0pt plus 5cm}int Assimp::Importer::GetPropertyInteger (const char $\ast$ {\em szName}, \/  int {\em iErrorReturn} = {\tt 0xffffffff}) const}}
+\label{class_assimp_1_1_importer_3e796a0758a9f10f13107f44c542ad41}
+
+
+Get a configuration property. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em szName}]Name of the property. All supported properties are defined in the aiConfig.g header (all constants share the prefix AI\_\-CONFIG\_\-XXX). \item[{\em iErrorReturn}]Value that is returned if the property is not found. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Current value of the property \end{Desc}
+\begin{Desc}
+\item[Note:]Property of different types (float, int, string ..) are kept on different lists, so calling \hyperlink{class_assimp_1_1_importer_2542eed3d5f491025c4095b4e55fa068}{SetPropertyInteger()} for a floating-point property has no effect - the loader will call \hyperlink{class_assimp_1_1_importer_dfe1387ccc837fd59bf620e8216637fa}{GetPropertyFloat()} to read the property, but it won't be there. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_90f5d35d25e5d2a0ef8bc0c6545b2010}{
+\index{Assimp::Importer@{Assimp::Importer}!GetPropertyBool@{GetPropertyBool}}
+\index{GetPropertyBool@{GetPropertyBool}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetPropertyBool]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::Importer::GetPropertyBool (const char $\ast$ {\em szName}, \/  bool {\em bErrorReturn} = {\tt false}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_assimp_1_1_importer_90f5d35d25e5d2a0ef8bc0c6545b2010}
+
+
+Get a boolean configuration property. Boolean properties are stored on the integer stack internally so it's possible to set them via \hyperlink{class_assimp_1_1_importer_4af22a88eddf464d949a761149c72825}{SetPropertyBool} and query them with \hyperlink{class_assimp_1_1_importer_90f5d35d25e5d2a0ef8bc0c6545b2010}{GetPropertyBool} and vice versa. \begin{Desc}
+\item[See also:]\hyperlink{class_assimp_1_1_importer_3e796a0758a9f10f13107f44c542ad41}{GetPropertyInteger()} \end{Desc}
+\hypertarget{class_assimp_1_1_importer_dfe1387ccc837fd59bf620e8216637fa}{
+\index{Assimp::Importer@{Assimp::Importer}!GetPropertyFloat@{GetPropertyFloat}}
+\index{GetPropertyFloat@{GetPropertyFloat}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetPropertyFloat]{\setlength{\rightskip}{0pt plus 5cm}ai\_\-real Assimp::Importer::GetPropertyFloat (const char $\ast$ {\em szName}, \/  ai\_\-real {\em fErrorReturn} = {\tt 10e10}) const}}
+\label{class_assimp_1_1_importer_dfe1387ccc837fd59bf620e8216637fa}
+
+
+Get a floating-point configuration property \begin{Desc}
+\item[See also:]\hyperlink{class_assimp_1_1_importer_3e796a0758a9f10f13107f44c542ad41}{GetPropertyInteger()} \end{Desc}
+\hypertarget{class_assimp_1_1_importer_a31cc1aa8f83056fe097b149354ddfd3}{
+\index{Assimp::Importer@{Assimp::Importer}!GetPropertyString@{GetPropertyString}}
+\index{GetPropertyString@{GetPropertyString}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetPropertyString]{\setlength{\rightskip}{0pt plus 5cm}const std::string Assimp::Importer::GetPropertyString (const char $\ast$ {\em szName}, \/  const std::string \& {\em sErrorReturn} = {\tt \char`\"{}\char`\"{}}) const}}
+\label{class_assimp_1_1_importer_a31cc1aa8f83056fe097b149354ddfd3}
+
+
+Get a string configuration property
+
+The return value remains valid until the property is modified. \begin{Desc}
+\item[See also:]\hyperlink{class_assimp_1_1_importer_3e796a0758a9f10f13107f44c542ad41}{GetPropertyInteger()} \end{Desc}
+\hypertarget{class_assimp_1_1_importer_1b2e36eab7155233846b24ec30e7e273}{
+\index{Assimp::Importer@{Assimp::Importer}!GetPropertyMatrix@{GetPropertyMatrix}}
+\index{GetPropertyMatrix@{GetPropertyMatrix}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetPropertyMatrix]{\setlength{\rightskip}{0pt plus 5cm}const aiMatrix4x4 Assimp::Importer::GetPropertyMatrix (const char $\ast$ {\em szName}, \/  const aiMatrix4x4 \& {\em sErrorReturn} = {\tt aiMatrix4x4()}) const}}
+\label{class_assimp_1_1_importer_1b2e36eab7155233846b24ec30e7e273}
+
+
+Get a matrix configuration property
+
+The return value remains valid until the property is modified. \begin{Desc}
+\item[See also:]\hyperlink{class_assimp_1_1_importer_3e796a0758a9f10f13107f44c542ad41}{GetPropertyInteger()} \end{Desc}
+\hypertarget{class_assimp_1_1_importer_1161f46318af18bb86dfe0fc3edea4df}{
+\index{Assimp::Importer@{Assimp::Importer}!SetIOHandler@{SetIOHandler}}
+\index{SetIOHandler@{SetIOHandler}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[SetIOHandler]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Importer::SetIOHandler ({\bf IOSystem} $\ast$ {\em pIOHandler})}}
+\label{class_assimp_1_1_importer_1161f46318af18bb86dfe0fc3edea4df}
+
+
+Supplies a custom IO handler to the importer to use to open and access files. If you need the importer to use custom IO logic to access the files, you need to provide a custom implementation of \hyperlink{class_assimp_1_1_i_o_system}{IOSystem} and IOFile to the importer. Then create an instance of your custom \hyperlink{class_assimp_1_1_i_o_system}{IOSystem} implementation and supply it by this function.
+
+The \hyperlink{class_assimp_1_1_importer}{Importer} takes ownership of the object and will destroy it afterwards. The previously assigned handler will be deleted. Pass NULL to take again ownership of your \hyperlink{class_assimp_1_1_i_o_system}{IOSystem} and reset \hyperlink{namespace_assimp}{Assimp} to use its default implementation.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pIOHandler}]The IO handler to be used in all file accesses of the \hyperlink{class_assimp_1_1_importer}{Importer}. \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_importer_be3af30f4c5eae2e875b0f32068be44d}{
+\index{Assimp::Importer@{Assimp::Importer}!GetIOHandler@{GetIOHandler}}
+\index{GetIOHandler@{GetIOHandler}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetIOHandler]{\setlength{\rightskip}{0pt plus 5cm}{\bf IOSystem}$\ast$ Assimp::Importer::GetIOHandler () const}}
+\label{class_assimp_1_1_importer_be3af30f4c5eae2e875b0f32068be44d}
+
+
+Retrieves the IO handler that is currently set. You can use \hyperlink{class_assimp_1_1_importer_e3f26466cf7756594216ffedbc247563}{IsDefaultIOHandler()} to check whether the returned interface is the default IO handler provided by ASSIMP. The default handler is active as long the application doesn't supply its own custom IO handler via \hyperlink{class_assimp_1_1_importer_1161f46318af18bb86dfe0fc3edea4df}{SetIOHandler()}. \begin{Desc}
+\item[Returns:]A valid \hyperlink{class_assimp_1_1_i_o_system}{IOSystem} interface, never NULL. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_e3f26466cf7756594216ffedbc247563}{
+\index{Assimp::Importer@{Assimp::Importer}!IsDefaultIOHandler@{IsDefaultIOHandler}}
+\index{IsDefaultIOHandler@{IsDefaultIOHandler}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[IsDefaultIOHandler]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::Importer::IsDefaultIOHandler () const}}
+\label{class_assimp_1_1_importer_e3f26466cf7756594216ffedbc247563}
+
+
+Checks whether a default IO handler is active A default handler is active as long the application doesn't supply its own custom IO handler via \hyperlink{class_assimp_1_1_importer_1161f46318af18bb86dfe0fc3edea4df}{SetIOHandler()}. \begin{Desc}
+\item[Returns:]true by default \end{Desc}
+\hypertarget{class_assimp_1_1_importer_6a4d830ffb3f77a3c7c919e0af006920}{
+\index{Assimp::Importer@{Assimp::Importer}!SetProgressHandler@{SetProgressHandler}}
+\index{SetProgressHandler@{SetProgressHandler}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[SetProgressHandler]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Importer::SetProgressHandler ({\bf ProgressHandler} $\ast$ {\em pHandler})}}
+\label{class_assimp_1_1_importer_6a4d830ffb3f77a3c7c919e0af006920}
+
+
+Supplies a custom progress handler to the importer. This interface exposes a Update() callback, which is called more or less periodically (please don't sue us if it isn't as periodically as you'd like it to have ...). This can be used to implement progress bars and loading timeouts. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pHandler}]Progress callback interface. Pass NULL to disable progress reporting. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]Progress handlers can be used to abort the loading at almost any time. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_1fa669f0edc504fdf9178e8e22c728ad}{
+\index{Assimp::Importer@{Assimp::Importer}!GetProgressHandler@{GetProgressHandler}}
+\index{GetProgressHandler@{GetProgressHandler}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetProgressHandler]{\setlength{\rightskip}{0pt plus 5cm}{\bf ProgressHandler}$\ast$ Assimp::Importer::GetProgressHandler () const}}
+\label{class_assimp_1_1_importer_1fa669f0edc504fdf9178e8e22c728ad}
+
+
+Retrieves the progress handler that is currently set. You can use \hyperlink{class_assimp_1_1_importer_2d60d970eddf8f9d35b6e9b54214cedd}{IsDefaultProgressHandler()} to check whether the returned interface is the default handler provided by ASSIMP. The default handler is active as long the application doesn't supply its own custom handler via \hyperlink{class_assimp_1_1_importer_6a4d830ffb3f77a3c7c919e0af006920}{SetProgressHandler()}. \begin{Desc}
+\item[Returns:]A valid \hyperlink{class_assimp_1_1_progress_handler}{ProgressHandler} interface, never NULL. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_2d60d970eddf8f9d35b6e9b54214cedd}{
+\index{Assimp::Importer@{Assimp::Importer}!IsDefaultProgressHandler@{IsDefaultProgressHandler}}
+\index{IsDefaultProgressHandler@{IsDefaultProgressHandler}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[IsDefaultProgressHandler]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::Importer::IsDefaultProgressHandler () const}}
+\label{class_assimp_1_1_importer_2d60d970eddf8f9d35b6e9b54214cedd}
+
+
+Checks whether a default progress handler is active A default handler is active as long the application doesn't supply its own custom progress handler via \hyperlink{class_assimp_1_1_importer_6a4d830ffb3f77a3c7c919e0af006920}{SetProgressHandler()}. \begin{Desc}
+\item[Returns:]true by default \end{Desc}
+\hypertarget{class_assimp_1_1_importer_780329e2dd0406e930291cf8ab9deb99}{
+\index{Assimp::Importer@{Assimp::Importer}!ValidateFlags@{ValidateFlags}}
+\index{ValidateFlags@{ValidateFlags}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[ValidateFlags]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::Importer::ValidateFlags (unsigned int {\em pFlags}) const}}
+\label{class_assimp_1_1_importer_780329e2dd0406e930291cf8ab9deb99}
+
+
+Check whether a given set of post-processing flags is supported. 
+
+Some flags are mutually exclusive, others are probably not available because your excluded them from your \hyperlink{namespace_assimp}{Assimp} builds. Calling this function is recommended if you're unsure.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pFlags}]Bitwise combination of the aiPostProcess flags. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if this flag combination is fine. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{
+\index{Assimp::Importer@{Assimp::Importer}!ReadFile@{ReadFile}}
+\index{ReadFile@{ReadFile}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[ReadFile]{\setlength{\rightskip}{0pt plus 5cm}const {\bf aiScene}$\ast$ Assimp::Importer::ReadFile (const char $\ast$ {\em pFile}, \/  unsigned int {\em pFlags})}}
+\label{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}
+
+
+Reads the given file and returns its contents if successful.
+
+If the call succeeds, the contents of the file are returned as a pointer to an \hyperlink{structai_scene}{aiScene} object. The returned data is intended to be read-only, the importer object keeps ownership of the data and will destroy it upon destruction. If the import fails, NULL is returned. A human-readable error description can be retrieved by calling \hyperlink{class_assimp_1_1_importer_23bab5ba8cb9b6886c690a610766668b}{GetErrorString()}. The previous scene will be deleted during this call. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pFile}]Path and filename to the file to be imported. \item[{\em pFlags}]Optional post processing steps to be executed after a successful import. Provide a bitwise combination of the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410}{aiPostProcessSteps} flags. If you wish to inspect the imported scene first in order to fine-tune your post-processing setup, consider to use \hyperlink{class_assimp_1_1_importer_5872e749c1451fee64183fc14f1fc81d}{ApplyPostProcessing()}. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the imported data, NULL if the import failed. The pointer to the scene remains in possession of the \hyperlink{class_assimp_1_1_importer}{Importer} instance. Use \hyperlink{class_assimp_1_1_importer_60eb9042fb85bfbd61a863e131a56ecd}{GetOrphanedScene()} to take ownership of it.\end{Desc}
+\begin{Desc}
+\item[Note:]\hyperlink{namespace_assimp}{Assimp} is able to determine the file format of a file automatically. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_9b3c5e8b1042702f449e84a95b3324f6}{
+\index{Assimp::Importer@{Assimp::Importer}!ReadFileFromMemory@{ReadFileFromMemory}}
+\index{ReadFileFromMemory@{ReadFileFromMemory}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[ReadFileFromMemory]{\setlength{\rightskip}{0pt plus 5cm}const {\bf aiScene}$\ast$ Assimp::Importer::ReadFileFromMemory (const void $\ast$ {\em pBuffer}, \/  size\_\-t {\em pLength}, \/  unsigned int {\em pFlags}, \/  const char $\ast$ {\em pHint} = {\tt \char`\"{}\char`\"{}})}}
+\label{class_assimp_1_1_importer_9b3c5e8b1042702f449e84a95b3324f6}
+
+
+Reads the given file from a memory buffer and returns its contents if successful.
+
+If the call succeeds, the contents of the file are returned as a pointer to an \hyperlink{structai_scene}{aiScene} object. The returned data is intended to be read-only, the importer object keeps ownership of the data and will destroy it upon destruction. If the import fails, NULL is returned. A human-readable error description can be retrieved by calling \hyperlink{class_assimp_1_1_importer_23bab5ba8cb9b6886c690a610766668b}{GetErrorString()}. The previous scene will be deleted during this call. Calling this method doesn't affect the active \hyperlink{class_assimp_1_1_i_o_system}{IOSystem}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pBuffer}]Pointer to the file data \item[{\em pLength}]Length of pBuffer, in bytes \item[{\em pFlags}]Optional post processing steps to be executed after a successful import. Provide a bitwise combination of the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410}{aiPostProcessSteps} flags. If you wish to inspect the imported scene first in order to fine-tune your post-processing setup, consider to use \hyperlink{class_assimp_1_1_importer_5872e749c1451fee64183fc14f1fc81d}{ApplyPostProcessing()}. \item[{\em pHint}]An additional hint to the library. If this is a non empty string, the library looks for a loader to support the file extension specified by pHint and passes the file to the first matching loader. If this loader is unable to completely the request, the library continues and tries to determine the file format on its own, a task that may or may not be successful. Check the return value, and you'll know ... \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the imported data, NULL if the import failed. The pointer to the scene remains in possession of the \hyperlink{class_assimp_1_1_importer}{Importer} instance. Use \hyperlink{class_assimp_1_1_importer_60eb9042fb85bfbd61a863e131a56ecd}{GetOrphanedScene()} to take ownership of it.\end{Desc}
+\begin{Desc}
+\item[Note:]This is a straightforward way to decode models from memory buffers, but it doesn't handle model formats that spread their data across multiple files or even directories. Examples include OBJ or MD3, which outsource parts of their material info into external scripts. If you need full functionality, provide a custom \hyperlink{class_assimp_1_1_i_o_system}{IOSystem} to make \hyperlink{namespace_assimp}{Assimp} find these files and use the regular \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()} API. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_5872e749c1451fee64183fc14f1fc81d}{
+\index{Assimp::Importer@{Assimp::Importer}!ApplyPostProcessing@{ApplyPostProcessing}}
+\index{ApplyPostProcessing@{ApplyPostProcessing}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[ApplyPostProcessing]{\setlength{\rightskip}{0pt plus 5cm}const {\bf aiScene}$\ast$ Assimp::Importer::ApplyPostProcessing (unsigned int {\em pFlags})}}
+\label{class_assimp_1_1_importer_5872e749c1451fee64183fc14f1fc81d}
+
+
+Apply post-processing to an already-imported scene.
+
+This is strictly equivalent to calling \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()} with the same flags. However, you can use this separate function to inspect the imported scene first to fine-tune your post-processing setup. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pFlags}]Provide a bitwise combination of the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410}{aiPostProcessSteps} flags. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the post-processed data. This is still the same as the pointer returned by \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()}. However, if post-processing fails, the scene could now be NULL. That's quite a rare case, post processing steps are not really designed to 'fail'. To be exact, the aiProcess\_\-ValidateDS flag is currently the only post processing step which can actually cause the scene to be reset to NULL.\end{Desc}
+\begin{Desc}
+\item[Note:]The method does nothing if no scene is currently bound to the \hyperlink{class_assimp_1_1_importer_2c207299ed05f1db1ad1e6dab005f719}{Importer} instance. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_339882c7acb47d5b5110bbd078d870a9}{
+\index{Assimp::Importer@{Assimp::Importer}!ReadFile@{ReadFile}}
+\index{ReadFile@{ReadFile}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[ReadFile]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE const {\bf aiScene} $\ast$ Assimp::Importer::ReadFile (const std::string \& {\em pFile}, \/  unsigned int {\em pFlags})}}
+\label{class_assimp_1_1_importer_339882c7acb47d5b5110bbd078d870a9}
+
+
+Reads the given file and returns its contents if successful. 
+
+class \hyperlink{class_assimp_1_1_importer}{Importer}
+
+This function is provided for backward compatibility. See the const char$\ast$ version for detailed docs. \begin{Desc}
+\item[See also:]ReadFile(const char$\ast$, pFlags) \end{Desc}
+\hypertarget{class_assimp_1_1_importer_53dafc3046abc33365a07c605716c5d4}{
+\index{Assimp::Importer@{Assimp::Importer}!FreeScene@{FreeScene}}
+\index{FreeScene@{FreeScene}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[FreeScene]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Importer::FreeScene ()}}
+\label{class_assimp_1_1_importer_53dafc3046abc33365a07c605716c5d4}
+
+
+Frees the current scene.
+
+The function does nothing if no scene has previously been read via \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()}. \hyperlink{class_assimp_1_1_importer_53dafc3046abc33365a07c605716c5d4}{FreeScene()} is called automatically by the destructor and \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()} itself. \hypertarget{class_assimp_1_1_importer_23bab5ba8cb9b6886c690a610766668b}{
+\index{Assimp::Importer@{Assimp::Importer}!GetErrorString@{GetErrorString}}
+\index{GetErrorString@{GetErrorString}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetErrorString]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ Assimp::Importer::GetErrorString () const}}
+\label{class_assimp_1_1_importer_23bab5ba8cb9b6886c690a610766668b}
+
+
+Returns an error description of an error that occurred in \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()}.
+
+Returns an empty string if no error occurred. \begin{Desc}
+\item[Returns:]A description of the last error, an empty string if no error occurred. The string is never NULL.\end{Desc}
+\begin{Desc}
+\item[Note:]The returned function remains valid until one of the following methods is called: \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()}, \hyperlink{class_assimp_1_1_importer_53dafc3046abc33365a07c605716c5d4}{FreeScene()}. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_26fd479a6a955969c1377fa59f92db66}{
+\index{Assimp::Importer@{Assimp::Importer}!GetScene@{GetScene}}
+\index{GetScene@{GetScene}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetScene]{\setlength{\rightskip}{0pt plus 5cm}const {\bf aiScene}$\ast$ Assimp::Importer::GetScene () const}}
+\label{class_assimp_1_1_importer_26fd479a6a955969c1377fa59f92db66}
+
+
+Returns the scene loaded by the last successful call to \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()}
+
+\begin{Desc}
+\item[Returns:]Current scene or NULL if there is currently no scene loaded \end{Desc}
+\hypertarget{class_assimp_1_1_importer_60eb9042fb85bfbd61a863e131a56ecd}{
+\index{Assimp::Importer@{Assimp::Importer}!GetOrphanedScene@{GetOrphanedScene}}
+\index{GetOrphanedScene@{GetOrphanedScene}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetOrphanedScene]{\setlength{\rightskip}{0pt plus 5cm}{\bf aiScene}$\ast$ Assimp::Importer::GetOrphanedScene ()}}
+\label{class_assimp_1_1_importer_60eb9042fb85bfbd61a863e131a56ecd}
+
+
+Returns the scene loaded by the last successful call to \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()} and releases the scene from the ownership of the \hyperlink{class_assimp_1_1_importer}{Importer} instance. The application is now responsible for deleting the scene. Any further calls to \hyperlink{class_assimp_1_1_importer_26fd479a6a955969c1377fa59f92db66}{GetScene()} or \hyperlink{class_assimp_1_1_importer_60eb9042fb85bfbd61a863e131a56ecd}{GetOrphanedScene()} will return NULL - until a new scene has been loaded via \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()}.
+
+\begin{Desc}
+\item[Returns:]Current scene or NULL if there is currently no scene loaded \end{Desc}
+\begin{Desc}
+\item[Note:]Use this method with maximal caution, and only if you have to. By design, aiScene's are exclusively maintained, allocated and deallocated by \hyperlink{namespace_assimp}{Assimp} and no one else. The reasoning behind this is the golden rule that deallocations should always be done by the module that did the original allocation because heaps are not necessarily shared. \hyperlink{class_assimp_1_1_importer_60eb9042fb85bfbd61a863e131a56ecd}{GetOrphanedScene()} enforces you to delete the returned scene by yourself, but this will only be fine if and only if you're using the same heap as assimp. On Windows, it's typically fine provided everything is linked against the multithreaded-dll version of the runtime library. It will work as well for static linkage with \hyperlink{namespace_assimp}{Assimp}. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_9146ea75c33c0aac0310195346877388}{
+\index{Assimp::Importer@{Assimp::Importer}!IsExtensionSupported@{IsExtensionSupported}}
+\index{IsExtensionSupported@{IsExtensionSupported}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[IsExtensionSupported]{\setlength{\rightskip}{0pt plus 5cm}bool Assimp::Importer::IsExtensionSupported (const char $\ast$ {\em szExtension}) const}}
+\label{class_assimp_1_1_importer_9146ea75c33c0aac0310195346877388}
+
+
+Returns whether a given file extension is supported by ASSIMP.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em szExtension}]Extension to be checked. Must include a trailing dot '.'. Example: \char`\"{}.3ds\char`\"{}, \char`\"{}.md3\char`\"{}. Cases-insensitive. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if the extension is supported, false otherwise \end{Desc}
+\hypertarget{class_assimp_1_1_importer_5b01905366f5bf8d1f89d51f755bf7d2}{
+\index{Assimp::Importer@{Assimp::Importer}!IsExtensionSupported@{IsExtensionSupported}}
+\index{IsExtensionSupported@{IsExtensionSupported}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[IsExtensionSupported]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE bool Assimp::Importer::IsExtensionSupported (const std::string \& {\em szExtension}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_assimp_1_1_importer_5b01905366f5bf8d1f89d51f755bf7d2}
+
+
+Returns whether a given file extension is supported by ASSIMP. 
+
+This function is provided for backward compatibility. See the const char$\ast$ version for detailed and up-to-date docs. \begin{Desc}
+\item[See also:]IsExtensionSupported(const char$\ast$) \end{Desc}
+\hypertarget{class_assimp_1_1_importer_23c85647f7977012d9fef20b36c2d579}{
+\index{Assimp::Importer@{Assimp::Importer}!GetExtensionList@{GetExtensionList}}
+\index{GetExtensionList@{GetExtensionList}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetExtensionList]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Importer::GetExtensionList ({\bf aiString} \& {\em szOut}) const}}
+\label{class_assimp_1_1_importer_23c85647f7977012d9fef20b36c2d579}
+
+
+Get a full list of all file extensions supported by ASSIMP.
+
+If a file extension is contained in the list this does of course not mean that ASSIMP is able to load all files with this extension --- it simply means there is an importer loaded which claims to handle files with this file extension. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em szOut}]String to receive the extension list. Format of the list: \char`\"{}$\ast$.3ds;$\ast$.obj;$\ast$.dae\char`\"{}. This is useful for use with the WinAPI call GetOpenFileName(Ex). \end{description}
+\end{Desc}
+\hypertarget{class_assimp_1_1_importer_6ab684351c55e170de3c5b7d730b306d}{
+\index{Assimp::Importer@{Assimp::Importer}!GetExtensionList@{GetExtensionList}}
+\index{GetExtensionList@{GetExtensionList}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetExtensionList]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE void Assimp::Importer::GetExtensionList (std::string \& {\em szOut}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_assimp_1_1_importer_6ab684351c55e170de3c5b7d730b306d}
+
+
+Get a full list of all file extensions supported by ASSIMP. 
+
+This function is provided for backward compatibility. See the \hyperlink{structai_string}{aiString} version for detailed and up-to-date docs. \begin{Desc}
+\item[See also:]GetExtensionList(aiString\&) \end{Desc}
+\hypertarget{class_assimp_1_1_importer_fe982451f1a1c9b0b59c788f9329ccc1}{
+\index{Assimp::Importer@{Assimp::Importer}!GetImporterCount@{GetImporterCount}}
+\index{GetImporterCount@{GetImporterCount}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetImporterCount]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Assimp::Importer::GetImporterCount () const}}
+\label{class_assimp_1_1_importer_fe982451f1a1c9b0b59c788f9329ccc1}
+
+
+Get the number of importers currently registered with \hyperlink{namespace_assimp}{Assimp}. \hypertarget{class_assimp_1_1_importer_857dd22e071521c7747dc909f6a8f6f9}{
+\index{Assimp::Importer@{Assimp::Importer}!GetImporterInfo@{GetImporterInfo}}
+\index{GetImporterInfo@{GetImporterInfo}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetImporterInfo]{\setlength{\rightskip}{0pt plus 5cm}const {\bf aiImporterDesc}$\ast$ Assimp::Importer::GetImporterInfo (size\_\-t {\em index}) const}}
+\label{class_assimp_1_1_importer_857dd22e071521c7747dc909f6a8f6f9}
+
+
+Get meta data for the importer corresponding to a specific index..
+
+For the declaration of \hyperlink{structai_importer_desc}{aiImporterDesc}, include $<$\hyperlink{importerdesc_8h}{assimp/importerdesc.h}$>$. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em index}]Index to query, must be within \mbox{[}0,\hyperlink{class_assimp_1_1_importer_fe982451f1a1c9b0b59c788f9329ccc1}{GetImporterCount()}) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]\hyperlink{class_assimp_1_1_importer}{Importer} meta data structure, NULL if the index does not exist or if the importer doesn't offer meta information ( importers may do this at the cost of being hated by their peers). \end{Desc}
+\hypertarget{class_assimp_1_1_importer_712a0545a11c9d198392867552ba6646}{
+\index{Assimp::Importer@{Assimp::Importer}!GetImporter@{GetImporter}}
+\index{GetImporter@{GetImporter}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetImporter]{\setlength{\rightskip}{0pt plus 5cm}BaseImporter$\ast$ Assimp::Importer::GetImporter (size\_\-t {\em index}) const}}
+\label{class_assimp_1_1_importer_712a0545a11c9d198392867552ba6646}
+
+
+Find the importer corresponding to a specific index.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em index}]Index to query, must be within \mbox{[}0,\hyperlink{class_assimp_1_1_importer_fe982451f1a1c9b0b59c788f9329ccc1}{GetImporterCount()}) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]\hyperlink{class_assimp_1_1_importer}{Importer} instance. NULL if the index does not exist. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_18921ab411273fa95961f60848ad6007}{
+\index{Assimp::Importer@{Assimp::Importer}!GetImporter@{GetImporter}}
+\index{GetImporter@{GetImporter}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetImporter]{\setlength{\rightskip}{0pt plus 5cm}BaseImporter$\ast$ Assimp::Importer::GetImporter (const char $\ast$ {\em szExtension}) const}}
+\label{class_assimp_1_1_importer_18921ab411273fa95961f60848ad6007}
+
+
+Find the importer corresponding to a specific file extension.
+
+This is quite similar to \hyperlink{class_assimp_1_1_importer_9146ea75c33c0aac0310195346877388}{IsExtensionSupported} except a BaseImporter instance is returned. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em szExtension}]Extension to check for. The following formats are recognized (BAH being the file extension): \char`\"{}BAH\char`\"{} (comparison is case-insensitive), \char`\"{}.bah\char`\"{}, \char`\"{}$\ast$.bah\char`\"{} (wild card and dot characters at the beginning of the extension are skipped). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]NULL if no importer is found \end{Desc}
+\hypertarget{class_assimp_1_1_importer_ee103460f66b9cbe3143400ec92ffc56}{
+\index{Assimp::Importer@{Assimp::Importer}!GetImporterIndex@{GetImporterIndex}}
+\index{GetImporterIndex@{GetImporterIndex}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetImporterIndex]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Assimp::Importer::GetImporterIndex (const char $\ast$ {\em szExtension}) const}}
+\label{class_assimp_1_1_importer_ee103460f66b9cbe3143400ec92ffc56}
+
+
+Find the importer index corresponding to a specific file extension.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em szExtension}]Extension to check for. The following formats are recognized (BAH being the file extension): \char`\"{}BAH\char`\"{} (comparison is case-insensitive), \char`\"{}.bah\char`\"{}, \char`\"{}$\ast$.bah\char`\"{} (wild card and dot characters at the beginning of the extension are skipped). \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:](size\_\-t)-1 if no importer is found \end{Desc}
+\hypertarget{class_assimp_1_1_importer_ba2eacd0b627cb481b6d66d9ca55eac9}{
+\index{Assimp::Importer@{Assimp::Importer}!GetMemoryRequirements@{GetMemoryRequirements}}
+\index{GetMemoryRequirements@{GetMemoryRequirements}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[GetMemoryRequirements]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Importer::GetMemoryRequirements ({\bf aiMemoryInfo} \& {\em in}) const}}
+\label{class_assimp_1_1_importer_ba2eacd0b627cb481b6d66d9ca55eac9}
+
+
+Returns the storage allocated by ASSIMP to hold the scene data in memory.
+
+This refers to the currently loaded file, see \hyperlink{class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5}{ReadFile()}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em in}]Data structure to be filled. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]The returned memory statistics refer to the actual size of the use data of the \hyperlink{structai_scene}{aiScene}. Heap-related overhead is (naturally) not included. \end{Desc}
+\hypertarget{class_assimp_1_1_importer_9bb793072c84c784279d0f6e870bb42d}{
+\index{Assimp::Importer@{Assimp::Importer}!SetExtraVerbose@{SetExtraVerbose}}
+\index{SetExtraVerbose@{SetExtraVerbose}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[SetExtraVerbose]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Importer::SetExtraVerbose (bool {\em bDo})}}
+\label{class_assimp_1_1_importer_9bb793072c84c784279d0f6e870bb42d}
+
+
+Enables \char`\"{}extra verbose\char`\"{} mode.
+
+'Extra verbose' means the data structure is validated after $\ast$every$\ast$ single post processing step to make sure everyone modifies the data structure in a well-defined manner. This is a debug feature and not intended for use in production environments. \hypertarget{class_assimp_1_1_importer_c112839f323a630f83395acb74746827}{
+\index{Assimp::Importer@{Assimp::Importer}!Pimpl@{Pimpl}}
+\index{Pimpl@{Pimpl}!Assimp::Importer@{Assimp::Importer}}
+\subsubsection[Pimpl]{\setlength{\rightskip}{0pt plus 5cm}ImporterPimpl$\ast$ Assimp::Importer::Pimpl ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_assimp_1_1_importer_c112839f323a630f83395acb74746827}
+
+
+Private, do not use. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_importer_8hpp}{Importer.hpp}\end{CompactItemize}

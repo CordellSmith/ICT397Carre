@@ -1,0 +1,398 @@
+\hypertarget{group__monitor}{
+\section{Monitor reference}
+\label{group__monitor}\index{Monitor reference@{Monitor reference}}
+}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}
+\begin{CompactList}\small\item\em Video mode type. \item\end{CompactList}\item 
+struct \hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}
+\begin{CompactList}\small\item\em Gamma ramp. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef struct \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}
+\begin{CompactList}\small\item\em Opaque monitor object. \item\end{CompactList}\item 
+typedef void($\ast$ \hyperlink{group__monitor_g67b74af6cecfdbccc7e57a6319a57210}{GLFWmonitorfun} )(\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$, int)
+\begin{CompactList}\small\item\em The function signature for monitor configuration callbacks. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+GLFWAPI \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$$\ast$ \hyperlink{group__monitor_gb4d483284c57e28837bc2cd9639e9665}{glfwGetMonitors} (int $\ast$count)
+\begin{CompactList}\small\item\em Returns the currently connected monitors. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$ \hyperlink{group__monitor_g59ea49f377fe701dd76764183e64d9f4}{glfwGetPrimaryMonitor} (void)
+\begin{CompactList}\small\item\em Returns the primary monitor. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__monitor_g45b5481a614ad7beb2aade9746d07563}{glfwGetMonitorPos} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, int $\ast$xpos, int $\ast$ypos)
+\begin{CompactList}\small\item\em Returns the position of the monitor's viewport on the virtual screen. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__monitor_gd0e93a9e42b32394369cabbbdc1ab702}{glfwGetMonitorPhysicalSize} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, int $\ast$widthMM, int $\ast$heightMM)
+\begin{CompactList}\small\item\em Returns the physical size of the monitor. \item\end{CompactList}\item 
+GLFWAPI const char $\ast$ \hyperlink{group__monitor_g22f62011bae33ea8d2974eff5d14f9b8}{glfwGetMonitorName} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor)
+\begin{CompactList}\small\item\em Returns the name of the specified monitor. \item\end{CompactList}\item 
+GLFWAPI \hyperlink{group__monitor_g67b74af6cecfdbccc7e57a6319a57210}{GLFWmonitorfun} \hyperlink{group__monitor_gcfa9978e57c73670577d530df23bf275}{glfwSetMonitorCallback} (\hyperlink{group__monitor_g67b74af6cecfdbccc7e57a6319a57210}{GLFWmonitorfun} cbfun)
+\begin{CompactList}\small\item\em Sets the monitor configuration callback. \item\end{CompactList}\item 
+GLFWAPI const \hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode} $\ast$ \hyperlink{group__monitor_g811c28d61595e630774389985947c665}{glfwGetVideoModes} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, int $\ast$count)
+\begin{CompactList}\small\item\em Returns the available video modes for the specified monitor. \item\end{CompactList}\item 
+GLFWAPI const \hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode} $\ast$ \hyperlink{group__monitor_gc234b63ec525c70d7e18ac84aca088c6}{glfwGetVideoMode} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor)
+\begin{CompactList}\small\item\em Returns the current mode of the specified monitor. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__monitor_g3e4ab484476c935b4cd0bf49a5c429d6}{glfwSetGamma} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, float gamma)
+\begin{CompactList}\small\item\em Generates a gamma ramp and sets it for the specified monitor. \item\end{CompactList}\item 
+GLFWAPI const \hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp} $\ast$ \hyperlink{group__monitor_geeac9198f3c91b83440eed679441f76b}{glfwGetGammaRamp} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor)
+\begin{CompactList}\small\item\em Returns the current gamma ramp for the specified monitor. \item\end{CompactList}\item 
+GLFWAPI void \hyperlink{group__monitor_gc9f36a1cfa10eab191d3029ea8bc9558}{glfwSetGammaRamp} (\hyperlink{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor} $\ast$monitor, const \hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp} $\ast$ramp)
+\begin{CompactList}\small\item\em Sets the current gamma ramp for the specified monitor. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+This is the reference documentation for monitor related functions and types. For more task-oriented information, see the monitor\_\-guide. 
+
+\subsection{Typedef Documentation}
+\hypertarget{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}{
+\index{monitor@{monitor}!GLFWmonitor@{GLFWmonitor}}
+\index{GLFWmonitor@{GLFWmonitor}!monitor@{monitor}}
+\subsubsection[GLFWmonitor]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf GLFWmonitor} {\bf GLFWmonitor}}}
+\label{group__monitor_g8d9efd1cde9426692c73fe40437d0ae3}
+
+
+Opaque monitor object. 
+
+Opaque monitor object.
+
+\begin{Desc}
+\item[See also:]monitor\_\-object\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__monitor_g67b74af6cecfdbccc7e57a6319a57210}{
+\index{monitor@{monitor}!GLFWmonitorfun@{GLFWmonitorfun}}
+\index{GLFWmonitorfun@{GLFWmonitorfun}!monitor@{monitor}}
+\subsubsection[GLFWmonitorfun]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  {\bf GLFWmonitorfun})({\bf GLFWmonitor} $\ast$, int)}}
+\label{group__monitor_g67b74af6cecfdbccc7e57a6319a57210}
+
+
+The function signature for monitor configuration callbacks. 
+
+This is the function signature for monitor configuration callback functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em monitor}]The monitor that was connected or disconnected. \item[\mbox{$\leftarrow$} {\em event}]One of `GLFW\_\-CONNECTED` or `GLFW\_\-DISCONNECTED`.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]monitor\_\-event 
+
+\hyperlink{group__monitor_gcfa9978e57c73670577d530df23bf275}{glfwSetMonitorCallback}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__monitor_geeac9198f3c91b83440eed679441f76b}{
+\index{monitor@{monitor}!glfwGetGammaRamp@{glfwGetGammaRamp}}
+\index{glfwGetGammaRamp@{glfwGetGammaRamp}!monitor@{monitor}}
+\subsubsection[glfwGetGammaRamp]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI const {\bf GLFWgammaramp}$\ast$ glfwGetGammaRamp ({\bf GLFWmonitor} $\ast$ {\em monitor})}}
+\label{group__monitor_geeac9198f3c91b83440eed679441f76b}
+
+
+Returns the current gamma ramp for the specified monitor. 
+
+This function returns the current gamma ramp of the specified monitor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em monitor}]The monitor to query. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The current gamma ramp, or `NULL` if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+The returned structure and its arrays are allocated and freed by GLFW. You should not free them yourself. They are valid until the specified monitor is disconnected, this function is called again for that monitor or the library is terminated.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]monitor\_\-gamma\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__monitor_g22f62011bae33ea8d2974eff5d14f9b8}{
+\index{monitor@{monitor}!glfwGetMonitorName@{glfwGetMonitorName}}
+\index{glfwGetMonitorName@{glfwGetMonitorName}!monitor@{monitor}}
+\subsubsection[glfwGetMonitorName]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI const char$\ast$ glfwGetMonitorName ({\bf GLFWmonitor} $\ast$ {\em monitor})}}
+\label{group__monitor_g22f62011bae33ea8d2974eff5d14f9b8}
+
+
+Returns the name of the specified monitor. 
+
+This function returns a human-readable name, encoded as UTF-8, of the specified monitor. The name typically reflects the make and model of the monitor and is not guaranteed to be unique among the connected monitors.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em monitor}]The monitor to query. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The UTF-8 encoded name of the monitor, or `NULL` if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+The returned string is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified monitor is disconnected or the library is terminated.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]monitor\_\-properties\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__monitor_gd0e93a9e42b32394369cabbbdc1ab702}{
+\index{monitor@{monitor}!glfwGetMonitorPhysicalSize@{glfwGetMonitorPhysicalSize}}
+\index{glfwGetMonitorPhysicalSize@{glfwGetMonitorPhysicalSize}!monitor@{monitor}}
+\subsubsection[glfwGetMonitorPhysicalSize]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwGetMonitorPhysicalSize ({\bf GLFWmonitor} $\ast$ {\em monitor}, \/  int $\ast$ {\em widthMM}, \/  int $\ast$ {\em heightMM})}}
+\label{group__monitor_gd0e93a9e42b32394369cabbbdc1ab702}
+
+
+Returns the physical size of the monitor. 
+
+This function returns the size, in millimetres, of the display area of the specified monitor.
+
+Some systems do not provide accurate monitor size information, either because the monitor \mbox{[}EDID\mbox{]}(\href{https://en.wikipedia.org/wiki/Extended_display_identification_data}{\tt https://en.wikipedia.org/wiki/Extended\_\-display\_\-identification\_\-data}) data is incorrect or because the driver does not report it accurately.
+
+Any or all of the size arguments may be `NULL`. If an error occurs, all non-`NULL` size arguments will be set to zero.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em monitor}]The monitor to query. \item[\mbox{$\rightarrow$} {\em widthMM}]Where to store the width, in millimetres, of the monitor's display area, or `NULL`. \item[\mbox{$\rightarrow$} {\em heightMM}]Where to store the height, in millimetres, of the monitor's display area, or `NULL`.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+\begin{Desc}
+\item[Remarks:]calculates the returned physical size from the current resolution and system DPI instead of querying the monitor EDID data.\end{Desc}
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]monitor\_\-properties\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__monitor_g45b5481a614ad7beb2aade9746d07563}{
+\index{monitor@{monitor}!glfwGetMonitorPos@{glfwGetMonitorPos}}
+\index{glfwGetMonitorPos@{glfwGetMonitorPos}!monitor@{monitor}}
+\subsubsection[glfwGetMonitorPos]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwGetMonitorPos ({\bf GLFWmonitor} $\ast$ {\em monitor}, \/  int $\ast$ {\em xpos}, \/  int $\ast$ {\em ypos})}}
+\label{group__monitor_g45b5481a614ad7beb2aade9746d07563}
+
+
+Returns the position of the monitor's viewport on the virtual screen. 
+
+This function returns the position, in screen coordinates, of the upper-left corner of the specified monitor.
+
+Any or all of the position arguments may be `NULL`. If an error occurs, all non-`NULL` position arguments will be set to zero.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em monitor}]The monitor to query. \item[\mbox{$\rightarrow$} {\em xpos}]Where to store the monitor x-coordinate, or `NULL`. \item[\mbox{$\rightarrow$} {\em ypos}]Where to store the monitor y-coordinate, or `NULL`.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]monitor\_\-properties\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__monitor_gb4d483284c57e28837bc2cd9639e9665}{
+\index{monitor@{monitor}!glfwGetMonitors@{glfwGetMonitors}}
+\index{glfwGetMonitors@{glfwGetMonitors}!monitor@{monitor}}
+\subsubsection[glfwGetMonitors]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWmonitor}$\ast$$\ast$ glfwGetMonitors (int $\ast$ {\em count})}}
+\label{group__monitor_gb4d483284c57e28837bc2cd9639e9665}
+
+
+Returns the currently connected monitors. 
+
+This function returns an array of handles for all currently connected monitors. The primary monitor is always first in the returned array. If no monitors were found, this function returns `NULL`.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em count}]Where to store the number of monitors in the returned array. This is set to zero if an error occurred. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An array of monitor handles, or `NULL` if no monitors were found or if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+The returned array is allocated and freed by GLFW. You should not free it yourself. It is guaranteed to be valid only until the monitor configuration changes or the library is terminated.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]monitor\_\-monitors 
+
+monitor\_\-event 
+
+\hyperlink{group__monitor_g59ea49f377fe701dd76764183e64d9f4}{glfwGetPrimaryMonitor}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__monitor_g59ea49f377fe701dd76764183e64d9f4}{
+\index{monitor@{monitor}!glfwGetPrimaryMonitor@{glfwGetPrimaryMonitor}}
+\index{glfwGetPrimaryMonitor@{glfwGetPrimaryMonitor}!monitor@{monitor}}
+\subsubsection[glfwGetPrimaryMonitor]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWmonitor}$\ast$ glfwGetPrimaryMonitor (void)}}
+\label{group__monitor_g59ea49f377fe701dd76764183e64d9f4}
+
+
+Returns the primary monitor. 
+
+This function returns the primary monitor. This is usually the monitor where elements like the task bar or global menu bar are located.
+
+\begin{Desc}
+\item[Returns:]The primary monitor, or `NULL` if no monitors were found or if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[Remarks:]The primary monitor is always first in the array returned by \hyperlink{group__monitor_gb4d483284c57e28837bc2cd9639e9665}{glfwGetMonitors}.\end{Desc}
+\begin{Desc}
+\item[See also:]monitor\_\-monitors 
+
+\hyperlink{group__monitor_gb4d483284c57e28837bc2cd9639e9665}{glfwGetMonitors}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__monitor_gc234b63ec525c70d7e18ac84aca088c6}{
+\index{monitor@{monitor}!glfwGetVideoMode@{glfwGetVideoMode}}
+\index{glfwGetVideoMode@{glfwGetVideoMode}!monitor@{monitor}}
+\subsubsection[glfwGetVideoMode]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI const {\bf GLFWvidmode}$\ast$ glfwGetVideoMode ({\bf GLFWmonitor} $\ast$ {\em monitor})}}
+\label{group__monitor_gc234b63ec525c70d7e18ac84aca088c6}
+
+
+Returns the current mode of the specified monitor. 
+
+This function returns the current video mode of the specified monitor. If you have created a full screen window for that monitor, the return value will depend on whether that window is iconified.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em monitor}]The monitor to query. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The current mode of the monitor, or `NULL` if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+The returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified monitor is disconnected or the library is terminated.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]monitor\_\-modes 
+
+\hyperlink{group__monitor_g811c28d61595e630774389985947c665}{glfwGetVideoModes}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. Replaces `glfwGetDesktopMode`. \end{Desc}
+\hypertarget{group__monitor_g811c28d61595e630774389985947c665}{
+\index{monitor@{monitor}!glfwGetVideoModes@{glfwGetVideoModes}}
+\index{glfwGetVideoModes@{glfwGetVideoModes}!monitor@{monitor}}
+\subsubsection[glfwGetVideoModes]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI const {\bf GLFWvidmode}$\ast$ glfwGetVideoModes ({\bf GLFWmonitor} $\ast$ {\em monitor}, \/  int $\ast$ {\em count})}}
+\label{group__monitor_g811c28d61595e630774389985947c665}
+
+
+Returns the available video modes for the specified monitor. 
+
+This function returns an array of all video modes supported by the specified monitor. The returned array is sorted in ascending order, first by color bit depth (the sum of all channel depths) and then by resolution area (the product of width and height).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em monitor}]The monitor to query. \item[\mbox{$\rightarrow$} {\em count}]Where to store the number of video modes in the returned array. This is set to zero if an error occurred. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An array of video modes, or `NULL` if an \mbox{[}error\mbox{]}(error\_\-handling) occurred.\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+The returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified monitor is disconnected, this function is called again for that monitor or the library is terminated.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]monitor\_\-modes 
+
+\hyperlink{group__monitor_gc234b63ec525c70d7e18ac84aca088c6}{glfwGetVideoMode}\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 1.0.  Changed to return an array of modes for a specific monitor. \end{Desc}
+\hypertarget{group__monitor_g3e4ab484476c935b4cd0bf49a5c429d6}{
+\index{monitor@{monitor}!glfwSetGamma@{glfwSetGamma}}
+\index{glfwSetGamma@{glfwSetGamma}!monitor@{monitor}}
+\subsubsection[glfwSetGamma]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetGamma ({\bf GLFWmonitor} $\ast$ {\em monitor}, \/  float {\em gamma})}}
+\label{group__monitor_g3e4ab484476c935b4cd0bf49a5c429d6}
+
+
+Generates a gamma ramp and sets it for the specified monitor. 
+
+This function generates a 256-element gamma ramp from the specified exponent and then calls \hyperlink{group__monitor_gc9f36a1cfa10eab191d3029ea8bc9558}{glfwSetGammaRamp} with it. The value must be a finite number greater than zero.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em monitor}]The monitor whose gamma ramp to set. \item[\mbox{$\leftarrow$} {\em gamma}]The desired exponent.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}, \hyperlink{group__errors_gaf2ef9aa8202c2b82ac2d921e554c687}{GLFW\_\-INVALID\_\-VALUE} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]monitor\_\-gamma\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__monitor_gc9f36a1cfa10eab191d3029ea8bc9558}{
+\index{monitor@{monitor}!glfwSetGammaRamp@{glfwSetGammaRamp}}
+\index{glfwSetGammaRamp@{glfwSetGammaRamp}!monitor@{monitor}}
+\subsubsection[glfwSetGammaRamp]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI void glfwSetGammaRamp ({\bf GLFWmonitor} $\ast$ {\em monitor}, \/  const {\bf GLFWgammaramp} $\ast$ {\em ramp})}}
+\label{group__monitor_gc9f36a1cfa10eab191d3029ea8bc9558}
+
+
+Sets the current gamma ramp for the specified monitor. 
+
+This function sets the current gamma ramp for the specified monitor. The original gamma ramp for that monitor is saved by GLFW the first time this function is called and is restored by \hyperlink{group__init_gfd90e6fd4819ea9e22e5e739519a6504}{glfwTerminate}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em monitor}]The monitor whose gamma ramp to set. \item[\mbox{$\leftarrow$} {\em ramp}]The gamma ramp to use.\end{description}
+\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED} and \hyperlink{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{GLFW\_\-PLATFORM\_\-ERROR}.
+
+\begin{Desc}
+\item[Remarks:]Gamma ramp sizes other than 256 are not supported by all platforms or graphics hardware.
+
+The gamma ramp size must be 256.\end{Desc}
+The specified gamma ramp is copied before this function returns.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]monitor\_\-gamma\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}
+\hypertarget{group__monitor_gcfa9978e57c73670577d530df23bf275}{
+\index{monitor@{monitor}!glfwSetMonitorCallback@{glfwSetMonitorCallback}}
+\index{glfwSetMonitorCallback@{glfwSetMonitorCallback}!monitor@{monitor}}
+\subsubsection[glfwSetMonitorCallback]{\setlength{\rightskip}{0pt plus 5cm}GLFWAPI {\bf GLFWmonitorfun} glfwSetMonitorCallback ({\bf GLFWmonitorfun} {\em cbfun})}}
+\label{group__monitor_gcfa9978e57c73670577d530df23bf275}
+
+
+Sets the monitor configuration callback. 
+
+This function sets the monitor configuration callback, or removes the currently set callback. This is called when a monitor is connected to or disconnected from the system.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em cbfun}]The new callback, or `NULL` to remove the currently set callback. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The previously set callback, or `NULL` if no callback was set or the library had not been \mbox{[}initialized\mbox{]}(intro\_\-init).\end{Desc}
+Possible errors include \hyperlink{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{GLFW\_\-NOT\_\-INITIALIZED}.
+
+This function must only be called from the main thread.
+
+\begin{Desc}
+\item[See also:]monitor\_\-event\end{Desc}
+\begin{Desc}
+\item[Since:]Added in version 3.0. \end{Desc}

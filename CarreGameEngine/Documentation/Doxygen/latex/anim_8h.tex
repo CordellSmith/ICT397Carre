@@ -1,0 +1,86 @@
+\hypertarget{anim_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/anim.h File Reference}
+\label{anim_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/anim.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/anim.h}}
+}
+Defines the data structures in which the imported animations are returned. 
+
+{\tt \#include $<$assimp/types.h$>$}\par
+{\tt \#include $<$assimp/quaternion.h$>$}\par
+
+
+Include dependency graph for anim.h:
+
+This graph shows which files directly or indirectly include this file:\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structai_vector_key}{aiVectorKey}
+\item 
+struct \hyperlink{structai_quat_key}{aiQuatKey}
+\item 
+struct \hyperlink{structai_mesh_key}{aiMeshKey}
+\item 
+struct \hyperlink{structai_mesh_morph_key}{aiMeshMorphKey}
+\item 
+struct \hyperlink{structai_node_anim}{aiNodeAnim}
+\item 
+struct \hyperlink{structai_mesh_anim}{aiMeshAnim}
+\item 
+struct \hyperlink{structai_mesh_morph_anim}{aiMeshMorphAnim}
+\item 
+struct \hyperlink{structai_animation}{aiAnimation}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \hyperlink{anim_8h_201b9e9429b82cd6423ff4a4daf01cef}{aiAnimBehaviour} \{ \par
+\hyperlink{anim_8h_201b9e9429b82cd6423ff4a4daf01cefc580185752c298b2e5bca0dbbef7f5c1}{aiAnimBehaviour\_\-DEFAULT} =  0x0, 
+\hyperlink{anim_8h_201b9e9429b82cd6423ff4a4daf01ceff6e8fd16ed92f7ec3652c367e15eb798}{aiAnimBehaviour\_\-CONSTANT} =  0x1, 
+\hyperlink{anim_8h_201b9e9429b82cd6423ff4a4daf01cef735ec243b581565a1ea5c974b07ec260}{aiAnimBehaviour\_\-LINEAR} =  0x2, 
+\hyperlink{anim_8h_201b9e9429b82cd6423ff4a4daf01ceffa0d6cc9c9718af698b436c7c6da836d}{aiAnimBehaviour\_\-REPEAT} =  0x3, 
+\par
+\hyperlink{anim_8h_201b9e9429b82cd6423ff4a4daf01cef8e18d19abc297d6f6ed86c7a7ab9b4fc}{\_\-aiAnimBehaviour\_\-Force32Bit} =  INT\_\-MAX
+ \}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the data structures in which the imported animations are returned. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{anim_8h_201b9e9429b82cd6423ff4a4daf01cef}{
+\index{anim.h@{anim.h}!aiAnimBehaviour@{aiAnimBehaviour}}
+\index{aiAnimBehaviour@{aiAnimBehaviour}!anim.h@{anim.h}}
+\subsubsection[aiAnimBehaviour]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiAnimBehaviour}}}
+\label{anim_8h_201b9e9429b82cd6423ff4a4daf01cef}
+
+
+Defines how an animation channel behaves outside the defined time range. This corresponds to \hyperlink{structai_node_anim_305c01b60886a07b69f04b1db6d7d3c5}{aiNodeAnim::mPreState} and \hyperlink{structai_node_anim_93cefd440cbaf587c136eb224d4a0327}{aiNodeAnim::mPostState}. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiAnimBehaviour\_\-DEFAULT@{aiAnimBehaviour\_\-DEFAULT}!anim.h@{anim.h}}\index{anim.h@{anim.h}!aiAnimBehaviour\_\-DEFAULT@{aiAnimBehaviour\_\-DEFAULT}}\item[{\em 
+\hypertarget{anim_8h_201b9e9429b82cd6423ff4a4daf01cefc580185752c298b2e5bca0dbbef7f5c1}{
+aiAnimBehaviour\_\-DEFAULT}
+\label{anim_8h_201b9e9429b82cd6423ff4a4daf01cefc580185752c298b2e5bca0dbbef7f5c1}
+}]The value from the default node transformation is taken \index{aiAnimBehaviour\_\-CONSTANT@{aiAnimBehaviour\_\-CONSTANT}!anim.h@{anim.h}}\index{anim.h@{anim.h}!aiAnimBehaviour\_\-CONSTANT@{aiAnimBehaviour\_\-CONSTANT}}\item[{\em 
+\hypertarget{anim_8h_201b9e9429b82cd6423ff4a4daf01ceff6e8fd16ed92f7ec3652c367e15eb798}{
+aiAnimBehaviour\_\-CONSTANT}
+\label{anim_8h_201b9e9429b82cd6423ff4a4daf01ceff6e8fd16ed92f7ec3652c367e15eb798}
+}]The nearest key value is used without interpolation \index{aiAnimBehaviour\_\-LINEAR@{aiAnimBehaviour\_\-LINEAR}!anim.h@{anim.h}}\index{anim.h@{anim.h}!aiAnimBehaviour\_\-LINEAR@{aiAnimBehaviour\_\-LINEAR}}\item[{\em 
+\hypertarget{anim_8h_201b9e9429b82cd6423ff4a4daf01cef735ec243b581565a1ea5c974b07ec260}{
+aiAnimBehaviour\_\-LINEAR}
+\label{anim_8h_201b9e9429b82cd6423ff4a4daf01cef735ec243b581565a1ea5c974b07ec260}
+}]The value of the nearest two keys is linearly extrapolated for the current time value. \index{aiAnimBehaviour\_\-REPEAT@{aiAnimBehaviour\_\-REPEAT}!anim.h@{anim.h}}\index{anim.h@{anim.h}!aiAnimBehaviour\_\-REPEAT@{aiAnimBehaviour\_\-REPEAT}}\item[{\em 
+\hypertarget{anim_8h_201b9e9429b82cd6423ff4a4daf01ceffa0d6cc9c9718af698b436c7c6da836d}{
+aiAnimBehaviour\_\-REPEAT}
+\label{anim_8h_201b9e9429b82cd6423ff4a4daf01ceffa0d6cc9c9718af698b436c7c6da836d}
+}]The animation is repeated.
+
+If the animation key go from n to m and the current time is t, use the value at (t-n) \% ($|$m-n$|$). \index{\_\-aiAnimBehaviour\_\-Force32Bit@{\_\-aiAnimBehaviour\_\-Force32Bit}!anim.h@{anim.h}}\index{anim.h@{anim.h}!\_\-aiAnimBehaviour\_\-Force32Bit@{\_\-aiAnimBehaviour\_\-Force32Bit}}\item[{\em 
+\hypertarget{anim_8h_201b9e9429b82cd6423ff4a4daf01cef8e18d19abc297d6f6ed86c7a7ab9b4fc}{
+\_\-aiAnimBehaviour\_\-Force32Bit}
+\label{anim_8h_201b9e9429b82cd6423ff4a4daf01cef8e18d19abc297d6f6ed86c7a7ab9b4fc}
+}]This value is not used, it is just here to force the the compiler to map this enum to a 32 Bit integer \end{description}
+\end{Desc}
+

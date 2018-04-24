@@ -1,0 +1,43 @@
+\hypertarget{classbt_gear_constraint}{
+\section{btGearConstraint Class Reference}
+\label{classbt_gear_constraint}\index{btGearConstraint@{btGearConstraint}}
+}
+{\tt \#include $<$btGearConstraint.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_gear_constraint_ee33fd1dac22b6f0323757057204e891}{
+\hyperlink{classbt_gear_constraint_ee33fd1dac22b6f0323757057204e891}{btGearConstraint} (\hyperlink{classbt_rigid_body}{btRigidBody} \&rbA, \hyperlink{classbt_rigid_body}{btRigidBody} \&rbB, const btVector3 \&axisInA, const btVector3 \&axisInB, btScalar ratio=1.f)}
+\label{classbt_gear_constraint_ee33fd1dac22b6f0323757057204e891}
+
+\begin{CompactList}\small\item\em Implemented by Erwin Coumans. The idea for the constraint comes from Dimitris Papavasiliou. \item\end{CompactList}\item 
+\hypertarget{classbt_gear_constraint_e8e7d953740bff99eca4441b5d9c7eb1}{
+virtual void \hyperlink{classbt_gear_constraint_e8e7d953740bff99eca4441b5d9c7eb1}{getInfo1} (btConstraintInfo1 $\ast$info)}
+\label{classbt_gear_constraint_e8e7d953740bff99eca4441b5d9c7eb1}
+
+\begin{CompactList}\small\item\em internal method used by the constraint solver, don't use them directly \item\end{CompactList}\item 
+\hypertarget{classbt_gear_constraint_e1c6770b8835458389ca7ae3ce7dfb05}{
+virtual void \hyperlink{classbt_gear_constraint_e1c6770b8835458389ca7ae3ce7dfb05}{getInfo2} (btConstraintInfo2 $\ast$info)}
+\label{classbt_gear_constraint_e1c6770b8835458389ca7ae3ce7dfb05}
+
+\begin{CompactList}\small\item\em internal method used by the constraint solver, don't use them directly \item\end{CompactList}\item 
+\hypertarget{classbt_gear_constraint_a08a0ddb52aacfa0141b41b388238aa6}{
+virtual btScalar \hyperlink{classbt_gear_constraint_a08a0ddb52aacfa0141b41b388238aa6}{getParam} (int num, int axis=-1) const }
+\label{classbt_gear_constraint_a08a0ddb52aacfa0141b41b388238aa6}
+
+\begin{CompactList}\small\item\em return the local value of parameter \item\end{CompactList}\item 
+\hypertarget{classbt_gear_constraint_223dc7a58e6d97f6b9cd5bd73b1dd440}{
+virtual const char $\ast$ \hyperlink{classbt_gear_constraint_223dc7a58e6d97f6b9cd5bd73b1dd440}{serialize} (void $\ast$dataBuffer, btSerializer $\ast$serializer) const }
+\label{classbt_gear_constraint_223dc7a58e6d97f6b9cd5bd73b1dd440}
+
+\begin{CompactList}\small\item\em fills the dataBuffer and returns the struct name (and 0 on failure) \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The btGeatConstraint will couple the angular velocity for two bodies around given local axis and ratio. See Bullet/Demos/ConstraintDemo for an example use. 
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/ConstraintSolver/btGearConstraint.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/ConstraintSolver/btGearConstraint.cpp\end{CompactItemize}

@@ -1,0 +1,32 @@
+\hypertarget{classbt_primitive_manager_base}{
+\section{btPrimitiveManagerBase Class Reference}
+\label{classbt_primitive_manager_base}\index{btPrimitiveManagerBase@{btPrimitiveManagerBase}}
+}
+Prototype Base class for primitive classification.  
+
+
+{\tt \#include $<$btGImpactBvh.h$>$}
+
+Inheritance diagram for btPrimitiveManagerBase:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_primitive_manager_base_7dce7dd350286219d9adddefa20394f9}{
+virtual bool \hyperlink{classbt_primitive_manager_base_7dce7dd350286219d9adddefa20394f9}{is\_\-trimesh} () const =0}
+\label{classbt_primitive_manager_base_7dce7dd350286219d9adddefa20394f9}
+
+\begin{CompactList}\small\item\em determines if this manager consist on only triangles, which special case will be optimized \item\end{CompactList}\item 
+\hypertarget{classbt_primitive_manager_base_2eb95b960e4259da38c5ee4ac080fdf7}{
+virtual void \hyperlink{classbt_primitive_manager_base_2eb95b960e4259da38c5ee4ac080fdf7}{get\_\-primitive\_\-triangle} (int prim\_\-index, btPrimitiveTriangle \&triangle) const =0}
+\label{classbt_primitive_manager_base_2eb95b960e4259da38c5ee4ac080fdf7}
+
+\begin{CompactList}\small\item\em retrieves only the points of the triangle, and the collision margin \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Prototype Base class for primitive classification. 
+
+This class is a wrapper for primitive collections. This tells relevant info for the Bounding Box set classes, which take care of space classification. This class can manage Compound shapes and trimeshes, and if it is managing trimesh then the Hierarchy Bounding Box classes will take advantage of primitive Vs Box overlapping tests for getting optimal results and less Per Box compairisons. 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactBvh.h\end{CompactItemize}

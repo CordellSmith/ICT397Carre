@@ -1,0 +1,26 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btSoftBody",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_userIndexMapping"];
+  Node2 [label="btAlignedObjectArray\< int \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node3 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node3 [label="btAlignedAllocator\< int, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node4 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_clusterConnectivity"];
+  Node4 [label="btAlignedObjectArray\< bool \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node5 -> Node4 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node5 [label="btAlignedAllocator\< bool, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node6 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_cdbvt\nm_fdbvt\nm_ndbvt"];
+  Node6 [label="btDbvt",height=0.2,width=0.4,color="black",URL="$structbt_dbvt.html"];
+  Node7 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_links"];
+  Node7 [label="btAlignedObjectArray\< Link \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node8 -> Node7 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node8 [label="btAlignedAllocator\< Link, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node9 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_collisionDisabledObjects"];
+  Node9 [label="btAlignedObjectArray\< const class btCollisionObject * \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node10 -> Node9 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node10 [label="btAlignedAllocator\< const class btCollisionObject *, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+}

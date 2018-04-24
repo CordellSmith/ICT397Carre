@@ -1,0 +1,153 @@
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache}{
+\section{btInverseDynamics::MultiBodyTree::InitCache Class Reference}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache}\index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
+}
+{\tt \#include $<$MultiBodyTreeInitCache.hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_3a0cec52886d731354bf479261409112}{
+\hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_3a0cec52886d731354bf479261409112}{InitCache} ()}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_3a0cec52886d731354bf479261409112}
+
+\begin{CompactList}\small\item\em constructor \item\end{CompactList}\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_3140b788b6cdc6c5a74cf2da2e8f5fac}{addBody} (const int body\_\-index, const int parent\_\-index, const JointType joint\_\-type, const \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} \&parent\_\-r\_\-parent\_\-body\_\-ref, const mat33 \&body\_\-T\_\-parent\_\-ref, const \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} \&body\_\-axis\_\-of\_\-motion, idScalar mass, const \hyperlink{classbt_inverse_dynamics_1_1vec3}{vec3} \&body\_\-r\_\-body\_\-com, const mat33 \&body\_\-I\_\-body, const int user\_\-int, void $\ast$user\_\-ptr)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_41e961d85dcd9e9f9aa9b18ac33289c9}{buildIndexSets} ()
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_38d366cfeb082b06f72eff27befae30b}{numDoFs} () const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_6203870a6e9093f6c26280feaee27832}{numBodies} () const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_ee00442cb04aaf00db41cac11b046567}{getInertiaData} (const int index, \hyperlink{structbt_inverse_dynamics_1_1_inertia_data}{InertiaData} $\ast$inertia) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_b877d886f33dd223c33d6629d7531b2d}{getJointData} (const int index, \hyperlink{structbt_inverse_dynamics_1_1_joint_data}{JointData} $\ast$joint) const 
+\item 
+void \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_e176197bd93ec8b395b9f9c0b538458c}{getParentIndexArray} (idArray$<$ int $>$::type $\ast$parent\_\-index)
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_88ec979065d527a5ee6759e8dfb8a768}{getUserInt} (const int index, int $\ast$user\_\-int) const 
+\item 
+int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_d5bbbbb03bdeeca34fe740f45c86274b}{getUserPtr} (const int index, void $\ast$$\ast$user\_\-ptr) const 
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Data structure to store data passed by the user. This is used in \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_c82772ed5bebb1edd6513c03ebd719c2}{MultiBodyTree::finalize} to build internal data structures. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_3140b788b6cdc6c5a74cf2da2e8f5fac}{
+\index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!addBody@{addBody}}
+\index{addBody@{addBody}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
+\subsubsection[addBody]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::addBody (const int {\em body\_\-index}, \/  const int {\em parent\_\-index}, \/  const JointType {\em joint\_\-type}, \/  const {\bf vec3} \& {\em parent\_\-r\_\-parent\_\-body\_\-ref}, \/  const mat33 \& {\em body\_\-T\_\-parent\_\-ref}, \/  const {\bf vec3} \& {\em body\_\-axis\_\-of\_\-motion}, \/  idScalar {\em mass}, \/  const {\bf vec3} \& {\em body\_\-r\_\-body\_\-com}, \/  const mat33 \& {\em body\_\-I\_\-body}, \/  const int {\em user\_\-int}, \/  void $\ast$ {\em user\_\-ptr})}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_3140b788b6cdc6c5a74cf2da2e8f5fac}
+
+
+Add body to the system. this allocates memory and not real-time safe. This only adds the data to an initial cache. After all bodies have been added, the system is setup using the buildSystem call \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em body\_\-index}]index of the body to be added. Must $>$=0, $<$number of bodies, and index of parent must be $<$ index of body \item[{\em parent\_\-index}]index of the parent body The root of the tree has index 0 and its parent (the world frame) is assigned index -1 the rotation and translation relative to the parent are taken as pose of the root body relative to the world frame. Other parameters are ignored \item[{\em JointType}]type of joint connecting the body to the parent \item[{\em mass}]the mass of the body \item[{\em body\_\-r\_\-body\_\-com}]the center of mass of the body relative to and described in the body fixed frame, which is located in the joint axis connecting the body to its parent \item[{\em body\_\-I\_\-body}]the moment of inertia of the body w.r.t the body-fixed frame (ie, the reference point is the origin of the body-fixed frame and the matrix is written w.r.t. those unit vectors) \item[{\em parent\_\-r\_\-parent\_\-body\_\-ref}]position of joint relative to the parent body's reference frame for q=0, written in the parent bodies reference frame \item[{\em body\_\-axis\_\-of\_\-motion}]translation/rotation axis in body-fixed frame. Ignored for joints that are not revolute or prismatic. must be a unit vector. \item[{\em body\_\-T\_\-parent\_\-ref}]transform matrix from parent to body reference frame for q=0. This is the matrix transforming a vector represented in the parent's reference frame into one represented in this body's reference frame. ie, if parent\_\-vec is a vector in R$^\wedge$3 whose components are w.r.t to the parent's reference frame, then the same vector written w.r.t. this body's frame (for q=0) is given by body\_\-vec = parent\_\-R\_\-body\_\-ref $\ast$ parent\_\-vec \item[{\em user\_\-ptr}]pointer to user data \item[{\em user\_\-int}]pointer to user integer \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on error \end{Desc}
+ \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_41e961d85dcd9e9f9aa9b18ac33289c9}{
+\index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!buildIndexSets@{buildIndexSets}}
+\index{buildIndexSets@{buildIndexSets}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
+\subsubsection[buildIndexSets]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::buildIndexSets ()}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_41e961d85dcd9e9f9aa9b18ac33289c9}
+
+
+build index arrays \begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_38d366cfeb082b06f72eff27befae30b}{
+\index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!numDoFs@{numDoFs}}
+\index{numDoFs@{numDoFs}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
+\subsubsection[numDoFs]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::numDoFs () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_38d366cfeb082b06f72eff27befae30b}
+
+
+\begin{Desc}
+\item[Returns:]number of degrees of freedom \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_6203870a6e9093f6c26280feaee27832}{
+\index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!numBodies@{numBodies}}
+\index{numBodies@{numBodies}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
+\subsubsection[numBodies]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::numBodies () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_6203870a6e9093f6c26280feaee27832}
+
+
+\begin{Desc}
+\item[Returns:]number of bodies \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_ee00442cb04aaf00db41cac11b046567}{
+\index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!getInertiaData@{getInertiaData}}
+\index{getInertiaData@{getInertiaData}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
+\subsubsection[getInertiaData]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::getInertiaData (const int {\em index}, \/  {\bf InertiaData} $\ast$ {\em inertia}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_ee00442cb04aaf00db41cac11b046567}
+
+
+get inertia data for index \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em index}]of the body \item[{\em inertia}]pointer for return data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_b877d886f33dd223c33d6629d7531b2d}{
+\index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!getJointData@{getJointData}}
+\index{getJointData@{getJointData}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
+\subsubsection[getJointData]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::getJointData (const int {\em index}, \/  {\bf JointData} $\ast$ {\em joint}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_b877d886f33dd223c33d6629d7531b2d}
+
+
+get joint data for index \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em index}]of the body \item[{\em joint}]pointer for return data \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_e176197bd93ec8b395b9f9c0b538458c}{
+\index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!getParentIndexArray@{getParentIndexArray}}
+\index{getParentIndexArray@{getParentIndexArray}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
+\subsubsection[getParentIndexArray]{\setlength{\rightskip}{0pt plus 5cm}void btInverseDynamics::MultiBodyTree::InitCache::getParentIndexArray (idArray$<$ int $>$::type $\ast$ {\em parent\_\-index})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_e176197bd93ec8b395b9f9c0b538458c}
+
+
+get parent index array (paren\_\-index\mbox{[}i\mbox{]} is the index of the parent of i) \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em parent\_\-index}]pointer for return data \end{description}
+\end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_88ec979065d527a5ee6759e8dfb8a768}{
+\index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!getUserInt@{getUserInt}}
+\index{getUserInt@{getUserInt}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
+\subsubsection[getUserInt]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::getUserInt (const int {\em index}, \/  int $\ast$ {\em user\_\-int}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_88ec979065d527a5ee6759e8dfb8a768}
+
+
+get user integer \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em index}]body index \item[{\em user\_\-int}]user integer \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_d5bbbbb03bdeeca34fe740f45c86274b}{
+\index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!getUserPtr@{getUserPtr}}
+\index{getUserPtr@{getUserPtr}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
+\subsubsection[getUserPtr]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::getUserPtr (const int {\em index}, \/  void $\ast$$\ast$ {\em user\_\-ptr}) const}}
+\label{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_d5bbbbb03bdeeca34fe740f45c86274b}
+
+
+get user pointer \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em index}]body index \item[{\em user\_\-int}]user pointer \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, -1 on failure \end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/details/MultiBodyTreeInitCache.hpp\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/details/MultiBodyTreeInitCache.cpp\end{CompactItemize}

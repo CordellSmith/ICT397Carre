@@ -1,0 +1,58 @@
+\hypertarget{classbt_default_collision_configuration}{
+\section{btDefaultCollisionConfiguration Class Reference}
+\label{classbt_default_collision_configuration}\index{btDefaultCollisionConfiguration@{btDefaultCollisionConfiguration}}
+}
+{\tt \#include $<$btDefaultCollisionConfiguration.h$>$}
+
+Inheritance diagram for btDefaultCollisionConfiguration:Collaboration diagram for btDefaultCollisionConfiguration:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classbt_default_collision_configuration_d08e7d72b0bd0d3f98290c2a1649b0d9}{btDefaultCollisionConfiguration} (const btDefaultCollisionConstructionInfo \&constructionInfo=btDefaultCollisionConstructionInfo())
+\item 
+\hypertarget{classbt_default_collision_configuration_5c11b78fe16465a5f6ea4e61af10265b}{
+virtual \hyperlink{classbt_pool_allocator}{btPoolAllocator} $\ast$ \hyperlink{classbt_default_collision_configuration_5c11b78fe16465a5f6ea4e61af10265b}{getPersistentManifoldPool} ()}
+\label{classbt_default_collision_configuration_5c11b78fe16465a5f6ea4e61af10265b}
+
+\begin{CompactList}\small\item\em memory pools \item\end{CompactList}\item 
+void \hyperlink{classbt_default_collision_configuration_39a173eedf0e8d55dd89ef3b637925a9}{setConvexConvexMultipointIterations} (int numPerturbationIterations=3, int minimumPointsPerturbationThreshold=3)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classbt_collision_configuration}{btCollisionConfiguration} allows to configure Bullet collision detection stack allocator, pool memory allocators \begin{Desc}
+\item[\hyperlink{todo__todo000012}{Todo}]: describe the meaning \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classbt_default_collision_configuration_d08e7d72b0bd0d3f98290c2a1649b0d9}{
+\index{btDefaultCollisionConfiguration@{btDefaultCollisionConfiguration}!btDefaultCollisionConfiguration@{btDefaultCollisionConfiguration}}
+\index{btDefaultCollisionConfiguration@{btDefaultCollisionConfiguration}!btDefaultCollisionConfiguration@{btDefaultCollisionConfiguration}}
+\subsubsection[btDefaultCollisionConfiguration]{\setlength{\rightskip}{0pt plus 5cm}btDefaultCollisionConfiguration::btDefaultCollisionConfiguration (const btDefaultCollisionConstructionInfo \& {\em constructionInfo} = {\tt btDefaultCollisionConstructionInfo()})}}
+\label{classbt_default_collision_configuration_d08e7d72b0bd0d3f98290c2a1649b0d9}
+
+
+
+
+calculate maximum element size, big enough to fit any collision algorithm in the memory pool 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_default_collision_configuration_39a173eedf0e8d55dd89ef3b637925a9}{
+\index{btDefaultCollisionConfiguration@{btDefaultCollisionConfiguration}!setConvexConvexMultipointIterations@{setConvexConvexMultipointIterations}}
+\index{setConvexConvexMultipointIterations@{setConvexConvexMultipointIterations}!btDefaultCollisionConfiguration@{btDefaultCollisionConfiguration}}
+\subsubsection[setConvexConvexMultipointIterations]{\setlength{\rightskip}{0pt plus 5cm}void btDefaultCollisionConfiguration::setConvexConvexMultipointIterations (int {\em numPerturbationIterations} = {\tt 3}, \/  int {\em minimumPointsPerturbationThreshold} = {\tt 3})}}
+\label{classbt_default_collision_configuration_39a173eedf0e8d55dd89ef3b637925a9}
+
+
+Use this method to allow to generate multiple contact points between at once, between two objects using the generic convex-convex algorithm. By default, this feature is disabled for best performance. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em numPerturbationIterations}]controls the number of collision queries. Set it to zero to disable the feature. \item[{\em minimumPointsPerturbationThreshold}]is the minimum number of points in the contact cache, above which the feature is disabled 3 is a good value for both params, if you want to enable the feature. This is because the default contact cache contains a maximum of 4 points, and one collision query at the unperturbed orientation is performed first. See Bullet/Demos/CollisionDemo for an example how this feature gathers multiple points. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[\hyperlink{todo__todo000013}{Todo}]we could add a per-object setting of those parameters, for level-of-detail collision detection. \end{Desc}
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.cpp\end{CompactItemize}

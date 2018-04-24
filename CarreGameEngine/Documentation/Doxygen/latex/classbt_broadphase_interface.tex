@@ -1,0 +1,41 @@
+\hypertarget{classbt_broadphase_interface}{
+\section{btBroadphaseInterface Class Reference}
+\label{classbt_broadphase_interface}\index{btBroadphaseInterface@{btBroadphaseInterface}}
+}
+{\tt \#include $<$btBroadphaseInterface.h$>$}
+
+Inheritance diagram for btBroadphaseInterface:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{classbt_broadphase_interface_27e29cb6fd31e5fe626e7ba973e67ddb}{
+virtual void \hyperlink{classbt_broadphase_interface_27e29cb6fd31e5fe626e7ba973e67ddb}{calculateOverlappingPairs} (\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher)=0}
+\label{classbt_broadphase_interface_27e29cb6fd31e5fe626e7ba973e67ddb}
+
+\begin{CompactList}\small\item\em calculateOverlappingPairs is optional: incremental algorithms (sweep and prune) might do it during the set aabb \item\end{CompactList}\item 
+virtual void \hyperlink{classbt_broadphase_interface_b5af9e26414f5a72a76040b8fab4d9e2}{getBroadphaseAabb} (btVector3 \&aabbMin, btVector3 \&aabbMax) const =0
+\item 
+\hypertarget{classbt_broadphase_interface_8135b10b29bced0b1c62ba6be060dc29}{
+virtual void \hyperlink{classbt_broadphase_interface_8135b10b29bced0b1c62ba6be060dc29}{resetPool} (\hyperlink{classbt_dispatcher}{btDispatcher} $\ast$dispatcher)}
+\label{classbt_broadphase_interface_8135b10b29bced0b1c62ba6be060dc29}
+
+\begin{CompactList}\small\item\em reset broadphase internal structures, to ensure determinism/reproducability \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classbt_broadphase_interface}{btBroadphaseInterface} class provides an interface to detect aabb-overlapping object pairs. Some implementations for this broadphase interface include \hyperlink{classbt_axis_sweep3}{btAxisSweep3}, \hyperlink{classbt32_bit_axis_sweep3}{bt32BitAxisSweep3} and \hyperlink{structbt_dbvt_broadphase}{btDbvtBroadphase}. The actual overlapping pair management, storage, adding and removing of pairs is dealt by the \hyperlink{classbt_overlapping_pair_cache}{btOverlappingPairCache} class. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_broadphase_interface_b5af9e26414f5a72a76040b8fab4d9e2}{
+\index{btBroadphaseInterface@{btBroadphaseInterface}!getBroadphaseAabb@{getBroadphaseAabb}}
+\index{getBroadphaseAabb@{getBroadphaseAabb}!btBroadphaseInterface@{btBroadphaseInterface}}
+\subsubsection[getBroadphaseAabb]{\setlength{\rightskip}{0pt plus 5cm}virtual void btBroadphaseInterface::getBroadphaseAabb (btVector3 \& {\em aabbMin}, \/  btVector3 \& {\em aabbMax}) const\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{classbt_broadphase_interface_b5af9e26414f5a72a76040b8fab4d9e2}
+
+
+getAabb returns the axis aligned bounding box in the 'global' coordinate frame will add some transform later 
+
+Implemented in \hyperlink{classbt_axis_sweep3_internal_5f343e29ce818d0b96cb11260bca2a68}{btAxisSweep3Internal$<$ BP\_\-FP\_\-INT\_\-TYPE $>$}, \hyperlink{structbt_dbvt_broadphase_32ab55b5ef2616d0cc039cd037c05d7f}{btDbvtBroadphase}, \hyperlink{classbt_simple_broadphase_8753363773ebbfeb48f8cf5594429dc2}{btSimpleBroadphase}, \hyperlink{classbt_axis_sweep3_internal_5f343e29ce818d0b96cb11260bca2a68}{btAxisSweep3Internal$<$ unsigned int $>$}, and \hyperlink{classbt_axis_sweep3_internal_5f343e29ce818d0b96cb11260bca2a68}{btAxisSweep3Internal$<$ unsigned short int $>$}.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h\end{CompactItemize}

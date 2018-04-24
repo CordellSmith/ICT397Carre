@@ -1,0 +1,153 @@
+\hypertarget{class_i_game_object}{
+\section{IGameObject Class Reference}
+\label{class_i_game_object}\index{IGameObject@{IGameObject}}
+}
+Interface class for game objects.  
+
+
+{\tt \#include $<$IGameObject.h$>$}
+
+Inherited by NPC, Object, and Terrain.
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_i_game_object_20daa5a14a79200a4b995ef763e4bbb5}{IGameObject} ()
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+\hyperlink{class_i_game_object_4f66e595aac6c39352e89101c8e49ad5}{$\sim$IGameObject} ()
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+virtual void \hyperlink{class_i_game_object_10bf61ea34e19af52b45a117d32da934}{LoadFromFilePath} (std::string filePath)=0
+\begin{CompactList}\small\item\em Load object from file path. \item\end{CompactList}\item 
+virtual const void \hyperlink{class_i_game_object_f60d2de5851de018cd9d0bc2fcb47427}{Load} ()=0
+\begin{CompactList}\small\item\em Load function. \item\end{CompactList}\item 
+virtual const void \hyperlink{class_i_game_object_4570fd0ad8d774b5414874fc3a67640e}{Unload} ()=0
+\begin{CompactList}\small\item\em Unload function. \item\end{CompactList}\item 
+virtual const std::string \& \hyperlink{class_i_game_object_bd2bd922cf7546ae9dccb259dae58c99}{GetFilePath} () const =0
+\begin{CompactList}\small\item\em Gets file path. \item\end{CompactList}\item 
+virtual void \hyperlink{class_i_game_object_4ff2c43df492113b7b51ce68d965defa}{SetFilePath} (const std::string \&filePath)=0
+\begin{CompactList}\small\item\em Sets a file path. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Interface class for game objects. 
+
+This class is an interface class for other objects to inherit from. Contains various helper functions that are to be overridden in the child classes.
+
+\begin{Desc}
+\item[Author:]Cordell Smith \end{Desc}
+\begin{Desc}
+\item[Version:]01 \end{Desc}
+\begin{Desc}
+\item[Date:]29/03/2018 CS \end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_i_game_object_20daa5a14a79200a4b995ef763e4bbb5}{
+\index{IGameObject@{IGameObject}!IGameObject@{IGameObject}}
+\index{IGameObject@{IGameObject}!IGameObject@{IGameObject}}
+\subsubsection[IGameObject]{\setlength{\rightskip}{0pt plus 5cm}IGameObject::IGameObject ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_i_game_object_20daa5a14a79200a4b995ef763e4bbb5}
+
+
+Default constructor. 
+
+Empty default constructor.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+\hypertarget{class_i_game_object_4f66e595aac6c39352e89101c8e49ad5}{
+\index{IGameObject@{IGameObject}!$\sim$IGameObject@{$\sim$IGameObject}}
+\index{$\sim$IGameObject@{$\sim$IGameObject}!IGameObject@{IGameObject}}
+\subsubsection[$\sim$IGameObject]{\setlength{\rightskip}{0pt plus 5cm}IGameObject::$\sim$IGameObject ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_i_game_object_4f66e595aac6c39352e89101c8e49ad5}
+
+
+Default constructor. 
+
+Empty destructor.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_i_game_object_10bf61ea34e19af52b45a117d32da934}{
+\index{IGameObject@{IGameObject}!LoadFromFilePath@{LoadFromFilePath}}
+\index{LoadFromFilePath@{LoadFromFilePath}!IGameObject@{IGameObject}}
+\subsubsection[LoadFromFilePath]{\setlength{\rightskip}{0pt plus 5cm}virtual void IGameObject::LoadFromFilePath (std::string {\em filePath})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_object_10bf61ea34e19af52b45a117d32da934}
+
+
+Load object from file path. 
+
+Virtual function taking a file path as a string parameter to load a file.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em std::string}]filePath \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_i_game_object_f60d2de5851de018cd9d0bc2fcb47427}{
+\index{IGameObject@{IGameObject}!Load@{Load}}
+\index{Load@{Load}!IGameObject@{IGameObject}}
+\subsubsection[Load]{\setlength{\rightskip}{0pt plus 5cm}virtual const void IGameObject::Load ()\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_object_f60d2de5851de018cd9d0bc2fcb47427}
+
+
+Load function. 
+
+Virtual load function.
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_i_game_object_4570fd0ad8d774b5414874fc3a67640e}{
+\index{IGameObject@{IGameObject}!Unload@{Unload}}
+\index{Unload@{Unload}!IGameObject@{IGameObject}}
+\subsubsection[Unload]{\setlength{\rightskip}{0pt plus 5cm}virtual const void IGameObject::Unload ()\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_object_4570fd0ad8d774b5414874fc3a67640e}
+
+
+Unload function. 
+
+Virtual unload function.
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_i_game_object_bd2bd922cf7546ae9dccb259dae58c99}{
+\index{IGameObject@{IGameObject}!GetFilePath@{GetFilePath}}
+\index{GetFilePath@{GetFilePath}!IGameObject@{IGameObject}}
+\subsubsection[GetFilePath]{\setlength{\rightskip}{0pt plus 5cm}virtual const std::string\& IGameObject::GetFilePath () const\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_object_bd2bd922cf7546ae9dccb259dae58c99}
+
+
+Gets file path. 
+
+Virtual function to return a file path.
+
+\begin{Desc}
+\item[Returns:]const std::string \end{Desc}
+\hypertarget{class_i_game_object_4ff2c43df492113b7b51ce68d965defa}{
+\index{IGameObject@{IGameObject}!SetFilePath@{SetFilePath}}
+\index{SetFilePath@{SetFilePath}!IGameObject@{IGameObject}}
+\subsubsection[SetFilePath]{\setlength{\rightskip}{0pt plus 5cm}virtual void IGameObject::SetFilePath (const std::string \& {\em filePath})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_object_4ff2c43df492113b7b51ce68d965defa}
+
+
+Sets a file path. 
+
+Virtual function to set a file path.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em const}]std::string\& filePath \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/IGameObject.h\end{CompactItemize}

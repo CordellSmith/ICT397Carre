@@ -1,0 +1,47 @@
+\hypertarget{structai_mesh_anim}{
+\section{aiMeshAnim Struct Reference}
+\label{structai_mesh_anim}\index{aiMeshAnim@{aiMeshAnim}}
+}
+{\tt \#include $<$anim.h$>$}
+
+Collaboration diagram for aiMeshAnim:\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+C\_\-STRUCT \hyperlink{structai_string}{aiString} \hyperlink{structai_mesh_anim_20751a739377fdba514c676ef4bda4c7}{mName}
+\item 
+unsigned int \hyperlink{structai_mesh_anim_a8702d42bf619ccc8414a556f41634d8}{mNumKeys}
+\item 
+C\_\-STRUCT \hyperlink{structai_mesh_key}{aiMeshKey} $\ast$ \hyperlink{structai_mesh_anim_bc78e9f6d7583c541447e8c389488f1b}{mKeys}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Describes vertex-based animations for a single mesh or a group of meshes. Meshes carry the animation data for each frame in their \hyperlink{structai_mesh_5078f7db7e99ed05db89dfa412f0e990}{aiMesh::mAnimMeshes} array. The purpose of \hyperlink{structai_mesh_anim}{aiMeshAnim} is to define keyframes linking each mesh attachment to a particular point in time. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structai_mesh_anim_20751a739377fdba514c676ef4bda4c7}{
+\index{aiMeshAnim@{aiMeshAnim}!mName@{mName}}
+\index{mName@{mName}!aiMeshAnim@{aiMeshAnim}}
+\subsubsection[mName]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiString} {\bf aiMeshAnim::mName}}}
+\label{structai_mesh_anim_20751a739377fdba514c676ef4bda4c7}
+
+
+Name of the mesh to be animated. An empty string is not allowed, animated meshes need to be named (not necessarily uniquely, the name can basically serve as wild-card to select a group of meshes with similar animation setup) \hypertarget{structai_mesh_anim_a8702d42bf619ccc8414a556f41634d8}{
+\index{aiMeshAnim@{aiMeshAnim}!mNumKeys@{mNumKeys}}
+\index{mNumKeys@{mNumKeys}!aiMeshAnim@{aiMeshAnim}}
+\subsubsection[mNumKeys]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiMeshAnim::mNumKeys}}}
+\label{structai_mesh_anim_a8702d42bf619ccc8414a556f41634d8}
+
+
+Size of the \hyperlink{structai_mesh_anim_bc78e9f6d7583c541447e8c389488f1b}{mKeys} array. Must be 1, at least. \hypertarget{structai_mesh_anim_bc78e9f6d7583c541447e8c389488f1b}{
+\index{aiMeshAnim@{aiMeshAnim}!mKeys@{mKeys}}
+\index{mKeys@{mKeys}!aiMeshAnim@{aiMeshAnim}}
+\subsubsection[mKeys]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiMeshKey}$\ast$ {\bf aiMeshAnim::mKeys}}}
+\label{structai_mesh_anim_bc78e9f6d7583c541447e8c389488f1b}
+
+
+Key frames of the animation. May not be NULL. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{anim_8h}{anim.h}\end{CompactItemize}

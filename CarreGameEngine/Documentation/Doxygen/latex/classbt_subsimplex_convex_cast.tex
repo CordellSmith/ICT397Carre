@@ -1,0 +1,36 @@
+\hypertarget{classbt_subsimplex_convex_cast}{
+\section{btSubsimplexConvexCast Class Reference}
+\label{classbt_subsimplex_convex_cast}\index{btSubsimplexConvexCast@{btSubsimplexConvexCast}}
+}
+{\tt \#include $<$btSubSimplexConvexCast.h$>$}
+
+Inheritance diagram for btSubsimplexConvexCast:Collaboration diagram for btSubsimplexConvexCast:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual bool \hyperlink{classbt_subsimplex_convex_cast_93202199b82c9d2f3074617f8db72e17}{calcTimeOfImpact} (const btTransform \&fromA, const btTransform \&toA, const btTransform \&fromB, const btTransform \&toB, \hyperlink{structbt_convex_cast_1_1_cast_result}{CastResult} \&result)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classbt_subsimplex_convex_cast}{btSubsimplexConvexCast} implements Gino van den Bergens' paper \char`\"{}Ray Casting against bteral Convex Objects with Application to Continuous Collision Detection\char`\"{} GJK based Ray Cast, optimized version Objects should not start in overlap, otherwise results are not defined. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_subsimplex_convex_cast_93202199b82c9d2f3074617f8db72e17}{
+\index{btSubsimplexConvexCast@{btSubsimplexConvexCast}!calcTimeOfImpact@{calcTimeOfImpact}}
+\index{calcTimeOfImpact@{calcTimeOfImpact}!btSubsimplexConvexCast@{btSubsimplexConvexCast}}
+\subsubsection[calcTimeOfImpact]{\setlength{\rightskip}{0pt plus 5cm}bool btSubsimplexConvexCast::calcTimeOfImpact (const btTransform \& {\em fromA}, \/  const btTransform \& {\em toA}, \/  const btTransform \& {\em fromB}, \/  const btTransform \& {\em toB}, \/  {\bf CastResult} \& {\em result})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_subsimplex_convex_cast_93202199b82c9d2f3074617f8db72e17}
+
+
+SimsimplexConvexCast calculateTimeOfImpact calculates the time of impact+normal for the linear cast (sweep) between two moving objects. Precondition is that objects should not penetration/overlap at the start from the interval. Overlap can be tested using \hyperlink{classbt_gjk_pair_detector}{btGjkPairDetector}. 
+
+take relative motion
+
+Just like regular GJK only add the vertex if it isn't already (close) to current vertex, it would lead to divisions by zero and NaN etc. 
+
+Implements \hyperlink{classbt_convex_cast_baf0f25a8cccfcafdaabada83c8d2bfb}{btConvexCast}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.cpp\end{CompactItemize}

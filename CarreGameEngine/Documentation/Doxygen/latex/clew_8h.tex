@@ -1,0 +1,52 @@
+\hypertarget{clew_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/clew/clew.h File Reference}
+\label{clew_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/clew/clew.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/clew/clew.h}}
+}
+OpenCL run-time loader header. 
+
+{\tt \#include $<$stdint.h$>$}\par
+{\tt \#include $<$stddef.h$>$}\par
+
+
+Include dependency graph for clew.h:\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{clew_8h_dfde77ec45b6b5bd9b7b63cd3130c2e2}{
+\#define \hyperlink{clew_8h_dfde77ec45b6b5bd9b7b63cd3130c2e2}{CLEW\_\-SUCCESS}~0}
+\label{clew_8h_dfde77ec45b6b5bd9b7b63cd3130c2e2}
+
+\begin{CompactList}\small\item\em Success error code. \item\end{CompactList}\item 
+\hypertarget{clew_8h_d83e3d163f77334c578d520997525b8e}{
+\#define \hyperlink{clew_8h_d83e3d163f77334c578d520997525b8e}{CLEW\_\-ERROR\_\-OPEN\_\-FAILED}~-1}
+\label{clew_8h_d83e3d163f77334c578d520997525b8e}
+
+\begin{CompactList}\small\item\em Error code for failing to open the dynamic library. \item\end{CompactList}\item 
+\hypertarget{clew_8h_3a66940b76761f53ac73426742451a8f}{
+\#define \hyperlink{clew_8h_3a66940b76761f53ac73426742451a8f}{CLEW\_\-ERROR\_\-ATEXIT\_\-FAILED}~-2}
+\label{clew_8h_3a66940b76761f53ac73426742451a8f}
+
+\begin{CompactList}\small\item\em Error code for failing to queue the closing of the dynamic library to atexit(). \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{clew_8h_eae77eb7416bee9188fa27dde344a866}{
+int \hyperlink{clew_8h_eae77eb7416bee9188fa27dde344a866}{clewInit} (const char $\ast$)}
+\label{clew_8h_eae77eb7416bee9188fa27dde344a866}
+
+\begin{CompactList}\small\item\em Load OpenCL dynamic library and set function entry points. \item\end{CompactList}\item 
+\hypertarget{clew_8h_493e309527f4d9f6881a31f4801ab2cf}{
+void \hyperlink{clew_8h_493e309527f4d9f6881a31f4801ab2cf}{clewExit} ()}
+\label{clew_8h_493e309527f4d9f6881a31f4801ab2cf}
+
+\begin{CompactList}\small\item\em Exit clew and unload OpenCL dynamic library. \item\end{CompactList}\item 
+\hypertarget{clew_8h_ec9b31dca4abfbac0eb20875da6a8689}{
+const char $\ast$ \hyperlink{clew_8h_ec9b31dca4abfbac0eb20875da6a8689}{clewErrorString} (cl\_\-int error)}
+\label{clew_8h_ec9b31dca4abfbac0eb20875da6a8689}
+
+\begin{CompactList}\small\item\em Convert an OpenCL error code to its string equivalent. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+OpenCL run-time loader header. 
+
+This file contains a copy of the contents of CL.H and CL\_\-PLATFORM.H from the official OpenCL spec. The purpose of this code is to load the OpenCL dynamic library at run-time and thus allow the executable to function on many platforms regardless of the vendor of the OpenCL driver actually installed. Some of the techniques used here were inspired by work done in the GLEW library (\href{http://glew.sourceforge.net/}{\tt http://glew.sourceforge.net/}) 

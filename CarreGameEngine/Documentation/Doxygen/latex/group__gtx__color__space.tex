@@ -1,0 +1,84 @@
+\hypertarget{group__gtx__color__space}{
+\section{GLM\_\-GTX\_\-color\_\-space}
+\label{group__gtx__color__space}\index{GLM\_\-GTX\_\-color\_\-space@{GLM\_\-GTX\_\-color\_\-space}}
+}
+
+
+Collaboration diagram for GLM\_\-GTX\_\-color\_\-space:Related to RGB to HSV conversions and operations.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec3$<$ T, P $>$ \hyperlink{group__gtx__color__space_g35a9210371395c95b185f5aac6c0020e}{glm::rgbColor} (detail::tvec3$<$ T, P $>$ const \&hsvValue)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec3$<$ T, P $>$ \hyperlink{group__gtx__color__space_g2532e85174ba333c4f60127d03d71655}{glm::hsvColor} (detail::tvec3$<$ T, P $>$ const \&rgbValue)
+\item 
+{\footnotesize template$<$typename T$>$ }\\GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$ T, defaultp $>$ \hyperlink{group__gtx__color__space_g53a08c053e194bad0bfc172ef950bfe7}{glm::saturation} (T const s)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec3$<$ T, P $>$ \hyperlink{group__gtx__color__space_gc45433ff3d2f2f3657edfcf9ee24800d}{glm::saturation} (T const s, detail::tvec3$<$ T, P $>$ const \&color)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec4$<$ T, P $>$ \hyperlink{group__gtx__color__space_g1ab05270ac2afa8e67b0d268e5c92573}{glm::saturation} (T const s, detail::tvec4$<$ T, P $>$ const \&color)
+\item 
+{\footnotesize template$<$typename T, precision P$>$ }\\GLM\_\-FUNC\_\-DECL T \hyperlink{group__gtx__color__space_gdd1c8feae48a4fcf9e575648b25b914f}{glm::luminosity} (detail::tvec3$<$ T, P $>$ const \&color)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Related to RGB to HSV conversions and operations. 
+
+$<$glm/gtx/color\_\-space.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtx__color__space_g2532e85174ba333c4f60127d03d71655}{
+\index{gtx\_\-color\_\-space@{gtx\_\-color\_\-space}!hsvColor@{hsvColor}}
+\index{hsvColor@{hsvColor}!gtx_color_space@{gtx\_\-color\_\-space}}
+\subsubsection[hsvColor]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::hsvColor (detail::tvec3$<$ T, P $>$ const \& {\em rgbValue})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__color__space_g2532e85174ba333c4f60127d03d71655}
+
+
+Converts a color from RGB color space to its color in HSV color space. \begin{Desc}
+\item[See also:]\hyperlink{group__gtx__color__space}{GLM\_\-GTX\_\-color\_\-space} \end{Desc}
+\hypertarget{group__gtx__color__space_gdd1c8feae48a4fcf9e575648b25b914f}{
+\index{gtx\_\-color\_\-space@{gtx\_\-color\_\-space}!luminosity@{luminosity}}
+\index{luminosity@{luminosity}!gtx_color_space@{gtx\_\-color\_\-space}}
+\subsubsection[luminosity]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::luminosity (detail::tvec3$<$ T, P $>$ const \& {\em color})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__color__space_gdd1c8feae48a4fcf9e575648b25b914f}
+
+
+Compute color luminosity associating ratios (0.33, 0.59, 0.11) to RGB canals. \begin{Desc}
+\item[See also:]\hyperlink{group__gtx__color__space}{GLM\_\-GTX\_\-color\_\-space} \end{Desc}
+\hypertarget{group__gtx__color__space_g35a9210371395c95b185f5aac6c0020e}{
+\index{gtx\_\-color\_\-space@{gtx\_\-color\_\-space}!rgbColor@{rgbColor}}
+\index{rgbColor@{rgbColor}!gtx_color_space@{gtx\_\-color\_\-space}}
+\subsubsection[rgbColor]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::rgbColor (detail::tvec3$<$ T, P $>$ const \& {\em hsvValue})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__color__space_g35a9210371395c95b185f5aac6c0020e}
+
+
+Converts a color from HSV color space to its color in RGB color space. \begin{Desc}
+\item[See also:]\hyperlink{group__gtx__color__space}{GLM\_\-GTX\_\-color\_\-space} \end{Desc}
+\hypertarget{group__gtx__color__space_g1ab05270ac2afa8e67b0d268e5c92573}{
+\index{gtx\_\-color\_\-space@{gtx\_\-color\_\-space}!saturation@{saturation}}
+\index{saturation@{saturation}!gtx_color_space@{gtx\_\-color\_\-space}}
+\subsubsection[saturation]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ T, P $>$ glm::saturation (T const {\em s}, \/  detail::tvec4$<$ T, P $>$ const \& {\em color})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__color__space_g1ab05270ac2afa8e67b0d268e5c92573}
+
+
+Modify the saturation of a color. \begin{Desc}
+\item[See also:]\hyperlink{group__gtx__color__space}{GLM\_\-GTX\_\-color\_\-space} \end{Desc}
+\hypertarget{group__gtx__color__space_gc45433ff3d2f2f3657edfcf9ee24800d}{
+\index{gtx\_\-color\_\-space@{gtx\_\-color\_\-space}!saturation@{saturation}}
+\index{saturation@{saturation}!gtx_color_space@{gtx\_\-color\_\-space}}
+\subsubsection[saturation]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::saturation (T const {\em s}, \/  detail::tvec3$<$ T, P $>$ const \& {\em color})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__color__space_gc45433ff3d2f2f3657edfcf9ee24800d}
+
+
+Modify the saturation of a color. \begin{Desc}
+\item[See also:]\hyperlink{group__gtx__color__space}{GLM\_\-GTX\_\-color\_\-space} \end{Desc}
+\hypertarget{group__gtx__color__space_g53a08c053e194bad0bfc172ef950bfe7}{
+\index{gtx\_\-color\_\-space@{gtx\_\-color\_\-space}!saturation@{saturation}}
+\index{saturation@{saturation}!gtx_color_space@{gtx\_\-color\_\-space}}
+\subsubsection[saturation]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, defaultp $>$ glm::saturation (T const  {\em s})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtx__color__space_g53a08c053e194bad0bfc172ef950bfe7}
+
+
+Build a saturation matrix. \begin{Desc}
+\item[See also:]\hyperlink{group__gtx__color__space}{GLM\_\-GTX\_\-color\_\-space} \end{Desc}

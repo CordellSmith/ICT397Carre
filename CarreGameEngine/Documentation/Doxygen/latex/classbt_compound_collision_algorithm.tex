@@ -1,0 +1,43 @@
+\hypertarget{classbt_compound_collision_algorithm}{
+\section{btCompoundCollisionAlgorithm Class Reference}
+\label{classbt_compound_collision_algorithm}\index{btCompoundCollisionAlgorithm@{btCompoundCollisionAlgorithm}}
+}
+\hyperlink{classbt_compound_collision_algorithm}{btCompoundCollisionAlgorithm} supports collision between CompoundCollisionShapes and other collision shapes  
+
+
+{\tt \#include $<$btCompoundCollisionAlgorithm.h$>$}
+
+Inheritance diagram for btCompoundCollisionAlgorithm:Collaboration diagram for btCompoundCollisionAlgorithm:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual void \hyperlink{classbt_compound_collision_algorithm_173ce993461795e0572dd2924c54cdc0}{processCollision} (const btCollisionObjectWrapper $\ast$body0Wrap, const btCollisionObjectWrapper $\ast$body1Wrap, const btDispatcherInfo \&dispatchInfo, \hyperlink{classbt_manifold_result}{btManifoldResult} $\ast$resultOut)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classbt_compound_collision_algorithm}{btCompoundCollisionAlgorithm} supports collision between CompoundCollisionShapes and other collision shapes 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbt_compound_collision_algorithm_173ce993461795e0572dd2924c54cdc0}{
+\index{btCompoundCollisionAlgorithm@{btCompoundCollisionAlgorithm}!processCollision@{processCollision}}
+\index{processCollision@{processCollision}!btCompoundCollisionAlgorithm@{btCompoundCollisionAlgorithm}}
+\subsubsection[processCollision]{\setlength{\rightskip}{0pt plus 5cm}void btCompoundCollisionAlgorithm::processCollision (const btCollisionObjectWrapper $\ast$ {\em body0Wrap}, \/  const btCollisionObjectWrapper $\ast$ {\em body1Wrap}, \/  const btDispatcherInfo \& {\em dispatchInfo}, \/  {\bf btManifoldResult} $\ast$ {\em resultOut})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{classbt_compound_collision_algorithm_173ce993461795e0572dd2924c54cdc0}
+
+
+
+
+btCompoundShape might have changed: /make sure the internal child collision algorithm caches are still valid
+
+clear and update all
+
+we need to refresh all contact manifolds note that we should actually recursively traverse all children, btCompoundShape can nested more then 1 level deep so we should add a 'refreshManifolds' in the \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm} 
+
+Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.
+
+Reimplemented in \hyperlink{classbt_compound_compound_collision_algorithm_5fb9d60f9713c0e3795c89390353beb3}{btCompoundCompoundCollisionAlgorithm}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.cpp\end{CompactItemize}

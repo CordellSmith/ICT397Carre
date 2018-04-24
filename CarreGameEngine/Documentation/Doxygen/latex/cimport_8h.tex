@@ -1,0 +1,603 @@
+\hypertarget{cimport_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/cimport.h File Reference}
+\label{cimport_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/cimport.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/cimport.h}}
+}
+Defines the C-API to the Open Asset Import Library. 
+
+{\tt \#include $<$assimp/types.h$>$}\par
+{\tt \#include \char`\"{}importerdesc.h\char`\"{}}\par
+
+
+Include dependency graph for cimport.h:\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structai_log_stream}{aiLogStream}
+\item 
+struct \hyperlink{structai_property_store}{aiPropertyStore}
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef int \hyperlink{cimport_8h_af9b3b6ed742722b3d0bbff0f4621691}{aiBool}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+ASSIMP\_\-API const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{cimport_8h_37baf75d55599334097f7337ce8f25c5}{aiImportFile} (const char $\ast$pFile, unsigned int pFlags)
+\item 
+ASSIMP\_\-API const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{cimport_8h_60c8f08f9daa728b5e2d20623e81cd13}{aiImportFileEx} (const char $\ast$pFile, unsigned int pFlags, C\_\-STRUCT \hyperlink{structai_file_i_o}{aiFileIO} $\ast$pFS)
+\item 
+ASSIMP\_\-API const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{cimport_8h_9ec6845e46be4043cedb579bb85fcc0c}{aiImportFileExWithProperties} (const char $\ast$pFile, unsigned int pFlags, C\_\-STRUCT \hyperlink{structai_file_i_o}{aiFileIO} $\ast$pFS, const C\_\-STRUCT \hyperlink{structai_property_store}{aiPropertyStore} $\ast$pProps)
+\item 
+ASSIMP\_\-API const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{cimport_8h_5d1825f4fd3d6b384c4eee8238b7539e}{aiImportFileFromMemory} (const char $\ast$pBuffer, unsigned int pLength, unsigned int pFlags, const char $\ast$pHint)
+\item 
+ASSIMP\_\-API const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{cimport_8h_a0230ea67e3054675d6e17b66b51d6de}{aiImportFileFromMemoryWithProperties} (const char $\ast$pBuffer, unsigned int pLength, unsigned int pFlags, const char $\ast$pHint, const C\_\-STRUCT \hyperlink{structai_property_store}{aiPropertyStore} $\ast$pProps)
+\item 
+ASSIMP\_\-API const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$ \hyperlink{cimport_8h_f399cb7002e348f6b9228cff3f836c6c}{aiApplyPostProcessing} (const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$pScene, unsigned int pFlags)
+\item 
+ASSIMP\_\-API C\_\-STRUCT \hyperlink{structai_log_stream}{aiLogStream} \hyperlink{cimport_8h_d7e375d7b134ec590e812ad1f50eab94}{aiGetPredefinedLogStream} (C\_\-ENUM \hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6}{aiDefaultLogStream} pStreams, const char $\ast$file)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_75c5aa6027cb059e63b3dda005c9c149}{aiAttachLogStream} (const C\_\-STRUCT \hyperlink{structai_log_stream}{aiLogStream} $\ast$stream)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_54a7485c9422348b2f20adcbd192ed64}{aiEnableVerboseLogging} (\hyperlink{cimport_8h_af9b3b6ed742722b3d0bbff0f4621691}{aiBool} d)
+\item 
+ASSIMP\_\-API C\_\-ENUM \hyperlink{types_8h_1f78dfb65090aa930cabb984c8abe711}{aiReturn} \hyperlink{cimport_8h_98ad05bb95e8f8157a97c133812a1597}{aiDetachLogStream} (const C\_\-STRUCT \hyperlink{structai_log_stream}{aiLogStream} $\ast$stream)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_8f1fe2e8ccc5f93484098114ae7071bf}{aiDetachAllLogStreams} (void)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_9d360f95be3deb87f40abf25d4c047dc}{aiReleaseImport} (const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$pScene)
+\item 
+ASSIMP\_\-API const char $\ast$ \hyperlink{cimport_8h_74c227c3ee707049a1295356f4c0af0e}{aiGetErrorString} (void)
+\item 
+ASSIMP\_\-API \hyperlink{cimport_8h_af9b3b6ed742722b3d0bbff0f4621691}{aiBool} \hyperlink{cimport_8h_df7ad488ca981fc8800e48e35ddc49e9}{aiIsExtensionSupported} (const char $\ast$szExtension)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_99cec86f7950963c0c9ecda87a2e07e2}{aiGetExtensionList} (C\_\-STRUCT \hyperlink{structai_string}{aiString} $\ast$szOut)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_cf5b67b3700dc01b5f847ad077895e59}{aiGetMemoryRequirements} (const C\_\-STRUCT \hyperlink{structai_scene}{aiScene} $\ast$pIn, C\_\-STRUCT \hyperlink{structai_memory_info}{aiMemoryInfo} $\ast$in)
+\item 
+ASSIMP\_\-API C\_\-STRUCT \hyperlink{structai_property_store}{aiPropertyStore} $\ast$ \hyperlink{cimport_8h_523d3d8b510203fb1a80d8702283f8c9}{aiCreatePropertyStore} (void)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_579dddd75dbba5621c235df780ffc3e6}{aiReleasePropertyStore} (C\_\-STRUCT \hyperlink{structai_property_store}{aiPropertyStore} $\ast$p)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_77fe5bf63f5b7811b10fb1ea072cd995}{aiSetImportPropertyInteger} (C\_\-STRUCT \hyperlink{structai_property_store}{aiPropertyStore} $\ast$store, const char $\ast$szName, int value)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_7a3fdb2a587ce72c66182b87465d664d}{aiSetImportPropertyFloat} (C\_\-STRUCT \hyperlink{structai_property_store}{aiPropertyStore} $\ast$store, const char $\ast$szName, ai\_\-real value)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_0c6f78241e9ec7b2470d193858baf22d}{aiSetImportPropertyString} (C\_\-STRUCT \hyperlink{structai_property_store}{aiPropertyStore} $\ast$store, const char $\ast$szName, const C\_\-STRUCT \hyperlink{structai_string}{aiString} $\ast$st)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_9c55a41ee04a8bf624d2a735eebf4c87}{aiSetImportPropertyMatrix} (C\_\-STRUCT \hyperlink{structai_property_store}{aiPropertyStore} $\ast$store, const char $\ast$szName, const C\_\-STRUCT aiMatrix4x4 $\ast$mat)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_6fa70de0a410d942b75102d605d700f3}{aiCreateQuaternionFromMatrix} (C\_\-STRUCT aiQuaternion $\ast$quat, const C\_\-STRUCT aiMatrix3x3 $\ast$mat)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_59f68c25251aefbd560582cfe39b9287}{aiDecomposeMatrix} (const C\_\-STRUCT aiMatrix4x4 $\ast$mat, C\_\-STRUCT aiVector3D $\ast$scaling, C\_\-STRUCT aiQuaternion $\ast$rotation, C\_\-STRUCT aiVector3D $\ast$position)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_884f06d627cc76df36c9b4ba67801997}{aiTransposeMatrix4} (C\_\-STRUCT aiMatrix4x4 $\ast$mat)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_f4b7283f4fab57fe71d5ba2efa65e620}{aiTransposeMatrix3} (C\_\-STRUCT aiMatrix3x3 $\ast$mat)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_3b4fbac8311e9a41c558a0d0798a3e04}{aiTransformVecByMatrix3} (C\_\-STRUCT aiVector3D $\ast$vec, const C\_\-STRUCT aiMatrix3x3 $\ast$mat)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_e5fedd4e5296d335c3afd51cca4f180e}{aiTransformVecByMatrix4} (C\_\-STRUCT aiVector3D $\ast$vec, const C\_\-STRUCT aiMatrix4x4 $\ast$mat)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_ddcc9b42dd7afac376679bc66a98fb4e}{aiMultiplyMatrix4} (C\_\-STRUCT aiMatrix4x4 $\ast$dst, const C\_\-STRUCT aiMatrix4x4 $\ast$src)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_756317f04e6b1f1fdbda294a0fc9d8b2}{aiMultiplyMatrix3} (C\_\-STRUCT aiMatrix3x3 $\ast$dst, const C\_\-STRUCT aiMatrix3x3 $\ast$src)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_1e1bf11ec19f8be587c767f3910384ee}{aiIdentityMatrix3} (C\_\-STRUCT aiMatrix3x3 $\ast$mat)
+\item 
+ASSIMP\_\-API void \hyperlink{cimport_8h_e7af650c79ce312146d55c46f3484508}{aiIdentityMatrix4} (C\_\-STRUCT aiMatrix4x4 $\ast$mat)
+\item 
+ASSIMP\_\-API size\_\-t \hyperlink{cimport_8h_0052bf974030e06a5f6b2a4c5d2c5d0d}{aiGetImportFormatCount} (void)
+\item 
+ASSIMP\_\-API const C\_\-STRUCT \hyperlink{structai_importer_desc}{aiImporterDesc} $\ast$ \hyperlink{cimport_8h_a80b5c006315b73e693feb2ec27ecf34}{aiGetImportFormatDescription} (size\_\-t pIndex)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the C-API to the Open Asset Import Library. 
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{cimport_8h_af9b3b6ed742722b3d0bbff0f4621691}{
+\index{cimport.h@{cimport.h}!aiBool@{aiBool}}
+\index{aiBool@{aiBool}!cimport.h@{cimport.h}}
+\subsubsection[aiBool]{\setlength{\rightskip}{0pt plus 5cm}typedef int {\bf aiBool}}}
+\label{cimport_8h_af9b3b6ed742722b3d0bbff0f4621691}
+
+
+Our own C boolean type 
+
+\subsection{Function Documentation}
+\hypertarget{cimport_8h_f399cb7002e348f6b9228cff3f836c6c}{
+\index{cimport.h@{cimport.h}!aiApplyPostProcessing@{aiApplyPostProcessing}}
+\index{aiApplyPostProcessing@{aiApplyPostProcessing}!cimport.h@{cimport.h}}
+\subsubsection[aiApplyPostProcessing]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API const C\_\-STRUCT {\bf aiScene}$\ast$ aiApplyPostProcessing (const C\_\-STRUCT {\bf aiScene} $\ast$ {\em pScene}, \/  unsigned int {\em pFlags})}}
+\label{cimport_8h_f399cb7002e348f6b9228cff3f836c6c}
+
+
+Apply post-processing to an already-imported scene.
+
+This is strictly equivalent to calling \hyperlink{cimport_8h_37baf75d55599334097f7337ce8f25c5}{aiImportFile()}/\hyperlink{cimport_8h_60c8f08f9daa728b5e2d20623e81cd13}{aiImportFileEx} with the same flags. However, you can use this separate function to inspect the imported scene first to fine-tune your post-processing setup. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pScene}]Scene to work on. \item[{\em pFlags}]Provide a bitwise combination of the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410}{aiPostProcessSteps} flags. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the post-processed data. Post processing is done in-place, meaning this is still the same \hyperlink{structai_scene}{aiScene} which you passed for pScene. However, \_\-if\_\- post-processing failed, the scene could now be NULL. That's quite a rare case, post processing steps are not really designed to 'fail'. To be exact, the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410e420ce22fbbac9d0fd21fd92f2b630fa}{aiProcess\_\-ValidateDataStructure} flag is currently the only post processing step which can actually cause the scene to be reset to NULL. \end{Desc}
+\hypertarget{cimport_8h_75c5aa6027cb059e63b3dda005c9c149}{
+\index{cimport.h@{cimport.h}!aiAttachLogStream@{aiAttachLogStream}}
+\index{aiAttachLogStream@{aiAttachLogStream}!cimport.h@{cimport.h}}
+\subsubsection[aiAttachLogStream]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiAttachLogStream (const C\_\-STRUCT {\bf aiLogStream} $\ast$ {\em stream})}}
+\label{cimport_8h_75c5aa6027cb059e63b3dda005c9c149}
+
+
+Attach a custom log stream to the libraries' logging system.
+
+Attaching a log stream can slightly reduce Assimp's overall import performance. Multiple log-streams can be attached. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]Describes the new log stream. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Note:]To ensure proper destruction of the logging system, you need to manually call \hyperlink{cimport_8h_98ad05bb95e8f8157a97c133812a1597}{aiDetachLogStream()} on every single log stream you attach. Alternatively (for the lazy folks) \hyperlink{cimport_8h_8f1fe2e8ccc5f93484098114ae7071bf}{aiDetachAllLogStreams} is provided. \end{Desc}
+\hypertarget{cimport_8h_523d3d8b510203fb1a80d8702283f8c9}{
+\index{cimport.h@{cimport.h}!aiCreatePropertyStore@{aiCreatePropertyStore}}
+\index{aiCreatePropertyStore@{aiCreatePropertyStore}!cimport.h@{cimport.h}}
+\subsubsection[aiCreatePropertyStore]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API C\_\-STRUCT {\bf aiPropertyStore}$\ast$ aiCreatePropertyStore (void)}}
+\label{cimport_8h_523d3d8b510203fb1a80d8702283f8c9}
+
+
+Create an empty property store. Property stores are used to collect import settings. \begin{Desc}
+\item[Returns:]New property store. Property stores need to be manually destroyed using the \hyperlink{cimport_8h_579dddd75dbba5621c235df780ffc3e6}{aiReleasePropertyStore} API function. \end{Desc}
+\hypertarget{cimport_8h_6fa70de0a410d942b75102d605d700f3}{
+\index{cimport.h@{cimport.h}!aiCreateQuaternionFromMatrix@{aiCreateQuaternionFromMatrix}}
+\index{aiCreateQuaternionFromMatrix@{aiCreateQuaternionFromMatrix}!cimport.h@{cimport.h}}
+\subsubsection[aiCreateQuaternionFromMatrix]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiCreateQuaternionFromMatrix (C\_\-STRUCT aiQuaternion $\ast$ {\em quat}, \/  const C\_\-STRUCT aiMatrix3x3 $\ast$ {\em mat})}}
+\label{cimport_8h_6fa70de0a410d942b75102d605d700f3}
+
+
+Construct a quaternion from a 3x3 rotation matrix. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em quat}]Receives the output quaternion. \item[{\em mat}]Matrix to 'quaternionize'. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]aiQuaternion(const aiMatrix3x3\& pRotMatrix) \end{Desc}
+\hypertarget{cimport_8h_59f68c25251aefbd560582cfe39b9287}{
+\index{cimport.h@{cimport.h}!aiDecomposeMatrix@{aiDecomposeMatrix}}
+\index{aiDecomposeMatrix@{aiDecomposeMatrix}!cimport.h@{cimport.h}}
+\subsubsection[aiDecomposeMatrix]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiDecomposeMatrix (const C\_\-STRUCT aiMatrix4x4 $\ast$ {\em mat}, \/  C\_\-STRUCT aiVector3D $\ast$ {\em scaling}, \/  C\_\-STRUCT aiQuaternion $\ast$ {\em rotation}, \/  C\_\-STRUCT aiVector3D $\ast$ {\em position})}}
+\label{cimport_8h_59f68c25251aefbd560582cfe39b9287}
+
+
+Decompose a transformation matrix into its rotational, translational and scaling components.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mat}]Matrix to decompose \item[{\em scaling}]Receives the scaling component \item[{\em rotation}]Receives the rotational component \item[{\em position}]Receives the translational component. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]aiMatrix4x4::Decompose (aiVector3D\&, aiQuaternion\&, aiVector3D\&) const; \end{Desc}
+\hypertarget{cimport_8h_8f1fe2e8ccc5f93484098114ae7071bf}{
+\index{cimport.h@{cimport.h}!aiDetachAllLogStreams@{aiDetachAllLogStreams}}
+\index{aiDetachAllLogStreams@{aiDetachAllLogStreams}!cimport.h@{cimport.h}}
+\subsubsection[aiDetachAllLogStreams]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiDetachAllLogStreams (void)}}
+\label{cimport_8h_8f1fe2e8ccc5f93484098114ae7071bf}
+
+
+Detach all active log streams from the libraries' logging system. This ensures that the logging system is terminated properly and all resources allocated by it are actually freed. If you attached a stream, don't forget to detach it again. \begin{Desc}
+\item[See also:]\hyperlink{cimport_8h_75c5aa6027cb059e63b3dda005c9c149}{aiAttachLogStream} 
+
+\hyperlink{cimport_8h_98ad05bb95e8f8157a97c133812a1597}{aiDetachLogStream} \end{Desc}
+\hypertarget{cimport_8h_98ad05bb95e8f8157a97c133812a1597}{
+\index{cimport.h@{cimport.h}!aiDetachLogStream@{aiDetachLogStream}}
+\index{aiDetachLogStream@{aiDetachLogStream}!cimport.h@{cimport.h}}
+\subsubsection[aiDetachLogStream]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API C\_\-ENUM {\bf aiReturn} aiDetachLogStream (const C\_\-STRUCT {\bf aiLogStream} $\ast$ {\em stream})}}
+\label{cimport_8h_98ad05bb95e8f8157a97c133812a1597}
+
+
+Detach a custom log stream from the libraries' logging system.
+
+This is the counterpart of \hyperlink{cimport_8h_75c5aa6027cb059e63b3dda005c9c149}{aiAttachLogStream}. If you attached a stream, don't forget to detach it again. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em stream}]The log stream to be detached. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]AI\_\-SUCCESS if the log stream has been detached successfully. \end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{cimport_8h_8f1fe2e8ccc5f93484098114ae7071bf}{aiDetachAllLogStreams} \end{Desc}
+\hypertarget{cimport_8h_54a7485c9422348b2f20adcbd192ed64}{
+\index{cimport.h@{cimport.h}!aiEnableVerboseLogging@{aiEnableVerboseLogging}}
+\index{aiEnableVerboseLogging@{aiEnableVerboseLogging}!cimport.h@{cimport.h}}
+\subsubsection[aiEnableVerboseLogging]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiEnableVerboseLogging ({\bf aiBool} {\em d})}}
+\label{cimport_8h_54a7485c9422348b2f20adcbd192ed64}
+
+
+Enable verbose logging. Verbose logging includes debug-related stuff and detailed import statistics. This can have severe impact on import performance and memory consumption. However, it might be useful to find out why a file didn't read correctly. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em d}]AI\_\-TRUE or AI\_\-FALSE, your decision. \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_74c227c3ee707049a1295356f4c0af0e}{
+\index{cimport.h@{cimport.h}!aiGetErrorString@{aiGetErrorString}}
+\index{aiGetErrorString@{aiGetErrorString}!cimport.h@{cimport.h}}
+\subsubsection[aiGetErrorString]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API const char$\ast$ aiGetErrorString (void)}}
+\label{cimport_8h_74c227c3ee707049a1295356f4c0af0e}
+
+
+Returns the error text of the last failed import process.
+
+\begin{Desc}
+\item[Returns:]A textual description of the error that occurred at the last import process. NULL if there was no error. There can't be an error if you got a non-NULL \hyperlink{structai_scene}{aiScene} from \hyperlink{cimport_8h_37baf75d55599334097f7337ce8f25c5}{aiImportFile}/\hyperlink{cimport_8h_60c8f08f9daa728b5e2d20623e81cd13}{aiImportFileEx}/\hyperlink{cimport_8h_f399cb7002e348f6b9228cff3f836c6c}{aiApplyPostProcessing}. \end{Desc}
+\hypertarget{cimport_8h_99cec86f7950963c0c9ecda87a2e07e2}{
+\index{cimport.h@{cimport.h}!aiGetExtensionList@{aiGetExtensionList}}
+\index{aiGetExtensionList@{aiGetExtensionList}!cimport.h@{cimport.h}}
+\subsubsection[aiGetExtensionList]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiGetExtensionList (C\_\-STRUCT {\bf aiString} $\ast$ {\em szOut})}}
+\label{cimport_8h_99cec86f7950963c0c9ecda87a2e07e2}
+
+
+Get a list of all file extensions supported by ASSIMP.
+
+If a file extension is contained in the list this does, of course, not mean that ASSIMP is able to load all files with this extension. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em szOut}]String to receive the extension list. Format of the list: \char`\"{}$\ast$.3ds;$\ast$.obj;$\ast$.dae\char`\"{}. NULL is not a valid parameter. \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_0052bf974030e06a5f6b2a4c5d2c5d0d}{
+\index{cimport.h@{cimport.h}!aiGetImportFormatCount@{aiGetImportFormatCount}}
+\index{aiGetImportFormatCount@{aiGetImportFormatCount}!cimport.h@{cimport.h}}
+\subsubsection[aiGetImportFormatCount]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API size\_\-t aiGetImportFormatCount (void)}}
+\label{cimport_8h_0052bf974030e06a5f6b2a4c5d2c5d0d}
+
+
+Returns the number of import file formats available in the current \hyperlink{namespace_assimp}{Assimp} build. Use \hyperlink{cimport_8h_a80b5c006315b73e693feb2ec27ecf34}{aiGetImportFormatDescription()} to retrieve infos of a specific import format. \hypertarget{cimport_8h_a80b5c006315b73e693feb2ec27ecf34}{
+\index{cimport.h@{cimport.h}!aiGetImportFormatDescription@{aiGetImportFormatDescription}}
+\index{aiGetImportFormatDescription@{aiGetImportFormatDescription}!cimport.h@{cimport.h}}
+\subsubsection[aiGetImportFormatDescription]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API const C\_\-STRUCT {\bf aiImporterDesc}$\ast$ aiGetImportFormatDescription (size\_\-t {\em pIndex})}}
+\label{cimport_8h_a80b5c006315b73e693feb2ec27ecf34}
+
+
+Returns a description of the nth import file format. Use \hyperlink{cimport_8h_0052bf974030e06a5f6b2a4c5d2c5d0d}{aiGetImportFormatCount()} to learn how many import formats are supported. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pIndex}]Index of the import format to retrieve information for. Valid range is 0 to \hyperlink{cimport_8h_0052bf974030e06a5f6b2a4c5d2c5d0d}{aiGetImportFormatCount()} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A description of that specific import format. NULL if pIndex is out of range. \end{Desc}
+\hypertarget{cimport_8h_cf5b67b3700dc01b5f847ad077895e59}{
+\index{cimport.h@{cimport.h}!aiGetMemoryRequirements@{aiGetMemoryRequirements}}
+\index{aiGetMemoryRequirements@{aiGetMemoryRequirements}!cimport.h@{cimport.h}}
+\subsubsection[aiGetMemoryRequirements]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiGetMemoryRequirements (const C\_\-STRUCT {\bf aiScene} $\ast$ {\em pIn}, \/  C\_\-STRUCT {\bf aiMemoryInfo} $\ast$ {\em in})}}
+\label{cimport_8h_cf5b67b3700dc01b5f847ad077895e59}
+
+
+Get the approximated storage required by an imported asset \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pIn}]Input asset. \item[{\em in}]Data structure to be filled. \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_d7e375d7b134ec590e812ad1f50eab94}{
+\index{cimport.h@{cimport.h}!aiGetPredefinedLogStream@{aiGetPredefinedLogStream}}
+\index{aiGetPredefinedLogStream@{aiGetPredefinedLogStream}!cimport.h@{cimport.h}}
+\subsubsection[aiGetPredefinedLogStream]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API C\_\-STRUCT {\bf aiLogStream} aiGetPredefinedLogStream (C\_\-ENUM {\bf aiDefaultLogStream} {\em pStreams}, \/  const char $\ast$ {\em file})}}
+\label{cimport_8h_d7e375d7b134ec590e812ad1f50eab94}
+
+
+Get one of the predefine log streams. This is the quick'n'easy solution to access Assimp's log system. Attaching a log stream can slightly reduce Assimp's overall import performance.
+
+Usage is rather simple (this will stream the log to a file, named log.txt, and the stdout stream of the process: 
+
+\begin{Code}\begin{verbatim}    struct aiLogStream c;
+    c = aiGetPredefinedLogStream(aiDefaultLogStream_FILE,"log.txt");
+    aiAttachLogStream(&c);
+    c = aiGetPredefinedLogStream(aiDefaultLogStream_STDOUT,NULL);
+    aiAttachLogStream(&c);
+\end{verbatim}
+\end{Code}
+
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pStreams}]One of the \hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6}{aiDefaultLogStream} enumerated values. \item[{\em file}]Solely for the \hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c653f81f9d36437ced72e67b297dc17815}{aiDefaultLogStream\_\-FILE} flag: specifies the file to write to. Pass NULL for all other flags. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The log stream. callback is set to NULL if something went wrong. \end{Desc}
+\hypertarget{cimport_8h_1e1bf11ec19f8be587c767f3910384ee}{
+\index{cimport.h@{cimport.h}!aiIdentityMatrix3@{aiIdentityMatrix3}}
+\index{aiIdentityMatrix3@{aiIdentityMatrix3}!cimport.h@{cimport.h}}
+\subsubsection[aiIdentityMatrix3]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiIdentityMatrix3 (C\_\-STRUCT aiMatrix3x3 $\ast$ {\em mat})}}
+\label{cimport_8h_1e1bf11ec19f8be587c767f3910384ee}
+
+
+Get a 3x3 identity matrix. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mat}]Matrix to receive its personal identity \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_e7af650c79ce312146d55c46f3484508}{
+\index{cimport.h@{cimport.h}!aiIdentityMatrix4@{aiIdentityMatrix4}}
+\index{aiIdentityMatrix4@{aiIdentityMatrix4}!cimport.h@{cimport.h}}
+\subsubsection[aiIdentityMatrix4]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiIdentityMatrix4 (C\_\-STRUCT aiMatrix4x4 $\ast$ {\em mat})}}
+\label{cimport_8h_e7af650c79ce312146d55c46f3484508}
+
+
+Get a 4x4 identity matrix. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mat}]Matrix to receive its personal identity \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_37baf75d55599334097f7337ce8f25c5}{
+\index{cimport.h@{cimport.h}!aiImportFile@{aiImportFile}}
+\index{aiImportFile@{aiImportFile}!cimport.h@{cimport.h}}
+\subsubsection[aiImportFile]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API const C\_\-STRUCT {\bf aiScene}$\ast$ aiImportFile (const char $\ast$ {\em pFile}, \/  unsigned int {\em pFlags})}}
+\label{cimport_8h_37baf75d55599334097f7337ce8f25c5}
+
+
+Reads the given file and returns its content.
+
+If the call succeeds, the imported data is returned in an \hyperlink{structai_scene}{aiScene} structure. The data is intended to be read-only, it stays property of the ASSIMP library and will be stable until \hyperlink{cimport_8h_9d360f95be3deb87f40abf25d4c047dc}{aiReleaseImport()} is called. After you're done with it, call \hyperlink{cimport_8h_9d360f95be3deb87f40abf25d4c047dc}{aiReleaseImport()} to free the resources associated with this file. If the import fails, NULL is returned instead. Call \hyperlink{cimport_8h_74c227c3ee707049a1295356f4c0af0e}{aiGetErrorString()} to retrieve a human-readable error text. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pFile}]Path and filename of the file to be imported, expected to be a null-terminated c-string. NULL is not a valid value. \item[{\em pFlags}]Optional post processing steps to be executed after a successful import. Provide a bitwise combination of the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410}{aiPostProcessSteps} flags. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to the imported data or NULL if the import failed. \end{Desc}
+\hypertarget{cimport_8h_60c8f08f9daa728b5e2d20623e81cd13}{
+\index{cimport.h@{cimport.h}!aiImportFileEx@{aiImportFileEx}}
+\index{aiImportFileEx@{aiImportFileEx}!cimport.h@{cimport.h}}
+\subsubsection[aiImportFileEx]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API const C\_\-STRUCT {\bf aiScene}$\ast$ aiImportFileEx (const char $\ast$ {\em pFile}, \/  unsigned int {\em pFlags}, \/  C\_\-STRUCT {\bf aiFileIO} $\ast$ {\em pFS})}}
+\label{cimport_8h_60c8f08f9daa728b5e2d20623e81cd13}
+
+
+Reads the given file using user-defined I/O functions and returns its content.
+
+If the call succeeds, the imported data is returned in an \hyperlink{structai_scene}{aiScene} structure. The data is intended to be read-only, it stays property of the ASSIMP library and will be stable until \hyperlink{cimport_8h_9d360f95be3deb87f40abf25d4c047dc}{aiReleaseImport()} is called. After you're done with it, call \hyperlink{cimport_8h_9d360f95be3deb87f40abf25d4c047dc}{aiReleaseImport()} to free the resources associated with this file. If the import fails, NULL is returned instead. Call \hyperlink{cimport_8h_74c227c3ee707049a1295356f4c0af0e}{aiGetErrorString()} to retrieve a human-readable error text. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pFile}]Path and filename of the file to be imported, expected to be a null-terminated c-string. NULL is not a valid value. \item[{\em pFlags}]Optional post processing steps to be executed after a successful import. Provide a bitwise combination of the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410}{aiPostProcessSteps} flags. \item[{\em pFS}]\hyperlink{structai_file_i_o}{aiFileIO} structure. Will be used to open the model file itself and any other files the loader needs to open. Pass NULL to use the default implementation. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to the imported data or NULL if the import failed. \end{Desc}
+\begin{Desc}
+\item[Note:]Include $<$aiFileIO.h$>$ for the definition of \hyperlink{structai_file_i_o}{aiFileIO}. \end{Desc}
+\hypertarget{cimport_8h_9ec6845e46be4043cedb579bb85fcc0c}{
+\index{cimport.h@{cimport.h}!aiImportFileExWithProperties@{aiImportFileExWithProperties}}
+\index{aiImportFileExWithProperties@{aiImportFileExWithProperties}!cimport.h@{cimport.h}}
+\subsubsection[aiImportFileExWithProperties]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API const C\_\-STRUCT {\bf aiScene}$\ast$ aiImportFileExWithProperties (const char $\ast$ {\em pFile}, \/  unsigned int {\em pFlags}, \/  C\_\-STRUCT {\bf aiFileIO} $\ast$ {\em pFS}, \/  const C\_\-STRUCT {\bf aiPropertyStore} $\ast$ {\em pProps})}}
+\label{cimport_8h_9ec6845e46be4043cedb579bb85fcc0c}
+
+
+Same as \hyperlink{cimport_8h_60c8f08f9daa728b5e2d20623e81cd13}{aiImportFileEx}, but adds an extra parameter containing importer settings.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pFile}]Path and filename of the file to be imported, expected to be a null-terminated c-string. NULL is not a valid value. \item[{\em pFlags}]Optional post processing steps to be executed after a successful import. Provide a bitwise combination of the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410}{aiPostProcessSteps} flags. \item[{\em pFS}]\hyperlink{structai_file_i_o}{aiFileIO} structure. Will be used to open the model file itself and any other files the loader needs to open. Pass NULL to use the default implementation. \item[{\em pProps}]\hyperlink{structai_property_store}{aiPropertyStore} instance containing import settings. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to the imported data or NULL if the import failed. \end{Desc}
+\begin{Desc}
+\item[Note:]Include $<$aiFileIO.h$>$ for the definition of \hyperlink{structai_file_i_o}{aiFileIO}. \end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{cimport_8h_60c8f08f9daa728b5e2d20623e81cd13}{aiImportFileEx} \end{Desc}
+\hypertarget{cimport_8h_5d1825f4fd3d6b384c4eee8238b7539e}{
+\index{cimport.h@{cimport.h}!aiImportFileFromMemory@{aiImportFileFromMemory}}
+\index{aiImportFileFromMemory@{aiImportFileFromMemory}!cimport.h@{cimport.h}}
+\subsubsection[aiImportFileFromMemory]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API const C\_\-STRUCT {\bf aiScene}$\ast$ aiImportFileFromMemory (const char $\ast$ {\em pBuffer}, \/  unsigned int {\em pLength}, \/  unsigned int {\em pFlags}, \/  const char $\ast$ {\em pHint})}}
+\label{cimport_8h_5d1825f4fd3d6b384c4eee8238b7539e}
+
+
+Reads the given file from a given memory buffer,
+
+If the call succeeds, the contents of the file are returned as a pointer to an \hyperlink{structai_scene}{aiScene} object. The returned data is intended to be read-only, the importer keeps ownership of the data and will destroy it upon destruction. If the import fails, NULL is returned. A human-readable error description can be retrieved by calling \hyperlink{cimport_8h_74c227c3ee707049a1295356f4c0af0e}{aiGetErrorString()}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pBuffer}]Pointer to the file data \item[{\em pLength}]Length of pBuffer, in bytes \item[{\em pFlags}]Optional post processing steps to be executed after a successful import. Provide a bitwise combination of the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410}{aiPostProcessSteps} flags. If you wish to inspect the imported scene first in order to fine-tune your post-processing setup, consider to use \hyperlink{cimport_8h_f399cb7002e348f6b9228cff3f836c6c}{aiApplyPostProcessing()}. \item[{\em pHint}]An additional hint to the library. If this is a non empty string, the library looks for a loader to support the file extension specified by pHint and passes the file to the first matching loader. If this loader is unable to completely the request, the library continues and tries to determine the file format on its own, a task that may or may not be successful. Check the return value, and you'll know ... \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the imported data, NULL if the import failed.\end{Desc}
+\begin{Desc}
+\item[Note:]This is a straightforward way to decode models from memory buffers, but it doesn't handle model formats that spread their data across multiple files or even directories. Examples include OBJ or MD3, which outsource parts of their material info into external scripts. If you need full functionality, provide a custom IOSystem to make \hyperlink{namespace_assimp}{Assimp} find these files and use the regular \hyperlink{cimport_8h_60c8f08f9daa728b5e2d20623e81cd13}{aiImportFileEx()}/aiImportFileExWithProperties() API. \end{Desc}
+\hypertarget{cimport_8h_a0230ea67e3054675d6e17b66b51d6de}{
+\index{cimport.h@{cimport.h}!aiImportFileFromMemoryWithProperties@{aiImportFileFromMemoryWithProperties}}
+\index{aiImportFileFromMemoryWithProperties@{aiImportFileFromMemoryWithProperties}!cimport.h@{cimport.h}}
+\subsubsection[aiImportFileFromMemoryWithProperties]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API const C\_\-STRUCT {\bf aiScene}$\ast$ aiImportFileFromMemoryWithProperties (const char $\ast$ {\em pBuffer}, \/  unsigned int {\em pLength}, \/  unsigned int {\em pFlags}, \/  const char $\ast$ {\em pHint}, \/  const C\_\-STRUCT {\bf aiPropertyStore} $\ast$ {\em pProps})}}
+\label{cimport_8h_a0230ea67e3054675d6e17b66b51d6de}
+
+
+Same as \hyperlink{cimport_8h_5d1825f4fd3d6b384c4eee8238b7539e}{aiImportFileFromMemory}, but adds an extra parameter containing importer settings.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pBuffer}]Pointer to the file data \item[{\em pLength}]Length of pBuffer, in bytes \item[{\em pFlags}]Optional post processing steps to be executed after a successful import. Provide a bitwise combination of the \hyperlink{postprocess_8h_64795260b95f5a4b3f3dc1be4f52e410}{aiPostProcessSteps} flags. If you wish to inspect the imported scene first in order to fine-tune your post-processing setup, consider to use \hyperlink{cimport_8h_f399cb7002e348f6b9228cff3f836c6c}{aiApplyPostProcessing()}. \item[{\em pHint}]An additional hint to the library. If this is a non empty string, the library looks for a loader to support the file extension specified by pHint and passes the file to the first matching loader. If this loader is unable to completely the request, the library continues and tries to determine the file format on its own, a task that may or may not be successful. Check the return value, and you'll know ... \item[{\em pProps}]\hyperlink{structai_property_store}{aiPropertyStore} instance containing import settings. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the imported data, NULL if the import failed.\end{Desc}
+\begin{Desc}
+\item[Note:]This is a straightforward way to decode models from memory buffers, but it doesn't handle model formats that spread their data across multiple files or even directories. Examples include OBJ or MD3, which outsource parts of their material info into external scripts. If you need full functionality, provide a custom IOSystem to make \hyperlink{namespace_assimp}{Assimp} find these files and use the regular \hyperlink{cimport_8h_60c8f08f9daa728b5e2d20623e81cd13}{aiImportFileEx()}/aiImportFileExWithProperties() API. \end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{cimport_8h_5d1825f4fd3d6b384c4eee8238b7539e}{aiImportFileFromMemory} \end{Desc}
+\hypertarget{cimport_8h_df7ad488ca981fc8800e48e35ddc49e9}{
+\index{cimport.h@{cimport.h}!aiIsExtensionSupported@{aiIsExtensionSupported}}
+\index{aiIsExtensionSupported@{aiIsExtensionSupported}!cimport.h@{cimport.h}}
+\subsubsection[aiIsExtensionSupported]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API {\bf aiBool} aiIsExtensionSupported (const char $\ast$ {\em szExtension})}}
+\label{cimport_8h_df7ad488ca981fc8800e48e35ddc49e9}
+
+
+Returns whether a given file extension is supported by ASSIMP
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em szExtension}]Extension for which the function queries support for. Must include a leading dot '.'. Example: \char`\"{}.3ds\char`\"{}, \char`\"{}.md3\char`\"{} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]AI\_\-TRUE if the file extension is supported. \end{Desc}
+\hypertarget{cimport_8h_756317f04e6b1f1fdbda294a0fc9d8b2}{
+\index{cimport.h@{cimport.h}!aiMultiplyMatrix3@{aiMultiplyMatrix3}}
+\index{aiMultiplyMatrix3@{aiMultiplyMatrix3}!cimport.h@{cimport.h}}
+\subsubsection[aiMultiplyMatrix3]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiMultiplyMatrix3 (C\_\-STRUCT aiMatrix3x3 $\ast$ {\em dst}, \/  const C\_\-STRUCT aiMatrix3x3 $\ast$ {\em src})}}
+\label{cimport_8h_756317f04e6b1f1fdbda294a0fc9d8b2}
+
+
+Multiply two 3x3 matrices. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dst}]First factor, receives result. \item[{\em src}]Matrix to be multiplied with 'dst'. \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_ddcc9b42dd7afac376679bc66a98fb4e}{
+\index{cimport.h@{cimport.h}!aiMultiplyMatrix4@{aiMultiplyMatrix4}}
+\index{aiMultiplyMatrix4@{aiMultiplyMatrix4}!cimport.h@{cimport.h}}
+\subsubsection[aiMultiplyMatrix4]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiMultiplyMatrix4 (C\_\-STRUCT aiMatrix4x4 $\ast$ {\em dst}, \/  const C\_\-STRUCT aiMatrix4x4 $\ast$ {\em src})}}
+\label{cimport_8h_ddcc9b42dd7afac376679bc66a98fb4e}
+
+
+Multiply two 4x4 matrices. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dst}]First factor, receives result. \item[{\em src}]Matrix to be multiplied with 'dst'. \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_9d360f95be3deb87f40abf25d4c047dc}{
+\index{cimport.h@{cimport.h}!aiReleaseImport@{aiReleaseImport}}
+\index{aiReleaseImport@{aiReleaseImport}!cimport.h@{cimport.h}}
+\subsubsection[aiReleaseImport]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiReleaseImport (const C\_\-STRUCT {\bf aiScene} $\ast$ {\em pScene})}}
+\label{cimport_8h_9d360f95be3deb87f40abf25d4c047dc}
+
+
+Releases all resources associated with the given import process.
+
+Call this function after you're done with the imported data. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pScene}]The imported data to release. NULL is a valid value. \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_579dddd75dbba5621c235df780ffc3e6}{
+\index{cimport.h@{cimport.h}!aiReleasePropertyStore@{aiReleasePropertyStore}}
+\index{aiReleasePropertyStore@{aiReleasePropertyStore}!cimport.h@{cimport.h}}
+\subsubsection[aiReleasePropertyStore]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiReleasePropertyStore (C\_\-STRUCT {\bf aiPropertyStore} $\ast$ {\em p})}}
+\label{cimport_8h_579dddd75dbba5621c235df780ffc3e6}
+
+
+Delete a property store. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em p}]Property store to be deleted. \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_7a3fdb2a587ce72c66182b87465d664d}{
+\index{cimport.h@{cimport.h}!aiSetImportPropertyFloat@{aiSetImportPropertyFloat}}
+\index{aiSetImportPropertyFloat@{aiSetImportPropertyFloat}!cimport.h@{cimport.h}}
+\subsubsection[aiSetImportPropertyFloat]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiSetImportPropertyFloat (C\_\-STRUCT {\bf aiPropertyStore} $\ast$ {\em store}, \/  const char $\ast$ {\em szName}, \/  ai\_\-real {\em value})}}
+\label{cimport_8h_7a3fdb2a587ce72c66182b87465d664d}
+
+
+Set a floating-point property.
+
+This is the C-version of \hyperlink{class_assimp_1_1_importer_d38af78d6fe4b1f132d2534d8a84deea}{Assimp::Importer::SetPropertyFloat()}. In the C interface, properties are always shared by all imports. It is not possible to specify them per import.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em store}]Store to modify. Use \hyperlink{cimport_8h_523d3d8b510203fb1a80d8702283f8c9}{aiCreatePropertyStore} to obtain a store. \item[{\em szName}]Name of the configuration property to be set. All supported public properties are defined in the \hyperlink{config_8h}{config.h} header file (AI\_\-CONFIG\_\-XXX). \item[{\em value}]New value for the property \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_77fe5bf63f5b7811b10fb1ea072cd995}{
+\index{cimport.h@{cimport.h}!aiSetImportPropertyInteger@{aiSetImportPropertyInteger}}
+\index{aiSetImportPropertyInteger@{aiSetImportPropertyInteger}!cimport.h@{cimport.h}}
+\subsubsection[aiSetImportPropertyInteger]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiSetImportPropertyInteger (C\_\-STRUCT {\bf aiPropertyStore} $\ast$ {\em store}, \/  const char $\ast$ {\em szName}, \/  int {\em value})}}
+\label{cimport_8h_77fe5bf63f5b7811b10fb1ea072cd995}
+
+
+Set an integer property.
+
+This is the C-version of \hyperlink{class_assimp_1_1_importer_2542eed3d5f491025c4095b4e55fa068}{Assimp::Importer::SetPropertyInteger()}. In the C interface, properties are always shared by all imports. It is not possible to specify them per import.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em store}]Store to modify. Use \hyperlink{cimport_8h_523d3d8b510203fb1a80d8702283f8c9}{aiCreatePropertyStore} to obtain a store. \item[{\em szName}]Name of the configuration property to be set. All supported public properties are defined in the \hyperlink{config_8h}{config.h} header file (AI\_\-CONFIG\_\-XXX). \item[{\em value}]New value for the property \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_9c55a41ee04a8bf624d2a735eebf4c87}{
+\index{cimport.h@{cimport.h}!aiSetImportPropertyMatrix@{aiSetImportPropertyMatrix}}
+\index{aiSetImportPropertyMatrix@{aiSetImportPropertyMatrix}!cimport.h@{cimport.h}}
+\subsubsection[aiSetImportPropertyMatrix]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiSetImportPropertyMatrix (C\_\-STRUCT {\bf aiPropertyStore} $\ast$ {\em store}, \/  const char $\ast$ {\em szName}, \/  const C\_\-STRUCT aiMatrix4x4 $\ast$ {\em mat})}}
+\label{cimport_8h_9c55a41ee04a8bf624d2a735eebf4c87}
+
+
+Set a matrix property.
+
+This is the C-version of \hyperlink{class_assimp_1_1_importer_cd128e5fb5777ef238b8bd1454a9c3ad}{Assimp::Importer::SetPropertyMatrix()}. In the C interface, properties are always shared by all imports. It is not possible to specify them per import.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em store}]Store to modify. Use \hyperlink{cimport_8h_523d3d8b510203fb1a80d8702283f8c9}{aiCreatePropertyStore} to obtain a store. \item[{\em szName}]Name of the configuration property to be set. All supported public properties are defined in the \hyperlink{config_8h}{config.h} header file (AI\_\-CONFIG\_\-XXX). \item[{\em mat}]New value for the property \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_0c6f78241e9ec7b2470d193858baf22d}{
+\index{cimport.h@{cimport.h}!aiSetImportPropertyString@{aiSetImportPropertyString}}
+\index{aiSetImportPropertyString@{aiSetImportPropertyString}!cimport.h@{cimport.h}}
+\subsubsection[aiSetImportPropertyString]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiSetImportPropertyString (C\_\-STRUCT {\bf aiPropertyStore} $\ast$ {\em store}, \/  const char $\ast$ {\em szName}, \/  const C\_\-STRUCT {\bf aiString} $\ast$ {\em st})}}
+\label{cimport_8h_0c6f78241e9ec7b2470d193858baf22d}
+
+
+Set a string property.
+
+This is the C-version of \hyperlink{class_assimp_1_1_importer_854087b213981108e3e464cf4d293fed}{Assimp::Importer::SetPropertyString()}. In the C interface, properties are always shared by all imports. It is not possible to specify them per import.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em store}]Store to modify. Use \hyperlink{cimport_8h_523d3d8b510203fb1a80d8702283f8c9}{aiCreatePropertyStore} to obtain a store. \item[{\em szName}]Name of the configuration property to be set. All supported public properties are defined in the \hyperlink{config_8h}{config.h} header file (AI\_\-CONFIG\_\-XXX). \item[{\em st}]New value for the property \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_3b4fbac8311e9a41c558a0d0798a3e04}{
+\index{cimport.h@{cimport.h}!aiTransformVecByMatrix3@{aiTransformVecByMatrix3}}
+\index{aiTransformVecByMatrix3@{aiTransformVecByMatrix3}!cimport.h@{cimport.h}}
+\subsubsection[aiTransformVecByMatrix3]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiTransformVecByMatrix3 (C\_\-STRUCT aiVector3D $\ast$ {\em vec}, \/  const C\_\-STRUCT aiMatrix3x3 $\ast$ {\em mat})}}
+\label{cimport_8h_3b4fbac8311e9a41c558a0d0798a3e04}
+
+
+Transform a vector by a 3x3 matrix \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em vec}]Vector to be transformed. \item[{\em mat}]Matrix to transform the vector with. \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_e5fedd4e5296d335c3afd51cca4f180e}{
+\index{cimport.h@{cimport.h}!aiTransformVecByMatrix4@{aiTransformVecByMatrix4}}
+\index{aiTransformVecByMatrix4@{aiTransformVecByMatrix4}!cimport.h@{cimport.h}}
+\subsubsection[aiTransformVecByMatrix4]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiTransformVecByMatrix4 (C\_\-STRUCT aiVector3D $\ast$ {\em vec}, \/  const C\_\-STRUCT aiMatrix4x4 $\ast$ {\em mat})}}
+\label{cimport_8h_e5fedd4e5296d335c3afd51cca4f180e}
+
+
+Transform a vector by a 4x4 matrix \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em vec}]Vector to be transformed. \item[{\em mat}]Matrix to transform the vector with. \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_f4b7283f4fab57fe71d5ba2efa65e620}{
+\index{cimport.h@{cimport.h}!aiTransposeMatrix3@{aiTransposeMatrix3}}
+\index{aiTransposeMatrix3@{aiTransposeMatrix3}!cimport.h@{cimport.h}}
+\subsubsection[aiTransposeMatrix3]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiTransposeMatrix3 (C\_\-STRUCT aiMatrix3x3 $\ast$ {\em mat})}}
+\label{cimport_8h_f4b7283f4fab57fe71d5ba2efa65e620}
+
+
+Transpose a 3x3 matrix. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mat}]Pointer to the matrix to be transposed \end{description}
+\end{Desc}
+\hypertarget{cimport_8h_884f06d627cc76df36c9b4ba67801997}{
+\index{cimport.h@{cimport.h}!aiTransposeMatrix4@{aiTransposeMatrix4}}
+\index{aiTransposeMatrix4@{aiTransposeMatrix4}!cimport.h@{cimport.h}}
+\subsubsection[aiTransposeMatrix4]{\setlength{\rightskip}{0pt plus 5cm}ASSIMP\_\-API void aiTransposeMatrix4 (C\_\-STRUCT aiMatrix4x4 $\ast$ {\em mat})}}
+\label{cimport_8h_884f06d627cc76df36c9b4ba67801997}
+
+
+Transpose a 4x4 matrix. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mat}]Pointer to the matrix to be transposed \end{description}
+\end{Desc}

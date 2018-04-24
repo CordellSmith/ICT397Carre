@@ -1,0 +1,131 @@
+\hypertarget{group__gtc__random}{
+\section{GLM\_\-GTC\_\-random}
+\label{group__gtc__random}\index{GLM\_\-GTC\_\-random@{GLM\_\-GTC\_\-random}}
+}
+
+
+Collaboration diagram for GLM\_\-GTC\_\-random:Generate random number from various distribution methods.  
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__gtc__random_gb955b990407d8d4b62cfe2a2a89d9492}{glm::linearRand} (genType const \&Min, genType const \&Max)
+\item 
+{\footnotesize template$<$typename genType$>$ }\\GLM\_\-FUNC\_\-DECL genType \hyperlink{group__gtc__random_gc045638daf634b0221ef4baaaf643cb2}{glm::gaussRand} (genType const \&Mean, genType const \&Deviation)
+\item 
+{\footnotesize template$<$typename T$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec2$<$ T, defaultp $>$ \hyperlink{group__gtc__random_gb633996dfedab1a7f45bb5cfa1b14443}{glm::circularRand} (T const \&Radius)
+\item 
+{\footnotesize template$<$typename T$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec3$<$ T, defaultp $>$ \hyperlink{group__gtc__random_g02f5a6b98ae4e494eef340bcdd38ed35}{glm::sphericalRand} (T const \&Radius)
+\item 
+{\footnotesize template$<$typename T$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec2$<$ T, defaultp $>$ \hyperlink{group__gtc__random_gea707507f941467133dfdd4f3de9eeed}{glm::diskRand} (T const \&Radius)
+\item 
+{\footnotesize template$<$typename T$>$ }\\GLM\_\-FUNC\_\-DECL detail::tvec3$<$ T, defaultp $>$ \hyperlink{group__gtc__random_g8543dd05af529c33cb10deb832aab03a}{glm::ballRand} (T const \&Radius)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Generate random number from various distribution methods. 
+
+$<$glm/gtc/random.hpp$>$ need to be included to use these functionalities. 
+
+\subsection{Function Documentation}
+\hypertarget{group__gtc__random_g8543dd05af529c33cb10deb832aab03a}{
+\index{gtc\_\-random@{gtc\_\-random}!ballRand@{ballRand}}
+\index{ballRand@{ballRand}!gtc_random@{gtc\_\-random}}
+\subsubsection[ballRand]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, defaultp $>$ glm::ballRand (T const \& {\em Radius})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__random_g8543dd05af529c33cb10deb832aab03a}
+
+
+Generate a random 3D vector which coordinates are regulary distributed within the volume of a ball of a given radius
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Radius}]\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}
+\hypertarget{group__gtc__random_gb633996dfedab1a7f45bb5cfa1b14443}{
+\index{gtc\_\-random@{gtc\_\-random}!circularRand@{circularRand}}
+\index{circularRand@{circularRand}!gtc_random@{gtc\_\-random}}
+\subsubsection[circularRand]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec2$<$ T, defaultp $>$ glm::circularRand (T const \& {\em Radius})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__random_gb633996dfedab1a7f45bb5cfa1b14443}
+
+
+Generate a random 2D vector which coordinates are regulary distributed on a circle of a given radius
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Radius}]\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}
+\hypertarget{group__gtc__random_gea707507f941467133dfdd4f3de9eeed}{
+\index{gtc\_\-random@{gtc\_\-random}!diskRand@{diskRand}}
+\index{diskRand@{diskRand}!gtc_random@{gtc\_\-random}}
+\subsubsection[diskRand]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec2$<$ T, defaultp $>$ glm::diskRand (T const \& {\em Radius})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__random_gea707507f941467133dfdd4f3de9eeed}
+
+
+Generate a random 2D vector which coordinates are regulary distributed within the area of a disk of a given radius
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Radius}]\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}
+\hypertarget{group__gtc__random_gc045638daf634b0221ef4baaaf643cb2}{
+\index{gtc\_\-random@{gtc\_\-random}!gaussRand@{gaussRand}}
+\index{gaussRand@{gaussRand}!gtc_random@{gtc\_\-random}}
+\subsubsection[gaussRand]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::gaussRand (genType const \& {\em Mean}, \/  genType const \& {\em Deviation})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__random_gc045638daf634b0221ef4baaaf643cb2}
+
+
+Generate random numbers in the interval \mbox{[}Min, Max\mbox{]}, according a gaussian distribution
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Mean}]\item[{\em Deviation}]\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}
+\hypertarget{group__gtc__random_gb955b990407d8d4b62cfe2a2a89d9492}{
+\index{gtc\_\-random@{gtc\_\-random}!linearRand@{linearRand}}
+\index{linearRand@{linearRand}!gtc_random@{gtc\_\-random}}
+\subsubsection[linearRand]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::linearRand (genType const \& {\em Min}, \/  genType const \& {\em Max})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__random_gb955b990407d8d4b62cfe2a2a89d9492}
+
+
+Generate random numbers in the interval \mbox{[}Min, Max\mbox{]}, according a linear distribution
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Min}]\item[{\em Max}]\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Template Parameters:]
+\begin{description}
+\item[{\em genType}]Value type. Currently supported: half (not recommanded), float or double scalars and vectors. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}
+\hypertarget{group__gtc__random_g02f5a6b98ae4e494eef340bcdd38ed35}{
+\index{gtc\_\-random@{gtc\_\-random}!sphericalRand@{sphericalRand}}
+\index{sphericalRand@{sphericalRand}!gtc_random@{gtc\_\-random}}
+\subsubsection[sphericalRand]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, defaultp $>$ glm::sphericalRand (T const \& {\em Radius})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{group__gtc__random_g02f5a6b98ae4e494eef340bcdd38ed35}
+
+
+Generate a random 3D vector which coordinates are regulary distributed on a sphere of a given radius
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Radius}]\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}

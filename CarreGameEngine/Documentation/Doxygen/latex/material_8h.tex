@@ -1,0 +1,478 @@
+\hypertarget{material_8h}{
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/material.h File Reference}
+\label{material_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/material.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/material.h}}
+}
+Defines the material system of the library. 
+
+{\tt \#include \char`\"{}types.h\char`\"{}}\par
+{\tt \#include \char`\"{}./Compiler/pushpack1.h\char`\"{}}\par
+{\tt \#include \char`\"{}./Compiler/poppack1.h\char`\"{}}\par
+
+
+Include dependency graph for material.h:
+
+This graph shows which files directly or indirectly include this file:\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structai_u_v_transform}{aiUVTransform}
+\begin{CompactList}\small\item\em Defines how an UV channel is transformed. \item\end{CompactList}\item 
+struct \hyperlink{structai_material}{aiMaterial}
+\begin{CompactList}\small\item\em Data structure for a material. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \hyperlink{material_8h_fcd3096d69affba13114cedfc6f9ee6b}{aiTextureOp} \{ \par
+\hyperlink{material_8h_fcd3096d69affba13114cedfc6f9ee6b4b4cf98920571bc5b5cdf333d1642759}{aiTextureOp\_\-Multiply} =  0x0, 
+\hyperlink{material_8h_fcd3096d69affba13114cedfc6f9ee6b38c643dc19bdb5dad544c54829129d14}{aiTextureOp\_\-Add} =  0x1, 
+\hyperlink{material_8h_fcd3096d69affba13114cedfc6f9ee6bc20a0da785e4670500e7338bc59a0793}{aiTextureOp\_\-Subtract} =  0x2, 
+\hyperlink{material_8h_fcd3096d69affba13114cedfc6f9ee6bc15b6232b50780f509edf0a6b39af72c}{aiTextureOp\_\-Divide} =  0x3, 
+\par
+\hyperlink{material_8h_fcd3096d69affba13114cedfc6f9ee6b174eaa1b84bdcc131febea53da22aa4a}{aiTextureOp\_\-SmoothAdd} =  0x4, 
+\hyperlink{material_8h_fcd3096d69affba13114cedfc6f9ee6bbe30ac3d3c7bff0fe1d69c70fbd646ff}{aiTextureOp\_\-SignedAdd} =  0x5
+ \}
+\begin{CompactList}\small\item\em Defines how the Nth texture of a specific type is combined with the result of all previous layers. \item\end{CompactList}\item 
+enum \hyperlink{material_8h_6cbe56056751aa80e8dd714632a49de0}{aiTextureMapMode} \{ \hyperlink{material_8h_6cbe56056751aa80e8dd714632a49de039bee4a4d7222d7f21fc093cacac2bcf}{aiTextureMapMode\_\-Wrap} =  0x0, 
+\hyperlink{material_8h_6cbe56056751aa80e8dd714632a49de0809e31ce25b28e9fb7dba0a362293ace}{aiTextureMapMode\_\-Clamp} =  0x1, 
+\hyperlink{material_8h_6cbe56056751aa80e8dd714632a49de036bdbb449ea382cf7d3ecd7ccbd9c3e8}{aiTextureMapMode\_\-Decal} =  0x3, 
+\hyperlink{material_8h_6cbe56056751aa80e8dd714632a49de0e0105c73fb2e7e6d10e80395b6995337}{aiTextureMapMode\_\-Mirror} =  0x2
+ \}
+\begin{CompactList}\small\item\em Defines how UV coordinates outside the \mbox{[}0...1\mbox{]} range are handled. \item\end{CompactList}\item 
+enum \hyperlink{material_8h_6186e909f1ae28133ab10f1b4635b0f9}{aiTextureMapping} \{ \par
+\hyperlink{material_8h_6186e909f1ae28133ab10f1b4635b0f9fe4af8e2f0303198ff2c51edf3039277}{aiTextureMapping\_\-UV} =  0x0, 
+\hyperlink{material_8h_6186e909f1ae28133ab10f1b4635b0f9da83cfca5e55fc99dc89e0e94c91cdb5}{aiTextureMapping\_\-SPHERE} =  0x1, 
+\hyperlink{material_8h_6186e909f1ae28133ab10f1b4635b0f91f3e2bcbdb450f19666b9b0730bad9ae}{aiTextureMapping\_\-CYLINDER} =  0x2, 
+\hyperlink{material_8h_6186e909f1ae28133ab10f1b4635b0f9c680b16f3be94f101132982afd003fee}{aiTextureMapping\_\-BOX} =  0x3, 
+\par
+\hyperlink{material_8h_6186e909f1ae28133ab10f1b4635b0f9cbb0fa22c77e4c8936c1071fcacd1a64}{aiTextureMapping\_\-PLANE} =  0x4, 
+\hyperlink{material_8h_6186e909f1ae28133ab10f1b4635b0f9585fb9423e1e77a52c9096fc0b907881}{aiTextureMapping\_\-OTHER} =  0x5
+ \}
+\begin{CompactList}\small\item\em Defines how the mapping coords for a texture are generated. \item\end{CompactList}\item 
+enum \hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0}{aiTextureType} \{ \par
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde029933480f8f018b381ae8be57435a435}{aiTextureType\_\-NONE} =  0x0, 
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde03027af56603d5babd7e2efcf5ed1debd}{aiTextureType\_\-DIFFUSE} =  0x1, 
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde00fdc17eca73119fe7c4e7d17043aba6b}{aiTextureType\_\-SPECULAR} =  0x2, 
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde088d7fc7cc800d2641fd481067eca0dc4}{aiTextureType\_\-AMBIENT} =  0x3, 
+\par
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde09a8cd97191328740f68e0e77e83ac485}{aiTextureType\_\-EMISSIVE} =  0x4, 
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde05cff2209ef767617b00c2875afe7d5a7}{aiTextureType\_\-HEIGHT} =  0x5, 
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0af9089ae800fe4b3d97bc88d7686bab0}{aiTextureType\_\-NORMALS} =  0x6, 
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde08675306af91180469f7e98a438125b89}{aiTextureType\_\-SHININESS} =  0x7, 
+\par
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde068e7f8f7485bb00142a25df18e1ff148}{aiTextureType\_\-OPACITY} =  0x8, 
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0929ae2ac33faa1ffe15978933c29337e}{aiTextureType\_\-DISPLACEMENT} =  0x9, 
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde086e356815b137cd584336cab11e72820}{aiTextureType\_\-LIGHTMAP} =  0xA, 
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0a675f72b81148c5c260d408e122de7f8}{aiTextureType\_\-REFLECTION} =  0xB, 
+\par
+\hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0435cc5adea69c96c0c3205a2bde21cce}{aiTextureType\_\-UNKNOWN} =  0xC
+ \}
+\begin{CompactList}\small\item\em Defines the purpose of a texture. \item\end{CompactList}\item 
+enum \hyperlink{material_8h_93e23e0201d6ed86fb4287e15218e4cf}{aiShadingMode} \{ \par
+\hyperlink{material_8h_93e23e0201d6ed86fb4287e15218e4cf59fa2c27721e28dadd58cbd39cd46782}{aiShadingMode\_\-Flat} =  0x1, 
+\hyperlink{material_8h_93e23e0201d6ed86fb4287e15218e4cf8a20ae47f38c01554ef467c324c27431}{aiShadingMode\_\-Gouraud} =  0x2, 
+\hyperlink{material_8h_93e23e0201d6ed86fb4287e15218e4cffe5e89f846a9657232077c224fd1a914}{aiShadingMode\_\-Phong} =  0x3, 
+\hyperlink{material_8h_93e23e0201d6ed86fb4287e15218e4cfccd4aca098e73986e50c7566efd6ca1f}{aiShadingMode\_\-Blinn} =  0x4, 
+\par
+\hyperlink{material_8h_93e23e0201d6ed86fb4287e15218e4cf85c7b6a3c243a1991f4b17125a28a54c}{aiShadingMode\_\-Toon} =  0x5, 
+\hyperlink{material_8h_93e23e0201d6ed86fb4287e15218e4cfb2243130ec0bdb25a26ce829d486e55a}{aiShadingMode\_\-OrenNayar} =  0x6, 
+\hyperlink{material_8h_93e23e0201d6ed86fb4287e15218e4cf0947dbe335c16766da43fe1b992af4fb}{aiShadingMode\_\-Minnaert} =  0x7, 
+\hyperlink{material_8h_93e23e0201d6ed86fb4287e15218e4cf36519b85cbfbba437bfe1c504d3dbd6d}{aiShadingMode\_\-CookTorrance} =  0x8, 
+\par
+\hyperlink{material_8h_93e23e0201d6ed86fb4287e15218e4cf625d6dc1a678985000a1e3a9c7da1e3f}{aiShadingMode\_\-NoShading} =  0x9, 
+\hyperlink{material_8h_93e23e0201d6ed86fb4287e15218e4cfb2f24381f6f4f21cee9cef32c1fd4d5f}{aiShadingMode\_\-Fresnel} =  0xa
+ \}
+\begin{CompactList}\small\item\em Defines all shading models supported by the library. \item\end{CompactList}\item 
+enum \hyperlink{material_8h_6d003e078617e4e80d1313a6250b2dfd}{aiTextureFlags} \{ \hyperlink{material_8h_6d003e078617e4e80d1313a6250b2dfd2d22809697f40ef1969a491a8d3278ff}{aiTextureFlags\_\-Invert} =  0x1, 
+\hyperlink{material_8h_6d003e078617e4e80d1313a6250b2dfd5712da7264ec0c6e90b45580e5badbe0}{aiTextureFlags\_\-UseAlpha} =  0x2, 
+\hyperlink{material_8h_6d003e078617e4e80d1313a6250b2dfd78f2667e8304213210c2508b7af47499}{aiTextureFlags\_\-IgnoreAlpha} =  0x4
+ \}
+\begin{CompactList}\small\item\em Defines some mixed flags for a particular texture. \item\end{CompactList}\item 
+enum \hyperlink{material_8h_e1236da1ccfbf4f23bb490287a4d61ac}{aiBlendMode} \{ \hyperlink{material_8h_e1236da1ccfbf4f23bb490287a4d61ac2df47d5d42d73938d3d273a75db671b0}{aiBlendMode\_\-Default} =  0x0, 
+\hyperlink{material_8h_e1236da1ccfbf4f23bb490287a4d61ac60eb5958c8fd4147bafd9098edf54e1e}{aiBlendMode\_\-Additive} =  0x1
+ \}
+\begin{CompactList}\small\item\em Defines alpha-blend flags. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structai_u_v_transform}{aiUVTransform} \hyperlink{material_8h_1c71a5aad6d48840ab1fb4a0e9fb2ac6}{PACK\_\-STRUCT}
+\begin{CompactList}\small\item\em Defines how an UV channel is transformed. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the material system of the library. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{material_8h_e1236da1ccfbf4f23bb490287a4d61ac}{
+\index{material.h@{material.h}!aiBlendMode@{aiBlendMode}}
+\index{aiBlendMode@{aiBlendMode}!material.h@{material.h}}
+\subsubsection[aiBlendMode]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiBlendMode}}}
+\label{material_8h_e1236da1ccfbf4f23bb490287a4d61ac}
+
+
+Defines alpha-blend flags. 
+
+If you're familiar with OpenGL or D3D, these flags aren't new to you. They define $\ast$how$\ast$ the final color value of a pixel is computed, basing on the previous color at that pixel and the new color value from the material. The blend formula is: 
+
+\begin{Code}\begin{verbatim}    SourceColor * SourceBlend + DestColor * DestBlend
+\end{verbatim}
+\end{Code}
+
+ where DestColor is the previous color in the framebuffer at this position and SourceColor is the material color before the transparency calculation.\par
+ This corresponds to the AI\_\-MATKEY\_\-BLEND\_\-FUNC property. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiBlendMode\_\-Default@{aiBlendMode\_\-Default}!material.h@{material.h}}\index{material.h@{material.h}!aiBlendMode\_\-Default@{aiBlendMode\_\-Default}}\item[{\em 
+\hypertarget{material_8h_e1236da1ccfbf4f23bb490287a4d61ac2df47d5d42d73938d3d273a75db671b0}{
+aiBlendMode\_\-Default}
+\label{material_8h_e1236da1ccfbf4f23bb490287a4d61ac2df47d5d42d73938d3d273a75db671b0}
+}]Formula: 
+
+\begin{Code}\begin{verbatim}  SourceColor*SourceAlpha + DestColor*(1-SourceAlpha)
+\end{verbatim}
+\end{Code}
+
+ \index{aiBlendMode\_\-Additive@{aiBlendMode\_\-Additive}!material.h@{material.h}}\index{material.h@{material.h}!aiBlendMode\_\-Additive@{aiBlendMode\_\-Additive}}\item[{\em 
+\hypertarget{material_8h_e1236da1ccfbf4f23bb490287a4d61ac60eb5958c8fd4147bafd9098edf54e1e}{
+aiBlendMode\_\-Additive}
+\label{material_8h_e1236da1ccfbf4f23bb490287a4d61ac60eb5958c8fd4147bafd9098edf54e1e}
+}]Additive blending
+
+Formula: 
+
+\begin{Code}\begin{verbatim}  SourceColor*1 + DestColor*1
+\end{verbatim}
+\end{Code}
+
+ \end{description}
+\end{Desc}
+
+\hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cf}{
+\index{material.h@{material.h}!aiShadingMode@{aiShadingMode}}
+\index{aiShadingMode@{aiShadingMode}!material.h@{material.h}}
+\subsubsection[aiShadingMode]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiShadingMode}}}
+\label{material_8h_93e23e0201d6ed86fb4287e15218e4cf}
+
+
+Defines all shading models supported by the library. 
+
+The list of shading modes has been taken from Blender. See Blender documentation for more information. The API does not distinguish between \char`\"{}specular\char`\"{} and \char`\"{}diffuse\char`\"{} shaders (thus the specular term for diffuse shading models like Oren-Nayar remains undefined). \par
+ Again, this value is just a hint. \hyperlink{namespace_assimp}{Assimp} tries to select the shader whose most common implementation matches the original rendering results of the 3D modeller which wrote a particular model as closely as possible. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiShadingMode\_\-Flat@{aiShadingMode\_\-Flat}!material.h@{material.h}}\index{material.h@{material.h}!aiShadingMode\_\-Flat@{aiShadingMode\_\-Flat}}\item[{\em 
+\hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cf59fa2c27721e28dadd58cbd39cd46782}{
+aiShadingMode\_\-Flat}
+\label{material_8h_93e23e0201d6ed86fb4287e15218e4cf59fa2c27721e28dadd58cbd39cd46782}
+}]Flat shading. Shading is done on per-face base, diffuse only. Also known as 'faceted shading'. \index{aiShadingMode\_\-Gouraud@{aiShadingMode\_\-Gouraud}!material.h@{material.h}}\index{material.h@{material.h}!aiShadingMode\_\-Gouraud@{aiShadingMode\_\-Gouraud}}\item[{\em 
+\hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cf8a20ae47f38c01554ef467c324c27431}{
+aiShadingMode\_\-Gouraud}
+\label{material_8h_93e23e0201d6ed86fb4287e15218e4cf8a20ae47f38c01554ef467c324c27431}
+}]Simple Gouraud shading. \index{aiShadingMode\_\-Phong@{aiShadingMode\_\-Phong}!material.h@{material.h}}\index{material.h@{material.h}!aiShadingMode\_\-Phong@{aiShadingMode\_\-Phong}}\item[{\em 
+\hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cffe5e89f846a9657232077c224fd1a914}{
+aiShadingMode\_\-Phong}
+\label{material_8h_93e23e0201d6ed86fb4287e15218e4cffe5e89f846a9657232077c224fd1a914}
+}]Phong-Shading - \index{aiShadingMode\_\-Blinn@{aiShadingMode\_\-Blinn}!material.h@{material.h}}\index{material.h@{material.h}!aiShadingMode\_\-Blinn@{aiShadingMode\_\-Blinn}}\item[{\em 
+\hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cfccd4aca098e73986e50c7566efd6ca1f}{
+aiShadingMode\_\-Blinn}
+\label{material_8h_93e23e0201d6ed86fb4287e15218e4cfccd4aca098e73986e50c7566efd6ca1f}
+}]Phong-Blinn-Shading \index{aiShadingMode\_\-Toon@{aiShadingMode\_\-Toon}!material.h@{material.h}}\index{material.h@{material.h}!aiShadingMode\_\-Toon@{aiShadingMode\_\-Toon}}\item[{\em 
+\hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cf85c7b6a3c243a1991f4b17125a28a54c}{
+aiShadingMode\_\-Toon}
+\label{material_8h_93e23e0201d6ed86fb4287e15218e4cf85c7b6a3c243a1991f4b17125a28a54c}
+}]Toon-Shading per pixel
+
+Also known as 'comic' shader. \index{aiShadingMode\_\-OrenNayar@{aiShadingMode\_\-OrenNayar}!material.h@{material.h}}\index{material.h@{material.h}!aiShadingMode\_\-OrenNayar@{aiShadingMode\_\-OrenNayar}}\item[{\em 
+\hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cfb2243130ec0bdb25a26ce829d486e55a}{
+aiShadingMode\_\-OrenNayar}
+\label{material_8h_93e23e0201d6ed86fb4287e15218e4cfb2243130ec0bdb25a26ce829d486e55a}
+}]OrenNayar-Shading per pixel
+
+Extension to standard Lambertian shading, taking the roughness of the material into account \index{aiShadingMode\_\-Minnaert@{aiShadingMode\_\-Minnaert}!material.h@{material.h}}\index{material.h@{material.h}!aiShadingMode\_\-Minnaert@{aiShadingMode\_\-Minnaert}}\item[{\em 
+\hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cf0947dbe335c16766da43fe1b992af4fb}{
+aiShadingMode\_\-Minnaert}
+\label{material_8h_93e23e0201d6ed86fb4287e15218e4cf0947dbe335c16766da43fe1b992af4fb}
+}]Minnaert-Shading per pixel
+
+Extension to standard Lambertian shading, taking the \char`\"{}darkness\char`\"{} of the material into account \index{aiShadingMode\_\-CookTorrance@{aiShadingMode\_\-CookTorrance}!material.h@{material.h}}\index{material.h@{material.h}!aiShadingMode\_\-CookTorrance@{aiShadingMode\_\-CookTorrance}}\item[{\em 
+\hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cf36519b85cbfbba437bfe1c504d3dbd6d}{
+aiShadingMode\_\-CookTorrance}
+\label{material_8h_93e23e0201d6ed86fb4287e15218e4cf36519b85cbfbba437bfe1c504d3dbd6d}
+}]CookTorrance-Shading per pixel
+
+Special shader for metallic surfaces. \index{aiShadingMode\_\-NoShading@{aiShadingMode\_\-NoShading}!material.h@{material.h}}\index{material.h@{material.h}!aiShadingMode\_\-NoShading@{aiShadingMode\_\-NoShading}}\item[{\em 
+\hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cf625d6dc1a678985000a1e3a9c7da1e3f}{
+aiShadingMode\_\-NoShading}
+\label{material_8h_93e23e0201d6ed86fb4287e15218e4cf625d6dc1a678985000a1e3a9c7da1e3f}
+}]No shading at all. Constant light influence of 1.0. \index{aiShadingMode\_\-Fresnel@{aiShadingMode\_\-Fresnel}!material.h@{material.h}}\index{material.h@{material.h}!aiShadingMode\_\-Fresnel@{aiShadingMode\_\-Fresnel}}\item[{\em 
+\hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cfb2f24381f6f4f21cee9cef32c1fd4d5f}{
+aiShadingMode\_\-Fresnel}
+\label{material_8h_93e23e0201d6ed86fb4287e15218e4cfb2f24381f6f4f21cee9cef32c1fd4d5f}
+}]Fresnel shading \end{description}
+\end{Desc}
+
+\hypertarget{material_8h_6d003e078617e4e80d1313a6250b2dfd}{
+\index{material.h@{material.h}!aiTextureFlags@{aiTextureFlags}}
+\index{aiTextureFlags@{aiTextureFlags}!material.h@{material.h}}
+\subsubsection[aiTextureFlags]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiTextureFlags}}}
+\label{material_8h_6d003e078617e4e80d1313a6250b2dfd}
+
+
+Defines some mixed flags for a particular texture. 
+
+Usually you'll instruct your cg artists how textures have to look like ... and how they will be processed in your application. However, if you use \hyperlink{namespace_assimp}{Assimp} for completely generic loading purposes you might also need to process these flags in order to display as many 'unknown' 3D models as possible correctly.
+
+This corresponds to the AI\_\-MATKEY\_\-TEXFLAGS property. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiTextureFlags\_\-Invert@{aiTextureFlags\_\-Invert}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureFlags\_\-Invert@{aiTextureFlags\_\-Invert}}\item[{\em 
+\hypertarget{material_8h_6d003e078617e4e80d1313a6250b2dfd2d22809697f40ef1969a491a8d3278ff}{
+aiTextureFlags\_\-Invert}
+\label{material_8h_6d003e078617e4e80d1313a6250b2dfd2d22809697f40ef1969a491a8d3278ff}
+}]The texture's color values have to be inverted (componentwise 1-n) \index{aiTextureFlags\_\-UseAlpha@{aiTextureFlags\_\-UseAlpha}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureFlags\_\-UseAlpha@{aiTextureFlags\_\-UseAlpha}}\item[{\em 
+\hypertarget{material_8h_6d003e078617e4e80d1313a6250b2dfd5712da7264ec0c6e90b45580e5badbe0}{
+aiTextureFlags\_\-UseAlpha}
+\label{material_8h_6d003e078617e4e80d1313a6250b2dfd5712da7264ec0c6e90b45580e5badbe0}
+}]Explicit request to the application to process the alpha channel of the texture.
+
+Mutually exclusive with \hyperlink{material_8h_6d003e078617e4e80d1313a6250b2dfd78f2667e8304213210c2508b7af47499}{aiTextureFlags\_\-IgnoreAlpha}. These flags are set if the library can say for sure that the alpha channel is used/is not used. If the model format does not define this, it is left to the application to decide whether the texture alpha channel - if any - is evaluated or not. \index{aiTextureFlags\_\-IgnoreAlpha@{aiTextureFlags\_\-IgnoreAlpha}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureFlags\_\-IgnoreAlpha@{aiTextureFlags\_\-IgnoreAlpha}}\item[{\em 
+\hypertarget{material_8h_6d003e078617e4e80d1313a6250b2dfd78f2667e8304213210c2508b7af47499}{
+aiTextureFlags\_\-IgnoreAlpha}
+\label{material_8h_6d003e078617e4e80d1313a6250b2dfd78f2667e8304213210c2508b7af47499}
+}]Explicit request to the application to ignore the alpha channel of the texture.
+
+Mutually exclusive with \hyperlink{material_8h_6d003e078617e4e80d1313a6250b2dfd5712da7264ec0c6e90b45580e5badbe0}{aiTextureFlags\_\-UseAlpha}. \end{description}
+\end{Desc}
+
+\hypertarget{material_8h_6cbe56056751aa80e8dd714632a49de0}{
+\index{material.h@{material.h}!aiTextureMapMode@{aiTextureMapMode}}
+\index{aiTextureMapMode@{aiTextureMapMode}!material.h@{material.h}}
+\subsubsection[aiTextureMapMode]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiTextureMapMode}}}
+\label{material_8h_6cbe56056751aa80e8dd714632a49de0}
+
+
+Defines how UV coordinates outside the \mbox{[}0...1\mbox{]} range are handled. 
+
+Commonly referred to as 'wrapping mode'. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiTextureMapMode\_\-Wrap@{aiTextureMapMode\_\-Wrap}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureMapMode\_\-Wrap@{aiTextureMapMode\_\-Wrap}}\item[{\em 
+\hypertarget{material_8h_6cbe56056751aa80e8dd714632a49de039bee4a4d7222d7f21fc093cacac2bcf}{
+aiTextureMapMode\_\-Wrap}
+\label{material_8h_6cbe56056751aa80e8dd714632a49de039bee4a4d7222d7f21fc093cacac2bcf}
+}]A texture coordinate u$|$v is translated to u1$|$v1 \index{aiTextureMapMode\_\-Clamp@{aiTextureMapMode\_\-Clamp}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureMapMode\_\-Clamp@{aiTextureMapMode\_\-Clamp}}\item[{\em 
+\hypertarget{material_8h_6cbe56056751aa80e8dd714632a49de0809e31ce25b28e9fb7dba0a362293ace}{
+aiTextureMapMode\_\-Clamp}
+\label{material_8h_6cbe56056751aa80e8dd714632a49de0809e31ce25b28e9fb7dba0a362293ace}
+}]Texture coordinates outside \mbox{[}0...1\mbox{]} are clamped to the nearest valid value. \index{aiTextureMapMode\_\-Decal@{aiTextureMapMode\_\-Decal}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureMapMode\_\-Decal@{aiTextureMapMode\_\-Decal}}\item[{\em 
+\hypertarget{material_8h_6cbe56056751aa80e8dd714632a49de036bdbb449ea382cf7d3ecd7ccbd9c3e8}{
+aiTextureMapMode\_\-Decal}
+\label{material_8h_6cbe56056751aa80e8dd714632a49de036bdbb449ea382cf7d3ecd7ccbd9c3e8}
+}]If the texture coordinates for a pixel are outside \mbox{[}0...1\mbox{]} the texture is not applied to that pixel \index{aiTextureMapMode\_\-Mirror@{aiTextureMapMode\_\-Mirror}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureMapMode\_\-Mirror@{aiTextureMapMode\_\-Mirror}}\item[{\em 
+\hypertarget{material_8h_6cbe56056751aa80e8dd714632a49de0e0105c73fb2e7e6d10e80395b6995337}{
+aiTextureMapMode\_\-Mirror}
+\label{material_8h_6cbe56056751aa80e8dd714632a49de0e0105c73fb2e7e6d10e80395b6995337}
+}]A texture coordinate u$|$v becomes u1$|$v1 if (u-(u1))2 is zero and 1-(u1)$|$1-(v1) otherwise \end{description}
+\end{Desc}
+
+\hypertarget{material_8h_6186e909f1ae28133ab10f1b4635b0f9}{
+\index{material.h@{material.h}!aiTextureMapping@{aiTextureMapping}}
+\index{aiTextureMapping@{aiTextureMapping}!material.h@{material.h}}
+\subsubsection[aiTextureMapping]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiTextureMapping}}}
+\label{material_8h_6186e909f1ae28133ab10f1b4635b0f9}
+
+
+Defines how the mapping coords for a texture are generated. 
+
+Real-time applications typically require full UV coordinates, so the use of the aiProcess\_\-GenUVCoords step is highly recommended. It generates proper UV channels for non-UV mapped objects, as long as an accurate description how the mapping should look like (e.g spherical) is given. See the AI\_\-MATKEY\_\-MAPPING property for more details. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiTextureMapping\_\-UV@{aiTextureMapping\_\-UV}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureMapping\_\-UV@{aiTextureMapping\_\-UV}}\item[{\em 
+\hypertarget{material_8h_6186e909f1ae28133ab10f1b4635b0f9fe4af8e2f0303198ff2c51edf3039277}{
+aiTextureMapping\_\-UV}
+\label{material_8h_6186e909f1ae28133ab10f1b4635b0f9fe4af8e2f0303198ff2c51edf3039277}
+}]The mapping coordinates are taken from an UV channel.
+
+The AI\_\-MATKEY\_\-UVWSRC key specifies from which UV channel the texture coordinates are to be taken from (remember, meshes can have more than one UV channel). \index{aiTextureMapping\_\-SPHERE@{aiTextureMapping\_\-SPHERE}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureMapping\_\-SPHERE@{aiTextureMapping\_\-SPHERE}}\item[{\em 
+\hypertarget{material_8h_6186e909f1ae28133ab10f1b4635b0f9da83cfca5e55fc99dc89e0e94c91cdb5}{
+aiTextureMapping\_\-SPHERE}
+\label{material_8h_6186e909f1ae28133ab10f1b4635b0f9da83cfca5e55fc99dc89e0e94c91cdb5}
+}]Spherical mapping \index{aiTextureMapping\_\-CYLINDER@{aiTextureMapping\_\-CYLINDER}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureMapping\_\-CYLINDER@{aiTextureMapping\_\-CYLINDER}}\item[{\em 
+\hypertarget{material_8h_6186e909f1ae28133ab10f1b4635b0f91f3e2bcbdb450f19666b9b0730bad9ae}{
+aiTextureMapping\_\-CYLINDER}
+\label{material_8h_6186e909f1ae28133ab10f1b4635b0f91f3e2bcbdb450f19666b9b0730bad9ae}
+}]Cylindrical mapping \index{aiTextureMapping\_\-BOX@{aiTextureMapping\_\-BOX}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureMapping\_\-BOX@{aiTextureMapping\_\-BOX}}\item[{\em 
+\hypertarget{material_8h_6186e909f1ae28133ab10f1b4635b0f9c680b16f3be94f101132982afd003fee}{
+aiTextureMapping\_\-BOX}
+\label{material_8h_6186e909f1ae28133ab10f1b4635b0f9c680b16f3be94f101132982afd003fee}
+}]Cubic mapping \index{aiTextureMapping\_\-PLANE@{aiTextureMapping\_\-PLANE}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureMapping\_\-PLANE@{aiTextureMapping\_\-PLANE}}\item[{\em 
+\hypertarget{material_8h_6186e909f1ae28133ab10f1b4635b0f9cbb0fa22c77e4c8936c1071fcacd1a64}{
+aiTextureMapping\_\-PLANE}
+\label{material_8h_6186e909f1ae28133ab10f1b4635b0f9cbb0fa22c77e4c8936c1071fcacd1a64}
+}]Planar mapping \index{aiTextureMapping\_\-OTHER@{aiTextureMapping\_\-OTHER}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureMapping\_\-OTHER@{aiTextureMapping\_\-OTHER}}\item[{\em 
+\hypertarget{material_8h_6186e909f1ae28133ab10f1b4635b0f9585fb9423e1e77a52c9096fc0b907881}{
+aiTextureMapping\_\-OTHER}
+\label{material_8h_6186e909f1ae28133ab10f1b4635b0f9585fb9423e1e77a52c9096fc0b907881}
+}]Undefined mapping. Have fun. \end{description}
+\end{Desc}
+
+\hypertarget{material_8h_fcd3096d69affba13114cedfc6f9ee6b}{
+\index{material.h@{material.h}!aiTextureOp@{aiTextureOp}}
+\index{aiTextureOp@{aiTextureOp}!material.h@{material.h}}
+\subsubsection[aiTextureOp]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiTextureOp}}}
+\label{material_8h_fcd3096d69affba13114cedfc6f9ee6b}
+
+
+Defines how the Nth texture of a specific type is combined with the result of all previous layers. 
+
+Example (left: key, right: value): \par
+ 
+
+\begin{Code}\begin{verbatim}  DiffColor0     - gray
+  DiffTextureOp0 - aiTextureOpMultiply
+  DiffTexture0   - tex1.png
+  DiffTextureOp0 - aiTextureOpAdd
+  DiffTexture1   - tex2.png
+\end{verbatim}
+\end{Code}
+
+ Written as equation, the final diffuse term for a specific pixel would be: 
+
+\begin{Code}\begin{verbatim}  diffFinal = DiffColor0 * sampleTex(DiffTexture0,UV0) +
+     sampleTex(DiffTexture1,UV0) * diffContrib;
+\end{verbatim}
+\end{Code}
+
+ where 'diffContrib' is the intensity of the incoming light for that pixel. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiTextureOp\_\-Multiply@{aiTextureOp\_\-Multiply}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureOp\_\-Multiply@{aiTextureOp\_\-Multiply}}\item[{\em 
+\hypertarget{material_8h_fcd3096d69affba13114cedfc6f9ee6b4b4cf98920571bc5b5cdf333d1642759}{
+aiTextureOp\_\-Multiply}
+\label{material_8h_fcd3096d69affba13114cedfc6f9ee6b4b4cf98920571bc5b5cdf333d1642759}
+}]T = T1 $\ast$ T2 \index{aiTextureOp\_\-Add@{aiTextureOp\_\-Add}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureOp\_\-Add@{aiTextureOp\_\-Add}}\item[{\em 
+\hypertarget{material_8h_fcd3096d69affba13114cedfc6f9ee6b38c643dc19bdb5dad544c54829129d14}{
+aiTextureOp\_\-Add}
+\label{material_8h_fcd3096d69affba13114cedfc6f9ee6b38c643dc19bdb5dad544c54829129d14}
+}]T = T1 + T2 \index{aiTextureOp\_\-Subtract@{aiTextureOp\_\-Subtract}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureOp\_\-Subtract@{aiTextureOp\_\-Subtract}}\item[{\em 
+\hypertarget{material_8h_fcd3096d69affba13114cedfc6f9ee6bc20a0da785e4670500e7338bc59a0793}{
+aiTextureOp\_\-Subtract}
+\label{material_8h_fcd3096d69affba13114cedfc6f9ee6bc20a0da785e4670500e7338bc59a0793}
+}]T = T1 - T2 \index{aiTextureOp\_\-Divide@{aiTextureOp\_\-Divide}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureOp\_\-Divide@{aiTextureOp\_\-Divide}}\item[{\em 
+\hypertarget{material_8h_fcd3096d69affba13114cedfc6f9ee6bc15b6232b50780f509edf0a6b39af72c}{
+aiTextureOp\_\-Divide}
+\label{material_8h_fcd3096d69affba13114cedfc6f9ee6bc15b6232b50780f509edf0a6b39af72c}
+}]T = T1 / T2 \index{aiTextureOp\_\-SmoothAdd@{aiTextureOp\_\-SmoothAdd}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureOp\_\-SmoothAdd@{aiTextureOp\_\-SmoothAdd}}\item[{\em 
+\hypertarget{material_8h_fcd3096d69affba13114cedfc6f9ee6b174eaa1b84bdcc131febea53da22aa4a}{
+aiTextureOp\_\-SmoothAdd}
+\label{material_8h_fcd3096d69affba13114cedfc6f9ee6b174eaa1b84bdcc131febea53da22aa4a}
+}]T = (T1 + T2) - (T1 $\ast$ T2) \index{aiTextureOp\_\-SignedAdd@{aiTextureOp\_\-SignedAdd}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureOp\_\-SignedAdd@{aiTextureOp\_\-SignedAdd}}\item[{\em 
+\hypertarget{material_8h_fcd3096d69affba13114cedfc6f9ee6bbe30ac3d3c7bff0fe1d69c70fbd646ff}{
+aiTextureOp\_\-SignedAdd}
+\label{material_8h_fcd3096d69affba13114cedfc6f9ee6bbe30ac3d3c7bff0fe1d69c70fbd646ff}
+}]T = T1 + (T2-0.5) \end{description}
+\end{Desc}
+
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0}{
+\index{material.h@{material.h}!aiTextureType@{aiTextureType}}
+\index{aiTextureType@{aiTextureType}!material.h@{material.h}}
+\subsubsection[aiTextureType]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf aiTextureType}}}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0}
+
+
+Defines the purpose of a texture. 
+
+This is a very difficult topic. Different 3D packages support different kinds of textures. For very common texture types, such as bumpmaps, the rendering results depend on implementation details in the rendering pipelines of these applications. \hyperlink{namespace_assimp}{Assimp} loads all texture references from the model file and tries to determine which of the predefined texture types below is the best choice to match the original use of the texture as closely as possible.\par
+
+
+In content pipelines you'll usually define how textures have to be handled, and the artists working on models have to conform to this specification, regardless which 3D tool they're using. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{aiTextureType\_\-NONE@{aiTextureType\_\-NONE}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-NONE@{aiTextureType\_\-NONE}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde029933480f8f018b381ae8be57435a435}{
+aiTextureType\_\-NONE}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde029933480f8f018b381ae8be57435a435}
+}]Dummy value.
+
+No texture, but the value to be used as 'texture semantic' (aiMaterialProperty::mSemantic) for all material properties $\ast$not$\ast$ related to textures. \index{aiTextureType\_\-DIFFUSE@{aiTextureType\_\-DIFFUSE}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-DIFFUSE@{aiTextureType\_\-DIFFUSE}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde03027af56603d5babd7e2efcf5ed1debd}{
+aiTextureType\_\-DIFFUSE}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde03027af56603d5babd7e2efcf5ed1debd}
+}]The texture is combined with the result of the diffuse lighting equation. \index{aiTextureType\_\-SPECULAR@{aiTextureType\_\-SPECULAR}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-SPECULAR@{aiTextureType\_\-SPECULAR}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde00fdc17eca73119fe7c4e7d17043aba6b}{
+aiTextureType\_\-SPECULAR}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde00fdc17eca73119fe7c4e7d17043aba6b}
+}]The texture is combined with the result of the specular lighting equation. \index{aiTextureType\_\-AMBIENT@{aiTextureType\_\-AMBIENT}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-AMBIENT@{aiTextureType\_\-AMBIENT}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde088d7fc7cc800d2641fd481067eca0dc4}{
+aiTextureType\_\-AMBIENT}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde088d7fc7cc800d2641fd481067eca0dc4}
+}]The texture is combined with the result of the ambient lighting equation. \index{aiTextureType\_\-EMISSIVE@{aiTextureType\_\-EMISSIVE}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-EMISSIVE@{aiTextureType\_\-EMISSIVE}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde09a8cd97191328740f68e0e77e83ac485}{
+aiTextureType\_\-EMISSIVE}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde09a8cd97191328740f68e0e77e83ac485}
+}]The texture is added to the result of the lighting calculation. It isn't influenced by incoming light. \index{aiTextureType\_\-HEIGHT@{aiTextureType\_\-HEIGHT}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-HEIGHT@{aiTextureType\_\-HEIGHT}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde05cff2209ef767617b00c2875afe7d5a7}{
+aiTextureType\_\-HEIGHT}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde05cff2209ef767617b00c2875afe7d5a7}
+}]The texture is a height map.
+
+By convention, higher gray-scale values stand for higher elevations from the base height. \index{aiTextureType\_\-NORMALS@{aiTextureType\_\-NORMALS}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-NORMALS@{aiTextureType\_\-NORMALS}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0af9089ae800fe4b3d97bc88d7686bab0}{
+aiTextureType\_\-NORMALS}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0af9089ae800fe4b3d97bc88d7686bab0}
+}]The texture is a (tangent space) normal-map.
+
+Again, there are several conventions for tangent-space normal maps. \hyperlink{namespace_assimp}{Assimp} does (intentionally) not distinguish here. \index{aiTextureType\_\-SHININESS@{aiTextureType\_\-SHININESS}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-SHININESS@{aiTextureType\_\-SHININESS}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde08675306af91180469f7e98a438125b89}{
+aiTextureType\_\-SHININESS}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde08675306af91180469f7e98a438125b89}
+}]The texture defines the glossiness of the material.
+
+The glossiness is in fact the exponent of the specular (phong) lighting equation. Usually there is a conversion function defined to map the linear color values in the texture to a suitable exponent. Have fun. \index{aiTextureType\_\-OPACITY@{aiTextureType\_\-OPACITY}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-OPACITY@{aiTextureType\_\-OPACITY}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde068e7f8f7485bb00142a25df18e1ff148}{
+aiTextureType\_\-OPACITY}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde068e7f8f7485bb00142a25df18e1ff148}
+}]The texture defines per-pixel opacity.
+
+Usually 'white' means opaque and 'black' means 'transparency'. Or quite the opposite. Have fun. \index{aiTextureType\_\-DISPLACEMENT@{aiTextureType\_\-DISPLACEMENT}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-DISPLACEMENT@{aiTextureType\_\-DISPLACEMENT}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0929ae2ac33faa1ffe15978933c29337e}{
+aiTextureType\_\-DISPLACEMENT}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0929ae2ac33faa1ffe15978933c29337e}
+}]Displacement texture
+
+The exact purpose and format is application-dependent. Higher color values stand for higher vertex displacements. \index{aiTextureType\_\-LIGHTMAP@{aiTextureType\_\-LIGHTMAP}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-LIGHTMAP@{aiTextureType\_\-LIGHTMAP}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde086e356815b137cd584336cab11e72820}{
+aiTextureType\_\-LIGHTMAP}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde086e356815b137cd584336cab11e72820}
+}]Lightmap texture (aka Ambient Occlusion)
+
+Both 'Lightmaps' and dedicated 'ambient occlusion maps' are covered by this material property. The texture contains a scaling value for the final color value of a pixel. Its intensity is not affected by incoming light. \index{aiTextureType\_\-REFLECTION@{aiTextureType\_\-REFLECTION}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-REFLECTION@{aiTextureType\_\-REFLECTION}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0a675f72b81148c5c260d408e122de7f8}{
+aiTextureType\_\-REFLECTION}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0a675f72b81148c5c260d408e122de7f8}
+}]Reflection texture
+
+Contains the color of a perfect mirror reflection. Rarely used, almost never for real-time applications. \index{aiTextureType\_\-UNKNOWN@{aiTextureType\_\-UNKNOWN}!material.h@{material.h}}\index{material.h@{material.h}!aiTextureType\_\-UNKNOWN@{aiTextureType\_\-UNKNOWN}}\item[{\em 
+\hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0435cc5adea69c96c0c3205a2bde21cce}{
+aiTextureType\_\-UNKNOWN}
+\label{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0435cc5adea69c96c0c3205a2bde21cce}
+}]Unknown texture
+
+A texture reference that does not match any of the definitions above is considered to be 'unknown'. It is still imported, but is excluded from any further postprocessing. \end{description}
+\end{Desc}
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{material_8h_1c71a5aad6d48840ab1fb4a0e9fb2ac6}{
+\index{material.h@{material.h}!PACK\_\-STRUCT@{PACK\_\-STRUCT}}
+\index{PACK\_\-STRUCT@{PACK\_\-STRUCT}!material.h@{material.h}}
+\subsubsection[PACK\_\-STRUCT]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf aiUVTransform}  {\bf PACK\_\-STRUCT}}}
+\label{material_8h_1c71a5aad6d48840ab1fb4a0e9fb2ac6}
+
+
+Defines how an UV channel is transformed. 
+
+This is just a helper structure for the AI\_\-MATKEY\_\-UVTRANSFORM key. See its documentation for more details.
+
+Typically you'll want to build a matrix of this information. However, we keep separate scaling/translation/rotation values to make it easier to process and optimize UV transformations internally. 
