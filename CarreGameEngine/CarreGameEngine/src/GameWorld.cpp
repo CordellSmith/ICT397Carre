@@ -84,7 +84,7 @@ void GameWorld::Update()
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		itr->second->SetCamera(m_camera);
-		itr->second->SetObjectPosition(glm::vec3(0.0, 0.0, 2.0));
+		//itr->second->SetObjectPosition(glm::vec3(0.0, 0.0, 5.0));
 		itr->second->Render(m_assimpShaderSource.VertexSource, m_assimpShaderSource.FragmentSource);
 	}
 }

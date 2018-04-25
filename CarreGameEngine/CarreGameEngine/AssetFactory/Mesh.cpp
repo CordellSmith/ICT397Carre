@@ -1,11 +1,12 @@
 #include "Mesh.h"
 
-Mesh::Mesh(std::vector<Vertex3> vertices, int numOfVertexs, std::vector<unsigned int> indices)
+Mesh::Mesh(std::vector<Vertex3> vertices, int numOfVertexs, std::vector<unsigned int> indices, std::vector<Texture> textures)
 {
 	m_camera = new Camera();
 	m_vertices = vertices;
 	m_numOfVertexs = numOfVertexs;
 	m_indices = indices;
+	m_textures = textures;
 
 	SetupMesh();
 }
@@ -40,6 +41,24 @@ void Mesh::Draw(Shader* shader)
 {
 	shader->TurnOn();
 
+	unsigned int diffuseNr = 1;
+	unsigned int specularNr = 1;
+	for (unsigned int i = 0; i < m_textures.size(); i++)
+	{
+		glActiveTexture(GL_TEXTURE0 + i); // activate proper texture unit before binding
+										  // retrieve texture number (the N in diffuse_textureN)
+		std::string number;
+		std::string name = m_textures[i].m_type;
+		if (name == "texture_diffuse")
+			number = std::to_string(diffuseNr++);
+		else if (name == "texture_specular")
+			number = std::to_string(specularNr++);
+		GLuint textureUniformId = shader->GetVariable(("material." + name + number).c_str());
+		shader->SetFloat(textureUniformId, i);
+		glBindTexture(GL_TEXTURE_2D, m_textures[i].m_id);
+	}
+	glActiveTexture(GL_TEXTURE0);
+	
 	// Grab the view and projection matrices
 	glm::mat4 projectionMatrix = m_camera->GetProjectionMatrix();
 	glm::mat4 viewMatrix = m_camera->GetViewMatrix();

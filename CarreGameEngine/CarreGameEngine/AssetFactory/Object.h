@@ -115,6 +115,4 @@ protected:
 	std::string m_filePath;
 	/// Model object
 	NewModel* m_model;
-
-	Shader* m_shader;
 };

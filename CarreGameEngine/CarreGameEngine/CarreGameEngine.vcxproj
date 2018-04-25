@@ -152,6 +152,7 @@
     <ClInclude Include="headers\Singleton.h" />
     <ClInclude Include="headers\TimeManager.h" />
     <ClInclude Include="headers\WindowManager.h" />
+    <ClInclude Include="ImageDB\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetFactory\GameAssetFactory.cpp" />

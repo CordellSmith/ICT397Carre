@@ -13,6 +13,7 @@
 #include <GLM\gtx\transform2.hpp>
 #include "PhysicsEngine.h"
 #include "..\AssetFactory\IGameObject.h"
+#include "..\ImageDB\stb_image.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 

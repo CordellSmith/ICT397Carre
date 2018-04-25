@@ -16,7 +16,11 @@ class NewModel
 {
 public:
 	// Must initialise shader
-	NewModel() { m_shader = new Shader(); }
+	NewModel() 
+	{
+		SetScale(glm::vec3(1.0, 1.0, 1.0));
+		m_shader = new Shader(); 
+	}
 	~NewModel() { }
 
 	void LoadModel(std::string filePath);
@@ -24,23 +28,18 @@ public:
 	void ProcessNode(aiNode* node, const aiScene* scene);
 	Mesh ProcessMesh(aiMesh *mesh, const aiScene *scene);
 
+	std::vector<Texture> LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName);
+
 	void Draw(std::string vertShader, std::string fragShader);
 
 	glm::vec3 GetPosition() { return m_position; }
-
-	// CONTINUE FROM HERE!
-	void SetPosition(glm::vec3 position)
-	{
-		for (int i = 0; i < m_meshBatch.size(); i++)
-		{
-			m_meshBatch[i].SetPosition(position);
-		}
-	}
+	void SetPosition(glm::vec3 position);
 
 	glm::vec3 GetRotation() { return m_rotation; }
 	void SetRotation(glm::vec3 rotation) { m_rotation = rotation; }
+
 	glm::vec3 GetScale() { return m_scale; }
-	void SetScale(glm::vec3 scale) { m_scale = scale; }
+	void SetScale(glm::vec3 scale);
 
 		/**
 		* @brief Sets the camera object
@@ -55,6 +54,8 @@ public:
 
 protected:
 	std::vector<Mesh> m_meshBatch;
+	std::vector<Texture> m_texturesLoaded;
+	std::string m_directory;
 
 	Shader* m_shader;
 

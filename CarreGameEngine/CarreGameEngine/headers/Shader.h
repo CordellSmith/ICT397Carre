@@ -152,10 +152,7 @@ public:
 		* @param const GLfloat* value
 		* @return void
 		*/
-	void SetMatrix4(GLint id, GLsizei count, GLboolean transpose, const GLfloat* value)
-	{ 
-		glUniformMatrix4fv(id, count, transpose, value);
-	}
+	void SetMatrix4(GLint id, GLsizei count, GLboolean transpose, const GLfloat* value) { glUniformMatrix4fv(id, count, transpose, value); }
 
 		/**
 		* @brief Turns shader on
