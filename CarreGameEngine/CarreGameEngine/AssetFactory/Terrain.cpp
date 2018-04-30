@@ -21,7 +21,18 @@ const void Terrain::Unload()
 	return void();
 }
 
-const void Terrain::Render(std::string vertShader, std::string fragShader)
+const void Terrain::Prepare(std::string vertShader, std::string fragShader)
+{
+	return void();
+}
+
+const void Terrain::Render()
+{
+	// Needs to be implemented
+	return void();
+}
+
+const void Terrain::Destroy()
 {
 	// Needs to be implemented
 	return void();

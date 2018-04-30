@@ -9,7 +9,7 @@ glm::mat4 Camera::SetPerspective(float fov, float aspectRatio, float near, float
 
 void Camera::PositionCamera(float positionX, float positionY, float positionZ, float yaw, float pitch)
 {
-	m_position = glm::vec3( positionX, positionY, positionZ );
+	m_position = glm::vec3(positionX, positionY, positionZ);
 	m_yaw = yaw;
 	m_pitch = pitch;
 }

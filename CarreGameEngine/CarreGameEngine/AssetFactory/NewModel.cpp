@@ -56,7 +56,7 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		vertexPos.z = mesh->mVertices[i].z;
 		vertex.m_position = vertexPos;
 
-		colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 1.0);
+		colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 1.0f);
 		vertex.m_colour = colour;
 
 		normalCoord.x = mesh->mNormals[i].x;
@@ -129,17 +129,25 @@ std::vector<Texture> NewModel::LoadMaterialTextures(aiMaterial* mat, aiTextureTy
 	return textures;
 }
 
-void NewModel::Draw(std::string vertShader, std::string fragShader)
+void NewModel::Prepare(std::string vertShader, std::string fragShader)
 {
 	m_shader->Initialize(vertShader, fragShader);
+}
 
+void NewModel::Draw()
+{
 	for (unsigned int i = 0; i < m_meshBatch.size(); i++)
 	{
-		// Pass camera object to retrieve projection/view matrices
-		m_meshBatch[i].SetCamera(m_camera);
 		m_meshBatch[i].Draw(m_shader);
 	}
 }
+
+void NewModel::Destroy()
+{
+	// Todo: implement destroy function of all meshes of the model
+	return void();
+}
+
 
 void NewModel::SetPosition(glm::vec3 position)
 {
@@ -197,4 +205,12 @@ unsigned int TextureFromFile(const char* path, const std::string& directory, boo
 	}
 
 	return textureID;
+}
+
+const void NewModel::SetCamera(Camera* camera) 
+{
+	for (int i = 0; i < m_meshBatch.size(); i++)
+	{
+		m_meshBatch[i].SetCamera(camera);
+	}
 }

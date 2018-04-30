@@ -47,7 +47,7 @@ public:
 		*
 		* @return null
 		*/
-	IGameObject() { m_camera = new Camera(); }
+	IGameObject() { }
 
 		/**
 		* @brief Default constructor
@@ -86,6 +86,8 @@ public:
 		*/
 	virtual const void Unload() = 0;
 
+	virtual const void Prepare(std::string vertShader, std::string fragShader) = 0;
+
 		/**
 		* @brief Render function
 		*
@@ -93,7 +95,9 @@ public:
 		*
 		* @return void
 		*/
-	virtual const void Render(std::string vertShader, std::string fragShader) = 0;
+	virtual const void Render() = 0;
+
+	virtual const void Destroy() = 0;
 
 		/**
 		* @brief Gets file path
@@ -125,11 +129,10 @@ public:
 		* @param Camera* camera
 		* @return void
 		*/
-	virtual void SetCamera(Camera* camera) { m_camera = camera; }
+	virtual void SetCamera(Camera* camera) = 0;
 
 	virtual void SetObjectPosition(glm::vec3 position) = 0;
 
 protected:
 	OBJ_TYPE m_objType;
-	Camera* m_camera;
 };

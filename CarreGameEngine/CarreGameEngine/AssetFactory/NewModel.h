@@ -16,12 +16,8 @@ class NewModel
 {
 public:
 	// Must initialise shader
-	NewModel() 
-	{
-		SetScale(glm::vec3(1.0, 1.0, 1.0));
-		m_shader = new Shader(); 
-	}
-	~NewModel() { }
+	NewModel() { m_shader = new Shader(); }
+	~NewModel() { Destroy(); }
 
 	void LoadModel(std::string filePath);
 
@@ -30,7 +26,9 @@ public:
 
 	std::vector<Texture> LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName);
 
-	void Draw(std::string vertShader, std::string fragShader);
+	void Prepare(std::string vertShader, std::string fragShader);
+	void Draw();
+	void Destroy();
 
 	glm::vec3 GetPosition() { return m_position; }
 	void SetPosition(glm::vec3 position);
@@ -50,7 +48,7 @@ public:
 		* @param Camera* camera
 		* @return void
 		*/
-	void SetCamera(Camera* camera) { m_camera = camera; }
+	const void SetCamera(Camera* camera);
 
 protected:
 	std::vector<Mesh> m_meshBatch;
@@ -62,6 +60,4 @@ protected:
 	glm::vec3 m_position;
 	glm::vec3 m_rotation;
 	glm::vec3 m_scale;
-
-	Camera* m_camera;
 };

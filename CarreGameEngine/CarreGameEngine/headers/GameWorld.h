@@ -56,7 +56,7 @@ public:
 		*
 		* @return null
 		*/
-	~GameWorld() { }
+	~GameWorld() { Destroy(); }
 
 		/**
 		* @brief Initialises the game world
@@ -149,7 +149,7 @@ public:
 
 protected:
 	/// Models to load
-	Model m_colourPanel, m_testModel;
+	Model m_colourPanel;
 	int m_modelVertexSize;
 
 	/// Shader sources

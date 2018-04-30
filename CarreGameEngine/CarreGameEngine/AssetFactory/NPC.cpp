@@ -21,7 +21,18 @@ const void NPC::Unload()
 	return void();
 }
 
-const void NPC::Render(std::string vertShader, std::string fragShader)
+const void NPC::Prepare(std::string vertShader, std::string fragShader)
+{
+	return void();
+}
+
+const void NPC::Render()
+{
+	// Needs to be implemented
+	return void();
+}
+
+const void NPC::Destroy()
 {
 	// Needs to be implemented
 	return void();
