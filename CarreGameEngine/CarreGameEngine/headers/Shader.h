@@ -62,7 +62,7 @@ public:
 		*
 		* @return void
 		*/
-	void Initialize(std::string vertFile, std::string fragFile);
+	void Initialize(std::string vertShader, std::string fragShader);
 	
 		/**
 		* @brief Gets the uniform variable
@@ -152,10 +152,7 @@ public:
 		* @param const GLfloat* value
 		* @return void
 		*/
-	void SetMatrix4(GLint id, GLsizei count, GLboolean transpose, const GLfloat* value)
-	{ 
-		glUniformMatrix4fv(id, count, transpose, value);
-	}
+	void SetMatrix4(GLint id, GLsizei count, GLboolean transpose, const GLfloat* value) { glUniformMatrix4fv(id, count, transpose, value); }
 
 		/**
 		* @brief Turns shader on
@@ -185,7 +182,7 @@ public:
 		*/
 	void Destroy();
 
-private:
+protected:
 	/// Stores vertex shader information
 	GLuint m_vertexShaderId;
 

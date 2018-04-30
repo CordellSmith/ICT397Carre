@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "..\headers\Camera.h"
+
 	/**
 	* @brief Enumerator for object types
 	*
@@ -84,6 +86,19 @@ public:
 		*/
 	virtual const void Unload() = 0;
 
+	virtual const void Prepare(std::string vertShader, std::string fragShader) = 0;
+
+		/**
+		* @brief Render function
+		*
+		* Virtual render function to draw object to screen depending on type.
+		*
+		* @return void
+		*/
+	virtual const void Render() = 0;
+
+	virtual const void Destroy() = 0;
+
 		/**
 		* @brief Gets file path
 		*
@@ -102,4 +117,22 @@ public:
 		* @return void
 		*/
 	virtual void SetFilePath(const std::string& filePath) = 0;
+
+	virtual const OBJ_TYPE GetOBJType() const { return m_objType; }
+
+		/**
+		* @brief Sets the camera object
+		*
+		* Sets the camera object to the world camera object to retrieve the view and projection
+		* matrices.
+		*
+		* @param Camera* camera
+		* @return void
+		*/
+	virtual void SetCamera(Camera* camera) = 0;
+
+	virtual void SetObjectPosition(glm::vec3 position) = 0;
+
+protected:
+	OBJ_TYPE m_objType;
 };

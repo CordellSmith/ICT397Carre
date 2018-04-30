@@ -80,6 +80,19 @@ public:
 		*/
 	virtual const void Unload();
 
+	virtual const void Prepare(std::string vertShader, std::string fragShader);
+	
+		/**
+		* @brief Renders
+		*
+		* Renders the NPC.
+		*
+		* @return void
+		*/
+	virtual const void Render();
+
+	virtual const void Destroy();
+
 		/**
 		* @brief Gets the file path
 		*
@@ -99,9 +112,15 @@ public:
 		*/
 	virtual void SetFilePath(const std::string& filePath);
 
+	virtual void SetObjectPosition(glm::vec3 position) { m_model->SetPosition(position); }
+
+	virtual void SetCamera(Camera* camera) { m_camera = camera; }
+
 protected:
 	/// Stores the file path containing the data
 	std::string m_filePath;
 	/// Model object
 	Model* m_model;
+	/// Camera object
+	Camera* m_camera;
 };

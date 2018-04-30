@@ -53,7 +53,12 @@ public:
 		*/
 	IGameObject* CreateAsset(OBJ_TYPE type, std::string filePath);
 
+	const void AddAsset(IGameObject* assetToAdd);
+
+	// Check if this should be double const
+	const std::multimap<OBJ_TYPE, IGameObject*> GetAssets() const { return m_assets; }
+
 protected:
 	/// Data structure to hold assets
-	std::map<OBJ_TYPE, IGameObject*> m_assets;
+	std::multimap<OBJ_TYPE, IGameObject*> m_assets;
 };

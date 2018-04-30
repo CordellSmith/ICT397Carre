@@ -29,13 +29,18 @@ void GameControlEngine::Initialize()
 
 	// Set camera perspective and position
 	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 100);
-	m_camera->PositionCamera(0, 0, 6, 0, 0);
+	m_camera->PositionCamera(4, 0, 6, 0, 0);
 	
 	// Pass camera into gameworld
 	m_gameWorld.SetCamera(m_camera);
 
-	// Initialize the game world
-	m_gameWorld.Init();
+	m_assetFactory = new GameAssetFactory();
+
+	m_assetFactory->AddAsset(m_assetFactory->CreateAsset(OBJ_OBJECT, "res/objects/cube.obj"));
+	m_assetFactory->AddAsset(m_assetFactory->CreateAsset(OBJ_OBJECT, "res/objects/taxi_model/taxi.obj"));
+
+	// Initialize the game world, pass in assets
+	m_gameWorld.Init(m_assetFactory->GetAssets());
 }
 
 void GameControlEngine::GameLoop()

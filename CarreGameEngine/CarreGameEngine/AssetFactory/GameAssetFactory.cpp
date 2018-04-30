@@ -20,3 +20,10 @@ IGameObject* GameAssetFactory::CreateAsset(OBJ_TYPE type, std::string filePath)
 		break;
 	}
 }
+
+const void GameAssetFactory::AddAsset(IGameObject* assetToAdd)
+{
+	std::pair<OBJ_TYPE, IGameObject*> tempAsset = std::pair<OBJ_TYPE, IGameObject*>(assetToAdd->GetOBJType(), assetToAdd);
+	m_assets.insert(tempAsset);
+}
+

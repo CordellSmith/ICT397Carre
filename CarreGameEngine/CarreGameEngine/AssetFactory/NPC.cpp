@@ -2,6 +2,7 @@
 
 NPC::NPC(std::string filePath) : m_filePath(filePath)
 {
+	m_objType = OBJ_NPC;
 	LoadFromFilePath(filePath);
 }
 
@@ -17,6 +18,23 @@ const void NPC::Load()
 
 const void NPC::Unload()
 {
+	return void();
+}
+
+const void NPC::Prepare(std::string vertShader, std::string fragShader)
+{
+	return void();
+}
+
+const void NPC::Render()
+{
+	// Needs to be implemented
+	return void();
+}
+
+const void NPC::Destroy()
+{
+	// Needs to be implemented
 	return void();
 }
 

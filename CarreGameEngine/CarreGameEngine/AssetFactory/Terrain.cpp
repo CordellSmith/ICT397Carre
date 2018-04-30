@@ -2,6 +2,7 @@
 
 Terrain::Terrain(std::string filePath) : m_filePath(filePath)
 {
+	m_objType = OBJ_TERRAIN;
 	LoadFromFilePath(filePath);
 }
 
@@ -17,6 +18,23 @@ const void Terrain::Load()
 
 const void Terrain::Unload()
 {
+	return void();
+}
+
+const void Terrain::Prepare(std::string vertShader, std::string fragShader)
+{
+	return void();
+}
+
+const void Terrain::Render()
+{
+	// Needs to be implemented
+	return void();
+}
+
+const void Terrain::Destroy()
+{
+	// Needs to be implemented
 	return void();
 }
 

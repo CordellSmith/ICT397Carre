@@ -167,7 +167,7 @@ public:
 		* Sets the camera object to the world camera object to retrieve the view and projection
 		* matrices.
 		*
-		* @param Camera* pCamera
+		* @param Camera* camera
 		* @return void
 		*/
 	void SetCamera(Camera* camera) { m_camera = camera; }

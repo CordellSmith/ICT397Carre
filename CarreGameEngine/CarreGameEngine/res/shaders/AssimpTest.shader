@@ -1,10 +1,12 @@
 #shader vertex
 #version 330 core
-layout(location = 0) in vec3 aPos;
-layout(location = 1) in vec3 aNormal;
-layout(location = 2) in vec2 aTexCoords;
 
-out glm::vec2 TexCoords;
+layout(location = 0) in vec3 inPos;
+layout(location = 1) in vec4 inColor;
+layout(location = 2) in vec3 inNormal;
+layout(location = 3) in vec2 inTexCoord;
+
+out vec4 VertexColor;
 
 uniform mat4 model;
 uniform mat4 view;
@@ -12,19 +14,18 @@ uniform mat4 projection;
 
 void main()
 {
-	TexCoords = aTexCoords;
-	gl_Position = projection * view * model * glm::vec4(aPos, 1.0);
+	gl_Position = projection * view * model * vec4(inPos, 1.0f);
+	VertexColor = inColor;
 }
 
 #shader fragment
 #version 330 core
-out vec4 FragColor;
 
-in vec2 TexCoords;
+in vec4 VertexColor;
 
-uniform sampler2D texture_diffuse1;
+layout(location = 0) out vec4 FragColor;
 
 void main()
-{    
-    FragColor = texture(texture_diffuse1, TexCoords);
+{
+	FragColor = VertexColor;
 }
