@@ -54,20 +54,24 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		vertexPos.x = mesh->mVertices[i].x;
 		vertexPos.y = mesh->mVertices[i].y;
 		vertexPos.z = mesh->mVertices[i].z;
+		vertex.m_position = vertexPos;
 
 		colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 1.0);
+		vertex.m_colour = colour;
 
 		normalCoord.x = mesh->mNormals[i].x;
 		normalCoord.y = mesh->mNormals[i].y;
 		normalCoord.z = mesh->mNormals[i].z;
-
-		texCoord.x = mesh->mTextureCoords[0][i].x;
-		texCoord.y = mesh->mTextureCoords[0][i].y;
-
-		vertex.m_position = vertexPos;
-		vertex.m_colour = colour;
 		vertex.m_normal = normalCoord;
-		vertex.m_texCoords = texCoord;
+
+		if (mesh->mTextureCoords[0])
+		{
+			texCoord.x = mesh->mTextureCoords[0][i].x;
+			texCoord.y = mesh->mTextureCoords[0][i].y;
+			vertex.m_texCoords = texCoord;
+		}
+		else
+			vertex.m_texCoords = glm::vec2(0.0f, 0.0f);
 
 		vertices.push_back(vertex);
 		numOfVertexs++;
