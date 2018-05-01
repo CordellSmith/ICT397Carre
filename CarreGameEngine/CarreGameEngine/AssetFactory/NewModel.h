@@ -4,7 +4,7 @@
 #include <vector>
 #include <GLM\glm.hpp>									// Used for the GLM math library
 #include <GLM\gtc\matrix_transform.hpp>					
-#include <GLM\gtx\transform2.hpp>						
+#include <GLM\gtx\transform2.hpp>					
 #include <assimp/Importer.hpp>							// Assimp library used for loading
 #include <assimp/scene.h>								// Guided by https://learnopengl.com/Model-Loading/Assimp
 #include <assimp/postprocess.h>

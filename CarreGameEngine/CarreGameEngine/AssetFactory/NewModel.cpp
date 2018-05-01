@@ -1,6 +1,5 @@
 #include "NewModel.h"
 
-#define STB_IMAGE_IMPLEMENTATION
 #include "..\ImageDB\stb_image.h"
 
 unsigned int TextureFromFile(const char* path, const std::string& directory, bool gamma = false);
@@ -152,7 +151,7 @@ void NewModel::Destroy()
 void NewModel::SetPosition(glm::vec3 position)
 {
 	m_position = position;
-	for (int i = 0; i < m_meshBatch.size(); i++)
+	for (size_t i = 0; i < m_meshBatch.size(); i++)
 	{
 		m_meshBatch[i].SetPosition(position);
 	}
@@ -161,7 +160,7 @@ void NewModel::SetPosition(glm::vec3 position)
 void NewModel::SetScale(glm::vec3 scale)
 {
 	m_scale = scale;
-	for (int i = 0; i < m_meshBatch.size(); i++)
+	for (size_t i = 0; i < m_meshBatch.size(); i++)
 	{
 		m_meshBatch[i].SetScale(scale);
 	}
@@ -209,7 +208,7 @@ unsigned int TextureFromFile(const char* path, const std::string& directory, boo
 
 const void NewModel::SetCamera(Camera* camera) 
 {
-	for (int i = 0; i < m_meshBatch.size(); i++)
+	for (size_t i = 0; i < m_meshBatch.size(); i++)
 	{
 		m_meshBatch[i].SetCamera(camera);
 	}

@@ -1,14 +1,14 @@
 #pragma once
 
-#include "IGameObject.h"
+#include "IGameAsset.h"
 #include "NewModel.h"
 
 	/*
 	* @class Object
-	* @brief Object (static/dynamic)
+	* @brief Object asset (static/dynamic)
 	*
 	* This class is used to store all the data about an Object. It inherits from
-	* the base class IGameObject and allows for initialisation and drawing of
+	* the base class IGameAsset and allows for initialisation and drawing of
 	* the object.
 	*
 	* @note Currently not entirely implemented.
@@ -18,7 +18,7 @@
 	* @date 29/03/2018 CS
 	*
 	*/
-class Object : public IGameObject
+class Object : public IGameAsset
 {
 public:
 		/**
@@ -42,14 +42,14 @@ public:
 		/**
 		* @brief Parameter constructor
 		*
-		* Takes the parameter string file path and assigns it to the member
-		* variable m_filePath. It then parses this into the LoadFromFilePath()
-		* function.
+		* Takes the parameter string asset name and creates a new
+		* Object with that name identifier. Initialises the model of the
+		* obejct as well.
 		*
-		* @param std::string filePath
+		* @param std::string assetName
 		* @return null
 		*/
-	Object(std::string filePath);
+	Object(std::string assetName);
 
 		/**
 		* @brief Loads an object from file

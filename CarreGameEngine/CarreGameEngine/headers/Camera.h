@@ -157,7 +157,7 @@ public:
 		* @param double speed
 		* @return void
 		*/
-	void SetSpeed(double speed) { m_speed = speed;  }
+	void SetSpeed(double speed) { m_speed = (float)speed;  }
 		
 		/**
 		* @brief Gets the camera speed
@@ -176,7 +176,7 @@ public:
 		* @param double speed
 		* @return void
 		*/
-	void SetRotationSpeed(double speed) { m_rotationSpeed = speed; }
+	void SetRotationSpeed(double speed) { m_rotationSpeed = (float)speed; }
 
 		/**
 		* @brief Gets the camera rotation speed

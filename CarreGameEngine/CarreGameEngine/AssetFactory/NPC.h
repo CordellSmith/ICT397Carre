@@ -1,14 +1,14 @@
 #pragma once
 
-#include "IGameObject.h"
+#include "IGameAsset.h"
 #include "..\headers\Model.h"
 
 	/*
 	* @class NPC
-	* @brief NPC object
+	* @brief NPC asset
 	*
 	* This class is used to store all the data about an NPC. It inherits from
-	* the base class IGameObject and allows for initialisation and drawing of
+	* the base class IGameAsset and allows for initialisation and drawing of
 	* the NPC object.
 	*
 	* @note Currently not entirely implemented.
@@ -18,7 +18,7 @@
 	* @date 29/03/2018 CS
 	*
 	*/
-class NPC : public IGameObject
+class NPC : public IGameAsset
 {
 public:
 		/**

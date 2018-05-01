@@ -11,11 +11,11 @@ void InputManager::KeyPressed(InputCodes code)
 	{
 		// Move forwards
 		case Up: case W: case w:
-			m_camera->MoveCamera(m_camera->GetSpeed() * TimeManager::Instance().DeltaTime);
+			m_camera->MoveCamera((float)(m_camera->GetSpeed() * TimeManager::Instance().DeltaTime));
 			break;
 		// Move backwards
 		case Down: case S: case s:
-			m_camera->MoveCamera(-1 * m_camera->GetSpeed() * TimeManager::Instance().DeltaTime);
+			m_camera->MoveCamera((float)(-1 * m_camera->GetSpeed() * TimeManager::Instance().DeltaTime));
 			break;
 		// Used to toggle wireframe of vertices
 		case q: case Q:
