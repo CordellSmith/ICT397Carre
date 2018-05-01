@@ -1,10 +1,10 @@
 #include "Object.h"
 
-Object::Object(std::string filePath) : m_filePath(filePath)
+Object::Object(std::string assetName)
 {
-	m_objType = OBJ_OBJECT;
+	m_assetType = ASS_OBJECT;
+	m_assetName = assetName;
 	m_model = new NewModel();
-	LoadFromFilePath(filePath);
 }
 
 void Object::LoadFromFilePath(std::string filePath)

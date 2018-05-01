@@ -36,8 +36,16 @@ void GameControlEngine::Initialize()
 
 	m_assetFactory = new GameAssetFactory();
 
-	m_assetFactory->AddAsset(m_assetFactory->CreateAsset(OBJ_OBJECT, "res/objects/cube.obj"));
-	m_assetFactory->AddAsset(m_assetFactory->CreateAsset(OBJ_OBJECT, "res/objects/taxi_model/taxi.obj"));
+	//m_assetFactory->AddAsset(m_assetFactory->CreateAsset(ASS_OBJECT, "res/objects/cube.obj"));
+	//m_assetFactory->AddAsset(m_assetFactory->CreateAsset(ASS_OBJECT, "res/objects/taxi_model/taxi.obj"));
+
+	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
+	cube->LoadFromFilePath("res/objects/cube.obj");
+	m_assetFactory->AddAsset(cube);
+	
+	IGameAsset* taxi = m_assetFactory->CreateAsset(ASS_OBJECT, "Taxi");
+	cube->LoadFromFilePath("res/objects/taxi_model/taxi.obj");
+	m_assetFactory->AddAsset(taxi);
 
 	// Initialize the game world, pass in assets
 	m_gameWorld.Init(m_assetFactory->GetAssets());

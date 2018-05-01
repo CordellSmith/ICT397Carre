@@ -5,10 +5,10 @@
 #include "..\headers\Camera.h"
 
 	/**
-	* @brief Enumerator for object types
+	* @brief Enumerator for asset types
 	*
-	* This enumerator is used to assign different types of objects to
-	* a corresponding value. Used in creation of objects.
+	* This enumerator is used to assign different types of assets to
+	* a corresponding value. Used in creation of assets.
 	*
 	* @note Currently not entirely implemented.
 	*
@@ -18,17 +18,17 @@
 	*/
 typedef enum
 {
-	OBJ_TERRAIN = 0,
-	OBJ_OBJECT = 1,
-	OBJ_NPC = 2
-}OBJ_TYPE;
+	ASS_TERRAIN = 0,
+	ASS_OBJECT = 1,
+	ASS_NPC = 2
+}ASS_TYPE;
 
 
 	/**
-	* @class IGameObject
-	* @brief Interface class for game objects
+	* @class IGameAsset
+	* @brief Interface class for game assets
 	*
-	* This class is an interface class for other objects to inherit from.
+	* This class is an interface class for other assets to inherit from.
 	* Contains various helper functions that are to be overridden in the child
 	* classes.
 	*
@@ -37,7 +37,7 @@ typedef enum
 	* @date 29/03/2018 CS
 	*
 	*/
-class IGameObject
+class IGameAsset
 {
 public:
 		/**
@@ -47,7 +47,7 @@ public:
 		*
 		* @return null
 		*/
-	IGameObject() { }
+	IGameAsset() { }
 
 		/**
 		* @brief Default constructor
@@ -56,7 +56,7 @@ public:
 		*
 		* @return null
 		*/
-	~IGameObject() { }
+	~IGameAsset() { }
 
 		/**
 		* @brief Load object from file path
@@ -118,7 +118,8 @@ public:
 		*/
 	virtual void SetFilePath(const std::string& filePath) = 0;
 
-	virtual const OBJ_TYPE GetOBJType() const { return m_objType; }
+	virtual const ASS_TYPE GetOBJType() const { return m_assetType; }
+	virtual const std::string GetAssetName() const { return m_assetName; }
 
 		/**
 		* @brief Sets the camera object
@@ -134,5 +135,6 @@ public:
 	virtual void SetObjectPosition(glm::vec3 position) = 0;
 
 protected:
-	OBJ_TYPE m_objType;
+	ASS_TYPE m_assetType;
+	std::string m_assetName;
 };

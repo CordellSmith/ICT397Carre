@@ -2,7 +2,7 @@
 
 NPC::NPC(std::string filePath) : m_filePath(filePath)
 {
-	m_objType = OBJ_NPC;
+	m_assetType = ASS_NPC;
 	LoadFromFilePath(filePath);
 }
 

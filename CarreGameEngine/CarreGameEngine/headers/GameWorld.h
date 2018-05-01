@@ -12,7 +12,7 @@
 #include <GLM\gtc\matrix_transform.hpp>					
 #include <GLM\gtx\transform2.hpp>
 #include "PhysicsEngine.h"
-#include "..\AssetFactory\IGameObject.h"
+#include "..\AssetFactory\IGameAsset.h"
 #include "..\ImageDB\stb_image.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
@@ -65,7 +65,7 @@ public:
 		*
 		* @return void
 		*/
-	void Init(std::multimap<OBJ_TYPE, IGameObject*> gameAssets);
+	void Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets);
 
 		/**
 		* @brief Updates the game world
@@ -145,7 +145,7 @@ public:
 		*/
 	void UpdatePhysics();
 
-	void SetGameAssets(std::multimap<OBJ_TYPE, IGameObject*> gameAssets) { m_gameAssets = gameAssets; }
+	void SetGameAssets(std::multimap<ASS_TYPE, IGameAsset*> gameAssets) { m_gameAssets = gameAssets; }
 
 protected:
 	/// Models to load
@@ -164,5 +164,5 @@ protected:
 	/// Vector of all collision objects (static and dynamic)
 	std::vector<btVector3> m_collisionBodyPos;
 
-	std::multimap<OBJ_TYPE, IGameObject*> m_gameAssets;
+	std::multimap<ASS_TYPE, IGameAsset*> m_gameAssets;
 };

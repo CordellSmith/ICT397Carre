@@ -34,14 +34,14 @@ ShaderSource ParseShader(const std::string& filePath)
 Vertex panel[6] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
 std::vector<unsigned int> m_indices;
 
-void GameWorld::Init(std::multimap<OBJ_TYPE, IGameObject*> gameAssets)
+void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 {
 	// Sets this game contexts assets to the  loaded game assets from the control engine
 	SetGameAssets(gameAssets);
 
-	m_assimpShaderSource = ParseShader("res/shaders/AssimpTest.shader");
+	m_assimpShaderSource = ParseShader("res/shaders/Default.shader");
 
-	std::multimap<OBJ_TYPE, IGameObject*>::iterator itr;
+	std::multimap<ASS_TYPE, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		// Pass camera pointer to all game objects to access projection / view matrices
@@ -73,7 +73,7 @@ void GameWorld::Update()
 	}
 
 	// Testing rendering of objects from multimap
-	std::multimap<OBJ_TYPE, IGameObject*>::iterator itr;
+	std::multimap<ASS_TYPE, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		itr->second->Render();
@@ -84,7 +84,7 @@ void GameWorld::Destroy()
 {
 	m_colourPanel.Destroy();
 
-	std::multimap<OBJ_TYPE, IGameObject*>::iterator itr;
+	std::multimap<ASS_TYPE, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		itr->second->Destroy();
@@ -142,7 +142,7 @@ void GameWorld::UpdatePhysics()
 	//colourPanel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
 
 	// Draw each object at the updated positions based on physics simulation
-	for (int i = 0; i < m_collisionBodyPos.size(); i++)
+	for (size_t i = 0; i < m_collisionBodyPos.size(); i++)
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
@@ -156,7 +156,7 @@ void GameWorld::UpdatePhysics()
 		// This code is trash hahah :P, have to find a way to select which object you want from the multimap. Will have to
 		// use some sort of search function as a string parameter like "cube" for instance then it be returned using the
 		// itr->second.
-		std::multimap<OBJ_TYPE, IGameObject*>::iterator itr = m_gameAssets.begin();
+		std::multimap<ASS_TYPE, IGameAsset*>::iterator itr = m_gameAssets.begin();
 		itr->second->SetObjectPosition(glm::vec3(temp.x, temp.y, temp.z));
 		itr->second->Render();
 	}

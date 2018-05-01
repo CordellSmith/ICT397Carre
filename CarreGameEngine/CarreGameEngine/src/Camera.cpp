@@ -58,17 +58,17 @@ void Camera::MoveCamera(float speed)
 void Camera::SetViewByMouse(float xOffset, float yOffset)
 {
 	// Rotate the yaw by the mouse's x offset, multiplied by a sensitivity speed setting
-	m_yaw += xOffset * m_mouseSpeed;
+	m_yaw += xOffset * (float)m_mouseSpeed;
 
 	// Rotate the pitch by the mouse's y offset, multiplied by a sensitivity speed setting
-	m_pitch += yOffset * m_mouseSpeed;
+	m_pitch += yOffset * (float)m_mouseSpeed;
 
 	if (m_yaw > 2 * PI)
 		m_yaw = 0;
 
 	// Yaw capped between 0 and 360
 	if (m_yaw < 0)
-		m_yaw = 2 * PI;
+		m_yaw = (float)(2 * PI);
 
 	// Pitch capped to 75 degrees up and -75 degrees down
 	if (m_pitch > glm::radians(71.0f))
