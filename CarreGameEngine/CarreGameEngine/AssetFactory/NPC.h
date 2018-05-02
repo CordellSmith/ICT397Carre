@@ -1,14 +1,14 @@
 #pragma once
 
-#include "IGameObject.h"
+#include "IGameAsset.h"
 #include "..\headers\Model.h"
 
 	/*
 	* @class NPC
-	* @brief NPC object
+	* @brief NPC asset
 	*
 	* This class is used to store all the data about an NPC. It inherits from
-	* the base class IGameObject and allows for initialisation and drawing of
+	* the base class IGameAsset and allows for initialisation and drawing of
 	* the NPC object.
 	*
 	* @note Currently not entirely implemented.
@@ -18,7 +18,7 @@
 	* @date 29/03/2018 CS
 	*
 	*/
-class NPC : public IGameObject
+class NPC : public IGameAsset
 {
 public:
 		/**
@@ -80,6 +80,19 @@ public:
 		*/
 	virtual const void Unload();
 
+	virtual const void Prepare(std::string vertShader, std::string fragShader);
+	
+		/**
+		* @brief Renders
+		*
+		* Renders the NPC.
+		*
+		* @return void
+		*/
+	virtual const void Render();
+
+	virtual const void Destroy();
+
 		/**
 		* @brief Gets the file path
 		*
@@ -99,9 +112,15 @@ public:
 		*/
 	virtual void SetFilePath(const std::string& filePath);
 
+	virtual void SetObjectPosition(glm::vec3 position) { m_model->SetPosition(position); }
+
+	virtual void SetCamera(Camera* camera) { m_camera = camera; }
+
 protected:
 	/// Stores the file path containing the data
 	std::string m_filePath;
 	/// Model object
 	Model* m_model;
+	/// Camera object
+	Camera* m_camera;
 };

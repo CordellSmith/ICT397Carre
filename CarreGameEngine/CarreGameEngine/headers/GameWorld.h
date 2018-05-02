@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <map>
 
 #include "Camera.h"
 #include "Model.h"
@@ -11,6 +12,8 @@
 #include <GLM\gtc\matrix_transform.hpp>					
 #include <GLM\gtx\transform2.hpp>
 #include "PhysicsEngine.h"
+#include "..\AssetFactory\IGameAsset.h"
+#include "..\ImageDB\stb_image.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
@@ -53,7 +56,7 @@ public:
 		*
 		* @return null
 		*/
-	~GameWorld() { }
+	~GameWorld() { Destroy(); }
 
 		/**
 		* @brief Initialises the game world
@@ -62,7 +65,7 @@ public:
 		*
 		* @return void
 		*/
-	void Init();
+	void Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets);
 
 		/**
 		* @brief Updates the game world
@@ -142,13 +145,15 @@ public:
 		*/
 	void UpdatePhysics();
 
+	void SetGameAssets(std::multimap<ASS_TYPE, IGameAsset*> gameAssets) { m_gameAssets = gameAssets; }
+
 protected:
 	/// Models to load
-	Model m_colourPanel, m_testModel;
+	Model m_colourPanel;
 	int m_modelVertexSize;
 
 	/// Shader sources
-	ShaderSource m_shaderSource1, m_shaderSource2;
+	ShaderSource m_assimpShaderSource, m_shaderSource1, m_shaderSource2;
 
 	/// Camera object
 	Camera* m_camera;
@@ -158,4 +163,6 @@ protected:
 
 	/// Vector of all collision objects (static and dynamic)
 	std::vector<btVector3> m_collisionBodyPos;
+
+	std::multimap<ASS_TYPE, IGameAsset*> m_gameAssets;
 };

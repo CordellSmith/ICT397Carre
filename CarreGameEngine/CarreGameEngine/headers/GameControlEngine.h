@@ -148,7 +148,7 @@ protected:
 	Camera* m_camera;
 
 	/// Game asset factory object
-	GameAssetFactory m_assetFactory;
+	GameAssetFactory* m_assetFactory;
 
 	/// Game world object
 	GameWorld m_gameWorld;

@@ -4,7 +4,7 @@
 #include <vector>
 #include <map>
 
-#include "IGameObject.h"
+#include "IGameAsset.h"
 
 	/*
 	* @class GameAssetFactory
@@ -47,13 +47,18 @@ public:
 		* Using the type parameter, checks to see what type of asset to return. The file path
 		* parameter is used to locate the file to load.
 		* 
-		* @param OBJ_TYPE type
+		* @param ASS_TYPE type
 		* @param std::string filePath
-		* @return IGameObject*
+		* @return IGameAsset*
 		*/
-	IGameObject* CreateAsset(OBJ_TYPE type, std::string filePath);
+	IGameAsset* CreateAsset(ASS_TYPE type, std::string filePath);
+
+	const void AddAsset(IGameAsset* assetToAdd);
+
+	// Check if this should be double const
+	const std::multimap<ASS_TYPE, IGameAsset*> GetAssets() const { return m_assets; }
 
 protected:
 	/// Data structure to hold assets
-	std::map<OBJ_TYPE, IGameObject*> m_assets;
+	std::multimap<ASS_TYPE, IGameAsset*> m_assets;
 };
