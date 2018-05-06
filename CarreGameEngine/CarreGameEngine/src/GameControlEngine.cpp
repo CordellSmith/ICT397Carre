@@ -44,8 +44,12 @@ void GameControlEngine::Initialize()
 	m_assetFactory->AddAsset(cube);
 	
 	IGameAsset* taxi = m_assetFactory->CreateAsset(ASS_OBJECT, "Taxi");
-	cube->LoadFromFilePath("res/objects/taxi_model/taxi.obj");
+	taxi->LoadFromFilePath("res/objects/taxi_model/taxi.obj");
 	m_assetFactory->AddAsset(taxi);
+
+	IGameAsset* terrain = m_assetFactory->CreateAsset(ASS_TERRAIN, "Terrain");
+	terrain->LoadFromFilePath("res/terrain/terraininfo.txt");
+
 
 	// Initialize the game world, pass in assets
 	m_gameWorld.Init(m_assetFactory->GetAssets());

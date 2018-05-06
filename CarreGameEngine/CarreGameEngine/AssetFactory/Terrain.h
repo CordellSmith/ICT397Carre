@@ -8,6 +8,7 @@
 #include <fstream>
 #include <filesystem>
 #include <string>
+#include <sstream>
 
 #define GLM_SWIZZLE_XYZW
 #include <glm/gtc/type_ptr.hpp>
