@@ -150,6 +150,7 @@
     <ClInclude Include="headers\ScriptManager.h" />
     <ClInclude Include="headers\Shader.h" />
     <ClInclude Include="headers\Singleton.h" />
+    <ClInclude Include="headers\TextureManager.h" />
     <ClInclude Include="headers\TimeManager.h" />
     <ClInclude Include="headers\WindowManager.h" />
     <ClInclude Include="ImageDB\stb_image.h" />
@@ -170,6 +171,7 @@
     <ClCompile Include="src\PhysicsEngine.cpp" />
     <ClCompile Include="src\ScriptManager.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="src\TimeManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
