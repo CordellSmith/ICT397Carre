@@ -5,6 +5,11 @@
 *
 * @date 03/07/2018
 * @version 1.0	Initial start. Created the layout of the class, using a singleton and the SOIL API.
+*
+* @date 07/07/2018
+* @version 1.1	Changed from SOIL to SOIL2, as SOIL was deprecated. Got file loading and storing in map
+*				working. Next to work on is a better system for loading files (from lua), and using the
+*				loaded in textures.
 */
 
 #ifndef TEXTUREMANAGER_H
@@ -15,6 +20,9 @@
 #include <string>
 #include <vector>
 #include <iostream>
+
+#include "GL\glew.h"
+#include "soil2.h"
 
 class TextureManager
 {
@@ -36,27 +44,11 @@ class TextureManager
 		}
 
 			/**
-			* @brief Default constructor
+			* @brief Activate a texture
 			*
-			* This is the default constructor
+			* Sets the given texture to be active
 			*
-			* @return null
-			*/
-		TextureManager();
-
-			/**
-			* @brief De-constructor
-			*
-			* This is the deconstructor 
-			*/
-		~TextureManager();
-
-			/**
-			* @brief Set texture to be active
-			*
-			* Sets the given texture to be able, and binds it
-			*
-			* @param texID - The texture to set active
+			* @param texID - Texture to set active
 			*
 			* @return bool - True
 			*/
@@ -95,6 +87,22 @@ class TextureManager
 		void ReleaseAllTextures();
 
 	private:
+
+			/**
+			* @brief Default constructor
+			*
+			* This is the default constructor
+			*
+			* @return null
+			*/
+		TextureManager();
+
+			/**
+			* @brief De-constructor
+			*
+			* This is the deconstructor
+			*/
+		~TextureManager();
 
 			/**
 			* @brief

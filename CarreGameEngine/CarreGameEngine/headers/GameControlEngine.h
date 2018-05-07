@@ -13,6 +13,7 @@
 #include "..\AssetFactory\GameAssetFactory.h"
 #include "GameWorld.h"
 #include "..\headers\ScriptManager.h"
+#include "TextureManager.h"
 
 //#include "PhysicsEngine.h"
 

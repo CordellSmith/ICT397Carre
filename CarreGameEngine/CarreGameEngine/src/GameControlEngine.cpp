@@ -72,6 +72,9 @@ void GameControlEngine::Destroy()
 {
 	m_gameWorld.Destroy();
 
+	/// Delete all textures
+	//TextureManager::Instance().~TextureManager();
+
 	/// Delete window
 	if (m_windowManager)
 	{
