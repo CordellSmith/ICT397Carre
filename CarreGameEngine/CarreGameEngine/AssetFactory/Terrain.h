@@ -18,7 +18,7 @@
 #include <glm/gtx/compatibility.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/euler_angles.hpp>
-#include <SOIL.h>
+#include <soil2.h>
 
 	/*
 	* @class Terrain
