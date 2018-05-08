@@ -17,10 +17,10 @@ int loadScript()
 
 	// Run a test lua file
 	printf("Running script..");
-	luaL_dofile(Environment, "resources/scripts/test.lua");
+	luaL_dofile(Environment, "res/scripts/test.lua");
 
 	// Call a function from a script
-	luaL_loadfile(Environment, "resources/scripts/test2.lua");
+	luaL_loadfile(Environment, "res/scripts/test2.lua");
 	lua_call(Environment, 0, 0); // 0 Arguments and 0 returns
 
 	// Close our environment

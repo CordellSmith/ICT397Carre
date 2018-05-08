@@ -40,22 +40,22 @@ void GameControlEngine::Initialize()
 	//m_assetFactory->AddAsset(m_assetFactory->CreateAsset(ASS_OBJECT, "res/objects/taxi/taxi.obj"));
 
 	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
-	cube->LoadFromFilePath("resources/objects/cube.obj");
+	cube->LoadFromFilePath("res/objects/cube.obj");
 	m_assetFactory->AddAsset(cube);
 	
 	IGameAsset* taxi = m_assetFactory->CreateAsset(ASS_OBJECT, "Taxi");
-	taxi->LoadFromFilePath("resources/objects/taxi/taxi.obj");
+	taxi->LoadFromFilePath("res/objects/taxi/taxi.obj");
 	taxi->SetAssetPosition(glm::vec3(10.0, -1.0, 10.0));
 	m_assetFactory->AddAsset(taxi);
 
 	IGameAsset* light = m_assetFactory->CreateAsset(ASS_OBJECT, "TrafficLight");
-	light->LoadFromFilePath("resources/objects/trafficlight/trafficlight.obj");
+	light->LoadFromFilePath("res/objects/trafficlight/trafficlight.obj");
 	light->SetAssetPosition(glm::vec3(3.0, -1.0, 1.0));
 	light->SetAssetScale(glm::vec3(0.2, 0.2, 0.2));
 	m_assetFactory->AddAsset(light);
 
 	IGameAsset* terrain = m_assetFactory->CreateAsset(ASS_TERRAIN, "Terrain");
-	terrain->LoadFromFilePath("resources/terrain/terraininfo.txt");
+	terrain->LoadFromFilePath("res/terrain/terraininfo.txt");
 	
 	// Initialize the game world, pass in assets
 	m_gameWorld.Init(m_assetFactory->GetAssets());

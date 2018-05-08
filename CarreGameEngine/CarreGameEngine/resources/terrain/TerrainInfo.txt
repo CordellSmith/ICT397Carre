@@ -1,5 +1,0 @@
-#terraininfo heightmap
-resources/terrain/terrain0-16bbp-257x257.raw
-
-#terraininfo texture
-resources/terrain/grass.jpg

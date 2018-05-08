@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\shaders\Basic.shader" />
-    <None Include="resources\shaders\Cube.Shader" />
-    <None Include="resources\shaders\Default.shader" />
-    <None Include="resources\shaders\Test.shader" />
+    <None Include="res\shaders\Basic.shader" />
+    <None Include="res\shaders\Cube.Shader" />
+    <None Include="res\shaders\Default.shader" />
+    <None Include="res\shaders\Test.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Camera.h">
@@ -101,34 +101,34 @@
     <ClCompile Include="AssetFactory\NewModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Camera.cpp">
+    <ClCompile Include="src\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\GameControlEngine.cpp">
+    <ClCompile Include="src\GameControlEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\GameWorld.cpp">
+    <ClCompile Include="src\GameWorld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\GLFWManager.cpp">
+    <ClCompile Include="src\GLFWManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\InputManager.cpp">
+    <ClCompile Include="src\InputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Model.cpp">
+    <ClCompile Include="src\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\PhysicsEngine.cpp">
+    <ClCompile Include="src\PhysicsEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\ScriptManager.cpp">
+    <ClCompile Include="src\ScriptManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Shader.cpp">
+    <ClCompile Include="src\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\TimeManager.cpp">
+    <ClCompile Include="src\TimeManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

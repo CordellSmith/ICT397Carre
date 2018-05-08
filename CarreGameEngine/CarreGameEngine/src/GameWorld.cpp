@@ -39,8 +39,8 @@ void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 	// Sets this game contexts assets to the  loaded game assets from the control engine
 	SetGameAssets(gameAssets);
 
-	m_assimpShaderSource = ParseShader("resources/shaders/Default.shader");
-	m_testShaderSource = ParseShader("resources/shaders/Test.shader");
+	m_assimpShaderSource = ParseShader("res/shaders/Default.shader");
+	m_testShaderSource = ParseShader("res/shaders/Test.shader");
 
 	std::multimap<ASS_TYPE, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
@@ -175,7 +175,7 @@ void GameWorld::UpdatePhysics()
 
 void GameWorld::PrepareColourPanel()
 {
-	m_shaderSource2 = ParseShader("resources/shaders/Basic.shader");
+	m_shaderSource2 = ParseShader("res/shaders/Basic.shader");
 	m_colourPanel.SetCamera(m_camera);
 
 	panel[0].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
