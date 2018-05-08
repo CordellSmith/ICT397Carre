@@ -94,8 +94,8 @@ void Mesh::Draw(Shader* shader)
 	glEnableVertexAttribArray(2);
 	glEnableVertexAttribArray(3);
 
-	glDrawArrays(GL_TRIANGLES, 0, m_numOfVertexs);
-	//glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, 0);
+	//glDrawArrays(GL_TRIANGLES, 0, m_numOfVertexs);
+	glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, 0);
 
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);

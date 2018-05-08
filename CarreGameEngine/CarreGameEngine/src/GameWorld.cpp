@@ -40,13 +40,21 @@ void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 	SetGameAssets(gameAssets);
 
 	m_assimpShaderSource = ParseShader("res/shaders/Default.shader");
+	m_testShaderSource = ParseShader("res/shaders/Test.shader");
 
 	std::multimap<ASS_TYPE, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		// Pass camera pointer to all game objects to access projection / view matrices
+		if (std::distance(m_gameAssets.begin(), itr) == 1)
+		{
+			// Pass camera pointer to all game objects to access projection / view matrices
+			itr->second->SetCamera(m_camera);
+			// Prepare shaders for each object (only testing with one model and shader atm)
+			itr->second->Prepare(m_testShaderSource.VertexSource, m_testShaderSource.FragmentSource);
+			break;
+		}
+
 		itr->second->SetCamera(m_camera);
-		// Prepare shaders for each object (only testing with one model and shader atm)
 		itr->second->Prepare(m_assimpShaderSource.VertexSource, m_assimpShaderSource.FragmentSource);
 	}
 
