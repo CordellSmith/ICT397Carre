@@ -88,17 +88,6 @@ public:
 	void Destroy();
 
 		/**
-		* @brief Prepares the test model
-		*
-		* Used to prepare the test model to be drawn to the screen.
-		*
-		* @param const char* filePath
-		* @param int& modelVertexSize
-		* @return void
-		*/
-	void PrepareTestModel(const char* filePath, int& modelVertexSize);
-
-		/**
 		* @brief Prepares the colour panel
 		*
 		* Used to prepare the test model to be drawn to the screen.
