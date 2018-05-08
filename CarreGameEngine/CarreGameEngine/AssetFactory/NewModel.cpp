@@ -41,7 +41,7 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 	std::vector<unsigned int> indices;
 	std::vector<Texture> textures;
 
-	// process vertex positions, normals and texture coordinates
+	// process mesh data
 	for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 	{
 		Vertex3 vertex;
@@ -49,20 +49,26 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		glm::vec4 colour;
 		glm::vec3 normalCoord;
 		glm::vec2 texCoord;
-
+		glm::vec3 tangent;
+		glm::vec3 biTangent;
+		
+		// vertex positions
 		vertexPos.x = mesh->mVertices[i].x;
 		vertexPos.y = mesh->mVertices[i].y;
 		vertexPos.z = mesh->mVertices[i].z;
 		vertex.m_position = vertexPos;
-
+		// colours (randomised)
 		colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 1.0f);
 		vertex.m_colour = colour;
-
-		normalCoord.x = mesh->mNormals[i].x;
-		normalCoord.y = mesh->mNormals[i].y;
-		normalCoord.z = mesh->mNormals[i].z;
-		vertex.m_normal = normalCoord;
-
+		// normals
+		if (mesh->HasNormals())
+		{
+			normalCoord.x = mesh->mNormals[i].x;
+			normalCoord.y = mesh->mNormals[i].y;
+			normalCoord.z = mesh->mNormals[i].z;
+			vertex.m_normal = normalCoord;
+		}
+		// texture coordinates
 		if (mesh->mTextureCoords[0])
 		{
 			texCoord.x = mesh->mTextureCoords[0][i].x;
@@ -71,6 +77,19 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		}
 		else
 			vertex.m_texCoords = glm::vec2(0.0f, 0.0f);
+		// tangents and bitangents
+		if (mesh->HasTangentsAndBitangents())
+		{
+			tangent.x = mesh->mTangents[i].x;
+			tangent.y = mesh->mTangents[i].y;
+			tangent.z = mesh->mTangents[i].z;
+			vertex.m_tangent = tangent;
+
+			biTangent.x = mesh->mBitangents[i].x;
+			biTangent.y = mesh->mBitangents[i].y;
+			biTangent.z = mesh->mBitangents[i].z;
+			vertex.m_biTangent = biTangent;
+		}
 
 		vertices.push_back(vertex);
 		numOfVertexs++;
@@ -86,12 +105,18 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 	if (mesh->mMaterialIndex >= 0)
 	{
 		aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
-
+		// diffuse maps
 		std::vector<Texture> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
 		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-
+		// specular maps
 		std::vector<Texture> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+		// normal maps
+		std::vector<Texture> normalMaps = LoadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
+		textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+		// height maps
+		std::vector<Texture> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
+		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 	}
 
 	return Mesh(vertices, numOfVertexs, indices, textures);

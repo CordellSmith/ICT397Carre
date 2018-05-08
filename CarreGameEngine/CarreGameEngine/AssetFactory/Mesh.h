@@ -17,6 +17,8 @@ struct Vertex3
 	glm::vec4 m_colour; // Colour r,g,b,a
 	glm::vec3 m_normal; // The normal coordinates
 	glm::vec2 m_texCoords; // The uv coordinates
+	glm::vec3 m_tangent;
+	glm::vec3 m_biTangent;
 };
 
 struct Texture

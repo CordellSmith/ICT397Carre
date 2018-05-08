@@ -40,14 +40,22 @@ void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 	SetGameAssets(gameAssets);
 
 	m_assimpShaderSource = ParseShader("res/shaders/Default.shader");
+	m_testShaderSource = ParseShader("res/shaders/Test.shader");
 
 	std::multimap<ASS_TYPE, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		// Pass camera pointer to all game objects to access projection / view matrices
+		if (std::distance(m_gameAssets.begin(), itr) < 1)
+		{
+			// Pass camera pointer to all game objects to access projection / view matrices
+			itr->second->SetCamera(m_camera);
+			// Prepare shaders for each object (only testing with one model and shader atm)
+			itr->second->Prepare(m_assimpShaderSource.VertexSource, m_assimpShaderSource.FragmentSource);
+			continue;
+		}
+
 		itr->second->SetCamera(m_camera);
-		// Prepare shaders for each object (only testing with one model and shader atm)
-		itr->second->Prepare(m_assimpShaderSource.VertexSource, m_assimpShaderSource.FragmentSource);
+		itr->second->Prepare(m_testShaderSource.VertexSource, m_testShaderSource.FragmentSource);
 	}
 
 	PrepareColourPanel();
@@ -71,6 +79,9 @@ void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 
 void GameWorld::Update()
 {
+	// Blue sky
+	glClearColor(0.0, 0.0, 0.5, 1.0);
+
 	// Update all physics body locations
 	UpdatePhysics();
 
@@ -152,7 +163,7 @@ void GameWorld::UpdatePhysics()
 	// Set updated camera location
 	m_camera->SetPosition(glm::vec3(temp2.getX(), temp2.getY(), temp2.getZ()));
 
-	// Draw shapes for testing (just planes atm, didn't know how to make spheres using current setup)
+	// Draw shapes for testing (just planes atm, didn't know how to make sphem_assetType using current setup)
 	//glm::vec3 temp = glm::vec3(m_collisionBodyPos[0].x(), m_collisionBodyPos[0].y(), m_collisionBodyPos[0].z());
 	//colourPanel.SetPosition(glm::vec3(temp.x, temp.y, temp.z));
 
@@ -172,7 +183,7 @@ void GameWorld::UpdatePhysics()
 		// use some sort of search function as a string parameter like "cube" for instance then it be returned using the
 		// itr->second.
 		std::multimap<ASS_TYPE, IGameAsset*>::iterator itr = m_gameAssets.begin();
-		itr->second->SetObjectPosition(glm::vec3(temp.x, temp.y, temp.z));
+		itr->second->SetAssetPosition(glm::vec3(temp.x, temp.y, temp.z));
 		itr->second->Render();
 	}
 }

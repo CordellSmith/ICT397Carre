@@ -1,12 +1,5 @@
 #include "Terrain.h"
 
-Terrain::Terrain(std::string textureFilePath, std::string heightmapFilePath) 
-	: m_textureFilePath(textureFilePath), 
-	m_heightmapFilePath(heightmapFilePath)
-{
-	m_assetType = ASS_TERRAIN;
-}
-
 Terrain::Terrain(std::string assetName, float heightScale, float blockScale)
 	: m_GLVertexBuffer(0)
 	, m_GLNormalBuffer(0)
@@ -24,6 +17,13 @@ Terrain::Terrain(std::string assetName, float heightScale, float blockScale)
 	m_assetType = ASS_TERRAIN;
 	m_assetName = assetName;
 	memset(m_GLTextures, 0, sizeof(m_GLTextures));
+}
+
+Terrain::Terrain(std::string textureFilePath, std::string heightmapFilePath)
+	: m_textureFilePath(textureFilePath),
+	m_heightmapFilePath(heightmapFilePath)
+{
+	m_assetType = ASS_TERRAIN;
 }
 
 bool Terrain::LoadTexture(unsigned int textureNo)
@@ -309,6 +309,41 @@ float Terrain::GetHeightAt(const glm::vec3& position)
 void Terrain::LoadFromFilePath(std::string filePath)
 {
 	//m_model->LoadModel(filePath);
+	std::ifstream stream(filePath);
+
+	enum class TType
+	{
+		NONE = -1, HM = 0, TEX = 1
+	};
+
+	std::string line;
+	std::stringstream ss[2]; // stack allocated array that will store vertex and fragment strings
+	TType type = TType::NONE; // set to none (-1) by default
+	while (getline(stream, line))
+	{
+		if (line.find("#terraininfo") != std::string::npos)
+		{
+			if (line.find("heightmap") != std::string::npos)
+				type = TType::HM;
+			else if (line.find("texture") != std::string::npos)
+				type = TType::TEX;
+		}
+		else
+		{
+			ss[(int)type] << line << '\n';
+		}
+	}
+
+	// Continue From Here!
+	m_heightmapFilePath = ss[0].str();
+	m_textureFilePath = ss[1].str();
+	// Remove new line characters from string
+	m_heightmapFilePath.erase(std::remove(m_heightmapFilePath.begin(), m_heightmapFilePath.end(), '\n'), m_heightmapFilePath.end());
+	m_textureFilePath.erase(std::remove(m_textureFilePath.begin(), m_textureFilePath.end(), '\n'), m_textureFilePath.end());
+	
+	LoadHeightmap(16, 257, 257);
+	LoadTexture(0);
+
 }
 
 const void Terrain::Load()
@@ -338,7 +373,7 @@ const void Terrain::Destroy()
 	return void();
 }
 
-const std::string & Terrain::GetFilePath() const
+const std::string& Terrain::GetFilePath() const
 {
 	// Update this
 	return "";

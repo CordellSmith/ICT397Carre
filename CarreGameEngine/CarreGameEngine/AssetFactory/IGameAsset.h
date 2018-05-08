@@ -132,7 +132,9 @@ public:
 		*/
 	virtual void SetCamera(Camera* camera) = 0;
 
-	virtual void SetObjectPosition(glm::vec3 position) = 0;
+	virtual void SetAssetPosition(glm::vec3 position) = 0;
+
+	virtual void SetAssetScale(glm::vec3 scale) = 0;
 
 protected:
 	ASS_TYPE m_assetType;

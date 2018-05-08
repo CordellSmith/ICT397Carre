@@ -112,9 +112,11 @@ public:
 		*/
 	virtual void SetFilePath(const std::string& filePath);
 
-	virtual void SetObjectPosition(glm::vec3 position) { m_model->SetPosition(position); }
-
 	virtual void SetCamera(Camera* camera) { m_camera = camera; }
+
+	virtual void SetAssetPosition(glm::vec3 position) { m_model->SetPosition(position); }
+
+	virtual void SetAssetScale(glm::vec3 scale) { m_model->SetScale(scale); }
 
 protected:
 	/// Stores the file path containing the data

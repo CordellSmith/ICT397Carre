@@ -40,7 +40,8 @@ int GLFWManager::Initialize(int width, int height, std::string strTitle, bool bF
 	// Make sure the window is valid
 	if (m_window == nullptr)
 	{
-		std::cout << "Failed to create a GLFW window!" << std::endl;
+		std::cout << "Failed to create a GLFW window! Press any key to continue!" << std::endl;
+		system("Pause");
 		Destroy();
 
 		return -1;
@@ -72,7 +73,6 @@ void GLFWManager::SwapTheBuffers()
 {
 	glfwSwapBuffers(m_window);
 }
-
 
 // This function processes all the application's input and returns a bool to tell us if we should continue
 bool GLFWManager::ProcessInput(bool continueGame = true)

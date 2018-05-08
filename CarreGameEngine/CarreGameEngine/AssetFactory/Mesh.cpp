@@ -43,16 +43,25 @@ void Mesh::Draw(Shader* shader)
 
 	unsigned int diffuseNr = 1;
 	unsigned int specularNr = 1;
+	unsigned int normalNr = 1;
+	unsigned int heightNr = 1;
+
 	for (size_t i = 0; i < m_textures.size(); i++)
 	{
 		glActiveTexture(GL_TEXTURE0 + i); // activate proper texture unit before binding
 										  // retrieve texture number (the N in diffuse_textureN)
 		std::string number;
 		std::string name = m_textures[i].m_type;
+
 		if (name == "texture_diffuse")
 			number = std::to_string(diffuseNr++);
 		else if (name == "texture_specular")
 			number = std::to_string(specularNr++);
+		else if (name == "texture_normal")
+			number = std::to_string(normalNr++);
+		else if (name == "texture_height")
+			number = std::to_string(heightNr++);
+
 		GLuint textureUniformId = shader->GetVariable(("material." + name + number).c_str());
 		shader->SetFloat(textureUniformId, i);
 		glBindTexture(GL_TEXTURE_2D, m_textures[i].m_id);
@@ -94,8 +103,8 @@ void Mesh::Draw(Shader* shader)
 	glEnableVertexAttribArray(2);
 	glEnableVertexAttribArray(3);
 
-	glDrawArrays(GL_TRIANGLES, 0, m_numOfVertexs);
-	//glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, 0);
+	//glDrawArrays(GL_TRIANGLES, 0, m_numOfVertexs);
+	glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, 0);
 
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
