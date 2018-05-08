@@ -63,6 +63,18 @@ void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 
 	// Initialize all physics objects
 	InitializePhysics();
+
+	/*****************************************/
+	// TextureManager testing
+	TextureManager::Instance().LoadTexture("res/objects/taxi_model/taxi_chrome_d.dds");
+	TextureManager::Instance().LoadTexture("res/objects/taxi_model/taxi_chrome_s.dds");
+	TextureManager::Instance().LoadTexture("res/objects/taxi_model/taxi_d.dds");
+
+	// This shouldn't work, as there is no file with that name
+	TextureManager::Instance().LoadTexture("res/objects/taxi_model/taxi.dds");
+
+	// This shouldn't work as .raw isn't supported with SOIL2
+	TextureManager::Instance().LoadTexture("res/terrain/height128.raw");
 }
 
 void GameWorld::Update()
@@ -93,6 +105,9 @@ void GameWorld::Update()
 
 void GameWorld::Destroy()
 {
+	/// Delete all textures
+	TextureManager::Instance().ReleaseAllTextures();
+
 	m_colourPanel.Destroy();
 
 	std::multimap<ASS_TYPE, IGameAsset*>::iterator itr;

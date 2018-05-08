@@ -14,6 +14,7 @@
 #include "PhysicsEngine.h"
 #include "..\AssetFactory\IGameAsset.h"
 #include "..\ImageDB\stb_image.h"
+#include "TextureManager.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
