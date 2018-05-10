@@ -48,11 +48,11 @@ void GameControlEngine::Initialize()
 	taxi->SetAssetPosition(glm::vec3(10.0, -1.0, 10.0));
 	m_assetFactory->AddAsset(taxi);
 
-	IGameAsset* light = m_assetFactory->CreateAsset(ASS_OBJECT, "TrafficLight");
-	light->LoadFromFilePath("res/objects/trafficlight/trafficlight.obj");
-	light->SetAssetPosition(glm::vec3(3.0, -1.0, 1.0));
-	light->SetAssetScale(glm::vec3(0.2, 0.2, 0.2));
-	m_assetFactory->AddAsset(light);
+	//IGameAsset* light = m_assetFactory->CreateAsset(ASS_OBJECT, "TrafficLight");
+	//light->LoadFromFilePath("res/objects/trafficlight/trafficlight.obj");
+	//light->SetAssetPosition(glm::vec3(3.0, -1.0, 1.0));
+	//light->SetAssetScale(glm::vec3(0.2, 0.2, 0.2));
+	//m_assetFactory->AddAsset(light);
 
 	IGameAsset* terrain = m_assetFactory->CreateAsset(ASS_TERRAIN, "Terrain");
 	terrain->LoadFromFilePath("res/terrain/terraininfo.txt");

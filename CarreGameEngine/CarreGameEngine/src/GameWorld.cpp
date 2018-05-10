@@ -33,6 +33,14 @@ ShaderSource ParseShader(const std::string& filePath)
 
 Vertex panel[6] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
 std::vector<unsigned int> m_indices;
+std::vector<Model> panelList;
+
+// Prototyping
+bool LoadHeightfield(char* filename, const int size);
+bool Inbounds(int xpos, int zpos);
+float GetHeight(int xpos, int zpos);
+unsigned char GetHeightColour(int xpos, int zpos);
+void RenderTerrain();
 
 void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 {
@@ -75,6 +83,9 @@ void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 
 	// This shouldn't work as .raw isn't supported with SOIL2
 	TextureManager::Instance().LoadTexture("res/terrain/height128.raw");
+
+	RenderTerrain();
+
 }
 
 void GameWorld::Update()
@@ -82,18 +93,18 @@ void GameWorld::Update()
 	// Blue sky
 	glClearColor(0.0, 0.0, 0.5, 1.0);
 
+	//// Render a floor on x/z axis (15 x 15)
+	//for (int x = 1; x < 11; x++)
+	//{
+	//	for (int z = 1; z < 11; z++)
+	//	{
+	//		m_colourPanel.SetPosition(glm::vec3(x * 5, -1.0, z * 5));
+	//		m_colourPanel.Render();
+	//	}
+	//}
+
 	// Update all physics body locations
 	UpdatePhysics();
-
-	// Render a floor on x/z axis (15 x 15)
-	for (int x = 0; x < 15; x++)
-	{
-		for (int z = 0; z < 15; z++)
-		{
-			m_colourPanel.SetPosition(glm::vec3(x * 2, 0, z * 2));
-			m_colourPanel.Render();
-		}
-	}
 
 	// Testing rendering of objects from multimap
 	std::multimap<ASS_TYPE, IGameAsset*>::iterator itr;
@@ -188,29 +199,135 @@ void GameWorld::UpdatePhysics()
 	}
 }
 
+int g_size;
+int scaleX = 5;
+int scaleY = 1;
+int scaleZ = 5;
+unsigned char* terrainData;
+
+bool LoadHeightfield(char* filename, const int size)
+{
+	// Open for binary read, print error if error found
+	std::ifstream infile(filename, std::ios::binary);
+	if (!infile)
+	{
+		std::cerr << "Cannot open file :" << filename << std::endl;
+		return false;
+	}
+
+	// Allocate memory, return false if no size = 0
+	if (terrainData)
+		delete[] terrainData;
+	if (size > 0)
+		terrainData = new unsigned char[size * size];
+
+	// Read in heightfield and get length of file
+	infile.seekg(0, std::ios::end);
+	int length = infile.tellg();
+
+	// Read data in as a block, cast to char*, set size, and close file
+	infile.seekg(0, std::ios::beg);
+	infile.read(reinterpret_cast<char *>(terrainData), length);
+	infile.close();
+	g_size = size;
+
+	return true;
+}
+
+bool Inbounds(int xpos, int zpos)
+{
+	if ((xpos >= 0 && xpos < g_size) && (zpos >= 0 && zpos < g_size))
+		return true;
+	else
+		return false;
+}
+
+float GetHeight(int xpos, int zpos)
+{
+	if (Inbounds(xpos, zpos))
+	{
+		return ((float)(terrainData[(zpos * g_size) + xpos])*scaleY);
+	}
+	return 1;
+}
+
+unsigned char GetHeightColour(int xpos, int zpos)
+{
+	if (Inbounds(xpos, zpos))
+	{
+		return terrainData[zpos * g_size + xpos];
+	}
+	return 1;
+}
+
+void RenderTerrain()
+{
+	// Colour of the height
+	unsigned char hcolor;
+
+	//
+	float texLeft, texBottom, texTop;
+
+	//if (tex)
+	//{
+	//	glEnable(GL_TEXTURE_2D);
+	//	glBindTexture(GL_TEXTURE_2D, tex);
+	//}
+	// Loop through the z-axis
+	for (int z = 0; z < g_size - 1; z++)
+	{
+		// Loop through the x-axis
+		glBegin(GL_TRIANGLE_STRIP);
+		for (int x = 0; x < g_size; x++)
+		{
+			//calculate the texture coordinates
+			texLeft = (float)x / g_size;
+			texBottom = (float)z / g_size;
+			texTop = (float)(z + 1) / g_size;
+
+			// Create the the first point in the triangle strip
+			hcolor = GetHeightColour(x, z);
+			glColor3ub(hcolor, hcolor, hcolor);
+			glTexCoord2f(texLeft, texBottom);
+			glVertex3f((float)x * scaleX, GetHeight(x, z), (float)z * scaleZ);
+
+			// Create the next point in the triangle strip
+			hcolor = GetHeightColour(x, z + 1);
+			glColor3ub(hcolor, hcolor, hcolor);
+			glTexCoord2f(texLeft, texTop);
+			glVertex3f((float)x * scaleX, GetHeight(x, z + 1), (float)(z + 1) * scaleZ);
+		}
+		glEnd();
+	}
+}
+
 void GameWorld::PrepareColourPanel()
 {
 	m_shaderSource2 = ParseShader("res/shaders/Basic.shader");
 	m_colourPanel.SetCamera(m_camera);
 
-	panel[0].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
-	panel[0].rgba = glm::vec4(0.5, 0.5, 0.0, 1);
+	if (!LoadHeightfield("res/terrain/height128.raw", 128))
+		std::cout << "ERROR!" << std::endl;
 
-	panel[1].xyz = glm::vec3(1.0f, -1.0f, -1.0f);
-	panel[1].rgba = glm::vec4(0.4, 0.0, 1.0, 1);
+	panel[0].xyz = glm::vec3(-5.0f, -5.0f, -5.0f);
+	panel[0].rgba = glm::vec4(1.0, 1.0, 1.0, 1.0);
 
-	panel[2].xyz = glm::vec3(1.0f, -1.0f, 1.0f);
-	panel[2].rgba = glm::vec4(0.5, 0.6, 1.0, 1);
+	panel[1].xyz = glm::vec3(5.0f, -5.0f, -5.0f);
+	panel[1].rgba = glm::vec4(1.0, 1.0, 1.0, 1.0);
 
-	panel[3].xyz = glm::vec3(1.0f, -1.0f, 1.0f);
-	panel[3].rgba = glm::vec4(1.0, 0.4, 0.4, 1);
+	panel[2].xyz = glm::vec3(5.0f, -5.0f, 5.0f);
+	panel[2].rgba = glm::vec4(1.0, 1.0, 1.0, 1.0);
 
-	panel[4].xyz = glm::vec3(-1.0f, -1.0f, 1.0f);
-	panel[4].rgba = glm::vec4(0.3, 1.0, 0.1, 1);
+	panel[3].xyz = glm::vec3(5.0f, -5.0f, 5.0f);
+	panel[3].rgba = glm::vec4(1.0, 1.0, 1.0, 1.0);
 
-	panel[5].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
-	panel[5].rgba = glm::vec4(1.0, 1.0, 0.4, 1);
+	panel[4].xyz = glm::vec3(-5.0f, -5.0f, 5.0f);
+	panel[4].rgba = glm::vec4(1.0, 1.0, 1.0, 1.0);
+
+	panel[5].xyz = glm::vec3(-5.0f, -5.0f, -5.0f);
+	panel[5].rgba = glm::vec4(1.0, 1.0, 1.0, 1.0);
 
 	for (int i = 1; i < 7; i++)
 		m_indices.push_back(i);
 }
+

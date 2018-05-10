@@ -59,7 +59,7 @@ public:
 		*
 		* @return null
 		*/
-	Model() { m_scale = glm::vec3(1.0f, 1.0f, 1.0f); }
+	Model() { m_scale = glm::vec3(0.5f, 0.5f, 0.5f); }
 		
 		/**
 		* @brief Destructor

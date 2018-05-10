@@ -58,7 +58,7 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		vertexPos.z = mesh->mVertices[i].z;
 		vertex.m_position = vertexPos;
 		// colours (randomised)
-		colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 1.0f);
+		colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 0.5f);
 		vertex.m_colour = colour;
 		// normals
 		if (mesh->HasNormals())
