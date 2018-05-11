@@ -8,6 +8,7 @@
 
 #include "Camera.h"
 #include "Model.h"
+#include "..\AssetFactory\NewModel.h"
 #include <GLM\glm.hpp>
 #include <GLM\gtc\matrix_transform.hpp>					
 #include <GLM\gtx\transform2.hpp>
@@ -15,6 +16,7 @@
 #include "..\AssetFactory\IGameAsset.h"
 #include "..\ImageDB\stb_image.h"
 #include "TextureManager.h"
+#include "..\AssetFactory\Bruteforce.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
@@ -136,6 +138,7 @@ public:
 	void UpdatePhysics();
 
 	void SetGameAssets(std::multimap<ASS_TYPE, IGameAsset*> gameAssets) { m_gameAssets = gameAssets; }
+	NewTerrain& GetTerrain() { return m_terrain; }
 
 protected:
 	/// Models to load
@@ -155,4 +158,6 @@ protected:
 	std::vector<btVector3> m_collisionBodyPos;
 
 	std::multimap<ASS_TYPE, IGameAsset*> m_gameAssets;
+
+	Bruteforce m_terrain;
 };

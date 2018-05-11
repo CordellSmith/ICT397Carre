@@ -229,7 +229,7 @@ protected:
 	glm::vec3 m_position;	
 
 	/// The camera's speed that is used with a time slice
-	float m_speed = 5.0;
+	float m_speed = 50.0;
 	/// The rotation speed for the camera
 	float m_rotationSpeed = 2;						
 	/// The speed for the mouse rotations

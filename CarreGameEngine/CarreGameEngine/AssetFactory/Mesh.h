@@ -31,10 +31,10 @@ struct Texture
 class Mesh
 {
 public:
-	Mesh() { }
+	Mesh();
 	~Mesh() { }
 
-	Mesh(std::vector<Vertex3> vertices, int numOfVertexs, std::vector<unsigned int> indices, std::vector<Texture> textures);
+	Mesh(std::vector<Vertex3> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
 
 	void SetupMesh();
 	void Draw(Shader* shader);
@@ -53,11 +53,13 @@ public:
 	void SetPosition(glm::vec3 position) { m_position = position; }
 	void SetScale(glm::vec3 scale) { m_scale = scale; }
 
+	std::vector<Vertex3>& GetVertices() { return m_vertices; }
+	void SetVertices(std::vector<Vertex3> vertices) { m_vertices = vertices; }
+
 protected:
 	std::vector<Vertex3> m_vertices;
 	std::vector<unsigned int> m_indices;
 	std::vector<Texture> m_textures;
-	int m_numOfVertexs;
 
 	unsigned int VAO, VBO, EBO;
 

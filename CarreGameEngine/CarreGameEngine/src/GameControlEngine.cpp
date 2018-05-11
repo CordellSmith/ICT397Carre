@@ -2,6 +2,37 @@
 
 #include "GL/glew.h"
 
+/// Function to read a shader in one string and return a struct containing separated Vertex and Fragment shaders
+ShaderSource ParseShaders(const std::string& filePath)
+{
+	std::ifstream stream(filePath);
+
+	enum class ShaderType
+	{
+		NONE = -1, VERTEX = 0, FRAGMENT = 1
+	};
+
+	std::string line;
+	std::stringstream ss[2]; // stack allocated array that will store vertex and fragment strings
+	ShaderType type = ShaderType::NONE; // set to none (-1) by default
+	while (getline(stream, line))
+	{
+		if (line.find("#shader") != std::string::npos)
+		{
+			if (line.find("vertex") != std::string::npos)
+				type = ShaderType::VERTEX;
+			else if (line.find("fragment") != std::string::npos)
+				type = ShaderType::FRAGMENT;
+		}
+		else
+		{
+			ss[(int)type] << line << '\n';
+		}
+	}
+
+	return{ ss[0].str(), ss[1].str() };
+}
+
 const int GameControlEngine::RunEngine()
 {
 	Initialize();
@@ -28,7 +59,7 @@ void GameControlEngine::Initialize()
 	loadScript();
 
 	// Set camera perspective and position
-	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 100);
+	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 1000);
 	m_camera->PositionCamera(4, 0, 6, 0, 0);
 	
 	// Pass camera into gameworld
@@ -36,28 +67,37 @@ void GameControlEngine::Initialize()
 
 	m_assetFactory = new GameAssetFactory();
 
-	//m_assetFactory->AddAsset(m_assetFactory->CreateAsset(ASS_OBJECT, "res/objects/cube.obj"));
-	//m_assetFactory->AddAsset(m_assetFactory->CreateAsset(ASS_OBJECT, "res/objects/taxi/taxi.obj"));
-
 	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
+	ShaderSource assimpShader = ParseShaders("res/shaders/Default.shader");
 	cube->LoadFromFilePath("res/objects/cube.obj");
+	cube->Prepare(assimpShader.VertexSource, assimpShader.FragmentSource);
 	m_assetFactory->AddAsset(cube);
 	
 	IGameAsset* taxi = m_assetFactory->CreateAsset(ASS_OBJECT, "Taxi");
+	ShaderSource testShader = ParseShaders("res/shaders/Test.shader");
 	taxi->LoadFromFilePath("res/objects/taxi/taxi.obj");
+	taxi->Prepare(testShader.VertexSource, testShader.FragmentSource);
 	taxi->SetAssetPosition(glm::vec3(10.0, -1.0, 10.0));
 	m_assetFactory->AddAsset(taxi);
 
 	//IGameAsset* light = m_assetFactory->CreateAsset(ASS_OBJECT, "TrafficLight");
 	//light->LoadFromFilePath("res/objects/trafficlight/trafficlight.obj");
+	//light->Prepare(testShader.VertexSource, testShader.FragmentSource);
 	//light->SetAssetPosition(glm::vec3(3.0, -1.0, 1.0));
 	//light->SetAssetScale(glm::vec3(0.2, 0.2, 0.2));
 	//m_assetFactory->AddAsset(light);
 
-	IGameAsset* terrain = m_assetFactory->CreateAsset(ASS_TERRAIN, "Terrain");
-	terrain->LoadFromFilePath("res/terrain/terraininfo.txt");
-	
+	//IGameAsset* terrain = m_assetFactory->CreateAsset(ASS_TERRAIN, "Terrain");
+	//terrain->LoadFromFilePath("res/terrain/terraininfo.txt");
+
+	bfTerrain.LoadHeightfield("res/terrain/height128.raw", 128);
+	bfTerrain.AddShader(assimpShader.VertexSource, assimpShader.FragmentSource);
+	bfTerrain.GenerateTerrain();
+	bfTerrain.SetPosition(glm::vec3(0.0, -200.0, 0.0));
+	bfTerrain.SetScale(glm::vec3(0.5, 0.5, 0.5));
+
 	// Initialize the game world, pass in assets
+	m_gameWorld.GetTerrain() = bfTerrain;
 	m_gameWorld.Init(m_assetFactory->GetAssets());
 }
 

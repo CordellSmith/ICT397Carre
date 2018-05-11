@@ -135,9 +135,11 @@
     <None Include="res\shaders\Test.shader" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetFactory\Bruteforce.h" />
     <ClInclude Include="AssetFactory\GameAssetFactory.h" />
     <ClInclude Include="AssetFactory\Mesh.h" />
     <ClInclude Include="AssetFactory\NewModel.h" />
+    <ClInclude Include="AssetFactory\NewTerrain.h" />
     <ClInclude Include="AssetFactory\NPC.h" />
     <ClInclude Include="AssetFactory\IGameAsset.h" />
     <ClInclude Include="AssetFactory\Object.h" />
@@ -158,9 +160,11 @@
     <ClInclude Include="ImageDB\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AssetFactory\Bruteforce.cpp" />
     <ClCompile Include="AssetFactory\GameAssetFactory.cpp" />
     <ClCompile Include="AssetFactory\Mesh.cpp" />
     <ClCompile Include="AssetFactory\NewModel.cpp" />
+    <ClCompile Include="AssetFactory\NewTerrain.cpp" />
     <ClCompile Include="AssetFactory\NPC.cpp" />
     <ClCompile Include="AssetFactory\Object.cpp" />
     <ClCompile Include="AssetFactory\Terrain.cpp" />
