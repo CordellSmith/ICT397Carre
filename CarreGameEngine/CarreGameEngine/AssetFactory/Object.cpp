@@ -10,7 +10,7 @@ Object::Object(std::string assetName)
 void Object::LoadFromFilePath(std::string filePath)
 {
 	m_model->LoadModel(filePath);
-	m_model->SetScale(glm::vec3(1.0f, 1.0f, 1.0f));
+	m_model->SetScale(glm::vec3(0.5f, 0.5f, 0.5f));
 }
 
 const void Object::Load()

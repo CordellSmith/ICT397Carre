@@ -115,15 +115,15 @@ bool Terrain::LoadHeightmap(unsigned char bitsPerPixel, unsigned int width, unsi
 			float Z = (T * terrainHeight) - halfTerrainHeight;
 
 			// Blend 3 textures depending on the height of the terrain
-			float tex0Contribution = 1.0f - GetPercentage(heightValue, 0.0f, 0.75f);
-			float tex2Contribution = 1.0f - GetPercentage(heightValue, 0.75f, 1.0f);
+			float tex0Contribution = 0.5f - GetPercentage(heightValue, 0.0f, 0.75f);
+			float tex2Contribution = 0.5f - GetPercentage(heightValue, 0.75f, 0.5f);
 
 			m_NormalBuffer[index] = glm::vec3(0);
 			m_PositionBuffer[index] = glm::vec3(X, Y, Z);
 #if ENABLE_MULTITEXTURE
 			m_ColorBuffer[index] = glm::vec4(tex0Contribution, tex0Contribution, tex0Contribution, tex2Contribution);
 #else
-			m_ColorBuffer[index] = glm::vec4(1.0f);
+			m_ColorBuffer[index] = glm::vec4(0.5f);
 #endif
 			m_Tex0Buffer[index] = glm::vec2(S, T);
 		}
@@ -189,7 +189,7 @@ void Terrain::GenerateNormals()
 		m_NormalBuffer[m_IndexBuffer[i + 2]] += normal;
 	}
 
-	const glm::vec3 UP(0.0f, 1.0f, 0.0f);
+	const glm::vec3 UP(0.0f, 0.5f, 0.0f);
 	for (unsigned int i = 0; i < m_NormalBuffer.size(); ++i)
 	{
 		m_NormalBuffer[i] = glm::normalize(m_NormalBuffer[i]);
@@ -259,8 +259,8 @@ float Terrain::GetHeightAt(const glm::vec3& position)
 
 	// Multiple the position by the inverse of the terrain matrix 
 	// to get the position in terrain local space
-	glm::vec3 terrainPos = glm::vec3(m_InverseLocalToWorldMatrix * glm::vec4(position, 1.0f));
-	glm::vec3 invBlockScale(1.0f / m_fBlockScale, 0.0f, 1.0f / m_fBlockScale);
+	glm::vec3 terrainPos = glm::vec3(m_InverseLocalToWorldMatrix * glm::vec4(position, 0.5f));
+	glm::vec3 invBlockScale(0.5f / m_fBlockScale, 0.0f, 0.5f / m_fBlockScale);
 
 	// Calculate an offset and scale to get the vertex indices
 	glm::vec3 offset(halfWidth, 0.0f, halfHeight);

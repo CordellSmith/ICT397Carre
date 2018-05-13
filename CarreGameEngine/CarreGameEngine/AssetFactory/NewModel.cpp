@@ -37,7 +37,6 @@ void NewModel::ProcessNode(aiNode* node, const aiScene* scene)
 Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 {
 	std::vector<Vertex3> vertices;
-	int numOfVertexs = 0;
 	std::vector<unsigned int> indices;
 	std::vector<Texture> textures;
 
@@ -58,7 +57,7 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		vertexPos.z = mesh->mVertices[i].z;
 		vertex.m_position = vertexPos;
 		// colours (randomised)
-		colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 1.0f);
+		colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 0.5f);
 		vertex.m_colour = colour;
 		// normals
 		if (mesh->HasNormals())
@@ -92,7 +91,6 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		}
 
 		vertices.push_back(vertex);
-		numOfVertexs++;
 	}
 	// process indices
 	for (unsigned int i = 0; i < mesh->mNumFaces; i++)
@@ -119,7 +117,7 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 	}
 
-	return Mesh(vertices, numOfVertexs, indices, textures);
+	return Mesh(vertices, indices, textures);
 }
 
 std::vector<Texture> NewModel::LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)

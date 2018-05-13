@@ -118,6 +118,9 @@ public:
 	
 	virtual void SetAssetScale(glm::vec3 scale) { m_model->SetScale(scale); }
 
+	NewModel* GetModel() { return m_model; }
+	void SetModel(NewModel* model) { m_model = model; }
+
 protected:
 	/// Stores the file path containing the data
 	std::string m_filePath;
