@@ -5,13 +5,13 @@
 #include <string>
 #include <sstream>
 #include <map>
+#include <GLM\glm.hpp>
+#include <GLM\gtc\matrix_transform.hpp>					
+#include <GLM\gtx\transform2.hpp>
 
 #include "Camera.h"
 #include "Model.h"
 #include "..\AssetFactory\NewModel.h"
-#include <GLM\glm.hpp>
-#include <GLM\gtc\matrix_transform.hpp>					
-#include <GLM\gtx\transform2.hpp>
 #include "PhysicsEngine.h"
 #include "..\AssetFactory\IGameAsset.h"
 #include "..\ImageDB\stb_image.h"

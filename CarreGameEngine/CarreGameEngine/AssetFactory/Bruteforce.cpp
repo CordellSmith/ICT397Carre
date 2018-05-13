@@ -3,59 +3,78 @@
 void Bruteforce::GenerateTerrain()
 {
 	Mesh tempMesh;
-
-	// Colour of the height
-	//unsigned char hcolor;
-	//float texLeft, texBottom, texTop;
-
 	Vertex3 vertex;
+	float colour;
+	float texLeft, texBottom, texTop;
 
-	//if (tex)
-	//{
-	//	glEnable(GL_TEXTURE_2D);
-	//	glBindTexture(GL_TEXTURE_2D, tex);
-	//}
-	// Loop through the z-axis
 	for (int z = 0; z < m_heightfieldSize - 1; z++)
 	{
-		// Loop through the x-axis
-		//glBegin(GL_TRIANGLE_STRIP);
 		for (int x = 0; x < m_heightfieldSize; x++)
 		{
-			vertex.m_texCoords.x = (float)x / m_heightfieldSize;
-			vertex.m_texCoords.y = (float)z / m_heightfieldSize;
-			//calculate the texture coordinates
-			//texLeft = (float)x / m_heightfieldSize;
-			//texBottom = (float)z / m_heightfieldSize;
-			//texTop = (float)(z + 1) / m_heightfieldSize;
-			//glTexCoord2f(texLeft, texBottom);
+			// Texture coordinates of the triangle
+			texLeft = (float)x / m_heightfieldSize;
+			texBottom = (float)z / m_heightfieldSize;
+			texTop = (float)(z + 1) / m_heightfieldSize;
 
-			// Create the the first point in the triangle strip
-			//hcolor = GetHeightColour(x, z);
-			//glColor3ub(hcolor, hcolor, hcolor);
+			// Colour of triangle
+			colour = (float)GetHeightColour(x, z) / 255;
+			vertex.m_colour = glm::vec4(colour, colour, colour, 1.0);
+
+			// Vertices
+			vertex.m_position.x = (float)x * m_scaleX;
+			vertex.m_position.y = GetHeight(x, z);
+			vertex.m_position.z = (float)z * m_scaleZ;
+
+			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 0.0
+
+			vertex.m_position.x = (float)x * m_scaleX;
+			vertex.m_position.y = GetHeight(x, z + 1);
+			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
+
+			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 1.0
+
+			vertex.m_position.x = (float)(x + 1) * m_scaleX;
+			vertex.m_position.y = GetHeight(x + 1, z + 1);
+			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
+
+			vertex.m_texCoords = glm::vec2(texLeft, texBottom);
+			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 1.0
 
 			vertex.m_position.x = (float)x * m_scaleX;
 			vertex.m_position.y = GetHeight(x, z);
 			vertex.m_position.z = (float)z * m_scaleZ;
 
-			vertex.m_colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 1.0);
-			//glVertex3f((float)x * m_scaleX, GetHeight(x, z), (float)z * m_scaleZ);
+			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 0.0
 
-			tempMesh.GetVertices().push_back(vertex);
+			vertex.m_position.x = (float)(x + 1) * m_scaleX;
+			vertex.m_position.y = GetHeight(x + 1, z + 1);
+			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
 
-			// Create the next point in the triangle strip
-			//hcolor = GetHeightColour(x, z + 1);
-			//glColor3ub(hcolor, hcolor, hcolor);
+			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 1.0
 
-			//glTexCoord2f(texLeft, texTop);
-			//glVertex3f((float)x * m_scaleX, GetHeight(x, z + 1), (float)(z + 1) * m_scaleZ);
+			vertex.m_position.x = (float)(x + 1) * m_scaleX;
+			vertex.m_position.y = GetHeight(x + 1, z);
+			vertex.m_position.z = (float)z * m_scaleZ;
+
+			vertex.m_texCoords = glm::vec2(texLeft, texTop);
+			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 0.0
 		}
-		//glEnd();
 	}
 	tempMesh.SetupMesh();
 	m_terrainModel->GetMeshBatch().push_back(tempMesh);
 	m_terrainModel->SetScale(glm::vec3(1.0, 1.0, 1.0));
 }
+
+void Bruteforce::SetTexture(GLuint textureId, std::string filePath)
+{
+	Texture temp;
+
+	temp.m_id = textureId;
+	temp.m_path = filePath;
+	temp.m_path = "texture_diffuse";
+	m_terrainModel->GetTextures().push_back(temp);
+}
+
 
 void Bruteforce::AddShader(std::string vertShader, std::string fragShader)
 {
@@ -109,10 +128,9 @@ bool Bruteforce::Inbounds(int xpos, int zpos)
 float Bruteforce::GetHeight(int xpos, int zpos)
 {
 	if (Inbounds(xpos, zpos))
-	{
 		return ((float)(m_terrainData[(zpos * m_heightfieldSize) + xpos]) * m_scaleY);
-	}
-	return 1;
+	else
+		return ((float)(m_terrainData[(zpos * m_heightfieldSize) + xpos - 1]) * m_scaleY);
 }
 
 unsigned char Bruteforce::GetHeightColour(int xpos, int zpos)
@@ -123,3 +141,15 @@ unsigned char Bruteforce::GetHeightColour(int xpos, int zpos)
 	}
 	return 1;
 }
+
+float Bruteforce::GetAverageHeight(int xpos, int zpos)
+{
+	if (Inbounds(xpos, zpos))
+	{
+		return ((float)(m_terrainData[((int)(zpos / m_scaleZ) * m_heightfieldSize  + (int)(xpos / m_scaleX))]) * m_scaleY);
+	}
+	return 1;
+}
+
+
+

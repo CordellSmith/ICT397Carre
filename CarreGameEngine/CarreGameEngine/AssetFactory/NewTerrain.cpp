@@ -1,7 +1,7 @@
 #include "NewTerrain.h"
 
 NewTerrain::NewTerrain()
-	: m_scaleX(1.0), m_scaleY(1.0), m_scaleZ(1.0)
+	: m_scaleX(3.0), m_scaleY(1.0), m_scaleZ(3.0)
 {
 	m_terrainModel = new NewModel();
 }

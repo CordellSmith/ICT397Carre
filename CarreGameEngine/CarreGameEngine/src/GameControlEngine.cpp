@@ -60,7 +60,7 @@ void GameControlEngine::Initialize()
 
 	// Set camera perspective and position
 	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 1000);
-	m_camera->PositionCamera(4, 0, 6, 0, 0);
+	m_camera->PositionCamera(0, 1.5, 0, 0, 0);
 	
 	// Pass camera into gameworld
 	m_gameWorld.SetCamera(m_camera);
@@ -92,9 +92,9 @@ void GameControlEngine::Initialize()
 
 	bfTerrain.LoadHeightfield("res/terrain/height128.raw", 128);
 	bfTerrain.AddShader(assimpShader.VertexSource, assimpShader.FragmentSource);
+	bfTerrain.SetTexture(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
 	bfTerrain.GenerateTerrain();
 	bfTerrain.SetPosition(glm::vec3(0.0, -200.0, 0.0));
-	bfTerrain.SetScale(glm::vec3(0.5, 0.5, 0.5));
 
 	// Initialize the game world, pass in assets
 	m_gameWorld.GetTerrain() = bfTerrain;

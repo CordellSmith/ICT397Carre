@@ -51,6 +51,7 @@ public:
 	const void SetCamera(Camera* camera);
 
 	std::vector<Mesh>& GetMeshBatch() { return m_meshBatch; }
+	std::vector<Texture>& GetTextures() { return m_texturesLoaded; }
 
 protected:
 	std::vector<Mesh> m_meshBatch;

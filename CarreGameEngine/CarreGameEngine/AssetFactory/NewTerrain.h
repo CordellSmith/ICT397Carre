@@ -5,6 +5,7 @@
 #include <string>
 
 #include "NewModel.h"
+#include "..\headers\TextureManager.h"
 
 class NewTerrain
 {
@@ -26,4 +27,6 @@ protected:
 	unsigned char* m_terrainData;
 	float m_scaleX, m_scaleY, m_scaleZ;
 	int m_heightfieldSize;
+
+	GLuint m_textureId;
 };

@@ -76,3 +76,11 @@ void Camera::SetViewByMouse(float xOffset, float yOffset)
 	if (m_pitch < glm::radians(-70.5f))
 		m_pitch = glm::radians(-70.5f);
 }
+
+//void Camera::CheckGround(Bruteforce terrain)
+//{
+//	if (terrain.Inbounds(m_position.x, m_position.z))
+//	{
+//		m_position.y = terrain.GetAverageHeight(m_position.x, m_position.z);
+//	}
+//}

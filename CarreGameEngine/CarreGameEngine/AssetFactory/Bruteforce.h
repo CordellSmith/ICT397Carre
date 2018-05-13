@@ -13,9 +13,11 @@ public:
 	virtual void Render() override;
 
 	bool LoadHeightfield(std::string fileName, const int size);
+	void SetTexture(GLuint textureId, std::string filePath);
 	bool Inbounds(int xpos, int zpos);
 	float GetHeight(int xpos, int zpos);
 	unsigned char GetHeightColour(int xpos, int zpos);
+	float GetAverageHeight(int xpos, int zpos);
 
 protected:
 };

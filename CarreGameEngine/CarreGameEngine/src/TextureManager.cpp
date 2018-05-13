@@ -66,6 +66,8 @@ int TextureManager::LoadTexture(std::string filename)
 
 	// Increment number of textures and return ID
 	m_numTextures++;
+	std::cout << "Successfully added Texture. Texture Count = " << m_numTextures << std::endl;
+
 	return newTex;
 }
 

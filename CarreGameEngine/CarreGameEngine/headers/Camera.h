@@ -8,7 +8,9 @@
 /// Used for the GLM math library
 #include <GLM\glm.hpp>									
 #include <GLM\gtc\matrix_transform.hpp>					
-#include <GLM\gtx\transform2.hpp>						
+#include <GLM\gtx\transform2.hpp>
+
+//#include "..\AssetFactory\Bruteforce.h"
 
 	/**
 	* @struct Camera
@@ -221,6 +223,9 @@ public:
 		* @return void
 		*/
 	void MoveCamera(float speed);
+
+	// Checks for ground below camera adjusting the y-position to follow terrain
+	//void CheckGround(Bruteforce terrain);
 
 protected:
 	/// The camera's projection matrix
