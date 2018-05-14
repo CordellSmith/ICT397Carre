@@ -14,8 +14,8 @@
 #define SCRIPTMANAGER_H
 
 // Includes
+#include <string>
 #include "lua.hpp"
-//#pragma comment(lib,"lua5.1.lib")
 
 class ScriptManager
 {
@@ -36,6 +36,8 @@ class ScriptManager
 			return instance;
 		}
 
+		void CloseLuaState();
+
 			/**
 			* @brief Load all lua scripts
 			*
@@ -45,7 +47,15 @@ class ScriptManager
 			*/
 		void LoadAllLuaScripts();
 
-		
+			/**
+			* @brief Load cam initilization
+			*
+			* Loads all camera and window initialisation variables in
+			*
+			* @return bool - True if load success, else false
+			*/
+		bool LoadWindowInitLua(int &width, int &height, std::string &name, bool &fullScreen);
+
 
 	private:
 
@@ -65,14 +75,7 @@ class ScriptManager
 			*/
 		~ScriptManager();
 
-			/**
-			* @brief Load cam initilization
-			*
-			* Loads all camera and window initialisation variables in
-			*
-			* @return bool - True if load success, else false
-			*/
-		bool LoadCamInitLua();
+		//lua_State* Environment;
 
 };
 

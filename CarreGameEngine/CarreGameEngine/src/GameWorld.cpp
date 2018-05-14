@@ -34,6 +34,8 @@ void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 
 	// Get texture ID from map
 	int texID1 = TextureManager::Instance().GetTextureID("res/objects/taxi/taxi_chrome_d.dds");
+
+	ScriptManager::Instance().LoadAllLuaScripts();
 }
 
 void GameWorld::Update()
@@ -62,7 +64,10 @@ void GameWorld::Update()
 
 void GameWorld::Destroy()
 {
-	/// Delete all textures
+	// Close lua state
+	ScriptManager::Instance().CloseLuaState();
+
+	// Delete all textures
 	TextureManager::Instance().ReleaseAllTextures();
 
 	m_colourPanel.Destroy();

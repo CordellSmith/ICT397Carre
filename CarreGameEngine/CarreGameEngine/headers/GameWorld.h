@@ -16,6 +16,7 @@
 #include "..\AssetFactory\IGameAsset.h"
 #include "..\ImageDB\stb_image.h"
 #include "TextureManager.h"
+#include "ScriptManager.h"
 #include "..\AssetFactory\Bruteforce.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
