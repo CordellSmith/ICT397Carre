@@ -8,7 +8,9 @@
 /// Used for the GLM math library
 #include <GLM\glm.hpp>									
 #include <GLM\gtc\matrix_transform.hpp>					
-#include <GLM\gtx\transform2.hpp>						
+#include <GLM\gtx\transform2.hpp>
+
+//#include "..\AssetFactory\Bruteforce.h"
 
 	/**
 	* @struct Camera
@@ -222,6 +224,9 @@ public:
 		*/
 	void MoveCamera(float speed);
 
+	// Checks for ground below camera adjusting the y-position to follow terrain
+	//void CheckGround(Bruteforce terrain);
+
 protected:
 	/// The camera's projection matrix
 	glm::mat4 m_projectionMatrix;
@@ -229,7 +234,7 @@ protected:
 	glm::vec3 m_position;	
 
 	/// The camera's speed that is used with a time slice
-	float m_speed = 5.0;
+	float m_speed = 50.0;
 	/// The rotation speed for the camera
 	float m_rotationSpeed = 2;						
 	/// The speed for the mouse rotations

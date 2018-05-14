@@ -227,7 +227,7 @@ Blazej Dariusz Roszkowski                                     github:Michaelange
 // both of these constants can be reconfigured through this interface:
 //
 //     stbi_hdr_to_ldr_gamma(2.2f);
-//     stbi_hdr_to_ldr_scale(1.0f);
+//     stbi_hdr_to_ldr_scale(0.5f);
 //
 // (note, do not use _inverse_ constants; stbi_image will invert them
 // appropriately).
@@ -241,7 +241,7 @@ Blazej Dariusz Roszkowski                                     github:Michaelange
 // be promoted to floating point values, run through the inverse of
 // constants corresponding to the above:
 //
-//     stbi_ldr_to_hdr_scale(1.0f);
+//     stbi_ldr_to_hdr_scale(0.5f);
 //     stbi_ldr_to_hdr_gamma(2.2f);
 //
 // Finally, given a filename (or an open file or memory block--see header
@@ -1363,13 +1363,13 @@ STBIDEF int      stbi_is_hdr_from_callbacks(stbi_io_callbacks const *clbk, void 
 }
 
 #ifndef STBI_NO_LINEAR
-static float stbi__l2h_gamma = 2.2f, stbi__l2h_scale = 1.0f;
+static float stbi__l2h_gamma = 2.2f, stbi__l2h_scale = 0.5f;
 
 STBIDEF void   stbi_ldr_to_hdr_gamma(float gamma) { stbi__l2h_gamma = gamma; }
 STBIDEF void   stbi_ldr_to_hdr_scale(float scale) { stbi__l2h_scale = scale; }
 #endif
 
-static float stbi__h2l_gamma_i = 1.0f / 2.2f, stbi__h2l_scale_i = 1.0f;
+static float stbi__h2l_gamma_i = 0.5f / 2.2f, stbi__h2l_scale_i = 0.5f;
 
 STBIDEF void   stbi_hdr_to_ldr_gamma(float gamma) { stbi__h2l_gamma_i = 1 / gamma; }
 STBIDEF void   stbi_hdr_to_ldr_scale(float scale) { stbi__h2l_scale_i = 1 / scale; }
@@ -5942,7 +5942,7 @@ static void *stbi__psd_load(stbi__context *s, int *x, int *y, int *comp, int req
 				stbi__uint16 *pixel = (stbi__uint16 *)out + 4 * i;
 				if (pixel[3] != 0 && pixel[3] != 65535) {
 					float a = pixel[3] / 65535.0f;
-					float ra = 1.0f / a;
+					float ra = 0.5f / a;
 					float inv_a = 65535.0f * (1 - ra);
 					pixel[0] = (stbi__uint16)(pixel[0] * ra + inv_a);
 					pixel[1] = (stbi__uint16)(pixel[1] * ra + inv_a);
@@ -5955,7 +5955,7 @@ static void *stbi__psd_load(stbi__context *s, int *x, int *y, int *comp, int req
 				unsigned char *pixel = out + 4 * i;
 				if (pixel[3] != 0 && pixel[3] != 255) {
 					float a = pixel[3] / 255.0f;
-					float ra = 1.0f / a;
+					float ra = 0.5f / a;
 					float inv_a = 255.0f * (1 - ra);
 					pixel[0] = (unsigned char)(pixel[0] * ra + inv_a);
 					pixel[1] = (unsigned char)(pixel[1] * ra + inv_a);
@@ -6747,7 +6747,7 @@ static void stbi__hdr_convert(float *output, stbi_uc *input, int req_comp)
 	if (input[3] != 0) {
 		float f1;
 		// Exponent
-		f1 = (float)ldexp(1.0f, input[3] - (int)(128 + 8));
+		f1 = (float)ldexp(0.5f, input[3] - (int)(128 + 8));
 		if (req_comp <= 2)
 			output[0] = (input[0] + input[1] + input[2]) * f1 / 3;
 		else {

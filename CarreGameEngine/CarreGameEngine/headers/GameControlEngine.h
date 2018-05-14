@@ -15,6 +15,8 @@
 #include "..\headers\ScriptManager.h"
 #include "TextureManager.h"
 
+//#include "..\AssetFactory\Bruteforce.h"
+
 //#include "PhysicsEngine.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
@@ -153,4 +155,8 @@ protected:
 
 	/// Game world object
 	GameWorld m_gameWorld;
+
+	/// Terrain
+	// Needs to be moved, should be created in init and passed to gameworld without being here
+	Bruteforce bfTerrain;
 };

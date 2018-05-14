@@ -1,10 +1,14 @@
 #include "Mesh.h"
 
-Mesh::Mesh(std::vector<Vertex3> vertices, int numOfVertexs, std::vector<unsigned int> indices, std::vector<Texture> textures)
+Mesh::Mesh()
+{
+	m_camera = new Camera();
+}
+
+Mesh::Mesh(std::vector<Vertex3> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures)
 {
 	m_camera = new Camera();
 	m_vertices = vertices;
-	m_numOfVertexs = numOfVertexs;
 	m_indices = indices;
 	m_textures = textures;
 
@@ -20,7 +24,7 @@ void Mesh::SetupMesh()
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-	glBufferData(GL_ARRAY_BUFFER, sizeof(m_vertices[0]) * m_numOfVertexs, &m_vertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(m_vertices[0]) * GetVertices().size(), &m_vertices[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indices.size() * sizeof(unsigned int), &m_indices[0], GL_STATIC_DRAW);
@@ -74,7 +78,7 @@ void Mesh::Draw(Shader* shader)
 
 	// Order is important, must be Translate, Scale then Rotation
 	// Create the Model Matrix with the current position
-	glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), m_position);
+	glm::mat4 modelMatrix = glm::translate(glm::mat4(0.5f), m_position);
 
 	// Similar to the Position above, we do the same for the m_scale
 	modelMatrix = glm::scale(modelMatrix, m_scale);
@@ -103,8 +107,8 @@ void Mesh::Draw(Shader* shader)
 	glEnableVertexAttribArray(2);
 	glEnableVertexAttribArray(3);
 
-	//glDrawArrays(GL_TRIANGLES, 0, m_numOfVertexs);
-	glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, 0);
+	glDrawArrays(GL_TRIANGLES, 0, GetVertices().size());
+	//glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, 0);
 
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);

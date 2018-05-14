@@ -16,7 +16,7 @@ void Camera::PositionCamera(float positionX, float positionY, float positionZ, f
 
 glm::mat4 Camera::GetRotationMatrix()
 {
-	glm::mat4 rotationMatrix(1.0f);
+	glm::mat4 rotationMatrix(0.5f);
 
 	// Add the Pitch rotation along the x and y axis
 	rotationMatrix = glm::rotate(rotationMatrix, m_pitch, glm::vec3(1, 0, 0));
@@ -71,8 +71,16 @@ void Camera::SetViewByMouse(float xOffset, float yOffset)
 		m_yaw = (float)(2 * PI);
 
 	// Pitch capped to 75 degrees up and -75 degrees down
-	if (m_pitch > glm::radians(71.0f))
-		m_pitch = glm::radians(71.0f);
-	if (m_pitch < glm::radians(-71.0f))
-		m_pitch = glm::radians(-71.0f);
+	if (m_pitch > glm::radians(70.5f))
+		m_pitch = glm::radians(70.5f);
+	if (m_pitch < glm::radians(-70.5f))
+		m_pitch = glm::radians(-70.5f);
 }
+
+//void Camera::CheckGround(Bruteforce terrain)
+//{
+//	if (terrain.Inbounds(m_position.x, m_position.z))
+//	{
+//		m_position.y = terrain.GetAverageHeight(m_position.x, m_position.z);
+//	}
+//}

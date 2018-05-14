@@ -1,46 +1,11 @@
 #include "..\headers\GameWorld.h"
 
-/// Function to read a shader in one string and return a struct containing separated Vertex and Fragment shaders
-ShaderSource ParseShader(const std::string& filePath)
-{
-	std::ifstream stream(filePath);
-
-	enum class ShaderType
-	{
-		NONE = -1, VERTEX = 0, FRAGMENT = 1
-	};
-
-	std::string line;
-	std::stringstream ss[2]; // stack allocated array that will store vertex and fragment strings
-	ShaderType type = ShaderType::NONE; // set to none (-1) by default
-	while (getline(stream, line))
-	{
-		if (line.find("#shader") != std::string::npos)
-		{
-			if (line.find("vertex") != std::string::npos)
-				type = ShaderType::VERTEX;
-			else if (line.find("fragment") != std::string::npos)
-				type = ShaderType::FRAGMENT;
-		}
-		else
-		{
-			ss[(int)type] << line << '\n';
-		}
-	}
-
-	return { ss[0].str(), ss[1].str() };
-}
-
-Vertex panel[6] = { glm::vec3(0), glm::vec4(1), glm::vec2(2), glm::vec3(3) };
-std::vector<unsigned int> m_indices;
-
 void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 {
 	// Sets this game contexts assets to the  loaded game assets from the control engine
 	SetGameAssets(gameAssets);
 
-	m_assimpShaderSource = ParseShader("res/shaders/Default.shader");
-	m_testShaderSource = ParseShader("res/shaders/Test.shader");
+	m_terrain.SetCamera(m_camera);
 
 	std::multimap<ASS_TYPE, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
@@ -58,9 +23,6 @@ void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 		itr->second->Prepare(m_testShaderSource.VertexSource, m_testShaderSource.FragmentSource);
 	}
 
-	PrepareColourPanel();
-	m_colourPanel.Initialize(panel, 6, m_indices, m_shaderSource2.VertexSource, m_shaderSource2.FragmentSource);
-
 	// Initialize all physics objects
 	InitializePhysics();
 
@@ -72,9 +34,6 @@ void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 
 	// Get texture ID from map
 	int texID1 = TextureManager::Instance().GetTextureID("res/objects/taxi/taxi_chrome_d.dds");
-
-	// Get texture ID from unloaded texture
-	int texID2 = TextureManager::Instance().GetTextureID("res/objects/taxi/taxi_d.dds");
 }
 
 void GameWorld::Update()
@@ -82,18 +41,16 @@ void GameWorld::Update()
 	// Blue sky
 	glClearColor(0.0, 0.0, 0.5, 1.0);
 
-	// Update all physics body locations
-	UpdatePhysics();
+	// Used for the camara to follow terrain
+	float newY = m_terrain.GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) + 15;
+	m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, newY, m_camera->GetPosition().z));
 
-	// Render a floor on x/z axis (15 x 15)
-	for (int x = 0; x < 15; x++)
-	{
-		for (int z = 0; z < 15; z++)
-		{
-			m_colourPanel.SetPosition(glm::vec3(x * 2, 0, z * 2));
-			m_colourPanel.Render();
-		}
-	}
+	std::cout << "X: " << m_camera->GetPosition().x << " Y: " << m_terrain.GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) << " Z: " << m_camera->GetPosition().z << std::endl;
+
+	// Update all physics body locations
+	//UpdatePhysics();
+
+	m_terrain.Render();
 
 	// Testing rendering of objects from multimap
 	std::multimap<ASS_TYPE, IGameAsset*>::iterator itr;
@@ -193,31 +150,4 @@ void GameWorld::UpdatePhysics()
 		itr->second->SetAssetPosition(glm::vec3(temp.x, temp.y, temp.z));
 		itr->second->Render();
 	}
-}
-
-void GameWorld::PrepareColourPanel()
-{
-	m_shaderSource2 = ParseShader("res/shaders/Basic.shader");
-	m_colourPanel.SetCamera(m_camera);
-
-	panel[0].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
-	panel[0].rgba = glm::vec4(0.5, 0.5, 0.0, 1);
-
-	panel[1].xyz = glm::vec3(1.0f, -1.0f, -1.0f);
-	panel[1].rgba = glm::vec4(0.4, 0.0, 1.0, 1);
-
-	panel[2].xyz = glm::vec3(1.0f, -1.0f, 1.0f);
-	panel[2].rgba = glm::vec4(0.5, 0.6, 1.0, 1);
-
-	panel[3].xyz = glm::vec3(1.0f, -1.0f, 1.0f);
-	panel[3].rgba = glm::vec4(1.0, 0.4, 0.4, 1);
-
-	panel[4].xyz = glm::vec3(-1.0f, -1.0f, 1.0f);
-	panel[4].rgba = glm::vec4(0.3, 1.0, 0.1, 1);
-
-	panel[5].xyz = glm::vec3(-1.0f, -1.0f, -1.0f);
-	panel[5].rgba = glm::vec4(1.0, 1.0, 0.4, 1);
-
-	for (int i = 1; i < 7; i++)
-		m_indices.push_back(i);
 }

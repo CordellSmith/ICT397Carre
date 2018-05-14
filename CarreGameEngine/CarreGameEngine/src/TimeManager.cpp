@@ -17,7 +17,7 @@ double TimeManager::CalculateFrameRate(bool writeToConsole = false)
 	// Increase frame counter
 	++framesPerSecond;
 	
-	if ( CurrentTime - startTime > 1.0f )
+	if ( CurrentTime - startTime > 0.5f )
 	{
 		startTime = CurrentTime;
 
