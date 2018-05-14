@@ -59,9 +59,11 @@ public:
 		*
 		* Load a texture from file using the SOIL API
 		*
+		* @param filePath - Relative path to the texture
 		*
 		* @return int - texID (given ID of loaded texture)
 		*/
+	int LoadTexture(std::string filePath);
 
 		/**
 		* @brief Add a texture to the map
