@@ -105,6 +105,32 @@ void TextureManager::AddTextureToMap(std::string filename, int texID)
 	}
 }
 
+// Return a texture ID
+int TextureManager::GetTextureID(std::string filename)
+{
+	// Get iterator to start of map
+	std::unordered_map<std::string, unsigned int>::iterator it = m_textureMap.begin();
+
+	// Search map for texture
+	while (it != m_textureMap.end())
+	{
+		// If texture found, return the given ID
+		if ((*it).first == filename)
+		{
+			return (*it).second;
+		}
+
+		// Increment iterator
+		it++;
+	}
+
+	// If texture is not in map, load it in and add to map
+	int texID = LoadTexture(filename);
+
+	// Return texture ID
+	return texID;
+}
+
 // Release all textures from memory
 void TextureManager::ReleaseAllTextures()
 {

@@ -38,7 +38,10 @@ void GameWorld::Update()
 
 void GameWorld::Destroy()
 {
-	/// Delete all textures
+	// Close lua state
+	ScriptManager::Instance().CloseLuaState();
+
+	// Delete all textures
 	TextureManager::Instance().ReleaseAllTextures();
 
 	std::multimap<std::string, IGameAsset*>::iterator itr;
@@ -52,6 +55,13 @@ void GameWorld::SetPhysicsWorld(PhysicsEngine* physicsEngine, std::vector<btVect
 {
 	m_physicsWorld = physicsEngine;
 	m_collisionBodyPos = collisionBodyPositions;
+}
+
+// Load all textures
+void GameWorld::LoadAllTextures()
+{
+	// Use lua?
+	// Or fstream?
 }
 
 // Update all physics

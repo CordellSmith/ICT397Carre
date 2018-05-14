@@ -14,6 +14,7 @@
 #include "GameWorld.h"
 #include "..\headers\ScriptManager.h"
 #include "TextureManager.h"
+#include "ScriptManager.h"
 
 //#include "..\AssetFactory\Bruteforce.h"
 
@@ -141,10 +142,16 @@ public:
 protected:
 
 	/// Screen width
-	static const int ScreenWidth = 1280;
+	int ScreenWidth;
 
 	/// Screen height
-	static const int ScreenHeight = 720;
+	int ScreenHeight;
+
+	/// Screen title
+	std::string screenTitle;
+
+	/// Full screen
+	bool fullScreen;
 
 	/// Engines window object
 	WindowManager* m_windowManager;
