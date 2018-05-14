@@ -49,7 +49,7 @@ void GameWorld::Update()
 	float newY = m_terrain.GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) + 15;
 	m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, newY, m_camera->GetPosition().z));
 
-	std::cout << "X: " << m_camera->GetPosition().x << " Y: " << m_terrain.GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) << " Z: " << m_camera->GetPosition().z << std::endl;
+	//std::cout << "X: " << m_camera->GetPosition().x << " Y: " << m_terrain.GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) << " Z: " << m_camera->GetPosition().z << std::endl;
 
 	// Update all physics body locations
 	//UpdatePhysics();

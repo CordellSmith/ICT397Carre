@@ -23,96 +23,98 @@
 
 #include "GL\glew.h"
 #include "soil2.h"
+#include "stb_image.h"
 
 class TextureManager
 {
-	public:
+public:
+		/**
+		* @brief Singleton instance
+		*
+		* This function returns a singleton instance of the texture manager class so that there is only
+		* one instance of a texture manager.
+		*
+		* @return static TextureManager&
+		*/
+	static TextureManager& Instance()
+	{
+		static TextureManager instance;
 
-			/**
-			* @brief Singleton instance
-			*
-			* This function returns a singleton instance of the texture manager class so that there is only
-			* one instance of a texture manager.
-			*
-			* @return static TextureManager&
-			*/
-		static TextureManager& Instance()
-		{
-			static TextureManager instance;
+		return instance;
+	}
 
-			return instance;
-		}
+		/**
+		* @brief Activate a texture
+		*
+		* Sets the given texture to be active
+		*
+		* @param texID - Texture to set active
+		*
+		* @return bool - True
+		*/
+	bool SetActiveTexture(unsigned int texID);
 
-			/**
-			* @brief Activate a texture
-			*
-			* Sets the given texture to be active
-			*
-			* @param texID - Texture to set active
-			*
-			* @return bool - True
-			*/
-		bool SetActiveTexture(unsigned int texID);
+		/**
+		* @brief Load a texture
+		*
+		* Load a texture from file using the SOIL API
+		*
+		*
+		* @return int - texID (given ID of loaded texture)
+		*/
 
-			/**
-			* @brief Load a texture
-			*
-			* Load a texture from file using the SOIL API
-			*
-			* @param filename - Name of file to load
-			*
-			* @return int - texID (given ID of loaded texture)
-			*/
-		int LoadTexture(std::string filename);
+		/**
+		* @brief Add a texture to the map
+		*
+		* Adds a texture that is loaded into the map for storing and later access
+		*
+		* @param filename - Name of file loaded
+		* @param texID - ID of texture
+		*
+		* @return void
+		*/
+	void AddTextureToMap(std::string filename, int texID);
 
-			/**
-			* @brief Add a texture to the map
-			*
-			* Adds a texture that is loaded into the map for storing and later access
-			*
-			* @param filename - Name of file loaded
-			* @param texID - ID of texture
-			*
-			* @return void
-			*/
-		void AddTextureToMap(std::string filename, int texID);
+		/**
+		* @brief Release all textures
+		*
+		* Releases all textures from memory (called in de-constructor
+		*
+		* @return void
+		*/
+	void ReleaseAllTextures();
 
-			/**
-			* @brief Release all textures
-			*
-			* Releases all textures from memory (called in de-constructor
-			*
-			* @return void
-			*/
-		void ReleaseAllTextures();
+protected:
+	/// Width and Height of texture loaded
+	int m_width, m_height;
 
-	private:
+private:
 
-			/**
-			* @brief Default constructor
-			*
-			* This is the default constructor
-			*
-			* @return null
-			*/
-		TextureManager();
+		/**
+		* @brief Default constructor
+		*
+		* This is the default constructor
+		*
+		* @return null
+		*/
+	TextureManager();
 
-			/**
-			* @brief De-constructor
-			*
-			* This is the deconstructor
-			*/
-		~TextureManager();
+		/**
+		* @brief De-constructor
+		*
+		* This is the deconstructor
+		*/
+	~TextureManager();
 
-			/**
-			* @brief
-			*
-			* An unordered map containing all textures for easy lookup
-			*/
-		std::unordered_map<std::string, unsigned int> m_textureMap;
+		/**
+		* @brief
+		*
+		* An unordered map containing all textures for easy lookup
+		*/
+	std::unordered_map<std::string, unsigned int> m_textureMap;
 
-		/// Number of textures
-		int m_numTextures;
+	/// Number of textures
+	int m_numTextures;
 };
 
 #endif
