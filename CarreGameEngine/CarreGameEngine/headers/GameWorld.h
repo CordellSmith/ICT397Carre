@@ -138,7 +138,7 @@ public:
 	void UpdatePhysics();
 
 	void SetGameAssets(std::multimap<ASS_TYPE, IGameAsset*> gameAssets) { m_gameAssets = gameAssets; }
-	NewTerrain& GetTerrain() { return m_terrain; }
+	void SetTerrain(Bruteforce terrain) { m_terrain = terrain; }
 
 protected:
 	/// Models to load
