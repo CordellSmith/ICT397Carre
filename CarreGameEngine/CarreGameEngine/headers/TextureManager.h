@@ -10,6 +10,9 @@
 * @version 1.1	Changed from SOIL to SOIL2, as SOIL was deprecated. Got file loading and storing in map
 *				working. Next to work on is a better system for loading files (from lua), and using the
 *				loaded in textures.
+*
+* @date 10/07/2018
+* @version 1.2	Added a few more useful functions, and some tidy up.
 */
 
 #ifndef TEXTUREMANAGER_H
@@ -76,6 +79,17 @@ class TextureManager
 			* @return void
 			*/
 		void AddTextureToMap(std::string filename, int texID);
+
+			/**
+			* @brief Return a texture
+			*
+			* Returns a texture ID to be used
+			*
+			* @param filename - Name of texture file to be returned
+			*
+			* @return int - texID (given ID and requested texture)
+			*/
+		int GetTextureID(std::string filename);
 
 			/**
 			* @brief Release all textures

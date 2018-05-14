@@ -66,15 +66,15 @@ void GameWorld::Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets)
 
 	/*****************************************/
 	// TextureManager testing
-	TextureManager::Instance().LoadTexture("res/objects/taxi_model/taxi_chrome_d.dds");
-	TextureManager::Instance().LoadTexture("res/objects/taxi_model/taxi_chrome_s.dds");
-	TextureManager::Instance().LoadTexture("res/objects/taxi_model/taxi_d.dds");
+	int texID0 = TextureManager::Instance().LoadTexture("res/objects/taxi/taxi_chrome_d.dds");
+	TextureManager::Instance().LoadTexture("res/objects/taxi/taxi_chrome_s.dds");
+	//TextureManager::Instance().LoadTexture("res/objects/taxi/taxi_d.dds");
 
-	// This shouldn't work, as there is no file with that name
-	TextureManager::Instance().LoadTexture("res/objects/taxi_model/taxi.dds");
+	// Get texture ID from map
+	int texID1 = TextureManager::Instance().GetTextureID("res/objects/taxi/taxi_chrome_d.dds");
 
-	// This shouldn't work as .raw isn't supported with SOIL2
-	TextureManager::Instance().LoadTexture("res/terrain/height128.raw");
+	// Get texture ID from unloaded texture
+	int texID2 = TextureManager::Instance().GetTextureID("res/objects/taxi/taxi_d.dds");
 }
 
 void GameWorld::Update()
@@ -149,6 +149,13 @@ void GameWorld::InitializePhysics()
 
 	// Activate all rigid body objects
 	m_physicsWorld.ActivateAllObjects();
+}
+
+// Load all textures
+void GameWorld::LoadAllTextures()
+{
+	// Use lua?
+	// Or fstream?
 }
 
 // Update all physics

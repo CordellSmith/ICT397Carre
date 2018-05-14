@@ -127,6 +127,15 @@ public:
 	void InitializePhysics();
 
 		/**
+		* @brief Load all textures
+		*
+		* This function loads all required textures into the TextureManager
+		*
+		* @return null
+		*/
+	void LoadAllTextures();
+
+		/**
 		* @brief Updates all physics
 		*
 		* This function updates all physics bodies, simulating them each step
