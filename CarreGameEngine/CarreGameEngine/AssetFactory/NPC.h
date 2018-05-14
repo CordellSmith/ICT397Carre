@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IGameAsset.h"
-#include "..\headers\Model.h"
+#include "..\AssetFactory\Model.h"
 
 	/*
 	* @class NPC

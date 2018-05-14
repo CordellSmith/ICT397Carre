@@ -10,7 +10,7 @@
 #include <GLM\gtx\transform2.hpp>
 
 #include "Camera.h"
-#include "..\AssetFactory\NewModel.h"
+#include "..\AssetFactory\Model.h"
 #include "PhysicsEngine.h"
 #include "..\AssetFactory\IGameAsset.h"
 #include "..\ImageDB\stb_image.h"

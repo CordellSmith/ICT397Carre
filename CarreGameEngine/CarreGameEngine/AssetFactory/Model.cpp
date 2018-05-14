@@ -1,10 +1,10 @@
-#include "NewModel.h"
+#include "Model.h"
 
 #include "..\ImageDB\stb_image.h"
 
 unsigned int TextureFromFile(const char* path, const std::string& directory);
 
-void NewModel::LoadModel(std::string filePath)
+void Model::LoadModel(std::string filePath)
 {
 	Assimp::Importer import;
 	const aiScene *scene = import.ReadFile(filePath, aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -19,7 +19,7 @@ void NewModel::LoadModel(std::string filePath)
 		ProcessNode(scene->mRootNode, scene);
 }
 
-void NewModel::ProcessNode(aiNode* node, const aiScene* scene)
+void Model::ProcessNode(aiNode* node, const aiScene* scene)
 {
 	// process all the node's meshes (if any)
 	for (unsigned int i = 0; i < node->mNumMeshes; i++)
@@ -34,7 +34,7 @@ void NewModel::ProcessNode(aiNode* node, const aiScene* scene)
 	}
 }
 
-Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
+Mesh Model::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 {
 	std::vector<Vertex3> vertices;
 	std::vector<unsigned int> indices;
@@ -120,7 +120,7 @@ Mesh NewModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 	return Mesh(vertices, indices, textures);
 }
 
-std::vector<Texture> NewModel::LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
+std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
 {
 	std::vector<Texture> textures;
 	for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
@@ -151,12 +151,12 @@ std::vector<Texture> NewModel::LoadMaterialTextures(aiMaterial* mat, aiTextureTy
 	return textures;
 }
 
-void NewModel::Prepare(std::string vertShader, std::string fragShader)
+void Model::Prepare(std::string vertShader, std::string fragShader)
 {
 	m_shader->Initialize(vertShader, fragShader);
 }
 
-void NewModel::Draw()
+void Model::Draw()
 {
 	for (unsigned int i = 0; i < m_meshBatch.size(); i++)
 	{
@@ -164,14 +164,14 @@ void NewModel::Draw()
 	}
 }
 
-void NewModel::Destroy()
+void Model::Destroy()
 {
 	// Todo: implement destroy function of all meshes of the model
 	return void();
 }
 
 
-void NewModel::SetPosition(glm::vec3 position)
+void Model::SetPosition(glm::vec3 position)
 {
 	m_position = position;
 	for (size_t i = 0; i < m_meshBatch.size(); i++)
@@ -180,7 +180,7 @@ void NewModel::SetPosition(glm::vec3 position)
 	}
 }
 
-void NewModel::SetScale(glm::vec3 scale)
+void Model::SetScale(glm::vec3 scale)
 {
 	m_scale = scale;
 	for (size_t i = 0; i < m_meshBatch.size(); i++)
@@ -197,7 +197,7 @@ unsigned int TextureFromFile(const char* path, const std::string& directory)
 	return TextureManager::Instance().LoadTexture(filePath);
 }
 
-const void NewModel::SetCamera(Camera* camera) 
+const void Model::SetCamera(Camera* camera) 
 {
 	for (size_t i = 0; i < m_meshBatch.size(); i++)
 	{

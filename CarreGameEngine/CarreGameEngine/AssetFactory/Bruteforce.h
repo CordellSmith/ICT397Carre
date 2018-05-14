@@ -1,8 +1,8 @@
 #pragma once
 
-#include "NewTerrain.h"
+#include "Terrain.h"
 
-class Bruteforce : public NewTerrain
+class Bruteforce : public Terrain
 {
 public:
 	Bruteforce() { }
