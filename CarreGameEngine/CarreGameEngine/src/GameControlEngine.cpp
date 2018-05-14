@@ -55,9 +55,6 @@ void GameControlEngine::Initialize()
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 
-	// Testing script output
-	loadScript();
-
 	// Set camera perspective and position
 	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 1000);
 	m_camera->PositionCamera(200, 2, 200, 0, 0);
