@@ -152,7 +152,9 @@ public:
 	virtual void SetAssetPosition(glm::vec3 position) { m_model->SetPosition(position); }
 
 	virtual void SetAssetScale(glm::vec3 scale) { m_model->SetScale(scale); }
-	
+
+	virtual const glm::vec3 GetAssetPosition() { return m_model->GetPosition(); }
+		
 protected:
 	/// Stores the file path containing the data
 	std::string m_textureFilePath, m_heightmapFilePath;

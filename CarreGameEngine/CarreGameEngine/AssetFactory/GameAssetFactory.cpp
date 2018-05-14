@@ -24,7 +24,7 @@ IGameAsset* GameAssetFactory::CreateAsset(ASS_TYPE type, std::string assetName)
 
 const void GameAssetFactory::AddAsset(IGameAsset* assetToAdd)
 {
-	std::pair<ASS_TYPE, IGameAsset*> tempAsset = std::pair<ASS_TYPE, IGameAsset*>(assetToAdd->GetOBJType(), assetToAdd);
+	std::pair<std::string, IGameAsset*> tempAsset = std::pair<std::string, IGameAsset*>(assetToAdd->GetAssetName(), assetToAdd);
 	m_assets.insert(tempAsset);
 }
 

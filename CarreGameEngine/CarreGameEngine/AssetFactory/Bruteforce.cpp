@@ -13,10 +13,10 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 			Vertex3 vertex;
 
 			// Texture coordinates of the triangle
-			tex00 = (float)x / m_heightfieldSize;
-			tex10 = (float)z / m_heightfieldSize;
-			tex11 = (float)(z + 1) / m_heightfieldSize;
-			tex01 = (float)(x + 1) / m_heightfieldSize;
+			tex00 = (float)x * m_heightfieldSize * m_scaleX;
+			tex10 = (float)z * m_heightfieldSize * m_scaleZ;
+			tex11 = (float)(z + 1) * m_heightfieldSize * m_scaleZ;
+			tex01 = (float)(x + 1) * m_heightfieldSize * m_scaleX;
 
 			// Colour of triangle
 			colour = (float)GetHeightColour(x, z) / 255;

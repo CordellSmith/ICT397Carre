@@ -51,14 +51,14 @@ public:
 		* @param std::string filePath
 		* @return IGameAsset*
 		*/
-	IGameAsset* CreateAsset(ASS_TYPE type, std::string filePath);
+	IGameAsset* CreateAsset(ASS_TYPE type, std::string assetName);
 
 	const void AddAsset(IGameAsset* assetToAdd);
 
 	// Check if this should be double const
-	const std::multimap<ASS_TYPE, IGameAsset*> GetAssets() const { return m_assets; }
+	const std::multimap<std::string, IGameAsset*>& GetAssets() { return m_assets; }
 
 protected:
 	/// Data structure to hold assets
-	std::multimap<ASS_TYPE, IGameAsset*> m_assets;
+	std::multimap<std::string, IGameAsset*> m_assets;
 };

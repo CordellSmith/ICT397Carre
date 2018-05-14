@@ -136,6 +136,8 @@ public:
 
 	virtual void SetAssetScale(glm::vec3 scale) = 0;
 
+	virtual const glm::vec3 GetAssetPosition() = 0;
+
 protected:
 	ASS_TYPE m_assetType;
 	std::string m_assetName;

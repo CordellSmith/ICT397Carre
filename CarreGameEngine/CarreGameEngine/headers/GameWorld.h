@@ -10,7 +10,6 @@
 #include <GLM\gtx\transform2.hpp>
 
 #include "Camera.h"
-#include "Model.h"
 #include "..\AssetFactory\NewModel.h"
 #include "PhysicsEngine.h"
 #include "..\AssetFactory\IGameAsset.h"
@@ -68,7 +67,7 @@ public:
 		*
 		* @return void
 		*/
-	void Init(std::multimap<ASS_TYPE, IGameAsset*> gameAssets);
+	void Init(std::multimap<std::string, IGameAsset*> gameAssets);
 
 		/**
 		* @brief Updates the game world
@@ -120,13 +119,16 @@ public:
 	void SetCamera(Camera* camera) { m_camera = camera; }
 
 		/**
-		* @brief Initialize all physics
+		* @brief Sets the physics world properties
 		*
-		* This function creates all rigid bodies for every game object, and adds their locations to a vector for drawing/updating
+		* Passes the initialized physics engine and populated collision bodies to the game world
+		* object to be used.
 		*
-		* @return null
+		* @param PhysicsEngine* physicsEngine
+		* @param std::vector<btVector3> collisionBodies
+		* @return void
 		*/
-	void InitializePhysics();
+	void SetPhysicsWorld(PhysicsEngine* physicsEngine, std::vector<btVector3> collisionBodies);
 
 		/**
 		* @brief Updates all physics
@@ -137,14 +139,11 @@ public:
 		*/
 	void UpdatePhysics();
 
-	void SetGameAssets(std::multimap<ASS_TYPE, IGameAsset*> gameAssets) { m_gameAssets = gameAssets; }
+	void SetGameAssets(std::multimap<std::string, IGameAsset*> gameAssets) { m_gameAssets = gameAssets; }
+
 	void SetTerrain(Bruteforce terrain) { m_terrain = terrain; }
 
 protected:
-	/// Models to load
-	Model m_colourPanel;
-	int m_modelVertexSize;
-
 	/// Shader sources
 	ShaderSource m_assimpShaderSource, m_shaderSource1, m_shaderSource2, m_testShaderSource;
 
@@ -152,12 +151,12 @@ protected:
 	Camera* m_camera;
 
 	/// Physics world
-	PhysicsEngine m_physicsWorld;
+	PhysicsEngine* m_physicsWorld;
 
 	/// Vector of all collision objects (static and dynamic)
 	std::vector<btVector3> m_collisionBodyPos;
 
-	std::multimap<ASS_TYPE, IGameAsset*> m_gameAssets;
+	std::multimap<std::string, IGameAsset*> m_gameAssets;
 
 	Bruteforce m_terrain;
 };
