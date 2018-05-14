@@ -6,7 +6,7 @@
 #include <sstream>
 
 #include "WindowManager.h"
-#include "Model.h"
+#include "..\AssetFactory\Model.h"
 #include "TimeManager.h"
 #include "Camera.h"
 #include "InputManager.h"

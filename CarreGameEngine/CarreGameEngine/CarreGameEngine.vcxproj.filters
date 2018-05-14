@@ -30,9 +30,6 @@
     <ClInclude Include="headers\InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Model.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headers\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -49,9 +46,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AssetFactory\GameAssetFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetFactory\Terrain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AssetFactory\NPC.h">
@@ -72,9 +66,6 @@
     <ClInclude Include="AssetFactory\Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AssetFactory\NewModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AssetFactory\IGameAsset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -84,17 +75,17 @@
     <ClInclude Include="headers\TextureManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AssetFactory\NewTerrain.h">
+    <ClInclude Include="AssetFactory\Bruteforce.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AssetFactory\Bruteforce.h">
+    <ClInclude Include="AssetFactory\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetFactory\Terrain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AssetFactory\Terrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AssetFactory\GameAssetFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -105,9 +96,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AssetFactory\Mesh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetFactory\NewModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Camera.cpp">
@@ -125,9 +113,6 @@
     <ClCompile Include="src\InputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Model.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\PhysicsEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -143,10 +128,13 @@
     <ClCompile Include="src\TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AssetFactory\NewTerrain.cpp">
+    <ClCompile Include="AssetFactory\Bruteforce.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AssetFactory\Bruteforce.cpp">
+    <ClCompile Include="AssetFactory\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetFactory\Terrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

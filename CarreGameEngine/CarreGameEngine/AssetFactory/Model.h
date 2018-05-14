@@ -13,12 +13,12 @@
 #include "..\headers\Shader.h"
 #include "..\headers\TextureManager.h"
 
-class NewModel
+class Model
 {
 public:
 	// Must initialise shader
-	NewModel() { m_shader = new Shader(); }
-	~NewModel() { Destroy(); }
+	Model() { m_shader = new Shader(); }
+	~Model() { Destroy(); }
 
 	void LoadModel(std::string filePath);
 

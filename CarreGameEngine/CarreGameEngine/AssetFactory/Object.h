@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IGameAsset.h"
-#include "NewModel.h"
+#include "Model.h"
 
 	/*
 	* @class Object
@@ -120,14 +120,14 @@ public:
 
 	virtual const glm::vec3 GetAssetPosition() { return m_model->GetPosition(); }
 	
-	NewModel* GetModel() { return m_model; }
-	void SetModel(NewModel* model) { m_model = model; }
+	Model* GetModel() { return m_model; }
+	void SetModel(Model* model) { m_model = model; }
 
 protected:
 	/// Stores the file path containing the data
 	std::string m_filePath;
 	/// Model object
-	NewModel* m_model;
+	Model* m_model;
 
 	Camera* m_camera;
 };

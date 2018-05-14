@@ -18,7 +18,7 @@
 	*/
 typedef enum
 {
-	ASS_TERRAIN = 0,
+	ASS_NULL = 0,
 	ASS_OBJECT = 1,
 	ASS_NPC = 2
 }ASS_TYPE;

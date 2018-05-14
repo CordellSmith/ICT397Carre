@@ -4,7 +4,7 @@ Object::Object(std::string assetName)
 {
 	m_assetType = ASS_OBJECT;
 	m_assetName = assetName;
-	m_model = new NewModel();
+	m_model = new Model();
 }
 
 void Object::LoadFromFilePath(std::string filePath)
@@ -35,7 +35,7 @@ const void Object::Render()
 
 const void Object::Destroy()
 {
-	m_model->~NewModel();
+	m_model->~Model();
 }
 
 const std::string & Object::GetFilePath() const
