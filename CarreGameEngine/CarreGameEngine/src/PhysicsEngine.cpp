@@ -27,7 +27,7 @@ PhysicsEngine::PhysicsEngine()
 	m_dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
 
 	// Set the gravity
-	m_dynamicsWorld->setGravity(btVector3(0, -2, 0));
+	m_dynamicsWorld->setGravity(btVector3(0, 0, 0));
 
 	// Initialize all objects to static
 	m_isDynamic = false;

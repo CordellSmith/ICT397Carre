@@ -118,6 +118,8 @@ public:
 	
 	virtual void SetAssetScale(glm::vec3 scale) { m_model->SetScale(scale); }
 
+	virtual const glm::vec3 GetAssetPosition() { return m_model->GetPosition(); }
+	
 	NewModel* GetModel() { return m_model; }
 	void SetModel(NewModel* model) { m_model = model; }
 
