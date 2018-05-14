@@ -81,7 +81,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\assimp-4.1.0\lib;$(SolutionDir)Dependencies\lua\lib;$(SolutionDir)Dependencies\glut\lib;$(SolutionDir)Dependencies\BulletPhysicsEngine\lib;$(SolutionDir)Dependencies\GLFW\lib-vc2015;$(SolutionDir)Dependencies\GLEW 2.1.0\lib\Release\Win32;$(SolutionDir)Dependencies\assimp-4.1.0\code\Debug;$(SolutionDir)Dependencies\SOIL2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>BulletDynamics.lib;BulletCollision.lib;LinearMath.lib;glfw3.lib;opengl32.lib;glew32s.lib;assimp-vc140-mt.lib;soil2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>BulletDynamics.lib;BulletCollision.lib;LinearMath.lib;glfw3.lib;opengl32.lib;glew32s.lib;assimp-vc140-mt.lib;soil2.lib;lua5.1.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <Xdcmake>

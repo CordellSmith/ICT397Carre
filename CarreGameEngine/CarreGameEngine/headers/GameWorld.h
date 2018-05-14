@@ -15,6 +15,7 @@
 #include "..\AssetFactory\IGameAsset.h"
 #include "..\ImageDB\stb_image.h"
 #include "TextureManager.h"
+#include "ScriptManager.h"
 #include "..\AssetFactory\Bruteforce.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
@@ -129,6 +130,15 @@ public:
 		* @return void
 		*/
 	void SetPhysicsWorld(PhysicsEngine* physicsEngine, std::vector<btVector3> collisionBodies);
+
+		/**
+		* @brief Load all textures
+		*
+		* This function loads all required textures into the TextureManager
+		*
+		* @return null
+		*/
+	void LoadAllTextures();
 
 		/**
 		* @brief Updates all physics

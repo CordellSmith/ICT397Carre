@@ -46,7 +46,10 @@ const int GameControlEngine::RunEngine()
 
 void GameControlEngine::Initialize()
 {
-	if (!m_windowManager || m_windowManager->Initialize(ScreenWidth, ScreenHeight, "Carre Game Engine", false) != 0)
+	// Initialize from script
+	ScriptManager::Instance().LoadWindowInitLua(ScreenWidth, ScreenHeight, screenTitle, fullScreen);
+
+	if (!m_windowManager || m_windowManager->Initialize(ScreenWidth, ScreenHeight, screenTitle, fullScreen) != 0)
 		exit(-1);
 
 	glViewport(0, 0, ScreenWidth, ScreenHeight);
@@ -57,9 +60,6 @@ void GameControlEngine::Initialize()
 
 	// Initialize gameworld
 	m_gameWorld = new GameWorld();
-
-	// Testing script output
-	loadScript();
 
 	// Set camera perspective and position
 	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 1000);
