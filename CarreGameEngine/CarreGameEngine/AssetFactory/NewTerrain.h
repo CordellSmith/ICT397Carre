@@ -14,7 +14,7 @@ public:
 	~NewTerrain() { }
 	NewTerrain(float scaleX, float scaleY, float scaleZ);
 
-	virtual void GenerateTerrain() = 0;
+	virtual void GenerateTerrain(GLuint textureId, std::string textureFilePath) = 0;
 	virtual void AddShader(std::string vertShader, std::string fragShader) = 0;
 	virtual void Render() = 0;
 

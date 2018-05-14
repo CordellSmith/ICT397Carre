@@ -46,7 +46,7 @@ void GameWorld::Update()
 	glClearColor(0.0, 0.0, 0.5, 1.0);
 
 	// Used for the camara to follow terrain
-	float newY = m_terrain.GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) + 1.5;
+	float newY = m_terrain.GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) + 15;
 	m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, newY, m_camera->GetPosition().z));
 
 	std::cout << "X: " << m_camera->GetPosition().x << " Y: " << m_terrain.GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) << " Z: " << m_camera->GetPosition().z << std::endl;

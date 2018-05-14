@@ -56,6 +56,8 @@ public:
 	std::vector<Vertex3>& GetVertices() { return m_vertices; }
 	void SetVertices(std::vector<Vertex3> vertices) { m_vertices = vertices; }
 
+	std::vector<Texture>& GetTextures() { return m_textures; }
+
 protected:
 	std::vector<Vertex3> m_vertices;
 	std::vector<unsigned int> m_indices;
