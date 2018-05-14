@@ -145,6 +145,7 @@ void GameControlEngine::InitializePhysics()
 	m_collisionBodyPos.push_back(cameraPosition);
 
 	// Loop through map and add all assets to the collision body list
+	std::multimap<std::string, IGameAsset*>::const_iterator itr;
 	for (itr = m_assetFactory->GetAssets().begin(); itr != m_assetFactory->GetAssets().end(); itr++)
 	{
 		m_physicsWorld->CreateStaticRigidBody();
