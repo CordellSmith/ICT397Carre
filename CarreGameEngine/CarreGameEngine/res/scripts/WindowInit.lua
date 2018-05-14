@@ -6,4 +6,4 @@
 screenWidth=1280
 screenHeight=720
 screenTitle="Carre Game Engine"
-fullScreen=true
+fullScreen=false

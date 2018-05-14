@@ -49,7 +49,7 @@ void GameControlEngine::Initialize()
 	// Initialize from script
 	ScriptManager::Instance().LoadWindowInitLua(ScreenWidth, ScreenHeight, screenTitle, fullScreen);
 
-	if (!m_windowManager || m_windowManager->Initialize(ScreenWidth, ScreenHeight, "Carre Game Engine", false) != 0)
+	if (!m_windowManager || m_windowManager->Initialize(ScreenWidth, ScreenHeight, screenTitle, fullScreen) != 0)
 		exit(-1);
 
 	glViewport(0, 0, ScreenWidth, ScreenHeight);
