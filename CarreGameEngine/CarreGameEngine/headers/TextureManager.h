@@ -26,6 +26,7 @@
 
 #include "GL\glew.h"
 #include "soil2.h"
+#include "stb_image.h"
 
 class TextureManager
 {
@@ -127,6 +128,14 @@ class TextureManager
 
 		/// Number of textures
 		int m_numTextures;
+
+	protected:
+
+		/// Width of texture loaded
+		int m_width;
+		
+		/// Height of texture loaded
+		int m_height;
 };
 
 #endif

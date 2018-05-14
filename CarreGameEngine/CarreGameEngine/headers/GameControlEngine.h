@@ -127,6 +127,8 @@ public:
 		*/
 	void GameLoop();
 
+	void InitializePhysics();
+
 		/**
 		* @brief Memory management
 		*
@@ -160,8 +162,14 @@ protected:
 	/// Game asset factory object
 	GameAssetFactory* m_assetFactory;
 
+	/// Physics world
+	PhysicsEngine* m_physicsWorld;
+
+	/// Vector of all collision objects (static and dynamic)
+	std::vector<btVector3> m_collisionBodyPos;
+
 	/// Game world object
-	GameWorld m_gameWorld;
+	GameWorld* m_gameWorld;
 
 	/// Terrain
 	// Needs to be moved, should be created in init and passed to gameworld without being here

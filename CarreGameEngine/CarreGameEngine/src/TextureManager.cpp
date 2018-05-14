@@ -30,43 +30,67 @@ bool TextureManager::SetActiveTexture(unsigned int texID)
 }
 
 // Load texture from file
-int TextureManager::LoadTexture(std::string filename)
+int TextureManager::LoadTexture(std::string filePath)
 {
-	// Get string as a const char *
-	const char* file = filename.c_str();
+	GLuint newTex;
 
 	// Load in the file
-	GLuint newTex = SOIL_load_OGL_texture
-	(
-		file,
-		SOIL_LOAD_AUTO,
-		SOIL_CREATE_NEW_ID,
-		SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_DDS_LOAD_DIRECT
-	);
+	//GLuint newTex = SOIL_load_OGL_texture
+	//(
+	//	file,
+	//	SOIL_LOAD_AUTO,
+	//	SOIL_CREATE_NEW_ID,
+	//	SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_DDS_LOAD_DIRECT
+	//);
 
-	// Check for error in loading file
-	if (newTex == 0)
+	//// Check for error in loading file
+	//if (newTex == 0)
+	//{
+	//	std::cout << "SOIL loading error: " << filename << " - " << SOIL_last_result() << std::endl;
+	//	return -1;
+	//}
+	
+	glGenTextures(1, &newTex);
+
+	int width, height, nrComponents;
+	unsigned char* data = stbi_load(filePath.c_str(), &width, &height, &nrComponents, 0);
+	if (data)
 	{
-		std::cout << "SOIL loading error: " << filename << " - " << SOIL_last_result() << std::endl;
-		return -1;
+		GLenum format;
+		if (nrComponents == 1)
+			format = GL_RED;
+		else if (nrComponents == 3)
+			format = GL_RGB;
+		else if (nrComponents == 4)
+			format = GL_RGBA;
+
+		m_width = width;
+		m_height = height;
+
+		// Bind the texture
+		glBindTexture(GL_TEXTURE_2D, newTex);
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		stbi_image_free(data);
+
+		// Increment number of textures and return ID
+		m_numTextures++;
+		std::cout << "Successfully added Texture. Texture Count = " << m_numTextures << std::endl;
+	}
+	else
+	{
+		std::cout << "Texture failed to load: " << filePath << std::endl;
+		stbi_image_free(data);
 	}
 
-	// Bind the texture
-	glBindTexture(GL_TEXTURE_2D, newTex);
-
-	// Add new texture to map
-	AddTextureToMap(filename, newTex);
-
-	/******************** from lab 4 *******************/
-	//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texture->getWidth(), texture->getHeight(), 0, GL_RGB, GL_UNSIGNED_BYTE, texture->getData());
-	//glBindTexture(GL_TEXTURE_2D, newTex);
-	/***************************************************/
-
-	// Increment number of textures and return ID
-	m_numTextures++;
-	std::cout << "Successfully added Texture. Texture Count = " << m_numTextures << std::endl;
+	// Add new texture to make
+	AddTextureToMap(filePath, newTex);
 
 	return newTex;
 }

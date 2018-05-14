@@ -11,6 +11,7 @@
 
 #include "Mesh.h"
 #include "..\headers\Shader.h"
+#include "..\headers\TextureManager.h"
 
 class NewModel
 {
