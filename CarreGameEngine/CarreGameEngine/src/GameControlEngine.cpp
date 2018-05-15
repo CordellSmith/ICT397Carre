@@ -88,7 +88,7 @@ void GameControlEngine::Initialize()
 	*/
 
 	// Bruteforce terrain
-	bfTerrain.LoadHeightfield("res/terrain/height128.raw", 128);
+	bfTerrain.LoadHeightfield("res/terrain/city.raw", 128);
 	bfTerrain.AddShader(testShader.VertexSource, testShader.FragmentSource);
 	bfTerrain.GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
 	bfTerrain.SetPosition(glm::vec3(0.0, 0.0, 0.0));

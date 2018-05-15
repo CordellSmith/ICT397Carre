@@ -6,15 +6,14 @@
 #include <sstream>
 
 #include "WindowManager.h"
-#include "..\AssetFactory\Model.h"
 #include "TimeManager.h"
 #include "Camera.h"
 #include "InputManager.h"
-#include "..\AssetFactory\GameAssetFactory.h"
 #include "GameWorld.h"
-#include "..\headers\ScriptManager.h"
 #include "TextureManager.h"
 #include "ScriptManager.h"
+#include "..\AssetFactory\Model.h"
+#include "..\AssetFactory\GameAssetFactory.h"
 
 //#include "..\AssetFactory\Bruteforce.h"
 
