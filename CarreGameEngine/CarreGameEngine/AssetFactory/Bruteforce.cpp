@@ -30,9 +30,9 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 			vertex.m_texCoords = glm::vec2(tex00, tex00);
 			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 0.0
 
-			vertex.m_position.x = (float)x * m_scaleX;
-			vertex.m_position.y = GetHeight(x, z + 1);
-			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
+			vertex.m_position.x = (float)(x + 1) * m_scaleX;
+			vertex.m_position.y = GetHeight(x + 1, z);
+			vertex.m_position.z = (float)z * m_scaleZ;
 
 			vertex.m_texCoords = glm::vec2(tex00, tex10);
 			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 1.0
@@ -43,7 +43,7 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 
 			vertex.m_texCoords = glm::vec2(tex00, tex11);
 			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 1.0
-
+			
 			vertex.m_position.x = (float)x * m_scaleX;
 			vertex.m_position.y = GetHeight(x, z);
 			vertex.m_position.z = (float)z * m_scaleZ;
@@ -58,10 +58,10 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 			vertex.m_texCoords = glm::vec2(tex00, tex11);
 			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 1.0
 
-			vertex.m_position.x = (float)(x + 1) * m_scaleX;
-			vertex.m_position.y = GetHeight(x + 1, z);
-			vertex.m_position.z = (float)z * m_scaleZ;
-
+			vertex.m_position.x = (float)x * m_scaleX;
+			vertex.m_position.y = GetHeight(x, z + 1);
+			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
+			
 			vertex.m_texCoords = glm::vec2(tex00, tex01);
 			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 0.0
 		}
@@ -137,7 +137,7 @@ float Bruteforce::GetHeight(int xpos, int zpos)
 	if (Inbounds(xpos, zpos))
 		return ((float)(m_terrainData[(zpos * m_heightfieldSize) + xpos]) * m_scaleY);
 	else
-		return ((float)(m_terrainData[(zpos * m_heightfieldSize) + xpos - 1]) * m_scaleY);
+		return ((float)(m_terrainData[(zpos - 1 * m_heightfieldSize) + xpos]) * m_scaleY);
 }
 
 unsigned char Bruteforce::GetHeightColour(int xpos, int zpos)
