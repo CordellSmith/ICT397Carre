@@ -10,8 +10,6 @@
 #include <GLM\gtc\matrix_transform.hpp>					
 #include <GLM\gtx\transform2.hpp>
 
-//#include "..\AssetFactory\Bruteforce.h"
-
 	/**
 	* @struct Camera
 	* @brief Basic camera class
@@ -224,8 +222,17 @@ public:
 		*/
 	void MoveCamera(float speed);
 
-	// Checks for ground below camera adjusting the y-position to follow terrain
-	//void CheckGround(Bruteforce terrain);
+	float GetFov() { return m_fov; }
+	void SetFov(float fov) { m_fov = fov; }
+
+	void UpdateFov(float newFov);
+
+	void CalculateCameraPosition(float horizontalDistance, float verticalDistance);	
+	float CalculateHorizontalDistance();
+	float CalculateVerticalDistance();
+	void CalculateZoom();
+	void CalculatePitch();
+	void CalculateAngleAroundPlayer();
 
 protected:
 	/// The camera's projection matrix
@@ -243,6 +250,15 @@ protected:
 	float m_yaw = 0;		
 	/// The vertical rotation angle (in radians) x-axis
 	float m_pitch = 0;
+	/// The fov
+	float m_fov;
+	float m_aspectRatio;
+	float m_nearPlane;
+	float m_farPlane;
+
+	//Object* Player;
+	float distanceFromPlayer = 50.0;
+	float angleAroundPlayer = 0.0;
 };
 
 

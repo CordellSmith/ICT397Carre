@@ -87,6 +87,12 @@ void GameControlEngine::Initialize()
 	m_assetFactory->AddAsset(light);
 	*/
 
+	/*
+		When creating .raw files in Gimp. Make sure the file is Grey-scale when creating and when exporting, 
+		make sure to select raw image format (.data) and Planar (RRR GGG BBB). Then you can just rename the .data 
+		extension to .raw and its all good to go!
+	*/
+
 	// Bruteforce terrain
 	bfTerrain.LoadHeightfield("res/terrain/city.raw", 128);
 	bfTerrain.AddShader(testShader.VertexSource, testShader.FragmentSource);

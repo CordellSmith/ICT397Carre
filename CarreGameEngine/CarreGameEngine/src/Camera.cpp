@@ -2,7 +2,12 @@
 
 glm::mat4 Camera::SetPerspective(float fov, float aspectRatio, float near, float far)
 {
-	m_projectionMatrix = glm::perspective(fov, aspectRatio, near, far);
+	m_fov = fov;
+	m_aspectRatio = aspectRatio;
+	m_nearPlane = near;
+	m_farPlane = far;
+
+	m_projectionMatrix = glm::perspective(m_fov, m_aspectRatio, m_nearPlane, m_farPlane);
 
 	return m_projectionMatrix;
 }
@@ -53,6 +58,12 @@ void Camera::MoveCamera(float speed)
 
 	m_position.x += viewVector.x * speed;
 	m_position.z += viewVector.z * speed;
+
+	CalculateZoom();
+	CalculatePitch();
+	CalculateAngleAroundPlayer();
+	float horizontalDistance = CalculateHorizontalDistance();
+	float verticalDistance = CalculateVerticalDistance();
 }
 
 void Camera::SetViewByMouse(float xOffset, float yOffset)
@@ -77,10 +88,39 @@ void Camera::SetViewByMouse(float xOffset, float yOffset)
 		m_pitch = glm::radians(-70.5f);
 }
 
-//void Camera::CheckGround(Bruteforce terrain)
-//{
-//	if (terrain.Inbounds(m_position.x, m_position.z))
-//	{
-//		m_position.y = terrain.GetAverageHeight(m_position.x, m_position.z);
-//	}
-//}
+void Camera::UpdateFov(float newFov)
+{
+	m_fov = newFov;
+
+	m_projectionMatrix = glm::perspective(m_fov, m_aspectRatio, m_nearPlane, m_farPlane);
+}
+
+void Camera::CalculateCameraPosition(float horizontalDistance, float verticalDistance)
+{
+	
+}
+
+float Camera::CalculateHorizontalDistance()
+{
+	return 1;
+}
+
+float Camera::CalculateVerticalDistance()
+{
+	return 1;
+}
+
+void Camera::CalculateZoom()
+{
+
+}
+
+void Camera::CalculatePitch()
+{
+
+}
+
+void Camera::CalculateAngleAroundPlayer()
+{
+
+}

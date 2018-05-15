@@ -105,7 +105,8 @@ public:
 		*/
 	void MouseMoved(float mouseX, float mouseY);
 
-
+	void WheelScrolled(double offsetz);
+	
 protected:
 	/// Camera object
 	Camera* m_camera;
