@@ -78,7 +78,7 @@ public:
 		* @return InputManager*
 		*/
 	virtual InputManager* GetInputManager() { return &m_inputManager; }
-
+	
 protected:
 	/// Used to control the camera movements
 	InputManager m_inputManager;

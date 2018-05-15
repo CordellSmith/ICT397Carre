@@ -23,7 +23,6 @@ typedef enum
 	ASS_NPC = 2
 }ASS_TYPE;
 
-
 	/**
 	* @class IGameAsset
 	* @brief Interface class for game assets

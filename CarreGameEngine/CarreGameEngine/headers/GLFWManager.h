@@ -1,6 +1,8 @@
 #pragma once
 
-#include <string>										
+#include <string>
+#include <stdio.h> 
+#include <stdlib.h>
 #include <fstream>															
 #include "GLFW\glfw3.h"									
 #include "WindowManager.h"								
@@ -27,7 +29,7 @@ public:
 		*
 		* @return null
 		*/
-	GLFWManager()	{ }
+	GLFWManager() { }
 
 		/**
 		* @brief Default constructor
@@ -36,7 +38,7 @@ public:
 		*
 		* @return null
 		*/
-	~GLFWManager()	{ Destroy(); }
+	~GLFWManager() { Destroy(); }
 
 		/**
 		* @brief Initializes the window
@@ -85,3 +87,8 @@ protected:
 	/// GLFW window object that manages the window and input
 	GLFWwindow* m_window;
 };
+
+static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	static_cast<GLFWManager*>(glfwGetWindowUserPointer(window))->GetInputManager()->WheelScrolled(yoffset);
+}

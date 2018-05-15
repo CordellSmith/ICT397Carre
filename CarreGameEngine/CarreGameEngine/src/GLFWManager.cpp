@@ -29,7 +29,7 @@ int GLFWManager::Initialize(int width, int height, std::string strTitle, bool bF
 	}
 
 	// GLFW setup
-	glfwWindowHint(GLFW_SAMPLES, 4);
+	glfwWindowHint(GLFW_SAMPLES, 4); // Do we need this?
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -47,12 +47,16 @@ int GLFWManager::Initialize(int width, int height, std::string strTitle, bool bF
 		return -1;
 	}
 
+	// Sets window user pointer
+	glfwSetWindowUserPointer(m_window, this);
+
 	glfwMakeContextCurrent(m_window);
 	glfwSetInputMode(m_window, GLFW_STICKY_KEYS, GL_TRUE);
 
 	// Cursor properties
 	glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPos(m_window, 0, 0);
+	glfwSetScrollCallback(m_window, scroll_callback);
 
 	// Turn of V-Sync
 	glfwSwapInterval(0);
@@ -78,7 +82,7 @@ void GLFWManager::SwapTheBuffers()
 bool GLFWManager::ProcessInput(bool continueGame = true)
 {
 	// Use the GLFW function to check for the user pressing the Escape button, as well as a window close event.
-	if ( glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS || glfwWindowShouldClose(m_window) != 0 )
+	if (glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS || glfwWindowShouldClose(m_window) != 0)
 		return false;
 
 	if (glfwGetKey(m_window, GLFW_KEY_UP) || glfwGetKey(m_window, GLFW_KEY_W))
@@ -89,12 +93,13 @@ bool GLFWManager::ProcessInput(bool continueGame = true)
 		m_inputManager.KeyPressed(InputCodes::Left);
 	if (glfwGetKey(m_window, GLFW_KEY_RIGHT) || glfwGetKey(m_window, GLFW_KEY_D))
 		m_inputManager.KeyPressed(InputCodes::Right);
+
 	// Used to toggle wireframe, Q to toggle on and E to toggle off
 	if (glfwGetKey(m_window, GLFW_KEY_Q))
 		m_inputManager.KeyPressed(InputCodes::q);
 	if (glfwGetKey(m_window, GLFW_KEY_E))
 		m_inputManager.KeyPressed(InputCodes::e);
-	
+
 	// Mouse position
 	double mouseX, mouseY;
 
@@ -102,7 +107,7 @@ bool GLFWManager::ProcessInput(bool continueGame = true)
 	glfwGetCursorPos(m_window, &mouseX, &mouseY);
 	
 	// Tell input manager the mouse moved
-	if ( mouseX != 0 && mouseY != 0 )
+	if (mouseX != 0 && mouseY != 0)
 		m_inputManager.MouseMoved((float)mouseX, (float)mouseY);
 
 	glfwSetCursorPos(m_window, 0, 0);

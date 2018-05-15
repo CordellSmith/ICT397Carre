@@ -31,7 +31,7 @@ void GameWorld::Update()
 
 	// Render terrain
 	m_terrain.Render();
-
+	
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
 }
@@ -93,7 +93,6 @@ void GameWorld::UpdatePhysics()
 
 		if (itr->first == "Taxi")
 		{
-			itr->second->SetAssetPosition(temp);
 			itr->second->Render();
 		}
 		i++;
