@@ -59,8 +59,6 @@ void Camera::MoveCamera(float speed)
 	m_position.x += viewVector.x * speed;
 	m_position.z += viewVector.z * speed;
 
-	CalculateZoom();
-	CalculatePitch();
 	CalculateAngleAroundPlayer();
 	float horizontalDistance = CalculateHorizontalDistance();
 	float verticalDistance = CalculateVerticalDistance();
@@ -88,11 +86,36 @@ void Camera::SetViewByMouse(float xOffset, float yOffset)
 		m_pitch = glm::radians(-70.5f);
 }
 
-void Camera::UpdateFov(float newFov)
+void Camera::Zoom(float yoffset)
 {
-	m_fov = newFov;
+	// multiplication factor changes how fast scrolling in and out occurs
+	int mf = 2;
+
+	if (glm::degrees(m_fov) >= 1.0 && glm::degrees(m_fov) <= 45.0)
+	{
+		float change = glm::degrees(m_fov);
+		change -= yoffset * mf;
+		m_fov = glm::radians(change);
+	}
+	if (glm::degrees(m_fov) <= 1.0)
+		m_fov = glm::radians(1.0);
+	if (glm::degrees(m_fov) >= 45.0)
+		m_fov = glm::radians(45.0);
 
 	m_projectionMatrix = glm::perspective(m_fov, m_aspectRatio, m_nearPlane, m_farPlane);
+}
+
+void Camera::ChangePitch(float yoffest)
+{
+	// multiplication factor changes how fast pitch up and down occurs
+	float mf = 0.01;
+	float pitchChange = yoffest;
+	m_pitch -= pitchChange * mf;
+
+	if (m_pitch > glm::radians(70.5f))
+		m_pitch = glm::radians(70.5f);
+	if (m_pitch < glm::radians(-70.5f))
+		m_pitch = glm::radians(-70.5f);
 }
 
 void Camera::CalculateCameraPosition(float horizontalDistance, float verticalDistance)
@@ -108,16 +131,6 @@ float Camera::CalculateHorizontalDistance()
 float Camera::CalculateVerticalDistance()
 {
 	return 1;
-}
-
-void Camera::CalculateZoom()
-{
-
-}
-
-void Camera::CalculatePitch()
-{
-
 }
 
 void Camera::CalculateAngleAroundPlayer()

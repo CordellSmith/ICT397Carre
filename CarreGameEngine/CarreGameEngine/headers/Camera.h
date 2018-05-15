@@ -225,13 +225,12 @@ public:
 	float GetFov() { return m_fov; }
 	void SetFov(float fov) { m_fov = fov; }
 
-	void UpdateFov(float newFov);
+	void Zoom(float yoffset);
+	void ChangePitch(float yoffset);
 
 	void CalculateCameraPosition(float horizontalDistance, float verticalDistance);	
 	float CalculateHorizontalDistance();
 	float CalculateVerticalDistance();
-	void CalculateZoom();
-	void CalculatePitch();
 	void CalculateAngleAroundPlayer();
 
 protected:

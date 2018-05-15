@@ -20,6 +20,8 @@
 */
 enum InputCodes
 {
+	MouseButtonLeft = 0,
+	MouseButtonRight = 1,
 	kEscape = 27,
 	Space = 32,
 	Left = 37,
@@ -104,6 +106,10 @@ public:
 		* @return void
 		*/
 	void MouseMoved(float mouseX, float mouseY);
+	
+	void MouseGetDeltaY(float mouseY);
+	
+	void MousePressed(InputCodes code, float mouseX, float mouseY);
 
 	void WheelScrolled(double offsetz);
 	

@@ -35,22 +35,27 @@ void InputManager::MouseMoved(float mouseX, float mouseY)
 	m_camera->SetViewByMouse(mouseX, mouseY);
 }
 
+void InputManager::MousePressed(InputCodes code, float mouseX, float mouseY)
+{
+	if (m_camera == nullptr)
+		return;
+
+	switch (code)
+	{
+	case MouseButtonRight:
+		m_camera->ChangePitch(mouseY);
+		break;
+	default:
+		break;
+	}
+	
+}
+
 void InputManager::WheelScrolled(double yoffset)
 {
-	// magnification changes how fast scrolling in and out occurs
-	int magnification = 2;
-	// Gets the current fov
-	float fov = glm::degrees(m_camera->GetFov());
-
-	if (fov >= 1.0 && fov <= 45.0)
-	{
-		fov -= yoffset * magnification;
-	}
-	if (fov <= 1.0)
-		fov = 1.0;
-	if (fov >= 45.0)
-		fov = 45.0;
+	if (m_camera == nullptr)
+		return;
 
 	//std::cout << fov << std::endl;
-	m_camera->UpdateFov(glm::radians(fov));
+	m_camera->Zoom(yoffset);
 }
