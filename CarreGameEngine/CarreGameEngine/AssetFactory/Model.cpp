@@ -4,6 +4,12 @@
 
 unsigned int TextureFromFile(const char* path, const std::string& directory);
 
+Model::Model()
+{
+	SetScale(glm::vec3(1.0, 1.0, 1.0));
+	m_shader = new Shader();
+}
+
 void Model::LoadModel(std::string filePath)
 {
 	Assimp::Importer import;
@@ -177,6 +183,15 @@ void Model::SetPosition(glm::vec3 position)
 	for (size_t i = 0; i < m_meshBatch.size(); i++)
 	{
 		m_meshBatch[i].SetPosition(position);
+	}
+}
+
+void Model::SetRotation(glm::vec3 rotation)
+{
+	m_rotation = rotation;
+	for (size_t i = 0; i < m_meshBatch.size(); i++)
+	{
+		m_meshBatch[i].SetRotation(rotation);
 	}
 }
 

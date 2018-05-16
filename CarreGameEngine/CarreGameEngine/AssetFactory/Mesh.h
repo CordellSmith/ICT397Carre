@@ -51,6 +51,7 @@ public:
 	void SetCamera(Camera* camera) { m_camera = camera; }
 
 	void SetPosition(glm::vec3 position) { m_position = position; }
+	void SetRotation(glm::vec3 rotation) { m_rotation = rotation; }
 	void SetScale(glm::vec3 scale) { m_scale = scale; }
 
 	std::vector<Vertex3>& GetVertices() { return m_vertices; }

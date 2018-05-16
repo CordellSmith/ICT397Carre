@@ -106,9 +106,7 @@ public:
 		* @return void
 		*/
 	void MouseMoved(float mouseX, float mouseY);
-	
-	void MouseGetDeltaY(float mouseY);
-	
+		
 	void MousePressed(InputCodes code, float mouseX, float mouseY);
 
 	void WheelScrolled(double offsetz);

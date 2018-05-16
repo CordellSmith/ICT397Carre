@@ -10,7 +10,6 @@ Object::Object(std::string assetName)
 void Object::LoadFromFilePath(std::string filePath)
 {
 	m_model->LoadModel(filePath);
-	m_model->SetScale(glm::vec3(0.5f, 0.5f, 0.5f));
 }
 
 const void Object::Load()
@@ -35,15 +34,5 @@ const void Object::Render()
 
 const void Object::Destroy()
 {
-	m_model->~Model();
-}
-
-const std::string & Object::GetFilePath() const
-{
-	return m_filePath;
-}
-
-void Object::SetFilePath(const std::string & filePath)
-{
-	m_filePath = filePath;
+	// Todo: destroy all items of Object class
 }

@@ -42,6 +42,9 @@ void InputManager::MousePressed(InputCodes code, float mouseX, float mouseY)
 
 	switch (code)
 	{
+	case MouseButtonLeft:
+		m_camera->ChangeAngleAroundPlayer(mouseX);
+		break;
 	case MouseButtonRight:
 		m_camera->ChangePitch(mouseY);
 		break;

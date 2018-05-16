@@ -86,7 +86,7 @@ void Mesh::Draw(Shader* shader)
 	// HAVING ISSUES WITH MOUSE MOVEMENT, COMMENT OUT TO FIX
 	// Add any rotation to the Model Matrix for each axis
 	//modelMatrix = glm::rotate(modelMatrix, m_rotation.x, glm::vec3(1, 0, 0));
-	//modelMatrix = glm::rotate(modelMatrix, m_rotation.y, glm::vec3(0, 1, 0));
+	modelMatrix = glm::rotate(modelMatrix, m_rotation.y, glm::vec3(0, 1, 0));
 	//modelMatrix = glm::rotate(modelMatrix, m_rotation.z, glm::vec3(0, 0, 1));
 
 	// Get the uniform variables from the shader

@@ -112,7 +112,9 @@ bool GLFWManager::ProcessInput(bool continueGame = true)
 
 	glfwSetCursorPos(m_window, 0, 0);
 
-	// Mouse button clicked (can be used to implement leftr mouse button also)
+	// Tell input manager the mouse button has been (is being) clicked
+	if (glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_RIGHT))
+		m_inputManager.MousePressed(InputCodes::MouseButtonLeft, (float)mouseX, (float)mouseY);
 	if (glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_RIGHT))
 		m_inputManager.MousePressed(InputCodes::MouseButtonRight, (float)mouseX, (float)mouseY);
 

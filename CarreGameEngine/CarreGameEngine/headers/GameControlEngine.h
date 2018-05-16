@@ -14,6 +14,7 @@
 #include "ScriptManager.h"
 #include "..\AssetFactory\Model.h"
 #include "..\AssetFactory\GameAssetFactory.h"
+#include "..\AssetFactory\Player.h"
 
 //#include "..\AssetFactory\Bruteforce.h"
 
@@ -173,4 +174,6 @@ protected:
 	/// Terrain
 	// Needs to be moved, should be created in init and passed to gameworld without being here
 	Bruteforce bfTerrain;
+
+	Player* player;
 };

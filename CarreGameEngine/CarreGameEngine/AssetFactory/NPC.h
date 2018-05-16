@@ -114,12 +114,16 @@ public:
 
 	virtual void SetCamera(Camera* camera) { m_camera = camera; }
 
-	virtual void SetAssetPosition(glm::vec3 position) { m_model->SetPosition(position); }
+	virtual void SetPosition(glm::vec3 position) { m_model->SetPosition(position); }
 
-	virtual void SetAssetScale(glm::vec3 scale) { m_model->SetScale(scale); }
+	virtual void SetScale(glm::vec3 scale) { m_model->SetScale(scale); }
 	
-	virtual const glm::vec3 GetAssetPosition() { return m_model->GetPosition(); }
-	
+	virtual void SetRotation(glm::vec3 rotation) { m_model->SetRotation(rotation); }
+
+	virtual const glm::vec3 GetPosition() { return m_model->GetPosition(); }
+
+	virtual const glm::vec3 GetRotation() { return m_model->GetRotation(); }
+
 protected:
 	/// Stores the file path containing the data
 	std::string m_filePath;

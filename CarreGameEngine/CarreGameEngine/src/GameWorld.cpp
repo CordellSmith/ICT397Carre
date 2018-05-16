@@ -1,26 +1,32 @@
 #include "..\headers\GameWorld.h"
 
-void GameWorld::Init(std::multimap<std::string, IGameAsset*> gameAssets)
+void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gameAssets)
 {
+	// Set player
+	m_player = player;
 	// Sets this game contexts assets to the  loaded game assets from the control engine
 	SetGameAssets(gameAssets);
 
 	m_terrain.SetCamera(m_camera);
 
+	m_player->SetCamera(m_camera);
+
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		if (std::distance(m_gameAssets.begin(), itr) < 1)
+		if (itr->first == "Cube")
 		{
 			// Pass camera pointer to all game objects to access projection / view matrices
 			itr->second->SetCamera(m_camera);
 			// Prepare shaders for each object (only testing with one model and shader atm)
 			itr->second->Prepare(m_assimpShaderSource.VertexSource, m_assimpShaderSource.FragmentSource);
-			continue;
 		}
 
-		itr->second->SetCamera(m_camera);
-		itr->second->Prepare(m_testShaderSource.VertexSource, m_testShaderSource.FragmentSource);
+		if (itr->first == "Taxi")
+		{
+			itr->second->SetCamera(m_camera);
+			itr->second->Prepare(m_testShaderSource.VertexSource, m_testShaderSource.FragmentSource);
+		}
 	}
 }
 
@@ -31,7 +37,12 @@ void GameWorld::Update()
 
 	// Render terrain
 	m_terrain.Render();
-	
+
+	// Testing player
+	s += 0.001;
+	m_player->SetRotation(glm::vec3(0.0, s, 0.0));
+	m_player->Render();
+		
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
 }
@@ -87,12 +98,13 @@ void GameWorld::UpdatePhysics()
 
 		if (itr->first == "Cube")
 		{
-			itr->second->SetAssetPosition(temp);
+			itr->second->SetPosition(temp);
 			itr->second->Render();
 		}
 
 		if (itr->first == "Taxi")
 		{
+			itr->second->SetPosition(temp);
 			itr->second->Render();
 		}
 		i++;

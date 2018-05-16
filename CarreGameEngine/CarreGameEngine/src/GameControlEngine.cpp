@@ -82,8 +82,8 @@ void GameControlEngine::Initialize()
 	IGameAsset* light = m_assetFactory->CreateAsset(ASS_OBJECT, "TrafficLight");
 	light->LoadFromFilePath("res/objects/trafficlight/trafficlight.obj");
 	light->Prepare(testShader.VertexSource, testShader.FragmentSource);
-	light->SetAssetPosition(glm::vec3(3.0, -1.0, 1.0));
-	light->SetAssetScale(glm::vec3(0.2, 0.2, 0.2));
+	light->SetPosition(glm::vec3(3.0, -1.0, 1.0));
+	light->SetScale(glm::vec3(0.2, 0.2, 0.2));
 	m_assetFactory->AddAsset(light);
 	*/
 
@@ -104,24 +104,38 @@ void GameControlEngine::Initialize()
 	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
 	cube->LoadFromFilePath("res/objects/cube.obj");
 	cube->Prepare(assimpShader.VertexSource, assimpShader.FragmentSource);
-	cube->SetAssetPosition(glm::vec3(200.0, bfTerrain.GetHeight(200, 250) + 15, 250.0));
-	cube->SetAssetScale(glm::vec3(15.0, 15.0, 15.0));
+	cube->SetPosition(glm::vec3(200.0, bfTerrain.GetHeight(200, 250) + 15, 250.0));
+	cube->SetScale(glm::vec3(15.0, 15.0, 15.0));
 	m_assetFactory->AddAsset(cube);
 
 	// Taxi asset
-	IGameAsset* taxi = m_assetFactory->CreateAsset(ASS_OBJECT, "Taxi");
-	taxi->LoadFromFilePath("res/objects/taxi/taxi.obj");
-	taxi->Prepare(testShader.VertexSource, testShader.FragmentSource);
-	taxi->SetAssetPosition(glm::vec3(200.0, bfTerrain.GetHeight(200, 200) + 15, 200.0));
-	taxi->SetAssetScale(glm::vec3(15.0, 15.0, 15.0));
-	m_assetFactory->AddAsset(taxi);
+	//IGameAsset* taxi = m_assetFactory->CreateAsset(ASS_OBJECT, "Taxi");
+	//taxi->LoadFromFilePath("res/objects/taxi/taxi.obj");
+	//taxi->Prepare(testShader.VertexSource, testShader.FragmentSource);
+	//taxi->SetPosition(glm::vec3(200.0, bfTerrain.GetHeight(200, 200) + 15, 200.0));
+	//taxi->SetScale(glm::vec3(15.0, 15.0, 15.0));
+	//taxi->SetRotation(glm::vec3(0.0, 15.0, 15.0));
+	//m_assetFactory->AddAsset(taxi);
+
+	// Main character creation
+	player = new Player("Player");
+	player->LoadFromFilePath("res/objects/taxi/taxi.obj");
+	player->Prepare(testShader.VertexSource, testShader.FragmentSource);
+	player->SetPosition(glm::vec3(200.0, bfTerrain.GetHeight(200, 200) + 15, 200.0));
+	player->SetScale(glm::vec3(15.0, 15.0, 15.0));
+	player->SetRotation(glm::vec3(0.0, 15.0, 0.0));
+
+	m_camera->SetPlayerRotation(player->GetRotation());
+
+	// Pass the main character / player to the camera for 3rd person PoV
+	//m_camera->SetPlayer(taxi);
 
 	// Physics engine initialization
 	InitializePhysics();
 
 	// Initialize the game world, pass in terrain, assets and physics engine *** Can be reworked *** 
 	m_gameWorld->SetTerrain(bfTerrain);
-	m_gameWorld->Init(m_assetFactory->GetAssets());
+	m_gameWorld->Init(player, m_assetFactory->GetAssets());
 	m_gameWorld->SetPhysicsWorld(m_physicsWorld, m_collisionBodyPos);
 }
 
@@ -155,8 +169,8 @@ void GameControlEngine::InitializePhysics()
 	for (itr = m_assetFactory->GetAssets().begin(); itr != m_assetFactory->GetAssets().end(); itr++)
 	{
 		m_physicsWorld->CreateStaticRigidBody();
-		m_collisionBodyPos.push_back(btVector3(itr->second->GetAssetPosition().x, 
-			itr->second->GetAssetPosition().y, itr->second->GetAssetPosition().z));
+		m_collisionBodyPos.push_back(btVector3(itr->second->GetPosition().x, 
+			itr->second->GetPosition().y, itr->second->GetPosition().z));
 	}
 
 	//  *** Can this be changed to the terrain mesh? *** 

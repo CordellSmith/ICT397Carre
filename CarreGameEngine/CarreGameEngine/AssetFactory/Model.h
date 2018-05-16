@@ -17,7 +17,7 @@ class Model
 {
 public:
 	// Must initialise shader
-	Model() { m_shader = new Shader(); }
+	Model();
 	~Model() { Destroy(); }
 
 	void LoadModel(std::string filePath);
@@ -35,7 +35,7 @@ public:
 	void SetPosition(glm::vec3 position);
 
 	glm::vec3 GetRotation() { return m_rotation; }
-	void SetRotation(glm::vec3 rotation) { m_rotation = rotation; }
+	void SetRotation(glm::vec3 rotation);
 
 	glm::vec3 GetScale() { return m_scale; }
 	void SetScale(glm::vec3 scale);
