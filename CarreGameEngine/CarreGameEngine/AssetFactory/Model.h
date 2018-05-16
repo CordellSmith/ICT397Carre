@@ -16,7 +16,6 @@
 class Model
 {
 public:
-	// Must initialise shader
 	Model();
 	~Model() { Destroy(); }
 

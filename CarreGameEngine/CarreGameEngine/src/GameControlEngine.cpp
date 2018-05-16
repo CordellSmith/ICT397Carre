@@ -123,9 +123,9 @@ void GameControlEngine::Initialize()
 	player->Prepare(testShader.VertexSource, testShader.FragmentSource);
 	player->SetPosition(glm::vec3(200.0, bfTerrain.GetHeight(200, 200) + 15, 200.0));
 	player->SetScale(glm::vec3(15.0, 15.0, 15.0));
-	player->SetRotation(glm::vec3(0.0, 15.0, 0.0));
 
-	m_camera->SetPlayerRotation(player->GetRotation());
+	m_windowManager->GetInputManager()->SetPlayer(player);
+	m_camera->PassPlayerInfo(player->GetPosition(), player->GetRotation());
 
 	// Pass the main character / player to the camera for 3rd person PoV
 	//m_camera->SetPlayer(taxi);

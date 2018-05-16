@@ -9,7 +9,8 @@
 #include <GLM\gtc\matrix_transform.hpp>					
 #include <GLM\gtx\transform2.hpp>
 
-#include "Camera.h"										
+#include "Camera.h"
+#include "..\AssetFactory\Player.h"
 
 /**
 * @brief Enumerator for each key value
@@ -110,8 +111,11 @@ public:
 	void MousePressed(InputCodes code, float mouseX, float mouseY);
 
 	void WheelScrolled(double offsetz);
+
+	void SetPlayer(Player* player) { m_player = player; }
 	
 protected:
 	/// Camera object
 	Camera* m_camera;
+	Player* m_player;
 };

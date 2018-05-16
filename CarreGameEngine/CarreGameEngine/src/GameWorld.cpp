@@ -39,8 +39,6 @@ void GameWorld::Update()
 	m_terrain.Render();
 
 	// Testing player
-	s += 0.001;
-	m_player->SetRotation(glm::vec3(0.0, s, 0.0));
 	m_player->Render();
 		
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***

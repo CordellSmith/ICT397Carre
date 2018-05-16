@@ -58,9 +58,6 @@ void Camera::MoveCamera(float speed)
 
 	m_position.x += viewVector.x * speed;
 	m_position.z += viewVector.z * speed;
-
-	float horizontalDistance = CalculateHorizontalDistance();
-	float verticalDistance = CalculateVerticalDistance();
 }
 
 void Camera::SetViewByMouse(float xOffset, float yOffset)
@@ -122,7 +119,12 @@ void Camera::ChangeAngleAroundPlayer(float xoffset)
 {
 	// multiplication factor changes how fast pitch up and down occurs
 	float mf = 0.1;
-	m_angleAroundPlayer -= xoffset * mf;
+	m_angleAroundPlayer -= xoffset;
+
+	float horizontalDistance = CalculateHorizontalDistance();
+	float verticalDistance = CalculateVerticalDistance();
+
+	CalculateCameraPosition(horizontalDistance, verticalDistance);
 }
 
 float Camera::CalculateHorizontalDistance()
@@ -137,7 +139,20 @@ float Camera::CalculateVerticalDistance()
 
 void Camera::CalculateCameraPosition(float horizontalDistance, float verticalDistance)
 {
-	
-	//m_position.y = m_player->GetPosition().y + verticalDistance;
+	float theta = m_playerRotation.y + m_angleAroundPlayer;
+	float xoffset = horizontalDistance * glm::sin(glm::radians(theta));
+	float zoffset = horizontalDistance * glm::cos(glm::radians(theta));
+
+	m_position.x = m_playerPosition.x - xoffset;
+	m_position.y = m_playerPosition.y + m_distanceFromPlayer;
+	m_position.z = m_playerPosition.z + zoffset;
+
+	m_yaw = 180 - (m_playerRotation.y + m_angleAroundPlayer);	
+}
+
+void Camera::PassPlayerInfo(glm::vec3& position, glm::vec3& rotation)
+{
+	m_playerPosition = position;
+	m_playerRotation = rotation;
 }
 

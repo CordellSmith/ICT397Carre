@@ -4,13 +4,12 @@
 #define PI 3.1415926	
 #define GLM_FORCE_RADIANS								
 
+#include <iostream>
 #include <fstream>
 /// Used for the GLM math library
 #include <GLM\glm.hpp>									
 #include <GLM\gtc\matrix_transform.hpp>					
 #include <GLM\gtx\transform2.hpp>
-
-//#include "..\AssetFactory\IGameAsset.h"
 
 	/**
 	* @struct Camera
@@ -236,7 +235,7 @@ public:
 	float CalculateVerticalDistance();
 	void CalculateCameraPosition(float horizontalDistance, float verticalDistance);
 
-	void SetPlayerRotation(glm::vec3& playerRotation) { m_playerRotation = playerRotation; }
+	void PassPlayerInfo(glm::vec3& position, glm::vec3& rotation);
 	
 protected:
 	/// The camera's projection matrix
@@ -259,11 +258,10 @@ protected:
 	float m_aspectRatio;
 	float m_nearPlane;
 	float m_farPlane;
-
-	//IGameObject* m_player;
+	
+	glm::vec3 m_playerPosition;
 	glm::vec3 m_playerRotation;
+	glm::vec3 m_playerScale;
 	float m_distanceFromPlayer = 45.0;
 	float m_angleAroundPlayer = 0.0;
 };
-
-
