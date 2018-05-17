@@ -13,11 +13,6 @@ ScriptManager::ScriptManager(){}
 // De-constructor
 ScriptManager::~ScriptManager(){}
 
-void ScriptManager::CloseLuaState()
-{
-	//lua_close(Environment);
-}
-
 // Load all scripts
 void ScriptManager::LoadAllLuaScripts()
 {
@@ -117,6 +112,65 @@ bool ScriptManager::LoadCamInitLua(glm::vec3 &camPos, float &yaw, float &pitch, 
 	fov = (float)lua_tonumber(Environment, 6);
 	near = (float)lua_tonumber(Environment, 7);
 	far = (float)lua_tonumber(Environment, 8);
+
+	// Close environment
+	lua_close(Environment);
+
+	// Return true for successful loading and reading
+	return true;
+}
+
+// Load all textures
+bool ScriptManager::LoadTexturesInitLua()
+{
+	// Create lua state
+	lua_State* Environment = lua_open();
+	if (Environment == NULL)
+	{
+		// Show error and exit program
+		std::cout << "Error Initializing lua.." << std::endl;
+		getchar();
+		exit(0);
+	}
+
+	// Load standard lua library functions
+	luaL_openlibs(Environment);
+
+	// Load and run script
+	if (luaL_dofile(Environment, "res/scripts/TexturesInit.lua"))
+	{
+		std::cout << "Error opening file.." << std::endl;
+		getchar();
+		return false;
+	}
+
+	// Read from script
+	lua_settop(Environment, 0);
+	lua_getglobal(Environment, "AllTextures");
+
+	// File path of texture to load
+	std::string filePath;
+
+	// Push to first table
+	lua_pushnil(Environment);
+
+	// Keep reading while there is data in table
+	while (lua_next(Environment, -2) != 0)
+	{
+		// Push to next table
+		lua_pushnil(Environment);
+		while (lua_next(Environment, -2) != 0)
+		{
+			// Get file path and load it
+			filePath = lua_tostring(Environment, -1);
+			TextureManager::Instance().LoadTexture(filePath);
+
+			// Pop out of current table
+			lua_pop(Environment, 1);
+		}
+		// Pop out of current table
+		lua_pop(Environment, 1);
+	}
 
 	// Close environment
 	lua_close(Environment);

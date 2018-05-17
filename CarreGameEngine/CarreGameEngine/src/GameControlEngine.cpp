@@ -50,7 +50,6 @@ void GameControlEngine::Initialize()
 	ScriptManager::Instance().LoadWindowInitLua(ScreenWidth, ScreenHeight, screenTitle, fullScreen);
 	ScriptManager::Instance().LoadCamInitLua(camPos, camYaw, camPitch, camFOV, camNearPlane, camFarPlane);
 
-
 	if (!m_windowManager || m_windowManager->Initialize(ScreenWidth, ScreenHeight, screenTitle, fullScreen) != 0)
 		exit(-1);
 
@@ -75,6 +74,9 @@ void GameControlEngine::Initialize()
 
 	// Initialize physics engine
 	m_physicsWorld = new PhysicsEngine();
+
+	// Load all textures
+	ScriptManager::Instance().LoadTexturesInitLua();
 
 	ShaderSource testShader = ParseShaders("res/shaders/Test.shader");
 	ShaderSource assimpShader = ParseShaders("res/shaders/Default.shader");

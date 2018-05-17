@@ -10,7 +10,8 @@
 * @version 1.1	Added LoadWindowInitLua and got it all working properly.
 *
 * @date 17/07/2018
-* @version 1.2	FInally had time to work on this again. Made LoadCamInitLua and got it all working.
+* @version 1.2	Finally had time to work on this again. Made LoadCamInitLua and got it all working.
+*				Also started on loading of all textures at the start of program.
 */
 
 #ifndef SCRIPTMANAGER_H
@@ -20,6 +21,7 @@
 #include <string>
 #include "lua.hpp"
 #include <GLM\glm.hpp>
+#include "TextureManager.h"
 
 class ScriptManager
 {
@@ -31,7 +33,7 @@ class ScriptManager
 			* This function returns a singleton instance of the script manager class so that there is only
 			* one instance of a script manager.
 			*
-			* @return static TextureManager&
+			* @return static ScriptManager&
 			*/
 		static ScriptManager& Instance()
 		{
@@ -39,8 +41,6 @@ class ScriptManager
 
 			return instance;
 		}
-
-		void CloseLuaState();
 
 			/**
 			* @brief Load all lua scripts
@@ -81,6 +81,14 @@ class ScriptManager
 			*/
 		bool LoadCamInitLua(glm::vec3 &camPos, float &yaw, float &pitch, float &fov, float &near, float &far);
 
+			/**
+			* @brief Load all textures
+			*
+			* Loads all textures in
+			*
+			* @return bool - True if load success, else false
+			*/
+		bool LoadTexturesInitLua();
 
 	private:
 
@@ -99,9 +107,6 @@ class ScriptManager
 			* This is the deconstructor
 			*/
 		~ScriptManager();
-
-		//lua_State* Environment;
-
 };
 
 #endif
