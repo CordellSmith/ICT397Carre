@@ -13,6 +13,10 @@
 *
 * @date 10/07/2018
 * @version 1.2	Added a few more useful functions, and some tidy up.
+*
+* @date 17/07/2018
+* @version 1.3	Altered LoadTexture to check to see if texture is already in map before loading the texture.
+*				Also added an function to help with that check.
 */
 
 #ifndef TEXTUREMANAGER_H
@@ -100,6 +104,17 @@ class TextureManager
 			* @return void
 			*/
 		void ReleaseAllTextures();
+
+			/**
+			* @brief Find out if texture is loaded
+			*
+			* Checks map to see if a texture is already loaded, prior to loading it
+			*
+			* @param filePath - File path of texture
+			*
+			* @return int - texID of loaded texture, or 0 if not in map
+			*/
+		int TexLoaded(std::string filePath);
 
 	private:
 
