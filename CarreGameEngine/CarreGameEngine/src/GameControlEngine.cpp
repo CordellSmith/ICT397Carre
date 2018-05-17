@@ -63,7 +63,7 @@ void GameControlEngine::Initialize()
 
 	// Set camera perspective and position
 	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 1000);
-	m_camera->PositionCamera(200, 2, 200, 0, 0);
+	m_camera->PositionCamera(600, 2, 600, 0, 0);
 	
 	// Pass camera into gameworld
 	m_gameWorld->SetCamera(m_camera);
@@ -121,7 +121,7 @@ void GameControlEngine::Initialize()
 	player = new Player("Player");
 	player->LoadFromFilePath("res/objects/taxi/taxi.obj");
 	player->Prepare(testShader.VertexSource, testShader.FragmentSource);
-	player->SetPosition(glm::vec3(200.0, bfTerrain.GetHeight(200, 200) + 15, 200.0));
+	player->SetPosition(glm::vec3(700.0, bfTerrain.GetHeight(700.0, 600.0) + 15, 600.0));
 	player->SetScale(glm::vec3(15.0, 15.0, 15.0));
 
 	m_windowManager->GetInputManager()->SetPlayer(player);
