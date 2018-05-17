@@ -14,15 +14,7 @@ ScriptManager::ScriptManager(){}
 ScriptManager::~ScriptManager(){}
 
 // Load all scripts
-void ScriptManager::LoadAllLuaScripts()
-{
-	// Read in file containing all lua script file names
-	// For each line read, call appropriate function
-	// Do this later
-
-	// Load all camera and window init variables
-	//LoadCamInitLua();
-}
+void ScriptManager::LoadAllLuaScripts(){}
 
 // Load all camera and window init variables
 bool ScriptManager::LoadWindowInitLua(int &width, int &height, std::string &name, bool &fullScreen)
@@ -161,10 +153,17 @@ bool ScriptManager::LoadTexturesInitLua()
 		lua_pushnil(Environment);
 		while (lua_next(Environment, -2) != 0)
 		{
-			// Get file path and load it
-			filePath = lua_tostring(Environment, -1);
-			TextureManager::Instance().LoadTexture(filePath);
+			// Push to next table
+			lua_pushnil(Environment);
+			while (lua_next(Environment, -2) != 0)
+			{
+				// Get file path and load it
+				filePath = lua_tostring(Environment, -1);
+				TextureManager::Instance().LoadTexture(filePath);
 
+				// Pop out of current table
+				lua_pop(Environment, 1);
+			}
 			// Pop out of current table
 			lua_pop(Environment, 1);
 		}
