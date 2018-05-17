@@ -93,7 +93,7 @@ bool ScriptManager::LoadCamInitLua(glm::vec3 &camPos, float &yaw, float &pitch, 
 	lua_getglobal(Environment, "pitch");
 	lua_getglobal(Environment, "camFOV");
 	lua_getglobal(Environment, "camNearPlane");
-	lua_getglobal(Environment, "camFarPlan");
+	lua_getglobal(Environment, "camFarPlane");
 
 	// Set values
 	camPos.x = (int)lua_tonumber(Environment, 1);
