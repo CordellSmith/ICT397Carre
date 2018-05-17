@@ -12,6 +12,9 @@
 * @date 17/07/2018
 * @version 1.2	Finally had time to work on this again. Made LoadCamInitLua and got it all working.
 *				Also started on loading of all textures at the start of program.
+*
+* @date 17/07/2018
+* @version 1.3	Finished loading in of all textures.
 */
 
 #ifndef SCRIPTMANAGER_H

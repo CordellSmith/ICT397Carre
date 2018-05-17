@@ -47,9 +47,6 @@ void GameWorld::Update()
 
 void GameWorld::Destroy()
 {
-	// Close lua state
-	ScriptManager::Instance().CloseLuaState();
-
 	// Delete all textures
 	TextureManager::Instance().ReleaseAllTextures();
 
