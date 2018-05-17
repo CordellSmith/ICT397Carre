@@ -153,6 +153,24 @@ protected:
 	/// Full screen
 	bool fullScreen;
 
+	/// Cam position
+	glm::vec3 camPos;
+
+	/// Cam yaw
+	float camYaw;
+
+	/// Cam pitch
+	float camPitch;
+
+	/// Cam FOV
+	float camFOV;
+
+	/// Projection matrix near plane
+	float camNearPlane;
+
+	/// Projection matrix far plane
+	float camFarPlane;
+
 	/// Engines window object
 	WindowManager* m_windowManager;
 	
