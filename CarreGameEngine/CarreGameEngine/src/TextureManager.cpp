@@ -32,7 +32,12 @@ bool TextureManager::SetActiveTexture(unsigned int texID)
 // Load texture from file
 int TextureManager::LoadTexture(std::string filePath)
 {
-	GLuint newTex;
+	// Check to see if texture is already loaded and in map, and return texID if true
+	if (TexLoaded(filePath) != 0)
+	{
+		std::cout << "File already loaded: " << filePath << std::endl;
+		return TexLoaded(filePath);
+	}
 
 	// Load in the file
 	//GLuint newTex = SOIL_load_OGL_texture
@@ -49,7 +54,9 @@ int TextureManager::LoadTexture(std::string filePath)
 	//	std::cout << "SOIL loading error: " << filename << " - " << SOIL_last_result() << std::endl;
 	//	return -1;
 	//}
-	
+
+	// Generate a new texID
+	GLuint newTex;
 	glGenTextures(1, &newTex);
 
 	int width, height, nrComponents;
@@ -148,4 +155,27 @@ void TextureManager::ReleaseAllTextures()
 
 	// Clear the map
 	m_textureMap.clear();
+}
+
+// Check to see if a texture is already loaded or not
+int TextureManager::TexLoaded(std::string filePath)
+{
+	// Get iterator to start of map
+	std::unordered_map<std::string, unsigned int>::iterator it = m_textureMap.begin();
+
+	// Search map for texture
+	while (it != m_textureMap.end())
+	{
+		// If texture found, return true
+		if ((*it).first == filePath)
+		{
+			return (*it).second;;
+		}
+
+		// Increment iterator
+		it++;
+	}
+
+	// If texture not found, return 0
+	return 0;
 }

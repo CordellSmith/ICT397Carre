@@ -48,6 +48,7 @@ void GameControlEngine::Initialize()
 {
 	// Initialize from script
 	ScriptManager::Instance().LoadWindowInitLua(ScreenWidth, ScreenHeight, screenTitle, fullScreen);
+	ScriptManager::Instance().LoadCamInitLua(camPos, camYaw, camPitch, camFOV, camNearPlane, camFarPlane);
 
 	if (!m_windowManager || m_windowManager->Initialize(ScreenWidth, ScreenHeight, screenTitle, fullScreen) != 0)
 		exit(-1);
@@ -60,10 +61,10 @@ void GameControlEngine::Initialize()
 
 	// Initialize gameworld
 	m_gameWorld = new GameWorld();
-
+	glm::vec3 test;
 	// Set camera perspective and position
-	m_camera->SetPerspective(glm::radians(60.0f), ScreenWidth / (float)ScreenHeight, 0.01f, 1000);
-	m_camera->PositionCamera(600, 2, 600, 0, 0);
+	m_camera->SetPerspective(glm::radians(camFOV), ScreenWidth / (float)ScreenHeight, camNearPlane, camFarPlane);
+	m_camera->PositionCamera(camPos.x, camPos.y, camPos.z, camYaw, camPitch);
 	
 	// Pass camera into gameworld
 	m_gameWorld->SetCamera(m_camera);
@@ -73,6 +74,9 @@ void GameControlEngine::Initialize()
 
 	// Initialize physics engine
 	m_physicsWorld = new PhysicsEngine();
+
+	// Load all textures
+	ScriptManager::Instance().LoadTexturesInitLua();
 
 	ShaderSource testShader = ParseShaders("res/shaders/Test.shader");
 	ShaderSource assimpShader = ParseShaders("res/shaders/Default.shader");
