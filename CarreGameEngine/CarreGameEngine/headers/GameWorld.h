@@ -10,13 +10,14 @@
 #include <GLM\gtx\transform2.hpp>
 
 #include "Camera.h"
-#include "..\AssetFactory\Model.h"
 #include "PhysicsEngine.h"
-#include "..\AssetFactory\IGameAsset.h"
-#include "..\ImageDB\stb_image.h"
 #include "TextureManager.h"
 #include "ScriptManager.h"
+#include "TimeManager.h"
+#include "..\AssetFactory\Model.h"
+#include "..\AssetFactory\IGameAsset.h"
 #include "..\AssetFactory\Bruteforce.h"
+#include "..\AssetFactory\Player.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
@@ -68,7 +69,7 @@ public:
 		*
 		* @return void
 		*/
-	void Init(std::multimap<std::string, IGameAsset*> gameAssets);
+	void Init(Player* player, std::multimap<std::string, IGameAsset*> gameAssets);
 
 		/**
 		* @brief Updates the game world
@@ -169,4 +170,7 @@ protected:
 	std::multimap<std::string, IGameAsset*> m_gameAssets;
 
 	Bruteforce m_terrain;
+
+	Player* m_player;
+	float s = 0.01;
 };

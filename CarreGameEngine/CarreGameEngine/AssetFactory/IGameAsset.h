@@ -20,7 +20,8 @@ typedef enum
 {
 	ASS_NULL = 0,
 	ASS_OBJECT = 1,
-	ASS_NPC = 2
+	ASS_NPC = 2,
+	ASS_PLAYER = 3
 }ASS_TYPE;
 
 	/**
@@ -118,6 +119,7 @@ public:
 	virtual void SetFilePath(const std::string& filePath) = 0;
 
 	virtual const ASS_TYPE GetOBJType() const { return m_assetType; }
+
 	virtual const std::string GetAssetName() const { return m_assetName; }
 
 		/**
@@ -131,11 +133,15 @@ public:
 		*/
 	virtual void SetCamera(Camera* camera) = 0;
 
-	virtual void SetAssetPosition(glm::vec3 position) = 0;
+	virtual void SetPosition(glm::vec3 position) = 0;
 
-	virtual void SetAssetScale(glm::vec3 scale) = 0;
+	virtual void SetScale(glm::vec3 scale) = 0;
 
-	virtual const glm::vec3 GetAssetPosition() = 0;
+	virtual void SetRotation(glm::vec3 rotation) = 0;
+
+	virtual const glm::vec3 GetPosition() = 0;
+
+	virtual const glm::vec3 GetRotation() = 0;
 
 protected:
 	ASS_TYPE m_assetType;

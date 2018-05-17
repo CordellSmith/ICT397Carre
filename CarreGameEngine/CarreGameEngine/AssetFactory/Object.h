@@ -100,7 +100,7 @@ public:
 		*
 		* @return std::string
 		*/
-	virtual const std::string & GetFilePath() const;
+	virtual const std::string& GetFilePath() const { return m_filePath; }
 
 		/**
 		* @brief Sets the file path
@@ -110,16 +110,20 @@ public:
 		* @param std::string& filePath
 		* @return void
 		*/
-	virtual void SetFilePath(const std::string& filePath);
+	virtual void SetFilePath(const std::string& filePath) { m_filePath = filePath; }
 
 	virtual void SetCamera(Camera* camera) { m_model->SetCamera(camera); }
 
-	virtual void SetAssetPosition(glm::vec3 position) { m_model->SetPosition(position); }
+	virtual void SetPosition(glm::vec3 position) { m_model->SetPosition(position); }
 	
-	virtual void SetAssetScale(glm::vec3 scale) { m_model->SetScale(scale); }
+	virtual void SetScale(glm::vec3 scale) { m_model->SetScale(scale); }
 
-	virtual const glm::vec3 GetAssetPosition() { return m_model->GetPosition(); }
+	virtual void SetRotation(glm::vec3 rotation) { m_model->SetRotation(rotation); }
 	
+	virtual const glm::vec3 GetPosition() { return m_model->GetPosition(); }
+
+	virtual const glm::vec3 GetRotation() { return m_model->GetRotation(); }
+		
 	Model* GetModel() { return m_model; }
 	void SetModel(Model* model) { m_model = model; }
 

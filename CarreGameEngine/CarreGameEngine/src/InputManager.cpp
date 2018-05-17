@@ -11,11 +11,21 @@ void InputManager::KeyPressed(InputCodes code)
 	{
 		// Move forwards
 		case Up: case W: case w:
-			m_camera->MoveCamera((float)(m_camera->GetSpeed() * TimeManager::Instance().DeltaTime));
+			//m_camera->MoveCamera((float)(m_camera->GetSpeed() * TimeManager::Instance().DeltaTime));
+			m_player->MoveForward((float)(m_player->GetMoveSpeed() * TimeManager::Instance().DeltaTime));
 			break;
 		// Move backwards
 		case Down: case S: case s:
-			m_camera->MoveCamera((float)(-1 * m_camera->GetSpeed() * TimeManager::Instance().DeltaTime));
+			//m_camera->MoveCamera((float)(-1 * m_camera->GetSpeed() * TimeManager::Instance().DeltaTime));
+			m_player->MoveBackward((float)(m_player->GetMoveSpeed() * TimeManager::Instance().DeltaTime));
+			break;
+		case Left: case A: case a:
+			//m_camera->MoveCamera((float)(-1 * m_camera->GetSpeed() * TimeManager::Instance().DeltaTime));
+			m_player->TurnAntiClock((float)(m_player->GetMoveSpeed() * TimeManager::Instance().DeltaTime));
+			break;
+		case Right: case D: case d:
+			//m_camera->MoveCamera((float)(-1 * m_camera->GetSpeed() * TimeManager::Instance().DeltaTime));
+			m_player->TurnClock((float)(m_player->GetMoveSpeed() * TimeManager::Instance().DeltaTime));
 			break;
 		// Used to toggle wireframe of vertices
 		case q: case Q:
@@ -35,22 +45,29 @@ void InputManager::MouseMoved(float mouseX, float mouseY)
 	m_camera->SetViewByMouse(mouseX, mouseY);
 }
 
+void InputManager::MousePressed(InputCodes code, float mouseX, float mouseY)
+{
+	if (m_camera == nullptr)
+		return;
+
+	switch (code)
+	{
+	case MouseButtonLeft:
+		m_camera->ChangeAngleAroundPlayer(mouseX);
+		break;
+	case MouseButtonRight:
+		m_camera->ChangePitch(mouseY);
+		break;
+	default:
+		break;
+	}
+}
+
 void InputManager::WheelScrolled(double yoffset)
 {
-	// magnification changes how fast scrolling in and out occurs
-	int magnification = 2;
-	// Gets the current fov
-	float fov = glm::degrees(m_camera->GetFov());
-
-	if (fov >= 1.0 && fov <= 45.0)
-	{
-		fov -= yoffset * magnification;
-	}
-	if (fov <= 1.0)
-		fov = 1.0;
-	if (fov >= 45.0)
-		fov = 45.0;
+	if (m_camera == nullptr)
+		return;
 
 	//std::cout << fov << std::endl;
-	m_camera->UpdateFov(glm::radians(fov));
+	m_camera->Zoom(yoffset);
 }

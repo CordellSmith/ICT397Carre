@@ -9,7 +9,8 @@
 #include <GLM\gtc\matrix_transform.hpp>					
 #include <GLM\gtx\transform2.hpp>
 
-#include "Camera.h"										
+#include "Camera.h"
+#include "..\AssetFactory\Player.h"
 
 /**
 * @brief Enumerator for each key value
@@ -20,6 +21,8 @@
 */
 enum InputCodes
 {
+	MouseButtonLeft = 0,
+	MouseButtonRight = 1,
 	kEscape = 27,
 	Space = 32,
 	Left = 37,
@@ -104,10 +107,15 @@ public:
 		* @return void
 		*/
 	void MouseMoved(float mouseX, float mouseY);
+		
+	void MousePressed(InputCodes code, float mouseX, float mouseY);
 
 	void WheelScrolled(double offsetz);
+
+	void SetPlayer(Player* player) { m_player = player; }
 	
 protected:
 	/// Camera object
 	Camera* m_camera;
+	Player* m_player;
 };

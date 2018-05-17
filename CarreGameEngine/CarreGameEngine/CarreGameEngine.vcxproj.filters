@@ -84,6 +84,9 @@
     <ClInclude Include="AssetFactory\Terrain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AssetFactory\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetFactory\GameAssetFactory.cpp">
@@ -135,6 +138,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AssetFactory\Terrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetFactory\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

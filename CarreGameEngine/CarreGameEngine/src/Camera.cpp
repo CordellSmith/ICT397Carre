@@ -58,12 +58,6 @@ void Camera::MoveCamera(float speed)
 
 	m_position.x += viewVector.x * speed;
 	m_position.z += viewVector.z * speed;
-
-	CalculateZoom();
-	CalculatePitch();
-	CalculateAngleAroundPlayer();
-	float horizontalDistance = CalculateHorizontalDistance();
-	float verticalDistance = CalculateVerticalDistance();
 }
 
 void Camera::SetViewByMouse(float xOffset, float yOffset)
@@ -88,39 +82,77 @@ void Camera::SetViewByMouse(float xOffset, float yOffset)
 		m_pitch = glm::radians(-70.5f);
 }
 
-void Camera::UpdateFov(float newFov)
+void Camera::Zoom(float yoffset)
 {
-	m_fov = newFov;
+	// multiplication factor changes how fast scrolling in and out occurs
+	int mf = 2;
 
+	if (glm::degrees(m_fov) >= 1.0 && glm::degrees(m_fov) <= 45.0)
+	{
+		float change = glm::degrees(m_fov);
+		change -= yoffset * mf;
+		m_fov = glm::radians(change);
+	}
+	if (glm::degrees(m_fov) <= 1.0)
+		m_fov = glm::radians(1.0);
+	if (glm::degrees(m_fov) >= 45.0)
+		m_fov = glm::radians(45.0);
+
+	m_distanceFromPlayer -= yoffset;
 	m_projectionMatrix = glm::perspective(m_fov, m_aspectRatio, m_nearPlane, m_farPlane);
 }
 
-void Camera::CalculateCameraPosition(float horizontalDistance, float verticalDistance)
+void Camera::ChangePitch(float yoffest)
 {
-	
+	// multiplication factor changes how fast pitch up and down occurs
+	float mf = 0.01;
+	float pitchChange = yoffest;
+	m_pitch += pitchChange * mf;
+
+	if (m_pitch > glm::radians(70.5f))
+		m_pitch = glm::radians(70.5f);
+	if (m_pitch < glm::radians(-70.5f))
+		m_pitch = glm::radians(-70.5f);
+}
+
+void Camera::ChangeAngleAroundPlayer(float xoffset)
+{
+	// multiplication factor changes how fast pitch up and down occurs
+	float mf = 0.1;
+	m_angleAroundPlayer -= xoffset;
+
+	float horizontalDistance = CalculateHorizontalDistance();
+	float verticalDistance = CalculateVerticalDistance();
+
+	CalculateCameraPosition(horizontalDistance, verticalDistance);
 }
 
 float Camera::CalculateHorizontalDistance()
 {
-	return 1;
+	return (float)m_distanceFromPlayer * glm::cos(glm::radians(m_pitch));
 }
 
 float Camera::CalculateVerticalDistance()
 {
-	return 1;
+	return (float)m_distanceFromPlayer * glm::sin(glm::radians(m_pitch));
 }
 
-void Camera::CalculateZoom()
+void Camera::CalculateCameraPosition(float horizontalDistance, float verticalDistance)
 {
+	float theta = m_playerRotation.y + m_angleAroundPlayer;
+	float xoffset = horizontalDistance * glm::sin(glm::radians(theta));
+	float zoffset = horizontalDistance * glm::cos(glm::radians(theta));
 
+	m_position.x = m_playerPosition.x - xoffset;
+	m_position.y = m_playerPosition.y + m_distanceFromPlayer;
+	m_position.z = m_playerPosition.z + zoffset;
+
+	m_yaw = 180 - (m_playerRotation.y + m_angleAroundPlayer);	
 }
 
-void Camera::CalculatePitch()
+void Camera::PassPlayerInfo(glm::vec3& position, glm::vec3& rotation)
 {
-
+	m_playerPosition = position;
+	m_playerRotation = rotation;
 }
 
-void Camera::CalculateAngleAroundPlayer()
-{
-
-}
