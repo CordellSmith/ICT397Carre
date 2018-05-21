@@ -15,6 +15,9 @@
 *
 * @date 17/07/2018
 * @version 1.3	Finished loading in of all textures.
+*
+* @date 21/07/2018
+* @version 1.4	Started on loading of all models. Got loading done correctly, just need to store them.
 */
 
 #ifndef SCRIPTMANAGER_H
@@ -92,6 +95,15 @@ class ScriptManager
 			* @return bool - True if load success, else false
 			*/
 		bool LoadTexturesInitLua();
+
+			/**
+			* @brief Load all models
+			*
+			* Loads all models, their xyz position, and their xyz scale
+			*
+			* @return bool - True if load success, else false
+			*/
+		bool LoadModelsInitLua();
 
 	private:
 

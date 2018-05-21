@@ -177,3 +177,102 @@ bool ScriptManager::LoadTexturesInitLua()
 	// Return true for successful loading and reading
 	return true;
 }
+
+// Load all textures
+bool ScriptManager::LoadModelsInitLua()
+{
+	// Create lua state
+	lua_State* Environment = lua_open();
+	if (Environment == NULL)
+	{
+		// Show error and exit program
+		std::cout << "Error Initializing lua.." << std::endl;
+		getchar();
+		exit(0);
+	}
+
+	// Load standard lua library functions
+	luaL_openlibs(Environment);
+
+	// Load and run script
+	if (luaL_dofile(Environment, "res/scripts/ModelsInit.lua"))
+	{
+		std::cout << "Error opening file.." << std::endl;
+		getchar();
+		return false;
+	}
+
+	// Read from script
+	lua_settop(Environment, 0);
+	lua_getglobal(Environment, "AllModels");
+
+	// File path of model to load
+	std::string filePath;
+
+	// Counters
+	int i = 0;
+	int j = 0;
+
+	//temp values
+	std::string temp;
+	std::string values[6];
+	values[0] = "filePath";
+	values[1] = "scaleX";
+	values[2] = "scaleY";
+	values[3] = "scaleZ";
+	values[4] = "posX";
+	values[5] = "posZ";
+	float scaleX, scaleY, scaleZ, posX, posZ;
+
+	std::vector<std::vector<float>> modelData;
+
+	// Push to first table
+	lua_pushnil(Environment);
+
+	// Keep reading while there is data in table
+	while (lua_next(Environment, -2) != 0)
+	{
+		temp = lua_tostring(Environment, -2);
+		std::cout << temp << ":" << std::endl;
+
+		// Push to next table
+		lua_pushnil(Environment);
+		while (lua_next(Environment, -2) != 0)
+		{
+			// Push to next table
+			lua_pushnil(Environment);
+			while (lua_next(Environment, -2) != 0)
+			{
+				// Get file path and load it
+				temp = lua_tostring(Environment, -2);
+				if (temp.compare(values[0]) == 0)
+					filePath = lua_tostring(Environment, -1);
+				if (temp.compare(values[1]) == 0)
+					scaleX = lua_tonumber(Environment, -1);
+				if (temp.compare(values[2]) == 0)
+					scaleY = lua_tonumber(Environment, -1);
+				if (temp.compare(values[3]) == 0)
+					scaleZ = lua_tonumber(Environment, -1);
+				if (temp.compare(values[4]) == 0)
+					posX = lua_tonumber(Environment, -1);
+				if (temp.compare(values[5]) == 0)
+					posZ = lua_tonumber(Environment, -1);
+
+				
+				// Pop out of current table
+				lua_pop(Environment, 1);
+			}
+			std::cout << filePath << ", " << scaleX << ", " << scaleY << ", " << scaleZ << ", " << posX << ", " << posZ << std::endl;
+			// Pop out of current table
+			lua_pop(Environment, 1);
+		}
+		// Pop out of current table
+		lua_pop(Environment, 1);
+	}
+
+	// Close environment
+	lua_close(Environment);
+
+	// Return true for successful loading and reading
+	return true;
+}
