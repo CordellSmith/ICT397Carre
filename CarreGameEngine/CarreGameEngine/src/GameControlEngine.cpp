@@ -80,6 +80,7 @@ void GameControlEngine::Initialize()
 
 	ShaderSource testShader = ParseShaders("res/shaders/Test.shader");
 	ShaderSource assimpShader = ParseShaders("res/shaders/Default.shader");
+	ShaderSource terrainShader = ParseShaders("res/shaders/Terrain.shader");
 
 	// Light asset
 	/*
@@ -99,7 +100,7 @@ void GameControlEngine::Initialize()
 
 	// Bruteforce terrain
 	bfTerrain.LoadHeightfield("res/terrain/city.raw", 128);
-	bfTerrain.AddShader(testShader.VertexSource, testShader.FragmentSource);
+	bfTerrain.AddShader(terrainShader.VertexSource, terrainShader.FragmentSource);
 	bfTerrain.GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
 	bfTerrain.SetPosition(glm::vec3(0.0, 0.0, 0.0));
 

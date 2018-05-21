@@ -19,6 +19,11 @@
     <None Include="res\shaders\Cube.Shader" />
     <None Include="res\shaders\Default.shader" />
     <None Include="res\shaders\Test.shader" />
+    <None Include="res\shaders\Terrain.shader" />
+    <None Include="res\scripts\CameraInit.lua" />
+    <None Include="res\scripts\ModelInit.lua" />
+    <None Include="res\scripts\TexturesInit.lua" />
+    <None Include="res\scripts\WindowInit.lua" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Camera.h">
