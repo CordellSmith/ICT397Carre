@@ -38,7 +38,6 @@ void Player::MoveForward(float speed)
 	float dx = (float)(m_currentMoveSpeed * glm::sin(m_playerModel->GetRotation().y));
 	float dz = (float)(m_currentMoveSpeed * glm::cos(m_playerModel->GetRotation().y));
 
-	std::cout << "dx: " << glm::degrees(m_playerModel->GetRotation().y) << " dy:" << dz << std::endl;
 	m_playerModel->SetPosition(glm::vec3(m_playerModel->GetPosition().x + dx, 0.0, m_playerModel->GetPosition().z + dz));
 }
 

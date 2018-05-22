@@ -58,7 +58,9 @@ public:
 	void SetVertices(std::vector<Vertex3> vertices) { m_vertices = vertices; }
 
 	std::vector<Texture>& GetTextures() { return m_textures; }
-
+	
+	void CreateTransformationMatrix(glm::mat4& modelMatrix);
+		
 protected:
 	std::vector<Vertex3> m_vertices;
 	std::vector<unsigned int> m_indices;

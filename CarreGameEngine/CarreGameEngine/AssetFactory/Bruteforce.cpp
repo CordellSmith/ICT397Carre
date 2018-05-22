@@ -12,12 +12,6 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 		{
 			Vertex3 vertex;
 
-			// Texture coordinates of the triangle
-			tex00 = (float)x * m_heightfieldSize * m_scaleX;
-			tex10 = (float)z * m_heightfieldSize * m_scaleZ;
-			tex11 = (float)(z + 1) * m_heightfieldSize * m_scaleZ;
-			tex01 = (float)(x + 1) * m_heightfieldSize * m_scaleX;
-
 			// Colour of triangle
 			colour = (float)GetHeightColour(x, z) / 255;
 			vertex.m_colour = glm::vec4(colour, colour, colour, 1.0);
@@ -27,42 +21,36 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 			vertex.m_position.y = GetHeight(x, z);
 			vertex.m_position.z = (float)z * m_scaleZ;
 
-			vertex.m_texCoords = glm::vec2(tex00, tex00);
 			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 0.0
 
 			vertex.m_position.x = (float)(x + 1) * m_scaleX;
 			vertex.m_position.y = GetHeight(x + 1, z);
 			vertex.m_position.z = (float)z * m_scaleZ;
 
-			vertex.m_texCoords = glm::vec2(tex00, tex10);
 			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 1.0
 
 			vertex.m_position.x = (float)(x + 1) * m_scaleX;
 			vertex.m_position.y = GetHeight(x + 1, z + 1);
 			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
 
-			vertex.m_texCoords = glm::vec2(tex11, tex11);
 			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 1.0
 			
 			vertex.m_position.x = (float)x * m_scaleX;
 			vertex.m_position.y = GetHeight(x, z);
 			vertex.m_position.z = (float)z * m_scaleZ;
 
-			vertex.m_texCoords = glm::vec2(tex00, tex00);
 			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 0.0
 
 			vertex.m_position.x = (float)(x + 1) * m_scaleX;
 			vertex.m_position.y = GetHeight(x + 1, z + 1);
 			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
 
-			vertex.m_texCoords = glm::vec2(tex11, tex11);
 			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 1.0
 
 			vertex.m_position.x = (float)x * m_scaleX;
 			vertex.m_position.y = GetHeight(x, z + 1);
 			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
 			
-			vertex.m_texCoords = glm::vec2(tex00, tex01);
 			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 0.0
 		}
 	}
