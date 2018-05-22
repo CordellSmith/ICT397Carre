@@ -11,34 +11,13 @@ void NPC::LoadFromFilePath(std::string filePath)
 	//m_model->LoadModel(filePath);
 }
 
-const void NPC::Load()
-{
-	return void();
-}
-
-const void NPC::Unload()
-{
-	return void();
-}
-
-const void NPC::Prepare(std::string vertShader, std::string fragShader)
-{
-	return void();
-}
-
-const void NPC::Render()
-{
-	// Needs to be implemented
-	return void();
-}
-
 const void NPC::Destroy()
 {
 	// Needs to be implemented
 	return void();
 }
 
-const std::string & NPC::GetFilePath() const
+const std::string& NPC::GetFilePath() const
 {
 	return m_filePath;
 }

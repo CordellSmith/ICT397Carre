@@ -2,31 +2,38 @@
 
 void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gameAssets)
 {
-	// Set player
-	m_player = player;
 	// Sets this game contexts assets to the  loaded game assets from the control engine
 	SetGameAssets(gameAssets);
-	// Pass camera to terrains
+	
+	ShaderSource testShader = ParseShaders("res/shaders/Test.shader");
+	ShaderSource assimpShader = ParseShaders("res/shaders/Default.shader");
+	ShaderSource terrainShader = ParseShaders("res/shaders/Terrain.shader");
+
+	// Prepare terrains
 	for each (Bruteforce* terrain in m_terrains)
 	{
 		terrain->SetCamera(m_camera);
+		m_glRenderer.Prepare(terrain->GetModel(), terrainShader.VertexSource, terrainShader.FragmentSource);
 	}
-	// Pass camera to player
-	m_player->SetCamera(m_camera);
-
-	m_camera->PassPlayerInfo(m_player->GetPosition(), m_player->GetRotation());
 	
+	// Prepare assets
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		if (itr->first == "Cube")
 		{
-			// Pass camera pointer to all game objects to access projection / view matrices
 			itr->second->SetCamera(m_camera);
-			// Prepare shaders for each object (only testing with one model and shader atm)
-			itr->second->Prepare(m_assimpShaderSource.VertexSource, m_assimpShaderSource.FragmentSource);
+			m_glRenderer.Prepare(itr->second->GetModel(), assimpShader.VertexSource, assimpShader.FragmentSource);
 		}
 	}
+
+	// Prepare player
+	m_player = player;
+	m_player->SetCamera(m_camera);
+	m_glRenderer.Prepare(m_player->GetModel(), testShader.VertexSource, testShader.FragmentSource);
+
+	// Pass player info to camera
+	m_camera->PassPlayerInfo(m_player->GetPosition(), m_player->GetRotation());
 }
 
 void GameWorld::Update()
@@ -37,16 +44,11 @@ void GameWorld::Update()
 	// Render terrain
 	for each (Bruteforce* terrain in m_terrains)
 	{
-		terrain->Render();
+		m_glRenderer.Render(terrain->GetModel());
 	}
 
-	// Testing player
-	m_player->SetPosition(glm::vec3(
-		m_player->GetPosition().x,
-		m_terrains[0]->GetAverageHeight(m_player->GetPosition().x, m_player->GetPosition().z),
-		m_player->GetPosition().z
-	));
-	m_player->Render();
+	// Render player
+	m_glRenderer.Render(m_player->GetModel());
 		
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
@@ -101,7 +103,7 @@ void GameWorld::UpdatePhysics()
 		if (itr->first == "Cube")
 		{
 			itr->second->SetPosition(temp);
-			itr->second->Render();
+			m_glRenderer.Render(itr->second->GetModel());
 		}
 		i++;
 	}

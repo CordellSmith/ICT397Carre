@@ -84,8 +84,9 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 1.0
 		}
 	}
-	tempMesh.SetupMesh();
+	//tempMesh.SetupMesh();
 	tempMesh.GetTextures().push_back(AddTexture(textureId, textureFilePath));
+	m_terrainModel->GetTextures().push_back(AddTexture(textureId, textureFilePath));
 	m_terrainModel->GetMeshBatch().push_back(tempMesh);
 	m_terrainModel->SetScale(glm::vec3(1.0, 1.0, 1.0));
 }
@@ -99,16 +100,6 @@ Texture Bruteforce::AddTexture(GLuint textureId, std::string textureFilePath)
 	temp.m_type = "texture_diffuse";
 
 	return temp;
-}
-
-void Bruteforce::AddShader(std::string vertShader, std::string fragShader)
-{
-	m_terrainModel->Prepare(vertShader, fragShader);
-}
-
-void Bruteforce::Render()
-{
-	m_terrainModel->Draw();
 }
 
 bool Bruteforce::LoadHeightfield(std::string fileName, const int size)

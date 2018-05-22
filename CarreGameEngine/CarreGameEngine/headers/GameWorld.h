@@ -19,6 +19,8 @@
 #include "..\AssetFactory\IGameAsset.h"
 #include "..\AssetFactory\Bruteforce.h"
 #include "..\AssetFactory\Player.h"
+#include "..\Renderer\OpenGl.h"
+#include "..\headers\Shader.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
@@ -167,4 +169,6 @@ protected:
 
 	Player* m_player;
 	float s = 0.01;
+
+	OpenGl m_glRenderer;
 };

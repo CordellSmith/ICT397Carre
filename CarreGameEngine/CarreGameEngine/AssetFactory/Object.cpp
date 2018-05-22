@@ -12,26 +12,6 @@ void Object::LoadFromFilePath(std::string filePath)
 	m_model->LoadModel(filePath);
 }
 
-const void Object::Load()
-{
-	return void();
-}
-
-const void Object::Unload()
-{
-	return void();
-}
-
-const void Object::Prepare(std::string vertShader, std::string fragShader)
-{
-	m_model->Prepare(vertShader, fragShader);
-}
-
-const void Object::Render()
-{
-	m_model->Draw();
-}
-
 const void Object::Destroy()
 {
 	// Todo: destroy all items of Object class

@@ -2,37 +2,6 @@
 
 #include "GL/glew.h"
 
-/// Function to read a shader in one string and return a struct containing separated Vertex and Fragment shaders
-ShaderSource ParseShaders(const std::string& filePath)
-{
-	std::ifstream stream(filePath);
-
-	enum class ShaderType
-	{
-		NONE = -1, VERTEX = 0, FRAGMENT = 1
-	};
-
-	std::string line;
-	std::stringstream ss[2]; // stack allocated array that will store vertex and fragment strings
-	ShaderType type = ShaderType::NONE; // set to none (-1) by default
-	while (getline(stream, line))
-	{
-		if (line.find("#shader") != std::string::npos)
-		{
-			if (line.find("vertex") != std::string::npos)
-				type = ShaderType::VERTEX;
-			else if (line.find("fragment") != std::string::npos)
-				type = ShaderType::FRAGMENT;
-		}
-		else
-		{
-			ss[(int)type] << line << '\n';
-		}
-	}
-
-	return{ ss[0].str(), ss[1].str() };
-}
-
 const int GameControlEngine::RunEngine()
 {
 	Initialize();
@@ -92,12 +61,13 @@ void GameControlEngine::Initialize()
 
 	// Holds terrains
 	std::vector<Bruteforce*> terrains;
+
 	// Main landscape terrain
 	Bruteforce* bfLandscape = new Bruteforce(100, 5, 100);
 	// Building terrain
 	Bruteforce* bfBuildings = new Bruteforce(100, 4, 100);
 
-	// Player
+	// Create new player
 	Player* player = new Player("Player");
 
 	// Set camera perspective and position
@@ -117,10 +87,6 @@ void GameControlEngine::Initialize()
 	// Load all textures
 	//ScriptManager::Instance().LoadTexturesInitLua();
 
-	ShaderSource testShader = ParseShaders("res/shaders/Test.shader");
-	ShaderSource assimpShader = ParseShaders("res/shaders/Default.shader");
-	ShaderSource terrainShader = ParseShaders("res/shaders/Terrain.shader");
-
 	// Light asset
 	/*
 	IGameAsset* light = m_assetFactory->CreateAsset(ASS_OBJECT, "TrafficLight");
@@ -139,13 +105,11 @@ void GameControlEngine::Initialize()
 
 	// Bruteforce terrain
 	bfLandscape->LoadHeightfield("res/terrain/newcity.raw", 128);
-	bfLandscape->AddShader(terrainShader.VertexSource, terrainShader.FragmentSource);
 	bfLandscape->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
 	bfLandscape->SetPosition(glm::vec3(0.0, 0.0, 0.0));
 	terrains.push_back(bfLandscape);
 
 	bfBuildings->LoadHeightfield("res/terrain/buildingheightmap.raw", 16);
-	bfBuildings->AddShader(terrainShader.VertexSource, terrainShader.FragmentSource);
 	bfBuildings->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/buildingtexture.jpg"), "res/terrain/buildingtexture.jpg");
 	bfBuildings->SetPosition(glm::vec3(6000.0, -1.0, 5000.0));
 	terrains.push_back(bfBuildings);
@@ -154,9 +118,7 @@ void GameControlEngine::Initialize()
 	// Cube asset
 	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
 	cube->LoadFromFilePath("res/objects/cube.obj");
-	cube->Prepare(assimpShader.VertexSource, assimpShader.FragmentSource);
-	cube->SetPosition(glm::vec3(200.0, bfLandscape->GetHeight(200, 250), 300.0));
-	cube->SetScale(glm::vec3(15.0, 15.0, 15.0));
+	cube->SetScale(glm::vec3(100, 100, 100));
 	m_assetFactory->AddAsset(cube);
 
 	/********************************************TESTING********************************************/
@@ -227,8 +189,7 @@ void GameControlEngine::Initialize()
 	/********************************************TESTING********************************************/
 	
 	// Main character creation
-	/*player->LoadFromFilePath("res/objects/taxi/taxi.obj");
-	player->Prepare(testShader.VertexSource, testShader.FragmentSource);
+	player->LoadFromFilePath("res/objects/taxi/taxi.obj");
 	player->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
 	player->SetScale(glm::vec3(15.0, 15.0, 15.0));*/
 

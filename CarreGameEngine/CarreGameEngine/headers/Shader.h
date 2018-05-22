@@ -2,8 +2,16 @@
 
 #include <iostream>
 #include <string>										
-#include <fstream>										
+#include <fstream>
+#include <sstream>
 #include "GL\glew.h"									
+
+/// Struct to hold both vertex and fragment shaders (needs to be moved)
+struct ShaderSource
+{
+	std::string VertexSource;
+	std::string FragmentSource;
+};
 
 	/**
 	* @class Shader
@@ -192,3 +200,34 @@ protected:
 	/// Stores the program information 
 	GLuint m_shaderProgramId;
 };
+
+inline ShaderSource ParseShaders(const std::string& filePath)
+{
+	std::ifstream stream(filePath);
+
+	enum class ShaderType
+	{
+		NONE = -1, VERTEX = 0, FRAGMENT = 1
+	};
+
+	std::string line;
+	std::stringstream ss[2]; // stack allocated array that will store vertex and fragment strings
+	ShaderType type = ShaderType::NONE; // set to none (-1) by default
+	while (getline(stream, line))
+	{
+		if (line.find("#shader") != std::string::npos)
+		{
+			if (line.find("vertex") != std::string::npos)
+				type = ShaderType::VERTEX;
+			else if (line.find("fragment") != std::string::npos)
+				type = ShaderType::FRAGMENT;
+		}
+		else
+		{
+			ss[(int)type] << line << '\n';
+		}
+	}
+
+	return{ ss[0].str(), ss[1].str() };
+}
+

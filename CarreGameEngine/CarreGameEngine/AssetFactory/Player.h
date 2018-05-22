@@ -12,10 +12,6 @@ public:
 
 	void LoadFromFilePath(std::string filePath);
 
-	const void Prepare(std::string vertShader, std::string fragShader);
-
-	const void Render();
-
 	const void Destroy();
 
 	void MoveForward(float speed);
@@ -37,6 +33,8 @@ public:
 	void SetScale(glm::vec3 scale) { m_playerModel->SetScale(scale); }
 
 	float GetMoveSpeed() { return m_moveSpeed; }
+
+	Model* GetModel() { return m_playerModel; }
 
 protected:
 	std::string m_filePath;

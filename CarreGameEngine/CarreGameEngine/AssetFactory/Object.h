@@ -62,35 +62,6 @@ public:
 		*/
 	virtual void LoadFromFilePath(std::string filePath);
 
-		/**
-		* @brief Loads
-		*
-		* Loads the object.
-		*
-		* @return void
-		*/
-	virtual const void Load();
-
-		/**
-		* @brief Unloads
-		*
-		* Unloads the object.
-		*
-		* @return void
-		*/
-	virtual const void Unload();
-
-	virtual const void Prepare(std::string vertShader, std::string fragShader);
-
-		/**
-		* @brief Renders
-		*
-		* Renders the Object.
-		*
-		* @return void
-		*/
-	virtual const void Render();
-
 	virtual const void Destroy();
 
 		/**
@@ -124,7 +95,8 @@ public:
 
 	virtual const glm::vec3 GetRotation() { return m_model->GetRotation(); }
 		
-	Model* GetModel() { return m_model; }
+	virtual Model* GetModel() { return m_model; }
+
 	void SetModel(Model* model) { m_model = model; }
 
 protected:
@@ -132,6 +104,4 @@ protected:
 	std::string m_filePath;
 	/// Model object
 	Model* m_model;
-
-	Camera* m_camera;
 };
