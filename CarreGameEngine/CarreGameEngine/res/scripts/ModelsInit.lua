@@ -8,19 +8,14 @@
 --Note: Needs improvements
 AllModels=
 {
-  	player=
-  	{
-    		{filePath = "res/objects/taxi/taxi.obj", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 700.0, posZ = 700.0},
-	},
-	pedestrian=
-	{
-		{filePath = "res/objects/pedestrian/pedestrian.obj", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 500.0, posZ = 100.0},
-		{filePath = "res/objects/pedestrian/pedestrian.obj", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 400.0, posZ = 200.0},
-	},
 	monsterOne=
 	{
-		{filePath = "res/objects/monster/monster1.obj", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 300.0, posZ = 300.0},
-		{filePath = "res/objects/monster/monster1.obj", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 300.0, posZ = 300.0},
-		{filePath = "res/objects/monster/monster1.obj", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 600.0, posZ = 500.0},
-	}
+		{filePath = "res/objects/monster/monster1.obj", scaleX = 41.0, scaleY = 42.0, scaleZ = 43.0, posX = 300.0, posZ = 300.0},
+		{filePath = "res/objects/monster/monster1.obj", scaleX = 51.0, scaleY = 52.0, scaleZ = 53.0, posX = 300.0, posZ = 300.0},
+		{filePath = "res/objects/monster/monster1.obj", scaleX = 61.0, scaleY = 62.0, scaleZ = 63.0, posX = 600.0, posZ = 500.0},
+	},
+	player=
+	{
+		{filePath = "res/objects/monster/player.obj", scaleX = 11.0, scaleY = 12.0, scaleZ = 13.0, posX = 300.0, posZ = 300.0},
+	},
 }

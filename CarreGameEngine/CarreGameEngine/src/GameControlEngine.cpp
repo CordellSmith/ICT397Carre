@@ -62,7 +62,7 @@ void GameControlEngine::Initialize()
 
 	// Initialize gameworld
 	m_gameWorld = new GameWorld();
-	glm::vec3 test;
+	
 	// Set camera perspective and position
 	m_camera->SetPerspective(glm::radians(camFOV), ScreenWidth / (float)ScreenHeight, camNearPlane, camFarPlane);
 	m_camera->PositionCamera(camPos.x, camPos.y, camPos.z, camYaw, camPitch);

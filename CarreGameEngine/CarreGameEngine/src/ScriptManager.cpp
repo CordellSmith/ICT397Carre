@@ -222,9 +222,15 @@ bool ScriptManager::LoadModelsInitLua()
 	values[3] = "scaleZ";
 	values[4] = "posX";
 	values[5] = "posZ";
-	float scaleX, scaleY, scaleZ, posX, posZ;
 
-	std::vector<std::vector<float>> modelData;
+	std::vector<std::vector<float>> modelDataPos;
+	std::vector<std::vector<float>> modelDataScale;
+	std::vector<float> tempData;
+	glm::vec3 tempPos;
+	tempPos.y = 0.0f;
+	glm::vec3 tempScale;
+
+	std::unordered_map<std::string, std::vector<std::vector<float>>> mData;
 
 	// Push to first table
 	lua_pushnil(Environment);
@@ -233,12 +239,17 @@ bool ScriptManager::LoadModelsInitLua()
 	while (lua_next(Environment, -2) != 0)
 	{
 		temp = lua_tostring(Environment, -2);
-		std::cout << temp << ":" << std::endl;
+		std::cout << temp << ": " << i << " :" << std::endl;
+
+		j = 0;
+		//modelDataScale[0].push_back(tempPos);
+		
 
 		// Push to next table
 		lua_pushnil(Environment);
 		while (lua_next(Environment, -2) != 0)
 		{
+			//std::cout << j << std::endl;
 			// Push to next table
 			lua_pushnil(Environment);
 			while (lua_next(Environment, -2) != 0)
@@ -248,27 +259,86 @@ bool ScriptManager::LoadModelsInitLua()
 				if (temp.compare(values[0]) == 0)
 					filePath = lua_tostring(Environment, -1);
 				if (temp.compare(values[1]) == 0)
-					scaleX = lua_tonumber(Environment, -1);
+					tempScale.x = lua_tonumber(Environment, -1);
 				if (temp.compare(values[2]) == 0)
-					scaleY = lua_tonumber(Environment, -1);
+					tempScale.y = lua_tonumber(Environment, -1);
 				if (temp.compare(values[3]) == 0)
-					scaleZ = lua_tonumber(Environment, -1);
+					tempScale.z = lua_tonumber(Environment, -1);
 				if (temp.compare(values[4]) == 0)
-					posX = lua_tonumber(Environment, -1);
+					tempPos.x = lua_tonumber(Environment, -1);
 				if (temp.compare(values[5]) == 0)
-					posZ = lua_tonumber(Environment, -1);
+					tempPos.z = lua_tonumber(Environment, -1);
 
-				
 				// Pop out of current table
 				lua_pop(Environment, 1);
-			}
-			std::cout << filePath << ", " << scaleX << ", " << scaleY << ", " << scaleZ << ", " << posX << ", " << posZ << std::endl;
+			}	
+			// Pass in scales, working backwards
+			tempData.push_back(tempScale.x);
+			tempData.push_back(tempScale.y);
+			tempData.push_back(tempScale.z);
+			modelDataScale.push_back(tempData);
+
+			//modelDataScale.clear();
+			tempData.clear();
+
+			// Pass in positions, working backwards
+			tempData.push_back(tempPos.x);
+			tempData.push_back(tempPos.y);
+			tempData.push_back(tempPos.z);
+			modelDataPos.push_back(tempData);
+
+			modelDataPos.clear();
+			tempData.clear();
+
+			j++;
+			//std::cout << filePath << ", " << scaleX << ", " << scaleY << ", " << scaleZ << ", " << posX << ", " << posZ << std::endl;
 			// Pop out of current table
 			lua_pop(Environment, 1);
 		}
+
+		// Add to map
+
+		//if (!mData[filePath])
+		//{
+			mData[filePath] = modelDataScale;
+		//}
+
+		modelDataScale.clear();
+
+		i++;
 		// Pop out of current table
 		lua_pop(Environment, 1);
 	}
+
+	// Get iterator to start of map
+	std::unordered_map<std::string, std::vector<std::vector<float>>>::iterator it = mData.begin();
+
+	// Search map for texture
+	while (it != mData.end())
+	{
+		//std::cout << (*it).second[0][0] << " ";
+		std::cout << (*it).first << std::endl;
+		for (int k = 0; k < (*it).second.size(); k++)
+		{
+			for (int l = 0; l < (*it).second[k].size(); l++)
+			{
+				std::cout << (*it).second[k][l] << " ";
+			}
+			std::cout << std::endl;
+		}		
+		// Increment iterator
+		std::cout << std::endl;
+		it++;
+	}
+
+	/*for (int k = 0; k < modelDataScale.size(); k++)
+	{
+		for (int l = 0; l < modelDataScale[k].size(); l++)
+		{
+			std::cout << modelDataScale[k][l] << " ";
+		}
+		std::cout << std::endl;
+	}*/
 
 	// Close environment
 	lua_close(Environment);
