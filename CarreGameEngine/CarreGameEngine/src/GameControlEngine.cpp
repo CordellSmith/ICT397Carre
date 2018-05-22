@@ -159,11 +159,78 @@ void GameControlEngine::Initialize()
 	cube->SetScale(glm::vec3(15.0, 15.0, 15.0));
 	m_assetFactory->AddAsset(cube);
 
-	// Main character creation
-	player->LoadFromFilePath("res/objects/taxi/taxi.obj");
+	/********************************************TESTING********************************************/
+	// Get iterator to start of map
+	std::unordered_map<std::string, ModelsData>::iterator it = m_allModelsData.begin();
+
+	// Search map for texture
+	while (it != m_allModelsData.end())
+	{
+		if ((*it).first == "player")
+		{
+			m_modelsData = (*it).second;
+			break;
+		}
+		// Increment iterator
+		it++;
+	}	
+
+	// Main character creation (filePath and scale read from m_modelsData)
+	player->LoadFromFilePath(m_modelsData.filePath);
 	player->Prepare(testShader.VertexSource, testShader.FragmentSource);
 	player->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
-	player->SetScale(glm::vec3(15.0, 15.0, 15.0));
+	player->SetScale(glm::vec3(m_modelsData.modelScales[0][0], m_modelsData.modelScales[0][1], m_modelsData.modelScales[0][2]));
+
+
+
+	/********************Loading of all models at once example (doesn't run)*******************/
+	//float scales[3];
+	//float positions[3];
+
+	// Search map for texture
+	//while (it != m_allModelsData.end())
+	//{
+	//	// For each different type of model (player already read in, so skip)
+	//	if ((*it).first != "player")
+	//	{
+	//		m_modelsData = (*it).second;
+
+	//		// Load model (.obj, .md2, etc)
+	//		model->LoadFromFilePath((*it).second.filePath);
+
+	//		// For each model of same type
+	//		for (int k = 0; k < (*it).second.modelPositions.size(); k++)
+	//		{
+	//			// Get scales
+	//			for (int l = 0; l < (*it).second.modelScales[k].size(); l++)
+	//			{
+	//				scales[l] = (*it).second.modelScales[k][l];
+	//			}
+
+	//			// Get positions
+	//			for (int l = 0; l < (*it).second.modelPositions[k].size(); l++)
+	//			{
+	//				positions[l] = (*it).second.modelPositions[k][l];
+	//			}
+
+	//			// Prepare shader, set scales, set positions of model data just read
+	//			model->Prepare(testShader.VertexSource, testShader.FragmentSource);
+	//			model->SetPosition(glm::vec3(scales[0], scales[1], scales[2]));
+	//			model->SetScale(glm::vec3(positions[0], positions[1], positions[2]));
+	//		}
+	//	}
+	//	// Increment iterator
+	//	it++;
+	//}
+	/********************Loading of all models at once example (doesn't run)*******************/
+
+	/********************************************TESTING********************************************/
+	
+	// Main character creation
+	/*player->LoadFromFilePath("res/objects/taxi/taxi.obj");
+	player->Prepare(testShader.VertexSource, testShader.FragmentSource);
+	player->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
+	player->SetScale(glm::vec3(15.0, 15.0, 15.0));*/
 
 	m_windowManager->GetInputManager()->SetPlayer(player);
 

@@ -14,19 +14,13 @@
 #include "TextureManager.h"
 #include "ScriptManager.h"
 #include "TimeManager.h"
+#include "Structs.h"
 #include "..\AssetFactory\Model.h"
 #include "..\AssetFactory\IGameAsset.h"
 #include "..\AssetFactory\Bruteforce.h"
 #include "..\AssetFactory\Player.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
-
-/// Struct to hold both vertex and fragment shaders (needs to be moved)
-struct ShaderSource
-{
-	std::string VertexSource;
-	std::string FragmentSource;
-};
 
 	/*
 	* @class GameWorld
