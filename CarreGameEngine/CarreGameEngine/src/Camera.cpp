@@ -87,7 +87,7 @@ void Camera::Zoom(float yoffset)
 	// multiplication factor changes how fast scrolling in and out occurs
 	int mf = 2;
 
-	if (glm::degrees(m_fov) >= 1.0 && glm::degrees(m_fov) <= 45.0)
+	if (glm::degrees(m_fov) >= 1.0 && glm::degrees(m_fov) <= 61.0)
 	{
 		float change = glm::degrees(m_fov);
 		change -= yoffset * mf;
@@ -95,8 +95,8 @@ void Camera::Zoom(float yoffset)
 	}
 	if (glm::degrees(m_fov) <= 1.0)
 		m_fov = glm::radians(1.0);
-	if (glm::degrees(m_fov) >= 45.0)
-		m_fov = glm::radians(45.0);
+	if (glm::degrees(m_fov) >= 61.0)
+		m_fov = glm::radians(60.0);
 
 	m_distanceFromPlayer -= yoffset;
 	m_projectionMatrix = glm::perspective(m_fov, m_aspectRatio, m_nearPlane, m_farPlane);
@@ -119,7 +119,8 @@ void Camera::ChangeAngleAroundPlayer(float xoffset)
 {
 	// multiplication factor changes how fast pitch up and down occurs
 	float mf = 0.1;
-	m_angleAroundPlayer -= xoffset;
+	float angleChange = xoffset * mf;
+	m_angleAroundPlayer -= angleChange;
 
 	float horizontalDistance = CalculateHorizontalDistance();
 	float verticalDistance = CalculateVerticalDistance();
@@ -139,7 +140,7 @@ float Camera::CalculateVerticalDistance()
 
 void Camera::CalculateCameraPosition(float horizontalDistance, float verticalDistance)
 {
-	float theta = m_playerRotation.y + m_angleAroundPlayer;
+	float theta = m_playerRotation.y + glm::radians(m_angleAroundPlayer);
 	float xoffset = horizontalDistance * glm::sin(glm::radians(theta));
 	float zoffset = horizontalDistance * glm::cos(glm::radians(theta));
 
@@ -147,7 +148,7 @@ void Camera::CalculateCameraPosition(float horizontalDistance, float verticalDis
 	m_position.y = m_playerPosition.y + m_distanceFromPlayer;
 	m_position.z = m_playerPosition.z + zoffset;
 
-	m_yaw = 180 - (m_playerRotation.y + m_angleAroundPlayer);	
+	m_yaw = glm::radians(180 - (m_playerRotation.y + m_angleAroundPlayer));	
 }
 
 void Camera::PassPlayerInfo(glm::vec3& position, glm::vec3& rotation)

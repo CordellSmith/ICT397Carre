@@ -188,10 +188,4 @@ protected:
 
 	/// Game world object
 	GameWorld* m_gameWorld;
-
-	/// Terrain
-	// Needs to be moved, should be created in init and passed to gameworld without being here
-	Bruteforce bfTerrain;
-
-	Player* player;
 };

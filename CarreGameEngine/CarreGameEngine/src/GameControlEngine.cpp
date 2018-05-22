@@ -62,11 +62,22 @@ void GameControlEngine::Initialize()
 
 	// Initialize gameworld
 	m_gameWorld = new GameWorld();
-	
+
+	// Holds terrains
+	std::vector<Bruteforce*> terrains;
+	// Main landscape terrain
+	Bruteforce* bfLandscape = new Bruteforce(100, 5, 100);
+	// Building terrain
+	Bruteforce* bfBuildings = new Bruteforce(100, 4, 100);
+
+	// Player
+	Player* player = new Player("Player");
+
 	// Set camera perspective and position
 	m_camera->SetPerspective(glm::radians(camFOV), ScreenWidth / (float)ScreenHeight, camNearPlane, camFarPlane);
-	m_camera->PositionCamera(camPos.x, camPos.y, camPos.z, camYaw, camPitch);
-	
+	m_camera->PositionCamera(camPos.x, camPos.y, camPos.z, camYaw, glm::radians(camPitch));
+	m_camera->SetPosition(glm::vec3(700, bfLandscape->GetAverageHeight(700, 700), 700.0));
+		
 	// Pass camera into gameworld
 	m_gameWorld->SetCamera(m_camera);
 
@@ -77,10 +88,11 @@ void GameControlEngine::Initialize()
 	m_physicsWorld = new PhysicsEngine();
 
 	// Load all textures
-	ScriptManager::Instance().LoadTexturesInitLua();
+	//ScriptManager::Instance().LoadTexturesInitLua();
 
 	ShaderSource testShader = ParseShaders("res/shaders/Test.shader");
 	ShaderSource assimpShader = ParseShaders("res/shaders/Default.shader");
+	ShaderSource terrainShader = ParseShaders("res/shaders/Terrain.shader");
 
 	// Light asset
 	/*
@@ -99,38 +111,34 @@ void GameControlEngine::Initialize()
 	*/
 
 	// Bruteforce terrain
-	bfTerrain.LoadHeightfield("res/terrain/city.raw", 128);
-	bfTerrain.AddShader(testShader.VertexSource, testShader.FragmentSource);
-	bfTerrain.GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
-	bfTerrain.SetPosition(glm::vec3(0.0, 0.0, 0.0));
+	bfLandscape->LoadHeightfield("res/terrain/newcity.raw", 128);
+	bfLandscape->AddShader(terrainShader.VertexSource, terrainShader.FragmentSource);
+	bfLandscape->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
+	bfLandscape->SetPosition(glm::vec3(0.0, 0.0, 0.0));
+	terrains.push_back(bfLandscape);
 
+	bfBuildings->LoadHeightfield("res/terrain/buildingheightmap.raw", 16);
+	bfBuildings->AddShader(terrainShader.VertexSource, terrainShader.FragmentSource);
+	bfBuildings->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/buildingtexture.jpg"), "res/terrain/buildingtexture.jpg");
+	bfBuildings->SetPosition(glm::vec3(6000.0, -1.0, 5000.0));
+	terrains.push_back(bfBuildings);
+	
 	// Everything has been scaled up by 15 because the terrain scaleX and scaleZ is at 15 per triangle grid
 	// Cube asset
 	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
 	cube->LoadFromFilePath("res/objects/cube.obj");
 	cube->Prepare(assimpShader.VertexSource, assimpShader.FragmentSource);
-	cube->SetPosition(glm::vec3(200.0, bfTerrain.GetHeight(200, 250) + 15, 250.0));
+	cube->SetPosition(glm::vec3(200.0, bfLandscape->GetHeight(200, 250), 300.0));
 	cube->SetScale(glm::vec3(15.0, 15.0, 15.0));
 	m_assetFactory->AddAsset(cube);
 
-	// Taxi asset
-	//IGameAsset* taxi = m_assetFactory->CreateAsset(ASS_OBJECT, "Taxi");
-	//taxi->LoadFromFilePath("res/objects/taxi/taxi.obj");
-	//taxi->Prepare(testShader.VertexSource, testShader.FragmentSource);
-	//taxi->SetPosition(glm::vec3(200.0, bfTerrain.GetHeight(200, 200) + 15, 200.0));
-	//taxi->SetScale(glm::vec3(15.0, 15.0, 15.0));
-	//taxi->SetRotation(glm::vec3(0.0, 15.0, 15.0));
-	//m_assetFactory->AddAsset(taxi);
-
 	// Main character creation
-	player = new Player("Player");
 	player->LoadFromFilePath("res/objects/taxi/taxi.obj");
 	player->Prepare(testShader.VertexSource, testShader.FragmentSource);
-	player->SetPosition(glm::vec3(700.0, bfTerrain.GetHeight(700.0, 600.0) + 15, 600.0));
+	player->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
 	player->SetScale(glm::vec3(15.0, 15.0, 15.0));
 
 	m_windowManager->GetInputManager()->SetPlayer(player);
-	m_camera->PassPlayerInfo(player->GetPosition(), player->GetRotation());
 
 	// Pass the main character / player to the camera for 3rd person PoV
 	//m_camera->SetPlayer(taxi);
@@ -139,7 +147,7 @@ void GameControlEngine::Initialize()
 	InitializePhysics();
 
 	// Initialize the game world, pass in terrain, assets and physics engine *** Can be reworked *** 
-	m_gameWorld->SetTerrain(bfTerrain);
+	m_gameWorld->SetTerrains(terrains);
 	m_gameWorld->Init(player, m_assetFactory->GetAssets());
 	m_gameWorld->SetPhysicsWorld(m_physicsWorld, m_collisionBodyPos);
 }
@@ -164,10 +172,15 @@ void GameControlEngine::GameLoop()
 void GameControlEngine::InitializePhysics()
 {
 	// Create camera rigid body to collide with objects
-	glm::vec3 windowPerspective(m_camera->GetPosition());
-	btVector3 cameraPosition(windowPerspective.x, windowPerspective.y, windowPerspective.z);
-	m_physicsWorld->CreatePlayerControlledRigidBody(cameraPosition);
-	m_collisionBodyPos.push_back(cameraPosition);
+	glm::vec3 camerPos(m_camera->GetPosition());
+	btVector3 bt_cameraPos(camerPos.x, camerPos.y, camerPos.z);
+	m_physicsWorld->CreatePlayerControlledRigidBody(bt_cameraPos);
+	m_collisionBodyPos.push_back(bt_cameraPos);
+
+	// Add player (taxi) to the rigid bodies
+	glm::vec3 playerPos(m_camera->GetPosition());
+	btVector3 bt_playerPos(playerPos.x, playerPos.y, playerPos.z);
+	m_collisionBodyPos.push_back(bt_playerPos);
 
 	// Loop through map and add all assets to the collision body list
 	std::multimap<std::string, IGameAsset*>::const_iterator itr;

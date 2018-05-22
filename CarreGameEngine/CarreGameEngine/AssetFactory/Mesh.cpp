@@ -74,20 +74,10 @@ void Mesh::Draw(Shader* shader)
 	
 	// Grab the view and projection matrices
 	glm::mat4 projectionMatrix = m_camera->GetProjectionMatrix();
+	glm::mat4 modelMatrix;
 	glm::mat4 viewMatrix = m_camera->GetViewMatrix();
 
-	// Order is important, must be Translate, Scale then Rotation
-	// Create the Model Matrix with the current position
-	glm::mat4 modelMatrix = glm::translate(glm::mat4(0.5f), m_position);
-
-	// Similar to the Position above, we do the same for the m_scale
-	modelMatrix = glm::scale(modelMatrix, m_scale);
-
-	// HAVING ISSUES WITH MOUSE MOVEMENT, COMMENT OUT TO FIX
-	// Add any rotation to the Model Matrix for each axis
-	//modelMatrix = glm::rotate(modelMatrix, m_rotation.x, glm::vec3(1, 0, 0));
-	//modelMatrix = glm::rotate(modelMatrix, m_rotation.y, glm::vec3(0, 1, 0));
-	//modelMatrix = glm::rotate(modelMatrix, m_rotation.z, glm::vec3(0, 0, 1));
+	CreateTransformationMatrix(modelMatrix);
 
 	// Get the uniform variables from the shader
 	GLint modelMatrixId = shader->GetVariable("model");
@@ -119,3 +109,19 @@ void Mesh::Draw(Shader* shader)
 
 	shader->TurnOff();
 }
+
+void Mesh::CreateTransformationMatrix(glm::mat4& modelMatrix)
+{
+	// Order is important, must be Translate, Scale then Rotation
+	// TRANSLATE
+	modelMatrix = glm::translate(glm::mat4(0.5f), m_position);
+
+	// SCALE
+	modelMatrix = glm::scale(modelMatrix, m_scale);
+
+	// ROTATE
+	//modelMatrix = glm::rotate(modelMatrix, m_rotation.x, glm::vec3(1, 0, 0));
+	//modelMatrix = glm::rotate(modelMatrix, m_rotation.y, glm::vec3(0, 1, 0));
+	//modelMatrix = glm::rotate(modelMatrix, m_rotation.z, glm::vec3(0, 0, 1));
+}
+
