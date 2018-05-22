@@ -12,9 +12,11 @@
 #include "GameWorld.h"
 #include "TextureManager.h"
 #include "ScriptManager.h"
+#include "Shader.h"
 #include "..\AssetFactory\Model.h"
 #include "..\AssetFactory\GameAssetFactory.h"
 #include "..\AssetFactory\Player.h"
+#include "..\Renderer\OpenGl.h"
 
 //#include "..\AssetFactory\Bruteforce.h"
 

@@ -92,6 +92,21 @@
     <ClInclude Include="AssetFactory\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AssetFactory\Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\IRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\OpenGl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Vertex3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\MyMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetFactory\GameAssetFactory.cpp">
@@ -146,6 +161,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AssetFactory\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetFactory\Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\OpenGl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

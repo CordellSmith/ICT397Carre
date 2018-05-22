@@ -10,6 +10,7 @@
 #include <assimp/postprocess.h>
 
 #include "Mesh.h"
+#include "..\headers\Camera.h"
 #include "..\headers\Shader.h"
 #include "..\headers\TextureManager.h"
 
@@ -26,8 +27,6 @@ public:
 
 	std::vector<Texture> LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName);
 
-	void Prepare(std::string vertShader, std::string fragShader);
-	void Draw();
 	void Destroy();
 
 	glm::vec3 GetPosition() { return m_position; }
@@ -39,6 +38,9 @@ public:
 	glm::vec3 GetScale() { return m_scale; }
 	void SetScale(glm::vec3 scale);
 
+	Camera* GetCamera() { return m_camera; }
+
+
 		/**
 		* @brief Sets the camera object
 		*
@@ -48,17 +50,21 @@ public:
 		* @param Camera* camera
 		* @return void
 		*/
-	const void SetCamera(Camera* camera);
+	const void SetCamera(Camera* camera) { m_camera = camera; }
 
 	std::vector<Mesh>& GetMeshBatch() { return m_meshBatch; }
 	std::vector<Texture>& GetTextures() { return m_texturesLoaded; }
 
+	Shader* GetShader() { return m_shader; }
+	void SetShader(Shader* shader) { m_shader = shader; }
+	
 protected:
 	std::vector<Mesh> m_meshBatch;
 	std::vector<Texture> m_texturesLoaded;
 	std::string m_directory;
 
 	Shader* m_shader;
+	Camera* m_camera;
 
 	glm::vec3 m_position;
 	glm::vec3 m_rotation;

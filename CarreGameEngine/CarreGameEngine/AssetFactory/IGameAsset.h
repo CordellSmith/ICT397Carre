@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "..\headers\Camera.h"
+#include "..\AssetFactory\Model.h"
 
 	/**
 	* @brief Enumerator for asset types
@@ -68,35 +69,6 @@ public:
 		*/
 	virtual void LoadFromFilePath(std::string filePath) = 0;
 
-		/**
-		* @brief Load function
-		*
-		* Virtual load function.
-		*
-		* @return void
-		*/
-	virtual const void Load() = 0;
-
-		/**
-		* @brief Unload function
-		*
-		* Virtual unload function.
-		*
-		* @return void
-		*/
-	virtual const void Unload() = 0;
-
-	virtual const void Prepare(std::string vertShader, std::string fragShader) = 0;
-
-		/**
-		* @brief Render function
-		*
-		* Virtual render function to draw object to screen depending on type.
-		*
-		* @return void
-		*/
-	virtual const void Render() = 0;
-
 	virtual const void Destroy() = 0;
 
 		/**
@@ -142,6 +114,8 @@ public:
 	virtual const glm::vec3 GetPosition() = 0;
 
 	virtual const glm::vec3 GetRotation() = 0;
+
+	virtual Model* GetModel() = 0;
 
 protected:
 	ASS_TYPE m_assetType;

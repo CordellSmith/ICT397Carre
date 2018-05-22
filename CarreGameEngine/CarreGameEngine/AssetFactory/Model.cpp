@@ -157,19 +157,6 @@ std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* mat, aiTextureType 
 	return textures;
 }
 
-void Model::Prepare(std::string vertShader, std::string fragShader)
-{
-	m_shader->Initialize(vertShader, fragShader);
-}
-
-void Model::Draw()
-{
-	for (unsigned int i = 0; i < m_meshBatch.size(); i++)
-	{
-		m_meshBatch[i].Draw(m_shader);
-	}
-}
-
 void Model::Destroy()
 {
 	// Todo: implement destroy function of all meshes of the model
@@ -210,12 +197,4 @@ unsigned int TextureFromFile(const char* path, const std::string& directory)
 	filePath = directory + '/' + filePath;
 
 	return TextureManager::Instance().LoadTexture(filePath);
-}
-
-const void Model::SetCamera(Camera* camera) 
-{
-	for (size_t i = 0; i < m_meshBatch.size(); i++)
-	{
-		m_meshBatch[i].SetCamera(camera);
-	}
 }

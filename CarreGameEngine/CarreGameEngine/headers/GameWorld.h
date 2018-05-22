@@ -18,15 +18,10 @@
 #include "..\AssetFactory\IGameAsset.h"
 #include "..\AssetFactory\Bruteforce.h"
 #include "..\AssetFactory\Player.h"
+#include "..\Renderer\OpenGl.h"
+#include "..\headers\Shader.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
-
-/// Struct to hold both vertex and fragment shaders (needs to be moved)
-struct ShaderSource
-{
-	std::string VertexSource;
-	std::string FragmentSource;
-};
 
 	/*
 	* @class GameWorld
@@ -173,4 +168,6 @@ protected:
 
 	Player* m_player;
 	float s = 0.01;
+
+	OpenGl m_glRenderer;
 };

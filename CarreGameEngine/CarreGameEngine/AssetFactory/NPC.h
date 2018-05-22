@@ -62,35 +62,6 @@ public:
 		*/
 	virtual void LoadFromFilePath(std::string filePath);
 
-		/**
-		* @brief Loads
-		*
-		* Loads the NPC.
-		*
-		* @return void
-		*/
-	virtual const void Load();
-
-		/**
-		* @brief Unloads
-		*
-		* Unloads the NPC.
-		*
-		* @return void
-		*/
-	virtual const void Unload();
-
-	virtual const void Prepare(std::string vertShader, std::string fragShader);
-	
-		/**
-		* @brief Renders
-		*
-		* Renders the NPC.
-		*
-		* @return void
-		*/
-	virtual const void Render();
-
 	virtual const void Destroy();
 
 		/**
@@ -112,7 +83,7 @@ public:
 		*/
 	virtual void SetFilePath(const std::string& filePath);
 
-	virtual void SetCamera(Camera* camera) { m_camera = camera; }
+	virtual void SetCamera(Camera* camera) { m_model->SetCamera(camera); }
 
 	virtual void SetPosition(glm::vec3 position) { m_model->SetPosition(position); }
 
@@ -124,11 +95,11 @@ public:
 
 	virtual const glm::vec3 GetRotation() { return m_model->GetRotation(); }
 
+	virtual Model* GetModel() { return m_model; }
+	
 protected:
 	/// Stores the file path containing the data
 	std::string m_filePath;
 	/// Model object
 	Model* m_model;
-	/// Camera object
-	Camera* m_camera;
 };
