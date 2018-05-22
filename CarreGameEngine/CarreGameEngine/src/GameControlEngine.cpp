@@ -61,11 +61,20 @@ void GameControlEngine::Initialize()
 
 	// Initialize gameworld
 	m_gameWorld = new GameWorld();
-	glm::vec3 test;
+	// Holds terrains
+	std::vector<Bruteforce*> terrains;
+	// Main landscape terrain
+	Bruteforce* bfLandscape = new Bruteforce(100, 5, 100);
+	// Building terrain
+	Bruteforce* bfBuildings = new Bruteforce(100, 4, 100);
+
+	// Player
+	Player* player = new Player("Player");
+
 	// Set camera perspective and position
 	m_camera->SetPerspective(glm::radians(camFOV), ScreenWidth / (float)ScreenHeight, camNearPlane, camFarPlane);
 	m_camera->PositionCamera(camPos.x, camPos.y, camPos.z, camYaw, glm::radians(camPitch));
-	m_camera->SetPosition(glm::vec3(700, bfTerrain.GetAverageHeight(700, 700), 700.0));
+	m_camera->SetPosition(glm::vec3(700, bfLandscape->GetAverageHeight(700, 700), 700.0));
 		
 	// Pass camera into gameworld
 	m_gameWorld->SetCamera(m_camera);
@@ -100,22 +109,28 @@ void GameControlEngine::Initialize()
 	*/
 
 	// Bruteforce terrain
-	bfTerrain.LoadHeightfield("res/terrain/city.raw", 128);
-	bfTerrain.AddShader(terrainShader.VertexSource, terrainShader.FragmentSource);
-	bfTerrain.GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
-	bfTerrain.SetPosition(glm::vec3(0.0, 0.0, 0.0));
+	bfLandscape->LoadHeightfield("res/terrain/newcity.raw", 128);
+	bfLandscape->AddShader(terrainShader.VertexSource, terrainShader.FragmentSource);
+	bfLandscape->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
+	bfLandscape->SetPosition(glm::vec3(0.0, 0.0, 0.0));
+	terrains.push_back(bfLandscape);
 
+	bfBuildings->LoadHeightfield("res/terrain/buildingheightmap.raw", 16);
+	bfBuildings->AddShader(terrainShader.VertexSource, terrainShader.FragmentSource);
+	bfBuildings->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/buildingtexture.jpg"), "res/terrain/buildingtexture.jpg");
+	bfBuildings->SetPosition(glm::vec3(6000.0, -1.0, 5000.0));
+	terrains.push_back(bfBuildings);
+	
 	// Everything has been scaled up by 15 because the terrain scaleX and scaleZ is at 15 per triangle grid
 	// Cube asset
 	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
 	cube->LoadFromFilePath("res/objects/cube.obj");
 	cube->Prepare(assimpShader.VertexSource, assimpShader.FragmentSource);
-	cube->SetPosition(glm::vec3(200.0, bfTerrain.GetHeight(200, 250), 300.0));
+	cube->SetPosition(glm::vec3(200.0, bfLandscape->GetHeight(200, 250), 300.0));
 	cube->SetScale(glm::vec3(15.0, 15.0, 15.0));
 	m_assetFactory->AddAsset(cube);
 
 	// Main character creation
-	player = new Player("Player");
 	player->LoadFromFilePath("res/objects/taxi/taxi.obj");
 	player->Prepare(testShader.VertexSource, testShader.FragmentSource);
 	player->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
@@ -130,7 +145,7 @@ void GameControlEngine::Initialize()
 	InitializePhysics();
 
 	// Initialize the game world, pass in terrain, assets and physics engine *** Can be reworked *** 
-	m_gameWorld->SetTerrain(bfTerrain);
+	m_gameWorld->SetTerrains(terrains);
 	m_gameWorld->Init(player, m_assetFactory->GetAssets());
 	m_gameWorld->SetPhysicsWorld(m_physicsWorld, m_collisionBodyPos);
 }

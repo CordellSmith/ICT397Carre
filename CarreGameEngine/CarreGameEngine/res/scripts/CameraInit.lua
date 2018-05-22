@@ -10,4 +10,4 @@ yaw=0
 pitch=25
 camFOV=60
 camNearPlane=0.01
-camFarPlane=1000
+camFarPlane=10000

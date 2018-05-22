@@ -120,8 +120,8 @@ void Mesh::CreateTransformationMatrix(glm::mat4& modelMatrix)
 	modelMatrix = glm::scale(modelMatrix, m_scale);
 
 	// ROTATE
-	modelMatrix = glm::rotate(modelMatrix, m_rotation.x, glm::vec3(1, 0, 0));
-	modelMatrix = glm::rotate(modelMatrix, m_rotation.y, glm::vec3(0, 1, 0));
-	modelMatrix = glm::rotate(modelMatrix, m_rotation.z, glm::vec3(0, 0, 1));
+	//modelMatrix = glm::rotate(modelMatrix, m_rotation.x, glm::vec3(1, 0, 0));
+	//modelMatrix = glm::rotate(modelMatrix, m_rotation.y, glm::vec3(0, 1, 0));
+	//modelMatrix = glm::rotate(modelMatrix, m_rotation.z, glm::vec3(0, 0, 1));
 }
 

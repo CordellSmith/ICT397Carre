@@ -1,16 +1,28 @@
 #include "Bruteforce.h"
 
+Bruteforce::Bruteforce(float scaleX, float scaleY, float scaleZ)
+{
+	m_scaleX = scaleX;
+	m_scaleY = scaleY;
+	m_scaleZ = scaleZ;
+}
+
 void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 {
 	Mesh tempMesh;
 	float colour;
-	float tex00, tex10, tex11, tex01;
+	float texLeft, texBottom, texTop;
 
 	for (int z = 0; z < m_heightfieldSize - 1; z++)
 	{
 		for (int x = 0; x < m_heightfieldSize - 1; x++)
 		{
 			Vertex3 vertex;
+
+			float tex00 = (float)x / (m_heightfieldSize * m_scaleX); // U
+			float tex01 = (float)z / (m_heightfieldSize * m_scaleZ); // V
+			float tex10 = (float)(x + 1) / (m_heightfieldSize * m_scaleX);
+			float tex11 = (float)(z + 1) / (m_heightfieldSize * m_scaleZ);
 
 			// Colour of triangle
 			colour = (float)GetHeightColour(x, z) / 255;
@@ -21,17 +33,26 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 			vertex.m_position.y = GetHeight(x, z);
 			vertex.m_position.z = (float)z * m_scaleZ;
 
+			vertex.m_texCoords.x = tex00;
+			vertex.m_texCoords.y = tex01;
+			
 			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 0.0
 
 			vertex.m_position.x = (float)(x + 1) * m_scaleX;
 			vertex.m_position.y = GetHeight(x + 1, z);
 			vertex.m_position.z = (float)z * m_scaleZ;
 
-			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 1.0
+			vertex.m_texCoords.x = tex10;
+			vertex.m_texCoords.y = tex00;
+
+			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 0.0
 
 			vertex.m_position.x = (float)(x + 1) * m_scaleX;
 			vertex.m_position.y = GetHeight(x + 1, z + 1);
 			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
+
+			vertex.m_texCoords.x = tex10;
+			vertex.m_texCoords.y = tex11;
 
 			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 1.0
 			
@@ -39,19 +60,28 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 			vertex.m_position.y = GetHeight(x, z);
 			vertex.m_position.z = (float)z * m_scaleZ;
 
+			vertex.m_texCoords.x = tex00;
+			vertex.m_texCoords.y = tex01;
+
 			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 0.0
 
 			vertex.m_position.x = (float)(x + 1) * m_scaleX;
 			vertex.m_position.y = GetHeight(x + 1, z + 1);
 			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
 
+			vertex.m_texCoords.x = tex10;
+			vertex.m_texCoords.y = tex11;
+
 			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 1.0
 
 			vertex.m_position.x = (float)x * m_scaleX;
 			vertex.m_position.y = GetHeight(x, z + 1);
 			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
+
+			vertex.m_texCoords.x = tex00;
+			vertex.m_texCoords.y = tex11;
 			
-			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 0.0
+			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 1.0
 		}
 	}
 	tempMesh.SetupMesh();

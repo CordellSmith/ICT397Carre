@@ -5,7 +5,7 @@
 class Bruteforce : public Terrain
 {
 public:
-	Bruteforce() { }
+	Bruteforce(float scaleX, float scaleY, float scaleZ);
 	~Bruteforce() { }
 
 	virtual void GenerateTerrain(GLuint textureId, std::string textureFilePath) override;
