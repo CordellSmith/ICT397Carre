@@ -179,7 +179,7 @@ bool ScriptManager::LoadTexturesInitLua()
 }
 
 // Load all textures
-bool ScriptManager::LoadModelsInitLua()
+bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData> &allModelData, ModelsData &modelData)
 {
 	// Create lua state
 	lua_State* Environment = lua_open();
@@ -209,12 +209,14 @@ bool ScriptManager::LoadModelsInitLua()
 	// File path of model to load
 	std::string filePath;
 
-	// Counters
+	// Name of current model being read in
+	std::string modelName;
+
+	// Counters for storing data in map and struct
 	int i = 0;
 	int j = 0;
 
-	//temp values
-	std::string temp;
+	// Different types of data being read in
 	std::string values[6];
 	values[0] = "filePath";
 	values[1] = "scaleX";
@@ -223,14 +225,14 @@ bool ScriptManager::LoadModelsInitLua()
 	values[4] = "posX";
 	values[5] = "posZ";
 
-	std::vector<std::vector<float>> modelDataPos;
-	std::vector<std::vector<float>> modelDataScale;
+	//temp values
+	std::string temp;
 	std::vector<float> tempData;
 	glm::vec3 tempPos;
-	tempPos.y = 0.0f;
 	glm::vec3 tempScale;
 
-	std::unordered_map<std::string, std::vector<std::vector<float>>> mData;
+	// Set 0 because posY not read from script (determined elsewhere)
+	tempPos.y = 0.0f;
 
 	// Push to first table
 	lua_pushnil(Environment);
@@ -238,23 +240,21 @@ bool ScriptManager::LoadModelsInitLua()
 	// Keep reading while there is data in table
 	while (lua_next(Environment, -2) != 0)
 	{
-		temp = lua_tostring(Environment, -2);
-		std::cout << temp << ": " << i << " :" << std::endl;
+		// Get current model name being read in
+		modelName = lua_tostring(Environment, -2);
 
+		// Reset for next batch of model info
 		j = 0;
-		//modelDataScale[0].push_back(tempPos);
 		
-
 		// Push to next table
 		lua_pushnil(Environment);
 		while (lua_next(Environment, -2) != 0)
 		{
-			//std::cout << j << std::endl;
 			// Push to next table
 			lua_pushnil(Environment);
 			while (lua_next(Environment, -2) != 0)
 			{
-				// Get file path and load it
+				// Load data into correct variable
 				temp = lua_tostring(Environment, -2);
 				if (temp.compare(values[0]) == 0)
 					filePath = lua_tostring(Environment, -1);
@@ -272,73 +272,47 @@ bool ScriptManager::LoadModelsInitLua()
 				// Pop out of current table
 				lua_pop(Environment, 1);
 			}	
-			// Pass in scales, working backwards
+			// Pass in filePath to modelData
+			modelData.filePath = filePath;
+
+			// Pass in model scales and push to modelData
 			tempData.push_back(tempScale.x);
 			tempData.push_back(tempScale.y);
 			tempData.push_back(tempScale.z);
-			modelDataScale.push_back(tempData);
+			modelData.modelScales.push_back(tempData);
 
-			//modelDataScale.clear();
+			// Clear for next batch of data
 			tempData.clear();
 
-			// Pass in positions, working backwards
+			// Pass in positions and push to modelData
 			tempData.push_back(tempPos.x);
 			tempData.push_back(tempPos.y);
 			tempData.push_back(tempPos.z);
-			modelDataPos.push_back(tempData);
+			modelData.modelPositions.push_back(tempData);
 
-			modelDataPos.clear();
+			// Clear for next batch of data
 			tempData.clear();
 
+			// Increment model number
 			j++;
-			//std::cout << filePath << ", " << scaleX << ", " << scaleY << ", " << scaleZ << ", " << posX << ", " << posZ << std::endl;
+
 			// Pop out of current table
 			lua_pop(Environment, 1);
 		}
-
 		// Add to map
+		allModelData[modelName] = modelData;
 
-		//if (!mData[filePath])
-		//{
-			mData[filePath] = modelDataScale;
-		//}
+		// Clear vectors of any data before adding more, and reset string
+		modelData.modelPositions.clear();
+		modelData.modelScales.clear();
+		modelData.filePath = "";
 
-		modelDataScale.clear();
-
+		// Increment model type
 		i++;
+
 		// Pop out of current table
 		lua_pop(Environment, 1);
 	}
-
-	// Get iterator to start of map
-	std::unordered_map<std::string, std::vector<std::vector<float>>>::iterator it = mData.begin();
-
-	// Search map for texture
-	while (it != mData.end())
-	{
-		//std::cout << (*it).second[0][0] << " ";
-		std::cout << (*it).first << std::endl;
-		for (int k = 0; k < (*it).second.size(); k++)
-		{
-			for (int l = 0; l < (*it).second[k].size(); l++)
-			{
-				std::cout << (*it).second[k][l] << " ";
-			}
-			std::cout << std::endl;
-		}		
-		// Increment iterator
-		std::cout << std::endl;
-		it++;
-	}
-
-	/*for (int k = 0; k < modelDataScale.size(); k++)
-	{
-		for (int l = 0; l < modelDataScale[k].size(); l++)
-		{
-			std::cout << modelDataScale[k][l] << " ";
-		}
-		std::cout << std::endl;
-	}*/
 
 	// Close environment
 	lua_close(Environment);

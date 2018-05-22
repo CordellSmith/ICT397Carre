@@ -3,21 +3,24 @@
 * @brief Script manager class that handles the loading of all scripts
 * @author Jack Matters
 *
-* @date 14/07/2018
+* @date 14/05/2018
 * @version 1.0	Initial start. Created the layout of the class, using a singleton.
 *
-* @date 14/07/2018
+* @date 14/05/2018
 * @version 1.1	Added LoadWindowInitLua and got it all working properly.
 *
-* @date 17/07/2018
+* @date 17/05/2018
 * @version 1.2	Finally had time to work on this again. Made LoadCamInitLua and got it all working.
 *				Also started on loading of all textures at the start of program.
 *
-* @date 17/07/2018
+* @date 17/05/2018
 * @version 1.3	Finished loading in of all textures.
 *
-* @date 21/07/2018
+* @date 21/05/2018
 * @version 1.4	Started on loading of all models. Got loading done correctly, just need to store them.
+*
+* @date 22/05/2018
+* @version 1.5	Finished loading of all model data (number of each model, positions, scales)
 */
 
 #ifndef SCRIPTMANAGER_H
@@ -28,6 +31,7 @@
 #include "lua.hpp"
 #include <GLM\glm.hpp>
 #include "TextureManager.h"
+#include "Structs.h"
 
 class ScriptManager
 {
@@ -103,7 +107,7 @@ class ScriptManager
 			*
 			* @return bool - True if load success, else false
 			*/
-		bool LoadModelsInitLua();
+		bool LoadModelsInitLua(std::unordered_map<std::string, ModelsData> &allModelData, ModelsData &modelData);
 
 	private:
 

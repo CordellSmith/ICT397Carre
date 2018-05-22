@@ -49,7 +49,34 @@ void GameControlEngine::Initialize()
 	// Initialize from script
 	ScriptManager::Instance().LoadWindowInitLua(ScreenWidth, ScreenHeight, screenTitle, fullScreen);
 	ScriptManager::Instance().LoadCamInitLua(camPos, camYaw, camPitch, camFOV, camNearPlane, camFarPlane);
-	ScriptManager::Instance().LoadModelsInitLua();
+	ScriptManager::Instance().LoadModelsInitLua(m_allModelsData, m_modelsData);
+
+	/********************************************TESTING********************************************/
+	//// Get iterator to start of map
+	//std::unordered_map<std::string, ModelsData>::iterator it = m_allModelsData.begin();
+
+	//// Search map for texture
+	//while (it != m_allModelsData.end())
+	//{
+	//	for (int k = 0; k < (*it).second.modelPositions.size(); k++)
+	//	{
+	//		std::cout << (*it).second.filePath << std::endl;
+
+	//		for (int l = 0; l < (*it).second.modelScales[k].size(); l++)
+	//		{
+	//			std::cout << (*it).second.modelScales[k][l] << " ";
+	//		}
+	//		for (int l = 0; l < (*it).second.modelPositions[k].size(); l++)
+	//		{
+	//			std::cout << (*it).second.modelPositions[k][l] << " ";
+	//		}
+	//		std::cout << std::endl;
+	//	}
+	//	// Increment iterator
+	//	std::cout << std::endl;
+	//	it++;
+	//}
+	/********************************************TESTING********************************************/
 
 	if (!m_windowManager || m_windowManager->Initialize(ScreenWidth, ScreenHeight, screenTitle, fullScreen) != 0)
 		exit(-1);
