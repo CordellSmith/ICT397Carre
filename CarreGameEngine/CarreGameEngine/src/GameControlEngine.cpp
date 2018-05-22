@@ -139,10 +139,8 @@ void GameControlEngine::Initialize()
 
 	// Main character creation (filePath and scale read from m_modelsData)
 	player->LoadFromFilePath(m_modelsData.filePath);
-	player->Prepare(testShader.VertexSource, testShader.FragmentSource);
 	player->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
 	player->SetScale(glm::vec3(m_modelsData.modelScales[0][0], m_modelsData.modelScales[0][1], m_modelsData.modelScales[0][2]));
-
 
 
 	/********************Loading of all models at once example (doesn't run)*******************/
@@ -191,12 +189,9 @@ void GameControlEngine::Initialize()
 	// Main character creation
 	player->LoadFromFilePath("res/objects/taxi/taxi.obj");
 	player->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
-	player->SetScale(glm::vec3(15.0, 15.0, 15.0));*/
+	player->SetScale(glm::vec3(15.0, 15.0, 15.0));
 
 	m_windowManager->GetInputManager()->SetPlayer(player);
-
-	// Pass the main character / player to the camera for 3rd person PoV
-	//m_camera->SetPlayer(taxi);
 
 	// Physics engine initialization
 	InitializePhysics();

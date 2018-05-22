@@ -20,12 +20,4 @@ struct ModelsData
 	std::vector<std::vector<float>> modelPositions;
 	std::vector<std::vector<float>> modelScales;
 };
-
-/// Struct to hold both vertex and fragment shaders (needs to be moved)
-struct ShaderSource
-{
-	std::string VertexSource;
-	std::string FragmentSource;
-};
-
 #endif
