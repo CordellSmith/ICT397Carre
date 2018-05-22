@@ -12,7 +12,7 @@
 #include <GLM\gtx\transform2.hpp>
 
 	/**
-	* @struct Camera
+	* @class Camera
 	* @brief Basic camera class
 	*
 	* This class contains the camera object that will allow us to move around and view the
@@ -48,6 +48,20 @@ public:
 	*/
 	glm::mat4 SetPerspective(float fov, float aspectRatio, float nearPlane, float farPlane);
 
+	/**
+	* @brief Sets up the camera
+	*
+	* This sets the Position and the yaw and pitch rotations (in radians).
+	*
+	* @param float positionX
+	* @param float positionY
+	* @param float positionZ
+	* @param float yaw
+	* @param float pitch
+	* @return void
+	*/
+	void PositionCamera(float positionX, float positionY, float positionZ, float yaw, float pitch);
+	
 	/**
 	* @brief Gets the rotation matrix
 	*
@@ -200,20 +214,6 @@ public:
 	void SetViewByMouse(float mouseX, float mouseY);
 
 	/**
-	* @brief Sets up the camera
-	*
-	* This sets the Position and the yaw and pitch rotations (in radians).
-	*
-	* @param float positionX
-	* @param float positionY
-	* @param float positionZ
-	* @param float yaw
-	* @param float pitch
-	* @return void
-	*/
-	void PositionCamera(float positionX, float positionY, float positionZ, float yaw, float pitch);
-
-	/**
 	* @brief Moves the camera
 	*
 	* This function will move the camera forward or backwards depending on the speed (negative for backwards).
@@ -222,8 +222,6 @@ public:
 	* @return void
 	*/
 	void MoveCamera(float speed);
-
-	//void SetPlayer(Object* player) { m_player = player; }
 
 	float GetFov() { return m_fov; }
 	void SetFov(float fov) { m_fov = fov; }

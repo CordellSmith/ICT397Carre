@@ -152,7 +152,7 @@ public:
 
 	void SetGameAssets(std::multimap<std::string, IGameAsset*> gameAssets) { m_gameAssets = gameAssets; }
 
-	void SetTerrain(Bruteforce terrain) { m_terrain = terrain; }
+	void SetTerrains(std::vector<Bruteforce*> terrains) { m_terrains = terrains; }
 
 protected:
 	/// Shader sources
@@ -169,7 +169,7 @@ protected:
 
 	std::multimap<std::string, IGameAsset*> m_gameAssets;
 
-	Bruteforce m_terrain;
+	std::vector<Bruteforce*> m_terrains;
 
 	Player* m_player;
 	float s = 0.01;

@@ -6,11 +6,16 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 	m_player = player;
 	// Sets this game contexts assets to the  loaded game assets from the control engine
 	SetGameAssets(gameAssets);
-	// Pass camera to terrain
-	m_terrain.SetCamera(m_camera);
+	// Pass camera to terrains
+	for each (Bruteforce* terrain in m_terrains)
+	{
+		terrain->SetCamera(m_camera);
+	}
 	// Pass camera to player
 	m_player->SetCamera(m_camera);
 
+	m_camera->PassPlayerInfo(m_player->GetPosition(), m_player->GetRotation());
+	
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
@@ -21,12 +26,6 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 			// Prepare shaders for each object (only testing with one model and shader atm)
 			itr->second->Prepare(m_assimpShaderSource.VertexSource, m_assimpShaderSource.FragmentSource);
 		}
-
-		if (itr->first == "Taxi")
-		{
-			itr->second->SetCamera(m_camera);
-			itr->second->Prepare(m_testShaderSource.VertexSource, m_testShaderSource.FragmentSource);
-		}
 	}
 }
 
@@ -36,9 +35,17 @@ void GameWorld::Update()
 	glClearColor(0.0, 0.0, 0.5, 1.0);
 
 	// Render terrain
-	m_terrain.Render();
+	for each (Bruteforce* terrain in m_terrains)
+	{
+		terrain->Render();
+	}
 
 	// Testing player
+	m_player->SetPosition(glm::vec3(
+		m_player->GetPosition().x,
+		m_terrains[0]->GetAverageHeight(m_player->GetPosition().x, m_player->GetPosition().z),
+		m_player->GetPosition().z
+	));
 	m_player->Render();
 		
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
@@ -79,26 +86,19 @@ void GameWorld::UpdatePhysics()
 	btVector3 temp2(temp1.x, temp1.y, temp1.z);
 	m_physicsWorld->Simulate(m_collisionBodyPos, temp2);
 
-	float newY = m_terrain.GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) + 15;
+	float newY = m_terrains[0]->GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) + 50;
 
 	// Set updated camera location
-	m_camera->SetPosition(glm::vec3(temp2.getX(), newY, temp2.getZ()));
-
+	m_camera->SetPosition(glm::vec3(m_player->GetPosition().x, newY, m_player->GetPosition().z));
+		
 	// Draw each object at the updated positions based on physics simulation
 	std::multimap<std::string, IGameAsset*>::iterator itr;
-	// Start at 1 because 0 is the cameras information
 	int i = 1;
-	for (itr = m_gameAssets.begin(); i < m_collisionBodyPos.size() || itr != m_gameAssets.end(); itr++)
+	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
+		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z());
 
 		if (itr->first == "Cube")
-		{
-			itr->second->SetPosition(temp);
-			itr->second->Render();
-		}
-
-		if (itr->first == "Taxi")
 		{
 			itr->second->SetPosition(temp);
 			itr->second->Render();

@@ -1,6 +1,6 @@
 #pragma once
 
-#include<iostream>
+#include <iostream>
 
 #include "Model.h"
 
@@ -43,8 +43,6 @@ protected:
 	std::string m_name;
 	
 	Model* m_playerModel;
-
-	Camera* m_camera;
 
 	float m_currentMoveSpeed;
 	float m_currentTurnSpeed;
