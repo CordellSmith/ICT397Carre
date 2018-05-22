@@ -24,6 +24,8 @@
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
+
+
 	/*
 	* @class GameControlEngine
 	* @brief The main game engine class
@@ -190,4 +192,10 @@ protected:
 
 	/// Game world object
 	GameWorld* m_gameWorld;
+
+	/// Struct containing models data
+	ModelsData m_modelsData;
+
+	/// Map containing all models data
+	std::unordered_map<std::string, ModelsData> m_allModelsData;
 };

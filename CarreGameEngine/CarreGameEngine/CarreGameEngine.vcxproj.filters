@@ -107,6 +107,11 @@
     <ClInclude Include="Common\MyMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="headers\Structs.h">
+       <Filter>Header Files</Filter>
+    </ClInclude>
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetFactory\GameAssetFactory.cpp">

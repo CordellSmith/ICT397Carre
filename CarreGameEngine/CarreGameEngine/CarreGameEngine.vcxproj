@@ -161,6 +161,7 @@
     <ClInclude Include="headers\ScriptManager.h" />
     <ClInclude Include="headers\Shader.h" />
     <ClInclude Include="headers\Singleton.h" />
+    <ClInclude Include="headers\Structs.h" />
     <ClInclude Include="headers\TextureManager.h" />
     <ClInclude Include="headers\TimeManager.h" />
     <ClInclude Include="headers\WindowManager.h" />

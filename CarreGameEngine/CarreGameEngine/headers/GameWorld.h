@@ -14,6 +14,7 @@
 #include "TextureManager.h"
 #include "ScriptManager.h"
 #include "TimeManager.h"
+#include "Structs.h"
 #include "..\AssetFactory\Model.h"
 #include "..\AssetFactory\IGameAsset.h"
 #include "..\AssetFactory\Bruteforce.h"
