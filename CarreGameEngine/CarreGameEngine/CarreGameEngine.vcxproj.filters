@@ -1,178 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="AssetFactory\Bruteforce.cpp" />
+    <ClCompile Include="AssetFactory\Entity.cpp" />
+    <ClCompile Include="AssetFactory\GameAssetFactory.cpp" />
+    <ClCompile Include="AssetFactory\Mesh.cpp" />
+    <ClCompile Include="AssetFactory\Model.cpp" />
+    <ClCompile Include="AssetFactory\Player.cpp" />
+    <ClCompile Include="AssetFactory\Terrain.cpp" />
+    <ClCompile Include="AssetFactory\NPC.cpp" />
+    <ClCompile Include="AssetFactory\Object.cpp" />
+    <ClCompile Include="Renderer\OpenGl.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\GameControlEngine.cpp" />
+    <ClCompile Include="src\GameWorld.cpp" />
+    <ClCompile Include="src\GLFWManager.cpp" />
+    <ClCompile Include="src\InputManager.cpp" />
+    <ClCompile Include="src\PhysicsEngine.cpp" />
+    <ClCompile Include="src\ScriptManager.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\TextureManager.cpp" />
+    <ClCompile Include="src\TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\Basic.shader" />
-    <None Include="res\shaders\Cube.Shader" />
-    <None Include="res\shaders\Default.shader" />
-    <None Include="res\shaders\Test.shader" />
-    <None Include="res\shaders\Terrain.shader" />
+    <ClInclude Include="AssetFactory\Bruteforce.h" />
+    <ClInclude Include="AssetFactory\Entity.h" />
+    <ClInclude Include="AssetFactory\GameAssetFactory.h" />
+    <ClInclude Include="AssetFactory\Mesh.h" />
+    <ClInclude Include="AssetFactory\Model.h" />
+    <ClInclude Include="AssetFactory\Player.h" />
+    <ClInclude Include="AssetFactory\Terrain.h" />
+    <ClInclude Include="AssetFactory\NPC.h" />
+    <ClInclude Include="AssetFactory\IGameAsset.h" />
+    <ClInclude Include="AssetFactory\Object.h" />
+    <ClInclude Include="Common\MyMath.h" />
+    <ClInclude Include="Common\Vertex3.h" />
+    <ClInclude Include="headers\Camera.h" />
+    <ClInclude Include="headers\GameControlEngine.h" />
+    <ClInclude Include="headers\GameWorld.h" />
+    <ClInclude Include="headers\GLFWManager.h" />
+    <ClInclude Include="headers\InputManager.h" />
+    <ClInclude Include="headers\PhysicsEngine.h" />
+    <ClInclude Include="headers\ScriptManager.h" />
+    <ClInclude Include="headers\Shader.h" />
+    <ClInclude Include="headers\Singleton.h" />
+    <ClInclude Include="headers\Structs.h" />
+    <ClInclude Include="headers\TextureManager.h" />
+    <ClInclude Include="headers\TimeManager.h" />
+    <ClInclude Include="headers\WindowManager.h" />
+    <ClInclude Include="ImageDB\stb_image.h" />
+    <ClInclude Include="Renderer\IRenderer.h" />
+    <ClInclude Include="Renderer\OpenGl.h" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="res\scripts\CameraInit.lua" />
     <None Include="res\scripts\ModelInit.lua" />
     <None Include="res\scripts\TexturesInit.lua" />
     <None Include="res\scripts\WindowInit.lua" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="headers\Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\GLFWManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\InputManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\TimeManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\WindowManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\PhysicsEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\Singleton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetFactory\GameAssetFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetFactory\NPC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetFactory\Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\GameControlEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\GameWorld.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\ScriptManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetFactory\Mesh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetFactory\IGameAsset.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageDB\stb_image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\TextureManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetFactory\Bruteforce.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetFactory\Model.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetFactory\Terrain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetFactory\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetFactory\Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer\IRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer\OpenGl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Common\Vertex3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Common\MyMath.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headers\Structs.h">
-       <Filter>Header Files</Filter>
-    </ClInclude>
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="AssetFactory\GameAssetFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetFactory\Object.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetFactory\NPC.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetFactory\Mesh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameControlEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameWorld.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GLFWManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\InputManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\PhysicsEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ScriptManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\TimeManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\TextureManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetFactory\Bruteforce.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetFactory\Model.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetFactory\Terrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetFactory\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetFactory\Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer\OpenGl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <None Include="res\shaders\Basic.shader" />
+    <None Include="res\shaders\Cube.Shader" />
+    <None Include="res\shaders\Default.shader" />
+    <None Include="res\shaders\Terrain.shader" />
+    <None Include="res\shaders\Test.shader" />
   </ItemGroup>
 </Project>

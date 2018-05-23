@@ -68,9 +68,8 @@ void OpenGl::Render(Model* model)
 		glActiveTexture(GL_TEXTURE0);
 
 		glm::mat4 projectionMatrix = model->GetCamera()->GetProjectionMatrix();
-		glm::mat4 viewMatrix = model->GetCamera()->GetViewMatrix();
-
 		glm::mat4 modelMatrix = CreateTransformationMatrix(model->GetPosition(), model->GetRotation(), model->GetScale());
+		glm::mat4 viewMatrix = CreateViewMatrix(model->GetCamera());
 
 		GLint modelMatrixId = model->GetShader()->GetVariable("model");
 		GLint viewMatrixId = model->GetShader()->GetVariable("view");

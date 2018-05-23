@@ -18,10 +18,6 @@
 #include "..\AssetFactory\Player.h"
 #include "..\Renderer\OpenGl.h"
 
-//#include "..\AssetFactory\Bruteforce.h"
-
-//#include "PhysicsEngine.h"
-
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
 

@@ -91,7 +91,7 @@ void GameWorld::UpdatePhysics()
 	float newY = m_terrains[0]->GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) + 50;
 
 	// Set updated camera location
-	m_camera->SetPosition(glm::vec3(m_player->GetPosition().x, newY, m_player->GetPosition().z));
+	m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, newY, m_camera->GetPosition().z));
 		
 	// Draw each object at the updated positions based on physics simulation
 	std::multimap<std::string, IGameAsset*>::iterator itr;
