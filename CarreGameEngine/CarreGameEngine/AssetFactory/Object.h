@@ -97,8 +97,10 @@ public:
 		
 	virtual Model* GetModel() { return m_model; }
 
+	virtual void AddTexutre(GLuint textureId, std::string textureFilePath);
+	
 	void SetModel(Model* model) { m_model = model; }
-
+	
 protected:
 	/// Stores the file path containing the data
 	std::string m_filePath;

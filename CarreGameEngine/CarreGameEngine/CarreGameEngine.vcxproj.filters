@@ -62,5 +62,6 @@
     <None Include="res\shaders\Default.shader" />
     <None Include="res\shaders\Terrain.shader" />
     <None Include="res\shaders\Test.shader" />
+    <None Include="res\scripts\ModelsInit.lua" />
   </ItemGroup>
 </Project>
