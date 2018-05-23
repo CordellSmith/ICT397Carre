@@ -19,33 +19,7 @@ void GameControlEngine::Initialize()
 	ScriptManager::Instance().LoadWindowInitLua(ScreenWidth, ScreenHeight, screenTitle, fullScreen);
 	ScriptManager::Instance().LoadCamInitLua(camPos, camYaw, camPitch, camFOV, camNearPlane, camFarPlane);
 	ScriptManager::Instance().LoadModelsInitLua(m_allModelsData, m_modelsData);
-
-	/********************************************TESTING********************************************/
-	//// Get iterator to start of map
-	//std::unordered_map<std::string, ModelsData>::iterator itt = m_allModelsData.begin();
-
-	//// Search map for texture
-	//while (itt != m_allModelsData.end())
-	//{
-	//	for (int k = 0; k < (*itt).second.modelPositions.size(); k++)
-	//	{
-	//		std::cout << (*itt).second.filePath << std::endl;
-
-	//		for (int l = 0; l < (*itt).second.modelScales[k].size(); l++)
-	//		{
-	//			std::cout << (*itt).second.modelScales[k][l] << " ";
-	//		}
-	//		for (int l = 0; l < (*itt).second.modelPositions[k].size(); l++)
-	//		{
-	//			std::cout << (*itt).second.modelPositions[k][l] << " ";
-	//		}
-	//		std::cout << std::endl;
-	//	}
-	//	// Increment iterator
-	//	std::cout << std::endl;
-	//	itt++;
-	//}
-	/********************************************TESTING********************************************/
+	ScriptManager::Instance().LoadHeightmapsInitLua(m_allHeightmapsData, m_heightmapsData);
 
 	if (!m_windowManager || m_windowManager->Initialize(ScreenWidth, ScreenHeight, screenTitle, fullScreen) != 0)
 		exit(-1);
@@ -113,13 +87,6 @@ void GameControlEngine::Initialize()
 	bfBuildings->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/buildingtexture.jpg"), "res/terrain/buildingtexture.jpg");
 	bfBuildings->SetPosition(glm::vec3(6000.0, -1.0, 5000.0));
 	terrains.push_back(bfBuildings);
-	
-	// Cube asset
-	//IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube3");
-	//cube->LoadFromFilePath("res/objects/cube.obj");
-	//cube->SetPosition(glm::vec3(1000, 0.0, 0.0));
-	//cube->SetScale(glm::vec3(20, 20, 20));
-	//m_assetFactory->AddAsset(cube);
 
 	IGameAsset* md2Model = m_assetFactory->CreateAsset(ASS_OBJECT, "md2");
 	md2Model->LoadFromFilePath("res/objects/knight.md2");
@@ -128,6 +95,9 @@ void GameControlEngine::Initialize()
 	md2Model->SetScale(glm::vec3(10.0, 10.0, 10.0));
 	m_assetFactory->AddAsset(md2Model);
 	
+
+
+
 	/********************************************TESTING********************************************/
 	// Get iterator to start of map
 	std::unordered_map<std::string, ModelsData>::iterator it = m_allModelsData.begin();
@@ -149,7 +119,7 @@ void GameControlEngine::Initialize()
 	player->SetPosition(glm::vec3(m_modelsData.modelPositions[0][0], m_modelsData.modelPositions[0][1], m_modelsData.modelPositions[0][2]));
 	player->SetScale(glm::vec3(m_modelsData.modelScales[0][0], m_modelsData.modelScales[0][1], m_modelsData.modelScales[0][2]));
 
-	/********************Loading of all models at once example (doesn't run)*******************/
+	/********************Loading of all models at once example*******************/
 	// Create asset
 	IGameAsset* modelAsset;
 
@@ -202,10 +172,14 @@ void GameControlEngine::Initialize()
 		// Increment iterator
 		it++;
 	}
-	/********************Loading of all models at once example (doesn't run)*******************/
+	/********************Loading of all models at once example*******************/
 
 	/********************************************TESTING********************************************/
 	
+
+
+
+
 	m_windowManager->GetInputManager()->SetPlayer(player);
 
 	// Physics engine initialization

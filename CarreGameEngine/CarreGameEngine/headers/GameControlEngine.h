@@ -194,4 +194,10 @@ protected:
 
 	/// Map containing all models data
 	std::unordered_map<std::string, ModelsData> m_allModelsData;
+
+	/// Struct containing all heightmaps data
+	HeightmapsData m_heightmapsData;
+
+	/// Map containing all heightmaps data
+	std::unordered_map<std::string, HeightmapsData> m_allHeightmapsData;
 };

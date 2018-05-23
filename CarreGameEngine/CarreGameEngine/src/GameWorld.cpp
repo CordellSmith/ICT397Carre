@@ -116,13 +116,9 @@ void GameWorld::UpdatePhysics()
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z());
-<<<<<<< HEAD
 
-		// TODO: Commented out for testing. Uncomment later
-		/*if (itr->first == "cube")
-=======
-		if (itr->first == "md2")
->>>>>>> master
+
+		/*if (itr->first == "md2")
 		{
 			m_glRenderer.Render(itr->second->GetModel());
 		}*/

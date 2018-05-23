@@ -178,7 +178,7 @@ bool ScriptManager::LoadTexturesInitLua()
 	return true;
 }
 
-// Load all textures
+// Load all model data
 bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData> &allModelData, ModelsData &modelData)
 {
 	// Create lua state
@@ -212,10 +212,6 @@ bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData
 	// Name of current model being read in
 	std::string modelName;
 
-	// Counters for storing data in map and struct
-	int i = 0;
-	int j = 0;
-
 	// Different types of data being read in
 	std::string values[7];
 	values[0] = "filePath";
@@ -240,9 +236,6 @@ bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData
 	{
 		// Get current model name being read in
 		modelName = lua_tostring(Environment, -2);
-
-		// Reset for next batch of model info
-		j = 0;
 		
 		// Push to next table
 		lua_pushnil(Environment);
@@ -293,9 +286,6 @@ bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData
 			// Clear for next batch of data
 			tempData.clear();
 
-			// Increment model number
-			j++;
-
 			// Pop out of current table
 			lua_pop(Environment, 1);
 		}
@@ -307,9 +297,133 @@ bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData
 		modelData.modelScales.clear();
 		modelData.filePath = "";
 
-		// Increment model type
-		i++;
+		// Pop out of current table
+		lua_pop(Environment, 1);
+	}
 
+	// Close environment
+	lua_close(Environment);
+
+	// Return true for successful loading and reading
+	return true;
+}
+
+// Load all heightmap data
+bool ScriptManager::LoadHeightmapsInitLua(std::unordered_map<std::string, HeightmapsData> &allHeightmapData, HeightmapsData &heightmapsData)
+{
+	// Create lua state
+	lua_State* Environment = lua_open();
+	if (Environment == NULL)
+	{
+		// Show error and exit program
+		std::cout << "Error Initializing lua.." << std::endl;
+		getchar();
+		exit(0);
+	}
+
+	// Load standard lua library functions
+	luaL_openlibs(Environment);
+
+	// Load and run script
+	if (luaL_dofile(Environment, "res/scripts/TerrainsInit.lua"))
+	{
+		std::cout << "Error opening file.." << std::endl;
+		getchar();
+		return false;
+	}
+
+	// Read from script
+	lua_settop(Environment, 0);
+	lua_getglobal(Environment, "AllHeightmaps");
+
+	// File path of heightmap and texture applied
+	std::string filePath;
+	std::string texFilePath;
+
+	// Different types of data being read in
+	std::string values[9];
+	values[0] = "filePath";
+	values[1] = "texFilePath";
+	values[2] = "fileSize";
+	values[3] = "scaleX";
+	values[4] = "scaleY";
+	values[5] = "scaleZ";
+	values[6] = "posX";
+	values[7] = "posY";
+	values[8] = "posZ";
+
+	//temp values
+	std::string temp;
+	glm::vec3 tempPos;
+	glm::vec3 tempScale;
+	int size;
+
+	// Push to first table
+	lua_pushnil(Environment);
+
+	// Keep reading while there is data in table
+	while (lua_next(Environment, -2) != 0)
+	{
+		// Push to next table
+		lua_pushnil(Environment);
+		while (lua_next(Environment, -2) != 0)
+		{
+			// Push to next table
+			lua_pushnil(Environment);
+			while (lua_next(Environment, -2) != 0)
+			{
+				// Load data into correct variable
+				temp = lua_tostring(Environment, -2);
+				if (temp.compare(values[0]) == 0)
+					filePath = lua_tostring(Environment, -1);
+				if (temp.compare(values[1]) == 0)
+					texFilePath = lua_tostring(Environment, -1);
+				if (temp.compare(values[2]) == 0)
+					size = lua_tonumber(Environment, -1);
+				if (temp.compare(values[3]) == 0)
+					tempScale.x = lua_tonumber(Environment, -1);
+				if (temp.compare(values[4]) == 0)
+					tempScale.y = lua_tonumber(Environment, -1);
+				if (temp.compare(values[5]) == 0)
+					tempScale.z = lua_tonumber(Environment, -1);
+				if (temp.compare(values[6]) == 0)
+					tempPos.x = lua_tonumber(Environment, -1);
+				if (temp.compare(values[7]) == 0)
+					tempPos.y = lua_tonumber(Environment, -1);
+				if (temp.compare(values[8]) == 0)
+					tempPos.z = lua_tonumber(Environment, -1);
+
+				// Pop out of current table
+				lua_pop(Environment, 1);
+			}
+			// Pass in filePath and texFilePath and size to heightmapsData
+			heightmapsData.filePath = filePath;
+			heightmapsData.texFilePath = texFilePath;
+			heightmapsData.fileSize = size;
+
+			// Pass in model scales and push to modelData
+			heightmapsData.modelScales.push_back(tempScale.x);
+			heightmapsData.modelScales.push_back(tempScale.y);
+			heightmapsData.modelScales.push_back(tempScale.z);
+
+			// Pass in positions and push to modelData
+			heightmapsData.modelPositions.push_back(tempPos.x);
+			heightmapsData.modelPositions.push_back(tempPos.y);
+			heightmapsData.modelPositions.push_back(tempPos.z);
+
+			// Add to map
+			allHeightmapData[filePath] = heightmapsData;
+
+			// Clear vectors of any data before adding more, and reset strings
+			heightmapsData.modelPositions.clear();
+			heightmapsData.modelScales.clear();
+			heightmapsData.fileSize = 0;
+			heightmapsData.filePath = "";
+			heightmapsData.texFilePath = "";
+
+			// Pop out of current table
+			lua_pop(Environment, 1);
+		}
 		// Pop out of current table
 		lua_pop(Environment, 1);
 	}
