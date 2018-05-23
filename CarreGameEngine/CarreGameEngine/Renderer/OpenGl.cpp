@@ -39,14 +39,15 @@ void OpenGl::Render(Model* model)
 	int meshBatchSize = model->GetMeshBatch().size();
 	for (int i = 0; i < meshBatchSize; i++)
 	{
-		unsigned int diffuseNr = 1;
-		unsigned int specularNr = 1;
-		unsigned int normalNr = 1;
-		unsigned int heightNr = 1;
 
 		int textureListSize = model->GetTextures().size();
 		for (size_t i = 0; i < textureListSize; i++)
 		{
+			unsigned int diffuseNr = 1;
+			unsigned int specularNr = 1;
+			unsigned int normalNr = 1;
+			unsigned int heightNr = 1;
+
 			glActiveTexture(GL_TEXTURE0 + i); // activate proper texture unit before binding
 											  // retrieve texture number (the N in diffuse_textureN)
 			std::string number;
@@ -87,7 +88,7 @@ void OpenGl::Render(Model* model)
 		glEnableVertexAttribArray(3);
 
 		glDrawArrays(GL_TRIANGLES, 0, model->GetMeshBatch()[i].GetVertices().size());
-		//glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, 0);
+		//glDrawElements(GL_TRIANGLES, model->GetMeshBatch()[i].GetIndices().size(), GL_UNSIGNED_INT, 0);
 
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);

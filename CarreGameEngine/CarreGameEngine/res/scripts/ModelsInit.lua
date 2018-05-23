@@ -17,7 +17,7 @@ AllModels=
 	},
 	player=
 	{
-		{filePath = "res/objects/taxi/taxi.obj", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 300.0, posZ = 300.0},
+		{filePath = "res/objects/taxi/taxi.obj", scaleX = 50.0, scaleY = 50.0, scaleZ = 50.0, posX = 700.0, posY = 150.0, posZ = 0.0},
 	},
 	monsterTwo=
 	{
