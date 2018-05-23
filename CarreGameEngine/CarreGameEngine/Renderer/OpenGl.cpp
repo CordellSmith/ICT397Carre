@@ -39,7 +39,6 @@ void OpenGl::Render(Model* model)
 	int meshBatchSize = model->GetMeshBatch().size();
 	for (int i = 0; i < meshBatchSize; i++)
 	{
-
 		int textureListSize = model->GetTextures().size();
 		for (size_t i = 0; i < textureListSize; i++)
 		{

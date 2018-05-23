@@ -13,7 +13,10 @@ Model::Model()
 void Model::LoadModel(std::string filePath)
 {
 	Assimp::Importer import;
-	const aiScene *scene = import.ReadFile(filePath, aiProcess_Triangulate | aiProcess_FlipUVs);
+	const aiScene *scene = import.ReadFile(filePath, aiProcess_CalcTangentSpace 
+		| aiProcess_Triangulate 
+		| aiProcess_JoinIdenticalVertices 
+		| aiProcess_SortByPType);
 
 	m_directory = filePath.substr(0, filePath.find_last_of('/'));
 
@@ -46,8 +49,8 @@ Mesh Model::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 	std::vector<unsigned int> indices;
 	std::vector<Texture> textures;
 
-	// process mesh data
-	for (unsigned int i = 0; i < mesh->mNumVertices; i++)
+	// process face data
+	for (unsigned int i = 0; i < mesh->mNumFaces; i++)
 	{
 		Vertex3 vertex;
 		glm::vec3 vertexPos;
@@ -56,57 +59,61 @@ Mesh Model::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		glm::vec2 texCoord;
 		glm::vec3 tangent;
 		glm::vec3 biTangent;
-		
-		// vertex positions
-		vertexPos.x = mesh->mVertices[i].x;
-		vertexPos.y = mesh->mVertices[i].y;
-		vertexPos.z = mesh->mVertices[i].z;
-		vertex.m_position = vertexPos;
-		// colours (randomised)
-		colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 0.5f);
-		vertex.m_colour = colour;
-		// normals
-		if (mesh->HasNormals())
-		{
-			normalCoord.x = mesh->mNormals[i].x;
-			normalCoord.y = mesh->mNormals[i].y;
-			normalCoord.z = mesh->mNormals[i].z;
-			vertex.m_normal = normalCoord;
-		}
-		// texture coordinates
-		if (mesh->mTextureCoords[0])
-		{
-			texCoord.x = mesh->mTextureCoords[0][i].x;
-			texCoord.y = mesh->mTextureCoords[0][i].y;
-			vertex.m_texCoords = texCoord;
-		}
-		else
-			vertex.m_texCoords = glm::vec2(0.0f, 0.0f);
-		// tangents and bitangents
-		if (mesh->HasTangentsAndBitangents())
-		{
-			tangent.x = mesh->mTangents[i].x;
-			tangent.y = mesh->mTangents[i].y;
-			tangent.z = mesh->mTangents[i].z;
-			vertex.m_tangent = tangent;
 
-			biTangent.x = mesh->mBitangents[i].x;
-			biTangent.y = mesh->mBitangents[i].y;
-			biTangent.z = mesh->mBitangents[i].z;
-			vertex.m_biTangent = biTangent;
-		}
-
-		vertices.push_back(vertex);
-	}
-	// process indices
-	for (unsigned int i = 0; i < mesh->mNumFaces; i++)
-	{
 		aiFace face = mesh->mFaces[i];
-		for (unsigned int j = 0; j < face.mNumIndices; j++)
+		for (unsigned int j = 0; j < 3; j++)
+		{
+			// vertex positions
+			auto const &v = mesh->mVertices[face.mIndices[j]];
+			vertexPos.x = v.x; 
+			vertexPos.y = v.y; 
+			vertexPos.z = v.z;
+			vertex.m_position = vertexPos;
+
+			// colours (randomised)
+			colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 1.0f);
+			vertex.m_colour = colour;
+
+			// normals
+			if (mesh->HasNormals())
+			{
+				auto const &n = mesh->mNormals[face.mIndices[j]];
+				normalCoord.x = n.x;
+				normalCoord.y = n.y;
+				normalCoord.z = n.z;
+				vertex.m_normal = normalCoord;
+			}
+
+			// texture coordinates
+			if (mesh->mTextureCoords[0])
+			{
+				auto const &uv = mesh->mTextureCoords[0][face.mIndices[j]];
+				texCoord.x = uv.x;
+				texCoord.y = uv.y;
+				vertex.m_texCoords = texCoord;
+			}
+
+			//// tangents and bitangents
+			//if (mesh->HasTangentsAndBitangents())
+			//{
+			//	auto const &t = mesh->mTangents[face.mIndices[j]];
+			//	tangent.x = t.x;
+			//	tangent.y = t.y;
+			//	tangent.z = t.z;
+			//	vertex.m_tangent = tangent;
+
+			//	auto const &bt = mesh->mBitangents[face.mIndices[j]];
+			//	biTangent.x = bt.x;
+			//	biTangent.y = bt.y;
+			//	biTangent.z = bt.z;
+			//	vertex.m_biTangent = biTangent;
+			//}
+
+			vertices.push_back(vertex);
 			indices.push_back(face.mIndices[j]);
+		}
 	}
 	// process materials
-
 	aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 	// diffuse maps
 	std::vector<Texture> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
@@ -120,7 +127,6 @@ Mesh Model::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 	// height maps
 	std::vector<Texture> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
 	textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
-
 
 	return Mesh(vertices, indices, textures);
 }
