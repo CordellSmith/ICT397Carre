@@ -24,8 +24,8 @@ glm::mat4 Camera::GetRotationMatrix()
 	glm::mat4 rotationMatrix(0.5f);
 
 	// Add the Pitch rotation along the x and y axis
-	rotationMatrix = glm::rotate(rotationMatrix, m_pitch, glm::vec3(1, 0, 0));
-	rotationMatrix = glm::rotate(rotationMatrix, m_yaw, glm::vec3(0, 1, 0));
+	rotationMatrix = glm::rotate(rotationMatrix, glm::degrees(m_pitch), glm::vec3(1, 0, 0));
+	rotationMatrix = glm::rotate(rotationMatrix, glm::degrees(m_yaw), glm::vec3(0, 1, 0));
 
 	return rotationMatrix;
 }
@@ -58,6 +58,29 @@ void Camera::MoveCamera(float speed)
 
 	m_position.x += viewVector.x * speed;
 	m_position.z += viewVector.z * speed;
+}
+
+void Camera::MoveForward(float speed)
+{
+	glm::vec3 viewVector = GetView();
+
+	m_position.z += viewVector.z * speed * 10;
+}
+
+void Camera::MoveBack(float speed)
+{
+	glm::vec3 viewVector = GetView();
+	m_position.z -= viewVector.z * speed * 10;
+}
+
+void Camera::MoveLeft(float speed)
+{
+	m_position.x -= speed * 10;
+}
+
+void Camera::MoveRight(float speed)
+{
+	m_position.x += speed * 10;
 }
 
 void Camera::SetViewByMouse(float xOffset, float yOffset)

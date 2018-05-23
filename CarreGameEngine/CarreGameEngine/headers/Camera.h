@@ -223,6 +223,11 @@ public:
 	*/
 	void MoveCamera(float speed);
 
+	void MoveForward(float speed);
+	void MoveBack(float speed);
+	void MoveLeft(float speed);
+	void MoveRight(float speed);
+
 	float GetFov() { return m_fov; }
 	void SetFov(float fov) { m_fov = fov; }
 
