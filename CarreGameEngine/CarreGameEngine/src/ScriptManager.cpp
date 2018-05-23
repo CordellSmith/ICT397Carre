@@ -232,7 +232,8 @@ bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData
 	glm::vec3 tempScale;
 
 	// Set 0 because posY not read from script (determined elsewhere)
-	tempPos.y = 0.0f;
+	// TODO: Reset this to 0
+	tempPos.y = 150.0f;
 
 	// Push to first table
 	lua_pushnil(Environment);

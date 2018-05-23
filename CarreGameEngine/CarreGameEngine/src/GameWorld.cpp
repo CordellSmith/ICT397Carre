@@ -20,11 +20,11 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		if (itr->first == "Cube")
-		{
+		//if (itr->first == "Cube")
+		//{
 			itr->second->SetCamera(m_camera);
 			m_glRenderer.Prepare(itr->second->GetModel(), assimpShader.VertexSource, assimpShader.FragmentSource);
-		}
+		//}
 	}
 
 	// Prepare player
@@ -50,6 +50,18 @@ void GameWorld::Update()
 	// Render player
 	m_glRenderer.Render(m_player->GetModel());
 		
+
+	// Prepare assets
+	std::multimap<std::string, IGameAsset*>::iterator itr;
+	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
+	{
+		//if (itr->first == "Cube")
+		//{
+		m_glRenderer.Render(itr->second->GetModel());
+		//}
+	}
+
+
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
 }
@@ -100,11 +112,12 @@ void GameWorld::UpdatePhysics()
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z());
 
-		if (itr->first == "Cube")
+		// TODO: Commented out for testing. Uncomment later
+		/*if (itr->first == "cube")
 		{
 			itr->second->SetPosition(temp);
 			m_glRenderer.Render(itr->second->GetModel());
-		}
+		}*/
 		i++;
 	}
 }

@@ -22,28 +22,28 @@ void GameControlEngine::Initialize()
 
 	/********************************************TESTING********************************************/
 	//// Get iterator to start of map
-	//std::unordered_map<std::string, ModelsData>::iterator it = m_allModelsData.begin();
+	//std::unordered_map<std::string, ModelsData>::iterator itt = m_allModelsData.begin();
 
 	//// Search map for texture
-	//while (it != m_allModelsData.end())
+	//while (itt != m_allModelsData.end())
 	//{
-	//	for (int k = 0; k < (*it).second.modelPositions.size(); k++)
+	//	for (int k = 0; k < (*itt).second.modelPositions.size(); k++)
 	//	{
-	//		std::cout << (*it).second.filePath << std::endl;
+	//		std::cout << (*itt).second.filePath << std::endl;
 
-	//		for (int l = 0; l < (*it).second.modelScales[k].size(); l++)
+	//		for (int l = 0; l < (*itt).second.modelScales[k].size(); l++)
 	//		{
-	//			std::cout << (*it).second.modelScales[k][l] << " ";
+	//			std::cout << (*itt).second.modelScales[k][l] << " ";
 	//		}
-	//		for (int l = 0; l < (*it).second.modelPositions[k].size(); l++)
+	//		for (int l = 0; l < (*itt).second.modelPositions[k].size(); l++)
 	//		{
-	//			std::cout << (*it).second.modelPositions[k][l] << " ";
+	//			std::cout << (*itt).second.modelPositions[k][l] << " ";
 	//		}
 	//		std::cout << std::endl;
 	//	}
 	//	// Increment iterator
 	//	std::cout << std::endl;
-	//	it++;
+	//	itt++;
 	//}
 	/********************************************TESTING********************************************/
 
@@ -116,10 +116,11 @@ void GameControlEngine::Initialize()
 	
 	// Everything has been scaled up by 15 because the terrain scaleX and scaleZ is at 15 per triangle grid
 	// Cube asset
-	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
-	cube->LoadFromFilePath("res/objects/cube.obj");
-	cube->SetScale(glm::vec3(100, 100, 100));
-	m_assetFactory->AddAsset(cube);
+	//IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube3");
+	//cube->LoadFromFilePath("res/objects/cube.obj");
+	//cube->SetPosition(glm::vec3(1000, 0.0, 0.0));
+	//cube->SetScale(glm::vec3(20, 20, 20));
+	//m_assetFactory->AddAsset(cube);
 
 	/********************************************TESTING********************************************/
 	// Get iterator to start of map
@@ -138,50 +139,64 @@ void GameControlEngine::Initialize()
 	}	
 
 	// Main character creation (filePath and scale read from m_modelsData)
-	player->LoadFromFilePath(m_modelsData.filePath);
-	player->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
-	player->SetScale(glm::vec3(m_modelsData.modelScales[0][0], m_modelsData.modelScales[0][1], m_modelsData.modelScales[0][2]));
+	//player->LoadFromFilePath(m_modelsData.filePath);
+	//player->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
+	//player->SetScale(glm::vec3(m_modelsData.modelScales[0][0], m_modelsData.modelScales[0][1], m_modelsData.modelScales[0][2]));
 
 
 	/********************Loading of all models at once example (doesn't run)*******************/
-	//float scales[3];
-	//float positions[3];
+	// Create asset
+	IGameAsset* modelAsset;
 
-	// Search map for texture
-	//while (it != m_allModelsData.end())
-	//{
-	//	// For each different type of model (player already read in, so skip)
-	//	if ((*it).first != "player")
-	//	{
-	//		m_modelsData = (*it).second;
+	// Temp values for naming of assets
+	std::string tempName = "Asset";
+	int assetTypeNum = 0;
+	std::string assetName;
+	
+	// Asset xyz scale and pos
+	float assetScaleXYZ[3];
+	float assetPosXYZ[3];
 
-	//		// Load model (.obj, .md2, etc)
-	//		model->LoadFromFilePath((*it).second.filePath);
+	// Start of map again
+	it = m_allModelsData.begin();
 
-	//		// For each model of same type
-	//		for (int k = 0; k < (*it).second.modelPositions.size(); k++)
-	//		{
-	//			// Get scales
-	//			for (int l = 0; l < (*it).second.modelScales[k].size(); l++)
-	//			{
-	//				scales[l] = (*it).second.modelScales[k][l];
-	//			}
+	// Loop through map until all models created
+	while (it != m_allModelsData.end())
+	{
+		// For each different type of model (player already read in, so skip)
+		if ((*it).first != "player")
+		{
+			// For each model of same type
+			for (int k = 0; k < (*it).second.modelPositions.size(); k++)
+			{
+				// Get scales
+				for (int j = 0; j < (*it).second.modelScales[k].size(); j++)
+				{
+					assetScaleXYZ[j] = (*it).second.modelScales[k][j];
+				}
 
-	//			// Get positions
-	//			for (int l = 0; l < (*it).second.modelPositions[k].size(); l++)
-	//			{
-	//				positions[l] = (*it).second.modelPositions[k][l];
-	//			}
+				// Get positions
+				for (int j = 0; j < (*it).second.modelPositions[k].size(); j++)
+				{
+					assetPosXYZ[j] = (*it).second.modelPositions[k][j];
+				}
 
-	//			// Prepare shader, set scales, set positions of model data just read
-	//			model->Prepare(testShader.VertexSource, testShader.FragmentSource);
-	//			model->SetPosition(glm::vec3(scales[0], scales[1], scales[2]));
-	//			model->SetScale(glm::vec3(positions[0], positions[1], positions[2]));
-	//		}
-	//	}
-	//	// Increment iterator
-	//	it++;
-	//}
+				// Get next name for asset (Asset1, Asset2, etc)
+				//assetName = tempName + std::to_string(assetTypeNum);
+
+				// Create name asset data and add to asset map
+				modelAsset = m_assetFactory->CreateAsset(ASS_OBJECT, (*it).first);
+				modelAsset->LoadFromFilePath((*it).second.filePath);
+				modelAsset->SetScale(glm::vec3(assetScaleXYZ[0], assetScaleXYZ[1], assetScaleXYZ[2]));
+				modelAsset->SetPosition(glm::vec3(assetPosXYZ[0], assetPosXYZ[1], assetPosXYZ[2]));
+				m_assetFactory->AddAsset(modelAsset);
+			}
+			// Increment type of asset num
+			assetTypeNum++;
+		}
+		// Increment iterator
+		it++;
+	}
 	/********************Loading of all models at once example (doesn't run)*******************/
 
 	/********************************************TESTING********************************************/
