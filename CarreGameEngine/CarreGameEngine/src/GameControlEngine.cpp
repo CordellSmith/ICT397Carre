@@ -114,7 +114,6 @@ void GameControlEngine::Initialize()
 	bfBuildings->SetPosition(glm::vec3(6000.0, -1.0, 5000.0));
 	terrains.push_back(bfBuildings);
 	
-	// Everything has been scaled up by 15 because the terrain scaleX and scaleZ is at 15 per triangle grid
 	// Cube asset
 	//IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube3");
 	//cube->LoadFromFilePath("res/objects/cube.obj");
@@ -122,6 +121,13 @@ void GameControlEngine::Initialize()
 	//cube->SetScale(glm::vec3(20, 20, 20));
 	//m_assetFactory->AddAsset(cube);
 
+	IGameAsset* md2Model = m_assetFactory->CreateAsset(ASS_OBJECT, "md2");
+	md2Model->LoadFromFilePath("res/objects/knight.md2");
+	md2Model->AddTexutre(TextureManager::Instance().LoadTexture("res/objects/knight.bmp"), "res/objects/knight.bmp");
+	md2Model->SetPosition(glm::vec3(10.0, 50.0, 10.0));
+	md2Model->SetScale(glm::vec3(10.0, 10.0, 10.0));
+	m_assetFactory->AddAsset(md2Model);
+	
 	/********************************************TESTING********************************************/
 	// Get iterator to start of map
 	std::unordered_map<std::string, ModelsData>::iterator it = m_allModelsData.begin();
@@ -139,10 +145,9 @@ void GameControlEngine::Initialize()
 	}	
 
 	// Main character creation (filePath and scale read from m_modelsData)
-	//player->LoadFromFilePath(m_modelsData.filePath);
-	//player->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
-	//player->SetScale(glm::vec3(m_modelsData.modelScales[0][0], m_modelsData.modelScales[0][1], m_modelsData.modelScales[0][2]));
-
+	player->LoadFromFilePath(m_modelsData.filePath);
+	player->SetPosition(glm::vec3(m_modelsData.modelPositions[0][0], m_modelsData.modelPositions[0][1], m_modelsData.modelPositions[0][2]));
+	player->SetScale(glm::vec3(m_modelsData.modelScales[0][0], m_modelsData.modelScales[0][1], m_modelsData.modelScales[0][2]));
 
 	/********************Loading of all models at once example (doesn't run)*******************/
 	// Create asset
@@ -201,11 +206,6 @@ void GameControlEngine::Initialize()
 
 	/********************************************TESTING********************************************/
 	
-	// Main character creation
-	player->LoadFromFilePath("res/objects/taxi/taxi.obj");
-	player->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
-	player->SetScale(glm::vec3(15.0, 15.0, 15.0));
-
 	m_windowManager->GetInputManager()->SetPlayer(player);
 
 	// Physics engine initialization

@@ -117,6 +117,8 @@ public:
 
 	virtual Model* GetModel() = 0;
 
+	virtual void AddTexutre(GLuint textureId, std::string textureFilePath) = 0;
+
 protected:
 	ASS_TYPE m_assetType;
 	std::string m_assetName;

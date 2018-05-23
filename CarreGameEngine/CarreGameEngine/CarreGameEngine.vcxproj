@@ -131,6 +131,7 @@
   <ItemGroup>
     <None Include="res\scripts\CameraInit.lua" />
     <None Include="res\scripts\ModelInit.lua" />
+    <None Include="res\scripts\ModelsInit.lua" />
     <None Include="res\scripts\TexturesInit.lua" />
     <None Include="res\scripts\WindowInit.lua" />
     <None Include="res\shaders\Basic.shader" />

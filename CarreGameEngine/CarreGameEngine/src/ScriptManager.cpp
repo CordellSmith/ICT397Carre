@@ -217,23 +217,20 @@ bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData
 	int j = 0;
 
 	// Different types of data being read in
-	std::string values[6];
+	std::string values[7];
 	values[0] = "filePath";
 	values[1] = "scaleX";
 	values[2] = "scaleY";
 	values[3] = "scaleZ";
 	values[4] = "posX";
-	values[5] = "posZ";
+	values[5] = "posY";
+	values[6] = "posZ";
 
 	//temp values
 	std::string temp;
 	std::vector<float> tempData;
 	glm::vec3 tempPos;
 	glm::vec3 tempScale;
-
-	// Set 0 because posY not read from script (determined elsewhere)
-	// TODO: Reset this to 0
-	tempPos.y = 150.0f;
 
 	// Push to first table
 	lua_pushnil(Environment);
@@ -268,6 +265,8 @@ bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData
 				if (temp.compare(values[4]) == 0)
 					tempPos.x = lua_tonumber(Environment, -1);
 				if (temp.compare(values[5]) == 0)
+					tempPos.y = lua_tonumber(Environment, -1);
+				if (temp.compare(values[6]) == 0)
 					tempPos.z = lua_tonumber(Environment, -1);
 
 				// Pop out of current table

@@ -24,7 +24,12 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 		//{
 			itr->second->SetCamera(m_camera);
 			m_glRenderer.Prepare(itr->second->GetModel(), assimpShader.VertexSource, assimpShader.FragmentSource);
-		//}
+		
+		if (itr->first == "md2")
+		{
+			itr->second->SetCamera(m_camera);
+			m_glRenderer.Prepare(itr->second->GetModel(), testShader.VertexSource, testShader.FragmentSource);
+		}
 	}
 
 	// Prepare player
@@ -111,11 +116,14 @@ void GameWorld::UpdatePhysics()
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z());
+<<<<<<< HEAD
 
 		// TODO: Commented out for testing. Uncomment later
 		/*if (itr->first == "cube")
+=======
+		if (itr->first == "md2")
+>>>>>>> master
 		{
-			itr->second->SetPosition(temp);
 			m_glRenderer.Render(itr->second->GetModel());
 		}*/
 		i++;
