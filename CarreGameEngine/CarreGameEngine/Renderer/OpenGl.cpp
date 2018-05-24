@@ -26,7 +26,7 @@ void OpenGl::Prepare(Model* model, std::string vertShader, std::string fragShade
 		// vertex normals
 		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_texCoords));
 		// vertex colours
-		glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_normal));
+		glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_normal));
 
 		glBindVertexArray(0);
 	}
