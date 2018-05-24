@@ -87,6 +87,14 @@ void GameControlEngine::Initialize()
 	bfBuildings->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/buildingtexture.jpg"), "res/terrain/buildingtexture.jpg");
 	bfBuildings->SetPosition(glm::vec3(6000.0, -1.0, 5000.0));
 	terrains.push_back(bfBuildings);
+	
+	// Cube asset
+	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
+	cube->LoadFromFilePath("res/objects/cube.obj");
+	cube->AddTexutre(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
+	cube->SetPosition(glm::vec3(400.0, 150.0, -100.0));
+	cube->SetScale(glm::vec3(100.0, 100.0, 100.0));
+	m_assetFactory->AddAsset(cube);
 
 	IGameAsset* md2Model = m_assetFactory->CreateAsset(ASS_OBJECT, "md2");
 	md2Model->LoadFromFilePath("res/objects/knight.md2");

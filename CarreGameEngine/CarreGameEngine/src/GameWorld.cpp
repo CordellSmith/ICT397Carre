@@ -5,7 +5,8 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 	// Sets this game contexts assets to the  loaded game assets from the control engine
 	SetGameAssets(gameAssets);
 	
-	ShaderSource testShader = ParseShaders("res/shaders/Test.shader");
+	// Each new entity, asset needs its own shader (terrain or anything with multiple meshes especially)
+	ShaderSource mainShader = ParseShaders("res/shaders/Test.shader");
 	ShaderSource assimpShader = ParseShaders("res/shaders/Default.shader");
 	ShaderSource terrainShader = ParseShaders("res/shaders/Terrain.shader");
 
@@ -23,19 +24,20 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 		//if (itr->first == "Cube")
 		//{
 			itr->second->SetCamera(m_camera);
-			m_glRenderer.Prepare(itr->second->GetModel(), assimpShader.VertexSource, assimpShader.FragmentSource);
-		
+
+			m_glRenderer.Prepare(itr->second->GetModel(), mainShader.VertexSource, mainShader.FragmentSource);
+	
 		if (itr->first == "md2")
 		{
 			itr->second->SetCamera(m_camera);
-			m_glRenderer.Prepare(itr->second->GetModel(), testShader.VertexSource, testShader.FragmentSource);
+			m_glRenderer.Prepare(itr->second->GetModel(), mainShader.VertexSource, mainShader.FragmentSource);
 		}
 	}
 
 	// Prepare player
 	m_player = player;
 	m_player->SetCamera(m_camera);
-	m_glRenderer.Prepare(m_player->GetModel(), testShader.VertexSource, testShader.FragmentSource);
+	m_glRenderer.Prepare(m_player->GetModel(), mainShader.VertexSource, mainShader.FragmentSource);
 
 	// Pass player info to camera
 	m_camera->PassPlayerInfo(m_player->GetPosition(), m_player->GetRotation());
@@ -116,12 +118,17 @@ void GameWorld::UpdatePhysics()
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z());
+<<<<<<< HEAD
 
 
 		/*if (itr->first == "md2")
 		{
 			m_glRenderer.Render(itr->second->GetModel());
 		}*/
+=======
+		m_glRenderer.Render(itr->second->GetModel());
+
+>>>>>>> master
 		i++;
 	}
 }
