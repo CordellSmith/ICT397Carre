@@ -26,4 +26,5 @@ void Object::AddTexutre(GLuint textureId, std::string textureFilePath)
 	texture.m_type = "texture_diffuse";
 
 	m_model->GetTextures().push_back(texture);
+	m_model->GetMeshBatch()[0].GetTextures().push_back(texture);
 }

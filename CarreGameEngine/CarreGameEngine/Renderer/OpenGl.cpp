@@ -2,6 +2,8 @@
 
 void OpenGl::Prepare(Model* model, std::string vertShader, std::string fragShader)
 {
+	model->GetShader()->Initialize(vertShader, fragShader);
+
 	int meshBatchSize = model->GetMeshBatch().size();
 	for (int i = 0; i < meshBatchSize; i++)
 	{
@@ -19,17 +21,15 @@ void OpenGl::Prepare(Model* model, std::string vertShader, std::string fragShade
 
 		// vertex positions
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), 0);
-		// vertex colours
-		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_position));
-		// vertex normals
-		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_colour));
 		// vertex texture coords
-		glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_normal));
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_position));
+		// vertex normals
+		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_texCoords));
+		// vertex colours
+		glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_normal));
 
 		glBindVertexArray(0);
 	}
-
-	model->GetShader()->Initialize(vertShader, fragShader);
 }
 
 void OpenGl::Render(Model* model)
@@ -39,18 +39,18 @@ void OpenGl::Render(Model* model)
 	int meshBatchSize = model->GetMeshBatch().size();
 	for (int i = 0; i < meshBatchSize; i++)
 	{
-		int textureListSize = model->GetTextures().size();
-		for (size_t i = 0; i < textureListSize; i++)
-		{
-			unsigned int diffuseNr = 1;
-			unsigned int specularNr = 1;
-			unsigned int normalNr = 1;
-			unsigned int heightNr = 1;
+		unsigned int diffuseNr = 1;
+		unsigned int specularNr = 1;
+		unsigned int normalNr = 1;
+		unsigned int heightNr = 1;
 
-			glActiveTexture(GL_TEXTURE0 + i); // activate proper texture unit before binding
-											  // retrieve texture number (the N in diffuse_textureN)
+		int textureListSize = meshBatchSize;
+		for (int j = 0; j < textureListSize; j++)
+		{
+			glActiveTexture(GL_TEXTURE0 + j); // activate proper texture unit before binding
+												// retrieve texture number (the N in diffuse_textureN)
 			std::string number;
-			std::string name = model->GetTextures()[i].m_type;
+			std::string name = model->GetMeshBatch()[i].GetTextures()[0].m_type;
 
 			if (name == "texture_diffuse")
 				number = std::to_string(diffuseNr++);
@@ -60,10 +60,15 @@ void OpenGl::Render(Model* model)
 				number = std::to_string(normalNr++);
 			else if (name == "texture_height")
 				number = std::to_string(heightNr++);
+			else
+				std::cout << "Incorrect texture Id in OpenGl renderer" << std::endl;
 
 			GLuint textureUniformId = model->GetShader()->GetVariable((name + number).c_str());
-			model->GetShader()->SetFloat(textureUniformId, i);
-			glBindTexture(GL_TEXTURE_2D, model->GetTextures()[i].m_id);
+			model->GetShader()->SetFloat(textureUniformId, j);
+			glBindTexture(GL_TEXTURE_2D, model->GetMeshBatch()[i].GetTextures()[0].m_id);
+
+			if (meshBatchSize == 1)
+				break;
 		}
 		glActiveTexture(GL_TEXTURE0);
 

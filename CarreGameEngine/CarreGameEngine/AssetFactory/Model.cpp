@@ -13,7 +13,8 @@ Model::Model()
 void Model::LoadModel(std::string filePath)
 {
 	Assimp::Importer import;
-	const aiScene *scene = import.ReadFile(filePath, aiProcess_CalcTangentSpace 
+	const aiScene *scene = import.ReadFile(filePath, aiProcess_FlipUVs 
+		| aiProcess_CalcTangentSpace
 		| aiProcess_Triangulate 
 		| aiProcess_JoinIdenticalVertices 
 		| aiProcess_SortByPType);
@@ -83,6 +84,8 @@ Mesh Model::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 				normalCoord.z = n.z;
 				vertex.m_normal = normalCoord;
 			}
+			else
+				vertex.m_normal = glm::vec3(0.0f, 0.0f, 0.0f);
 
 			// texture coordinates
 			if (mesh->mTextureCoords[0])
@@ -92,6 +95,8 @@ Mesh Model::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 				texCoord.y = uv.y;
 				vertex.m_texCoords = texCoord;
 			}
+			else
+				vertex.m_texCoords = glm::vec2(0.0f, 0.0f);
 
 			//// tangents and bitangents
 			//if (mesh->HasTangentsAndBitangents())
