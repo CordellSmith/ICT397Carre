@@ -40,7 +40,6 @@ public:
 
 	Camera* GetCamera() { return m_camera; }
 
-
 		/**
 		* @brief Sets the camera object
 		*

@@ -21,6 +21,7 @@
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="src\TimeManager.cpp" />
+    <ClCompile Include="AssetFactory\Md2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetFactory\Bruteforce.h" />
@@ -51,6 +52,7 @@
     <ClInclude Include="ImageDB\stb_image.h" />
     <ClInclude Include="Renderer\IRenderer.h" />
     <ClInclude Include="Renderer\OpenGl.h" />
+    <ClInclude Include="AssetFactory\Md2.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\scripts\CameraInit.lua" />
