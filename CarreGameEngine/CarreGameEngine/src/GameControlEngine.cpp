@@ -117,6 +117,8 @@ void GameControlEngine::Initialize()
 	// Cube asset
 	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
 	cube->LoadFromFilePath("res/objects/cube.obj");
+	cube->AddTexutre(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
+	cube->SetPosition(glm::vec3(400.0, 150.0, -100.0));
 	cube->SetScale(glm::vec3(100.0, 100.0, 100.0));
 	m_assetFactory->AddAsset(cube);
 
