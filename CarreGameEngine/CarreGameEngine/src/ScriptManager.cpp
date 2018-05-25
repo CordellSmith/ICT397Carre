@@ -211,16 +211,18 @@ bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData
 
 	// Name of current model being read in
 	std::string modelName;
+	std::string texFilePath;
 
 	// Different types of data being read in
-	std::string values[7];
+	std::string values[8];
 	values[0] = "filePath";
-	values[1] = "scaleX";
-	values[2] = "scaleY";
-	values[3] = "scaleZ";
-	values[4] = "posX";
-	values[5] = "posY";
-	values[6] = "posZ";
+	values[1] = "texFilePath";
+	values[2] = "scaleX";
+	values[3] = "scaleY";
+	values[4] = "scaleZ";
+	values[5] = "posX";
+	values[6] = "posY";
+	values[7] = "posZ";
 
 	//temp values
 	std::string temp;
@@ -250,16 +252,18 @@ bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData
 				if (temp.compare(values[0]) == 0)
 					filePath = lua_tostring(Environment, -1);
 				if (temp.compare(values[1]) == 0)
-					tempScale.x = lua_tonumber(Environment, -1);
+					texFilePath = lua_tostring(Environment, -1);
 				if (temp.compare(values[2]) == 0)
-					tempScale.y = lua_tonumber(Environment, -1);
+					tempScale.x = lua_tonumber(Environment, -1);
 				if (temp.compare(values[3]) == 0)
-					tempScale.z = lua_tonumber(Environment, -1);
+					tempScale.y = lua_tonumber(Environment, -1);
 				if (temp.compare(values[4]) == 0)
-					tempPos.x = lua_tonumber(Environment, -1);
+					tempScale.z = lua_tonumber(Environment, -1);
 				if (temp.compare(values[5]) == 0)
-					tempPos.y = lua_tonumber(Environment, -1);
+					tempPos.x = lua_tonumber(Environment, -1);
 				if (temp.compare(values[6]) == 0)
+					tempPos.y = lua_tonumber(Environment, -1);
+				if (temp.compare(values[7]) == 0)
 					tempPos.z = lua_tonumber(Environment, -1);
 
 				// Pop out of current table
@@ -267,6 +271,7 @@ bool ScriptManager::LoadModelsInitLua(std::unordered_map<std::string, ModelsData
 			}	
 			// Pass in filePath to modelData
 			modelData.filePath = filePath;
+			modelData.texFilePath = texFilePath;
 
 			// Pass in model scales and push to modelData
 			tempData.push_back(tempScale.x);

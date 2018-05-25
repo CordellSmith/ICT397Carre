@@ -158,8 +158,7 @@ void GameControlEngine::Initialize()
 				// Create name asset data and add to asset map
 				modelAsset = m_assetFactory->CreateAsset(ASS_OBJECT, (*it).first);
 				modelAsset->LoadFromFilePath((*it).second.filePath);
-				//modelAsset->AddTexutre(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
-				modelAsset->AddTexutre(0, "");
+				modelAsset->AddTexutre(TextureManager::Instance().GetTextureID((*it).second.texFilePath), (*it).second.texFilePath);
 				modelAsset->SetScale(glm::vec3(assetScaleXYZ[0], assetScaleXYZ[1], assetScaleXYZ[2]));
 				modelAsset->SetPosition(glm::vec3(assetPosXYZ[0], assetPosXYZ[1], assetPosXYZ[2]));
 				m_assetFactory->AddAsset(modelAsset);

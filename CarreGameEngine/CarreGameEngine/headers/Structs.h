@@ -17,6 +17,7 @@
 struct ModelsData
 {
 	std::string filePath;
+	std::string texFilePath;
 	std::vector<std::vector<float>> modelPositions;
 	std::vector<std::vector<float>> modelScales;
 };
