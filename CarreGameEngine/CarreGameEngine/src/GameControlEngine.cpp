@@ -79,65 +79,30 @@ void GameControlEngine::Initialize()
 
 	// Bruteforce terrain
 	bfLandscape->LoadHeightfield("res/terrain/newcity.raw", 128);
-	bfLandscape->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
+	bfLandscape->GenerateTerrain(TextureManager::Instance().GetTextureID("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
 	bfLandscape->SetPosition(glm::vec3(0.0, 0.0, 0.0));
 	terrains.push_back(bfLandscape);
 
 	bfBuildings->LoadHeightfield("res/terrain/buildingheightmap.raw", 16);
-	bfBuildings->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/buildingtexture.jpg"), "res/terrain/buildingtexture.jpg");
+	bfBuildings->GenerateTerrain(TextureManager::Instance().GetTextureID("res/terrain/buildingtexture.jpg"), "res/terrain/buildingtexture.jpg");
 	bfBuildings->SetPosition(glm::vec3(6000.0, -1.0, 5000.0));
 	terrains.push_back(bfBuildings);
 
-	IGameAsset* md2Model = m_assetFactory->CreateAsset(ASS_OBJECT, "md2");
-	md2Model->LoadFromFilePath("res/objects/knight.md2");
-	md2Model->AddTexutre(TextureManager::Instance().LoadTexture("res/objects/knight.bmp"), "res/objects/knight.bmp");
-	md2Model->SetPosition(glm::vec3(10.0, 50.0, 10.0));
-	md2Model->SetScale(glm::vec3(10.0, 10.0, 10.0));
-	m_assetFactory->AddAsset(md2Model);
-	
-
-
-
-	/********************************************TESTING********************************************/
-	// Get iterator to start of map
-	std::unordered_map<std::string, ModelsData>::iterator it = m_allModelsData.begin();
-
-	// Search map for texture
-	while (it != m_allModelsData.end())
-	{
-		if ((*it).first == "player")
-		{
-			m_modelsData = (*it).second;
-			break;
-		}
-		// Increment iterator
-		it++;
-	}	
-
-	// Main character creation (filePath and scale read from m_modelsData)
-	player->LoadFromFilePath(m_modelsData.filePath);
-	player->SetPosition(glm::vec3(m_modelsData.modelPositions[0][0], m_modelsData.modelPositions[0][1], m_modelsData.modelPositions[0][2]));
-	player->SetScale(glm::vec3(m_modelsData.modelScales[0][0], m_modelsData.modelScales[0][1], m_modelsData.modelScales[0][2]));
-
-	/********************Loading of all models at once example*******************/
+	/********************Loading of all models at once*******************/
 	// Create asset
 	IGameAsset* modelAsset;
-
-	// Temp values for naming of assets
-	std::string tempName = "Asset";
-	std::string assetName;
 	
 	// Asset xyz scale and pos
 	float assetScaleXYZ[3];
 	float assetPosXYZ[3];
 
-	// Start of map again
-	it = m_allModelsData.begin();
+	// Get iterator to start of map
+	std::unordered_map<std::string, ModelsData>::iterator it = m_allModelsData.begin();
 
 	// Loop through map until all models created
 	while (it != m_allModelsData.end())
 	{
-		// For each different type of model (player already read in, so skip)
+		// For each different type of model that isn't the player model
 		if ((*it).first != "player")
 		{
 			// For each model of same type
@@ -164,16 +129,32 @@ void GameControlEngine::Initialize()
 				m_assetFactory->AddAsset(modelAsset);
 			}
 		}
+		// Player model
+		else if ((*it).first == "player")
+		{
+			for (int k = 0; k < (*it).second.modelPositions.size(); k++)
+			{
+				// Get scales
+				for (int j = 0; j < (*it).second.modelScales[k].size(); j++)
+				{
+					assetScaleXYZ[j] = (*it).second.modelScales[k][j];
+				}
+
+				// Get positions
+				for (int j = 0; j < (*it).second.modelPositions[k].size(); j++)
+				{
+					assetPosXYZ[j] = (*it).second.modelPositions[k][j];
+				}
+			}
+			// Initialize player model
+			player->LoadFromFilePath((*it).second.filePath);
+			player->SetPosition(glm::vec3(assetPosXYZ[0], assetPosXYZ[1], assetPosXYZ[2]));
+			player->SetScale(glm::vec3(assetScaleXYZ[0], assetScaleXYZ[1], assetScaleXYZ[2]));
+		}
 		// Increment iterator
 		it++;
 	}
-	/********************Loading of all models at once example*******************/
-
-	/********************************************TESTING********************************************/
-	
-
-
-
+	/********************Loading of all models at once*******************/
 
 	m_windowManager->GetInputManager()->SetPlayer(player);
 
