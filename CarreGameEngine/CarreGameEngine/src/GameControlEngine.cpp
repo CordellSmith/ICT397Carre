@@ -87,14 +87,6 @@ void GameControlEngine::Initialize()
 	bfBuildings->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/buildingtexture.jpg"), "res/terrain/buildingtexture.jpg");
 	bfBuildings->SetPosition(glm::vec3(6000.0, -1.0, 5000.0));
 	terrains.push_back(bfBuildings);
-	
-	// Cube asset
-	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
-	cube->LoadFromFilePath("res/objects/cube.obj");
-	cube->AddTexutre(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
-	cube->SetPosition(glm::vec3(400.0, 150.0, -100.0));
-	cube->SetScale(glm::vec3(100.0, 100.0, 100.0));
-	m_assetFactory->AddAsset(cube);
 
 	IGameAsset* md2Model = m_assetFactory->CreateAsset(ASS_OBJECT, "md2");
 	md2Model->LoadFromFilePath("res/objects/knight.md2");
@@ -133,7 +125,6 @@ void GameControlEngine::Initialize()
 
 	// Temp values for naming of assets
 	std::string tempName = "Asset";
-	int assetTypeNum = 0;
 	std::string assetName;
 	
 	// Asset xyz scale and pos
@@ -164,18 +155,15 @@ void GameControlEngine::Initialize()
 					assetPosXYZ[j] = (*it).second.modelPositions[k][j];
 				}
 
-				// Get next name for asset (Asset1, Asset2, etc)
-				//assetName = tempName + std::to_string(assetTypeNum);
-
 				// Create name asset data and add to asset map
 				modelAsset = m_assetFactory->CreateAsset(ASS_OBJECT, (*it).first);
 				modelAsset->LoadFromFilePath((*it).second.filePath);
+				//modelAsset->AddTexutre(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
+				modelAsset->AddTexutre(0, "");
 				modelAsset->SetScale(glm::vec3(assetScaleXYZ[0], assetScaleXYZ[1], assetScaleXYZ[2]));
 				modelAsset->SetPosition(glm::vec3(assetPosXYZ[0], assetPosXYZ[1], assetPosXYZ[2]));
 				m_assetFactory->AddAsset(modelAsset);
 			}
-			// Increment type of asset num
-			assetTypeNum++;
 		}
 		// Increment iterator
 		it++;

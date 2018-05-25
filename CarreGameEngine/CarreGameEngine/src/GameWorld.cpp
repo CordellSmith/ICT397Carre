@@ -62,12 +62,12 @@ void GameWorld::Update()
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		//if (itr->first == "Cube")
-		//{
+		// TODO: Not drawing lightpoles due to drop in framerate
+		if (itr->first != "trafficLight")
+		{
 		m_glRenderer.Render(itr->second->GetModel());
-		//}
+		}
 	}
-
 
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
@@ -118,17 +118,15 @@ void GameWorld::UpdatePhysics()
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z());
-<<<<<<< HEAD
 
 
-		/*if (itr->first == "md2")
+
+		if (itr->first == "md2")
 		{
 			m_glRenderer.Render(itr->second->GetModel());
-		}*/
-=======
-		m_glRenderer.Render(itr->second->GetModel());
+		}
 
->>>>>>> master
+
 		i++;
 	}
 }
