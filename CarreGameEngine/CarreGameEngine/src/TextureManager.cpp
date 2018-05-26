@@ -16,7 +16,7 @@ TextureManager::TextureManager()
 // De-constructor
 TextureManager::~TextureManager()
 {
-	//ReleaseAllTextures();
+	ReleaseAllTextures();
 }
 
 // Set texture to be active

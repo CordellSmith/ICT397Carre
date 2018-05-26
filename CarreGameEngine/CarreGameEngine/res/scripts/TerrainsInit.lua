@@ -8,9 +8,12 @@
 --Note: Needs improvements
 AllHeightmaps=
 {
-	heightmap=
+	terrain=
 	{
-		{filePath = "res/terrain/newcity.raw", texFilePath = "res/terrain/grass.jpg", fileSize = 128, scaleX = 15.0, scaleY = 16.0, scaleZ = 17.0, posX = 0.0, posY = 150.0, posZ = 200.0},
-		{filePath = "res/terrain/buildingheightmap.raw", texFilePath = "res/terrain/buildingtexture.jpg", fileSize = 25, scaleX = 26.0, scaleY = 27.0, scaleZ = 15.0, posX = 100.0, posY = 150.0, posZ = 200.0},
+		{filePath = "res/terrain/newcity.raw", texFilePath = "res/terrain/grass.jpg", fileSize = 128, scaleX = 100.0, scaleY = 5.0, scaleZ = 100.0, posX = 0.0, posY = 0.0, posZ = 0.0},
+	},
+	buildings=
+	{
+		{filePath = "res/terrain/buildingheightmap.raw", texFilePath = "res/terrain/buildingtexture.jpg", fileSize = 16, scaleX = 100.0, scaleY = 4.0, scaleZ = 100.0, posX = 6000.0, posY = -1.0, posZ = 6000.0},
 	},
 }

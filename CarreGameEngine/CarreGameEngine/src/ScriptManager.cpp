@@ -344,6 +344,7 @@ bool ScriptManager::LoadHeightmapsInitLua(std::unordered_map<std::string, Height
 	// File path of heightmap and texture applied
 	std::string filePath;
 	std::string texFilePath;
+	std::string heightfieldType;
 
 	// Different types of data being read in
 	std::string values[9];
@@ -369,6 +370,9 @@ bool ScriptManager::LoadHeightmapsInitLua(std::unordered_map<std::string, Height
 	// Keep reading while there is data in table
 	while (lua_next(Environment, -2) != 0)
 	{
+		// Get type of heightfield
+		heightfieldType = lua_tostring(Environment, -2);
+
 		// Push to next table
 		lua_pushnil(Environment);
 		while (lua_next(Environment, -2) != 0)
@@ -416,8 +420,11 @@ bool ScriptManager::LoadHeightmapsInitLua(std::unordered_map<std::string, Height
 			heightmapsData.modelPositions.push_back(tempPos.y);
 			heightmapsData.modelPositions.push_back(tempPos.z);
 
-			// Add to map
-			allHeightmapData[filePath] = heightmapsData;
+			// Add to map (should only be ONE terrain heightfield, and this is used to set cam height later)
+			if(heightfieldType == "terrain")
+				allHeightmapData[heightfieldType] = heightmapsData;
+			else
+				allHeightmapData[filePath] = heightmapsData;
 
 			// Clear vectors of any data before adding more, and reset strings
 			heightmapsData.modelPositions.clear();

@@ -35,6 +35,8 @@
 	* @version 01
 	* @date 29/03/2018
 	*
+	* @version 02
+	* @date 26/05/2018
 	*/
 class GameControlEngine
 {

@@ -75,14 +75,15 @@ void GameWorld::Update()
 
 void GameWorld::Destroy()
 {
-	// Delete all textures
-	TextureManager::Instance().ReleaseAllTextures();
-
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		itr->second->Destroy();
 	}
+
+	// Delete all heightmap BruteForce
+	for (int i = 0; i < m_terrains.size()-1; i++)
+		delete m_terrains[i];
 }
 
 void GameWorld::SetPhysicsWorld(PhysicsEngine* physicsEngine, std::vector<btVector3> collisionBodyPositions)
