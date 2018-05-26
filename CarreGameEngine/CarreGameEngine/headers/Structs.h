@@ -17,7 +17,18 @@
 struct ModelsData
 {
 	std::string filePath;
+	std::string texFilePath;
 	std::vector<std::vector<float>> modelPositions;
 	std::vector<std::vector<float>> modelScales;
+};
+
+/// Struct to hold all of heightmaps data (positions, scales, size, filePath to load and texture)
+struct HeightmapsData
+{
+	std::string filePath;
+	std::string texFilePath;
+	int fileSize;
+	std::vector<float> modelPositions;
+	std::vector<float> modelScales;
 };
 #endif

@@ -210,5 +210,5 @@ unsigned int TextureFromFile(const char* path, const std::string& directory)
 	std::string filePath = std::string(path);
 	filePath = directory + '/' + filePath;
 
-	return TextureManager::Instance().LoadTexture(filePath);
+	return TextureManager::Instance().GetTextureID(filePath);
 }
