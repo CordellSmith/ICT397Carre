@@ -21,11 +21,12 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		if (itr->first == "Cube")
-		{
+		//if (itr->first == "Cube")
+		//{
 			itr->second->SetCamera(m_camera);
+
 			m_glRenderer.Prepare(itr->second->GetModel(), mainShader.VertexSource, mainShader.FragmentSource);
-		}
+	
 		if (itr->first == "md2")
 		{
 			itr->second->SetCamera(m_camera);
@@ -56,20 +57,33 @@ void GameWorld::Update()
 	// Render player
 	m_glRenderer.Render(m_player->GetModel());
 		
+
+	// Prepare assets
+	std::multimap<std::string, IGameAsset*>::iterator itr;
+	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
+	{
+		// TODO: Not drawing lightpoles due to drop in framerate
+		if (itr->first != "trafficLight")
+		{
+		m_glRenderer.Render(itr->second->GetModel());
+		}
+	}
+
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
 }
 
 void GameWorld::Destroy()
 {
-	// Delete all textures
-	TextureManager::Instance().ReleaseAllTextures();
-
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		itr->second->Destroy();
 	}
+
+	// Delete all heightmap BruteForce
+	for (int i = 0; i < m_terrains.size()-1; i++)
+		delete m_terrains[i];
 }
 
 void GameWorld::SetPhysicsWorld(PhysicsEngine* physicsEngine, std::vector<btVector3> collisionBodyPositions)
@@ -105,7 +119,14 @@ void GameWorld::UpdatePhysics()
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z());
-		m_glRenderer.Render(itr->second->GetModel());
+
+
+
+		if (itr->first == "md2")
+		{
+			m_glRenderer.Render(itr->second->GetModel());
+		}
+
 
 		i++;
 	}

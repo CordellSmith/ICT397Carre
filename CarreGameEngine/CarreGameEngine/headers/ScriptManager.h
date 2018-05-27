@@ -20,7 +20,11 @@
 * @version 1.4	Started on loading of all models. Got loading done correctly, just need to store them.
 *
 * @date 22/05/2018
-* @version 1.5	Finished loading of all model data (number of each model, positions, scales)
+* @version 1.5	Finished loading of all model data (number of each model, positions, scales).
+*
+* @date 23/05/2018
+* @version 1.6	Started loading of heightmap data. Planned to do this in ModelsInit.lua, but heightmaps
+*				have extra information that is needed, so a new function was created.
 */
 
 #ifndef SCRIPTMANAGER_H
@@ -108,6 +112,15 @@ class ScriptManager
 			* @return bool - True if load success, else false
 			*/
 		bool LoadModelsInitLua(std::unordered_map<std::string, ModelsData> &allModelData, ModelsData &modelData);
+
+			/**
+			* @brief Load all models
+			*
+			* Loads all models, their xyz position, and their xyz scale
+			*
+			* @return bool - True if load success, else false
+			*/
+		bool LoadHeightmapsInitLua(std::unordered_map<std::string, HeightmapsData> &allHeightmapData, HeightmapsData &heightmapsData);
 
 	private:
 

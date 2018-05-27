@@ -8,7 +8,9 @@ const int GameControlEngine::RunEngine()
 
 	GameLoop();
 
-	Destroy();
+	// NOTE: return 0 automatically calls ~GameControlEngine() which calls Destroy()
+	// This results in a crash on the second run through when trying to access/delete data already deleted
+	//Destroy();
 
 	return 0;
 }
@@ -19,37 +21,13 @@ void GameControlEngine::Initialize()
 	ScriptManager::Instance().LoadWindowInitLua(ScreenWidth, ScreenHeight, screenTitle, fullScreen);
 	ScriptManager::Instance().LoadCamInitLua(camPos, camYaw, camPitch, camFOV, camNearPlane, camFarPlane);
 	ScriptManager::Instance().LoadModelsInitLua(m_allModelsData, m_modelsData);
+	ScriptManager::Instance().LoadHeightmapsInitLua(m_allHeightmapsData, m_heightmapsData);
 
-	/********************************************TESTING********************************************/
-	//// Get iterator to start of map
-	//std::unordered_map<std::string, ModelsData>::iterator it = m_allModelsData.begin();
-
-	//// Search map for texture
-	//while (it != m_allModelsData.end())
-	//{
-	//	for (int k = 0; k < (*it).second.modelPositions.size(); k++)
-	//	{
-	//		std::cout << (*it).second.filePath << std::endl;
-
-	//		for (int l = 0; l < (*it).second.modelScales[k].size(); l++)
-	//		{
-	//			std::cout << (*it).second.modelScales[k][l] << " ";
-	//		}
-	//		for (int l = 0; l < (*it).second.modelPositions[k].size(); l++)
-	//		{
-	//			std::cout << (*it).second.modelPositions[k][l] << " ";
-	//		}
-	//		std::cout << std::endl;
-	//	}
-	//	// Increment iterator
-	//	std::cout << std::endl;
-	//	it++;
-	//}
-	/********************************************TESTING********************************************/
-
+	// Exit if error creating window
 	if (!m_windowManager || m_windowManager->Initialize(ScreenWidth, ScreenHeight, screenTitle, fullScreen) != 0)
 		exit(-1);
 
+	// Create viewport
 	glViewport(0, 0, ScreenWidth, ScreenHeight);
 
 	// Enable depth testing
@@ -59,21 +37,45 @@ void GameControlEngine::Initialize()
 	// Initialize gameworld
 	m_gameWorld = new GameWorld();
 
+	// Initialize camera perspective and position
+	m_camera->SetPerspective(glm::radians(camFOV), ScreenWidth / (float)ScreenHeight, camNearPlane, camFarPlane);
+	m_camera->PositionCamera(camPos.x, camPos.y, camPos.z, camYaw, glm::radians(camPitch));
+
 	// Holds terrains
 	std::vector<Bruteforce*> terrains;
-
-	// Main landscape terrain
-	Bruteforce* bfLandscape = new Bruteforce(100, 5, 100);
-	// Building terrain
-	Bruteforce* bfBuildings = new Bruteforce(100, 4, 100);
 
 	// Create new player
 	Player* player = new Player("Player");
 
-	// Set camera perspective and position
-	m_camera->SetPerspective(glm::radians(camFOV), ScreenWidth / (float)ScreenHeight, camNearPlane, camFarPlane);
-	m_camera->PositionCamera(camPos.x, camPos.y, camPos.z, camYaw, glm::radians(camPitch));
-	m_camera->SetPosition(glm::vec3(700, bfLandscape->GetAverageHeight(700, 700), 700.0));
+	/**********************************Loading of all heightfields at once**************************************/
+	// Get iterator to start of heightfields map
+	std::unordered_map<std::string, HeightmapsData>::iterator itHeightfields = m_allHeightmapsData.begin();
+	
+	// BruteForce variable
+	Bruteforce* bfHeightfield;
+
+	// Initialize all heightfields in map
+	while (itHeightfields != m_allHeightmapsData.end())
+	{
+		// Create new BruteForce
+		bfHeightfield = new Bruteforce((*itHeightfields).second.modelScales[0], (*itHeightfields).second.modelScales[1], (*itHeightfields).second.modelScales[2]);
+		
+		// Initialize data from map and push to terrains vector
+		bfHeightfield->LoadHeightfield((*itHeightfields).second.filePath, (*itHeightfields).second.fileSize);
+		bfHeightfield->GenerateTerrain(TextureManager::Instance().GetTextureID((*itHeightfields).second.texFilePath), (*itHeightfields).second.texFilePath);
+		bfHeightfield->SetPosition(glm::vec3((*itHeightfields).second.modelPositions[0], (*itHeightfields).second.modelPositions[1], (*itHeightfields).second.modelPositions[2]));
+		terrains.push_back(bfHeightfield);
+		
+		// Move camera to be on top of terrain 
+		if ((*itHeightfields).first == "terrain")
+		{
+			m_camera->SetPosition(glm::vec3(camPos.x, bfHeightfield->GetAverageHeight(camPos.x, camPos.z), camPos.z));
+		}
+
+		// Increment iterator
+		itHeightfields++;
+	}
+	/**********************************Loading of all heightfields at once**************************************/
 		
 	// Pass camera into gameworld
 	m_gameWorld->SetCamera(m_camera);
@@ -84,116 +86,80 @@ void GameControlEngine::Initialize()
 	// Initialize physics engine
 	m_physicsWorld = new PhysicsEngine();
 
-	// Load all textures
-	//ScriptManager::Instance().LoadTexturesInitLua();
-
-	// Light asset
-	/*
-	IGameAsset* light = m_assetFactory->CreateAsset(ASS_OBJECT, "TrafficLight");
-	light->LoadFromFilePath("res/objects/trafficlight/trafficlight.obj");
-	light->Prepare(testShader.VertexSource, testShader.FragmentSource);
-	light->SetPosition(glm::vec3(3.0, -1.0, 1.0));
-	light->SetScale(glm::vec3(0.2, 0.2, 0.2));
-	m_assetFactory->AddAsset(light);
-	*/
-
 	/*
 		When creating .raw files in Gimp. Make sure the file is Grey-scale when creating and when exporting, 
 		make sure to select raw image format (.data) and Planar (RRR GGG BBB). Then you can just rename the .data 
 		extension to .raw and its all good to go!
 	*/
 
-	// Bruteforce terrain
-	bfLandscape->LoadHeightfield("res/terrain/newcity.raw", 128);
-	bfLandscape->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
-	bfLandscape->SetPosition(glm::vec3(0.0, 0.0, 0.0));
-	terrains.push_back(bfLandscape);
-
-	bfBuildings->LoadHeightfield("res/terrain/buildingheightmap.raw", 16);
-	bfBuildings->GenerateTerrain(TextureManager::Instance().LoadTexture("res/terrain/buildingtexture.jpg"), "res/terrain/buildingtexture.jpg");
-	bfBuildings->SetPosition(glm::vec3(6000.0, -1.0, 5000.0));
-	terrains.push_back(bfBuildings);
+	/********************Loading of all models at once*******************/
+	// Create asset
+	IGameAsset* modelAsset;
 	
-	// Cube asset
-	IGameAsset* cube = m_assetFactory->CreateAsset(ASS_OBJECT, "Cube");
-	cube->LoadFromFilePath("res/objects/cube.obj");
-	cube->AddTexutre(TextureManager::Instance().LoadTexture("res/terrain/grass.jpg"), "res/terrain/grass.jpg");
-	cube->SetPosition(glm::vec3(400.0, 150.0, -100.0));
-	cube->SetScale(glm::vec3(100.0, 100.0, 100.0));
-	m_assetFactory->AddAsset(cube);
+	// Asset xyz scale and pos
+	float assetScaleXYZ[3];
+	float assetPosXYZ[3];
 
-	IGameAsset* md2Model = m_assetFactory->CreateAsset(ASS_OBJECT, "md2");
-	md2Model->LoadFromFilePath("res/objects/knight.md2");
-	md2Model->AddTexutre(TextureManager::Instance().LoadTexture("res/objects/knight.bmp"), "res/objects/knight.bmp");
-	md2Model->SetPosition(glm::vec3(10.0, 50.0, 10.0));
-	md2Model->SetScale(glm::vec3(10.0, 10.0, 10.0));
-	m_assetFactory->AddAsset(md2Model);
-	
-	/********************************************TESTING********************************************/
-	// Get iterator to start of map
-	std::unordered_map<std::string, ModelsData>::iterator it = m_allModelsData.begin();
+	// Get iterator to start of models map
+	std::unordered_map<std::string, ModelsData>::iterator itModels = m_allModelsData.begin();
 
-	// Search map for texture
-	while (it != m_allModelsData.end())
+	// Loop through map until all models created
+	while (itModels != m_allModelsData.end())
 	{
-		if ((*it).first == "player")
+		// For each different type of model that isn't the player model
+		if ((*itModels).first != "player")
 		{
-			m_modelsData = (*it).second;
-			break;
+			// For each model of same type
+			for (int k = 0; k < (*itModels).second.modelPositions.size(); k++)
+			{
+				// Get scales
+				for (int j = 0; j < (*itModels).second.modelScales[k].size(); j++)
+				{
+					assetScaleXYZ[j] = (*itModels).second.modelScales[k][j];
+				}
+
+				// Get positions
+				for (int j = 0; j < (*itModels).second.modelPositions[k].size(); j++)
+				{
+					assetPosXYZ[j] = (*itModels).second.modelPositions[k][j];
+				}
+
+				// Create name asset data and add to asset map
+				modelAsset = m_assetFactory->CreateAsset(ASS_OBJECT, (*itModels).first);
+				modelAsset->LoadFromFilePath((*itModels).second.filePath);
+				modelAsset->AddTexutre(TextureManager::Instance().GetTextureID((*itModels).second.texFilePath), (*itModels).second.texFilePath);
+				modelAsset->SetScale(glm::vec3(assetScaleXYZ[0], assetScaleXYZ[1], assetScaleXYZ[2]));
+				modelAsset->SetPosition(glm::vec3(assetPosXYZ[0], assetPosXYZ[1], assetPosXYZ[2]));
+				m_assetFactory->AddAsset(modelAsset);
+			}
+		}
+		// Player model
+		else if ((*itModels).first == "player")
+		{
+			for (int k = 0; k < (*itModels).second.modelPositions.size(); k++)
+			{
+				// Get scales
+				for (int j = 0; j < (*itModels).second.modelScales[k].size(); j++)
+				{
+					assetScaleXYZ[j] = (*itModels).second.modelScales[k][j];
+				}
+
+				// Get positions
+				for (int j = 0; j < (*itModels).second.modelPositions[k].size(); j++)
+				{
+					assetPosXYZ[j] = (*itModels).second.modelPositions[k][j];
+				}
+			}
+			// Initialize player model
+			player->LoadFromFilePath((*itModels).second.filePath);
+			player->SetPosition(glm::vec3(assetPosXYZ[0], assetPosXYZ[1], assetPosXYZ[2]));
+			player->SetScale(glm::vec3(assetScaleXYZ[0], assetScaleXYZ[1], assetScaleXYZ[2]));
 		}
 		// Increment iterator
-		it++;
-	}	
+		itModels++;
+	}
+	/********************Loading of all models at once*******************/
 
-	// Main character creation (filePath and scale read from m_modelsData)
-	player->LoadFromFilePath(m_modelsData.filePath);
-	player->SetPosition(glm::vec3(m_modelsData.modelPositions[0][0], m_modelsData.modelPositions[0][1], m_modelsData.modelPositions[0][2]));
-	player->SetScale(glm::vec3(m_modelsData.modelScales[0][0], m_modelsData.modelScales[0][1], m_modelsData.modelScales[0][2]));
-
-
-	/********************Loading of all models at once example (doesn't run)*******************/
-	//float scales[3];
-	//float positions[3];
-
-	// Search map for texture
-	//while (it != m_allModelsData.end())
-	//{
-	//	// For each different type of model (player already read in, so skip)
-	//	if ((*it).first != "player")
-	//	{
-	//		m_modelsData = (*it).second;
-
-	//		// Load model (.obj, .md2, etc)
-	//		model->LoadFromFilePath((*it).second.filePath);
-
-	//		// For each model of same type
-	//		for (int k = 0; k < (*it).second.modelPositions.size(); k++)
-	//		{
-	//			// Get scales
-	//			for (int l = 0; l < (*it).second.modelScales[k].size(); l++)
-	//			{
-	//				scales[l] = (*it).second.modelScales[k][l];
-	//			}
-
-	//			// Get positions
-	//			for (int l = 0; l < (*it).second.modelPositions[k].size(); l++)
-	//			{
-	//				positions[l] = (*it).second.modelPositions[k][l];
-	//			}
-
-	//			// Prepare shader, set scales, set positions of model data just read
-	//			model->Prepare(testShader.VertexSource, testShader.FragmentSource);
-	//			model->SetPosition(glm::vec3(scales[0], scales[1], scales[2]));
-	//			model->SetScale(glm::vec3(positions[0], positions[1], positions[2]));
-	//		}
-	//	}
-	//	// Increment iterator
-	//	it++;
-	//}
-	/********************Loading of all models at once example (doesn't run)*******************/
-
-	/********************************************TESTING********************************************/
-	
 	m_windowManager->GetInputManager()->SetPlayer(player);
 
 	// Physics engine initialization
@@ -255,12 +221,10 @@ void GameControlEngine::InitializePhysics()
 
 void GameControlEngine::Destroy()
 {
+	// Destroy game world
 	m_gameWorld->Destroy();
 
-	/// Delete all textures
-	//TextureManager::Instance().~TextureManager();
-
-	/// Delete window
+	// Delete window
 	if (m_windowManager)
 	{
 		m_windowManager->Destroy();
@@ -269,7 +233,7 @@ void GameControlEngine::Destroy()
 		m_windowManager = nullptr;
 	}
 
-	/// Delete camera
+	// Delete camera
 	if (m_camera)
 	{
 		delete m_camera;
