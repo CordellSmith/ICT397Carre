@@ -34,16 +34,14 @@ struct HeightmapsData
 
 
 
-/// Contains all the operations required by Vector3 variables
+/// Contains all the operations required by Vector2 variables
 /// Taken from old assignment
 ///TODO: Fix comments
-struct Vector3
+struct Vector2
 {
 public:
 	//x-axis value
 	float x;
-	//y-axis value
-	float y;
 	//z-axis value
 	float z;
 
@@ -53,25 +51,23 @@ public:
 	* @param y - y-axis value
 	* @param z - z-axis value
 	*/
-	Vector3(float x, float y, float z) {
-		Vector3::x = x;
-		Vector3::y = y;
-		Vector3::z = z;
+	Vector2(float x, float z) {
+		Vector2::x = x;
+		Vector2::z = z;
 	};
 
 	/**
 	* @brief A default constructor to set the
 	* vector's variables to 0.
 	*/
-	Vector3() { x = 0; y = 0; z = 0; };
+	Vector2() { x = 0; z = 0; };
 
 	/**
 	* @brief A constructor to set all variables to the parameter's value.
 	* @param num - the number to be set to.
 	*/
-	Vector3(float num) {
+	Vector2(float num) {
 		x = num;
-		y = num;
 		z = num;
 	}
 
@@ -80,11 +76,10 @@ public:
 	* @param A vector to be copied from.
 	* @return a bew vector
 	*/
-	Vector3 operator = (const Vector3 original) {
+	Vector2 operator = (const Vector2 original) {
 		x = original.x;
-		y = original.y;
 		z = original.z;
-		return Vector3(x, y, z);
+		return Vector2(x, z);
 	};
 
 	/**
@@ -93,8 +88,8 @@ public:
 	* @param two - the second vector
 	* @return a scalar value
 	*/
-	static float Dot(Vector3 one, Vector3 two) {
-		return one.x*two.x + one.y*two.y + one.z *two.z;
+	static float Dot(Vector2 one, Vector2 two) {
+		return one.x*two.x + one.z *two.z;
 	}
 
 	/**
@@ -102,8 +97,8 @@ public:
 	* @param os - reference to an output stream
 	* @param vector - a vector to be displayed.
 	*/
-	friend std::ostream & operator <<(std::ostream & os, const Vector3 & vector) {
-		os << vector.x << "  " << vector.y << "  " << vector.z;
+	friend std::ostream & operator <<(std::ostream & os, const Vector2 & vector) {
+		os << vector.x << "  " << vector.z;
 		return os;
 	}
 
@@ -114,7 +109,7 @@ public:
 	* @param c - the third point
 	* @return Normal vector
 	*/
-	static Vector3 Normal(Vector3 a, Vector3 b, Vector3 c) {
+	static Vector2 Normal(Vector2 a, Vector2 b, Vector2 c) {
 		return Cross(a - b, c - b);
 	}
 
@@ -124,8 +119,8 @@ public:
 	* @param second - the second vector
 	* @return the cross product
 	*/
-	static Vector3 Cross(const Vector3 first, const Vector3 second) {
-		return Vector3(first.y*second.z - first.z*second.y, first.z*second.x - first.x*second.z, first.x*second.y - first.y*second.x);
+	static Vector2 Cross(const Vector2 first, const Vector2 second) {
+		return Vector2(first.x * second.z + first.z * second.x);
 	}
 
 	/**
@@ -134,9 +129,8 @@ public:
 	* @param second - the second point
 	* @return the distance between the points.
 	*/
-	static float Distance(const Vector3 first, const Vector3 second) {
+	static float Distance(const Vector2 first, const Vector2 second) {
 		return sqrt((second.x - first.x)*(second.x - first.x) +
-			(second.y - first.y)*(second.y - first.y) +
 			(second.z - first.z)*(second.z - first.z));
 	}
 
@@ -145,11 +139,10 @@ public:
 	* @param the scalar
 	* @return the result of multiplication.
 	*/
-	Vector3 operator * (const float scalar) {
+	Vector2 operator * (const float scalar) {
 		x *= scalar;
-		y *= scalar;
 		z *= scalar;
-		return Vector3(x, y, z);
+		return Vector2(x, z);
 	};
 
 	/*
@@ -157,9 +150,8 @@ public:
 	* @param second - a vector which has to be added
 	* @return the result of addition.
 	*/
-	Vector3 operator + (const Vector3 second) {
+	Vector2 operator + (const Vector2 second) {
 		this->x += second.x;
-		this->y += second.y;
 		this->z += second.z;
 		return *this;
 	}
@@ -169,9 +161,8 @@ public:
 	* @param second - a vector which has to be subtracted from this vector.
 	* @return the result of subtraction.
 	*/
-	Vector3 operator - (const Vector3 second) {
+	Vector2 operator - (const Vector2 second) {
 		this->x -= second.x;
-		this->y -= second.y;
 		this->z -= second.z;
 		return *this;
 	}
@@ -185,8 +176,6 @@ public:
 		if (index == 0)
 			return x;
 		else if (index == 1)
-			return y;
-		else if (index == 2)
 			return z;
 		else
 			return -10000000;
@@ -201,8 +190,6 @@ public:
 		if (index == 0)
 			x = value;
 		else if (index == 1)
-			y = value;
-		else if (index == 2)
 			z = value;
 	}
 
@@ -212,11 +199,10 @@ public:
 	* @return the result of division
 	*
 	*/
-	Vector3 operator / (const float copy) {
+	Vector2 operator / (const float copy) {
 		x /= copy;
-		y /= copy;
 		z /= copy;
-		return Vector3(x, y, z);
+		return Vector2(x, z);
 	}
 
 	/*
@@ -224,19 +210,19 @@ public:
 	* @return the length of the vector.
 	*/
 	float Length() {
-		return sqrt((x*x) + (y*y) + (z*z));
+		return sqrt((x*x) + (z*z));
 	}
 
 	/**
 	* @brief Calculates a normalized version of the vector.
 	* @return the normalized vector.
 	*/
-	Vector3 Normalized() const {
-		float length = Vector3(x, y, z).Length();
+	Vector2 Normalized() const {
+		float length = Vector2(x, z).Length();
 		if (length == 0)
-			return Vector3(0);
+			return Vector2(0);
 		else {
-			return Vector3(x / length, y / length, z / length);
+			return Vector2(x / length, z / length);
 		}
 	}
 };

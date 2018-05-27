@@ -13,19 +13,21 @@
 // Includes
 #include "Singleton.h"
 #include "State.h"
+#include "ComputerAI.h"
+#include "TimeManager.h"
 
 /*****************************************Class Separator******************************************/
 
-class ComputerAI;
+//class ComputerAI;
 
 /*****************************************Class Separator******************************************/
 
 class IdleState:public State<ComputerAI>
 {
 public:
-	void Enter(ComputerAI* compAI) {};
-	void Execute(ComputerAI* compAI) {};
-	void Exit(ComputerAI* compAI) {};
+	void Enter(ComputerAI* compAI);
+	void Execute(ComputerAI* compAI);
+	void Exit(ComputerAI* compAI) ;
 };
 
 /*****************************************Class Separator******************************************/
@@ -33,7 +35,7 @@ public:
 class GlobalState :public State<ComputerAI>
 {
 public:
-	void Enter(ComputerAI* compAI) {};
+	void Enter(ComputerAI* compAI) { std::cout << "Entering Global state!" << std::endl; };
 	void Execute(ComputerAI* compAI) {};
 	void Exit(ComputerAI* compAI) {};
 };

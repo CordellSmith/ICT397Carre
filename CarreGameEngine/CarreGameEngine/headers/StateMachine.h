@@ -14,7 +14,6 @@
 #include <iostream>
 #include "State.h"
 #include "Structs.h"
-#include "GLM\glm.hpp"
 
 template <class entity_type>
 class StateMachine

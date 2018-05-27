@@ -17,7 +17,8 @@ ComputerAI::ComputerAI()
 	this->m_computerAIFSM->SetGlobalState(&m_globalState::GetInstance());
 
 	// Read from script
-	this->m_currPos = Vector3(0, 0, 0);
+	this->m_currPos = Vector2(0, 0);
+	this->m_currVel = Vector2(1, 0);
 	this->m_health = 100;
 	this->m_maxHealth = 100;
 	this->m_isDead = false;
@@ -58,41 +59,86 @@ int ComputerAI::GetHealth()
 	return this->m_health;
 }
 
-// Move to a location
-bool ComputerAI::MoveTo(Vector3 &currPos, Vector3 &targetPos, Vector3 &currVel, double timeElapsed, double offset)
+// Return if dead or not
+bool ComputerAI::IsDead()
 {
+	return m_isDead == true;
+}
+
+// Update the FSM
+void ComputerAI::Update()
+{
+	m_computerAIFSM->Update();
+}
+
+// Set current velocity
+void ComputerAI::SetVelocity(Vector2 vel)
+{
+	this->m_currVel = vel;
+}
+
+// Get current velocity
+Vector2 ComputerAI::GetVelocity()
+{
+	return m_currVel;
+}
+
+// Set current position
+void ComputerAI::SetPosition(Vector2 pos)
+{
+	this->m_currPos = pos;
+}
+
+// Return current position
+Vector2 ComputerAI::GetPosition()
+{
+	return m_currPos;
+}
+
+// Move to a location
+bool ComputerAI::MoveTo(ComputerAI* compAI)
+{
+	Vector2 targetPos(100, 100);
+	Vector2 currVel = compAI->GetVelocity();
+	Vector2 currPos = compAI->GetPosition();
+
 	// Calcute heading from this position to target position
-	Vector3 toTarget = targetPos - currPos;
-	toTarget.Normalized();
-	if(toTarget.Length() == 0)
+	Vector2 toTarget = targetPos - currPos;
+	toTarget = toTarget.Normalized();
+	if(toTarget.x == 0 && toTarget.z == 0)
 		return true;
 
 	// Calculate new velocity and new position
 	currVel = toTarget * currVel.Length();
-	Vector3 displacement = currVel * timeElapsed;
-	Vector3 newPos = currPos + displacement;
+	compAI->SetVelocity(currVel);
+	Vector2 displacement = currVel * 0.05;
+	Vector2 newPos = currPos + displacement;
 
 	// Calculate real target position
-	Vector3 realTargetPos = targetPos - (toTarget * offset);
+	Vector2 realTargetPos = targetPos - (toTarget * 0.5);
 
 	// Calculate the direction from newPos to realTargetPos
-	Vector3 toRealTarget = realTargetPos - newPos;
+	Vector2 toRealTarget = realTargetPos - newPos;
 	toRealTarget.Normalized();
-	if (toRealTarget.Length() == 0)
+	if (toRealTarget.x == 0 && toRealTarget.z == 0)
 	{
 		currPos = realTargetPos;
+		compAI->SetPosition(currPos);
 		return true;
 	}
-
+	
 	// Check to see whether newPos has passed the realTargetPos
 	float dp = toRealTarget.Dot(toRealTarget, toTarget);
 	if (dp < 0.0)
 	{
 		currPos = realTargetPos;
+		compAI->SetPosition(currPos);
 		return true;
 	}
 
 	// newPos has not yet passed realTargetPos
 	currPos = newPos;
+	compAI->SetPosition(currPos);
 	return false;
 }
+

@@ -12,7 +12,6 @@
 
 // Includes
 #include "State.h"
-#include <vector>
 #include "StateMachine.h"
 
 
@@ -64,8 +63,84 @@ class ComputerAI
 			* @return int - m_health
 			*/
 		int GetHealth();
+
+			/**
+			* @brief Returns if dead
+			*
+			* Return m_isDead to determine if dead or not
+			*
+			* @return bool - True if dead, false otherwise
+			*/
+		bool IsDead();
 		
-		bool MoveTo(Vector3 &currPos, Vector3 &targetPos, Vector3 &currVel, double timeElapsed, double offset);
+			/**
+			* @brief Update state
+			*
+			* Updates the current state
+			*
+			* @return void
+			*/
+		void Update();
+
+			/**
+			* @brief Set velocity
+			*
+			* Sets the current velocity
+			*
+			* @param vel - Velocity to be set
+			*
+			* @return void
+			*/
+		void SetVelocity(Vector2 vel);
+		
+			/**
+			* @brief Return velocity
+			*
+			* Returns the current velocity
+			*
+			* @return Vector2 - m_currVel
+			*/
+		Vector2 GetVelocity();
+
+			/**
+			* @brief Set position
+			*
+			* Sets the current position
+			*
+			* @param pos - Position to be set
+			*
+			* @return void
+			*/
+		void SetPosition(Vector2 pos);
+		
+			/**
+			* @brief Return position
+			*
+			* Returns the current position
+			*
+			* @return Vector2 - m_currPos
+			*/
+		Vector2 GetPosition();
+
+			/**
+			* @brief Move to a location
+			*
+			* Moves to a given location (waypoint, player, other AI)
+			*
+			* @param compAI - AI that is moving
+			*
+			* @return bool - True if at position, false otherwise
+			*/
+		bool MoveTo(ComputerAI* compAI);
+
+			/**
+			* @brief Return FSM
+			*
+			* Returns the FSM attached to this AI
+			*
+			* @return StateMachine<ComputerAI> - The FSM of the AI
+			*/
+		StateMachine<ComputerAI>* GetFSM() const { return m_computerAIFSM; }
 
 	private:
 
@@ -73,15 +148,18 @@ class ComputerAI
 		StateMachine<ComputerAI>* m_computerAIFSM;
 
 		/// Current XZ position
-		Vector3 m_currPos;
+		Vector2 m_currPos;
+
+		/// Current velocity
+		Vector2 m_currVel;
 
 		/// Current health points
 		int m_health;
 
 		/// Maximum health points
 		int m_maxHealth;
-
-		///
+		
+		/// Dead or not
 		bool m_isDead;
 };
 #endif
