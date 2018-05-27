@@ -2,11 +2,11 @@
 #version 330 core
 
 layout(location = 0) in vec3 inPos;
-layout(location = 1) in vec4 inColor;
+layout(location = 1) in vec2 inTexCoord;
 layout(location = 2) in vec3 inNormal;
-layout(location = 3) in vec2 inTexCoord;
+layout(location = 3) in vec4 inColor;
 
-out vec4 VertexColor;
+out vec2 TexCoord;
 
 uniform mat4 model;
 uniform mat4 view;
@@ -14,18 +14,20 @@ uniform mat4 projection;
 
 void main()
 {
-	gl_Position = projection * view * model * vec4(inPos, 0.5f);
-	VertexColor = inColor;
+	TexCoord = inTexCoord;
+    gl_Position = projection * view * model * vec4(inPos, 1.0f);
 }
 
 #shader fragment
 #version 330 core
 
-in vec4 VertexColor;
+out vec4 FragColor;
 
-layout(location = 0) out vec4 FragColor;
+in vec2 TexCoord;
+
+uniform sampler2D texture_diffuse1;
 
 void main()
 {
-	FragColor = VertexColor;
+    FragColor = texture(texture_diffuse1, TexCoord);
 }

@@ -59,11 +59,9 @@
     <None Include="res\scripts\ModelInit.lua" />
     <None Include="res\scripts\TexturesInit.lua" />
     <None Include="res\scripts\WindowInit.lua" />
-    <None Include="res\shaders\Basic.shader" />
-    <None Include="res\shaders\Cube.Shader" />
-    <None Include="res\shaders\Default.shader" />
     <None Include="res\shaders\Terrain.shader" />
-    <None Include="res\shaders\Test.shader" />
     <None Include="res\scripts\ModelsInit.lua" />
+    <None Include="res\shaders\Default.shader" />
+    <None Include="res\scripts\TerrainsInit.lua" />
   </ItemGroup>
 </Project>

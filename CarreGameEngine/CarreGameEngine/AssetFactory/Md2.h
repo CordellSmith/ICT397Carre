@@ -99,8 +99,8 @@ public:
 
 	bool ImportMD2(Model* model, const char* strFileName, std::string strTexture);
 	void ReadMd2Data();
-	void ParseAnimations(Model* md2Model);
-	void ConvertDataStructures(Model* md2Model);
+	//void ParseAnimations(Model* md2Model);
+	//void ConvertDataStructures(Model* md2Model);
 
 	void CleanUp() { }
 

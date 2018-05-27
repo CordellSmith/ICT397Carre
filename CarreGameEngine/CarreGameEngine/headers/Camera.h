@@ -133,7 +133,7 @@ public:
 	*
 	* @return float
 	*/
-	float GetYaw() { return m_yaw; }
+	float& GetYaw() { return m_yaw; }
 
 	/**
 	* @brief Sets the yaw
@@ -152,7 +152,7 @@ public:
 	*
 	* @return float
 	*/
-	float GetPitch() { return m_pitch; }
+	float& GetPitch() { return m_pitch; }
 
 	/**
 	* @brief Sets the camera pitch
@@ -228,8 +228,10 @@ public:
 	void MoveLeft(float speed);
 	void MoveRight(float speed);
 
-	float GetFov() { return m_fov; }
+	float& GetFov() { return m_fov; }
 	void SetFov(float fov) { m_fov = fov; }
+	float& GetNearPlane() { return m_nearPlane; }
+	float& GetFarPlane() { return m_farPlane; }
 
 	void Zoom(float yoffset);
 	void ChangePitch(float yoffset);

@@ -6,8 +6,7 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 	SetGameAssets(gameAssets);
 	
 	// Each new entity, asset needs its own shader (terrain or anything with multiple meshes especially)
-	ShaderSource mainShader = ParseShaders("res/shaders/Test.shader");
-	ShaderSource assimpShader = ParseShaders("res/shaders/Default.shader");
+	ShaderSource mainShader = ParseShaders("res/shaders/Default.shader");
 	ShaderSource terrainShader = ParseShaders("res/shaders/Terrain.shader");
 
 	// Prepare terrains
@@ -21,11 +20,8 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		//if (itr->first == "Cube")
-		//{
-			itr->second->SetCamera(m_camera);
-
-			m_glRenderer.Prepare(itr->second->GetModel(), mainShader.VertexSource, mainShader.FragmentSource);
+		itr->second->SetCamera(m_camera);
+		m_glRenderer.Prepare(itr->second->GetModel(), mainShader.VertexSource, mainShader.FragmentSource);
 	
 		if (itr->first == "md2")
 		{
@@ -65,7 +61,7 @@ void GameWorld::Update()
 		// TODO: Not drawing lightpoles due to drop in framerate
 		if (itr->first != "trafficLight")
 		{
-		m_glRenderer.Render(itr->second->GetModel());
+			m_glRenderer.Render(itr->second->GetModel());
 		}
 	}
 
@@ -120,14 +116,15 @@ void GameWorld::UpdatePhysics()
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z());
 
-
-
 		if (itr->first == "md2")
 		{
 			m_glRenderer.Render(itr->second->GetModel());
 		}
 
-
+		//if (itr->first == "trafficLight")
+		//{
+		//	m_glRenderer.Render(itr->second->GetModel());
+		//}
 		i++;
 	}
 }

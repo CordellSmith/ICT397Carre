@@ -14,7 +14,7 @@ bool Md2::ImportMD2(Model* model, const char* strFileName, std::string strTextur
 	std::string strMessage;
 
 	// Open the MD2 file in binary
-	m_filePointer = std::fopen(strFileName, "rb");
+	//m_filePointer = std::fopen(strFileName, "rb");
 
 	// Make sure we have a valid file pointer (we found the file)
 	if (!m_filePointer)
@@ -40,7 +40,7 @@ bool Md2::ImportMD2(Model* model, const char* strFileName, std::string strTextur
 
 	// Here we pass in our model structure so it can store and read Quake data
 	// in our own model and object structure data.
-	ConvertDataStructures(model);
+	//ConvertDataStructures(model);
 
 	CleanUp();
 
@@ -98,7 +98,7 @@ void Md2::ReadMd2Data()
 		fread(pFrame, 1, m_header.frameSize, m_filePointer);
 
 		// Copy the name of the animation to our frames array
-		strcpy(m_frames[i].strName, pFrame->name);
+		//strcpy(m_frames[i].strName, pFrame->name);
 
 		// Store off a vertex array pointer to cut down large lines of code
 		Md2Triangle* pVertices = m_frames[i].pVertices;
@@ -115,6 +115,7 @@ void Md2::ReadMd2Data()
 	}
 }
 
+/*
 void Md2::ParseAnimations(Model* model)
 {
 	for (int i = 0; i < model->numOfObjects; i++)
@@ -262,3 +263,4 @@ void Md2::ConvertDataStructures(Model* model)
 		pModel->pObject.push_back(currentFrame);
 	}
 }
+*/
