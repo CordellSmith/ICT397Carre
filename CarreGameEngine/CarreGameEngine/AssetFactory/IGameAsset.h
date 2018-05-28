@@ -119,6 +119,9 @@ public:
 
 	virtual void AddTexutre(GLuint textureId, std::string textureFilePath) = 0;
 
+	virtual void SetAI(ComputerAI* compAI) = 0;
+	virtual ComputerAI* GetAI() = 0;
+
 protected:
 	ASS_TYPE m_assetType;
 	std::string m_assetName;

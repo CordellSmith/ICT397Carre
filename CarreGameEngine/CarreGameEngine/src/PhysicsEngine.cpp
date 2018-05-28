@@ -37,6 +37,11 @@ PhysicsEngine::PhysicsEngine()
 
 	m_oldForce.setZero();
 	m_newForce.setZero();
+
+
+	/*btIDebugDraw tempp;
+	m_dynamicsWorld->setDebugDrawer(btIDebugDraw::DebugDrawModes::DBG_MAX_DEBUG_DRAW_MODE);
+	m_dynamicsWorld->deb*/
 }
 
 // De-constructor (not implemented)
@@ -81,7 +86,7 @@ void PhysicsEngine::CreateStaticRigidBody()
 void PhysicsEngine::CreatePlayerControlledRigidBody(btVector3 &playerObj)
 {
 	// Create box shape and add to shape array
-	btCollisionShape* camShape = new btSphereShape(1.0);
+	btCollisionShape* camShape = new btSphereShape(25.0);
 	m_collisionShapes.push_back(camShape);
 
 	// Create a dynamic object
@@ -124,7 +129,7 @@ void PhysicsEngine::CreatePlayerControlledRigidBody(btVector3 &playerObj)
 void PhysicsEngine::CreateDynamicRigidBody(btVector3 &pos)
 {
 	// Create box shape and add to shape array
-	btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(1.5), btScalar(0.5), btScalar(1.5)));
+	btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(5), btScalar(5), btScalar(5)));
 	m_collisionShapes.push_back(boxShape);
 
 	// Create a dynamic object
@@ -175,7 +180,8 @@ void PhysicsEngine::Simulate(std::vector<btVector3> &bodyPos, btVector3 &playerO
 		{
 			//body->clearForces();
 			btVector3 tempVel = body->getLinearVelocity();
-			body->setLinearVelocity(btVector3(0,tempVel.getY(),0));
+			//body->setLinearVelocity(btVector3(0,tempVel.getY(),0));
+			body->setLinearVelocity(btVector3(0, 0, 0));
 		}
 
 		// Update rigid body positions

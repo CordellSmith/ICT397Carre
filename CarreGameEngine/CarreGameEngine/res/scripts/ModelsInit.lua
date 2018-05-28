@@ -10,21 +10,22 @@ AllModels=
 {
 	cube=
 	{
-		{filePath = "res/objects/cube.obj", texFilePath = "res/terrain/grass.jpg", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 0.0, posY = 150.0, posZ = 200.0},
+		{filePath = "res/objects/cube.obj", texFilePath = "res/terrain/grass.jpg", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 0.0, posY = 150.0, posZ = 200.0, AI = false},
 		--{filePath = "res/objects/buildings/medium density/building.obj", texFilePath = "res/objects/buildings/medium density/cover.jpg",scaleX = 1.0, scaleY = 1.0, scaleZ = 1.0, posX = 400.0, posY = 150.0, posZ = 200.0},
 	},
 	player=
 	{
-		{filePath = "res/objects/taxi/taxi.obj", texFilePath = "", scaleX = 50.0, scaleY = 50.0, scaleZ = 50.0, posX = 900.0, posY = 150.0, posZ = 0.0},
+		{filePath = "res/objects/taxi/taxi.obj", texFilePath = "", scaleX = 50.0, scaleY = 50.0, scaleZ = 50.0, posX = 900.0, posY = 150.0, posZ = 0.0, AI = false},
 	},
 	trafficLight=
 	{
-		--{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 10.0, scaleY = 10.0, scaleZ = 10.0, posX = 300.0, posY = 150.0, posZ = 0.0},
-		--{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 400.0, posY = 150.0, posZ = 400.0},
-		--{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 500.0, posY = 150.0, posZ = 500.0},
+		--{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 300.0, posY = 150.0, posZ = 300.0, AI = false},
+		--{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 400.0, posY = 150.0, posZ = 400.0, AI = false},
+		--{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 500.0, posY = 150.0, posZ = 500.0, AI = false},
 	},
 	knight=
 	{
-		{filePath = "res/objects/knight.md2", texFilePath = "res/objects/knight.bmp", scaleX = 10.0, scaleY = 10.0, scaleZ = 10.0, posX = 10.0, posY = 50.0, posZ = 10.0},
+		{filePath = "res/objects/knight.md2", texFilePath = "res/objects/knight.bmp", scaleX = 4.0, scaleY = 4.0, scaleZ = 4.0, posX = 10.0, posY = 50.0, posZ = 10.0, AI = true},
+		{filePath = "res/objects/knight.md2", texFilePath = "res/objects/knight.bmp", scaleX = 4.0, scaleY = 4.0, scaleZ = 4.0, posX = 1000.0, posY = 50.0, posZ = 500.0, AI = true},
 	}
 }

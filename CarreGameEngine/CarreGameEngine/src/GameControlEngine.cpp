@@ -101,6 +101,9 @@ void GameControlEngine::Initialize()
 	/********************Loading of all models at once*******************/
 	// Create asset
 	IGameAsset* modelAsset;
+
+	//std::vector<ComputerAI*> m_allAI;
+	ComputerAI* modelAI;
 	
 	// Asset xyz scale and pos
 	float assetScaleXYZ[3];
@@ -136,6 +139,20 @@ void GameControlEngine::Initialize()
 				modelAsset->AddTexutre(TextureManager::Instance().GetTextureID((*itModels).second.texFilePath), (*itModels).second.texFilePath);
 				modelAsset->SetScale(glm::vec3(assetScaleXYZ[0], assetScaleXYZ[1], assetScaleXYZ[2]));
 				modelAsset->SetPosition(glm::vec3(assetPosXYZ[0], assetPosXYZ[1], assetPosXYZ[2]));
+
+				// Create AI
+				for (int k = 0; k < (*itModels).second.modelPositions.size(); k++)
+				{
+					// If AI model, make AI for it
+					if ((*itModels).second.isAI[k])
+					{
+						// Create new computerAI and push to vector storing them
+						modelAI = new ComputerAI(glm::vec3((*itModels).second.modelPositions[k][0], (*itModels).second.modelPositions[k][1], (*itModels).second.modelPositions[k][2]));
+						m_allAI.push_back(modelAI);
+						modelAsset->SetAI(modelAI);
+					}
+				}
+
 				m_assetFactory->AddAsset(modelAsset);
 			}
 		}
@@ -168,12 +185,21 @@ void GameControlEngine::Initialize()
 
 	m_windowManager->GetInputManager()->SetPlayer(player);
 
+
+	/********************AI Testing*******************/
+	/*ComputerAI* p = new ComputerAI();
+	for (int i = 0; i < 1000; i++)
+	p->Update();
+	getchar();*/
+	/********************AI Testing*******************/
+
 	// Physics engine initialization
 	InitializePhysics();
 
 	// Initialize the game world, pass in terrain, assets and physics engine *** Can be reworked *** 
 	m_gameWorld->SetTerrains(terrains);
 	m_gameWorld->Init(player, m_assetFactory->GetAssets());
+	m_gameWorld->SetAI(m_allAI);
 	m_gameWorld->SetPhysicsWorld(m_physicsWorld, m_collisionBodyPos);
 }
 
@@ -186,6 +212,31 @@ void GameControlEngine::GameLoop()
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
+
+
+
+		//// Get iterator to start of models map
+		//std::unordered_map<std::string, ModelsData>::iterator itr = m_allModelsData.begin();
+
+		//ComputerAI* compAI;
+
+		//// Loop through map until all models created
+		//while (itr != m_allModelsData.end())
+		//{
+
+		//	
+
+		//	compAI = (*itr).second.;
+		//	if (compAI != NULL)
+		//	{
+		//		compAI->Update();
+		//		Vector2 tempPos = compAI->GetPosition();
+		//		itr->second->SetPosition(glm::vec3(tempPos.x, 50, tempPos.z));
+		//	}
+		//}
+
+
+
 		// Update the game world
 		m_gameWorld->Update();
 
@@ -207,13 +258,19 @@ void GameControlEngine::InitializePhysics()
 	btVector3 bt_playerPos(playerPos.x, playerPos.y, playerPos.z);
 	m_collisionBodyPos.push_back(bt_playerPos);
 
+	int i = 1;
+
 	// Loop through map and add all assets to the collision body list
 	std::multimap<std::string, IGameAsset*>::const_iterator itr;
 	for (itr = m_assetFactory->GetAssets().begin(); itr != m_assetFactory->GetAssets().end(); itr++)
 	{
-		m_physicsWorld->CreateStaticRigidBody();
+		m_physicsWorld->CreateDynamicRigidBody(btVector3(itr->second->GetPosition().x,
+			itr->second->GetPosition().y, itr->second->GetPosition().z));
 		m_collisionBodyPos.push_back(btVector3(itr->second->GetPosition().x, 
 			itr->second->GetPosition().y, itr->second->GetPosition().z));
+
+		//std::cout << "Physics body added: " << i << std::endl;
+		i++;
 	}
 
 	//  *** Can this be changed to the terrain mesh? *** 

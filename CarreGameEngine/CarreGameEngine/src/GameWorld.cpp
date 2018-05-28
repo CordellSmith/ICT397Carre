@@ -1,5 +1,4 @@
 #include "..\headers\GameWorld.h"
-#include "..\headers\ComputerAI.h"
 
 // Animation testing
 #include "..\Animation\DynamicObject.h"
@@ -80,15 +79,16 @@ void GameWorld::Update()
 	m_glRenderer.Render(m_player->GetModel());
 
 	// Prepare assets
-	std::multimap<std::string, IGameAsset*>::iterator itr;
-	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
-	{
-		// TODO: Not drawing lightpoles due to drop in framerate
-		if (itr->first != "trafficLight")
-		{
-			m_glRenderer.Render(itr->second->GetModel());
-		}
-	}
+
+	//std::multimap<std::string, IGameAsset*>::iterator itr;
+	//for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
+	//{
+	//	// TODO: Not drawing lightpoles due to drop in framerate
+	//	if (itr->first != "trafficLight")
+	//	{
+	//		m_glRenderer.Render(itr->second->GetModel());
+	//	}
+	//}
 
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
@@ -146,11 +146,25 @@ void GameWorld::UpdatePhysics()
 	// Draw each object at the updated positions based on physics simulation
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	int i = 1;
+	ComputerAI* compAI;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z());
+		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()) + 50, m_collisionBodyPos[i].z());
+		//glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
-		if (itr->first == "md2")
+		compAI = itr->second->GetAI();
+		if (compAI != NULL)
+		{
+			compAI->Update();
+			Vector2 tempPos = compAI->GetPosition();
+			itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));
+		}
+		else
+		{
+			itr->second->SetPosition(temp);
+		}
+
+		if (itr->first == "knight")
 		{
 			m_glRenderer.Render(itr->second->GetModel());
 		}
