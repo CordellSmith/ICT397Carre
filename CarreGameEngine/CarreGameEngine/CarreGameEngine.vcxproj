@@ -139,10 +139,13 @@
     <None Include="res\shaders\Default.shader" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation\Definitions.h" />
+    <ClInclude Include="Animation\DynamicObject.h" />
+    <ClInclude Include="Animation\GLSLProgram.h" />
+    <ClInclude Include="Animation\Vertex.h" />
     <ClInclude Include="AssetFactory\Bruteforce.h" />
     <ClInclude Include="AssetFactory\Entity.h" />
     <ClInclude Include="AssetFactory\GameAssetFactory.h" />
-    <ClInclude Include="AssetFactory\Md2.h" />
     <ClInclude Include="AssetFactory\Mesh.h" />
     <ClInclude Include="AssetFactory\Model.h" />
     <ClInclude Include="AssetFactory\Player.h" />
@@ -174,10 +177,11 @@
     <ClInclude Include="Renderer\OpenGl.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation\DynamicObject.cpp" />
+    <ClCompile Include="Animation\GLSLProgram.cpp" />
     <ClCompile Include="AssetFactory\Bruteforce.cpp" />
     <ClCompile Include="AssetFactory\Entity.cpp" />
     <ClCompile Include="AssetFactory\GameAssetFactory.cpp" />
-    <ClCompile Include="AssetFactory\Md2.cpp" />
     <ClCompile Include="AssetFactory\Mesh.cpp" />
     <ClCompile Include="AssetFactory\Model.cpp" />
     <ClCompile Include="AssetFactory\Player.cpp" />

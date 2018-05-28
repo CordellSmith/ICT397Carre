@@ -3,9 +3,9 @@
 --Date: 17/05/2018
 --Brief: Initialise all camera variables
 --Note: Needs improvements
-camPosX=700
-camPosY=0
-camPosZ=700
+camPosX=300
+camPosY=250
+camPosZ=300
 yaw=0
 pitch=25
 camFOV=60

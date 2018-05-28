@@ -75,7 +75,7 @@ void GameControlEngine::Initialize()
 		// Move camera to be on top of terrain 
 		if ((*itHeightfields).first == "terrain")
 		{
-			m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, bfHeightfield->GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z), m_camera->GetPosition().z));
+			//m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, bfHeightfield->GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z), m_camera->GetPosition().z));
 		}
 
 		// Increment iterator
