@@ -152,21 +152,29 @@ void GameWorld::UpdatePhysics()
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()) + 50, m_collisionBodyPos[i].z());
 		//glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
-		compAI = itr->second->GetAI();
-		if (compAI != NULL)
-		{
-			compAI->Update();
-			Vector2 tempPos = compAI->GetPosition();
-			itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));
-		}
-		else
-		{
+		//compAI = itr->second->GetAI();
+		//if (compAI != NULL)
+		//{
+		//	compAI->Update();
+		//	
+		//	Vector2 tempPos = compAI->GetPosition();
+		//	itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));
+		//}
+		//else
+		//{
 			itr->second->SetPosition(temp);
-		}
+		//}
 
 		if (itr->first == "knight")
 		{
+			compAI = itr->second->GetAI();
+			compAI->Update();
+
+			Vector2 tempPos = compAI->GetPosition();
+			itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));
+
 			m_glRenderer.Render(itr->second->GetModel());
+			
 		}
 
 		if (itr->first == "cube")

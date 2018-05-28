@@ -18,11 +18,11 @@
 
 /*****************************************Class Separator******************************************/
 
-//class ComputerAI;
+class ComputerAI;
 
 /*****************************************Class Separator******************************************/
 
-class IdleState:public State<ComputerAI>
+class MoveState:public State<ComputerAI>
 {
 public:
 	void Enter(ComputerAI* compAI);
@@ -56,9 +56,24 @@ public:
 
 /*****************************************Class Separator******************************************/
 
+class IdleState :public State<ComputerAI>
+{
+public:
+	void Enter(ComputerAI* compAI);
+	void Execute(ComputerAI* compAI);
+	void Exit(ComputerAI* compAI) {};
+
+	bool isMoving;
+	std::vector<Vector2> m_waypoints;
+	Vector2 currTargetPos;
+};
+
+/*****************************************Class Separator******************************************/
+
 
 typedef Singleton<IdleState> m_idleState;
 typedef Singleton<GlobalState> m_globalState;
 typedef Singleton<StartState> m_startState;
+typedef Singleton<MoveState> m_moveState;
 
 #endif

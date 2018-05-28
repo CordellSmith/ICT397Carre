@@ -124,9 +124,9 @@ bool ComputerAI::MoveTo(ComputerAI* compAI, Vector2 targetPos)
 	Vector2 currPos = compAI->GetPosition();
 
 	// Calcute heading from this position to target position
-	Vector2 toTarget = targetPos - currPos;
-	toTarget = toTarget.Normalized();
-	if (toTarget.x == 0 && toTarget.z == 0)
+	Vector2 toTarget2 = targetPos - currPos;
+	Vector2 toTarget = toTarget2.Normalized();
+	if ((toTarget2.x < 10 && toTarget2.x > -10) && (toTarget2.z < 10 && toTarget2.z > -10))
 	{
 		std::cout << "here 0" << std::endl;
 		compAI->SetVelocity(Vector2(0, 0));
@@ -144,8 +144,8 @@ bool ComputerAI::MoveTo(ComputerAI* compAI, Vector2 targetPos)
 
 	// Calculate the direction from newPos to realTargetPos
 	Vector2 toRealTarget = realTargetPos - newPos;
-	toRealTarget.Normalized();
-	if (toRealTarget.x == 0 && toRealTarget.z == 0)
+	Vector2 toRealTarget2 = toRealTarget.Normalized();
+	if (toRealTarget2.x == 0 && toRealTarget2.z == 0)
 	{
 		std::cout << "here 1" << std::endl;
 		currPos = realTargetPos;
@@ -154,16 +154,18 @@ bool ComputerAI::MoveTo(ComputerAI* compAI, Vector2 targetPos)
 		return true;
 	}
 	
-	// Check to see whether newPos has passed the realTargetPos
-	float dp = toRealTarget.Dot(toRealTarget, toTarget);
-	if (dp < 0.0)
-	{
-		std::cout << "here 2" << std::endl;
-		currPos = realTargetPos;
-		compAI->SetPosition(targetPos);
-		compAI->SetVelocity(Vector2(0, 0));
-		return true;
-	}
+	//std::cout << toRealTarget2 << " : " << toTarget << std::endl;
+
+	//// Check to see whether newPos has passed the realTargetPos
+	//float dp = toRealTarget2.Dot(toRealTarget2, toTarget);
+	//if (dp < 0.0)
+	//{
+	//	std::cout << "here 2" << std::endl;
+	//	currPos = realTargetPos;
+	//	compAI->SetPosition(currPos);
+	//	compAI->SetVelocity(Vector2(0, 0));
+	//	return true;
+	//}
 
 	// newPos has not yet passed realTargetPos
 	currPos = newPos;
@@ -185,7 +187,7 @@ std::vector<Vector2> ComputerAI::MakeWaypoints()
 	//	//std::cout << waypoint << std::endl;
 	//}
 
-	waypoint = Vector2(1000,1000);
+	waypoint = Vector2(1000, 1000);
 	this->m_waypoints.push_back(waypoint);
 	waypoint = Vector2(-1000, -1000);
 	this->m_waypoints.push_back(waypoint);

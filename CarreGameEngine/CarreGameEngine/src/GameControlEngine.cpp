@@ -211,31 +211,6 @@ void GameControlEngine::GameLoop()
 		TimeManager::Instance().CalculateFrameRate(true);
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
-
-
-
-		//// Get iterator to start of models map
-		//std::unordered_map<std::string, ModelsData>::iterator itr = m_allModelsData.begin();
-
-		//ComputerAI* compAI;
-
-		//// Loop through map until all models created
-		//while (itr != m_allModelsData.end())
-		//{
-
-		//	
-
-		//	compAI = (*itr).second.;
-		//	if (compAI != NULL)
-		//	{
-		//		compAI->Update();
-		//		Vector2 tempPos = compAI->GetPosition();
-		//		itr->second->SetPosition(glm::vec3(tempPos.x, 50, tempPos.z));
-		//	}
-		//}
-
-
 
 		// Update the game world
 		m_gameWorld->Update();
