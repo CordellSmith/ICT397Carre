@@ -100,7 +100,11 @@ public:
 	virtual void AddTexutre(GLuint textureId, std::string textureFilePath);
 	
 	void SetModel(Model* model) { m_model = model; }
-	
+
+	void SetAI(ComputerAI* compAI) { m_model->SetAI(compAI); }
+
+	ComputerAI* GetAI() { return m_model->GetAI(); }
+
 protected:
 	/// Stores the file path containing the data
 	std::string m_filePath;

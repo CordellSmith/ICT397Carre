@@ -13,6 +13,7 @@
 #include "..\headers\Camera.h"
 #include "..\headers\Shader.h"
 #include "..\headers\TextureManager.h"
+#include "..\headers\ComputerAI.h"
 
 class Model
 {
@@ -57,6 +58,11 @@ public:
 	Shader* GetShader() { return m_shader; }
 	void SetShader(Shader* shader) { m_shader = shader; }
 
+	
+	void SetAI(ComputerAI* compAI) { m_compAI = compAI; }
+	ComputerAI* GetAI() { return m_compAI; }
+
+
 	unsigned int VAO;
 	
 protected:
@@ -70,4 +76,7 @@ protected:
 	glm::vec3 m_position;
 	glm::vec3 m_rotation;
 	glm::vec3 m_scale;
+
+
+	ComputerAI* m_compAI;
 };

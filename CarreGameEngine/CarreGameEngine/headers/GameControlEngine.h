@@ -17,6 +17,7 @@
 #include "..\AssetFactory\GameAssetFactory.h"
 #include "..\AssetFactory\Player.h"
 #include "..\Renderer\OpenGl.h"
+//#include "..\headers\ComputerAI.h"
 
 	/*
 	* @class GameControlEngine
@@ -180,4 +181,7 @@ protected:
 
 	/// Map containing all heightmaps data
 	std::unordered_map<std::string, HeightmapsData> m_allHeightmapsData;
+
+	/// Vector holding all AI
+	std::vector<ComputerAI*> m_allAI;
 };

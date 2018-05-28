@@ -13,6 +13,9 @@
 // Includes
 #include "State.h"
 #include "StateMachine.h"
+#include "GLM\glm.hpp"
+#include <vector>
+#include <time.h>
 
 
 class ComputerAI
@@ -25,6 +28,13 @@ class ComputerAI
 			* This is the default constructor
 			*/
 		ComputerAI();
+
+			/**
+			* @brief Default constructor
+			*
+			* This is the default constructor
+			*/
+		ComputerAI(glm::vec3 pos);
 
 			/**
 			* @brief De-constructor
@@ -131,7 +141,7 @@ class ComputerAI
 			*
 			* @return bool - True if at position, false otherwise
 			*/
-		bool MoveTo(ComputerAI* compAI);
+		bool MoveTo(ComputerAI* compAI, Vector2 targetPos);
 
 			/**
 			* @brief Return FSM
@@ -141,6 +151,10 @@ class ComputerAI
 			* @return StateMachine<ComputerAI> - The FSM of the AI
 			*/
 		StateMachine<ComputerAI>* GetFSM() const { return m_computerAIFSM; }
+
+		std::vector<Vector2> MakeWaypoints();
+
+		//std::vector<Vector2> MakeWaypoints();
 
 	private:
 
@@ -161,5 +175,10 @@ class ComputerAI
 		
 		/// Dead or not
 		bool m_isDead;
+
+		/// Vector of waypoints
+		std::vector<Vector2> m_waypoints;
+
+		
 };
 #endif

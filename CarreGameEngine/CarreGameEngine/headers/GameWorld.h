@@ -21,6 +21,7 @@
 #include "..\AssetFactory\Player.h"
 #include "..\Renderer\OpenGl.h"
 #include "..\headers\Shader.h"
+#include "..\headers\ComputerAI.h"
 
 //#pragma comment(lib, "legacy_stdio_definitions.lib")
 
@@ -150,6 +151,8 @@ public:
 
 	void SetTerrains(std::vector<Bruteforce*> terrains) { m_terrains = terrains; }
 
+	void SetAI(std::vector<ComputerAI*> allAI) { m_allAI = allAI; }
+
 protected:
 	/// Shader sources
 	ShaderSource m_assimpShaderSource, m_shaderSource1, m_shaderSource2, m_testShaderSource;
@@ -166,6 +169,8 @@ protected:
 	std::multimap<std::string, IGameAsset*> m_gameAssets;
 
 	std::vector<Bruteforce*> m_terrains;
+
+	std::vector<ComputerAI*> m_allAI;
 
 	Player* m_player;
 	float s = 0.01;
