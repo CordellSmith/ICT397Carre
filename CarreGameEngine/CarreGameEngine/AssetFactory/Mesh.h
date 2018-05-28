@@ -8,15 +8,9 @@
 #include <GLM\gtx\transform2.hpp>						
 #include <GL\glew.h>
 
+#include "..\headers\TextureManager.h"
 #include "..\Common\Vertex3.h"
 #include "..\headers\Shader.h"
-
-struct Texture
-{
-	unsigned int m_id;
-	std::string m_type;
-	std::string m_path;
-};
 
 class Mesh
 {
@@ -39,6 +33,7 @@ public:
 	std::vector<Texture>& GetTextures() { return m_textures; }
 		
 	unsigned int VAO, VBO, EBO;
+
 protected:
 	std::vector<Vertex3> m_vertices;
 	std::vector<unsigned int> m_indices;

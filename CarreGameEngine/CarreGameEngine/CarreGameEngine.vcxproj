@@ -132,15 +132,17 @@
     <None Include="res\scripts\CameraInit.lua" />
     <None Include="res\scripts\ModelInit.lua" />
     <None Include="res\scripts\ModelsInit.lua" />
+    <None Include="res\scripts\TerrainsInit.lua" />
     <None Include="res\scripts\TexturesInit.lua" />
     <None Include="res\scripts\WindowInit.lua" />
-    <None Include="res\shaders\Basic.shader" />
-    <None Include="res\shaders\Cube.Shader" />
-    <None Include="res\shaders\Default.shader" />
     <None Include="res\shaders\Terrain.shader" />
-    <None Include="res\shaders\Test.shader" />
+    <None Include="res\shaders\Default.shader" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation\Definitions.h" />
+    <ClInclude Include="Animation\DynamicObject.h" />
+    <ClInclude Include="Animation\GLSLProgram.h" />
+    <ClInclude Include="Animation\Vertex.h" />
     <ClInclude Include="AssetFactory\Bruteforce.h" />
     <ClInclude Include="AssetFactory\Entity.h" />
     <ClInclude Include="AssetFactory\GameAssetFactory.h" />
@@ -175,6 +177,8 @@
     <ClInclude Include="Renderer\OpenGl.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation\DynamicObject.cpp" />
+    <ClCompile Include="Animation\GLSLProgram.cpp" />
     <ClCompile Include="AssetFactory\Bruteforce.cpp" />
     <ClCompile Include="AssetFactory\Entity.cpp" />
     <ClCompile Include="AssetFactory\GameAssetFactory.cpp" />

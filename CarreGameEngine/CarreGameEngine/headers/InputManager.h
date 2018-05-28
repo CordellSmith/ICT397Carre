@@ -98,15 +98,6 @@ public:
 		* @return Camera*
 		*/
 	Camera* GetCamera() { return m_camera; }
-	
-		/**
-		* @brief Handles mouse movement
-		*
-		* This sends in an updated mouse x and y position that should be a change from (0, 0).
-		*
-		* @return void
-		*/
-	void MouseMoved(float mouseX, float mouseY);
 		
 	void MousePressed(InputCodes code, float mouseX, float mouseY);
 

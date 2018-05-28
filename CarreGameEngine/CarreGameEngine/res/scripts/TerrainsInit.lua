@@ -14,6 +14,6 @@ AllHeightmaps=
 	},
 	buildings=
 	{
-		{filePath = "res/terrain/buildingheightmap.raw", texFilePath = "res/terrain/buildingtexture.jpg", fileSize = 16, scaleX = 100.0, scaleY = 4.0, scaleZ = 100.0, posX = 6000.0, posY = -1.0, posZ = 6000.0},
+		--{filePath = "res/terrain/buildingheightmap.raw", texFilePath = "res/terrain/buildingtexture.jpg", fileSize = 16, scaleX = 100.0, scaleY = 4.0, scaleZ = 100.0, posX = 6000.0, posY = -1.0, posZ = 6000.0},
 	},
 }

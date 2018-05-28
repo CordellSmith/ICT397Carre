@@ -60,55 +60,10 @@ void Camera::MoveCamera(float speed)
 	m_position.z += viewVector.z * speed;
 }
 
-void Camera::MoveForward(float speed)
-{
-	glm::vec3 viewVector = GetView();
-
-	m_position.z += viewVector.z * speed * 10;
-}
-
-void Camera::MoveBack(float speed)
-{
-	glm::vec3 viewVector = GetView();
-	m_position.z -= viewVector.z * speed * 10;
-}
-
-void Camera::MoveLeft(float speed)
-{
-	m_position.x -= speed * 10;
-}
-
-void Camera::MoveRight(float speed)
-{
-	m_position.x += speed * 10;
-}
-
-void Camera::SetViewByMouse(float xOffset, float yOffset)
-{
-	// Rotate the yaw by the mouse's x offset, multiplied by a sensitivity speed setting
-	m_yaw += xOffset * (float)m_mouseSpeed;
-
-	// Rotate the pitch by the mouse's y offset, multiplied by a sensitivity speed setting
-	m_pitch += yOffset * (float)m_mouseSpeed;
-
-	if (m_yaw > 2 * PI)
-		m_yaw = 0;
-
-	// Yaw capped between 0 and 360
-	if (m_yaw < 0)
-		m_yaw = (float)(2 * PI);
-
-	// Pitch capped to 75 degrees up and -75 degrees down
-	if (m_pitch > glm::radians(70.5f))
-		m_pitch = glm::radians(70.5f);
-	if (m_pitch < glm::radians(-70.5f))
-		m_pitch = glm::radians(-70.5f);
-}
-
 void Camera::Zoom(float yoffset)
 {
 	// multiplication factor changes how fast scrolling in and out occurs
-	int mf = 2;
+	int mf = 4;
 
 	if (glm::degrees(m_fov) >= 1.0 && glm::degrees(m_fov) <= 61.0)
 	{
@@ -153,30 +108,29 @@ void Camera::ChangeAngleAroundPlayer(float xoffset)
 
 float Camera::CalculateHorizontalDistance()
 {
-	return (float)m_distanceFromPlayer * glm::cos(glm::radians(m_pitch));
+	return (float)m_distanceFromPlayer * glm::cos(m_pitch);
 }
 
 float Camera::CalculateVerticalDistance()
 {
-	return (float)m_distanceFromPlayer * glm::sin(glm::radians(m_pitch));
+	return (float)m_distanceFromPlayer * glm::sin(m_pitch);
 }
 
 void Camera::CalculateCameraPosition(float horizontalDistance, float verticalDistance)
 {
-	float theta = m_playerRotation.y + glm::radians(m_angleAroundPlayer);
+	float theta = m_playerRotation.y + m_angleAroundPlayer;
 	float xoffset = horizontalDistance * glm::sin(glm::radians(theta));
 	float zoffset = horizontalDistance * glm::cos(glm::radians(theta));
 
 	m_position.x = m_playerPosition.x - xoffset;
-	m_position.y = m_playerPosition.y + m_distanceFromPlayer;
-	m_position.z = m_playerPosition.z + zoffset;
+	m_position.y = m_playerPosition.y + verticalDistance;
+	m_position.z = m_playerPosition.z - zoffset;
 
 	m_yaw = glm::radians(180 - (m_playerRotation.y + m_angleAroundPlayer));	
 }
 
-void Camera::PassPlayerInfo(glm::vec3& position, glm::vec3& rotation)
+void Camera::ParsePlayerInfo(glm::vec3& position, glm::vec3& rotation)
 {
 	m_playerPosition = position;
 	m_playerRotation = rotation;
 }
-

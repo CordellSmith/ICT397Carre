@@ -1,14 +1,30 @@
 #include "..\headers\GameWorld.h"
 
+// Animation testing
+#include "..\Animation\DynamicObject.h"
+
+DynamicObject* md2file;
+double lastTime;
+
 void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gameAssets)
 {
 	// Sets this game contexts assets to the  loaded game assets from the control engine
 	SetGameAssets(gameAssets);
-	
+
 	// Each new entity, asset needs its own shader (terrain or anything with multiple meshes especially)
-	ShaderSource mainShader = ParseShaders("res/shaders/Test.shader");
-	ShaderSource assimpShader = ParseShaders("res/shaders/Default.shader");
+	ShaderSource mainShader = ParseShaders("res/shaders/Default.shader");
 	ShaderSource terrainShader = ParseShaders("res/shaders/Terrain.shader");
+
+	// Prepare player
+	m_player = player;
+	m_player->SetCamera(m_camera);
+	m_glRenderer.Prepare(m_player->GetModel(), mainShader.VertexSource, mainShader.FragmentSource);
+
+	// Pass player info to camera
+	m_camera->ParsePlayerInfo(m_player->GetPosition(), m_player->GetRotation());
+	float horizontalDistance = m_camera->CalculateHorizontalDistance();
+	float verticalDistance = m_camera->CalculateVerticalDistance();
+	m_camera->CalculateCameraPosition(horizontalDistance, verticalDistance);
 
 	// Prepare terrains
 	for each (Bruteforce* terrain in m_terrains)
@@ -21,11 +37,8 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		//if (itr->first == "Cube")
-		//{
-			itr->second->SetCamera(m_camera);
-
-			m_glRenderer.Prepare(itr->second->GetModel(), mainShader.VertexSource, mainShader.FragmentSource);
+		itr->second->SetCamera(m_camera);
+		m_glRenderer.Prepare(itr->second->GetModel(), mainShader.VertexSource, mainShader.FragmentSource);
 	
 		if (itr->first == "md2")
 		{
@@ -34,17 +47,25 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 		}
 	}
 
-	// Prepare player
-	m_player = player;
-	m_player->SetCamera(m_camera);
-	m_glRenderer.Prepare(m_player->GetModel(), mainShader.VertexSource, mainShader.FragmentSource);
+	// AI testing
+	/*ComputerAI p;
+	for (int i = 0; i < 1000; i++)
+		p.Update();
+	getchar();*/
 
-	// Pass player info to camera
-	m_camera->PassPlayerInfo(m_player->GetPosition(), m_player->GetRotation());
+	// Animation testing
+	//md2file = new DynamicObject(2.5, 512, 512, 0, 100);
+	//md2file->Import("res/objects/knight.md2", glm::mat4());
 }
 
 void GameWorld::Update()
 {
+	// Camera
+	m_camera->ParsePlayerInfo(m_player->GetPosition(), m_player->GetRotation());
+	float horizontalDistance = m_camera->CalculateHorizontalDistance();
+	float verticalDistance = m_camera->CalculateVerticalDistance();
+	m_camera->CalculateCameraPosition(horizontalDistance, verticalDistance);
+
 	// Blue sky
 	glClearColor(0.0, 0.0, 0.5, 1.0);
 
@@ -56,24 +77,30 @@ void GameWorld::Update()
 
 	// Render player
 	m_glRenderer.Render(m_player->GetModel());
-		
 
 	// Prepare assets
-	//std::multimap<std::string, IGameAsset*>::iterator itr;
-	//for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
-	//{
-	//	// TODO: Not drawing lightpoles due to drop in framerate
-	//	if (itr->first != "trafficLight")
-	//	{
-	//	m_glRenderer.Render(itr->second->GetModel());
-	//	}
-	//}
 
-	//glm::vec3 tempp = m_camera->GetPosition();
-	//std::cout <<tempp.x << " " << tempp.y << " " << tempp.z << std::endl;
+	std::multimap<std::string, IGameAsset*>::iterator itr;
+	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
+	{
+		// TODO: Not drawing lightpoles due to drop in framerate
+		if (itr->first != "trafficLight")
+		{
+			m_glRenderer.Render(itr->second->GetModel());
+		}
+	}
 
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
+
+	// Animation
+	//double now = glfwGetTime();
+	//md2file->Animate(now - lastTime);
+	//lastTime = now;
+
+	//md2file->UpdateVAO();
+
+	//md2file->Draw();
 }
 
 void GameWorld::Destroy()
@@ -111,11 +138,10 @@ void GameWorld::UpdatePhysics()
 	btVector3 temp2(temp1.x, temp1.y, temp1.z);
 	m_physicsWorld->Simulate(m_collisionBodyPos, temp2);
 
-	float newY = m_terrains[0]->GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) + 50;
+	//float newY = m_terrains[0]->GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) + 20;
 
 	// Set updated camera location
-	//m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, newY, m_camera->GetPosition().z));
-	m_camera->SetPosition(glm::vec3(temp2.getX(), newY, temp2.getZ()));
+	m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
 		
 	// Draw each object at the updated positions based on physics simulation
 	std::multimap<std::string, IGameAsset*>::iterator itr;
@@ -126,8 +152,6 @@ void GameWorld::UpdatePhysics()
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()) + 50, m_collisionBodyPos[i].z());
 		//glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
-		/*if (i == 3)
-			std::cout << temp.x << " " << temp.y << " " << temp.z << std::endl;*/
 
 		compAI = itr->second->GetAI();
 		if (compAI != NULL)
@@ -141,17 +165,20 @@ void GameWorld::UpdatePhysics()
 			itr->second->SetPosition(temp);
 		}
 
-		//itr->second->SetPosition(temp);
-
-		/*if (i == 3)
-			std::cout << temp.x << " " << temp.y << " " << temp.z << std::endl;*/
-
-		if (itr->first != "trafficLight")
+		if (itr->first == "md2")
 		{
 			m_glRenderer.Render(itr->second->GetModel());
 		}
 
+		if (itr->first == "cube")
+		{
+			m_glRenderer.Render(itr->second->GetModel());
+		}
 
+		//if (itr->first == "trafficLight")
+		//{
+		//	m_glRenderer.Render(itr->second->GetModel());
+		//}
 		i++;
 	}
 }

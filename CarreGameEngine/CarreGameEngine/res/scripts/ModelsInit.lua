@@ -11,11 +11,7 @@ AllModels=
 	cube=
 	{
 		{filePath = "res/objects/cube.obj", texFilePath = "res/terrain/grass.jpg", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 0.0, posY = 150.0, posZ = 200.0, AI = false},
-		{filePath = "res/objects/cube.obj", texFilePath = "res/terrain/grass.jpg", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 100.0, posY = 150.0, posZ = 100.0, AI = false},
-		{filePath = "res/objects/cube.obj", texFilePath = "res/terrain/grass.jpg", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 200.0, posY = 150.0, posZ = 200.0, AI = false},
-		{filePath = "res/objects/cube.obj", texFilePath = "res/terrain/grass.jpg", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 300.0, posY = 150.0, posZ = 100.0, AI = false},
-		{filePath = "res/objects/cube.obj", texFilePath = "res/terrain/grass.jpg", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 400.0, posY = 150.0, posZ = 200.0, AI = false},
-		{filePath = "res/objects/cube.obj", texFilePath = "res/terrain/grass.jpg", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 500.0, posY = 150.0, posZ = 100.0, AI = false},
+		--{filePath = "res/objects/buildings/medium density/building.obj", texFilePath = "res/objects/buildings/medium density/cover.jpg",scaleX = 1.0, scaleY = 1.0, scaleZ = 1.0, posX = 400.0, posY = 150.0, posZ = 200.0},
 	},
 	player=
 	{
@@ -23,9 +19,9 @@ AllModels=
 	},
 	trafficLight=
 	{
-		{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 300.0, posY = 150.0, posZ = 300.0, AI = false},
-		{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 400.0, posY = 150.0, posZ = 400.0, AI = false},
-		{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 500.0, posY = 150.0, posZ = 500.0, AI = false},
+		--{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 300.0, posY = 150.0, posZ = 300.0, AI = false},
+		--{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 400.0, posY = 150.0, posZ = 400.0, AI = false},
+		--{filePath = "res/objects/trafficlight/trafficlight.obj", texFilePath = "", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 500.0, posY = 150.0, posZ = 500.0, AI = false},
 	},
 	knight=
 	{

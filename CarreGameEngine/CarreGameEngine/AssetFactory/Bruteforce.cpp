@@ -19,10 +19,10 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 		{
 			Vertex3 vertex;
 
-			float tex00 = (float)x / (m_heightfieldSize * m_scaleX); // U
-			float tex01 = (float)z / (m_heightfieldSize * m_scaleZ); // V
-			float tex10 = (float)(x + 1) / (m_heightfieldSize * m_scaleX);
-			float tex11 = (float)(z + 1) / (m_heightfieldSize * m_scaleZ);
+			float tex00 = (float)x / (m_heightfieldSize); // U
+			float tex01 = (float)z / (m_heightfieldSize); // V
+			float tex10 = (float)(x + 1) / (m_heightfieldSize);
+			float tex11 = (float)(z + 1) / (m_heightfieldSize);
 
 			// Colour of triangle
 			colour = (float)GetHeightColour(x, z) / 255;
@@ -34,7 +34,7 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 			vertex.m_position.z = (float)z * m_scaleZ;
 
 			vertex.m_texCoords.x = tex00;
-			vertex.m_texCoords.y = tex00;
+			vertex.m_texCoords.y = tex11;
 			
 			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 0.0
 
@@ -43,7 +43,7 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 			vertex.m_position.z = (float)z * m_scaleZ;
 
 			vertex.m_texCoords.x = tex10;
-			vertex.m_texCoords.y = tex10;
+			vertex.m_texCoords.y = tex01;
 
 			tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 0.0
 
@@ -61,7 +61,7 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 			vertex.m_position.z = (float)z * m_scaleZ;
 
 			vertex.m_texCoords.x = tex00;
-			vertex.m_texCoords.y = tex00;
+			vertex.m_texCoords.y = tex01;
 
 			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 0.0
 
@@ -78,7 +78,7 @@ void Bruteforce::GenerateTerrain(GLuint textureId, std::string textureFilePath)
 			vertex.m_position.y = GetHeight(x, z + 1);
 			vertex.m_position.z = (float)(z + 1) * m_scaleZ;
 
-			vertex.m_texCoords.x = tex11;
+			vertex.m_texCoords.x = tex00;
 			vertex.m_texCoords.y = tex11;
 			
 			tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 1.0
