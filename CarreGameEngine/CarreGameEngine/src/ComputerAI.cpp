@@ -13,7 +13,7 @@ ComputerAI::ComputerAI()
 	this->m_computerAIFSM = new StateMachine<ComputerAI>(this);
 
 	// Possible change
-	this->m_computerAIFSM->SetCurrState(&m_idleState::GetInstance());
+	this->m_computerAIFSM->SetCurrState(&m_startState::GetInstance());
 	this->m_computerAIFSM->SetGlobalState(&m_globalState::GetInstance());
 
 	// Read from script
@@ -22,6 +22,8 @@ ComputerAI::ComputerAI()
 	this->m_health = 100;
 	this->m_maxHealth = 100;
 	this->m_isDead = false;
+
+	//MakeWaypoints();
 }
 
 // Default constructor
@@ -30,7 +32,7 @@ ComputerAI::ComputerAI(glm::vec3 pos)
 	this->m_computerAIFSM = new StateMachine<ComputerAI>(this);
 
 	// Possible change
-	this->m_computerAIFSM->SetCurrState(&m_idleState::GetInstance());
+	this->m_computerAIFSM->SetCurrState(&m_startState::GetInstance());
 	this->m_computerAIFSM->SetGlobalState(&m_globalState::GetInstance());
 
 	// Read from script
@@ -39,6 +41,8 @@ ComputerAI::ComputerAI(glm::vec3 pos)
 	this->m_health = 100;
 	this->m_maxHealth = 100;
 	this->m_isDead = false;
+
+	//MakeWaypoints();
 }
 
 // De-constructor
@@ -113,9 +117,9 @@ Vector2 ComputerAI::GetPosition()
 }
 
 // Move to a location
-bool ComputerAI::MoveTo(ComputerAI* compAI)
+bool ComputerAI::MoveTo(ComputerAI* compAI, Vector2 targetPos)
 {
-	Vector2 targetPos(1000, 1000);
+	//Vector2 targetPos(1000, 1000);
 	Vector2 currVel = compAI->GetVelocity();
 	Vector2 currPos = compAI->GetPosition();
 
@@ -124,6 +128,7 @@ bool ComputerAI::MoveTo(ComputerAI* compAI)
 	toTarget = toTarget.Normalized();
 	if (toTarget.x == 0 && toTarget.z == 0)
 	{
+		std::cout << "here 0" << std::endl;
 		compAI->SetVelocity(Vector2(0, 0));
 		return true;
 	}
@@ -135,14 +140,14 @@ bool ComputerAI::MoveTo(ComputerAI* compAI)
 	Vector2 newPos = currPos + displacement;
 
 	// Calculate real target position
-	Vector2 realTargetPos = targetPos - (toTarget * 0);
+	Vector2 realTargetPos = targetPos - (toTarget * 0.05);
 
 	// Calculate the direction from newPos to realTargetPos
 	Vector2 toRealTarget = realTargetPos - newPos;
 	toRealTarget.Normalized();
 	if (toRealTarget.x == 0 && toRealTarget.z == 0)
 	{
-		std::cout << "Here 1" << std::endl;
+		std::cout << "here 1" << std::endl;
 		currPos = realTargetPos;
 		compAI->SetPosition(currPos);
 		compAI->SetVelocity(Vector2(0, 0));
@@ -153,9 +158,9 @@ bool ComputerAI::MoveTo(ComputerAI* compAI)
 	float dp = toRealTarget.Dot(toRealTarget, toTarget);
 	if (dp < 0.0)
 	{
-		std::cout << "Here 2" << std::endl;
+		std::cout << "here 2" << std::endl;
 		currPos = realTargetPos;
-		compAI->SetPosition(currPos);
+		compAI->SetPosition(targetPos);
 		compAI->SetVelocity(Vector2(0, 0));
 		return true;
 	}
@@ -166,3 +171,18 @@ bool ComputerAI::MoveTo(ComputerAI* compAI)
 	return false;
 }
 
+std::vector<Vector2> ComputerAI::MakeWaypoints()
+{
+	Vector2 waypoint;
+
+	srand(time(NULL));
+
+	for (int i = 0; i < 5; i++)
+	{
+		waypoint = Vector2(rand() % 2000 + -1000, rand() % 2000 + -1000);
+		m_waypoints.push_back(waypoint);
+
+		//std::cout << waypoint << std::endl;
+	}
+	return m_waypoints;
+}

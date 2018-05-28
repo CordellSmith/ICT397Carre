@@ -27,7 +27,11 @@ class IdleState:public State<ComputerAI>
 public:
 	void Enter(ComputerAI* compAI);
 	void Execute(ComputerAI* compAI);
-	void Exit(ComputerAI* compAI) ;
+	void Exit(ComputerAI* compAI);
+
+	bool isMoving;
+	std::vector<Vector2> m_waypoints;
+	Vector2 currTargetPos;
 };
 
 /*****************************************Class Separator******************************************/
@@ -36,7 +40,17 @@ class GlobalState :public State<ComputerAI>
 {
 public:
 	void Enter(ComputerAI* compAI) { std::cout << "Entering Global state!" << std::endl; };
-	void Execute(ComputerAI* compAI) {};
+	void Execute(ComputerAI* compAI) {  };
+	void Exit(ComputerAI* compAI) {};
+};
+
+/*****************************************Class Separator******************************************/
+
+class StartState :public State<ComputerAI>
+{
+public:
+	void Enter(ComputerAI* compAI) {};
+	void Execute(ComputerAI* compAI);
 	void Exit(ComputerAI* compAI) {};
 };
 
@@ -45,5 +59,6 @@ public:
 
 typedef Singleton<IdleState> m_idleState;
 typedef Singleton<GlobalState> m_globalState;
+typedef Singleton<StartState> m_startState;
 
 #endif
