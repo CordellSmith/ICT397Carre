@@ -121,7 +121,6 @@ public:
 
 	virtual void SetAI(ComputerAI* compAI) = 0;
 	virtual ComputerAI* GetAI() = 0;
-	//virtual void SimulateAI() = 0;
 
 protected:
 	ASS_TYPE m_assetType;
