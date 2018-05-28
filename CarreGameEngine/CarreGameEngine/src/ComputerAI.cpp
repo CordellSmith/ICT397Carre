@@ -140,7 +140,7 @@ bool ComputerAI::MoveTo(ComputerAI* compAI, Vector2 targetPos)
 	Vector2 newPos = currPos + displacement;
 
 	// Calculate real target position
-	Vector2 realTargetPos = targetPos - (toTarget * 0.05);
+	Vector2 realTargetPos = targetPos - (toTarget * 0.001);
 
 	// Calculate the direction from newPos to realTargetPos
 	Vector2 toRealTarget = realTargetPos - newPos;
@@ -175,14 +175,23 @@ std::vector<Vector2> ComputerAI::MakeWaypoints()
 {
 	Vector2 waypoint;
 
-	srand(time(NULL));
+	//srand(time(NULL));
 
-	for (int i = 0; i < 5; i++)
-	{
-		waypoint = Vector2(rand() % 2000 + -1000, rand() % 2000 + -1000);
-		m_waypoints.push_back(waypoint);
+	//for (int i = 0; i < 5; i++)
+	//{
+	//	waypoint = Vector2(rand() % 2000 + -1000, rand() % 2000 + -1000);
+	//	this->m_waypoints.push_back(waypoint);
 
-		//std::cout << waypoint << std::endl;
-	}
-	return m_waypoints;
+	//	//std::cout << waypoint << std::endl;
+	//}
+
+	waypoint = Vector2(1000,1000);
+	this->m_waypoints.push_back(waypoint);
+	waypoint = Vector2(-1000, -1000);
+	this->m_waypoints.push_back(waypoint);
+	waypoint = Vector2(1000, -1000);
+	this->m_waypoints.push_back(waypoint);
+	waypoint = Vector2(-1000, 1000);
+	this->m_waypoints.push_back(waypoint);
+	return this->m_waypoints;
 }

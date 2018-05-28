@@ -80,15 +80,15 @@ void GameWorld::Update()
 
 	// Prepare assets
 
-	std::multimap<std::string, IGameAsset*>::iterator itr;
-	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
-	{
-		// TODO: Not drawing lightpoles due to drop in framerate
-		if (itr->first != "trafficLight")
-		{
-			m_glRenderer.Render(itr->second->GetModel());
-		}
-	}
+	//std::multimap<std::string, IGameAsset*>::iterator itr;
+	//for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
+	//{
+	//	// TODO: Not drawing lightpoles due to drop in framerate
+	//	if (itr->first != "trafficLight")
+	//	{
+	//		m_glRenderer.Render(itr->second->GetModel());
+	//	}
+	//}
 
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
@@ -152,7 +152,6 @@ void GameWorld::UpdatePhysics()
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()) + 50, m_collisionBodyPos[i].z());
 		//glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
-
 		compAI = itr->second->GetAI();
 		if (compAI != NULL)
 		{
@@ -165,7 +164,7 @@ void GameWorld::UpdatePhysics()
 			itr->second->SetPosition(temp);
 		}
 
-		if (itr->first == "md2")
+		if (itr->first == "knight")
 		{
 			m_glRenderer.Render(itr->second->GetModel());
 		}

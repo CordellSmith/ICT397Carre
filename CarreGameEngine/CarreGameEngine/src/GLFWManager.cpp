@@ -70,6 +70,7 @@ int GLFWManager::Initialize(int width, int height, std::string strTitle, bool bF
 		return -1;
 	}
 
+	srand(time(NULL));
 	return 0;
 }
 

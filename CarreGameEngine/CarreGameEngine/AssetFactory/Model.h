@@ -58,7 +58,7 @@ public:
 	Shader* GetShader() { return m_shader; }
 	void SetShader(Shader* shader) { m_shader = shader; }
 
-	ComputerAI* m_compAI;
+	
 	void SetAI(ComputerAI* compAI) { m_compAI = compAI; }
 	ComputerAI* GetAI() { return m_compAI; }
 
@@ -76,4 +76,7 @@ protected:
 	glm::vec3 m_position;
 	glm::vec3 m_rotation;
 	glm::vec3 m_scale;
+
+
+	ComputerAI* m_compAI;
 };

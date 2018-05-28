@@ -28,6 +28,7 @@ void IdleState::Execute(ComputerAI* compAI)
 
 		//srand(time(NULL));
 		int pos = rand() % m_waypoints.size();
+		std::cout << pos << std::endl;
 		currTargetPos = m_waypoints[pos];
 
 		std::cout << currTargetPos << std::endl;
