@@ -32,7 +32,11 @@ public:
 	*
 	* @return null
 	*/
-	Camera() { m_position = glm::vec3(0.0, 0.0, 0.0); }
+	Camera() { 
+		m_position = glm::vec3(0.0, 0.0, 0.0); 
+		m_distanceFromPlayer = 450.0;
+		m_angleAroundPlayer = 0.0;
+	}
 
 	/**
 	* @brief Default constructor
@@ -105,7 +109,7 @@ public:
 	*
 	* @return glm::vec3
 	*/
-	glm::vec3 GetPosition() { return m_position; }
+	glm::vec3& GetPosition() { return m_position; }
 
 	/**
 	* @brief Gets the camera view
@@ -133,7 +137,7 @@ public:
 	*
 	* @return float
 	*/
-	float GetYaw() { return m_yaw; }
+	float& GetYaw() { return m_yaw; }
 
 	/**
 	* @brief Sets the yaw
@@ -152,7 +156,7 @@ public:
 	*
 	* @return float
 	*/
-	float GetPitch() { return m_pitch; }
+	float& GetPitch() { return m_pitch; }
 
 	/**
 	* @brief Sets the camera pitch
@@ -223,13 +227,10 @@ public:
 	*/
 	void MoveCamera(float speed);
 
-	void MoveForward(float speed);
-	void MoveBack(float speed);
-	void MoveLeft(float speed);
-	void MoveRight(float speed);
-
-	float GetFov() { return m_fov; }
+	float& GetFov() { return m_fov; }
 	void SetFov(float fov) { m_fov = fov; }
+	float& GetNearPlane() { return m_nearPlane; }
+	float& GetFarPlane() { return m_farPlane; }
 
 	void Zoom(float yoffset);
 	void ChangePitch(float yoffset);
@@ -238,7 +239,7 @@ public:
 	float CalculateVerticalDistance();
 	void CalculateCameraPosition(float horizontalDistance, float verticalDistance);
 
-	void PassPlayerInfo(glm::vec3& position, glm::vec3& rotation);
+	void ParsePlayerInfo(glm::vec3& position, glm::vec3& rotation);
 	
 protected:
 	/// The camera's projection matrix
@@ -265,6 +266,6 @@ protected:
 	glm::vec3 m_playerPosition;
 	glm::vec3 m_playerRotation;
 	glm::vec3 m_playerScale;
-	float m_distanceFromPlayer = 45.0;
-	float m_angleAroundPlayer = 0.0;
+	float m_distanceFromPlayer;
+	float m_angleAroundPlayer;
 };

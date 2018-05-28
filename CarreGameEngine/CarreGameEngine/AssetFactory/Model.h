@@ -29,17 +29,16 @@ public:
 
 	void Destroy();
 
-	glm::vec3 GetPosition() { return m_position; }
+	glm::vec3& GetPosition() { return m_position; }
 	void SetPosition(glm::vec3 position);
 
-	glm::vec3 GetRotation() { return m_rotation; }
+	glm::vec3& GetRotation() { return m_rotation; }
 	void SetRotation(glm::vec3 rotation);
 
-	glm::vec3 GetScale() { return m_scale; }
+	glm::vec3& GetScale() { return m_scale; }
 	void SetScale(glm::vec3 scale);
 
 	Camera* GetCamera() { return m_camera; }
-
 
 		/**
 		* @brief Sets the camera object
@@ -57,6 +56,8 @@ public:
 
 	Shader* GetShader() { return m_shader; }
 	void SetShader(Shader* shader) { m_shader = shader; }
+
+	unsigned int VAO;
 	
 protected:
 	std::vector<Mesh> m_meshBatch;

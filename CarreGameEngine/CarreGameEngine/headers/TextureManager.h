@@ -32,6 +32,13 @@
 #include "soil2.h"
 #include "stb_image.h"
 
+struct Texture
+{
+	unsigned int m_id;
+	std::string m_type;
+	std::string m_path;
+};
+
 class TextureManager
 {
 	public:

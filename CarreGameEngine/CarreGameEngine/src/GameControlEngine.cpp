@@ -19,7 +19,13 @@ void GameControlEngine::Initialize()
 {
 	// Initialize from script
 	ScriptManager::Instance().LoadWindowInitLua(ScreenWidth, ScreenHeight, screenTitle, fullScreen);
-	ScriptManager::Instance().LoadCamInitLua(camPos, camYaw, camPitch, camFOV, camNearPlane, camFarPlane);
+	ScriptManager::Instance().LoadCamInitLua(
+		m_camera->GetPosition(), 
+		m_camera->GetYaw(), 
+		m_camera->GetPitch(), 
+		m_camera->GetFov(), 
+		m_camera->GetNearPlane(), 
+		m_camera->GetFarPlane());
 	ScriptManager::Instance().LoadModelsInitLua(m_allModelsData, m_modelsData);
 	ScriptManager::Instance().LoadHeightmapsInitLua(m_allHeightmapsData, m_heightmapsData);
 
@@ -38,8 +44,8 @@ void GameControlEngine::Initialize()
 	m_gameWorld = new GameWorld();
 
 	// Initialize camera perspective and position
-	m_camera->SetPerspective(glm::radians(camFOV), ScreenWidth / (float)ScreenHeight, camNearPlane, camFarPlane);
-	m_camera->PositionCamera(camPos.x, camPos.y, camPos.z, camYaw, glm::radians(camPitch));
+	m_camera->SetPerspective(glm::radians(m_camera->GetFov()), ScreenWidth / (float)ScreenHeight, m_camera->GetNearPlane(), m_camera->GetFarPlane());
+	m_camera->PositionCamera(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z, m_camera->GetYaw(), glm::radians(m_camera->GetPitch()));
 
 	// Holds terrains
 	std::vector<Bruteforce*> terrains;
@@ -69,7 +75,7 @@ void GameControlEngine::Initialize()
 		// Move camera to be on top of terrain 
 		if ((*itHeightfields).first == "terrain")
 		{
-			m_camera->SetPosition(glm::vec3(camPos.x, bfHeightfield->GetAverageHeight(camPos.x, camPos.z), camPos.z));
+			//m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, bfHeightfield->GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z), m_camera->GetPosition().z));
 		}
 
 		// Increment iterator

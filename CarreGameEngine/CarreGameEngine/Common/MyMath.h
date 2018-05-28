@@ -29,8 +29,8 @@ inline glm::mat4 CreateTransformationMatrix(glm::vec3 translation, glm::vec3 rot
 	modelMatrix = glm::translate(modelMatrix, translation);
 
 	// ROTATE
-	modelMatrix = glm::rotate(modelMatrix, rotation.x, glm::vec3(1, 0, 0));
-	modelMatrix = glm::rotate(modelMatrix, rotation.y, glm::vec3(0, 1, 0));
+	modelMatrix = glm::rotate(modelMatrix, glm::degrees(rotation.x), glm::vec3(1, 0, 0));
+	modelMatrix = glm::rotate(modelMatrix, glm::degrees(rotation.y), glm::vec3(0, 1, 0));
 	//modelMatrix = glm::rotate(modelMatrix, rotation.z, glm::vec3(0, 0, 1)); // We dont roll so no need for z rotation
 
 	// SCALE

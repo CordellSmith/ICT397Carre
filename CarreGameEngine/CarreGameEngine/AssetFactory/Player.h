@@ -14,10 +14,10 @@ public:
 
 	const void Destroy();
 
-	void MoveForward(float speed);
-	void MoveBackward(float speed);
-	void TurnClock(float speed);
-	void TurnAntiClock(float speed);
+	void MoveForward(float time);
+	void MoveBackward(float time);
+	void TurnClock(float time);
+	void TurnAntiClock(float time);
 	
 	const std::string & GetFilePath() const { return m_filePath; }
 	void SetFilePath(const std::string& filePath) { m_filePath = filePath; }
@@ -44,6 +44,6 @@ protected:
 
 	float m_currentMoveSpeed;
 	float m_currentTurnSpeed;
-	float m_moveSpeed;
-	float m_turnSpeed;
+	float m_moveSpeed = 2;
+	float m_turnSpeed = 0.5;
 };

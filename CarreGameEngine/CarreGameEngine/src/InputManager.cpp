@@ -11,17 +11,17 @@ void InputManager::KeyPressed(InputCodes code)
 	{
 		// Move forwards
 		case Up: case W: case w:
-			m_camera->MoveForward((float)(m_player->GetMoveSpeed() * TimeManager::Instance().DeltaTime));
+			m_player->MoveForward((float)(TimeManager::Instance().DeltaTime));
 			break;
 		// Move backwards
 		case Down: case S: case s:
-			m_camera->MoveBack((float)(m_player->GetMoveSpeed() * TimeManager::Instance().DeltaTime));
+			m_player->MoveBackward((float)(TimeManager::Instance().DeltaTime));
 			break;
 		case Left: case A: case a:
-			m_camera->MoveLeft((float)(m_player->GetMoveSpeed() * TimeManager::Instance().DeltaTime));
+			m_player->TurnAntiClock((float)(TimeManager::Instance().DeltaTime));
 			break;
 		case Right: case D: case d:
-			m_camera->MoveRight((float)(m_player->GetMoveSpeed() * TimeManager::Instance().DeltaTime));
+			m_player->TurnClock((float)(TimeManager::Instance().DeltaTime));
 			break;
 		case q: case Q:
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -30,14 +30,6 @@ void InputManager::KeyPressed(InputCodes code)
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 			break;
 	}
-}
-
-void InputManager::MouseMoved(float mouseX, float mouseY)
-{
-	if (m_camera == nullptr)
-		return;
-
-	m_camera->SetViewByMouse(mouseX, mouseY);
 }
 
 void InputManager::MousePressed(InputCodes code, float mouseX, float mouseY)

@@ -21,34 +21,34 @@ const void Player::Destroy()
 	return void();
 }
 
-void Player::MoveForward(float speed)
+void Player::MoveForward(float time)
 {
-	m_currentMoveSpeed = m_moveSpeed * speed;
+	m_currentMoveSpeed = m_moveSpeed * time * 15;
+	float dx = m_currentMoveSpeed * glm::sin(m_playerModel->GetRotation().y);
+	float dz = m_currentMoveSpeed * glm::cos(m_playerModel->GetRotation().y);
 
-	float dx = (float)(m_currentMoveSpeed * glm::sin(m_playerModel->GetRotation().y));
-	float dz = (float)(m_currentMoveSpeed * glm::cos(m_playerModel->GetRotation().y));
-
-	m_playerModel->SetPosition(glm::vec3(m_playerModel->GetPosition().x + dx, 0.0, m_playerModel->GetPosition().z + dz));
+	glm::vec3 temp = m_playerModel->GetPosition() + glm::vec3(dx, 0, dz);
+	m_playerModel->SetPosition(temp);
 }
 
-void Player::MoveBackward(float speed)
+void Player::MoveBackward(float time)
 {
-	m_currentMoveSpeed = m_moveSpeed * speed;;
+	m_currentMoveSpeed = -m_moveSpeed * time * 15;
+	float dx = m_currentMoveSpeed * glm::sin(m_playerModel->GetRotation().y);
+	float dz = m_currentMoveSpeed * glm::cos(m_playerModel->GetRotation().y);
 
-	float dx = (float)(m_currentMoveSpeed * glm::sin(glm::radians(m_playerModel->GetRotation().y)));
-	float dz = (float)(m_currentMoveSpeed * glm::cos(glm::radians(m_playerModel->GetRotation().y)));
-
-	m_playerModel->SetPosition(glm::vec3(m_playerModel->GetPosition().x - dx, 0.0, m_playerModel->GetPosition().z - dz));
+	glm::vec3 temp = m_playerModel->GetPosition() + glm::vec3(dx, 0, dz);
+	m_playerModel->SetPosition(temp);
 }
 
-void Player::TurnClock(float speed)
+void Player::TurnClock(float time)
 {
-	m_currentTurnSpeed = m_turnSpeed * speed;
-	m_playerModel->SetRotation(glm::vec3(0.0, m_playerModel->GetRotation().y - m_currentTurnSpeed, 0.0));
+	m_currentTurnSpeed = -m_turnSpeed * time * 10;
+	m_playerModel->SetRotation(glm::vec3(0, m_playerModel->GetRotation().y + m_currentTurnSpeed, 0));
 }
 
-void Player::TurnAntiClock(float speed)
+void Player::TurnAntiClock(float time)
 {
-	m_currentTurnSpeed = m_turnSpeed * speed;
-	m_playerModel->SetRotation(glm::vec3(0.0, m_playerModel->GetRotation().y + m_currentTurnSpeed, 0.0));
+	m_currentTurnSpeed = m_turnSpeed * time * 10;
+	m_playerModel->SetRotation(glm::vec3(0, m_playerModel->GetRotation().y + m_currentTurnSpeed, 0));
 }

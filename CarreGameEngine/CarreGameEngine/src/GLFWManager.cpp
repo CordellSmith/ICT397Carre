@@ -106,10 +106,6 @@ bool GLFWManager::ProcessInput(bool continueGame = true)
 	// Current mouse position
 	glfwGetCursorPos(m_window, &mouseX, &mouseY);
 	
-	// Tell input manager the mouse moved
-	if (mouseX != 0 && mouseY != 0)
-		m_inputManager.MouseMoved((float)mouseX, (float)mouseY);
-
 	glfwSetCursorPos(m_window, 0, 0);
 
 	// Tell input manager the mouse button has been (is being) clicked
