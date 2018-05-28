@@ -10,6 +10,7 @@
     <ClCompile Include="AssetFactory\Terrain.cpp" />
     <ClCompile Include="AssetFactory\NPC.cpp" />
     <ClCompile Include="AssetFactory\Object.cpp" />
+	<ClCompile Include="AssetFactory\Md2.cpp" />
     <ClCompile Include="Renderer\OpenGl.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\GameControlEngine.cpp" />
@@ -21,7 +22,8 @@
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="src\TimeManager.cpp" />
-    <ClCompile Include="AssetFactory\Md2.cpp" />
+    <ClCompile Include="src\AllStatesFSM.cpp" />
+    <ClCompile Include="src\ComputerAI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetFactory\Bruteforce.h" />
@@ -34,6 +36,7 @@
     <ClInclude Include="AssetFactory\NPC.h" />
     <ClInclude Include="AssetFactory\IGameAsset.h" />
     <ClInclude Include="AssetFactory\Object.h" />
+	<ClInclude Include="AssetFactory\Md2.h" />
     <ClInclude Include="Common\MyMath.h" />
     <ClInclude Include="Common\Vertex3.h" />
     <ClInclude Include="headers\Camera.h" />
@@ -52,7 +55,10 @@
     <ClInclude Include="ImageDB\stb_image.h" />
     <ClInclude Include="Renderer\IRenderer.h" />
     <ClInclude Include="Renderer\OpenGl.h" />
-    <ClInclude Include="AssetFactory\Md2.h" />
+    <ClInclude Include="headers\StateMachine.h" />
+    <ClInclude Include="headers\State.h" />
+    <ClInclude Include="headers\AllStatesFSM.h" />
+    <ClInclude Include="headers\ComputerAI.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\scripts\CameraInit.lua" />

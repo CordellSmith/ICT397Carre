@@ -21,10 +21,10 @@ public:
 	*
 	* @return static Static T*
 	*/
-	Static T* GetInstance() {
-		static T instance;
+	static T& GetInstance() {
+		static T _instance;
 		
-		return &instance;
+		return _instance;
 	}
 
 private:

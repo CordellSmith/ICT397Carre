@@ -1,4 +1,5 @@
 #include "..\headers\GameWorld.h"
+#include "..\headers\ComputerAI.h"
 
 void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gameAssets)
 {
@@ -37,6 +38,13 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 
 	// Pass player info to camera
 	m_camera->PassPlayerInfo(m_player->GetPosition(), m_player->GetRotation());
+
+
+	// AI testing
+	/*ComputerAI p;
+	for (int i = 0; i < 1000; i++)
+		p.Update();
+	getchar();*/
 }
 
 void GameWorld::Update()

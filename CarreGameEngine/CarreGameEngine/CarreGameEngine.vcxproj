@@ -152,7 +152,9 @@
     <ClInclude Include="AssetFactory\Object.h" />
     <ClInclude Include="Common\MyMath.h" />
     <ClInclude Include="Common\Vertex3.h" />
+    <ClInclude Include="headers\AllStatesFSM.h" />
     <ClInclude Include="headers\Camera.h" />
+    <ClInclude Include="headers\ComputerAI.h" />
     <ClInclude Include="headers\GameControlEngine.h" />
     <ClInclude Include="headers\GameWorld.h" />
     <ClInclude Include="headers\GLFWManager.h" />
@@ -161,6 +163,8 @@
     <ClInclude Include="headers\ScriptManager.h" />
     <ClInclude Include="headers\Shader.h" />
     <ClInclude Include="headers\Singleton.h" />
+    <ClInclude Include="headers\State.h" />
+    <ClInclude Include="headers\StateMachine.h" />
     <ClInclude Include="headers\Structs.h" />
     <ClInclude Include="headers\TextureManager.h" />
     <ClInclude Include="headers\TimeManager.h" />
@@ -181,7 +185,9 @@
     <ClCompile Include="AssetFactory\NPC.cpp" />
     <ClCompile Include="AssetFactory\Object.cpp" />
     <ClCompile Include="Renderer\OpenGl.cpp" />
+    <ClCompile Include="src\AllStatesFSM.cpp" />
     <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\ComputerAI.cpp" />
     <ClCompile Include="src\GameControlEngine.cpp" />
     <ClCompile Include="src\GameWorld.cpp" />
     <ClCompile Include="src\GLFWManager.cpp" />

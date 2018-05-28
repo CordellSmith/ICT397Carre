@@ -136,7 +136,7 @@ class ScriptManager
 			/**
 			* @brief De-constructor
 			*
-			* This is the deconstructor
+			* This is the de-constructor
 			*/
 		~ScriptManager();
 };
