@@ -115,7 +115,7 @@ Vector2 ComputerAI::GetPosition()
 // Move to a location
 bool ComputerAI::MoveTo(ComputerAI* compAI)
 {
-	Vector2 targetPos(100, 100);
+	Vector2 targetPos(1000, 1000);
 	Vector2 currVel = compAI->GetVelocity();
 	Vector2 currPos = compAI->GetPosition();
 
@@ -135,13 +135,14 @@ bool ComputerAI::MoveTo(ComputerAI* compAI)
 	Vector2 newPos = currPos + displacement;
 
 	// Calculate real target position
-	Vector2 realTargetPos = targetPos - (toTarget * 0.5);
+	Vector2 realTargetPos = targetPos - (toTarget * 0);
 
 	// Calculate the direction from newPos to realTargetPos
 	Vector2 toRealTarget = realTargetPos - newPos;
 	toRealTarget.Normalized();
 	if (toRealTarget.x == 0 && toRealTarget.z == 0)
 	{
+		std::cout << "Here 1" << std::endl;
 		currPos = realTargetPos;
 		compAI->SetPosition(currPos);
 		compAI->SetVelocity(Vector2(0, 0));
@@ -152,6 +153,7 @@ bool ComputerAI::MoveTo(ComputerAI* compAI)
 	float dp = toRealTarget.Dot(toRealTarget, toTarget);
 	if (dp < 0.0)
 	{
+		std::cout << "Here 2" << std::endl;
 		currPos = realTargetPos;
 		compAI->SetPosition(currPos);
 		compAI->SetVelocity(Vector2(0, 0));

@@ -98,6 +98,10 @@ public:
 	virtual Model* GetModel() { return m_model; }
 
 	virtual void AddTexutre(GLuint textureId, std::string textureFilePath) { }
+
+	void SetAI(ComputerAI* compAI) { m_model->SetAI(compAI); }
+
+	ComputerAI* GetAI() { return m_model->GetAI(); }
 		
 protected:
 	/// Stores the file path containing the data

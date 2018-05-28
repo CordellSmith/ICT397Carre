@@ -16,17 +16,17 @@ void IdleState::Enter(ComputerAI* compAI)
 
 void IdleState::Execute(ComputerAI* compAI)
 {
-	std::cout << "Entering 'Execute' state!" << std::endl;
+	//std::cout << "Entering 'Execute' state!" << std::endl;
 
 	// If no velocity, set to walking
 	Vector2 tempVel = compAI->GetVelocity();
 	if (tempVel.x == 0 && tempVel.z == 0)
-		compAI->SetVelocity(Vector2(1, 0));
+		compAI->SetVelocity(Vector2(5, 0));
 
-	bool temp = compAI->MoveTo(compAI);
+	compAI->MoveTo(compAI);
 	
-
-	std::cout << temp << " " <<compAI->GetPosition() << std::endl;
+	//std::cout << compAI->GetVelocity() << std::endl;
+	//std::cout << compAI->GetPosition() << std::endl;
 }
 
 void IdleState::Exit(ComputerAI* compAI)

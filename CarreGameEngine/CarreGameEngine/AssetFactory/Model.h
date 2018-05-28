@@ -13,6 +13,7 @@
 #include "..\headers\Camera.h"
 #include "..\headers\Shader.h"
 #include "..\headers\TextureManager.h"
+#include "..\headers\ComputerAI.h"
 
 class Model
 {
@@ -57,7 +58,12 @@ public:
 
 	Shader* GetShader() { return m_shader; }
 	void SetShader(Shader* shader) { m_shader = shader; }
-	
+
+
+	ComputerAI* m_compAI;
+	void SetAI(ComputerAI* compAI) { m_compAI = compAI; }
+	ComputerAI* GetAI() { return m_compAI; }
+
 protected:
 	std::vector<Mesh> m_meshBatch;
 	std::vector<Texture> m_texturesLoaded;

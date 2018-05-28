@@ -8,6 +8,7 @@ Model::Model()
 {
 	SetScale(glm::vec3(1.0, 1.0, 1.0));
 	m_shader = new Shader();
+	m_compAI = NULL;
 }
 
 void Model::LoadModel(std::string filePath)

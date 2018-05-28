@@ -133,19 +133,21 @@ void GameControlEngine::Initialize()
 				modelAsset->AddTexutre(TextureManager::Instance().GetTextureID((*itModels).second.texFilePath), (*itModels).second.texFilePath);
 				modelAsset->SetScale(glm::vec3(assetScaleXYZ[0], assetScaleXYZ[1], assetScaleXYZ[2]));
 				modelAsset->SetPosition(glm::vec3(assetPosXYZ[0], assetPosXYZ[1], assetPosXYZ[2]));
-				m_assetFactory->AddAsset(modelAsset);
-			}
 
-			// Create AI
-			for (int k = 0; k < (*itModels).second.modelPositions.size(); k++)
-			{
-				// If AI model, make AI for it
-				if ((*itModels).second.isAI[k])
+				// Create AI
+				for (int k = 0; k < (*itModels).second.modelPositions.size(); k++)
 				{
-					// Create new computerAI and push to vector storing them
-					modelAI = new ComputerAI(glm::vec3((*itModels).second.modelPositions[k][0], (*itModels).second.modelPositions[k][1], (*itModels).second.modelPositions[k][2]));
-					m_allAI.push_back(modelAI);
+					// If AI model, make AI for it
+					if ((*itModels).second.isAI[k])
+					{
+						// Create new computerAI and push to vector storing them
+						modelAI = new ComputerAI(glm::vec3((*itModels).second.modelPositions[k][0], (*itModels).second.modelPositions[k][1], (*itModels).second.modelPositions[k][2]));
+						m_allAI.push_back(modelAI);
+						modelAsset->SetAI(modelAI);
+					}
 				}
+
+				m_assetFactory->AddAsset(modelAsset);
 			}
 		}
 		// Player model
@@ -236,7 +238,7 @@ void GameControlEngine::InitializePhysics()
 		m_collisionBodyPos.push_back(btVector3(itr->second->GetPosition().x, 
 			itr->second->GetPosition().y, itr->second->GetPosition().z));
 
-		std::cout << "Physics body added: " << i << std::endl;
+		//std::cout << "Physics body added: " << i << std::endl;
 		i++;
 	}
 

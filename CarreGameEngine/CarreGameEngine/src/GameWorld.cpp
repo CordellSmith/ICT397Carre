@@ -69,8 +69,8 @@ void GameWorld::Update()
 	//	}
 	//}
 
-	glm::vec3 tempp = m_camera->GetPosition();
-	std::cout <<tempp.x << " " << tempp.y << " " << tempp.z << std::endl;
+	//glm::vec3 tempp = m_camera->GetPosition();
+	//std::cout <<tempp.x << " " << tempp.y << " " << tempp.z << std::endl;
 
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
@@ -120,6 +120,7 @@ void GameWorld::UpdatePhysics()
 	// Draw each object at the updated positions based on physics simulation
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	int i = 1;
+	ComputerAI* compAI;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()) + 50, m_collisionBodyPos[i].z());
@@ -128,7 +129,19 @@ void GameWorld::UpdatePhysics()
 		/*if (i == 3)
 			std::cout << temp.x << " " << temp.y << " " << temp.z << std::endl;*/
 
-		itr->second->SetPosition(temp);
+		compAI = itr->second->GetAI();
+		if (compAI != NULL)
+		{
+			compAI->Update();
+			Vector2 tempPos = compAI->GetPosition();
+			itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));
+		}
+		else
+		{
+			itr->second->SetPosition(temp);
+		}
+
+		//itr->second->SetPosition(temp);
 
 		/*if (i == 3)
 			std::cout << temp.x << " " << temp.y << " " << temp.z << std::endl;*/
