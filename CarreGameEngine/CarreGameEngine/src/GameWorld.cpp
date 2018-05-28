@@ -1,5 +1,4 @@
 #include "..\headers\GameWorld.h"
-#include "..\headers\ComputerAI.h"
 
 void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gameAssets)
 {
@@ -42,13 +41,6 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 
 	// Pass player info to camera
 	m_camera->PassPlayerInfo(m_player->GetPosition(), m_player->GetRotation());
-
-
-	// AI testing
-	/*ComputerAI p;
-	for (int i = 0; i < 1000; i++)
-		p.Update();
-	getchar();*/
 }
 
 void GameWorld::Update()
@@ -67,15 +59,18 @@ void GameWorld::Update()
 		
 
 	// Prepare assets
-	std::multimap<std::string, IGameAsset*>::iterator itr;
-	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
-	{
-		// TODO: Not drawing lightpoles due to drop in framerate
-		if (itr->first != "trafficLight")
-		{
-		m_glRenderer.Render(itr->second->GetModel());
-		}
-	}
+	//std::multimap<std::string, IGameAsset*>::iterator itr;
+	//for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
+	//{
+	//	// TODO: Not drawing lightpoles due to drop in framerate
+	//	if (itr->first != "trafficLight")
+	//	{
+	//	m_glRenderer.Render(itr->second->GetModel());
+	//	}
+	//}
+
+	glm::vec3 tempp = m_camera->GetPosition();
+	std::cout <<tempp.x << " " << tempp.y << " " << tempp.z << std::endl;
 
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
@@ -119,18 +114,26 @@ void GameWorld::UpdatePhysics()
 	float newY = m_terrains[0]->GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) + 50;
 
 	// Set updated camera location
-	m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, newY, m_camera->GetPosition().z));
+	//m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, newY, m_camera->GetPosition().z));
+	m_camera->SetPosition(glm::vec3(temp2.getX(), newY, temp2.getZ()));
 		
 	// Draw each object at the updated positions based on physics simulation
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	int i = 1;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
-		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z());
+		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()) + 50, m_collisionBodyPos[i].z());
+		//glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
 
+		/*if (i == 3)
+			std::cout << temp.x << " " << temp.y << " " << temp.z << std::endl;*/
 
+		itr->second->SetPosition(temp);
 
-		if (itr->first == "md2")
+		/*if (i == 3)
+			std::cout << temp.x << " " << temp.y << " " << temp.z << std::endl;*/
+
+		if (itr->first != "trafficLight")
 		{
 			m_glRenderer.Render(itr->second->GetModel());
 		}

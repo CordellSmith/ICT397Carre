@@ -48,6 +48,7 @@
 #include "BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h"
 #include <vector>
 #include <fstream>	// Used for testing of heightfield terrain shape (will be removed later)
+#include "LinearMath\btIDebugDraw.h"
 
 class PhysicsEngine
 {
@@ -207,6 +208,8 @@ class PhysicsEngine
 
 			/// Holds all heightfield data (used for testing)
 		unsigned char *m_terrainData;
+
+		//btIDebugDraw test;
 
 	protected:
 

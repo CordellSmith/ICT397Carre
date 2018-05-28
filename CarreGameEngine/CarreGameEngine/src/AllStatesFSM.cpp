@@ -18,6 +18,11 @@ void IdleState::Execute(ComputerAI* compAI)
 {
 	std::cout << "Entering 'Execute' state!" << std::endl;
 
+	// If no velocity, set to walking
+	Vector2 tempVel = compAI->GetVelocity();
+	if (tempVel.x == 0 && tempVel.z == 0)
+		compAI->SetVelocity(Vector2(1, 0));
+
 	bool temp = compAI->MoveTo(compAI);
 	
 

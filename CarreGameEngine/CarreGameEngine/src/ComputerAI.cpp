@@ -18,7 +18,24 @@ ComputerAI::ComputerAI()
 
 	// Read from script
 	this->m_currPos = Vector2(0, 0);
-	this->m_currVel = Vector2(1, 0);
+	this->m_currVel = Vector2(0, 0);
+	this->m_health = 100;
+	this->m_maxHealth = 100;
+	this->m_isDead = false;
+}
+
+// Default constructor
+ComputerAI::ComputerAI(glm::vec3 pos)
+{
+	this->m_computerAIFSM = new StateMachine<ComputerAI>(this);
+
+	// Possible change
+	this->m_computerAIFSM->SetCurrState(&m_idleState::GetInstance());
+	this->m_computerAIFSM->SetGlobalState(&m_globalState::GetInstance());
+
+	// Read from script
+	this->m_currPos = Vector2(pos.x, pos.z);
+	this->m_currVel = Vector2(0, 0);
 	this->m_health = 100;
 	this->m_maxHealth = 100;
 	this->m_isDead = false;
@@ -105,8 +122,11 @@ bool ComputerAI::MoveTo(ComputerAI* compAI)
 	// Calcute heading from this position to target position
 	Vector2 toTarget = targetPos - currPos;
 	toTarget = toTarget.Normalized();
-	if(toTarget.x == 0 && toTarget.z == 0)
+	if (toTarget.x == 0 && toTarget.z == 0)
+	{
+		compAI->SetVelocity(Vector2(0, 0));
 		return true;
+	}
 
 	// Calculate new velocity and new position
 	currVel = toTarget * currVel.Length();
@@ -124,6 +144,7 @@ bool ComputerAI::MoveTo(ComputerAI* compAI)
 	{
 		currPos = realTargetPos;
 		compAI->SetPosition(currPos);
+		compAI->SetVelocity(Vector2(0, 0));
 		return true;
 	}
 	
@@ -133,6 +154,7 @@ bool ComputerAI::MoveTo(ComputerAI* compAI)
 	{
 		currPos = realTargetPos;
 		compAI->SetPosition(currPos);
+		compAI->SetVelocity(Vector2(0, 0));
 		return true;
 	}
 

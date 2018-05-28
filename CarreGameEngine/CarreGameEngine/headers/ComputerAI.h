@@ -13,6 +13,7 @@
 // Includes
 #include "State.h"
 #include "StateMachine.h"
+#include "GLM\glm.hpp"
 
 
 class ComputerAI
@@ -25,6 +26,13 @@ class ComputerAI
 			* This is the default constructor
 			*/
 		ComputerAI();
+
+			/**
+			* @brief Default constructor
+			*
+			* This is the default constructor
+			*/
+		ComputerAI(glm::vec3 pos);
 
 			/**
 			* @brief De-constructor

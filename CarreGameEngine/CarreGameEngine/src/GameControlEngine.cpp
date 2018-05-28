@@ -95,6 +95,9 @@ void GameControlEngine::Initialize()
 	/********************Loading of all models at once*******************/
 	// Create asset
 	IGameAsset* modelAsset;
+
+	//std::vector<ComputerAI*> m_allAI;
+	ComputerAI* modelAI;
 	
 	// Asset xyz scale and pos
 	float assetScaleXYZ[3];
@@ -132,6 +135,18 @@ void GameControlEngine::Initialize()
 				modelAsset->SetPosition(glm::vec3(assetPosXYZ[0], assetPosXYZ[1], assetPosXYZ[2]));
 				m_assetFactory->AddAsset(modelAsset);
 			}
+
+			// Create AI
+			for (int k = 0; k < (*itModels).second.modelPositions.size(); k++)
+			{
+				// If AI model, make AI for it
+				if ((*itModels).second.isAI[k])
+				{
+					// Create new computerAI and push to vector storing them
+					modelAI = new ComputerAI(glm::vec3((*itModels).second.modelPositions[k][0], (*itModels).second.modelPositions[k][1], (*itModels).second.modelPositions[k][2]));
+					m_allAI.push_back(modelAI);
+				}
+			}
 		}
 		// Player model
 		else if ((*itModels).first == "player")
@@ -162,12 +177,21 @@ void GameControlEngine::Initialize()
 
 	m_windowManager->GetInputManager()->SetPlayer(player);
 
+
+	/********************AI Testing*******************/
+	/*ComputerAI* p = new ComputerAI();
+	for (int i = 0; i < 1000; i++)
+	p->Update();
+	getchar();*/
+	/********************AI Testing*******************/
+
 	// Physics engine initialization
 	InitializePhysics();
 
 	// Initialize the game world, pass in terrain, assets and physics engine *** Can be reworked *** 
 	m_gameWorld->SetTerrains(terrains);
 	m_gameWorld->Init(player, m_assetFactory->GetAssets());
+	m_gameWorld->SetAI(m_allAI);
 	m_gameWorld->SetPhysicsWorld(m_physicsWorld, m_collisionBodyPos);
 }
 
@@ -201,13 +225,19 @@ void GameControlEngine::InitializePhysics()
 	btVector3 bt_playerPos(playerPos.x, playerPos.y, playerPos.z);
 	m_collisionBodyPos.push_back(bt_playerPos);
 
+	int i = 1;
+
 	// Loop through map and add all assets to the collision body list
 	std::multimap<std::string, IGameAsset*>::const_iterator itr;
 	for (itr = m_assetFactory->GetAssets().begin(); itr != m_assetFactory->GetAssets().end(); itr++)
 	{
-		m_physicsWorld->CreateStaticRigidBody();
+		m_physicsWorld->CreateDynamicRigidBody(btVector3(itr->second->GetPosition().x,
+			itr->second->GetPosition().y, itr->second->GetPosition().z));
 		m_collisionBodyPos.push_back(btVector3(itr->second->GetPosition().x, 
 			itr->second->GetPosition().y, itr->second->GetPosition().z));
+
+		std::cout << "Physics body added: " << i << std::endl;
+		i++;
 	}
 
 	//  *** Can this be changed to the terrain mesh? *** 
