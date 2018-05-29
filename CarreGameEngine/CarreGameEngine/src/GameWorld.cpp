@@ -183,6 +183,7 @@ void GameWorld::UpdatePhysics()
 
 		if (itr->first == "cube")
 		{
+			itr->second->SetPosition(glm::vec3(temp.x, temp.y - 50, temp.z));
 			m_glRenderer.Render(itr->second->GetModel());
 		}
 

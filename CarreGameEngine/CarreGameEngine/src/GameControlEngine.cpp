@@ -236,10 +236,20 @@ void GameControlEngine::InitializePhysics()
 	std::multimap<std::string, IGameAsset*>::const_iterator itr;
 	for (itr = m_assetFactory->GetAssets().begin(); itr != m_assetFactory->GetAssets().end(); itr++)
 	{
-		m_physicsWorld->CreateDynamicRigidBody(btVector3(itr->second->GetPosition().x,
-			itr->second->GetPosition().y, itr->second->GetPosition().z));
-		m_collisionBodyPos.push_back(btVector3(itr->second->GetPosition().x, 
-			itr->second->GetPosition().y, itr->second->GetPosition().z));
+		if (itr->second->GetAssetName() == "cube")
+		{
+			m_physicsWorld->CreateStaticRigidBody(btVector3(itr->second->GetPosition().x,
+				itr->second->GetPosition().y, itr->second->GetPosition().z));
+			m_collisionBodyPos.push_back(btVector3(itr->second->GetPosition().x,
+				itr->second->GetPosition().y, itr->second->GetPosition().z));
+		}
+		else
+		{
+			m_physicsWorld->CreateDynamicRigidBody(btVector3(itr->second->GetPosition().x,
+				itr->second->GetPosition().y, itr->second->GetPosition().z));
+			m_collisionBodyPos.push_back(btVector3(itr->second->GetPosition().x,
+				itr->second->GetPosition().y, itr->second->GetPosition().z));
+		}
 
 		//std::cout << "Physics body added: " << i << std::endl;
 		i++;

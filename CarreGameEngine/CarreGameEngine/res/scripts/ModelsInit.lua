@@ -10,7 +10,7 @@ AllModels=
 {
 	cube=
 	{
-		{filePath = "res/objects/cube.obj", texFilePath = "res/terrain/grass.jpg", scaleX = 15.0, scaleY = 15.0, scaleZ = 15.0, posX = 0.0, posY = 150.0, posZ = 200.0, AI = false},
+		{filePath = "res/objects/cube.obj", texFilePath = "res/terrain/grass.jpg", scaleX = 75.0, scaleY = 75.0, scaleZ = 75.0, posX = 6700.0, posY = 150.0, posZ = 5575.0, AI = false},
 		--{filePath = "res/objects/buildings/medium density/building.obj", texFilePath = "res/objects/buildings/medium density/cover.jpg",scaleX = 1.0, scaleY = 1.0, scaleZ = 1.0, posX = 400.0, posY = 150.0, posZ = 200.0},
 	},
 	player=
@@ -25,7 +25,7 @@ AllModels=
 	},
 	knight=
 	{
-		{filePath = "res/objects/knight.md2", texFilePath = "res/objects/knight.bmp", scaleX = 4.0, scaleY = 4.0, scaleZ = 4.0, posX = 6800.0, posY = 150.0, posZ = 5575.0, AI = true},
+		{filePath = "res/objects/knight.md2", texFilePath = "res/objects/knight.bmp", scaleX = 4.0, scaleY = 4.0, scaleZ = 4.0, posX = 7000.0, posY = 150.0, posZ = 6000.0, AI = true},
 		{filePath = "res/objects/knight.md2", texFilePath = "res/objects/knight.bmp", scaleX = 4.0, scaleY = 4.0, scaleZ = 4.0, posX = 7000.0, posY = 150.0, posZ = 5575.0, AI = false},
 	}
 }

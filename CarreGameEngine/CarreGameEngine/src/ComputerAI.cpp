@@ -128,7 +128,7 @@ bool ComputerAI::MoveTo(ComputerAI* compAI, Vector2 targetPos)
 	Vector2 toTarget = toTarget2.Normalized();
 	if ((toTarget2.x < 10 && toTarget2.x > -10) && (toTarget2.z < 10 && toTarget2.z > -10))
 	{
-		std::cout << "here 0" << std::endl;
+		//std::cout << "here 0" << std::endl;
 		compAI->SetVelocity(Vector2(0, 0));
 		return true;
 	}
@@ -147,7 +147,7 @@ bool ComputerAI::MoveTo(ComputerAI* compAI, Vector2 targetPos)
 	Vector2 toRealTarget2 = toRealTarget.Normalized();
 	if (toRealTarget2.x == 0 && toRealTarget2.z == 0)
 	{
-		std::cout << "here 1" << std::endl;
+		//std::cout << "here 1" << std::endl;
 		currPos = realTargetPos;
 		compAI->SetPosition(currPos);
 		compAI->SetVelocity(Vector2(0, 0));
