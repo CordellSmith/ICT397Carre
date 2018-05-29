@@ -24,11 +24,11 @@ void MoveState::Execute(ComputerAI* compAI)
 	Vector2 tempVel = compAI->GetVelocity();
 	if (tempVel.x == 0 && tempVel.z == 0)
 	{
-		compAI->SetVelocity(Vector2(5, 0));
+		compAI->SetVelocity(Vector2(2, 0));
 
 		//srand(time(NULL));
 		int pos = rand() % m_waypoints.size();
-		std::cout << pos << std::endl;
+		//std::cout << pos << std::endl;
 		currTargetPos = m_waypoints[pos];
 
 		//std::cout << currTargetPos << std::endl;
