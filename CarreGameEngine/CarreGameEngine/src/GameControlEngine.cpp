@@ -51,7 +51,7 @@ void GameControlEngine::Initialize()
 	std::vector<Bruteforce*> terrains;
 
 	// Create new player
-	Player* player = new Player("Player");
+	player = new Player("Player");
 
 	/**********************************Loading of all heightfields at once**************************************/
 	// Get iterator to start of heightfields map
@@ -140,17 +140,14 @@ void GameControlEngine::Initialize()
 				modelAsset->SetScale(glm::vec3(assetScaleXYZ[0], assetScaleXYZ[1], assetScaleXYZ[2]));
 				modelAsset->SetPosition(glm::vec3(assetPosXYZ[0], assetPosXYZ[1], assetPosXYZ[2]));
 
-				// Create AI
-				for (int k = 0; k < (*itModels).second.modelPositions.size(); k++)
+				// If AI model, make AI for it
+				if ((*itModels).second.isAI[k])
 				{
-					// If AI model, make AI for it
-					if ((*itModels).second.isAI[k])
-					{
-						// Create new computerAI and push to vector storing them
-						modelAI = new ComputerAI(glm::vec3((*itModels).second.modelPositions[k][0], (*itModels).second.modelPositions[k][1], (*itModels).second.modelPositions[k][2]));
-						m_allAI.push_back(modelAI);
-						modelAsset->SetAI(modelAI);
-					}
+					// Create new computerAI and push to vector storing them
+					modelAI = new ComputerAI(glm::vec3((*itModels).second.modelPositions[k][0], (*itModels).second.modelPositions[k][1], (*itModels).second.modelPositions[k][2]));
+					m_allAI.push_back(modelAI);
+					modelAsset->SetAI(modelAI);
+					std::cout << "Model loaded" << std::endl;
 				}
 
 				m_assetFactory->AddAsset(modelAsset);
@@ -223,7 +220,7 @@ void GameControlEngine::GameLoop()
 void GameControlEngine::InitializePhysics()
 {
 	// Create camera rigid body to collide with objects
-	glm::vec3 camerPos(m_camera->GetPosition());
+	glm::vec3 camerPos(player->GetPosition());
 	btVector3 bt_cameraPos(camerPos.x, camerPos.y, camerPos.z);
 	m_physicsWorld->CreatePlayerControlledRigidBody(bt_cameraPos);
 	m_collisionBodyPos.push_back(bt_cameraPos);

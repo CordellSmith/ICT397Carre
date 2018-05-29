@@ -187,13 +187,13 @@ std::vector<Vector2> ComputerAI::MakeWaypoints()
 	//	//std::cout << waypoint << std::endl;
 	//}
 
-	waypoint = Vector2(1000, 1000);
+	waypoint = Vector2(5387, 4262);
 	this->m_waypoints.push_back(waypoint);
-	waypoint = Vector2(-1000, -1000);
+	waypoint = Vector2(8018, 4262);
 	this->m_waypoints.push_back(waypoint);
-	waypoint = Vector2(1000, -1000);
+	waypoint = Vector2(8018, 7155);
 	this->m_waypoints.push_back(waypoint);
-	waypoint = Vector2(-1000, 1000);
+	waypoint = Vector2(5387, 7155);
 	this->m_waypoints.push_back(waypoint);
 	return this->m_waypoints;
 }

@@ -15,7 +15,7 @@ AllModels=
 	},
 	player=
 	{
-		{filePath = "res/objects/taxi/taxi.obj", texFilePath = "", scaleX = 50.0, scaleY = 50.0, scaleZ = 50.0, posX = 900.0, posY = 150.0, posZ = 0.0, AI = false},
+		{filePath = "res/objects/taxi/taxi.obj", texFilePath = "", scaleX = 50.0, scaleY = 50.0, scaleZ = 50.0, posX = 7000.0, posY = 150.0, posZ = 5200.0, AI = false},
 	},
 	trafficLight=
 	{
@@ -25,7 +25,7 @@ AllModels=
 	},
 	knight=
 	{
-		{filePath = "res/objects/knight.md2", texFilePath = "res/objects/knight.bmp", scaleX = 4.0, scaleY = 4.0, scaleZ = 4.0, posX = -1000.0, posY = 100.0, posZ = -500.0, AI = true},
-		--{filePath = "res/objects/knight.md2", texFilePath = "res/objects/knight.bmp", scaleX = 4.0, scaleY = 4.0, scaleZ = 4.0, posX = 1000.0, posY = 50.0, posZ = 500.0, AI = true},
+		{filePath = "res/objects/knight.md2", texFilePath = "res/objects/knight.bmp", scaleX = 4.0, scaleY = 4.0, scaleZ = 4.0, posX = 6800.0, posY = 150.0, posZ = 5575.0, AI = true},
+		{filePath = "res/objects/knight.md2", texFilePath = "res/objects/knight.bmp", scaleX = 4.0, scaleY = 4.0, scaleZ = 4.0, posX = 7000.0, posY = 150.0, posZ = 5575.0, AI = false},
 	}
 }

@@ -31,7 +31,7 @@ void MoveState::Execute(ComputerAI* compAI)
 		std::cout << pos << std::endl;
 		currTargetPos = m_waypoints[pos];
 
-		std::cout << currTargetPos << std::endl;
+		//std::cout << currTargetPos << std::endl;
 	}
 
 	compAI->MoveTo(compAI, currTargetPos);
