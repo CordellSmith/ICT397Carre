@@ -184,4 +184,7 @@ protected:
 
 	/// Vector holding all AI
 	std::vector<ComputerAI*> m_allAI;
+
+	/// Player object
+	Player* player;
 };

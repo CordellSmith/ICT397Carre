@@ -9,7 +9,7 @@
 
 /*****************************************Class Separator******************************************/
 
-void IdleState::Enter(ComputerAI* compAI)
+void MoveState::Enter(ComputerAI* compAI)
 {
 	std::cout << "Entering 'Enter' state!" << std::endl;
 
@@ -18,7 +18,7 @@ void IdleState::Enter(ComputerAI* compAI)
 	currTargetPos = m_waypoints[0];
 }
 
-void IdleState::Execute(ComputerAI* compAI)
+void MoveState::Execute(ComputerAI* compAI)
 {
 	// If no velocity, set to walking and pick a waypoint
 	Vector2 tempVel = compAI->GetVelocity();
@@ -31,25 +31,48 @@ void IdleState::Execute(ComputerAI* compAI)
 		std::cout << pos << std::endl;
 		currTargetPos = m_waypoints[pos];
 
-		std::cout << currTargetPos << std::endl;
+		//std::cout << currTargetPos << std::endl;
 	}
 
 	compAI->MoveTo(compAI, currTargetPos);
+
+	// Change to idle state if player is too close
+	//if ()
+	//{
+	//	compAI->GetFSM()->ChangeState(&m_idleState::GetInstance());
+	//}
 	
 	//std::cout << compAI->GetVelocity() << std::endl;
 	//std::cout << compAI->GetPosition() << std::endl;
 }
 
-void IdleState::Exit(ComputerAI* compAI)
+void MoveState::Exit(ComputerAI* compAI)
 {
 	std::cout << "Entering 'Exit' state!" << std::endl;
+	isMoving = false;
+	m_waypoints.clear();
 }
 
 /*****************************************Class Separator******************************************/
 
 void StartState::Execute(ComputerAI* compAI)
 {
-	compAI->GetFSM()->ChangeState(&m_idleState::GetInstance());
+	compAI->GetFSM()->ChangeState(&m_moveState::GetInstance());
 }
 
 /*****************************************Class Separator******************************************/
+
+void IdleState::Enter(ComputerAI* compAI)
+{
+	compAI->SetVelocity(0.0);
+}
+
+void IdleState::Execute(ComputerAI* compAI)
+{
+
+	// Change to move state if player moves away
+	//if ()
+	//{
+	//	compAI->GetFSM()->ChangeState(&m_moveState::GetInstance());
+	//}
+}
