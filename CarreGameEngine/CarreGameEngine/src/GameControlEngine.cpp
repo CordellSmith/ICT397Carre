@@ -236,7 +236,7 @@ void GameControlEngine::InitializePhysics()
 	std::multimap<std::string, IGameAsset*>::const_iterator itr;
 	for (itr = m_assetFactory->GetAssets().begin(); itr != m_assetFactory->GetAssets().end(); itr++)
 	{
-		if (itr->second->GetAssetName() == "cube")
+		if (itr->second->GetAssetName() == "rock")
 		{
 			m_physicsWorld->CreateStaticRigidBody(btVector3(itr->second->GetPosition().x,
 				itr->second->GetPosition().y, itr->second->GetPosition().z));
