@@ -93,9 +93,11 @@ class PhysicsEngine
 			*
 			* This is a test function that is used to create a static body (as of now, it creates a floor)
 			*
+			* @param pos - Position to create body
+			*
 			* @return void
 			*/
-		void CreateStaticRigidBody();
+		void CreateStaticRigidBody(btVector3 &pos);
 
 			/**
 			* @brief Creates dynamic rigid body

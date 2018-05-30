@@ -48,16 +48,16 @@ PhysicsEngine::PhysicsEngine()
 PhysicsEngine::~PhysicsEngine(){};
 
 // Create a static rigid body (ground)
-void PhysicsEngine::CreateStaticRigidBody()
+void PhysicsEngine::CreateStaticRigidBody(btVector3 &pos)
 {
 	// Create a floor shape and add to shape array
-	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(100.0), btScalar(0.0), btScalar(100.0)));
+	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(50.0), btScalar(50.0), btScalar(50.0)));
 	m_collisionShapes.push_back(groundShape);
 
 	// Initialize transform and location
 	btTransform groundTransform;
 	groundTransform.setIdentity();
-	groundTransform.setOrigin(btVector3(0.0, -1.0, 0.0));
+	groundTransform.setOrigin(pos);
 
 	// Set mass (zero for static)
 	m_mass = 0.0;
@@ -86,7 +86,7 @@ void PhysicsEngine::CreateStaticRigidBody()
 void PhysicsEngine::CreatePlayerControlledRigidBody(btVector3 &playerObj)
 {
 	// Create box shape and add to shape array
-	btCollisionShape* camShape = new btSphereShape(25.0);
+	btCollisionShape* camShape = new btBoxShape(btVector3(btScalar(30), btScalar(20), btScalar(50)));
 	m_collisionShapes.push_back(camShape);
 
 	// Create a dynamic object
@@ -129,7 +129,7 @@ void PhysicsEngine::CreatePlayerControlledRigidBody(btVector3 &playerObj)
 void PhysicsEngine::CreateDynamicRigidBody(btVector3 &pos)
 {
 	// Create box shape and add to shape array
-	btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(5), btScalar(5), btScalar(5)));
+	btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(20), btScalar(50), btScalar(20)));
 	m_collisionShapes.push_back(boxShape);
 
 	// Create a dynamic object
@@ -137,7 +137,7 @@ void PhysicsEngine::CreateDynamicRigidBody(btVector3 &pos)
 	startTransform.setIdentity();
 
 	// Set mass (non-zero for dynamic)
-	m_mass = 5.0f;
+	m_mass = 100.0f;
 
 	// Set dynamic objects to objects with mass that is non-zero
 	m_isDynamic = (m_mass != 0.0f);
