@@ -5,6 +5,8 @@
 
 DynamicObject* md2file;
 double lastTime;
+int randomPositions[20];
+int randomRotations[20];
 
 void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gameAssets)
 {
@@ -56,6 +58,15 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 	// Animation testing
 	//md2file = new DynamicObject(2.5, 512, 512, 0, 100);
 	//md2file->Import("res/objects/knight.md2", glm::mat4());
+
+	for (int i = 0; i < 15; i++)
+	{
+		int randNum1 = rand() % (6000 - 0 + 1) + 0;
+		int randNum2 = rand() % (360 - 1 + 1) + 1;
+
+		randomPositions[i] = randNum1;
+		randomRotations[i] = randNum2;
+	}
 }
 
 void GameWorld::Update()
@@ -155,15 +166,31 @@ void GameWorld::UpdatePhysics()
 
 			Vector2 tempPos = compAI->GetPosition();
 			itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));*/
-
+			itr->second->SetPosition(temp);
 			m_glRenderer.Render(itr->second->GetModel());
-			
+
+			for (int i = 0; i < 15; i++)
+			{
+				glm::vec3 newPos = temp + glm::vec3(randomPositions[i], 0, randomPositions[i - 1]);
+				
+				itr->second->SetPosition(glm::vec3(newPos.x, m_terrains[0]->GetAverageHeight(newPos.x, newPos.z) + 100, newPos.z));
+				itr->second->SetRotation(glm::vec3(0, randomRotations[i], 0));
+				m_glRenderer.Render(itr->second->GetModel());
+			}
 		}
 
 		if (itr->first == "rock")
 		{
 			itr->second->SetPosition(glm::vec3(temp.x-150, temp.y - 100, temp.z+50));
 			m_glRenderer.Render(itr->second->GetModel());
+
+			for (int i = 0; i < 15; i++)
+			{
+				glm::vec3 newPos = temp + glm::vec3(randomPositions[i], 0, randomPositions[i - 1]);
+
+				itr->second->SetPosition(glm::vec3(newPos.x, m_terrains[0]->GetAverageHeight(newPos.x, newPos.z) - 25, newPos.z));
+				m_glRenderer.Render(itr->second->GetModel());
+			}
 		}
 		i++;
 	}
