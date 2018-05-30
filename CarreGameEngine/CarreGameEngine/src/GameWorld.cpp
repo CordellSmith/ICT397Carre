@@ -81,18 +81,6 @@ void GameWorld::Update()
 	// Render player
 	m_glRenderer.Render(m_player->GetModel());
 
-	// Prepare assets
-
-	//std::multimap<std::string, IGameAsset*>::iterator itr;
-	//for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
-	//{
-	//	// TODO: Not drawing lightpoles due to drop in framerate
-	//	if (itr->first != "trafficLight")
-	//	{
-	//		m_glRenderer.Render(itr->second->GetModel());
-	//	}
-	//}
-
 	// Update all physics body locations *** All asset rendering is done through here for now because I dont want to have to call asset render twice ***
 	UpdatePhysics();
 
@@ -125,13 +113,6 @@ void GameWorld::SetPhysicsWorld(PhysicsEngine* physicsEngine, std::vector<btVect
 	m_collisionBodyPos = collisionBodyPositions;
 }
 
-// Load all textures
-void GameWorld::LoadAllTextures()
-{
-	// Use lua?
-	// Or fstream?
-}
-
 // Update all physics
 void GameWorld::UpdatePhysics()
 {
@@ -141,8 +122,6 @@ void GameWorld::UpdatePhysics()
 	
 	btVector3 temp2(temp1.x, temp1.y, temp1.z);
 	m_physicsWorld->Simulate(m_collisionBodyPos, temp2);
-
-	//float newY = m_terrains[0]->GetAverageHeight(m_camera->GetPosition().x, m_camera->GetPosition().z) + 20;
 
 	// Set updated camera location
 	m_camera->SetPosition(glm::vec3(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z));
@@ -181,16 +160,11 @@ void GameWorld::UpdatePhysics()
 			
 		}
 
-		if (itr->first == "cube")
+		if (itr->first == "rock")
 		{
-			itr->second->SetPosition(glm::vec3(temp.x, temp.y - 50, temp.z));
+			itr->second->SetPosition(glm::vec3(temp.x, temp.y - 100, temp.z));
 			m_glRenderer.Render(itr->second->GetModel());
 		}
-
-		//if (itr->first == "trafficLight")
-		//{
-		//	m_glRenderer.Render(itr->second->GetModel());
-		//}
 		i++;
 	}
 
