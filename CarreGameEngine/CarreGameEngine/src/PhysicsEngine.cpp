@@ -51,13 +51,17 @@ PhysicsEngine::~PhysicsEngine(){};
 void PhysicsEngine::CreateStaticRigidBody(btVector3 &pos)
 {
 	// Create a floor shape and add to shape array
-	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(50.0), btScalar(50.0), btScalar(50.0)));
+	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(250.0), btScalar(50.0), btScalar(200.0)));
 	m_collisionShapes.push_back(groundShape);
+
+	btVector3 temp = pos;
+	//temp.setX(temp.getX() - 3000);
+	//temp.setZ(temp.getZ() - 50);
 
 	// Initialize transform and location
 	btTransform groundTransform;
 	groundTransform.setIdentity();
-	groundTransform.setOrigin(pos);
+	groundTransform.setOrigin(temp);
 
 	// Set mass (zero for static)
 	m_mass = 0.0;
