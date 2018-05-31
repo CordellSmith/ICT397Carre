@@ -226,6 +226,11 @@ void GameControlEngine::GameLoop()
 	}
 }
 
+float RandomPos()
+{
+	return rand() % (4000 - 0 + 1) + 0;
+}
+
 void GameControlEngine::InitializePhysics()
 {
 	// Create camera rigid body to collide with objects
@@ -240,40 +245,46 @@ void GameControlEngine::InitializePhysics()
 	m_collisionBodyPos.push_back(bt_playerPos);
 
 	int i = 1;
-
+	int numOfRocks = 10;
+	int numOfKnights = 20;
 	// Loop through map and add all assets to the collision body list
 	std::multimap<std::string, IGameAsset*>::const_iterator itr;
 	for (itr = m_assetFactory->GetAssets().begin(); itr != m_assetFactory->GetAssets().end(); itr++)
 	{
-		btVector3 pos = btVector3(itr->second->GetPosition().x, m_terrains[0]->GetAverageHeight(itr->second->GetPosition().x, itr->second->GetPosition().z) + 100, itr->second->GetPosition().z);
+		btVector3 randomPos;
+		float tempX, tempY, tempZ;
 
+		if (itr->second->GetAssetName() == "knight")
+		{
+			for (int j = 0; j < numOfKnights; j++)
+			{
+				tempX = itr->second->GetPosition().x + RandomPos();
+				tempZ = itr->second->GetPosition().z + RandomPos();
+				tempY = m_terrains[0]->GetAverageHeight(tempX, tempZ) + 100;
+
+				randomPos = btVector3(tempX, tempY, tempZ);
+				
+				m_physicsWorld->CreateStaticRigidBody(randomPos, "knight");
+				m_collisionBodyPos.push_back(randomPos);
+			}
+		}
+		
 		if (itr->second->GetAssetName() == "rock")
 		{
-			for (int i = 0; i < 5; i++)
+			
+			for (int j = 0; j < numOfRocks; j++)
 			{
-				btVector3 randomPos = btVector3(itr->second->GetPosition().x + randPositions[i], m_terrains[0]->GetAverageHeight(itr->second->GetPosition().x, itr->second->GetPosition().z) + 100, itr->second->GetPosition().z + randPositions[i]);
-				
-				m_physicsWorld->CreateStaticRigidBody(randomPos);
-				m_collisionBodyPos.push_back(randomPos);
-			}
-		}
-		else if (itr->second->GetAssetName() == "knight")
-		{
-			for (int i = 0; i < 15; i++)
-			{
-				btVector3 randomPos = btVector3(itr->second->GetPosition().x - randPositions[i], m_terrains[0]->GetAverageHeight(itr->second->GetPosition().x, itr->second->GetPosition().z) + 100, itr->second->GetPosition().z - randPositions[i]);
+				tempX = itr->second->GetPosition().x + RandomPos();
+				tempZ = itr->second->GetPosition().z + RandomPos();
+				tempY = m_terrains[0]->GetAverageHeight(tempX, tempZ) + 100;
 
-				m_physicsWorld->CreateStaticRigidBody(randomPos);
+				randomPos = btVector3(tempX, tempY, tempZ);
+
+				m_physicsWorld->CreateStaticRigidBody(randomPos, "rock");
 				m_collisionBodyPos.push_back(randomPos);
 			}
-		}
-		else
-		{
-			m_physicsWorld->CreateDynamicRigidBody(pos);
-			m_collisionBodyPos.push_back(pos);
 		}
 	}
-
 
 	//  *** Can this be changed to the terrain mesh? *** 
 	// Create static rigid body (floor)

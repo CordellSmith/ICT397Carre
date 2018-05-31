@@ -47,11 +47,18 @@ PhysicsEngine::PhysicsEngine()
 // De-constructor (not implemented)
 PhysicsEngine::~PhysicsEngine(){};
 
-// Create a static rigid body (ground)
-void PhysicsEngine::CreateStaticRigidBody(btVector3 &pos)
+// Create a static rigid body
+void PhysicsEngine::CreateStaticRigidBody(btVector3 &pos, std::string type)
 {
-	// Create a floor shape and add to shape array
-	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(250.0), btScalar(50.0), btScalar(200.0)));
+	btCollisionShape* groundShape;
+
+	if (type == "knight")
+		groundShape = new btBoxShape(btVector3(btScalar(80.0), btScalar(100.0), btScalar(80.0)));
+	else if (type == "rock")
+		groundShape = new btBoxShape(btVector3(btScalar(225.0), btScalar(100.0), btScalar(200.0)));
+	else
+		groundShape = new btBoxShape(btVector3(btScalar(0.0), btScalar(0.0), btScalar(0.0)));
+
 	m_collisionShapes.push_back(groundShape);
 
 	btVector3 temp = pos;
