@@ -162,7 +162,7 @@ float Bruteforce::GetAverageHeight(int xpos, int zpos)
 {
 	if (Inbounds(xpos, zpos))
 	{
-		return ((float)(m_terrainData[((int)(zpos / m_scaleZ) * m_heightfieldSize + (int)(xpos / m_scaleX))]) * m_scaleY);
+		return (float)(m_terrainData[((int)(zpos / m_scaleZ) * m_heightfieldSize + (int)(xpos / m_scaleX))]) * m_scaleY;
 	}
 	return 1;
 }
