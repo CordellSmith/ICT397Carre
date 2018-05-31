@@ -5,6 +5,9 @@
 *
 * @date 22/05/2017
 * @version 1.0	Initial start.
+* 
+* @date 31/05/2018
+* @version 2.0	Final version for submission.
 */
 
 #ifndef STRUCTS_H

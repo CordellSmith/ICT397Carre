@@ -19,6 +19,8 @@
 	* @version 01
 	* @date 29/03/2018 CS
 	*
+	* @version 02
+	* @date 31/05/2018
 	*/
 class GameAssetFactory
 {
