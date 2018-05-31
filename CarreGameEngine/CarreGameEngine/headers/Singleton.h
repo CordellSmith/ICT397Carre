@@ -9,6 +9,8 @@
 	* @version 01
 	* @date 29/03/2018
 	*
+	* @version 02
+	* @date 31/05/2018
 	*/
 template<class T>
 class Singleton
