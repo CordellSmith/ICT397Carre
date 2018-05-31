@@ -181,7 +181,7 @@ void GameWorld::UpdatePhysics()
 
 		if (itr->first == "rock")
 		{
-			itr->second->SetPosition(glm::vec3(temp.x, temp.y - 100, temp.z));
+			itr->second->SetPosition(glm::vec3(temp.x-150, temp.y - 100, temp.z+50));
 			m_glRenderer.Render(itr->second->GetModel());
 
 			for (int i = 0; i < 15; i++)
