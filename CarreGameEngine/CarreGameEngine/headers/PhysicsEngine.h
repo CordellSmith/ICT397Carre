@@ -22,22 +22,25 @@
 *				Managed to get 2 spheres (currently shown as floor planes) to collide off each other and a floor.
 *
 * @date 05/04/2018
-* @version 2.0	Altered code to draw a square dynamic rigid body instead of a sphere for testing purposes. Started work on camera collision. 
+* @version 1.1	Altered code to draw a square dynamic rigid body instead of a sphere for testing purposes. Started work on camera collision. 
 *
 * @date 06/04/2018
-* @version 2.1  Tidied up camera (player object) code. Force is now applied in direction camera was moved, calculations are done, then camera is moved to updated
+* @version 1.2  Tidied up camera (player object) code. Force is now applied in direction camera was moved, calculations are done, then camera is moved to updated
 *				position. Still needs some work, but will do for now.
 *
 * @date 18/04/2018
-* @version 3.0	Big gap between versions due to other units requirements. Set up functions for initializing all object rigid bodies. Will need changing.
+* @version 1.3	Big gap between versions due to other units requirements. Set up functions for initializing all object rigid bodies. Will need changing.
 *
 * @date 19/04/2018
-* @version 3.1	Added testing for heightfield terrain shape. Got it loading and working, but without a visual terrain it is not possible to see if it is
+* @version 1.4	Added testing for heightfield terrain shape. Got it loading and working, but without a visual terrain it is not possible to see if it is
 *				working correctly or not. Have commented it out until I am able to keep working on it. Also added some more doxygen comments.
 *
 * @date 20/04/2018
-* @version 3.2	Did some research and found out that objects become inactive after a set time of inactivity. Created new function to ensure all objects are always active.
+* @version 1.5	Did some research and found out that objects become inactive after a set time of inactivity. Created new function to ensure all objects are always active.
 *				This fixed the camera getting stuck, as well as other objects getting stuck in the air.
+*
+* @date 31/05/2018
+* @version 2.0	Final version for submission.
 */
 
 #ifndef PHYSICSENGINE_H

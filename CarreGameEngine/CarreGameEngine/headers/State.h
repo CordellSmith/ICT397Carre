@@ -5,6 +5,9 @@
 *
 * @date 27/05/2018
 * @version 1.0	Initial start. Created the layout of the class.
+*
+* @date 31/05/2018
+* @version 2.0	Final version for submission.
 */
 
 #ifndef STATE_H

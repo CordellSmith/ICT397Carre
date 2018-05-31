@@ -17,6 +17,9 @@
 * @date 17/07/2018
 * @version 1.3	Altered LoadTexture to check to see if texture is already in map before loading the texture.
 *				Also added an function to help with that check.
+*
+* @date 31/05/2018
+* @version 2.0	Final version for submission.
 */
 
 #ifndef TEXTUREMANAGER_H

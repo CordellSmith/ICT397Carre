@@ -25,6 +25,9 @@
 * @date 23/05/2018
 * @version 1.6	Started loading of heightmap data. Planned to do this in ModelsInit.lua, but heightmaps
 *				have extra information that is needed, so a new function was created.
+*
+* @date 31/05/2018
+* @version 2.0	Final version for submission.
 */
 
 #ifndef SCRIPTMANAGER_H
