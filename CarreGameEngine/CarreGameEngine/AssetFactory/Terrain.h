@@ -7,6 +7,15 @@
 #include "Model.h"
 #include "..\headers\TextureManager.h"
 
+	/**
+	* @class
+	* @brief
+	*
+	* @author Cordell Smith
+	* @version 01
+	* @date 31/05/2018
+	*
+	*/
 class Terrain
 {
 public:

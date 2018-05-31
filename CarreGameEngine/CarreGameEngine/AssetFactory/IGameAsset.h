@@ -69,10 +69,17 @@ public:
 		*/
 	virtual void LoadFromFilePath(std::string filePath) = 0;
 
+		/**
+		* @brief Destroys the asset
+		*
+		* Virtual function to destroy the asset data for memory management.
+		*
+		* @return const void
+		*/
 	virtual const void Destroy() = 0;
 
 		/**
-		* @brief Gets file path
+		* @brief Gets the asset file path
 		*
 		* Virtual function to return a file path.
 		*
@@ -81,7 +88,7 @@ public:
 	virtual const std::string& GetFilePath() const = 0;
 
 		/**
-		* @brief Sets a file path
+		* @brief Sets the asset file path
 		*
 		* Virtual function to set a file path.
 		*
@@ -90,8 +97,23 @@ public:
 		*/
 	virtual void SetFilePath(const std::string& filePath) = 0;
 
+		/**
+		* @brief Gets the asset type
+		*
+		* Virtual function to return the asset type.
+		*
+		* @return ASS_TYPE
+		*/
 	virtual const ASS_TYPE GetOBJType() const { return m_assetType; }
 
+		/**
+		* @brief Gets the asset name
+		*
+		* Virtual function to return the objects name which is its corresponding
+		* key to reference it.
+		*
+		* @return const std::string const
+		*/
 	virtual const std::string GetAssetName() const { return m_assetName; }
 
 		/**
@@ -105,14 +127,52 @@ public:
 		*/
 	virtual void SetCamera(Camera* camera) = 0;
 
+		/**
+		* @brief Sets the asset position
+		*
+		* Virtual function to return to set the position of the asset.
+		*
+		* @param glm::vec3 position
+		* @return void
+		*/
 	virtual void SetPosition(glm::vec3 position) = 0;
 
+		/**
+		* @brief Sets the asset scale
+		*
+		* Virtual function to return to set the scale of the asset.
+		*
+		* @param glm::vec3 scale
+		* @return void
+		*/
 	virtual void SetScale(glm::vec3 scale) = 0;
 
+		/**
+		* @brief Sets the asset rotation
+		*
+		* Virtual function to return to set the rotation of the asset.
+		*
+		* @param glm::vec3 rotation
+		* @return void
+		*/
 	virtual void SetRotation(glm::vec3 rotation) = 0;
 
+		/**
+		* @brief Gets the asset position
+		*
+		* Virtual function to return to get the position of the asset.
+		*
+		* @return const glm::vec3
+		*/
 	virtual const glm::vec3 GetPosition() = 0;
 
+		/**
+		* @brief Gets the asset rotation
+		*
+		* Virtual function to return to get the position of the asset.
+		*
+		* @return const glm::vec3
+		*/
 	virtual const glm::vec3 GetRotation() = 0;
 
 	virtual Model* GetModel() = 0;

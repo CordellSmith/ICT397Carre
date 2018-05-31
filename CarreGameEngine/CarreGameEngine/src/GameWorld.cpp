@@ -150,7 +150,7 @@ void GameWorld::UpdatePhysics()
 		if (compAI != NULL)
 		{
 			compAI->Update();
-			
+
 			Vector2 tempPos = compAI->GetPosition();
 			itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));
 		}
@@ -166,33 +166,24 @@ void GameWorld::UpdatePhysics()
 
 			Vector2 tempPos = compAI->GetPosition();
 			itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));*/
-			itr->second->SetPosition(temp);
-			m_glRenderer.Render(itr->second->GetModel());
 
-			for (int i = 0; i < 15; i++)
+			for (int j = 0; j < 15; j++)
 			{
-				glm::vec3 newPos = temp + glm::vec3(randomPositions[i], 0, randomPositions[i - 1]);
-				
-				itr->second->SetPosition(glm::vec3(newPos.x, m_terrains[0]->GetAverageHeight(newPos.x, newPos.z) + 100, newPos.z));
-				itr->second->SetRotation(glm::vec3(0, randomRotations[i], 0));
+				itr->second->SetPosition(glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z()));
 				m_glRenderer.Render(itr->second->GetModel());
+				i++;
 			}
 		}
 
 		if (itr->first == "rock")
 		{
-			itr->second->SetPosition(glm::vec3(temp.x-150, temp.y - 100, temp.z+50));
-			m_glRenderer.Render(itr->second->GetModel());
-
-			for (int i = 0; i < 15; i++)
+			for (int j = 0; j < 5; j++)
 			{
-				glm::vec3 newPos = temp + glm::vec3(randomPositions[i], 0, randomPositions[i - 1]);
-
-				itr->second->SetPosition(glm::vec3(newPos.x, m_terrains[0]->GetAverageHeight(newPos.x, newPos.z) - 25, newPos.z));
+				itr->second->SetPosition(glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()) - 20, m_collisionBodyPos[i].z()));
 				m_glRenderer.Render(itr->second->GetModel());
+				i++;
 			}
 		}
-		i++;
 	}
 
 	glm::vec3 tempPlayer = m_player->GetPosition();

@@ -87,10 +87,10 @@ void Camera::ChangePitch(float yoffest)
 	float pitchChange = yoffest;
 	m_pitch += pitchChange * mf;
 
-	if (m_pitch > glm::radians(70.5f))
-		m_pitch = glm::radians(70.5f);
-	if (m_pitch < glm::radians(-70.5f))
-		m_pitch = glm::radians(-70.5f);
+	if (m_pitch > glm::radians(70.0))
+		m_pitch = glm::radians(70.0);
+	if (m_pitch < glm::radians(1.0))
+		m_pitch = glm::radians(1.0);
 }
 
 void Camera::ChangeAngleAroundPlayer(float xoffset)

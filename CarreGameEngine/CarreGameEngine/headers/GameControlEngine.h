@@ -161,6 +161,9 @@ protected:
 	/// Game asset factory object
 	GameAssetFactory* m_assetFactory;
 
+	/// Holds Terrains
+	std::vector<Bruteforce*> m_terrains;
+
 	/// Physics world
 	PhysicsEngine* m_physicsWorld;
 

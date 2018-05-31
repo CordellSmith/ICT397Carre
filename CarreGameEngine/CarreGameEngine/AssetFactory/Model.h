@@ -15,6 +15,15 @@
 #include "..\headers\TextureManager.h"
 #include "..\headers\ComputerAI.h"
 
+	/**
+	* @class
+	* @brief
+	*
+	* @author Cordell Smith
+	* @version 01
+	* @date 31/05/2018
+	*
+	*/
 class Model
 {
 public:
