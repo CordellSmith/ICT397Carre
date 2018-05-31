@@ -94,7 +94,7 @@ class PhysicsEngine
 			/**
 			* @brief Creates static rigid body
 			*
-			* This is a test function that is used to create a static body (as of now, it creates a floor)
+			* Create a static box shape rigid body at the given xyz position
 			*
 			* @param pos - Position to create body
 			*

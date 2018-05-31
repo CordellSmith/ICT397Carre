@@ -47,12 +47,12 @@ PhysicsEngine::PhysicsEngine()
 // De-constructor (not implemented)
 PhysicsEngine::~PhysicsEngine(){};
 
-// Create a static rigid body (ground)
+// Create a static rigid body
 void PhysicsEngine::CreateStaticRigidBody(btVector3 &pos)
 {
-	// Create a floor shape and add to shape array
-	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(250.0), btScalar(50.0), btScalar(200.0)));
-	m_collisionShapes.push_back(groundShape);
+	// Create a box shape and add to shape array
+	btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(250.0), btScalar(50.0), btScalar(200.0)));
+	m_collisionShapes.push_back(boxShape);
 
 	btVector3 temp = pos;
 	//temp.setX(temp.getX() - 3000);
@@ -72,15 +72,15 @@ void PhysicsEngine::CreateStaticRigidBody(btVector3 &pos)
 	btVector3 localInertia(0.0, 0.0, 0.0);
 
 	if (m_isDynamic)
-		groundShape->calculateLocalInertia(m_mass, localInertia);
+		boxShape->calculateLocalInertia(m_mass, localInertia);
 
 	//using motionstate is optional, it provides interpolation capabilities, and only synchronizes 'active' objects
 	btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
-	btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, groundShape, localInertia);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, boxShape, localInertia);
 	btRigidBody* body = new btRigidBody(rbInfo);
 
 	// Set the index for the type of rigid body that is being created
-	body->setUserIndex(PLANE);
+	body->setUserIndex(BOX);
 
 	// Add the body to the dynamic world
 	m_dynamicsWorld->addRigidBody(body);
