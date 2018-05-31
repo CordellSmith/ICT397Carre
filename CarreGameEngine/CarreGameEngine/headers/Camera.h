@@ -261,8 +261,11 @@ protected:
 	float m_pitch = 0;
 	/// The fov
 	float m_fov;
+	/// aspect ratio of the screen
 	float m_aspectRatio;
+	/// minimum rendering distance
 	float m_nearPlane;
+	/// maximum rendering distance
 	float m_farPlane;
 	
 	glm::vec3 m_playerPosition;

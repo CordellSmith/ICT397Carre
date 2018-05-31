@@ -125,7 +125,14 @@ public:
 		* @return void
 		*/
 	void GameLoop();
-
+	
+		/**
+		* @brief Initializes the Physics
+		*
+		* Sets up the physics in the game engine.
+		*
+		* @return void
+		*/
 	void InitializePhysics();
 
 		/**
@@ -160,6 +167,9 @@ protected:
 
 	/// Game asset factory object
 	GameAssetFactory* m_assetFactory;
+
+	/// Holds Terrains
+	std::vector<Bruteforce*> m_terrains;
 
 	/// Physics world
 	PhysicsEngine* m_physicsWorld;

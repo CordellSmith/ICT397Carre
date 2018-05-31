@@ -29,7 +29,6 @@ int GLFWManager::Initialize(int width, int height, std::string strTitle, bool bF
 	}
 
 	// GLFW setup
-	//glfwWindowHint(GLFW_SAMPLES, 4); // Do we need this?
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);

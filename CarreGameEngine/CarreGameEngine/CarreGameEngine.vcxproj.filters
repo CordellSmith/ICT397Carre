@@ -23,12 +23,9 @@
     <ClCompile Include="src\TimeManager.cpp" />
     <ClCompile Include="src\AllStatesFSM.cpp" />
     <ClCompile Include="src\ComputerAI.cpp" />
-    <ClCompile Include="Animation\DynamicObject.cpp" />
-    <ClCompile Include="Animation\GLSLProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetFactory\Bruteforce.h" />
-    <ClInclude Include="AssetFactory\Entity.h" />
     <ClInclude Include="AssetFactory\GameAssetFactory.h" />
     <ClInclude Include="AssetFactory\Mesh.h" />
     <ClInclude Include="AssetFactory\Model.h" />
@@ -52,17 +49,11 @@
     <ClInclude Include="headers\TextureManager.h" />
     <ClInclude Include="headers\TimeManager.h" />
     <ClInclude Include="headers\WindowManager.h" />
-    <ClInclude Include="ImageDB\stb_image.h" />
-    <ClInclude Include="Renderer\IRenderer.h" />
     <ClInclude Include="Renderer\OpenGl.h" />
     <ClInclude Include="headers\StateMachine.h" />
     <ClInclude Include="headers\State.h" />
     <ClInclude Include="headers\AllStatesFSM.h" />
     <ClInclude Include="headers\ComputerAI.h" />
-    <ClInclude Include="Animation\Definitions.h" />
-    <ClInclude Include="Animation\DynamicObject.h" />
-    <ClInclude Include="Animation\GLSLProgram.h" />
-    <ClInclude Include="Animation\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\scripts\CameraInit.lua" />

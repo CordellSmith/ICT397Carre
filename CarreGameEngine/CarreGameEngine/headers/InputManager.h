@@ -65,6 +65,8 @@ enum InputCodes
 	*
 	* @version 01
 	* @date 29/03/2018
+	* @version 02
+	* @date 31/05/2018
 	*
 	*/
 class InputManager
@@ -109,4 +111,5 @@ protected:
 	/// Camera object
 	Camera* m_camera;
 	Player* m_player;
+	bool m_wireframe = false;
 };

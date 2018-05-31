@@ -2,6 +2,9 @@
 
 #include "GL/glew.h"
 
+int randPositions[20];
+int randRotations[20];
+
 const int GameControlEngine::RunEngine()
 {
 	Initialize();
@@ -47,9 +50,6 @@ void GameControlEngine::Initialize()
 	m_camera->SetPerspective(glm::radians(m_camera->GetFov()), ScreenWidth / (float)ScreenHeight, m_camera->GetNearPlane(), m_camera->GetFarPlane());
 	m_camera->PositionCamera(m_camera->GetPosition().x, m_camera->GetPosition().y, m_camera->GetPosition().z, m_camera->GetYaw(), glm::radians(m_camera->GetPitch()));
 
-	// Holds terrains
-	std::vector<Bruteforce*> terrains;
-
 	// Create new player
 	player = new Player("Player");
 
@@ -70,7 +70,7 @@ void GameControlEngine::Initialize()
 		bfHeightfield->LoadHeightfield((*itHeightfields).second.filePath, (*itHeightfields).second.fileSize);
 		bfHeightfield->GenerateTerrain(TextureManager::Instance().GetTextureID((*itHeightfields).second.texFilePath), (*itHeightfields).second.texFilePath);
 		bfHeightfield->SetPosition(glm::vec3((*itHeightfields).second.modelPositions[0], (*itHeightfields).second.modelPositions[1], (*itHeightfields).second.modelPositions[2]));
-		terrains.push_back(bfHeightfield);
+		m_terrains.push_back(bfHeightfield);
 		
 		// Move camera to be on top of terrain 
 		if ((*itHeightfields).first == "terrain")
@@ -190,11 +190,20 @@ void GameControlEngine::Initialize()
 	getchar();*/
 	/********************AI Testing*******************/
 
+	for (int i = 0; i < 15; i++)
+	{
+		int randNum1 = rand() % (6000 - 0 + 1) + 0;
+		int randNum2 = rand() % (360 - 1 + 1) + 1;
+
+		randPositions[i] = randNum1;
+		randRotations[i] = randNum2;
+	}
+
 	// Physics engine initialization
 	InitializePhysics();
 
 	// Initialize the game world, pass in terrain, assets and physics engine *** Can be reworked *** 
-	m_gameWorld->SetTerrains(terrains);
+	m_gameWorld->SetTerrains(m_terrains);
 	m_gameWorld->Init(player, m_assetFactory->GetAssets());
 	m_gameWorld->SetAI(m_allAI);
 	m_gameWorld->SetPhysicsWorld(m_physicsWorld, m_collisionBodyPos);
@@ -236,24 +245,35 @@ void GameControlEngine::InitializePhysics()
 	std::multimap<std::string, IGameAsset*>::const_iterator itr;
 	for (itr = m_assetFactory->GetAssets().begin(); itr != m_assetFactory->GetAssets().end(); itr++)
 	{
+		btVector3 pos = btVector3(itr->second->GetPosition().x, m_terrains[0]->GetAverageHeight(itr->second->GetPosition().x, itr->second->GetPosition().z) + 100, itr->second->GetPosition().z);
+
 		if (itr->second->GetAssetName() == "rock")
 		{
-			m_physicsWorld->CreateStaticRigidBody(btVector3(itr->second->GetPosition().x,
-				itr->second->GetPosition().y, itr->second->GetPosition().z));
-			m_collisionBodyPos.push_back(btVector3(itr->second->GetPosition().x,
-				itr->second->GetPosition().y, itr->second->GetPosition().z));
+			for (int i = 0; i < 5; i++)
+			{
+				btVector3 randomPos = btVector3(itr->second->GetPosition().x + randPositions[i], m_terrains[0]->GetAverageHeight(itr->second->GetPosition().x, itr->second->GetPosition().z) + 100, itr->second->GetPosition().z + randPositions[i]);
+				
+				m_physicsWorld->CreateStaticRigidBody(randomPos);
+				m_collisionBodyPos.push_back(randomPos);
+			}
+		}
+		else if (itr->second->GetAssetName() == "knight")
+		{
+			for (int i = 0; i < 15; i++)
+			{
+				btVector3 randomPos = btVector3(itr->second->GetPosition().x - randPositions[i], m_terrains[0]->GetAverageHeight(itr->second->GetPosition().x, itr->second->GetPosition().z) + 100, itr->second->GetPosition().z - randPositions[i]);
+
+				m_physicsWorld->CreateStaticRigidBody(randomPos);
+				m_collisionBodyPos.push_back(randomPos);
+			}
 		}
 		else
 		{
-			m_physicsWorld->CreateDynamicRigidBody(btVector3(itr->second->GetPosition().x,
-				itr->second->GetPosition().y, itr->second->GetPosition().z));
-			m_collisionBodyPos.push_back(btVector3(itr->second->GetPosition().x,
-				itr->second->GetPosition().y, itr->second->GetPosition().z));
+			m_physicsWorld->CreateDynamicRigidBody(pos);
+			m_collisionBodyPos.push_back(pos);
 		}
-
-		//std::cout << "Physics body added: " << i << std::endl;
-		i++;
 	}
+
 
 	//  *** Can this be changed to the terrain mesh? *** 
 	// Create static rigid body (floor)
