@@ -55,9 +55,24 @@ public:
 		*/
 	IGameAsset* CreateAsset(ASS_TYPE type, std::string assetName);
 
+		/**
+		* @brief Adds an asset to map
+		*
+		* Adds the pointer to a game asset that is parsed in as a parameter to the map data structure
+		* that holds all the loaded assets.
+		*
+		* @param IGameAsset* assetToAdd
+		* @return const void
+		*/
 	const void AddAsset(IGameAsset* assetToAdd);
 
-	// Check if this should be double const
+		/**
+		* @brief Gets the asset map
+		*
+		* Returns the asset map by reference.
+		*
+		* @return const std::multimap<std::string, IGameAsset*>&
+		*/
 	const std::multimap<std::string, IGameAsset*>& GetAssets() { return m_assets; }
 
 protected:

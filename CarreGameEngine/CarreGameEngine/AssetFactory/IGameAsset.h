@@ -133,7 +133,7 @@ public:
 		/**
 		* @brief Sets the asset position
 		*
-		* Virtual function to return to set the position of the asset.
+		* Virtual function to set the position of the asset.
 		*
 		* @param glm::vec3 position
 		* @return void
@@ -143,7 +143,7 @@ public:
 		/**
 		* @brief Sets the asset scale
 		*
-		* Virtual function to return to set the scale of the asset.
+		* Virtual function to set the scale of the asset.
 		*
 		* @param glm::vec3 scale
 		* @return void
@@ -153,7 +153,7 @@ public:
 		/**
 		* @brief Sets the asset rotation
 		*
-		* Virtual function to return to set the rotation of the asset.
+		* Virtual function to set the rotation of the asset.
 		*
 		* @param glm::vec3 rotation
 		* @return void
@@ -163,7 +163,7 @@ public:
 		/**
 		* @brief Gets the asset position
 		*
-		* Virtual function to return to get the position of the asset.
+		* Virtual function to get the position of the asset.
 		*
 		* @return const glm::vec3
 		*/
@@ -172,20 +172,55 @@ public:
 		/**
 		* @brief Gets the asset rotation
 		*
-		* Virtual function to return to get the position of the asset.
+		* Virtual function to get the position of the asset.
 		*
 		* @return const glm::vec3
 		*/
 	virtual const glm::vec3 GetRotation() = 0;
 
+		/**
+		* @brief Gets the assets model object
+		*
+		* Virtual function to get the assets model.
+		*
+		* @return Model*
+		*/
 	virtual Model* GetModel() = 0;
 
+		/**
+		* @brief Adds a texture to the model
+		*
+		* Virtual function to add a texture to the assets mdoel. This takes a
+		* texture Id and relative texture file path and adds it.
+		*
+		* @param GLuint textureId
+		* @param std::string textureFilePath
+		* @return void
+		*/
 	virtual void AddTexutre(GLuint textureId, std::string textureFilePath) = 0;
 
+		/**
+		* @brief Sets the assets AI
+		*
+		* Virtual function to set the AI of the asset.
+		*
+		* @param ComputerAI* compAI
+		* @return void
+		*/
 	virtual void SetAI(ComputerAI* compAI) = 0;
+
+		/**
+		* @brief Gets the assets AI
+		*
+		* Virtual function to get the AI of the asset.
+		*
+		* @return ComputerAI*
+		*/
 	virtual ComputerAI* GetAI() = 0;
 
 protected:
+	/// Defines the nature of the asset
 	ASS_TYPE m_assetType;
+	/// Used as the key to access a specific asset
 	std::string m_assetName;
 };

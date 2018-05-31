@@ -49,7 +49,6 @@
     <ClInclude Include="headers\TextureManager.h" />
     <ClInclude Include="headers\TimeManager.h" />
     <ClInclude Include="headers\WindowManager.h" />
-    <ClInclude Include="Renderer\IRenderer.h" />
     <ClInclude Include="Renderer\OpenGl.h" />
     <ClInclude Include="headers\StateMachine.h" />
     <ClInclude Include="headers\State.h" />

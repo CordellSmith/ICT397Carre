@@ -140,10 +140,37 @@ public:
 		*/
 	void UpdatePhysics();
 
+		/**
+		* @brief Sets the game assets
+		*
+		* Sets the member data structure containing all the game assets to the map parsed in as a
+		* parameter.
+		*
+		* @param std::multimap<std::string, IGameAsset*> gameAssets
+		* @return void
+		*/
 	void SetGameAssets(std::multimap<std::string, IGameAsset*> gameAssets) { m_gameAssets = gameAssets; }
 
+		/**
+		* @brief Sets the terrains
+		*
+		* Sets the member data structure containing all the terrains to the vector data structure parsed in 
+		* as a parameter.
+		*
+		* @param std::vector<Bruteforce*> terrains
+		* @return void
+		*/
 	void SetTerrains(std::vector<Bruteforce*> terrains) { m_terrains = terrains; }
 
+		/**
+		* @brief Sets the AI
+		*
+		* Sets the member data structure containing all the AI to the vector data structure parsed in
+		* as a parameter.
+		*
+		* @param std::vector<ComputerAI*> allAI
+		* @return void
+		*/
 	void SetAI(std::vector<ComputerAI*> allAI) { m_allAI = allAI; }
 
 protected:

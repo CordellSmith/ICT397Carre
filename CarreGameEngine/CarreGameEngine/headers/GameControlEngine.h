@@ -125,7 +125,14 @@ public:
 		* @return void
 		*/
 	void GameLoop();
-
+	
+		/**
+		* @brief Initializes the Physics
+		*
+		* Sets up the physics in the game engine.
+		*
+		* @return void
+		*/
 	void InitializePhysics();
 
 		/**
