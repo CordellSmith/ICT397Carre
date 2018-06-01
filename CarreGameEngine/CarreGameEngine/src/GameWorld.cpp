@@ -5,8 +5,16 @@
 
 DynamicObject* md2file;
 double lastTime;
-int randomPositions[20];
-int randomRotations[20];
+
+int randRot[20];
+
+void GenRandomRotations()
+{
+	for (int i = 0; i < 20; i++)
+	{
+		randRot[i] = rand() % (360 - 15 + 1) + 15;
+	}
+}
 
 void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gameAssets)
 {
@@ -49,6 +57,8 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 		}
 	}
 
+	GenRandomRotations();
+
 	// AI testing
 	/*ComputerAI p;
 	for (int i = 0; i < 1000; i++)
@@ -58,15 +68,6 @@ void GameWorld::Init(Player* player, std::multimap<std::string, IGameAsset*> gam
 	// Animation testing
 	//md2file = new DynamicObject(2.5, 512, 512, 0, 100);
 	//md2file->Import("res/objects/knight.md2", glm::mat4());
-
-	for (int i = 0; i < 15; i++)
-	{
-		int randNum1 = rand() % (6000 - 0 + 1) + 0;
-		int randNum2 = rand() % (360 - 1 + 1) + 1;
-
-		randomPositions[i] = randNum1;
-		randomRotations[i] = randNum2;
-	}
 }
 
 void GameWorld::Update()
@@ -140,11 +141,14 @@ void GameWorld::UpdatePhysics()
 	// Draw each object at the updated positions based on physics simulation
 	std::multimap<std::string, IGameAsset*>::iterator itr;
 	int i = 1;
+	int numOfRocks = 10;
+	int numOfKnights = 20;
 	ComputerAI* compAI;
 	for (itr = m_gameAssets.begin(); itr != m_gameAssets.end(); itr++)
 	{
 		glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()) + 100, m_collisionBodyPos[i].z());
-		//glm::vec3 temp = glm::vec3(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].y(), m_collisionBodyPos[i].z());
+		glm::vec3 randomPos;
+		float rX, rY, rZ;
 
 		compAI = itr->second->GetAI();
 		if (compAI != NULL)
@@ -153,10 +157,6 @@ void GameWorld::UpdatePhysics()
 
 			Vector2 tempPos = compAI->GetPosition();
 			itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));
-		}
-		else
-		{
-			itr->second->SetPosition(temp);
 		}
 
 		if (itr->first == "knight")
@@ -167,9 +167,14 @@ void GameWorld::UpdatePhysics()
 			Vector2 tempPos = compAI->GetPosition();
 			itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));*/
 
-			for (int j = 0; j < 15; j++)
+			for (int j = 0; j < numOfKnights; j++)
 			{
-				itr->second->SetPosition(glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()), m_collisionBodyPos[i].z()));
+				rX = m_collisionBodyPos[i].x();
+				rY = m_collisionBodyPos[i].y();
+				rZ = m_collisionBodyPos[i].z();
+
+				itr->second->SetPosition(glm::vec3(rX, rY, rZ));
+				itr->second->SetRotation(glm::vec3(0, randRot[i], 0));
 				m_glRenderer.Render(itr->second->GetModel());
 				i++;
 			}
@@ -177,9 +182,13 @@ void GameWorld::UpdatePhysics()
 
 		if (itr->first == "rock")
 		{
-			for (int j = 0; j < 5; j++)
+			for (int j = 0; j < numOfRocks; j++)
 			{
-				itr->second->SetPosition(glm::vec3(m_collisionBodyPos[i].x(), m_terrains[0]->GetAverageHeight(m_collisionBodyPos[i].x(), m_collisionBodyPos[i].z()) - 20, m_collisionBodyPos[i].z()));
+				rX = m_collisionBodyPos[i].x();
+				rY = m_collisionBodyPos[i].y() - 100;
+				rZ = m_collisionBodyPos[i].z();
+
+				itr->second->SetPosition(glm::vec3(rX, rY, rZ));
 				m_glRenderer.Render(itr->second->GetModel());
 				i++;
 			}

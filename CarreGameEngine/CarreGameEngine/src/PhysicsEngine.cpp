@@ -48,11 +48,18 @@ PhysicsEngine::PhysicsEngine()
 PhysicsEngine::~PhysicsEngine(){};
 
 // Create a static rigid body
-void PhysicsEngine::CreateStaticRigidBody(btVector3 &pos)
+void PhysicsEngine::CreateStaticRigidBody(btVector3 &pos, std::string type)
 {
-	// Create a box shape and add to shape array
-	btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(250.0), btScalar(50.0), btScalar(200.0)));
-	m_collisionShapes.push_back(boxShape);
+	btCollisionShape* groundShape;
+
+	if (type == "knight")
+		groundShape = new btBoxShape(btVector3(btScalar(80.0), btScalar(100.0), btScalar(80.0)));
+	else if (type == "rock")
+		groundShape = new btBoxShape(btVector3(btScalar(225.0), btScalar(100.0), btScalar(200.0)));
+	else
+		groundShape = new btBoxShape(btVector3(btScalar(0.0), btScalar(0.0), btScalar(0.0)));
+
+	m_collisionShapes.push_back(groundShape);
 
 	btVector3 temp = pos;
 	//temp.setX(temp.getX() - 3000);

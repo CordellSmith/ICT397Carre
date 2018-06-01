@@ -71,8 +71,8 @@ void Camera::Zoom(float yoffset)
 		change -= yoffset * mf;
 		m_fov = glm::radians(change);
 	}
-	if (glm::degrees(m_fov) <= 1.0)
-		m_fov = glm::radians(1.0);
+	if (glm::degrees(m_fov) <= 10.0)
+		m_fov = glm::radians(10.0);
 	if (glm::degrees(m_fov) >= 61.0)
 		m_fov = glm::radians(60.0);
 

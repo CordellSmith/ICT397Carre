@@ -55,6 +55,5 @@ void InputManager::WheelScrolled(double yoffset)
 	if (m_camera == nullptr)
 		return;
 
-	//std::cout << fov << std::endl;
 	m_camera->Zoom(yoffset);
 }

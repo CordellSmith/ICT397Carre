@@ -100,7 +100,7 @@ class PhysicsEngine
 			*
 			* @return void
 			*/
-		void CreateStaticRigidBody(btVector3 &pos);
+		void CreateStaticRigidBody(btVector3 &pos, std::string type);
 
 			/**
 			* @brief Creates dynamic rigid body
