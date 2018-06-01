@@ -41,14 +41,51 @@ $<$glm/gtx/transform2.hpp$>$ need to be included to use these functionalities.
 \label{group__gtx__transform2_gcee3ec4d06d03a1cf9f4037c4effc2e4}
 
 
-Build planar projection matrix along normal axis. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_gea404ce6c1541825232f418242bff9fb}{
+Build planar projection matrix along normal axis. From GLM\_\-GTX\_\-transform2 extension. 
+
+Definition at line 102 of file transform2.inl.
+
+\begin{Code}\begin{verbatim}105         {
+106                 detail::tmat3x3<T, P> r(1);
+107                 r[0][0] = 1 - normal.x * normal.x;
+108                 r[0][1] = - normal.x * normal.y;
+109                 r[1][0] = - normal.x * normal.y;
+110                 r[1][1] = 1 - normal.y * normal.y;
+111                 return m * r;
+112         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__transform2_gea404ce6c1541825232f418242bff9fb}{
 \index{gtx\_\-transform2@{gtx\_\-transform2}!proj3D@{proj3D}}
 \index{proj3D@{proj3D}!gtx_transform2@{gtx\_\-transform2}}
 \subsubsection[proj3D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::proj3D (const detail::tmat4x4$<$ T, P $>$ \& {\em m}, \/  const detail::tvec3$<$ T, P $>$ \& {\em normal})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__transform2_gea404ce6c1541825232f418242bff9fb}
 
 
-Build planar projection matrix along normal axis. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_g235e65153daa1bdc12fcc07c8019931b}{
+Build planar projection matrix along normal axis. From GLM\_\-GTX\_\-transform2 extension. 
+
+Definition at line 115 of file transform2.inl.
+
+\begin{Code}\begin{verbatim}118         {
+119                 detail::tmat4x4<T, P> r(1);
+120                 r[0][0] = 1 - normal.x * normal.x;
+121                 r[0][1] = - normal.x * normal.y;
+122                 r[0][2] = - normal.x * normal.z;
+123                 r[1][0] = - normal.x * normal.y;
+124                 r[1][1] = 1 - normal.y * normal.y;
+125                 r[1][2] = - normal.y * normal.z;
+126                 r[2][0] = - normal.x * normal.z;
+127                 r[2][1] = - normal.y * normal.z;
+128                 r[2][2] = 1 - normal.z * normal.z;
+129                 return m * r;
+130         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__transform2_g235e65153daa1bdc12fcc07c8019931b}{
 \index{gtx\_\-transform2@{gtx\_\-transform2}!scaleBias@{scaleBias}}
 \index{scaleBias@{scaleBias}!gtx_transform2@{gtx\_\-transform2}}
 \subsubsection[scaleBias]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename valType, precision P$>$ GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$valType, P$>$ glm::scaleBias (detail::tmat4x4$<$ valType, P $>$ const \& {\em m}, \/  valType {\em scale}, \/  valType {\em bias})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -69,28 +106,82 @@ Build a scale bias matrix. From GLM\_\-GTX\_\-transform2 extension. \hypertarget
 \label{group__gtx__transform2_gb571921ddab480d5cd402b5f3e325fb7}
 
 
-Transforms a matrix with a shearing on X axis. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_ga091ba9f8bd59949adaf8ed5d4ec52ed}{
+Transforms a matrix with a shearing on X axis. From GLM\_\-GTX\_\-transform2 extension. 
+
+Definition at line 13 of file transform2.inl.
+
+\begin{Code}\begin{verbatim}16         {
+17                 detail::tmat3x3<T, P> r(1);
+18                 r[0][1] = s;
+19                 return m * r;
+20         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__transform2_ga091ba9f8bd59949adaf8ed5d4ec52ed}{
 \index{gtx\_\-transform2@{gtx\_\-transform2}!shearX3D@{shearX3D}}
 \index{shearX3D@{shearX3D}!gtx_transform2@{gtx\_\-transform2}}
 \subsubsection[shearX3D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::shearX3D (const detail::tmat4x4$<$ T, P $>$ \& {\em m}, \/  T {\em y}, \/  T {\em z})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__transform2_ga091ba9f8bd59949adaf8ed5d4ec52ed}
 
 
-Transforms a matrix with a shearing on X axis From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_g17fa300cd87fdaadb7b40970d1efc515}{
+Transforms a matrix with a shearing on X axis From GLM\_\-GTX\_\-transform2 extension. 
+
+Definition at line 33 of file transform2.inl.
+
+\begin{Code}\begin{verbatim}37         {
+38                 detail::tmat4x4<T, P> r(1);
+39                 r[1][0] = s;
+40                 r[2][0] = t;
+41                 return m * r;
+42         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__transform2_g17fa300cd87fdaadb7b40970d1efc515}{
 \index{gtx\_\-transform2@{gtx\_\-transform2}!shearY2D@{shearY2D}}
 \index{shearY2D@{shearY2D}!gtx_transform2@{gtx\_\-transform2}}
 \subsubsection[shearY2D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::shearY2D (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  T {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__transform2_g17fa300cd87fdaadb7b40970d1efc515}
 
 
-Transforms a matrix with a shearing on Y axis. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_g9f9bb8a5e641eb978f4ed24e980bd898}{
+Transforms a matrix with a shearing on Y axis. From GLM\_\-GTX\_\-transform2 extension. 
+
+Definition at line 23 of file transform2.inl.
+
+\begin{Code}\begin{verbatim}26         {
+27                 detail::tmat3x3<T, P> r(1);
+28                 r[1][0] = s;
+29                 return m * r;
+30         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__transform2_g9f9bb8a5e641eb978f4ed24e980bd898}{
 \index{gtx\_\-transform2@{gtx\_\-transform2}!shearY3D@{shearY3D}}
 \index{shearY3D@{shearY3D}!gtx_transform2@{gtx\_\-transform2}}
 \subsubsection[shearY3D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::shearY3D (const detail::tmat4x4$<$ T, P $>$ \& {\em m}, \/  T {\em x}, \/  T {\em z})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__transform2_g9f9bb8a5e641eb978f4ed24e980bd898}
 
 
-Transforms a matrix with a shearing on Y axis. From GLM\_\-GTX\_\-transform2 extension. \hypertarget{group__gtx__transform2_ge94300dc2220af5a0d4afa13c912d1a1}{
+Transforms a matrix with a shearing on Y axis. From GLM\_\-GTX\_\-transform2 extension. 
+
+Definition at line 45 of file transform2.inl.
+
+\begin{Code}\begin{verbatim}49         {
+50                 detail::tmat4x4<T, P> r(1);
+51                 r[0][1] = s;
+52                 r[2][1] = t;
+53                 return m * r;
+54         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__transform2_ge94300dc2220af5a0d4afa13c912d1a1}{
 \index{gtx\_\-transform2@{gtx\_\-transform2}!shearZ3D@{shearZ3D}}
 \index{shearZ3D@{shearZ3D}!gtx_transform2@{gtx\_\-transform2}}
 \subsubsection[shearZ3D]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::shearZ3D (const detail::tmat4x4$<$ T, P $>$ \& {\em m}, \/  T {\em x}, \/  T {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -98,3 +189,16 @@ Transforms a matrix with a shearing on Y axis. From GLM\_\-GTX\_\-transform2 ext
 
 
 Transforms a matrix with a shearing on Z axis. From GLM\_\-GTX\_\-transform2 extension. 
+
+Definition at line 57 of file transform2.inl.
+
+\begin{Code}\begin{verbatim}61         {
+62                 detail::tmat4x4<T, P> r(1);
+63                 r[0][2] = s;
+64                 r[1][2] = t;
+65                 return m * r;
+66         }
+\end{verbatim}
+\end{Code}
+
+

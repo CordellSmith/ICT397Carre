@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_spline</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_spline</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -96,6 +96,34 @@ template&lt;typename genType&gt; </div>
 <p>
 Return a point from a catmull rom curve. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__spline.html" title="Spline functions.">GLM_GTX_spline</a> extension. </dd></dl>
 
+<p>Definition at line <a class="el" href="spline_8inl-source.html#l00014">14</a> of file <a class="el" href="spline_8inl-source.html">spline.inl</a>.</p>
+
+<p>References <a class="el" href="optimum__pow_8inl-source.html#l00013">glm::pow2()</a>, and <a class="el" href="optimum__pow_8inl-source.html#l00019">glm::pow3()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00021"></a>00021 {
+<a name="l00022"></a>00022         <span class="keyword">typename</span> genType::value_type s1 = s;
+<a name="l00023"></a>00023         <span class="keyword">typename</span> genType::value_type s2 = <a class="code" href="group__gtx__optimum__pow.html#g8c44a36cd695f8abc2444152606f6067">pow2</a>(s);
+<a name="l00024"></a>00024         <span class="keyword">typename</span> genType::value_type s3 = <a class="code" href="group__gtx__optimum__pow.html#gc304ffcd456eeb248c1a3820cd9d7784">pow3</a>(s);
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026         <span class="keyword">typename</span> genType::value_type f1 = -s3 + <span class="keyword">typename</span> genType::value_type(2) * s2 - s;
+<a name="l00027"></a>00027         <span class="keyword">typename</span> genType::value_type f2 = <span class="keyword">typename</span> genType::value_type(3) * s3 - <span class="keyword">typename</span> genType::value_type(5) * s2 + <span class="keyword">typename</span> genType::value_type(2);
+<a name="l00028"></a>00028         <span class="keyword">typename</span> genType::value_type f3 = <span class="keyword">typename</span> genType::value_type(-3) * s3 + <span class="keyword">typename</span> genType::value_type(4) * s2 + s;
+<a name="l00029"></a>00029         <span class="keyword">typename</span> genType::value_type f4 = s3 - s2;
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031         <span class="keywordflow">return</span> (f1 * v1 + f2 * v2 + f3 * v3 + f4 * v4) / <span class="keyword">typename</span> genType::value_type(2);
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__spline_gb08e3c8b7ddaa352cd1415f654f4d628_cgraph.png" border="0" usemap="#group__gtx__spline_gb08e3c8b7ddaa352cd1415f654f4d628_cgraph_map" alt=""></center>
+<map name="group__gtx__spline_gb08e3c8b7ddaa352cd1415f654f4d628_cgraph_map">
+<area shape="rect" href="group__gtx__optimum__pow.html#g8c44a36cd695f8abc2444152606f6067" title="glm::pow2" alt="" coords="173,5,253,32"><area shape="rect" href="group__gtx__optimum__pow.html#gc304ffcd456eeb248c1a3820cd9d7784" title="glm::pow3" alt="" coords="173,56,253,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g46e54d27ad211a24813f19b80aba0329"></a><!-- doxytag: member="glm::cubic" ref="g46e54d27ad211a24813f19b80aba0329" args="(genType const &amp;v1, genType const &amp;v2, genType const &amp;v3, genType const &amp;v4, typename genType::value_type const &amp;s)" -->
@@ -145,6 +173,13 @@ template&lt;typename genType&gt; </div>
 
 <p>
 Return a point from a cubic curve. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__spline.html" title="Spline functions.">GLM_GTX_spline</a> extension. </dd></dl>
+
+<p>Definition at line <a class="el" href="spline_8inl-source.html#l00059">59</a> of file <a class="el" href="spline_8inl-source.html">spline.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00066"></a>00066 {
+<a name="l00067"></a>00067         <span class="keywordflow">return</span> ((v1 * s + v2) * s + v3) * s + v4;
+<a name="l00068"></a>00068 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -196,10 +231,37 @@ template&lt;typename genType&gt; </div>
 <p>
 Return a point from a hermite curve. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__spline.html" title="Spline functions.">GLM_GTX_spline</a> extension. </dd></dl>
 
+<p>Definition at line <a class="el" href="spline_8inl-source.html#l00037">37</a> of file <a class="el" href="spline_8inl-source.html">spline.inl</a>.</p>
+
+<p>References <a class="el" href="optimum__pow_8inl-source.html#l00013">glm::pow2()</a>, and <a class="el" href="optimum__pow_8inl-source.html#l00019">glm::pow3()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00044"></a>00044 {
+<a name="l00045"></a>00045         <span class="keyword">typename</span> genType::value_type s1 = s;
+<a name="l00046"></a>00046         <span class="keyword">typename</span> genType::value_type s2 = <a class="code" href="group__gtx__optimum__pow.html#g8c44a36cd695f8abc2444152606f6067">pow2</a>(s);
+<a name="l00047"></a>00047         <span class="keyword">typename</span> genType::value_type s3 = <a class="code" href="group__gtx__optimum__pow.html#gc304ffcd456eeb248c1a3820cd9d7784">pow3</a>(s);
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049         <span class="keyword">typename</span> genType::value_type f1 = <span class="keyword">typename</span> genType::value_type(2) * s3 - <span class="keyword">typename</span> genType::value_type(3) * s2 + <span class="keyword">typename</span> genType::value_type(1);
+<a name="l00050"></a>00050         <span class="keyword">typename</span> genType::value_type f2 = <span class="keyword">typename</span> genType::value_type(-2) * s3 + <span class="keyword">typename</span> genType::value_type(3) * s2;
+<a name="l00051"></a>00051         <span class="keyword">typename</span> genType::value_type f3 = s3 - <span class="keyword">typename</span> genType::value_type(2) * s2 + s;
+<a name="l00052"></a>00052         <span class="keyword">typename</span> genType::value_type f4 = s3 - s2;
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054         <span class="keywordflow">return</span> f1 * v1 + f2 * v2 + f3 * t1 + f4 * t2;
+<a name="l00055"></a>00055 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__spline_ge95792c83c014a3c61b35312fb02679f_cgraph.png" border="0" usemap="#group__gtx__spline_ge95792c83c014a3c61b35312fb02679f_cgraph_map" alt=""></center>
+<map name="group__gtx__spline_ge95792c83c014a3c61b35312fb02679f_cgraph_map">
+<area shape="rect" href="group__gtx__optimum__pow.html#g8c44a36cd695f8abc2444152606f6067" title="glm::pow2" alt="" coords="147,5,227,32"><area shape="rect" href="group__gtx__optimum__pow.html#gc304ffcd456eeb248c1a3820cd9d7784" title="glm::pow3" alt="" coords="147,56,227,83"></map>
+</div>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:43 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:57 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

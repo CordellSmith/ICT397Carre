@@ -26,6 +26,8 @@ enum \hyperlink{structbt_soft_body_1_1f_collision_feb40bef0380b8db7e9e5628cc5f08
 \subsection{Detailed Description}
 \hyperlink{structbt_soft_body_1_1f_collision}{fCollision} 
 
+Definition at line 136 of file btSoftBody.h.
+
 \subsection{Member Enumeration Documentation}
 \hypertarget{structbt_soft_body_1_1f_collision_feb40bef0380b8db7e9e5628cc5f08d5}{
 \index{btSoftBody::fCollision@{btSoftBody::fCollision}!\_\-@{\_\-}}
@@ -57,7 +59,7 @@ VF\_\-SS}
 \hypertarget{structbt_soft_body_1_1f_collision_feb40bef0380b8db7e9e5628cc5f08d5602caf1ca49fea4d9215dbea6ad17f04}{
 CL\_\-SS}
 \label{structbt_soft_body_1_1f_collision_feb40bef0380b8db7e9e5628cc5f08d5602caf1ca49fea4d9215dbea6ad17f04}
-}]\hyperlink{struct_vertex}{Vertex} vs face soft vs soft handling. \index{CL\_\-SELF@{CL\_\-SELF}!btSoftBody::fCollision@{btSoftBody::fCollision}}\index{btSoftBody::fCollision@{btSoftBody::fCollision}!CL\_\-SELF@{CL\_\-SELF}}\item[{\em 
+}]\hyperlink{class_vertex}{Vertex} vs face soft vs soft handling. \index{CL\_\-SELF@{CL\_\-SELF}!btSoftBody::fCollision@{btSoftBody::fCollision}}\index{btSoftBody::fCollision@{btSoftBody::fCollision}!CL\_\-SELF@{CL\_\-SELF}}\item[{\em 
 \hypertarget{structbt_soft_body_1_1f_collision_feb40bef0380b8db7e9e5628cc5f08d571505ee64a4a976707c73ec67cfcd533}{
 CL\_\-SELF}
 \label{structbt_soft_body_1_1f_collision_feb40bef0380b8db7e9e5628cc5f08d571505ee64a4a976707c73ec67cfcd533}
@@ -70,6 +72,27 @@ Default}
 
 
 
+Definition at line 136 of file btSoftBody.h.
+
+\begin{Code}\begin{verbatim}136                           { enum _ {
+137                 RVSmask =       0x000f, 
+138                 SDF_RS  =       0x0001, 
+139                 CL_RS   =       0x0002, 
+140 
+141                 SVSmask =       0x0030, 
+142                 VF_SS   =       0x0010, 
+143                 CL_SS   =       0x0020, 
+144                 CL_SELF =       0x0040, 
+145                 /* presets      */ 
+146                 Default =       SDF_RS,
+147                 END
+148         };};
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this struct was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBody.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBody.h\end{CompactItemize}

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTC_ulp</title>
+<title>Assignment2 - OOber Taxi: GLM_GTC_ulp</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -119,6 +119,49 @@ template&lt;typename T&gt; </div>
 <p>
 Return the distance in the number of ULP between 2 scalars. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__ulp.html" title="Allow the measurement of the accuracy of a function against a reference implementation...">GLM_GTC_ulp</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="ulp_8inl-source.html#l00300">300</a> of file <a class="el" href="ulp_8inl-source.html">ulp.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__ulp.html#g5ec4457d254b7b960db32f10d219fd6f">glm::next_float()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00301"></a>00301         {
+<a name="l00302"></a>00302                 <a class="code" href="group__core__precision.html#g4fd29415871152bfb5abd588334147c8">uint</a> ulp = 0;
+<a name="l00303"></a>00303 
+<a name="l00304"></a>00304                 <span class="keywordflow">if</span>(x &lt; y)
+<a name="l00305"></a>00305                 {
+<a name="l00306"></a>00306                         T temp = x;
+<a name="l00307"></a>00307                         <span class="keywordflow">while</span>(temp != y)<span class="comment">// &amp;&amp; ulp &lt; std::numeric_limits&lt;std::size_t&gt;::max())</span>
+<a name="l00308"></a>00308                         {
+<a name="l00309"></a>00309                                 ++ulp;
+<a name="l00310"></a>00310                                 temp = <a class="code" href="group__gtc__ulp.html#g686013928fd7c76c5f100b84483b1f51">next_float</a>(temp);
+<a name="l00311"></a>00311                         }
+<a name="l00312"></a>00312                 }
+<a name="l00313"></a>00313                 <span class="keywordflow">else</span> <span class="keywordflow">if</span>(y &lt; x)
+<a name="l00314"></a>00314                 {
+<a name="l00315"></a>00315                         T temp = y;
+<a name="l00316"></a>00316                         <span class="keywordflow">while</span>(temp != x)<span class="comment">// &amp;&amp; ulp &lt; std::numeric_limits&lt;std::size_t&gt;::max())</span>
+<a name="l00317"></a>00317                         {
+<a name="l00318"></a>00318                                 ++ulp;
+<a name="l00319"></a>00319                                 temp = <a class="code" href="group__gtc__ulp.html#g686013928fd7c76c5f100b84483b1f51">next_float</a>(temp);
+<a name="l00320"></a>00320                         }
+<a name="l00321"></a>00321                 }
+<a name="l00322"></a>00322                 <span class="keywordflow">else</span> <span class="comment">// ==</span>
+<a name="l00323"></a>00323                 {
+<a name="l00324"></a>00324 
+<a name="l00325"></a>00325                 }
+<a name="l00326"></a>00326 
+<a name="l00327"></a>00327                 <span class="keywordflow">return</span> ulp;
+<a name="l00328"></a>00328         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__ulp_g4cb4468c9654077d40266d039158206b_cgraph.png" border="0" usemap="#group__gtc__ulp_g4cb4468c9654077d40266d039158206b_cgraph_map" alt=""></center>
+<map name="group__gtc__ulp_g4cb4468c9654077d40266d039158206b_cgraph_map">
+<area shape="rect" href="group__gtc__ulp.html#g5ec4457d254b7b960db32f10d219fd6f" title="glm::next_float" alt="" coords="184,5,291,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g686013928fd7c76c5f100b84483b1f51"></a><!-- doxytag: member="glm::next_float" ref="g686013928fd7c76c5f100b84483b1f51" args="(genType const &amp;x, uint const &amp;Distance)" -->
@@ -173,6 +216,17 @@ template&lt;typename genType&gt; </div>
 
 <p>
 Return the next ULP value(s) after the input value(s). <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__ulp.html" title="Allow the measurement of the accuracy of a function against a reference implementation...">GLM_GTC_ulp</a> </dd></dl>
+
+<p>Referenced by <a class="el" href="ulp_8inl-source.html#l00300">glm::float_distance()</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__ulp_g5ec4457d254b7b960db32f10d219fd6f_icgraph.png" border="0" usemap="#group__gtc__ulp_g5ec4457d254b7b960db32f10d219fd6f_icgraph_map" alt=""></center>
+<map name="group__gtc__ulp_g5ec4457d254b7b960db32f10d219fd6f_icgraph_map">
+<area shape="rect" href="group__gtc__ulp.html#g4cb4468c9654077d40266d039158206b" title="glm::float_distance" alt="" coords="160,5,291,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -232,7 +286,7 @@ Return the previous ULP value(s) before the input value(s). <dl class="see" comp
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:27 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:58:54 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

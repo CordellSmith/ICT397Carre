@@ -50,6 +50,17 @@ Returns a double-precision value obtained by packing the components of v into a 
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packDouble2x32.xml}{\tt GLSL packDouble2x32 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 91 of file func\_\-packing.inl.
+
+\begin{Code}\begin{verbatim}92         {
+93                 return reinterpret_cast<double const &>(v);
+94         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__packing_g082f6dd65f73a547ed3067ef00be036f}{
 \index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!packHalf2x16@{packHalf2x16}}
 \index{packHalf2x16@{packHalf2x16}!core_func_packing@{core\_\-func\_\-packing}}
@@ -63,6 +74,22 @@ Returns an unsigned integer obtained by converting the components of a two-compo
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packHalf2x16.xml}{\tt GLSL packHalf2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 101 of file func\_\-packing.inl.
+
+\begin{Code}\begin{verbatim}102         {
+103                 i16vec2 Unpack(
+104                         detail::toFloat16(v.x),
+105                         detail::toFloat16(v.y));
+106 
+107                 uint * Result = reinterpret_cast<uint*>(&Unpack);
+108                 return *Result;
+109         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__packing_g0c8005de240d6c4ca3d16c7bee25c622}{
 \index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!packSnorm2x16@{packSnorm2x16}}
 \index{packSnorm2x16@{packSnorm2x16}!core_func_packing@{core\_\-func\_\-packing}}
@@ -80,7 +107,25 @@ The first component of the vector will be written to the least significant bits 
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packSnorm2x16.xml}{\tt GLSL packSnorm2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__core__func__packing_gfcf25acc0d361c6c696a433aa5dfd16b}{
+
+
+Definition at line 49 of file func\_\-packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}50         {
+51                 i16vec2 Topack(round(clamp(v ,-1.0f, 1.0f) * 32767.0f));
+52                 // return reinterpret_cast<uint32&>(Topack);
+53     uint* ptr(reinterpret_cast<uint*>(&Topack));
+54     return *ptr;
+55         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__packing_gfcf25acc0d361c6c696a433aa5dfd16b}{
 \index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!packSnorm4x8@{packSnorm4x8}}
 \index{packSnorm4x8@{packSnorm4x8}!core_func_packing@{core\_\-func\_\-packing}}
 \subsubsection[packSnorm4x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint glm::packSnorm4x8 (vec4 const \& {\em v})}}
@@ -97,7 +142,23 @@ The first component of the vector will be written to the least significant bits 
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packSnorm4x8.xml}{\tt GLSL packSnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__core__func__packing_g0659ddaf09727551c7bf51655d2a65cf}{
+
+
+Definition at line 77 of file func\_\-packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}78         {
+79                 i8vec4 Topack(round(clamp(v ,-1.0f, 1.0f) * 127.0f));
+80                 return reinterpret_cast<uint&>(Topack);
+81         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__packing_g0659ddaf09727551c7bf51655d2a65cf}{
 \index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!packUnorm2x16@{packUnorm2x16}}
 \index{packUnorm2x16@{packUnorm2x16}!core_func_packing@{core\_\-func\_\-packing}}
 \subsubsection[packUnorm2x16]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint glm::packUnorm2x16 (vec2 const \& {\em v})}}
@@ -114,7 +175,25 @@ The first component of the vector will be written to the least significant bits 
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packUnorm2x16.xml}{\tt GLSL packUnorm2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__core__func__packing_g834ee9a9e73dcb0a7c1fc88143f3edb8}{
+
+
+Definition at line 35 of file func\_\-packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}36         {
+37                 u16vec2 Topack(round(clamp(v, 0.0f, 1.0f) * 65535.0f));
+38                 // return reinterpret_cast<uint&>(Topack);
+39     uint* ptr(reinterpret_cast<uint*>(&Topack));
+40     return *ptr;
+41         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__packing_g834ee9a9e73dcb0a7c1fc88143f3edb8}{
 \index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!packUnorm4x8@{packUnorm4x8}}
 \index{packUnorm4x8@{packUnorm4x8}!core_func_packing@{core\_\-func\_\-packing}}
 \subsubsection[packUnorm4x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint glm::packUnorm4x8 (vec4 const \& {\em v})}}
@@ -131,7 +210,23 @@ The first component of the vector will be written to the least significant bits 
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packUnorm4x8.xml}{\tt GLSL packUnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__core__func__packing_g7e8cf88c278c18969c99af83bceed024}{
+
+
+Definition at line 65 of file func\_\-packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}66         {
+67                 u8vec4 Topack(round(clamp(v, 0.0f, 1.0f) * 255.0f));
+68                 return reinterpret_cast<uint&>(Topack);
+69         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__packing_g7e8cf88c278c18969c99af83bceed024}{
 \index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackDouble2x32@{unpackDouble2x32}}
 \index{unpackDouble2x32@{unpackDouble2x32}!core_func_packing@{core\_\-func\_\-packing}}
 \subsubsection[unpackDouble2x32]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uvec2 glm::unpackDouble2x32 (double const \& {\em v})}}
@@ -144,6 +239,17 @@ Returns a two-component unsigned integer vector representation of v. The bit-lev
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackDouble2x32.xml}{\tt GLSL unpackDouble2x32 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 96 of file func\_\-packing.inl.
+
+\begin{Code}\begin{verbatim}97         {
+98                 return reinterpret_cast<uvec2 const &>(v);
+99         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__packing_g4051804cc2c930ba4ca73382b79edf1d}{
 \index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackHalf2x16@{unpackHalf2x16}}
 \index{unpackHalf2x16@{unpackHalf2x16}!core_func_packing@{core\_\-func\_\-packing}}
@@ -157,6 +263,21 @@ Returns a two-component floating-point vector with components obtained by unpack
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackHalf2x16.xml}{\tt GLSL unpackHalf2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 111 of file func\_\-packing.inl.
+
+\begin{Code}\begin{verbatim}112         {
+113                 i16vec2 Unpack(reinterpret_cast<i16vec2 const &>(v));
+114         
+115                 return vec2(
+116                         detail::toFloat32(Unpack.x), 
+117                         detail::toFloat32(Unpack.y));
+118         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__packing_ga3f9bd6a71d7bdfab090b9626f2466aa}{
 \index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackSnorm2x16@{unpackSnorm2x16}}
 \index{unpackSnorm2x16@{unpackSnorm2x16}!core_func_packing@{core\_\-func\_\-packing}}
@@ -174,7 +295,25 @@ The first component of the returned vector will be extracted from the least sign
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackSnorm2x16.xml}{\tt GLSL unpackSnorm2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__core__func__packing_g126a0deffef1f2d10dd67237981a870b}{
+
+
+Definition at line 57 of file func\_\-packing.inl.
+
+References glm::clamp(), and glm::e().
+
+\begin{Code}\begin{verbatim}58         {
+59                 vec2 Unpack(reinterpret_cast<i16vec2 const &>(p));
+60                 return clamp(
+61                         Unpack * 3.0518509475997192297128208258309e-5f, //1.0f / 32767.0f,
+62                         -1.0f, 1.0f);
+63         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__packing_g126a0deffef1f2d10dd67237981a870b}{
 \index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackSnorm4x8@{unpackSnorm4x8}}
 \index{unpackSnorm4x8@{unpackSnorm4x8}!core_func_packing@{core\_\-func\_\-packing}}
 \subsubsection[unpackSnorm4x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER {\bf glm::vec4} glm::unpackSnorm4x8 (uint const \& {\em p})}}
@@ -191,7 +330,25 @@ The first component of the returned vector will be extracted from the least sign
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackSnorm4x8.xml}{\tt GLSL unpackSnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__core__func__packing_gff327a2fca8abfe31b74b914b68ac5ec}{
+
+
+Definition at line 83 of file func\_\-packing.inl.
+
+References glm::clamp().
+
+\begin{Code}\begin{verbatim}84         {
+85                 vec4 Unpack(reinterpret_cast<i8vec4 const &>(p));
+86                 return clamp(
+87                         Unpack * 0.0078740157480315f, // 1.0f / 127.0f
+88                         -1.0f, 1.0f);
+89         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__packing_gff327a2fca8abfe31b74b914b68ac5ec}{
 \index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackUnorm2x16@{unpackUnorm2x16}}
 \index{unpackUnorm2x16@{unpackUnorm2x16}!core_func_packing@{core\_\-func\_\-packing}}
 \subsubsection[unpackUnorm2x16]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER vec2 glm::unpackUnorm2x16 (uint const \& {\em p})}}
@@ -208,7 +365,23 @@ The first component of the returned vector will be extracted from the least sign
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackUnorm2x16.xml}{\tt GLSL unpackUnorm2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__core__func__packing_g5d3c4d354b48a317935349dd62a8b8a5}{
+
+
+Definition at line 43 of file func\_\-packing.inl.
+
+References glm::e().
+
+\begin{Code}\begin{verbatim}44         {
+45                 vec2 Unpack(reinterpret_cast<u16vec2 const &>(p));
+46                 return Unpack * float(1.5259021896696421759365224689097e-5); // 1.0 / 65535.0
+47         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__packing_g5d3c4d354b48a317935349dd62a8b8a5}{
 \index{core\_\-func\_\-packing@{core\_\-func\_\-packing}!unpackUnorm4x8@{unpackUnorm4x8}}
 \index{unpackUnorm4x8@{unpackUnorm4x8}!core_func_packing@{core\_\-func\_\-packing}}
 \subsubsection[unpackUnorm4x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER vec4 glm::unpackUnorm4x8 (uint const \& {\em p})}}
@@ -225,3 +398,15 @@ The first component of the returned vector will be extracted from the least sign
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackUnorm4x8.xml}{\tt GLSL unpackUnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 71 of file func\_\-packing.inl.
+
+\begin{Code}\begin{verbatim}72         {
+73                 vec4 Unpack(reinterpret_cast<u8vec4 const&>(p));
+74                 return Unpack * float(0.0039215686274509803921568627451); // 1 / 255
+75         }
+\end{verbatim}
+\end{Code}
+
+

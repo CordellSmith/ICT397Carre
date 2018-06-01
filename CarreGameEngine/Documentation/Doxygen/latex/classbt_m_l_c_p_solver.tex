@@ -37,6 +37,8 @@ btMatrixXu \hyperlink{classbt_m_l_c_p_solver_8430698267e9572498e04e8dba3cda3b}{m
 \subsection{Detailed Description}
 original version written by Erwin Coumans, October 2013 
 
+Definition at line 24 of file btMLCPSolver.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_m_l_c_p_solver_a465e167537eceb89f7125d3bb2d5321}{
 \index{btMLCPSolver@{btMLCPSolver}!solveGroupCacheFriendlySetup@{solveGroupCacheFriendlySetup}}
@@ -47,7 +49,100 @@ original version written by Erwin Coumans, October 2013
 
 
 
-The btSequentialImpulseConstraintSolver moves all friction constraints at the very end, we can also interleave them instead \hypertarget{classbt_m_l_c_p_solver_b36b9b3bf2bbbd1de7db27ba109e0a8a}{
+The btSequentialImpulseConstraintSolver moves all friction constraints at the very end, we can also interleave them instead 
+
+Definition at line 36 of file btMLCPSolver.cpp.
+
+References createMLCPFast(), btAlignedObjectArray$<$ T $>$::push\_\-back(), btAlignedObjectArray$<$ T $>$::resize(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}37 {
+38         btSequentialImpulseConstraintSolver::solveGroupCacheFriendlySetup( bodies, numBodiesUnUsed, manifoldPtr, numManifolds,constraints,numConstraints,infoGlobal,debugDrawer);
+39 
+40         {
+41                 BT_PROFILE("gather constraint data");
+42 
+43                 int numFrictionPerContact = m_tmpSolverContactConstraintPool.size()==m_tmpSolverContactFrictionConstraintPool.size()? 1 : 2;
+44 
+45 
+46         //      int numBodies = m_tmpSolverBodyPool.size();
+47                 m_allConstraintPtrArray.resize(0);
+48                 m_limitDependencies.resize(m_tmpSolverNonContactConstraintPool.size()+m_tmpSolverContactConstraintPool.size()+m_tmpSolverContactFrictionConstraintPool.size());
+49                 btAssert(m_limitDependencies.size() == m_tmpSolverNonContactConstraintPool.size()+m_tmpSolverContactConstraintPool.size()+m_tmpSolverContactFrictionConstraintPool.size());
+50         //      printf("m_limitDependencies.size() = %d\n",m_limitDependencies.size());
+51 
+52                 int dindex = 0;
+53                 for (int i=0;i<m_tmpSolverNonContactConstraintPool.size();i++)
+54                 {
+55                         m_allConstraintPtrArray.push_back(&m_tmpSolverNonContactConstraintPool[i]);
+56                         m_limitDependencies[dindex++] = -1;
+57                 }
+58  
+60                 
+61                 int firstContactConstraintOffset=dindex;
+62 
+63                 if (interleaveContactAndFriction)
+64                 {
+65                         for (int i=0;i<m_tmpSolverContactConstraintPool.size();i++)
+66                         {
+67                                 m_allConstraintPtrArray.push_back(&m_tmpSolverContactConstraintPool[i]);
+68                                 m_limitDependencies[dindex++] = -1;
+69                                 m_allConstraintPtrArray.push_back(&m_tmpSolverContactFrictionConstraintPool[i*numFrictionPerContact]);
+70                                 int findex = (m_tmpSolverContactFrictionConstraintPool[i*numFrictionPerContact].m_frictionIndex*(1+numFrictionPerContact));
+71                                 m_limitDependencies[dindex++] = findex +firstContactConstraintOffset;
+72                                 if (numFrictionPerContact==2)
+73                                 {
+74                                         m_allConstraintPtrArray.push_back(&m_tmpSolverContactFrictionConstraintPool[i*numFrictionPerContact+1]);
+75                                         m_limitDependencies[dindex++] = findex+firstContactConstraintOffset;
+76                                 }
+77                         }
+78                 } else
+79                 {
+80                         for (int i=0;i<m_tmpSolverContactConstraintPool.size();i++)
+81                         {
+82                                 m_allConstraintPtrArray.push_back(&m_tmpSolverContactConstraintPool[i]);
+83                                 m_limitDependencies[dindex++] = -1;
+84                         }
+85                         for (int i=0;i<m_tmpSolverContactFrictionConstraintPool.size();i++)
+86                         {
+87                                 m_allConstraintPtrArray.push_back(&m_tmpSolverContactFrictionConstraintPool[i]);
+88                                 m_limitDependencies[dindex++] = m_tmpSolverContactFrictionConstraintPool[i].m_frictionIndex+firstContactConstraintOffset;
+89                         }
+90                         
+91                 }
+92 
+93 
+94                 if (!m_allConstraintPtrArray.size())
+95                 {
+96                         m_A.resize(0,0);
+97                         m_b.resize(0);
+98                         m_x.resize(0);
+99                         m_lo.resize(0);
+100                         m_hi.resize(0);
+101                         return 0.f;
+102                 }
+103         }
+104 
+105         
+106         if (gUseMatrixMultiply)
+107         {
+108                 BT_PROFILE("createMLCP");
+109                 createMLCP(infoGlobal);
+110         }
+111         else
+112         {
+113                 BT_PROFILE("createMLCPFast");
+114                 createMLCPFast(infoGlobal);
+115         }
+116 
+117         return 0.f;
+118 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_m_l_c_p_solver_b36b9b3bf2bbbd1de7db27ba109e0a8a}{
 \index{btMLCPSolver@{btMLCPSolver}!createMLCPFast@{createMLCPFast}}
 \index{createMLCPFast@{createMLCPFast}!btMLCPSolver@{btMLCPSolver}}
 \subsubsection[createMLCPFast]{\setlength{\rightskip}{0pt plus 5cm}void btMLCPSolver::createMLCPFast (const btContactSolverInfo \& {\em infoGlobal})\hspace{0.3cm}{\tt  \mbox{[}protected, virtual\mbox{]}}}}
@@ -57,6 +152,335 @@ The btSequentialImpulseConstraintSolver moves all friction constraints at the ve
 
 
 fill the upper triangle of the matrix, to make it symmetric 
+
+Definition at line 154 of file btMLCPSolver.cpp.
+
+References btAlignedObjectArray$<$ T $>$::expand(), btRigidBody::getInvInertiaTensorWorld(), btRigidBody::getInvMass(), m\_\-bSplit, m\_\-scratchJ3, btAlignedObjectArray$<$ T $>$::reserve(), btAlignedObjectArray$<$ T $>$::resize(), btAlignedObjectArray$<$ T $>$::resizeNoInitialize(), glm::row(), and btAlignedObjectArray$<$ T $>$::size().
+
+Referenced by solveGroupCacheFriendlySetup().
+
+\begin{Code}\begin{verbatim}155 {
+156         int numContactRows = interleaveContactAndFriction ? 3 : 1;
+157 
+158         int numConstraintRows = m_allConstraintPtrArray.size();
+159         int n = numConstraintRows;
+160         {
+161                 BT_PROFILE("init b (rhs)");
+162                 m_b.resize(numConstraintRows);
+163                 m_bSplit.resize(numConstraintRows);
+164                 m_b.setZero();
+165                 m_bSplit.setZero();
+166                 for (int i=0;i<numConstraintRows ;i++)
+167                 {
+168                         btScalar jacDiag = m_allConstraintPtrArray[i]->m_jacDiagABInv;
+169                         if (!btFuzzyZero(jacDiag))
+170                         {
+171                                 btScalar rhs = m_allConstraintPtrArray[i]->m_rhs;
+172                                 btScalar rhsPenetration = m_allConstraintPtrArray[i]->m_rhsPenetration;
+173                                 m_b[i]=rhs/jacDiag;
+174                                 m_bSplit[i] = rhsPenetration/jacDiag;
+175                         }
+176 
+177                 }
+178         }
+179 
+180 //      btScalar* w = 0;
+181 //      int nub = 0;
+182 
+183         m_lo.resize(numConstraintRows);
+184         m_hi.resize(numConstraintRows);
+185  
+186         {
+187                 BT_PROFILE("init lo/ho");
+188 
+189                 for (int i=0;i<numConstraintRows;i++)
+190                 {
+191                         if (0)//m_limitDependencies[i]>=0)
+192                         {
+193                                 m_lo[i] = -BT_INFINITY;
+194                                 m_hi[i] = BT_INFINITY;
+195                         } else
+196                         {
+197                                 m_lo[i] = m_allConstraintPtrArray[i]->m_lowerLimit;
+198                                 m_hi[i] = m_allConstraintPtrArray[i]->m_upperLimit;
+199                         }
+200                 }
+201         }
+202 
+203         //
+204         int m=m_allConstraintPtrArray.size();
+205 
+206         int numBodies = m_tmpSolverBodyPool.size();
+207         btAlignedObjectArray<int> bodyJointNodeArray;
+208         {
+209                 BT_PROFILE("bodyJointNodeArray.resize");
+210                 bodyJointNodeArray.resize(numBodies,-1);
+211         }
+212         btAlignedObjectArray<btJointNode> jointNodeArray;
+213         {
+214                 BT_PROFILE("jointNodeArray.reserve");
+215                 jointNodeArray.reserve(2*m_allConstraintPtrArray.size());
+216         }
+217 
+218     btMatrixXu& J3 = m_scratchJ3;
+219         {
+220                 BT_PROFILE("J3.resize");
+221                 J3.resize(2*m,8);
+222         }
+223     btMatrixXu& JinvM3 = m_scratchJInvM3;
+224         {
+225                 BT_PROFILE("JinvM3.resize/setZero");
+226 
+227                 JinvM3.resize(2*m,8);
+228                 JinvM3.setZero();
+229                 J3.setZero();
+230         }
+231         int cur=0;
+232         int rowOffset = 0;
+233     btAlignedObjectArray<int>& ofs = m_scratchOfs;
+234         {
+235                 BT_PROFILE("ofs resize");
+236                 ofs.resize(0);
+237                 ofs.resizeNoInitialize(m_allConstraintPtrArray.size());
+238         }                               
+239         {
+240                 BT_PROFILE("Compute J and JinvM");
+241                 int c=0;
+242 
+243                 int numRows = 0;
+244 
+245                 for (int i=0;i<m_allConstraintPtrArray.size();i+=numRows,c++)
+246                 {
+247                         ofs[c] = rowOffset;
+248                         int sbA = m_allConstraintPtrArray[i]->m_solverBodyIdA;
+249                         int sbB = m_allConstraintPtrArray[i]->m_solverBodyIdB;
+250                         btRigidBody* orgBodyA = m_tmpSolverBodyPool[sbA].m_originalBody;
+251                         btRigidBody* orgBodyB = m_tmpSolverBodyPool[sbB].m_originalBody;
+252 
+253                         numRows = i<m_tmpSolverNonContactConstraintPool.size() ? m_tmpConstraintSizesPool[c].m_numConstraintRows : numContactRows ;
+254                         if (orgBodyA)
+255                         {
+256                                 {
+257                                         int slotA=-1;
+258                                         //find free jointNode slot for sbA
+259                                         slotA =jointNodeArray.size();
+260                                         jointNodeArray.expand();//NonInitializing();
+261                                         int prevSlot = bodyJointNodeArray[sbA];
+262                                         bodyJointNodeArray[sbA] = slotA;
+263                                         jointNodeArray[slotA].nextJointNodeIndex = prevSlot;
+264                                         jointNodeArray[slotA].jointIndex = c;
+265                                         jointNodeArray[slotA].constraintRowIndex = i;
+266                                         jointNodeArray[slotA].otherBodyIndex = orgBodyB ? sbB : -1;
+267                                 }
+268                                 for (int row=0;row<numRows;row++,cur++)
+269                                 {
+270                                         btVector3 normalInvMass =                               m_allConstraintPtrArray[i+row]->m_contactNormal1 *              orgBodyA->getInvMass();
+271                                         btVector3 relPosCrossNormalInvInertia = m_allConstraintPtrArray[i+row]->m_relpos1CrossNormal *  orgBodyA->getInvInertiaTensorWorld();
+272 
+273                                         for (int r=0;r<3;r++)
+274                                         {
+275                                                 J3.setElem(cur,r,m_allConstraintPtrArray[i+row]->m_contactNormal1[r]);
+276                                                 J3.setElem(cur,r+4,m_allConstraintPtrArray[i+row]->m_relpos1CrossNormal[r]);
+277                                                 JinvM3.setElem(cur,r,normalInvMass[r]);
+278                                                 JinvM3.setElem(cur,r+4,relPosCrossNormalInvInertia[r]);
+279                                         }
+280                                         J3.setElem(cur,3,0);
+281                                         JinvM3.setElem(cur,3,0);
+282                                         J3.setElem(cur,7,0);
+283                                         JinvM3.setElem(cur,7,0);
+284                                 }
+285                         } else
+286                         {
+287                                 cur += numRows;
+288                         }
+289                         if (orgBodyB)
+290                         {
+291 
+292                                 {
+293                                         int slotB=-1;
+294                                         //find free jointNode slot for sbA
+295                                         slotB =jointNodeArray.size();
+296                                         jointNodeArray.expand();//NonInitializing();
+297                                         int prevSlot = bodyJointNodeArray[sbB];
+298                                         bodyJointNodeArray[sbB] = slotB;
+299                                         jointNodeArray[slotB].nextJointNodeIndex = prevSlot;
+300                                         jointNodeArray[slotB].jointIndex = c;
+301                                         jointNodeArray[slotB].otherBodyIndex = orgBodyA ? sbA : -1;
+302                                         jointNodeArray[slotB].constraintRowIndex = i;
+303                                 }
+304 
+305                                 for (int row=0;row<numRows;row++,cur++)
+306                                 {
+307                                         btVector3 normalInvMassB = m_allConstraintPtrArray[i+row]->m_contactNormal2*orgBodyB->getInvMass();
+308                                         btVector3 relPosInvInertiaB = m_allConstraintPtrArray[i+row]->m_relpos2CrossNormal * orgBodyB->getInvInertiaTensorWorld();
+309 
+310                                         for (int r=0;r<3;r++)
+311                                         {
+312                                                 J3.setElem(cur,r,m_allConstraintPtrArray[i+row]->m_contactNormal2[r]);
+313                                                 J3.setElem(cur,r+4,m_allConstraintPtrArray[i+row]->m_relpos2CrossNormal[r]);
+314                                                 JinvM3.setElem(cur,r,normalInvMassB[r]);
+315                                                 JinvM3.setElem(cur,r+4,relPosInvInertiaB[r]);
+316                                         }
+317                                         J3.setElem(cur,3,0);
+318                                         JinvM3.setElem(cur,3,0);
+319                                         J3.setElem(cur,7,0);
+320                                         JinvM3.setElem(cur,7,0);
+321                                 }
+322                         }
+323                         else
+324                         {
+325                                 cur += numRows;
+326                         }
+327                         rowOffset+=numRows;
+328 
+329                 }
+330                 
+331         }
+332 
+333 
+334         //compute JinvM = J*invM.
+335         const btScalar* JinvM = JinvM3.getBufferPointer();
+336 
+337         const btScalar* Jptr = J3.getBufferPointer();
+338         {
+339                 BT_PROFILE("m_A.resize");
+340                 m_A.resize(n,n);
+341         }
+342         
+343         {
+344                 BT_PROFILE("m_A.setZero");
+345                 m_A.setZero();
+346         }
+347         int c=0;
+348         {
+349                 int numRows = 0;
+350                 BT_PROFILE("Compute A");
+351                 for (int i=0;i<m_allConstraintPtrArray.size();i+= numRows,c++)
+352                 {
+353                         int row__ = ofs[c];
+354                         int sbA = m_allConstraintPtrArray[i]->m_solverBodyIdA;
+355                         int sbB = m_allConstraintPtrArray[i]->m_solverBodyIdB;
+356                 //      btRigidBody* orgBodyA = m_tmpSolverBodyPool[sbA].m_originalBody;
+357                 //      btRigidBody* orgBodyB = m_tmpSolverBodyPool[sbB].m_originalBody;
+358 
+359                         numRows = i<m_tmpSolverNonContactConstraintPool.size() ? m_tmpConstraintSizesPool[c].m_numConstraintRows : numContactRows ;
+360                                         
+361                         const btScalar *JinvMrow = JinvM + 2*8*(size_t)row__;
+362 
+363                         {
+364                                 int startJointNodeA = bodyJointNodeArray[sbA];
+365                                 while (startJointNodeA>=0)
+366                                 {
+367                                         int j0 = jointNodeArray[startJointNodeA].jointIndex;
+368                                         int cr0 = jointNodeArray[startJointNodeA].constraintRowIndex;
+369                                         if (j0<c)
+370                                         {
+371                                                                  
+372                                                 int numRowsOther = cr0 < m_tmpSolverNonContactConstraintPool.size() ? m_tmpConstraintSizesPool[j0].m_numConstraintRows : numContactRows;
+373                                                 size_t ofsother = (m_allConstraintPtrArray[cr0]->m_solverBodyIdB == sbA) ? 8*numRowsOther  : 0;
+374                                                 //printf("%d joint i %d and j0: %d: ",count++,i,j0);
+375                                                 m_A.multiplyAdd2_p8r ( JinvMrow, 
+376                                                 Jptr + 2*8*(size_t)ofs[j0] + ofsother, numRows, numRowsOther,  row__,ofs[j0]);
+377                                         }
+378                                         startJointNodeA = jointNodeArray[startJointNodeA].nextJointNodeIndex;
+379                                 }
+380                         }
+381 
+382                         {
+383                                 int startJointNodeB = bodyJointNodeArray[sbB];
+384                                 while (startJointNodeB>=0)
+385                                 {
+386                                         int j1 = jointNodeArray[startJointNodeB].jointIndex;
+387                                         int cj1 = jointNodeArray[startJointNodeB].constraintRowIndex;
+388 
+389                                         if (j1<c)
+390                                         {
+391                                                 int numRowsOther =  cj1 < m_tmpSolverNonContactConstraintPool.size() ? m_tmpConstraintSizesPool[j1].m_numConstraintRows : numContactRows;
+392                                                 size_t ofsother = (m_allConstraintPtrArray[cj1]->m_solverBodyIdB == sbB) ? 8*numRowsOther  : 0;
+393                                                 m_A.multiplyAdd2_p8r ( JinvMrow + 8*(size_t)numRows, 
+394                                                 Jptr + 2*8*(size_t)ofs[j1] + ofsother, numRows, numRowsOther, row__,ofs[j1]);
+395                                         }
+396                                         startJointNodeB = jointNodeArray[startJointNodeB].nextJointNodeIndex;
+397                                 }
+398                         }
+399                 }
+400 
+401                 {
+402                         BT_PROFILE("compute diagonal");
+403                         // compute diagonal blocks of m_A
+404 
+405                         int  row__ = 0;
+406                         int numJointRows = m_allConstraintPtrArray.size();
+407 
+408                         int jj=0;
+409                         for (;row__<numJointRows;)
+410                         {
+411 
+412                                 //int sbA = m_allConstraintPtrArray[row__]->m_solverBodyIdA;
+413                                 int sbB = m_allConstraintPtrArray[row__]->m_solverBodyIdB;
+414                         //      btRigidBody* orgBodyA = m_tmpSolverBodyPool[sbA].m_originalBody;
+415                                 btRigidBody* orgBodyB = m_tmpSolverBodyPool[sbB].m_originalBody;
+416 
+417 
+418                                 const unsigned int infom =  row__ < m_tmpSolverNonContactConstraintPool.size() ? m_tmpConstraintSizesPool[jj].m_numConstraintRows : numContactRows;
+419                                 
+420                                 const btScalar *JinvMrow = JinvM + 2*8*(size_t)row__;
+421                                 const btScalar *Jrow = Jptr + 2*8*(size_t)row__;
+422                                 m_A.multiply2_p8r (JinvMrow, Jrow, infom, infom, row__,row__);
+423                                 if (orgBodyB) 
+424                                 {
+425                                         m_A.multiplyAdd2_p8r (JinvMrow + 8*(size_t)infom, Jrow + 8*(size_t)infom, infom, infom,  row__,row__);
+426                                 }
+427                                 row__ += infom;
+428                                 jj++;
+429                         }
+430                 }
+431         }
+432 
+433         if (1)
+434         {
+435                 // add cfm to the diagonal of m_A
+436                 for ( int i=0; i<m_A.rows(); ++i) 
+437                 {
+438                         m_A.setElem(i,i,m_A(i,i)+ infoGlobal.m_globalCfm/ infoGlobal.m_timeStep);
+439                 }
+440         }
+441                                    
+443         {
+444                 BT_PROFILE("fill the upper triangle ");
+445                 m_A.copyLowerToUpperTriangle();
+446         }
+447 
+448         {
+449                 BT_PROFILE("resize/init x");
+450                 m_x.resize(numConstraintRows);
+451                 m_xSplit.resize(numConstraintRows);
+452 
+453                 if (infoGlobal.m_solverMode&SOLVER_USE_WARMSTARTING)
+454                 {
+455                         for (int i=0;i<m_allConstraintPtrArray.size();i++)
+456                         {
+457                                 const btSolverConstraint& c = *m_allConstraintPtrArray[i];
+458                                 m_x[i]=c.m_appliedImpulse;
+459                                 m_xSplit[i] = c.m_appliedPushImpulse;
+460                         }
+461                 } else
+462                 {
+463                         m_x.setZero();
+464                         m_xSplit.setZero();
+465                 }
+466         }
+467 
+468 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:
 
 \subsection{Member Data Documentation}
 \hypertarget{classbt_m_l_c_p_solver_8430698267e9572498e04e8dba3cda3b}{
@@ -68,7 +492,11 @@ fill the upper triangle of the matrix, to make it symmetric
 
 The following scratch variables are not stateful -- contents are cleared prior to each use. They are only cached here to avoid extra memory allocations and deallocations and to ensure that multiple instances of the solver can be run in parallel. 
 
+Definition at line 49 of file btMLCPSolver.h.
+
+Referenced by createMLCPFast().
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/MLCPSolvers/btMLCPSolver.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/MLCPSolvers/btMLCPSolver.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/MLCPSolvers/btMLCPSolver.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/MLCPSolvers/btMLCPSolver.cpp\end{CompactItemize}

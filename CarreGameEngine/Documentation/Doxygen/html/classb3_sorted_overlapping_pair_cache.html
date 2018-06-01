@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: b3SortedOverlappingPairCache Class Reference</title>
+<title>Assignment2 - OOber Taxi: b3SortedOverlappingPairCache Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>b3SortedOverlappingPairCache Class Reference</h1><!-- doxytag: class="b3SortedOverlappingPairCache" --><!-- doxytag: inherits="b3OverlappingPairCache" --><code>#include &lt;b3OverlappingPairCache.h&gt;</code>
+<h1>b3SortedOverlappingPairCache Class Reference</h1><!-- doxytag: class="b3SortedOverlappingPairCache" --><!-- doxytag: inherits="b3OverlappingPairCache" --><code>#include &lt;<a class="el" href="b3_overlapping_pair_cache_8h-source.html">b3OverlappingPairCache.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for b3SortedOverlappingPairCache:</div>
@@ -55,7 +55,9 @@ bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">by default, do the removal during the pair traversal <br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-<a class="el" href="classb3_sorted_overlapping_pair_cache.html">b3SortedOverlappingPairCache</a> maintains the objects with overlapping AABB Typically managed by the Broadphase, Axis3Sweep or b3SimpleBroadphase <hr><h2>Member Function Documentation</h2>
+<a class="el" href="classb3_sorted_overlapping_pair_cache.html">b3SortedOverlappingPairCache</a> maintains the objects with overlapping AABB Typically managed by the Broadphase, Axis3Sweep or b3SimpleBroadphase 
+<p>Definition at line <a class="el" href="b3_overlapping_pair_cache_8h-source.html#l00286">286</a> of file <a class="el" href="b3_overlapping_pair_cache_8h-source.html">b3OverlappingPairCache.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="d24f6d5bfc4b9e378ace06bcb10519ea"></a><!-- doxytag: member="b3SortedOverlappingPairCache::findPair" ref="d24f6d5bfc4b9e378ace06bcb10519ea" args="(int proxy0, int proxy1)" -->
 <div class="memitem">
 <div class="memproto">
@@ -85,12 +87,42 @@ bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 this findPair becomes really slow. Either sort the list to speedup the query, or use a different solution. It is mainly used for Removing overlapping pairs. Removal could be delayed. we could keep a linked list in each proxy, and store pair in one of the proxies (with lowest memory address) Also we can use a 2D bitmap, which can be useful for a future GPU implementation 
 <p>Implements <a class="el" href="classb3_overlapping_pair_cache.html">b3OverlappingPairCache</a>.</p>
 
+<p>Definition at line <a class="el" href="b3_overlapping_pair_cache_8cpp-source.html#l00490">490</a> of file <a class="el" href="b3_overlapping_pair_cache_8cpp-source.html">b3OverlappingPairCache.cpp</a>.</p>
+
+<p>References <a class="el" href="b3_aligned_object_array_8h-source.html#l00471">b3AlignedObjectArray&lt; T &gt;::findLinearSearch()</a>, and <a class="el" href="b3_aligned_object_array_8h-source.html#l00149">b3AlignedObjectArray&lt; T &gt;::size()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00491"></a>00491 {
+<a name="l00492"></a>00492         <span class="keywordflow">if</span> (!needsBroadphaseCollision(proxy0,proxy1))
+<a name="l00493"></a>00493                 <span class="keywordflow">return</span> 0;
+<a name="l00494"></a>00494 
+<a name="l00495"></a>00495         b3BroadphasePair tmpPair = b3MakeBroadphasePair(proxy0,proxy1);
+<a name="l00496"></a>00496         <span class="keywordtype">int</span> findIndex = m_overlappingPairArray.<a class="code" href="classb3_aligned_object_array.html#a780a7f9c6e187b479e6c4dd94aa581b">findLinearSearch</a>(tmpPair);
+<a name="l00497"></a>00497 
+<a name="l00498"></a>00498         <span class="keywordflow">if</span> (findIndex &lt; m_overlappingPairArray.<a class="code" href="classb3_aligned_object_array.html#18672b9373a0a957d49677195fde6a85" title="return the number of elements in the array">size</a>())
+<a name="l00499"></a>00499         {
+<a name="l00500"></a>00500                 <span class="comment">//b3Assert(it != m_overlappingPairSet.end());</span>
+<a name="l00501"></a>00501                  b3BroadphasePair* pair = &amp;m_overlappingPairArray[findIndex];
+<a name="l00502"></a>00502                 <span class="keywordflow">return</span> pair;
+<a name="l00503"></a>00503         }
+<a name="l00504"></a>00504         <span class="keywordflow">return</span> 0;
+<a name="l00505"></a>00505 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classb3_sorted_overlapping_pair_cache_d24f6d5bfc4b9e378ace06bcb10519ea_cgraph.png" border="0" usemap="#classb3_sorted_overlapping_pair_cache_d24f6d5bfc4b9e378ace06bcb10519ea_cgraph_map" alt=""></center>
+<map name="classb3_sorted_overlapping_pair_cache_d24f6d5bfc4b9e378ace06bcb10519ea_cgraph_map">
+<area shape="rect" href="classb3_aligned_object_array.html#a780a7f9c6e187b479e6c4dd94aa581b" title="b3AlignedObjectArray::findLinearSearch" alt="" coords="308,5,559,32"><area shape="rect" href="classb3_aligned_object_array.html#18672b9373a0a957d49677195fde6a85" title="return the number of elements in the array" alt="" coords="344,56,523,83"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3OverlappingPairCache.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3OverlappingPairCache.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/<a class="el" href="b3_overlapping_pair_cache_8h-source.html">b3OverlappingPairCache.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/<a class="el" href="b3_overlapping_pair_cache_8cpp-source.html">b3OverlappingPairCache.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:59 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:27 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

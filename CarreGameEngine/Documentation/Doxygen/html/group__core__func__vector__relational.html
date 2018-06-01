@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Vector Relational Functions</title>
+<title>Assignment2 - OOber Taxi: Vector Relational Functions</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -90,6 +90,27 @@ Returns true if all components of x are true.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/all.xml">GLSL all man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.7 Vector Relational Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__vector__relational_8inl-source.html#l00142">142</a> of file <a class="el" href="func__vector__relational_8inl-source.html">func_vector_relational.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="rotate__vector_8inl-source.html#l00206">glm::orientation()</a>, and <a class="el" href="vector__angle_8inl-source.html#l00053">glm::orientedAngle()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00143"></a>00143         {
+<a name="l00144"></a>00144                 <span class="keywordtype">bool</span> Result = <span class="keyword">true</span>;
+<a name="l00145"></a>00145                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; v.length(); ++i)
+<a name="l00146"></a>00146                         Result = Result &amp;&amp; v[i];
+<a name="l00147"></a>00147                 <span class="keywordflow">return</span> Result;
+<a name="l00148"></a>00148         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__vector__relational_gabd60ec747e12c78e2d5c6e6c2ede230_icgraph.png" border="0" usemap="#group__core__func__vector__relational_gabd60ec747e12c78e2d5c6e6c2ede230_icgraph_map" alt=""></center>
+<map name="group__core__func__vector__relational_gabd60ec747e12c78e2d5c6e6c2ede230_icgraph_map">
+<area shape="rect" href="group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e" title="glm::orientation" alt="" coords="128,5,237,32"><area shape="rect" href="group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36" title="glm::orientedAngle" alt="" coords="119,56,247,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="ge1073be2b9f4c5ffa77eec25400e8121"></a><!-- doxytag: member="glm::any" ref="ge1073be2b9f4c5ffa77eec25400e8121" args="(vecType&lt; bool, P &gt; const &amp;v)" -->
@@ -119,6 +140,16 @@ Returns true if any component of x is true.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/any.xml">GLSL any man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.7 Vector Relational Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__vector__relational_8inl-source.html#l00133">133</a> of file <a class="el" href="func__vector__relational_8inl-source.html">func_vector_relational.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00134"></a>00134         {
+<a name="l00135"></a>00135                 <span class="keywordtype">bool</span> Result = <span class="keyword">false</span>;
+<a name="l00136"></a>00136                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; v.length(); ++i)
+<a name="l00137"></a>00137                         Result = Result || v[i];
+<a name="l00138"></a>00138                 <span class="keywordflow">return</span> Result;
+<a name="l00139"></a>00139         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -159,6 +190,20 @@ Returns the component-wise comparison of result x &gt; y.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/greaterThan.xml">GLSL greaterThan man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.7 Vector Relational Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__vector__relational_8inl-source.html#l00070">70</a> of file <a class="el" href="func__vector__relational_8inl-source.html">func_vector_relational.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00074"></a>00074         {
+<a name="l00075"></a>00075                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559 || std::numeric_limits&lt;T&gt;::is_integer,
+<a name="l00076"></a>00076                         <span class="stringliteral">"Invalid template instantiation of 'greaterThan', GLM vector types required floating-point or integer value types vectors"</span>);
+<a name="l00077"></a>00077                 assert(x.length() == y.length());
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079                 <span class="keyword">typename</span> vecType&lt;bool, P&gt;::bool_type Result(vecType&lt;bool, P&gt;::_null);
+<a name="l00080"></a>00080                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; x.length(); ++i)
+<a name="l00081"></a>00081                         Result[i] = x[i] &gt; y[i];
+<a name="l00082"></a>00082                 <span class="keywordflow">return</span> Result;
+<a name="l00083"></a>00083         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="ga384b9c124d40d56bf5bd02ea9b04926"></a><!-- doxytag: member="glm::greaterThanEqual" ref="ga384b9c124d40d56bf5bd02ea9b04926" args="(vecType&lt; T, P &gt; const &amp;x, vecType&lt; T, P &gt; const &amp;y)" -->
@@ -197,6 +242,20 @@ Returns the component-wise comparison of result x &gt;= y.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/greaterThanEqual.xml">GLSL greaterThanEqual man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.7 Vector Relational Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__vector__relational_8inl-source.html#l00087">87</a> of file <a class="el" href="func__vector__relational_8inl-source.html">func_vector_relational.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00091"></a>00091         {
+<a name="l00092"></a>00092                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559 || std::numeric_limits&lt;T&gt;::is_integer,
+<a name="l00093"></a>00093                         <span class="stringliteral">"Invalid template instantiation of 'greaterThanEqual', GLM vector types required floating-point or integer value types vectors"</span>);
+<a name="l00094"></a>00094                 assert(x.length() == y.length());
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096                 <span class="keyword">typename</span> vecType&lt;bool, P&gt;::bool_type Result(vecType&lt;bool, P&gt;::_null);
+<a name="l00097"></a>00097                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; x.length(); ++i)
+<a name="l00098"></a>00098                         Result[i] = x[i] &gt;= y[i];
+<a name="l00099"></a>00099                 <span class="keywordflow">return</span> Result;
+<a name="l00100"></a>00100         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -244,6 +303,20 @@ Returns the component-wise comparison result of x &lt; y.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/lessThanEqual.xml">GLSL lessThanEqual man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.7 Vector Relational Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__vector__relational_8inl-source.html#l00053">53</a> of file <a class="el" href="func__vector__relational_8inl-source.html">func_vector_relational.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00057"></a>00057         {
+<a name="l00058"></a>00058                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559 || std::numeric_limits&lt;T&gt;::is_integer,
+<a name="l00059"></a>00059                         <span class="stringliteral">"Invalid template instantiation of 'lessThanEqual', GLM vector types required floating-point or integer value types vectors"</span>);
+<a name="l00060"></a>00060                 assert(x.length() == y.length());
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062                 <span class="keyword">typename</span> vecType&lt;bool, P&gt;::bool_type Result(vecType&lt;bool, P&gt;::_null);
+<a name="l00063"></a>00063                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; x.length(); ++i)
+<a name="l00064"></a>00064                         Result[i] = x[i] &lt;= y[i];
+<a name="l00065"></a>00065                 <span class="keywordflow">return</span> Result;
+<a name="l00066"></a>00066         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g3f686b22d487d7d06447b15d3c621d2f"></a><!-- doxytag: member="glm::not_" ref="g3f686b22d487d7d06447b15d3c621d2f" args="(vecType&lt; bool, P &gt; const &amp;v)" -->
@@ -273,6 +346,16 @@ Returns the component-wise logical complement of x. /!\ Because of language inco
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/not.xml">GLSL not man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.7 Vector Relational Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__vector__relational_8inl-source.html#l00151">151</a> of file <a class="el" href="func__vector__relational_8inl-source.html">func_vector_relational.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00152"></a>00152         {
+<a name="l00153"></a>00153                 <span class="keyword">typename</span> vecType&lt;bool, P&gt;::bool_type Result(vecType&lt;bool, P&gt;::_null);
+<a name="l00154"></a>00154                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; v.length(); ++i)
+<a name="l00155"></a>00155                         Result[i] = !v[i];
+<a name="l00156"></a>00156                 <span class="keywordflow">return</span> Result;
+<a name="l00157"></a>00157         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -320,10 +403,22 @@ Returns the component-wise comparison of result x == y.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/notEqual.xml">GLSL notEqual man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.7 Vector Relational Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__vector__relational_8inl-source.html#l00119">119</a> of file <a class="el" href="func__vector__relational_8inl-source.html">func_vector_relational.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00123"></a>00123         {
+<a name="l00124"></a>00124                 assert(x.length() == y.length());
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126                 <span class="keyword">typename</span> vecType&lt;bool, P&gt;::bool_type Result(vecType&lt;bool, P&gt;::_null);
+<a name="l00127"></a>00127                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; x.length(); ++i)
+<a name="l00128"></a>00128                         Result[i] = x[i] != y[i];
+<a name="l00129"></a>00129                 <span class="keywordflow">return</span> Result;
+<a name="l00130"></a>00130         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:20 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:58:17 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -1,0 +1,14 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::sign",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::fastAtan",height=0.2,width=0.4,color="black",URL="$group__gtx__fast__trigonometry.html#gc6605aad8dce8278938f58b6e68b036a"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btQuaternion::slerp",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#c95a27feda1c165b2ce359e7415fec6f",tooltip="Return the quaternion which is the result of Spherical Linear Interpolation between..."];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="b3Quaternion::slerp",height=0.2,width=0.4,color="black",URL="$classb3_quaternion.html#9b64bb67f4ece30723d963132478049c",tooltip="Return the quaternion which is the result of Spherical Linear Interpolation between..."];
+}

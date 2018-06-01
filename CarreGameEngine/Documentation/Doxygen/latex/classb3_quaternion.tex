@@ -105,6 +105,8 @@ B3\_\-FORCE\_\-INLINE \hyperlink{classb3_quaternion}{b3Quaternion} \hyperlink{cl
 \subsection{Detailed Description}
 The \hyperlink{classb3_quaternion}{b3Quaternion} implements quaternion to perform linear algebra rotations in combination with b3Matrix3x3, b3Vector3 and b3Transform. 
 
+Definition at line 42 of file b3Quaternion.h.
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classb3_quaternion_e9b2568fec426fbb4574bdcbd1bad418}{
 \index{b3Quaternion@{b3Quaternion}!b3Quaternion@{b3Quaternion}}
@@ -120,7 +122,22 @@ Axis angle Constructor.
 \begin{description}
 \item[{\em axis}]The axis which the rotation is around \item[{\em angle}]The magnitude of the rotation around the angle (Radians) \end{description}
 \end{Desc}
-\hypertarget{classb3_quaternion_05b0b4abc7eaf5cb9ba00ea3b2353908}{
+
+
+Definition at line 82 of file b3Quaternion.h.
+
+References setRotation().
+
+\begin{Code}\begin{verbatim}83         { 
+84                 setRotation(_axis, _angle); 
+85         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classb3_quaternion_05b0b4abc7eaf5cb9ba00ea3b2353908}{
 \index{b3Quaternion@{b3Quaternion}!b3Quaternion@{b3Quaternion}}
 \index{b3Quaternion@{b3Quaternion}!b3Quaternion@{b3Quaternion}}
 \subsubsection[b3Quaternion]{\setlength{\rightskip}{0pt plus 5cm}b3Quaternion::b3Quaternion (const b3Scalar \& {\em yaw}, \/  const b3Scalar \& {\em pitch}, \/  const b3Scalar \& {\em roll})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -135,6 +152,25 @@ Constructor from Euler angles.
 \item[{\em yaw}]Angle around Y unless B3\_\-EULER\_\-DEFAULT\_\-ZYX defined then Z \item[{\em pitch}]Angle around X unless B3\_\-EULER\_\-DEFAULT\_\-ZYX defined then Y \item[{\em roll}]Angle around Z unless B3\_\-EULER\_\-DEFAULT\_\-ZYX defined then X \end{description}
 \end{Desc}
 
+
+Definition at line 90 of file b3Quaternion.h.
+
+References setEuler(), and setEulerZYX().
+
+\begin{Code}\begin{verbatim}91         { 
+92 #ifndef B3_EULER_DEFAULT_ZYX
+93                 setEuler(yaw, pitch, roll); 
+94 #else
+95                 setEulerZYX(yaw, pitch, roll); 
+96 #endif 
+97         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
 
 \subsection{Member Function Documentation}
 \hypertarget{classb3_quaternion_af98a2aed426d63aacf993c354bb4571}{
@@ -151,7 +187,26 @@ Set the rotation using axis angle notation.
 \begin{description}
 \item[{\em axis}]The axis around which to rotate \item[{\em angle}]The magnitude of the rotation in Radians \end{description}
 \end{Desc}
-\hypertarget{classb3_quaternion_497ec9be887735d3655eb5f64bfb45bb}{
+
+
+Definition at line 101 of file b3Quaternion.h.
+
+Referenced by b3Quaternion().
+
+\begin{Code}\begin{verbatim}102         {
+103                 b3Scalar d = axis.length();
+104                 b3Assert(d != b3Scalar(0.0));
+105                 b3Scalar s = b3Sin(_angle * b3Scalar(0.5)) / d;
+106                 setValue(axis.getX() * s, axis.getY() * s, axis.getZ() * s, 
+107                         b3Cos(_angle * b3Scalar(0.5)));
+108         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classb3_quaternion_497ec9be887735d3655eb5f64bfb45bb}{
 \index{b3Quaternion@{b3Quaternion}!setEuler@{setEuler}}
 \index{setEuler@{setEuler}!b3Quaternion@{b3Quaternion}}
 \subsubsection[setEuler]{\setlength{\rightskip}{0pt plus 5cm}void b3Quaternion::setEuler (const b3Scalar \& {\em yaw}, \/  const b3Scalar \& {\em pitch}, \/  const b3Scalar \& {\em roll})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -165,7 +220,34 @@ Set the quaternion using Euler angles.
 \begin{description}
 \item[{\em yaw}]Angle around Y \item[{\em pitch}]Angle around X \item[{\em roll}]Angle around Z \end{description}
 \end{Desc}
-\hypertarget{classb3_quaternion_78e3817a97a72fd1e32d4d17e40be362}{
+
+
+Definition at line 113 of file b3Quaternion.h.
+
+Referenced by b3Quaternion().
+
+\begin{Code}\begin{verbatim}114         {
+115                 b3Scalar halfYaw = b3Scalar(yaw) * b3Scalar(0.5);  
+116                 b3Scalar halfPitch = b3Scalar(pitch) * b3Scalar(0.5);  
+117                 b3Scalar halfRoll = b3Scalar(roll) * b3Scalar(0.5);  
+118                 b3Scalar cosYaw = b3Cos(halfYaw);
+119                 b3Scalar sinYaw = b3Sin(halfYaw);
+120                 b3Scalar cosPitch = b3Cos(halfPitch);
+121                 b3Scalar sinPitch = b3Sin(halfPitch);
+122                 b3Scalar cosRoll = b3Cos(halfRoll);
+123                 b3Scalar sinRoll = b3Sin(halfRoll);
+124                 setValue(cosRoll * sinPitch * cosYaw + sinRoll * cosPitch * sinYaw,
+125                         cosRoll * cosPitch * sinYaw - sinRoll * sinPitch * cosYaw,
+126                         sinRoll * cosPitch * cosYaw - cosRoll * sinPitch * sinYaw,
+127                         cosRoll * cosPitch * cosYaw + sinRoll * sinPitch * sinYaw);
+128         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classb3_quaternion_78e3817a97a72fd1e32d4d17e40be362}{
 \index{b3Quaternion@{b3Quaternion}!setEulerZYX@{setEulerZYX}}
 \index{setEulerZYX@{setEulerZYX}!b3Quaternion@{b3Quaternion}}
 \subsubsection[setEulerZYX]{\setlength{\rightskip}{0pt plus 5cm}void b3Quaternion::setEulerZYX (const b3Scalar \& {\em yawZ}, \/  const b3Scalar \& {\em pitchY}, \/  const b3Scalar \& {\em rollX})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -179,7 +261,39 @@ Set the quaternion using euler angles.
 \begin{description}
 \item[{\em yaw}]Angle around Z \item[{\em pitch}]Angle around Y \item[{\em roll}]Angle around X \end{description}
 \end{Desc}
-\hypertarget{classb3_quaternion_6d11b2745e4a668ef7a1d6dd9d97f621}{
+
+
+Definition at line 134 of file b3Quaternion.h.
+
+References normalize().
+
+Referenced by b3Quaternion().
+
+\begin{Code}\begin{verbatim}135         {
+136                 b3Scalar halfYaw = b3Scalar(yawZ) * b3Scalar(0.5);  
+137                 b3Scalar halfPitch = b3Scalar(pitchY) * b3Scalar(0.5);  
+138                 b3Scalar halfRoll = b3Scalar(rollX) * b3Scalar(0.5);  
+139                 b3Scalar cosYaw = b3Cos(halfYaw);
+140                 b3Scalar sinYaw = b3Sin(halfYaw);
+141                 b3Scalar cosPitch = b3Cos(halfPitch);
+142                 b3Scalar sinPitch = b3Sin(halfPitch);
+143                 b3Scalar cosRoll = b3Cos(halfRoll);
+144                 b3Scalar sinRoll = b3Sin(halfRoll);
+145                 setValue(sinRoll * cosPitch * cosYaw - cosRoll * sinPitch * sinYaw, //x
+146                          cosRoll * sinPitch * cosYaw + sinRoll * cosPitch * sinYaw, //y
+147                          cosRoll * cosPitch * sinYaw - sinRoll * sinPitch * cosYaw, //z
+148                          cosRoll * cosPitch * cosYaw + sinRoll * sinPitch * sinYaw); //formerly yzx
+149                 normalize();
+150         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classb3_quaternion_6d11b2745e4a668ef7a1d6dd9d97f621}{
 \index{b3Quaternion@{b3Quaternion}!getEulerZYX@{getEulerZYX}}
 \index{getEulerZYX@{getEulerZYX}!b3Quaternion@{b3Quaternion}}
 \subsubsection[getEulerZYX]{\setlength{\rightskip}{0pt plus 5cm}void b3Quaternion::getEulerZYX (b3Scalar \& {\em yawZ}, \/  b3Scalar \& {\em pitchY}, \/  b3Scalar \& {\em rollX}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -193,6 +307,29 @@ Get the euler angles from this quaternion.
 \begin{description}
 \item[{\em yaw}]Angle around Z \item[{\em pitch}]Angle around Y \item[{\em roll}]Angle around X \end{description}
 \end{Desc}
+
+
+Definition at line 156 of file b3Quaternion.h.
+
+\begin{Code}\begin{verbatim}157         {
+158                 b3Scalar squ;
+159                 b3Scalar sqx;
+160                 b3Scalar sqy;
+161                 b3Scalar sqz;
+162                 b3Scalar sarg;
+163                 sqx = m_floats[0] * m_floats[0];
+164                 sqy = m_floats[1] * m_floats[1];
+165                 sqz = m_floats[2] * m_floats[2];
+166                 squ = m_floats[3] * m_floats[3];
+167                 rollX = b3Atan2(2 * (m_floats[1] * m_floats[2] + m_floats[3] * m_floats[0]), squ - sqx - sqy + sqz);
+168                 sarg = b3Scalar(-2.) * (m_floats[0] * m_floats[2] - m_floats[3] * m_floats[1]);
+169                 pitchY = sarg <= b3Scalar(-1.0) ? b3Scalar(-0.5) * B3_PI: (sarg >= b3Scalar(1.0) ? b3Scalar(0.5) * B3_PI : b3Asin(sarg));
+170                 yawZ = b3Atan2(2 * (m_floats[0] * m_floats[1] + m_floats[3] * m_floats[2]), squ + sqx - sqy - sqz);
+171         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classb3_quaternion_558450afdbe170892934fa936d085b1b}{
 \index{b3Quaternion@{b3Quaternion}!operator+=@{operator+=}}
 \index{operator+=@{operator+=}!b3Quaternion@{b3Quaternion}}
@@ -207,6 +344,27 @@ Add two quaternions.
 \begin{description}
 \item[{\em q}]The quaternion to add to this one \end{description}
 \end{Desc}
+
+
+Definition at line 175 of file b3Quaternion.h.
+
+\begin{Code}\begin{verbatim}176         {
+177 #if defined (B3_USE_SSE_IN_API) && defined (B3_USE_SSE)
+178                 mVec128 = _mm_add_ps(mVec128, q.mVec128);
+179 #elif defined(B3_USE_NEON)
+180                 mVec128 = vaddq_f32(mVec128, q.mVec128);
+181 #else   
+182                 m_floats[0] += q.getX(); 
+183         m_floats[1] += q.getY(); 
+184         m_floats[2] += q.getZ(); 
+185         m_floats[3] += q.m_floats[3];
+186 #endif
+187                 return *this;
+188         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classb3_quaternion_76087565cf44b29f38d8d2b5ac3cc268}{
 \index{b3Quaternion@{b3Quaternion}!operator-=@{operator-=}}
 \index{operator-=@{operator-=}!b3Quaternion@{b3Quaternion}}
@@ -221,6 +379,27 @@ Subtract out a quaternion.
 \begin{description}
 \item[{\em q}]The quaternion to subtract from this one \end{description}
 \end{Desc}
+
+
+Definition at line 192 of file b3Quaternion.h.
+
+\begin{Code}\begin{verbatim}193         {
+194 #if defined (B3_USE_SSE_IN_API) && defined (B3_USE_SSE)
+195                 mVec128 = _mm_sub_ps(mVec128, q.mVec128);
+196 #elif defined(B3_USE_NEON)
+197                 mVec128 = vsubq_f32(mVec128, q.mVec128);
+198 #else   
+199                 m_floats[0] -= q.getX(); 
+200         m_floats[1] -= q.getY(); 
+201         m_floats[2] -= q.getZ(); 
+202         m_floats[3] -= q.m_floats[3];
+203 #endif
+204         return *this;
+205         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classb3_quaternion_b21bc07cb139b5f1f604432666a28deb}{
 \index{b3Quaternion@{b3Quaternion}!operator$\ast$=@{operator$\ast$=}}
 \index{operator$\ast$=@{operator$\ast$=}!b3Quaternion@{b3Quaternion}}
@@ -235,6 +414,29 @@ Scale this quaternion.
 \begin{description}
 \item[{\em s}]The scalar to scale by \end{description}
 \end{Desc}
+
+
+Definition at line 209 of file b3Quaternion.h.
+
+\begin{Code}\begin{verbatim}210         {
+211 #if defined (B3_USE_SSE_IN_API) && defined (B3_USE_SSE)
+212                 __m128  vs = _mm_load_ss(&s);   //      (S 0 0 0)
+213                 vs = b3_pshufd_ps(vs, 0);       //      (S S S S)
+214                 mVec128 = _mm_mul_ps(mVec128, vs);
+215 #elif defined(B3_USE_NEON)
+216                 mVec128 = vmulq_n_f32(mVec128, s);
+217 #else
+218                 m_floats[0] *= s; 
+219         m_floats[1] *= s; 
+220         m_floats[2] *= s; 
+221         m_floats[3] *= s;
+222 #endif
+223                 return *this;
+224         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classb3_quaternion_756f3ae0fbbdf018fb3d63b95f4ddcaa}{
 \index{b3Quaternion@{b3Quaternion}!operator$\ast$=@{operator$\ast$=}}
 \index{operator$\ast$=@{operator$\ast$=}!b3Quaternion@{b3Quaternion}}
@@ -249,6 +451,94 @@ Multiply this quaternion by q on the right.
 \begin{description}
 \item[{\em q}]The other quaternion Equivilant to this = this $\ast$ q \end{description}
 \end{Desc}
+
+
+Definition at line 229 of file b3Quaternion.h.
+
+\begin{Code}\begin{verbatim}230         {
+231 #if defined (B3_USE_SSE_IN_API) && defined (B3_USE_SSE)
+232                 __m128 vQ2 = q.get128();
+233                 
+234                 __m128 A1 = b3_pshufd_ps(mVec128, B3_SHUFFLE(0,1,2,0));
+235                 __m128 B1 = b3_pshufd_ps(vQ2, B3_SHUFFLE(3,3,3,0));
+236                 
+237                 A1 = A1 * B1;
+238                 
+239                 __m128 A2 = b3_pshufd_ps(mVec128, B3_SHUFFLE(1,2,0,1));
+240                 __m128 B2 = b3_pshufd_ps(vQ2, B3_SHUFFLE(2,0,1,1));
+241                 
+242                 A2 = A2 * B2;
+243                 
+244                 B1 = b3_pshufd_ps(mVec128, B3_SHUFFLE(2,0,1,2));
+245                 B2 = b3_pshufd_ps(vQ2, B3_SHUFFLE(1,2,0,2));
+246                 
+247                 B1 = B1 * B2;   //      A3 *= B3
+248                 
+249                 mVec128 = b3_splat_ps(mVec128, 3);      //      A0
+250                 mVec128 = mVec128 * vQ2;        //      A0 * B0
+251                 
+252                 A1 = A1 + A2;   //      AB12
+253                 mVec128 = mVec128 - B1; //      AB03 = AB0 - AB3 
+254                 A1 = _mm_xor_ps(A1, b3vPPPM);   //      change sign of the last element
+255                 mVec128 = mVec128+ A1;  //      AB03 + AB12
+256 
+257 #elif defined(B3_USE_NEON)     
+258 
+259         float32x4_t vQ1 = mVec128;
+260         float32x4_t vQ2 = q.get128();
+261         float32x4_t A0, A1, B1, A2, B2, A3, B3;
+262         float32x2_t vQ1zx, vQ2wx, vQ1yz, vQ2zx, vQ2yz, vQ2xz;
+263         
+264         {
+265         float32x2x2_t tmp;
+266         tmp = vtrn_f32( vget_high_f32(vQ1), vget_low_f32(vQ1) );       // {z x}, {w y}
+267         vQ1zx = tmp.val[0];
+268 
+269         tmp = vtrn_f32( vget_high_f32(vQ2), vget_low_f32(vQ2) );       // {z x}, {w y}
+270         vQ2zx = tmp.val[0];
+271         }
+272         vQ2wx = vext_f32(vget_high_f32(vQ2), vget_low_f32(vQ2), 1); 
+273 
+274         vQ1yz = vext_f32(vget_low_f32(vQ1), vget_high_f32(vQ1), 1);
+275 
+276         vQ2yz = vext_f32(vget_low_f32(vQ2), vget_high_f32(vQ2), 1);
+277         vQ2xz = vext_f32(vQ2zx, vQ2zx, 1);
+278 
+279         A1 = vcombine_f32(vget_low_f32(vQ1), vQ1zx);                    // X Y  z x 
+280         B1 = vcombine_f32(vdup_lane_f32(vget_high_f32(vQ2), 1), vQ2wx); // W W  W X 
+281 
+282         A2 = vcombine_f32(vQ1yz, vget_low_f32(vQ1));
+283         B2 = vcombine_f32(vQ2zx, vdup_lane_f32(vget_low_f32(vQ2), 1));
+284 
+285         A3 = vcombine_f32(vQ1zx, vQ1yz);        // Z X Y Z
+286         B3 = vcombine_f32(vQ2yz, vQ2xz);        // Y Z x z
+287 
+288         A1 = vmulq_f32(A1, B1);
+289         A2 = vmulq_f32(A2, B2);
+290         A3 = vmulq_f32(A3, B3); //      A3 *= B3
+291         A0 = vmulq_lane_f32(vQ2, vget_high_f32(vQ1), 1); //     A0 * B0
+292 
+293         A1 = vaddq_f32(A1, A2); //      AB12 = AB1 + AB2
+294         A0 = vsubq_f32(A0, A3); //      AB03 = AB0 - AB3 
+295         
+296         //      change the sign of the last element
+297         A1 = (b3SimdFloat4)veorq_s32((int32x4_t)A1, (int32x4_t)b3vPPPM);        
+298         A0 = vaddq_f32(A0, A1); //      AB03 + AB12
+299         
+300         mVec128 = A0;
+301 #else
+302                 setValue(
+303             m_floats[3] * q.getX() + m_floats[0] * q.m_floats[3] + m_floats[1] * q.getZ() - m_floats[2] * q.getY(),
+304                         m_floats[3] * q.getY() + m_floats[1] * q.m_floats[3] + m_floats[2] * q.getX() - m_floats[0] * q.getZ(),
+305                         m_floats[3] * q.getZ() + m_floats[2] * q.m_floats[3] + m_floats[0] * q.getY() - m_floats[1] * q.getX(),
+306                         m_floats[3] * q.m_floats[3] - m_floats[0] * q.getX() - m_floats[1] * q.getY() - m_floats[2] * q.getZ());
+307 #endif
+308                 return *this;
+309         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classb3_quaternion_747537c86fc2d63a6fc43db811952634}{
 \index{b3Quaternion@{b3Quaternion}!dot@{dot}}
 \index{dot@{dot}!b3Quaternion@{b3Quaternion}}
@@ -263,7 +553,43 @@ Return the dot product between this quaternion and another.
 \begin{description}
 \item[{\em q}]The other quaternion \end{description}
 \end{Desc}
-\hypertarget{classb3_quaternion_ad2b1b2ec07bc16942c47eb5c7750016}{
+
+
+Definition at line 312 of file b3Quaternion.h.
+
+Referenced by angle(), farthest(), length2(), nearest(), and slerp().
+
+\begin{Code}\begin{verbatim}313         {
+314 #if defined (B3_USE_SSE_IN_API) && defined (B3_USE_SSE)
+315                 __m128  vd;
+316                 
+317                 vd = _mm_mul_ps(mVec128, q.mVec128);
+318                 
+319         __m128 t = _mm_movehl_ps(vd, vd);
+320                 vd = _mm_add_ps(vd, t);
+321                 t = _mm_shuffle_ps(vd, vd, 0x55);
+322                 vd = _mm_add_ss(vd, t);
+323                 
+324         return _mm_cvtss_f32(vd);
+325 #elif defined(B3_USE_NEON)
+326                 float32x4_t vd = vmulq_f32(mVec128, q.mVec128);
+327                 float32x2_t x = vpadd_f32(vget_low_f32(vd), vget_high_f32(vd));  
+328                 x = vpadd_f32(x, x);
+329                 return vget_lane_f32(x, 0);
+330 #else    
+331                 return  m_floats[0] * q.getX() + 
+332                 m_floats[1] * q.getY() + 
+333                 m_floats[2] * q.getZ() + 
+334                 m_floats[3] * q.m_floats[3];
+335 #endif
+336         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classb3_quaternion_ad2b1b2ec07bc16942c47eb5c7750016}{
 \index{b3Quaternion@{b3Quaternion}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!b3Quaternion@{b3Quaternion}}
 \subsubsection[operator$\ast$]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-FORCE\_\-INLINE {\bf b3Quaternion} b3Quaternion::operator$\ast$ (const b3Scalar \& {\em s}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -277,7 +603,31 @@ Return a scaled version of this quaternion.
 \begin{description}
 \item[{\em s}]The scale factor \end{description}
 \end{Desc}
-\hypertarget{classb3_quaternion_4774d113abff51d66af8cf4da7cccc26}{
+
+
+Definition at line 378 of file b3Quaternion.h.
+
+References b3Quaternion().
+
+\begin{Code}\begin{verbatim}379         {
+380 #if defined (B3_USE_SSE_IN_API) && defined (B3_USE_SSE)
+381                 __m128  vs = _mm_load_ss(&s);   //      (S 0 0 0)
+382                 vs = b3_pshufd_ps(vs, 0x00);    //      (S S S S)
+383                 
+384                 return b3Quaternion(_mm_mul_ps(mVec128, vs));
+385 #elif defined(B3_USE_NEON)
+386                 return b3Quaternion(vmulq_n_f32(mVec128, s));
+387 #else
+388                 return b3Quaternion(getX() * s, getY() * s, getZ() * s, m_floats[3] * s);
+389 #endif
+390         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classb3_quaternion_4774d113abff51d66af8cf4da7cccc26}{
 \index{b3Quaternion@{b3Quaternion}!operator/@{operator/}}
 \index{operator/@{operator/}!b3Quaternion@{b3Quaternion}}
 \subsubsection[operator/]{\setlength{\rightskip}{0pt plus 5cm}{\bf b3Quaternion} b3Quaternion::operator/ (const b3Scalar \& {\em s}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -291,6 +641,18 @@ Return an inversely scaled versionof this quaternion.
 \begin{description}
 \item[{\em s}]The inverse scale factor \end{description}
 \end{Desc}
+
+
+Definition at line 394 of file b3Quaternion.h.
+
+\begin{Code}\begin{verbatim}395         {
+396                 b3Assert(s != b3Scalar(0.0));
+397                 return *this * (b3Scalar(1.0) / s);
+398         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classb3_quaternion_293d5a2d8e103d5577a83baa18d4b2b7}{
 \index{b3Quaternion@{b3Quaternion}!operator/=@{operator/=}}
 \index{operator/=@{operator/=}!b3Quaternion@{b3Quaternion}}
@@ -305,6 +667,18 @@ Inversely scale this quaternion.
 \begin{description}
 \item[{\em s}]The scale factor \end{description}
 \end{Desc}
+
+
+Definition at line 402 of file b3Quaternion.h.
+
+\begin{Code}\begin{verbatim}403         {
+404                 b3Assert(s != b3Scalar(0.0));
+405                 return *this *= b3Scalar(1.0) / s;
+406         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classb3_quaternion_cbdc532e53c4319bd2b8c760764a9452}{
 \index{b3Quaternion@{b3Quaternion}!angle@{angle}}
 \index{angle@{angle}!b3Quaternion@{b3Quaternion}}
@@ -319,7 +693,24 @@ Return the angle between this quaternion and the other.
 \begin{description}
 \item[{\em q}]The other quaternion \end{description}
 \end{Desc}
-\hypertarget{classb3_quaternion_67190e0235b14f9d062f8616221665cf}{
+
+
+Definition at line 415 of file b3Quaternion.h.
+
+References dot(), and length2().
+
+\begin{Code}\begin{verbatim}416         {
+417                 b3Scalar s = b3Sqrt(length2() * q.length2());
+418                 b3Assert(s != b3Scalar(0.0));
+419                 return b3Acos(dot(q) / s);
+420         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classb3_quaternion_67190e0235b14f9d062f8616221665cf}{
 \index{b3Quaternion@{b3Quaternion}!operator+@{operator+}}
 \index{operator+@{operator+}!b3Quaternion@{b3Quaternion}}
 \subsubsection[operator+]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-FORCE\_\-INLINE {\bf b3Quaternion} b3Quaternion::operator+ (const {\bf b3Quaternion} \& {\em q2}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -333,7 +724,29 @@ Return the sum of this quaternion and the other.
 \begin{description}
 \item[{\em q2}]The other quaternion \end{description}
 \end{Desc}
-\hypertarget{classb3_quaternion_67a697c45563268c8ff6da91bb4d6fea}{
+
+
+Definition at line 454 of file b3Quaternion.h.
+
+References b3Quaternion().
+
+\begin{Code}\begin{verbatim}455         {
+456 #if defined (B3_USE_SSE_IN_API) && defined (B3_USE_SSE)
+457                 return b3Quaternion(_mm_add_ps(mVec128, q2.mVec128));
+458 #elif defined(B3_USE_NEON)
+459         return b3Quaternion(vaddq_f32(mVec128, q2.mVec128));
+460 #else   
+461                 const b3Quaternion& q1 = *this;
+462                 return b3Quaternion(q1.getX() + q2.getX(), q1.getY() + q2.getY(), q1.getZ() + q2.getZ(), q1.m_floats[3] + q2.m_floats[3]);
+463 #endif
+464         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classb3_quaternion_67a697c45563268c8ff6da91bb4d6fea}{
 \index{b3Quaternion@{b3Quaternion}!operator-@{operator-}}
 \index{operator-@{operator-}!b3Quaternion@{b3Quaternion}}
 \subsubsection[operator-]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-FORCE\_\-INLINE {\bf b3Quaternion} b3Quaternion::operator- (const {\bf b3Quaternion} \& {\em q2}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -347,7 +760,29 @@ Return the difference between this quaternion and the other.
 \begin{description}
 \item[{\em q2}]The other quaternion \end{description}
 \end{Desc}
-\hypertarget{classb3_quaternion_388e68921f4749a5641df37449076db0}{
+
+
+Definition at line 469 of file b3Quaternion.h.
+
+References b3Quaternion().
+
+\begin{Code}\begin{verbatim}470         {
+471 #if defined (B3_USE_SSE_IN_API) && defined (B3_USE_SSE)
+472                 return b3Quaternion(_mm_sub_ps(mVec128, q2.mVec128));
+473 #elif defined(B3_USE_NEON)
+474         return b3Quaternion(vsubq_f32(mVec128, q2.mVec128));
+475 #else   
+476                 const b3Quaternion& q1 = *this;
+477                 return b3Quaternion(q1.getX() - q2.getX(), q1.getY() - q2.getY(), q1.getZ() - q2.getZ(), q1.m_floats[3] - q2.m_floats[3]);
+478 #endif
+479         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classb3_quaternion_388e68921f4749a5641df37449076db0}{
 \index{b3Quaternion@{b3Quaternion}!farthest@{farthest}}
 \index{farthest@{farthest}!b3Quaternion@{b3Quaternion}}
 \subsubsection[farthest]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-FORCE\_\-INLINE {\bf b3Quaternion} b3Quaternion::farthest (const {\bf b3Quaternion} \& {\em qd}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -356,7 +791,27 @@ Return the difference between this quaternion and the other.
 
 \begin{Desc}
 \item[\hyperlink{todo__todo000002}{Todo}]document this and it's use \end{Desc}
-\hypertarget{classb3_quaternion_c257faeb2bf5a223870603face96f002}{
+
+
+Definition at line 495 of file b3Quaternion.h.
+
+References dot().
+
+\begin{Code}\begin{verbatim}496         {
+497                 b3Quaternion diff,sum;
+498                 diff = *this - qd;
+499                 sum = *this + qd;
+500                 if( diff.dot(diff) > sum.dot(sum) )
+501                         return qd;
+502                 return (-qd);
+503         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classb3_quaternion_c257faeb2bf5a223870603face96f002}{
 \index{b3Quaternion@{b3Quaternion}!nearest@{nearest}}
 \index{nearest@{nearest}!b3Quaternion@{b3Quaternion}}
 \subsubsection[nearest]{\setlength{\rightskip}{0pt plus 5cm}B3\_\-FORCE\_\-INLINE {\bf b3Quaternion} b3Quaternion::nearest (const {\bf b3Quaternion} \& {\em qd}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -365,7 +820,27 @@ Return the difference between this quaternion and the other.
 
 \begin{Desc}
 \item[\hyperlink{todo__todo000003}{Todo}]document this and it's use \end{Desc}
-\hypertarget{classb3_quaternion_9b64bb67f4ece30723d963132478049c}{
+
+
+Definition at line 506 of file b3Quaternion.h.
+
+References dot().
+
+\begin{Code}\begin{verbatim}507         {
+508                 b3Quaternion diff,sum;
+509                 diff = *this - qd;
+510                 sum = *this + qd;
+511                 if( diff.dot(diff) < sum.dot(sum) )
+512                         return qd;
+513                 return (-qd);
+514         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classb3_quaternion_9b64bb67f4ece30723d963132478049c}{
 \index{b3Quaternion@{b3Quaternion}!slerp@{slerp}}
 \index{slerp@{slerp}!b3Quaternion@{b3Quaternion}}
 \subsubsection[slerp]{\setlength{\rightskip}{0pt plus 5cm}{\bf b3Quaternion} b3Quaternion::slerp (const {\bf b3Quaternion} \& {\em q}, \/  const b3Scalar \& {\em t}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -381,6 +856,44 @@ Return the quaternion which is the result of Spherical Linear Interpolation betw
 \end{Desc}
 
 
+Definition at line 521 of file b3Quaternion.h.
+
+References b3Quaternion(), dot(), length2(), and glm::sign().
+
+\begin{Code}\begin{verbatim}522         {
+523           b3Scalar magnitude = b3Sqrt(length2() * q.length2()); 
+524           b3Assert(magnitude > b3Scalar(0));
+525 
+526     b3Scalar product = dot(q) / magnitude;
+527     if (b3Fabs(product) < b3Scalar(1))
+528                 {
+529       // Take care of long angle case see http://en.wikipedia.org/wiki/Slerp
+530       const b3Scalar sign = (product < 0) ? b3Scalar(-1) : b3Scalar(1);
+531 
+532       const b3Scalar theta = b3Acos(sign * product);
+533       const b3Scalar s1 = b3Sin(sign * t * theta);   
+534       const b3Scalar d = b3Scalar(1.0) / b3Sin(theta);
+535       const b3Scalar s0 = b3Sin((b3Scalar(1.0) - t) * theta);
+536 
+537       return b3Quaternion(
+538           (m_floats[0] * s0 + q.getX() * s1) * d,
+539           (m_floats[1] * s0 + q.getY() * s1) * d,
+540           (m_floats[2] * s0 + q.getZ() * s1) * d,
+541           (m_floats[3] * s0 + q.m_floats[3] * s1) * d);
+542                 }
+543                 else
+544                 {
+545                         return *this;
+546                 }
+547         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Common/b3Quaternion.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Common/b3Quaternion.h\end{CompactItemize}

@@ -42,6 +42,8 @@ int \hyperlink{classbt_raycast_vehicle_6e6ae8ff0a356616fc73f5a558d9b1c1}{getUser
 \subsection{Detailed Description}
 rayCast vehicle, very special constraint that turn a rigidbody into a vehicle. 
 
+Definition at line 25 of file btRaycastVehicle.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_raycast_vehicle_53451c4e3495561f3f078b2041ef04be}{
 \index{btRaycastVehicle@{btRaycastVehicle}!rayCast@{rayCast}}
@@ -56,7 +58,102 @@ rayCast vehicle, very special constraint that turn a rigidbody into a vehicle.
 \item[\hyperlink{todo__todo000038}{Todo}]for driving on dynamic/movable objects!; \end{Desc}
 
 
+Definition at line 167 of file btRaycastVehicle.cpp.
+
+References btVehicleRaycaster::castRay(), btRigidBody::getCenterOfMassPosition(), btWheelInfo::getSuspensionRestLength(), btRigidBody::getVelocityInLocalPoint(), btWheelInfo::m\_\-clippedInvContactDotSuspension, btWheelInfo::m\_\-maxSuspensionTravelCm, btWheelInfo::m\_\-raycastInfo, btWheelInfo::m\_\-suspensionRelativeVelocity, and btWheelInfo::m\_\-wheelsRadius.
+
+\begin{Code}\begin{verbatim}168 {
+169         updateWheelTransformsWS( wheel,false);
+170 
+171         
+172         btScalar depth = -1;
+173         
+174         btScalar raylen = wheel.getSuspensionRestLength()+wheel.m_wheelsRadius;
+175 
+176         btVector3 rayvector = wheel.m_raycastInfo.m_wheelDirectionWS * (raylen);
+177         const btVector3& source = wheel.m_raycastInfo.m_hardPointWS;
+178         wheel.m_raycastInfo.m_contactPointWS = source + rayvector;
+179         const btVector3& target = wheel.m_raycastInfo.m_contactPointWS;
+180 
+181         btScalar param = btScalar(0.);
+182         
+183         btVehicleRaycaster::btVehicleRaycasterResult    rayResults;
+184 
+185         btAssert(m_vehicleRaycaster);
+186 
+187         void* object = m_vehicleRaycaster->castRay(source,target,rayResults);
+188 
+189         wheel.m_raycastInfo.m_groundObject = 0;
+190 
+191         if (object)
+192         {
+193                 param = rayResults.m_distFraction;
+194                 depth = raylen * rayResults.m_distFraction;
+195                 wheel.m_raycastInfo.m_contactNormalWS  = rayResults.m_hitNormalInWorld;
+196                 wheel.m_raycastInfo.m_isInContact = true;
+197                 
+198                 wheel.m_raycastInfo.m_groundObject = &getFixedBody();
+199                 //wheel.m_raycastInfo.m_groundObject = object;
+200 
+201 
+202                 btScalar hitDistance = param*raylen;
+203                 wheel.m_raycastInfo.m_suspensionLength = hitDistance - wheel.m_wheelsRadius;
+204                 //clamp on max suspension travel
+205 
+206                 btScalar  minSuspensionLength = wheel.getSuspensionRestLength() - wheel.m_maxSuspensionTravelCm*btScalar(0.01);
+207                 btScalar maxSuspensionLength = wheel.getSuspensionRestLength()+ wheel.m_maxSuspensionTravelCm*btScalar(0.01);
+208                 if (wheel.m_raycastInfo.m_suspensionLength < minSuspensionLength)
+209                 {
+210                         wheel.m_raycastInfo.m_suspensionLength = minSuspensionLength;
+211                 }
+212                 if (wheel.m_raycastInfo.m_suspensionLength > maxSuspensionLength)
+213                 {
+214                         wheel.m_raycastInfo.m_suspensionLength = maxSuspensionLength;
+215                 }
+216 
+217                 wheel.m_raycastInfo.m_contactPointWS = rayResults.m_hitPointInWorld;
+218 
+219                 btScalar denominator= wheel.m_raycastInfo.m_contactNormalWS.dot( wheel.m_raycastInfo.m_wheelDirectionWS );
+220 
+221                 btVector3 chassis_velocity_at_contactPoint;
+222                 btVector3 relpos = wheel.m_raycastInfo.m_contactPointWS-getRigidBody()->getCenterOfMassPosition();
+223 
+224                 chassis_velocity_at_contactPoint = getRigidBody()->getVelocityInLocalPoint(relpos);
+225 
+226                 btScalar projVel = wheel.m_raycastInfo.m_contactNormalWS.dot( chassis_velocity_at_contactPoint );
+227 
+228                 if ( denominator >= btScalar(-0.1))
+229                 {
+230                         wheel.m_suspensionRelativeVelocity = btScalar(0.0);
+231                         wheel.m_clippedInvContactDotSuspension = btScalar(1.0) / btScalar(0.1);
+232                 }
+233                 else
+234                 {
+235                         btScalar inv = btScalar(-1.) / denominator;
+236                         wheel.m_suspensionRelativeVelocity = projVel * inv;
+237                         wheel.m_clippedInvContactDotSuspension = inv;
+238                 }
+239                         
+240         } else
+241         {
+242                 //put wheel info as in rest position
+243                 wheel.m_raycastInfo.m_suspensionLength = wheel.getSuspensionRestLength();
+244                 wheel.m_suspensionRelativeVelocity = btScalar(0.0);
+245                 wheel.m_raycastInfo.m_contactNormalWS = - wheel.m_raycastInfo.m_wheelDirectionWS;
+246                 wheel.m_clippedInvContactDotSuspension = btScalar(1.0);
+247         }
+248 
+249         return depth;
+250 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Vehicle/btRaycastVehicle.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Vehicle/btRaycastVehicle.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Vehicle/btRaycastVehicle.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Vehicle/btRaycastVehicle.cpp\end{CompactItemize}

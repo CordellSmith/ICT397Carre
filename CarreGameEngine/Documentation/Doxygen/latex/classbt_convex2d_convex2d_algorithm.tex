@@ -16,6 +16,8 @@ virtual void \hyperlink{classbt_convex2d_convex2d_algorithm_de3af2f3f04d9b202535
 \subsection{Detailed Description}
 The convex2dConvex2dAlgorithm collision algorithm support 2d collision detection for btConvex2dShape Currently it requires the \hyperlink{classbt_minkowski_penetration_depth_solver}{btMinkowskiPenetrationDepthSolver}, it has support for 2d penetration depth computation 
 
+Definition at line 33 of file btConvex2dConvex2dAlgorithm.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_convex2d_convex2d_algorithm_32bf85e0246ed54dd41edd861294c37e}{
 \index{btConvex2dConvex2dAlgorithm@{btConvex2dConvex2dAlgorithm}!calculateTimeOfImpact@{calculateTimeOfImpact}}
@@ -38,7 +40,102 @@ Sphere (for convex0) against Convex1
 
 Simplification, one object is simplified as a sphere 
 
-Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.\hypertarget{classbt_convex2d_convex2d_algorithm_de3af2f3f04d9b202535d33550a94be4}{
+Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.
+
+Definition at line 151 of file btConvex2dConvex2dAlgorithm.cpp.
+
+References btGjkConvexCast::calcTimeOfImpact(), and glm::length2().
+
+\begin{Code}\begin{verbatim}152 {
+153         (void)resultOut;
+154         (void)dispatchInfo;
+156 
+159         btScalar resultFraction = btScalar(1.);
+160 
+161 
+162         btScalar squareMot0 = (col0->getInterpolationWorldTransform().getOrigin() - col0->getWorldTransform().getOrigin()).length2();
+163         btScalar squareMot1 = (col1->getInterpolationWorldTransform().getOrigin() - col1->getWorldTransform().getOrigin()).length2();
+164 
+165         if (squareMot0 < col0->getCcdSquareMotionThreshold() &&
+166                 squareMot1 < col1->getCcdSquareMotionThreshold())
+167                 return resultFraction;
+168 
+169 
+170         //An adhoc way of testing the Continuous Collision Detection algorithms
+171         //One object is approximated as a sphere, to simplify things
+172         //Starting in penetration should report no time of impact
+173         //For proper CCD, better accuracy and handling of 'allowed' penetration should be added
+174         //also the mainloop of the physics should have a kind of toi queue (something like Brian Mirtich's application of Timewarp for Rigidbodies)
+175 
+176 
+178         {
+179                 btConvexShape* convex0 = static_cast<btConvexShape*>(col0->getCollisionShape());
+180 
+181                 btSphereShape   sphere1(col1->getCcdSweptSphereRadius()); //todo: allow non-zero sphere sizes, for better approximation
+182                 btConvexCast::CastResult result;
+183                 btVoronoiSimplexSolver voronoiSimplex;
+184                 //SubsimplexConvexCast ccd0(&sphere,min0,&voronoiSimplex);
+186                 btGjkConvexCast ccd1( convex0 ,&sphere1,&voronoiSimplex);
+187                 //ContinuousConvexCollision ccd(min0,min1,&voronoiSimplex,0);
+188                 if (ccd1.calcTimeOfImpact(col0->getWorldTransform(),col0->getInterpolationWorldTransform(),
+189                         col1->getWorldTransform(),col1->getInterpolationWorldTransform(),result))
+190                 {
+191 
+192                         //store result.m_fraction in both bodies
+193 
+194                         if (col0->getHitFraction()> result.m_fraction)
+195                                 col0->setHitFraction( result.m_fraction );
+196 
+197                         if (col1->getHitFraction() > result.m_fraction)
+198                                 col1->setHitFraction( result.m_fraction);
+199 
+200                         if (resultFraction > result.m_fraction)
+201                                 resultFraction = result.m_fraction;
+202 
+203                 }
+204 
+205 
+206 
+207 
+208         }
+209 
+211         {
+212                 btConvexShape* convex1 = static_cast<btConvexShape*>(col1->getCollisionShape());
+213 
+214                 btSphereShape   sphere0(col0->getCcdSweptSphereRadius()); //todo: allow non-zero sphere sizes, for better approximation
+215                 btConvexCast::CastResult result;
+216                 btVoronoiSimplexSolver voronoiSimplex;
+217                 //SubsimplexConvexCast ccd0(&sphere,min0,&voronoiSimplex);
+219                 btGjkConvexCast ccd1(&sphere0,convex1,&voronoiSimplex);
+220                 //ContinuousConvexCollision ccd(min0,min1,&voronoiSimplex,0);
+221                 if (ccd1.calcTimeOfImpact(col0->getWorldTransform(),col0->getInterpolationWorldTransform(),
+222                         col1->getWorldTransform(),col1->getInterpolationWorldTransform(),result))
+223                 {
+224 
+225                         //store result.m_fraction in both bodies
+226 
+227                         if (col0->getHitFraction()      > result.m_fraction)
+228                                 col0->setHitFraction( result.m_fraction);
+229 
+230                         if (col1->getHitFraction() > result.m_fraction)
+231                                 col1->setHitFraction( result.m_fraction);
+232 
+233                         if (resultFraction > result.m_fraction)
+234                                 resultFraction = result.m_fraction;
+235 
+236                 }
+237         }
+238 
+239         return resultFraction;
+240 
+241 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_convex2d_convex2d_algorithm_de3af2f3f04d9b202535d33550a94be4}{
 \index{btConvex2dConvex2dAlgorithm@{btConvex2dConvex2dAlgorithm}!getAllContactManifolds@{getAllContactManifolds}}
 \index{getAllContactManifolds@{getAllContactManifolds}!btConvex2dConvex2dAlgorithm@{btConvex2dConvex2dAlgorithm}}
 \subsubsection[getAllContactManifolds]{\setlength{\rightskip}{0pt plus 5cm}virtual void btConvex2dConvex2dAlgorithm::getAllContactManifolds ({\bf btManifoldArray} \& {\em manifoldArray})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
@@ -51,7 +148,23 @@ should we use m\_\-ownManifold to avoid adding duplicates?
 
 Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.
 
+Definition at line 54 of file btConvex2dConvex2dAlgorithm.h.
+
+References btAlignedObjectArray$<$ T $>$::push\_\-back().
+
+\begin{Code}\begin{verbatim}55         {
+57                 if (m_manifoldPtr && m_ownManifold)
+58                         manifoldArray.push_back(m_manifoldPtr);
+59         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btConvex2dConvex2dAlgorithm.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btConvex2dConvex2dAlgorithm.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btConvex2dConvex2dAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btConvex2dConvex2dAlgorithm.cpp\end{CompactItemize}

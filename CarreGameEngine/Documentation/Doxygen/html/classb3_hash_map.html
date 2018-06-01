@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: b3HashMap&lt; Key, Value &gt; Class Template Reference</title>
+<title>Assignment2 - OOber Taxi: b3HashMap&lt; Key, Value &gt; Class Template Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,14 +25,21 @@
   </div>
 </div>
 <div class="contents">
-<h1>b3HashMap&lt; Key, Value &gt; Class Template Reference</h1><!-- doxytag: class="b3HashMap" --><code>#include &lt;b3HashMap.h&gt;</code>
+<h1>b3HashMap&lt; Key, Value &gt; Class Template Reference</h1><!-- doxytag: class="b3HashMap" --><code>#include &lt;<a class="el" href="b3_hash_map_8h-source.html">b3HashMap.h</a>&gt;</code>
 <p>
+<div class="dynheader">
+Inheritance diagram for b3HashMap&lt; Key, Value &gt;:</div>
+<div class="dynsection">
+<p><center><img src="classb3_hash_map__inherit__graph.png" border="0" usemap="#b3_hash_map_3_01_key_00_01_value_01_4__inherit__map" alt="Inheritance graph"></center>
+<map name="b3_hash_map_3_01_key_00_01_value_01_4__inherit__map">
+<area shape="rect" href="classb3_hash_map.html" title="b3HashMap\&lt; b3HashPtr, bParse::bStructHandle * \&gt;" alt="" coords="772,47,1095,73"><area shape="rect" href="classb3_hash_map.html" title="b3HashMap\&lt; b3HashString, int \&gt;" alt="" coords="827,97,1040,124"><area shape="rect" href="classb3_hash_map.html" title="b3HashMap\&lt; b3HashPtr, b3PointerUid \&gt;" alt="" coords="805,148,1061,175"><area shape="rect" href="classb3_hash_map.html" title="b3HashMap\&lt; const b3HashPtr, char * \&gt;" alt="" coords="807,199,1060,225"><area shape="rect" href="classb3_hash_map.html" title="b3HashMap\&lt; b3HashInt, int \&gt;" alt="" coords="836,249,1031,276"><area shape="rect" href="classb3_hash_map.html" title="b3HashMap\&lt; b3HashPtr, void void **typedef void *typedef void *typedef void *typedef * \&gt;" alt="" coords="669,300,1197,327"><area shape="rect" href="classb3_hash_map.html" title="b3HashMap\&lt; b3HashPtr, bParse::bChunkInd \&gt;" alt="" coords="787,351,1080,377"></map>
+<center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 <div class="dynheader">
 Collaboration diagram for b3HashMap&lt; Key, Value &gt;:</div>
 <div class="dynsection">
 <p><center><img src="classb3_hash_map__coll__graph.png" border="0" usemap="#b3_hash_map_3_01_key_00_01_value_01_4__coll__map" alt="Collaboration graph"></center>
 <map name="b3_hash_map_3_01_key_00_01_value_01_4__coll__map">
-<area shape="rect" href="classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; Key \&gt;" alt="" coords="333,8,528,35"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; Key, 16 \&gt;" alt="" coords="11,8,208,35"><area shape="rect" href="classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; int \&gt;" alt="" coords="339,69,523,96"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; int, 16 \&gt;" alt="" coords="15,69,204,96"><area shape="rect" href="classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; Value \&gt;" alt="" coords="329,120,532,147"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; Value, 16 \&gt;" alt="" coords="5,120,213,147"></map>
+<area shape="rect" href="classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; Key \&gt;" alt="" coords="1109,29,1304,56"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; Key, 16 \&gt;" alt="" coords="559,5,756,32"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,136,232,163"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="351,89,532,116"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; int, 16 \&gt;" alt="" coords="563,169,752,196"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; Value, 16 \&gt;" alt="" coords="781,233,989,260"><area shape="rect" href="classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; T \&gt;" alt="" coords="796,83,975,109"><area shape="rect" href="classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; int \&gt;" alt="" coords="1115,91,1299,117"><area shape="rect" href="classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; Value \&gt;" alt="" coords="1105,141,1308,168"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -43,10 +50,12 @@ Collaboration diagram for b3HashMap&lt; Key, Value &gt;:</div>
 <h3>template&lt;class Key, class Value&gt;<br>
  class b3HashMap&lt; Key, Value &gt;</h3>
 
-The <a class="el" href="classb3_hash_map.html">b3HashMap</a> template class implements a generic and lightweight hashmap. A basic sample of how to use <a class="el" href="classb3_hash_map.html">b3HashMap</a> is located in Demos\BasicDemo\main.cpp <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Common/b3HashMap.h</ul>
+The <a class="el" href="classb3_hash_map.html">b3HashMap</a> template class implements a generic and lightweight hashmap. A basic sample of how to use <a class="el" href="classb3_hash_map.html">b3HashMap</a> is located in Demos\BasicDemo\main.cpp 
+<p>Definition at line <a class="el" href="b3_hash_map_8h-source.html#l00224">224</a> of file <a class="el" href="b3_hash_map_8h-source.html">b3HashMap.h</a>.</p>
+<hr>The documentation for this class was generated from the following file:<ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Common/<a class="el" href="b3_hash_map_8h-source.html">b3HashMap.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:57 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:20 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

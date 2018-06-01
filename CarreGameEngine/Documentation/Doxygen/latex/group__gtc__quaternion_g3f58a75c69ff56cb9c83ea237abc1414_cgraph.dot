@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::roll",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::atan",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#g459eaa7149e799125acda24938114746"];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::degrees",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64"];
+}

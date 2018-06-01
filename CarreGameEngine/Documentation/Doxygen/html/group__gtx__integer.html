@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_integer</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_integer</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -77,6 +77,8 @@ Add support for integer for core functions.
 
 <p>
 32bit signed integer. From GLM_GTX_integer extension. 
+<p>Definition at line <a class="el" href="gtx_2integer_8hpp-source.html#l00081">81</a> of file <a class="el" href="gtx_2integer_8hpp-source.html">integer.hpp</a>.</p>
+
 </div>
 </div><p>
 <hr><h2>Function Documentation</h2>
@@ -100,6 +102,17 @@ template&lt;typename genType&gt; </div>
 
 <p>
 Return the factorial value of a number (!12 max, integer only) From GLM_GTX_integer extension. 
+<p>Definition at line <a class="el" href="integer_8inl-source.html#l00093">93</a> of file <a class="el" href="integer_8inl-source.html">integer.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00094"></a>00094         {
+<a name="l00095"></a>00095                 genType Temp = x;
+<a name="l00096"></a>00096                 genType Result;
+<a name="l00097"></a>00097                 <span class="keywordflow">for</span>(Result = 1; Temp &gt; 1; --Temp)
+<a name="l00098"></a>00098                         Result *= Temp;
+<a name="l00099"></a>00099                 <span class="keywordflow">return</span> Result;
+<a name="l00100"></a>00100         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g7011b4e1c1e1ed492149b028feacc00e"></a><!-- doxytag: member="glm::floor_log2" ref="g7011b4e1c1e1ed492149b028feacc00e" args="(unsigned int x)" -->
@@ -171,6 +184,13 @@ Returns the log2 of x. Can be reliably using to compute mipmap count from the te
 
 <p>
 Modulus. Returns x - y * floor(x / y) for each component in x using the floating point value y. From GLM_GTX_integer extension. 
+<p>Definition at line <a class="el" href="integer_8inl-source.html#l00156">156</a> of file <a class="el" href="integer_8inl-source.html">integer.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00157"></a>00157         {
+<a name="l00158"></a>00158                 <span class="keywordflow">return</span> x - y * (x / y);
+<a name="l00159"></a>00159         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gb9d22df91aac4d9eb925a4910f556f1b"></a><!-- doxytag: member="glm::mod" ref="gb9d22df91aac4d9eb925a4910f556f1b" args="(int x, int y)" -->
@@ -200,6 +220,13 @@ Modulus. Returns x - y * floor(x / y) for each component in x using the floating
 
 <p>
 Modulus. Returns x - y * floor(x / y) for each component in x using the floating point value y. From GLM_GTX_integer extension. 
+<p>Definition at line <a class="el" href="integer_8inl-source.html#l00086">86</a> of file <a class="el" href="integer_8inl-source.html">integer.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00087"></a>00087         {
+<a name="l00088"></a>00088                 <span class="keywordflow">return</span> x - y * (x / y);
+<a name="l00089"></a>00089         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gcbe62fd2384464c16ea30ecc4defc11c"></a><!-- doxytag: member="glm::nlz" ref="gcbe62fd2384464c16ea30ecc4defc11c" args="(uint x)" -->
@@ -220,6 +247,37 @@ Modulus. Returns x - y * floor(x / y) for each component in x using the floating
 
 <p>
 Returns the number of leading zeros. From GLM_GTX_integer extension. 
+<p>Definition at line <a class="el" href="integer_8inl-source.html#l00171">171</a> of file <a class="el" href="integer_8inl-source.html">integer.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00172"></a>00172         {
+<a name="l00173"></a>00173                 <span class="keywordtype">int</span> y, m, n;
+<a name="l00174"></a>00174 
+<a name="l00175"></a>00175                 y = -int(x &gt;&gt; 16);      <span class="comment">// If left half of x is 0,</span>
+<a name="l00176"></a>00176                 m = (y &gt;&gt; 16) &amp; 16;  <span class="comment">// set n = 16.  If left half</span>
+<a name="l00177"></a>00177                 n = 16 - m;          <span class="comment">// is nonzero, set n = 0 and</span>
+<a name="l00178"></a>00178                 x = x &gt;&gt; m;          <span class="comment">// shift x right 16.</span>
+<a name="l00179"></a>00179                                                         <span class="comment">// Now x is of the form 0000xxxx.</span>
+<a name="l00180"></a>00180                 y = x - 0x100;       <span class="comment">// If positions 8-15 are 0,</span>
+<a name="l00181"></a>00181                 m = (y &gt;&gt; 16) &amp; 8;   <span class="comment">// add 8 to n and shift x left 8.</span>
+<a name="l00182"></a>00182                 n = n + m;
+<a name="l00183"></a>00183                 x = x &lt;&lt; m;
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185                 y = x - 0x1000;      <span class="comment">// If positions 12-15 are 0,</span>
+<a name="l00186"></a>00186                 m = (y &gt;&gt; 16) &amp; 4;   <span class="comment">// add 4 to n and shift x left 4.</span>
+<a name="l00187"></a>00187                 n = n + m;
+<a name="l00188"></a>00188                 x = x &lt;&lt; m;
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190                 y = x - 0x4000;      <span class="comment">// If positions 14-15 are 0,</span>
+<a name="l00191"></a>00191                 m = (y &gt;&gt; 16) &amp; 2;   <span class="comment">// add 2 to n and shift x left 2.</span>
+<a name="l00192"></a>00192                 n = n + m;
+<a name="l00193"></a>00193                 x = x &lt;&lt; m;
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195                 y = x &gt;&gt; 14;         <span class="comment">// Set y = 0, 1, 2, or 3.</span>
+<a name="l00196"></a>00196                 m = y &amp; ~(y &gt;&gt; 1);   <span class="comment">// Set m = 0, 1, 2, or 2 resp.</span>
+<a name="l00197"></a>00197                 <span class="keywordflow">return</span> unsigned(n + 2 - m);
+<a name="l00198"></a>00198         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="ga8229e850c3cc4ad83492fe390ada044"></a><!-- doxytag: member="glm::pow" ref="ga8229e850c3cc4ad83492fe390ada044" args="(uint x, uint y)" -->
@@ -249,6 +307,16 @@ Returns the number of leading zeros. From GLM_GTX_integer extension.
 
 <p>
 Returns x raised to the y power. From GLM_GTX_integer extension. 
+<p>Definition at line <a class="el" href="integer_8inl-source.html#l00132">132</a> of file <a class="el" href="integer_8inl-source.html">integer.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00133"></a>00133         {
+<a name="l00134"></a>00134                 <a class="code" href="group__core__precision.html#g4fd29415871152bfb5abd588334147c8">uint</a> result = x;
+<a name="l00135"></a>00135                 <span class="keywordflow">for</span>(<a class="code" href="group__core__precision.html#g4fd29415871152bfb5abd588334147c8">uint</a> i = 1; i &lt; y; ++i)
+<a name="l00136"></a>00136                         result *= x;
+<a name="l00137"></a>00137                 <span class="keywordflow">return</span> result;
+<a name="l00138"></a>00138         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g9642514a44a67afa70966d756f040ca9"></a><!-- doxytag: member="glm::pow" ref="g9642514a44a67afa70966d756f040ca9" args="(int x, int y)" -->
@@ -278,6 +346,18 @@ Returns x raised to the y power. From GLM_GTX_integer extension.
 
 <p>
 Returns x raised to the y power. From GLM_GTX_integer extension. 
+<p>Definition at line <a class="el" href="integer_8inl-source.html#l00013">13</a> of file <a class="el" href="integer_8inl-source.html">integer.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00014"></a>00014         {
+<a name="l00015"></a>00015                 <span class="keywordflow">if</span>(y == 0)
+<a name="l00016"></a>00016                         <span class="keywordflow">return</span> 1;
+<a name="l00017"></a>00017                 <span class="keywordtype">int</span> result = x;
+<a name="l00018"></a>00018                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 1; i &lt; y; ++i)
+<a name="l00019"></a>00019                         result *= x;
+<a name="l00020"></a>00020                 <span class="keywordflow">return</span> result;
+<a name="l00021"></a>00021         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g457e9efca8339bf918d319e9c55f7c8f"></a><!-- doxytag: member="glm::sqrt" ref="g457e9efca8339bf918d319e9c55f7c8f" args="(uint x)" -->
@@ -298,6 +378,35 @@ Returns x raised to the y power. From GLM_GTX_integer extension.
 
 <p>
 Returns the positive square root of x. From GLM_GTX_integer extension. 
+<p>Definition at line <a class="el" href="integer_8inl-source.html#l00140">140</a> of file <a class="el" href="integer_8inl-source.html">integer.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00813">glm::axis()</a>, <a class="el" href="_structs_8h-source.html#l00136">Vector2::Distance()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00723">glm::quat_cast()</a>, and <a class="el" href="func__geometric_8inl-source.html#l00323">glm::refract()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00141"></a>00141         {
+<a name="l00142"></a>00142                 <span class="keywordflow">if</span>(x &lt;= 1) <span class="keywordflow">return</span> x;
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144                 <a class="code" href="group__core__precision.html#g4fd29415871152bfb5abd588334147c8">uint</a> NextTrial = x &gt;&gt; 1;
+<a name="l00145"></a>00145                 <a class="code" href="group__core__precision.html#g4fd29415871152bfb5abd588334147c8">uint</a> CurrentAnswer;
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147                 <span class="keywordflow">do</span>
+<a name="l00148"></a>00148                 {
+<a name="l00149"></a>00149                         CurrentAnswer = NextTrial;
+<a name="l00150"></a>00150                         NextTrial = (NextTrial + x / NextTrial) &gt;&gt; 1;
+<a name="l00151"></a>00151                 } <span class="keywordflow">while</span>(NextTrial &lt; CurrentAnswer);
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153                 <span class="keywordflow">return</span> CurrentAnswer;
+<a name="l00154"></a>00154         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__integer_g457e9efca8339bf918d319e9c55f7c8f_icgraph.png" border="0" usemap="#group__gtx__integer_g457e9efca8339bf918d319e9c55f7c8f_icgraph_map" alt=""></center>
+<map name="group__gtx__integer_g457e9efca8339bf918d319e9c55f7c8f_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b" title="glm::axis" alt="" coords="151,132,225,159"><area shape="rect" href="struct_vector2.html#80a99fd93db704d9b47f376a8568c86e" title="Calculates the distance between to 3D points." alt="" coords="125,183,251,209"><area shape="rect" href="group__gtc__quaternion.html#ga615768cdd09816fd42da38f484fb4c0" title="glm::quat_cast" alt="" coords="135,233,241,260"><area shape="rect" href="group__core__func__geometric.html#g2020e01c134ebe03c1690306ff93af53" title="glm::refract" alt="" coords="145,284,231,311"><area shape="rect" href="classbt_gear_constraint.html#a08a0ddb52aacfa0141b41b388238aa6" title="return the local value of parameter" alt="" coords="299,81,483,108"><area shape="rect" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="349,132,432,159"><area shape="rect" href="group__gtx__rotate__normalized__axis.html#g9fc93bb16dd6719fc660a506cb833fb0" title="glm::rotateNormalizedAxis" alt="" coords="304,183,477,209"><area shape="rect" href="class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix." alt="" coords="532,56,711,83"><area shape="rect" href="group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e" title="glm::orientation" alt="" coords="567,107,676,133"><area shape="rect" href="group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36" title="glm::orientedAngle" alt="" coords="557,157,685,184"><area shape="rect" href="group__gtx__rotate__vector.html#gf0809ae83e84fc9880b4c8b7093c349c" title="glm::rotate" alt="" coords="580,208,663,235"><area shape="rect" href="class_camera.html#ff61f06284cca3216accdf556dfbd3c1" title="Gets the camera position." alt="" coords="784,5,896,32"><area shape="rect" href="class_camera.html#338c5baf20b57652828c53e0791adf9a" title="Gets the camera view." alt="" coords="779,56,901,83"><area shape="rect" href="class_camera.html#ffa333055635aed96518c4c66be9a70c" title="Gets the view matrix." alt="" coords="760,107,920,133"><area shape="rect" href="class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223" title="Moves the camera." alt="" coords="968,56,1117,83"><area shape="rect" href="group__gtx__quaternion.html#gdc8d8daae2f8d725dae576d6655e36d2" title="glm::toQuat" alt="" coords="347,233,435,260"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g78e2e68330e91d350fcfc2f4831cad12"></a><!-- doxytag: member="glm::sqrt" ref="g78e2e68330e91d350fcfc2f4831cad12" args="(int x)" -->
@@ -318,10 +427,28 @@ Returns the positive square root of x. From GLM_GTX_integer extension.
 
 <p>
 Returns the positive square root of x. From GLM_GTX_integer extension. 
+<p>Definition at line <a class="el" href="integer_8inl-source.html#l00024">24</a> of file <a class="el" href="integer_8inl-source.html">integer.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00025"></a>00025         {
+<a name="l00026"></a>00026                 <span class="keywordflow">if</span>(x &lt;= 1) <span class="keywordflow">return</span> x;
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028                 <span class="keywordtype">int</span> NextTrial = x &gt;&gt; 1;
+<a name="l00029"></a>00029                 <span class="keywordtype">int</span> CurrentAnswer;
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031                 <span class="keywordflow">do</span>
+<a name="l00032"></a>00032                 {
+<a name="l00033"></a>00033                         CurrentAnswer = NextTrial;
+<a name="l00034"></a>00034                         NextTrial = (NextTrial + x / NextTrial) &gt;&gt; 1;
+<a name="l00035"></a>00035                 } <span class="keywordflow">while</span>(NextTrial &lt; CurrentAnswer);
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037                 <span class="keywordflow">return</span> CurrentAnswer;
+<a name="l00038"></a>00038         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:33 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:23 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

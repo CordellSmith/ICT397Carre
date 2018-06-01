@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btSoftRigidCollisionAlgorithm Class Reference</title>
+<title>Assignment2 - OOber Taxi: btSoftRigidCollisionAlgorithm Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btSoftRigidCollisionAlgorithm Class Reference</h1><!-- doxytag: class="btSoftRigidCollisionAlgorithm" --><!-- doxytag: inherits="btCollisionAlgorithm" --><a class="el" href="classbt_soft_rigid_collision_algorithm.html" title="btSoftRigidCollisionAlgorithm provides collision detection between btSoftBody and...">btSoftRigidCollisionAlgorithm</a> provides collision detection between <a class="el" href="classbt_soft_body.html">btSoftBody</a> and <a class="el" href="classbt_rigid_body.html">btRigidBody</a>  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btSoftRigidCollisionAlgorithm.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_soft_rigid_collision_algorithm_8h-source.html">btSoftRigidCollisionAlgorithm.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btSoftRigidCollisionAlgorithm:</div>
@@ -53,7 +53,9 @@ Collaboration diagram for btSoftRigidCollisionAlgorithm:</div>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-<a class="el" href="classbt_soft_rigid_collision_algorithm.html" title="btSoftRigidCollisionAlgorithm provides collision detection between btSoftBody and...">btSoftRigidCollisionAlgorithm</a> provides collision detection between <a class="el" href="classbt_soft_body.html">btSoftBody</a> and <a class="el" href="classbt_rigid_body.html">btRigidBody</a> <hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="el" href="classbt_soft_rigid_collision_algorithm.html" title="btSoftRigidCollisionAlgorithm provides collision detection between btSoftBody and...">btSoftRigidCollisionAlgorithm</a> provides collision detection between <a class="el" href="classbt_soft_body.html">btSoftBody</a> and <a class="el" href="classbt_rigid_body.html">btRigidBody</a> 
+<p>Definition at line <a class="el" href="bt_soft_rigid_collision_algorithm_8h-source.html#l00029">29</a> of file <a class="el" href="bt_soft_rigid_collision_algorithm_8h-source.html">btSoftRigidCollisionAlgorithm.h</a>.</p>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="a6f289e315d626acf0a47ba093f6d4eb"></a><!-- doxytag: member="btSoftRigidCollisionAlgorithm::btSoftRigidCollisionAlgorithm" ref="a6f289e315d626acf0a47ba093f6d4eb" args="(btPersistentManifold *mf, const btCollisionAlgorithmConstructionInfo &amp;ci, const btCollisionObjectWrapper *col0, const btCollisionObjectWrapper *col1Wrap, bool isSwapped)" -->
 <div class="memitem">
 <div class="memproto">
@@ -99,12 +101,22 @@ Collaboration diagram for btSoftRigidCollisionAlgorithm:</div>
 
 <p>
 TODO: include all the shapes that the softbody can collide with alternatively, implement special case collision algorithms (just like for rigid collision shapes) 
+<p>Definition at line <a class="el" href="bt_soft_rigid_collision_algorithm_8cpp-source.html#l00030">30</a> of file <a class="el" href="bt_soft_rigid_collision_algorithm_8cpp-source.html">btSoftRigidCollisionAlgorithm.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00031"></a>00031 : <a class="code" href="classbt_collision_algorithm.html">btCollisionAlgorithm</a>(ci),
+<a name="l00032"></a>00032 <span class="comment">//m_ownManifold(false),</span>
+<a name="l00033"></a>00033 <span class="comment">//m_manifoldPtr(mf),</span>
+<a name="l00034"></a>00034 m_isSwapped(isSwapped)
+<a name="l00035"></a>00035 {
+<a name="l00036"></a>00036 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftRigidCollisionAlgorithm.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftRigidCollisionAlgorithm.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/<a class="el" href="bt_soft_rigid_collision_algorithm_8h-source.html">btSoftRigidCollisionAlgorithm.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/<a class="el" href="bt_soft_rigid_collision_algorithm_8cpp-source.html">btSoftRigidCollisionAlgorithm.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:53 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:59 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

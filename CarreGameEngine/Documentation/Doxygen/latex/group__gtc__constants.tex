@@ -75,7 +75,22 @@ $<$glm/gtc/constants.hpp$>$ need to be included to use these features.
 
 Return e constant. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
-\hypertarget{group__gtc__constants_g136c74927d8ab624f3c008bcd8c4445b}{
+
+
+Definition at line 118 of file constants.inl.
+
+Referenced by glm::unpackSnorm1x16(), glm::unpackSnorm2x16(), and glm::unpackUnorm2x16().
+
+\begin{Code}\begin{verbatim}119         {
+120                 return genType(2.71828182845904523536);
+121         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtc__constants_g136c74927d8ab624f3c008bcd8c4445b}{
 \index{gtc\_\-constants@{gtc\_\-constants}!epsilon@{epsilon}}
 \index{epsilon@{epsilon}!gtc_constants@{gtc\_\-constants}}
 \subsubsection[epsilon]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::epsilon ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -86,7 +101,22 @@ Return the epsilon constant for floating point types. \begin{Desc}
 \item[\hyperlink{todo__todo000051}{Todo}]Implement epsilon for half-precision floating point type. \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
-\hypertarget{group__gtc__constants_g99cfc0dd627ebc20b51d3c9c0f706c6a}{
+
+
+Definition at line 34 of file constants.inl.
+
+Referenced by glm::axisAngle(), btSubsimplexConvexCast::calcTimeOfImpact(), glm::intersectLineSphere(), glm::intersectLineTriangle(), glm::intersectRayPlane(), glm::intersectRaySphere(), and glm::intersectRayTriangle().
+
+\begin{Code}\begin{verbatim}35         {
+36                 return std::numeric_limits<genType>::epsilon();
+37         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtc__constants_g99cfc0dd627ebc20b51d3c9c0f706c6a}{
 \index{gtc\_\-constants@{gtc\_\-constants}!euler@{euler}}
 \index{euler@{euler}!gtc_constants@{gtc\_\-constants}}
 \subsubsection[euler]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::euler ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -95,6 +125,17 @@ Return the epsilon constant for floating point types. \begin{Desc}
 
 Return Euler's constant. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 124 of file constants.inl.
+
+\begin{Code}\begin{verbatim}125         {
+126                 return genType(0.577215664901532860606);
+127         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g8a045109452784d20481cd2ac053c4e0}{
 \index{gtc\_\-constants@{gtc\_\-constants}!golden\_\-ratio@{golden\_\-ratio}}
 \index{golden\_\-ratio@{golden\_\-ratio}!gtc_constants@{gtc\_\-constants}}
@@ -104,6 +145,17 @@ Return Euler's constant. \begin{Desc}
 
 Return the golden ratio constant. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 178 of file constants.inl.
+
+\begin{Code}\begin{verbatim}179         {
+180                 return genType(1.61803398874989484820458683436563811);
+181         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_gac1d3ec09335dd506ecc76a0097db220}{
 \index{gtc\_\-constants@{gtc\_\-constants}!half\_\-pi@{half\_\-pi}}
 \index{half\_\-pi@{half\_\-pi}!gtc_constants@{gtc\_\-constants}}
@@ -113,6 +165,17 @@ Return the golden ratio constant. \begin{Desc}
 
 Return pi / 2. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 64 of file constants.inl.
+
+\begin{Code}\begin{verbatim}65         {
+66                 return genType(1.57079632679489661923132169163975144);
+67         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g938ac709f33297c1324ca30866f3d9a5}{
 \index{gtc\_\-constants@{gtc\_\-constants}!ln\_\-ln\_\-two@{ln\_\-ln\_\-two}}
 \index{ln\_\-ln\_\-two@{ln\_\-ln\_\-two}!gtc_constants@{gtc\_\-constants}}
@@ -122,6 +185,17 @@ Return pi / 2. \begin{Desc}
 
 Return ln(ln(2)). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 160 of file constants.inl.
+
+\begin{Code}\begin{verbatim}161         {
+162                 return genType(-0.3665129205816643);
+163         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g8b4f9e44073d823e00294592d295d0f1}{
 \index{gtc\_\-constants@{gtc\_\-constants}!ln\_\-ten@{ln\_\-ten}}
 \index{ln\_\-ten@{ln\_\-ten}!gtc_constants@{gtc\_\-constants}}
@@ -131,6 +205,17 @@ Return ln(ln(2)). \begin{Desc}
 
 Return ln(10). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 154 of file constants.inl.
+
+\begin{Code}\begin{verbatim}155         {
+156                 return genType(2.30258509299404568401799145468436421);
+157         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g1d237e2d94b69cdf1122ae8cbb561b2d}{
 \index{gtc\_\-constants@{gtc\_\-constants}!ln\_\-two@{ln\_\-two}}
 \index{ln\_\-two@{ln\_\-two}!gtc_constants@{gtc\_\-constants}}
@@ -140,6 +225,17 @@ Return ln(10). \begin{Desc}
 
 Return ln(2). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 148 of file constants.inl.
+
+\begin{Code}\begin{verbatim}149         {
+150                 return genType(0.693147180559945309417232121458176568);
+151         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_gbc71dfc97639e8010a39c1892e68ed9b}{
 \index{gtc\_\-constants@{gtc\_\-constants}!one@{one}}
 \index{one@{one}!gtc_constants@{gtc\_\-constants}}
@@ -149,7 +245,22 @@ Return ln(2). \begin{Desc}
 
 Return 1. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
-\hypertarget{group__gtc__constants_gcbd54875746accf5c4c5a52582c8d764}{
+
+
+Definition at line 46 of file constants.inl.
+
+Referenced by glm::lerp().
+
+\begin{Code}\begin{verbatim}47         {
+48                 return genType(1);
+49         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtc__constants_gcbd54875746accf5c4c5a52582c8d764}{
 \index{gtc\_\-constants@{gtc\_\-constants}!one\_\-over\_\-pi@{one\_\-over\_\-pi}}
 \index{one\_\-over\_\-pi@{one\_\-over\_\-pi}!gtc_constants@{gtc\_\-constants}}
 \subsubsection[one\_\-over\_\-pi]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::one\_\-over\_\-pi ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -158,6 +269,17 @@ Return 1. \begin{Desc}
 
 Return 1 / pi. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 76 of file constants.inl.
+
+\begin{Code}\begin{verbatim}77         {
+78                 return genType(0.318309886183790671537767526745028724);
+79         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g59e3cc61460e0c503d80df6e70aa38b0}{
 \index{gtc\_\-constants@{gtc\_\-constants}!one\_\-over\_\-root\_\-two@{one\_\-over\_\-root\_\-two}}
 \index{one\_\-over\_\-root\_\-two@{one\_\-over\_\-root\_\-two}!gtc_constants@{gtc\_\-constants}}
@@ -167,6 +289,17 @@ Return 1 / pi. \begin{Desc}
 
 Return 1 / sqrt(2). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 94 of file constants.inl.
+
+\begin{Code}\begin{verbatim}95         {
+96                 return genType(0.707106781186547524400844362104849039);
+97         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g7e73289d56099ea4789c597750dc68b8}{
 \index{gtc\_\-constants@{gtc\_\-constants}!pi@{pi}}
 \index{pi@{pi}!gtc_constants@{gtc\_\-constants}}
@@ -176,6 +309,17 @@ Return 1 / sqrt(2). \begin{Desc}
 
 Return the pi constant. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 52 of file constants.inl.
+
+\begin{Code}\begin{verbatim}53         {
+54                 return genType(3.14159265358979323846264338327950288);
+55         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g42880986550674518989d057ee8b6407}{
 \index{gtc\_\-constants@{gtc\_\-constants}!quarter\_\-pi@{quarter\_\-pi}}
 \index{quarter\_\-pi@{quarter\_\-pi}!gtc_constants@{gtc\_\-constants}}
@@ -185,6 +329,17 @@ Return the pi constant. \begin{Desc}
 
 Return pi / 4. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 70 of file constants.inl.
+
+\begin{Code}\begin{verbatim}71         {
+72                 return genType(0.785398163397448309615660845819875721);
+73         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_gfa2f8c1bc0e6684652171820d9140d3e}{
 \index{gtc\_\-constants@{gtc\_\-constants}!root\_\-five@{root\_\-five}}
 \index{root\_\-five@{root\_\-five}!gtc_constants@{gtc\_\-constants}}
@@ -194,6 +349,17 @@ Return pi / 4. \begin{Desc}
 
 Return sqrt(5). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 142 of file constants.inl.
+
+\begin{Code}\begin{verbatim}143         {
+144                 return genType(2.23606797749978969640917366873127623);
+145         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g39bda21134486f771067238aa263c562}{
 \index{gtc\_\-constants@{gtc\_\-constants}!root\_\-half\_\-pi@{root\_\-half\_\-pi}}
 \index{root\_\-half\_\-pi@{root\_\-half\_\-pi}!gtc_constants@{gtc\_\-constants}}
@@ -203,6 +369,17 @@ Return sqrt(5). \begin{Desc}
 
 Return sqrt(pi / 2). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 100 of file constants.inl.
+
+\begin{Code}\begin{verbatim}101         {
+102                 return genType(1.253314137315500251);
+103         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g0f121de1b70ce7379c08f47291efdb49}{
 \index{gtc\_\-constants@{gtc\_\-constants}!root\_\-ln\_\-four@{root\_\-ln\_\-four}}
 \index{root\_\-ln\_\-four@{root\_\-ln\_\-four}!gtc_constants@{gtc\_\-constants}}
@@ -212,6 +389,17 @@ Return sqrt(pi / 2). \begin{Desc}
 
 Return sqrt(ln(4)). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 112 of file constants.inl.
+
+\begin{Code}\begin{verbatim}113         {
+114                 return genType(1.17741002251547469);
+115         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g94ccd058b697006c9aacc2329edc05a0}{
 \index{gtc\_\-constants@{gtc\_\-constants}!root\_\-pi@{root\_\-pi}}
 \index{root\_\-pi@{root\_\-pi}!gtc_constants@{gtc\_\-constants}}
@@ -221,6 +409,17 @@ Return sqrt(ln(4)). \begin{Desc}
 
 Return square root of pi. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 58 of file constants.inl.
+
+\begin{Code}\begin{verbatim}59         {
+60                 return genType(1.772453850905516027);
+61         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g2d2fec6ccd7b739e797e402521780fe3}{
 \index{gtc\_\-constants@{gtc\_\-constants}!root\_\-three@{root\_\-three}}
 \index{root\_\-three@{root\_\-three}!gtc_constants@{gtc\_\-constants}}
@@ -230,6 +429,17 @@ Return square root of pi. \begin{Desc}
 
 Return sqrt(3). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 136 of file constants.inl.
+
+\begin{Code}\begin{verbatim}137         {
+138                 return genType(1.73205080756887729352744634150587236);
+139         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g7e985cdcc68d42d833072d09cac683dc}{
 \index{gtc\_\-constants@{gtc\_\-constants}!root\_\-two@{root\_\-two}}
 \index{root\_\-two@{root\_\-two}!gtc_constants@{gtc\_\-constants}}
@@ -239,6 +449,17 @@ Return sqrt(3). \begin{Desc}
 
 Return sqrt(2). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 130 of file constants.inl.
+
+\begin{Code}\begin{verbatim}131         {
+132                 return genType(1.41421356237309504880168872420969808);
+133         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g030fc8d3f9b605ce3d21dba058c930dd}{
 \index{gtc\_\-constants@{gtc\_\-constants}!root\_\-two\_\-pi@{root\_\-two\_\-pi}}
 \index{root\_\-two\_\-pi@{root\_\-two\_\-pi}!gtc_constants@{gtc\_\-constants}}
@@ -248,6 +469,17 @@ Return sqrt(2). \begin{Desc}
 
 Return sqrt(2 $\ast$ pi). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 106 of file constants.inl.
+
+\begin{Code}\begin{verbatim}107         {
+108                 return genType(2.506628274631000502);
+109         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_ge45f6bc38af321ae365cf702a527c574}{
 \index{gtc\_\-constants@{gtc\_\-constants}!third@{third}}
 \index{third@{third}!gtc_constants@{gtc\_\-constants}}
@@ -257,6 +489,17 @@ Return sqrt(2 $\ast$ pi). \begin{Desc}
 
 Return 1 / 3. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 166 of file constants.inl.
+
+\begin{Code}\begin{verbatim}167         {
+168                 return genType(0.3333333333333333333333333333333333333333);
+169         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g3b92bf25d756f2d34a531394146decbf}{
 \index{gtc\_\-constants@{gtc\_\-constants}!two\_\-over\_\-pi@{two\_\-over\_\-pi}}
 \index{two\_\-over\_\-pi@{two\_\-over\_\-pi}!gtc_constants@{gtc\_\-constants}}
@@ -266,6 +509,17 @@ Return 1 / 3. \begin{Desc}
 
 Return 2 / pi. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 82 of file constants.inl.
+
+\begin{Code}\begin{verbatim}83         {
+84                 return genType(0.636619772367581343075535053490057448);
+85         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g542f9a504c7cf25b6c0108adb4a9f97a}{
 \index{gtc\_\-constants@{gtc\_\-constants}!two\_\-over\_\-root\_\-pi@{two\_\-over\_\-root\_\-pi}}
 \index{two\_\-over\_\-root\_\-pi@{two\_\-over\_\-root\_\-pi}!gtc_constants@{gtc\_\-constants}}
@@ -275,6 +529,17 @@ Return 2 / pi. \begin{Desc}
 
 Return 2 / sqrt(pi). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 88 of file constants.inl.
+
+\begin{Code}\begin{verbatim}89         {
+90                 return genType(1.12837916709551257389615890312154517);
+91         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g846874e34295fed917708f134f754ae4}{
 \index{gtc\_\-constants@{gtc\_\-constants}!two\_\-thirds@{two\_\-thirds}}
 \index{two\_\-thirds@{two\_\-thirds}!gtc_constants@{gtc\_\-constants}}
@@ -284,6 +549,17 @@ Return 2 / sqrt(pi). \begin{Desc}
 
 Return 2 / 3. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 172 of file constants.inl.
+
+\begin{Code}\begin{verbatim}173         {
+174                 return genType(0.666666666666666666666666666666666666667);
+175         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__constants_g888d199297a924864bc2235f5133c30f}{
 \index{gtc\_\-constants@{gtc\_\-constants}!zero@{zero}}
 \index{zero@{zero}!gtc_constants@{gtc\_\-constants}}
@@ -293,3 +569,14 @@ Return 2 / 3. \begin{Desc}
 
 Return 0. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__constants}{GLM\_\-GTC\_\-constants} \end{Desc}
+
+
+Definition at line 40 of file constants.inl.
+
+\begin{Code}\begin{verbatim}41         {
+42                 return genType(0);
+43         }
+\end{verbatim}
+\end{Code}
+
+

@@ -50,6 +50,8 @@ $<$glm/gtx/integer.hpp$>$ need to be included to use these functionalities.
 
 32bit signed integer. From GLM\_\-GTX\_\-integer extension. 
 
+Definition at line 81 of file integer.hpp.
+
 \subsection{Function Documentation}
 \hypertarget{group__gtx__integer_g57ba2a6a2729f23ba4848bbad551dcd1}{
 \index{gtx\_\-integer@{gtx\_\-integer}!factorial@{factorial}}
@@ -58,7 +60,22 @@ $<$glm/gtx/integer.hpp$>$ need to be included to use these functionalities.
 \label{group__gtx__integer_g57ba2a6a2729f23ba4848bbad551dcd1}
 
 
-Return the factorial value of a number (!12 max, integer only) From GLM\_\-GTX\_\-integer extension. \hypertarget{group__gtx__integer_g7011b4e1c1e1ed492149b028feacc00e}{
+Return the factorial value of a number (!12 max, integer only) From GLM\_\-GTX\_\-integer extension. 
+
+Definition at line 93 of file integer.inl.
+
+\begin{Code}\begin{verbatim}94         {
+95                 genType Temp = x;
+96                 genType Result;
+97                 for(Result = 1; Temp > 1; --Temp)
+98                         Result *= Temp;
+99                 return Result;
+100         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__integer_g7011b4e1c1e1ed492149b028feacc00e}{
 \index{gtx\_\-integer@{gtx\_\-integer}!floor\_\-log2@{floor\_\-log2}}
 \index{floor\_\-log2@{floor\_\-log2}!gtx_integer@{gtx\_\-integer}}
 \subsubsection[floor\_\-log2]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-DECL unsigned int glm::floor\_\-log2 (unsigned int {\em x})}}
@@ -79,42 +96,155 @@ Returns the log2 of x. Can be reliably using to compute mipmap count from the te
 \label{group__gtx__integer_gb8f9ec0ca93ca90669434224818f0750}
 
 
-Modulus. Returns x - y $\ast$ floor(x / y) for each component in x using the floating point value y. From GLM\_\-GTX\_\-integer extension. \hypertarget{group__gtx__integer_gb9d22df91aac4d9eb925a4910f556f1b}{
+Modulus. Returns x - y $\ast$ floor(x / y) for each component in x using the floating point value y. From GLM\_\-GTX\_\-integer extension. 
+
+Definition at line 156 of file integer.inl.
+
+\begin{Code}\begin{verbatim}157         {
+158                 return x - y * (x / y);
+159         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__integer_gb9d22df91aac4d9eb925a4910f556f1b}{
 \index{gtx\_\-integer@{gtx\_\-integer}!mod@{mod}}
 \index{mod@{mod}!gtx_integer@{gtx\_\-integer}}
 \subsubsection[mod]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER int glm::mod (int {\em x}, \/  int {\em y})}}
 \label{group__gtx__integer_gb9d22df91aac4d9eb925a4910f556f1b}
 
 
-Modulus. Returns x - y $\ast$ floor(x / y) for each component in x using the floating point value y. From GLM\_\-GTX\_\-integer extension. \hypertarget{group__gtx__integer_gcbe62fd2384464c16ea30ecc4defc11c}{
+Modulus. Returns x - y $\ast$ floor(x / y) for each component in x using the floating point value y. From GLM\_\-GTX\_\-integer extension. 
+
+Definition at line 86 of file integer.inl.
+
+\begin{Code}\begin{verbatim}87         {
+88                 return x - y * (x / y);
+89         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__integer_gcbe62fd2384464c16ea30ecc4defc11c}{
 \index{gtx\_\-integer@{gtx\_\-integer}!nlz@{nlz}}
 \index{nlz@{nlz}!gtx_integer@{gtx\_\-integer}}
 \subsubsection[nlz]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER unsigned int glm::nlz (uint {\em x})}}
 \label{group__gtx__integer_gcbe62fd2384464c16ea30ecc4defc11c}
 
 
-Returns the number of leading zeros. From GLM\_\-GTX\_\-integer extension. \hypertarget{group__gtx__integer_ga8229e850c3cc4ad83492fe390ada044}{
+Returns the number of leading zeros. From GLM\_\-GTX\_\-integer extension. 
+
+Definition at line 171 of file integer.inl.
+
+\begin{Code}\begin{verbatim}172         {
+173                 int y, m, n;
+174 
+175                 y = -int(x >> 16);      // If left half of x is 0,
+176                 m = (y >> 16) & 16;  // set n = 16.  If left half
+177                 n = 16 - m;          // is nonzero, set n = 0 and
+178                 x = x >> m;          // shift x right 16.
+179                                                         // Now x is of the form 0000xxxx.
+180                 y = x - 0x100;       // If positions 8-15 are 0,
+181                 m = (y >> 16) & 8;   // add 8 to n and shift x left 8.
+182                 n = n + m;
+183                 x = x << m;
+184 
+185                 y = x - 0x1000;      // If positions 12-15 are 0,
+186                 m = (y >> 16) & 4;   // add 4 to n and shift x left 4.
+187                 n = n + m;
+188                 x = x << m;
+189 
+190                 y = x - 0x4000;      // If positions 14-15 are 0,
+191                 m = (y >> 16) & 2;   // add 2 to n and shift x left 2.
+192                 n = n + m;
+193                 x = x << m;
+194 
+195                 y = x >> 14;         // Set y = 0, 1, 2, or 3.
+196                 m = y & ~(y >> 1);   // Set m = 0, 1, 2, or 2 resp.
+197                 return unsigned(n + 2 - m);
+198         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__integer_ga8229e850c3cc4ad83492fe390ada044}{
 \index{gtx\_\-integer@{gtx\_\-integer}!pow@{pow}}
 \index{pow@{pow}!gtx_integer@{gtx\_\-integer}}
 \subsubsection[pow]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint glm::pow (uint {\em x}, \/  uint {\em y})}}
 \label{group__gtx__integer_ga8229e850c3cc4ad83492fe390ada044}
 
 
-Returns x raised to the y power. From GLM\_\-GTX\_\-integer extension. \hypertarget{group__gtx__integer_g9642514a44a67afa70966d756f040ca9}{
+Returns x raised to the y power. From GLM\_\-GTX\_\-integer extension. 
+
+Definition at line 132 of file integer.inl.
+
+\begin{Code}\begin{verbatim}133         {
+134                 uint result = x;
+135                 for(uint i = 1; i < y; ++i)
+136                         result *= x;
+137                 return result;
+138         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__integer_g9642514a44a67afa70966d756f040ca9}{
 \index{gtx\_\-integer@{gtx\_\-integer}!pow@{pow}}
 \index{pow@{pow}!gtx_integer@{gtx\_\-integer}}
 \subsubsection[pow]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER int glm::pow (int {\em x}, \/  int {\em y})}}
 \label{group__gtx__integer_g9642514a44a67afa70966d756f040ca9}
 
 
-Returns x raised to the y power. From GLM\_\-GTX\_\-integer extension. \hypertarget{group__gtx__integer_g457e9efca8339bf918d319e9c55f7c8f}{
+Returns x raised to the y power. From GLM\_\-GTX\_\-integer extension. 
+
+Definition at line 13 of file integer.inl.
+
+\begin{Code}\begin{verbatim}14         {
+15                 if(y == 0)
+16                         return 1;
+17                 int result = x;
+18                 for(int i = 1; i < y; ++i)
+19                         result *= x;
+20                 return result;
+21         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__integer_g457e9efca8339bf918d319e9c55f7c8f}{
 \index{gtx\_\-integer@{gtx\_\-integer}!sqrt@{sqrt}}
 \index{sqrt@{sqrt}!gtx_integer@{gtx\_\-integer}}
 \subsubsection[sqrt]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint glm::sqrt (uint {\em x})}}
 \label{group__gtx__integer_g457e9efca8339bf918d319e9c55f7c8f}
 
 
-Returns the positive square root of x. From GLM\_\-GTX\_\-integer extension. \hypertarget{group__gtx__integer_g78e2e68330e91d350fcfc2f4831cad12}{
+Returns the positive square root of x. From GLM\_\-GTX\_\-integer extension. 
+
+Definition at line 140 of file integer.inl.
+
+Referenced by glm::axis(), Vector2::Distance(), glm::quat\_\-cast(), and glm::refract().
+
+\begin{Code}\begin{verbatim}141         {
+142                 if(x <= 1) return x;
+143 
+144                 uint NextTrial = x >> 1;
+145                 uint CurrentAnswer;
+146 
+147                 do
+148                 {
+149                         CurrentAnswer = NextTrial;
+150                         NextTrial = (NextTrial + x / NextTrial) >> 1;
+151                 } while(NextTrial < CurrentAnswer);
+152 
+153                 return CurrentAnswer;
+154         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtx__integer_g78e2e68330e91d350fcfc2f4831cad12}{
 \index{gtx\_\-integer@{gtx\_\-integer}!sqrt@{sqrt}}
 \index{sqrt@{sqrt}!gtx_integer@{gtx\_\-integer}}
 \subsubsection[sqrt]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER int glm::sqrt (int {\em x})}}
@@ -122,3 +252,24 @@ Returns the positive square root of x. From GLM\_\-GTX\_\-integer extension. \hy
 
 
 Returns the positive square root of x. From GLM\_\-GTX\_\-integer extension. 
+
+Definition at line 24 of file integer.inl.
+
+\begin{Code}\begin{verbatim}25         {
+26                 if(x <= 1) return x;
+27 
+28                 int NextTrial = x >> 1;
+29                 int CurrentAnswer;
+30 
+31                 do
+32                 {
+33                         CurrentAnswer = NextTrial;
+34                         NextTrial = (NextTrial + x / NextTrial) >> 1;
+35                 } while(NextTrial < CurrentAnswer);
+36 
+37                 return CurrentAnswer;
+38         }
+\end{verbatim}
+\end{Code}
+
+

@@ -2,7 +2,7 @@
 \section{Model Class Reference}
 \label{class_model}\index{Model@{Model}}
 }
-\hyperlink{class_model}{Model} class to create a 3D model.  
+\hyperlink{class_model}{Model} class to store model data.  
 
 
 {\tt \#include $<$Model.h$>$}
@@ -11,110 +11,96 @@ Collaboration diagram for Model:\subsection*{Public Member Functions}
 \begin{CompactItemize}
 \item 
 \hyperlink{class_model_e3b375de5f6df4faf74a95d64748e048}{Model} ()
-\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
 \hyperlink{class_model_d6ebd2062a0b823db841a0b88baac4c0}{$\sim$Model} ()
 \begin{CompactList}\small\item\em Destructor. \item\end{CompactList}\item 
-void \hyperlink{class_model_bb9bbb4050349e0c775dd383474aca37}{Initialize} (\hyperlink{struct_vertex}{Vertex} vertices\mbox{[}$\,$\mbox{]}, int length, std::vector$<$ unsigned int $>$ \&indices, std::string vertShaderString, std::string fragShaderString)
-\begin{CompactList}\small\item\em Initializes the model. \item\end{CompactList}\item 
-void \hyperlink{class_model_0a3de8a969bada5a82ffa727f8c216b5}{Render} ()
-\begin{CompactList}\small\item\em Renders the model. \item\end{CompactList}\item 
-\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_5fe059a355fdb0531110696dafcec43b}{GetPosition} ()
+void \hyperlink{class_model_d7e2859170e157f9c6393b16e54c3fd8}{LoadModel} (std::string filePath)
+\begin{CompactList}\small\item\em Loads the model data. \item\end{CompactList}\item 
+void \hyperlink{class_model_9bb9d5cd67e4cd9dc95c01bedd92034a}{ProcessNode} (\hyperlink{structai_node}{aiNode} $\ast$node, const \hyperlink{structai_scene}{aiScene} $\ast$scene)
+\begin{CompactList}\small\item\em Processes the node of an \hyperlink{structai_scene}{aiScene}. \item\end{CompactList}\item 
+\hyperlink{class_mesh}{Mesh} \hyperlink{class_model_2cc9f43dc71e2781369f6106392e560e}{ProcessMesh} (\hyperlink{structai_mesh}{aiMesh} $\ast$mesh, const \hyperlink{structai_scene}{aiScene} $\ast$scene)
+\begin{CompactList}\small\item\em Processes the mesh. \item\end{CompactList}\item 
+std::vector$<$ Texture $>$ \hyperlink{class_model_43da250403b6d11aa1a0f54c9021ac45}{LoadMaterialTextures} (\hyperlink{structai_material}{aiMaterial} $\ast$mat, \hyperlink{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0}{aiTextureType} type, std::string typeName)
+\begin{CompactList}\small\item\em Loads the material textures. \item\end{CompactList}\item 
+void \hyperlink{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}{Destroy} ()
+\begin{CompactList}\small\item\em Destroys the model. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \& \hyperlink{class_model_f4b5a0bae6b0b057c118444189c5dfa9}{GetPosition} ()
 \begin{CompactList}\small\item\em Gets the models position. \item\end{CompactList}\item 
 void \hyperlink{class_model_3a615a604e26270bd0849462718703b2}{SetPosition} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} position)
 \begin{CompactList}\small\item\em Sets the models position. \item\end{CompactList}\item 
-\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_4000e7bcd78069bc4584da37d2bf3d66}{GetRotation} ()
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \& \hyperlink{class_model_fc6593eeb0980053628cd00a75be51e9}{GetRotation} ()
 \begin{CompactList}\small\item\em Gets the models rotation. \item\end{CompactList}\item 
 void \hyperlink{class_model_71aa61e54f3f12bc86175fa359079d23}{SetRotation} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} rotation)
 \begin{CompactList}\small\item\em Sets the models rotation. \item\end{CompactList}\item 
-\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_1b61b8298674542ad929bf582b4de262}{GetScale} ()
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \& \hyperlink{class_model_a0fecf0d42fd4ab4d3c4a49a84bd830e}{GetScale} ()
 \begin{CompactList}\small\item\em Gets the models scale. \item\end{CompactList}\item 
 void \hyperlink{class_model_76860d36c983eb38250588899775aab7}{SetScale} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} scale)
 \begin{CompactList}\small\item\em Sets the models scale. \item\end{CompactList}\item 
 \hyperlink{class_camera}{Camera} $\ast$ \hyperlink{class_model_8c6429a35a1376657357e6e770470f13}{GetCamera} ()
 \begin{CompactList}\small\item\em Gets the camera object. \item\end{CompactList}\item 
-void \hyperlink{class_model_19b6689d4a5e80e187df85a5ab6f03b8}{SetCamera} (\hyperlink{class_camera}{Camera} $\ast$camera)
+const void \hyperlink{class_model_5efc69bc9e86c4946aec2be4b190351f}{SetCamera} (\hyperlink{class_camera}{Camera} $\ast$camera)
 \begin{CompactList}\small\item\em Sets the camera object. \item\end{CompactList}\item 
-void \hyperlink{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}{Destroy} ()
-\begin{CompactList}\small\item\em Cleans up the VAO and VBOs. \item\end{CompactList}\end{CompactItemize}
-\subsection*{Protected Attributes}
-\begin{CompactItemize}
-\item 
-\hypertarget{class_model_5cacbaf83f7abedb413670a877ca0342}{
-\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_5cacbaf83f7abedb413670a877ca0342}{m\_\-rotation}}
-\label{class_model_5cacbaf83f7abedb413670a877ca0342}
-
-\begin{CompactList}\small\item\em The model's rotation. \item\end{CompactList}\item 
-\hypertarget{class_model_bc23ecdbd0ec986ed2ccd00fe20b817a}{
-\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_bc23ecdbd0ec986ed2ccd00fe20b817a}{m\_\-scale}}
-\label{class_model_bc23ecdbd0ec986ed2ccd00fe20b817a}
-
-\begin{CompactList}\small\item\em The model's scale. \item\end{CompactList}\item 
-\hypertarget{class_model_b3675205d8830c998e19f00497429f20}{
-GLuint \hyperlink{class_model_b3675205d8830c998e19f00497429f20}{m\_\-VAO}}
-\label{class_model_b3675205d8830c998e19f00497429f20}
-
-\begin{CompactList}\small\item\em VAO id. \item\end{CompactList}\item 
-\hypertarget{class_model_20a4832d570e33d3a1868d92ac81cc49}{
-GLuint \hyperlink{class_model_20a4832d570e33d3a1868d92ac81cc49}{m\_\-VBO}}
-\label{class_model_20a4832d570e33d3a1868d92ac81cc49}
-
-\begin{CompactList}\small\item\em VBO id. \item\end{CompactList}\item 
-\hypertarget{class_model_cc674d063b027e3fdfb687b0e72d9322}{
-GLuint \hyperlink{class_model_cc674d063b027e3fdfb687b0e72d9322}{m\_\-EBO}}
-\label{class_model_cc674d063b027e3fdfb687b0e72d9322}
-
-\begin{CompactList}\small\item\em EBO id. \item\end{CompactList}\item 
-\hypertarget{class_model_427b7834b2b4a8e3f41aec118fbb8e58}{
-\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_model_427b7834b2b4a8e3f41aec118fbb8e58}{m\_\-positon}}
-\label{class_model_427b7834b2b4a8e3f41aec118fbb8e58}
-
-\begin{CompactList}\small\item\em The model's position. \item\end{CompactList}\item 
-\hypertarget{class_model_02e541e1a8ad04eb05e0729abcc7e0d5}{
-\hyperlink{class_shader}{Shader} \hyperlink{class_model_02e541e1a8ad04eb05e0729abcc7e0d5}{m\_\-shader}}
-\label{class_model_02e541e1a8ad04eb05e0729abcc7e0d5}
-
-\begin{CompactList}\small\item\em \hyperlink{class_shader}{Shader} object. \item\end{CompactList}\item 
-\hypertarget{class_model_7dae1bc84476979aa5c44335c63054b8}{
-\hyperlink{class_camera}{Camera} $\ast$ \hyperlink{class_model_7dae1bc84476979aa5c44335c63054b8}{m\_\-camera}}
-\label{class_model_7dae1bc84476979aa5c44335c63054b8}
-
-\begin{CompactList}\small\item\em \hyperlink{class_camera}{Camera} object. \item\end{CompactList}\end{CompactItemize}
-\subsection*{Static Protected Attributes}
-\begin{CompactItemize}
-\item 
-\hypertarget{class_model_7ee034d94e2f05fb2a48712bcfa8e4dd}{
-static const GLuint \hyperlink{class_model_7ee034d94e2f05fb2a48712bcfa8e4dd}{m\_\-vertexIndex} = 0}
-\label{class_model_7ee034d94e2f05fb2a48712bcfa8e4dd}
-
-\begin{CompactList}\small\item\em These are used as pointers to each index where each information is stored within the vertex buffer object. \item\end{CompactList}\end{CompactItemize}
+std::vector$<$ \hyperlink{class_mesh}{Mesh} $>$ \& \hyperlink{class_model_e8189e0eb940a7a994591ca71dafae5b}{GetMeshBatch} ()
+\begin{CompactList}\small\item\em Gets the mesh batch. \item\end{CompactList}\item 
+std::vector$<$ Texture $>$ \& \hyperlink{class_model_3ba990a64ec154e543ffe4a529220cc4}{GetTextures} ()
+\begin{CompactList}\small\item\em Gets the textures. \item\end{CompactList}\item 
+\hyperlink{class_shader}{Shader} $\ast$ \hyperlink{class_model_985c54c42525ea8e9885977eff7027de}{GetShader} ()
+\begin{CompactList}\small\item\em Gets the shader. \item\end{CompactList}\item 
+void \hyperlink{class_model_a1a4b42427c675bccfdd93d3b049cee5}{SetShader} (\hyperlink{class_shader}{Shader} $\ast$shader)
+\begin{CompactList}\small\item\em Sets the shader. \item\end{CompactList}\item 
+void \hyperlink{class_model_88a59a41b18480246ade2f6a22b4e61d}{SetAI} (ComputerAI $\ast$compAI)
+\begin{CompactList}\small\item\em Sets the AI of the model. \item\end{CompactList}\item 
+ComputerAI $\ast$ \hyperlink{class_model_cadb88d0d8d9839884f9b55aa6eb9235}{GetAI} ()
+\begin{CompactList}\small\item\em Gets the AI of the model. \item\end{CompactList}\end{CompactItemize}
 
 
 \subsection{Detailed Description}
-\hyperlink{class_model}{Model} class to create a 3D model. 
+\hyperlink{class_model}{Model} class to store model data. 
 
-This class is used to store all model information including initializion of the model to be rendered and drawn onto the screen using shaders.
+The model class is used to read in and store model data that is read in using the assimp import asset library. It contains all the functionality to load in a model of many different file types and store the information in various data structures to be accessed later.
 
+\begin{Desc}
+\item[Author:]Cordell Smith \end{Desc}
 \begin{Desc}
 \item[Version:]01 \end{Desc}
 \begin{Desc}
-\item[Date:]29/03/2018 \end{Desc}
+\item[Date:]31/05/2018 \end{Desc}
 
+
+Definition at line 32 of file Model.h.
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_model_e3b375de5f6df4faf74a95d64748e048}{
 \index{Model@{Model}!Model@{Model}}
 \index{Model@{Model}!Model@{Model}}
-\subsubsection[Model]{\setlength{\rightskip}{0pt plus 5cm}Model::Model ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\subsubsection[Model]{\setlength{\rightskip}{0pt plus 5cm}Model::Model ()}}
 \label{class_model_e3b375de5f6df4faf74a95d64748e048}
 
 
-Default constructor. 
+Constructor. 
 
-This is the default constuctor that sets the scale value of the model to 1.
+This is the default constuctor that sets the scale value of the model to 1, initializes the models shader as well as setting the AI of the model to NULL.
 
 \begin{Desc}
 \item[Returns:]null \end{Desc}
-\hypertarget{class_model_d6ebd2062a0b823db841a0b88baac4c0}{
+
+
+Definition at line 7 of file Model.cpp.
+
+References SetScale().
+
+\begin{Code}\begin{verbatim}8 {
+9         SetScale(glm::vec3(1.0, 1.0, 1.0));
+10         m_shader = new Shader();
+11         m_compAI = NULL;
+12 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_model_d6ebd2062a0b823db841a0b88baac4c0}{
 \index{Model@{Model}!$\sim$Model@{$\sim$Model}}
 \index{$\sim$Model@{$\sim$Model}!Model@{Model}}
 \subsubsection[$\sim$Model]{\setlength{\rightskip}{0pt plus 5cm}Model::$\sim$Model ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -123,49 +109,344 @@ This is the default constuctor that sets the scale value of the model to 1.
 
 Destructor. 
 
-This is the destructor that calls \hyperlink{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}{Destroy()} to free up the used memory.
+This is the default destructor that calls the \hyperlink{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}{Destroy()} function to free up any resources used by the model, incorporating memory management.
 
 \begin{Desc}
 \item[Returns:]null \end{Desc}
 
 
+Definition at line 53 of file Model.h.
+
+References Destroy().
+
+\begin{Code}\begin{verbatim}53 { Destroy(); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 \subsection{Member Function Documentation}
-\hypertarget{class_model_bb9bbb4050349e0c775dd383474aca37}{
-\index{Model@{Model}!Initialize@{Initialize}}
-\index{Initialize@{Initialize}!Model@{Model}}
-\subsubsection[Initialize]{\setlength{\rightskip}{0pt plus 5cm}void Model::Initialize ({\bf Vertex} {\em vertices}\mbox{[}$\,$\mbox{]}, \/  int {\em length}, \/  std::vector$<$ unsigned int $>$ \& {\em indices}, \/  std::string {\em vertShaderString}, \/  std::string {\em fragShaderString})}}
-\label{class_model_bb9bbb4050349e0c775dd383474aca37}
+\hypertarget{class_model_d7e2859170e157f9c6393b16e54c3fd8}{
+\index{Model@{Model}!LoadModel@{LoadModel}}
+\index{LoadModel@{LoadModel}!Model@{Model}}
+\subsubsection[LoadModel]{\setlength{\rightskip}{0pt plus 5cm}void Model::LoadModel (std::string {\em filePath})}}
+\label{class_model_d7e2859170e157f9c6393b16e54c3fd8}
 
 
-Initializes the model. 
+Loads the model data. 
 
-This function takes a list of x, y, z vertices and its length to create a vertex buffer object (VBO) and vertex array object (VBO) as well as the corresponding vertex and fragment shaders as strings.
+This function loads the model data taking in a relative string file path. The function then uses the assimp import asset library to read the file and with other helper functions, store the data in the correct member variable data structures.
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \hyperlink{struct_vertex}{Vertex}}]vertices\mbox{[}\mbox{]} \item[{\em int}]length \item[{\em std::string}]vertShaderString \item[{\em std::string}]fragShaderString \end{description}
+\item[{\em std::string}]filePath \end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_model_0a3de8a969bada5a82ffa727f8c216b5}{
-\index{Model@{Model}!Render@{Render}}
-\index{Render@{Render}!Model@{Model}}
-\subsubsection[Render]{\setlength{\rightskip}{0pt plus 5cm}void Model::Render ()}}
-\label{class_model_0a3de8a969bada5a82ffa727f8c216b5}
 
 
-Renders the model. 
+Definition at line 14 of file Model.cpp.
 
-This function draws the model to the backbuffer by first initializing the shader, turning it on and binding the vertex array. Each vertex attribute is enabled and glDrawArrays() function is called to draw the vertices to the screen. The attributes are disabled and the shader is then turned off.
+References AI\_\-SCENE\_\-FLAGS\_\-INCOMPLETE, aiProcess\_\-CalcTangentSpace, aiProcess\_\-FlipUVs, aiProcess\_\-JoinIdenticalVertices, aiProcess\_\-SortByPType, aiProcess\_\-Triangulate, aiScene::mFlags, aiScene::mRootNode, and ProcessNode().
+
+Referenced by Player::LoadFromFilePath().
+
+\begin{Code}\begin{verbatim}15 {
+16         Assimp::Importer import;
+17         const aiScene *scene = import.ReadFile(filePath, aiProcess_FlipUVs 
+18                 | aiProcess_CalcTangentSpace
+19                 | aiProcess_Triangulate 
+20                 | aiProcess_JoinIdenticalVertices 
+21                 | aiProcess_SortByPType);
+22 
+23         m_directory = filePath.substr(0, filePath.find_last_of('/'));
+24 
+25         if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+26         {
+27                 std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
+28         }
+29         else
+30                 ProcessNode(scene->mRootNode, scene);
+31 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{class_model_9bb9d5cd67e4cd9dc95c01bedd92034a}{
+\index{Model@{Model}!ProcessNode@{ProcessNode}}
+\index{ProcessNode@{ProcessNode}!Model@{Model}}
+\subsubsection[ProcessNode]{\setlength{\rightskip}{0pt plus 5cm}void Model::ProcessNode ({\bf aiNode} $\ast$ {\em node}, \/  const {\bf aiScene} $\ast$ {\em scene})}}
+\label{class_model_9bb9d5cd67e4cd9dc95c01bedd92034a}
+
+
+Processes the node of an \hyperlink{structai_scene}{aiScene}. 
+
+\hyperlink{namespace_assimp}{Assimp} reads the loaded file as a scene that contains many nodes. The nodes are stored in a linked list data structure. This function processes the specific node that is being examined.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aiNode$\ast$}]node \item[{\em const}]aiScene$\ast$ scene \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 33 of file Model.cpp.
+
+References aiNode::mChildren, aiNode::mMeshes, aiScene::mMeshes, aiNode::mNumChildren, aiNode::mNumMeshes, and ProcessMesh().
+
+Referenced by LoadModel().
+
+\begin{Code}\begin{verbatim}34 {
+35         // process all the node's meshes (if any)
+36         for (unsigned int i = 0; i < node->mNumMeshes; i++)
+37         {
+38                 aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
+39                 m_meshBatch.push_back(ProcessMesh(mesh, scene));
+40         }
+41         // then do the same for each of its children
+42         for (unsigned int i = 0; i < node->mNumChildren; i++)
+43         {
+44                 ProcessNode(node->mChildren[i], scene);
+45         }
+46 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{class_model_2cc9f43dc71e2781369f6106392e560e}{
+\index{Model@{Model}!ProcessMesh@{ProcessMesh}}
+\index{ProcessMesh@{ProcessMesh}!Model@{Model}}
+\subsubsection[ProcessMesh]{\setlength{\rightskip}{0pt plus 5cm}{\bf Mesh} Model::ProcessMesh ({\bf aiMesh} $\ast$ {\em mesh}, \/  const {\bf aiScene} $\ast$ {\em scene})}}
+\label{class_model_2cc9f43dc71e2781369f6106392e560e}
+
+
+Processes the mesh. 
+
+For each node that is contained in a scene, if it contains a mesh, then this function processes it. It reads the vertex data in the \hyperlink{structai_node}{aiNode} object and stores them in the correct member data structures.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aiMesh$\ast$}]mesh \item[{\em const}]aiScene$\ast$ scene \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 48 of file Model.cpp.
+
+References aiTextureType\_\-AMBIENT, aiTextureType\_\-DIFFUSE, aiTextureType\_\-HEIGHT, aiTextureType\_\-SPECULAR, LoadMaterialTextures(), aiMesh::mFaces, aiFace::mIndices, aiMesh::mMaterialIndex, aiScene::mMaterials, aiMesh::mNormals, aiMesh::mNumFaces, aiMesh::mTextureCoords, and aiMesh::mVertices.
+
+Referenced by ProcessNode().
+
+\begin{Code}\begin{verbatim}49 {
+50         std::vector<Vertex3> vertices;
+51         std::vector<unsigned int> indices;
+52         std::vector<Texture> textures;
+53 
+54         // process face data
+55         for (unsigned int i = 0; i < mesh->mNumFaces; i++)
+56         {
+57                 Vertex3 vertex;
+58                 glm::vec3 vertexPos;
+59                 glm::vec4 colour;
+60                 glm::vec3 normalCoord;
+61                 glm::vec2 texCoord;
+62                 glm::vec3 tangent;
+63                 glm::vec3 biTangent;
+64 
+65                 aiFace face = mesh->mFaces[i];
+66                 for (unsigned int j = 0; j < 3; j++)
+67                 {
+68                         // vertex positions
+69                         auto const &v = mesh->mVertices[face.mIndices[j]];
+70                         vertexPos.x = v.x; 
+71                         vertexPos.y = v.y; 
+72                         vertexPos.z = v.z;
+73                         vertex.m_position = vertexPos;
+74 
+75                         // colours (randomised)
+76                         colour = glm::vec4(((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), 1.0f);
+77                         vertex.m_colour = colour;
+78 
+79                         // normals
+80                         if (mesh->HasNormals())
+81                         {
+82                                 auto const &n = mesh->mNormals[face.mIndices[j]];
+83                                 normalCoord.x = n.x;
+84                                 normalCoord.y = n.y;
+85                                 normalCoord.z = n.z;
+86                                 vertex.m_normal = normalCoord;
+87                         }
+88                         else
+89                                 vertex.m_normal = glm::vec3(0.0f, 0.0f, 0.0f);
+90 
+91                         // texture coordinates
+92                         if (mesh->mTextureCoords[0])
+93                         {
+94                                 auto const &uv = mesh->mTextureCoords[0][face.mIndices[j]];
+95                                 texCoord.x = uv.x;
+96                                 texCoord.y = uv.y;
+97                                 vertex.m_texCoords = texCoord;
+98                         }
+99                         else
+100                                 vertex.m_texCoords = glm::vec2(0.0f, 0.0f);
+101 
+103                         //if (mesh->HasTangentsAndBitangents())
+104                         //{
+105                         //      auto const &t = mesh->mTangents[face.mIndices[j]];
+106                         //      tangent.x = t.x;
+107                         //      tangent.y = t.y;
+108                         //      tangent.z = t.z;
+109                         //      vertex.m_tangent = tangent;
+110 
+111                         //      auto const &bt = mesh->mBitangents[face.mIndices[j]];
+112                         //      biTangent.x = bt.x;
+113                         //      biTangent.y = bt.y;
+114                         //      biTangent.z = bt.z;
+115                         //      vertex.m_biTangent = biTangent;
+116                         //}
+117 
+118                         vertices.push_back(vertex);
+119                         indices.push_back(face.mIndices[j]);
+120                 }
+121         }
+122         // process materials
+123         aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
+124         // diffuse maps
+125         std::vector<Texture> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+126         textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+127         // specular maps
+128         std::vector<Texture> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+129         textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+130         // normal maps
+131         std::vector<Texture> normalMaps = LoadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
+132         textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+133         // height maps
+134         std::vector<Texture> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
+135         textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
+136 
+137         return Mesh(vertices, indices, textures);
+138 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{class_model_43da250403b6d11aa1a0f54c9021ac45}{
+\index{Model@{Model}!LoadMaterialTextures@{LoadMaterialTextures}}
+\index{LoadMaterialTextures@{LoadMaterialTextures}!Model@{Model}}
+\subsubsection[LoadMaterialTextures]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ Texture $>$ Model::LoadMaterialTextures ({\bf aiMaterial} $\ast$ {\em mat}, \/  {\bf aiTextureType} {\em type}, \/  std::string {\em typeName})}}
+\label{class_model_43da250403b6d11aa1a0f54c9021ac45}
+
+
+Loads the material textures. 
+
+Reads in the materials of the \hyperlink{structai_mesh}{aiMesh} and stores them in a temporary Texture data structure that is then returned.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em aiMaterial$\ast$}]mat \item[{\em aiTextureType}]type \item[{\em std::string}]typeName \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]std::vector$<$Texture$>$ \end{Desc}
+
+
+Definition at line 140 of file Model.cpp.
+
+Referenced by ProcessMesh().
+
+\begin{Code}\begin{verbatim}141 {
+142         std::vector<Texture> textures;
+143         for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
+144         {
+145                 aiString str;
+146                 mat->GetTexture(type, i, &str);
+147                 // check if texture was loaded before and if so, continue to next iteration: skip loading a new texture
+148                 bool skip = false;
+149 
+150                 if (std::strcmp(str.C_Str(), "$texture_dummy.bmp") == 0)
+151                         skip = true;
+152 
+153                 for (unsigned int j = 0; j < m_texturesLoaded.size(); j++)
+154                 {
+155                         if (std::strcmp(m_texturesLoaded[j].m_path.data(), str.C_Str()) == 0)
+156                         {
+157                                 textures.push_back(m_texturesLoaded[j]);
+158                                 skip = true; // a texture with the same filepath has already been loaded, continue to next one. (optimization)
+159                                 break;
+160                         }
+161                 }
+162                 if (!skip)
+163                 {   // if texture hasn't been loaded already, load it
+164                         Texture texture;
+165                         texture.m_id = TextureFromFile(str.C_Str(), this->m_directory);
+166                         texture.m_type = typeName;
+167                         texture.m_path = str.C_Str();
+168                         textures.push_back(texture);
+169                         m_texturesLoaded.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
+170                 }
+171         }
+172         return textures;
+173 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}{
+\index{Model@{Model}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!Model@{Model}}
+\subsubsection[Destroy]{\setlength{\rightskip}{0pt plus 5cm}void Model::Destroy ()}}
+\label{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}
+
+
+Destroys the model. 
+
+Deallocates any memory used by the model object.
 
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_model_5fe059a355fdb0531110696dafcec43b}{
+
+
+Definition at line 175 of file Model.cpp.
+
+Referenced by $\sim$Model().
+
+\begin{Code}\begin{verbatim}176 {
+177         // Todo: implement destroy function of all meshes of the model
+178         return void();
+179 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_f4b5a0bae6b0b057c118444189c5dfa9}{
 \index{Model@{Model}!GetPosition@{GetPosition}}
 \index{GetPosition@{GetPosition}!Model@{Model}}
-\subsubsection[GetPosition]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3} Model::GetPosition ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
-\label{class_model_5fe059a355fdb0531110696dafcec43b}
+\subsubsection[GetPosition]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3}\& Model::GetPosition ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_f4b5a0bae6b0b057c118444189c5dfa9}
 
 
 Gets the models position. 
@@ -173,11 +454,24 @@ Gets the models position.
 Returns the position of the model as a \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}.
 
 \begin{Desc}
-\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
-\hypertarget{class_model_3a615a604e26270bd0849462718703b2}{
+\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}\& \end{Desc}
+
+
+Definition at line 120 of file Model.h.
+
+Referenced by Player::GetPosition(), Player::MoveBackward(), Player::MoveForward(), and OpenGl::Render().
+
+\begin{Code}\begin{verbatim}120 { return m_position; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_3a615a604e26270bd0849462718703b2}{
 \index{Model@{Model}!SetPosition@{SetPosition}}
 \index{SetPosition@{SetPosition}!Model@{Model}}
-\subsubsection[SetPosition]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetPosition ({\bf glm::vec3} {\em position})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\subsubsection[SetPosition]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetPosition ({\bf glm::vec3} {\em position})}}
 \label{class_model_3a615a604e26270bd0849462718703b2}
 
 
@@ -192,11 +486,30 @@ Sets the position of the model using the parameter given.
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_model_4000e7bcd78069bc4584da37d2bf3d66}{
+
+
+Definition at line 182 of file Model.cpp.
+
+Referenced by Player::MoveBackward(), Player::MoveForward(), Terrain::SetPosition(), and Player::SetPosition().
+
+\begin{Code}\begin{verbatim}183 {
+184         m_position = position;
+185         for (size_t i = 0; i < m_meshBatch.size(); i++)
+186         {
+187                 m_meshBatch[i].SetPosition(position);
+188         }
+189 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_fc6593eeb0980053628cd00a75be51e9}{
 \index{Model@{Model}!GetRotation@{GetRotation}}
 \index{GetRotation@{GetRotation}!Model@{Model}}
-\subsubsection[GetRotation]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3} Model::GetRotation ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
-\label{class_model_4000e7bcd78069bc4584da37d2bf3d66}
+\subsubsection[GetRotation]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3}\& Model::GetRotation ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_fc6593eeb0980053628cd00a75be51e9}
 
 
 Gets the models rotation. 
@@ -204,11 +517,24 @@ Gets the models rotation.
 Returns the rotation of the model as a \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}.
 
 \begin{Desc}
-\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
-\hypertarget{class_model_71aa61e54f3f12bc86175fa359079d23}{
+\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}\& \end{Desc}
+
+
+Definition at line 139 of file Model.h.
+
+Referenced by Player::GetRotation(), Player::MoveBackward(), Player::MoveForward(), OpenGl::Render(), Player::TurnAntiClock(), and Player::TurnClock().
+
+\begin{Code}\begin{verbatim}139 { return m_rotation; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_71aa61e54f3f12bc86175fa359079d23}{
 \index{Model@{Model}!SetRotation@{SetRotation}}
 \index{SetRotation@{SetRotation}!Model@{Model}}
-\subsubsection[SetRotation]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetRotation ({\bf glm::vec3} {\em rotation})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\subsubsection[SetRotation]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetRotation ({\bf glm::vec3} {\em rotation})}}
 \label{class_model_71aa61e54f3f12bc86175fa359079d23}
 
 
@@ -223,11 +549,30 @@ Sets the rotation of the model using the parameter given.
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_model_1b61b8298674542ad929bf582b4de262}{
+
+
+Definition at line 191 of file Model.cpp.
+
+Referenced by Player::SetRotation(), Player::TurnAntiClock(), and Player::TurnClock().
+
+\begin{Code}\begin{verbatim}192 {
+193         m_rotation = rotation;
+194         for (size_t i = 0; i < m_meshBatch.size(); i++)
+195         {
+196                 m_meshBatch[i].SetRotation(rotation);
+197         }
+198 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_a0fecf0d42fd4ab4d3c4a49a84bd830e}{
 \index{Model@{Model}!GetScale@{GetScale}}
 \index{GetScale@{GetScale}!Model@{Model}}
-\subsubsection[GetScale]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3} Model::GetScale ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
-\label{class_model_1b61b8298674542ad929bf582b4de262}
+\subsubsection[GetScale]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3}\& Model::GetScale ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_a0fecf0d42fd4ab4d3c4a49a84bd830e}
 
 
 Gets the models scale. 
@@ -235,11 +580,24 @@ Gets the models scale.
 Returns the scale of the model as a \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}.
 
 \begin{Desc}
-\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
-\hypertarget{class_model_76860d36c983eb38250588899775aab7}{
+\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}\& \end{Desc}
+
+
+Definition at line 158 of file Model.h.
+
+Referenced by OpenGl::Render().
+
+\begin{Code}\begin{verbatim}158 { return m_scale; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_76860d36c983eb38250588899775aab7}{
 \index{Model@{Model}!SetScale@{SetScale}}
 \index{SetScale@{SetScale}!Model@{Model}}
-\subsubsection[SetScale]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetScale ({\bf glm::vec3} {\em scale})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\subsubsection[SetScale]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetScale ({\bf glm::vec3} {\em scale})}}
 \label{class_model_76860d36c983eb38250588899775aab7}
 
 
@@ -254,7 +612,26 @@ Sets the rotation of the model using the parameter given.
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_model_8c6429a35a1376657357e6e770470f13}{
+
+
+Definition at line 200 of file Model.cpp.
+
+Referenced by Bruteforce::GenerateTerrain(), Model(), Terrain::SetScale(), and Player::SetScale().
+
+\begin{Code}\begin{verbatim}201 {
+202         m_scale = scale;
+203         for (size_t i = 0; i < m_meshBatch.size(); i++)
+204         {
+205                 m_meshBatch[i].SetScale(scale);
+206         }
+207 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_8c6429a35a1376657357e6e770470f13}{
 \index{Model@{Model}!GetCamera@{GetCamera}}
 \index{GetCamera@{GetCamera}!Model@{Model}}
 \subsubsection[GetCamera]{\setlength{\rightskip}{0pt plus 5cm}{\bf Camera}$\ast$ Model::GetCamera ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -267,11 +644,24 @@ Returns a pointer to the camera object to access the view and projection matrice
 
 \begin{Desc}
 \item[Returns:]Camera$\ast$ \end{Desc}
-\hypertarget{class_model_19b6689d4a5e80e187df85a5ab6f03b8}{
+
+
+Definition at line 177 of file Model.h.
+
+Referenced by OpenGl::Render().
+
+\begin{Code}\begin{verbatim}177 { return m_camera; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_5efc69bc9e86c4946aec2be4b190351f}{
 \index{Model@{Model}!SetCamera@{SetCamera}}
 \index{SetCamera@{SetCamera}!Model@{Model}}
-\subsubsection[SetCamera]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetCamera ({\bf Camera} $\ast$ {\em camera})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
-\label{class_model_19b6689d4a5e80e187df85a5ab6f03b8}
+\subsubsection[SetCamera]{\setlength{\rightskip}{0pt plus 5cm}const void Model::SetCamera ({\bf Camera} $\ast$ {\em camera})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_5efc69bc9e86c4946aec2be4b190351f}
 
 
 Sets the camera object. 
@@ -281,28 +671,180 @@ Sets the camera object to the world camera object to retrieve the view and proje
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em Camera$\ast$}]pCamera \end{description}
+\item[{\em Camera$\ast$}]camera \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]const void \end{Desc}
+
+
+Definition at line 188 of file Model.h.
+
+Referenced by Terrain::SetCamera(), and Player::SetCamera().
+
+\begin{Code}\begin{verbatim}188 { m_camera = camera; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_e8189e0eb940a7a994591ca71dafae5b}{
+\index{Model@{Model}!GetMeshBatch@{GetMeshBatch}}
+\index{GetMeshBatch@{GetMeshBatch}!Model@{Model}}
+\subsubsection[GetMeshBatch]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<${\bf Mesh}$>$\& Model::GetMeshBatch ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_e8189e0eb940a7a994591ca71dafae5b}
+
+
+Gets the mesh batch. 
+
+Returns the vector of meshes of the model by reference.
+
+\begin{Desc}
+\item[Returns:]std::vector$<$Mesh$>$\& \end{Desc}
+
+
+Definition at line 197 of file Model.h.
+
+Referenced by Bruteforce::GenerateTerrain(), OpenGl::Prepare(), and OpenGl::Render().
+
+\begin{Code}\begin{verbatim}197 { return m_meshBatch; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_3ba990a64ec154e543ffe4a529220cc4}{
+\index{Model@{Model}!GetTextures@{GetTextures}}
+\index{GetTextures@{GetTextures}!Model@{Model}}
+\subsubsection[GetTextures]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$Texture$>$\& Model::GetTextures ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_3ba990a64ec154e543ffe4a529220cc4}
+
+
+Gets the textures. 
+
+Returns the vector of textures of the model by reference.
+
+\begin{Desc}
+\item[Returns:]std::vector$<$Texture$>$\& \end{Desc}
+
+
+Definition at line 206 of file Model.h.
+
+Referenced by Bruteforce::GenerateTerrain().
+
+\begin{Code}\begin{verbatim}206 { return m_texturesLoaded; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_985c54c42525ea8e9885977eff7027de}{
+\index{Model@{Model}!GetShader@{GetShader}}
+\index{GetShader@{GetShader}!Model@{Model}}
+\subsubsection[GetShader]{\setlength{\rightskip}{0pt plus 5cm}{\bf Shader}$\ast$ Model::GetShader ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_985c54c42525ea8e9885977eff7027de}
+
+
+Gets the shader. 
+
+Returns the shader object of the model.
+
+\begin{Desc}
+\item[Returns:]Shader$\ast$ \end{Desc}
+
+
+Definition at line 215 of file Model.h.
+
+Referenced by OpenGl::Prepare(), and OpenGl::Render().
+
+\begin{Code}\begin{verbatim}215 { return m_shader; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_model_a1a4b42427c675bccfdd93d3b049cee5}{
+\index{Model@{Model}!SetShader@{SetShader}}
+\index{SetShader@{SetShader}!Model@{Model}}
+\subsubsection[SetShader]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetShader ({\bf Shader} $\ast$ {\em shader})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_a1a4b42427c675bccfdd93d3b049cee5}
+
+
+Sets the shader. 
+
+Sets the shader member variable to the parameter shader parsed in.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Shader$\ast$}]shader \end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}{
-\index{Model@{Model}!Destroy@{Destroy}}
-\index{Destroy@{Destroy}!Model@{Model}}
-\subsubsection[Destroy]{\setlength{\rightskip}{0pt plus 5cm}void Model::Destroy ()}}
-\label{class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4}
 
 
-Cleans up the VAO and VBOs. 
+Definition at line 225 of file Model.h.
 
-Unbinds any VAO and VBOs and frees up any memory used.
+\begin{Code}\begin{verbatim}225 { m_shader = shader; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_model_88a59a41b18480246ade2f6a22b4e61d}{
+\index{Model@{Model}!SetAI@{SetAI}}
+\index{SetAI@{SetAI}!Model@{Model}}
+\subsubsection[SetAI]{\setlength{\rightskip}{0pt plus 5cm}void Model::SetAI (ComputerAI $\ast$ {\em compAI})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_88a59a41b18480246ade2f6a22b4e61d}
+
+
+Sets the AI of the model. 
+
+Sets the ComputerAI member variable of the model to tha parameter ComputerAI parsed in.
 
 \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ComputerAI$\ast$}]compAI \end{description}
+\end{Desc}
+\begin{Desc}
 \item[Returns:]void \end{Desc}
+
+
+Definition at line 236 of file Model.h.
+
+\begin{Code}\begin{verbatim}236 { m_compAI = compAI; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_model_cadb88d0d8d9839884f9b55aa6eb9235}{
+\index{Model@{Model}!GetAI@{GetAI}}
+\index{GetAI@{GetAI}!Model@{Model}}
+\subsubsection[GetAI]{\setlength{\rightskip}{0pt plus 5cm}ComputerAI$\ast$ Model::GetAI ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_model_cadb88d0d8d9839884f9b55aa6eb9235}
+
+
+Gets the AI of the model. 
+
+Returns the ComputerAI member variable of the model as a pointer.
+
+\begin{Desc}
+\item[Returns:]ComputerAI$\ast$ \end{Desc}
+
+
+Definition at line 245 of file Model.h.
+
+\begin{Code}\begin{verbatim}245 { return m_compAI; }
+\end{verbatim}
+\end{Code}
+
+
 
 
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Model.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/Model.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Model.cpp\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/src/Model.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Model.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Model.cpp\end{CompactItemize}

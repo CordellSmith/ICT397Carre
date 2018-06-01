@@ -1,0 +1,8 @@
+<area shape="rect" href="$classgim__hash__table.html#6ebfb7415bd946855ec5730651f7c191" title="insert an element in hash table." alt="" coords="260,24,537,51">
+<area shape="rect" href="$classgim__hash__table.html#95f93f63d75663f494388dc03423332f" title="Fast insertion in m_nodes array." alt="" coords="611,75,827,101">
+<area shape="rect" href="$classgim__hash__table.html#93e5bf5c573a39e21e9bd0a4aec38e1a" title="Finds an avaliable hash table cell, and resizes the table if there isn&#39;t space..." alt="" coords="588,24,849,51">
+<area shape="rect" href="$classgim__hash__table.html#cc2d3d29a0190232386fb155ec9e5d8f" title="Find the avaliable cell for the hashkey, and return an existing cell if it has the..." alt="" coords="1452,24,1681,51">
+<area shape="rect" href="$classgim__hash__table.html#51905040dee4c41954f5de1634c090dd" title="Resize hash table indices." alt="" coords="899,49,1096,76">
+<area shape="rect" href="$classgim__hash__table.html#06933fdb198971dcd753564d1d6e9424" title="Clear all memory for the hash table." alt="" coords="1152,24,1395,51">
+<area shape="rect" href="$classgim__hash__table.html#a33115e75d8cc5c489fa6ce8b1a23654" title="Invalidates the keys (Assigning GIM_INVALID_HASH to all) Reorders the hash keys." alt="" coords="1191,75,1356,101">
+<area shape="rect" href="$classgim__hash__table.html#4d9347e131c0e17ac2d4966c092817f8" title="reserves the memory for the hash table." alt="" coords="1145,125,1401,152">

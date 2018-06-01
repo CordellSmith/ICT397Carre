@@ -79,11 +79,11 @@ void PhysicsEngine::CreateStaticRigidBody(btVector3 &pos, std::string type)
 	btVector3 localInertia(0.0, 0.0, 0.0);
 
 	if (m_isDynamic)
-		boxShape->calculateLocalInertia(m_mass, localInertia);
+		groundShape->calculateLocalInertia(m_mass, localInertia);
 
 	//using motionstate is optional, it provides interpolation capabilities, and only synchronizes 'active' objects
 	btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
-	btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, boxShape, localInertia);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, groundShape, localInertia);
 	btRigidBody* body = new btRigidBody(rbInfo);
 
 	// Set the index for the type of rigid body that is being created

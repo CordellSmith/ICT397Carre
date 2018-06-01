@@ -35,6 +35,8 @@ SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___t_r_i_a_n_g_l_e_2b333284fd
 \subsection{Detailed Description}
 Class for colliding triangles. 
 
+Definition at line 126 of file gim\_\-tri\_\-collision.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_500db747a4c740b3de1756336263a53d}{
 \index{GIM\_\-TRIANGLE@{GIM\_\-TRIANGLE}!get\_\-triangle\_\-transform@{get\_\-triangle\_\-transform}}
@@ -47,6 +49,33 @@ Gets the relative transformation of this triangle.
 
 The transformation is oriented to the triangle normal , and aligned to the 1st edge of this triangle. The position corresponds to vertice 0:\begin{itemize}
 \item triangle normal corresponds to Z axis.\item 1st normalized edge corresponds to X axis, \end{itemize}
+
+
+Definition at line 172 of file gim\_\-tri\_\-collision.h.
+
+References MAT\_\-SET\_\-X, MAT\_\-SET\_\-Y, MAT\_\-SET\_\-Z, and VEC\_\-NORMALIZE.
+
+\begin{Code}\begin{verbatim}173     {
+174         btMatrix3x3 & matrix = triangle_transform.getBasis();
+175 
+176         btVector3 zaxis;
+177         get_normal(zaxis);
+178         MAT_SET_Z(matrix,zaxis);
+179 
+180         btVector3 xaxis = m_vertices[1] - m_vertices[0];
+181         VEC_NORMALIZE(xaxis);
+182         MAT_SET_X(matrix,xaxis);
+183 
+184         //y axis
+185         xaxis = zaxis.cross(xaxis);
+186         MAT_SET_Y(matrix,xaxis);
+187 
+188         triangle_transform.setOrigin(m_vertices[0]);
+189     }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_0ec3d21ba17dec3cfecbe8ff34b85072}{
 \index{GIM\_\-TRIANGLE@{GIM\_\-TRIANGLE}!collide\_\-triangle\_\-hard\_\-test@{collide\_\-triangle\_\-hard\_\-test}}
 \index{collide\_\-triangle\_\-hard\_\-test@{collide\_\-triangle\_\-hard\_\-test}!GIM_TRIANGLE@{GIM\_\-TRIANGLE}}
@@ -61,7 +90,29 @@ Test triangles by finding separating axis.
 \begin{description}
 \item[{\em other}]Triangle for collide \item[{\em contact\_\-data}]Structure for holding contact points, normal and penetration depth; The normal is pointing toward this triangle from the other triangle \end{description}
 \end{Desc}
-\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_42749c17088408842a97534559b9d1f2}{
+
+
+Definition at line 626 of file gim\_\-tri\_\-collision.cpp.
+
+References m\_\-margin, and m\_\-vertices.
+
+Referenced by collide\_\-triangle().
+
+\begin{Code}\begin{verbatim}629 {
+630         GIM_TRIANGLE_CALCULATION_CACHE calc_cache;      
+631         return calc_cache.triangle_collision(
+632                                         m_vertices[0],m_vertices[1],m_vertices[2],m_margin,
+633                                         other.m_vertices[0],other.m_vertices[1],other.m_vertices[2],other.m_margin,
+634                                         contact_data);
+635 
+636 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_42749c17088408842a97534559b9d1f2}{
 \index{GIM\_\-TRIANGLE@{GIM\_\-TRIANGLE}!collide\_\-triangle@{collide\_\-triangle}}
 \index{collide\_\-triangle@{collide\_\-triangle}!GIM_TRIANGLE@{GIM\_\-TRIANGLE}}
 \subsubsection[collide\_\-triangle]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE bool GIM\_\-TRIANGLE::collide\_\-triangle (const {\bf GIM\_\-TRIANGLE} \& {\em other}, \/  {\bf GIM\_\-TRIANGLE\_\-CONTACT\_\-DATA} \& {\em contact\_\-data}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -75,7 +126,28 @@ Test boxes before doing hard test.
 \begin{description}
 \item[{\em other}]Triangle for collide \item[{\em contact\_\-data}]Structure for holding contact points, normal and penetration depth; The normal is pointing toward this triangle from the other triangle $\backslash$ \end{description}
 \end{Desc}
-\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_cbd27931f5431435ecce5576de18924b}{
+
+
+Definition at line 207 of file gim\_\-tri\_\-collision.h.
+
+References collide\_\-triangle\_\-hard\_\-test(), GIM\_\-AABB::has\_\-collision(), m\_\-margin, and m\_\-vertices.
+
+\begin{Code}\begin{verbatim}210         {
+211                 //test box collisioin
+212                 GIM_AABB boxu(m_vertices[0],m_vertices[1],m_vertices[2],m_margin);
+213                 GIM_AABB boxv(other.m_vertices[0],other.m_vertices[1],other.m_vertices[2],other.m_margin);
+214                 if(!boxu.has_collision(boxv)) return false;
+215 
+216                 //do hard test
+217                 return collide_triangle_hard_test(other,contact_data);
+218         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_cbd27931f5431435ecce5576de18924b}{
 \index{GIM\_\-TRIANGLE@{GIM\_\-TRIANGLE}!get\_\-uv\_\-parameters@{get\_\-uv\_\-parameters}}
 \index{get\_\-uv\_\-parameters@{get\_\-uv\_\-parameters}!GIM_TRIANGLE@{GIM\_\-TRIANGLE}}
 \subsubsection[get\_\-uv\_\-parameters]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE bool GIM\_\-TRIANGLE::get\_\-uv\_\-parameters (const btVector3 \& {\em point}, \/  const btVector3 \& {\em tri\_\-plane}, \/  GREAL \& {\em u}, \/  GREAL \& {\em v}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -106,6 +178,54 @@ if 0.0$<$= u+v $<$=1.0 then they are inside of triangle
 
 \begin{Desc}
 \item[Returns:]false if the point is outside of triangle.This function doesn't take the margin \end{Desc}
+
+
+Definition at line 248 of file gim\_\-tri\_\-collision.h.
+
+\begin{Code}\begin{verbatim}252         {
+253                 btVector3 _axe1 = m_vertices[1]-m_vertices[0];
+254                 btVector3 _axe2 = m_vertices[2]-m_vertices[0];
+255                 btVector3 _vecproj = point - m_vertices[0];
+256                 GUINT _i1 = (tri_plane.closestAxis()+1)%3;
+257                 GUINT _i2 = (_i1+1)%3;
+258                 if(btFabs(_axe2[_i2])<G_EPSILON)
+259                 {
+260                         u = (_vecproj[_i2]*_axe2[_i1] - _vecproj[_i1]*_axe2[_i2]) /(_axe1[_i2]*_axe2[_i1]  - _axe1[_i1]*_axe2[_i2]);
+261                         v = (_vecproj[_i1] - u*_axe1[_i1])/_axe2[_i1];
+262                 }
+263                 else
+264                 {
+265                         u = (_vecproj[_i1]*_axe2[_i2] - _vecproj[_i2]*_axe2[_i1]) /(_axe1[_i1]*_axe2[_i2]  - _axe1[_i2]*_axe2[_i1]);
+266                         v = (_vecproj[_i2] - u*_axe1[_i2])/_axe2[_i2];
+267                 }
+268 
+269                 if(u<-G_EPSILON)
+270                 {
+271                         return false;
+272                 }
+273                 else if(v<-G_EPSILON)
+274                 {
+275                         return false;
+276                 }
+277                 else
+278                 {
+279                         btScalar sumuv;
+280                         sumuv = u+v;
+281                         if(sumuv<-G_EPSILON)
+282                         {
+283                                 return false;
+284                         }
+285                         else if(sumuv-1.0f>G_EPSILON)
+286                         {
+287                                 return false;
+288                         }
+289                 }
+290                 return true;
+291         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_g_i_m___t_r_i_a_n_g_l_e_921acb2a97263653fce72384f177a953}{
 \index{GIM\_\-TRIANGLE@{GIM\_\-TRIANGLE}!is\_\-point\_\-inside@{is\_\-point\_\-inside}}
 \index{is\_\-point\_\-inside@{is\_\-point\_\-inside}!GIM_TRIANGLE@{GIM\_\-TRIANGLE}}
@@ -117,7 +237,35 @@ is point in triangle beam?
 
 Test if point is in triangle, with m\_\-margin tolerance 
 
+Definition at line 297 of file gim\_\-tri\_\-collision.h.
+
+Referenced by ray\_\-collision(), and ray\_\-collision\_\-front\_\-side().
+
+\begin{Code}\begin{verbatim}298         {
+299                 //Test with edge 0
+300                 btVector4 edge_plane;
+301                 this->get_edge_plane(0,tri_normal,edge_plane);
+302                 GREAL dist = DISTANCE_PLANE_POINT(edge_plane,point);
+303                 if(dist-m_margin>0.0f) return false; // outside plane
+304 
+305                 this->get_edge_plane(1,tri_normal,edge_plane);
+306                 dist = DISTANCE_PLANE_POINT(edge_plane,point);
+307                 if(dist-m_margin>0.0f) return false; // outside plane
+308 
+309                 this->get_edge_plane(2,tri_normal,edge_plane);
+310                 dist = DISTANCE_PLANE_POINT(edge_plane,point);
+311                 if(dist-m_margin>0.0f) return false; // outside plane
+312                 return true;
+313         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__tri__collision_8h}{gim\_\-tri\_\-collision.h}\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-tri\_\-collision.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__tri__collision_8h}{gim\_\-tri\_\-collision.h}\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-tri\_\-collision.cpp\end{CompactItemize}

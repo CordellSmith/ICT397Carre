@@ -1,0 +1,339 @@
+\hypertarget{class_mesh}{
+\section{Mesh Class Reference}
+\label{class_mesh}\index{Mesh@{Mesh}}
+}
+Used to store mesh data.  
+
+
+{\tt \#include $<$Mesh.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_mesh_2af137f1571af89172b9c102302c416b}{Mesh} ()
+\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
+\hyperlink{class_mesh_5efe4da1a4c0971cfb037bd70304c303}{$\sim$Mesh} ()
+\begin{CompactList}\small\item\em Destructor. \item\end{CompactList}\item 
+\hyperlink{class_mesh_f55e3db5357789c5de2de1f98d2cbd5b}{Mesh} (std::vector$<$ Vertex3 $>$ vertices, std::vector$<$ unsigned int $>$ indices, std::vector$<$ Texture $>$ textures)
+\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
+void \hyperlink{class_mesh_b847f16073bd4d5c405ffbb894cb1d62}{SetPosition} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} position)
+\begin{CompactList}\small\item\em Sets the position. \item\end{CompactList}\item 
+void \hyperlink{class_mesh_519811cebec8a556190226ed3da06390}{SetRotation} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} rotation)
+\begin{CompactList}\small\item\em Sets the rotation. \item\end{CompactList}\item 
+void \hyperlink{class_mesh_d40c958d695b3aba9855581ed56a8118}{SetScale} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} scale)
+\begin{CompactList}\small\item\em Sets the scale. \item\end{CompactList}\item 
+std::vector$<$ Vertex3 $>$ \& \hyperlink{class_mesh_e6c2ecc1d274027b40cb75dad610eb93}{GetVertices} ()
+\begin{CompactList}\small\item\em Gets the vertices of the mesh. \item\end{CompactList}\item 
+void \hyperlink{class_mesh_9f9d573f88176edf6a883ee5da35ab06}{SetVertices} (std::vector$<$ Vertex3 $>$ vertices)
+\begin{CompactList}\small\item\em Sets the vertices of the mesh. \item\end{CompactList}\item 
+std::vector$<$ unsigned int $>$ \& \hyperlink{class_mesh_411f2f5c53f04b607d66b15450a57b9a}{GetIndices} ()
+\begin{CompactList}\small\item\em Gets the indices of the mesh. \item\end{CompactList}\item 
+void \hyperlink{class_mesh_632245c4ccf578208f0a75e183c68e34}{SetIndices} (std::vector$<$ unsigned int $>$ indices)
+\begin{CompactList}\small\item\em Sets the indices of the mesh. \item\end{CompactList}\item 
+std::vector$<$ Texture $>$ \& \hyperlink{class_mesh_95ffc7584eff5e065901637728e0f66a}{GetTextures} ()
+\begin{CompactList}\small\item\em Gets the textures of the mesh. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Used to store mesh data. 
+
+The mesh class is what holds all the vertex information about an objects model. There may be many meshes that make up a model. Each mesh contains vertices, indices and textures that are used to draw the specific model.
+
+\begin{Desc}
+\item[Author:]Cordell Smith \end{Desc}
+\begin{Desc}
+\item[Version:]01 \end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
+
+
+Definition at line 29 of file Mesh.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_mesh_2af137f1571af89172b9c102302c416b}{
+\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\subsubsection[Mesh]{\setlength{\rightskip}{0pt plus 5cm}Mesh::Mesh ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_mesh_2af137f1571af89172b9c102302c416b}
+
+
+Constructor. 
+
+Empty default constructor.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 39 of file Mesh.h.
+
+\begin{Code}\begin{verbatim}39 { }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_mesh_5efe4da1a4c0971cfb037bd70304c303}{
+\index{Mesh@{Mesh}!$\sim$Mesh@{$\sim$Mesh}}
+\index{$\sim$Mesh@{$\sim$Mesh}!Mesh@{Mesh}}
+\subsubsection[$\sim$Mesh]{\setlength{\rightskip}{0pt plus 5cm}Mesh::$\sim$Mesh ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_mesh_5efe4da1a4c0971cfb037bd70304c303}
+
+
+Destructor. 
+
+Empty default destructor.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 48 of file Mesh.h.
+
+\begin{Code}\begin{verbatim}48 { }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_mesh_f55e3db5357789c5de2de1f98d2cbd5b}{
+\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\subsubsection[Mesh]{\setlength{\rightskip}{0pt plus 5cm}Mesh::Mesh (std::vector$<$ Vertex3 $>$ {\em vertices}, \/  std::vector$<$ unsigned int $>$ {\em indices}, \/  std::vector$<$ Texture $>$ {\em textures})}}
+\label{class_mesh_f55e3db5357789c5de2de1f98d2cbd5b}
+
+
+Constructor. 
+
+This constructor takes in vertices, indices and texture data and assigns them to member variables of the mesh.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 3 of file Mesh.cpp.
+
+\begin{Code}\begin{verbatim}4 {
+5         m_vertices = vertices;
+6         m_indices = indices;
+7         m_textures = textures;
+8 }\end{verbatim}
+\end{Code}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_mesh_b847f16073bd4d5c405ffbb894cb1d62}{
+\index{Mesh@{Mesh}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Mesh@{Mesh}}
+\subsubsection[SetPosition]{\setlength{\rightskip}{0pt plus 5cm}void Mesh::SetPosition ({\bf glm::vec3} {\em position})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_mesh_b847f16073bd4d5c405ffbb894cb1d62}
+
+
+Sets the position. 
+
+Sets the position of the mesh to the 3 component vector parsed in.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]position \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 68 of file Mesh.h.
+
+\begin{Code}\begin{verbatim}68 { m_position = position; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_mesh_519811cebec8a556190226ed3da06390}{
+\index{Mesh@{Mesh}!SetRotation@{SetRotation}}
+\index{SetRotation@{SetRotation}!Mesh@{Mesh}}
+\subsubsection[SetRotation]{\setlength{\rightskip}{0pt plus 5cm}void Mesh::SetRotation ({\bf glm::vec3} {\em rotation})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_mesh_519811cebec8a556190226ed3da06390}
+
+
+Sets the rotation. 
+
+Sets the rotation of the mesh to the 3 component vector parsed in.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]rotation \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 78 of file Mesh.h.
+
+\begin{Code}\begin{verbatim}78 { m_rotation = rotation; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_mesh_d40c958d695b3aba9855581ed56a8118}{
+\index{Mesh@{Mesh}!SetScale@{SetScale}}
+\index{SetScale@{SetScale}!Mesh@{Mesh}}
+\subsubsection[SetScale]{\setlength{\rightskip}{0pt plus 5cm}void Mesh::SetScale ({\bf glm::vec3} {\em scale})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_mesh_d40c958d695b3aba9855581ed56a8118}
+
+
+Sets the scale. 
+
+Sets the scale of the mesh to the 3 component vector parsed in.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]scale \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 88 of file Mesh.h.
+
+\begin{Code}\begin{verbatim}88 { m_scale = scale; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_mesh_e6c2ecc1d274027b40cb75dad610eb93}{
+\index{Mesh@{Mesh}!GetVertices@{GetVertices}}
+\index{GetVertices@{GetVertices}!Mesh@{Mesh}}
+\subsubsection[GetVertices]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$Vertex3$>$\& Mesh::GetVertices ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_mesh_e6c2ecc1d274027b40cb75dad610eb93}
+
+
+Gets the vertices of the mesh. 
+
+Returns the vertices data of the mesh by reference.
+
+\begin{Desc}
+\item[Returns:]std::vector$<$Vertex3$>$\& \end{Desc}
+
+
+Definition at line 97 of file Mesh.h.
+
+Referenced by Bruteforce::GenerateTerrain().
+
+\begin{Code}\begin{verbatim}97 { return m_vertices; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_mesh_9f9d573f88176edf6a883ee5da35ab06}{
+\index{Mesh@{Mesh}!SetVertices@{SetVertices}}
+\index{SetVertices@{SetVertices}!Mesh@{Mesh}}
+\subsubsection[SetVertices]{\setlength{\rightskip}{0pt plus 5cm}void Mesh::SetVertices (std::vector$<$ Vertex3 $>$ {\em vertices})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_mesh_9f9d573f88176edf6a883ee5da35ab06}
+
+
+Sets the vertices of the mesh. 
+
+Sets the vertices data of the mesh to the parsed in parameter value.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em std::vector$<$Vertex3$>$}]vertices \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 107 of file Mesh.h.
+
+\begin{Code}\begin{verbatim}107 { m_vertices = vertices; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_mesh_411f2f5c53f04b607d66b15450a57b9a}{
+\index{Mesh@{Mesh}!GetIndices@{GetIndices}}
+\index{GetIndices@{GetIndices}!Mesh@{Mesh}}
+\subsubsection[GetIndices]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$unsigned int$>$\& Mesh::GetIndices ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_mesh_411f2f5c53f04b607d66b15450a57b9a}
+
+
+Gets the indices of the mesh. 
+
+Returns the indices data of the mesh by reference.
+
+\begin{Desc}
+\item[Returns:]std::vector$<$unsigned int$>$\& \end{Desc}
+
+
+Definition at line 116 of file Mesh.h.
+
+\begin{Code}\begin{verbatim}116 { return m_indices; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_mesh_632245c4ccf578208f0a75e183c68e34}{
+\index{Mesh@{Mesh}!SetIndices@{SetIndices}}
+\index{SetIndices@{SetIndices}!Mesh@{Mesh}}
+\subsubsection[SetIndices]{\setlength{\rightskip}{0pt plus 5cm}void Mesh::SetIndices (std::vector$<$ unsigned int $>$ {\em indices})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_mesh_632245c4ccf578208f0a75e183c68e34}
+
+
+Sets the indices of the mesh. 
+
+Sets the indices data of the mesh to the parsed in parameter value.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em std::vector$<$unsigned}]int$>$ indices \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 126 of file Mesh.h.
+
+\begin{Code}\begin{verbatim}126 { m_indices = indices; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_mesh_95ffc7584eff5e065901637728e0f66a}{
+\index{Mesh@{Mesh}!GetTextures@{GetTextures}}
+\index{GetTextures@{GetTextures}!Mesh@{Mesh}}
+\subsubsection[GetTextures]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$Texture$>$\& Mesh::GetTextures ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_mesh_95ffc7584eff5e065901637728e0f66a}
+
+
+Gets the textures of the mesh. 
+
+Gets the textures data of the mesh by reference.
+
+\begin{Desc}
+\item[Returns:]std::vector$<$Texture$>$\& \end{Desc}
+
+
+Definition at line 135 of file Mesh.h.
+
+Referenced by Bruteforce::GenerateTerrain().
+
+\begin{Code}\begin{verbatim}135 { return m_textures; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Mesh.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Mesh.cpp\end{CompactItemize}

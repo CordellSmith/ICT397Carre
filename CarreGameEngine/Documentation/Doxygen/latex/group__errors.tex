@@ -48,7 +48,9 @@ The installed graphics driver does not support the requested API, or does not su
 
 \begin{Desc}
 \item[]Some pre-installed Windows graphics drivers do not support OpenGL. AMD only supports OpenGL ES via EGL, while Nvidia and Intel only support it via a WGL or GLX extension. OS X does not provide OpenGL ES at all. The Mesa EGL, OpenGL and OpenGL ES libraries do not interface with the Nvidia binary driver. Older graphics drivers do not support Vulkan. \end{Desc}
-\hypertarget{group__errors_g196e125ef261d94184e2b55c05762f14}{
+
+
+Definition at line 567 of file glfw3.h.\hypertarget{group__errors_g196e125ef261d94184e2b55c05762f14}{
 \index{errors@{errors}!GLFW\_\-FORMAT\_\-UNAVAILABLE@{GLFW\_\-FORMAT\_\-UNAVAILABLE}}
 \index{GLFW\_\-FORMAT\_\-UNAVAILABLE@{GLFW\_\-FORMAT\_\-UNAVAILABLE}!errors@{errors}}
 \subsubsection[GLFW\_\-FORMAT\_\-UNAVAILABLE]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-FORMAT\_\-UNAVAILABLE~0x00010009}}
@@ -65,7 +67,9 @@ If emitted during window creation, one or more \mbox{[}hard constraints\mbox{]}(
 
 \begin{Desc}
 \item[]If emitted when querying the clipboard, ignore the error or report it to the user, as appropriate. \end{Desc}
-\hypertarget{group__errors_g76f6bb9c4eea73db675f096b404593ce}{
+
+
+Definition at line 614 of file glfw3.h.\hypertarget{group__errors_g76f6bb9c4eea73db675f096b404593ce}{
 \index{errors@{errors}!GLFW\_\-INVALID\_\-ENUM@{GLFW\_\-INVALID\_\-ENUM}}
 \index{GLFW\_\-INVALID\_\-ENUM@{GLFW\_\-INVALID\_\-ENUM}!errors@{errors}}
 \subsubsection[GLFW\_\-INVALID\_\-ENUM]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-INVALID\_\-ENUM~0x00010003}}
@@ -76,7 +80,9 @@ One of the arguments to the function was an invalid enum value.
 
 One of the arguments to the function was an invalid enum value, for example requesting \mbox{[}GLFW\_\-RED\_\-BITS\mbox{]}(window\_\-hints\_\-fb) with \hyperlink{group__window_g1bb0c7e100418e284dbb800789c63d40}{glfwGetWindowAttrib}.
 
-Application programmer error. Fix the offending call. \hypertarget{group__errors_gaf2ef9aa8202c2b82ac2d921e554c687}{
+Application programmer error. Fix the offending call. 
+
+Definition at line 532 of file glfw3.h.\hypertarget{group__errors_gaf2ef9aa8202c2b82ac2d921e554c687}{
 \index{errors@{errors}!GLFW\_\-INVALID\_\-VALUE@{GLFW\_\-INVALID\_\-VALUE}}
 \index{GLFW\_\-INVALID\_\-VALUE@{GLFW\_\-INVALID\_\-VALUE}!errors@{errors}}
 \subsubsection[GLFW\_\-INVALID\_\-VALUE]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-INVALID\_\-VALUE~0x00010004}}
@@ -89,7 +95,9 @@ One of the arguments to the function was an invalid value, for example requestin
 
 Requesting a valid but unavailable OpenGL or OpenGL ES version will instead result in a \hyperlink{group__errors_gd16c5565b4a69f9c2a9ac2c0dbc89462}{GLFW\_\-VERSION\_\-UNAVAILABLE} error.
 
-Application programmer error. Fix the offending call. \hypertarget{group__errors_ga8290386e9528ccb9e42a3a4e16fc0d0}{
+Application programmer error. Fix the offending call. 
+
+Definition at line 543 of file glfw3.h.\hypertarget{group__errors_ga8290386e9528ccb9e42a3a4e16fc0d0}{
 \index{errors@{errors}!GLFW\_\-NO\_\-CURRENT\_\-CONTEXT@{GLFW\_\-NO\_\-CURRENT\_\-CONTEXT}}
 \index{GLFW\_\-NO\_\-CURRENT\_\-CONTEXT@{GLFW\_\-NO\_\-CURRENT\_\-CONTEXT}!errors@{errors}}
 \subsubsection[GLFW\_\-NO\_\-CURRENT\_\-CONTEXT]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-NO\_\-CURRENT\_\-CONTEXT~0x00010002}}
@@ -100,7 +108,9 @@ No context is current for this thread.
 
 This occurs if a GLFW function was called that needs and operates on the current OpenGL or OpenGL ES context but no context is current on the calling thread. One such function is \hyperlink{group__context_g12a595c06947cec4967c6e1f14210a8a}{glfwSwapInterval}.
 
-Application programmer error. Ensure a context is current before calling functions that require a current context. \hypertarget{group__errors_gcff24d2757da752ae4c80bf452356487}{
+Application programmer error. Ensure a context is current before calling functions that require a current context. 
+
+Definition at line 523 of file glfw3.h.\hypertarget{group__errors_gcff24d2757da752ae4c80bf452356487}{
 \index{errors@{errors}!GLFW\_\-NO\_\-WINDOW\_\-CONTEXT@{GLFW\_\-NO\_\-WINDOW\_\-CONTEXT}}
 \index{GLFW\_\-NO\_\-WINDOW\_\-CONTEXT@{GLFW\_\-NO\_\-WINDOW\_\-CONTEXT}!errors@{errors}}
 \subsubsection[GLFW\_\-NO\_\-WINDOW\_\-CONTEXT]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-NO\_\-WINDOW\_\-CONTEXT~0x0001000A}}
@@ -111,7 +121,9 @@ The specified window does not have an OpenGL or OpenGL ES context.
 
 A window that does not have an OpenGL or OpenGL ES context was passed to a function that requires it to have one.
 
-Application programmer error. Fix the offending call. \hypertarget{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{
+Application programmer error. Fix the offending call. 
+
+Definition at line 622 of file glfw3.h.\hypertarget{group__errors_g2374ee02c177f12e1fa76ff3ed15e14a}{
 \index{errors@{errors}!GLFW\_\-NOT\_\-INITIALIZED@{GLFW\_\-NOT\_\-INITIALIZED}}
 \index{GLFW\_\-NOT\_\-INITIALIZED@{GLFW\_\-NOT\_\-INITIALIZED}!errors@{errors}}
 \subsubsection[GLFW\_\-NOT\_\-INITIALIZED]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-NOT\_\-INITIALIZED~0x00010001}}
@@ -122,7 +134,9 @@ GLFW has not been initialized.
 
 This occurs if a GLFW function was called that must not be called unless the library is \mbox{[}initialized\mbox{]}(intro\_\-init).
 
-Application programmer error. Initialize GLFW before calling any function that requires initialization. \hypertarget{group__errors_g9023953a2bcb98c2906afd071d21ee7f}{
+Application programmer error. Initialize GLFW before calling any function that requires initialization. 
+
+Definition at line 513 of file glfw3.h.\hypertarget{group__errors_g9023953a2bcb98c2906afd071d21ee7f}{
 \index{errors@{errors}!GLFW\_\-OUT\_\-OF\_\-MEMORY@{GLFW\_\-OUT\_\-OF\_\-MEMORY}}
 \index{GLFW\_\-OUT\_\-OF\_\-MEMORY@{GLFW\_\-OUT\_\-OF\_\-MEMORY}!errors@{errors}}
 \subsubsection[GLFW\_\-OUT\_\-OF\_\-MEMORY]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-OUT\_\-OF\_\-MEMORY~0x00010005}}
@@ -133,7 +147,9 @@ A memory allocation failed.
 
 A memory allocation failed.
 
-A bug in GLFW or the underlying operating system. Report the bug to our \mbox{[}issue tracker\mbox{]}(\href{https://github.com/glfw/glfw/issues}{\tt https://github.com/glfw/glfw/issues}). \hypertarget{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{
+A bug in GLFW or the underlying operating system. Report the bug to our \mbox{[}issue tracker\mbox{]}(\href{https://github.com/glfw/glfw/issues}{\tt https://github.com/glfw/glfw/issues}). 
+
+Definition at line 551 of file glfw3.h.\hypertarget{group__errors_gd44162d78100ea5e87cdd38426b8c7a1}{
 \index{errors@{errors}!GLFW\_\-PLATFORM\_\-ERROR@{GLFW\_\-PLATFORM\_\-ERROR}}
 \index{GLFW\_\-PLATFORM\_\-ERROR@{GLFW\_\-PLATFORM\_\-ERROR}!errors@{errors}}
 \subsubsection[GLFW\_\-PLATFORM\_\-ERROR]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-PLATFORM\_\-ERROR~0x00010008}}
@@ -144,7 +160,9 @@ A platform-specific error occurred that does not match any of the more specific 
 
 A platform-specific error occurred that does not match any of the more specific categories.
 
-A bug or configuration error in GLFW, the underlying operating system or its drivers, or a lack of required resources. Report the issue to our \mbox{[}issue tracker\mbox{]}(\href{https://github.com/glfw/glfw/issues}{\tt https://github.com/glfw/glfw/issues}). \hypertarget{group__errors_gd16c5565b4a69f9c2a9ac2c0dbc89462}{
+A bug or configuration error in GLFW, the underlying operating system or its drivers, or a lack of required resources. Report the issue to our \mbox{[}issue tracker\mbox{]}(\href{https://github.com/glfw/glfw/issues}{\tt https://github.com/glfw/glfw/issues}). 
+
+Definition at line 595 of file glfw3.h.\hypertarget{group__errors_gd16c5565b4a69f9c2a9ac2c0dbc89462}{
 \index{errors@{errors}!GLFW\_\-VERSION\_\-UNAVAILABLE@{GLFW\_\-VERSION\_\-UNAVAILABLE}}
 \index{GLFW\_\-VERSION\_\-UNAVAILABLE@{GLFW\_\-VERSION\_\-UNAVAILABLE}!errors@{errors}}
 \subsubsection[GLFW\_\-VERSION\_\-UNAVAILABLE]{\setlength{\rightskip}{0pt plus 5cm}\#define GLFW\_\-VERSION\_\-UNAVAILABLE~0x00010007}}
@@ -159,3 +177,6 @@ The machine does not support your requirements. If your application is sufficien
 
 \begin{Desc}
 \item[]Future invalid OpenGL and OpenGL ES versions, for example OpenGL 4.8 if 5.0 comes out before the 4.x series gets that far, also fail with this error and not \hyperlink{group__errors_gaf2ef9aa8202c2b82ac2d921e554c687}{GLFW\_\-INVALID\_\-VALUE}, because GLFW cannot know what future versions will exist. \end{Desc}
+
+
+Definition at line 584 of file glfw3.h.

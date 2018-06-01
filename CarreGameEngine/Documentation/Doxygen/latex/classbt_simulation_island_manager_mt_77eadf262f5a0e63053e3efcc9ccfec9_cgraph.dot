@@ -1,0 +1,14 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btSimulationIslandManagerMt::addManifoldsToIslands",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btDispatcher::getManifoldByIndexInternal",height=0.2,width=0.4,color="black",URL="$classbt_dispatcher.html#39b0732750f15f48d2e8faa2de18d4e0"];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btDispatcher::getNumManifolds",height=0.2,width=0.4,color="black",URL="$classbt_dispatcher.html#0c94a046ac053c226d43211c5379c31f"];
+  Node1 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="btDispatcher::needsResponse",height=0.2,width=0.4,color="black",URL="$classbt_dispatcher.html#a3ac9c7d70da34e5647da1018880624d"];
+}

@@ -1,0 +1,16 @@
+<area shape="rect" href="$group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b" title="glm::axis" alt="" coords="151,132,225,159">
+<area shape="rect" href="$struct_vector2.html#80a99fd93db704d9b47f376a8568c86e" title="Calculates the distance between to 3D points." alt="" coords="125,183,251,209">
+<area shape="rect" href="$group__gtc__quaternion.html#ga615768cdd09816fd42da38f484fb4c0" title="glm::quat_cast" alt="" coords="135,233,241,260">
+<area shape="rect" href="$group__core__func__geometric.html#g2020e01c134ebe03c1690306ff93af53" title="glm::refract" alt="" coords="145,284,231,311">
+<area shape="rect" href="$classbt_gear_constraint.html#a08a0ddb52aacfa0141b41b388238aa6" title="return the local value of parameter" alt="" coords="299,81,483,108">
+<area shape="rect" href="$group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="349,132,432,159">
+<area shape="rect" href="$group__gtx__rotate__normalized__axis.html#g9fc93bb16dd6719fc660a506cb833fb0" title="glm::rotateNormalizedAxis" alt="" coords="304,183,477,209">
+<area shape="rect" href="$class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix." alt="" coords="532,56,711,83">
+<area shape="rect" href="$group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e" title="glm::orientation" alt="" coords="567,107,676,133">
+<area shape="rect" href="$group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36" title="glm::orientedAngle" alt="" coords="557,157,685,184">
+<area shape="rect" href="$group__gtx__rotate__vector.html#gf0809ae83e84fc9880b4c8b7093c349c" title="glm::rotate" alt="" coords="580,208,663,235">
+<area shape="rect" href="$class_camera.html#ff61f06284cca3216accdf556dfbd3c1" title="Gets the camera position." alt="" coords="784,5,896,32">
+<area shape="rect" href="$class_camera.html#338c5baf20b57652828c53e0791adf9a" title="Gets the camera view." alt="" coords="779,56,901,83">
+<area shape="rect" href="$class_camera.html#ffa333055635aed96518c4c66be9a70c" title="Gets the view matrix." alt="" coords="760,107,920,133">
+<area shape="rect" href="$class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223" title="Moves the camera." alt="" coords="968,56,1117,83">
+<area shape="rect" href="$group__gtx__quaternion.html#gdc8d8daae2f8d725dae576d6655e36d2" title="glm::toQuat" alt="" coords="347,233,435,260">

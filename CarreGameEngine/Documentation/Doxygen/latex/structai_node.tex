@@ -30,6 +30,8 @@ A node in the imported hierarchy.
 
 Each node has name, a parent node (except for the root node), a transformation relative to its parent and possibly several child nodes. Simple file formats don't support hierarchical structures - for these formats the imported scene does consist of only a single root node without children. 
 
+Definition at line 78 of file scene.h.
+
 \subsection{Member Data Documentation}
 \hypertarget{structai_node_fa528a7e43e15d92a920229b1ff094f6}{
 \index{aiNode@{aiNode}!mName@{mName}}
@@ -55,49 +57,71 @@ Sometimes assimp introduces new nodes not present in the source file into the hi
 
 \footnotesize\begin{verbatim}<DummyRootNode> \end{verbatim}
 \normalsize
-. \hypertarget{structai_node_adb69c766c7658bba9d2195af16d6831}{
+. 
+
+Definition at line 102 of file scene.h.\hypertarget{structai_node_adb69c766c7658bba9d2195af16d6831}{
 \index{aiNode@{aiNode}!mTransformation@{mTransformation}}
 \index{mTransformation@{mTransformation}!aiNode@{aiNode}}
 \subsubsection[mTransformation]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiMatrix4x4 {\bf aiNode::mTransformation}}}
 \label{structai_node_adb69c766c7658bba9d2195af16d6831}
 
 
-The transformation relative to the node's parent. \hypertarget{structai_node_a6896b42c78e784db85d822a4c8dd404}{
+The transformation relative to the node's parent. 
+
+Definition at line 105 of file scene.h.\hypertarget{structai_node_a6896b42c78e784db85d822a4c8dd404}{
 \index{aiNode@{aiNode}!mParent@{mParent}}
 \index{mParent@{mParent}!aiNode@{aiNode}}
 \subsubsection[mParent]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiNode}$\ast$ {\bf aiNode::mParent}}}
 \label{structai_node_a6896b42c78e784db85d822a4c8dd404}
 
 
-Parent node. NULL if this node is the root node. \hypertarget{structai_node_f5030494b156ec54632e6182a6e386ca}{
+Parent node. NULL if this node is the root node. 
+
+Definition at line 108 of file scene.h.\hypertarget{structai_node_f5030494b156ec54632e6182a6e386ca}{
 \index{aiNode@{aiNode}!mNumChildren@{mNumChildren}}
 \index{mNumChildren@{mNumChildren}!aiNode@{aiNode}}
 \subsubsection[mNumChildren]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiNode::mNumChildren}}}
 \label{structai_node_f5030494b156ec54632e6182a6e386ca}
 
 
-The number of child nodes of this node. \hypertarget{structai_node_c700679f0d4971f124e8444f68057291}{
+The number of child nodes of this node. 
+
+Definition at line 111 of file scene.h.
+
+Referenced by Model::ProcessNode().\hypertarget{structai_node_c700679f0d4971f124e8444f68057291}{
 \index{aiNode@{aiNode}!mChildren@{mChildren}}
 \index{mChildren@{mChildren}!aiNode@{aiNode}}
 \subsubsection[mChildren]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiNode}$\ast$$\ast$ {\bf aiNode::mChildren}}}
 \label{structai_node_c700679f0d4971f124e8444f68057291}
 
 
-The child nodes of this node. NULL if mNumChildren is 0. \hypertarget{structai_node_7a411079096f86d1e96b6368d237d897}{
+The child nodes of this node. NULL if mNumChildren is 0. 
+
+Definition at line 114 of file scene.h.
+
+Referenced by Model::ProcessNode().\hypertarget{structai_node_7a411079096f86d1e96b6368d237d897}{
 \index{aiNode@{aiNode}!mNumMeshes@{mNumMeshes}}
 \index{mNumMeshes@{mNumMeshes}!aiNode@{aiNode}}
 \subsubsection[mNumMeshes]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiNode::mNumMeshes}}}
 \label{structai_node_7a411079096f86d1e96b6368d237d897}
 
 
-The number of meshes of this node. \hypertarget{structai_node_cd1706d6508b31916c18e39b7085ca63}{
+The number of meshes of this node. 
+
+Definition at line 117 of file scene.h.
+
+Referenced by Model::ProcessNode().\hypertarget{structai_node_cd1706d6508b31916c18e39b7085ca63}{
 \index{aiNode@{aiNode}!mMeshes@{mMeshes}}
 \index{mMeshes@{mMeshes}!aiNode@{aiNode}}
 \subsubsection[mMeshes]{\setlength{\rightskip}{0pt plus 5cm}unsigned int$\ast$ {\bf aiNode::mMeshes}}}
 \label{structai_node_cd1706d6508b31916c18e39b7085ca63}
 
 
-The meshes of this node. Each entry is an index into the mesh list of the \hyperlink{structai_scene}{aiScene}. \hypertarget{structai_node_111b5a6cbc5dccde0cf2a17a6e5c3b67}{
+The meshes of this node. Each entry is an index into the mesh list of the \hyperlink{structai_scene}{aiScene}. 
+
+Definition at line 122 of file scene.h.
+
+Referenced by Model::ProcessNode().\hypertarget{structai_node_111b5a6cbc5dccde0cf2a17a6e5c3b67}{
 \index{aiNode@{aiNode}!mMetaData@{mMetaData}}
 \index{mMetaData@{mMetaData}!aiNode@{aiNode}}
 \subsubsection[mMetaData]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiMetadata}$\ast$ {\bf aiNode::mMetaData}}}
@@ -106,6 +130,8 @@ The meshes of this node. Each entry is an index into the mesh list of the \hyper
 
 Metadata associated with this node or NULL if there is no metadata. Whether any metadata is generated depends on the source file format. See the \hyperlink{}{importer\_\-notes} page for more information on every source file format. Importers that don't document any metadata don't write any. 
 
+Definition at line 129 of file scene.h.
+
 The documentation for this struct was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{scene_8h}{scene.h}\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{scene_8h}{scene.h}\end{CompactItemize}

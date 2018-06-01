@@ -1,14 +1,17 @@
-<area shape="rect" href="$types_8h.html" title="assimp/types.h" alt="" coords="548,80,657,107">
-<area shape="rect" href="$quaternion_8h.html" title="Quaternion structure, including operators when compiling in C++." alt="" coords="1293,155,1384,181">
-<area shape="rect" href="$defs_8h.html" title="Assimp build configuration setup. See the notes in the comment blocks to find out..." alt="" coords="267,304,323,331">
-<area shape="rect" href="$vector3_8h.html" title="3D vector structure, including operators when compiling in C++" alt="" coords="160,229,232,256">
-<area shape="rect" href="$vector2_8h.html" title="2D vector structure, including operators when compiling in C++" alt="" coords="64,229,136,256">
-<area shape="rect" href="$color4_8h.html" title="RGBA color structure, including operators when compiling in C++." alt="" coords="357,229,424,256">
-<area shape="rect" href="$matrix3x3_8h.html" title="Definition of a 3x3 matrix, including operators when compiling in C++." alt="" coords="448,229,536,256">
-<area shape="rect" href="$matrix4x4_8h.html" title="4x4 matrix structure, including operators when compiling in C++" alt="" coords="195,155,283,181">
-<area shape="rect" href="$vector2_8inl.html" title="Inline implementation of aiVector2t&lt;TReal&gt; operators." alt="" coords="459,155,539,181">
-<area shape="rect" href="$vector3_8inl.html" title="Inline implementation of aiVector3t&lt;TReal&gt; operators." alt="" coords="563,155,643,181">
-<area shape="rect" href="$color4_8inl.html" title="Inline implementation of aiColor4t&lt;TReal&gt; operators." alt="" coords="667,155,739,181">
-<area shape="rect" href="$matrix3x3_8inl.html" title="Inline implementation of the 3x3 matrix operators." alt="" coords="763,155,859,181">
-<area shape="rect" href="$matrix4x4_8inl.html" title="Inline implementation of the 4x4 matrix operators." alt="" coords="883,155,979,181">
-<area shape="rect" href="$config_8h.html" title="Defines constants for configurable properties for the library." alt="" coords="239,379,351,405">
+<area shape="rect" href="$types_8h.html" title="assimp/types.h" alt="" coords="603,80,712,107">
+<area shape="rect" href="$quaternion_8h.html" title="Quaternion structure, including operators when compiling in C++." alt="" coords="1421,155,1512,181">
+<area shape="rect" href="$defs_8h.html" title="Assimp build configuration setup. See the notes in the comment blocks to find out..." alt="" coords="221,304,277,331">
+<area shape="rect" href="$vector3_8h.html" title="3D vector structure, including operators when compiling in C++" alt="" coords="336,229,408,256">
+<area shape="rect" href="$vector2_8h.html" title="2D vector structure, including operators when compiling in C++" alt="" coords="432,229,504,256">
+<area shape="rect" href="$color4_8h.html" title="RGBA color structure, including operators when compiling in C++." alt="" coords="195,229,261,256">
+<area shape="rect" href="$matrix3x3_8h.html" title="Definition of a 3x3 matrix, including operators when compiling in C++." alt="" coords="32,229,120,256">
+<area shape="rect" href="$matrix4x4_8h.html" title="4x4 matrix structure, including operators when compiling in C++" alt="" coords="251,155,339,181">
+<area shape="rect" href="$vector2_8inl.html" title="Inline implementation of aiVector2t&lt;TReal&gt; operators." alt="" coords="464,155,544,181">
+<area shape="rect" href="$vector3_8inl.html" title="Inline implementation of aiVector3t&lt;TReal&gt; operators." alt="" coords="568,155,648,181">
+<area shape="rect" href="$color4_8inl.html" title="Inline implementation of aiColor4t&lt;TReal&gt; operators." alt="" coords="672,155,744,181">
+<area shape="rect" href="$assimp-4_81_80_2include_2assimp_2quaternion_8inl-source.html" title="quaternion.inl" alt="" coords="768,155,867,181">
+<area shape="rect" href="$matrix3x3_8inl.html" title="Inline implementation of the 3x3 matrix operators." alt="" coords="891,155,987,181">
+<area shape="rect" href="$matrix4x4_8inl.html" title="Inline implementation of the 4x4 matrix operators." alt="" coords="1011,155,1107,181">
+<area shape="rect" href="$config_8h.html" title="Defines constants for configurable properties for the library." alt="" coords="193,379,305,405">
+<area shape="rect" href="$pushpack1_8h-source.html" title="./Compiler/pushpack1.h" alt="" coords="408,304,565,331">
+<area shape="rect" href="$poppack1_8h-source.html" title="./Compiler/poppack1.h" alt="" coords="589,304,741,331">

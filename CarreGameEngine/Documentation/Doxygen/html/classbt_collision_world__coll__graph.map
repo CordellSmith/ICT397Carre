@@ -1,5 +1,8 @@
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionObject * \&gt;" alt="" coords="401,8,676,35">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionObject *, 16 \&gt;" alt="" coords="5,8,285,35">
-<area shape="rect" href="$classbt_dispatcher.html" title="btDispatcher" alt="" coords="492,59,585,85">
-<area shape="rect" href="$classbt_broadphase_interface.html" title="btBroadphaseInterface" alt="" coords="464,109,613,136">
-<area shape="rect" href="$classbt_i_debug_draw.html" title="btIDebugDraw" alt="" coords="488,160,589,187">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionObject * \&gt;" alt="" coords="1297,35,1572,61">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionObject *, 16 \&gt;" alt="" coords="637,5,917,32">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,32,229,59">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="433,59,612,85">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="941,65,1117,92">
+<area shape="rect" href="$classbt_dispatcher.html" title="btDispatcher" alt="" coords="1388,85,1481,112">
+<area shape="rect" href="$classbt_broadphase_interface.html" title="btBroadphaseInterface" alt="" coords="1360,136,1509,163">
+<area shape="rect" href="$classbt_i_debug_draw.html" title="btIDebugDraw" alt="" coords="1384,187,1485,213">

@@ -1,0 +1,28 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::cross",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::intersectLineTriangle",height=0.2,width=0.4,color="black",URL="$group__gtx__intersect.html#g1aa5d241478d1493ff4d8c22b8d9e293"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::intersectRayTriangle",height=0.2,width=0.4,color="black",URL="$group__gtx__intersect.html#gbf48f0fca6a10a8edb001b3d546de5fe"];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::leftHanded",height=0.2,width=0.4,color="black",URL="$group__gtx__handed__coordinate__space.html#g5613515e0fdb693d30e9e8db0aa17176"];
+  Node1 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="glm::lookAt",height=0.2,width=0.4,color="black",URL="$group__gtc__matrix__transform.html#g7f4f81d4b0d7b492112eb4d5b184d9be"];
+  Node1 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="glm::mixedProduct",height=0.2,width=0.4,color="black",URL="$group__gtx__mixed__product.html#g996c1d98418ba8e1208e273404158883",tooltip="Mixed product of 3 vectors (from GLM_GTX_mixed_product extension)."];
+  Node1 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="glm::orientation",height=0.2,width=0.4,color="black",URL="$group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e"];
+  Node1 -> Node8 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="glm::orientedAngle",height=0.2,width=0.4,color="black",URL="$group__gtx__vector__angle.html#gc56a6bdc5d430b476514d64cb185b772"];
+  Node1 -> Node9 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="glm::rightHanded",height=0.2,width=0.4,color="black",URL="$group__gtx__handed__coordinate__space.html#g65f766ab3c8924b90eabc0e1ecf014d1"];
+  Node1 -> Node10 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="glm::rotation",height=0.2,width=0.4,color="black",URL="$group__gtx__quaternion.html#gf7a15242ef69e5c997df231b28b92cef"];
+  Node1 -> Node11 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="glm::triangleNormal",height=0.2,width=0.4,color="black",URL="$group__gtx__normal.html#g008775be02f71e8673a58e34acbb9a69"];
+}

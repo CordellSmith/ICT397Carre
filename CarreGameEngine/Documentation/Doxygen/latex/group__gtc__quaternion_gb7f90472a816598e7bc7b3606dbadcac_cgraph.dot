@@ -1,0 +1,23 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::eulerAngles",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::pitch",height=0.2,width=0.4,color="black",URL="$group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd"];
+  Node2 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::atan",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#g459eaa7149e799125acda24938114746"];
+  Node2 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::degrees",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64"];
+  Node1 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="glm::roll",height=0.2,width=0.4,color="black",URL="$group__gtc__quaternion.html#g3f58a75c69ff56cb9c83ea237abc1414"];
+  Node5 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node1 -> Node6 [color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="glm::yaw",height=0.2,width=0.4,color="black",URL="$group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1"];
+  Node6 -> Node7 [color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="glm::asin",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gb87756fced3e8d3f58b24b65c8166b77"];
+  Node6 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+}

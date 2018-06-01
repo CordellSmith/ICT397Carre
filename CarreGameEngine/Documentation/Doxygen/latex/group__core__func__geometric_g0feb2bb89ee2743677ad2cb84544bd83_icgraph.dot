@@ -1,0 +1,42 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::normalize",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::axisAngleMatrix",height=0.2,width=0.4,color="black",URL="$group__gtx__matrix__interpolation.html#gf7c0106d03d55a7b670a6261b107f22b"];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::interpolate",height=0.2,width=0.4,color="black",URL="$group__gtx__matrix__interpolation.html#gc618bbef632f87be5c570aa5afe63f30"];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::fastMix",height=0.2,width=0.4,color="black",URL="$group__gtx__quaternion.html#g0538872e0a23bc7ba865700756c1a3a7"];
+  Node1 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="glm::intersectLineSphere",height=0.2,width=0.4,color="black",URL="$group__gtx__intersect.html#g28b9b80acf2ea35780709e01b27ab60f"];
+  Node1 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="glm::lookAt",height=0.2,width=0.4,color="black",URL="$group__gtc__matrix__transform.html#g7f4f81d4b0d7b492112eb4d5b184d9be"];
+  Node1 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="glm::orthonormalize",height=0.2,width=0.4,color="black",URL="$group__gtx__orthonormalize.html#ge0c06d8312a13b38747271ea68f00121"];
+  Node1 -> Node8 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="glm::rotate",height=0.2,width=0.4,color="black",URL="$group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14"];
+  Node8 -> Node9 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="Camera::GetRotationMatrix",height=0.2,width=0.4,color="black",URL="$class_camera.html#3518233b244af839db6eefe59e7002de",tooltip="Gets the rotation matrix."];
+  Node9 -> Node10 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="Camera::GetUp",height=0.2,width=0.4,color="black",URL="$class_camera.html#ff61f06284cca3216accdf556dfbd3c1",tooltip="Gets the camera position."];
+  Node9 -> Node11 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="Camera::GetView",height=0.2,width=0.4,color="black",URL="$class_camera.html#338c5baf20b57652828c53e0791adf9a",tooltip="Gets the camera view."];
+  Node11 -> Node12 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node12 [label="Camera::MoveCamera",height=0.2,width=0.4,color="black",URL="$class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223",tooltip="Moves the camera."];
+  Node9 -> Node13 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node13 [label="Camera::GetViewMatrix",height=0.2,width=0.4,color="black",URL="$class_camera.html#ffa333055635aed96518c4c66be9a70c",tooltip="Gets the view matrix."];
+  Node8 -> Node14 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node14 [label="glm::orientation",height=0.2,width=0.4,color="black",URL="$group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e"];
+  Node8 -> Node15 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node15 [label="glm::orientedAngle",height=0.2,width=0.4,color="black",URL="$group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36"];
+  Node8 -> Node16 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node16 [label="glm::rotate",height=0.2,width=0.4,color="black",URL="$group__gtx__rotate__vector.html#gf0809ae83e84fc9880b4c8b7093c349c"];
+  Node1 -> Node17 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node17 [label="glm::rotation",height=0.2,width=0.4,color="black",URL="$group__gtx__quaternion.html#gf7a15242ef69e5c997df231b28b92cef"];
+  Node1 -> Node18 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node18 [label="glm::triangleNormal",height=0.2,width=0.4,color="black",URL="$group__gtx__normal.html#g008775be02f71e8673a58e34acbb9a69"];
+}

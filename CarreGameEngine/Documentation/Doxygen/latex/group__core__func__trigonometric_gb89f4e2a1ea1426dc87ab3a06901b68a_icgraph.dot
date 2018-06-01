@@ -1,0 +1,39 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::atan",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::acot",height=0.2,width=0.4,color="black",URL="$group__gtc__reciprocal.html#ge06055493cfcf5e3732cf330d81fd186"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::atan2",height=0.2,width=0.4,color="black",URL="$group__gtx__compatibility.html#g7af1203c97febe3c07958178aead3788",tooltip="Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are used..."];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::log",height=0.2,width=0.4,color="black",URL="$group__gtx__quaternion.html#gbed81c73a777fce84fe442bbc17c13ce"];
+  Node4 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="glm::log",height=0.2,width=0.4,color="black",URL="$group__core__func__exponential.html#gce8148db3949f9260f6f883f8dbae808"];
+  Node5 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="glm::acosh",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#g7d91deddd26925a390f08448a1b9ab1a"];
+  Node6 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="glm::asech",height=0.2,width=0.4,color="black",URL="$group__gtc__reciprocal.html#g05d1bc30693d02a9a08c9044d75c5333"];
+  Node5 -> Node8 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="glm::asinh",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gaedecffe9a7c10e5930c4ec938a0ca2e"];
+  Node8 -> Node9 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="glm::acsch",height=0.2,width=0.4,color="black",URL="$group__gtc__reciprocal.html#gb24c5c23d9d3d10517ad80f5af515b0e"];
+  Node5 -> Node10 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="glm::atanh",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#g5207916954ad98477bf488a9a188f045"];
+  Node10 -> Node11 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="glm::acoth",height=0.2,width=0.4,color="black",URL="$group__gtc__reciprocal.html#g651e435e3e8f63b1ea1da0e5e7581864"];
+  Node5 -> Node12 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node12 [label="glm::fastPow",height=0.2,width=0.4,color="black",URL="$group__gtx__fast__exponential.html#g399b134d7015729817135440eb047d5a"];
+  Node5 -> Node13 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node13 [label="glm::gaussRand",height=0.2,width=0.4,color="black",URL="$group__gtc__random.html#gc045638daf634b0221ef4baaaf643cb2"];
+  Node5 -> Node14 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node14 [label="glm::intermediate",height=0.2,width=0.4,color="black",URL="$group__gtx__quaternion.html#ge94a070898e8be560a5dcf8e15854b2d"];
+  Node5 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node1 -> Node15 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node15 [label="glm::polar",height=0.2,width=0.4,color="black",URL="$group__gtx__polar__coordinates.html#g65a075c52ee1c699d77c4a98dd266006"];
+  Node1 -> Node16 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node16 [label="glm::shortMix",height=0.2,width=0.4,color="black",URL="$group__gtx__quaternion.html#g1d83d29dc8f5870d70d2833c64be777c"];
+}

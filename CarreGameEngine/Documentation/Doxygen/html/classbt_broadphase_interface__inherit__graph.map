@@ -1,7 +1,7 @@
-<area shape="rect" href="$classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; BP_FP_INT_TYPE \&gt;" alt="" coords="205,5,485,32">
-<area shape="rect" href="$classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; unsigned int \&gt;" alt="" coords="225,56,465,83">
-<area shape="rect" href="$classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; unsigned short int \&gt;" alt="" coords="209,107,481,133">
-<area shape="rect" href="$structbt_dbvt_broadphase.html" title="btDbvtBroadphase" alt="" coords="283,157,408,184">
-<area shape="rect" href="$classbt_simple_broadphase.html" title="btSimpleBroadphase" alt="" coords="275,208,416,235">
-<area shape="rect" href="$classbt32_bit_axis_sweep3.html" title="bt32BitAxisSweep3" alt="" coords="535,56,668,83">
-<area shape="rect" href="$classbt_axis_sweep3.html" title="btAxisSweep3" alt="" coords="549,107,653,133">
+<area shape="rect" href="$classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; BP_FP_INT_TYPE \&gt;" alt="" coords="208,64,488,91">
+<area shape="rect" href="$classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; unsigned int \&gt;" alt="" coords="681,23,921,49">
+<area shape="rect" href="$classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; unsigned short int \&gt;" alt="" coords="665,93,937,120">
+<area shape="rect" href="$structbt_dbvt_broadphase.html" title="btDbvtBroadphase" alt="" coords="285,165,411,192">
+<area shape="rect" href="$classbt_simple_broadphase.html" title="btSimpleBroadphase" alt="" coords="277,216,419,243">
+<area shape="rect" href="$classbt32_bit_axis_sweep3.html" title="bt32BitAxisSweep3" alt="" coords="991,23,1124,49">
+<area shape="rect" href="$classbt_axis_sweep3.html" title="btAxisSweep3" alt="" coords="1005,93,1109,120">

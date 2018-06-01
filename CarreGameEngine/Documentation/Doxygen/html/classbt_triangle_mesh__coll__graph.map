@@ -1,6 +1,9 @@
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; unsigned int \&gt;" alt="" coords="415,8,652,35">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; unsigned int, 16 \&gt;" alt="" coords="23,8,265,35">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; unsigned short int \&gt;" alt="" coords="397,59,669,85">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; unsigned short int, 16 \&gt;" alt="" coords="7,59,281,85">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btVector3 \&gt;" alt="" coords="421,109,645,136">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btVector3, 16 \&gt;" alt="" coords="31,109,257,136">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; unsigned int \&gt;" alt="" coords="1356,33,1593,60">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; unsigned int, 16 \&gt;" alt="" coords="649,5,892,32">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,136,229,163">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="428,89,607,116">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; unsigned short int, 16 \&gt;" alt="" coords="633,169,908,196">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btVector3, 16 \&gt;" alt="" coords="935,233,1161,260">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="960,83,1136,109">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; unsigned short int \&gt;" alt="" coords="1339,84,1611,111">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btVector3 \&gt;" alt="" coords="1363,135,1587,161">

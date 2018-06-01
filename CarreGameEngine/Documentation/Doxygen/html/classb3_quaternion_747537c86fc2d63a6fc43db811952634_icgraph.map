@@ -1,0 +1,11 @@
+<area shape="rect" href="$classb3_quaternion.html#cbdc532e53c4319bd2b8c760764a9452" title="Return the angle between this quaternion and the other." alt="" coords="379,11,515,37">
+<area shape="rect" href="$classb3_quaternion.html#388e68921f4749a5641df37449076db0" title="b3Quaternion::farthest" alt="" coords="179,36,328,63">
+<area shape="rect" href="$classb3_quaternion.html#a8d3d563ea89e36794d63bd289934509" title="Return the length squared of the quaternion." alt="" coords="180,87,327,113">
+<area shape="rect" href="$classb3_quaternion.html#9b64bb67f4ece30723d963132478049c" title="Return the quaternion which is the result of Spherical Linear Interpolation between..." alt="" coords="380,137,513,164">
+<area shape="rect" href="$classb3_quaternion.html#c257faeb2bf5a223870603face96f002" title="b3Quaternion::nearest" alt="" coords="179,188,328,215">
+<area shape="rect" href="$classb3_quaternion.html#d008f8dd2f6dbd5ac86f3b02a10ef4a6" title="Return the length of the quaternion." alt="" coords="376,87,517,113">
+<area shape="rect" href="$classb3_quaternion.html#96d3f4aedcb4b645115ab5a7897fa0d1" title="Normalize the quaternion Such that x^2 + y^2 + z^2 +w^2 = 1." alt="" coords="569,61,732,88">
+<area shape="rect" href="$classb3_quaternion.html#91d2ea964b6c93fc2c61cc678610bd8f" title="Return a normalized version of this quaternion." alt="" coords="567,112,735,139">
+<area shape="rect" href="$classb3_transform_util.html#077905e76e231101930678ace3bd444a" title="b3TransformUtil::calculateDiffAxisAngle" alt="" coords="784,36,1032,63">
+<area shape="rect" href="$classb3_quaternion.html#78e3817a97a72fd1e32d4d17e40be362" title="Set the quaternion using euler angles." alt="" coords="820,87,996,113">
+<area shape="rect" href="$classb3_quaternion.html#05b0b4abc7eaf5cb9ba00ea3b2353908" title="Constructor from Euler angles." alt="" coords="1080,87,1264,113">

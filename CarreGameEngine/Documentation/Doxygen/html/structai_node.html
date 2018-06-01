@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: aiNode Struct Reference</title>
+<title>Assignment2 - OOber Taxi: aiNode Struct Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>aiNode Struct Reference</h1><!-- doxytag: class="aiNode" --><code>#include &lt;scene.h&gt;</code>
+<h1>aiNode Struct Reference</h1><!-- doxytag: class="aiNode" --><code>#include &lt;<a class="el" href="scene_8h-source.html">scene.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for aiNode:</div>
@@ -58,7 +58,9 @@ Collaboration diagram for aiNode:</div>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 A node in the imported hierarchy.<p>
-Each node has name, a parent node (except for the root node), a transformation relative to its parent and possibly several child nodes. Simple file formats don't support hierarchical structures - for these formats the imported scene does consist of only a single root node without children. <hr><h2>Member Data Documentation</h2>
+Each node has name, a parent node (except for the root node), a transformation relative to its parent and possibly several child nodes. Simple file formats don't support hierarchical structures - for these formats the imported scene does consist of only a single root node without children. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00078">78</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+<hr><h2>Member Data Documentation</h2>
 <a class="anchor" name="fa528a7e43e15d92a920229b1ff094f6"></a><!-- doxytag: member="aiNode::mName" ref="fa528a7e43e15d92a920229b1ff094f6" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -77,6 +79,8 @@ Cameras and lights reference a specific node by name - if there are multiple nod
  There are no limitations with regard to the characters contained in the name string as it is usually taken directly from the source file.<p>
 Implementations should be able to handle tokens such as whitespace, tabs, line feeds, quotation marks, ampersands etc.<p>
 Sometimes assimp introduces new nodes not present in the source file into the hierarchy (usually out of necessity because sometimes the source hierarchy format is simply not compatible). Their names are surrounded by <div class="fragment"><pre class="fragment">&lt;&gt; </pre></div> e.g. <div class="fragment"><pre class="fragment">&lt;DummyRootNode&gt; </pre></div>. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00102">102</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="adb69c766c7658bba9d2195af16d6831"></a><!-- doxytag: member="aiNode::mTransformation" ref="adb69c766c7658bba9d2195af16d6831" args="" -->
@@ -92,6 +96,8 @@ Sometimes assimp introduces new nodes not present in the source file into the hi
 
 <p>
 The transformation relative to the node's parent. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00105">105</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="a6896b42c78e784db85d822a4c8dd404"></a><!-- doxytag: member="aiNode::mParent" ref="a6896b42c78e784db85d822a4c8dd404" args="" -->
@@ -107,6 +113,8 @@ The transformation relative to the node's parent.
 
 <p>
 Parent node. NULL if this node is the root node. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00108">108</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="f5030494b156ec54632e6182a6e386ca"></a><!-- doxytag: member="aiNode::mNumChildren" ref="f5030494b156ec54632e6182a6e386ca" args="" -->
@@ -122,6 +130,10 @@ Parent node. NULL if this node is the root node.
 
 <p>
 The number of child nodes of this node. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00111">111</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00033">Model::ProcessNode()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="c700679f0d4971f124e8444f68057291"></a><!-- doxytag: member="aiNode::mChildren" ref="c700679f0d4971f124e8444f68057291" args="" -->
@@ -137,6 +149,10 @@ The number of child nodes of this node.
 
 <p>
 The child nodes of this node. NULL if mNumChildren is 0. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00114">114</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00033">Model::ProcessNode()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="7a411079096f86d1e96b6368d237d897"></a><!-- doxytag: member="aiNode::mNumMeshes" ref="7a411079096f86d1e96b6368d237d897" args="" -->
@@ -152,6 +168,10 @@ The child nodes of this node. NULL if mNumChildren is 0.
 
 <p>
 The number of meshes of this node. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00117">117</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00033">Model::ProcessNode()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="cd1706d6508b31916c18e39b7085ca63"></a><!-- doxytag: member="aiNode::mMeshes" ref="cd1706d6508b31916c18e39b7085ca63" args="" -->
@@ -167,6 +187,10 @@ The number of meshes of this node.
 
 <p>
 The meshes of this node. Each entry is an index into the mesh list of the <a class="el" href="structai_scene.html">aiScene</a>. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00122">122</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00033">Model::ProcessNode()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="111b5a6cbc5dccde0cf2a17a6e5c3b67"></a><!-- doxytag: member="aiNode::mMetaData" ref="111b5a6cbc5dccde0cf2a17a6e5c3b67" args="" -->
@@ -182,12 +206,14 @@ The meshes of this node. Each entry is an index into the mesh list of the <a cla
 
 <p>
 Metadata associated with this node or NULL if there is no metadata. Whether any metadata is generated depends on the source file format. See the <a class="el" href="">importer_notes</a> page for more information on every source file format. Importers that don't document any metadata don't write any. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00129">129</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="scene_8h.html">scene.h</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="scene_8h-source.html">scene.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:51 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:13 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

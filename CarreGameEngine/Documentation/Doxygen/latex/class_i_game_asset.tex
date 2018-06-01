@@ -1,0 +1,403 @@
+\hypertarget{class_i_game_asset}{
+\section{IGameAsset Class Reference}
+\label{class_i_game_asset}\index{IGameAsset@{IGameAsset}}
+}
+Interface class for game assets.  
+
+
+{\tt \#include $<$IGameAsset.h$>$}
+
+Inherited by NPC, and Object.
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_i_game_asset_53edef712a3f422c5390e135c0d0a90d}{IGameAsset} ()
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+\hyperlink{class_i_game_asset_59d0aefea418a3df2b73abdfbc911366}{$\sim$IGameAsset} ()
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+virtual void \hyperlink{class_i_game_asset_56b8cc22f2d683cc1b36fe6f76945886}{LoadFromFilePath} (std::string filePath)=0
+\begin{CompactList}\small\item\em Load object from file path. \item\end{CompactList}\item 
+virtual const void \hyperlink{class_i_game_asset_959fc9a958e94213c44dbfe0119c76be}{Destroy} ()=0
+\begin{CompactList}\small\item\em Destroys the asset. \item\end{CompactList}\item 
+virtual const std::string \& \hyperlink{class_i_game_asset_a7eba4ae57e5e30eac800af114c84d37}{GetFilePath} () const =0
+\begin{CompactList}\small\item\em Gets the asset file path. \item\end{CompactList}\item 
+virtual void \hyperlink{class_i_game_asset_60c6259d4630bc0dc1527c20e80bcc3e}{SetFilePath} (const std::string \&filePath)=0
+\begin{CompactList}\small\item\em Sets the asset file path. \item\end{CompactList}\item 
+virtual const ASS\_\-TYPE \hyperlink{class_i_game_asset_b21bb7eb1227a3cfa585428197cd1919}{GetOBJType} () const 
+\begin{CompactList}\small\item\em Gets the asset type. \item\end{CompactList}\item 
+virtual const std::string \hyperlink{class_i_game_asset_1ebad4f0cd4687fa4fe14aecf82edb9c}{GetAssetName} () const 
+\begin{CompactList}\small\item\em Gets the asset name. \item\end{CompactList}\item 
+virtual void \hyperlink{class_i_game_asset_152b3c23cfc77ba25c473f78e1987fc5}{SetCamera} (\hyperlink{class_camera}{Camera} $\ast$camera)=0
+\begin{CompactList}\small\item\em Sets the camera object. \item\end{CompactList}\item 
+virtual void \hyperlink{class_i_game_asset_2e98161443bb490819d97991f4dc662f}{SetPosition} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} position)=0
+\begin{CompactList}\small\item\em Sets the asset position. \item\end{CompactList}\item 
+virtual void \hyperlink{class_i_game_asset_bfda4878867c08bc8087c8fbe7336e54}{SetScale} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} scale)=0
+\begin{CompactList}\small\item\em Sets the asset scale. \item\end{CompactList}\item 
+virtual void \hyperlink{class_i_game_asset_46bb3a2356eb6b97bf7f5adfade662c3}{SetRotation} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} rotation)=0
+\begin{CompactList}\small\item\em Sets the asset rotation. \item\end{CompactList}\item 
+virtual const \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_i_game_asset_d625e23f7bd5d32c41855cc72e339f10}{GetPosition} ()=0
+\begin{CompactList}\small\item\em Gets the asset position. \item\end{CompactList}\item 
+virtual const \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_i_game_asset_b17b3face9a76d70d3b6537b19f7ba5b}{GetRotation} ()=0
+\begin{CompactList}\small\item\em Gets the asset rotation. \item\end{CompactList}\item 
+virtual \hyperlink{class_model}{Model} $\ast$ \hyperlink{class_i_game_asset_eee1dc987bfe4df399b6d9878b01b094}{GetModel} ()=0
+\begin{CompactList}\small\item\em Gets the assets model object. \item\end{CompactList}\item 
+virtual void \hyperlink{class_i_game_asset_cb5ed97729be8b36021acca98073b420}{AddTexutre} (GLuint textureId, std::string textureFilePath)=0
+\begin{CompactList}\small\item\em Adds a texture to the model. \item\end{CompactList}\item 
+virtual void \hyperlink{class_i_game_asset_5b487893a4ef77c9522b3d8ff68c4e25}{SetAI} (ComputerAI $\ast$compAI)=0
+\begin{CompactList}\small\item\em Sets the assets AI. \item\end{CompactList}\item 
+virtual ComputerAI $\ast$ \hyperlink{class_i_game_asset_41a27cd2c0dc69ea041b69d3a60dfc22}{GetAI} ()=0
+\begin{CompactList}\small\item\em Gets the assets AI. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_i_game_asset_076aef4c07705e50ee4bfca6e16db742}{
+ASS\_\-TYPE \hyperlink{class_i_game_asset_076aef4c07705e50ee4bfca6e16db742}{m\_\-assetType}}
+\label{class_i_game_asset_076aef4c07705e50ee4bfca6e16db742}
+
+\begin{CompactList}\small\item\em Defines the nature of the asset. \item\end{CompactList}\item 
+\hypertarget{class_i_game_asset_cdc07b73c5cade61a1a38fa515576716}{
+std::string \hyperlink{class_i_game_asset_cdc07b73c5cade61a1a38fa515576716}{m\_\-assetName}}
+\label{class_i_game_asset_cdc07b73c5cade61a1a38fa515576716}
+
+\begin{CompactList}\small\item\em Used as the key to access a specific asset. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Interface class for game assets. 
+
+This class is an interface class for other assets to inherit from. Contains various helper functions that are to be overridden in the child classes.
+
+\begin{Desc}
+\item[Author:]Cordell Smith \end{Desc}
+\begin{Desc}
+\item[Version:]01 \end{Desc}
+\begin{Desc}
+\item[Date:]29/03/2018 CS \end{Desc}
+
+
+Definition at line 44 of file IGameAsset.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_i_game_asset_53edef712a3f422c5390e135c0d0a90d}{
+\index{IGameAsset@{IGameAsset}!IGameAsset@{IGameAsset}}
+\index{IGameAsset@{IGameAsset}!IGameAsset@{IGameAsset}}
+\subsubsection[IGameAsset]{\setlength{\rightskip}{0pt plus 5cm}IGameAsset::IGameAsset ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_i_game_asset_53edef712a3f422c5390e135c0d0a90d}
+
+
+Default constructor. 
+
+Empty default constructor.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 54 of file IGameAsset.h.
+
+\begin{Code}\begin{verbatim}54 { }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_i_game_asset_59d0aefea418a3df2b73abdfbc911366}{
+\index{IGameAsset@{IGameAsset}!$\sim$IGameAsset@{$\sim$IGameAsset}}
+\index{$\sim$IGameAsset@{$\sim$IGameAsset}!IGameAsset@{IGameAsset}}
+\subsubsection[$\sim$IGameAsset]{\setlength{\rightskip}{0pt plus 5cm}IGameAsset::$\sim$IGameAsset ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_i_game_asset_59d0aefea418a3df2b73abdfbc911366}
+
+
+Default constructor. 
+
+Empty destructor.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 63 of file IGameAsset.h.
+
+\begin{Code}\begin{verbatim}63 { }
+\end{verbatim}
+\end{Code}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_i_game_asset_56b8cc22f2d683cc1b36fe6f76945886}{
+\index{IGameAsset@{IGameAsset}!LoadFromFilePath@{LoadFromFilePath}}
+\index{LoadFromFilePath@{LoadFromFilePath}!IGameAsset@{IGameAsset}}
+\subsubsection[LoadFromFilePath]{\setlength{\rightskip}{0pt plus 5cm}virtual void IGameAsset::LoadFromFilePath (std::string {\em filePath})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_56b8cc22f2d683cc1b36fe6f76945886}
+
+
+Load object from file path. 
+
+Virtual function taking a file path as a string parameter to load a file.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em std::string}]filePath \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_i_game_asset_959fc9a958e94213c44dbfe0119c76be}{
+\index{IGameAsset@{IGameAsset}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!IGameAsset@{IGameAsset}}
+\subsubsection[Destroy]{\setlength{\rightskip}{0pt plus 5cm}virtual const void IGameAsset::Destroy ()\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_959fc9a958e94213c44dbfe0119c76be}
+
+
+Destroys the asset. 
+
+Virtual function to destroy the asset data for memory management.
+
+\begin{Desc}
+\item[Returns:]const void \end{Desc}
+\hypertarget{class_i_game_asset_a7eba4ae57e5e30eac800af114c84d37}{
+\index{IGameAsset@{IGameAsset}!GetFilePath@{GetFilePath}}
+\index{GetFilePath@{GetFilePath}!IGameAsset@{IGameAsset}}
+\subsubsection[GetFilePath]{\setlength{\rightskip}{0pt plus 5cm}virtual const std::string\& IGameAsset::GetFilePath () const\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_a7eba4ae57e5e30eac800af114c84d37}
+
+
+Gets the asset file path. 
+
+Virtual function to return a file path.
+
+\begin{Desc}
+\item[Returns:]const std::string \end{Desc}
+\hypertarget{class_i_game_asset_60c6259d4630bc0dc1527c20e80bcc3e}{
+\index{IGameAsset@{IGameAsset}!SetFilePath@{SetFilePath}}
+\index{SetFilePath@{SetFilePath}!IGameAsset@{IGameAsset}}
+\subsubsection[SetFilePath]{\setlength{\rightskip}{0pt plus 5cm}virtual void IGameAsset::SetFilePath (const std::string \& {\em filePath})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_60c6259d4630bc0dc1527c20e80bcc3e}
+
+
+Sets the asset file path. 
+
+Virtual function to set a file path.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em const}]std::string\& filePath \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_i_game_asset_b21bb7eb1227a3cfa585428197cd1919}{
+\index{IGameAsset@{IGameAsset}!GetOBJType@{GetOBJType}}
+\index{GetOBJType@{GetOBJType}!IGameAsset@{IGameAsset}}
+\subsubsection[GetOBJType]{\setlength{\rightskip}{0pt plus 5cm}virtual const ASS\_\-TYPE IGameAsset::GetOBJType () const\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{class_i_game_asset_b21bb7eb1227a3cfa585428197cd1919}
+
+
+Gets the asset type. 
+
+Virtual function to return the asset type.
+
+\begin{Desc}
+\item[Returns:]ASS\_\-TYPE \end{Desc}
+
+
+Definition at line 110 of file IGameAsset.h.
+
+References m\_\-assetType.
+
+\begin{Code}\begin{verbatim}110 { return m_assetType; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_i_game_asset_1ebad4f0cd4687fa4fe14aecf82edb9c}{
+\index{IGameAsset@{IGameAsset}!GetAssetName@{GetAssetName}}
+\index{GetAssetName@{GetAssetName}!IGameAsset@{IGameAsset}}
+\subsubsection[GetAssetName]{\setlength{\rightskip}{0pt plus 5cm}virtual const std::string IGameAsset::GetAssetName () const\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
+\label{class_i_game_asset_1ebad4f0cd4687fa4fe14aecf82edb9c}
+
+
+Gets the asset name. 
+
+Virtual function to return the objects name which is its corresponding key to reference it.
+
+\begin{Desc}
+\item[Returns:]const std::string const \end{Desc}
+
+
+Definition at line 120 of file IGameAsset.h.
+
+References m\_\-assetName.
+
+\begin{Code}\begin{verbatim}120 { return m_assetName; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_i_game_asset_152b3c23cfc77ba25c473f78e1987fc5}{
+\index{IGameAsset@{IGameAsset}!SetCamera@{SetCamera}}
+\index{SetCamera@{SetCamera}!IGameAsset@{IGameAsset}}
+\subsubsection[SetCamera]{\setlength{\rightskip}{0pt plus 5cm}virtual void IGameAsset::SetCamera ({\bf Camera} $\ast$ {\em camera})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_152b3c23cfc77ba25c473f78e1987fc5}
+
+
+Sets the camera object. 
+
+Sets the camera object to the world camera object to retrieve the view and projection matrices.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Camera$\ast$}]camera \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_i_game_asset_2e98161443bb490819d97991f4dc662f}{
+\index{IGameAsset@{IGameAsset}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!IGameAsset@{IGameAsset}}
+\subsubsection[SetPosition]{\setlength{\rightskip}{0pt plus 5cm}virtual void IGameAsset::SetPosition ({\bf glm::vec3} {\em position})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_2e98161443bb490819d97991f4dc662f}
+
+
+Sets the asset position. 
+
+Virtual function to set the position of the asset.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]position \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_i_game_asset_bfda4878867c08bc8087c8fbe7336e54}{
+\index{IGameAsset@{IGameAsset}!SetScale@{SetScale}}
+\index{SetScale@{SetScale}!IGameAsset@{IGameAsset}}
+\subsubsection[SetScale]{\setlength{\rightskip}{0pt plus 5cm}virtual void IGameAsset::SetScale ({\bf glm::vec3} {\em scale})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_bfda4878867c08bc8087c8fbe7336e54}
+
+
+Sets the asset scale. 
+
+Virtual function to set the scale of the asset.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]scale \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_i_game_asset_46bb3a2356eb6b97bf7f5adfade662c3}{
+\index{IGameAsset@{IGameAsset}!SetRotation@{SetRotation}}
+\index{SetRotation@{SetRotation}!IGameAsset@{IGameAsset}}
+\subsubsection[SetRotation]{\setlength{\rightskip}{0pt plus 5cm}virtual void IGameAsset::SetRotation ({\bf glm::vec3} {\em rotation})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_46bb3a2356eb6b97bf7f5adfade662c3}
+
+
+Sets the asset rotation. 
+
+Virtual function to set the rotation of the asset.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]rotation \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_i_game_asset_d625e23f7bd5d32c41855cc72e339f10}{
+\index{IGameAsset@{IGameAsset}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!IGameAsset@{IGameAsset}}
+\subsubsection[GetPosition]{\setlength{\rightskip}{0pt plus 5cm}virtual const {\bf glm::vec3} IGameAsset::GetPosition ()\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_d625e23f7bd5d32c41855cc72e339f10}
+
+
+Gets the asset position. 
+
+Virtual function to get the position of the asset.
+
+\begin{Desc}
+\item[Returns:]const \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
+\hypertarget{class_i_game_asset_b17b3face9a76d70d3b6537b19f7ba5b}{
+\index{IGameAsset@{IGameAsset}!GetRotation@{GetRotation}}
+\index{GetRotation@{GetRotation}!IGameAsset@{IGameAsset}}
+\subsubsection[GetRotation]{\setlength{\rightskip}{0pt plus 5cm}virtual const {\bf glm::vec3} IGameAsset::GetRotation ()\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_b17b3face9a76d70d3b6537b19f7ba5b}
+
+
+Gets the asset rotation. 
+
+Virtual function to get the position of the asset.
+
+\begin{Desc}
+\item[Returns:]const \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
+\hypertarget{class_i_game_asset_eee1dc987bfe4df399b6d9878b01b094}{
+\index{IGameAsset@{IGameAsset}!GetModel@{GetModel}}
+\index{GetModel@{GetModel}!IGameAsset@{IGameAsset}}
+\subsubsection[GetModel]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Model}$\ast$ IGameAsset::GetModel ()\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_eee1dc987bfe4df399b6d9878b01b094}
+
+
+Gets the assets model object. 
+
+Virtual function to get the assets model.
+
+\begin{Desc}
+\item[Returns:]Model$\ast$ \end{Desc}
+\hypertarget{class_i_game_asset_cb5ed97729be8b36021acca98073b420}{
+\index{IGameAsset@{IGameAsset}!AddTexutre@{AddTexutre}}
+\index{AddTexutre@{AddTexutre}!IGameAsset@{IGameAsset}}
+\subsubsection[AddTexutre]{\setlength{\rightskip}{0pt plus 5cm}virtual void IGameAsset::AddTexutre (GLuint {\em textureId}, \/  std::string {\em textureFilePath})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_cb5ed97729be8b36021acca98073b420}
+
+
+Adds a texture to the model. 
+
+Virtual function to add a texture to the assets mdoel. This takes a texture Id and relative texture file path and adds it.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em GLuint}]textureId \item[{\em std::string}]textureFilePath \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_i_game_asset_5b487893a4ef77c9522b3d8ff68c4e25}{
+\index{IGameAsset@{IGameAsset}!SetAI@{SetAI}}
+\index{SetAI@{SetAI}!IGameAsset@{IGameAsset}}
+\subsubsection[SetAI]{\setlength{\rightskip}{0pt plus 5cm}virtual void IGameAsset::SetAI (ComputerAI $\ast$ {\em compAI})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_5b487893a4ef77c9522b3d8ff68c4e25}
+
+
+Sets the assets AI. 
+
+Virtual function to set the AI of the asset.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ComputerAI$\ast$}]compAI \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_i_game_asset_41a27cd2c0dc69ea041b69d3a60dfc22}{
+\index{IGameAsset@{IGameAsset}!GetAI@{GetAI}}
+\index{GetAI@{GetAI}!IGameAsset@{IGameAsset}}
+\subsubsection[GetAI]{\setlength{\rightskip}{0pt plus 5cm}virtual ComputerAI$\ast$ IGameAsset::GetAI ()\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_i_game_asset_41a27cd2c0dc69ea041b69d3a60dfc22}
+
+
+Gets the assets AI. 
+
+Virtual function to get the AI of the asset.
+
+\begin{Desc}
+\item[Returns:]ComputerAI$\ast$ \end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/IGameAsset.h\end{CompactItemize}

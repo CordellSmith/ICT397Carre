@@ -1,9 +1,13 @@
 \hypertarget{bt_geometry_operations_8h}{
-\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGeometryOperations.h File Reference}
-\label{bt_geometry_operations_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGeometryOperations.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGeometryOperations.h}}
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGeometryOperations.h File Reference}
+\label{bt_geometry_operations_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGeometryOperations.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGeometryOperations.h}}
 }
 {\tt \#include \char`\"{}btBoxCollision.h\char`\"{}}\par
-\subsection*{Functions}
+
+
+Include dependency graph for btGeometryOperations.h:
+
+This graph shows which files directly or indirectly include this file:\subsection*{Functions}
 \begin{CompactItemize}
 \item 
 \hypertarget{bt_geometry_operations_8h_8ef83f3444ff4b984beb7c1c593cb0eb}{
@@ -27,6 +31,8 @@ SIMD\_\-FORCE\_\-INLINE void \hyperlink{bt_geometry_operations_8h_ae15cd5c846026
 \item[Author:]Francisco Leon Najera \end{Desc}
 
 
+Definition in file \hyperlink{bt_geometry_operations_8h-source}{btGeometryOperations.h}.
+
 \subsection{Function Documentation}
 \hypertarget{bt_geometry_operations_8h_db1d2624b7fc6f880aee1f590fe7e3b4}{
 \index{btGeometryOperations.h@{btGeometryOperations.h}!bt\_\-closest\_\-point\_\-on\_\-segment@{bt\_\-closest\_\-point\_\-on\_\-segment}}
@@ -35,7 +41,36 @@ SIMD\_\-FORCE\_\-INLINE void \hyperlink{bt_geometry_operations_8h_ae15cd5c846026
 \label{bt_geometry_operations_8h_db1d2624b7fc6f880aee1f590fe7e3b4}
 
 
-Finds the closest point(cp) to (v) on a segment (e1,e2) \hypertarget{bt_geometry_operations_8h_8da4cf7fec1c05beb975ac1ea64009e4}{
+Finds the closest point(cp) to (v) on a segment (e1,e2) 
+
+Definition at line 54 of file btGeometryOperations.h.
+
+Referenced by bt\_\-segment\_\-collision().
+
+\begin{Code}\begin{verbatim}57 {
+58     btVector3 n = e2-e1;
+59     cp = v - e1;
+60         btScalar _scalar = cp.dot(n)/n.dot(n);
+61         if(_scalar <0.0f)
+62         {
+63             cp = e1;
+64         }
+65         else if(_scalar >1.0f)
+66         {
+67             cp = e2;
+68         }
+69         else
+70         {
+71                 cp = _scalar*n + e1;
+72         }
+73 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{bt_geometry_operations_8h_8da4cf7fec1c05beb975ac1ea64009e4}{
 \index{btGeometryOperations.h@{btGeometryOperations.h}!bt\_\-line\_\-plane\_\-collision@{bt\_\-line\_\-plane\_\-collision}}
 \index{bt\_\-line\_\-plane\_\-collision@{bt\_\-line\_\-plane\_\-collision}!btGeometryOperations.h@{btGeometryOperations.h}}
 \subsubsection[bt\_\-line\_\-plane\_\-collision]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE int bt\_\-line\_\-plane\_\-collision (const btVector4 \& {\em plane}, \/  const btVector3 \& {\em vDir}, \/  const btVector3 \& {\em vPoint}, \/  btVector3 \& {\em pout}, \/  btScalar \& {\em tparam}, \/  btScalar {\em tmin}, \/  btScalar {\em tmax})}}
@@ -46,3 +81,43 @@ line plane collision
 
 \begin{Desc}
 \item[Returns:]-0 if the ray never intersects -1 if the ray collides in front -2 if the ray collides in back \end{Desc}
+
+
+Definition at line 84 of file btGeometryOperations.h.
+
+Referenced by bt\_\-segment\_\-collision().
+
+\begin{Code}\begin{verbatim}91 {
+92 
+93         btScalar _dotdir = vDir.dot(plane);
+94 
+95         if(btFabs(_dotdir)<PLANEDIREPSILON)
+96         {
+97                 tparam = tmax;
+98             return 0;
+99         }
+100 
+101         btScalar _dis = bt_distance_point_plane(plane,vPoint);
+102         char returnvalue = _dis<0.0f? 2:1;
+103         tparam = -_dis/_dotdir;
+104 
+105         if(tparam<tmin)
+106         {
+107                 returnvalue = 0;
+108                 tparam = tmin;
+109         }
+110         else if(tparam>tmax)
+111         {
+112                 returnvalue = 0;
+113                 tparam = tmax;
+114         }
+115         pout = tparam*vDir + vPoint;
+116         return returnvalue;
+117 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:

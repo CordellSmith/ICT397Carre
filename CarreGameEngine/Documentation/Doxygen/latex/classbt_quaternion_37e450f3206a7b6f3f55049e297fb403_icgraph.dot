@@ -1,0 +1,31 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btQuaternion::dot",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btQuaternion::angle",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#6398a143dbe4bbf6211d90bc8c2dd2bc",tooltip="Return the ***half*** angle between this quaternion and the other."];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btQuaternion::angleShortestPath",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#3160453535401db05d3926d7bc0ca5de",tooltip="Return the angle between this quaternion and the other along the shortest path."];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="btQuaternion::farthest",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#deda27273475435a9e3223abeea73992"];
+  Node1 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="btQuaternion::length2",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#59cc2f3a2c732aba98cd43764165b8cd",tooltip="Return the length squared of the quaternion."];
+  Node5 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="btQuaternion::length",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#9041c1885648f81009f41fc2aa6c17df",tooltip="Return the length of the quaternion."];
+  Node6 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="btQuaternion::normalize",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#db5cd1eb8145a906f9f47857c498d3d6",tooltip="Normalize the quaternion Such that x^2 + y^2 + z^2 +w^2 = 1."];
+  Node7 -> Node8 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="btTransformUtil::calculateDiffAxisAngle",height=0.2,width=0.4,color="black",URL="$classbt_transform_util.html#39f53b05940a57082053067bd5e337ec"];
+  Node6 -> Node9 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="btQuaternion::normalized",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#b74af1c81fd04a63c1697b25a063e507",tooltip="Return a normalized version of this quaternion."];
+  Node5 -> Node10 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="btQuaternion::slerp",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#c95a27feda1c165b2ce359e7415fec6f",tooltip="Return the quaternion which is the result of Spherical Linear Interpolation between..."];
+  Node1 -> Node11 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="btQuaternion::nearest",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#821a38604c6333b95d954867315d8716"];
+  Node1 -> Node10 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+}

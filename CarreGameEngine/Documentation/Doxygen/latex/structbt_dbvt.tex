@@ -19,6 +19,8 @@ static DBVT\_\-PREFIX void \hyperlink{structbt_dbvt_8e316ee3bc9bd7b7354086c0c558
 \subsection{Detailed Description}
 The \hyperlink{structbt_dbvt}{btDbvt} class implements a fast dynamic bounding volume tree based on axis aligned bounding boxes (aabb tree). This \hyperlink{structbt_dbvt}{btDbvt} is used for soft body collision detection and for the \hyperlink{structbt_dbvt_broadphase}{btDbvtBroadphase}. It has a fast insert, remove and update of nodes. Unlike the btQuantizedBvh, nodes can be dynamically moved around, which allows for change in topology of the underlying data structure. 
 
+Definition at line 198 of file btDbvt.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{structbt_dbvt_8e316ee3bc9bd7b7354086c0c558cfb5}{
 \index{btDbvt@{btDbvt}!rayTest@{rayTest}}
@@ -29,7 +31,89 @@ The \hyperlink{structbt_dbvt}{btDbvt} class implements a fast dynamic bounding v
 
 rayTest is a re-entrant ray test, and can be called in parallel as long as the btAlignedAlloc is thread-safe (uses locking etc) rayTest is slower than rayTestInternal, because it builds a local stack, using memory allocations, and it recomputes signs/rayDirectionInverses each time 
 
-what about division by zero? --$>$ just set rayDirection\mbox{[}i\mbox{]} to INF/BT\_\-LARGE\_\-FLOAT \hypertarget{structbt_dbvt_f8f2ca01be7eadc4732464272f580028}{
+what about division by zero? --$>$ just set rayDirection\mbox{[}i\mbox{]} to INF/BT\_\-LARGE\_\-FLOAT 
+
+Definition at line 1060 of file btDbvt.h.
+
+References btAlignedObjectArray$<$ T $>$::initializeFromBuffer(), btAlignedObjectArray$<$ T $>$::resize(), and btAlignedObjectArray$<$ T $>$::size().
+
+Referenced by btCollisionWorld::rayTestSingleInternal().
+
+\begin{Code}\begin{verbatim}1064 {
+1065         DBVT_CHECKTYPE
+1066                 if(root)
+1067                 {
+1068                         btVector3 rayDir = (rayTo-rayFrom);
+1069                         rayDir.normalize ();
+1070 
+1072                         btVector3 rayDirectionInverse;
+1073                         rayDirectionInverse[0] = rayDir[0] == btScalar(0.0) ? btScalar(BT_LARGE_FLOAT) : btScalar(1.0) / rayDir[0];
+1074                         rayDirectionInverse[1] = rayDir[1] == btScalar(0.0) ? btScalar(BT_LARGE_FLOAT) : btScalar(1.0) / rayDir[1];
+1075                         rayDirectionInverse[2] = rayDir[2] == btScalar(0.0) ? btScalar(BT_LARGE_FLOAT) : btScalar(1.0) / rayDir[2];
+1076                         unsigned int signs[3] = { rayDirectionInverse[0] < 0.0, rayDirectionInverse[1] < 0.0, rayDirectionInverse[2] < 0.0};
+1077 
+1078                         btScalar lambda_max = rayDir.dot(rayTo-rayFrom);
+1079 
+1080                         btVector3 resultNormal;
+1081 
+1082                         btAlignedObjectArray<const btDbvtNode*> stack;
+1083 
+1084                         int                                                             depth=1;
+1085                         int                                                             treshold=DOUBLE_STACKSIZE-2;
+1086 
+1087                         char tempmemory[DOUBLE_STACKSIZE * sizeof(const btDbvtNode*)];
+1088 #ifndef BT_DISABLE_STACK_TEMP_MEMORY
+1089                         stack.initializeFromBuffer(tempmemory, DOUBLE_STACKSIZE, DOUBLE_STACKSIZE);
+1090 #else//BT_DISABLE_STACK_TEMP_MEMORY
+1091                         stack.resize(DOUBLE_STACKSIZE);
+1092 #endif //BT_DISABLE_STACK_TEMP_MEMORY
+1093                         stack[0]=root;
+1094                         btVector3 bounds[2];
+1095                         do      {
+1096                                 const btDbvtNode*       node=stack[--depth];
+1097 
+1098                                 bounds[0] = node->volume.Mins();
+1099                                 bounds[1] = node->volume.Maxs();
+1100                                 
+1101                                 btScalar tmin=1.f,lambda_min=0.f;
+1102                                 unsigned int result1 = btRayAabb2(rayFrom,rayDirectionInverse,signs,bounds,tmin,lambda_min,lambda_max);
+1103 
+1104 #ifdef COMPARE_BTRAY_AABB2
+1105                                 btScalar param=1.f;
+1106                                 bool result2 = btRayAabb(rayFrom,rayTo,node->volume.Mins(),node->volume.Maxs(),param,resultNormal);
+1107                                 btAssert(result1 == result2);
+1108 #endif //TEST_BTRAY_AABB2
+1109 
+1110                                 if(result1)
+1111                                 {
+1112                                         if(node->isinternal())
+1113                                         {
+1114                                                 if(depth>treshold)
+1115                                                 {
+1116                                                         stack.resize(stack.size()*2);
+1117                                                         treshold=stack.size()-2;
+1118                                                 }
+1119                                                 stack[depth++]=node->childs[0];
+1120                                                 stack[depth++]=node->childs[1];
+1121                                         }
+1122                                         else
+1123                                         {
+1124                                                 policy.Process(node);
+1125                                         }
+1126                                 }
+1127                         } while(depth);
+1128 
+1129                 }
+1130 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{structbt_dbvt_f8f2ca01be7eadc4732464272f580028}{
 \index{btDbvt@{btDbvt}!rayTestInternal@{rayTestInternal}}
 \index{rayTestInternal@{rayTestInternal}!btDbvt@{btDbvt}}
 \subsubsection[rayTestInternal]{\setlength{\rightskip}{0pt plus 5cm}DBVT\_\-PREFIX void btDbvt::rayTestInternal (const btDbvtNode $\ast$ {\em root}, \/  const btVector3 \& {\em rayFrom}, \/  const btVector3 \& {\em rayTo}, \/  const btVector3 \& {\em rayDirectionInverse}, \/  unsigned int {\em signs}\mbox{[}3\mbox{]}, \/  btScalar {\em lambda\_\-max}, \/  const btVector3 \& {\em aabbMin}, \/  const btVector3 \& {\em aabbMax}, \/  {\bf btAlignedObjectArray}$<$ const btDbvtNode $\ast$ $>$ \& {\em stack}, \/  DBVT\_\-IPOLICY) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -38,7 +122,59 @@ what about division by zero? --$>$ just set rayDirection\mbox{[}i\mbox{]} to INF
 
 rayTestInternal is faster than rayTest, because it uses a persistent stack (to reduce dynamic memory allocations to a minimum) and it uses precomputed signs/rayInverseDirections rayTestInternal is used by \hyperlink{structbt_dbvt_broadphase}{btDbvtBroadphase} to accelerate world ray casts 
 
+Definition at line 1007 of file btDbvt.h.
+
+References btAlignedObjectArray$<$ T $>$::resize(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}1017 {
+1018         (void) rayTo;
+1019         DBVT_CHECKTYPE
+1020         if(root)
+1021         {
+1022                 btVector3 resultNormal;
+1023 
+1024                 int                                                             depth=1;
+1025                 int                                                             treshold=DOUBLE_STACKSIZE-2;
+1026                 stack.resize(DOUBLE_STACKSIZE);
+1027                 stack[0]=root;
+1028                 btVector3 bounds[2];
+1029                 do      
+1030                 {
+1031                         const btDbvtNode*       node=stack[--depth];
+1032                         bounds[0] = node->volume.Mins()-aabbMax;
+1033                         bounds[1] = node->volume.Maxs()-aabbMin;
+1034                         btScalar tmin=1.f,lambda_min=0.f;
+1035                         unsigned int result1=false;
+1036                         result1 = btRayAabb2(rayFrom,rayDirectionInverse,signs,bounds,tmin,lambda_min,lambda_max);
+1037                         if(result1)
+1038                         {
+1039                                 if(node->isinternal())
+1040                                 {
+1041                                         if(depth>treshold)
+1042                                         {
+1043                                                 stack.resize(stack.size()*2);
+1044                                                 treshold=stack.size()-2;
+1045                                         }
+1046                                         stack[depth++]=node->childs[0];
+1047                                         stack[depth++]=node->childs[1];
+1048                                 }
+1049                                 else
+1050                                 {
+1051                                         policy.Process(node);
+1052                                 }
+1053                         }
+1054                 } while(depth);
+1055         }
+1056 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this struct was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvt.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvt.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvt.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvt.cpp\end{CompactItemize}

@@ -3,6 +3,7 @@ digraph G
   bgcolor="transparent";
   edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
   node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
   Node1 [label="btNullPairCache",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
   Node2 -> Node1 [dir=back,color="midnightblue",fontsize=10,style="solid"];
   Node2 [label="btOverlappingPairCache",height=0.2,width=0.4,color="black",URL="$classbt_overlapping_pair_cache.html"];
@@ -12,4 +13,11 @@ digraph G
   Node4 [label="btAlignedObjectArray\< btBroadphasePair \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
   Node5 -> Node4 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
   Node5 [label="btAlignedAllocator\< btBroadphasePair, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node6 -> Node5 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btBroadphasePair, 16 \>"];
+  Node6 [label="btAlignedAllocator\< T, Alignment \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node7 -> Node4 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btBroadphasePair \>"];
+  Node7 [label="btAlignedObjectArray\< T \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node8 -> Node7 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node8 [label="btAlignedAllocator\< T, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node6 -> Node8 [dir=back,color="orange",fontsize=10,style="dashed",label="\< T, 16 \>"];
 }

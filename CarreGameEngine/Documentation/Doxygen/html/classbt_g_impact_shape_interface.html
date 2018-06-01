@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btGImpactShapeInterface Class Reference</title>
+<title>Assignment2 - OOber Taxi: btGImpactShapeInterface Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btGImpactShapeInterface Class Reference</h1><!-- doxytag: class="btGImpactShapeInterface" -->Base class for gimpact shapes.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btGImpactShape.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btGImpactShapeInterface:</div>
@@ -142,7 +142,9 @@ virtual btTransform&nbsp;</td><td class="memItemRight" valign="bottom"><a class=
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">use this function for perfofm refit in bounding boxes  <a href="#1712a4613e20aa9249514dcd97f0a086"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Base class for gimpact shapes. <hr><h2>Member Function Documentation</h2>
+Base class for gimpact shapes. 
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8h-source.html#l00079">79</a> of file <a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="1712a4613e20aa9249514dcd97f0a086"></a><!-- doxytag: member="btGImpactShapeInterface::calcLocalAABB" ref="1712a4613e20aa9249514dcd97f0a086" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -163,6 +165,46 @@ use this function for perfofm refit in bounding boxes
 <p>
 use this function for perfofm refit in bounding boxes 
 <p>Reimplemented in <a class="el" href="classbt_g_impact_mesh_shape.html#a9273d609f4872c7a4c05e9873edbda8">btGImpactMeshShape</a>.</p>
+
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8h-source.html#l00089">89</a> of file <a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>.</p>
+
+<p>References <a class="el" href="bt_g_impact_quantized_bvh_8cpp-source.html#l00287">btGImpactQuantizedBvh::buildSet()</a>, <a class="el" href="bt_g_impact_quantized_bvh_8h-source.html#l00183">btGImpactQuantizedBvh::getGlobalBox()</a>, <a class="el" href="bt_g_impact_quantized_bvh_8h-source.html#l00243">btGImpactQuantizedBvh::getNodeCount()</a>, <a class="el" href="bt_g_impact_shape_8h-source.html#l00231">lockChildShapes()</a>, and <a class="el" href="bt_g_impact_quantized_bvh_8h-source.html#l00205">btGImpactQuantizedBvh::update()</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_g_impact_shape_8h-source.html#l00123">updateBound()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00090"></a>00090     {
+<a name="l00091"></a>00091                 <a class="code" href="classbt_g_impact_shape_interface.html#e5de49e788c97a954ab9f2bde16adf60" title="call when reading child shapes">lockChildShapes</a>();
+<a name="l00092"></a>00092         <span class="keywordflow">if</span>(m_box_set.<a class="code" href="classbt_g_impact_quantized_bvh.html#5ffe3a11330ab3bce0d6eaffb9b3f689" title="node count">getNodeCount</a>() == 0)
+<a name="l00093"></a>00093         {
+<a name="l00094"></a>00094                 m_box_set.<a class="code" href="classbt_g_impact_quantized_bvh.html#2f061fbf0c6d8a81438861be4add7968" title="this rebuild the entire set">buildSet</a>();
+<a name="l00095"></a>00095         }
+<a name="l00096"></a>00096         <span class="keywordflow">else</span>
+<a name="l00097"></a>00097         {
+<a name="l00098"></a>00098                 m_box_set.<a class="code" href="classbt_g_impact_quantized_bvh.html#71665f5245b8f7de1c54f107ef262cd0" title="this attemps to refit the box set.">update</a>();
+<a name="l00099"></a>00099         }
+<a name="l00100"></a>00100         unlockChildShapes();
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102         m_localAABB = m_box_set.<a class="code" href="classbt_g_impact_quantized_bvh.html#f2309fdcd1f0cb289a64c64864c29459">getGlobalBox</a>();
+<a name="l00103"></a>00103     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_shape_interface_1712a4613e20aa9249514dcd97f0a086_cgraph.png" border="0" usemap="#classbt_g_impact_shape_interface_1712a4613e20aa9249514dcd97f0a086_cgraph_map" alt=""></center>
+<map name="classbt_g_impact_shape_interface_1712a4613e20aa9249514dcd97f0a086_cgraph_map">
+<area shape="rect" href="classbt_g_impact_quantized_bvh.html#2f061fbf0c6d8a81438861be4add7968" title="this rebuild the entire set" alt="" coords="348,56,564,83"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#f2309fdcd1f0cb289a64c64864c29459" title="btGImpactQuantizedBvh::getGlobalBox" alt="" coords="332,107,580,133"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#5ffe3a11330ab3bce0d6eaffb9b3f689" title="node count" alt="" coords="331,157,581,184"><area shape="rect" href="classbt_g_impact_shape_interface.html#e5de49e788c97a954ab9f2bde16adf60" title="call when reading child shapes" alt="" coords="320,208,592,235"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#71665f5245b8f7de1c54f107ef262cd0" title="this attemps to refit the box set." alt="" coords="352,259,560,285"><area shape="rect" href="classbt_quantized_bvh_tree.html#a2229fd3e3e2004cdf8151437535e936" title="stackless build tree" alt="" coords="680,5,880,32"><area shape="rect" href="classbt_primitive_manager_base.html#c826409d978724f266d4e3453118de4e" title="btPrimitiveManagerBase::get_primitive_box" alt="" coords="645,56,915,83"><area shape="rect" href="classbt_primitive_manager_base.html#9799cc93c1cf51471d22c5295f276ae8" title="btPrimitiveManagerBase::get_primitive_count" alt="" coords="640,107,920,133"><area shape="rect" href="classbt_quantized_bvh_tree.html#8f8b4acde8a974cb57d9d19b37009100" title="node count" alt="" coords="667,157,893,184"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_shape_interface_1712a4613e20aa9249514dcd97f0a086_icgraph.png" border="0" usemap="#classbt_g_impact_shape_interface_1712a4613e20aa9249514dcd97f0a086_icgraph_map" alt=""></center>
+<map name="classbt_g_impact_shape_interface_1712a4613e20aa9249514dcd97f0a086_icgraph_map">
+<area shape="rect" href="classbt_g_impact_shape_interface.html#cb26c2d7a2aecabd06b996b72b848492" title="performs refit operation" alt="" coords="321,5,572,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -186,6 +228,26 @@ performs refit operation
 <p>
 Updates the entire Box set of this shape. <dl class="pre" compact><dt><b>Precondition:</b></dt><dd><a class="el" href="classbt_g_impact_shape_interface.html#c430754948ac92d6f70b81e88416c96a" title="Tells to this object that is needed to refit the box set.">postUpdate()</a> must be called for attemps to calculating the box set, else this function will does nothing. </dd></dl>
 <dl class="post" compact><dt><b>Postcondition:</b></dt><dd>if m_needs_update == true, then it calls <a class="el" href="classbt_g_impact_shape_interface.html#1712a4613e20aa9249514dcd97f0a086" title="use this function for perfofm refit in bounding boxes">calcLocalAABB()</a>; </dd></dl>
+
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8h-source.html#l00123">123</a> of file <a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>.</p>
+
+<p>References <a class="el" href="bt_g_impact_shape_8h-source.html#l00089">calcLocalAABB()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00124"></a>00124     {
+<a name="l00125"></a>00125         <span class="keywordflow">if</span>(!m_needs_update) <span class="keywordflow">return</span>;
+<a name="l00126"></a>00126         <a class="code" href="classbt_g_impact_shape_interface.html#1712a4613e20aa9249514dcd97f0a086" title="use this function for perfofm refit in bounding boxes">calcLocalAABB</a>();
+<a name="l00127"></a>00127         m_needs_update  = <span class="keyword">false</span>;
+<a name="l00128"></a>00128     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492_cgraph.png" border="0" usemap="#classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492_cgraph_map" alt=""></center>
+<map name="classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492_cgraph_map">
+<area shape="rect" href="classbt_g_impact_shape_interface.html#1712a4613e20aa9249514dcd97f0a086" title="use this function for perfofm refit in bounding boxes" alt="" coords="307,157,573,184"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#2f061fbf0c6d8a81438861be4add7968" title="this rebuild the entire set" alt="" coords="649,56,865,83"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#f2309fdcd1f0cb289a64c64864c29459" title="btGImpactQuantizedBvh::getGlobalBox" alt="" coords="633,107,881,133"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#5ffe3a11330ab3bce0d6eaffb9b3f689" title="node count" alt="" coords="632,157,883,184"><area shape="rect" href="classbt_g_impact_shape_interface.html#e5de49e788c97a954ab9f2bde16adf60" title="call when reading child shapes" alt="" coords="621,208,893,235"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#71665f5245b8f7de1c54f107ef262cd0" title="this attemps to refit the box set." alt="" coords="653,259,861,285"><area shape="rect" href="classbt_quantized_bvh_tree.html#a2229fd3e3e2004cdf8151437535e936" title="stackless build tree" alt="" coords="981,5,1181,32"><area shape="rect" href="classbt_primitive_manager_base.html#c826409d978724f266d4e3453118de4e" title="btPrimitiveManagerBase::get_primitive_box" alt="" coords="947,56,1216,83"><area shape="rect" href="classbt_primitive_manager_base.html#9799cc93c1cf51471d22c5295f276ae8" title="btPrimitiveManagerBase::get_primitive_count" alt="" coords="941,107,1221,133"><area shape="rect" href="classbt_quantized_bvh_tree.html#8f8b4acde8a974cb57d9d19b37009100" title="node count" alt="" coords="968,157,1195,184"></map>
+</div>
 
 </div>
 </div><p>
@@ -225,6 +287,16 @@ If the Bounding box is not updated, then this class attemps to calculate it.
 <p>
 <dl class="post" compact><dt><b>Postcondition:</b></dt><dd>Calls <a class="el" href="classbt_g_impact_shape_interface.html#cb26c2d7a2aecabd06b996b72b848492" title="performs refit operation">updateBound()</a> for update the box set. </dd></dl>
 
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8h-source.html#l00134">134</a> of file <a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00135"></a>00135     {
+<a name="l00136"></a>00136         btAABB transformedbox = m_localAABB;
+<a name="l00137"></a>00137         transformedbox.appy_transform(t);
+<a name="l00138"></a>00138         aabbMin = transformedbox.m_min;
+<a name="l00139"></a>00139         aabbMax = transformedbox.m_max;
+<a name="l00140"></a>00140     }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="dec0bd43cd0105b1d0dc172bc7db50d8"></a><!-- doxytag: member="btGImpactShapeInterface::setLocalScaling" ref="dec0bd43cd0105b1d0dc172bc7db50d8" args="(const btVector3 &amp;scaling)" -->
@@ -248,6 +320,25 @@ If the Bounding box is not updated, then this class attemps to calculate it.
 
 <p>Reimplemented in <a class="el" href="classbt_g_impact_mesh_shape_part.html#2c1de297d020a75e1ab0f10f7c71478f">btGImpactMeshShapePart</a>, and <a class="el" href="classbt_g_impact_mesh_shape.html#ed8d5e4b2e75538109909d44b244bc35">btGImpactMeshShape</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8h-source.html#l00163">163</a> of file <a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>.</p>
+
+<p>References <a class="el" href="bt_g_impact_shape_8h-source.html#l00143">postUpdate()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00164"></a>00164         {
+<a name="l00165"></a>00165                 localScaling = scaling;
+<a name="l00166"></a>00166                 <a class="code" href="classbt_g_impact_shape_interface.html#c430754948ac92d6f70b81e88416c96a" title="Tells to this object that is needed to refit the box set.">postUpdate</a>();
+<a name="l00167"></a>00167         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_shape_interface_dec0bd43cd0105b1d0dc172bc7db50d8_cgraph.png" border="0" usemap="#classbt_g_impact_shape_interface_dec0bd43cd0105b1d0dc172bc7db50d8_cgraph_map" alt=""></center>
+<map name="classbt_g_impact_shape_interface_dec0bd43cd0105b1d0dc172bc7db50d8_cgraph_map">
+<area shape="rect" href="classbt_g_impact_shape_interface.html#c430754948ac92d6f70b81e88416c96a" title="Tells to this object that is needed to refit the box set." alt="" coords="324,5,564,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="25cacbe448997e3f8ec99cb2d4952859"></a><!-- doxytag: member="btGImpactShapeInterface::getGImpactShapeType" ref="25cacbe448997e3f8ec99cb2d4952859" args="() const =0" -->
@@ -270,6 +361,17 @@ Base method for determinig which kind of GIMPACT shape we get.
 <p>
 Subshape member functions 
 <p>Implemented in <a class="el" href="classbt_g_impact_compound_shape.html#861967c52cb52a358b8d99aa4c65e306">btGImpactCompoundShape</a>, <a class="el" href="classbt_g_impact_mesh_shape_part.html#5ff615b55a2bdaeba511fb116a9ab546">btGImpactMeshShapePart</a>, and <a class="el" href="classbt_g_impact_mesh_shape.html#cd958461b4f7802e5bceed2db87c4ff0">btGImpactMeshShape</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_g_impact_collision_algorithm_8cpp-source.html#l00461">btGImpactCollisionAlgorithm::gimpact_vs_gimpact()</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_shape_interface_25cacbe448997e3f8ec99cb2d4952859_icgraph.png" border="0" usemap="#classbt_g_impact_shape_interface_25cacbe448997e3f8ec99cb2d4952859_icgraph_map" alt=""></center>
+<map name="classbt_g_impact_shape_interface_25cacbe448997e3f8ec99cb2d4952859_icgraph_map">
+<area shape="rect" href="classbt_g_impact_collision_algorithm.html#2a6bd5ca4d26e3578d2613543e85429b" title="Collides two gimpact shapes." alt="" coords="363,5,675,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -344,6 +446,13 @@ Function for retrieve triangles.
 It gives the triangles in local space 
 <p>Reimplemented in <a class="el" href="classbt_g_impact_mesh_shape_part.html#230a814ad9f784638e8bcbf0592cdd39">btGImpactMeshShapePart</a>, and <a class="el" href="classbt_g_impact_mesh_shape.html#0b3a0f7b06feb5e2e1fa94f2b5fcd4c7">btGImpactMeshShape</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8h-source.html#l00287">287</a> of file <a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00288"></a>00288         {
+<a name="l00289"></a>00289         (void) callback; (void) aabbMin; (void) aabbMax;
+<a name="l00290"></a>00290         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="646ad13b4aa116d58df110c2f407e5a8"></a><!-- doxytag: member="btGImpactShapeInterface::processAllTrianglesRay" ref="646ad13b4aa116d58df110c2f407e5a8" args="(btTriangleCallback *, const btVector3 &amp;, const btVector3 &amp;) const " -->
@@ -383,12 +492,19 @@ Function for retrieve triangles.
 It gives the triangles in local space 
 <p>Reimplemented in <a class="el" href="classbt_g_impact_mesh_shape_part.html#0e35b55bd50911911f8164cf3a2dd5c8">btGImpactMeshShapePart</a>, and <a class="el" href="classbt_g_impact_mesh_shape.html#80b60d4ca87b2739b2389258e901900d">btGImpactMeshShape</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8h-source.html#l00296">296</a> of file <a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00297"></a>00297         {
+<a name="l00298"></a>00298                 
+<a name="l00299"></a>00299         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_g_impact_shape_8h.html">btGImpactShape.h</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:32 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:22 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

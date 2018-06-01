@@ -91,6 +91,8 @@ int \hyperlink{classbt_rotational_limit_motor_d1e4fa6cb3ea2e4b78c96feab97448e8}{
 \subsection{Detailed Description}
 Rotation Limit structure for generic joints. 
 
+Definition at line 48 of file btGeneric6DofConstraint.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_rotational_limit_motor_c0651bd36beda2dbb23c45a90dc1cccd}{
 \index{btRotationalLimitMotor@{btRotationalLimitMotor}!testLimitValue@{testLimitValue}}
@@ -101,7 +103,48 @@ Rotation Limit structure for generic joints.
 
 calculates error 
 
-calculates m\_\-currentLimit and m\_\-currentLimitError. \hypertarget{classbt_rotational_limit_motor_d52e9b1c402c7bdd47fb1a9de28afb7e}{
+calculates m\_\-currentLimit and m\_\-currentLimitError. 
+
+Definition at line 122 of file btGeneric6DofConstraint.cpp.
+
+References m\_\-currentLimit, m\_\-currentLimitError, m\_\-hiLimit, and m\_\-loLimit.
+
+\begin{Code}\begin{verbatim}123 {
+124         if(m_loLimit>m_hiLimit)
+125         {
+126                 m_currentLimit = 0;//Free from violation
+127                 return 0;
+128         }
+129         if (test_value < m_loLimit)
+130         {
+131                 m_currentLimit = 1;//low limit violation
+132                 m_currentLimitError =  test_value - m_loLimit;
+133                 if(m_currentLimitError>SIMD_PI) 
+134                         m_currentLimitError-=SIMD_2_PI;
+135                 else if(m_currentLimitError<-SIMD_PI) 
+136                         m_currentLimitError+=SIMD_2_PI;
+137                 return 1;
+138         }
+139         else if (test_value> m_hiLimit)
+140         {
+141                 m_currentLimit = 2;//High limit violation
+142                 m_currentLimitError = test_value - m_hiLimit;
+143                 if(m_currentLimitError>SIMD_PI) 
+144                         m_currentLimitError-=SIMD_2_PI;
+145                 else if(m_currentLimitError<-SIMD_PI) 
+146                         m_currentLimitError+=SIMD_2_PI;
+147                 return 2;
+148         };
+149 
+150         m_currentLimit = 0;//Free from violation
+151         return 0;
+152 
+153 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{classbt_rotational_limit_motor_d52e9b1c402c7bdd47fb1a9de28afb7e}{
 \index{btRotationalLimitMotor@{btRotationalLimitMotor}!solveAngularLimits@{solveAngularLimits}}
 \index{solveAngularLimits@{solveAngularLimits}!btRotationalLimitMotor@{btRotationalLimitMotor}}
 \subsubsection[solveAngularLimits]{\setlength{\rightskip}{0pt plus 5cm}btScalar btRotationalLimitMotor::solveAngularLimits (btScalar {\em timeStep}, \/  btVector3 \& {\em axis}, \/  btScalar {\em jacDiagABInv}, \/  {\bf btRigidBody} $\ast$ {\em body0}, \/  {\bf btRigidBody} $\ast$ {\em body1})}}
@@ -116,6 +159,90 @@ apply the correction impulses for two bodies
 \item[\hyperlink{todo__todo000028}{Todo}]: should clip against accumulated impulse \end{Desc}
 
 
+Definition at line 157 of file btGeneric6DofConstraint.cpp.
+
+References btRigidBody::applyTorqueImpulse(), btRigidBody::getAngularVelocity(), m\_\-bounce, m\_\-currentLimit, m\_\-currentLimitError, m\_\-damping, m\_\-maxLimitForce, m\_\-maxMotorForce, m\_\-stopERP, m\_\-targetVelocity, and needApplyTorques().
+
+\begin{Code}\begin{verbatim}160 {
+161         if (needApplyTorques()==false) return 0.0f;
+162 
+163         btScalar target_velocity = m_targetVelocity;
+164         btScalar maxMotorForce = m_maxMotorForce;
+165 
+166         //current error correction
+167         if (m_currentLimit!=0)
+168         {
+169                 target_velocity = -m_stopERP*m_currentLimitError/(timeStep);
+170                 maxMotorForce = m_maxLimitForce;
+171         }
+172 
+173         maxMotorForce *= timeStep;
+174 
+175         // current velocity difference
+176 
+177         btVector3 angVelA = body0->getAngularVelocity();
+178         btVector3 angVelB = body1->getAngularVelocity();
+179 
+180         btVector3 vel_diff;
+181         vel_diff = angVelA-angVelB;
+182 
+183 
+184 
+185         btScalar rel_vel = axis.dot(vel_diff);
+186 
+187         // correction velocity
+188         btScalar motor_relvel = m_limitSoftness*(target_velocity  - m_damping*rel_vel);
+189 
+190 
+191         if ( motor_relvel < SIMD_EPSILON && motor_relvel > -SIMD_EPSILON  )
+192         {
+193                 return 0.0f;//no need for applying force
+194         }
+195 
+196 
+197         // correction impulse
+198         btScalar unclippedMotorImpulse = (1+m_bounce)*motor_relvel*jacDiagABInv;
+199 
+200         // clip correction impulse
+201         btScalar clippedMotorImpulse;
+202 
+204         if (unclippedMotorImpulse>0.0f)
+205         {
+206                 clippedMotorImpulse =  unclippedMotorImpulse > maxMotorForce? maxMotorForce: unclippedMotorImpulse;
+207         }
+208         else
+209         {
+210                 clippedMotorImpulse =  unclippedMotorImpulse < -maxMotorForce ? -maxMotorForce: unclippedMotorImpulse;
+211         }
+212 
+213 
+214         // sort with accumulated impulses
+215         btScalar        lo = btScalar(-BT_LARGE_FLOAT);
+216         btScalar        hi = btScalar(BT_LARGE_FLOAT);
+217 
+218         btScalar oldaccumImpulse = m_accumulatedImpulse;
+219         btScalar sum = oldaccumImpulse + clippedMotorImpulse;
+220         m_accumulatedImpulse = sum > hi ? btScalar(0.) : sum < lo ? btScalar(0.) : sum;
+221 
+222         clippedMotorImpulse = m_accumulatedImpulse - oldaccumImpulse;
+223 
+224         btVector3 motorImp = clippedMotorImpulse * axis;
+225 
+226         body0->applyTorqueImpulse(motorImp);
+227         body1->applyTorqueImpulse(-motorImp);
+228 
+229         return clippedMotorImpulse;
+230 
+231 
+232 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 \subsection{Member Data Documentation}
 \hypertarget{classbt_rotational_limit_motor_57ff414e1856d661d81b797702c4f986}{
 \index{btRotationalLimitMotor@{btRotationalLimitMotor}!m\_\-loLimit@{m\_\-loLimit}}
@@ -126,7 +253,11 @@ apply the correction impulses for two bodies
 
 joint limit 
 
-limit\_\-parameters \hypertarget{classbt_rotational_limit_motor_3d06f5a5de013fd97f39cf63273dce45}{
+limit\_\-parameters 
+
+Definition at line 53 of file btGeneric6DofConstraint.h.
+
+Referenced by isLimited(), and testLimitValue().\hypertarget{classbt_rotational_limit_motor_3d06f5a5de013fd97f39cf63273dce45}{
 \index{btRotationalLimitMotor@{btRotationalLimitMotor}!m\_\-normalCFM@{m\_\-normalCFM}}
 \index{m\_\-normalCFM@{m\_\-normalCFM}!btRotationalLimitMotor@{btRotationalLimitMotor}}
 \subsubsection[m\_\-normalCFM]{\setlength{\rightskip}{0pt plus 5cm}btScalar {\bf btRotationalLimitMotor::m\_\-normalCFM}}}
@@ -135,14 +266,20 @@ limit\_\-parameters \hypertarget{classbt_rotational_limit_motor_3d06f5a5de013fd9
 
 Relaxation factor. 
 
-Constraint force mixing factor \hypertarget{classbt_rotational_limit_motor_7128feccb391176842f287b584e375d3}{
+Constraint force mixing factor 
+
+Definition at line 60 of file btGeneric6DofConstraint.h.\hypertarget{classbt_rotational_limit_motor_7128feccb391176842f287b584e375d3}{
 \index{btRotationalLimitMotor@{btRotationalLimitMotor}!m\_\-currentLimitError@{m\_\-currentLimitError}}
 \index{m\_\-currentLimitError@{m\_\-currentLimitError}!btRotationalLimitMotor@{btRotationalLimitMotor}}
 \subsubsection[m\_\-currentLimitError]{\setlength{\rightskip}{0pt plus 5cm}btScalar {\bf btRotationalLimitMotor::m\_\-currentLimitError}}}
 \label{classbt_rotational_limit_motor_7128feccb391176842f287b584e375d3}
 
 
-temp\_\-variables \hypertarget{classbt_rotational_limit_motor_d1e4fa6cb3ea2e4b78c96feab97448e8}{
+temp\_\-variables 
+
+Definition at line 70 of file btGeneric6DofConstraint.h.
+
+Referenced by solveAngularLimits(), and testLimitValue().\hypertarget{classbt_rotational_limit_motor_d1e4fa6cb3ea2e4b78c96feab97448e8}{
 \index{btRotationalLimitMotor@{btRotationalLimitMotor}!m\_\-currentLimit@{m\_\-currentLimit}}
 \index{m\_\-currentLimit@{m\_\-currentLimit}!btRotationalLimitMotor@{btRotationalLimitMotor}}
 \subsubsection[m\_\-currentLimit]{\setlength{\rightskip}{0pt plus 5cm}int {\bf btRotationalLimitMotor::m\_\-currentLimit}}}
@@ -153,7 +290,11 @@ current value of angle
 
 0=free, 1=at lo limit, 2=at hi limit 
 
+Definition at line 72 of file btGeneric6DofConstraint.h.
+
+Referenced by needApplyTorques(), solveAngularLimits(), and testLimitValue().
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.cpp\end{CompactItemize}

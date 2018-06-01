@@ -1,0 +1,16 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="Player::LoadFromFilePath",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="Model::LoadModel",height=0.2,width=0.4,color="black",URL="$class_model.html#d7e2859170e157f9c6393b16e54c3fd8",tooltip="Loads the model data."];
+  Node2 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="Model::ProcessNode",height=0.2,width=0.4,color="black",URL="$class_model.html#9bb9d5cd67e4cd9dc95c01bedd92034a",tooltip="Processes the node of an aiScene."];
+  Node3 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="Model::ProcessMesh",height=0.2,width=0.4,color="black",URL="$class_model.html#2cc9f43dc71e2781369f6106392e560e",tooltip="Processes the mesh."];
+  Node4 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="Model::LoadMaterialTextures",height=0.2,width=0.4,color="black",URL="$class_model.html#43da250403b6d11aa1a0f54c9021ac45",tooltip="Loads the material textures."];
+}

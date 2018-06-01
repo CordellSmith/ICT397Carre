@@ -1,0 +1,10 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btInverseDynamics::MultiBodyTree::getBodyAxisOfMotion",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyAxisOfMotion",height=0.2,width=0.4,color="black",URL="$classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#3a0e4f72e0c1f41332e738014fd5f257"];
+}

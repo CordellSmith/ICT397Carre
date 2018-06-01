@@ -1,12 +1,15 @@
-<area shape="rect" href="$classbt_compound_collision_algorithm.html" title="btCompoundCollisionAlgorithm supports collision between CompoundCollisionShapes and..." alt="" coords="1169,147,1367,173">
-<area shape="rect" href="$classbt_activating_collision_algorithm.html" title="This class is not enabled yet (work&#45;in&#45;progress) to more aggressively activate objects..." alt="" coords="697,96,889,123">
-<area shape="rect" href="$classbt_collision_algorithm.html" title="btCollisionAlgorithm" alt="" coords="312,76,448,103">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionAlgorithm * \&gt;" alt="" coords="648,45,939,72">
-<area shape="rect" href="$classbt_dispatcher.html" title="btDispatcher" alt="" coords="7,76,100,103">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; const btDbvtNode * \&gt;" alt="" coords="653,147,933,173">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; const btDbvtNode *, 16 \&gt;" alt="" coords="239,147,521,173">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionAlgorithm *, 16 \&gt;" alt="" coords="232,5,528,32">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btPersistentManifold * \&gt;" alt="" coords="645,197,941,224">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btPersistentManifold *, 16 \&gt;" alt="" coords="231,197,529,224">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btSimplePair \&gt;" alt="" coords="1147,223,1389,249">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btSimplePair, 16 \&gt;" alt="" coords="671,248,916,275">
+<area shape="rect" href="$classbt_compound_collision_algorithm.html" title="btCompoundCollisionAlgorithm supports collision between CompoundCollisionShapes and..." alt="" coords="1932,168,2129,195">
+<area shape="rect" href="$classbt_activating_collision_algorithm.html" title="This class is not enabled yet (work&#45;in&#45;progress) to more aggressively activate objects..." alt="" coords="1481,104,1673,131">
+<area shape="rect" href="$classbt_collision_algorithm.html" title="btCollisionAlgorithm" alt="" coords="1037,64,1173,91">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionAlgorithm * \&gt;" alt="" coords="1432,47,1723,73">
+<area shape="rect" href="$classbt_dispatcher.html" title="btDispatcher" alt="" coords="495,64,588,91">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; const btDbvtNode * \&gt;" alt="" coords="1437,245,1717,272">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; const btDbvtNode *, 16 \&gt;" alt="" coords="665,316,948,343">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,227,229,253">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="452,227,631,253">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionAlgorithm *, 16 \&gt;" alt="" coords="659,5,955,32">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btPersistentManifold *, 16 \&gt;" alt="" coords="657,156,956,183">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btSimplePair, 16 \&gt;" alt="" coords="983,399,1228,425">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="1017,227,1193,253">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btPersistentManifold * \&gt;" alt="" coords="1429,168,1725,195">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btSimplePair \&gt;" alt="" coords="1456,296,1699,323">

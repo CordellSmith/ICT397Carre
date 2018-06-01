@@ -22,6 +22,8 @@ bool \hyperlink{classb3_sorted_overlapping_pair_cache_ebe6abcf2a675cda50246430a4
 \subsection{Detailed Description}
 \hyperlink{classb3_sorted_overlapping_pair_cache}{b3SortedOverlappingPairCache} maintains the objects with overlapping AABB Typically managed by the Broadphase, Axis3Sweep or b3SimpleBroadphase 
 
+Definition at line 286 of file b3OverlappingPairCache.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classb3_sorted_overlapping_pair_cache_d24f6d5bfc4b9e378ace06bcb10519ea}{
 \index{b3SortedOverlappingPairCache@{b3SortedOverlappingPairCache}!findPair@{findPair}}
@@ -34,7 +36,34 @@ this findPair becomes really slow. Either sort the list to speedup the query, or
 
 Implements \hyperlink{classb3_overlapping_pair_cache}{b3OverlappingPairCache}.
 
+Definition at line 490 of file b3OverlappingPairCache.cpp.
+
+References b3AlignedObjectArray$<$ T $>$::findLinearSearch(), and b3AlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}491 {
+492         if (!needsBroadphaseCollision(proxy0,proxy1))
+493                 return 0;
+494 
+495         b3BroadphasePair tmpPair = b3MakeBroadphasePair(proxy0,proxy1);
+496         int findIndex = m_overlappingPairArray.findLinearSearch(tmpPair);
+497 
+498         if (findIndex < m_overlappingPairArray.size())
+499         {
+500                 //b3Assert(it != m_overlappingPairSet.end());
+501                  b3BroadphasePair* pair = &m_overlappingPairArray[findIndex];
+502                 return pair;
+503         }
+504         return 0;
+505 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3OverlappingPairCache.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3OverlappingPairCache.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3OverlappingPairCache.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3OverlappingPairCache.cpp\end{CompactItemize}

@@ -31,7 +31,22 @@ $<$glm/gtx/wrap.hpp$>$ need to be included to use these functionalities.
 
 Simulate GL\_\-CLAMP OpenGL wrap mode \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__wrap}{GLM\_\-GTX\_\-wrap} extension. \end{Desc}
-\hypertarget{group__gtx__wrap_g03ce460f4f1bbc3058ce0d4928e29071}{
+
+
+Definition at line 17 of file wrap.inl.
+
+References glm::clamp().
+
+\begin{Code}\begin{verbatim}20         {
+21                 return glm::clamp(Texcoord, genType(0), genType(1));
+22         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__wrap_g03ce460f4f1bbc3058ce0d4928e29071}{
 \index{gtx\_\-wrap@{gtx\_\-wrap}!mirrorRepeat@{mirrorRepeat}}
 \index{mirrorRepeat@{mirrorRepeat}!gtx_wrap@{gtx\_\-wrap}}
 \subsubsection[mirrorRepeat]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::mirrorRepeat (genType const \& {\em Texcoord})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -40,7 +55,32 @@ Simulate GL\_\-CLAMP OpenGL wrap mode \begin{Desc}
 
 Simulate GL\_\-MIRROR\_\-REPEAT OpenGL wrap mode \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__wrap}{GLM\_\-GTX\_\-wrap} extension. \end{Desc}
-\hypertarget{group__gtx__wrap_g0e136d75883428ad7d9c19611290d77a}{
+
+
+Definition at line 113 of file wrap.inl.
+
+References glm::floor().
+
+\begin{Code}\begin{verbatim}116         {
+117                 genType const Clamp = genType(int(glm::floor(Texcoord)) % 2);
+118                 genType const Floor = glm::floor(Texcoord);
+119                 genType const Rest = Texcoord - Floor;
+120                 genType const Mirror = Clamp + Rest;
+121 
+122                 genType Out;
+123                 if(Mirror >= genType(1))
+124                         Out = genType(1) - Rest;
+125                 else
+126                         Out = Rest;
+127                 return Out;
+128         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__wrap_g0e136d75883428ad7d9c19611290d77a}{
 \index{gtx\_\-wrap@{gtx\_\-wrap}!repeat@{repeat}}
 \index{repeat@{repeat}!gtx_wrap@{gtx\_\-wrap}}
 \subsubsection[repeat]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::repeat (genType const \& {\em Texcoord})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -49,3 +89,19 @@ Simulate GL\_\-MIRROR\_\-REPEAT OpenGL wrap mode \begin{Desc}
 
 Simulate GL\_\-REPEAT OpenGL wrap mode \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__wrap}{GLM\_\-GTX\_\-wrap} extension. \end{Desc}
+
+
+Definition at line 65 of file wrap.inl.
+
+References glm::fract().
+
+\begin{Code}\begin{verbatim}68         {
+69                 return glm::fract(Texcoord);
+70         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

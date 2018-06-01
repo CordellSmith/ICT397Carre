@@ -44,7 +44,34 @@ Generate a random 3D vector which coordinates are regulary distributed within th
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}
-\hypertarget{group__gtc__random_gb633996dfedab1a7f45bb5cfa1b14443}{
+
+
+Definition at line 126 of file random.inl.
+
+References glm::length(), and glm::linearRand().
+
+\begin{Code}\begin{verbatim}129         {               
+130                 detail::tvec3<T, defaultp> Result(T(0));
+131                 T LenRadius(T(0));
+132                 
+133                 do
+134                 {
+135                         Result = linearRand(
+136                                 detail::tvec3<T, defaultp>(-Radius),
+137                                 detail::tvec3<T, defaultp>(Radius));
+138                         LenRadius = length(Result);
+139                 }
+140                 while(LenRadius > Radius);
+141                 
+142                 return Result;
+143         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__random_gb633996dfedab1a7f45bb5cfa1b14443}{
 \index{gtc\_\-random@{gtc\_\-random}!circularRand@{circularRand}}
 \index{circularRand@{circularRand}!gtc_random@{gtc\_\-random}}
 \subsubsection[circularRand]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec2$<$ T, defaultp $>$ glm::circularRand (T const \& {\em Radius})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -60,7 +87,23 @@ Generate a random 2D vector which coordinates are regulary distributed on a circ
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}
-\hypertarget{group__gtc__random_gea707507f941467133dfdd4f3de9eeed}{
+
+
+Definition at line 147 of file random.inl.
+
+References glm::cos(), glm::linearRand(), and glm::sin().
+
+\begin{Code}\begin{verbatim}150         {
+151                 T a = linearRand(T(0), T(6.283185307179586476925286766559f));
+152                 return detail::tvec2<T, defaultp>(cos(a), sin(a)) * Radius;             
+153         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__random_gea707507f941467133dfdd4f3de9eeed}{
 \index{gtc\_\-random@{gtc\_\-random}!diskRand@{diskRand}}
 \index{diskRand@{diskRand}!gtc_random@{gtc\_\-random}}
 \subsubsection[diskRand]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec2$<$ T, defaultp $>$ glm::diskRand (T const \& {\em Radius})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -76,7 +119,34 @@ Generate a random 2D vector which coordinates are regulary distributed within th
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}
-\hypertarget{group__gtc__random_gc045638daf634b0221ef4baaaf643cb2}{
+
+
+Definition at line 105 of file random.inl.
+
+References glm::length(), and glm::linearRand().
+
+\begin{Code}\begin{verbatim}108         {               
+109                 detail::tvec2<T, defaultp> Result(T(0));
+110                 T LenRadius(T(0));
+111                 
+112                 do
+113                 {
+114                         Result = linearRand(
+115                                 detail::tvec2<T, defaultp>(-Radius),
+116                                 detail::tvec2<T, defaultp>(Radius));
+117                         LenRadius = length(Result);
+118                 }
+119                 while(LenRadius > Radius);
+120                 
+121                 return Result;
+122         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__random_gc045638daf634b0221ef4baaaf643cb2}{
 \index{gtc\_\-random@{gtc\_\-random}!gaussRand@{gaussRand}}
 \index{gaussRand@{gaussRand}!gtc_random@{gtc\_\-random}}
 \subsubsection[gaussRand]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::gaussRand (genType const \& {\em Mean}, \/  genType const \& {\em Deviation})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -92,7 +162,32 @@ Generate random numbers in the interval \mbox{[}Min, Max\mbox{]}, according a ga
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}
-\hypertarget{group__gtc__random_gb955b990407d8d4b62cfe2a2a89d9492}{
+
+
+Definition at line 83 of file random.inl.
+
+References glm::linearRand(), glm::log(), and glm::sqrt().
+
+\begin{Code}\begin{verbatim}87         {
+88                 genType w, x1, x2;
+89         
+90                 do
+91                 {
+92                         x1 = linearRand(genType(-1), genType(1));
+93                         x2 = linearRand(genType(-1), genType(1));
+94                 
+95                         w = x1 * x1 + x2 * x2;
+96                 } while(w > genType(1));
+97         
+98                 return x2 * Deviation * Deviation * sqrt((genType(-2) * log(w)) / w) + Mean;
+99         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__random_gb955b990407d8d4b62cfe2a2a89d9492}{
 \index{gtc\_\-random@{gtc\_\-random}!linearRand@{linearRand}}
 \index{linearRand@{linearRand}!gtc_random@{gtc\_\-random}}
 \subsubsection[linearRand]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::linearRand (genType const \& {\em Min}, \/  genType const \& {\em Max})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -113,7 +208,22 @@ Generate random numbers in the interval \mbox{[}Min, Max\mbox{]}, according a li
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}
-\hypertarget{group__gtc__random_g02f5a6b98ae4e494eef340bcdd38ed35}{
+
+
+Definition at line 71 of file random.inl.
+
+Referenced by glm::ballRand(), glm::circularRand(), glm::diskRand(), glm::gaussRand(), and glm::sphericalRand().
+
+\begin{Code}\begin{verbatim}75         {
+76                 return detail::compute_linearRand()(Min, Max);
+77         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtc__random_g02f5a6b98ae4e494eef340bcdd38ed35}{
 \index{gtc\_\-random@{gtc\_\-random}!sphericalRand@{sphericalRand}}
 \index{sphericalRand@{sphericalRand}!gtc_random@{gtc\_\-random}}
 \subsubsection[sphericalRand]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, defaultp $>$ glm::sphericalRand (T const \& {\em Radius})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -129,3 +239,27 @@ Generate a random 3D vector which coordinates are regulary distributed on a sphe
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__random}{GLM\_\-GTC\_\-random} \end{Desc}
+
+
+Definition at line 157 of file random.inl.
+
+References glm::cos(), glm::linearRand(), glm::sin(), and glm::sqrt().
+
+\begin{Code}\begin{verbatim}160         {
+161                 T z = linearRand(T(-1), T(1));
+162                 T a = linearRand(T(0), T(6.283185307179586476925286766559f));
+163         
+164                 T r = sqrt(T(1) - z * z);
+165         
+166                 T x = r * cos(a);
+167                 T y = r * sin(a);
+168         
+169                 return detail::tvec3<T, defaultp>(x, y, z) * Radius;    
+170         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

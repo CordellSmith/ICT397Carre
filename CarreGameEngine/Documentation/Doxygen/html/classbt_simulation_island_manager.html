@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btSimulationIslandManager Class Reference</title>
+<title>Assignment2 - OOber Taxi: btSimulationIslandManager Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btSimulationIslandManager Class Reference</h1><!-- doxytag: class="btSimulationIslandManager" -->SimulationIslandManager creates and handles simulation islands, using <a class="el" href="classbt_union_find.html" title="UnionFind calculates connected subsets.">btUnionFind</a>.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btSimulationIslandManager.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_simulation_island_manager_8h-source.html">btSimulationIslandManager.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btSimulationIslandManager:</div>
@@ -42,7 +42,7 @@ Collaboration diagram for btSimulationIslandManager:</div>
 <div class="dynsection">
 <p><center><img src="classbt_simulation_island_manager__coll__graph.png" border="0" usemap="#bt_simulation_island_manager__coll__map" alt="Collaboration graph"></center>
 <map name="bt_simulation_island_manager__coll__map">
-<area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionObject * \&gt;" alt="" coords="784,8,1059,35"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionObject *, 16 \&gt;" alt="" coords="363,8,643,35"><area shape="rect" href="classbt_union_find.html" title="UnionFind calculates connected subsets." alt="" coords="876,59,967,85"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btElement \&gt;" alt="" coords="389,59,616,85"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btElement, 16 \&gt;" alt="" coords="5,59,237,85"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btPersistentManifold * \&gt;" alt="" coords="773,109,1069,136"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btPersistentManifold *, 16 \&gt;" alt="" coords="353,109,652,136"></map>
+<area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionObject * \&gt;" alt="" coords="1453,28,1728,55"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionObject *, 16 \&gt;" alt="" coords="637,5,917,32"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,136,229,163"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="433,89,612,116"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btElement, 16 \&gt;" alt="" coords="661,169,893,196"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btPersistentManifold *, 16 \&gt;" alt="" coords="943,233,1241,260"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="1004,83,1180,109"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btElement \&gt;" alt="" coords="1477,89,1704,116"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btPersistentManifold * \&gt;" alt="" coords="1443,143,1739,169"><area shape="rect" href="classbt_union_find.html" title="UnionFind calculates connected subsets." alt="" coords="1864,89,1955,116"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -55,7 +55,9 @@ Collaboration diagram for btSimulationIslandManager:</div>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-SimulationIslandManager creates and handles simulation islands, using <a class="el" href="classbt_union_find.html" title="UnionFind calculates connected subsets.">btUnionFind</a>. <hr><h2>Member Function Documentation</h2>
+SimulationIslandManager creates and handles simulation islands, using <a class="el" href="classbt_union_find.html" title="UnionFind calculates connected subsets.">btUnionFind</a>. 
+<p>Definition at line <a class="el" href="bt_simulation_island_manager_8h-source.html#l00031">31</a> of file <a class="el" href="bt_simulation_island_manager_8h-source.html">btSimulationIslandManager.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="b0f52dc46bc01c6754f4cb32ba26c99a"></a><!-- doxytag: member="btSimulationIslandManager::buildAndProcessIslands" ref="b0f52dc46bc01c6754f4cb32ba26c99a" args="(btDispatcher *dispatcher, btCollisionWorld *collisionWorld, IslandCallback *callback)" -->
 <div class="memitem">
 <div class="memproto">
@@ -92,6 +94,116 @@ SimulationIslandManager creates and handles simulation islands, using <a class="
 
 <p>
 Process the actual simulation, only if not sleeping/deactivated 
+<p>Definition at line <a class="el" href="bt_simulation_island_manager_8cpp-source.html#l00354">354</a> of file <a class="el" href="bt_simulation_island_manager_8cpp-source.html">btSimulationIslandManager.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_simulation_island_manager_8cpp-source.html#l00203">buildIslands()</a>, <a class="el" href="bt_collision_world_8h-source.html#l00488">btCollisionWorld::getCollisionObjectArray()</a>, <a class="el" href="bt_union_find_8h-source.html#l00061">btUnionFind::getElement()</a>, btDispatcher::getInternalManifoldPointer(), <a class="el" href="bt_union_find_8h-source.html#l00052">btUnionFind::getNumElements()</a>, btDispatcher::getNumManifolds(), <a class="el" href="bt_aligned_object_array_8h-source.html#l00274">btAlignedObjectArray&lt; T &gt;::push_back()</a>, <a class="el" href="bt_aligned_object_array_8h-source.html#l00363">btAlignedObjectArray&lt; T &gt;::quickSort()</a>, <a class="el" href="bt_aligned_object_array_8h-source.html#l00218">btAlignedObjectArray&lt; T &gt;::resize()</a>, and <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00355"></a>00355 {
+<a name="l00356"></a>00356         <a class="code" href="classbt_aligned_object_array.html">btCollisionObjectArray</a>&amp; collisionObjects = collisionWorld-&gt;<a class="code" href="classbt_collision_world.html#43e878669b2e755992acc41fad1cda30">getCollisionObjectArray</a>();
+<a name="l00357"></a>00357 
+<a name="l00358"></a>00358         <a class="code" href="classbt_simulation_island_manager.html#ea0b5869eca2d034ac9c643e149a5e01">buildIslands</a>(dispatcher,collisionWorld);
+<a name="l00359"></a>00359 
+<a name="l00360"></a>00360         <span class="keywordtype">int</span> endIslandIndex=1;
+<a name="l00361"></a>00361         <span class="keywordtype">int</span> startIslandIndex;
+<a name="l00362"></a>00362         <span class="keywordtype">int</span> numElem = getUnionFind().<a class="code" href="classbt_union_find.html#89310eac5261eaa57051d1b4990605c8">getNumElements</a>();
+<a name="l00363"></a>00363 
+<a name="l00364"></a>00364         BT_PROFILE(<span class="stringliteral">"processIslands"</span>);
+<a name="l00365"></a>00365 
+<a name="l00366"></a>00366         <span class="keywordflow">if</span>(!m_splitIslands)
+<a name="l00367"></a>00367         {
+<a name="l00368"></a>00368                 btPersistentManifold** manifold = dispatcher-&gt;<a class="code" href="classbt_dispatcher.html#6dc66e497da821c3646e1f89f7d53412">getInternalManifoldPointer</a>();
+<a name="l00369"></a>00369                 <span class="keywordtype">int</span> maxNumManifolds = dispatcher-&gt;<a class="code" href="classbt_dispatcher.html#0c94a046ac053c226d43211c5379c31f">getNumManifolds</a>();
+<a name="l00370"></a>00370                 callback-&gt;processIsland(&amp;collisionObjects[0],collisionObjects.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>(),manifold,maxNumManifolds, -1);
+<a name="l00371"></a>00371         }
+<a name="l00372"></a>00372         <span class="keywordflow">else</span>
+<a name="l00373"></a>00373         {
+<a name="l00374"></a>00374                 <span class="comment">// Sort manifolds, based on islands</span>
+<a name="l00375"></a>00375                 <span class="comment">// Sort the vector using predicate and std::sort</span>
+<a name="l00376"></a>00376                 <span class="comment">//std::sort(islandmanifold.begin(), islandmanifold.end(), btPersistentManifoldSortPredicate);</span>
+<a name="l00377"></a>00377 
+<a name="l00378"></a>00378                 <span class="keywordtype">int</span> numManifolds = int (m_islandmanifold.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>());
+<a name="l00379"></a>00379 
+<a name="l00380"></a>00380                 <span class="comment">//tried a radix sort, but quicksort/heapsort seems still faster</span>
+<a name="l00381"></a>00381                 <span class="comment">//@todo rewrite island management</span>
+<a name="l00382"></a>00382                 m_islandmanifold.<a class="code" href="classbt_aligned_object_array.html#228f2a824ac397c1de311a9c2b775dc4">quickSort</a>(<a class="code" href="classbt_persistent_manifold_sort_predicate.html" title="function object that routes calls to operator&amp;lt;">btPersistentManifoldSortPredicate</a>());
+<a name="l00383"></a>00383                 <span class="comment">//m_islandmanifold.heapSort(btPersistentManifoldSortPredicate());</span>
+<a name="l00384"></a>00384 
+<a name="l00385"></a>00385                 <span class="comment">//now process all active islands (sets of manifolds for now)</span>
+<a name="l00386"></a>00386 
+<a name="l00387"></a>00387                 <span class="keywordtype">int</span> startManifoldIndex = 0;
+<a name="l00388"></a>00388                 <span class="keywordtype">int</span> endManifoldIndex = 1;
+<a name="l00389"></a>00389 
+<a name="l00390"></a>00390                 <span class="comment">//int islandId;</span>
+<a name="l00391"></a>00391 
+<a name="l00392"></a>00392                 
+<a name="l00393"></a>00393 
+<a name="l00394"></a>00394         <span class="comment">//      printf("Start Islands\n");</span>
+<a name="l00395"></a>00395 
+<a name="l00396"></a>00396                 <span class="comment">//traverse the simulation islands, and call the solver, unless all objects are sleeping/deactivated</span>
+<a name="l00397"></a>00397                 <span class="keywordflow">for</span> ( startIslandIndex=0;startIslandIndex&lt;numElem;startIslandIndex = endIslandIndex)
+<a name="l00398"></a>00398                 {
+<a name="l00399"></a>00399                         <span class="keywordtype">int</span> islandId = getUnionFind().<a class="code" href="classbt_union_find.html#b9c9ac633e6a3a43f90da29845b92bd3">getElement</a>(startIslandIndex).m_id;
+<a name="l00400"></a>00400 
+<a name="l00401"></a>00401 
+<a name="l00402"></a>00402                            <span class="keywordtype">bool</span> islandSleeping = <span class="keyword">true</span>;
+<a name="l00403"></a>00403                         
+<a name="l00404"></a>00404                                         <span class="keywordflow">for</span> (endIslandIndex = startIslandIndex;(endIslandIndex&lt;numElem) &amp;&amp; (getUnionFind().getElement(endIslandIndex).m_id == islandId);endIslandIndex++)
+<a name="l00405"></a>00405                                         {
+<a name="l00406"></a>00406                                                         <span class="keywordtype">int</span> i = getUnionFind().<a class="code" href="classbt_union_find.html#b9c9ac633e6a3a43f90da29845b92bd3">getElement</a>(endIslandIndex).m_sz;
+<a name="l00407"></a>00407                                                         btCollisionObject* colObj0 = collisionObjects[i];
+<a name="l00408"></a>00408                                                         m_islandBodies.<a class="code" href="classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1">push_back</a>(colObj0);
+<a name="l00409"></a>00409                                                         <span class="keywordflow">if</span> (colObj0-&gt;isActive())
+<a name="l00410"></a>00410                                                                         islandSleeping = <span class="keyword">false</span>;
+<a name="l00411"></a>00411                                         }
+<a name="l00412"></a>00412                         
+<a name="l00413"></a>00413 
+<a name="l00414"></a>00414                         <span class="comment">//find the accompanying contact manifold for this islandId</span>
+<a name="l00415"></a>00415                         <span class="keywordtype">int</span> numIslandManifolds = 0;
+<a name="l00416"></a>00416                         btPersistentManifold** startManifold = 0;
+<a name="l00417"></a>00417 
+<a name="l00418"></a>00418                         <span class="keywordflow">if</span> (startManifoldIndex&lt;numManifolds)
+<a name="l00419"></a>00419                         {
+<a name="l00420"></a>00420                                 <span class="keywordtype">int</span> curIslandId = getIslandId(m_islandmanifold[startManifoldIndex]);
+<a name="l00421"></a>00421                                 <span class="keywordflow">if</span> (curIslandId == islandId)
+<a name="l00422"></a>00422                                 {
+<a name="l00423"></a>00423                                         startManifold = &amp;m_islandmanifold[startManifoldIndex];
+<a name="l00424"></a>00424                                 
+<a name="l00425"></a>00425                                         <span class="keywordflow">for</span> (endManifoldIndex = startManifoldIndex+1;(endManifoldIndex&lt;numManifolds) &amp;&amp; (islandId == getIslandId(m_islandmanifold[endManifoldIndex]));endManifoldIndex++)
+<a name="l00426"></a>00426                                         {
+<a name="l00427"></a>00427 
+<a name="l00428"></a>00428                                         }
+<a name="l00430"></a>00430                                         numIslandManifolds = endManifoldIndex-startManifoldIndex;
+<a name="l00431"></a>00431                                 }
+<a name="l00432"></a>00432 
+<a name="l00433"></a>00433                         }
+<a name="l00434"></a>00434 
+<a name="l00435"></a>00435                         <span class="keywordflow">if</span> (!islandSleeping)
+<a name="l00436"></a>00436                         {
+<a name="l00437"></a>00437                                 callback-&gt;processIsland(&amp;m_islandBodies[0],m_islandBodies.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>(),startManifold,numIslandManifolds, islandId);
+<a name="l00438"></a>00438         <span class="comment">//                      printf("Island callback of size:%d bodies, %d manifolds\n",islandBodies.size(),numIslandManifolds);</span>
+<a name="l00439"></a>00439                         }
+<a name="l00440"></a>00440                         
+<a name="l00441"></a>00441                         <span class="keywordflow">if</span> (numIslandManifolds)
+<a name="l00442"></a>00442                         {
+<a name="l00443"></a>00443                                 startManifoldIndex = endManifoldIndex;
+<a name="l00444"></a>00444                         }
+<a name="l00445"></a>00445 
+<a name="l00446"></a>00446                         m_islandBodies.<a class="code" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190">resize</a>(0);
+<a name="l00447"></a>00447                 }
+<a name="l00448"></a>00448         } <span class="comment">// else if(!splitIslands) </span>
+<a name="l00449"></a>00449 
+<a name="l00450"></a>00450 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_simulation_island_manager_b0f52dc46bc01c6754f4cb32ba26c99a_cgraph.png" border="0" usemap="#classbt_simulation_island_manager_b0f52dc46bc01c6754f4cb32ba26c99a_cgraph_map" alt=""></center>
+<map name="classbt_simulation_island_manager_b0f52dc46bc01c6754f4cb32ba26c99a_cgraph_map">
+<area shape="rect" href="classbt_simulation_island_manager.html#ea0b5869eca2d034ac9c643e149a5e01" title="btSimulationIslandManager::buildIslands" alt="" coords="379,317,632,344"><area shape="rect" href="classbt_collision_world.html#43e878669b2e755992acc41fad1cda30" title="btCollisionWorld::getCollisionObjectArray" alt="" coords="681,76,940,103"><area shape="rect" href="classbt_union_find.html#b9c9ac633e6a3a43f90da29845b92bd3" title="btUnionFind::getElement" alt="" coords="729,127,892,153"><area shape="rect" href="classbt_union_find.html#89310eac5261eaa57051d1b4990605c8" title="btUnionFind::getNumElements" alt="" coords="712,177,909,204"><area shape="rect" href="classbt_dispatcher.html#0c94a046ac053c226d43211c5379c31f" title="btDispatcher::getNumManifolds" alt="" coords="709,380,912,407"><area shape="rect" href="classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1" title="btAlignedObjectArray::push_back" alt="" coords="703,431,919,457"><area shape="rect" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190" title="btAlignedObjectArray::resize" alt="" coords="717,481,904,508"><area shape="rect" href="classbt_aligned_object_array.html#228f2a824ac397c1de311a9c2b775dc4" title="btAlignedObjectArray::quickSort" alt="" coords="989,140,1197,167"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="1005,317,1181,344"><area shape="rect" href="classbt_dispatcher.html#6dc66e497da821c3646e1f89f7d53412" title="btDispatcher::getInternalManifoldPointer" alt="" coords="380,583,631,609"><area shape="rect" href="classbt_dispatcher.html#39b0732750f15f48d2e8faa2de18d4e0" title="btDispatcher::getManifoldByIndexInternal" alt="" coords="683,329,939,356"><area shape="rect" href="classbt_dispatcher.html#a3ac9c7d70da34e5647da1018880624d" title="btDispatcher::needsResponse" alt="" coords="713,279,908,305"><area shape="rect" href="classbt_union_find.html#8bf4647f84d20b033e0d0a7188f3b798" title="btUnionFind::sortIslands" alt="" coords="731,228,891,255"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="ea0b5869eca2d034ac9c643e149a5e01"></a><!-- doxytag: member="btSimulationIslandManager::buildIslands" ref="ea0b5869eca2d034ac9c643e149a5e01" args="(btDispatcher *dispatcher, btCollisionWorld *colWorld)" -->
@@ -124,12 +236,183 @@ Process the actual simulation, only if not sleeping/deactivated
 <p>
 <dl compact><dt><b><a class="el" href="todo.html#_todo000016">Todo:</a></b></dt><dd>: check sleeping conditions! </dd></dl>
 
+<p>Definition at line <a class="el" href="bt_simulation_island_manager_8cpp-source.html#l00203">203</a> of file <a class="el" href="bt_simulation_island_manager_8cpp-source.html">btSimulationIslandManager.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_collision_world_8h-source.html#l00488">btCollisionWorld::getCollisionObjectArray()</a>, <a class="el" href="bt_union_find_8h-source.html#l00061">btUnionFind::getElement()</a>, btDispatcher::getManifoldByIndexInternal(), <a class="el" href="bt_union_find_8h-source.html#l00052">btUnionFind::getNumElements()</a>, btDispatcher::getNumManifolds(), btDispatcher::needsResponse(), <a class="el" href="bt_aligned_object_array_8h-source.html#l00274">btAlignedObjectArray&lt; T &gt;::push_back()</a>, <a class="el" href="bt_aligned_object_array_8h-source.html#l00218">btAlignedObjectArray&lt; T &gt;::resize()</a>, and <a class="el" href="bt_union_find_8cpp-source.html#l00064">btUnionFind::sortIslands()</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_simulation_island_manager_8cpp-source.html#l00354">buildAndProcessIslands()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00204"></a>00204 {
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206         BT_PROFILE(<span class="stringliteral">"islandUnionFindAndQuickSort"</span>);
+<a name="l00207"></a>00207         
+<a name="l00208"></a>00208         <a class="code" href="classbt_aligned_object_array.html">btCollisionObjectArray</a>&amp; collisionObjects = collisionWorld-&gt;getCollisionObjectArray();
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210         m_islandmanifold.<a class="code" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190">resize</a>(0);
+<a name="l00211"></a>00211 
+<a name="l00212"></a>00212         <span class="comment">//we are going to sort the unionfind array, and store the element id in the size</span>
+<a name="l00213"></a>00213         <span class="comment">//afterwards, we clean unionfind, to make sure no-one uses it anymore</span>
+<a name="l00214"></a>00214         
+<a name="l00215"></a>00215         getUnionFind().<a class="code" href="classbt_union_find.html#8bf4647f84d20b033e0d0a7188f3b798">sortIslands</a>();
+<a name="l00216"></a>00216         <span class="keywordtype">int</span> numElem = getUnionFind().<a class="code" href="classbt_union_find.html#89310eac5261eaa57051d1b4990605c8">getNumElements</a>();
+<a name="l00217"></a>00217 
+<a name="l00218"></a>00218         <span class="keywordtype">int</span> endIslandIndex=1;
+<a name="l00219"></a>00219         <span class="keywordtype">int</span> startIslandIndex;
+<a name="l00220"></a>00220 
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222         <span class="comment">//update the sleeping state for bodies, if all are sleeping</span>
+<a name="l00223"></a>00223         <span class="keywordflow">for</span> ( startIslandIndex=0;startIslandIndex&lt;numElem;startIslandIndex = endIslandIndex)
+<a name="l00224"></a>00224         {
+<a name="l00225"></a>00225                 <span class="keywordtype">int</span> islandId = getUnionFind().<a class="code" href="classbt_union_find.html#b9c9ac633e6a3a43f90da29845b92bd3">getElement</a>(startIslandIndex).m_id;
+<a name="l00226"></a>00226                 <span class="keywordflow">for</span> (endIslandIndex = startIslandIndex+1;(endIslandIndex&lt;numElem) &amp;&amp; (getUnionFind().getElement(endIslandIndex).m_id == islandId);endIslandIndex++)
+<a name="l00227"></a>00227                 {
+<a name="l00228"></a>00228                 }
+<a name="l00229"></a>00229 
+<a name="l00230"></a>00230                 <span class="comment">//int numSleeping = 0;</span>
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232                 <span class="keywordtype">bool</span> allSleeping = <span class="keyword">true</span>;
+<a name="l00233"></a>00233 
+<a name="l00234"></a>00234                 <span class="keywordtype">int</span> idx;
+<a name="l00235"></a>00235                 <span class="keywordflow">for</span> (idx=startIslandIndex;idx&lt;endIslandIndex;idx++)
+<a name="l00236"></a>00236                 {
+<a name="l00237"></a>00237                         <span class="keywordtype">int</span> i = getUnionFind().<a class="code" href="classbt_union_find.html#b9c9ac633e6a3a43f90da29845b92bd3">getElement</a>(idx).m_sz;
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239                         btCollisionObject* colObj0 = collisionObjects[i];
+<a name="l00240"></a>00240                         <span class="keywordflow">if</span> ((colObj0-&gt;getIslandTag() != islandId) &amp;&amp; (colObj0-&gt;getIslandTag() != -1))
+<a name="l00241"></a>00241                         {
+<a name="l00242"></a>00242 <span class="comment">//                              printf("error in island management\n");</span>
+<a name="l00243"></a>00243                         }
+<a name="l00244"></a>00244 
+<a name="l00245"></a>00245                         btAssert((colObj0-&gt;getIslandTag() == islandId) || (colObj0-&gt;getIslandTag() == -1));
+<a name="l00246"></a>00246                         <span class="keywordflow">if</span> (colObj0-&gt;getIslandTag() == islandId)
+<a name="l00247"></a>00247                         {
+<a name="l00248"></a>00248                                 <span class="keywordflow">if</span> (colObj0-&gt;getActivationState()== ACTIVE_TAG)
+<a name="l00249"></a>00249                                 {
+<a name="l00250"></a>00250                                         allSleeping = <span class="keyword">false</span>;
+<a name="l00251"></a>00251                                 }
+<a name="l00252"></a>00252                                 <span class="keywordflow">if</span> (colObj0-&gt;getActivationState()== DISABLE_DEACTIVATION)
+<a name="l00253"></a>00253                                 {
+<a name="l00254"></a>00254                                         allSleeping = <span class="keyword">false</span>;
+<a name="l00255"></a>00255                                 }
+<a name="l00256"></a>00256                         }
+<a name="l00257"></a>00257                 }
+<a name="l00258"></a>00258                         
+<a name="l00259"></a>00259 
+<a name="l00260"></a>00260                 <span class="keywordflow">if</span> (allSleeping)
+<a name="l00261"></a>00261                 {
+<a name="l00262"></a>00262                         <span class="keywordtype">int</span> idx;
+<a name="l00263"></a>00263                         <span class="keywordflow">for</span> (idx=startIslandIndex;idx&lt;endIslandIndex;idx++)
+<a name="l00264"></a>00264                         {
+<a name="l00265"></a>00265                                 <span class="keywordtype">int</span> i = getUnionFind().<a class="code" href="classbt_union_find.html#b9c9ac633e6a3a43f90da29845b92bd3">getElement</a>(idx).m_sz;
+<a name="l00266"></a>00266                                 btCollisionObject* colObj0 = collisionObjects[i];
+<a name="l00267"></a>00267                                 <span class="keywordflow">if</span> ((colObj0-&gt;getIslandTag() != islandId) &amp;&amp; (colObj0-&gt;getIslandTag() != -1))
+<a name="l00268"></a>00268                                 {
+<a name="l00269"></a>00269 <span class="comment">//                                      printf("error in island management\n");</span>
+<a name="l00270"></a>00270                                 }
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272                                 btAssert((colObj0-&gt;getIslandTag() == islandId) || (colObj0-&gt;getIslandTag() == -1));
+<a name="l00273"></a>00273 
+<a name="l00274"></a>00274                                 <span class="keywordflow">if</span> (colObj0-&gt;getIslandTag() == islandId)
+<a name="l00275"></a>00275                                 {
+<a name="l00276"></a>00276                                         colObj0-&gt;setActivationState( ISLAND_SLEEPING );
+<a name="l00277"></a>00277                                 }
+<a name="l00278"></a>00278                         }
+<a name="l00279"></a>00279                 } <span class="keywordflow">else</span>
+<a name="l00280"></a>00280                 {
+<a name="l00281"></a>00281 
+<a name="l00282"></a>00282                         <span class="keywordtype">int</span> idx;
+<a name="l00283"></a>00283                         <span class="keywordflow">for</span> (idx=startIslandIndex;idx&lt;endIslandIndex;idx++)
+<a name="l00284"></a>00284                         {
+<a name="l00285"></a>00285                                 <span class="keywordtype">int</span> i = getUnionFind().<a class="code" href="classbt_union_find.html#b9c9ac633e6a3a43f90da29845b92bd3">getElement</a>(idx).m_sz;
+<a name="l00286"></a>00286 
+<a name="l00287"></a>00287                                 btCollisionObject* colObj0 = collisionObjects[i];
+<a name="l00288"></a>00288                                 <span class="keywordflow">if</span> ((colObj0-&gt;getIslandTag() != islandId) &amp;&amp; (colObj0-&gt;getIslandTag() != -1))
+<a name="l00289"></a>00289                                 {
+<a name="l00290"></a>00290 <span class="comment">//                                      printf("error in island management\n");</span>
+<a name="l00291"></a>00291                                 }
+<a name="l00292"></a>00292 
+<a name="l00293"></a>00293                                 btAssert((colObj0-&gt;getIslandTag() == islandId) || (colObj0-&gt;getIslandTag() == -1));
+<a name="l00294"></a>00294 
+<a name="l00295"></a>00295                                 <span class="keywordflow">if</span> (colObj0-&gt;getIslandTag() == islandId)
+<a name="l00296"></a>00296                                 {
+<a name="l00297"></a>00297                                         <span class="keywordflow">if</span> ( colObj0-&gt;getActivationState() == ISLAND_SLEEPING)
+<a name="l00298"></a>00298                                         {
+<a name="l00299"></a>00299                                                 colObj0-&gt;setActivationState( WANTS_DEACTIVATION);
+<a name="l00300"></a>00300                                                 colObj0-&gt;setDeactivationTime(0.f);
+<a name="l00301"></a>00301                                         }
+<a name="l00302"></a>00302                                 }
+<a name="l00303"></a>00303                         }
+<a name="l00304"></a>00304                 }
+<a name="l00305"></a>00305         }
+<a name="l00306"></a>00306 
+<a name="l00307"></a>00307         
+<a name="l00308"></a>00308         <span class="keywordtype">int</span> i;
+<a name="l00309"></a>00309         <span class="keywordtype">int</span> maxNumManifolds = dispatcher-&gt;<a class="code" href="classbt_dispatcher.html#0c94a046ac053c226d43211c5379c31f">getNumManifolds</a>();
+<a name="l00310"></a>00310 
+<a name="l00311"></a>00311 <span class="comment">//#define SPLIT_ISLANDS 1</span>
+<a name="l00312"></a>00312 <span class="comment">//#ifdef SPLIT_ISLANDS</span>
+<a name="l00313"></a>00313 
+<a name="l00314"></a>00314         
+<a name="l00315"></a>00315 <span class="comment">//#endif //SPLIT_ISLANDS</span>
+<a name="l00316"></a>00316 
+<a name="l00317"></a>00317         
+<a name="l00318"></a>00318         <span class="keywordflow">for</span> (i=0;i&lt;maxNumManifolds ;i++)
+<a name="l00319"></a>00319         {
+<a name="l00320"></a>00320                  btPersistentManifold* manifold = dispatcher-&gt;<a class="code" href="classbt_dispatcher.html#39b0732750f15f48d2e8faa2de18d4e0">getManifoldByIndexInternal</a>(i);
+<a name="l00321"></a>00321                  
+<a name="l00322"></a>00322                  <span class="keyword">const</span> btCollisionObject* colObj0 = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>btCollisionObject*<span class="keyword">&gt;</span>(manifold-&gt;getBody0());
+<a name="l00323"></a>00323                  <span class="keyword">const</span> btCollisionObject* colObj1 = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>btCollisionObject*<span class="keyword">&gt;</span>(manifold-&gt;getBody1());
+<a name="l00324"></a>00324                 
+<a name="l00326"></a>00326                  <span class="keywordflow">if</span> (((colObj0) &amp;&amp; colObj0-&gt;getActivationState() != ISLAND_SLEEPING) ||
+<a name="l00327"></a>00327                         ((colObj1) &amp;&amp; colObj1-&gt;getActivationState() != ISLAND_SLEEPING))
+<a name="l00328"></a>00328                 {
+<a name="l00329"></a>00329                 
+<a name="l00330"></a>00330                         <span class="comment">//kinematic objects don't merge islands, but wake up all connected objects</span>
+<a name="l00331"></a>00331                         <span class="keywordflow">if</span> (colObj0-&gt;isKinematicObject() &amp;&amp; colObj0-&gt;getActivationState() != ISLAND_SLEEPING)
+<a name="l00332"></a>00332                         {
+<a name="l00333"></a>00333                                 <span class="keywordflow">if</span> (colObj0-&gt;hasContactResponse())
+<a name="l00334"></a>00334                                         colObj1-&gt;activate();
+<a name="l00335"></a>00335                         }
+<a name="l00336"></a>00336                         <span class="keywordflow">if</span> (colObj1-&gt;isKinematicObject() &amp;&amp; colObj1-&gt;getActivationState() != ISLAND_SLEEPING)
+<a name="l00337"></a>00337                         {
+<a name="l00338"></a>00338                                 <span class="keywordflow">if</span> (colObj1-&gt;hasContactResponse())
+<a name="l00339"></a>00339                                         colObj0-&gt;activate();
+<a name="l00340"></a>00340                         }
+<a name="l00341"></a>00341                         <span class="keywordflow">if</span>(m_splitIslands)
+<a name="l00342"></a>00342                         { 
+<a name="l00343"></a>00343                                 <span class="comment">//filtering for response</span>
+<a name="l00344"></a>00344                                 <span class="keywordflow">if</span> (dispatcher-&gt;<a class="code" href="classbt_dispatcher.html#a3ac9c7d70da34e5647da1018880624d">needsResponse</a>(colObj0,colObj1))
+<a name="l00345"></a>00345                                         m_islandmanifold.<a class="code" href="classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1">push_back</a>(manifold);
+<a name="l00346"></a>00346                         }
+<a name="l00347"></a>00347                 }
+<a name="l00348"></a>00348         }
+<a name="l00349"></a>00349 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_simulation_island_manager_ea0b5869eca2d034ac9c643e149a5e01_cgraph.png" border="0" usemap="#classbt_simulation_island_manager_ea0b5869eca2d034ac9c643e149a5e01_cgraph_map" alt=""></center>
+<map name="classbt_simulation_island_manager_ea0b5869eca2d034ac9c643e149a5e01_cgraph_map">
+<area shape="rect" href="classbt_collision_world.html#43e878669b2e755992acc41fad1cda30" title="btCollisionWorld::getCollisionObjectArray" alt="" coords="308,5,567,32"><area shape="rect" href="classbt_union_find.html#b9c9ac633e6a3a43f90da29845b92bd3" title="btUnionFind::getElement" alt="" coords="356,56,519,83"><area shape="rect" href="classbt_dispatcher.html#39b0732750f15f48d2e8faa2de18d4e0" title="btDispatcher::getManifoldByIndexInternal" alt="" coords="309,107,565,133"><area shape="rect" href="classbt_union_find.html#89310eac5261eaa57051d1b4990605c8" title="btUnionFind::getNumElements" alt="" coords="339,157,536,184"><area shape="rect" href="classbt_dispatcher.html#0c94a046ac053c226d43211c5379c31f" title="btDispatcher::getNumManifolds" alt="" coords="336,208,539,235"><area shape="rect" href="classbt_dispatcher.html#a3ac9c7d70da34e5647da1018880624d" title="btDispatcher::needsResponse" alt="" coords="340,259,535,285"><area shape="rect" href="classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1" title="btAlignedObjectArray::push_back" alt="" coords="329,309,545,336"><area shape="rect" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190" title="btAlignedObjectArray::resize" alt="" coords="344,360,531,387"><area shape="rect" href="classbt_union_find.html#8bf4647f84d20b033e0d0a7188f3b798" title="btUnionFind::sortIslands" alt="" coords="357,411,517,437"><area shape="rect" href="classbt_aligned_object_array.html#228f2a824ac397c1de311a9c2b775dc4" title="btAlignedObjectArray::quickSort" alt="" coords="616,385,824,412"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="632,436,808,463"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_simulation_island_manager_ea0b5869eca2d034ac9c643e149a5e01_icgraph.png" border="0" usemap="#classbt_simulation_island_manager_ea0b5869eca2d034ac9c643e149a5e01_icgraph_map" alt=""></center>
+<map name="classbt_simulation_island_manager_ea0b5869eca2d034ac9c643e149a5e01_icgraph_map">
+<area shape="rect" href="classbt_simulation_island_manager.html#b0f52dc46bc01c6754f4cb32ba26c99a" title="btSimulationIslandManager::buildAndProcessIslands" alt="" coords="308,5,631,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSimulationIslandManager.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSimulationIslandManager.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/<a class="el" href="bt_simulation_island_manager_8h-source.html">btSimulationIslandManager.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/<a class="el" href="bt_simulation_island_manager_8cpp-source.html">btSimulationIslandManager.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:48 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:51 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

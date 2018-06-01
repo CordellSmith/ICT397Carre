@@ -8,4 +8,7 @@ digraph G
   Node2 [label="btAxisSweep3Internal\< unsigned short int \>",height=0.2,width=0.4,color="black",URL="$classbt_axis_sweep3_internal.html"];
   Node3 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
   Node3 [label="btBroadphaseInterface",height=0.2,width=0.4,color="black",URL="$classbt_broadphase_interface.html"];
+  Node4 -> Node2 [dir=back,color="orange",fontsize=10,style="dashed",label="\< unsigned short int \>"];
+  Node4 [label="btAxisSweep3Internal\< BP_FP_INT_TYPE \>",height=0.2,width=0.4,color="black",URL="$classbt_axis_sweep3_internal.html"];
+  Node3 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
 }

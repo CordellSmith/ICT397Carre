@@ -81,6 +81,17 @@ Interleaves the bits of x, y, z and w. The first bit is the first bit of x follo
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 777 of file bit.inl.
+
+\begin{Code}\begin{verbatim}778         {
+779                 return detail::bitfieldInterleave<uint16, uint64>(x, y, z, w);
+780         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_g09ee0be0fac790a1607a711e597dd9bf}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
@@ -92,7 +103,40 @@ Interleaves the bits of x, y, z and w. The first bit is the first bit of x follo
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_g447c0bbed9d60c14578626d8f03f3755}{
+
+
+Definition at line 754 of file bit.inl.
+
+References glm::bitfieldInterleave().
+
+\begin{Code}\begin{verbatim}755         {
+756                 union sign16
+757                 {
+758                         int16 i;
+759                         uint16 u;
+760                 } sign_x, sign_y, sign_z, sign_w;
+761 
+762                 union sign64
+763                 {
+764                         int64 i;
+765                         uint64 u;
+766                 } result;
+767 
+768                 sign_x.i = x;
+769                 sign_y.i = y;
+770                 sign_z.i = z;
+771                 sign_w.i = w;
+772                 result.u = bitfieldInterleave(sign_x.u, sign_y.u, sign_z.u, sign_w.u);
+773 
+774                 return result.i;
+775         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__bit_g447c0bbed9d60c14578626d8f03f3755}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[bitfieldInterleave]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint32 glm::bitfieldInterleave (uint8 {\em x}, \/  uint8 {\em y}, \/  uint8 {\em z}, \/  uint8 {\em w})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -103,6 +147,17 @@ Interleaves the bits of x, y, z and w. The first bit is the first bit of x follo
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 749 of file bit.inl.
+
+\begin{Code}\begin{verbatim}750         {
+751                 return detail::bitfieldInterleave<uint8, uint32>(x, y, z, w);
+752         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_g7da84ecc2b3a46c9c08a9f40012359cf}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
@@ -114,7 +169,40 @@ Interleaves the bits of x, y, z and w. The first bit is the first bit of x follo
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_g7c10eb37f608365cfaef5ca2c476e1ce}{
+
+
+Definition at line 726 of file bit.inl.
+
+References glm::bitfieldInterleave().
+
+\begin{Code}\begin{verbatim}727         {
+728                 union sign8
+729                 {
+730                         int8 i;
+731                         uint8 u;
+732                 } sign_x, sign_y, sign_z, sign_w;
+733 
+734                 union sign32
+735                 {
+736                         int32 i;
+737                         uint32 u;
+738                 } result;
+739 
+740                 sign_x.i = x;
+741                 sign_y.i = y;
+742                 sign_z.i = z;
+743                 sign_w.i = w;
+744                 result.u = bitfieldInterleave(sign_x.u, sign_y.u, sign_z.u, sign_w.u);
+745 
+746                 return result.i;
+747         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__bit_g7c10eb37f608365cfaef5ca2c476e1ce}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[bitfieldInterleave]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint64 glm::bitfieldInterleave (uint32 {\em x}, \/  uint32 {\em y}, \/  uint32 {\em z})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -125,6 +213,17 @@ Interleaves the bits of x, y and z. The first bit is the first bit of x followed
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 721 of file bit.inl.
+
+\begin{Code}\begin{verbatim}722         {
+723                 return detail::bitfieldInterleave<uint32, uint64>(x, y, z);
+724         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_g64e2d84f6560af3cc639644b1e628c42}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
@@ -136,7 +235,39 @@ Interleaves the bits of x, y and z. The first bit is the first bit of x followed
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_g3c170e2ec54f2faab5e1c5bb693d718d}{
+
+
+Definition at line 699 of file bit.inl.
+
+References glm::bitfieldInterleave().
+
+\begin{Code}\begin{verbatim}700         {
+701                 union sign16
+702                 {
+703                         int32 i;
+704                         uint32 u;
+705                 } sign_x, sign_y, sign_z;
+706 
+707                 union sign64
+708                 {
+709                         int64 i;
+710                         uint64 u;
+711                 } result;
+712 
+713                 sign_x.i = x;
+714                 sign_y.i = y;
+715                 sign_z.i = z;
+716                 result.u = bitfieldInterleave(sign_x.u, sign_y.u, sign_z.u);
+717 
+718                 return result.i;
+719         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__bit_g3c170e2ec54f2faab5e1c5bb693d718d}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[bitfieldInterleave]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint64 glm::bitfieldInterleave (uint16 {\em x}, \/  uint16 {\em y}, \/  uint16 {\em z})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -147,6 +278,17 @@ Interleaves the bits of x, y and z. The first bit is the first bit of x followed
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 694 of file bit.inl.
+
+\begin{Code}\begin{verbatim}695         {
+696                 return detail::bitfieldInterleave<uint32, uint64>(x, y, z);
+697         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_gf898f842ac089fcc8d6201c32702584a}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
@@ -158,7 +300,39 @@ Interleaves the bits of x, y and z. The first bit is the first bit of x followed
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_gb9d593a2e916beb8f8137a0dbeae3afe}{
+
+
+Definition at line 672 of file bit.inl.
+
+References glm::bitfieldInterleave().
+
+\begin{Code}\begin{verbatim}673         {
+674                 union sign16
+675                 {
+676                         int16 i;
+677                         uint16 u;
+678                 } sign_x, sign_y, sign_z;
+679 
+680                 union sign64
+681                 {
+682                         int64 i;
+683                         uint64 u;
+684                 } result;
+685 
+686                 sign_x.i = x;
+687                 sign_y.i = y;
+688                 sign_z.i = z;
+689                 result.u = bitfieldInterleave(sign_x.u, sign_y.u, sign_z.u);
+690 
+691                 return result.i;
+692         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__bit_gb9d593a2e916beb8f8137a0dbeae3afe}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[bitfieldInterleave]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint32 glm::bitfieldInterleave (uint8 {\em x}, \/  uint8 {\em y}, \/  uint8 {\em z})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -169,6 +343,17 @@ Interleaves the bits of x, y and z. The first bit is the first bit of x followed
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 667 of file bit.inl.
+
+\begin{Code}\begin{verbatim}668         {
+669                 return detail::bitfieldInterleave<uint8, uint32>(x, y, z);
+670         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_g6dee2ce1c45805063bb7fc5f6fd8f5ca}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
@@ -180,7 +365,39 @@ Interleaves the bits of x, y and z. The first bit is the first bit of x followed
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_g2bc87fd66f6f8471c1a46888360cef12}{
+
+
+Definition at line 645 of file bit.inl.
+
+References glm::bitfieldInterleave().
+
+\begin{Code}\begin{verbatim}646         {
+647                 union sign8
+648                 {
+649                         int8 i;
+650                         uint8 u;
+651                 } sign_x, sign_y, sign_z;
+652 
+653                 union sign32
+654                 {
+655                         int32 i;
+656                         uint32 u;
+657                 } result;
+658 
+659                 sign_x.i = x;
+660                 sign_y.i = y;
+661                 sign_z.i = z;
+662                 result.u = bitfieldInterleave(sign_x.u, sign_y.u, sign_z.u);
+663 
+664                 return result.i;
+665         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__bit_g2bc87fd66f6f8471c1a46888360cef12}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[bitfieldInterleave]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint64 glm::bitfieldInterleave (uint32 {\em x}, \/  uint32 {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -191,6 +408,17 @@ Interleaves the bits of x and y. The first bit is the first bit of x followed by
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 640 of file bit.inl.
+
+\begin{Code}\begin{verbatim}641         {
+642                 return detail::bitfieldInterleave<uint32, uint64>(x, y);
+643         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_g0de51d5985e6a703f305a5a61479babd}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
@@ -202,7 +430,38 @@ Interleaves the bits of x and y. The first bit is the first bit of x followed by
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_g19ef8360379483e3ee245e89cb62ff93}{
+
+
+Definition at line 619 of file bit.inl.
+
+References glm::bitfieldInterleave().
+
+\begin{Code}\begin{verbatim}620         {
+621                 union sign32
+622                 {
+623                         int32 i;
+624                         uint32 u;
+625                 } sign_x, sign_y;
+626 
+627                 union sign64
+628                 {
+629                         int64 i;
+630                         uint64 u;
+631                 } result;
+632 
+633                 sign_x.i = x;
+634                 sign_y.i = y;
+635                 result.u = bitfieldInterleave(sign_x.u, sign_y.u);
+636 
+637                 return result.i;
+638         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__bit_g19ef8360379483e3ee245e89cb62ff93}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[bitfieldInterleave]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint32 glm::bitfieldInterleave (uint16 {\em x}, \/  uint16 {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -213,6 +472,17 @@ Interleaves the bits of x and y. The first bit is the first bit of x followed by
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 614 of file bit.inl.
+
+\begin{Code}\begin{verbatim}615         {
+616                 return detail::bitfieldInterleave<uint16, uint32>(x, y);
+617         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_g1a0264598647ae00a596865af4e1e878}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
@@ -224,7 +494,38 @@ Interleaves the bits of x and y. The first bit is the first bit of x followed by
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_g0700a3ceb088a0ecc23d76c154096061}{
+
+
+Definition at line 593 of file bit.inl.
+
+References glm::bitfieldInterleave().
+
+\begin{Code}\begin{verbatim}594         {
+595                 union sign16
+596                 {
+597                         int16 i;
+598                         uint16 u;
+599                 } sign_x, sign_y;
+600 
+601                 union sign32
+602                 {
+603                         int32 i;
+604                         uint32 u;
+605                 } result;
+606 
+607                 sign_x.i = x;
+608                 sign_y.i = y;
+609                 result.u = bitfieldInterleave(sign_x.u, sign_y.u);
+610 
+611                 return result.i;
+612         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__bit_g0700a3ceb088a0ecc23d76c154096061}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[bitfieldInterleave]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint16 glm::bitfieldInterleave (uint8 {\em x}, \/  uint8 {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -235,6 +536,17 @@ Interleaves the bits of x and y. The first bit is the first bit of x followed by
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 588 of file bit.inl.
+
+\begin{Code}\begin{verbatim}589         {
+590                 return detail::bitfieldInterleave<uint8, uint16>(x, y);
+591         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_g479134317bc95d99f2b2e235d3db287b}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitfieldInterleave@{bitfieldInterleave}}
 \index{bitfieldInterleave@{bitfieldInterleave}!gtx_bit@{gtx\_\-bit}}
@@ -246,7 +558,38 @@ Interleaves the bits of x and y. The first bit is the first bit of x followed by
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_g878bcf889f80259fcf86d0e25db92af4}{
+
+
+Definition at line 567 of file bit.inl.
+
+Referenced by glm::bitfieldInterleave().
+
+\begin{Code}\begin{verbatim}568         {
+569                 union sign8
+570                 {
+571                         int8 i;
+572                         uint8 u;
+573                 } sign_x, sign_y;
+574 
+575                 union sign16
+576                 {
+577                         int16 i;
+578                         uint16 u;
+579                 } result;
+580 
+581                 sign_x.i = x;
+582                 sign_y.i = y;
+583                 result.u = bitfieldInterleave(sign_x.u, sign_y.u);
+584 
+585                 return result.i;
+586         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtx__bit_g878bcf889f80259fcf86d0e25db92af4}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitRevert@{bitRevert}}
 \index{bitRevert@{bitRevert}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[bitRevert]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::bitRevert (genType const \& {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -255,6 +598,24 @@ Interleaves the bits of x and y. The first bit is the first bit of x followed by
 
 Revert all bits of any integer based type. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 168 of file bit.inl.
+
+\begin{Code}\begin{verbatim}169         {
+170                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_integer, "'bitRevert' only accept integer values");
+171 
+172                 genType Out = 0;
+173                 std::size_t BitSize = sizeof(genType) * 8;
+174                 for(std::size_t i = 0; i < BitSize; ++i)
+175                         if(In & (genType(1) << i))
+176                                 Out |= genType(1) << (BitSize - 1 - i);
+177                 return Out;
+178         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_g4cd980832ab9c35c73f8c76b8f309c92}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitRotateLeft@{bitRotateLeft}}
 \index{bitRotateLeft@{bitRotateLeft}!gtx_bit@{gtx\_\-bit}}
@@ -264,6 +625,20 @@ Revert all bits of any integer based type. \begin{Desc}
 
 Rotate all bits to the left. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 231 of file bit.inl.
+
+\begin{Code}\begin{verbatim}232         {
+233                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_integer, "'bitRotateLeft' only accept integer values");
+234 
+235                 std::size_t BitSize = sizeof(genType) * 8;
+236                 return (In >> Shift) | (In << (BitSize - Shift));
+237         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_g01a6893d9fa57a4df1f6f7b0d399268d}{
 \index{gtx\_\-bit@{gtx\_\-bit}!bitRotateRight@{bitRotateRight}}
 \index{bitRotateRight@{bitRotateRight}!gtx_bit@{gtx\_\-bit}}
@@ -273,6 +648,20 @@ Rotate all bits to the left. \begin{Desc}
 
 Rotate all bits to the right. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 183 of file bit.inl.
+
+\begin{Code}\begin{verbatim}184         {
+185                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_integer, "'bitRotateRight' only accept integer values");
+186 
+187                 std::size_t BitSize = sizeof(genType) * 8;
+188                 return (In << Shift) | (In >> (BitSize - Shift));
+189         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_g98140d04738cfe05d70f090a7f1151f9}{
 \index{gtx\_\-bit@{gtx\_\-bit}!fillBitfieldWithOne@{fillBitfieldWithOne}}
 \index{fillBitfieldWithOne@{fillBitfieldWithOne}!gtx_bit@{gtx\_\-bit}}
@@ -282,6 +671,23 @@ Rotate all bits to the right. \begin{Desc}
 
 Set to 1 a range of bits. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 280 of file bit.inl.
+
+\begin{Code}\begin{verbatim}285         {
+286                 assert(FromBit <= ToBit);
+287                 assert(ToBit <= sizeof(genIUType) * std::size_t(8));
+288 
+289                 genIUType Result = Value;
+290                 for(signed i = 0; i <= ToBit; ++i)
+291                         Result |= (1 << i);
+292                 return Result;
+293         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_gd7bf903dae07525ab89be5a3cad616a7}{
 \index{gtx\_\-bit@{gtx\_\-bit}!fillBitfieldWithZero@{fillBitfieldWithZero}}
 \index{fillBitfieldWithZero@{fillBitfieldWithZero}!gtx_bit@{gtx\_\-bit}}
@@ -291,6 +697,23 @@ Set to 1 a range of bits. \begin{Desc}
 
 Set to 0 a range of bits. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 297 of file bit.inl.
+
+\begin{Code}\begin{verbatim}302         {
+303                 assert(FromBit <= ToBit);
+304                 assert(ToBit <= sizeof(genIUType) * std::size_t(8));
+305 
+306                 genIUType Result = Value;
+307                 for(signed i = 0; i <= ToBit; ++i)
+308                         Result &= ~(1 << i);
+309                 return Result;
+310         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_gda4310fc2dd8db30392da133067ed13e}{
 \index{gtx\_\-bit@{gtx\_\-bit}!highestBitValue@{highestBitValue}}
 \index{highestBitValue@{highestBitValue}!gtx_bit@{gtx\_\-bit}}
@@ -300,7 +723,29 @@ Set to 0 a range of bits. \begin{Desc}
 
 Find the highest bit set to 1 in a integer variable and return its value. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_g2b12722968dabd423334391d1fd42acd}{
+
+
+Definition at line 29 of file bit.inl.
+
+Referenced by glm::powerOfTwoAbove(), glm::powerOfTwoBelow(), and glm::powerOfTwoNearest().
+
+\begin{Code}\begin{verbatim}32         {
+33                 genType tmp = value;
+34                 genType result = genType(0);
+35                 while(tmp)
+36                 {
+37                         result = (tmp & (~tmp + 1)); // grab lowest bit
+38                         tmp &= ~result; // clear lowest bit
+39                 }
+40                 return result;
+41         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtx__bit_g2b12722968dabd423334391d1fd42acd}{
 \index{gtx\_\-bit@{gtx\_\-bit}!isPowerOfTwo@{isPowerOfTwo}}
 \index{isPowerOfTwo@{isPowerOfTwo}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[isPowerOfTwo]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isPowerOfTwo (genType const \& {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -309,7 +754,33 @@ Find the highest bit set to 1 in a integer variable and return its value. \begin
 
 Return true if the value is a power of two number. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_g7a909d8e8b8a5f73ed643bdca7602017}{
+
+
+Definition at line 81 of file bit.inl.
+
+References glm::abs().
+
+Referenced by glm::powerOfTwoAbove(), glm::powerOfTwoBelow(), and glm::powerOfTwoNearest().
+
+\begin{Code}\begin{verbatim}82         {
+83                 //detail::If<std::numeric_limits<genType>::is_signed>::apply(abs, Value);
+84                 //return !(Value & (Value - 1));
+85 
+86                 // For old complier?
+87                 genType Result = Value;
+88                 if(std::numeric_limits<genType>::is_signed)
+89                         Result = abs(Result);
+90                 return !(Result & (Result - 1));
+91         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtx__bit_g7a909d8e8b8a5f73ed643bdca7602017}{
 \index{gtx\_\-bit@{gtx\_\-bit}!mask@{mask}}
 \index{mask@{mask}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[mask]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genIType$>$ GLM\_\-FUNC\_\-QUALIFIER genIType glm::mask (genIType const \& {\em count})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -318,6 +789,17 @@ Return true if the value is a power of two number. \begin{Desc}
 
 Build a mask of 'count' bits \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 17 of file bit.inl.
+
+\begin{Code}\begin{verbatim}20         {
+21                 return ((genIType(1) << (count)) - genIType(1));
+22         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__bit_gf27d271ec57b96b6acae9395b9c4a365}{
 \index{gtx\_\-bit@{gtx\_\-bit}!powerOfTwoAbove@{powerOfTwoAbove}}
 \index{powerOfTwoAbove@{powerOfTwoAbove}!gtx_bit@{gtx\_\-bit}}
@@ -327,7 +809,22 @@ Build a mask of 'count' bits \begin{Desc}
 
 Return the power of two number which value is just higher the input value. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_ga0bb1687b43f594a471c5506cc505dce}{
+
+
+Definition at line 131 of file bit.inl.
+
+References glm::highestBitValue(), and glm::isPowerOfTwo().
+
+\begin{Code}\begin{verbatim}132         {
+133                 return isPowerOfTwo(value) ? value : highestBitValue(value) << 1;
+134         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__bit_ga0bb1687b43f594a471c5506cc505dce}{
 \index{gtx\_\-bit@{gtx\_\-bit}!powerOfTwoBelow@{powerOfTwoBelow}}
 \index{powerOfTwoBelow@{powerOfTwoBelow}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[powerOfTwoBelow]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::powerOfTwoBelow (genType const \& {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -336,7 +833,22 @@ Return the power of two number which value is just higher the input value. \begi
 
 Return the power of two number which value is just lower the input value. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
-\hypertarget{group__gtx__bit_g0e3c8f921e59dc07ad9c70bb1376799c}{
+
+
+Definition at line 141 of file bit.inl.
+
+References glm::highestBitValue(), and glm::isPowerOfTwo().
+
+\begin{Code}\begin{verbatim}144         {
+145                 return isPowerOfTwo(value) ? value : highestBitValue(value);
+146         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__bit_g0e3c8f921e59dc07ad9c70bb1376799c}{
 \index{gtx\_\-bit@{gtx\_\-bit}!powerOfTwoNearest@{powerOfTwoNearest}}
 \index{powerOfTwoNearest@{powerOfTwoNearest}!gtx_bit@{gtx\_\-bit}}
 \subsubsection[powerOfTwoNearest]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::powerOfTwoNearest (genType const \& {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -345,3 +857,24 @@ Return the power of two number which value is just lower the input value. \begin
 
 Return the power of two number which value is the closet to the input value. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__bit}{GLM\_\-GTX\_\-bit} \end{Desc}
+
+
+Definition at line 153 of file bit.inl.
+
+References glm::highestBitValue(), and glm::isPowerOfTwo().
+
+\begin{Code}\begin{verbatim}156         {
+157                 if(isPowerOfTwo(value))
+158                         return value;
+159 
+160                 genType prev = highestBitValue(value);
+161                 genType next = prev << 1;
+162                 return (next - value) < (value - prev) ? next : prev;
+163         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

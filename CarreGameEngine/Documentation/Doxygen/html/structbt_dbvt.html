@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btDbvt Struct Reference</title>
+<title>Assignment2 - OOber Taxi: btDbvt Struct Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>btDbvt Struct Reference</h1><!-- doxytag: class="btDbvt" --><code>#include &lt;btDbvt.h&gt;</code>
+<h1>btDbvt Struct Reference</h1><!-- doxytag: class="btDbvt" --><code>#include &lt;<a class="el" href="bt_dbvt_8h-source.html">btDbvt.h</a>&gt;</code>
 <p>
 
 <p>
@@ -39,7 +39,9 @@
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The <a class="el" href="structbt_dbvt.html">btDbvt</a> class implements a fast dynamic bounding volume tree based on axis aligned bounding boxes (aabb tree). This <a class="el" href="structbt_dbvt.html">btDbvt</a> is used for soft body collision detection and for the <a class="el" href="structbt_dbvt_broadphase.html">btDbvtBroadphase</a>. It has a fast insert, remove and update of nodes. Unlike the btQuantizedBvh, nodes can be dynamically moved around, which allows for change in topology of the underlying data structure. <hr><h2>Member Function Documentation</h2>
+The <a class="el" href="structbt_dbvt.html">btDbvt</a> class implements a fast dynamic bounding volume tree based on axis aligned bounding boxes (aabb tree). This <a class="el" href="structbt_dbvt.html">btDbvt</a> is used for soft body collision detection and for the <a class="el" href="structbt_dbvt_broadphase.html">btDbvtBroadphase</a>. It has a fast insert, remove and update of nodes. Unlike the btQuantizedBvh, nodes can be dynamically moved around, which allows for change in topology of the underlying data structure. 
+<p>Definition at line <a class="el" href="bt_dbvt_8h-source.html#l00198">198</a> of file <a class="el" href="bt_dbvt_8h-source.html">btDbvt.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="8e316ee3bc9bd7b7354086c0c558cfb5"></a><!-- doxytag: member="btDbvt::rayTest" ref="8e316ee3bc9bd7b7354086c0c558cfb5" args="(const btDbvtNode *root, const btVector3 &amp;rayFrom, const btVector3 &amp;rayTo, DBVT_IPOLICY)" -->
 <div class="memitem">
 <div class="memproto">
@@ -81,6 +83,98 @@ The <a class="el" href="structbt_dbvt.html">btDbvt</a> class implements a fast d
 rayTest is a re-entrant ray test, and can be called in parallel as long as the btAlignedAlloc is thread-safe (uses locking etc) rayTest is slower than rayTestInternal, because it builds a local stack, using memory allocations, and it recomputes signs/rayDirectionInverses each time 
 <p>
 what about division by zero? --&gt; just set rayDirection[i] to INF/BT_LARGE_FLOAT 
+<p>Definition at line <a class="el" href="bt_dbvt_8h-source.html#l01060">1060</a> of file <a class="el" href="bt_dbvt_8h-source.html">btDbvt.h</a>.</p>
+
+<p>References <a class="el" href="bt_aligned_object_array_8h-source.html#l00512">btAlignedObjectArray&lt; T &gt;::initializeFromBuffer()</a>, <a class="el" href="bt_aligned_object_array_8h-source.html#l00218">btAlignedObjectArray&lt; T &gt;::resize()</a>, and <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_collision_world_8cpp-source.html#l00290">btCollisionWorld::rayTestSingleInternal()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l01064"></a>01064 {
+<a name="l01065"></a>01065         DBVT_CHECKTYPE
+<a name="l01066"></a>01066                 <span class="keywordflow">if</span>(root)
+<a name="l01067"></a>01067                 {
+<a name="l01068"></a>01068                         btVector3 rayDir = (rayTo-rayFrom);
+<a name="l01069"></a>01069                         rayDir.normalize ();
+<a name="l01070"></a>01070 
+<a name="l01072"></a>01072                         btVector3 rayDirectionInverse;
+<a name="l01073"></a>01073                         rayDirectionInverse[0] = rayDir[0] == btScalar(0.0) ? btScalar(BT_LARGE_FLOAT) : btScalar(1.0) / rayDir[0];
+<a name="l01074"></a>01074                         rayDirectionInverse[1] = rayDir[1] == btScalar(0.0) ? btScalar(BT_LARGE_FLOAT) : btScalar(1.0) / rayDir[1];
+<a name="l01075"></a>01075                         rayDirectionInverse[2] = rayDir[2] == btScalar(0.0) ? btScalar(BT_LARGE_FLOAT) : btScalar(1.0) / rayDir[2];
+<a name="l01076"></a>01076                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> signs[3] = { rayDirectionInverse[0] &lt; 0.0, rayDirectionInverse[1] &lt; 0.0, rayDirectionInverse[2] &lt; 0.0};
+<a name="l01077"></a>01077 
+<a name="l01078"></a>01078                         btScalar lambda_max = rayDir.dot(rayTo-rayFrom);
+<a name="l01079"></a>01079 
+<a name="l01080"></a>01080                         btVector3 resultNormal;
+<a name="l01081"></a>01081 
+<a name="l01082"></a>01082                         <a class="code" href="classbt_aligned_object_array.html">btAlignedObjectArray&lt;const btDbvtNode*&gt;</a> stack;
+<a name="l01083"></a>01083 
+<a name="l01084"></a>01084                         <span class="keywordtype">int</span>                                                             depth=1;
+<a name="l01085"></a>01085                         <span class="keywordtype">int</span>                                                             treshold=DOUBLE_STACKSIZE-2;
+<a name="l01086"></a>01086 
+<a name="l01087"></a>01087                         <span class="keywordtype">char</span> tempmemory[DOUBLE_STACKSIZE * <span class="keyword">sizeof</span>(<span class="keyword">const</span> btDbvtNode*)];
+<a name="l01088"></a>01088 <span class="preprocessor">#ifndef BT_DISABLE_STACK_TEMP_MEMORY</span>
+<a name="l01089"></a>01089 <span class="preprocessor"></span>                        stack.<a class="code" href="classbt_aligned_object_array.html#a8d21bd5fe47cfe0216990b78fef665e">initializeFromBuffer</a>(tempmemory, DOUBLE_STACKSIZE, DOUBLE_STACKSIZE);
+<a name="l01090"></a>01090 <span class="preprocessor">#else//BT_DISABLE_STACK_TEMP_MEMORY</span>
+<a name="l01091"></a>01091 <span class="preprocessor"></span>                        stack.<a class="code" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190">resize</a>(DOUBLE_STACKSIZE);
+<a name="l01092"></a>01092 <span class="preprocessor">#endif //BT_DISABLE_STACK_TEMP_MEMORY</span>
+<a name="l01093"></a>01093 <span class="preprocessor"></span>                        stack[0]=root;
+<a name="l01094"></a>01094                         btVector3 bounds[2];
+<a name="l01095"></a>01095                         <span class="keywordflow">do</span>      {
+<a name="l01096"></a>01096                                 <span class="keyword">const</span> btDbvtNode*       node=stack[--depth];
+<a name="l01097"></a>01097 
+<a name="l01098"></a>01098                                 bounds[0] = node-&gt;volume.Mins();
+<a name="l01099"></a>01099                                 bounds[1] = node-&gt;volume.Maxs();
+<a name="l01100"></a>01100                                 
+<a name="l01101"></a>01101                                 btScalar tmin=1.f,lambda_min=0.f;
+<a name="l01102"></a>01102                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> result1 = btRayAabb2(rayFrom,rayDirectionInverse,signs,bounds,tmin,lambda_min,lambda_max);
+<a name="l01103"></a>01103 
+<a name="l01104"></a>01104 <span class="preprocessor">#ifdef COMPARE_BTRAY_AABB2</span>
+<a name="l01105"></a>01105 <span class="preprocessor"></span>                                btScalar param=1.f;
+<a name="l01106"></a>01106                                 <span class="keywordtype">bool</span> result2 = btRayAabb(rayFrom,rayTo,node-&gt;volume.Mins(),node-&gt;volume.Maxs(),param,resultNormal);
+<a name="l01107"></a>01107                                 btAssert(result1 == result2);
+<a name="l01108"></a>01108 <span class="preprocessor">#endif //TEST_BTRAY_AABB2</span>
+<a name="l01109"></a>01109 <span class="preprocessor"></span>
+<a name="l01110"></a>01110                                 <span class="keywordflow">if</span>(result1)
+<a name="l01111"></a>01111                                 {
+<a name="l01112"></a>01112                                         <span class="keywordflow">if</span>(node-&gt;isinternal())
+<a name="l01113"></a>01113                                         {
+<a name="l01114"></a>01114                                                 <span class="keywordflow">if</span>(depth&gt;treshold)
+<a name="l01115"></a>01115                                                 {
+<a name="l01116"></a>01116                                                         stack.<a class="code" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190">resize</a>(stack.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>()*2);
+<a name="l01117"></a>01117                                                         treshold=stack.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>()-2;
+<a name="l01118"></a>01118                                                 }
+<a name="l01119"></a>01119                                                 stack[depth++]=node-&gt;childs[0];
+<a name="l01120"></a>01120                                                 stack[depth++]=node-&gt;childs[1];
+<a name="l01121"></a>01121                                         }
+<a name="l01122"></a>01122                                         <span class="keywordflow">else</span>
+<a name="l01123"></a>01123                                         {
+<a name="l01124"></a>01124                                                 policy.Process(node);
+<a name="l01125"></a>01125                                         }
+<a name="l01126"></a>01126                                 }
+<a name="l01127"></a>01127                         } <span class="keywordflow">while</span>(depth);
+<a name="l01128"></a>01128 
+<a name="l01129"></a>01129                 }
+<a name="l01130"></a>01130 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="structbt_dbvt_8e316ee3bc9bd7b7354086c0c558cfb5_cgraph.png" border="0" usemap="#structbt_dbvt_8e316ee3bc9bd7b7354086c0c558cfb5_cgraph_map" alt=""></center>
+<map name="structbt_dbvt_8e316ee3bc9bd7b7354086c0c558cfb5_cgraph_map">
+<area shape="rect" href="classbt_aligned_object_array.html#a8d21bd5fe47cfe0216990b78fef665e" title="btAlignedObjectArray::initializeFromBuffer" alt="" coords="164,5,425,32"><area shape="rect" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190" title="btAlignedObjectArray::resize" alt="" coords="201,56,388,83"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="207,107,383,133"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="structbt_dbvt_8e316ee3bc9bd7b7354086c0c558cfb5_icgraph.png" border="0" usemap="#structbt_dbvt_8e316ee3bc9bd7b7354086c0c558cfb5_icgraph_map" alt=""></center>
+<map name="structbt_dbvt_8e316ee3bc9bd7b7354086c0c558cfb5_icgraph_map">
+<area shape="rect" href="classbt_collision_world.html#84bbeea09de9dc5c68e49826e58f7114" title="btCollisionWorld::rayTestSingleInternal" alt="" coords="164,5,407,32"><area shape="rect" href="classbt_collision_world.html#ca2a9413508b4a2449fe83ff93ea564e" title="btCollisionWorld::rayTestSingle" alt="" coords="456,5,659,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="f8f2ca01be7eadc4732464272f580028"></a><!-- doxytag: member="btDbvt::rayTestInternal" ref="f8f2ca01be7eadc4732464272f580028" args="(const btDbvtNode *root, const btVector3 &amp;rayFrom, const btVector3 &amp;rayTo, const btVector3 &amp;rayDirectionInverse, unsigned int signs[3], btScalar lambda_max, const btVector3 &amp;aabbMin, const btVector3 &amp;aabbMax, btAlignedObjectArray&lt; const btDbvtNode * &gt; &amp;stack, DBVT_IPOLICY) const " -->
@@ -158,12 +252,67 @@ what about division by zero? --&gt; just set rayDirection[i] to INF/BT_LARGE_FLO
 
 <p>
 rayTestInternal is faster than rayTest, because it uses a persistent stack (to reduce dynamic memory allocations to a minimum) and it uses precomputed signs/rayInverseDirections rayTestInternal is used by <a class="el" href="structbt_dbvt_broadphase.html">btDbvtBroadphase</a> to accelerate world ray casts 
+<p>Definition at line <a class="el" href="bt_dbvt_8h-source.html#l01007">1007</a> of file <a class="el" href="bt_dbvt_8h-source.html">btDbvt.h</a>.</p>
+
+<p>References <a class="el" href="bt_aligned_object_array_8h-source.html#l00218">btAlignedObjectArray&lt; T &gt;::resize()</a>, and <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l01017"></a>01017 {
+<a name="l01018"></a>01018         (void) rayTo;
+<a name="l01019"></a>01019         DBVT_CHECKTYPE
+<a name="l01020"></a>01020         <span class="keywordflow">if</span>(root)
+<a name="l01021"></a>01021         {
+<a name="l01022"></a>01022                 btVector3 resultNormal;
+<a name="l01023"></a>01023 
+<a name="l01024"></a>01024                 <span class="keywordtype">int</span>                                                             depth=1;
+<a name="l01025"></a>01025                 <span class="keywordtype">int</span>                                                             treshold=DOUBLE_STACKSIZE-2;
+<a name="l01026"></a>01026                 stack.<a class="code" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190">resize</a>(DOUBLE_STACKSIZE);
+<a name="l01027"></a>01027                 stack[0]=root;
+<a name="l01028"></a>01028                 btVector3 bounds[2];
+<a name="l01029"></a>01029                 <span class="keywordflow">do</span>      
+<a name="l01030"></a>01030                 {
+<a name="l01031"></a>01031                         <span class="keyword">const</span> btDbvtNode*       node=stack[--depth];
+<a name="l01032"></a>01032                         bounds[0] = node-&gt;volume.Mins()-aabbMax;
+<a name="l01033"></a>01033                         bounds[1] = node-&gt;volume.Maxs()-aabbMin;
+<a name="l01034"></a>01034                         btScalar tmin=1.f,lambda_min=0.f;
+<a name="l01035"></a>01035                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> result1=<span class="keyword">false</span>;
+<a name="l01036"></a>01036                         result1 = btRayAabb2(rayFrom,rayDirectionInverse,signs,bounds,tmin,lambda_min,lambda_max);
+<a name="l01037"></a>01037                         <span class="keywordflow">if</span>(result1)
+<a name="l01038"></a>01038                         {
+<a name="l01039"></a>01039                                 <span class="keywordflow">if</span>(node-&gt;isinternal())
+<a name="l01040"></a>01040                                 {
+<a name="l01041"></a>01041                                         <span class="keywordflow">if</span>(depth&gt;treshold)
+<a name="l01042"></a>01042                                         {
+<a name="l01043"></a>01043                                                 stack.<a class="code" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190">resize</a>(stack.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>()*2);
+<a name="l01044"></a>01044                                                 treshold=stack.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>()-2;
+<a name="l01045"></a>01045                                         }
+<a name="l01046"></a>01046                                         stack[depth++]=node-&gt;childs[0];
+<a name="l01047"></a>01047                                         stack[depth++]=node-&gt;childs[1];
+<a name="l01048"></a>01048                                 }
+<a name="l01049"></a>01049                                 <span class="keywordflow">else</span>
+<a name="l01050"></a>01050                                 {
+<a name="l01051"></a>01051                                         policy.Process(node);
+<a name="l01052"></a>01052                                 }
+<a name="l01053"></a>01053                         }
+<a name="l01054"></a>01054                 } <span class="keywordflow">while</span>(depth);
+<a name="l01055"></a>01055         }
+<a name="l01056"></a>01056 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="structbt_dbvt_f8f2ca01be7eadc4732464272f580028_cgraph.png" border="0" usemap="#structbt_dbvt_f8f2ca01be7eadc4732464272f580028_cgraph_map" alt=""></center>
+<map name="structbt_dbvt_f8f2ca01be7eadc4732464272f580028_cgraph_map">
+<area shape="rect" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190" title="btAlignedObjectArray::resize" alt="" coords="207,5,393,32"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="212,56,388,83"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvt.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvt.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/<a class="el" href="bt_dbvt_8h-source.html">btDbvt.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/<a class="el" href="bt_dbvt_8cpp-source.html">btDbvt.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:20 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:02 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

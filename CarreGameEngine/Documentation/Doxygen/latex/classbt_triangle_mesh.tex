@@ -26,6 +26,8 @@ void \hyperlink{classbt_triangle_mesh_ceefc2d4c6a9abaff3bd58310533fd8a}{addIndex
 \subsection{Detailed Description}
 The \hyperlink{classbt_triangle_mesh}{btTriangleMesh} class is a convenience class derived from btTriangleIndexVertexArray, that provides storage for a concave triangle mesh. It can be used as data for the btBvhTriangleMeshShape. It allows either 32bit or 16bit indices, and 4 (x-y-z-w) or 3 (x-y-z) component vertices. If you want to share triangle/index data between graphics mesh and collision mesh (btBvhTriangleMeshShape), you can directly use btTriangleIndexVertexArray or derive your own class from btStridingMeshInterface. Performance of \hyperlink{classbt_triangle_mesh}{btTriangleMesh} and btTriangleIndexVertexArray used in a btBvhTriangleMeshShape is the same. 
 
+Definition at line 27 of file btTriangleMesh.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_triangle_mesh_28551d57ae59248a210163a504558583}{
 \index{btTriangleMesh@{btTriangleMesh}!addTriangle@{addTriangle}}
@@ -34,7 +36,25 @@ The \hyperlink{classbt_triangle_mesh}{btTriangleMesh} class is a convenience cla
 \label{classbt_triangle_mesh_28551d57ae59248a210163a504558583}
 
 
-By default addTriangle won't search for duplicate vertices, because the search is very slow for large triangle meshes. In general it is better to directly use btTriangleIndexVertexArray instead. \hypertarget{classbt_triangle_mesh_3b521a1faa5862a818d9f983230749a2}{
+By default addTriangle won't search for duplicate vertices, because the search is very slow for large triangle meshes. In general it is better to directly use btTriangleIndexVertexArray instead. 
+
+Definition at line 132 of file btTriangleMesh.cpp.
+
+References addIndex(), and findOrAddVertex().
+
+\begin{Code}\begin{verbatim}133 {
+134         m_indexedMeshes[0].m_numTriangles++;
+135         addIndex(findOrAddVertex(vertex0,removeDuplicateVertices));
+136         addIndex(findOrAddVertex(vertex1,removeDuplicateVertices));
+137         addIndex(findOrAddVertex(vertex2,removeDuplicateVertices));
+138 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_triangle_mesh_3b521a1faa5862a818d9f983230749a2}{
 \index{btTriangleMesh@{btTriangleMesh}!findOrAddVertex@{findOrAddVertex}}
 \index{findOrAddVertex@{findOrAddVertex}!btTriangleMesh@{btTriangleMesh}}
 \subsubsection[findOrAddVertex]{\setlength{\rightskip}{0pt plus 5cm}int btTriangleMesh::findOrAddVertex (const btVector3 \& {\em vertex}, \/  bool {\em removeDuplicateVertices})}}
@@ -49,7 +69,66 @@ findOrAddVertex is an internal method, use addTriangle instead
 \item[\hyperlink{todo__todo000024}{Todo}]: could use acceleration structure for this \end{Desc}
 
 
+Definition at line 86 of file btTriangleMesh.cpp.
+
+References glm::length2(), btAlignedObjectArray$<$ T $>$::push\_\-back(), and btAlignedObjectArray$<$ T $>$::size().
+
+Referenced by addTriangle().
+
+\begin{Code}\begin{verbatim}87 {
+88         //return index of new/existing vertex
+90         if (m_use4componentVertices)
+91         {
+92                 if (removeDuplicateVertices)
+93                         {
+94                         for (int i=0;i< m_4componentVertices.size();i++)
+95                         {
+96                                 if ((m_4componentVertices[i]-vertex).length2() <= m_weldingThreshold)
+97                                 {
+98                                         return i;
+99                                 }
+100                         }
+101                 }
+102                 m_indexedMeshes[0].m_numVertices++;
+103                 m_4componentVertices.push_back(vertex);
+104                 m_indexedMeshes[0].m_vertexBase = (unsigned char*)&m_4componentVertices[0];
+105 
+106                 return m_4componentVertices.size()-1;
+107                 
+108         } else
+109         {
+110                 
+111                 if (removeDuplicateVertices)
+112                 {
+113                         for (int i=0;i< m_3componentVertices.size();i+=3)
+114                         {
+115                                 btVector3 vtx(m_3componentVertices[i],m_3componentVertices[i+1],m_3componentVertices[i+2]);
+116                                 if ((vtx-vertex).length2() <= m_weldingThreshold)
+117                                 {
+118                                         return i/3;
+119                                 }
+120                         }
+121                 }
+122                 m_3componentVertices.push_back(vertex.getX());
+123                 m_3componentVertices.push_back(vertex.getY());
+124                 m_3componentVertices.push_back(vertex.getZ());
+125                 m_indexedMeshes[0].m_numVertices++;
+126                 m_indexedMeshes[0].m_vertexBase = (unsigned char*)&m_3componentVertices[0];
+127                 return (m_3componentVertices.size()/3)-1;
+128         }
+129 
+130 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionShapes/btTriangleMesh.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionShapes/btTriangleMesh.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionShapes/btTriangleMesh.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionShapes/btTriangleMesh.cpp\end{CompactItemize}

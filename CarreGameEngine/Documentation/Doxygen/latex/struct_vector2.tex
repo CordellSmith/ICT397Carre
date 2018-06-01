@@ -1,0 +1,425 @@
+\hypertarget{struct_vector2}{
+\section{Vector2 Struct Reference}
+\label{struct_vector2}\index{Vector2@{Vector2}}
+}
+{\tt \#include $<$Structs.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{struct_vector2_24d2d059ca7d66113abac07ef1854b57}{Vector2} (float x, float z)
+\begin{CompactList}\small\item\em A contructor to define a 3D vector. \item\end{CompactList}\item 
+\hypertarget{struct_vector2_22104d1809be26a419ef1f959e3761bf}{
+\hyperlink{struct_vector2_22104d1809be26a419ef1f959e3761bf}{Vector2} ()}
+\label{struct_vector2_22104d1809be26a419ef1f959e3761bf}
+
+\begin{CompactList}\small\item\em A default constructor to set the vector's variables to 0. \item\end{CompactList}\item 
+\hyperlink{struct_vector2_bd2746f75192b018c15831940d080b38}{Vector2} (float num)
+\begin{CompactList}\small\item\em A constructor to set all variables to the parameter's value. \item\end{CompactList}\item 
+\hyperlink{struct_vector2}{Vector2} \hyperlink{struct_vector2_3d1d26225e42356584a90f6c61e86b17}{operator=} (const \hyperlink{struct_vector2}{Vector2} original)
+\begin{CompactList}\small\item\em Overloads the equality operator to copy vectors. \item\end{CompactList}\item 
+float \hyperlink{struct_vector2_ef2c82543da2c72118f7d145333f1d05}{operator\mbox{[}$\,$\mbox{]}} (const int index) const 
+\begin{CompactList}\small\item\em An overlaoded array access operator to get one of the vector's values. \item\end{CompactList}\item 
+void \hyperlink{struct_vector2_b2eed8d8249024d0edeb809178da3972}{Set} (int index, float value)
+\begin{CompactList}\small\item\em Changes one of the variables of this vector. \item\end{CompactList}\item 
+\hyperlink{struct_vector2}{Vector2} \hyperlink{struct_vector2_4a047a7b72a15bc98eeb90f84bec1069}{operator/} (const float copy)
+\begin{CompactList}\small\item\em Divides this vector by a scalar. \item\end{CompactList}\item 
+\hyperlink{struct_vector2}{Vector2} \hyperlink{struct_vector2_34d1ee65e90865a7078dbc7e80e3c7e8}{Normalized} () const 
+\begin{CompactList}\small\item\em Calculates a normalized version of the vector. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static float \hyperlink{struct_vector2_b4153e2451dacbb95a6f86fd3ef387a4}{Dot} (\hyperlink{struct_vector2}{Vector2} one, \hyperlink{struct_vector2}{Vector2} two)
+\begin{CompactList}\small\item\em Returns the dot product of two vectors. \item\end{CompactList}\item 
+static \hyperlink{struct_vector2}{Vector2} \hyperlink{struct_vector2_3e174796c3f77a15999999800feff8ce}{Normal} (\hyperlink{struct_vector2}{Vector2} a, \hyperlink{struct_vector2}{Vector2} b, \hyperlink{struct_vector2}{Vector2} c)
+\begin{CompactList}\small\item\em The normal vector of a face. \item\end{CompactList}\item 
+static \hyperlink{struct_vector2}{Vector2} \hyperlink{struct_vector2_841ba377f4b9e2765aadca82d4577261}{Cross} (const \hyperlink{struct_vector2}{Vector2} first, const \hyperlink{struct_vector2}{Vector2} second)
+\begin{CompactList}\small\item\em The cross product of two vectors. \item\end{CompactList}\item 
+static float \hyperlink{struct_vector2_80a99fd93db704d9b47f376a8568c86e}{Distance} (const \hyperlink{struct_vector2}{Vector2} first, const \hyperlink{struct_vector2}{Vector2} second)
+\begin{CompactList}\small\item\em Calculates the distance between to 3D points. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+std::ostream \& \hyperlink{struct_vector2_9fc2efab2b5d63c84f76fa8f036bec0c}{operator$<$$<$} (std::ostream \&os, const \hyperlink{struct_vector2}{Vector2} \&vector)
+\begin{CompactList}\small\item\em Uses IO to display one vector. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Contains all the operations required by \hyperlink{struct_vector2}{Vector2} variables Taken from old assignment TODO: Fix comments 
+
+Definition at line 44 of file Structs.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{struct_vector2_24d2d059ca7d66113abac07ef1854b57}{
+\index{Vector2@{Vector2}!Vector2@{Vector2}}
+\index{Vector2@{Vector2}!Vector2@{Vector2}}
+\subsubsection[Vector2]{\setlength{\rightskip}{0pt plus 5cm}Vector2::Vector2 (float {\em x}, \/  float {\em z})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{struct_vector2_24d2d059ca7d66113abac07ef1854b57}
+
+
+A contructor to define a 3D vector. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em x}]- x-axis value \item[{\em y}]- y-axis value \item[{\em z}]- z-axis value \end{description}
+\end{Desc}
+
+
+Definition at line 58 of file Structs.h.
+
+\begin{Code}\begin{verbatim}58                                   {
+59                 Vector2::x = x;
+60                 Vector2::z = z;
+61         };
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{struct_vector2_bd2746f75192b018c15831940d080b38}{
+\index{Vector2@{Vector2}!Vector2@{Vector2}}
+\index{Vector2@{Vector2}!Vector2@{Vector2}}
+\subsubsection[Vector2]{\setlength{\rightskip}{0pt plus 5cm}Vector2::Vector2 (float {\em num})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{struct_vector2_bd2746f75192b018c15831940d080b38}
+
+
+A constructor to set all variables to the parameter's value. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em num}]- the number to be set to. \end{description}
+\end{Desc}
+
+
+Definition at line 73 of file Structs.h.
+
+\begin{Code}\begin{verbatim}73                            {
+74                 x = num;
+75                 z = num;
+76         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{struct_vector2_3d1d26225e42356584a90f6c61e86b17}{
+\index{Vector2@{Vector2}!operator=@{operator=}}
+\index{operator=@{operator=}!Vector2@{Vector2}}
+\subsubsection[operator=]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector2} Vector2::operator= (const {\bf Vector2} {\em original})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{struct_vector2_3d1d26225e42356584a90f6c61e86b17}
+
+
+Overloads the equality operator to copy vectors. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em A}]vector to be copied from. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]a bew vector \end{Desc}
+
+
+Definition at line 83 of file Structs.h.
+
+References Vector2(), x, and z.
+
+\begin{Code}\begin{verbatim}83                                                     {
+84                 x = original.x;
+85                 z = original.z;
+86                 return Vector2(x, z);
+87         };
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{struct_vector2_b4153e2451dacbb95a6f86fd3ef387a4}{
+\index{Vector2@{Vector2}!Dot@{Dot}}
+\index{Dot@{Dot}!Vector2@{Vector2}}
+\subsubsection[Dot]{\setlength{\rightskip}{0pt plus 5cm}static float Vector2::Dot ({\bf Vector2} {\em one}, \/  {\bf Vector2} {\em two})\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{struct_vector2_b4153e2451dacbb95a6f86fd3ef387a4}
+
+
+Returns the dot product of two vectors. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em one}]- the first vector \item[{\em two}]- the second vector \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]a scalar value \end{Desc}
+
+
+Definition at line 95 of file Structs.h.
+
+References x, and z.
+
+\begin{Code}\begin{verbatim}95                                                    {
+96                 return one.x*two.x + one.z *two.z;
+97         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{struct_vector2_3e174796c3f77a15999999800feff8ce}{
+\index{Vector2@{Vector2}!Normal@{Normal}}
+\index{Normal@{Normal}!Vector2@{Vector2}}
+\subsubsection[Normal]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Vector2} Vector2::Normal ({\bf Vector2} {\em a}, \/  {\bf Vector2} {\em b}, \/  {\bf Vector2} {\em c})\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{struct_vector2_3e174796c3f77a15999999800feff8ce}
+
+
+The normal vector of a face. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a}]- the first point \item[{\em b}]- the second point \item[{\em c}]- the third point \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Normal vector \end{Desc}
+
+
+Definition at line 116 of file Structs.h.
+
+References Cross().
+
+\begin{Code}\begin{verbatim}116                                                                {
+117                 return Cross(a - b, c - b);
+118         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{struct_vector2_841ba377f4b9e2765aadca82d4577261}{
+\index{Vector2@{Vector2}!Cross@{Cross}}
+\index{Cross@{Cross}!Vector2@{Vector2}}
+\subsubsection[Cross]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Vector2} Vector2::Cross (const {\bf Vector2} {\em first}, \/  const {\bf Vector2} {\em second})\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{struct_vector2_841ba377f4b9e2765aadca82d4577261}
+
+
+The cross product of two vectors. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em first}]- the first vector \item[{\em second}]- the second vector \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the cross product \end{Desc}
+
+
+Definition at line 126 of file Structs.h.
+
+References Vector2(), x, and z.
+
+Referenced by Normal().
+
+\begin{Code}\begin{verbatim}126                                                                         {
+127                 return Vector2(first.x * second.z + first.z * second.x);
+128         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{struct_vector2_80a99fd93db704d9b47f376a8568c86e}{
+\index{Vector2@{Vector2}!Distance@{Distance}}
+\index{Distance@{Distance}!Vector2@{Vector2}}
+\subsubsection[Distance]{\setlength{\rightskip}{0pt plus 5cm}static float Vector2::Distance (const {\bf Vector2} {\em first}, \/  const {\bf Vector2} {\em second})\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{struct_vector2_80a99fd93db704d9b47f376a8568c86e}
+
+
+Calculates the distance between to 3D points. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em first}]- the first point \item[{\em second}]- the second point \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the distance between the points. \end{Desc}
+
+
+Definition at line 136 of file Structs.h.
+
+References glm::sqrt(), x, and z.
+
+\begin{Code}\begin{verbatim}136                                                                          {
+137                 return sqrt((second.x - first.x)*(second.x - first.x) +
+138                         (second.z - first.z)*(second.z - first.z));
+139         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{struct_vector2_ef2c82543da2c72118f7d145333f1d05}{
+\index{Vector2@{Vector2}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Vector2@{Vector2}}
+\subsubsection[operator[]]{\setlength{\rightskip}{0pt plus 5cm}float Vector2::operator\mbox{[}$\,$\mbox{]} (const int {\em index}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{struct_vector2_ef2c82543da2c72118f7d145333f1d05}
+
+
+An overlaoded array access operator to get one of the vector's values. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em index}]- 0 - x value, 1 - y value, 2 - z value \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the value of a particular variable or -1000000 \end{Desc}
+
+
+Definition at line 179 of file Structs.h.
+
+\begin{Code}\begin{verbatim}179                                                  {
+180                 if (index == 0)
+181                         return x;
+182                 else if (index == 1)
+183                         return z;
+184                 else
+185                         return -10000000;
+186         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{struct_vector2_b2eed8d8249024d0edeb809178da3972}{
+\index{Vector2@{Vector2}!Set@{Set}}
+\index{Set@{Set}!Vector2@{Vector2}}
+\subsubsection[Set]{\setlength{\rightskip}{0pt plus 5cm}void Vector2::Set (int {\em index}, \/  float {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{struct_vector2_b2eed8d8249024d0edeb809178da3972}
+
+
+Changes one of the variables of this vector. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em index}]- 0 - x value, 1 - y value, 2 - z value \item[{\em value}]- a new value to be assigned \end{description}
+\end{Desc}
+
+
+Definition at line 193 of file Structs.h.
+
+\begin{Code}\begin{verbatim}193                                          {
+194                 if (index == 0)
+195                         x = value;
+196                 else if (index == 1)
+197                         z = value;
+198         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{struct_vector2_4a047a7b72a15bc98eeb90f84bec1069}{
+\index{Vector2@{Vector2}!operator/@{operator/}}
+\index{operator/@{operator/}!Vector2@{Vector2}}
+\subsubsection[operator/]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector2} Vector2::operator/ (const float {\em copy})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{struct_vector2_4a047a7b72a15bc98eeb90f84bec1069}
+
+
+Divides this vector by a scalar. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a}]float to be divided by \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the result of division \end{Desc}
+
+
+Definition at line 206 of file Structs.h.
+
+References Vector2().
+
+\begin{Code}\begin{verbatim}206                                               {
+207                 x /= copy;
+208                 z /= copy;
+209                 return Vector2(x, z);
+210         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{struct_vector2_34d1ee65e90865a7078dbc7e80e3c7e8}{
+\index{Vector2@{Vector2}!Normalized@{Normalized}}
+\index{Normalized@{Normalized}!Vector2@{Vector2}}
+\subsubsection[Normalized]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector2} Vector2::Normalized () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{struct_vector2_34d1ee65e90865a7078dbc7e80e3c7e8}
+
+
+Calculates a normalized version of the vector. 
+
+\begin{Desc}
+\item[Returns:]the normalized vector. \end{Desc}
+
+
+Definition at line 224 of file Structs.h.
+
+References glm::length(), and Vector2().
+
+\begin{Code}\begin{verbatim}224                                    {
+225                 float length = Vector2(x, z).Length();
+226                 if (length == 0)
+227                         return Vector2(0);
+228                 else {
+229                         return Vector2(x / length, z / length);
+230                 }
+231         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{struct_vector2_9fc2efab2b5d63c84f76fa8f036bec0c}{
+\index{Vector2@{Vector2}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Vector2@{Vector2}}
+\subsubsection[operator$<$$<$]{\setlength{\rightskip}{0pt plus 5cm}std::ostream\& operator$<$$<$ (std::ostream \& {\em os}, \/  const {\bf Vector2} \& {\em vector})\hspace{0.3cm}{\tt  \mbox{[}friend\mbox{]}}}}
+\label{struct_vector2_9fc2efab2b5d63c84f76fa8f036bec0c}
+
+
+Uses IO to display one vector. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em os}]- reference to an output stream \item[{\em vector}]- a vector to be displayed. \end{description}
+\end{Desc}
+
+
+Definition at line 104 of file Structs.h.
+
+\begin{Code}\begin{verbatim}104                                                                                  {
+105                 os << vector.x << "  " << vector.z;
+106                 return os;
+107         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/Structs.h\end{CompactItemize}

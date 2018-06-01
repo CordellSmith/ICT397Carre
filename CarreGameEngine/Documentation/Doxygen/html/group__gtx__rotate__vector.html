@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_rotate_vector</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_rotate_vector</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -99,6 +99,34 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a rotation matrix from a normal and a up vector. From GLM_GTX_rotate_vector extension. 
+<p>Definition at line <a class="el" href="rotate__vector_8inl-source.html#l00206">206</a> of file <a class="el" href="rotate__vector_8inl-source.html">rotate_vector.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00119">glm::acos()</a>, <a class="el" href="func__vector__relational_8inl-source.html#l00142">glm::all()</a>, <a class="el" href="func__geometric_8inl-source.html#l00217">glm::cross()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00052">glm::degrees()</a>, <a class="el" href="func__geometric_8inl-source.html#l00188">glm::dot()</a>, and <a class="el" href="matrix__transform_8inl-source.html#l00049">glm::rotate()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00210"></a>00210         {
+<a name="l00211"></a>00211                 <span class="keywordflow">if</span>(<a class="code" href="group__core__func__vector__relational.html#gabd60ec747e12c78e2d5c6e6c2ede230">all</a>(<a class="code" href="group__gtc__quaternion.html#gd867dac3fe25c96ee0cc95a141acd4db">equal</a>(Normal, Up)))
+<a name="l00212"></a>00212                         <span class="keywordflow">return</span> detail::tmat4x4&lt;T, P&gt;(T(1));
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214                 detail::tvec3&lt;T, P&gt; RotationAxis = <a class="code" href="group__gtx__quaternion.html#gd81a2ea5c1048d8101ce2876eb6569f7">cross</a>(Up, Normal);
+<a name="l00215"></a>00215 <span class="preprocessor">#               ifdef GLM_FORCE_RADIANS</span>
+<a name="l00216"></a>00216 <span class="preprocessor"></span>                        T Angle = <a class="code" href="group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078">acos</a>(<a class="code" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">dot</a>(Normal, Up));
+<a name="l00217"></a>00217 <span class="preprocessor">#               else</span>
+<a name="l00218"></a>00218 <span class="preprocessor"></span><span class="preprocessor">#                       pragma message("GLM: rotateZ function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00219"></a>00219 <span class="preprocessor"></span>                        T Angle = <a class="code" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64">degrees</a>(<a class="code" href="group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078">acos</a>(<a class="code" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">dot</a>(Normal, Up)));
+<a name="l00220"></a>00220 <span class="preprocessor">#               endif</span>
+<a name="l00221"></a>00221 <span class="preprocessor"></span>                <span class="keywordflow">return</span> <a class="code" href="group__gtx__transform.html#g52e753e0ad1cb6ae700855cc9ca921ca">rotate</a>(Angle, RotationAxis);
+<a name="l00222"></a>00222         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__rotate__vector_g6388a91274507ab81224d8f5d434875e_cgraph.png" border="0" usemap="#group__gtx__rotate__vector_g6388a91274507ab81224d8f5d434875e_cgraph_map" alt=""></center>
+<map name="group__gtx__rotate__vector_g6388a91274507ab81224d8f5d434875e_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078" title="glm::acos" alt="" coords="175,5,252,32"><area shape="rect" href="group__core__func__vector__relational.html#gabd60ec747e12c78e2d5c6e6c2ede230" title="glm::all" alt="" coords="181,56,245,83"><area shape="rect" href="group__core__func__geometric.html#g9a325364ff3650c4a85c33704c646e76" title="glm::cross" alt="" coords="172,107,255,133"><area shape="rect" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="165,157,261,184"><area shape="rect" href="group__core__func__geometric.html#gc64a3b29d01336161a668d328cac97eb" title="glm::dot" alt="" coords="180,208,247,235"><area shape="rect" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="172,259,255,285"><area shape="rect" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b" title="glm::axis" alt="" coords="325,157,400,184"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="327,208,399,235"><area shape="rect" href="group__core__func__geometric.html#g0feb2bb89ee2743677ad2cb84544bd83" title="glm::normalize" alt="" coords="309,259,416,285"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="317,309,408,336"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="329,360,396,387"><area shape="rect" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f" title="glm::sqrt" alt="" coords="464,157,536,184"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="ga787e2132208a47efe58640ac7de9509"></a><!-- doxytag: member="glm::rotate" ref="ga787e2132208a47efe58640ac7de9509" args="(detail::tvec4&lt; T, P &gt; const &amp;v, T const &amp;angle, detail::tvec3&lt; T, P &gt; const &amp;normal)" -->
@@ -136,6 +164,24 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Rotate a four dimensional vector around an axis. From GLM_GTX_rotate_vector extension. 
+<p>Definition at line <a class="el" href="rotate__vector_8inl-source.html#l00057">57</a> of file <a class="el" href="rotate__vector_8inl-source.html">rotate_vector.inl</a>.</p>
+
+<p>References <a class="el" href="matrix__transform_8inl-source.html#l00049">glm::rotate()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00062"></a>00062         {
+<a name="l00063"></a>00063                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__transform.html#g52e753e0ad1cb6ae700855cc9ca921ca">rotate</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>, normal) * v;
+<a name="l00064"></a>00064         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__rotate__vector_ga787e2132208a47efe58640ac7de9509_cgraph.png" border="0" usemap="#group__gtx__rotate__vector_ga787e2132208a47efe58640ac7de9509_cgraph_map" alt=""></center>
+<map name="group__gtx__rotate__vector_ga787e2132208a47efe58640ac7de9509_cgraph_map">
+<area shape="rect" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="140,107,223,133"><area shape="rect" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b" title="glm::axis" alt="" coords="288,5,363,32"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="289,56,361,83"><area shape="rect" href="group__core__func__geometric.html#g0feb2bb89ee2743677ad2cb84544bd83" title="glm::normalize" alt="" coords="272,107,379,133"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="280,157,371,184"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="292,208,359,235"><area shape="rect" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f" title="glm::sqrt" alt="" coords="427,5,499,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gf0809ae83e84fc9880b4c8b7093c349c"></a><!-- doxytag: member="glm::rotate" ref="gf0809ae83e84fc9880b4c8b7093c349c" args="(detail::tvec3&lt; T, P &gt; const &amp;v, T const &amp;angle, detail::tvec3&lt; T, P &gt; const &amp;normal)" -->
@@ -173,6 +219,24 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Rotate a three dimensional vector around an axis. From GLM_GTX_rotate_vector extension. 
+<p>Definition at line <a class="el" href="rotate__vector_8inl-source.html#l00035">35</a> of file <a class="el" href="rotate__vector_8inl-source.html">rotate_vector.inl</a>.</p>
+
+<p>References <a class="el" href="matrix__transform_8inl-source.html#l00049">glm::rotate()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00040"></a>00040         {
+<a name="l00041"></a>00041                 <span class="keywordflow">return</span> detail::tmat3x3&lt;T, P&gt;(<a class="code" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14">glm::rotate</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>, normal)) * v;
+<a name="l00042"></a>00042         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__rotate__vector_gf0809ae83e84fc9880b4c8b7093c349c_cgraph.png" border="0" usemap="#group__gtx__rotate__vector_gf0809ae83e84fc9880b4c8b7093c349c_cgraph_map" alt=""></center>
+<map name="group__gtx__rotate__vector_gf0809ae83e84fc9880b4c8b7093c349c_cgraph_map">
+<area shape="rect" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="140,107,223,133"><area shape="rect" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b" title="glm::axis" alt="" coords="288,5,363,32"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="289,56,361,83"><area shape="rect" href="group__core__func__geometric.html#g0feb2bb89ee2743677ad2cb84544bd83" title="glm::normalize" alt="" coords="272,107,379,133"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="280,157,371,184"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="292,208,359,235"><area shape="rect" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f" title="glm::sqrt" alt="" coords="427,5,499,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gc1ec422e7ac679e3332b381e88d29dfd"></a><!-- doxytag: member="glm::rotate" ref="gc1ec422e7ac679e3332b381e88d29dfd" args="(detail::tvec2&lt; T, P &gt; const &amp;v, T const &amp;angle)" -->
@@ -204,6 +268,35 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Rotate a two dimensional vector. From GLM_GTX_rotate_vector extension. 
+<p>Definition at line <a class="el" href="rotate__vector_8inl-source.html#l00014">14</a> of file <a class="el" href="rotate__vector_8inl-source.html">rotate_vector.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00038">glm::radians()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00018"></a>00018         {
+<a name="l00019"></a>00019                 detail::tvec2&lt;T, P&gt; Result;
+<a name="l00020"></a>00020 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00021"></a>00021 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00022"></a>00022                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00023"></a>00023 <span class="preprocessor">#else</span>
+<a name="l00024"></a>00024 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: rotate function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00025"></a>00025 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00026"></a>00026                 T <span class="keyword">const</span> Sin = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00027"></a>00027 <span class="preprocessor">#endif</span>
+<a name="l00028"></a>00028 <span class="preprocessor"></span>                Result.x = v.x * Cos - v.y * Sin;
+<a name="l00029"></a>00029                 Result.y = v.x * Sin + v.y * Cos;
+<a name="l00030"></a>00030                 <span class="keywordflow">return</span> Result;
+<a name="l00031"></a>00031         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__rotate__vector_gc1ec422e7ac679e3332b381e88d29dfd_cgraph.png" border="0" usemap="#group__gtx__rotate__vector_gc1ec422e7ac679e3332b381e88d29dfd_cgraph_map" alt=""></center>
+<map name="group__gtx__rotate__vector_gc1ec422e7ac679e3332b381e88d29dfd_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="149,5,221,32"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="140,56,231,83"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="152,107,219,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g846674e399c4106196405900ce78fe27"></a><!-- doxytag: member="glm::rotateX" ref="g846674e399c4106196405900ce78fe27" args="(detail::tvec4&lt; T, P &gt; const &amp;v, T const &amp;angle)" -->
@@ -235,6 +328,37 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Rotate a four dimentionnals vector around the X axis. From GLM_GTX_rotate_vector extension. 
+<p>Definition at line <a class="el" href="rotate__vector_8inl-source.html#l00137">137</a> of file <a class="el" href="rotate__vector_8inl-source.html">rotate_vector.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00038">glm::radians()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00141"></a>00141         {
+<a name="l00142"></a>00142                 detail::tvec4&lt;T, P&gt; Result = v;
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00145"></a>00145 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00146"></a>00146                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00147"></a>00147 <span class="preprocessor">#else</span>
+<a name="l00148"></a>00148 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: rotateX function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00149"></a>00149 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>)));
+<a name="l00150"></a>00150                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>)));
+<a name="l00151"></a>00151 <span class="preprocessor">#endif</span>
+<a name="l00152"></a>00152 <span class="preprocessor"></span>
+<a name="l00153"></a>00153                 Result.y = v.y * Cos - v.z * Sin;
+<a name="l00154"></a>00154                 Result.z = v.y * Sin + v.z * Cos;
+<a name="l00155"></a>00155                 <span class="keywordflow">return</span> Result;
+<a name="l00156"></a>00156         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__rotate__vector_g846674e399c4106196405900ce78fe27_cgraph.png" border="0" usemap="#group__gtx__rotate__vector_g846674e399c4106196405900ce78fe27_cgraph_map" alt=""></center>
+<map name="group__gtx__rotate__vector_g846674e399c4106196405900ce78fe27_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="155,5,227,32"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="145,56,236,83"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="157,107,224,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g29ccc284b661dc52c457959f8cbf8af6"></a><!-- doxytag: member="glm::rotateX" ref="g29ccc284b661dc52c457959f8cbf8af6" args="(detail::tvec3&lt; T, P &gt; const &amp;v, T const &amp;angle)" -->
@@ -266,6 +390,37 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Rotate a three dimensional vector around the X axis. From GLM_GTX_rotate_vector extension. 
+<p>Definition at line <a class="el" href="rotate__vector_8inl-source.html#l00068">68</a> of file <a class="el" href="rotate__vector_8inl-source.html">rotate_vector.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00038">glm::radians()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00072"></a>00072         {
+<a name="l00073"></a>00073                 detail::tvec3&lt;T, P&gt; Result(v);
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00076"></a>00076 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00077"></a>00077                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00078"></a>00078 <span class="preprocessor">#else</span>
+<a name="l00079"></a>00079 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: rotateX function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00080"></a>00080 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00081"></a>00081                 T <span class="keyword">const</span> Sin = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00082"></a>00082 <span class="preprocessor">#endif</span>
+<a name="l00083"></a>00083 <span class="preprocessor"></span>
+<a name="l00084"></a>00084                 Result.y = v.y * Cos - v.z * Sin;
+<a name="l00085"></a>00085                 Result.z = v.y * Sin + v.z * Cos;
+<a name="l00086"></a>00086                 <span class="keywordflow">return</span> Result;
+<a name="l00087"></a>00087         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__rotate__vector_g29ccc284b661dc52c457959f8cbf8af6_cgraph.png" border="0" usemap="#group__gtx__rotate__vector_g29ccc284b661dc52c457959f8cbf8af6_cgraph_map" alt=""></center>
+<map name="group__gtx__rotate__vector_g29ccc284b661dc52c457959f8cbf8af6_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="155,5,227,32"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="145,56,236,83"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="157,107,224,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g8e90d477a21ac9e17a8b764eac6d0999"></a><!-- doxytag: member="glm::rotateY" ref="g8e90d477a21ac9e17a8b764eac6d0999" args="(detail::tvec4&lt; T, P &gt; const &amp;v, T const &amp;angle)" -->
@@ -297,6 +452,37 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Rotate a four dimensional vector around the X axis. From GLM_GTX_rotate_vector extension. 
+<p>Definition at line <a class="el" href="rotate__vector_8inl-source.html#l00160">160</a> of file <a class="el" href="rotate__vector_8inl-source.html">rotate_vector.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00038">glm::radians()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00164"></a>00164         {
+<a name="l00165"></a>00165                 detail::tvec4&lt;T, P&gt; Result = v;
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00168"></a>00168 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00169"></a>00169                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00170"></a>00170 <span class="preprocessor">#else</span>
+<a name="l00171"></a>00171 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: rotateX function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00172"></a>00172 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>)));
+<a name="l00173"></a>00173                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>)));
+<a name="l00174"></a>00174 <span class="preprocessor">#endif</span>
+<a name="l00175"></a>00175 <span class="preprocessor"></span>
+<a name="l00176"></a>00176                 Result.x =  v.x * Cos + v.z * Sin;
+<a name="l00177"></a>00177                 Result.z = -v.x * Sin + v.z * Cos;
+<a name="l00178"></a>00178                 <span class="keywordflow">return</span> Result;
+<a name="l00179"></a>00179         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__rotate__vector_g8e90d477a21ac9e17a8b764eac6d0999_cgraph.png" border="0" usemap="#group__gtx__rotate__vector_g8e90d477a21ac9e17a8b764eac6d0999_cgraph_map" alt=""></center>
+<map name="group__gtx__rotate__vector_g8e90d477a21ac9e17a8b764eac6d0999_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="157,5,229,32"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="148,56,239,83"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="160,107,227,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g8e792cb7fbd2ad57a4eafcccc62c523c"></a><!-- doxytag: member="glm::rotateY" ref="g8e792cb7fbd2ad57a4eafcccc62c523c" args="(detail::tvec3&lt; T, P &gt; const &amp;v, T const &amp;angle)" -->
@@ -328,6 +514,37 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Rotate a three dimensional vector around the Y axis. From GLM_GTX_rotate_vector extension. 
+<p>Definition at line <a class="el" href="rotate__vector_8inl-source.html#l00091">91</a> of file <a class="el" href="rotate__vector_8inl-source.html">rotate_vector.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00038">glm::radians()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00095"></a>00095         {
+<a name="l00096"></a>00096                 detail::tvec3&lt;T, P&gt; Result = v;
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00099"></a>00099 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00100"></a>00100                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00101"></a>00101 <span class="preprocessor">#else</span>
+<a name="l00102"></a>00102 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: rotateY function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00103"></a>00103 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>)));
+<a name="l00104"></a>00104                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>)));
+<a name="l00105"></a>00105 <span class="preprocessor">#endif</span>
+<a name="l00106"></a>00106 <span class="preprocessor"></span>
+<a name="l00107"></a>00107                 Result.x =  v.x * Cos + v.z * Sin;
+<a name="l00108"></a>00108                 Result.z = -v.x * Sin + v.z * Cos;
+<a name="l00109"></a>00109                 <span class="keywordflow">return</span> Result;
+<a name="l00110"></a>00110         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__rotate__vector_g8e792cb7fbd2ad57a4eafcccc62c523c_cgraph.png" border="0" usemap="#group__gtx__rotate__vector_g8e792cb7fbd2ad57a4eafcccc62c523c_cgraph_map" alt=""></center>
+<map name="group__gtx__rotate__vector_g8e792cb7fbd2ad57a4eafcccc62c523c_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="157,5,229,32"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="148,56,239,83"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="160,107,227,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g4505b3c64cf26afba934ad1f65c5f792"></a><!-- doxytag: member="glm::rotateZ" ref="g4505b3c64cf26afba934ad1f65c5f792" args="(detail::tvec4&lt; T, P &gt; const &amp;v, T const &amp;angle)" -->
@@ -359,6 +576,37 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Rotate a four dimensional vector around the X axis. From GLM_GTX_rotate_vector extension. 
+<p>Definition at line <a class="el" href="rotate__vector_8inl-source.html#l00183">183</a> of file <a class="el" href="rotate__vector_8inl-source.html">rotate_vector.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00038">glm::radians()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00187"></a>00187         {
+<a name="l00188"></a>00188                 detail::tvec4&lt;T, P&gt; Result = v;
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00191"></a>00191 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00192"></a>00192                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00193"></a>00193 <span class="preprocessor">#else</span>
+<a name="l00194"></a>00194 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: rotateZ function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00195"></a>00195 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>)));
+<a name="l00196"></a>00196                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>)));
+<a name="l00197"></a>00197 <span class="preprocessor">#endif</span>
+<a name="l00198"></a>00198 <span class="preprocessor"></span>
+<a name="l00199"></a>00199                 Result.x = v.x * Cos - v.y * Sin;
+<a name="l00200"></a>00200                 Result.y = v.x * Sin + v.y * Cos;
+<a name="l00201"></a>00201                 <span class="keywordflow">return</span> Result;
+<a name="l00202"></a>00202         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__rotate__vector_g4505b3c64cf26afba934ad1f65c5f792_cgraph.png" border="0" usemap="#group__gtx__rotate__vector_g4505b3c64cf26afba934ad1f65c5f792_cgraph_map" alt=""></center>
+<map name="group__gtx__rotate__vector_g4505b3c64cf26afba934ad1f65c5f792_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="155,5,227,32"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="145,56,236,83"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="157,107,224,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g67b56c3da73e7da777810b2a82bab4f8"></a><!-- doxytag: member="glm::rotateZ" ref="g67b56c3da73e7da777810b2a82bab4f8" args="(detail::tvec3&lt; T, P &gt; const &amp;v, T const &amp;angle)" -->
@@ -390,10 +638,41 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Rotate a three dimensional vector around the Z axis. From GLM_GTX_rotate_vector extension. 
+<p>Definition at line <a class="el" href="rotate__vector_8inl-source.html#l00114">114</a> of file <a class="el" href="rotate__vector_8inl-source.html">rotate_vector.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00038">glm::radians()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00118"></a>00118         {
+<a name="l00119"></a>00119                 detail::tvec3&lt;T, P&gt; Result = v;
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00122"></a>00122 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00123"></a>00123                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00124"></a>00124 <span class="preprocessor">#else</span>
+<a name="l00125"></a>00125 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: rotateZ function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00126"></a>00126 <span class="preprocessor"></span>                T <span class="keyword">const</span> Cos(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>)));
+<a name="l00127"></a>00127                 T <span class="keyword">const</span> Sin(<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>)));
+<a name="l00128"></a>00128 <span class="preprocessor">#endif</span>
+<a name="l00129"></a>00129 <span class="preprocessor"></span>
+<a name="l00130"></a>00130                 Result.x = v.x * Cos - v.y * Sin;
+<a name="l00131"></a>00131                 Result.y = v.x * Sin + v.y * Cos;
+<a name="l00132"></a>00132                 <span class="keywordflow">return</span> Result;
+<a name="l00133"></a>00133         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__rotate__vector_g67b56c3da73e7da777810b2a82bab4f8_cgraph.png" border="0" usemap="#group__gtx__rotate__vector_g67b56c3da73e7da777810b2a82bab4f8_cgraph_map" alt=""></center>
+<map name="group__gtx__rotate__vector_g67b56c3da73e7da777810b2a82bab4f8_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="155,5,227,32"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="145,56,236,83"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="157,107,224,133"></map>
+</div>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:41 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:56 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -1,0 +1,22 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="b3HashMap\< Key, Value \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="orange",fontsize=10,style="dashed",label="\< b3HashPtr, bParse::bStructHandle * \>"];
+  Node2 [label="b3HashMap\< b3HashPtr, bParse::bStructHandle * \>",height=0.2,width=0.4,color="black",URL="$classb3_hash_map.html"];
+  Node1 -> Node3 [dir=back,color="orange",fontsize=10,style="dashed",label="\< b3HashString, int \>"];
+  Node3 [label="b3HashMap\< b3HashString, int \>",height=0.2,width=0.4,color="black",URL="$classb3_hash_map.html"];
+  Node1 -> Node4 [dir=back,color="orange",fontsize=10,style="dashed",label="\< b3HashPtr, b3PointerUid \>"];
+  Node4 [label="b3HashMap\< b3HashPtr, b3PointerUid \>",height=0.2,width=0.4,color="black",URL="$classb3_hash_map.html"];
+  Node1 -> Node5 [dir=back,color="orange",fontsize=10,style="dashed",label="\< const b3HashPtr, char * \>"];
+  Node5 [label="b3HashMap\< const b3HashPtr, char * \>",height=0.2,width=0.4,color="black",URL="$classb3_hash_map.html"];
+  Node1 -> Node6 [dir=back,color="orange",fontsize=10,style="dashed",label="\< b3HashInt, int \>"];
+  Node6 [label="b3HashMap\< b3HashInt, int \>",height=0.2,width=0.4,color="black",URL="$classb3_hash_map.html"];
+  Node1 -> Node7 [dir=back,color="orange",fontsize=10,style="dashed",label="\< b3HashPtr, void void **typedef void *typedef void *typedef void *typedef * \>"];
+  Node7 [label="b3HashMap\< b3HashPtr, void void **typedef void *typedef void *typedef void *typedef * \>",height=0.2,width=0.4,color="black",URL="$classb3_hash_map.html"];
+  Node1 -> Node8 [dir=back,color="orange",fontsize=10,style="dashed",label="\< b3HashPtr, bParse::bChunkInd \>"];
+  Node8 [label="b3HashMap\< b3HashPtr, bParse::bChunkInd \>",height=0.2,width=0.4,color="black",URL="$classb3_hash_map.html"];
+}

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btSimpleDynamicsWorld Class Reference</title>
+<title>Assignment2 - OOber Taxi: btSimpleDynamicsWorld Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>btSimpleDynamicsWorld Class Reference</h1><!-- doxytag: class="btSimpleDynamicsWorld" --><!-- doxytag: inherits="btDynamicsWorld" --><code>#include &lt;btSimpleDynamicsWorld.h&gt;</code>
+<h1>btSimpleDynamicsWorld Class Reference</h1><!-- doxytag: class="btSimpleDynamicsWorld" --><!-- doxytag: inherits="btDynamicsWorld" --><code>#include &lt;<a class="el" href="bt_simple_dynamics_world_8h-source.html">btSimpleDynamicsWorld.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btSimpleDynamicsWorld:</div>
@@ -39,7 +39,7 @@ Collaboration diagram for btSimpleDynamicsWorld:</div>
 <div class="dynsection">
 <p><center><img src="classbt_simple_dynamics_world__coll__graph.png" border="0" usemap="#bt_simple_dynamics_world__coll__map" alt="Collaboration graph"></center>
 <map name="bt_simple_dynamics_world__coll__map">
-<area shape="rect" href="classbt_dynamics_world.html" title="The btDynamicsWorld is the interface class for several dynamics implementation, basic..." alt="" coords="1041,84,1164,111"><area shape="rect" href="classbt_collision_world.html" title="CollisionWorld is interface and container for the collision detection." alt="" coords="873,84,988,111"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionObject * \&gt;" alt="" coords="401,8,676,35"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionObject *, 16 \&gt;" alt="" coords="5,8,285,35"><area shape="rect" href="classbt_dispatcher.html" title="btDispatcher" alt="" coords="492,59,585,85"><area shape="rect" href="classbt_broadphase_interface.html" title="btBroadphaseInterface" alt="" coords="464,109,613,136"><area shape="rect" href="classbt_i_debug_draw.html" title="btIDebugDraw" alt="" coords="488,160,589,187"></map>
+<area shape="rect" href="classbt_dynamics_world.html" title="The btDynamicsWorld is the interface class for several dynamics implementation, basic..." alt="" coords="1937,111,2060,137"><area shape="rect" href="classbt_collision_world.html" title="CollisionWorld is interface and container for the collision detection." alt="" coords="1769,111,1884,137"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionObject * \&gt;" alt="" coords="1297,35,1572,61"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionObject *, 16 \&gt;" alt="" coords="637,5,917,32"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,32,229,59"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="433,59,612,85"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="941,65,1117,92"><area shape="rect" href="classbt_dispatcher.html" title="btDispatcher" alt="" coords="1388,85,1481,112"><area shape="rect" href="classbt_broadphase_interface.html" title="btBroadphaseInterface" alt="" coords="1360,136,1509,163"><area shape="rect" href="classbt_i_debug_draw.html" title="btIDebugDraw" alt="" coords="1384,187,1485,213"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -63,7 +63,9 @@ virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The <a class="el" href="classbt_simple_dynamics_world.html">btSimpleDynamicsWorld</a> serves as unit-test and to verify more complicated and optimized dynamics worlds. Please use btDiscreteDynamicsWorld instead <hr><h2>Member Function Documentation</h2>
+The <a class="el" href="classbt_simple_dynamics_world.html">btSimpleDynamicsWorld</a> serves as unit-test and to verify more complicated and optimized dynamics worlds. Please use btDiscreteDynamicsWorld instead 
+<p>Definition at line <a class="el" href="bt_simple_dynamics_world_8h-source.html#l00027">27</a> of file <a class="el" href="bt_simple_dynamics_world_8h-source.html">btSimpleDynamicsWorld.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="f6b4810b5018cbaf09f82839111a243d"></a><!-- doxytag: member="btSimpleDynamicsWorld::stepSimulation" ref="f6b4810b5018cbaf09f82839111a243d" args="(btScalar timeStep, int maxSubSteps=1, btScalar fixedTimeStep=btScalar(1.)/btScalar(60.))" -->
 <div class="memitem">
 <div class="memproto">
@@ -106,6 +108,58 @@ solve contact constraints<p>
 integrate transforms 
 <p>Implements <a class="el" href="classbt_dynamics_world.html#5ab26a0d6e8b2b21fbde2ed8f8dd6294">btDynamicsWorld</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_simple_dynamics_world_8cpp-source.html#l00055">55</a> of file <a class="el" href="bt_simple_dynamics_world_8cpp-source.html">btSimpleDynamicsWorld.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_simple_dynamics_world_8cpp-source.html#l00098">clearForces()</a>, btDispatcher::getNumManifolds(), and <a class="el" href="bt_simple_dynamics_world_8cpp-source.html#l00248">synchronizeMotionStates()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00056"></a>00056 {
+<a name="l00057"></a>00057         (void)fixedTimeStep;
+<a name="l00058"></a>00058         (void)maxSubSteps;
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 
+<a name="l00062"></a>00062         predictUnconstraintMotion(timeStep);
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064         btDispatcherInfo&amp;       dispatchInfo = getDispatchInfo();
+<a name="l00065"></a>00065         dispatchInfo.m_timeStep = timeStep;
+<a name="l00066"></a>00066         dispatchInfo.m_stepCount = 0;
+<a name="l00067"></a>00067         dispatchInfo.m_debugDraw = getDebugDrawer();
+<a name="l00068"></a>00068 
+<a name="l00070"></a>00070         performDiscreteCollisionDetection();
+<a name="l00071"></a>00071 
+<a name="l00073"></a>00073         <span class="keywordtype">int</span> numManifolds = m_dispatcher1-&gt;<a class="code" href="classbt_dispatcher.html#0c94a046ac053c226d43211c5379c31f">getNumManifolds</a>();
+<a name="l00074"></a>00074         <span class="keywordflow">if</span> (numManifolds)
+<a name="l00075"></a>00075         {
+<a name="l00076"></a>00076                 btPersistentManifold** manifoldPtr = ((<a class="code" href="classbt_collision_dispatcher.html">btCollisionDispatcher</a>*)m_dispatcher1)-&gt;getInternalManifoldPointer();
+<a name="l00077"></a>00077                 
+<a name="l00078"></a>00078                 btContactSolverInfo infoGlobal;
+<a name="l00079"></a>00079                 infoGlobal.m_timeStep = timeStep;
+<a name="l00080"></a>00080                 m_constraintSolver-&gt;prepareSolve(0,numManifolds);
+<a name="l00081"></a>00081                 m_constraintSolver-&gt;solveGroup(&amp;getCollisionObjectArray()[0],getNumCollisionObjects(),manifoldPtr, numManifolds,0,0,infoGlobal,m_debugDrawer, m_dispatcher1);
+<a name="l00082"></a>00082                 m_constraintSolver-&gt;allSolved(infoGlobal,m_debugDrawer);
+<a name="l00083"></a>00083         }
+<a name="l00084"></a>00084 
+<a name="l00086"></a>00086         integrateTransforms(timeStep);
+<a name="l00087"></a>00087                 
+<a name="l00088"></a>00088         updateAabbs();
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090         <a class="code" href="classbt_simple_dynamics_world.html#91e996f5ce6e465e805565ee0ba14824">synchronizeMotionStates</a>();
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092         <a class="code" href="classbt_simple_dynamics_world.html#c44c80444f4d6d4e3c2955dd43b7a93a">clearForces</a>();
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094         <span class="keywordflow">return</span> 1;
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_simple_dynamics_world_f6b4810b5018cbaf09f82839111a243d_cgraph.png" border="0" usemap="#classbt_simple_dynamics_world_f6b4810b5018cbaf09f82839111a243d_cgraph_map" alt=""></center>
+<map name="classbt_simple_dynamics_world_f6b4810b5018cbaf09f82839111a243d_cgraph_map">
+<area shape="rect" href="classbt_simple_dynamics_world.html#c44c80444f4d6d4e3c2955dd43b7a93a" title="btSimpleDynamicsWorld::clearForces" alt="" coords="352,56,592,83"><area shape="rect" href="classbt_dispatcher.html#0c94a046ac053c226d43211c5379c31f" title="btDispatcher::getNumManifolds" alt="" coords="371,157,573,184"><area shape="rect" href="classbt_simple_dynamics_world.html#91e996f5ce6e465e805565ee0ba14824" title="btSimpleDynamicsWorld::synchronizeMotionStates" alt="" coords="312,107,632,133"><area shape="rect" href="classbt_rigid_body.html#1ffe77aaa4d3712457aa8f9aa83f42a7" title="btRigidBody::clearForces" alt="" coords="707,5,875,32"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="703,107,879,133"><area shape="rect" href="classbt_rigid_body.html#59077fce3d2efd193a3fd7d7de2c97e8" title="btRigidBody::upcast" alt="" coords="721,56,860,83"><area shape="rect" href="classbt_rigid_body.html#2bbea712d9095f05ff3b031bbe4e6521" title="btRigidBody::getMotionState" alt="" coords="697,208,884,235"><area shape="rect" href="classbt_motion_state.html#fde01598075a93ef42ebb1493a2bf6fc" title="btMotionState::setWorldTransform" alt="" coords="681,157,900,184"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="91e996f5ce6e465e805565ee0ba14824"></a><!-- doxytag: member="btSimpleDynamicsWorld::synchronizeMotionStates" ref="91e996f5ce6e465e805565ee0ba14824" args="()" -->
@@ -129,6 +183,47 @@ integrate transforms
 <dl compact><dt><b><a class="el" href="todo.html#_todo000034">Todo:</a></b></dt><dd>: iterate over awake simulation islands! </dd></dl>
 
 <p>Implements <a class="el" href="classbt_dynamics_world.html">btDynamicsWorld</a>.</p>
+
+<p>Definition at line <a class="el" href="bt_simple_dynamics_world_8cpp-source.html#l00248">248</a> of file <a class="el" href="bt_simple_dynamics_world_8cpp-source.html">btSimpleDynamicsWorld.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_rigid_body_8h-source.html#l00474">btRigidBody::getMotionState()</a>, btMotionState::setWorldTransform(), <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>, and <a class="el" href="bt_rigid_body_8h-source.html#l00203">btRigidBody::upcast()</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_simple_dynamics_world_8cpp-source.html#l00055">stepSimulation()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00249"></a>00249 {
+<a name="l00251"></a>00251         <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i=0;i&lt;m_collisionObjects.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>();i++)
+<a name="l00252"></a>00252         {
+<a name="l00253"></a>00253                 btCollisionObject* colObj = m_collisionObjects[i];
+<a name="l00254"></a>00254                 <a class="code" href="classbt_rigid_body.html">btRigidBody</a>* body = <a class="code" href="classbt_rigid_body.html#59077fce3d2efd193a3fd7d7de2c97e8">btRigidBody::upcast</a>(colObj);
+<a name="l00255"></a>00255                 <span class="keywordflow">if</span> (body &amp;&amp; body-&gt;<a class="code" href="classbt_rigid_body.html#2bbea712d9095f05ff3b031bbe4e6521">getMotionState</a>())
+<a name="l00256"></a>00256                 {
+<a name="l00257"></a>00257                         <span class="keywordflow">if</span> (body-&gt;getActivationState() != ISLAND_SLEEPING)
+<a name="l00258"></a>00258                         {
+<a name="l00259"></a>00259                                 body-&gt;<a class="code" href="classbt_rigid_body.html#2bbea712d9095f05ff3b031bbe4e6521">getMotionState</a>()-&gt;<a class="code" href="classbt_motion_state.html#fde01598075a93ef42ebb1493a2bf6fc">setWorldTransform</a>(body-&gt;getWorldTransform());
+<a name="l00260"></a>00260                         }
+<a name="l00261"></a>00261                 }
+<a name="l00262"></a>00262         }
+<a name="l00263"></a>00263 
+<a name="l00264"></a>00264 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824_cgraph.png" border="0" usemap="#classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824_cgraph_map" alt=""></center>
+<map name="classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824_cgraph_map">
+<area shape="rect" href="classbt_rigid_body.html#2bbea712d9095f05ff3b031bbe4e6521" title="btRigidBody::getMotionState" alt="" coords="391,5,577,32"><area shape="rect" href="classbt_motion_state.html#fde01598075a93ef42ebb1493a2bf6fc" title="btMotionState::setWorldTransform" alt="" coords="375,56,593,83"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="396,107,572,133"><area shape="rect" href="classbt_rigid_body.html#59077fce3d2efd193a3fd7d7de2c97e8" title="btRigidBody::upcast" alt="" coords="415,157,553,184"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824_icgraph.png" border="0" usemap="#classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824_icgraph_map" alt=""></center>
+<map name="classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824_icgraph_map">
+<area shape="rect" href="classbt_simple_dynamics_world.html#f6b4810b5018cbaf09f82839111a243d" title="maxSubSteps/fixedTimeStep for interpolation is currently ignored for btSimpleDynamicsWorld..." alt="" coords="373,5,632,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -154,12 +249,50 @@ integrate transforms
 
 <p>Implements <a class="el" href="classbt_dynamics_world.html">btDynamicsWorld</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_simple_dynamics_world_8cpp-source.html#l00098">98</a> of file <a class="el" href="bt_simple_dynamics_world_8cpp-source.html">btSimpleDynamicsWorld.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_rigid_body_8h-source.html#l00346">btRigidBody::clearForces()</a>, <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>, and <a class="el" href="bt_rigid_body_8h-source.html#l00203">btRigidBody::upcast()</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_simple_dynamics_world_8cpp-source.html#l00055">stepSimulation()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00099"></a>00099 {
+<a name="l00101"></a>00101         <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i=0;i&lt;m_collisionObjects.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>();i++)
+<a name="l00102"></a>00102         {
+<a name="l00103"></a>00103                 btCollisionObject* colObj = m_collisionObjects[i];
+<a name="l00104"></a>00104                 
+<a name="l00105"></a>00105                 <a class="code" href="classbt_rigid_body.html">btRigidBody</a>* body = <a class="code" href="classbt_rigid_body.html#59077fce3d2efd193a3fd7d7de2c97e8">btRigidBody::upcast</a>(colObj);
+<a name="l00106"></a>00106                 <span class="keywordflow">if</span> (body)
+<a name="l00107"></a>00107                 {
+<a name="l00108"></a>00108                         body-&gt;<a class="code" href="classbt_rigid_body.html#1ffe77aaa4d3712457aa8f9aa83f42a7">clearForces</a>();
+<a name="l00109"></a>00109                 }
+<a name="l00110"></a>00110         }
+<a name="l00111"></a>00111 }       
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a_cgraph.png" border="0" usemap="#classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a_cgraph_map" alt=""></center>
+<map name="classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a_cgraph_map">
+<area shape="rect" href="classbt_rigid_body.html#1ffe77aaa4d3712457aa8f9aa83f42a7" title="btRigidBody::clearForces" alt="" coords="297,5,465,32"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="293,56,469,83"><area shape="rect" href="classbt_rigid_body.html#59077fce3d2efd193a3fd7d7de2c97e8" title="btRigidBody::upcast" alt="" coords="312,107,451,133"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a_icgraph.png" border="0" usemap="#classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a_icgraph_map" alt=""></center>
+<map name="classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a_icgraph_map">
+<area shape="rect" href="classbt_simple_dynamics_world.html#f6b4810b5018cbaf09f82839111a243d" title="maxSubSteps/fixedTimeStep for interpolation is currently ignored for btSimpleDynamicsWorld..." alt="" coords="293,5,552,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimpleDynamicsWorld.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/<a class="el" href="bt_simple_dynamics_world_8h-source.html">btSimpleDynamicsWorld.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/<a class="el" href="bt_simple_dynamics_world_8cpp-source.html">btSimpleDynamicsWorld.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:47 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:50 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

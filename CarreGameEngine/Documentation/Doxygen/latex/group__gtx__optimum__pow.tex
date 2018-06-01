@@ -37,42 +37,137 @@ $<$glm/gtx/optimum\_\-pow.hpp$>$ need to be included to use these functionalitie
 \label{group__gtx__optimum__pow_g8c44a36cd695f8abc2444152606f6067}
 
 
-Returns x raised to the power of 2. From GLM\_\-GTX\_\-optimum\_\-pow extension. \hypertarget{group__gtx__optimum__pow_gc304ffcd456eeb248c1a3820cd9d7784}{
+Returns x raised to the power of 2. From GLM\_\-GTX\_\-optimum\_\-pow extension. 
+
+Definition at line 13 of file optimum\_\-pow.inl.
+
+Referenced by glm::catmullRom(), glm::hermite(), and glm::radialGradient().
+
+\begin{Code}\begin{verbatim}14         {
+15                 return x * x;
+16         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtx__optimum__pow_gc304ffcd456eeb248c1a3820cd9d7784}{
 \index{gtx\_\-optimum\_\-pow@{gtx\_\-optimum\_\-pow}!pow3@{pow3}}
 \index{pow3@{pow3}!gtx_optimum_pow@{gtx\_\-optimum\_\-pow}}
 \subsubsection[pow3]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::gtx::pow3 (const genType \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__optimum__pow_gc304ffcd456eeb248c1a3820cd9d7784}
 
 
-Returns x raised to the power of 3. From GLM\_\-GTX\_\-optimum\_\-pow extension. \hypertarget{group__gtx__optimum__pow_g829e48dc50a8db13c225cef2aa618839}{
+Returns x raised to the power of 3. From GLM\_\-GTX\_\-optimum\_\-pow extension. 
+
+Definition at line 19 of file optimum\_\-pow.inl.
+
+Referenced by glm::catmullRom(), and glm::hermite().
+
+\begin{Code}\begin{verbatim}20         {
+21                 return x * x * x;
+22         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtx__optimum__pow_g829e48dc50a8db13c225cef2aa618839}{
 \index{gtx\_\-optimum\_\-pow@{gtx\_\-optimum\_\-pow}!pow4@{pow4}}
 \index{pow4@{pow4}!gtx_optimum_pow@{gtx\_\-optimum\_\-pow}}
 \subsubsection[pow4]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::gtx::pow4 (const genType \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__optimum__pow_g829e48dc50a8db13c225cef2aa618839}
 
 
-Returns x raised to the power of 4. From GLM\_\-GTX\_\-optimum\_\-pow extension. \hypertarget{group__gtx__optimum__pow_g6b8d2e72de216fdb517d7bcc9323a713}{
+Returns x raised to the power of 4. From GLM\_\-GTX\_\-optimum\_\-pow extension. 
+
+Definition at line 25 of file optimum\_\-pow.inl.
+
+\begin{Code}\begin{verbatim}26         {
+27                 return (x * x) * (x * x);
+28         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__optimum__pow_g6b8d2e72de216fdb517d7bcc9323a713}{
 \index{gtx\_\-optimum\_\-pow@{gtx\_\-optimum\_\-pow}!powOfTwo@{powOfTwo}}
 \index{powOfTwo@{powOfTwo}!gtx_optimum_pow@{gtx\_\-optimum\_\-pow}}
 \subsubsection[powOfTwo]{\setlength{\rightskip}{0pt plus 5cm}template$<$precision P$>$ GLM\_\-FUNC\_\-DECL detail::tvec4$<$bool, P$>$ glm::gtx::powOfTwo (detail::tvec4$<$ int, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__optimum__pow_g6b8d2e72de216fdb517d7bcc9323a713}
 
 
-Checks to determine if the parameter component are power of 2 numbers. From GLM\_\-GTX\_\-optimum\_\-pow extension. \hypertarget{group__gtx__optimum__pow_g9225089c241c18df4ff3548949f8d223}{
+Checks to determine if the parameter component are power of 2 numbers. From GLM\_\-GTX\_\-optimum\_\-pow extension. 
+
+Definition at line 53 of file optimum\_\-pow.inl.
+
+References glm::powOfTwo().
+
+\begin{Code}\begin{verbatim}54         {
+55                 return detail::tvec4<bool, P>(
+56                         powOfTwo(x.x),
+57                         powOfTwo(x.y),
+58                         powOfTwo(x.z),
+59                         powOfTwo(x.w));
+60         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__optimum__pow_g9225089c241c18df4ff3548949f8d223}{
 \index{gtx\_\-optimum\_\-pow@{gtx\_\-optimum\_\-pow}!powOfTwo@{powOfTwo}}
 \index{powOfTwo@{powOfTwo}!gtx_optimum_pow@{gtx\_\-optimum\_\-pow}}
 \subsubsection[powOfTwo]{\setlength{\rightskip}{0pt plus 5cm}template$<$precision P$>$ GLM\_\-FUNC\_\-DECL detail::tvec3$<$bool, P$>$ glm::gtx::powOfTwo (detail::tvec3$<$ int, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__optimum__pow_g9225089c241c18df4ff3548949f8d223}
 
 
-Checks to determine if the parameter component are power of 2 numbers. From GLM\_\-GTX\_\-optimum\_\-pow extension. \hypertarget{group__gtx__optimum__pow_g9eb230332816fecf06fc3a6f01fcaffa}{
+Checks to determine if the parameter component are power of 2 numbers. From GLM\_\-GTX\_\-optimum\_\-pow extension. 
+
+Definition at line 44 of file optimum\_\-pow.inl.
+
+References glm::powOfTwo().
+
+\begin{Code}\begin{verbatim}45         {
+46                 return detail::tvec3<bool, P>(
+47                         powOfTwo(x.x),
+48                         powOfTwo(x.y),
+49                         powOfTwo(x.z));
+50         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__optimum__pow_g9eb230332816fecf06fc3a6f01fcaffa}{
 \index{gtx\_\-optimum\_\-pow@{gtx\_\-optimum\_\-pow}!powOfTwo@{powOfTwo}}
 \index{powOfTwo@{powOfTwo}!gtx_optimum_pow@{gtx\_\-optimum\_\-pow}}
 \subsubsection[powOfTwo]{\setlength{\rightskip}{0pt plus 5cm}template$<$precision P$>$ GLM\_\-FUNC\_\-DECL detail::tvec2$<$bool, P$>$ glm::gtx::powOfTwo (detail::tvec2$<$ int, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__optimum__pow_g9eb230332816fecf06fc3a6f01fcaffa}
 
 
-Checks to determine if the parameter component are power of 2 numbers. From GLM\_\-GTX\_\-optimum\_\-pow extension. \hypertarget{group__gtx__optimum__pow_g399b24df28267c1f061c462dd359affd}{
+Checks to determine if the parameter component are power of 2 numbers. From GLM\_\-GTX\_\-optimum\_\-pow extension. 
+
+Definition at line 36 of file optimum\_\-pow.inl.
+
+References glm::powOfTwo().
+
+\begin{Code}\begin{verbatim}37         {
+38                 return detail::tvec2<bool, P>(
+39                         powOfTwo(x.x),
+40                         powOfTwo(x.y));
+41         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__optimum__pow_g399b24df28267c1f061c462dd359affd}{
 \index{gtx\_\-optimum\_\-pow@{gtx\_\-optimum\_\-pow}!powOfTwo@{powOfTwo}}
 \index{powOfTwo@{powOfTwo}!gtx_optimum_pow@{gtx\_\-optimum\_\-pow}}
 \subsubsection[powOfTwo]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-DECL bool glm::gtx::powOfTwo (int {\em num})}}
@@ -80,3 +175,18 @@ Checks to determine if the parameter component are power of 2 numbers. From GLM\
 
 
 Checks if the parameter is a power of 2 number. From GLM\_\-GTX\_\-optimum\_\-pow extension. 
+
+Definition at line 30 of file optimum\_\-pow.inl.
+
+Referenced by glm::powOfTwo().
+
+\begin{Code}\begin{verbatim}31         {
+32                 return !(x & (x - 1));
+33         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:

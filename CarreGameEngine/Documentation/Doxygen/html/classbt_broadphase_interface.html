@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btBroadphaseInterface Class Reference</title>
+<title>Assignment2 - OOber Taxi: btBroadphaseInterface Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,14 +25,14 @@
   </div>
 </div>
 <div class="contents">
-<h1>btBroadphaseInterface Class Reference</h1><!-- doxytag: class="btBroadphaseInterface" --><code>#include &lt;btBroadphaseInterface.h&gt;</code>
+<h1>btBroadphaseInterface Class Reference</h1><!-- doxytag: class="btBroadphaseInterface" --><code>#include &lt;<a class="el" href="bt_broadphase_interface_8h-source.html">btBroadphaseInterface.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btBroadphaseInterface:</div>
 <div class="dynsection">
 <p><center><img src="classbt_broadphase_interface__inherit__graph.png" border="0" usemap="#bt_broadphase_interface__inherit__map" alt="Inheritance graph"></center>
 <map name="bt_broadphase_interface__inherit__map">
-<area shape="rect" href="classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; BP_FP_INT_TYPE \&gt;" alt="" coords="205,5,485,32"><area shape="rect" href="classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; unsigned int \&gt;" alt="" coords="225,56,465,83"><area shape="rect" href="classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; unsigned short int \&gt;" alt="" coords="209,107,481,133"><area shape="rect" href="structbt_dbvt_broadphase.html" title="btDbvtBroadphase" alt="" coords="283,157,408,184"><area shape="rect" href="classbt_simple_broadphase.html" title="btSimpleBroadphase" alt="" coords="275,208,416,235"><area shape="rect" href="classbt32_bit_axis_sweep3.html" title="bt32BitAxisSweep3" alt="" coords="535,56,668,83"><area shape="rect" href="classbt_axis_sweep3.html" title="btAxisSweep3" alt="" coords="549,107,653,133"></map>
+<area shape="rect" href="classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; BP_FP_INT_TYPE \&gt;" alt="" coords="208,64,488,91"><area shape="rect" href="classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; unsigned int \&gt;" alt="" coords="681,23,921,49"><area shape="rect" href="classbt_axis_sweep3_internal.html" title="btAxisSweep3Internal\&lt; unsigned short int \&gt;" alt="" coords="665,93,937,120"><area shape="rect" href="structbt_dbvt_broadphase.html" title="btDbvtBroadphase" alt="" coords="285,165,411,192"><area shape="rect" href="classbt_simple_broadphase.html" title="btSimpleBroadphase" alt="" coords="277,216,419,243"><area shape="rect" href="classbt32_bit_axis_sweep3.html" title="bt32BitAxisSweep3" alt="" coords="991,23,1124,49"><area shape="rect" href="classbt_axis_sweep3.html" title="btAxisSweep3" alt="" coords="1005,93,1109,120"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -51,7 +51,9 @@ virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">reset broadphase internal structures, to ensure determinism/reproducability <br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The <a class="el" href="classbt_broadphase_interface.html">btBroadphaseInterface</a> class provides an interface to detect aabb-overlapping object pairs. Some implementations for this broadphase interface include <a class="el" href="classbt_axis_sweep3.html">btAxisSweep3</a>, <a class="el" href="classbt32_bit_axis_sweep3.html">bt32BitAxisSweep3</a> and <a class="el" href="structbt_dbvt_broadphase.html">btDbvtBroadphase</a>. The actual overlapping pair management, storage, adding and removing of pairs is dealt by the <a class="el" href="classbt_overlapping_pair_cache.html">btOverlappingPairCache</a> class. <hr><h2>Member Function Documentation</h2>
+The <a class="el" href="classbt_broadphase_interface.html">btBroadphaseInterface</a> class provides an interface to detect aabb-overlapping object pairs. Some implementations for this broadphase interface include <a class="el" href="classbt_axis_sweep3.html">btAxisSweep3</a>, <a class="el" href="classbt32_bit_axis_sweep3.html">bt32BitAxisSweep3</a> and <a class="el" href="structbt_dbvt_broadphase.html">btDbvtBroadphase</a>. The actual overlapping pair management, storage, adding and removing of pairs is dealt by the <a class="el" href="classbt_overlapping_pair_cache.html">btOverlappingPairCache</a> class. 
+<p>Definition at line <a class="el" href="bt_broadphase_interface_8h-source.html#l00055">55</a> of file <a class="el" href="bt_broadphase_interface_8h-source.html">btBroadphaseInterface.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="b5af9e26414f5a72a76040b8fab4d9e2"></a><!-- doxytag: member="btBroadphaseInterface::getBroadphaseAabb" ref="b5af9e26414f5a72a76040b8fab4d9e2" args="(btVector3 &amp;aabbMin, btVector3 &amp;aabbMax) const =0" -->
 <div class="memitem">
 <div class="memproto">
@@ -84,9 +86,9 @@ getAabb returns the axis aligned bounding box in the 'global' coordinate frame w
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/<a class="el" href="bt_broadphase_interface_8h-source.html">btBroadphaseInterface.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:07 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:40 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

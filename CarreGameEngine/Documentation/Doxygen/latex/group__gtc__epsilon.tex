@@ -46,7 +46,26 @@ Returns the component-wise comparison of $|$x - y$|$ $<$ epsilon. True if this e
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__epsilon}{GLM\_\-GTC\_\-epsilon} \end{Desc}
-\hypertarget{group__gtc__epsilon_gcdfcf5e1180e8147b0619c0743e3eb7d}{
+
+
+Definition at line 85 of file epsilon.inl.
+
+References glm::abs().
+
+Referenced by glm::orientedAngle().
+
+\begin{Code}\begin{verbatim}90         {
+91                 return lessThan(abs(x - y), vecType<T, P>(epsilon));
+92         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtc__epsilon_gcdfcf5e1180e8147b0619c0743e3eb7d}{
 \index{gtc\_\-epsilon@{gtc\_\-epsilon}!epsilonNotEqual@{epsilonNotEqual}}
 \index{epsilonNotEqual@{epsilonNotEqual}!gtc_epsilon@{gtc\_\-epsilon}}
 \subsubsection[epsilonNotEqual]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL bool glm::epsilonNotEqual (genType const \& {\em x}, \/  genType const \& {\em y}, \/  genType const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}

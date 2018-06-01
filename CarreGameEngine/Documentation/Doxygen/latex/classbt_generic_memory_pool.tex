@@ -25,6 +25,8 @@ size\_\-t \hyperlink{classbt_generic_memory_pool_b3d627fdeb0178314779ba9b2361462
 \subsection{Detailed Description}
 Generic Pool class. 
 
+Definition at line 34 of file btGenericPoolAllocator.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_generic_memory_pool_cd47d75d6fbd7dbf6f0d7849e0bd9ec1}{
 \index{btGenericMemoryPool@{btGenericMemoryPool}!allocate@{allocate}}
@@ -42,7 +44,41 @@ Allocates memory in pool.
 \end{Desc}
 
 
+Definition at line 119 of file btGenericPoolAllocator.cpp.
+
+References allocate\_\-from\_\-free\_\-nodes().
+
+Referenced by btGenericPoolAllocator::allocate().
+
+\begin{Code}\begin{verbatim}120 {
+121 
+122         size_t module = size_bytes%m_element_size;
+123         size_t element_count = size_bytes/m_element_size;
+124         if(module>0) element_count++;
+125 
+126         size_t alloc_pos = allocate_from_free_nodes(element_count);
+127         // a free node is found
+128         if(alloc_pos != BT_UINT_MAX)
+129         {
+130                 return get_element_data(alloc_pos);
+131         }
+132         // allocate directly on pool
+133         alloc_pos = allocate_from_pool(element_count);
+134 
+135         if(alloc_pos == BT_UINT_MAX) return NULL; // not space
+136         return get_element_data(alloc_pos);
+137 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_generic_pool_allocator_8h}{btGenericPoolAllocator.h}\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_generic_pool_allocator_8cpp}{btGenericPoolAllocator.cpp}\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_generic_pool_allocator_8h}{btGenericPoolAllocator.h}\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_generic_pool_allocator_8cpp}{btGenericPoolAllocator.cpp}\end{CompactItemize}

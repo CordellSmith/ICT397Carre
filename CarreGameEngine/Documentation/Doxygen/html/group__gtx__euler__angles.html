@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_euler_angles</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_euler_angles</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -120,6 +120,42 @@ template&lt;typename T&gt; </div>
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from an euler angle X. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00014">14</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+
+<p>Referenced by <a class="el" href="euler__angles_8inl-source.html#l00100">glm::eulerAngleXZ()</a>, and <a class="el" href="euler__angles_8inl-source.html#l00110">glm::eulerAngleZX()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00017"></a>00017         {
+<a name="l00018"></a>00018                 T cosX = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(angleX);
+<a name="l00019"></a>00019                 T sinX = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(angleX);
+<a name="l00020"></a>00020         
+<a name="l00021"></a>00021                 <span class="keywordflow">return</span> detail::tmat4x4&lt;T, defaultp&gt;(
+<a name="l00022"></a>00022                         T(1), T(0), T(0), T(0),
+<a name="l00023"></a>00023                         T(0), cosX, sinX, T(0),
+<a name="l00024"></a>00024                         T(0),-sinX, cosX, T(0),
+<a name="l00025"></a>00025                         T(0), T(0), T(0), T(1));
+<a name="l00026"></a>00026         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g5fb8269b6795f95dec7ca7bbe61805f6_cgraph.png" border="0" usemap="#group__gtx__euler__angles_g5fb8269b6795f95dec7ca7bbe61805f6_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g5fb8269b6795f95dec7ca7bbe61805f6_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="173,5,245,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="176,56,243,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g5fb8269b6795f95dec7ca7bbe61805f6_icgraph.png" border="0" usemap="#group__gtx__euler__angles_g5fb8269b6795f95dec7ca7bbe61805f6_icgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g5fb8269b6795f95dec7ca7bbe61805f6_icgraph_map">
+<area shape="rect" href="group__gtx__euler__angles.html#g9b63e52fda0b7773c50bbf3c310bdcf2" title="glm::eulerAngleXZ" alt="" coords="173,5,299,32"><area shape="rect" href="group__gtx__euler__angles.html#g3709f9eb45b49ecf41d42bec91c031fa" title="glm::eulerAngleZX" alt="" coords="173,56,299,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g6a2dc9bf80aecdffb3e5ab3bcede6647"></a><!-- doxytag: member="glm::eulerAngleXY" ref="g6a2dc9bf80aecdffb3e5ab3bcede6647" args="(T const &amp;angleX, T const &amp;angleY)" -->
@@ -151,6 +187,33 @@ template&lt;typename T&gt; </div>
 
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (X * Y). <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00062">62</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00066"></a>00066         {
+<a name="l00067"></a>00067                 T cosX = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(angleX);
+<a name="l00068"></a>00068                 T sinX = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(angleX);
+<a name="l00069"></a>00069                 T cosY = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(angleY);
+<a name="l00070"></a>00070                 T sinY = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(angleY);
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072                 <span class="keywordflow">return</span> detail::tmat4x4&lt;T, defaultp&gt;(
+<a name="l00073"></a>00073                         cosY,   -sinX * -sinY,  cosX * -sinY,   T(0),
+<a name="l00074"></a>00074                         T(0),   cosX,           sinX,           T(0),
+<a name="l00075"></a>00075                         sinY,   -sinX * cosY,   cosX * cosY,    T(0),
+<a name="l00076"></a>00076                         T(0),   T(0),           T(0),           T(1));
+<a name="l00077"></a>00077         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g6a2dc9bf80aecdffb3e5ab3bcede6647_cgraph.png" border="0" usemap="#group__gtx__euler__angles_g6a2dc9bf80aecdffb3e5ab3bcede6647_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g6a2dc9bf80aecdffb3e5ab3bcede6647_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="181,5,253,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="184,56,251,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -184,6 +247,24 @@ template&lt;typename T&gt; </div>
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (X * Z). <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00100">100</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="euler__angles_8inl-source.html#l00014">glm::eulerAngleX()</a>, and <a class="el" href="euler__angles_8inl-source.html#l00046">glm::eulerAngleZ()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00104"></a>00104         {
+<a name="l00105"></a>00105                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__euler__angles.html#g5fb8269b6795f95dec7ca7bbe61805f6">eulerAngleX</a>(angleX) * <a class="code" href="group__gtx__euler__angles.html#ge77e2c08c118ecd34ffc8ca425d2cf77">eulerAngleZ</a>(angleZ);
+<a name="l00106"></a>00106         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g9b63e52fda0b7773c50bbf3c310bdcf2_cgraph.png" border="0" usemap="#group__gtx__euler__angles_g9b63e52fda0b7773c50bbf3c310bdcf2_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g9b63e52fda0b7773c50bbf3c310bdcf2_cgraph_map">
+<area shape="rect" href="group__gtx__euler__angles.html#g5fb8269b6795f95dec7ca7bbe61805f6" title="glm::eulerAngleX" alt="" coords="180,5,297,32"><area shape="rect" href="group__gtx__euler__angles.html#ge77e2c08c118ecd34ffc8ca425d2cf77" title="glm::eulerAngleZ" alt="" coords="180,56,297,83"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="347,5,419,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="349,56,416,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g558b0e0fd3c1f6a414d184a22c968b79"></a><!-- doxytag: member="glm::eulerAngleY" ref="g558b0e0fd3c1f6a414d184a22c968b79" args="(T const &amp;angleY)" -->
@@ -206,6 +287,42 @@ template&lt;typename T&gt; </div>
 
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from an euler angle Y. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00030">30</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+
+<p>Referenced by <a class="el" href="euler__angles_8inl-source.html#l00120">glm::eulerAngleYZ()</a>, and <a class="el" href="euler__angles_8inl-source.html#l00130">glm::eulerAngleZY()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00033"></a>00033         {
+<a name="l00034"></a>00034                 T cosY = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(angleY);
+<a name="l00035"></a>00035                 T sinY = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(angleY);
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037                 <span class="keywordflow">return</span> detail::tmat4x4&lt;T, defaultp&gt;(
+<a name="l00038"></a>00038                         cosY,   T(0),   -sinY,  T(0),
+<a name="l00039"></a>00039                         T(0),   T(1),   T(0),   T(0),
+<a name="l00040"></a>00040                         sinY,   T(0),   cosY,   T(0),
+<a name="l00041"></a>00041                         T(0),   T(0),   T(0),   T(1));
+<a name="l00042"></a>00042         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g558b0e0fd3c1f6a414d184a22c968b79_cgraph.png" border="0" usemap="#group__gtx__euler__angles_g558b0e0fd3c1f6a414d184a22c968b79_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g558b0e0fd3c1f6a414d184a22c968b79_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="173,5,245,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="176,56,243,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g558b0e0fd3c1f6a414d184a22c968b79_icgraph.png" border="0" usemap="#group__gtx__euler__angles_g558b0e0fd3c1f6a414d184a22c968b79_icgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g558b0e0fd3c1f6a414d184a22c968b79_icgraph_map">
+<area shape="rect" href="group__gtx__euler__angles.html#g9ac024a16439421d2a3c7c17b6df31b5" title="glm::eulerAngleYZ" alt="" coords="173,5,301,32"><area shape="rect" href="group__gtx__euler__angles.html#gfcd7d34bef520fd8bee6d4d865a8162a" title="glm::eulerAngleZY" alt="" coords="173,56,301,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -238,6 +355,33 @@ template&lt;typename T&gt; </div>
 
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Y * X). <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00081">81</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00085"></a>00085         {
+<a name="l00086"></a>00086                 T cosX = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(angleX);
+<a name="l00087"></a>00087                 T sinX = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(angleX);
+<a name="l00088"></a>00088                 T cosY = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(angleY);
+<a name="l00089"></a>00089                 T sinY = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(angleY);
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091                 <span class="keywordflow">return</span> detail::tmat4x4&lt;T, defaultp&gt;(
+<a name="l00092"></a>00092                         cosY,          0,      -sinY,    T(0),
+<a name="l00093"></a>00093                         sinY * sinX,  cosX, cosY * sinX, T(0),
+<a name="l00094"></a>00094                         sinY * cosX, -sinX, cosY * cosX, T(0),
+<a name="l00095"></a>00095                         T(0),         T(0),     T(0),    T(1));
+<a name="l00096"></a>00096         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_gd26afd5add0e121296d3b44dea32f32e_cgraph.png" border="0" usemap="#group__gtx__euler__angles_gd26afd5add0e121296d3b44dea32f32e_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_gd26afd5add0e121296d3b44dea32f32e_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="181,5,253,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="184,56,251,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -277,6 +421,48 @@ template&lt;typename T&gt; </div>
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Y * X * Z). <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00140">140</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00145"></a>00145         {
+<a name="l00146"></a>00146                 T tmp_ch = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(<a class="code" href="group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1">yaw</a>);
+<a name="l00147"></a>00147                 T tmp_sh = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(<a class="code" href="group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1">yaw</a>);
+<a name="l00148"></a>00148                 T tmp_cp = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(<a class="code" href="group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd">pitch</a>);
+<a name="l00149"></a>00149                 T tmp_sp = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(<a class="code" href="group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd">pitch</a>);
+<a name="l00150"></a>00150                 T tmp_cb = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(<a class="code" href="group__gtc__quaternion.html#g3f58a75c69ff56cb9c83ea237abc1414">roll</a>);
+<a name="l00151"></a>00151                 T tmp_sb = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(<a class="code" href="group__gtc__quaternion.html#g3f58a75c69ff56cb9c83ea237abc1414">roll</a>);
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153                 detail::tmat4x4&lt;T, defaultp&gt; Result;
+<a name="l00154"></a>00154                 Result[0][0] = tmp_ch * tmp_cb + tmp_sh * tmp_sp * tmp_sb;
+<a name="l00155"></a>00155                 Result[0][1] = tmp_sb * tmp_cp;
+<a name="l00156"></a>00156                 Result[0][2] = -tmp_sh * tmp_cb + tmp_ch * tmp_sp * tmp_sb;
+<a name="l00157"></a>00157                 Result[0][3] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00158"></a>00158                 Result[1][0] = -tmp_ch * tmp_sb + tmp_sh * tmp_sp * tmp_cb;
+<a name="l00159"></a>00159                 Result[1][1] = tmp_cb * tmp_cp;
+<a name="l00160"></a>00160                 Result[1][2] = tmp_sb * tmp_sh + tmp_ch * tmp_sp * tmp_cb;
+<a name="l00161"></a>00161                 Result[1][3] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00162"></a>00162                 Result[2][0] = tmp_sh * tmp_cp;
+<a name="l00163"></a>00163                 Result[2][1] = -tmp_sp;
+<a name="l00164"></a>00164                 Result[2][2] = tmp_ch * tmp_cp;
+<a name="l00165"></a>00165                 Result[2][3] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00166"></a>00166                 Result[3][0] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00167"></a>00167                 Result[3][1] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00168"></a>00168                 Result[3][2] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00169"></a>00169                 Result[3][3] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(1);
+<a name="l00170"></a>00170                 <span class="keywordflow">return</span> Result;
+<a name="l00171"></a>00171         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g7ba74fb9419dd90256b682855e904159_cgraph.png" border="0" usemap="#group__gtx__euler__angles_g7ba74fb9419dd90256b682855e904159_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g7ba74fb9419dd90256b682855e904159_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="189,5,261,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="192,56,259,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g9ac024a16439421d2a3c7c17b6df31b5"></a><!-- doxytag: member="glm::eulerAngleYZ" ref="g9ac024a16439421d2a3c7c17b6df31b5" args="(T const &amp;angleY, T const &amp;angleZ)" -->
@@ -309,6 +495,24 @@ template&lt;typename T&gt; </div>
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Y * Z). <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00120">120</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="euler__angles_8inl-source.html#l00030">glm::eulerAngleY()</a>, and <a class="el" href="euler__angles_8inl-source.html#l00046">glm::eulerAngleZ()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00124"></a>00124         {
+<a name="l00125"></a>00125                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__euler__angles.html#g558b0e0fd3c1f6a414d184a22c968b79">eulerAngleY</a>(angleY) * <a class="code" href="group__gtx__euler__angles.html#ge77e2c08c118ecd34ffc8ca425d2cf77">eulerAngleZ</a>(angleZ);
+<a name="l00126"></a>00126         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g9ac024a16439421d2a3c7c17b6df31b5_cgraph.png" border="0" usemap="#group__gtx__euler__angles_g9ac024a16439421d2a3c7c17b6df31b5_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g9ac024a16439421d2a3c7c17b6df31b5_cgraph_map">
+<area shape="rect" href="group__gtx__euler__angles.html#g558b0e0fd3c1f6a414d184a22c968b79" title="glm::eulerAngleY" alt="" coords="181,5,301,32"><area shape="rect" href="group__gtx__euler__angles.html#ge77e2c08c118ecd34ffc8ca425d2cf77" title="glm::eulerAngleZ" alt="" coords="183,56,300,83"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="349,5,421,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="352,56,419,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="ge77e2c08c118ecd34ffc8ca425d2cf77"></a><!-- doxytag: member="glm::eulerAngleZ" ref="ge77e2c08c118ecd34ffc8ca425d2cf77" args="(T const &amp;angleZ)" -->
@@ -331,6 +535,42 @@ template&lt;typename T&gt; </div>
 
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from an euler angle Z. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00046">46</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+
+<p>Referenced by <a class="el" href="euler__angles_8inl-source.html#l00100">glm::eulerAngleXZ()</a>, <a class="el" href="euler__angles_8inl-source.html#l00120">glm::eulerAngleYZ()</a>, <a class="el" href="euler__angles_8inl-source.html#l00110">glm::eulerAngleZX()</a>, and <a class="el" href="euler__angles_8inl-source.html#l00130">glm::eulerAngleZY()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00049"></a>00049         {
+<a name="l00050"></a>00050                 T cosZ = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(angleZ);
+<a name="l00051"></a>00051                 T sinZ = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(angleZ);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053                 <span class="keywordflow">return</span> detail::tmat4x4&lt;T, defaultp&gt;(
+<a name="l00054"></a>00054                         cosZ,   sinZ,   T(0), T(0),
+<a name="l00055"></a>00055                         -sinZ,  cosZ,   T(0), T(0),
+<a name="l00056"></a>00056                         T(0),   T(0),   T(1), T(0),
+<a name="l00057"></a>00057                         T(0),   T(0),   T(0), T(1));
+<a name="l00058"></a>00058         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_ge77e2c08c118ecd34ffc8ca425d2cf77_cgraph.png" border="0" usemap="#group__gtx__euler__angles_ge77e2c08c118ecd34ffc8ca425d2cf77_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_ge77e2c08c118ecd34ffc8ca425d2cf77_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="173,5,245,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="176,56,243,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_ge77e2c08c118ecd34ffc8ca425d2cf77_icgraph.png" border="0" usemap="#group__gtx__euler__angles_ge77e2c08c118ecd34ffc8ca425d2cf77_icgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_ge77e2c08c118ecd34ffc8ca425d2cf77_icgraph_map">
+<area shape="rect" href="group__gtx__euler__angles.html#g9b63e52fda0b7773c50bbf3c310bdcf2" title="glm::eulerAngleXZ" alt="" coords="175,5,300,32"><area shape="rect" href="group__gtx__euler__angles.html#g9ac024a16439421d2a3c7c17b6df31b5" title="glm::eulerAngleYZ" alt="" coords="173,56,301,83"><area shape="rect" href="group__gtx__euler__angles.html#g3709f9eb45b49ecf41d42bec91c031fa" title="glm::eulerAngleZX" alt="" coords="175,107,300,133"><area shape="rect" href="group__gtx__euler__angles.html#gfcd7d34bef520fd8bee6d4d865a8162a" title="glm::eulerAngleZY" alt="" coords="173,157,301,184"></map>
+</div>
 
 </div>
 </div><p>
@@ -364,6 +604,24 @@ template&lt;typename T&gt; </div>
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Z * X). <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00110">110</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="euler__angles_8inl-source.html#l00014">glm::eulerAngleX()</a>, and <a class="el" href="euler__angles_8inl-source.html#l00046">glm::eulerAngleZ()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00114"></a>00114         {
+<a name="l00115"></a>00115                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__euler__angles.html#ge77e2c08c118ecd34ffc8ca425d2cf77">eulerAngleZ</a>(angleZ) * <a class="code" href="group__gtx__euler__angles.html#g5fb8269b6795f95dec7ca7bbe61805f6">eulerAngleX</a>(angleX);
+<a name="l00116"></a>00116         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g3709f9eb45b49ecf41d42bec91c031fa_cgraph.png" border="0" usemap="#group__gtx__euler__angles_g3709f9eb45b49ecf41d42bec91c031fa_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g3709f9eb45b49ecf41d42bec91c031fa_cgraph_map">
+<area shape="rect" href="group__gtx__euler__angles.html#g5fb8269b6795f95dec7ca7bbe61805f6" title="glm::eulerAngleX" alt="" coords="180,5,297,32"><area shape="rect" href="group__gtx__euler__angles.html#ge77e2c08c118ecd34ffc8ca425d2cf77" title="glm::eulerAngleZ" alt="" coords="180,56,297,83"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="347,5,419,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="349,56,416,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gfcd7d34bef520fd8bee6d4d865a8162a"></a><!-- doxytag: member="glm::eulerAngleZY" ref="gfcd7d34bef520fd8bee6d4d865a8162a" args="(T const &amp;angleZ, T const &amp;angleY)" -->
@@ -396,6 +654,24 @@ template&lt;typename T&gt; </div>
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Z * Y). <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00130">130</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="euler__angles_8inl-source.html#l00030">glm::eulerAngleY()</a>, and <a class="el" href="euler__angles_8inl-source.html#l00046">glm::eulerAngleZ()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00134"></a>00134         {
+<a name="l00135"></a>00135                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__euler__angles.html#ge77e2c08c118ecd34ffc8ca425d2cf77">eulerAngleZ</a>(angleZ) * <a class="code" href="group__gtx__euler__angles.html#g558b0e0fd3c1f6a414d184a22c968b79">eulerAngleY</a>(angleY);
+<a name="l00136"></a>00136         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_gfcd7d34bef520fd8bee6d4d865a8162a_cgraph.png" border="0" usemap="#group__gtx__euler__angles_gfcd7d34bef520fd8bee6d4d865a8162a_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_gfcd7d34bef520fd8bee6d4d865a8162a_cgraph_map">
+<area shape="rect" href="group__gtx__euler__angles.html#g558b0e0fd3c1f6a414d184a22c968b79" title="glm::eulerAngleY" alt="" coords="181,5,301,32"><area shape="rect" href="group__gtx__euler__angles.html#ge77e2c08c118ecd34ffc8ca425d2cf77" title="glm::eulerAngleZ" alt="" coords="183,56,300,83"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="349,5,421,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="352,56,419,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g026f776506cd9c5b144c6d4b410a079b"></a><!-- doxytag: member="glm::orientate2" ref="g026f776506cd9c5b144c6d4b410a079b" args="(T const &amp;angle)" -->
@@ -418,6 +694,32 @@ template&lt;typename T&gt; </div>
 
 <p>
 Creates a 2D 2 * 2 rotation matrix from an euler angle. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00210">210</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00213"></a>00213         {
+<a name="l00214"></a>00214                 T c = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>);
+<a name="l00215"></a>00215                 T s = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>);
+<a name="l00216"></a>00216 
+<a name="l00217"></a>00217                 detail::tmat2x2&lt;T, defaultp&gt; Result;
+<a name="l00218"></a>00218                 Result[0][0] = c;
+<a name="l00219"></a>00219                 Result[0][1] = s;
+<a name="l00220"></a>00220                 Result[1][0] = -s;
+<a name="l00221"></a>00221                 Result[1][1] = c;
+<a name="l00222"></a>00222                 <span class="keywordflow">return</span> Result;
+<a name="l00223"></a>00223         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g026f776506cd9c5b144c6d4b410a079b_cgraph.png" border="0" usemap="#group__gtx__euler__angles_g026f776506cd9c5b144c6d4b410a079b_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g026f776506cd9c5b144c6d4b410a079b_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="163,5,235,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="165,56,232,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -442,6 +744,24 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Creates a 3D 3 * 3 rotation matrix from euler angles (Y * X * Z). <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00249">249</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="euler__angles_8inl-source.html#l00175">glm::yawPitchRoll()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00252"></a>00252         {
+<a name="l00253"></a>00253                 <span class="keywordflow">return</span> detail::tmat3x3&lt;T, P&gt;(<a class="code" href="group__gtx__euler__angles.html#ga254d26a7a42b65101f4eee88d5b153f">yawPitchRoll</a>(angles.z, angles.x, angles.y));
+<a name="l00254"></a>00254         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g114ce533cc2f140cb17ca5a44214d973_cgraph.png" border="0" usemap="#group__gtx__euler__angles_g114ce533cc2f140cb17ca5a44214d973_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g114ce533cc2f140cb17ca5a44214d973_cgraph_map">
+<area shape="rect" href="group__gtx__euler__angles.html#ga254d26a7a42b65101f4eee88d5b153f" title="glm::yawPitchRoll" alt="" coords="163,31,288,57"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="336,5,408,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="339,56,405,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gce794db535af3056d97f4f62e7ed7509"></a><!-- doxytag: member="glm::orientate3" ref="gce794db535af3056d97f4f62e7ed7509" args="(T const &amp;angle)" -->
@@ -465,6 +785,37 @@ template&lt;typename T&gt; </div>
 <p>
 Creates a 2D 4 * 4 homogeneous rotation matrix from an euler angle. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00227">227</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00230"></a>00230         {
+<a name="l00231"></a>00231                 T c = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>);
+<a name="l00232"></a>00232                 T s = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>);
+<a name="l00233"></a>00233 
+<a name="l00234"></a>00234                 detail::tmat3x3&lt;T, defaultp&gt; Result;
+<a name="l00235"></a>00235                 Result[0][0] = c;
+<a name="l00236"></a>00236                 Result[0][1] = s;
+<a name="l00237"></a>00237                 Result[0][2] = 0.0f;
+<a name="l00238"></a>00238                 Result[1][0] = -s;
+<a name="l00239"></a>00239                 Result[1][1] = c;
+<a name="l00240"></a>00240                 Result[1][2] = 0.0f;
+<a name="l00241"></a>00241                 Result[2][0] = 0.0f;
+<a name="l00242"></a>00242                 Result[2][1] = 0.0f;
+<a name="l00243"></a>00243                 Result[2][2] = 1.0f;
+<a name="l00244"></a>00244                 <span class="keywordflow">return</span> Result;
+<a name="l00245"></a>00245         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_gce794db535af3056d97f4f62e7ed7509_cgraph.png" border="0" usemap="#group__gtx__euler__angles_gce794db535af3056d97f4f62e7ed7509_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_gce794db535af3056d97f4f62e7ed7509_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="163,5,235,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="165,56,232,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g98f6c8d3b6b97ff0ae2f64544142cb7f"></a><!-- doxytag: member="glm::orientate4" ref="g98f6c8d3b6b97ff0ae2f64544142cb7f" args="(detail::tvec3&lt; T, P &gt; const &amp;angles)" -->
@@ -487,6 +838,24 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Y * X * Z). <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00258">258</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="euler__angles_8inl-source.html#l00175">glm::yawPitchRoll()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00261"></a>00261         {
+<a name="l00262"></a>00262                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__euler__angles.html#ga254d26a7a42b65101f4eee88d5b153f">yawPitchRoll</a>(angles.z, angles.x, angles.y);
+<a name="l00263"></a>00263         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_g98f6c8d3b6b97ff0ae2f64544142cb7f_cgraph.png" border="0" usemap="#group__gtx__euler__angles_g98f6c8d3b6b97ff0ae2f64544142cb7f_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_g98f6c8d3b6b97ff0ae2f64544142cb7f_cgraph_map">
+<area shape="rect" href="group__gtx__euler__angles.html#ga254d26a7a42b65101f4eee88d5b153f" title="glm::yawPitchRoll" alt="" coords="163,31,288,57"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="336,5,408,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="339,56,405,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -526,10 +895,63 @@ template&lt;typename T&gt; </div>
 <p>
 Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Y * X * Z). <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__euler__angles.html" title="Build matrices from Euler angles.">GLM_GTX_euler_angles</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="euler__angles_8inl-source.html#l00175">175</a> of file <a class="el" href="euler__angles_8inl-source.html">euler_angles.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+
+<p>Referenced by <a class="el" href="euler__angles_8inl-source.html#l00249">glm::orientate3()</a>, and <a class="el" href="euler__angles_8inl-source.html#l00258">glm::orientate4()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00180"></a>00180         {
+<a name="l00181"></a>00181                 T tmp_ch = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(<a class="code" href="group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1">yaw</a>);
+<a name="l00182"></a>00182                 T tmp_sh = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(<a class="code" href="group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1">yaw</a>);
+<a name="l00183"></a>00183                 T tmp_cp = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(<a class="code" href="group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd">pitch</a>);
+<a name="l00184"></a>00184                 T tmp_sp = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(<a class="code" href="group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd">pitch</a>);
+<a name="l00185"></a>00185                 T tmp_cb = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(<a class="code" href="group__gtc__quaternion.html#g3f58a75c69ff56cb9c83ea237abc1414">roll</a>);
+<a name="l00186"></a>00186                 T tmp_sb = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(<a class="code" href="group__gtc__quaternion.html#g3f58a75c69ff56cb9c83ea237abc1414">roll</a>);
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188                 detail::tmat4x4&lt;T, defaultp&gt; Result;
+<a name="l00189"></a>00189                 Result[0][0] = tmp_ch * tmp_cb + tmp_sh * tmp_sp * tmp_sb;
+<a name="l00190"></a>00190                 Result[0][1] = tmp_sb * tmp_cp;
+<a name="l00191"></a>00191                 Result[0][2] = -tmp_sh * tmp_cb + tmp_ch * tmp_sp * tmp_sb;
+<a name="l00192"></a>00192                 Result[0][3] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00193"></a>00193                 Result[1][0] = -tmp_ch * tmp_sb + tmp_sh * tmp_sp * tmp_cb;
+<a name="l00194"></a>00194                 Result[1][1] = tmp_cb * tmp_cp;
+<a name="l00195"></a>00195                 Result[1][2] = tmp_sb * tmp_sh + tmp_ch * tmp_sp * tmp_cb;
+<a name="l00196"></a>00196                 Result[1][3] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00197"></a>00197                 Result[2][0] = tmp_sh * tmp_cp;
+<a name="l00198"></a>00198                 Result[2][1] = -tmp_sp;
+<a name="l00199"></a>00199                 Result[2][2] = tmp_ch * tmp_cp;
+<a name="l00200"></a>00200                 Result[2][3] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00201"></a>00201                 Result[3][0] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00202"></a>00202                 Result[3][1] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00203"></a>00203                 Result[3][2] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00204"></a>00204                 Result[3][3] = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(1);
+<a name="l00205"></a>00205                 <span class="keywordflow">return</span> Result;
+<a name="l00206"></a>00206         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_ga254d26a7a42b65101f4eee88d5b153f_cgraph.png" border="0" usemap="#group__gtx__euler__angles_ga254d26a7a42b65101f4eee88d5b153f_cgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_ga254d26a7a42b65101f4eee88d5b153f_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="179,5,251,32"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="181,56,248,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__euler__angles_ga254d26a7a42b65101f4eee88d5b153f_icgraph.png" border="0" usemap="#group__gtx__euler__angles_ga254d26a7a42b65101f4eee88d5b153f_icgraph_map" alt=""></center>
+<map name="group__gtx__euler__angles_ga254d26a7a42b65101f4eee88d5b153f_icgraph_map">
+<area shape="rect" href="group__gtx__euler__angles.html#g114ce533cc2f140cb17ca5a44214d973" title="glm::orientate3" alt="" coords="180,5,287,32"><area shape="rect" href="group__gtx__euler__angles.html#g98f6c8d3b6b97ff0ae2f64544142cb7f" title="glm::orientate4" alt="" coords="180,56,287,83"></map>
+</div>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:30 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:12 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

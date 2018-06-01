@@ -37,42 +37,121 @@ $<$glm/gtx/fast\_\-trigonometry.hpp$>$ need to be included to use these function
 \label{group__gtx__fast__trigonometry_g7f5301bad6bd3a073be8882ac1f4f5d4}
 
 
-Faster than the common acos function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. \hypertarget{group__gtx__fast__trigonometry_g8c49efe243e7ad6ed58a3bcf07b560a0}{
+Faster than the common acos function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. 
+
+Definition at line 50 of file fast\_\-trigonometry.inl.
+
+References glm::fastAsin().
+
+\begin{Code}\begin{verbatim}51         {
+52                 return T(1.5707963267948966192313216916398) - fastAsin(x); //(PI / 2)
+53         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__fast__trigonometry_g8c49efe243e7ad6ed58a3bcf07b560a0}{
 \index{gtx\_\-fast\_\-trigonometry@{gtx\_\-fast\_\-trigonometry}!fastAsin@{fastAsin}}
 \index{fastAsin@{fastAsin}!gtx_fast_trigonometry@{gtx\_\-fast\_\-trigonometry}}
 \subsubsection[fastAsin]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::fastAsin (const T \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__fast__trigonometry_g8c49efe243e7ad6ed58a3bcf07b560a0}
 
 
-Faster than the common asin function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. \hypertarget{group__gtx__fast__trigonometry_g0f10c61865500e4cfe86ad070e5d6312}{
+Faster than the common asin function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. 
+
+Definition at line 41 of file fast\_\-trigonometry.inl.
+
+Referenced by glm::fastAcos().
+
+\begin{Code}\begin{verbatim}42         {
+43                 return x + (x * x * x * T(0.166666667)) + (x * x * x * x * x * T(0.075)) + (x * x * x * x * x * x * x * T(0.0446428571)) + (x * x * x * x * x * x * x * x * x * T(0.0303819444));// + (x * x * x * x * x * x * x * x * x * x * x * T(0.022372159));
+44         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtx__fast__trigonometry_g0f10c61865500e4cfe86ad070e5d6312}{
 \index{gtx\_\-fast\_\-trigonometry@{gtx\_\-fast\_\-trigonometry}!fastAtan@{fastAtan}}
 \index{fastAtan@{fastAtan}!gtx_fast_trigonometry@{gtx\_\-fast\_\-trigonometry}}
 \subsubsection[fastAtan]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::fastAtan (const T \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__fast__trigonometry_g0f10c61865500e4cfe86ad070e5d6312}
 
 
-Faster than the common atan function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. \hypertarget{group__gtx__fast__trigonometry_gc6605aad8dce8278938f58b6e68b036a}{
+Faster than the common atan function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. 
+
+Definition at line 68 of file fast\_\-trigonometry.inl.
+
+\begin{Code}\begin{verbatim}69         {
+70                 return x - (x * x * x * T(0.333333333333)) + (x * x * x * x * x * T(0.2)) - (x * x * x * x * x * x * x * T(0.1428571429)) + (x * x * x * x * x * x * x * x * x * T(0.111111111111)) - (x * x * x * x * x * x * x * x * x * x * x * T(0.0909090909));
+71         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__fast__trigonometry_gc6605aad8dce8278938f58b6e68b036a}{
 \index{gtx\_\-fast\_\-trigonometry@{gtx\_\-fast\_\-trigonometry}!fastAtan@{fastAtan}}
 \index{fastAtan@{fastAtan}!gtx_fast_trigonometry@{gtx\_\-fast\_\-trigonometry}}
 \subsubsection[fastAtan]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::fastAtan (const T \& {\em y}, \/  const T \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__fast__trigonometry_gc6605aad8dce8278938f58b6e68b036a}
 
 
-Faster than the common atan function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. \hypertarget{group__gtx__fast__trigonometry_g40743124db6dc2a59de72aa81bc1cf93}{
+Faster than the common atan function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. 
+
+Definition at line 59 of file fast\_\-trigonometry.inl.
+
+References glm::abs(), and glm::sign().
+
+\begin{Code}\begin{verbatim}60         {
+61                 T sgn = sign(y) * sign(x);
+62                 return abs(fastAtan(y / x)) * sgn;
+63         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__fast__trigonometry_g40743124db6dc2a59de72aa81bc1cf93}{
 \index{gtx\_\-fast\_\-trigonometry@{gtx\_\-fast\_\-trigonometry}!fastCos@{fastCos}}
 \index{fastCos@{fastCos}!gtx_fast_trigonometry@{gtx\_\-fast\_\-trigonometry}}
 \subsubsection[fastCos]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::fastCos (const T \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__fast__trigonometry_g40743124db6dc2a59de72aa81bc1cf93}
 
 
-Faster than the common cos function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. \hypertarget{group__gtx__fast__trigonometry_g2f7a014f1fb9b16ede8b0cac0beba9f1}{
+Faster than the common cos function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. 
+
+Definition at line 23 of file fast\_\-trigonometry.inl.
+
+\begin{Code}\begin{verbatim}24         {
+25                 return T(1) - (x * x * T(0.5)) + (x * x * x * x * T(0.041666666666)) - (x * x * x * x * x * x * T(0.00138888888888));
+26         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__fast__trigonometry_g2f7a014f1fb9b16ede8b0cac0beba9f1}{
 \index{gtx\_\-fast\_\-trigonometry@{gtx\_\-fast\_\-trigonometry}!fastSin@{fastSin}}
 \index{fastSin@{fastSin}!gtx_fast_trigonometry@{gtx\_\-fast\_\-trigonometry}}
 \subsubsection[fastSin]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::fastSin (const T \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__fast__trigonometry_g2f7a014f1fb9b16ede8b0cac0beba9f1}
 
 
-Faster than the common sin function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. \hypertarget{group__gtx__fast__trigonometry_gd182bf6a962a33e47d5f6daf06ca3d6b}{
+Faster than the common sin function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. 
+
+Definition at line 14 of file fast\_\-trigonometry.inl.
+
+\begin{Code}\begin{verbatim}15         {
+16                 return x - ((x * x * x) / T(6)) + ((x * x * x * x * x) / T(120)) - ((x * x * x * x * x * x * x) / T(5040));
+17         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__fast__trigonometry_gd182bf6a962a33e47d5f6daf06ca3d6b}{
 \index{gtx\_\-fast\_\-trigonometry@{gtx\_\-fast\_\-trigonometry}!fastTan@{fastTan}}
 \index{fastTan@{fastTan}!gtx_fast_trigonometry@{gtx\_\-fast\_\-trigonometry}}
 \subsubsection[fastTan]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::fastTan (const T \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -80,3 +159,13 @@ Faster than the common sin function but less accurate. Defined between -2pi and 
 
 
 Faster than the common tan function but less accurate. Defined between -2pi and 2pi. From GLM\_\-GTX\_\-fast\_\-trigonometry extension. 
+
+Definition at line 32 of file fast\_\-trigonometry.inl.
+
+\begin{Code}\begin{verbatim}33         {
+34                 return x + (x * x * x * T(0.3333333333)) + (x * x * x * x * x * T(0.1333333333333)) + (x * x * x * x * x * x * x * T(0.0539682539));
+35         }
+\end{verbatim}
+\end{Code}
+
+

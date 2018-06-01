@@ -17,6 +17,8 @@ virtual void \hyperlink{classbt_compound_compound_collision_algorithm_5fb9d60f97
 \subsection{Detailed Description}
 \hyperlink{classbt_compound_compound_collision_algorithm}{btCompoundCompoundCollisionAlgorithm} supports collision between two btCompoundCollisionShape shapes 
 
+Definition at line 38 of file btCompoundCompoundCollisionAlgorithm.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_compound_compound_collision_algorithm_5fb9d60f9713c0e3795c89390353beb3}{
 \index{btCompoundCompoundCollisionAlgorithm@{btCompoundCompoundCollisionAlgorithm}!processCollision@{processCollision}}
@@ -35,7 +37,155 @@ we need to refresh all contact manifolds note that we should actually recursivel
 
 Reimplemented from \hyperlink{classbt_compound_collision_algorithm_173ce993461795e0572dd2924c54cdc0}{btCompoundCollisionAlgorithm}.
 
+Definition at line 304 of file btCompoundCompoundCollisionAlgorithm.cpp.
+
+References btAlignedObjectArray$<$ T $>$::clear(), btDispatcher::freeCollisionAlgorithm(), btCollisionAlgorithm::getAllContactManifolds(), btAlignedObjectArray$<$ T $>$::initializeFromBuffer(), btManifoldResult::m\_\-closestPointDistanceThreshold, btDbvt::m\_\-root, btCompoundCollisionAlgorithm::processCollision(), btAlignedObjectArray$<$ T $>$::push\_\-back(), btManifoldResult::refreshContactPoints(), btAlignedObjectArray$<$ T $>$::resize(), btManifoldResult::setPersistentManifold(), btAlignedObjectArray$<$ T $>$::size(), and btCollisionAlgorithm::$\sim$btCollisionAlgorithm().
+
+\begin{Code}\begin{verbatim}305 {
+306 
+307         const btCollisionObjectWrapper* col0ObjWrap = body0Wrap;
+308         const btCollisionObjectWrapper* col1ObjWrap= body1Wrap;
+309 
+310         btAssert (col0ObjWrap->getCollisionShape()->isCompound());
+311         btAssert (col1ObjWrap->getCollisionShape()->isCompound());
+312         const btCompoundShape* compoundShape0 = static_cast<const btCompoundShape*>(col0ObjWrap->getCollisionShape());
+313         const btCompoundShape* compoundShape1 = static_cast<const btCompoundShape*>(col1ObjWrap->getCollisionShape());
+314 
+315         const btDbvt* tree0 = compoundShape0->getDynamicAabbTree();
+316         const btDbvt* tree1 = compoundShape1->getDynamicAabbTree();
+317         if (!tree0 || !tree1)
+318         {
+319                 return btCompoundCollisionAlgorithm::processCollision(body0Wrap,body1Wrap,dispatchInfo,resultOut);
+320         }
+323         if ((compoundShape0->getUpdateRevision() != m_compoundShapeRevision0) || (compoundShape1->getUpdateRevision() != m_compoundShapeRevision1))
+324         {
+326                 removeChildAlgorithms();
+327                 m_compoundShapeRevision0 = compoundShape0->getUpdateRevision();
+328                 m_compoundShapeRevision1 = compoundShape1->getUpdateRevision();
+329 
+330         }
+331 
+332 
+336         {
+337                 int i;
+338                 btManifoldArray manifoldArray;
+339 #ifdef USE_LOCAL_STACK 
+340                 btPersistentManifold localManifolds[4];
+341                 manifoldArray.initializeFromBuffer(&localManifolds,0,4);
+342 #endif
+343                 btSimplePairArray& pairs = m_childCollisionAlgorithmCache->getOverlappingPairArray();
+344                 for (i=0;i<pairs.size();i++)
+345                 {
+346                         if (pairs[i].m_userPointer)
+347                         {
+348                                 btCollisionAlgorithm* algo = (btCollisionAlgorithm*) pairs[i].m_userPointer;
+349                                 algo->getAllContactManifolds(manifoldArray);
+350                                 for (int m=0;m<manifoldArray.size();m++)
+351                                 {
+352                                         if (manifoldArray[m]->getNumContacts())
+353                                         {
+354                                                 resultOut->setPersistentManifold(manifoldArray[m]);
+355                                                 resultOut->refreshContactPoints();
+356                                                 resultOut->setPersistentManifold(0);
+357                                         }
+358                                 }
+359                                 manifoldArray.resize(0);
+360                         }
+361                 }
+362         }
+363 
+364 
+365         
+366 
+367         btCompoundCompoundLeafCallback callback(col0ObjWrap,col1ObjWrap,this->m_dispatcher,dispatchInfo,resultOut,this->m_childCollisionAlgorithmCache,m_sharedManifold);
+368 
+369 
+370         const btTransform       xform=col0ObjWrap->getWorldTransform().inverse()*col1ObjWrap->getWorldTransform();
+371         MycollideTT(tree0->m_root,tree1->m_root,xform,&callback, resultOut->m_closestPointDistanceThreshold);
+372 
+373         //printf("#compound-compound child/leaf overlap =%d                      \r",callback.m_numOverlapPairs);
+374 
+375         //remove non-overlapping child pairs
+376 
+377         {
+378                 btAssert(m_removePairs.size()==0);
+379 
+380                 //iterate over all children, perform an AABB check inside ProcessChildShape
+381                 btSimplePairArray& pairs = m_childCollisionAlgorithmCache->getOverlappingPairArray();
+382                 
+383                 int i;
+384                 btManifoldArray manifoldArray;
+385         
+386                 
+387 
+388         
+389         
+390         btVector3 aabbMin0,aabbMax0,aabbMin1,aabbMax1;        
+391         
+392                 for (i=0;i<pairs.size();i++)
+393                 {
+394                         if (pairs[i].m_userPointer)
+395                         {
+396                                 btCollisionAlgorithm* algo = (btCollisionAlgorithm*)pairs[i].m_userPointer;
+397 
+398                                 {
+399                                         btTransform     orgTrans0;
+400                                         const btCollisionShape* childShape0 = 0;
+401                                         
+402                                         btTransform     newChildWorldTrans0;
+403                                         btTransform     orgInterpolationTrans0;
+404                                         childShape0 = compoundShape0->getChildShape(pairs[i].m_indexA);
+405                                         orgTrans0 = col0ObjWrap->getWorldTransform();
+406                                         orgInterpolationTrans0 = col0ObjWrap->getWorldTransform();
+407                                         const btTransform& childTrans0 = compoundShape0->getChildTransform(pairs[i].m_indexA);
+408                                         newChildWorldTrans0 = orgTrans0*childTrans0 ;
+409                                         childShape0->getAabb(newChildWorldTrans0,aabbMin0,aabbMax0);
+410                                 }
+411                                 btVector3 thresholdVec(resultOut->m_closestPointDistanceThreshold, resultOut->m_closestPointDistanceThreshold, resultOut->m_closestPointDistanceThreshold);
+412                                 aabbMin0 -= thresholdVec;
+413                                 aabbMax0 += thresholdVec;
+414                                 {
+415                                         btTransform     orgInterpolationTrans1;
+416                                         const btCollisionShape* childShape1 = 0;
+417                                         btTransform     orgTrans1;
+418                                         btTransform     newChildWorldTrans1;
+419 
+420                                         childShape1 = compoundShape1->getChildShape(pairs[i].m_indexB);
+421                                         orgTrans1 = col1ObjWrap->getWorldTransform();
+422                                         orgInterpolationTrans1 = col1ObjWrap->getWorldTransform();
+423                                         const btTransform& childTrans1 = compoundShape1->getChildTransform(pairs[i].m_indexB);
+424                                         newChildWorldTrans1 = orgTrans1*childTrans1 ;
+425                                         childShape1->getAabb(newChildWorldTrans1,aabbMin1,aabbMax1);
+426                                 }
+427                                 
+428                                 aabbMin1 -= thresholdVec;
+429                                 aabbMax1 += thresholdVec;
+430 
+431                                 if (!TestAabbAgainstAabb2(aabbMin0,aabbMax0,aabbMin1,aabbMax1))
+432                                 {
+433                                         algo->~btCollisionAlgorithm();
+434                                         m_dispatcher->freeCollisionAlgorithm(algo);
+435                                         m_removePairs.push_back(btSimplePair(pairs[i].m_indexA,pairs[i].m_indexB));
+436                                 }
+437                         }
+438                 }
+439                 for (int i=0;i<m_removePairs.size();i++)
+440                 {
+441                         m_childCollisionAlgorithmCache->removeOverlappingPair(m_removePairs[i].m_indexA,m_removePairs[i].m_indexB);
+442                 }
+443                 m_removePairs.clear();
+444         }
+445 
+446 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCompoundCompoundCollisionAlgorithm.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCompoundCompoundCollisionAlgorithm.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCompoundCompoundCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCompoundCompoundCollisionAlgorithm.cpp\end{CompactItemize}

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: WindowManager Class Reference</title>
+<title>Assignment2 - OOber Taxi: WindowManager Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>WindowManager Class Reference</h1><!-- doxytag: class="WindowManager" -->Interface class to manage the creation of the window.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;WindowManager.h&gt;</code>
+<code>#include &lt;<a class="el" href="_window_manager_8h-source.html">WindowManager.h</a>&gt;</code>
 <p>
 Inherited by GLFWManager.
 <p>
@@ -66,7 +66,11 @@ Interface class to manage the creation of the window.
 <p>
 This class handles input and the creation of the OpenGL context implementing GLFW.<p>
 <dl class="version" compact><dt><b>Version:</b></dt><dd>01 </dd></dl>
-<dl class="date" compact><dt><b>Date:</b></dt><dd>29/03/2018 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>29/03/2018</dd></dl>
+<dl class="version" compact><dt><b>Version:</b></dt><dd>02 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>31/05/2018 </dd></dl>
+
+<p>Definition at line <a class="el" href="_window_manager_8h-source.html#l00019">19</a> of file <a class="el" href="_window_manager_8h-source.html">WindowManager.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="d2c42494d2d9045b18a3a09e5920290f"></a><!-- doxytag: member="WindowManager::~WindowManager" ref="d2c42494d2d9045b18a3a09e5920290f" args="()" -->
 <div class="memitem">
@@ -88,6 +92,11 @@ Destructor.
 <p>
 This function is required for the inheriting class to have its destructor called.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>null </dd></dl>
+
+<p>Definition at line <a class="el" href="_window_manager_8h-source.html#l00029">29</a> of file <a class="el" href="_window_manager_8h-source.html">WindowManager.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00029"></a>00029 { }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -241,12 +250,19 @@ Returns the input manager object.
 This function is a getter that retrurns a pointer to the InputManager object in order to move the camera.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>InputManager* </dd></dl>
 
+<p>Definition at line <a class="el" href="_window_manager_8h-source.html#l00082">82</a> of file <a class="el" href="_window_manager_8h-source.html">WindowManager.h</a>.</p>
+
+<p>References <a class="el" href="_window_manager_8h-source.html#l00086">m_inputManager</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00082"></a>00082 { <span class="keywordflow">return</span> &amp;<a class="code" href="class_window_manager.html#df17f87e4722c2a30b80a25081901dbd" title="Used to control the camera movements.">m_inputManager</a>; }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/WindowManager.h</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/<a class="el" href="_window_manager_8h-source.html">WindowManager.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:05:09 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:02:51 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

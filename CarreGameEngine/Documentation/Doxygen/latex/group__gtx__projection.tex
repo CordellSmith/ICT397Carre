@@ -26,3 +26,22 @@ $<$glm/gtx/projection.hpp$>$ need to be included to use these functionalities.
 
 
 Projects x on Normal. From GLM\_\-GTX\_\-projection extension. 
+
+Definition at line 14 of file projection.inl.
+
+References glm::dot().
+
+Referenced by glm::perp().
+
+\begin{Code}\begin{verbatim}18         {
+19                 return glm::dot(x, Normal) / glm::dot(Normal, Normal) * Normal;
+20         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:

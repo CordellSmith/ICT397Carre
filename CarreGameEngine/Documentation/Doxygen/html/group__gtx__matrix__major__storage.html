@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_matrix_major_storage</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_matrix_major_storage</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -107,6 +107,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a column major matrix from other matrix. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00135">135</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00137"></a>00137         {
+<a name="l00138"></a>00138                 <span class="keywordflow">return</span> detail::tmat2x2&lt;T, P&gt;(m);
+<a name="l00139"></a>00139         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g3e3ecc119e43821d7ac582124ef891cb"></a><!-- doxytag: member="glm::colMajor2" ref="g3e3ecc119e43821d7ac582124ef891cb" args="(detail::tvec2&lt; T, P &gt; const &amp;v1, detail::tvec2&lt; T, P &gt; const &amp;v2)" -->
@@ -138,6 +145,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a column major matrix from column vectors. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00127">127</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00130"></a>00130         {
+<a name="l00131"></a>00131                 <span class="keywordflow">return</span> detail::tmat2x2&lt;T, P&gt;(v1, v2);
+<a name="l00132"></a>00132         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g645e8b3708b02ae2ca1c4f3048f8f32a"></a><!-- doxytag: member="glm::colMajor3" ref="g645e8b3708b02ae2ca1c4f3048f8f32a" args="(detail::tmat3x3&lt; T, P &gt; const &amp;m)" -->
@@ -160,6 +174,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a column major matrix from other matrix. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00151">151</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00153"></a>00153         {
+<a name="l00154"></a>00154                 <span class="keywordflow">return</span> detail::tmat3x3&lt;T, P&gt;(m);
+<a name="l00155"></a>00155         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gfa499e4dd0fe76587feea1f3ad8dcfef"></a><!-- doxytag: member="glm::colMajor3" ref="gfa499e4dd0fe76587feea1f3ad8dcfef" args="(detail::tvec3&lt; T, P &gt; const &amp;v1, detail::tvec3&lt; T, P &gt; const &amp;v2, detail::tvec3&lt; T, P &gt; const &amp;v3)" -->
@@ -197,6 +218,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a column major matrix from column vectors. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00142">142</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00146"></a>00146         {
+<a name="l00147"></a>00147                 <span class="keywordflow">return</span> detail::tmat3x3&lt;T, P&gt;(v1, v2, v3);
+<a name="l00148"></a>00148         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g85020709c53f89466c5135114e85d34a"></a><!-- doxytag: member="glm::colMajor4" ref="g85020709c53f89466c5135114e85d34a" args="(detail::tmat4x4&lt; T, P &gt; const &amp;m)" -->
@@ -219,6 +247,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a column major matrix from other matrix. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00168">168</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00170"></a>00170         {
+<a name="l00171"></a>00171                 <span class="keywordflow">return</span> detail::tmat4x4&lt;T, P&gt;(m);
+<a name="l00172"></a>00172         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g585113d3d54f337093700210a8103f6d"></a><!-- doxytag: member="glm::colMajor4" ref="g585113d3d54f337093700210a8103f6d" args="(detail::tvec4&lt; T, P &gt; const &amp;v1, detail::tvec4&lt; T, P &gt; const &amp;v2, detail::tvec4&lt; T, P &gt; const &amp;v3, detail::tvec4&lt; T, P &gt; const &amp;v4)" -->
@@ -262,6 +297,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a column major matrix from column vectors. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00158">158</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00163"></a>00163         {
+<a name="l00164"></a>00164                 <span class="keywordflow">return</span> detail::tmat4x4&lt;T, P&gt;(v1, v2, v3, v4);
+<a name="l00165"></a>00165         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g9712bed19f3aa3776b59756adf3b56e2"></a><!-- doxytag: member="glm::rowMajor2" ref="g9712bed19f3aa3776b59756adf3b56e2" args="(detail::tmat2x2&lt; T, P &gt; const &amp;m)" -->
@@ -284,6 +326,18 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a row major matrix from other matrix. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00028">28</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00030"></a>00030         {
+<a name="l00031"></a>00031                 detail::tmat2x2&lt;T, P&gt; Result;
+<a name="l00032"></a>00032                 Result[0][0] = m[0][0];
+<a name="l00033"></a>00033                 Result[0][1] = m[1][0];
+<a name="l00034"></a>00034                 Result[1][0] = m[0][1];
+<a name="l00035"></a>00035                 Result[1][1] = m[1][1];
+<a name="l00036"></a>00036                 <span class="keywordflow">return</span> Result;
+<a name="l00037"></a>00037         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g9d48983329e8a94489982067dfe8f5cf"></a><!-- doxytag: member="glm::rowMajor2" ref="g9d48983329e8a94489982067dfe8f5cf" args="(detail::tvec2&lt; T, P &gt; const &amp;v1, detail::tvec2&lt; T, P &gt; const &amp;v2)" -->
@@ -315,6 +369,18 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a row major matrix from row vectors. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00014">14</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00018"></a>00018         {
+<a name="l00019"></a>00019                 detail::tmat2x2&lt;T, P&gt; Result;
+<a name="l00020"></a>00020                 Result[0][0] = v1.x;
+<a name="l00021"></a>00021                 Result[1][0] = v1.y;
+<a name="l00022"></a>00022                 Result[0][1] = v2.x;
+<a name="l00023"></a>00023                 Result[1][1] = v2.y;
+<a name="l00024"></a>00024                 <span class="keywordflow">return</span> Result;
+<a name="l00025"></a>00025         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g292c13103d16ead7193def8fcbcfa9fb"></a><!-- doxytag: member="glm::rowMajor3" ref="g292c13103d16ead7193def8fcbcfa9fb" args="(detail::tmat3x3&lt; T, P &gt; const &amp;m)" -->
@@ -337,6 +403,23 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a row major matrix from other matrix. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00059">59</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00061"></a>00061         {
+<a name="l00062"></a>00062                 detail::tmat3x3&lt;T, P&gt; Result;
+<a name="l00063"></a>00063                 Result[0][0] = m[0][0];
+<a name="l00064"></a>00064                 Result[0][1] = m[1][0];
+<a name="l00065"></a>00065                 Result[0][2] = m[2][0];
+<a name="l00066"></a>00066                 Result[1][0] = m[0][1];
+<a name="l00067"></a>00067                 Result[1][1] = m[1][1];
+<a name="l00068"></a>00068                 Result[1][2] = m[2][1];
+<a name="l00069"></a>00069                 Result[2][0] = m[0][2];
+<a name="l00070"></a>00070                 Result[2][1] = m[1][2];
+<a name="l00071"></a>00071                 Result[2][2] = m[2][2];
+<a name="l00072"></a>00072                 <span class="keywordflow">return</span> Result;
+<a name="l00073"></a>00073         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g3839659b9641777b1bbc98122efc1320"></a><!-- doxytag: member="glm::rowMajor3" ref="g3839659b9641777b1bbc98122efc1320" args="(detail::tvec3&lt; T, P &gt; const &amp;v1, detail::tvec3&lt; T, P &gt; const &amp;v2, detail::tvec3&lt; T, P &gt; const &amp;v3)" -->
@@ -374,6 +457,23 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a row major matrix from row vectors. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00040">40</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00044"></a>00044         {
+<a name="l00045"></a>00045                 detail::tmat3x3&lt;T, P&gt; Result;
+<a name="l00046"></a>00046                 Result[0][0] = v1.x;
+<a name="l00047"></a>00047                 Result[1][0] = v1.y;
+<a name="l00048"></a>00048                 Result[2][0] = v1.z;
+<a name="l00049"></a>00049                 Result[0][1] = v2.x;
+<a name="l00050"></a>00050                 Result[1][1] = v2.y;
+<a name="l00051"></a>00051                 Result[2][1] = v2.z;
+<a name="l00052"></a>00052                 Result[0][2] = v3.x;
+<a name="l00053"></a>00053                 Result[1][2] = v3.y;
+<a name="l00054"></a>00054                 Result[2][2] = v3.z;
+<a name="l00055"></a>00055                 <span class="keywordflow">return</span> Result;
+<a name="l00056"></a>00056         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g77df85015848f4812005392d9c78b8a4"></a><!-- doxytag: member="glm::rowMajor4" ref="g77df85015848f4812005392d9c78b8a4" args="(detail::tmat4x4&lt; T, P &gt; const &amp;m)" -->
@@ -396,6 +496,30 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a row major matrix from other matrix. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00103">103</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00105"></a>00105         {
+<a name="l00106"></a>00106                 detail::tmat4x4&lt;T, P&gt; Result;
+<a name="l00107"></a>00107                 Result[0][0] = m[0][0];
+<a name="l00108"></a>00108                 Result[0][1] = m[1][0];
+<a name="l00109"></a>00109                 Result[0][2] = m[2][0];
+<a name="l00110"></a>00110                 Result[0][3] = m[3][0];
+<a name="l00111"></a>00111                 Result[1][0] = m[0][1];
+<a name="l00112"></a>00112                 Result[1][1] = m[1][1];
+<a name="l00113"></a>00113                 Result[1][2] = m[2][1];
+<a name="l00114"></a>00114                 Result[1][3] = m[3][1];
+<a name="l00115"></a>00115                 Result[2][0] = m[0][2];
+<a name="l00116"></a>00116                 Result[2][1] = m[1][2];
+<a name="l00117"></a>00117                 Result[2][2] = m[2][2];
+<a name="l00118"></a>00118                 Result[2][3] = m[3][2];
+<a name="l00119"></a>00119                 Result[3][0] = m[0][3];
+<a name="l00120"></a>00120                 Result[3][1] = m[1][3];
+<a name="l00121"></a>00121                 Result[3][2] = m[2][3];
+<a name="l00122"></a>00122                 Result[3][3] = m[3][3];
+<a name="l00123"></a>00123                 <span class="keywordflow">return</span> Result;
+<a name="l00124"></a>00124         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g8d22c54daf5c593c1285c54d1439eead"></a><!-- doxytag: member="glm::rowMajor4" ref="g8d22c54daf5c593c1285c54d1439eead" args="(detail::tvec4&lt; T, P &gt; const &amp;v1, detail::tvec4&lt; T, P &gt; const &amp;v2, detail::tvec4&lt; T, P &gt; const &amp;v3, detail::tvec4&lt; T, P &gt; const &amp;v4)" -->
@@ -439,10 +563,34 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Build a row major matrix from row vectors. From GLM_GTX_matrix_major_storage extension. 
+<p>Definition at line <a class="el" href="matrix__major__storage_8inl-source.html#l00076">76</a> of file <a class="el" href="matrix__major__storage_8inl-source.html">matrix_major_storage.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00081"></a>00081         {
+<a name="l00082"></a>00082                 detail::tmat4x4&lt;T, P&gt; Result;
+<a name="l00083"></a>00083                 Result[0][0] = v1.x;
+<a name="l00084"></a>00084                 Result[1][0] = v1.y;
+<a name="l00085"></a>00085                 Result[2][0] = v1.z;
+<a name="l00086"></a>00086                 Result[3][0] = v1.w;
+<a name="l00087"></a>00087                 Result[0][1] = v2.x;
+<a name="l00088"></a>00088                 Result[1][1] = v2.y;
+<a name="l00089"></a>00089                 Result[2][1] = v2.z;
+<a name="l00090"></a>00090                 Result[3][1] = v2.w;
+<a name="l00091"></a>00091                 Result[0][2] = v3.x;
+<a name="l00092"></a>00092                 Result[1][2] = v3.y;
+<a name="l00093"></a>00093                 Result[2][2] = v3.z;
+<a name="l00094"></a>00094                 Result[3][2] = v3.w;
+<a name="l00095"></a>00095                 Result[0][3] = v4.x;
+<a name="l00096"></a>00096                 Result[1][3] = v4.y;
+<a name="l00097"></a>00097                 Result[2][3] = v4.z;
+<a name="l00098"></a>00098                 Result[3][3] = v4.w;
+<a name="l00099"></a>00099                 <span class="keywordflow">return</span> Result;
+<a name="l00100"></a>00100         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:35 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:30 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

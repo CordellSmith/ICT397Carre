@@ -75,6 +75,8 @@ virtual void \hyperlink{class_assimp_1_1_logger_e2ea0790aba6125b90af0f2768b0759d
 \subsection{Detailed Description}
 CPP-API: Abstract interface for logger implementations. \hyperlink{namespace_assimp}{Assimp} provides a default implementation and uses it for almost all logging stuff ('DefaultLogger'). This class defines just basic logging behaviour and is not of interest for you. Instead, take a look at DefaultLogger. 
 
+Definition at line 62 of file Logger.hpp.
+
 \subsection{Member Enumeration Documentation}
 \hypertarget{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6}{
 \index{Assimp::Logger@{Assimp::Logger}!LogSeverity@{LogSeverity}}
@@ -98,6 +100,18 @@ VERBOSE}
 \label{class_assimp_1_1_logger_8b6248a0fd062431e8572556350d29e6fc9d1d86aa82fdb80e00c99b3c1ce486}
 }]Debug infos will be logged, too. \end{description}
 \end{Desc}
+
+
+
+Definition at line 73 of file Logger.hpp.
+
+\begin{Code}\begin{verbatim}74     {
+75         NORMAL,     
+76         VERBOSE     
+77     };
+\end{verbatim}
+\end{Code}
+
 
 \hypertarget{class_assimp_1_1_logger_cd0b52a87d6fc11e957ed2c6e2ad75b6}{
 \index{Assimp::Logger@{Assimp::Logger}!ErrorSeverity@{ErrorSeverity}}
@@ -132,6 +146,20 @@ Err}
 
 
 
+Definition at line 87 of file Logger.hpp.
+
+\begin{Code}\begin{verbatim}88     {
+89         Debugging   = 1,    
+90         Info        = 2,    
+91         Warn        = 4,    
+92         Err         = 8     
+93     };
+\end{verbatim}
+\end{Code}
+
+
+
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8}{
 \index{Assimp::Logger@{Assimp::Logger}!Logger@{Logger}}
@@ -140,7 +168,22 @@ Err}
 \label{class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8}
 
 
-Default constructor \hypertarget{class_assimp_1_1_logger_ccc0ffea63ddf0982d8c2ba7e07f0716}{
+Default constructor 
+
+Definition at line 212 of file Logger.hpp.
+
+References NORMAL, and setLogSeverity().
+
+\begin{Code}\begin{verbatim}212                       {
+213     setLogSeverity(NORMAL);
+214 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_assimp_1_1_logger_ccc0ffea63ddf0982d8c2ba7e07f0716}{
 \index{Assimp::Logger@{Assimp::Logger}!Logger@{Logger}}
 \index{Logger@{Logger}!Assimp::Logger@{Assimp::Logger}}
 \subsubsection[Logger]{\setlength{\rightskip}{0pt plus 5cm}Assimp::Logger::Logger ({\bf LogSeverity} {\em severity})\hspace{0.3cm}{\tt  \mbox{[}inline, explicit, protected\mbox{]}}}}
@@ -148,6 +191,21 @@ Default constructor \hypertarget{class_assimp_1_1_logger_ccc0ffea63ddf0982d8c2ba
 
 
 Construction with a given log severity 
+
+Definition at line 224 of file Logger.hpp.
+
+References setLogSeverity().
+
+\begin{Code}\begin{verbatim}224                                           {
+225     setLogSeverity(severity);
+226 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
 
 \subsection{Member Function Documentation}
 \hypertarget{class_assimp_1_1_logger_3b10454ab4c0949f251062376d9c4161}{
@@ -220,7 +278,24 @@ Set a new log severity.
 \begin{description}
 \item[{\em log\_\-severity}]New severity for logging \end{description}
 \end{Desc}
-\hypertarget{class_assimp_1_1_logger_af32a42b02a7e227076013d01e349871}{
+
+
+Definition at line 230 of file Logger.hpp.
+
+References m\_\-Severity.
+
+Referenced by Logger().
+
+\begin{Code}\begin{verbatim}230                                                           {
+231     m_Severity = log_severity;
+232 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_assimp_1_1_logger_af32a42b02a7e227076013d01e349871}{
 \index{Assimp::Logger@{Assimp::Logger}!attachStream@{attachStream}}
 \index{attachStream@{attachStream}!Assimp::Logger@{Assimp::Logger}}
 \subsubsection[attachStream]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Assimp::Logger::attachStream ({\bf LogStream} $\ast$ {\em pStream}, \/  unsigned int {\em severity} = {\tt Debugging$|$Err$|$Warn$|$Info})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
@@ -332,4 +407,4 @@ Implemented in \hyperlink{class_assimp_1_1_null_logger_4fbf66103757fafcff891fb04
 
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_logger_8hpp}{Logger.hpp}\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_logger_8hpp}{Logger.hpp}\end{CompactItemize}

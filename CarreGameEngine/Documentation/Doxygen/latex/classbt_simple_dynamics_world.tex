@@ -28,6 +28,8 @@ virtual void \hyperlink{classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43
 \subsection{Detailed Description}
 The \hyperlink{classbt_simple_dynamics_world}{btSimpleDynamicsWorld} serves as unit-test and to verify more complicated and optimized dynamics worlds. Please use btDiscreteDynamicsWorld instead 
 
+Definition at line 27 of file btSimpleDynamicsWorld.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_simple_dynamics_world_f6b4810b5018cbaf09f82839111a243d}{
 \index{btSimpleDynamicsWorld@{btSimpleDynamicsWorld}!stepSimulation@{stepSimulation}}
@@ -48,7 +50,56 @@ solve contact constraints
 
 integrate transforms 
 
-Implements \hyperlink{classbt_dynamics_world_5ab26a0d6e8b2b21fbde2ed8f8dd6294}{btDynamicsWorld}.\hypertarget{classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824}{
+Implements \hyperlink{classbt_dynamics_world_5ab26a0d6e8b2b21fbde2ed8f8dd6294}{btDynamicsWorld}.
+
+Definition at line 55 of file btSimpleDynamicsWorld.cpp.
+
+References clearForces(), btDispatcher::getNumManifolds(), and synchronizeMotionStates().
+
+\begin{Code}\begin{verbatim}56 {
+57         (void)fixedTimeStep;
+58         (void)maxSubSteps;
+59 
+60 
+62         predictUnconstraintMotion(timeStep);
+63 
+64         btDispatcherInfo&       dispatchInfo = getDispatchInfo();
+65         dispatchInfo.m_timeStep = timeStep;
+66         dispatchInfo.m_stepCount = 0;
+67         dispatchInfo.m_debugDraw = getDebugDrawer();
+68 
+70         performDiscreteCollisionDetection();
+71 
+73         int numManifolds = m_dispatcher1->getNumManifolds();
+74         if (numManifolds)
+75         {
+76                 btPersistentManifold** manifoldPtr = ((btCollisionDispatcher*)m_dispatcher1)->getInternalManifoldPointer();
+77                 
+78                 btContactSolverInfo infoGlobal;
+79                 infoGlobal.m_timeStep = timeStep;
+80                 m_constraintSolver->prepareSolve(0,numManifolds);
+81                 m_constraintSolver->solveGroup(&getCollisionObjectArray()[0],getNumCollisionObjects(),manifoldPtr, numManifolds,0,0,infoGlobal,m_debugDrawer, m_dispatcher1);
+82                 m_constraintSolver->allSolved(infoGlobal,m_debugDrawer);
+83         }
+84 
+86         integrateTransforms(timeStep);
+87                 
+88         updateAabbs();
+89 
+90         synchronizeMotionStates();
+91 
+92         clearForces();
+93 
+94         return 1;
+95 
+96 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_simple_dynamics_world_91e996f5ce6e465e805565ee0ba14824}{
 \index{btSimpleDynamicsWorld@{btSimpleDynamicsWorld}!synchronizeMotionStates@{synchronizeMotionStates}}
 \index{synchronizeMotionStates@{synchronizeMotionStates}!btSimpleDynamicsWorld@{btSimpleDynamicsWorld}}
 \subsubsection[synchronizeMotionStates]{\setlength{\rightskip}{0pt plus 5cm}void btSimpleDynamicsWorld::synchronizeMotionStates ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
@@ -61,7 +112,38 @@ Implements \hyperlink{classbt_dynamics_world_5ab26a0d6e8b2b21fbde2ed8f8dd6294}{b
 \item[\hyperlink{todo__todo000034}{Todo}]: iterate over awake simulation islands! \end{Desc}
 
 
-Implements \hyperlink{classbt_dynamics_world}{btDynamicsWorld}.\hypertarget{classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a}{
+Implements \hyperlink{classbt_dynamics_world}{btDynamicsWorld}.
+
+Definition at line 248 of file btSimpleDynamicsWorld.cpp.
+
+References btRigidBody::getMotionState(), btMotionState::setWorldTransform(), btAlignedObjectArray$<$ T $>$::size(), and btRigidBody::upcast().
+
+Referenced by stepSimulation().
+
+\begin{Code}\begin{verbatim}249 {
+251         for ( int i=0;i<m_collisionObjects.size();i++)
+252         {
+253                 btCollisionObject* colObj = m_collisionObjects[i];
+254                 btRigidBody* body = btRigidBody::upcast(colObj);
+255                 if (body && body->getMotionState())
+256                 {
+257                         if (body->getActivationState() != ISLAND_SLEEPING)
+258                         {
+259                                 body->getMotionState()->setWorldTransform(body->getWorldTransform());
+260                         }
+261                 }
+262         }
+263 
+264 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classbt_simple_dynamics_world_c44c80444f4d6d4e3c2955dd43b7a93a}{
 \index{btSimpleDynamicsWorld@{btSimpleDynamicsWorld}!clearForces@{clearForces}}
 \index{clearForces@{clearForces}!btSimpleDynamicsWorld@{btSimpleDynamicsWorld}}
 \subsubsection[clearForces]{\setlength{\rightskip}{0pt plus 5cm}void btSimpleDynamicsWorld::clearForces ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
@@ -76,7 +158,35 @@ Implements \hyperlink{classbt_dynamics_world}{btDynamicsWorld}.\hypertarget{clas
 
 Implements \hyperlink{classbt_dynamics_world}{btDynamicsWorld}.
 
+Definition at line 98 of file btSimpleDynamicsWorld.cpp.
+
+References btRigidBody::clearForces(), btAlignedObjectArray$<$ T $>$::size(), and btRigidBody::upcast().
+
+Referenced by stepSimulation().
+
+\begin{Code}\begin{verbatim}99 {
+101         for ( int i=0;i<m_collisionObjects.size();i++)
+102         {
+103                 btCollisionObject* colObj = m_collisionObjects[i];
+104                 
+105                 btRigidBody* body = btRigidBody::upcast(colObj);
+106                 if (body)
+107                 {
+108                         body->clearForces();
+109                 }
+110         }
+111 }       
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimpleDynamicsWorld.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimpleDynamicsWorld.cpp\end{CompactItemize}

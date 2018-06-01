@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: aiScene Struct Reference</title>
+<title>Assignment2 - OOber Taxi: aiScene Struct Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>aiScene Struct Reference</h1><!-- doxytag: class="aiScene" --><code>#include &lt;scene.h&gt;</code>
+<h1>aiScene Struct Reference</h1><!-- doxytag: class="aiScene" --><code>#include &lt;<a class="el" href="scene_8h-source.html">scene.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for aiScene:</div>
@@ -72,7 +72,9 @@ Collaboration diagram for aiScene:</div>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 The root structure of the imported data.<p>
-Everything that was imported from the given file can be accessed from here. Objects of this class are generally maintained and owned by <a class="el" href="namespace_assimp.html">Assimp</a>, not by the caller. You shouldn't want to instance it, nor should you ever try to delete a given scene on your own. <hr><h2>Member Data Documentation</h2>
+Everything that was imported from the given file can be accessed from here. Objects of this class are generally maintained and owned by <a class="el" href="namespace_assimp.html">Assimp</a>, not by the caller. You shouldn't want to instance it, nor should you ever try to delete a given scene on your own. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00240">240</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+<hr><h2>Member Data Documentation</h2>
 <a class="anchor" name="4091f10bb81e05db00ebc34f40c48f38"></a><!-- doxytag: member="aiScene::mFlags" ref="4091f10bb81e05db00ebc34f40c48f38" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -86,6 +88,10 @@ Everything that was imported from the given file can be accessed from here. Obje
 
 <p>
 Any combination of the AI_SCENE_FLAGS_XXX flags. By default this value is 0, no flags are set. Most applications will want to reject all scenes with the AI_SCENE_FLAGS_INCOMPLETE bit set. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00247">247</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00014">Model::LoadModel()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="d0e9a7e68f2ed6b3120a7c19ef20307a"></a><!-- doxytag: member="aiScene::mRootNode" ref="d0e9a7e68f2ed6b3120a7c19ef20307a" args="" -->
@@ -102,6 +108,10 @@ Any combination of the AI_SCENE_FLAGS_XXX flags. By default this value is 0, no 
 <p>
 The root node of the hierarchy.<p>
 There will always be at least the root node if the import was successful (and no special flags have been set). Presence of further nodes depends on the format and content of the imported file. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00256">256</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00014">Model::LoadModel()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="1a6c1abca994c54381a28cc151e5fa4f"></a><!-- doxytag: member="aiScene::mNumMeshes" ref="1a6c1abca994c54381a28cc151e5fa4f" args="" -->
@@ -117,6 +127,8 @@ There will always be at least the root node if the import was successful (and no
 
 <p>
 The number of meshes in the scene. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00259">259</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="d1c7000f0f28ea747868db9f94d32a3d"></a><!-- doxytag: member="aiScene::mMeshes" ref="d1c7000f0f28ea747868db9f94d32a3d" args="" -->
@@ -133,6 +145,10 @@ The number of meshes in the scene.
 <p>
 The array of meshes.<p>
 Use the indices given in the <a class="el" href="structai_node.html">aiNode</a> structure to access this array. The array is mNumMeshes in size. If the AI_SCENE_FLAGS_INCOMPLETE flag is not set there will always be at least ONE material. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00268">268</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00033">Model::ProcessNode()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="4277d8bffe8b8f568098af6c31d042b7"></a><!-- doxytag: member="aiScene::mNumMaterials" ref="4277d8bffe8b8f568098af6c31d042b7" args="" -->
@@ -148,6 +164,8 @@ Use the indices given in the <a class="el" href="structai_node.html">aiNode</a> 
 
 <p>
 The number of materials in the scene. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00271">271</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="52bc7089a5b943ad7c7c386e616df35e"></a><!-- doxytag: member="aiScene::mMaterials" ref="52bc7089a5b943ad7c7c386e616df35e" args="" -->
@@ -164,6 +182,10 @@ The number of materials in the scene.
 <p>
 The array of materials.<p>
 Use the index given in each <a class="el" href="structai_mesh.html" title="enum aiMorphingMethod">aiMesh</a> structure to access this array. The array is mNumMaterials in size. If the AI_SCENE_FLAGS_INCOMPLETE flag is not set there will always be at least ONE material. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00280">280</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00048">Model::ProcessMesh()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="a2af030ec218ead0dc062b6a96a7471a"></a><!-- doxytag: member="aiScene::mNumAnimations" ref="a2af030ec218ead0dc062b6a96a7471a" args="" -->
@@ -179,6 +201,8 @@ Use the index given in each <a class="el" href="structai_mesh.html" title="enum 
 
 <p>
 The number of animations in the scene. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00283">283</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="b76fb8f38c2e7365ccce42d565b62b25"></a><!-- doxytag: member="aiScene::mAnimations" ref="b76fb8f38c2e7365ccce42d565b62b25" args="" -->
@@ -195,6 +219,8 @@ The number of animations in the scene.
 <p>
 The array of animations.<p>
 All animations imported from the given file are listed here. The array is mNumAnimations in size. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00290">290</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="0d61a5439edd7223097b48aea57c47dd"></a><!-- doxytag: member="aiScene::mNumTextures" ref="0d61a5439edd7223097b48aea57c47dd" args="" -->
@@ -210,6 +236,8 @@ All animations imported from the given file are listed here. The array is mNumAn
 
 <p>
 The number of textures embedded into the file 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00293">293</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="0fd0d29fbc439e3715b4975ccb68d2d3"></a><!-- doxytag: member="aiScene::mTextures" ref="0fd0d29fbc439e3715b4975ccb68d2d3" args="" -->
@@ -226,6 +254,8 @@ The number of textures embedded into the file
 <p>
 The array of embedded textures.<p>
 Not many file formats embed their textures into the file. An example is Quake's MDL format (which is also used by some GameStudio versions) 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00301">301</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="0c90fc5f15b979e0bb0d3e8f1e246307"></a><!-- doxytag: member="aiScene::mNumLights" ref="0c90fc5f15b979e0bb0d3e8f1e246307" args="" -->
@@ -241,6 +271,8 @@ Not many file formats embed their textures into the file. An example is Quake's 
 
 <p>
 The number of light sources in the scene. Light sources are fully optional, in most cases this attribute will be 0 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00306">306</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="2e64a69ade81cae0b3901bea90b6bb47"></a><!-- doxytag: member="aiScene::mLights" ref="2e64a69ade81cae0b3901bea90b6bb47" args="" -->
@@ -257,6 +289,8 @@ The number of light sources in the scene. Light sources are fully optional, in m
 <p>
 The array of light sources.<p>
 All light sources imported from the given file are listed here. The array is mNumLights in size. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00313">313</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="4abc432e1b22a7e01553f33c79c0592f"></a><!-- doxytag: member="aiScene::mNumCameras" ref="4abc432e1b22a7e01553f33c79c0592f" args="" -->
@@ -272,6 +306,8 @@ All light sources imported from the given file are listed here. The array is mNu
 
 <p>
 The number of cameras in the scene. Cameras are fully optional, in most cases this attribute will be 0 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00318">318</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="71e7d204d96969ca4f5a931f4d636f1e"></a><!-- doxytag: member="aiScene::mCameras" ref="71e7d204d96969ca4f5a931f4d636f1e" args="" -->
@@ -288,6 +324,8 @@ The number of cameras in the scene. Cameras are fully optional, in most cases th
 <p>
 The array of cameras.<p>
 All cameras imported from the given file are listed here. The array is mNumCameras in size. The first camera in the array (if existing) is the default camera view into the scene. 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00327">327</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="dc5fcf5c4ef86a45f721560d6c1a4923"></a><!-- doxytag: member="aiScene::mPrivate" ref="dc5fcf5c4ef86a45f721560d6c1a4923" args="" -->
@@ -303,12 +341,14 @@ All cameras imported from the given file are listed here. The array is mNumCamer
 
 <p>
 Internal data, do not touch 
+<p>Definition at line <a class="el" href="scene_8h-source.html#l00375">375</a> of file <a class="el" href="scene_8h-source.html">scene.h</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="scene_8h.html">scene.h</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="scene_8h-source.html">scene.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:52 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:14 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Floating-Point Pack and Unpack Functions</title>
+<title>Assignment2 - OOber Taxi: Floating-Point Pack and Unpack Functions</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -81,6 +81,13 @@ Returns a double-precision value obtained by packing the components of v into a 
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/packDouble2x32.xml">GLSL packDouble2x32 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00091">91</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00092"></a>00092         {
+<a name="l00093"></a>00093                 <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">double</span> <span class="keyword">const </span>&amp;<span class="keyword">&gt;</span>(v);
+<a name="l00094"></a>00094         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g082f6dd65f73a547ed3067ef00be036f"></a><!-- doxytag: member="glm::packHalf2x16" ref="g082f6dd65f73a547ed3067ef00be036f" args="(vec2 const &amp;v)" -->
@@ -103,6 +110,18 @@ Returns a double-precision value obtained by packing the components of v into a 
 Returns an unsigned integer obtained by converting the components of a two-component floating-point vector to the 16-bit floating-point representation found in the OpenGL Specification, and then packing these two 16- bit integers into a 32-bit unsigned integer. The first vector component specifies the 16 least-significant bits of the result; the second component specifies the 16 most-significant bits.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/packHalf2x16.xml">GLSL packHalf2x16 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00101">101</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00102"></a>00102         {
+<a name="l00103"></a>00103                 <a class="code" href="group__gtc__type__precision.html#g13f7a88281faec6a72231dce73ce6129">i16vec2</a> Unpack(
+<a name="l00104"></a>00104                         detail::toFloat16(v.x),
+<a name="l00105"></a>00105                         detail::toFloat16(v.y));
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107                 <a class="code" href="group__core__precision.html#g4fd29415871152bfb5abd588334147c8">uint</a> * Result = <span class="keyword">reinterpret_cast&lt;</span><a class="code" href="group__core__precision.html#g4fd29415871152bfb5abd588334147c8">uint</a>*<span class="keyword">&gt;</span>(&amp;Unpack);
+<a name="l00108"></a>00108                 <span class="keywordflow">return</span> *Result;
+<a name="l00109"></a>00109         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -129,6 +148,27 @@ The first component of the vector will be written to the least significant bits 
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/packSnorm2x16.xml">GLSL packSnorm2x16 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00049">49</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+
+<p>References <a class="el" href="func__common_8inl-source.html#l00404">glm::clamp()</a>, and <a class="el" href="func__common_8inl-source.html#l00197">glm::round()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00050"></a>00050         {
+<a name="l00051"></a>00051                 <a class="code" href="group__gtc__type__precision.html#g13f7a88281faec6a72231dce73ce6129">i16vec2</a> Topack(<a class="code" href="group__core__func__common.html#g931fae510be1b98fe22646fc649a50d2">round</a>(<a class="code" href="group__gtx__wrap.html#g18e81aeb796ba941505bb883f1efd586">clamp</a>(v ,-1.0f, 1.0f) * 32767.0f));
+<a name="l00052"></a>00052                 <span class="comment">// return reinterpret_cast&lt;uint32&amp;&gt;(Topack);</span>
+<a name="l00053"></a>00053     <a class="code" href="group__core__precision.html#g4fd29415871152bfb5abd588334147c8">uint</a>* ptr(reinterpret_cast&lt;uint*&gt;(&amp;Topack));
+<a name="l00054"></a>00054     <span class="keywordflow">return</span> *ptr;
+<a name="l00055"></a>00055         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__packing_g0c8005de240d6c4ca3d16c7bee25c622_cgraph.png" border="0" usemap="#group__core__func__packing_g0c8005de240d6c4ca3d16c7bee25c622_cgraph_map" alt=""></center>
+<map name="group__core__func__packing_g0c8005de240d6c4ca3d16c7bee25c622_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#g8b4808983e20c4c74b20e0a025787ab4" title="glm::clamp" alt="" coords="197,31,283,57"><area shape="rect" href="group__core__func__common.html#g931fae510be1b98fe22646fc649a50d2" title="glm::round" alt="" coords="199,81,281,108"><area shape="rect" href="group__core__func__common.html#g4e4d7b280fec55e5dfeb1367a1a2597d" title="glm::max" alt="" coords="332,5,407,32"><area shape="rect" href="group__core__func__common.html#g7c4425eacc9498bb2ab8a7cfd662cd69" title="glm::min" alt="" coords="333,56,405,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gfcf25acc0d361c6c696a433aa5dfd16b"></a><!-- doxytag: member="glm::packSnorm4x8" ref="gfcf25acc0d361c6c696a433aa5dfd16b" args="(vec4 const &amp;v)" -->
@@ -153,6 +193,25 @@ The conversion for component c of v to fixed point is done as follows: packSnorm
 The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/packSnorm4x8.xml">GLSL packSnorm4x8 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00077">77</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+
+<p>References <a class="el" href="func__common_8inl-source.html#l00404">glm::clamp()</a>, and <a class="el" href="func__common_8inl-source.html#l00197">glm::round()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00078"></a>00078         {
+<a name="l00079"></a>00079                 <a class="code" href="group__gtc__type__precision.html#g89bb5e6481ae11fb2599b71e36a390bb">i8vec4</a> Topack(<a class="code" href="group__core__func__common.html#g931fae510be1b98fe22646fc649a50d2">round</a>(<a class="code" href="group__gtx__wrap.html#g18e81aeb796ba941505bb883f1efd586">clamp</a>(v ,-1.0f, 1.0f) * 127.0f));
+<a name="l00080"></a>00080                 <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span><a class="code" href="group__core__precision.html#g4fd29415871152bfb5abd588334147c8">uint</a>&amp;<span class="keyword">&gt;</span>(Topack);
+<a name="l00081"></a>00081         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__packing_gfcf25acc0d361c6c696a433aa5dfd16b_cgraph.png" border="0" usemap="#group__core__func__packing_gfcf25acc0d361c6c696a433aa5dfd16b_cgraph_map" alt=""></center>
+<map name="group__core__func__packing_gfcf25acc0d361c6c696a433aa5dfd16b_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#g8b4808983e20c4c74b20e0a025787ab4" title="glm::clamp" alt="" coords="192,31,277,57"><area shape="rect" href="group__core__func__common.html#g931fae510be1b98fe22646fc649a50d2" title="glm::round" alt="" coords="193,81,276,108"><area shape="rect" href="group__core__func__common.html#g4e4d7b280fec55e5dfeb1367a1a2597d" title="glm::max" alt="" coords="327,5,401,32"><area shape="rect" href="group__core__func__common.html#g7c4425eacc9498bb2ab8a7cfd662cd69" title="glm::min" alt="" coords="328,56,400,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -179,6 +238,27 @@ The first component of the vector will be written to the least significant bits 
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/packUnorm2x16.xml">GLSL packUnorm2x16 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00035">35</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+
+<p>References <a class="el" href="func__common_8inl-source.html#l00404">glm::clamp()</a>, and <a class="el" href="func__common_8inl-source.html#l00197">glm::round()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00036"></a>00036         {
+<a name="l00037"></a>00037                 <a class="code" href="group__gtc__type__precision.html#g4beac509930099bb494b4bd0a44c49f2">u16vec2</a> Topack(<a class="code" href="group__core__func__common.html#g931fae510be1b98fe22646fc649a50d2">round</a>(<a class="code" href="group__gtx__wrap.html#g18e81aeb796ba941505bb883f1efd586">clamp</a>(v, 0.0f, 1.0f) * 65535.0f));
+<a name="l00038"></a>00038                 <span class="comment">// return reinterpret_cast&lt;uint&amp;&gt;(Topack);</span>
+<a name="l00039"></a>00039     <a class="code" href="group__core__precision.html#g4fd29415871152bfb5abd588334147c8">uint</a>* ptr(reinterpret_cast&lt;uint*&gt;(&amp;Topack));
+<a name="l00040"></a>00040     <span class="keywordflow">return</span> *ptr;
+<a name="l00041"></a>00041         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__packing_g0659ddaf09727551c7bf51655d2a65cf_cgraph.png" border="0" usemap="#group__core__func__packing_g0659ddaf09727551c7bf51655d2a65cf_cgraph_map" alt=""></center>
+<map name="group__core__func__packing_g0659ddaf09727551c7bf51655d2a65cf_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#g8b4808983e20c4c74b20e0a025787ab4" title="glm::clamp" alt="" coords="197,31,283,57"><area shape="rect" href="group__core__func__common.html#g931fae510be1b98fe22646fc649a50d2" title="glm::round" alt="" coords="199,81,281,108"><area shape="rect" href="group__core__func__common.html#g4e4d7b280fec55e5dfeb1367a1a2597d" title="glm::max" alt="" coords="332,5,407,32"><area shape="rect" href="group__core__func__common.html#g7c4425eacc9498bb2ab8a7cfd662cd69" title="glm::min" alt="" coords="333,56,405,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g834ee9a9e73dcb0a7c1fc88143f3edb8"></a><!-- doxytag: member="glm::packUnorm4x8" ref="g834ee9a9e73dcb0a7c1fc88143f3edb8" args="(vec4 const &amp;v)" -->
@@ -204,6 +284,25 @@ The first component of the vector will be written to the least significant bits 
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/packUnorm4x8.xml">GLSL packUnorm4x8 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00065">65</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+
+<p>References <a class="el" href="func__common_8inl-source.html#l00404">glm::clamp()</a>, and <a class="el" href="func__common_8inl-source.html#l00197">glm::round()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00066"></a>00066         {
+<a name="l00067"></a>00067                 <a class="code" href="group__gtc__type__precision.html#gaf6b3d127698d893de8652deedfd3d9b">u8vec4</a> Topack(<a class="code" href="group__core__func__common.html#g931fae510be1b98fe22646fc649a50d2">round</a>(<a class="code" href="group__gtx__wrap.html#g18e81aeb796ba941505bb883f1efd586">clamp</a>(v, 0.0f, 1.0f) * 255.0f));
+<a name="l00068"></a>00068                 <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span><a class="code" href="group__core__precision.html#g4fd29415871152bfb5abd588334147c8">uint</a>&amp;<span class="keyword">&gt;</span>(Topack);
+<a name="l00069"></a>00069         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__packing_g834ee9a9e73dcb0a7c1fc88143f3edb8_cgraph.png" border="0" usemap="#group__core__func__packing_g834ee9a9e73dcb0a7c1fc88143f3edb8_cgraph_map" alt=""></center>
+<map name="group__core__func__packing_g834ee9a9e73dcb0a7c1fc88143f3edb8_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#g8b4808983e20c4c74b20e0a025787ab4" title="glm::clamp" alt="" coords="192,31,277,57"><area shape="rect" href="group__core__func__common.html#g931fae510be1b98fe22646fc649a50d2" title="glm::round" alt="" coords="193,81,276,108"><area shape="rect" href="group__core__func__common.html#g4e4d7b280fec55e5dfeb1367a1a2597d" title="glm::max" alt="" coords="327,5,401,32"><area shape="rect" href="group__core__func__common.html#g7c4425eacc9498bb2ab8a7cfd662cd69" title="glm::min" alt="" coords="328,56,400,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g7e8cf88c278c18969c99af83bceed024"></a><!-- doxytag: member="glm::unpackDouble2x32" ref="g7e8cf88c278c18969c99af83bceed024" args="(double const &amp;v)" -->
@@ -227,6 +326,13 @@ Returns a two-component unsigned integer vector representation of v. The bit-lev
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackDouble2x32.xml">GLSL unpackDouble2x32 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00096">96</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00097"></a>00097         {
+<a name="l00098"></a>00098                 <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span><a class="code" href="group__core__types.html#gfd2041b45eff671aa8899d2c2835eee9">uvec2</a> <span class="keyword">const </span>&amp;<span class="keyword">&gt;</span>(v);
+<a name="l00099"></a>00099         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g4051804cc2c930ba4ca73382b79edf1d"></a><!-- doxytag: member="glm::unpackHalf2x16" ref="g4051804cc2c930ba4ca73382b79edf1d" args="(uint const &amp;v)" -->
@@ -249,6 +355,17 @@ Returns a two-component unsigned integer vector representation of v. The bit-lev
 Returns a two-component floating-point vector with components obtained by unpacking a 32-bit unsigned integer into a pair of 16-bit values, interpreting those values as 16-bit floating-point numbers according to the OpenGL Specification, and converting them to 32-bit floating-point values. The first component of the vector is obtained from the 16 least-significant bits of v; the second component is obtained from the 16 most-significant bits of v.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackHalf2x16.xml">GLSL unpackHalf2x16 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00111">111</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00112"></a>00112         {
+<a name="l00113"></a>00113                 <a class="code" href="group__gtc__type__precision.html#g13f7a88281faec6a72231dce73ce6129">i16vec2</a> Unpack(reinterpret_cast&lt;i16vec2 const &amp;&gt;(v));
+<a name="l00114"></a>00114         
+<a name="l00115"></a>00115                 <span class="keywordflow">return</span> <a class="code" href="group__core__types.html#ga1618f51db67eaa145db101d8c8431d8">vec2</a>(
+<a name="l00116"></a>00116                         detail::toFloat32(Unpack.x), 
+<a name="l00117"></a>00117                         detail::toFloat32(Unpack.y));
+<a name="l00118"></a>00118         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -275,6 +392,27 @@ The first component of the returned vector will be extracted from the least sign
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackSnorm2x16.xml">GLSL unpackSnorm2x16 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00057">57</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+
+<p>References <a class="el" href="func__common_8inl-source.html#l00404">glm::clamp()</a>, and <a class="el" href="constants_8inl-source.html#l00118">glm::e()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00058"></a>00058         {
+<a name="l00059"></a>00059                 <a class="code" href="group__core__types.html#ga1618f51db67eaa145db101d8c8431d8">vec2</a> Unpack(reinterpret_cast&lt;i16vec2 const &amp;&gt;(p));
+<a name="l00060"></a>00060                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__wrap.html#g18e81aeb796ba941505bb883f1efd586">clamp</a>(
+<a name="l00061"></a>00061                         Unpack * 3.0518509475997192297128208258309<a class="code" href="group__gtc__constants.html#g2425b9c6a54d9d91fd1a634700e85cf1">e</a>-5f, <span class="comment">//1.0f / 32767.0f,</span>
+<a name="l00062"></a>00062                         -1.0f, 1.0f);
+<a name="l00063"></a>00063         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__packing_ga3f9bd6a71d7bdfab090b9626f2466aa_cgraph.png" border="0" usemap="#group__core__func__packing_ga3f9bd6a71d7bdfab090b9626f2466aa_cgraph_map" alt=""></center>
+<map name="group__core__func__packing_ga3f9bd6a71d7bdfab090b9626f2466aa_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#g8b4808983e20c4c74b20e0a025787ab4" title="glm::clamp" alt="" coords="213,31,299,57"><area shape="rect" href="group__gtc__constants.html#g2425b9c6a54d9d91fd1a634700e85cf1" title="glm::e" alt="" coords="228,81,284,108"><area shape="rect" href="group__core__func__common.html#g4e4d7b280fec55e5dfeb1367a1a2597d" title="glm::max" alt="" coords="348,5,423,32"><area shape="rect" href="group__core__func__common.html#g7c4425eacc9498bb2ab8a7cfd662cd69" title="glm::min" alt="" coords="349,56,421,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g126a0deffef1f2d10dd67237981a870b"></a><!-- doxytag: member="glm::unpackSnorm4x8" ref="g126a0deffef1f2d10dd67237981a870b" args="(uint const &amp;p)" -->
@@ -299,6 +437,27 @@ The conversion for unpacked fixed-point value f to floating point is done as fol
 The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackSnorm4x8.xml">GLSL unpackSnorm4x8 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00083">83</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+
+<p>References <a class="el" href="func__common_8inl-source.html#l00404">glm::clamp()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00084"></a>00084         {
+<a name="l00085"></a>00085                 <a class="code" href="group__core__types.html#g5881b1b022d7fd1b7218f5916532dd02">vec4</a> Unpack(reinterpret_cast&lt;i8vec4 const &amp;&gt;(p));
+<a name="l00086"></a>00086                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__wrap.html#g18e81aeb796ba941505bb883f1efd586">clamp</a>(
+<a name="l00087"></a>00087                         Unpack * 0.0078740157480315f, <span class="comment">// 1.0f / 127.0f</span>
+<a name="l00088"></a>00088                         -1.0f, 1.0f);
+<a name="l00089"></a>00089         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__packing_g126a0deffef1f2d10dd67237981a870b_cgraph.png" border="0" usemap="#group__core__func__packing_g126a0deffef1f2d10dd67237981a870b_cgraph_map" alt=""></center>
+<map name="group__core__func__packing_g126a0deffef1f2d10dd67237981a870b_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#g8b4808983e20c4c74b20e0a025787ab4" title="glm::clamp" alt="" coords="205,31,291,57"><area shape="rect" href="group__core__func__common.html#g4e4d7b280fec55e5dfeb1367a1a2597d" title="glm::max" alt="" coords="340,5,415,32"><area shape="rect" href="group__core__func__common.html#g7c4425eacc9498bb2ab8a7cfd662cd69" title="glm::min" alt="" coords="341,56,413,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -325,6 +484,25 @@ The first component of the returned vector will be extracted from the least sign
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackUnorm2x16.xml">GLSL unpackUnorm2x16 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00043">43</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+
+<p>References <a class="el" href="constants_8inl-source.html#l00118">glm::e()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00044"></a>00044         {
+<a name="l00045"></a>00045                 <a class="code" href="group__core__types.html#ga1618f51db67eaa145db101d8c8431d8">vec2</a> Unpack(reinterpret_cast&lt;u16vec2 const &amp;&gt;(p));
+<a name="l00046"></a>00046                 <span class="keywordflow">return</span> Unpack * float(1.5259021896696421759365224689097<a class="code" href="group__gtc__constants.html#g2425b9c6a54d9d91fd1a634700e85cf1">e</a>-5); <span class="comment">// 1.0 / 65535.0</span>
+<a name="l00047"></a>00047         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__packing_gff327a2fca8abfe31b74b914b68ac5ec_cgraph.png" border="0" usemap="#group__core__func__packing_gff327a2fca8abfe31b74b914b68ac5ec_cgraph_map" alt=""></center>
+<map name="group__core__func__packing_gff327a2fca8abfe31b74b914b68ac5ec_cgraph_map">
+<area shape="rect" href="group__gtc__constants.html#g2425b9c6a54d9d91fd1a634700e85cf1" title="glm::e" alt="" coords="215,5,271,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g5d3c4d354b48a317935349dd62a8b8a5"></a><!-- doxytag: member="glm::unpackUnorm4x8" ref="g5d3c4d354b48a317935349dd62a8b8a5" args="(uint const &amp;p)" -->
@@ -350,10 +528,18 @@ The first component of the returned vector will be extracted from the least sign
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackUnorm4x8.xml">GLSL unpackUnorm4x8 man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__packing_8inl-source.html#l00071">71</a> of file <a class="el" href="func__packing_8inl-source.html">func_packing.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00072"></a>00072         {
+<a name="l00073"></a>00073                 <a class="code" href="group__core__types.html#g5881b1b022d7fd1b7218f5916532dd02">vec4</a> Unpack(reinterpret_cast&lt;u8vec4 const&amp;&gt;(p));
+<a name="l00074"></a>00074                 <span class="keywordflow">return</span> Unpack * float(0.0039215686274509803921568627451); <span class="comment">// 1 / 255</span>
+<a name="l00075"></a>00075         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:19 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:58:09 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

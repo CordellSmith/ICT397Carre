@@ -24,6 +24,8 @@ Normally textures are contained in external files but some file formats embed th
 
 Embedded textures are referenced from materials using strings like \char`\"{}$\ast$0\char`\"{}, \char`\"{}$\ast$1\char`\"{}, etc. as the texture paths (a single asterisk character followed by the zero-based index of the texture in the \hyperlink{structai_scene_0fd0d29fbc439e3715b4975ccb68d2d3}{aiScene::mTextures} array). 
 
+Definition at line 133 of file texture.h.
+
 \subsection{Member Data Documentation}
 \hypertarget{structai_texture_aa3ad8cfe44fdc4dea2db91977d92234}{
 \index{aiTexture@{aiTexture}!mWidth@{mWidth}}
@@ -34,7 +36,9 @@ Embedded textures are referenced from materials using strings like \char`\"{}$\a
 
 Width of the texture, in pixels
 
-If mHeight is zero the texture is compressed in a format like JPEG. In this case mWidth specifies the size of the memory area pcData is pointing to, in bytes. \hypertarget{structai_texture_c1e2fa6f1f646e9c55e3985d4418a752}{
+If mHeight is zero the texture is compressed in a format like JPEG. In this case mWidth specifies the size of the memory area pcData is pointing to, in bytes. 
+
+Definition at line 141 of file texture.h.\hypertarget{structai_texture_c1e2fa6f1f646e9c55e3985d4418a752}{
 \index{aiTexture@{aiTexture}!mHeight@{mHeight}}
 \index{mHeight@{mHeight}!aiTexture@{aiTexture}}
 \subsubsection[mHeight]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiTexture::mHeight}}}
@@ -43,7 +47,9 @@ If mHeight is zero the texture is compressed in a format like JPEG. In this case
 
 Height of the texture, in pixels
 
-If this value is zero, pcData points to an compressed texture in any format (e.g. JPEG). \hypertarget{structai_texture_8e281d19486df620af1b2869464fa5c0}{
+If this value is zero, pcData points to an compressed texture in any format (e.g. JPEG). 
+
+Definition at line 148 of file texture.h.\hypertarget{structai_texture_8e281d19486df620af1b2869464fa5c0}{
 \index{aiTexture@{aiTexture}!achFormatHint@{achFormatHint}}
 \index{achFormatHint@{achFormatHint}!aiTexture@{aiTexture}}
 \subsubsection[achFormatHint]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aiTexture::achFormatHint}\mbox{[}9\mbox{]}}}
@@ -52,7 +58,9 @@ If this value is zero, pcData points to an compressed texture in any format (e.g
 
 A hint from the loader to make it easier for applications to determine the type of embedded textures.
 
-If mHeight != 0 this member is show how data is packed. Hint will consist of two parts: channel order and channel bitness (count of the bits for every color channel). For simple parsing by the viewer it's better to not omit absent color channel and just use 0 for bitness. For example: 1. Image contain RGBA and 8 bit per channel, achFormatHint == \char`\"{}rgba8888\char`\"{}; 2. Image contain ARGB and 8 bit per channel, achFormatHint == \char`\"{}argb8888\char`\"{}; 3. Image contain RGB and 5 bit for R and B channels and 6 bit for G channel, achFormatHint == \char`\"{}rgba5650\char`\"{}; 4. One color image with B channel and 1 bit for it, achFormatHint == \char`\"{}rgba0010\char`\"{}; If mHeight == 0 then achFormatHint is set set to '$\backslash$0$\backslash$0$\backslash$0$\backslash$0' if the loader has no additional information about the texture file format used OR the file extension of the format without a trailing dot. If there are multiple file extensions for a format, the shortest extension is chosen (JPEG maps to 'jpg', not to 'jpeg'). E.g. 'dds$\backslash$0', 'pcx$\backslash$0', 'jpg$\backslash$0'. All characters are lower-case. The fourth character will always be '$\backslash$0'. \hypertarget{structai_texture_eb07528748b6e49d2d81c60006024f9a}{
+If mHeight != 0 this member is show how data is packed. Hint will consist of two parts: channel order and channel bitness (count of the bits for every color channel). For simple parsing by the viewer it's better to not omit absent color channel and just use 0 for bitness. For example: 1. Image contain RGBA and 8 bit per channel, achFormatHint == \char`\"{}rgba8888\char`\"{}; 2. Image contain ARGB and 8 bit per channel, achFormatHint == \char`\"{}argb8888\char`\"{}; 3. Image contain RGB and 5 bit for R and B channels and 6 bit for G channel, achFormatHint == \char`\"{}rgba5650\char`\"{}; 4. One color image with B channel and 1 bit for it, achFormatHint == \char`\"{}rgba0010\char`\"{}; If mHeight == 0 then achFormatHint is set set to '$\backslash$0$\backslash$0$\backslash$0$\backslash$0' if the loader has no additional information about the texture file format used OR the file extension of the format without a trailing dot. If there are multiple file extensions for a format, the shortest extension is chosen (JPEG maps to 'jpg', not to 'jpeg'). E.g. 'dds$\backslash$0', 'pcx$\backslash$0', 'jpg$\backslash$0'. All characters are lower-case. The fourth character will always be '$\backslash$0'. 
+
+Definition at line 169 of file texture.h.\hypertarget{structai_texture_eb07528748b6e49d2d81c60006024f9a}{
 \index{aiTexture@{aiTexture}!pcData@{pcData}}
 \index{pcData@{pcData}!aiTexture@{aiTexture}}
 \subsubsection[pcData]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiTexel}$\ast$ {\bf aiTexture::pcData}}}
@@ -63,6 +71,8 @@ Data of the texture.
 
 Points to an array of mWidth $\ast$ mHeight aiTexel's. The format of the texture data is always ARGB8888 to make the implementation for user of the library as easy as possible. If mHeight = 0 this is a pointer to a memory buffer of size mWidth containing the compressed texture data. Good luck, have fun! 
 
+Definition at line 180 of file texture.h.
+
 The documentation for this struct was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{texture_8h}{texture.h}\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{texture_8h}{texture.h}\end{CompactItemize}

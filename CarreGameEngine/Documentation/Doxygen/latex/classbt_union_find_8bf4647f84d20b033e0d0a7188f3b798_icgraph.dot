@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btUnionFind::sortIslands",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btSimulationIslandManager::buildIslands",height=0.2,width=0.4,color="black",URL="$classbt_simulation_island_manager.html#ea0b5869eca2d034ac9c643e149a5e01"];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btSimulationIslandManager::buildAndProcessIslands",height=0.2,width=0.4,color="black",URL="$classbt_simulation_island_manager.html#b0f52dc46bc01c6754f4cb32ba26c99a"];
+}

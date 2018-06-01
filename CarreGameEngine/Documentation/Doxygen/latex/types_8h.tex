@@ -1,6 +1,6 @@
 \hypertarget{types_8h}{
-\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/types.h File Reference}
-\label{types_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/types.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/types.h}}
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/types.h File Reference}
+\label{types_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/types.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/types.h}}
 }
 {\tt \#include $<$sys/types.h$>$}\par
 {\tt \#include $<$stddef.h$>$}\par
@@ -65,6 +65,8 @@ enum \hyperlink{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6}{aiDefaultLogStream} \
 \subsection{Detailed Description}
 Basic data types and primitives, such as vectors or colors. 
 
+Definition in file \hyperlink{types_8h-source}{types.h}.
+
 \subsection{Define Documentation}
 \hypertarget{types_8h_e6648cd71a8bd49d58ae8ed33ba910d1}{
 \index{types.h@{types.h}!MAXLEN@{MAXLEN}}
@@ -74,6 +76,8 @@ Basic data types and primitives, such as vectors or colors.
 
 
 Maximum dimension for strings, ASSIMP strings are zero terminated. 
+
+Definition at line 116 of file types.h.
 
 \subsection{Enumeration Type Documentation}
 \hypertarget{types_8h_e4271f61a7c06cd4770fc3e11f58f9c6}{
@@ -107,6 +111,25 @@ aiDefaultLogStream\_\-DEBUGGER}
 }]MSVC only: Stream the log the the debugger (this relies on OutputDebugString from the Win32 SDK) \end{description}
 \end{Desc}
 
+
+
+Definition at line 429 of file types.h.
+
+\begin{Code}\begin{verbatim}430 {
+432     aiDefaultLogStream_FILE = 0x1,
+433 
+435     aiDefaultLogStream_STDOUT = 0x2,
+436 
+438     aiDefaultLogStream_STDERR = 0x4,
+439 
+443     aiDefaultLogStream_DEBUGGER = 0x8,
+444 
+448     _AI_DLS_ENFORCE_ENUM_SIZE = 0x7fffffff
+450 }; // !enum aiDefaultLogStream
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{types_8h_c50fbaa57d78776ca99e42104d9b2786}{
 \index{types.h@{types.h}!aiOrigin@{aiOrigin}}
 \index{aiOrigin@{aiOrigin}!types.h@{types.h}}
@@ -132,6 +155,24 @@ aiOrigin\_\-END}
 }]End of the file, offsets must be negative \end{description}
 \end{Desc}
 
+
+
+Definition at line 405 of file types.h.
+
+\begin{Code}\begin{verbatim}406 {
+408     aiOrigin_SET = 0x0,
+409 
+411     aiOrigin_CUR = 0x1,
+412 
+414     aiOrigin_END = 0x2,
+415 
+419     _AI_ORIGIN_ENFORCE_ENUM_SIZE = 0x7fffffff
+420 
+422 }; // !enum aiOrigin
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{types_8h_1f78dfb65090aa930cabb984c8abe711}{
 \index{types.h@{types.h}!aiReturn@{aiReturn}}
 \index{aiReturn@{aiReturn}!types.h@{types.h}}
@@ -156,4 +197,22 @@ aiReturn\_\-OUTOFMEMORY}
 \label{types_8h_1f78dfb65090aa930cabb984c8abe711ec066535964aaa165dd72815ade727f1}
 }]Indicates that not enough memory was available to perform the requested operation \end{description}
 \end{Desc}
+
+
+
+Definition at line 375 of file types.h.
+
+\begin{Code}\begin{verbatim}376 {
+378     aiReturn_SUCCESS = 0x0,
+379 
+381     aiReturn_FAILURE = -0x1,
+382 
+386     aiReturn_OUTOFMEMORY = -0x3,
+387 
+391     _AI_ENFORCE_ENUM_SIZE = 0x7fffffff
+392 
+394 } aiReturn;  // !enum aiReturn
+\end{verbatim}
+\end{Code}
+
 

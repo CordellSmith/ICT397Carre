@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Matrix functions</title>
+<title>Assignment2 - OOber Taxi: Matrix functions</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -85,6 +85,14 @@ Returns the transposed matrix of x<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/determinant.xml">GLSL determinant man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__matrix_8inl-source.html#l00447">447</a> of file <a class="el" href="func__matrix_8inl-source.html">func_matrix.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00448"></a>00448         {
+<a name="l00449"></a>00449                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559, <span class="stringliteral">"'determinant' only accept floating-point inputs"</span>);
+<a name="l00450"></a>00450                 <span class="keywordflow">return</span> detail::compute_determinant&lt;matType, T, P&gt;::call(m);
+<a name="l00451"></a>00451         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g4b56decdc6560a13b616c6312bdcc17e"></a><!-- doxytag: member="glm::inverse" ref="g4b56decdc6560a13b616c6312bdcc17e" args="(matType&lt; T, P &gt; const &amp;m)" -->
@@ -114,6 +122,25 @@ Return the inverse of a squared matrix.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/inverse.xml">GLSL inverse man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__matrix_8inl-source.html#l00454">454</a> of file <a class="el" href="func__matrix_8inl-source.html">func_matrix.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00017">glm::cross()</a>, <a class="el" href="_camera_8cpp-source.html#l00047">Camera::GetUp()</a>, <a class="el" href="_camera_8cpp-source.html#l00039">Camera::GetView()</a>, <a class="el" href="_camera_8cpp-source.html#l00033">Camera::GetViewMatrix()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00049">glm::intermediate()</a>, and <a class="el" href="matrix__transform_8inl-source.html#l00371">glm::unProject()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00455"></a>00455         {
+<a name="l00456"></a>00456                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559, <span class="stringliteral">"'inverse' only accept floating-point inputs"</span>);
+<a name="l00457"></a>00457                 <span class="keywordflow">return</span> detail::compute_inverse&lt;matType, T, P&gt;::call(m);
+<a name="l00458"></a>00458         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__matrix_g4b56decdc6560a13b616c6312bdcc17e_icgraph.png" border="0" usemap="#group__core__func__matrix_g4b56decdc6560a13b616c6312bdcc17e_icgraph_map" alt=""></center>
+<map name="group__core__func__matrix_g4b56decdc6560a13b616c6312bdcc17e_icgraph_map">
+<area shape="rect" href="group__gtx__quaternion.html#gd81a2ea5c1048d8101ce2876eb6569f7" title="glm::cross" alt="" coords="183,31,265,57"><area shape="rect" href="class_camera.html#ff61f06284cca3216accdf556dfbd3c1" title="Gets the camera position." alt="" coords="168,81,280,108"><area shape="rect" href="class_camera.html#338c5baf20b57652828c53e0791adf9a" title="Gets the camera view." alt="" coords="163,132,285,159"><area shape="rect" href="class_camera.html#ffa333055635aed96518c4c66be9a70c" title="Gets the view matrix." alt="" coords="144,183,304,209"><area shape="rect" href="group__gtx__quaternion.html#ge94a070898e8be560a5dcf8e15854b2d" title="glm::intermediate" alt="" coords="164,233,284,260"><area shape="rect" href="group__gtc__matrix__transform.html#g90b6f19047316d870f88e0a50d8b13f3" title="glm::unProject" alt="" coords="172,284,276,311"><area shape="rect" href="bt_geometry_operations_8h.html#8ef83f3444ff4b984beb7c1c593cb0eb" title="Calc a plane from a triangle edge an a normal. plane is a vec4f." alt="" coords="440,5,544,32"><area shape="rect" href="classbt_soft_body_triangle_callback.html#0f8b46eba213eb55a451e182d2f6a9be" title="btSoftBodyTriangleCallback::processTriangle" alt="" coords="352,56,632,83"><area shape="rect" href="class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223" title="Moves the camera." alt="" coords="417,132,567,159"></map>
+</div>
 
 </div>
 </div><p>
@@ -153,6 +180,18 @@ Multiply matrix x by matrix y component-wise, i.e., result[i][j] is the scalar p
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/matrixCompMult.xml">GLSL matrixCompMult man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__matrix_8inl-source.html#l00422">422</a> of file <a class="el" href="func__matrix_8inl-source.html">func_matrix.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00423"></a>00423         {
+<a name="l00424"></a>00424                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559, <span class="stringliteral">"'matrixCompMult' only accept floating-point inputs"</span>);
+<a name="l00425"></a>00425 
+<a name="l00426"></a>00426                 matType&lt;T, P&gt; result(matType&lt;T, P&gt;::_null);
+<a name="l00427"></a>00427                 <span class="keywordflow">for</span>(length_t i = 0; i &lt; result.length(); ++i)
+<a name="l00428"></a>00428                         result[i] = x[i] * y[i];
+<a name="l00429"></a>00429                 <span class="keywordflow">return</span> result;
+<a name="l00430"></a>00430         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -194,10 +233,18 @@ Treats the first parameter c as a column vector and the second parameter r as a 
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.6 Matrix Functions</a></dd></dl>
 <dl compact><dt><b><a class="el" href="todo.html#_todo000048">Todo:</a></b></dt><dd>Clarify the declaration to specify that matType doesn't have to be provided when used. </dd></dl>
 
+<p>Definition at line <a class="el" href="func__matrix_8inl-source.html#l00433">433</a> of file <a class="el" href="func__matrix_8inl-source.html">func_matrix.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00434"></a>00434         {
+<a name="l00435"></a>00435                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559, <span class="stringliteral">"'outerProduct' only accept floating-point inputs"</span>);
+<a name="l00436"></a>00436                 <span class="keywordflow">return</span> detail::compute_outerProduct&lt;vecTypeA, vecTypeB, T, P&gt;::call(c, r);
+<a name="l00437"></a>00437         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:19 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:58:06 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

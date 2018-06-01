@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTC_type_ptr</title>
+<title>Assignment2 - OOber Taxi: GLM_GTC_type_ptr</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -217,6 +217,24 @@ template&lt;typename T&gt; </div>
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00442">442</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="type__ptr_8inl-source.html#l00352">glm::make_mat2x2()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00443"></a>00443         {
+<a name="l00444"></a>00444                 <span class="keywordflow">return</span> <a class="code" href="group__gtc__type__ptr.html#g49c18920c113e1e72caea1c3978c8e7f">make_mat2x2</a>(ptr);
+<a name="l00445"></a>00445         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g08f35700be4d2e627da4d894edfa1b60_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g08f35700be4d2e627da4d894edfa1b60_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g08f35700be4d2e627da4d894edfa1b60_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g49c18920c113e1e72caea1c3978c8e7f" title="glm::make_mat2x2" alt="" coords="175,5,305,32"><area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="355,5,456,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g49c18920c113e1e72caea1c3978c8e7f"></a><!-- doxytag: member="glm::make_mat2x2" ref="g49c18920c113e1e72caea1c3978c8e7f" args="(T const *const ptr)" -->
@@ -239,6 +257,37 @@ template&lt;typename T&gt; </div>
 
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00352">352</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+
+<p>Referenced by <a class="el" href="type__ptr_8inl-source.html#l00442">glm::make_mat2()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00353"></a>00353         {
+<a name="l00354"></a>00354                 detail::tmat2x2&lt;T, defaultp&gt; Result;
+<a name="l00355"></a>00355                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tmat2x2&lt;T, defaultp&gt;));
+<a name="l00356"></a>00356                 <span class="keywordflow">return</span> Result;
+<a name="l00357"></a>00357         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g49c18920c113e1e72caea1c3978c8e7f_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g49c18920c113e1e72caea1c3978c8e7f_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g49c18920c113e1e72caea1c3978c8e7f_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="187,5,288,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g49c18920c113e1e72caea1c3978c8e7f_icgraph.png" border="0" usemap="#group__gtc__type__ptr_g49c18920c113e1e72caea1c3978c8e7f_icgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g49c18920c113e1e72caea1c3978c8e7f_icgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g08f35700be4d2e627da4d894edfa1b60" title="glm::make_mat2" alt="" coords="188,5,305,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -263,6 +312,26 @@ template&lt;typename T&gt; </div>
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00362">362</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00363"></a>00363         {
+<a name="l00364"></a>00364                 detail::tmat2x3&lt;T, defaultp&gt; Result;
+<a name="l00365"></a>00365                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tmat2x3&lt;T, defaultp&gt;));
+<a name="l00366"></a>00366                 <span class="keywordflow">return</span> Result;
+<a name="l00367"></a>00367         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g86620b90c993ff8e31f0dff1611bd2da_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g86620b90c993ff8e31f0dff1611bd2da_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g86620b90c993ff8e31f0dff1611bd2da_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="187,5,288,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g50245f47c0e6f5a2ab5ce157dc3e97ac"></a><!-- doxytag: member="glm::make_mat2x4" ref="g50245f47c0e6f5a2ab5ce157dc3e97ac" args="(T const *const ptr)" -->
@@ -285,6 +354,26 @@ template&lt;typename T&gt; </div>
 
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00372">372</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00373"></a>00373         {
+<a name="l00374"></a>00374                 detail::tmat2x4&lt;T, defaultp&gt; Result;
+<a name="l00375"></a>00375                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tmat2x4&lt;T, defaultp&gt;));
+<a name="l00376"></a>00376                 <span class="keywordflow">return</span> Result;
+<a name="l00377"></a>00377         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g50245f47c0e6f5a2ab5ce157dc3e97ac_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g50245f47c0e6f5a2ab5ce157dc3e97ac_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g50245f47c0e6f5a2ab5ce157dc3e97ac_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="187,5,288,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -309,6 +398,24 @@ template&lt;typename T&gt; </div>
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00450">450</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="type__ptr_8inl-source.html#l00392">glm::make_mat3x3()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00451"></a>00451         {
+<a name="l00452"></a>00452                 <span class="keywordflow">return</span> <a class="code" href="group__gtc__type__ptr.html#g206b172296286d333b0ff92e77b28b66">make_mat3x3</a>(ptr);
+<a name="l00453"></a>00453         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g63c04b2cd2367a06e9817a66b5025662_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g63c04b2cd2367a06e9817a66b5025662_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g63c04b2cd2367a06e9817a66b5025662_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g206b172296286d333b0ff92e77b28b66" title="glm::make_mat3x3" alt="" coords="175,5,305,32"><area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="355,5,456,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g6c7d94e71f8df512fca44427311baeae"></a><!-- doxytag: member="glm::make_mat3x2" ref="g6c7d94e71f8df512fca44427311baeae" args="(T const *const ptr)" -->
@@ -331,6 +438,26 @@ template&lt;typename T&gt; </div>
 
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00382">382</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00383"></a>00383         {
+<a name="l00384"></a>00384                 detail::tmat3x2&lt;T, defaultp&gt; Result;
+<a name="l00385"></a>00385                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tmat3x2&lt;T, defaultp&gt;));
+<a name="l00386"></a>00386                 <span class="keywordflow">return</span> Result;
+<a name="l00387"></a>00387         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g6c7d94e71f8df512fca44427311baeae_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g6c7d94e71f8df512fca44427311baeae_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g6c7d94e71f8df512fca44427311baeae_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="187,5,288,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -355,6 +482,37 @@ template&lt;typename T&gt; </div>
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00392">392</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+
+<p>Referenced by <a class="el" href="type__ptr_8inl-source.html#l00450">glm::make_mat3()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00393"></a>00393         {
+<a name="l00394"></a>00394                 detail::tmat3x3&lt;T, defaultp&gt; Result;
+<a name="l00395"></a>00395                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tmat3x3&lt;T, defaultp&gt;));
+<a name="l00396"></a>00396                 <span class="keywordflow">return</span> Result;
+<a name="l00397"></a>00397         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g206b172296286d333b0ff92e77b28b66_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g206b172296286d333b0ff92e77b28b66_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g206b172296286d333b0ff92e77b28b66_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="187,5,288,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g206b172296286d333b0ff92e77b28b66_icgraph.png" border="0" usemap="#group__gtc__type__ptr_g206b172296286d333b0ff92e77b28b66_icgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g206b172296286d333b0ff92e77b28b66_icgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g63c04b2cd2367a06e9817a66b5025662" title="glm::make_mat3" alt="" coords="188,5,305,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g81d4d38acbaded29fb07ca282f089122"></a><!-- doxytag: member="glm::make_mat3x4" ref="g81d4d38acbaded29fb07ca282f089122" args="(T const *const ptr)" -->
@@ -377,6 +535,26 @@ template&lt;typename T&gt; </div>
 
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00402">402</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00403"></a>00403         {
+<a name="l00404"></a>00404                 detail::tmat3x4&lt;T, defaultp&gt; Result;
+<a name="l00405"></a>00405                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tmat3x4&lt;T, defaultp&gt;));
+<a name="l00406"></a>00406                 <span class="keywordflow">return</span> Result;
+<a name="l00407"></a>00407         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g81d4d38acbaded29fb07ca282f089122_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g81d4d38acbaded29fb07ca282f089122_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g81d4d38acbaded29fb07ca282f089122_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="187,5,288,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -401,6 +579,24 @@ template&lt;typename T&gt; </div>
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00458">458</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="type__ptr_8inl-source.html#l00432">glm::make_mat4x4()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00459"></a>00459         {
+<a name="l00460"></a>00460                 <span class="keywordflow">return</span> <a class="code" href="group__gtc__type__ptr.html#g74e671ae9dc7e5e8f21aa44ea263d76e">make_mat4x4</a>(ptr);
+<a name="l00461"></a>00461         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g082261bc3bf4a6d320d6beaebcbaf1db_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g082261bc3bf4a6d320d6beaebcbaf1db_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g082261bc3bf4a6d320d6beaebcbaf1db_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g74e671ae9dc7e5e8f21aa44ea263d76e" title="glm::make_mat4x4" alt="" coords="175,5,305,32"><area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="355,5,456,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gc253e8157af1e4ec366c80d4bd90cbb2"></a><!-- doxytag: member="glm::make_mat4x2" ref="gc253e8157af1e4ec366c80d4bd90cbb2" args="(T const *const ptr)" -->
@@ -423,6 +619,26 @@ template&lt;typename T&gt; </div>
 
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00412">412</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00413"></a>00413         {
+<a name="l00414"></a>00414                 detail::tmat4x2&lt;T, defaultp&gt; Result;
+<a name="l00415"></a>00415                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tmat4x2&lt;T, defaultp&gt;));
+<a name="l00416"></a>00416                 <span class="keywordflow">return</span> Result;
+<a name="l00417"></a>00417         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_gc253e8157af1e4ec366c80d4bd90cbb2_cgraph.png" border="0" usemap="#group__gtc__type__ptr_gc253e8157af1e4ec366c80d4bd90cbb2_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_gc253e8157af1e4ec366c80d4bd90cbb2_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="187,5,288,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -447,6 +663,26 @@ template&lt;typename T&gt; </div>
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00422">422</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00423"></a>00423         {
+<a name="l00424"></a>00424                 detail::tmat4x3&lt;T, defaultp&gt; Result;
+<a name="l00425"></a>00425                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tmat4x3&lt;T, defaultp&gt;));
+<a name="l00426"></a>00426                 <span class="keywordflow">return</span> Result;
+<a name="l00427"></a>00427         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_gc375314134d9b3736395a4eda2602590_cgraph.png" border="0" usemap="#group__gtc__type__ptr_gc375314134d9b3736395a4eda2602590_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_gc375314134d9b3736395a4eda2602590_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="187,5,288,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g74e671ae9dc7e5e8f21aa44ea263d76e"></a><!-- doxytag: member="glm::make_mat4x4" ref="g74e671ae9dc7e5e8f21aa44ea263d76e" args="(T const *const ptr)" -->
@@ -469,6 +705,37 @@ template&lt;typename T&gt; </div>
 
 <p>
 Build a matrix from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00432">432</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+
+<p>Referenced by <a class="el" href="type__ptr_8inl-source.html#l00458">glm::make_mat4()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00433"></a>00433         {
+<a name="l00434"></a>00434                 detail::tmat4x4&lt;T, defaultp&gt; Result;
+<a name="l00435"></a>00435                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tmat4x4&lt;T, defaultp&gt;));
+<a name="l00436"></a>00436                 <span class="keywordflow">return</span> Result;
+<a name="l00437"></a>00437         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g74e671ae9dc7e5e8f21aa44ea263d76e_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g74e671ae9dc7e5e8f21aa44ea263d76e_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g74e671ae9dc7e5e8f21aa44ea263d76e_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="187,5,288,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g74e671ae9dc7e5e8f21aa44ea263d76e_icgraph.png" border="0" usemap="#group__gtc__type__ptr_g74e671ae9dc7e5e8f21aa44ea263d76e_icgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g74e671ae9dc7e5e8f21aa44ea263d76e_icgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g082261bc3bf4a6d320d6beaebcbaf1db" title="glm::make_mat4" alt="" coords="188,5,305,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -493,6 +760,26 @@ template&lt;typename T&gt; </div>
 <p>
 Build a quaternion from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00466">466</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00467"></a>00467         {
+<a name="l00468"></a>00468                 detail::tquat&lt;T, defaultp&gt; Result;
+<a name="l00469"></a>00469                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tquat&lt;T, defaultp&gt;));
+<a name="l00470"></a>00470                 <span class="keywordflow">return</span> Result;
+<a name="l00471"></a>00471         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_gac5b8f1104856835d3d65d854362c85b_cgraph.png" border="0" usemap="#group__gtc__type__ptr_gac5b8f1104856835d3d65d854362c85b_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_gac5b8f1104856835d3d65d854362c85b_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="168,5,269,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g7009d8090f046d1ce98e59df584fff46"></a><!-- doxytag: member="glm::make_vec2" ref="g7009d8090f046d1ce98e59df584fff46" args="(T const *const ptr)" -->
@@ -515,6 +802,26 @@ template&lt;typename T&gt; </div>
 
 <p>
 Build a vector from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00322">322</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00323"></a>00323         {
+<a name="l00324"></a>00324                 detail::tvec2&lt;T, defaultp&gt; Result;
+<a name="l00325"></a>00325                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tvec2&lt;T, defaultp&gt;));
+<a name="l00326"></a>00326                 <span class="keywordflow">return</span> Result;
+<a name="l00327"></a>00327         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g7009d8090f046d1ce98e59df584fff46_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g7009d8090f046d1ce98e59df584fff46_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g7009d8090f046d1ce98e59df584fff46_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="171,5,272,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -539,6 +846,26 @@ template&lt;typename T&gt; </div>
 <p>
 Build a vector from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00332">332</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00333"></a>00333         {
+<a name="l00334"></a>00334                 detail::tvec3&lt;T, defaultp&gt; Result;
+<a name="l00335"></a>00335                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tvec3&lt;T, defaultp&gt;));
+<a name="l00336"></a>00336                 <span class="keywordflow">return</span> Result;
+<a name="l00337"></a>00337         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g0b727d0acba617ec7b9af9f06892336a_cgraph.png" border="0" usemap="#group__gtc__type__ptr_g0b727d0acba617ec7b9af9f06892336a_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g0b727d0acba617ec7b9af9f06892336a_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="171,5,272,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gf44d3c8aa09a7a8021ae5312e2f1f091"></a><!-- doxytag: member="glm::make_vec4" ref="gf44d3c8aa09a7a8021ae5312e2f1f091" args="(T const *const ptr)" -->
@@ -561,6 +888,26 @@ template&lt;typename T&gt; </div>
 
 <p>
 Build a vector from a pointer. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00342">342</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b">glm::value_ptr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00343"></a>00343         {
+<a name="l00344"></a>00344                 detail::tvec4&lt;T, defaultp&gt; Result;
+<a name="l00345"></a>00345                 memcpy(<a class="code" href="group__gtc__type__ptr.html#ga84b8d637d0b816514e2db6ce19cec6c">value_ptr</a>(Result), ptr, <span class="keyword">sizeof</span>(detail::tvec4&lt;T, defaultp&gt;));
+<a name="l00346"></a>00346                 <span class="keywordflow">return</span> Result;
+<a name="l00347"></a>00347         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_gf44d3c8aa09a7a8021ae5312e2f1f091_cgraph.png" border="0" usemap="#group__gtc__type__ptr_gf44d3c8aa09a7a8021ae5312e2f1f091_cgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_gf44d3c8aa09a7a8021ae5312e2f1f091_cgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g87d5cb613f75f83973609ccb8922200b" title="glm::value_ptr" alt="" coords="171,5,272,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -585,6 +932,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the address to the data of the quaternion input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00312">312</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00315"></a>00315         {
+<a name="l00316"></a>00316                 <span class="keywordflow">return</span> &amp;(q[0]);
+<a name="l00317"></a>00317         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g06ca6cd0663b5a1ed1c217efc80013d8"></a><!-- doxytag: member="glm::value_ptr" ref="g06ca6cd0663b5a1ed1c217efc80013d8" args="(detail::tquat&lt; T, P &gt; const &amp;q)" -->
@@ -607,6 +961,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the constant address to the data of the input parameter. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00301">301</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00304"></a>00304         {
+<a name="l00305"></a>00305                 <span class="keywordflow">return</span> &amp;(q[0]);
+<a name="l00306"></a>00306         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -631,6 +992,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00292">292</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00293"></a>00293         {
+<a name="l00294"></a>00294                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00295"></a>00295         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g7c8877c9dc37f2229d4b75fd735be5d5"></a><!-- doxytag: member="glm::value_ptr" ref="g7c8877c9dc37f2229d4b75fd735be5d5" args="(detail::tmat4x3&lt; T, P &gt; const &amp;mat)" -->
@@ -653,6 +1021,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the constant address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00282">282</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00285"></a>00285         {
+<a name="l00286"></a>00286                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00287"></a>00287         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -677,6 +1052,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00271">271</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00274"></a>00274         {
+<a name="l00275"></a>00275                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00276"></a>00276         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g7ac16d67cf7bb44cb53bc7e6a7c8bd2c"></a><!-- doxytag: member="glm::value_ptr" ref="g7ac16d67cf7bb44cb53bc7e6a7c8bd2c" args="(detail::tmat3x4&lt; T, P &gt; const &amp;mat)" -->
@@ -699,6 +1081,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the constant address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00260">260</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00263"></a>00263         {
+<a name="l00264"></a>00264                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00265"></a>00265         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -723,6 +1112,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00249">249</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00252"></a>00252         {
+<a name="l00253"></a>00253                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00254"></a>00254         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g548aa4697fc58fdd3d33df6c57777191"></a><!-- doxytag: member="glm::value_ptr" ref="g548aa4697fc58fdd3d33df6c57777191" args="(detail::tmat4x2&lt; T, P &gt; const &amp;mat)" -->
@@ -745,6 +1141,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the constant address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00238">238</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00241"></a>00241         {
+<a name="l00242"></a>00242                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00243"></a>00243         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -769,6 +1172,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00227">227</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00230"></a>00230         {
+<a name="l00231"></a>00231                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00232"></a>00232         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g9efd0cc6b3e12ec8953d9a96e8b750b0"></a><!-- doxytag: member="glm::value_ptr" ref="g9efd0cc6b3e12ec8953d9a96e8b750b0" args="(detail::tmat2x4&lt; T, P &gt; const &amp;mat)" -->
@@ -791,6 +1201,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the constant address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00216">216</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00219"></a>00219         {
+<a name="l00220"></a>00220                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00221"></a>00221         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -815,6 +1232,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00205">205</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00208"></a>00208         {
+<a name="l00209"></a>00209                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00210"></a>00210         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g3ad2904b61a8c3fe50ccb6222e6e928c"></a><!-- doxytag: member="glm::value_ptr" ref="g3ad2904b61a8c3fe50ccb6222e6e928c" args="(detail::tmat3x2&lt; T, P &gt; const &amp;mat)" -->
@@ -837,6 +1261,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the constant address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00194">194</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00197"></a>00197         {
+<a name="l00198"></a>00198                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00199"></a>00199         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -861,6 +1292,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00183">183</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00186"></a>00186         {
+<a name="l00187"></a>00187                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00188"></a>00188         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g76ad4707fac9af56b7eaea2c9b6019fb"></a><!-- doxytag: member="glm::value_ptr" ref="g76ad4707fac9af56b7eaea2c9b6019fb" args="(detail::tmat2x3&lt; T, P &gt; const &amp;mat)" -->
@@ -884,6 +1322,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the constant address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00172">172</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00175"></a>00175         {
+<a name="l00176"></a>00176                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00177"></a>00177         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g5f34b63d9c6322a3a61f15ee63768304"></a><!-- doxytag: member="glm::value_ptr" ref="g5f34b63d9c6322a3a61f15ee63768304" args="(detail::tmat4x4&lt; T, P &gt; &amp;mat)" -->
@@ -906,6 +1351,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the address to the data of the matrix input. From GLM_GTC_type_ptr extension. 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00161">161</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00164"></a>00164         {
+<a name="l00165"></a>00165                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00166"></a>00166         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gcb2a7024434ab32998c6ade8ec0c0e4b"></a><!-- doxytag: member="glm::value_ptr" ref="gcb2a7024434ab32998c6ade8ec0c0e4b" args="(detail::tmat4x4&lt; T, P &gt; const &amp;mat)" -->
@@ -928,6 +1380,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the constant address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00150">150</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00153"></a>00153         {
+<a name="l00154"></a>00154                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00155"></a>00155         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -952,6 +1411,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00139">139</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00142"></a>00142         {
+<a name="l00143"></a>00143                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00144"></a>00144         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g78aceb3dc479cf7745bc5a0d9f751504"></a><!-- doxytag: member="glm::value_ptr" ref="g78aceb3dc479cf7745bc5a0d9f751504" args="(detail::tmat3x3&lt; T, P &gt; const &amp;mat)" -->
@@ -974,6 +1440,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the constant address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00128">128</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00131"></a>00131         {
+<a name="l00132"></a>00132                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00133"></a>00133         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -998,6 +1471,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00117">117</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00120"></a>00120         {
+<a name="l00121"></a>00121                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00122"></a>00122         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g97a60e78c46993259f0cbac724d0b354"></a><!-- doxytag: member="glm::value_ptr" ref="g97a60e78c46993259f0cbac724d0b354" args="(detail::tmat2x2&lt; T, P &gt; const &amp;mat)" -->
@@ -1021,6 +1501,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the constant address to the data of the matrix input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00106">106</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00109"></a>00109         {
+<a name="l00110"></a>00110                 <span class="keywordflow">return</span> &amp;(mat[0].x);
+<a name="l00111"></a>00111         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g793e108db1bc068a8c09cf75c1b04389"></a><!-- doxytag: member="glm::value_ptr" ref="g793e108db1bc068a8c09cf75c1b04389" args="(detail::tvec4&lt; T, P &gt; &amp;vec)" -->
@@ -1043,6 +1530,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the address to the data of the vector input. From GLM_GTC_type_ptr extension. 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00095">95</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00098"></a>00098         {
+<a name="l00099"></a>00099                 <span class="keywordflow">return</span> &amp;(vec.x);
+<a name="l00100"></a>00100         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gc66d56efb1b37e96a17d235374f53a03"></a><!-- doxytag: member="glm::value_ptr" ref="gc66d56efb1b37e96a17d235374f53a03" args="(detail::tvec4&lt; T, P &gt; const &amp;vec)" -->
@@ -1065,6 +1559,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the constant address to the data of the vector input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00084">84</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00087"></a>00087         {
+<a name="l00088"></a>00088                 <span class="keywordflow">return</span> &amp;(vec.x);
+<a name="l00089"></a>00089         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -1089,6 +1590,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the address to the data of the vector input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00073">73</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00076"></a>00076         {
+<a name="l00077"></a>00077                 <span class="keywordflow">return</span> &amp;(vec.x);
+<a name="l00078"></a>00078         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g5668973c91b739c1a19f0ef201ddce50"></a><!-- doxytag: member="glm::value_ptr" ref="g5668973c91b739c1a19f0ef201ddce50" args="(detail::tvec3&lt; T, P &gt; const &amp;vec)" -->
@@ -1111,6 +1619,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the constant address to the data of the vector input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00062">62</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00065"></a>00065         {
+<a name="l00066"></a>00066                 <span class="keywordflow">return</span> &amp;(vec.x);
+<a name="l00067"></a>00067         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -1135,6 +1650,13 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Return the address to the data of the vector input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00051">51</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00054"></a>00054         {
+<a name="l00055"></a>00055                 <span class="keywordflow">return</span> &amp;(vec.x);
+<a name="l00056"></a>00056         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gb43f07f8b8793c17c58c7b5826d4d5ff"></a><!-- doxytag: member="glm::value_ptr" ref="gb43f07f8b8793c17c58c7b5826d4d5ff" args="(detail::tvec2&lt; T, P &gt; const &amp;vec)" -->
@@ -1157,6 +1679,13 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return the constant address to the data of the vector input. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="type__ptr_8inl-source.html#l00040">40</a> of file <a class="el" href="type__ptr_8inl-source.html">type_ptr.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00043"></a>00043         {
+<a name="l00044"></a>00044                 <span class="keywordflow">return</span> &amp;(vec.x);
+<a name="l00045"></a>00045         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -1181,10 +1710,21 @@ template&lt;typename genType&gt; </div>
 <p>
 Return the constant address to the data of the input parameter. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__type__ptr.html" title="Handles the interaction between pointers and vector, matrix types.">GLM_GTC_type_ptr</a> </dd></dl>
 
+<p>Referenced by <a class="el" href="type__ptr_8inl-source.html#l00352">glm::make_mat2x2()</a>, <a class="el" href="type__ptr_8inl-source.html#l00362">glm::make_mat2x3()</a>, <a class="el" href="type__ptr_8inl-source.html#l00372">glm::make_mat2x4()</a>, <a class="el" href="type__ptr_8inl-source.html#l00382">glm::make_mat3x2()</a>, <a class="el" href="type__ptr_8inl-source.html#l00392">glm::make_mat3x3()</a>, <a class="el" href="type__ptr_8inl-source.html#l00402">glm::make_mat3x4()</a>, <a class="el" href="type__ptr_8inl-source.html#l00412">glm::make_mat4x2()</a>, <a class="el" href="type__ptr_8inl-source.html#l00422">glm::make_mat4x3()</a>, <a class="el" href="type__ptr_8inl-source.html#l00432">glm::make_mat4x4()</a>, <a class="el" href="type__ptr_8inl-source.html#l00466">glm::make_quat()</a>, <a class="el" href="type__ptr_8inl-source.html#l00322">glm::make_vec2()</a>, <a class="el" href="type__ptr_8inl-source.html#l00332">glm::make_vec3()</a>, and <a class="el" href="type__ptr_8inl-source.html#l00342">glm::make_vec4()</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__type__ptr_g87d5cb613f75f83973609ccb8922200b_icgraph.png" border="0" usemap="#group__gtc__type__ptr_g87d5cb613f75f83973609ccb8922200b_icgraph_map" alt=""></center>
+<map name="group__gtc__type__ptr_g87d5cb613f75f83973609ccb8922200b_icgraph_map">
+<area shape="rect" href="group__gtc__type__ptr.html#g49c18920c113e1e72caea1c3978c8e7f" title="glm::make_mat2x2" alt="" coords="156,5,287,32"><area shape="rect" href="group__gtc__type__ptr.html#g86620b90c993ff8e31f0dff1611bd2da" title="glm::make_mat2x3" alt="" coords="156,56,287,83"><area shape="rect" href="group__gtc__type__ptr.html#g50245f47c0e6f5a2ab5ce157dc3e97ac" title="glm::make_mat2x4" alt="" coords="156,107,287,133"><area shape="rect" href="group__gtc__type__ptr.html#g6c7d94e71f8df512fca44427311baeae" title="glm::make_mat3x2" alt="" coords="156,157,287,184"><area shape="rect" href="group__gtc__type__ptr.html#g206b172296286d333b0ff92e77b28b66" title="glm::make_mat3x3" alt="" coords="156,208,287,235"><area shape="rect" href="group__gtc__type__ptr.html#g81d4d38acbaded29fb07ca282f089122" title="glm::make_mat3x4" alt="" coords="156,259,287,285"><area shape="rect" href="group__gtc__type__ptr.html#gc253e8157af1e4ec366c80d4bd90cbb2" title="glm::make_mat4x2" alt="" coords="156,309,287,336"><area shape="rect" href="group__gtc__type__ptr.html#gc375314134d9b3736395a4eda2602590" title="glm::make_mat4x3" alt="" coords="156,360,287,387"><area shape="rect" href="group__gtc__type__ptr.html#g74e671ae9dc7e5e8f21aa44ea263d76e" title="glm::make_mat4x4" alt="" coords="156,411,287,437"><area shape="rect" href="group__gtc__type__ptr.html#gac5b8f1104856835d3d65d854362c85b" title="glm::make_quat" alt="" coords="164,461,279,488"><area shape="rect" href="group__gtc__type__ptr.html#g7009d8090f046d1ce98e59df584fff46" title="glm::make_vec2" alt="" coords="164,512,279,539"><area shape="rect" href="group__gtc__type__ptr.html#g0b727d0acba617ec7b9af9f06892336a" title="glm::make_vec3" alt="" coords="164,563,279,589"><area shape="rect" href="group__gtc__type__ptr.html#gf44d3c8aa09a7a8021ae5312e2f1f091" title="glm::make_vec4" alt="" coords="164,613,279,640"><area shape="rect" href="group__gtc__type__ptr.html#g08f35700be4d2e627da4d894edfa1b60" title="glm::make_mat2" alt="" coords="337,5,455,32"><area shape="rect" href="group__gtc__type__ptr.html#g63c04b2cd2367a06e9817a66b5025662" title="glm::make_mat3" alt="" coords="337,208,455,235"><area shape="rect" href="group__gtc__type__ptr.html#g082261bc3bf4a6d320d6beaebcbaf1db" title="glm::make_mat4" alt="" coords="337,411,455,437"></map>
+</div>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:27 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:58:53 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

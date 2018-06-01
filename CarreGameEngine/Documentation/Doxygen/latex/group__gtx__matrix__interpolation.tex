@@ -31,21 +31,153 @@ $<$glm/gtx/matrix\_\-interpolation.hpp$>$ need to be included to use these funct
 \label{group__gtx__matrix__interpolation_g16474d44af6a32a07c50df2409526d95}
 
 
-Get the axis and angle of the rotation from a matrix. From GLM\_\-GTX\_\-matrix\_\-interpolation extension. \hypertarget{group__gtx__matrix__interpolation_gf7c0106d03d55a7b670a6261b107f22b}{
+Get the axis and angle of the rotation from a matrix. From GLM\_\-GTX\_\-matrix\_\-interpolation extension. 
+
+Definition at line 14 of file matrix\_\-interpolation.inl.
+
+References glm::abs(), glm::acos(), glm::epsilon(), and glm::sqrt().
+
+Referenced by glm::interpolate().
+
+\begin{Code}\begin{verbatim}19         {
+20                 T epsilon = (T)0.01;
+21                 T epsilon2 = (T)0.1;
+22 
+23                 if((abs(mat[1][0] - mat[0][1]) < epsilon) && (abs(mat[2][0] - mat[0][2]) < epsilon) && (abs(mat[2][1] - mat[1][2]) < epsilon))
+24                 {
+25                         if ((abs(mat[1][0] + mat[0][1]) < epsilon2) && (abs(mat[2][0] + mat[0][2]) < epsilon2) && (abs(mat[2][1] + mat[1][2]) < epsilon2) && (abs(mat[0][0] + mat[1][1] + mat[2][2] - (T)3.0) < epsilon2))
+26                         {
+27                                 angle = (T)0.0;
+28                                 axis.x = (T)1.0;
+29                                 axis.y = (T)0.0;
+30                                 axis.z = (T)0.0;
+31                                 return;
+32                         }
+33                         angle = static_cast<T>(3.1415926535897932384626433832795);
+34                         T xx = (mat[0][0] + (T)1.0) / (T)2.0;
+35                         T yy = (mat[1][1] + (T)1.0) / (T)2.0;
+36                         T zz = (mat[2][2] + (T)1.0) / (T)2.0;
+37                         T xy = (mat[1][0] + mat[0][1]) / (T)4.0;
+38                         T xz = (mat[2][0] + mat[0][2]) / (T)4.0;
+39                         T yz = (mat[2][1] + mat[1][2]) / (T)4.0;
+40                         if((xx > yy) && (xx > zz))
+41                         {
+42                                 if (xx < epsilon) {
+43                                         axis.x = (T)0.0;
+44                                         axis.y = (T)0.7071;
+45                                         axis.z = (T)0.7071;
+46                                 } else {
+47                                         axis.x = sqrt(xx);
+48                                         axis.y = xy / axis.x;
+49                                         axis.z = xz / axis.x;
+50                                 }
+51                         }
+52                         else if (yy > zz)
+53                         {
+54                                 if (yy < epsilon) {
+55                                         axis.x = (T)0.7071;
+56                                         axis.y = (T)0.0;
+57                                         axis.z = (T)0.7071;
+58                                 } else {
+59                                         axis.y = sqrt(yy);
+60                                         axis.x = xy / axis.y;
+61                                         axis.z = yz / axis.y;
+62                                 }
+63                         }
+64                         else
+65                         {
+66                                 if (zz < epsilon) {
+67                                         axis.x = (T)0.7071;
+68                                         axis.y = (T)0.7071;
+69                                         axis.z = (T)0.0;
+70                                 } else {
+71                                         axis.z = sqrt(zz);
+72                                         axis.x = xz / axis.z;
+73                                         axis.y = yz / axis.z;
+74                                 }
+75                         }
+76                         return;
+77                 }
+78                 T s = sqrt((mat[2][1] - mat[1][2]) * (mat[2][1] - mat[1][2]) + (mat[2][0] - mat[0][2]) * (mat[2][0] - mat[0][2]) + (mat[1][0] - mat[0][1]) * (mat[1][0] - mat[0][1]));
+79                 if (glm::abs(s) < T(0.001))
+80                         s = (T)1.0;
+81                 angle = acos((mat[0][0] + mat[1][1] + mat[2][2] - (T)1.0) / (T)2.0);
+82                 axis.x = (mat[1][2] - mat[2][1]) / s;
+83                 axis.y = (mat[2][0] - mat[0][2]) / s;
+84                 axis.z = (mat[0][1] - mat[1][0]) / s;
+85         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtx__matrix__interpolation_gf7c0106d03d55a7b670a6261b107f22b}{
 \index{gtx\_\-matrix\_\-interpolation@{gtx\_\-matrix\_\-interpolation}!axisAngleMatrix@{axisAngleMatrix}}
 \index{axisAngleMatrix@{axisAngleMatrix}!gtx_matrix_interpolation@{gtx\_\-matrix\_\-interpolation}}
 \subsubsection[axisAngleMatrix]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::axisAngleMatrix (detail::tvec3$<$ T, P $>$ const \& {\em axis}, \/  T const  {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__interpolation_gf7c0106d03d55a7b670a6261b107f22b}
 
 
-Build a matrix from axis and angle. From GLM\_\-GTX\_\-matrix\_\-interpolation extension. \hypertarget{group__gtx__matrix__interpolation_gf559937fe5cea133f5e7f3c228255960}{
+Build a matrix from axis and angle. From GLM\_\-GTX\_\-matrix\_\-interpolation extension. 
+
+Definition at line 89 of file matrix\_\-interpolation.inl.
+
+References glm::cos(), glm::normalize(), and glm::sin().
+
+Referenced by glm::interpolate().
+
+\begin{Code}\begin{verbatim}93         {
+94                 T c = cos(angle);
+95                 T s = sin(angle);
+96                 T t = static_cast<T>(1) - c;
+97                 detail::tvec3<T, P> n = normalize(axis);
+98 
+99                 return detail::tmat4x4<T, P>(
+100                         t * n.x * n.x + c,          t * n.x * n.y + n.z * s,    t * n.x * n.z - n.y * s,    T(0),
+101                         t * n.x * n.y - n.z * s,    t * n.y * n.y + c,          t * n.y * n.z + n.x * s,    T(0),
+102                         t * n.x * n.z + n.y * s,    t * n.y * n.z - n.x * s,    t * n.z * n.z + c,          T(0),
+103                         T(0),                        T(0),                        T(0),                     T(1)
+104                 );
+105         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtx__matrix__interpolation_gf559937fe5cea133f5e7f3c228255960}{
 \index{gtx\_\-matrix\_\-interpolation@{gtx\_\-matrix\_\-interpolation}!extractMatrixRotation@{extractMatrixRotation}}
 \index{extractMatrixRotation@{extractMatrixRotation}!gtx_matrix_interpolation@{gtx\_\-matrix\_\-interpolation}}
 \subsubsection[extractMatrixRotation]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::extractMatrixRotation (detail::tmat4x4$<$ T, P $>$ const \& {\em mat})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__interpolation_gf559937fe5cea133f5e7f3c228255960}
 
 
-Extracts the rotation part of a matrix. From GLM\_\-GTX\_\-matrix\_\-interpolation extension. \hypertarget{group__gtx__matrix__interpolation_gc618bbef632f87be5c570aa5afe63f30}{
+Extracts the rotation part of a matrix. From GLM\_\-GTX\_\-matrix\_\-interpolation extension. 
+
+Definition at line 109 of file matrix\_\-interpolation.inl.
+
+Referenced by glm::interpolate().
+
+\begin{Code}\begin{verbatim}112         {
+113                 return detail::tmat4x4<T, P>(
+114                         mat[0][0], mat[0][1], mat[0][2], 0.0,
+115                         mat[1][0], mat[1][1], mat[1][2], 0.0,
+116                         mat[2][0], mat[2][1], mat[2][2], 0.0,
+117                         0.0,       0.0,       0.0,       1.0
+118                 );
+119         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtx__matrix__interpolation_gc618bbef632f87be5c570aa5afe63f30}{
 \index{gtx\_\-matrix\_\-interpolation@{gtx\_\-matrix\_\-interpolation}!interpolate@{interpolate}}
 \index{interpolate@{interpolate}!gtx_matrix_interpolation@{gtx\_\-matrix\_\-interpolation}}
 \subsubsection[interpolate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::interpolate (detail::tmat4x4$<$ T, P $>$ const \& {\em m1}, \/  detail::tmat4x4$<$ T, P $>$ const \& {\em m2}, \/  T const  {\em delta})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -53,3 +185,27 @@ Extracts the rotation part of a matrix. From GLM\_\-GTX\_\-matrix\_\-interpolati
 
 
 Build a interpolation of 4 $\ast$ 4 matrixes. From GLM\_\-GTX\_\-matrix\_\-interpolation extension. Warning! works only with rotation and/or translation matrixes, scale will generate unexpected results. 
+
+Definition at line 123 of file matrix\_\-interpolation.inl.
+
+References glm::axisAngle(), glm::axisAngleMatrix(), and glm::extractMatrixRotation().
+
+\begin{Code}\begin{verbatim}128         {
+129                 detail::tmat4x4<T, P> m1rot = extractMatrixRotation(m1);
+130                 detail::tmat4x4<T, P> dltRotation = m2 * transpose(m1rot);
+131                 detail::tvec3<T, P> dltAxis;
+132                 T dltAngle;
+133                 axisAngle(dltRotation, dltAxis, dltAngle);
+134                 detail::tmat4x4<T, P> out = axisAngleMatrix(dltAxis, dltAngle * delta) * m1rot;
+135                 out[3][0] = m1[3][0] + delta * (m2[3][0] - m1[3][0]);
+136                 out[3][1] = m1[3][1] + delta * (m2[3][1] - m1[3][1]);
+137                 out[3][2] = m1[3][2] + delta * (m2[3][2] - m1[3][2]);
+138                 return out;
+139         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

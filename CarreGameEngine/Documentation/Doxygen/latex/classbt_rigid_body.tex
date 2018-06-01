@@ -73,6 +73,8 @@ The \hyperlink{classbt_rigid_body}{btRigidBody} is the main class for rigid body
 \item A) Dynamic rigid bodies, with positive mass. Motion is controlled by rigid body dynamics.\item B) Fixed objects with zero mass. They are not moving (basically collision objects)\item C) Kinematic objects, which are objects without mass, but the user can move them. There is on-way interaction, and Bullet calculates a velocity based on the timestep and previous and current world transform. Bullet automatically deactivates dynamic rigid bodies, when the velocity is below a threshold for a given time. Deactivated (sleeping) rigid bodies don't take any processing time, except a minor broadphase collision detection impact (to allow active objects to activate/wake up sleeping objects) \end{itemize}
 
 
+Definition at line 62 of file btRigidBody.h.
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classbt_rigid_body_ac9b7d050bc87644d38e9ffe4fe4c5ab}{
 \index{btRigidBody@{btRigidBody}!btRigidBody@{btRigidBody}}
@@ -83,6 +85,22 @@ The \hyperlink{classbt_rigid_body}{btRigidBody} is the main class for rigid body
 
 \hyperlink{classbt_rigid_body}{btRigidBody} constructor for backwards compatibility. To specify friction (etc) during rigid body construction, please use the other constructor (using \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info}{btRigidBodyConstructionInfo}) 
 
+Definition at line 35 of file btRigidBody.cpp.
+
+References setupRigidBody().
+
+\begin{Code}\begin{verbatim}36 {
+37         btRigidBodyConstructionInfo cinfo(mass,motionState,collisionShape,localInertia);
+38         setupRigidBody(cinfo);
+39 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_rigid_body_59077fce3d2efd193a3fd7d7de2c97e8}{
 \index{btRigidBody@{btRigidBody}!upcast@{upcast}}
@@ -91,7 +109,24 @@ The \hyperlink{classbt_rigid_body}{btRigidBody} is the main class for rigid body
 \label{classbt_rigid_body_59077fce3d2efd193a3fd7d7de2c97e8}
 
 
-to keep collision detection and dynamics separate we don't store a rigidbody pointer but a rigidbody is derived from btCollisionObject, so we can safely perform an upcast \hypertarget{classbt_rigid_body_16029bc5aabcbb33aaf7e6e6e819283a}{
+to keep collision detection and dynamics separate we don't store a rigidbody pointer but a rigidbody is derived from btCollisionObject, so we can safely perform an upcast 
+
+Definition at line 203 of file btRigidBody.h.
+
+Referenced by btSimpleDynamicsWorld::clearForces(), btSimpleDynamicsWorld::removeCollisionObject(), PhysicsEngine::Simulate(), and btSimpleDynamicsWorld::synchronizeMotionStates().
+
+\begin{Code}\begin{verbatim}204         {
+205                 if (colObj->getInternalType()&btCollisionObject::CO_RIGID_BODY)
+206                         return (const btRigidBody*)colObj;
+207                 return 0;
+208         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_rigid_body_16029bc5aabcbb33aaf7e6e6e819283a}{
 \index{btRigidBody@{btRigidBody}!integrateVelocities@{integrateVelocities}}
 \index{integrateVelocities@{integrateVelocities}!btRigidBody@{btRigidBody}}
 \subsubsection[integrateVelocities]{\setlength{\rightskip}{0pt plus 5cm}void btRigidBody::integrateVelocities (btScalar {\em step})}}
@@ -100,7 +135,30 @@ to keep collision detection and dynamics separate we don't store a rigidbody poi
 
 
 
-clamp angular velocity. collision calculations will fail on higher angular velocities \hypertarget{classbt_rigid_body_1c89df31d2a10f06cc81da0e4b573297}{
+clamp angular velocity. collision calculations will fail on higher angular velocities 
+
+Definition at line 387 of file btRigidBody.cpp.
+
+\begin{Code}\begin{verbatim}388 {
+389         if (isStaticOrKinematicObject())
+390                 return;
+391 
+392         m_linearVelocity += m_totalForce * (m_inverseMass * step);
+393         m_angularVelocity += m_invInertiaTensorWorld * m_totalTorque * step;
+394 
+395 #define MAX_ANGVEL SIMD_HALF_PI
+397         btScalar angvel = m_angularVelocity.length();
+398         if (angvel*step > MAX_ANGVEL)
+399         {
+400                 m_angularVelocity *= (MAX_ANGVEL/step) /angvel;
+401         }
+402 
+403 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{classbt_rigid_body_1c89df31d2a10f06cc81da0e4b573297}{
 \index{btRigidBody@{btRigidBody}!addConstraintRef@{addConstraintRef}}
 \index{addConstraintRef@{addConstraintRef}!btRigidBody@{btRigidBody}}
 \subsubsection[addConstraintRef]{\setlength{\rightskip}{0pt plus 5cm}void btRigidBody::addConstraintRef (btTypedConstraint $\ast$ {\em c})}}
@@ -111,7 +169,39 @@ clamp angular velocity. collision calculations will fail on higher angular veloc
 
 disable collision with the 'other' body 
 
+Definition at line 433 of file btRigidBody.cpp.
+
+References btAlignedObjectArray$<$ T $>$::findLinearSearch(), btAlignedObjectArray$<$ T $>$::push\_\-back(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}434 {
+436 
+437         int index = m_constraintRefs.findLinearSearch(c);
+438         //don't add constraints that are already referenced
+439         //btAssert(index == m_constraintRefs.size());
+440         if (index == m_constraintRefs.size())
+441         {
+442                 m_constraintRefs.push_back(c);
+443                 btCollisionObject* colObjA = &c->getRigidBodyA();
+444                 btCollisionObject* colObjB = &c->getRigidBodyB();
+445                 if (colObjA == this)
+446                 {
+447                         colObjA->setIgnoreCollisionCheck(colObjB, true);
+448                 }
+449                 else
+450                 {
+451                         colObjB->setIgnoreCollisionCheck(colObjA, true);
+452                 }
+453         } 
+454 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.cpp\end{CompactItemize}

@@ -27,6 +27,8 @@ virtual void \hyperlink{classbt_simple_broadphase_65c387ba0fa8690716296ee9d5f755
 \subsection{Detailed Description}
 The SimpleBroadphase is just a unit-test for \hyperlink{classbt_axis_sweep3}{btAxisSweep3}, \hyperlink{classbt32_bit_axis_sweep3}{bt32BitAxisSweep3}, or \hyperlink{structbt_dbvt_broadphase}{btDbvtBroadphase}, so use those classes instead. It is a brute force aabb culling broadphase based on O(n$^\wedge$2) aabb checks 
 
+Definition at line 49 of file btSimpleBroadphase.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_simple_broadphase_8753363773ebbfeb48f8cf5594429dc2}{
 \index{btSimpleBroadphase@{btSimpleBroadphase}!getBroadphaseAabb@{getBroadphaseAabb}}
@@ -39,7 +41,19 @@ getAabb returns the axis aligned bounding box in the 'global' coordinate frame w
 
 Implements \hyperlink{classbt_broadphase_interface_b5af9e26414f5a72a76040b8fab4d9e2}{btBroadphaseInterface}.
 
+Definition at line 155 of file btSimpleBroadphase.h.
+
+\begin{Code}\begin{verbatim}156         {
+157                 aabbMin.setValue(-BT_LARGE_FLOAT,-BT_LARGE_FLOAT,-BT_LARGE_FLOAT);
+158                 aabbMax.setValue(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
+159         }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btSimpleBroadphase.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btSimpleBroadphase.cpp\end{CompactItemize}

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Integer functions</title>
+<title>Assignment2 - OOber Taxi: Integer functions</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -144,6 +144,20 @@ If bits is zero, the result will be zero. The result will be undefined if offset
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/bitfieldExtract.xml">GLSL bitfieldExtract man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.8 Integer Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__integer_8inl-source.html#l00286">286</a> of file <a class="el" href="func__integer_8inl-source.html">func_integer.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00291"></a>00291         {
+<a name="l00292"></a>00292                 <span class="keywordtype">int</span> GenSize = int(<span class="keyword">sizeof</span>(genIUType)) &lt;&lt; int(3);
+<a name="l00293"></a>00293 
+<a name="l00294"></a>00294                 assert(Offset + Bits &lt;= GenSize);
+<a name="l00295"></a>00295 
+<a name="l00296"></a>00296                 genIUType ShiftLeft = Bits ? Value &lt;&lt; (GenSize - (Bits + Offset)) : genIUType(0);
+<a name="l00297"></a>00297                 genIUType ShiftBack = ShiftLeft &gt;&gt; genIUType(GenSize - Bits);
+<a name="l00298"></a>00298 
+<a name="l00299"></a>00299                 <span class="keywordflow">return</span> ShiftBack;
+<a name="l00300"></a>00300         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g33b112990d40ef4c8bf91591dc7d9cd9"></a><!-- doxytag: member="glm::bitfieldInsert" ref="g33b112990d40ef4c8bf91591dc7d9cd9" args="(genIUType const &amp;Base, genIUType const &amp;Insert, int const &amp;Offset, int const &amp;Bits)" -->
@@ -196,6 +210,23 @@ The result will have bits [offset, offset + bits - 1] taken from bits [0, bits -
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/bitfieldInsert.xml">GLSL bitfieldInsert man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.8 Integer Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__integer_8inl-source.html#l00347">347</a> of file <a class="el" href="func__integer_8inl-source.html">func_integer.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00353"></a>00353         {
+<a name="l00354"></a>00354                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genIUType&gt;::is_integer, <span class="stringliteral">"'bitfieldInsert' only accept integer values"</span>);
+<a name="l00355"></a>00355                 assert(Offset + Bits &lt;= <span class="keyword">sizeof</span>(genIUType));
+<a name="l00356"></a>00356 
+<a name="l00357"></a>00357                 <span class="keywordflow">if</span>(Bits == 0)
+<a name="l00358"></a>00358                         <span class="keywordflow">return</span> Base;
+<a name="l00359"></a>00359 
+<a name="l00360"></a>00360                 genIUType Mask = 0;
+<a name="l00361"></a>00361                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> Bit = Offset; Bit &lt; Offset + Bits; ++Bit)
+<a name="l00362"></a>00362                         Mask |= (1 &lt;&lt; Bit);
+<a name="l00363"></a>00363 
+<a name="l00364"></a>00364                 <span class="keywordflow">return</span> (Base &amp; ~Mask) | (Insert &amp; Mask);
+<a name="l00365"></a>00365         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="ge55354ee3125593fc17f4cff052e6a10"></a><!-- doxytag: member="glm::bitfieldReverse" ref="ge55354ee3125593fc17f4cff052e6a10" args="(genIUType const &amp;Value)" -->
@@ -225,6 +256,20 @@ Returns the reversal of the bits of value. The bit numbered n of the result will
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/bitfieldReverse.xml">GLSL bitfieldReverse man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.8 Integer Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__integer_8inl-source.html#l00414">414</a> of file <a class="el" href="func__integer_8inl-source.html">func_integer.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00415"></a>00415         {
+<a name="l00416"></a>00416                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genIUType&gt;::is_integer, <span class="stringliteral">"'bitfieldReverse' only accept integer values"</span>);
+<a name="l00417"></a>00417 
+<a name="l00418"></a>00418                 genIUType Out = 0;
+<a name="l00419"></a>00419                 std::size_t BitSize = <span class="keyword">sizeof</span>(genIUType) * 8;
+<a name="l00420"></a>00420                 <span class="keywordflow">for</span>(std::size_t i = 0; i &lt; BitSize; ++i)
+<a name="l00421"></a>00421                         <span class="keywordflow">if</span>(Value &amp; (genIUType(1) &lt;&lt; i))
+<a name="l00422"></a>00422                                 Out |= genIUType(1) &lt;&lt; (BitSize - 1 - i);
+<a name="l00423"></a>00423                 <span class="keywordflow">return</span> Out;
+<a name="l00424"></a>00424         }       
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -483,7 +528,7 @@ Subtracts the 32-bit unsigned integer y from x, returning the difference if non-
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:18 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:58:06 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

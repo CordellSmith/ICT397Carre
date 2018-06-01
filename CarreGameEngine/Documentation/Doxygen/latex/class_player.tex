@@ -1,0 +1,576 @@
+\hypertarget{class_player}{
+\section{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+}
+\hyperlink{class_player}{Player} class data and functionality.  
+
+
+{\tt \#include $<$Player.h$>$}
+
+Collaboration diagram for Player:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_player_1608a9c58abd8e3a681f683672b25601}{Player} (std::string assetName)
+\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
+\hyperlink{class_player_749d2c00e1fe0f5c2746f7505a58c062}{$\sim$Player} ()
+\begin{CompactList}\small\item\em Destructor. \item\end{CompactList}\item 
+void \hyperlink{class_player_394737f2360c0e14e21401044ffe74ff}{LoadFromFilePath} (std::string filePath)
+\begin{CompactList}\small\item\em Load object from file path. \item\end{CompactList}\item 
+const void \hyperlink{class_player_e275691f90f93b0cf6134b2626da5e39}{Destroy} ()
+\begin{CompactList}\small\item\em Destroys the player object. \item\end{CompactList}\item 
+void \hyperlink{class_player_afa223a6906cf925ac0f9ae1ad197cde}{MoveForward} (float time)
+\begin{CompactList}\small\item\em Moves the player forward. \item\end{CompactList}\item 
+void \hyperlink{class_player_0de705c108e85cf8609ac827319fe11b}{MoveBackward} (float time)
+\begin{CompactList}\small\item\em Moves the player backward. \item\end{CompactList}\item 
+void \hyperlink{class_player_f7ca641f9d3134c96b8039919b6f8876}{TurnClock} (float time)
+\begin{CompactList}\small\item\em Turns the player clockwise. \item\end{CompactList}\item 
+void \hyperlink{class_player_5e09b10a0ae73a3714267c87bd43f95d}{TurnAntiClock} (float time)
+\begin{CompactList}\small\item\em Turns the player anti-clockwise. \item\end{CompactList}\item 
+const std::string \& \hyperlink{class_player_42cc1504610f6ceff2eed808b5e6edf5}{GetFilePath} () const 
+\begin{CompactList}\small\item\em Gets the file path of the player. \item\end{CompactList}\item 
+void \hyperlink{class_player_033b610c332fd8266d403d8383a4f869}{SetFilePath} (const std::string \&filePath)
+\begin{CompactList}\small\item\em Sets the file path of the player. \item\end{CompactList}\item 
+void \hyperlink{class_player_4747c299dc385f1aeb6ade65d67962bf}{SetCamera} (\hyperlink{class_camera}{Camera} $\ast$camera)
+\begin{CompactList}\small\item\em Sets the camera object. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_player_78a1bb11afc7985ce85e93b496d72879}{GetPosition} () const 
+\begin{CompactList}\small\item\em Gets the position. \item\end{CompactList}\item 
+void \hyperlink{class_player_2a58860a7169ad27fbb1eec6a64fc31b}{SetPosition} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} position)
+\begin{CompactList}\small\item\em Sets the position. \item\end{CompactList}\item 
+\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \hyperlink{class_player_df9696bac0f5ef8d18b7faff9b75e21e}{GetRotation} () const 
+\begin{CompactList}\small\item\em Gets the rotation. \item\end{CompactList}\item 
+void \hyperlink{class_player_2e3d2df5baf6a9b83e06bcae3aaeccd6}{SetRotation} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} rotation)
+\begin{CompactList}\small\item\em Sets the rotation. \item\end{CompactList}\item 
+void \hyperlink{class_player_454ad879bdf9073c89b1055647e6f8c6}{SetScale} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} scale)
+\begin{CompactList}\small\item\em Sets the scale. \item\end{CompactList}\item 
+float \hyperlink{class_player_f0f47c5d51eeb711111f692595d211d5}{GetMoveSpeed} ()
+\begin{CompactList}\small\item\em Gets the movement speed. \item\end{CompactList}\item 
+\hyperlink{class_model}{Model} $\ast$ \hyperlink{class_player_26741893f9eb0aeb01ead80a8bcf851f}{GetModel} ()
+\begin{CompactList}\small\item\em Gets the model of the player. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_player}{Player} class data and functionality. 
+
+The player class represents any character in the game that you can control. It requires its own special class because it may contain attributes that other assets or objects may not such as health or statistics.
+
+\begin{Desc}
+\item[Author:]Cordell Smith \end{Desc}
+\begin{Desc}
+\item[Version:]01 \end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
+
+
+Definition at line 20 of file Player.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_player_1608a9c58abd8e3a681f683672b25601}{
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection[Player]{\setlength{\rightskip}{0pt plus 5cm}Player::Player (std::string {\em assetName})}}
+\label{class_player_1608a9c58abd8e3a681f683672b25601}
+
+
+Constructor. 
+
+This constructor takes the a string as the key to reference the player and sets it to the name member variable. It initializes the model, sets the current move speed to 0, current turn speed to 0, move speed to 30 and turn speed to 0.1.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 3 of file Player.cpp.
+
+\begin{Code}\begin{verbatim}4 {
+5         m_name = playerName;
+6         m_playerModel = new Model();
+7 
+8         m_currentMoveSpeed = 0;
+9         m_currentTurnSpeed = 0;
+10         m_moveSpeed = 30;
+11         m_turnSpeed = 0.1;
+12 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_player_749d2c00e1fe0f5c2746f7505a58c062}{
+\index{Player@{Player}!$\sim$Player@{$\sim$Player}}
+\index{$\sim$Player@{$\sim$Player}!Player@{Player}}
+\subsubsection[$\sim$Player]{\setlength{\rightskip}{0pt plus 5cm}Player::$\sim$Player ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_player_749d2c00e1fe0f5c2746f7505a58c062}
+
+
+Destructor. 
+
+This the empty default destructor.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 41 of file Player.h.
+
+\begin{Code}\begin{verbatim}41 { }
+\end{verbatim}
+\end{Code}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_player_394737f2360c0e14e21401044ffe74ff}{
+\index{Player@{Player}!LoadFromFilePath@{LoadFromFilePath}}
+\index{LoadFromFilePath@{LoadFromFilePath}!Player@{Player}}
+\subsubsection[LoadFromFilePath]{\setlength{\rightskip}{0pt plus 5cm}void Player::LoadFromFilePath (std::string {\em filePath})}}
+\label{class_player_394737f2360c0e14e21401044ffe74ff}
+
+
+Load object from file path. 
+
+This function takes a file path as a string parameter to load a file.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em std::string}]filePath \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 14 of file Player.cpp.
+
+References Model::LoadModel().
+
+\begin{Code}\begin{verbatim}15 {
+16         m_playerModel->LoadModel(filePath);
+17 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_player_e275691f90f93b0cf6134b2626da5e39}{
+\index{Player@{Player}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!Player@{Player}}
+\subsubsection[Destroy]{\setlength{\rightskip}{0pt plus 5cm}const void Player::Destroy ()}}
+\label{class_player_e275691f90f93b0cf6134b2626da5e39}
+
+
+Destroys the player object. 
+
+This function deallocates any memory that the player class has used. Used for memory management.
+
+\begin{Desc}
+\item[Returns:]const void \end{Desc}
+
+
+Definition at line 19 of file Player.cpp.
+
+\begin{Code}\begin{verbatim}20 {
+21         return void();
+22 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_player_afa223a6906cf925ac0f9ae1ad197cde}{
+\index{Player@{Player}!MoveForward@{MoveForward}}
+\index{MoveForward@{MoveForward}!Player@{Player}}
+\subsubsection[MoveForward]{\setlength{\rightskip}{0pt plus 5cm}void Player::MoveForward (float {\em time})}}
+\label{class_player_afa223a6906cf925ac0f9ae1ad197cde}
+
+
+Moves the player forward. 
+
+Takes the delta time as a parameter (\hyperlink{group__input_g03d4a1039b8662c71eeb40beea8cb622}{glfwGetTime()}) and uses it to calculate the speed at which the player will move. It then adjusts the position of the player in a forward direction for movement.
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 24 of file Player.cpp.
+
+References glm::cos(), Model::GetPosition(), Model::GetRotation(), Model::SetPosition(), and glm::sin().
+
+\begin{Code}\begin{verbatim}25 {
+26         m_currentMoveSpeed = m_moveSpeed * time * 15;
+27         float dx = m_currentMoveSpeed * glm::sin(m_playerModel->GetRotation().y);
+28         float dz = m_currentMoveSpeed * glm::cos(m_playerModel->GetRotation().y);
+29 
+30         glm::vec3 temp = m_playerModel->GetPosition() + glm::vec3(dx, 0, dz);
+31         m_playerModel->SetPosition(temp);
+32 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_player_0de705c108e85cf8609ac827319fe11b}{
+\index{Player@{Player}!MoveBackward@{MoveBackward}}
+\index{MoveBackward@{MoveBackward}!Player@{Player}}
+\subsubsection[MoveBackward]{\setlength{\rightskip}{0pt plus 5cm}void Player::MoveBackward (float {\em time})}}
+\label{class_player_0de705c108e85cf8609ac827319fe11b}
+
+
+Moves the player backward. 
+
+Takes the delta time as a parameter (\hyperlink{group__input_g03d4a1039b8662c71eeb40beea8cb622}{glfwGetTime()}) and uses it to calculate the speed at which the player will move. It then adjusts the position of the player in a backward direction for movement.
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 34 of file Player.cpp.
+
+References glm::cos(), Model::GetPosition(), Model::GetRotation(), Model::SetPosition(), and glm::sin().
+
+\begin{Code}\begin{verbatim}35 {
+36         m_currentMoveSpeed = -m_moveSpeed * time * 15;
+37         float dx = m_currentMoveSpeed * glm::sin(m_playerModel->GetRotation().y);
+38         float dz = m_currentMoveSpeed * glm::cos(m_playerModel->GetRotation().y);
+39 
+40         glm::vec3 temp = m_playerModel->GetPosition() + glm::vec3(dx, 0, dz);
+41         m_playerModel->SetPosition(temp);
+42 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_player_f7ca641f9d3134c96b8039919b6f8876}{
+\index{Player@{Player}!TurnClock@{TurnClock}}
+\index{TurnClock@{TurnClock}!Player@{Player}}
+\subsubsection[TurnClock]{\setlength{\rightskip}{0pt plus 5cm}void Player::TurnClock (float {\em time})}}
+\label{class_player_f7ca641f9d3134c96b8039919b6f8876}
+
+
+Turns the player clockwise. 
+
+Takes the delta time as a parameter (\hyperlink{group__input_g03d4a1039b8662c71eeb40beea8cb622}{glfwGetTime()}) and uses it to calculate the speed at which the player will turn. It then adjusts the rotation of the player in a clockwise direction for movement.
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 44 of file Player.cpp.
+
+References Model::GetRotation(), and Model::SetRotation().
+
+\begin{Code}\begin{verbatim}45 {
+46         m_currentTurnSpeed = -m_turnSpeed * time * 10;
+47         m_playerModel->SetRotation(glm::vec3(0, m_playerModel->GetRotation().y + m_currentTurnSpeed, 0));
+48 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_player_5e09b10a0ae73a3714267c87bd43f95d}{
+\index{Player@{Player}!TurnAntiClock@{TurnAntiClock}}
+\index{TurnAntiClock@{TurnAntiClock}!Player@{Player}}
+\subsubsection[TurnAntiClock]{\setlength{\rightskip}{0pt plus 5cm}void Player::TurnAntiClock (float {\em time})}}
+\label{class_player_5e09b10a0ae73a3714267c87bd43f95d}
+
+
+Turns the player anti-clockwise. 
+
+Takes the delta time as a parameter (\hyperlink{group__input_g03d4a1039b8662c71eeb40beea8cb622}{glfwGetTime()}) and uses it to calculate the speed at which the player will turn. It then adjusts the rotation of the player in a anti-clockwise direction for movement.
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 50 of file Player.cpp.
+
+References Model::GetRotation(), and Model::SetRotation().
+
+\begin{Code}\begin{verbatim}51 {
+52         m_currentTurnSpeed = m_turnSpeed * time * 10;
+53         m_playerModel->SetRotation(glm::vec3(0, m_playerModel->GetRotation().y + m_currentTurnSpeed, 0));
+54 }\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_player_42cc1504610f6ceff2eed808b5e6edf5}{
+\index{Player@{Player}!GetFilePath@{GetFilePath}}
+\index{GetFilePath@{GetFilePath}!Player@{Player}}
+\subsubsection[GetFilePath]{\setlength{\rightskip}{0pt plus 5cm}const std::string\& Player::GetFilePath () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_player_42cc1504610f6ceff2eed808b5e6edf5}
+
+
+Gets the file path of the player. 
+
+Returns the file path that the players data was read in from as a string.
+
+\begin{Desc}
+\item[Returns:]const std::string\& \end{Desc}
+
+
+Definition at line 114 of file Player.h.
+
+\begin{Code}\begin{verbatim}114 { return m_filePath; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_player_033b610c332fd8266d403d8383a4f869}{
+\index{Player@{Player}!SetFilePath@{SetFilePath}}
+\index{SetFilePath@{SetFilePath}!Player@{Player}}
+\subsubsection[SetFilePath]{\setlength{\rightskip}{0pt plus 5cm}void Player::SetFilePath (const std::string \& {\em filePath})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_player_033b610c332fd8266d403d8383a4f869}
+
+
+Sets the file path of the player. 
+
+Sets the file path to which the data was read in from to the string parameter parsed in.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em const}]std::string\& filePath \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 125 of file Player.h.
+
+\begin{Code}\begin{verbatim}125 { m_filePath = filePath; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_player_4747c299dc385f1aeb6ade65d67962bf}{
+\index{Player@{Player}!SetCamera@{SetCamera}}
+\index{SetCamera@{SetCamera}!Player@{Player}}
+\subsubsection[SetCamera]{\setlength{\rightskip}{0pt plus 5cm}void Player::SetCamera ({\bf Camera} $\ast$ {\em camera})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_player_4747c299dc385f1aeb6ade65d67962bf}
+
+
+Sets the camera object. 
+
+Parses the parameter given Camera$\ast$ object to the players model. This is to be able to access the view and projection matrices when rendering.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Camera$\ast$}]camera \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 136 of file Player.h.
+
+References Model::SetCamera().
+
+\begin{Code}\begin{verbatim}136 { m_playerModel->SetCamera(camera); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_player_78a1bb11afc7985ce85e93b496d72879}{
+\index{Player@{Player}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Player@{Player}}
+\subsubsection[GetPosition]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3} Player::GetPosition () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_player_78a1bb11afc7985ce85e93b496d72879}
+
+
+Gets the position. 
+
+Returns the position of the player in a 3 component \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}.
+
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
+
+
+Definition at line 145 of file Player.h.
+
+References Model::GetPosition().
+
+\begin{Code}\begin{verbatim}145 { return m_playerModel->GetPosition(); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_player_2a58860a7169ad27fbb1eec6a64fc31b}{
+\index{Player@{Player}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Player@{Player}}
+\subsubsection[SetPosition]{\setlength{\rightskip}{0pt plus 5cm}void Player::SetPosition ({\bf glm::vec3} {\em position})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_player_2a58860a7169ad27fbb1eec6a64fc31b}
+
+
+Sets the position. 
+
+Sets the position of the player to the 3 component vector parsed in.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]position \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 155 of file Player.h.
+
+References Model::SetPosition().
+
+\begin{Code}\begin{verbatim}155 { m_playerModel->SetPosition(position); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_player_df9696bac0f5ef8d18b7faff9b75e21e}{
+\index{Player@{Player}!GetRotation@{GetRotation}}
+\index{GetRotation@{GetRotation}!Player@{Player}}
+\subsubsection[GetRotation]{\setlength{\rightskip}{0pt plus 5cm}{\bf glm::vec3} Player::GetRotation () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_player_df9696bac0f5ef8d18b7faff9b75e21e}
+
+
+Gets the rotation. 
+
+Returns the rotation of the player in a 3 component \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}.
+
+\begin{Desc}
+\item[Returns:]\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \end{Desc}
+
+
+Definition at line 164 of file Player.h.
+
+References Model::GetRotation().
+
+\begin{Code}\begin{verbatim}164 { return m_playerModel->GetRotation(); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_player_2e3d2df5baf6a9b83e06bcae3aaeccd6}{
+\index{Player@{Player}!SetRotation@{SetRotation}}
+\index{SetRotation@{SetRotation}!Player@{Player}}
+\subsubsection[SetRotation]{\setlength{\rightskip}{0pt plus 5cm}void Player::SetRotation ({\bf glm::vec3} {\em rotation})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_player_2e3d2df5baf6a9b83e06bcae3aaeccd6}
+
+
+Sets the rotation. 
+
+Sets the rotation of the player to the 3 component vector parsed in.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]rotation \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 174 of file Player.h.
+
+References Model::SetRotation().
+
+\begin{Code}\begin{verbatim}174 { m_playerModel->SetRotation(rotation); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_player_454ad879bdf9073c89b1055647e6f8c6}{
+\index{Player@{Player}!SetScale@{SetScale}}
+\index{SetScale@{SetScale}!Player@{Player}}
+\subsubsection[SetScale]{\setlength{\rightskip}{0pt plus 5cm}void Player::SetScale ({\bf glm::vec3} {\em scale})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_player_454ad879bdf9073c89b1055647e6f8c6}
+
+
+Sets the scale. 
+
+Sets the scale of the player to the 3 component vector parsed in.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]scale \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 184 of file Player.h.
+
+References Model::SetScale().
+
+\begin{Code}\begin{verbatim}184 { m_playerModel->SetScale(scale); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_player_f0f47c5d51eeb711111f692595d211d5}{
+\index{Player@{Player}!GetMoveSpeed@{GetMoveSpeed}}
+\index{GetMoveSpeed@{GetMoveSpeed}!Player@{Player}}
+\subsubsection[GetMoveSpeed]{\setlength{\rightskip}{0pt plus 5cm}float Player::GetMoveSpeed ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_player_f0f47c5d51eeb711111f692595d211d5}
+
+
+Gets the movement speed. 
+
+Returns the movement speed of the player as float.
+
+\begin{Desc}
+\item[Returns:]float \end{Desc}
+
+
+Definition at line 193 of file Player.h.
+
+\begin{Code}\begin{verbatim}193 { return m_moveSpeed; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_player_26741893f9eb0aeb01ead80a8bcf851f}{
+\index{Player@{Player}!GetModel@{GetModel}}
+\index{GetModel@{GetModel}!Player@{Player}}
+\subsubsection[GetModel]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model}$\ast$ Player::GetModel ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_player_26741893f9eb0aeb01ead80a8bcf851f}
+
+
+Gets the model of the player. 
+
+Returns a pointer to the model of the player.
+
+\begin{Desc}
+\item[Returns:]Model$\ast$ \end{Desc}
+
+
+Definition at line 202 of file Player.h.
+
+\begin{Code}\begin{verbatim}202 { return m_playerModel; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Player.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Player.cpp\end{CompactItemize}

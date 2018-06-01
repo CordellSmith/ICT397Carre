@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTC_epsilon</title>
+<title>Assignment2 - OOber Taxi: GLM_GTC_epsilon</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -127,6 +127,35 @@ template&lt;typename T, precision P, template&lt; typename, precision &gt; class
 Returns the component-wise comparison of |x - y| &lt; epsilon. True if this expression is satisfied.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__epsilon.html" title="Comparison functions for a user defined epsilon values.">GLM_GTC_epsilon</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="epsilon_8inl-source.html#l00085">85</a> of file <a class="el" href="epsilon_8inl-source.html">epsilon.inl</a>.</p>
+
+<p>References <a class="el" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">glm::abs()</a>.</p>
+
+<p>Referenced by <a class="el" href="vector__angle_8inl-source.html#l00053">glm::orientedAngle()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00090"></a>00090         {
+<a name="l00091"></a>00091                 <span class="keywordflow">return</span> <a class="code" href="group__gtc__quaternion.html#gf0ab4cfbc0f3e16f060fa4dd501b5dc1">lessThan</a>(<a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(x - y), vecType&lt;T, P&gt;(<a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>));
+<a name="l00092"></a>00092         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__epsilon_g7051ff93341ffb11d864e88d4bc0e3d8_cgraph.png" border="0" usemap="#group__gtc__epsilon_g7051ff93341ffb11d864e88d4bc0e3d8_cgraph_map" alt=""></center>
+<map name="group__gtc__epsilon_g7051ff93341ffb11d864e88d4bc0e3d8_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="179,5,251,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__epsilon_g7051ff93341ffb11d864e88d4bc0e3d8_icgraph.png" border="0" usemap="#group__gtc__epsilon_g7051ff93341ffb11d864e88d4bc0e3d8_icgraph_map" alt=""></center>
+<map name="group__gtc__epsilon_g7051ff93341ffb11d864e88d4bc0e3d8_icgraph_map">
+<area shape="rect" href="group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36" title="glm::orientedAngle" alt="" coords="180,5,308,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gcdfcf5e1180e8147b0619c0743e3eb7d"></a><!-- doxytag: member="glm::epsilonNotEqual" ref="gcdfcf5e1180e8147b0619c0743e3eb7d" args="(genType const &amp;x, genType const &amp;y, genType const &amp;epsilon)" -->
@@ -208,7 +237,7 @@ Returns the component-wise comparison of |x - y| &lt; epsilon. True if this expr
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:23 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:58:21 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

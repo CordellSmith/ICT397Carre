@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btRigidBody::btRigidBodyConstructionInfo Struct Reference</title>
+<title>Assignment2 - OOber Taxi: btRigidBody::btRigidBodyConstructionInfo Struct Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -27,7 +27,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>btRigidBody::btRigidBodyConstructionInfo Struct Reference</h1><!-- doxytag: class="btRigidBody::btRigidBodyConstructionInfo" --><code>#include &lt;btRigidBody.h&gt;</code>
+<h1>btRigidBody::btRigidBodyConstructionInfo Struct Reference</h1><!-- doxytag: class="btRigidBody::btRigidBodyConstructionInfo" --><code>#include &lt;<a class="el" href="bt_rigid_body_8h-source.html">btRigidBody.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for btRigidBody::btRigidBodyConstructionInfo:</div>
@@ -55,7 +55,9 @@ btScalar&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">best simulation results using zero restitution. <br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The <a class="el" href="structbt_rigid_body_1_1bt_rigid_body_construction_info.html">btRigidBodyConstructionInfo</a> structure provides information to create a rigid body. Setting mass to zero creates a fixed (non-dynamic) rigid body. For dynamic objects, you can use the collision shape to approximate the local inertia tensor, otherwise use the zero vector (default argument) You can use the motion state to synchronize the world transform between physics and graphics objects. And if the motion state is provided, the rigid body will initialize its initial world transform from the motion state, m_startWorldTransform is only used when you don't provide a motion state. <hr><h2>Member Data Documentation</h2>
+The <a class="el" href="structbt_rigid_body_1_1bt_rigid_body_construction_info.html">btRigidBodyConstructionInfo</a> structure provides information to create a rigid body. Setting mass to zero creates a fixed (non-dynamic) rigid body. For dynamic objects, you can use the collision shape to approximate the local inertia tensor, otherwise use the zero vector (default argument) You can use the motion state to synchronize the world transform between physics and graphics objects. And if the motion state is provided, the rigid body will initialize its initial world transform from the motion state, m_startWorldTransform is only used when you don't provide a motion state. 
+<p>Definition at line <a class="el" href="bt_rigid_body_8h-source.html#l00119">119</a> of file <a class="el" href="bt_rigid_body_8h-source.html">btRigidBody.h</a>.</p>
+<hr><h2>Member Data Documentation</h2>
 <a class="anchor" name="729b0b79412f36ac983d4adafbffa429"></a><!-- doxytag: member="btRigidBody::btRigidBodyConstructionInfo::m_motionState" ref="729b0b79412f36ac983d4adafbffa429" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -69,6 +71,10 @@ The <a class="el" href="structbt_rigid_body_1_1bt_rigid_body_construction_info.h
 
 <p>
 When a motionState is provided, the rigid body will initialize its world transform from the motion state In this case, m_startWorldTransform is ignored. 
+<p>Definition at line <a class="el" href="bt_rigid_body_8h-source.html#l00125">125</a> of file <a class="el" href="bt_rigid_body_8h-source.html">btRigidBody.h</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_rigid_body_8cpp-source.html#l00041">btRigidBody::setupRigidBody()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="bb72d0a00d035d2224a927810e9ed972"></a><!-- doxytag: member="btRigidBody::btRigidBodyConstructionInfo::m_rollingFriction" ref="bb72d0a00d035d2224a927810e9ed972" args="" -->
@@ -84,12 +90,16 @@ When a motionState is provided, the rigid body will initialize its world transfo
 
 <p>
 the m_rollingFriction prevents rounded shapes, such as spheres, cylinders and capsules from rolling forever. See Bullet/Demos/RollingFrictionDemo for usage 
+<p>Definition at line <a class="el" href="bt_rigid_body_8h-source.html#l00137">137</a> of file <a class="el" href="bt_rigid_body_8h-source.html">btRigidBody.h</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_rigid_body_8cpp-source.html#l00041">btRigidBody::setupRigidBody()</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.h</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/<a class="el" href="bt_rigid_body_8h-source.html">btRigidBody.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:45 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:45 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btClock Class Reference</title>
+<title>Assignment2 - OOber Taxi: btClock Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btClock Class Reference</h1><!-- doxytag: class="btClock" -->The <a class="el" href="classbt_clock.html" title="The btClock is a portable basic clock that measures accurate time in seconds, use...">btClock</a> is a portable basic clock that measures accurate time in seconds, use for profiling.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btQuickprof.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_quickprof_8h-source.html">btQuickprof.h</a>&gt;</code>
 <p>
 
 <p>
@@ -51,7 +51,9 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The <a class="el" href="classbt_clock.html" title="The btClock is a portable basic clock that measures accurate time in seconds, use...">btClock</a> is a portable basic clock that measures accurate time in seconds, use for profiling. <hr><h2>Member Function Documentation</h2>
+The <a class="el" href="classbt_clock.html" title="The btClock is a portable basic clock that measures accurate time in seconds, use...">btClock</a> is a portable basic clock that measures accurate time in seconds, use for profiling. 
+<p>Definition at line <a class="el" href="bt_quickprof_8h-source.html#l00024">24</a> of file <a class="el" href="bt_quickprof_8h-source.html">btQuickprof.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="989e96af94f4ec3ae28635f5f843c066"></a><!-- doxytag: member="btClock::getTimeMilliseconds" ref="989e96af94f4ec3ae28635f5f843c066" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -70,6 +72,41 @@ The <a class="el" href="classbt_clock.html" title="The btClock is a portable bas
 <p>
 Returns the time in ms since the last call to reset or since the <a class="el" href="classbt_clock.html" title="The btClock is a portable basic clock that measures accurate time in seconds, use...">btClock</a> was created.<p>
 Returns the time in ms since the last call to reset or since the <a class="el" href="classbt_clock.html" title="The btClock is a portable basic clock that measures accurate time in seconds, use...">btClock</a> was created. 
+<p>Definition at line <a class="el" href="bt_quickprof_8cpp-source.html#l00143">143</a> of file <a class="el" href="bt_quickprof_8cpp-source.html">btQuickprof.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00144"></a>00144 {
+<a name="l00145"></a>00145 <span class="preprocessor">#ifdef BT_USE_WINDOWS_TIMERS</span>
+<a name="l00146"></a>00146 <span class="preprocessor"></span>        LARGE_INTEGER currentTime;
+<a name="l00147"></a>00147         QueryPerformanceCounter(&amp;currentTime);
+<a name="l00148"></a>00148         LONGLONG elapsedTime = currentTime.QuadPart -
+<a name="l00149"></a>00149                 m_data-&gt;mStartTime.QuadPart;
+<a name="l00150"></a>00150                 <span class="comment">// Compute the number of millisecond ticks elapsed.</span>
+<a name="l00151"></a>00151         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> msecTicks = (<span class="keywordtype">unsigned</span> long)(1000 * elapsedTime /
+<a name="l00152"></a>00152                 m_data-&gt;mClockFrequency.QuadPart);
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154                 <span class="keywordflow">return</span> msecTicks;
+<a name="l00155"></a>00155 <span class="preprocessor">#else</span>
+<a name="l00156"></a>00156 <span class="preprocessor"></span>
+<a name="l00157"></a>00157 <span class="preprocessor">#ifdef __CELLOS_LV2__</span>
+<a name="l00158"></a>00158 <span class="preprocessor"></span>                <a class="code" href="group__gtc__type__precision.html#g058f57c19e1befdcf12498944bd73e69">uint64_t</a> freq=sys_time_get_timebase_frequency();
+<a name="l00159"></a>00159                 <span class="keywordtype">double</span> dFreq=((double) freq) / 1000.0;
+<a name="l00160"></a>00160                 <span class="keyword">typedef</span> <a class="code" href="group__gtc__type__precision.html#g058f57c19e1befdcf12498944bd73e69">uint64_t</a>  ClockSize;
+<a name="l00161"></a>00161                 ClockSize newTime;
+<a name="l00162"></a>00162                 SYS_TIMEBASE_GET( newTime );
+<a name="l00163"></a>00163                 <span class="comment">//__asm __volatile__( "mftb %0" : "=r" (newTime) : : "memory");</span>
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165                 <span class="keywordflow">return</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>)((double(newTime-m_data-&gt;mStartTime)) / dFreq);
+<a name="l00166"></a>00166 <span class="preprocessor">#else</span>
+<a name="l00167"></a>00167 <span class="preprocessor"></span>
+<a name="l00168"></a>00168                 <span class="keyword">struct </span>timeval currentTime;
+<a name="l00169"></a>00169                 gettimeofday(&amp;currentTime, 0);
+<a name="l00170"></a>00170                 <span class="keywordflow">return</span> (currentTime.tv_sec - m_data-&gt;mStartTime.tv_sec) * 1000 +
+<a name="l00171"></a>00171                         (currentTime.tv_usec - m_data-&gt;mStartTime.tv_usec) / 1000;
+<a name="l00172"></a>00172 <span class="preprocessor">#endif //__CELLOS_LV2__</span>
+<a name="l00173"></a>00173 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00174"></a>00174 <span class="preprocessor"></span>}
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="a58b76bfde0b0f3f33d0cb91ec6b6938"></a><!-- doxytag: member="btClock::getTimeMicroseconds" ref="a58b76bfde0b0f3f33d0cb91ec6b6938" args="()" -->
@@ -90,6 +127,53 @@ Returns the time in ms since the last call to reset or since the <a class="el" h
 <p>
 Returns the time in us since the last call to reset or since the Clock was created.<p>
 Returns the time in us since the last call to reset or since the Clock was created. 
+<p>Definition at line <a class="el" href="bt_quickprof_8cpp-source.html#l00178">178</a> of file <a class="el" href="bt_quickprof_8cpp-source.html">btQuickprof.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_quickprof_8cpp-source.html#l00276">getTimeSeconds()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00179"></a>00179 {
+<a name="l00180"></a>00180 <span class="preprocessor">#ifdef BT_USE_WINDOWS_TIMERS</span>
+<a name="l00181"></a>00181 <span class="preprocessor"></span>        <span class="comment">//see https://msdn.microsoft.com/en-us/library/windows/desktop/dn553408(v=vs.85).aspx   </span>
+<a name="l00182"></a>00182                 LARGE_INTEGER currentTime, elapsedTime;
+<a name="l00183"></a>00183                 
+<a name="l00184"></a>00184                 QueryPerformanceCounter(&amp;currentTime);
+<a name="l00185"></a>00185                 elapsedTime.QuadPart = currentTime.QuadPart - 
+<a name="l00186"></a>00186                         m_data-&gt;mStartTime.QuadPart;
+<a name="l00187"></a>00187                 elapsedTime.QuadPart *= 1000000;
+<a name="l00188"></a>00188                 elapsedTime.QuadPart /= m_data-&gt;mClockFrequency.QuadPart;
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190                 <span class="keywordflow">return</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>) elapsedTime.QuadPart;
+<a name="l00191"></a>00191 <span class="preprocessor">#else</span>
+<a name="l00192"></a>00192 <span class="preprocessor"></span>
+<a name="l00193"></a>00193 <span class="preprocessor">#ifdef __CELLOS_LV2__</span>
+<a name="l00194"></a>00194 <span class="preprocessor"></span>                <a class="code" href="group__gtc__type__precision.html#g058f57c19e1befdcf12498944bd73e69">uint64_t</a> freq=sys_time_get_timebase_frequency();
+<a name="l00195"></a>00195                 <span class="keywordtype">double</span> dFreq=((double) freq)/ 1000000.0;
+<a name="l00196"></a>00196                 <span class="keyword">typedef</span> <a class="code" href="group__gtc__type__precision.html#g058f57c19e1befdcf12498944bd73e69">uint64_t</a>  ClockSize;
+<a name="l00197"></a>00197                 ClockSize newTime;
+<a name="l00198"></a>00198                 <span class="comment">//__asm __volatile__( "mftb %0" : "=r" (newTime) : : "memory");</span>
+<a name="l00199"></a>00199                 SYS_TIMEBASE_GET( newTime );
+<a name="l00200"></a>00200 
+<a name="l00201"></a>00201                 <span class="keywordflow">return</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>)((double(newTime-m_data-&gt;mStartTime)) / dFreq);
+<a name="l00202"></a>00202 <span class="preprocessor">#else</span>
+<a name="l00203"></a>00203 <span class="preprocessor"></span>
+<a name="l00204"></a>00204                 <span class="keyword">struct </span>timeval currentTime;
+<a name="l00205"></a>00205                 gettimeofday(&amp;currentTime, 0);
+<a name="l00206"></a>00206                 <span class="keywordflow">return</span> (currentTime.tv_sec - m_data-&gt;mStartTime.tv_sec) * 1000000 +
+<a name="l00207"></a>00207                         (currentTime.tv_usec - m_data-&gt;mStartTime.tv_usec);
+<a name="l00208"></a>00208 <span class="preprocessor">#endif//__CELLOS_LV2__</span>
+<a name="l00209"></a>00209 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00210"></a>00210 <span class="preprocessor"></span>}
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_clock_a58b76bfde0b0f3f33d0cb91ec6b6938_icgraph.png" border="0" usemap="#classbt_clock_a58b76bfde0b0f3f33d0cb91ec6b6938_icgraph_map" alt=""></center>
+<map name="classbt_clock_a58b76bfde0b0f3f33d0cb91ec6b6938_icgraph_map">
+<area shape="rect" href="classbt_clock.html#3fd3c27b67fa12ff3a56a57679667936" title="btClock::getTimeSeconds" alt="" coords="253,5,424,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="3fd3c27b67fa12ff3a56a57679667936"></a><!-- doxytag: member="btClock::getTimeSeconds" ref="3fd3c27b67fa12ff3a56a57679667936" args="()" -->
@@ -110,12 +194,31 @@ Returns the time in us since the last call to reset or since the Clock was creat
 <p>
 Returns the time in s since the last call to reset or since the Clock was created.<p>
 Returns the time in s since the last call to reset or since the Clock was created. 
+<p>Definition at line <a class="el" href="bt_quickprof_8cpp-source.html#l00276">276</a> of file <a class="el" href="bt_quickprof_8cpp-source.html">btQuickprof.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_quickprof_8cpp-source.html#l00178">getTimeMicroseconds()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00277"></a>00277 {
+<a name="l00278"></a>00278         <span class="keyword">static</span> <span class="keyword">const</span> btScalar microseconds_to_seconds = btScalar(0.000001);
+<a name="l00279"></a>00279         <span class="keywordflow">return</span> btScalar(<a class="code" href="classbt_clock.html#a58b76bfde0b0f3f33d0cb91ec6b6938">getTimeMicroseconds</a>()) * microseconds_to_seconds;
+<a name="l00280"></a>00280 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_clock_3fd3c27b67fa12ff3a56a57679667936_cgraph.png" border="0" usemap="#classbt_clock_3fd3c27b67fa12ff3a56a57679667936_cgraph_map" alt=""></center>
+<map name="classbt_clock_3fd3c27b67fa12ff3a56a57679667936_cgraph_map">
+<area shape="rect" href="classbt_clock.html#a58b76bfde0b0f3f33d0cb91ec6b6938" title="btClock::getTimeMicroseconds" alt="" coords="224,5,424,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btQuickprof.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btQuickprof.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/<a class="el" href="bt_quickprof_8h-source.html">btQuickprof.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/<a class="el" href="bt_quickprof_8cpp-source.html">btQuickprof.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:07 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:42 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

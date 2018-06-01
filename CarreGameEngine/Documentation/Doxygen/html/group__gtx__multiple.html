@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_multiple</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_multiple</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -87,6 +87,14 @@ Higher multiple number of Source.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__multiple.html" title="Find the closest number of a number multiple of other number.">GLM_GTX_multiple</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="multiple_8inl-source.html#l00057">57</a> of file <a class="el" href="multiple_8inl-source.html">multiple.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00061"></a>00061         {
+<a name="l00062"></a>00062                 detail::higherMultiple&lt;std::numeric_limits&lt;genType&gt;::is_signed&gt; Compute;
+<a name="l00063"></a>00063                 <span class="keywordflow">return</span> Compute(Source, Multiple);
+<a name="l00064"></a>00064         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gecccd82257351764e3c2bec8973458e3"></a><!-- doxytag: member="glm::lowerMultiple" ref="gecccd82257351764e3c2bec8973458e3" args="(genType const &amp;Source, genType const &amp;Multiple)" -->
@@ -131,10 +139,23 @@ Lower multiple number of Source.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__multiple.html" title="Find the closest number of a number multiple of other number.">GLM_GTX_multiple</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="multiple_8inl-source.html#l00105">105</a> of file <a class="el" href="multiple_8inl-source.html">multiple.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00109"></a>00109         {
+<a name="l00110"></a>00110                 <span class="keywordflow">if</span> (Source &gt;= genType(0))
+<a name="l00111"></a>00111                         <span class="keywordflow">return</span> Source - Source % Multiple;
+<a name="l00112"></a>00112                 <span class="keywordflow">else</span>
+<a name="l00113"></a>00113                 {
+<a name="l00114"></a>00114                         genType Tmp = Source + genType(1);
+<a name="l00115"></a>00115                         <span class="keywordflow">return</span> Tmp - Tmp % Multiple - Multiple;
+<a name="l00116"></a>00116                 }
+<a name="l00117"></a>00117         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:37 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:34 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

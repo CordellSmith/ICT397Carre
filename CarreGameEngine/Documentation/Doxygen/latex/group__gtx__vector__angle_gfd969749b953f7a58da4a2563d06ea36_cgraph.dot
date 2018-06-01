@@ -1,0 +1,40 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::orientedAngle",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::acos",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078"];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::all",height=0.2,width=0.4,color="black",URL="$group__core__func__vector__relational.html#gabd60ec747e12c78e2d5c6e6c2ede230"];
+  Node1 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::clamp",height=0.2,width=0.4,color="black",URL="$group__core__func__common.html#g8b4808983e20c4c74b20e0a025787ab4"];
+  Node4 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="glm::max",height=0.2,width=0.4,color="black",URL="$group__core__func__common.html#g4e4d7b280fec55e5dfeb1367a1a2597d"];
+  Node4 -> Node6 [color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="glm::min",height=0.2,width=0.4,color="black",URL="$group__core__func__common.html#g7c4425eacc9498bb2ab8a7cfd662cd69"];
+  Node1 -> Node7 [color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="glm::degrees",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64"];
+  Node1 -> Node8 [color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="glm::dot",height=0.2,width=0.4,color="black",URL="$group__core__func__geometric.html#gc64a3b29d01336161a668d328cac97eb"];
+  Node1 -> Node9 [color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="glm::epsilonEqual",height=0.2,width=0.4,color="black",URL="$group__gtc__epsilon.html#g7051ff93341ffb11d864e88d4bc0e3d8"];
+  Node9 -> Node10 [color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="glm::abs",height=0.2,width=0.4,color="black",URL="$group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1"];
+  Node1 -> Node11 [color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="glm::rotate",height=0.2,width=0.4,color="black",URL="$group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14"];
+  Node11 -> Node12 [color="midnightblue",fontsize=10,style="solid"];
+  Node12 [label="glm::axis",height=0.2,width=0.4,color="black",URL="$group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b"];
+  Node12 -> Node13 [color="midnightblue",fontsize=10,style="solid"];
+  Node13 [label="glm::sqrt",height=0.2,width=0.4,color="black",URL="$group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f"];
+  Node11 -> Node14 [color="midnightblue",fontsize=10,style="solid"];
+  Node14 [label="glm::cos",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98"];
+  Node11 -> Node15 [color="midnightblue",fontsize=10,style="solid"];
+  Node15 [label="glm::normalize",height=0.2,width=0.4,color="black",URL="$group__core__func__geometric.html#g0feb2bb89ee2743677ad2cb84544bd83"];
+  Node11 -> Node16 [color="midnightblue",fontsize=10,style="solid"];
+  Node16 [label="glm::radians",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d"];
+  Node11 -> Node17 [color="midnightblue",fontsize=10,style="solid"];
+  Node17 [label="glm::sin",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2"];
+}

@@ -1,19 +1,24 @@
-<area shape="rect" href="$types_8h.html" title="types.h" alt="" coords="571,155,635,181">
-<area shape="rect" href="$texture_8h.html" title="Defines texture helper structures for the library." alt="" coords="679,80,751,107">
-<area shape="rect" href="$light_8h.html" title="Defines the aiLight data structure." alt="" coords="447,80,503,107">
-<area shape="rect" href="$material_8h.html" title="Defines the material system of the library." alt="" coords="527,80,604,107">
-<area shape="rect" href="$anim_8h.html" title="Defines the data structures in which the imported animations are returned." alt="" coords="775,80,833,107">
-<area shape="rect" href="$metadata_8h.html" title="Defines the data structures for holding node meta information." alt="" coords="857,80,943,107">
-<area shape="rect" href="$defs_8h.html" title="Assimp build configuration setup. See the notes in the comment blocks to find out..." alt="" coords="267,379,323,405">
-<area shape="rect" href="$vector3_8h.html" title="3D vector structure, including operators when compiling in C++" alt="" coords="160,304,232,331">
-<area shape="rect" href="$vector2_8h.html" title="2D vector structure, including operators when compiling in C++" alt="" coords="64,304,136,331">
-<area shape="rect" href="$color4_8h.html" title="RGBA color structure, including operators when compiling in C++." alt="" coords="357,304,424,331">
-<area shape="rect" href="$matrix3x3_8h.html" title="Definition of a 3x3 matrix, including operators when compiling in C++." alt="" coords="448,304,536,331">
-<area shape="rect" href="$matrix4x4_8h.html" title="4x4 matrix structure, including operators when compiling in C++" alt="" coords="195,229,283,256">
-<area shape="rect" href="$quaternion_8h.html" title="Quaternion structure, including operators when compiling in C++." alt="" coords="1293,229,1384,256">
-<area shape="rect" href="$vector2_8inl.html" title="Inline implementation of aiVector2t&lt;TReal&gt; operators." alt="" coords="459,229,539,256">
-<area shape="rect" href="$vector3_8inl.html" title="Inline implementation of aiVector3t&lt;TReal&gt; operators." alt="" coords="563,229,643,256">
-<area shape="rect" href="$color4_8inl.html" title="Inline implementation of aiColor4t&lt;TReal&gt; operators." alt="" coords="667,229,739,256">
-<area shape="rect" href="$matrix3x3_8inl.html" title="Inline implementation of the 3x3 matrix operators." alt="" coords="763,229,859,256">
-<area shape="rect" href="$matrix4x4_8inl.html" title="Inline implementation of the 4x4 matrix operators." alt="" coords="883,229,979,256">
-<area shape="rect" href="$config_8h.html" title="Defines constants for configurable properties for the library." alt="" coords="239,453,351,480">
+<area shape="rect" href="$types_8h.html" title="types.h" alt="" coords="923,155,987,181">
+<area shape="rect" href="$texture_8h.html" title="Defines texture helper structures for the library." alt="" coords="1601,80,1673,107">
+<area shape="rect" href="$_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html" title="mesh.h" alt="" coords="992,80,1056,107">
+<area shape="rect" href="$light_8h.html" title="Defines the aiLight data structure." alt="" coords="1080,80,1136,107">
+<area shape="rect" href="$_dependencies_2assimp-4_81_80_2include_2assimp_2_camera_8h-source.html" title="camera.h" alt="" coords="1160,80,1235,107">
+<area shape="rect" href="$material_8h.html" title="Defines the material system of the library." alt="" coords="1447,80,1524,107">
+<area shape="rect" href="$anim_8h.html" title="Defines the data structures in which the imported animations are returned." alt="" coords="1259,80,1317,107">
+<area shape="rect" href="$metadata_8h.html" title="Defines the data structures for holding node meta information." alt="" coords="1705,80,1791,107">
+<area shape="rect" href="$defs_8h.html" title="Assimp build configuration setup. See the notes in the comment blocks to find out..." alt="" coords="639,379,695,405">
+<area shape="rect" href="$vector3_8h.html" title="3D vector structure, including operators when compiling in C++" alt="" coords="745,304,817,331">
+<area shape="rect" href="$vector2_8h.html" title="2D vector structure, including operators when compiling in C++" alt="" coords="819,229,891,256">
+<area shape="rect" href="$color4_8h.html" title="RGBA color structure, including operators when compiling in C++." alt="" coords="492,304,559,331">
+<area shape="rect" href="$matrix3x3_8h.html" title="Definition of a 3x3 matrix, including operators when compiling in C++." alt="" coords="583,304,671,331">
+<area shape="rect" href="$matrix4x4_8h.html" title="4x4 matrix structure, including operators when compiling in C++" alt="" coords="656,229,744,256">
+<area shape="rect" href="$quaternion_8h.html" title="Quaternion structure, including operators when compiling in C++." alt="" coords="1461,229,1552,256">
+<area shape="rect" href="$vector2_8inl.html" title="Inline implementation of aiVector2t&lt;TReal&gt; operators." alt="" coords="915,229,995,256">
+<area shape="rect" href="$vector3_8inl.html" title="Inline implementation of aiVector3t&lt;TReal&gt; operators." alt="" coords="1019,229,1099,256">
+<area shape="rect" href="$color4_8inl.html" title="Inline implementation of aiColor4t&lt;TReal&gt; operators." alt="" coords="1123,229,1195,256">
+<area shape="rect" href="$assimp-4_81_80_2include_2assimp_2quaternion_8inl-source.html" title="quaternion.inl" alt="" coords="1219,229,1317,256">
+<area shape="rect" href="$matrix3x3_8inl.html" title="Inline implementation of the 3x3 matrix operators." alt="" coords="1341,229,1437,256">
+<area shape="rect" href="$matrix4x4_8inl.html" title="Inline implementation of the 4x4 matrix operators." alt="" coords="5,229,101,256">
+<area shape="rect" href="$config_8h.html" title="Defines constants for configurable properties for the library." alt="" coords="611,453,723,480">
+<area shape="rect" href="$pushpack1_8h-source.html" title="./Compiler/pushpack1.h" alt="" coords="1459,304,1616,331">
+<area shape="rect" href="$poppack1_8h-source.html" title="./Compiler/poppack1.h" alt="" coords="1640,304,1792,331">

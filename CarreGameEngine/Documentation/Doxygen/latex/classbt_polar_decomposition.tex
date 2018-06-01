@@ -18,6 +18,8 @@ unsigned int \hyperlink{classbt_polar_decomposition_c999bd3afdcc94a43ddbea028b5d
 \subsection{Detailed Description}
 This class is used to compute the polar decomposition of a matrix. In general, the polar decomposition factorizes a matrix, A, into two parts: a unitary matrix (U) and a positive, semi-definite Hermitian matrix (H). However, in this particular implementation the original matrix, A, is required to be a square 3x3 matrix with real elements. This means that U will be an orthogonal matrix and H with be a positive-definite, symmetric matrix. 
 
+Definition at line 14 of file btPolarDecomposition.h.
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classbt_polar_decomposition_10bfe3fb4d9163c9dce603bf77c0e1a0}{
 \index{btPolarDecomposition@{btPolarDecomposition}!btPolarDecomposition@{btPolarDecomposition}}
@@ -33,6 +35,18 @@ Creates an instance with optional parameters.
 \begin{description}
 \item[{\em tolerance}]- the tolerance used to determine convergence of the algorithm \item[{\em maxIterations}]- the maximum number of iterations used to achieve convergence \end{description}
 \end{Desc}
+
+
+Definition at line 35 of file btPolarDecomposition.cpp.
+
+\begin{Code}\begin{verbatim}36 : m_tolerance(tolerance)
+37 , m_maxIterations(maxIterations)
+38 {
+39 }
+\end{verbatim}
+\end{Code}
+
+
 
 
 \subsection{Member Function Documentation}
@@ -52,6 +66,59 @@ Decomposes a matrix into orthogonal and symmetric, positive-definite parts. If t
 \end{Desc}
 \begin{Desc}
 \item[Returns:]the number of iterations performed by the algorithm. \end{Desc}
+
+
+Definition at line 41 of file btPolarDecomposition.cpp.
+
+\begin{Code}\begin{verbatim}42 {
+43   // Use the 'u' and 'h' matrices for intermediate calculations
+44   u = a;
+45   h = a.inverse();
+46 
+47   for (unsigned int i = 0; i < m_maxIterations; ++i)
+48   {
+49     const btScalar h_1 = p1_norm(h);
+50     const btScalar h_inf = pinf_norm(h);
+51     const btScalar u_1 = p1_norm(u);
+52     const btScalar u_inf = pinf_norm(u);
+53 
+54     const btScalar h_norm = h_1 * h_inf;
+55     const btScalar u_norm = u_1 * u_inf;
+56 
+57     // The matrix is effectively singular so we cannot invert it
+58     if (btFuzzyZero(h_norm) || btFuzzyZero(u_norm))
+59       break;
+60 
+61     const btScalar gamma = btPow(h_norm / u_norm, 0.25f);
+62     const btScalar inv_gamma = btScalar(1.0) / gamma;
+63 
+64     // Determine the delta to 'u'
+65     const btMatrix3x3 delta = (u * (gamma - btScalar(2.0)) + h.transpose() * inv_gamma) * btScalar(0.5);
+66 
+67     // Update the matrices
+68     u += delta;
+69     h = u.inverse();
+70 
+71     // Check for convergence
+72     if (p1_norm(delta) <= m_tolerance * u_1)
+73     {
+74       h = u.transpose() * a;
+75       h = (h + h.transpose()) * 0.5;
+76       return i;
+77     }
+78   }
+79 
+80   // The algorithm has failed to converge to the specified tolerance, but we
+81   // want to make sure that the matrices returned are in the right form.
+82   h = u.transpose() * a;
+83   h = (h + h.transpose()) * 0.5;
+84 
+85   return m_maxIterations;
+86 }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_polar_decomposition_c999bd3afdcc94a43ddbea028b5d4867}{
 \index{btPolarDecomposition@{btPolarDecomposition}!maxIterations@{maxIterations}}
 \index{maxIterations@{maxIterations}!btPolarDecomposition@{btPolarDecomposition}}
@@ -65,7 +132,18 @@ Returns the maximum number of iterations that this algorithm will perform to ach
 \item[Returns:]maximum number of iterations \end{Desc}
 
 
+Definition at line 88 of file btPolarDecomposition.cpp.
+
+\begin{Code}\begin{verbatim}89 {
+90   return m_maxIterations;
+91 }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btPolarDecomposition.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btPolarDecomposition.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btPolarDecomposition.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btPolarDecomposition.cpp\end{CompactItemize}

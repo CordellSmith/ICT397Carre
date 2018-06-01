@@ -1,0 +1,5 @@
+<area shape="rect" href="$group__core__func__trigonometric.html#gb89f4e2a1ea1426dc87ab3a06901b68a" title="glm::atan" alt="" coords="156,5,231,32">
+<area shape="rect" href="$group__core__func__geometric.html#gc64a3b29d01336161a668d328cac97eb" title="glm::dot" alt="" coords="160,56,227,83">
+<area shape="rect" href="$group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="160,107,227,133">
+<area shape="rect" href="$group__core__func__exponential.html#gfe49b7b63045b6ab94bffbcd7e7a7bc8" title="glm::sqrt" alt="" coords="157,157,229,184">
+<area shape="rect" href="$group__gtx__compatibility.html#ga7c3a1b05bab87aa5a7cbc9efadfbc52" title="Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are used..." alt="" coords="280,5,363,32">

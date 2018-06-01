@@ -1,0 +1,14 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="Shader::Destroy",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="Shader::Initialize",height=0.2,width=0.4,color="black",URL="$class_shader.html#750cae45b47ecb6d8b8ae334562e7c6f",tooltip="Initializes the shader program."];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="OpenGl::Prepare",height=0.2,width=0.4,color="black",URL="$class_open_gl.html#d8259307bc0b851348b7afaa46965473",tooltip="Prepare."];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="Shader::~Shader",height=0.2,width=0.4,color="black",URL="$class_shader.html#ff01df87e8a102f270b5b135a295e59d",tooltip="Destructor."];
+}

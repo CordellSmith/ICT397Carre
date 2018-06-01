@@ -43,63 +43,284 @@ $<$glm/gtx/rotate\_\-vector.hpp$>$ need to be included to use these functionalit
 \label{group__gtx__rotate__vector_g6388a91274507ab81224d8f5d434875e}
 
 
-Build a rotation matrix from a normal and a up vector. From GLM\_\-GTX\_\-rotate\_\-vector extension. \hypertarget{group__gtx__rotate__vector_ga787e2132208a47efe58640ac7de9509}{
+Build a rotation matrix from a normal and a up vector. From GLM\_\-GTX\_\-rotate\_\-vector extension. 
+
+Definition at line 206 of file rotate\_\-vector.inl.
+
+References glm::acos(), glm::all(), glm::cross(), glm::degrees(), glm::dot(), and glm::rotate().
+
+\begin{Code}\begin{verbatim}210         {
+211                 if(all(equal(Normal, Up)))
+212                         return detail::tmat4x4<T, P>(T(1));
+213 
+214                 detail::tvec3<T, P> RotationAxis = cross(Up, Normal);
+215 #               ifdef GLM_FORCE_RADIANS
+216                         T Angle = acos(dot(Normal, Up));
+217 #               else
+218 #                       pragma message("GLM: rotateZ function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+219                         T Angle = degrees(acos(dot(Normal, Up)));
+220 #               endif
+221                 return rotate(Angle, RotationAxis);
+222         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__rotate__vector_ga787e2132208a47efe58640ac7de9509}{
 \index{gtx\_\-rotate\_\-vector@{gtx\_\-rotate\_\-vector}!rotate@{rotate}}
 \index{rotate@{rotate}!gtx_rotate_vector@{gtx\_\-rotate\_\-vector}}
 \subsubsection[rotate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ T, P $>$ glm::rotate (detail::tvec4$<$ T, P $>$ const \& {\em v}, \/  T const \& {\em angle}, \/  detail::tvec3$<$ T, P $>$ const \& {\em normal})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__rotate__vector_ga787e2132208a47efe58640ac7de9509}
 
 
-Rotate a four dimensional vector around an axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. \hypertarget{group__gtx__rotate__vector_gf0809ae83e84fc9880b4c8b7093c349c}{
+Rotate a four dimensional vector around an axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. 
+
+Definition at line 57 of file rotate\_\-vector.inl.
+
+References glm::rotate().
+
+\begin{Code}\begin{verbatim}62         {
+63                 return rotate(angle, normal) * v;
+64         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__rotate__vector_gf0809ae83e84fc9880b4c8b7093c349c}{
 \index{gtx\_\-rotate\_\-vector@{gtx\_\-rotate\_\-vector}!rotate@{rotate}}
 \index{rotate@{rotate}!gtx_rotate_vector@{gtx\_\-rotate\_\-vector}}
 \subsubsection[rotate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::rotate (detail::tvec3$<$ T, P $>$ const \& {\em v}, \/  T const \& {\em angle}, \/  detail::tvec3$<$ T, P $>$ const \& {\em normal})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__rotate__vector_gf0809ae83e84fc9880b4c8b7093c349c}
 
 
-Rotate a three dimensional vector around an axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. \hypertarget{group__gtx__rotate__vector_gc1ec422e7ac679e3332b381e88d29dfd}{
+Rotate a three dimensional vector around an axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. 
+
+Definition at line 35 of file rotate\_\-vector.inl.
+
+References glm::rotate().
+
+\begin{Code}\begin{verbatim}40         {
+41                 return detail::tmat3x3<T, P>(glm::rotate(angle, normal)) * v;
+42         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__rotate__vector_gc1ec422e7ac679e3332b381e88d29dfd}{
 \index{gtx\_\-rotate\_\-vector@{gtx\_\-rotate\_\-vector}!rotate@{rotate}}
 \index{rotate@{rotate}!gtx_rotate_vector@{gtx\_\-rotate\_\-vector}}
 \subsubsection[rotate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec2$<$ T, P $>$ glm::rotate (detail::tvec2$<$ T, P $>$ const \& {\em v}, \/  T const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__rotate__vector_gc1ec422e7ac679e3332b381e88d29dfd}
 
 
-Rotate a two dimensional vector. From GLM\_\-GTX\_\-rotate\_\-vector extension. \hypertarget{group__gtx__rotate__vector_g846674e399c4106196405900ce78fe27}{
+Rotate a two dimensional vector. From GLM\_\-GTX\_\-rotate\_\-vector extension. 
+
+Definition at line 14 of file rotate\_\-vector.inl.
+
+References glm::cos(), glm::radians(), and glm::sin().
+
+\begin{Code}\begin{verbatim}18         {
+19                 detail::tvec2<T, P> Result;
+20 #ifdef GLM_FORCE_RADIANS
+21                 T const Cos(cos(angle));
+22                 T const Sin(sin(angle));
+23 #else
+24 #               pragma message("GLM: rotate function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+25                 T const Cos = cos(radians(angle));
+26                 T const Sin = sin(radians(angle));
+27 #endif
+28                 Result.x = v.x * Cos - v.y * Sin;
+29                 Result.y = v.x * Sin + v.y * Cos;
+30                 return Result;
+31         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__rotate__vector_g846674e399c4106196405900ce78fe27}{
 \index{gtx\_\-rotate\_\-vector@{gtx\_\-rotate\_\-vector}!rotateX@{rotateX}}
 \index{rotateX@{rotateX}!gtx_rotate_vector@{gtx\_\-rotate\_\-vector}}
 \subsubsection[rotateX]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ T, P $>$ glm::rotateX (detail::tvec4$<$ T, P $>$ const \& {\em v}, \/  T const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__rotate__vector_g846674e399c4106196405900ce78fe27}
 
 
-Rotate a four dimentionnals vector around the X axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. \hypertarget{group__gtx__rotate__vector_g29ccc284b661dc52c457959f8cbf8af6}{
+Rotate a four dimentionnals vector around the X axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. 
+
+Definition at line 137 of file rotate\_\-vector.inl.
+
+References glm::cos(), glm::radians(), and glm::sin().
+
+\begin{Code}\begin{verbatim}141         {
+142                 detail::tvec4<T, P> Result = v;
+143 
+144 #ifdef GLM_FORCE_RADIANS
+145                 T const Cos(cos(angle));
+146                 T const Sin(sin(angle));
+147 #else
+148 #               pragma message("GLM: rotateX function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+149                 T const Cos(cos(radians(angle)));
+150                 T const Sin(sin(radians(angle)));
+151 #endif
+152 
+153                 Result.y = v.y * Cos - v.z * Sin;
+154                 Result.z = v.y * Sin + v.z * Cos;
+155                 return Result;
+156         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__rotate__vector_g29ccc284b661dc52c457959f8cbf8af6}{
 \index{gtx\_\-rotate\_\-vector@{gtx\_\-rotate\_\-vector}!rotateX@{rotateX}}
 \index{rotateX@{rotateX}!gtx_rotate_vector@{gtx\_\-rotate\_\-vector}}
 \subsubsection[rotateX]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::rotateX (detail::tvec3$<$ T, P $>$ const \& {\em v}, \/  T const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__rotate__vector_g29ccc284b661dc52c457959f8cbf8af6}
 
 
-Rotate a three dimensional vector around the X axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. \hypertarget{group__gtx__rotate__vector_g8e90d477a21ac9e17a8b764eac6d0999}{
+Rotate a three dimensional vector around the X axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. 
+
+Definition at line 68 of file rotate\_\-vector.inl.
+
+References glm::cos(), glm::radians(), and glm::sin().
+
+\begin{Code}\begin{verbatim}72         {
+73                 detail::tvec3<T, P> Result(v);
+74 
+75 #ifdef GLM_FORCE_RADIANS
+76                 T const Cos(cos(angle));
+77                 T const Sin(sin(angle));
+78 #else
+79 #               pragma message("GLM: rotateX function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+80                 T const Cos = cos(radians(angle));
+81                 T const Sin = sin(radians(angle));
+82 #endif
+83 
+84                 Result.y = v.y * Cos - v.z * Sin;
+85                 Result.z = v.y * Sin + v.z * Cos;
+86                 return Result;
+87         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__rotate__vector_g8e90d477a21ac9e17a8b764eac6d0999}{
 \index{gtx\_\-rotate\_\-vector@{gtx\_\-rotate\_\-vector}!rotateY@{rotateY}}
 \index{rotateY@{rotateY}!gtx_rotate_vector@{gtx\_\-rotate\_\-vector}}
 \subsubsection[rotateY]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ T, P $>$ glm::rotateY (detail::tvec4$<$ T, P $>$ const \& {\em v}, \/  T const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__rotate__vector_g8e90d477a21ac9e17a8b764eac6d0999}
 
 
-Rotate a four dimensional vector around the X axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. \hypertarget{group__gtx__rotate__vector_g8e792cb7fbd2ad57a4eafcccc62c523c}{
+Rotate a four dimensional vector around the X axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. 
+
+Definition at line 160 of file rotate\_\-vector.inl.
+
+References glm::cos(), glm::radians(), and glm::sin().
+
+\begin{Code}\begin{verbatim}164         {
+165                 detail::tvec4<T, P> Result = v;
+166 
+167 #ifdef GLM_FORCE_RADIANS
+168                 T const Cos(cos(angle));
+169                 T const Sin(sin(angle));
+170 #else
+171 #               pragma message("GLM: rotateX function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+172                 T const Cos(cos(radians(angle)));
+173                 T const Sin(sin(radians(angle)));
+174 #endif
+175 
+176                 Result.x =  v.x * Cos + v.z * Sin;
+177                 Result.z = -v.x * Sin + v.z * Cos;
+178                 return Result;
+179         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__rotate__vector_g8e792cb7fbd2ad57a4eafcccc62c523c}{
 \index{gtx\_\-rotate\_\-vector@{gtx\_\-rotate\_\-vector}!rotateY@{rotateY}}
 \index{rotateY@{rotateY}!gtx_rotate_vector@{gtx\_\-rotate\_\-vector}}
 \subsubsection[rotateY]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::rotateY (detail::tvec3$<$ T, P $>$ const \& {\em v}, \/  T const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__rotate__vector_g8e792cb7fbd2ad57a4eafcccc62c523c}
 
 
-Rotate a three dimensional vector around the Y axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. \hypertarget{group__gtx__rotate__vector_g4505b3c64cf26afba934ad1f65c5f792}{
+Rotate a three dimensional vector around the Y axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. 
+
+Definition at line 91 of file rotate\_\-vector.inl.
+
+References glm::cos(), glm::radians(), and glm::sin().
+
+\begin{Code}\begin{verbatim}95         {
+96                 detail::tvec3<T, P> Result = v;
+97 
+98 #ifdef GLM_FORCE_RADIANS
+99                 T const Cos(cos(angle));
+100                 T const Sin(sin(angle));
+101 #else
+102 #               pragma message("GLM: rotateY function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+103                 T const Cos(cos(radians(angle)));
+104                 T const Sin(sin(radians(angle)));
+105 #endif
+106 
+107                 Result.x =  v.x * Cos + v.z * Sin;
+108                 Result.z = -v.x * Sin + v.z * Cos;
+109                 return Result;
+110         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__rotate__vector_g4505b3c64cf26afba934ad1f65c5f792}{
 \index{gtx\_\-rotate\_\-vector@{gtx\_\-rotate\_\-vector}!rotateZ@{rotateZ}}
 \index{rotateZ@{rotateZ}!gtx_rotate_vector@{gtx\_\-rotate\_\-vector}}
 \subsubsection[rotateZ]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ T, P $>$ glm::rotateZ (detail::tvec4$<$ T, P $>$ const \& {\em v}, \/  T const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__rotate__vector_g4505b3c64cf26afba934ad1f65c5f792}
 
 
-Rotate a four dimensional vector around the X axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. \hypertarget{group__gtx__rotate__vector_g67b56c3da73e7da777810b2a82bab4f8}{
+Rotate a four dimensional vector around the X axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. 
+
+Definition at line 183 of file rotate\_\-vector.inl.
+
+References glm::cos(), glm::radians(), and glm::sin().
+
+\begin{Code}\begin{verbatim}187         {
+188                 detail::tvec4<T, P> Result = v;
+189 
+190 #ifdef GLM_FORCE_RADIANS
+191                 T const Cos(cos(angle));
+192                 T const Sin(sin(angle));
+193 #else
+194 #               pragma message("GLM: rotateZ function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+195                 T const Cos(cos(radians(angle)));
+196                 T const Sin(sin(radians(angle)));
+197 #endif
+198 
+199                 Result.x = v.x * Cos - v.y * Sin;
+200                 Result.y = v.x * Sin + v.y * Cos;
+201                 return Result;
+202         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__rotate__vector_g67b56c3da73e7da777810b2a82bab4f8}{
 \index{gtx\_\-rotate\_\-vector@{gtx\_\-rotate\_\-vector}!rotateZ@{rotateZ}}
 \index{rotateZ@{rotateZ}!gtx_rotate_vector@{gtx\_\-rotate\_\-vector}}
 \subsubsection[rotateZ]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::rotateZ (detail::tvec3$<$ T, P $>$ const \& {\em v}, \/  T const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -107,3 +328,31 @@ Rotate a four dimensional vector around the X axis. From GLM\_\-GTX\_\-rotate\_\
 
 
 Rotate a three dimensional vector around the Z axis. From GLM\_\-GTX\_\-rotate\_\-vector extension. 
+
+Definition at line 114 of file rotate\_\-vector.inl.
+
+References glm::cos(), glm::radians(), and glm::sin().
+
+\begin{Code}\begin{verbatim}118         {
+119                 detail::tvec3<T, P> Result = v;
+120 
+121 #ifdef GLM_FORCE_RADIANS
+122                 T const Cos(cos(angle));
+123                 T const Sin(sin(angle));
+124 #else
+125 #               pragma message("GLM: rotateZ function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+126                 T const Cos(cos(radians(angle)));
+127                 T const Sin(sin(radians(angle)));
+128 #endif
+129 
+130                 Result.x = v.x * Cos - v.y * Sin;
+131                 Result.y = v.x * Sin + v.y * Cos;
+132                 return Result;
+133         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

@@ -39,6 +39,8 @@ GPU Parallel Linearized Bounding Volume Heirarchy(LBVH) that is reconstructed ev
 \item[]\mbox{[}Karras 2012\mbox{]} improves on the algorithm by introducing fully parallel methods for the last 2 stages. The BVH implementation here shares many concepts with \mbox{[}Karras 2012\mbox{]}, but a different method is used for constructing the tree. Instead of searching for the child nodes of each internal node, we search for the parent node of each node. Additionally, a non-atomic traversal that starts from the leaf nodes and moves towards the root node is used to set the AABBs. \end{Desc}
 
 
+Definition at line 49 of file b3GpuParallelLinearBvh.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classb3_gpu_parallel_linear_bvh_c0208fca9279bdfd66eabd321d98420b}{
 \index{b3GpuParallelLinearBvh@{b3GpuParallelLinearBvh}!calculateOverlappingPairs@{calculateOverlappingPairs}}
@@ -52,6 +54,90 @@ GPU Parallel Linearized Bounding Volume Heirarchy(LBVH) that is reconstructed ev
 \begin{description}
 \item[{\em out\_\-overlappingPairs}]The size() of this array is used to determine the max number of pairs. If the number of overlapping pairs is $<$ out\_\-overlappingPairs.size(), out\_\-overlappingPairs is resized. \end{description}
 \end{Desc}
+
+
+Definition at line 292 of file b3GpuParallelLinearBvh.cpp.
+
+\begin{Code}\begin{verbatim}293 {
+294         int maxPairs = out_overlappingPairs.size();
+295         b3OpenCLArray<int>& numPairsGpu = m_temp;
+296         
+297         int reset = 0;
+298         numPairsGpu.copyFromHostPointer(&reset, 1);
+299         
+300         //
+301         if( m_leafNodeAabbs.size() > 1 )
+302         {
+303                 B3_PROFILE("PLBVH small-small AABB test");
+304         
+305                 int numQueryAabbs = m_leafNodeAabbs.size();
+306                 
+307                 b3BufferInfoCL bufferInfo[] = 
+308                 {
+309                         b3BufferInfoCL( m_leafNodeAabbs.getBufferCL() ),
+310                         
+311                         b3BufferInfoCL( m_rootNodeIndex.getBufferCL() ),
+312                         b3BufferInfoCL( m_internalNodeChildNodes.getBufferCL() ),
+313                         b3BufferInfoCL( m_internalNodeAabbs.getBufferCL() ),
+314                         b3BufferInfoCL( m_internalNodeLeafIndexRanges.getBufferCL() ),
+315                         b3BufferInfoCL( m_mortonCodesAndAabbIndicies.getBufferCL() ),
+316                         
+317                         b3BufferInfoCL( numPairsGpu.getBufferCL() ),
+318                         b3BufferInfoCL( out_overlappingPairs.getBufferCL() )
+319                 };
+320                 
+321                 b3LauncherCL launcher(m_queue, m_plbvhCalculateOverlappingPairsKernel, "m_plbvhCalculateOverlappingPairsKernel");
+322                 launcher.setBuffers( bufferInfo, sizeof(bufferInfo)/sizeof(b3BufferInfoCL) );
+323                 launcher.setConst(maxPairs);
+324                 launcher.setConst(numQueryAabbs);
+325                 
+326                 launcher.launch1D(numQueryAabbs);
+327                 clFinish(m_queue);
+328         }
+329         
+330         int numLargeAabbRigids = m_largeAabbs.size();
+331         if( numLargeAabbRigids > 0 && m_leafNodeAabbs.size() > 0 )
+332         {
+333                 B3_PROFILE("PLBVH large-small AABB test");
+334         
+335                 int numQueryAabbs = m_leafNodeAabbs.size();
+336                 
+337                 b3BufferInfoCL bufferInfo[] = 
+338                 {
+339                         b3BufferInfoCL( m_leafNodeAabbs.getBufferCL() ),
+340                         b3BufferInfoCL( m_largeAabbs.getBufferCL() ),
+341                         
+342                         b3BufferInfoCL( numPairsGpu.getBufferCL() ),
+343                         b3BufferInfoCL( out_overlappingPairs.getBufferCL() )
+344                 };
+345                 
+346                 b3LauncherCL launcher(m_queue, m_plbvhLargeAabbAabbTestKernel, "m_plbvhLargeAabbAabbTestKernel");
+347                 launcher.setBuffers( bufferInfo, sizeof(bufferInfo)/sizeof(b3BufferInfoCL) );
+348                 launcher.setConst(maxPairs);
+349                 launcher.setConst(numLargeAabbRigids);
+350                 launcher.setConst(numQueryAabbs);
+351                 
+352                 launcher.launch1D(numQueryAabbs);
+353                 clFinish(m_queue);
+354         }
+355         
+356         
+357         //
+358         int numPairs = -1;
+359         numPairsGpu.copyToHostPointer(&numPairs, 1);
+360         if(numPairs > maxPairs)
+361         {
+362                 b3Error("Error running out of pairs: numPairs = %d, maxPairs = %d.\n", numPairs, maxPairs);
+363                 numPairs = maxPairs;
+364                 numPairsGpu.copyFromHostPointer(&maxPairs, 1);
+365         }
+366         
+367         out_overlappingPairs.resize(numPairs);
+368 }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classb3_gpu_parallel_linear_bvh_a2e73543c39fe8a8ba65394fbc33e8bb}{
 \index{b3GpuParallelLinearBvh@{b3GpuParallelLinearBvh}!testRaysAgainstBvhAabbs@{testRaysAgainstBvhAabbs}}
 \index{testRaysAgainstBvhAabbs@{testRaysAgainstBvhAabbs}!b3GpuParallelLinearBvh@{b3GpuParallelLinearBvh}}
@@ -66,7 +152,86 @@ GPU Parallel Linearized Bounding Volume Heirarchy(LBVH) that is reconstructed ev
 \end{Desc}
 
 
+Definition at line 371 of file b3GpuParallelLinearBvh.cpp.
+
+\begin{Code}\begin{verbatim}373 {
+374         B3_PROFILE("PLBVH testRaysAgainstBvhAabbs()");
+375         
+376         int numRays = rays.size();
+377         int maxRayRigidPairs = out_rayRigidPairs.size();
+378         
+379         int reset = 0;
+380         out_numRayRigidPairs.copyFromHostPointer(&reset, 1);
+381         
+382         //
+383         if( m_leafNodeAabbs.size() > 0 )
+384         {
+385                 B3_PROFILE("PLBVH ray test small AABB");
+386         
+387                 b3BufferInfoCL bufferInfo[] = 
+388                 {
+389                         b3BufferInfoCL( m_leafNodeAabbs.getBufferCL() ),
+390                         
+391                         b3BufferInfoCL( m_rootNodeIndex.getBufferCL() ),
+392                         b3BufferInfoCL( m_internalNodeChildNodes.getBufferCL() ),
+393                         b3BufferInfoCL( m_internalNodeAabbs.getBufferCL() ),
+394                         b3BufferInfoCL( m_internalNodeLeafIndexRanges.getBufferCL() ),
+395                         b3BufferInfoCL( m_mortonCodesAndAabbIndicies.getBufferCL() ),
+396                         
+397                         b3BufferInfoCL( rays.getBufferCL() ),
+398                         
+399                         b3BufferInfoCL( out_numRayRigidPairs.getBufferCL() ),
+400                         b3BufferInfoCL( out_rayRigidPairs.getBufferCL() )
+401                 };
+402                 
+403                 b3LauncherCL launcher(m_queue, m_plbvhRayTraverseKernel, "m_plbvhRayTraverseKernel");
+404                 launcher.setBuffers( bufferInfo, sizeof(bufferInfo)/sizeof(b3BufferInfoCL) );
+405                 launcher.setConst(maxRayRigidPairs);
+406                 launcher.setConst(numRays);
+407                 
+408                 launcher.launch1D(numRays);
+409                 clFinish(m_queue);
+410         }
+411         
+412         int numLargeAabbRigids = m_largeAabbs.size();
+413         if(numLargeAabbRigids > 0)
+414         {
+415                 B3_PROFILE("PLBVH ray test large AABB");
+416                 
+417                 b3BufferInfoCL bufferInfo[] = 
+418                 {
+419                         b3BufferInfoCL( m_largeAabbs.getBufferCL() ),
+420                         b3BufferInfoCL( rays.getBufferCL() ),
+421                         
+422                         b3BufferInfoCL( out_numRayRigidPairs.getBufferCL() ),
+423                         b3BufferInfoCL( out_rayRigidPairs.getBufferCL() )
+424                 };
+425                 
+426                 b3LauncherCL launcher(m_queue, m_plbvhLargeAabbRayTestKernel, "m_plbvhLargeAabbRayTestKernel");
+427                 launcher.setBuffers( bufferInfo, sizeof(bufferInfo)/sizeof(b3BufferInfoCL) );
+428                 launcher.setConst(numLargeAabbRigids);
+429                 launcher.setConst(maxRayRigidPairs);
+430                 launcher.setConst(numRays);
+431                 
+432                 launcher.launch1D(numRays);
+433                 clFinish(m_queue);
+434         }
+435         
+436         //
+437         int numRayRigidPairs = -1;
+438         out_numRayRigidPairs.copyToHostPointer(&numRayRigidPairs, 1);
+439         
+440         if(numRayRigidPairs > maxRayRigidPairs)
+441                 b3Error("Error running out of rayRigid pairs: numRayRigidPairs = %d, maxRayRigidPairs = %d.\n", numRayRigidPairs, maxRayRigidPairs);
+442         
+443 }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3OpenCL/BroadphaseCollision/b3GpuParallelLinearBvh.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3OpenCL/BroadphaseCollision/b3GpuParallelLinearBvh.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3OpenCL/BroadphaseCollision/b3GpuParallelLinearBvh.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3OpenCL/BroadphaseCollision/b3GpuParallelLinearBvh.cpp\end{CompactItemize}

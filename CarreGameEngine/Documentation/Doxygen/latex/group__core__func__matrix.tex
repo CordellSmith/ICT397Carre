@@ -48,6 +48,18 @@ Returns the transposed matrix of x
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/determinant.xml}{\tt GLSL determinant man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.6 Matrix Functions} \end{Desc}
+
+
+Definition at line 447 of file func\_\-matrix.inl.
+
+\begin{Code}\begin{verbatim}448         {
+449                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'determinant' only accept floating-point inputs");
+450                 return detail::compute_determinant<matType, T, P>::call(m);
+451         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__matrix_g4b56decdc6560a13b616c6312bdcc17e}{
 \index{core\_\-func\_\-matrix@{core\_\-func\_\-matrix}!inverse@{inverse}}
 \index{inverse@{inverse}!core_func_matrix@{core\_\-func\_\-matrix}}
@@ -66,7 +78,23 @@ Return the inverse of a squared matrix.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/inverse.xml}{\tt GLSL inverse man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.6 Matrix Functions} \end{Desc}
-\hypertarget{group__core__func__matrix_g30bbe46a821497b9ae0c63a2d27db0b2}{
+
+
+Definition at line 454 of file func\_\-matrix.inl.
+
+Referenced by glm::cross(), Camera::GetUp(), Camera::GetView(), Camera::GetViewMatrix(), glm::intermediate(), and glm::unProject().
+
+\begin{Code}\begin{verbatim}455         {
+456                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'inverse' only accept floating-point inputs");
+457                 return detail::compute_inverse<matType, T, P>::call(m);
+458         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__matrix_g30bbe46a821497b9ae0c63a2d27db0b2}{
 \index{core\_\-func\_\-matrix@{core\_\-func\_\-matrix}!matrixCompMult@{matrixCompMult}}
 \index{matrixCompMult@{matrixCompMult}!core_func_matrix@{core\_\-func\_\-matrix}}
 \subsubsection[matrixCompMult]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ GLM\_\-FUNC\_\-QUALIFIER matType$<$ T, P $>$ glm::matrixCompMult (matType$<$ T, P $>$ const \& {\em x}, \/  matType$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -84,6 +112,22 @@ Multiply matrix x by matrix y component-wise, i.e., result\mbox{[}i\mbox{]}\mbox
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/matrixCompMult.xml}{\tt GLSL matrixCompMult man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.6 Matrix Functions} \end{Desc}
+
+
+Definition at line 422 of file func\_\-matrix.inl.
+
+\begin{Code}\begin{verbatim}423         {
+424                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'matrixCompMult' only accept floating-point inputs");
+425 
+426                 matType<T, P> result(matType<T, P>::_null);
+427                 for(length_t i = 0; i < result.length(); ++i)
+428                         result[i] = x[i] * y[i];
+429                 return result;
+430         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__matrix_g47818f9809502f7a975a2c43a61fedb3}{
 \index{core\_\-func\_\-matrix@{core\_\-func\_\-matrix}!outerProduct@{outerProduct}}
 \index{outerProduct@{outerProduct}!core_func_matrix@{core\_\-func\_\-matrix}}
@@ -104,3 +148,15 @@ Treats the first parameter c as a column vector and the second parameter r as a 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.6 Matrix Functions}\end{Desc}
 \begin{Desc}
 \item[\hyperlink{todo__todo000048}{Todo}]Clarify the declaration to specify that matType doesn't have to be provided when used. \end{Desc}
+
+
+Definition at line 433 of file func\_\-matrix.inl.
+
+\begin{Code}\begin{verbatim}434         {
+435                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'outerProduct' only accept floating-point inputs");
+436                 return detail::compute_outerProduct<vecTypeA, vecTypeB, T, P>::call(c, r);
+437         }
+\end{verbatim}
+\end{Code}
+
+

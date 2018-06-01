@@ -46,6 +46,8 @@ int \hyperlink{classbt_aligned_object_array_9c72e0a8fa512a04e11fe8c31b09260a}{fi
 
 The \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray} template class uses a subset of the stl::vector interface for its methods It is developed to replace stl::vector to avoid portability issues, including STL alignment issues to add SIMD/SSE data 
 
+Definition at line 53 of file btAlignedObjectArray.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_aligned_object_array_2cc58c74534181a7a10e5c6ab8b21227}{
 \index{btAlignedObjectArray@{btAlignedObjectArray}!resizeNoInitialize@{resizeNoInitialize}}
@@ -56,6 +58,25 @@ The \hyperlink{classbt_aligned_object_array}{btAlignedObjectArray} template clas
 
 resize changes the number of elements in the array. If the new size is larger, the new elements will be constructed using the optional second argument. when the new number of elements is smaller, the destructor will be called, but memory will not be freed, to reduce performance overhead of run-time memory (de)allocations. 
 
+Definition at line 209 of file btAlignedObjectArray.h.
+
+Referenced by btMLCPSolver::createMLCPFast().
+
+\begin{Code}\begin{verbatim}210                 {
+211                         if (newsize > size())
+212                         {
+213                                 reserve(newsize);
+214                         }
+215                         m_size = newsize;
+216                 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btAlignedObjectArray.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btAlignedObjectArray.h\end{CompactItemize}

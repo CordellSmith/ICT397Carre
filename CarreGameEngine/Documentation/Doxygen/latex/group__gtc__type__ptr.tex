@@ -130,7 +130,22 @@ $<$glm/gtc/type\_\-ptr.hpp$>$ need to be included to use these functionalities.
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_g49c18920c113e1e72caea1c3978c8e7f}{
+
+
+Definition at line 442 of file type\_\-ptr.inl.
+
+References glm::make\_\-mat2x2().
+
+\begin{Code}\begin{verbatim}443         {
+444                 return make_mat2x2(ptr);
+445         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_g49c18920c113e1e72caea1c3978c8e7f}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-mat2x2@{make\_\-mat2x2}}
 \index{make\_\-mat2x2@{make\_\-mat2x2}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-mat2x2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat2x2$<$ T, defaultp $>$ glm::make\_\-mat2x2 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -139,7 +154,28 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_g86620b90c993ff8e31f0dff1611bd2da}{
+
+
+Definition at line 352 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+Referenced by glm::make\_\-mat2().
+
+\begin{Code}\begin{verbatim}353         {
+354                 detail::tmat2x2<T, defaultp> Result;
+355                 memcpy(value_ptr(Result), ptr, sizeof(detail::tmat2x2<T, defaultp>));
+356                 return Result;
+357         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtc__type__ptr_g86620b90c993ff8e31f0dff1611bd2da}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-mat2x3@{make\_\-mat2x3}}
 \index{make\_\-mat2x3@{make\_\-mat2x3}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-mat2x3]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat2x3$<$ T, defaultp $>$ glm::make\_\-mat2x3 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -148,7 +184,24 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_g50245f47c0e6f5a2ab5ce157dc3e97ac}{
+
+
+Definition at line 362 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+\begin{Code}\begin{verbatim}363         {
+364                 detail::tmat2x3<T, defaultp> Result;
+365                 memcpy(value_ptr(Result), ptr, sizeof(detail::tmat2x3<T, defaultp>));
+366                 return Result;
+367         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_g50245f47c0e6f5a2ab5ce157dc3e97ac}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-mat2x4@{make\_\-mat2x4}}
 \index{make\_\-mat2x4@{make\_\-mat2x4}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-mat2x4]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat2x4$<$ T, defaultp $>$ glm::make\_\-mat2x4 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -157,7 +210,24 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_g63c04b2cd2367a06e9817a66b5025662}{
+
+
+Definition at line 372 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+\begin{Code}\begin{verbatim}373         {
+374                 detail::tmat2x4<T, defaultp> Result;
+375                 memcpy(value_ptr(Result), ptr, sizeof(detail::tmat2x4<T, defaultp>));
+376                 return Result;
+377         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_g63c04b2cd2367a06e9817a66b5025662}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-mat3@{make\_\-mat3}}
 \index{make\_\-mat3@{make\_\-mat3}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-mat3]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, defaultp $>$ glm::make\_\-mat3 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -166,7 +236,22 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_g6c7d94e71f8df512fca44427311baeae}{
+
+
+Definition at line 450 of file type\_\-ptr.inl.
+
+References glm::make\_\-mat3x3().
+
+\begin{Code}\begin{verbatim}451         {
+452                 return make_mat3x3(ptr);
+453         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_g6c7d94e71f8df512fca44427311baeae}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-mat3x2@{make\_\-mat3x2}}
 \index{make\_\-mat3x2@{make\_\-mat3x2}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-mat3x2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x2$<$ T, defaultp $>$ glm::make\_\-mat3x2 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -175,7 +260,24 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_g206b172296286d333b0ff92e77b28b66}{
+
+
+Definition at line 382 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+\begin{Code}\begin{verbatim}383         {
+384                 detail::tmat3x2<T, defaultp> Result;
+385                 memcpy(value_ptr(Result), ptr, sizeof(detail::tmat3x2<T, defaultp>));
+386                 return Result;
+387         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_g206b172296286d333b0ff92e77b28b66}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-mat3x3@{make\_\-mat3x3}}
 \index{make\_\-mat3x3@{make\_\-mat3x3}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-mat3x3]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, defaultp $>$ glm::make\_\-mat3x3 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -184,7 +286,28 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_g81d4d38acbaded29fb07ca282f089122}{
+
+
+Definition at line 392 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+Referenced by glm::make\_\-mat3().
+
+\begin{Code}\begin{verbatim}393         {
+394                 detail::tmat3x3<T, defaultp> Result;
+395                 memcpy(value_ptr(Result), ptr, sizeof(detail::tmat3x3<T, defaultp>));
+396                 return Result;
+397         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtc__type__ptr_g81d4d38acbaded29fb07ca282f089122}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-mat3x4@{make\_\-mat3x4}}
 \index{make\_\-mat3x4@{make\_\-mat3x4}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-mat3x4]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x4$<$ T, defaultp $>$ glm::make\_\-mat3x4 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -193,7 +316,24 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_g082261bc3bf4a6d320d6beaebcbaf1db}{
+
+
+Definition at line 402 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+\begin{Code}\begin{verbatim}403         {
+404                 detail::tmat3x4<T, defaultp> Result;
+405                 memcpy(value_ptr(Result), ptr, sizeof(detail::tmat3x4<T, defaultp>));
+406                 return Result;
+407         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_g082261bc3bf4a6d320d6beaebcbaf1db}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-mat4@{make\_\-mat4}}
 \index{make\_\-mat4@{make\_\-mat4}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-mat4]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, defaultp $>$ glm::make\_\-mat4 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -202,7 +342,22 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_gc253e8157af1e4ec366c80d4bd90cbb2}{
+
+
+Definition at line 458 of file type\_\-ptr.inl.
+
+References glm::make\_\-mat4x4().
+
+\begin{Code}\begin{verbatim}459         {
+460                 return make_mat4x4(ptr);
+461         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_gc253e8157af1e4ec366c80d4bd90cbb2}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-mat4x2@{make\_\-mat4x2}}
 \index{make\_\-mat4x2@{make\_\-mat4x2}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-mat4x2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x2$<$ T, defaultp $>$ glm::make\_\-mat4x2 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -211,7 +366,24 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_gc375314134d9b3736395a4eda2602590}{
+
+
+Definition at line 412 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+\begin{Code}\begin{verbatim}413         {
+414                 detail::tmat4x2<T, defaultp> Result;
+415                 memcpy(value_ptr(Result), ptr, sizeof(detail::tmat4x2<T, defaultp>));
+416                 return Result;
+417         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_gc375314134d9b3736395a4eda2602590}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-mat4x3@{make\_\-mat4x3}}
 \index{make\_\-mat4x3@{make\_\-mat4x3}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-mat4x3]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x3$<$ T, defaultp $>$ glm::make\_\-mat4x3 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -220,7 +392,24 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_g74e671ae9dc7e5e8f21aa44ea263d76e}{
+
+
+Definition at line 422 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+\begin{Code}\begin{verbatim}423         {
+424                 detail::tmat4x3<T, defaultp> Result;
+425                 memcpy(value_ptr(Result), ptr, sizeof(detail::tmat4x3<T, defaultp>));
+426                 return Result;
+427         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_g74e671ae9dc7e5e8f21aa44ea263d76e}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-mat4x4@{make\_\-mat4x4}}
 \index{make\_\-mat4x4@{make\_\-mat4x4}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-mat4x4]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, defaultp $>$ glm::make\_\-mat4x4 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -229,7 +418,28 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a matrix from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_gac5b8f1104856835d3d65d854362c85b}{
+
+
+Definition at line 432 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+Referenced by glm::make\_\-mat4().
+
+\begin{Code}\begin{verbatim}433         {
+434                 detail::tmat4x4<T, defaultp> Result;
+435                 memcpy(value_ptr(Result), ptr, sizeof(detail::tmat4x4<T, defaultp>));
+436                 return Result;
+437         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtc__type__ptr_gac5b8f1104856835d3d65d854362c85b}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-quat@{make\_\-quat}}
 \index{make\_\-quat@{make\_\-quat}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-quat]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, defaultp $>$ glm::make\_\-quat (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -238,7 +448,24 @@ Build a matrix from a pointer. \begin{Desc}
 
 Build a quaternion from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_g7009d8090f046d1ce98e59df584fff46}{
+
+
+Definition at line 466 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+\begin{Code}\begin{verbatim}467         {
+468                 detail::tquat<T, defaultp> Result;
+469                 memcpy(value_ptr(Result), ptr, sizeof(detail::tquat<T, defaultp>));
+470                 return Result;
+471         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_g7009d8090f046d1ce98e59df584fff46}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-vec2@{make\_\-vec2}}
 \index{make\_\-vec2@{make\_\-vec2}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-vec2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec2$<$ T, defaultp $>$ glm::make\_\-vec2 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -247,7 +474,24 @@ Build a quaternion from a pointer. \begin{Desc}
 
 Build a vector from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_g0b727d0acba617ec7b9af9f06892336a}{
+
+
+Definition at line 322 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+\begin{Code}\begin{verbatim}323         {
+324                 detail::tvec2<T, defaultp> Result;
+325                 memcpy(value_ptr(Result), ptr, sizeof(detail::tvec2<T, defaultp>));
+326                 return Result;
+327         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_g0b727d0acba617ec7b9af9f06892336a}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-vec3@{make\_\-vec3}}
 \index{make\_\-vec3@{make\_\-vec3}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-vec3]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, defaultp $>$ glm::make\_\-vec3 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -256,7 +500,24 @@ Build a vector from a pointer. \begin{Desc}
 
 Build a vector from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_gf44d3c8aa09a7a8021ae5312e2f1f091}{
+
+
+Definition at line 332 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+\begin{Code}\begin{verbatim}333         {
+334                 detail::tvec3<T, defaultp> Result;
+335                 memcpy(value_ptr(Result), ptr, sizeof(detail::tvec3<T, defaultp>));
+336                 return Result;
+337         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_gf44d3c8aa09a7a8021ae5312e2f1f091}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!make\_\-vec4@{make\_\-vec4}}
 \index{make\_\-vec4@{make\_\-vec4}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[make\_\-vec4]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ T, defaultp $>$ glm::make\_\-vec4 (T const $\ast$const  {\em ptr})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -265,7 +526,24 @@ Build a vector from a pointer. \begin{Desc}
 
 Build a vector from a pointer. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
-\hypertarget{group__gtc__type__ptr_ga84b8d637d0b816514e2db6ce19cec6c}{
+
+
+Definition at line 342 of file type\_\-ptr.inl.
+
+References glm::value\_\-ptr().
+
+\begin{Code}\begin{verbatim}343         {
+344                 detail::tvec4<T, defaultp> Result;
+345                 memcpy(value_ptr(Result), ptr, sizeof(detail::tvec4<T, defaultp>));
+346                 return Result;
+347         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__type__ptr_ga84b8d637d0b816514e2db6ce19cec6c}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[value\_\-ptr]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T$\ast$ glm::value\_\-ptr (detail::tquat$<$ T, P $>$ \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -274,6 +552,17 @@ Build a vector from a pointer. \begin{Desc}
 
 Return the address to the data of the quaternion input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 312 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}315         {
+316                 return &(q[0]);
+317         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g06ca6cd0663b5a1ed1c217efc80013d8}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -283,6 +572,17 @@ Return the address to the data of the quaternion input. \begin{Desc}
 
 Return the constant address to the data of the input parameter. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 301 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}304         {
+305                 return &(q[0]);
+306         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g1ba54cb6c4ff3c61c27f4883bddf6d31}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -292,6 +592,17 @@ Return the constant address to the data of the input parameter. \begin{Desc}
 
 Return the address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 292 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}293         {
+294                 return &(mat[0].x);
+295         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g7c8877c9dc37f2229d4b75fd735be5d5}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -301,6 +612,17 @@ Return the address to the data of the matrix input. \begin{Desc}
 
 Return the constant address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 282 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}285         {
+286                 return &(mat[0].x);
+287         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_gf7f8f1087650774da27f31c99175cfeb}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -310,6 +632,17 @@ Return the constant address to the data of the matrix input. \begin{Desc}
 
 Return the address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 271 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}274         {
+275                 return &(mat[0].x);
+276         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g7ac16d67cf7bb44cb53bc7e6a7c8bd2c}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -319,6 +652,17 @@ Return the address to the data of the matrix input. \begin{Desc}
 
 Return the constant address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 260 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}263         {
+264                 return &(mat[0].x);
+265         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_gcf65ffcdfc741ebebedfc7a50e2bde7f}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -328,6 +672,17 @@ Return the constant address to the data of the matrix input. \begin{Desc}
 
 Return the address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 249 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}252         {
+253                 return &(mat[0].x);
+254         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g548aa4697fc58fdd3d33df6c57777191}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -337,6 +692,17 @@ Return the address to the data of the matrix input. \begin{Desc}
 
 Return the constant address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 238 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}241         {
+242                 return &(mat[0].x);
+243         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g998aae25d0d9de346b951148c61e930e}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -346,6 +712,17 @@ Return the constant address to the data of the matrix input. \begin{Desc}
 
 Return the address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 227 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}230         {
+231                 return &(mat[0].x);
+232         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g9efd0cc6b3e12ec8953d9a96e8b750b0}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -355,6 +732,17 @@ Return the address to the data of the matrix input. \begin{Desc}
 
 Return the constant address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 216 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}219         {
+220                 return &(mat[0].x);
+221         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_gd4e46790704d514a05d86164af942d72}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -364,6 +752,17 @@ Return the constant address to the data of the matrix input. \begin{Desc}
 
 Return the address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 205 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}208         {
+209                 return &(mat[0].x);
+210         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g3ad2904b61a8c3fe50ccb6222e6e928c}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -373,6 +772,17 @@ Return the address to the data of the matrix input. \begin{Desc}
 
 Return the constant address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 194 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}197         {
+198                 return &(mat[0].x);
+199         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g12dda3f2717411f15a1a317a82113f14}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -382,6 +792,17 @@ Return the constant address to the data of the matrix input. \begin{Desc}
 
 Return the address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 183 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}186         {
+187                 return &(mat[0].x);
+188         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g76ad4707fac9af56b7eaea2c9b6019fb}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -391,6 +812,17 @@ Return the address to the data of the matrix input. \begin{Desc}
 
 Return the constant address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 172 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}175         {
+176                 return &(mat[0].x);
+177         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g5f34b63d9c6322a3a61f15ee63768304}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -398,7 +830,18 @@ Return the constant address to the data of the matrix input. \begin{Desc}
 \label{group__gtc__type__ptr_g5f34b63d9c6322a3a61f15ee63768304}
 
 
-Return the address to the data of the matrix input. From GLM\_\-GTC\_\-type\_\-ptr extension. \hypertarget{group__gtc__type__ptr_gcb2a7024434ab32998c6ade8ec0c0e4b}{
+Return the address to the data of the matrix input. From GLM\_\-GTC\_\-type\_\-ptr extension. 
+
+Definition at line 161 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}164         {
+165                 return &(mat[0].x);
+166         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtc__type__ptr_gcb2a7024434ab32998c6ade8ec0c0e4b}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[value\_\-ptr]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T const$\ast$ glm::value\_\-ptr (detail::tmat4x4$<$ T, P $>$ const \& {\em mat})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -407,6 +850,17 @@ Return the address to the data of the matrix input. From GLM\_\-GTC\_\-type\_\-p
 
 Return the constant address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 150 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}153         {
+154                 return &(mat[0].x);
+155         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_ge90c54e1a61d5ad0417d3c1a7800dfdc}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -416,6 +870,17 @@ Return the constant address to the data of the matrix input. \begin{Desc}
 
 Return the address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 139 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}142         {
+143                 return &(mat[0].x);
+144         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g78aceb3dc479cf7745bc5a0d9f751504}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -425,6 +890,17 @@ Return the address to the data of the matrix input. \begin{Desc}
 
 Return the constant address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 128 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}131         {
+132                 return &(mat[0].x);
+133         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g2005106958abf8304187586557d11444}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -434,6 +910,17 @@ Return the constant address to the data of the matrix input. \begin{Desc}
 
 Return the address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 117 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}120         {
+121                 return &(mat[0].x);
+122         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g97a60e78c46993259f0cbac724d0b354}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -443,6 +930,17 @@ Return the address to the data of the matrix input. \begin{Desc}
 
 Return the constant address to the data of the matrix input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 106 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}109         {
+110                 return &(mat[0].x);
+111         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g793e108db1bc068a8c09cf75c1b04389}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -450,7 +948,18 @@ Return the constant address to the data of the matrix input. \begin{Desc}
 \label{group__gtc__type__ptr_g793e108db1bc068a8c09cf75c1b04389}
 
 
-Return the address to the data of the vector input. From GLM\_\-GTC\_\-type\_\-ptr extension. \hypertarget{group__gtc__type__ptr_gc66d56efb1b37e96a17d235374f53a03}{
+Return the address to the data of the vector input. From GLM\_\-GTC\_\-type\_\-ptr extension. 
+
+Definition at line 95 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}98         {
+99                 return &(vec.x);
+100         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtc__type__ptr_gc66d56efb1b37e96a17d235374f53a03}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
 \subsubsection[value\_\-ptr]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T const$\ast$ glm::value\_\-ptr (detail::tvec4$<$ T, P $>$ const \& {\em vec})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -459,6 +968,17 @@ Return the address to the data of the vector input. From GLM\_\-GTC\_\-type\_\-p
 
 Return the constant address to the data of the vector input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 84 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}87         {
+88                 return &(vec.x);
+89         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_ga3e39c9c4cf1c1f573037fb2d6e6a1f9}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -468,6 +988,17 @@ Return the constant address to the data of the vector input. \begin{Desc}
 
 Return the address to the data of the vector input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 73 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}76         {
+77                 return &(vec.x);
+78         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g5668973c91b739c1a19f0ef201ddce50}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -477,6 +1008,17 @@ Return the address to the data of the vector input. \begin{Desc}
 
 Return the constant address to the data of the vector input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 62 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}65         {
+66                 return &(vec.x);
+67         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_gfb7060ef2ca0edab610e0069ed911531}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -486,6 +1028,17 @@ Return the constant address to the data of the vector input. \begin{Desc}
 
 Return the address to the data of the vector input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 51 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}54         {
+55                 return &(vec.x);
+56         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_gb43f07f8b8793c17c58c7b5826d4d5ff}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -495,6 +1048,17 @@ Return the address to the data of the vector input. \begin{Desc}
 
 Return the constant address to the data of the vector input. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Definition at line 40 of file type\_\-ptr.inl.
+
+\begin{Code}\begin{verbatim}43         {
+44                 return &(vec.x);
+45         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__type__ptr_g87d5cb613f75f83973609ccb8922200b}{
 \index{gtc\_\-type\_\-ptr@{gtc\_\-type\_\-ptr}!value\_\-ptr@{value\_\-ptr}}
 \index{value\_\-ptr@{value\_\-ptr}!gtc_type_ptr@{gtc\_\-type\_\-ptr}}
@@ -504,3 +1068,8 @@ Return the constant address to the data of the vector input. \begin{Desc}
 
 Return the constant address to the data of the input parameter. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__type__ptr}{GLM\_\-GTC\_\-type\_\-ptr} \end{Desc}
+
+
+Referenced by glm::make\_\-mat2x2(), glm::make\_\-mat2x3(), glm::make\_\-mat2x4(), glm::make\_\-mat3x2(), glm::make\_\-mat3x3(), glm::make\_\-mat3x4(), glm::make\_\-mat4x2(), glm::make\_\-mat4x3(), glm::make\_\-mat4x4(), glm::make\_\-quat(), glm::make\_\-vec2(), glm::make\_\-vec3(), and glm::make\_\-vec4().
+
+Here is the caller graph for this function:

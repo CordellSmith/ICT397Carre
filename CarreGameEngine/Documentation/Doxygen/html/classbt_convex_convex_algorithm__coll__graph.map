@@ -1,6 +1,9 @@
-<area shape="rect" href="$classbt_activating_collision_algorithm.html" title="This class is not enabled yet (work&#45;in&#45;progress) to more aggressively activate objects..." alt="" coords="589,8,781,35">
-<area shape="rect" href="$classbt_collision_algorithm.html" title="btCollisionAlgorithm" alt="" coords="276,8,412,35">
-<area shape="rect" href="$classbt_dispatcher.html" title="btDispatcher" alt="" coords="7,8,100,35">
-<area shape="rect" href="$classbt_convex_penetration_depth_solver.html" title="ConvexPenetrationDepthSolver provides an interface for penetration depth calculation..." alt="" coords="581,59,789,85">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btVector3 \&gt;" alt="" coords="573,121,797,148">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btVector3, 16 \&gt;" alt="" coords="231,121,457,148">
+<area shape="rect" href="$classbt_activating_collision_algorithm.html" title="This class is not enabled yet (work&#45;in&#45;progress) to more aggressively activate objects..." alt="" coords="1160,8,1352,35">
+<area shape="rect" href="$classbt_collision_algorithm.html" title="btCollisionAlgorithm" alt="" coords="860,8,996,35">
+<area shape="rect" href="$classbt_dispatcher.html" title="btDispatcher" alt="" coords="425,8,519,35">
+<area shape="rect" href="$classbt_convex_penetration_depth_solver.html" title="ConvexPenetrationDepthSolver provides an interface for penetration depth calculation..." alt="" coords="1152,59,1360,85">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btVector3 \&gt;" alt="" coords="1144,121,1368,148">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btVector3, 16 \&gt;" alt="" coords="588,79,815,105">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,105,229,132">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="383,132,561,159">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="840,135,1016,161">

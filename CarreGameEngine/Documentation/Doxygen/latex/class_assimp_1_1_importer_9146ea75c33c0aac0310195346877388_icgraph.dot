@@ -1,0 +1,10 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="Assimp::Importer::IsExtensionSupported",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="Assimp::Importer::IsExtensionSupported",height=0.2,width=0.4,color="black",URL="$class_assimp_1_1_importer.html#5b01905366f5bf8d1f89d51f755bf7d2",tooltip="Returns whether a given file extension is supported by ASSIMP."];
+}

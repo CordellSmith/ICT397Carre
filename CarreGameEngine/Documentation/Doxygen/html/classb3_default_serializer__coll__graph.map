@@ -1,22 +1,30 @@
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; char * \&gt;" alt="" coords="779,8,984,35">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; char *, 16 \&gt;" alt="" coords="395,8,603,35">
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; short \&gt;" alt="" coords="781,59,981,85">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; short, 16 \&gt;" alt="" coords="397,59,600,85">
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; short * \&gt;" alt="" coords="777,109,985,136">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; short *, 16 \&gt;" alt="" coords="392,109,605,136">
-<area shape="rect" href="$classb3_hash_map.html" title="b3HashMap\&lt; b3HashInt, int \&gt;" alt="" coords="784,261,979,288">
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; b3HashInt \&gt;" alt="" coords="384,261,613,288">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; b3HashInt, 16 \&gt;" alt="" coords="16,261,248,288">
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; int \&gt;" alt="" coords="407,415,591,441">
-<area shape="rect" href="$classb3_hash_map.html" title="b3HashMap\&lt; b3HashString, int \&gt;" alt="" coords="775,211,988,237">
-<area shape="rect" href="$classb3_hash_map.html" title="b3HashMap\&lt; b3HashPtr, b3PointerUid \&gt;" alt="" coords="753,500,1009,527">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; int, 16 \&gt;" alt="" coords="37,415,227,441">
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; b3Chunk * \&gt;" alt="" coords="765,160,997,187">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; b3Chunk *, 16 \&gt;" alt="" coords="381,160,616,187">
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; b3HashString \&gt;" alt="" coords="375,211,623,237">
-<area shape="rect" href="$structb3_hash_string.html" title="very basic hashable string implementation, compatible with b3HashMap" alt="" coords="83,160,181,187">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; b3HashString, 16 \&gt;" alt="" coords="5,211,259,237">
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; b3PointerUid \&gt;" alt="" coords="376,523,621,549">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; b3PointerUid, 16 \&gt;" alt="" coords="8,523,256,549">
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; b3HashPtr \&gt;" alt="" coords="383,573,615,600">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; b3HashPtr, 16 \&gt;" alt="" coords="15,573,249,600">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; char * \&gt;" alt="" coords="1364,88,1569,115">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; char *, 16 \&gt;" alt="" coords="683,88,891,115">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,395,232,421">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="428,431,609,457">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; short, 16 \&gt;" alt="" coords="685,156,888,183">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; short *, 16 \&gt;" alt="" coords="680,47,893,73">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; b3HashInt, 16 \&gt;" alt="" coords="403,264,635,291">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; int, 16 \&gt;" alt="" coords="424,485,613,512">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; Key, 16 \&gt;" alt="" coords="688,303,885,329">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; Value, 16 \&gt;" alt="" coords="959,372,1167,399">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; b3Chunk *, 16 \&gt;" alt="" coords="401,892,636,919">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; b3HashString, 16 \&gt;" alt="" coords="936,661,1189,688">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; b3PointerUid, 16 \&gt;" alt="" coords="663,676,911,703">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; b3HashPtr, 16 \&gt;" alt="" coords="945,804,1180,831">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; T \&gt;" alt="" coords="973,424,1152,451">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; short \&gt;" alt="" coords="1367,168,1567,195">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; short * \&gt;" alt="" coords="1363,8,1571,35">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; b3HashInt \&gt;" alt="" coords="1352,245,1581,272">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; int \&gt;" alt="" coords="1375,479,1559,505">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; Key \&gt;" alt="" coords="1369,299,1564,325">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; Value \&gt;" alt="" coords="1365,375,1568,401">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; b3Chunk * \&gt;" alt="" coords="1351,861,1583,888">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; b3HashString \&gt;" alt="" coords="1343,588,1591,615">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; b3PointerUid \&gt;" alt="" coords="1344,709,1589,736">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; b3HashPtr \&gt;" alt="" coords="1351,773,1583,800">
+<area shape="rect" href="$classb3_hash_map.html" title="b3HashMap\&lt; b3HashInt, int \&gt;" alt="" coords="2147,341,2341,368">
+<area shape="rect" href="$classb3_hash_map.html" title="b3HashMap\&lt; Key, Value \&gt;" alt="" coords="1720,403,1899,429">
+<area shape="rect" href="$classb3_hash_map.html" title="b3HashMap\&lt; b3HashString, int \&gt;" alt="" coords="2137,459,2351,485">
+<area shape="rect" href="$classb3_hash_map.html" title="b3HashMap\&lt; b3HashPtr, b3PointerUid \&gt;" alt="" coords="2116,645,2372,672">
+<area shape="rect" href="$structb3_hash_string.html" title="very basic hashable string implementation, compatible with b3HashMap" alt="" coords="1013,595,1112,621">

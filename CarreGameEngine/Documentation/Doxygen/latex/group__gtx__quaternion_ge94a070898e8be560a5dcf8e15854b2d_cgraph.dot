@@ -1,0 +1,35 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::intermediate",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::exp",height=0.2,width=0.4,color="black",URL="$group__core__func__exponential.html#g0e7e69c5497cbbfe4afe08ee5449c553"];
+  Node2 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::exp",height=0.2,width=0.4,color="black",URL="$group__gtx__quaternion.html#gd4ec8f59911f01bb4c298839017ba91f"];
+  Node3 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::cos",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98"];
+  Node3 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="glm::length",height=0.2,width=0.4,color="black",URL="$group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e"];
+  Node5 -> Node6 [color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="glm::abs",height=0.2,width=0.4,color="black",URL="$group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1"];
+  Node3 -> Node7 [color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="glm::sin",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2"];
+  Node1 -> Node8 [color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="glm::inverse",height=0.2,width=0.4,color="black",URL="$group__core__func__matrix.html#g4b56decdc6560a13b616c6312bdcc17e"];
+  Node1 -> Node9 [color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="glm::log",height=0.2,width=0.4,color="black",URL="$group__core__func__exponential.html#gce8148db3949f9260f6f883f8dbae808"];
+  Node9 -> Node10 [color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="glm::log",height=0.2,width=0.4,color="black",URL="$group__gtx__quaternion.html#gbed81c73a777fce84fe442bbc17c13ce"];
+  Node10 -> Node11 [color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="glm::atan",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gb89f4e2a1ea1426dc87ab3a06901b68a"];
+  Node11 -> Node12 [color="midnightblue",fontsize=10,style="solid"];
+  Node12 [label="glm::atan2",height=0.2,width=0.4,color="black",URL="$group__gtx__compatibility.html#ga7c3a1b05bab87aa5a7cbc9efadfbc52",tooltip="Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are used..."];
+  Node12 -> Node11 [color="midnightblue",fontsize=10,style="solid"];
+  Node10 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node10 -> Node9 [color="midnightblue",fontsize=10,style="solid"];
+  Node10 -> Node13 [color="midnightblue",fontsize=10,style="solid"];
+  Node13 [label="glm::sqrt",height=0.2,width=0.4,color="black",URL="$group__core__func__exponential.html#gfe49b7b63045b6ab94bffbcd7e7a7bc8"];
+}

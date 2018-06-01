@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btGImpactCollisionAlgorithm Class Reference</title>
+<title>Assignment2 - OOber Taxi: btGImpactCollisionAlgorithm Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btGImpactCollisionAlgorithm Class Reference</h1><!-- doxytag: class="btGImpactCollisionAlgorithm" --><!-- doxytag: inherits="btActivatingCollisionAlgorithm" -->Collision Algorithm for GImpact Shapes.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btGImpactCollisionAlgorithm.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_g_impact_collision_algorithm_8h-source.html">btGImpactCollisionAlgorithm.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btGImpactCollisionAlgorithm:</div>
@@ -73,7 +73,9 @@ Collision Algorithm for GImpact Shapes.
 <p>
 For register this algorithm in Bullet, proceed as following: <div class="fragment"><pre class="fragment"><a class="code" href="classbt_collision_dispatcher.html">btCollisionDispatcher</a> * dispatcher = <span class="keyword">static_cast&lt;</span><a class="code" href="classbt_collision_dispatcher.html">btCollisionDispatcher</a> *<span class="keyword">&gt;</span>(m_dynamicsWorld -&gt;getDispatcher());
 <a class="code" href="classbt_g_impact_collision_algorithm.html#8ddef653ddc1afa7c976abb1ecaf0b98" title="Use this function for register the algorithm externally.">btGImpactCollisionAlgorithm::registerAlgorithm</a>(dispatcher);
-</pre></div> <hr><h2>Member Function Documentation</h2>
+</pre></div> 
+<p>Definition at line <a class="el" href="bt_g_impact_collision_algorithm_8h-source.html#l00054">54</a> of file <a class="el" href="bt_g_impact_collision_algorithm_8h-source.html">btGImpactCollisionAlgorithm.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="1cc907bcb394f7a95d609b1b56a5490e"></a><!-- doxytag: member="btGImpactCollisionAlgorithm::collide_gjk_triangles" ref="1cc907bcb394f7a95d609b1b56a5490e" args="(const btCollisionObjectWrapper *body0Wrap, const btCollisionObjectWrapper *body1Wrap, const btGImpactMeshShapePart *shape0, const btGImpactMeshShapePart *shape1, const int *pairs, int pair_count)" -->
 <div class="memitem">
 <div class="memproto">
@@ -125,6 +127,65 @@ For register this algorithm in Bullet, proceed as following: <div class="fragmen
 
 <p>
 Collision routines 
+<p>Definition at line <a class="el" href="bt_g_impact_collision_algorithm_8cpp-source.html#l00349">349</a> of file <a class="el" href="bt_g_impact_collision_algorithm_8cpp-source.html">btGImpactCollisionAlgorithm.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_g_impact_shape_8h-source.html#l00826">btGImpactMeshShapePart::getBulletTriangle()</a>, <a class="el" href="bt_g_impact_shape_8cpp-source.html#l00056">btGImpactMeshShapePart::lockChildShapes()</a>, <a class="el" href="bt_triangle_shape_ex_8cpp-source.html#l00188">btTriangleShapeEx::overlap_test_conservative()</a>, and <a class="el" href="bt_g_impact_shape_8cpp-source.html#l00067">btGImpactMeshShapePart::unlockChildShapes()</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_g_impact_collision_algorithm_8cpp-source.html#l00461">gimpact_vs_gimpact()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00354"></a>00354 {
+<a name="l00355"></a>00355         <a class="code" href="classbt_triangle_shape_ex.html" title="Helper class for colliding Bullet Triangle Shapes.">btTriangleShapeEx</a> tri0;
+<a name="l00356"></a>00356         <a class="code" href="classbt_triangle_shape_ex.html" title="Helper class for colliding Bullet Triangle Shapes.">btTriangleShapeEx</a> tri1;
+<a name="l00357"></a>00357 
+<a name="l00358"></a>00358         shape0-&gt;<a class="code" href="classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28" title="call when reading child shapes">lockChildShapes</a>();
+<a name="l00359"></a>00359         shape1-&gt;<a class="code" href="classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28" title="call when reading child shapes">lockChildShapes</a>();
+<a name="l00360"></a>00360 
+<a name="l00361"></a>00361         <span class="keyword">const</span> <span class="keywordtype">int</span> * pair_pointer = pairs;
+<a name="l00362"></a>00362 
+<a name="l00363"></a>00363         <span class="keywordflow">while</span>(pair_count--)
+<a name="l00364"></a>00364         {
+<a name="l00365"></a>00365 
+<a name="l00366"></a>00366                 m_triface0 = *(pair_pointer);
+<a name="l00367"></a>00367                 m_triface1 = *(pair_pointer+1);
+<a name="l00368"></a>00368                 pair_pointer+=2;
+<a name="l00369"></a>00369 
+<a name="l00370"></a>00370 
+<a name="l00371"></a>00371 
+<a name="l00372"></a>00372                 shape0-&gt;<a class="code" href="classbt_g_impact_mesh_shape_part.html#5deaf3963fd7b8c337a322a5d775b478">getBulletTriangle</a>(m_triface0,tri0);
+<a name="l00373"></a>00373                 shape1-&gt;<a class="code" href="classbt_g_impact_mesh_shape_part.html#5deaf3963fd7b8c337a322a5d775b478">getBulletTriangle</a>(m_triface1,tri1);
+<a name="l00374"></a>00374 
+<a name="l00375"></a>00375 
+<a name="l00376"></a>00376                 <span class="comment">//collide two convex shapes</span>
+<a name="l00377"></a>00377                 <span class="keywordflow">if</span>(tri0.<a class="code" href="classbt_triangle_shape_ex.html#8642843da440361eecf27d5a074d6231" title="class btTriangleShapeEx: public btTriangleShape">overlap_test_conservative</a>(tri1))
+<a name="l00378"></a>00378                 {
+<a name="l00379"></a>00379                         convex_vs_convex_collision(body0Wrap,body1Wrap,&amp;tri0,&amp;tri1);
+<a name="l00380"></a>00380                 }
+<a name="l00381"></a>00381 
+<a name="l00382"></a>00382         }
+<a name="l00383"></a>00383 
+<a name="l00384"></a>00384         shape0-&gt;<a class="code" href="classbt_g_impact_mesh_shape_part.html#0624b4e736275809ea259a7144ac0a48">unlockChildShapes</a>();
+<a name="l00385"></a>00385         shape1-&gt;<a class="code" href="classbt_g_impact_mesh_shape_part.html#0624b4e736275809ea259a7144ac0a48">unlockChildShapes</a>();
+<a name="l00386"></a>00386 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_collision_algorithm_1cc907bcb394f7a95d609b1b56a5490e_cgraph.png" border="0" usemap="#classbt_g_impact_collision_algorithm_1cc907bcb394f7a95d609b1b56a5490e_cgraph_map" alt=""></center>
+<map name="classbt_g_impact_collision_algorithm_1cc907bcb394f7a95d609b1b56a5490e_cgraph_map">
+<area shape="rect" href="classbt_g_impact_mesh_shape_part.html#5deaf3963fd7b8c337a322a5d775b478" title="btGImpactMeshShapePart::getBulletTriangle" alt="" coords="373,5,651,32"><area shape="rect" href="classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28" title="call when reading child shapes" alt="" coords="372,56,652,83"><area shape="rect" href="classbt_triangle_shape_ex.html#8642843da440361eecf27d5a074d6231" title="class btTriangleShapeEx: public btTriangleShape" alt="" coords="371,107,653,133"><area shape="rect" href="classbt_g_impact_mesh_shape_part.html#0624b4e736275809ea259a7144ac0a48" title="btGImpactMeshShapePart::unlockChildShapes" alt="" coords="365,157,659,184"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#8954b68cdc557ffab6c4c0361cea109a" title="btGImpactQuantizedBvh::getPrimitiveManager" alt="" coords="744,5,1029,32"><area shape="rect" href="classbt_g_impact_mesh_shape_part_1_1_trimesh_primitive_manager.html#48a013e72b76f832638a54326a7cc709" title="btGImpactMeshShapePart::TrimeshPrimitiveManager::lock" alt="" coords="707,56,1067,83"><area shape="rect" href="classbt_triangle_shape_ex.html#004b61bd84c01fde9edd25e0c538bd1d" title="btTriangleShapeEx::buildTriPlane" alt="" coords="781,107,992,133"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_collision_algorithm_1cc907bcb394f7a95d609b1b56a5490e_icgraph.png" border="0" usemap="#classbt_g_impact_collision_algorithm_1cc907bcb394f7a95d609b1b56a5490e_icgraph_map" alt=""></center>
+<map name="classbt_g_impact_collision_algorithm_1cc907bcb394f7a95d609b1b56a5490e_icgraph_map">
+<area shape="rect" href="classbt_g_impact_collision_algorithm.html#2a6bd5ca4d26e3578d2613543e85429b" title="Collides two gimpact shapes." alt="" coords="365,5,677,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="2a6bd5ca4d26e3578d2613543e85429b"></a><!-- doxytag: member="btGImpactCollisionAlgorithm::gimpact_vs_gimpact" ref="2a6bd5ca4d26e3578d2613543e85429b" args="(const btCollisionObjectWrapper *body0Wrap, const btCollisionObjectWrapper *body1Wrap, const btGImpactShapeInterface *shape0, const btGImpactShapeInterface *shape1)" -->
@@ -169,12 +230,125 @@ Collides two gimpact shapes.
 <p>
 <dl class="pre" compact><dt><b>Precondition:</b></dt><dd>shape0 and shape1 couldn't be <a class="el" href="classbt_g_impact_mesh_shape.html" title="This class manages a mesh supplied by the btStridingMeshInterface interface.">btGImpactMeshShape</a> objects </dd></dl>
 
+<p>Definition at line <a class="el" href="bt_g_impact_collision_algorithm_8cpp-source.html#l00461">461</a> of file <a class="el" href="bt_g_impact_collision_algorithm_8cpp-source.html">btGImpactCollisionAlgorithm.cpp</a>.</p>
+
+<p>References <a class="el" href="classbt_g_impact_shape_interface.html#9ea24ba36990721e4f55851afc421e06">btGImpactShapeInterface::childrenHasTransform()</a>, <a class="el" href="bt_g_impact_collision_algorithm_8cpp-source.html#l00349">collide_gjk_triangles()</a>, <a class="el" href="bt_g_impact_collision_algorithm_8cpp-source.html#l00156">GIM_ShapeRetriever::getChildShape()</a>, <a class="el" href="classbt_g_impact_shape_interface.html#c06b1f597e2b628bf1e0523ab1c62d08">btGImpactShapeInterface::getChildTransform()</a>, <a class="el" href="classbt_g_impact_shape_interface.html#25cacbe448997e3f8ec99cb2d4952859">btGImpactShapeInterface::getGImpactShapeType()</a>, <a class="el" href="bt_g_impact_shape_8h-source.html#l00951">btGImpactMeshShape::getMeshPart()</a>, <a class="el" href="bt_g_impact_shape_8h-source.html#l00946">btGImpactMeshShape::getMeshPartCount()</a>, <a class="el" href="bt_g_impact_shape_8h-source.html#l00231">btGImpactShapeInterface::lockChildShapes()</a>, <a class="el" href="bt_g_impact_bvh_structs_8h-source.html#l00036">GIM_PAIR::m_index1</a>, <a class="el" href="bt_g_impact_bvh_structs_8h-source.html#l00037">GIM_PAIR::m_index2</a>, <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>, and <a class="el" href="bt_g_impact_shape_8h-source.html#l00235">btGImpactShapeInterface::unlockChildShapes()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00466"></a>00466 {
+<a name="l00467"></a>00467 
+<a name="l00468"></a>00468         <span class="keywordflow">if</span>(shape0-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#25cacbe448997e3f8ec99cb2d4952859" title="Base method for determinig which kind of GIMPACT shape we get.">getGImpactShapeType</a>()==CONST_GIMPACT_TRIMESH_SHAPE)
+<a name="l00469"></a>00469         {
+<a name="l00470"></a>00470                 <span class="keyword">const</span> <a class="code" href="classbt_g_impact_mesh_shape.html" title="This class manages a mesh supplied by the btStridingMeshInterface interface.">btGImpactMeshShape</a> * meshshape0 = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classbt_g_impact_mesh_shape.html" title="This class manages a mesh supplied by the btStridingMeshInterface interface.">btGImpactMeshShape</a> *<span class="keyword">&gt;</span>(shape0);
+<a name="l00471"></a>00471                 m_part0 = meshshape0-&gt;<a class="code" href="classbt_g_impact_mesh_shape.html#6cea13ee2675f58721e9cde9e7acc917">getMeshPartCount</a>();
+<a name="l00472"></a>00472 
+<a name="l00473"></a>00473                 <span class="keywordflow">while</span>(m_part0--)
+<a name="l00474"></a>00474                 {
+<a name="l00475"></a>00475                         <a class="code" href="classbt_g_impact_collision_algorithm.html#2a6bd5ca4d26e3578d2613543e85429b" title="Collides two gimpact shapes.">gimpact_vs_gimpact</a>(body0Wrap,body1Wrap,meshshape0-&gt;<a class="code" href="classbt_g_impact_mesh_shape.html#bac8a0def4182767d8556d7ed8b08a7c">getMeshPart</a>(m_part0),shape1);
+<a name="l00476"></a>00476                 }
+<a name="l00477"></a>00477 
+<a name="l00478"></a>00478                 <span class="keywordflow">return</span>;
+<a name="l00479"></a>00479         }
+<a name="l00480"></a>00480 
+<a name="l00481"></a>00481         <span class="keywordflow">if</span>(shape1-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#25cacbe448997e3f8ec99cb2d4952859" title="Base method for determinig which kind of GIMPACT shape we get.">getGImpactShapeType</a>()==CONST_GIMPACT_TRIMESH_SHAPE)
+<a name="l00482"></a>00482         {
+<a name="l00483"></a>00483                 <span class="keyword">const</span> <a class="code" href="classbt_g_impact_mesh_shape.html" title="This class manages a mesh supplied by the btStridingMeshInterface interface.">btGImpactMeshShape</a> * meshshape1 = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classbt_g_impact_mesh_shape.html" title="This class manages a mesh supplied by the btStridingMeshInterface interface.">btGImpactMeshShape</a> *<span class="keyword">&gt;</span>(shape1);
+<a name="l00484"></a>00484                 m_part1 = meshshape1-&gt;<a class="code" href="classbt_g_impact_mesh_shape.html#6cea13ee2675f58721e9cde9e7acc917">getMeshPartCount</a>();
+<a name="l00485"></a>00485 
+<a name="l00486"></a>00486                 <span class="keywordflow">while</span>(m_part1--)
+<a name="l00487"></a>00487                 {
+<a name="l00488"></a>00488 
+<a name="l00489"></a>00489                         <a class="code" href="classbt_g_impact_collision_algorithm.html#2a6bd5ca4d26e3578d2613543e85429b" title="Collides two gimpact shapes.">gimpact_vs_gimpact</a>(body0Wrap,body1Wrap,shape0,meshshape1-&gt;<a class="code" href="classbt_g_impact_mesh_shape.html#bac8a0def4182767d8556d7ed8b08a7c">getMeshPart</a>(m_part1));
+<a name="l00490"></a>00490 
+<a name="l00491"></a>00491                 }
+<a name="l00492"></a>00492 
+<a name="l00493"></a>00493                 <span class="keywordflow">return</span>;
+<a name="l00494"></a>00494         }
+<a name="l00495"></a>00495 
+<a name="l00496"></a>00496 
+<a name="l00497"></a>00497         btTransform orgtrans0 = body0Wrap-&gt;getWorldTransform();
+<a name="l00498"></a>00498         btTransform orgtrans1 = body1Wrap-&gt;getWorldTransform();
+<a name="l00499"></a>00499 
+<a name="l00500"></a>00500         <a class="code" href="classbt_pair_set.html" title="A pairset array.">btPairSet</a> pairset;
+<a name="l00501"></a>00501 
+<a name="l00502"></a>00502         gimpact_vs_gimpact_find_pairs(orgtrans0,orgtrans1,shape0,shape1,pairset);
+<a name="l00503"></a>00503 
+<a name="l00504"></a>00504         <span class="keywordflow">if</span>(pairset.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>()== 0) <span class="keywordflow">return</span>;
+<a name="l00505"></a>00505 
+<a name="l00506"></a>00506         <span class="keywordflow">if</span>(shape0-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#25cacbe448997e3f8ec99cb2d4952859" title="Base method for determinig which kind of GIMPACT shape we get.">getGImpactShapeType</a>() == CONST_GIMPACT_TRIMESH_SHAPE_PART &amp;&amp;
+<a name="l00507"></a>00507                 shape1-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#25cacbe448997e3f8ec99cb2d4952859" title="Base method for determinig which kind of GIMPACT shape we get.">getGImpactShapeType</a>() == CONST_GIMPACT_TRIMESH_SHAPE_PART)
+<a name="l00508"></a>00508         {
+<a name="l00509"></a>00509                 <span class="keyword">const</span> <a class="code" href="classbt_g_impact_mesh_shape_part.html" title="This class manages a sub part of a mesh supplied by the btStridingMeshInterface interface...">btGImpactMeshShapePart</a> * shapepart0 = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classbt_g_impact_mesh_shape_part.html" title="This class manages a sub part of a mesh supplied by the btStridingMeshInterface interface...">btGImpactMeshShapePart</a> * <span class="keyword">&gt;</span>(shape0);
+<a name="l00510"></a>00510                 <span class="keyword">const</span> <a class="code" href="classbt_g_impact_mesh_shape_part.html" title="This class manages a sub part of a mesh supplied by the btStridingMeshInterface interface...">btGImpactMeshShapePart</a> * shapepart1 = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><a class="code" href="classbt_g_impact_mesh_shape_part.html" title="This class manages a sub part of a mesh supplied by the btStridingMeshInterface interface...">btGImpactMeshShapePart</a> * <span class="keyword">&gt;</span>(shape1);
+<a name="l00511"></a>00511                 <span class="comment">//specialized function</span>
+<a name="l00512"></a>00512 <span class="preprocessor">                #ifdef BULLET_TRIANGLE_COLLISION</span>
+<a name="l00513"></a>00513 <span class="preprocessor"></span>                <a class="code" href="classbt_g_impact_collision_algorithm.html#1cc907bcb394f7a95d609b1b56a5490e">collide_gjk_triangles</a>(body0Wrap,body1Wrap,shapepart0,shapepart1,&amp;pairset[0].m_index1,pairset.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>());
+<a name="l00514"></a>00514 <span class="preprocessor">                #else</span>
+<a name="l00515"></a>00515 <span class="preprocessor"></span>                collide_sat_triangles(body0Wrap,body1Wrap,shapepart0,shapepart1,&amp;pairset[0].m_index1,pairset.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>());
+<a name="l00516"></a>00516 <span class="preprocessor">                #endif</span>
+<a name="l00517"></a>00517 <span class="preprocessor"></span>
+<a name="l00518"></a>00518                 <span class="keywordflow">return</span>;
+<a name="l00519"></a>00519         }
+<a name="l00520"></a>00520 
+<a name="l00521"></a>00521         <span class="comment">//general function</span>
+<a name="l00522"></a>00522 
+<a name="l00523"></a>00523         shape0-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#e5de49e788c97a954ab9f2bde16adf60" title="call when reading child shapes">lockChildShapes</a>();
+<a name="l00524"></a>00524         shape1-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#e5de49e788c97a954ab9f2bde16adf60" title="call when reading child shapes">lockChildShapes</a>();
+<a name="l00525"></a>00525 
+<a name="l00526"></a>00526         <a class="code" href="class_g_i_m___shape_retriever.html" title="Retrieving shapes shapes.">GIM_ShapeRetriever</a> retriever0(shape0);
+<a name="l00527"></a>00527         <a class="code" href="class_g_i_m___shape_retriever.html" title="Retrieving shapes shapes.">GIM_ShapeRetriever</a> retriever1(shape1);
+<a name="l00528"></a>00528 
+<a name="l00529"></a>00529         <span class="keywordtype">bool</span> child_has_transform0 = shape0-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#9ea24ba36990721e4f55851afc421e06" title="if true, then its children must get transforms.">childrenHasTransform</a>();
+<a name="l00530"></a>00530         <span class="keywordtype">bool</span> child_has_transform1 = shape1-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#9ea24ba36990721e4f55851afc421e06" title="if true, then its children must get transforms.">childrenHasTransform</a>();
+<a name="l00531"></a>00531 
+<a name="l00532"></a>00532         <span class="keywordtype">int</span> i = pairset.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>();
+<a name="l00533"></a>00533         <span class="keywordflow">while</span>(i--)
+<a name="l00534"></a>00534         {
+<a name="l00535"></a>00535                 <a class="code" href="struct_g_i_m___p_a_i_r.html" title="Overlapping pair.">GIM_PAIR</a> * pair = &amp;pairset[i];
+<a name="l00536"></a>00536                 m_triface0 = pair-&gt;<a class="code" href="struct_g_i_m___p_a_i_r.html#aa47e96faadf96f0cf08af1e3e63bf16">m_index1</a>;
+<a name="l00537"></a>00537                 m_triface1 = pair-&gt;<a class="code" href="struct_g_i_m___p_a_i_r.html#b4036400db03b1d66a922cae402523ff">m_index2</a>;
+<a name="l00538"></a>00538                 <span class="keyword">const</span> btCollisionShape * colshape0 = retriever0.getChildShape(m_triface0);
+<a name="l00539"></a>00539                 <span class="keyword">const</span> btCollisionShape * colshape1 = retriever1.getChildShape(m_triface1);
+<a name="l00540"></a>00540 
+<a name="l00541"></a>00541                 btTransform tr0 = body0Wrap-&gt;getWorldTransform();
+<a name="l00542"></a>00542                 btTransform tr1 = body1Wrap-&gt;getWorldTransform();
+<a name="l00543"></a>00543 
+<a name="l00544"></a>00544                 <span class="keywordflow">if</span>(child_has_transform0)
+<a name="l00545"></a>00545                 {
+<a name="l00546"></a>00546                         tr0 = orgtrans0*shape0-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#c06b1f597e2b628bf1e0523ab1c62d08" title="Gets the children transform.">getChildTransform</a>(m_triface0);
+<a name="l00547"></a>00547                 }
+<a name="l00548"></a>00548 
+<a name="l00549"></a>00549                 <span class="keywordflow">if</span>(child_has_transform1)
+<a name="l00550"></a>00550                 {
+<a name="l00551"></a>00551                         tr1 = orgtrans1*shape1-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#c06b1f597e2b628bf1e0523ab1c62d08" title="Gets the children transform.">getChildTransform</a>(m_triface1);
+<a name="l00552"></a>00552                 }
+<a name="l00553"></a>00553 
+<a name="l00554"></a>00554                 btCollisionObjectWrapper ob0(body0Wrap,colshape0,body0Wrap-&gt;getCollisionObject(),tr0,m_part0,m_triface0);
+<a name="l00555"></a>00555                 btCollisionObjectWrapper ob1(body1Wrap,colshape1,body1Wrap-&gt;getCollisionObject(),tr1,m_part1,m_triface1);
+<a name="l00556"></a>00556 
+<a name="l00557"></a>00557                 <span class="comment">//collide two convex shapes</span>
+<a name="l00558"></a>00558                 convex_vs_convex_collision(&amp;ob0,&amp;ob1,colshape0,colshape1);
+<a name="l00559"></a>00559         }
+<a name="l00560"></a>00560 
+<a name="l00561"></a>00561         shape0-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#c7da336fdb3165c1d086c766fe42114e">unlockChildShapes</a>();
+<a name="l00562"></a>00562         shape1-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#c7da336fdb3165c1d086c766fe42114e">unlockChildShapes</a>();
+<a name="l00563"></a>00563 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_collision_algorithm_2a6bd5ca4d26e3578d2613543e85429b_cgraph.png" border="0" usemap="#classbt_g_impact_collision_algorithm_2a6bd5ca4d26e3578d2613543e85429b_cgraph_map" alt=""></center>
+<map name="classbt_g_impact_collision_algorithm_2a6bd5ca4d26e3578d2613543e85429b_cgraph_map">
+<area shape="rect" href="classbt_g_impact_shape_interface.html#9ea24ba36990721e4f55851afc421e06" title="if true, then its children must get transforms." alt="" coords="372,31,671,57"><area shape="rect" href="classbt_g_impact_collision_algorithm.html#1cc907bcb394f7a95d609b1b56a5490e" title="btGImpactCollisionAlgorithm::collide_gjk_triangles" alt="" coords="367,81,676,108"><area shape="rect" href="class_g_i_m___shape_retriever.html#83751e415bbb4c24f608ea786b7ddb6e" title="GIM_ShapeRetriever::getChildShape" alt="" coords="405,132,637,159"><area shape="rect" href="classbt_g_impact_shape_interface.html#c06b1f597e2b628bf1e0523ab1c62d08" title="Gets the children transform." alt="" coords="381,183,661,209"><area shape="rect" href="classbt_g_impact_shape_interface.html#25cacbe448997e3f8ec99cb2d4952859" title="Base method for determinig which kind of GIMPACT shape we get." alt="" coords="368,233,675,260"><area shape="rect" href="classbt_g_impact_mesh_shape.html#bac8a0def4182767d8556d7ed8b08a7c" title="btGImpactMeshShape::getMeshPart" alt="" coords="405,284,637,311"><area shape="rect" href="classbt_g_impact_mesh_shape.html#6cea13ee2675f58721e9cde9e7acc917" title="btGImpactMeshShape::getMeshPartCount" alt="" coords="388,335,655,361"><area shape="rect" href="classbt_g_impact_shape_interface.html#e5de49e788c97a954ab9f2bde16adf60" title="call when reading child shapes" alt="" coords="385,385,657,412"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="433,436,609,463"><area shape="rect" href="classbt_g_impact_shape_interface.html#c7da336fdb3165c1d086c766fe42114e" title="btGImpactShapeInterface::unlockChildShapes" alt="" coords="379,487,664,513"><area shape="rect" href="classbt_g_impact_mesh_shape_part.html#5deaf3963fd7b8c337a322a5d775b478" title="btGImpactMeshShapePart::getBulletTriangle" alt="" coords="733,5,1011,32"><area shape="rect" href="classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28" title="call when reading child shapes" alt="" coords="732,56,1012,83"><area shape="rect" href="classbt_triangle_shape_ex.html#8642843da440361eecf27d5a074d6231" title="class btTriangleShapeEx: public btTriangleShape" alt="" coords="731,107,1013,133"><area shape="rect" href="classbt_g_impact_mesh_shape_part.html#0624b4e736275809ea259a7144ac0a48" title="btGImpactMeshShapePart::unlockChildShapes" alt="" coords="725,157,1019,184"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#8954b68cdc557ffab6c4c0361cea109a" title="btGImpactQuantizedBvh::getPrimitiveManager" alt="" coords="1104,5,1389,32"><area shape="rect" href="classbt_g_impact_mesh_shape_part_1_1_trimesh_primitive_manager.html#48a013e72b76f832638a54326a7cc709" title="btGImpactMeshShapePart::TrimeshPrimitiveManager::lock" alt="" coords="1067,56,1427,83"><area shape="rect" href="classbt_triangle_shape_ex.html#004b61bd84c01fde9edd25e0c538bd1d" title="btTriangleShapeEx::buildTriPlane" alt="" coords="1141,107,1352,133"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_g_impact_collision_algorithm_8h-source.html">btGImpactCollisionAlgorithm.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_g_impact_collision_algorithm_8cpp-source.html">btGImpactCollisionAlgorithm.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:27 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:12 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

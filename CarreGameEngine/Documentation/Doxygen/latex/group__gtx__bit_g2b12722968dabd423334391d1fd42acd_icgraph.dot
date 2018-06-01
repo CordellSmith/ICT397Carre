@@ -1,0 +1,14 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::isPowerOfTwo",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::powerOfTwoAbove",height=0.2,width=0.4,color="black",URL="$group__gtx__bit.html#gf27d271ec57b96b6acae9395b9c4a365"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::powerOfTwoBelow",height=0.2,width=0.4,color="black",URL="$group__gtx__bit.html#ga0bb1687b43f594a471c5506cc505dce"];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::powerOfTwoNearest",height=0.2,width=0.4,color="black",URL="$group__gtx__bit.html#g0e3c8f921e59dc07ad9c70bb1376799c"];
+}

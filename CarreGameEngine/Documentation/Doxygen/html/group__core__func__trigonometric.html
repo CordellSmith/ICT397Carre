@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Angle and Trigonometry Functions</title>
+<title>Assignment2 - OOber Taxi: Angle and Trigonometry Functions</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -110,6 +110,26 @@ Arc cosine. Returns an angle whose sine is x. The range of values returned by th
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/acos.xml">GLSL acos man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00119">119</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00799">glm::angle()</a>, <a class="el" href="reciprocal_8inl-source.html#l00079">glm::asec()</a>, <a class="el" href="matrix__interpolation_8inl-source.html#l00014">glm::axisAngle()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00519">glm::mix()</a>, <a class="el" href="rotate__vector_8inl-source.html#l00206">glm::orientation()</a>, <a class="el" href="vector__angle_8inl-source.html#l00053">glm::orientedAngle()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00102">glm::pow()</a>, and <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00562">glm::slerp()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00122"></a>00122         {
+<a name="l00123"></a>00123                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'acos' only accept floating-point input"</span>);
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125                 <span class="keywordflow">return</span> genType(::<a class="code" href="group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078">std::acos</a>(x));
+<a name="l00126"></a>00126         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_gd945cb7263cb202d93ea76aa5d419078_icgraph.png" border="0" usemap="#group__core__func__trigonometric_gd945cb7263cb202d93ea76aa5d419078_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_gd945cb7263cb202d93ea76aa5d419078_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#g48c100d72c9c3295b75c9133ddbb83d1" title="glm::angle" alt="" coords="159,5,239,32"><area shape="rect" href="group__gtc__reciprocal.html#g79e2b1e9949a6c514eef05d462ab01a0" title="glm::asec" alt="" coords="160,56,237,83"><area shape="rect" href="group__gtx__matrix__interpolation.html#g16474d44af6a32a07c50df2409526d95" title="glm::axisAngle" alt="" coords="145,107,252,133"><area shape="rect" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350" title="glm::mix" alt="" coords="163,157,235,184"><area shape="rect" href="group__gtc__quaternion.html#ga75cee4315cd8e7f15eaac3ea944106a" title="Returns the slurp interpolation between two quaternions." alt="" coords="329,183,407,209"><area shape="rect" href="group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e" title="glm::orientation" alt="" coords="144,259,253,285"><area shape="rect" href="group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36" title="glm::orientedAngle" alt="" coords="135,309,263,336"><area shape="rect" href="group__gtx__quaternion.html#g49e7cd8958d474290778760d171a44d2" title="glm::pow" alt="" coords="163,360,235,387"><area shape="rect" href="group__gtx__matrix__interpolation.html#gc618bbef632f87be5c570aa5afe63f30" title="glm::interpolate" alt="" coords="313,107,423,133"><area shape="rect" href="group__core__func__exponential.html#gfdaffc3606f4ee7f415cd64ada108356" title="glm::pow" alt="" coords="332,360,404,387"><area shape="rect" href="group__gtx__norm.html#g2f42190c8743abab279d0a8f5a321692" title="glm::lxNorm" alt="" coords="473,360,564,387"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g7d91deddd26925a390f08448a1b9ab1a"></a><!-- doxytag: member="glm::acosh" ref="g7d91deddd26925a390f08448a1b9ab1a" args="(genType const &amp;x)" -->
@@ -139,6 +159,39 @@ Arc hyperbolic cosine; returns the non-negative inverse of cosh. Results are und
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/acosh.xml">GLSL acosh man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00217">217</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>References <a class="el" href="func__exponential_8inl-source.html#l00116">glm::log()</a>, and <a class="el" href="func__exponential_8inl-source.html#l00219">glm::sqrt()</a>.</p>
+
+<p>Referenced by <a class="el" href="reciprocal_8inl-source.html#l00164">glm::asech()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00220"></a>00220         {
+<a name="l00221"></a>00221                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'acosh' only accept floating-point input"</span>);
+<a name="l00222"></a>00222 
+<a name="l00223"></a>00223                 <span class="keywordflow">if</span>(x &lt; genType(1))
+<a name="l00224"></a>00224                         <span class="keywordflow">return</span> genType(0);
+<a name="l00225"></a>00225                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__quaternion.html#gbed81c73a777fce84fe442bbc17c13ce">log</a>(x + <a class="code" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f">sqrt</a>(x * x - genType(1)));
+<a name="l00226"></a>00226         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_g7d91deddd26925a390f08448a1b9ab1a_cgraph.png" border="0" usemap="#group__core__func__trigonometric_g7d91deddd26925a390f08448a1b9ab1a_cgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_g7d91deddd26925a390f08448a1b9ab1a_cgraph_map">
+<area shape="rect" href="group__core__func__exponential.html#gce8148db3949f9260f6f883f8dbae808" title="glm::log" alt="" coords="140,56,207,83"><area shape="rect" href="group__core__func__exponential.html#gfe49b7b63045b6ab94bffbcd7e7a7bc8" title="glm::sqrt" alt="" coords="380,107,452,133"><area shape="rect" href="group__gtx__quaternion.html#gbed81c73a777fce84fe442bbc17c13ce" title="glm::log" alt="" coords="257,56,324,83"><area shape="rect" href="group__core__func__trigonometric.html#gb89f4e2a1ea1426dc87ab3a06901b68a" title="glm::atan" alt="" coords="379,5,453,32"><area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="373,56,459,83"><area shape="rect" href="group__gtx__compatibility.html#ga7c3a1b05bab87aa5a7cbc9efadfbc52" title="Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are used..." alt="" coords="507,5,589,32"><area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="512,56,584,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_g7d91deddd26925a390f08448a1b9ab1a_icgraph.png" border="0" usemap="#group__core__func__trigonometric_g7d91deddd26925a390f08448a1b9ab1a_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_g7d91deddd26925a390f08448a1b9ab1a_icgraph_map">
+<area shape="rect" href="group__gtc__reciprocal.html#g05d1bc30693d02a9a08c9044d75c5333" title="glm::asech" alt="" coords="139,5,224,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -170,6 +223,26 @@ Arc sine. Returns an angle whose sine is x. The range of values returned by this
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/asin.xml">GLSL asin man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00105">105</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="reciprocal_8inl-source.html#l00093">glm::acsc()</a>, and <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00669">glm::yaw()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00108"></a>00108         {
+<a name="l00109"></a>00109                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'asin' only accept floating-point input"</span>);
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111                 <span class="keywordflow">return</span> genType(::<a class="code" href="group__core__func__trigonometric.html#gb87756fced3e8d3f58b24b65c8166b77">std::asin</a>(x));
+<a name="l00112"></a>00112         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_gb87756fced3e8d3f58b24b65c8166b77_icgraph.png" border="0" usemap="#group__core__func__trigonometric_gb87756fced3e8d3f58b24b65c8166b77_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_gb87756fced3e8d3f58b24b65c8166b77_icgraph_map">
+<area shape="rect" href="group__gtc__reciprocal.html#g921be8522fbf0a5cfc877e78fb9abed2" title="glm::acsc" alt="" coords="129,5,207,32"><area shape="rect" href="group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1" title="glm::yaw" alt="" coords="132,56,204,83"><area shape="rect" href="group__gtc__quaternion.html#gb7f90472a816598e7bc7b3606dbadcac" title="glm::eulerAngles" alt="" coords="257,56,375,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gaedecffe9a7c10e5930c4ec938a0ca2e"></a><!-- doxytag: member="glm::asinh" ref="gaedecffe9a7c10e5930c4ec938a0ca2e" args="(genType const &amp;x)" -->
@@ -200,6 +273,37 @@ Arc hyperbolic sine; returns the inverse of sinh.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/asinh.xml">GLSL asinh man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00203">203</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>References <a class="el" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">glm::abs()</a>, <a class="el" href="func__exponential_8inl-source.html#l00116">glm::log()</a>, and <a class="el" href="func__exponential_8inl-source.html#l00219">glm::sqrt()</a>.</p>
+
+<p>Referenced by <a class="el" href="reciprocal_8inl-source.html#l00178">glm::acsch()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00206"></a>00206         {
+<a name="l00207"></a>00207                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'asinh' only accept floating-point input"</span>);
+<a name="l00208"></a>00208                 
+<a name="l00209"></a>00209                 <span class="keywordflow">return</span> (x &lt; genType(0) ? genType(-1) : (x &gt; genType(0) ? genType(1) : genType(0))) * <a class="code" href="group__gtx__quaternion.html#gbed81c73a777fce84fe442bbc17c13ce">log</a>(<a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(x) + <a class="code" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f">sqrt</a>(genType(1) + x * x));
+<a name="l00210"></a>00210         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_gaedecffe9a7c10e5930c4ec938a0ca2e_cgraph.png" border="0" usemap="#group__core__func__trigonometric_gaedecffe9a7c10e5930c4ec938a0ca2e_cgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_gaedecffe9a7c10e5930c4ec938a0ca2e_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="509,5,581,32"><area shape="rect" href="group__core__func__exponential.html#gce8148db3949f9260f6f883f8dbae808" title="glm::log" alt="" coords="137,81,204,108"><area shape="rect" href="group__core__func__exponential.html#gfe49b7b63045b6ab94bffbcd7e7a7bc8" title="glm::sqrt" alt="" coords="377,132,449,159"><area shape="rect" href="group__gtx__quaternion.html#gbed81c73a777fce84fe442bbc17c13ce" title="glm::log" alt="" coords="255,81,321,108"><area shape="rect" href="group__core__func__trigonometric.html#gb89f4e2a1ea1426dc87ab3a06901b68a" title="glm::atan" alt="" coords="376,81,451,108"><area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="371,31,456,57"><area shape="rect" href="group__gtx__compatibility.html#ga7c3a1b05bab87aa5a7cbc9efadfbc52" title="Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are used..." alt="" coords="504,81,587,108"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_gaedecffe9a7c10e5930c4ec938a0ca2e_icgraph.png" border="0" usemap="#group__core__func__trigonometric_gaedecffe9a7c10e5930c4ec938a0ca2e_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_gaedecffe9a7c10e5930c4ec938a0ca2e_icgraph_map">
+<area shape="rect" href="group__gtc__reciprocal.html#gb24c5c23d9d3d10517ad80f5af515b0e" title="glm::acsch" alt="" coords="136,5,221,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g459eaa7149e799125acda24938114746"></a><!-- doxytag: member="glm::atan" ref="g459eaa7149e799125acda24938114746" args="(genType const &amp;y_over_x)" -->
@@ -229,6 +333,26 @@ Arc tangent. Returns an angle whose tangent is y_over_x. The range of values ret
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/atan.xml">GLSL atan man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00147">147</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00655">glm::pitch()</a>, and <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00641">glm::roll()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00150"></a>00150         {
+<a name="l00151"></a>00151                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'atan' only accept floating-point input"</span>);
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153                 <span class="keywordflow">return</span> genType(::<a class="code" href="group__core__func__trigonometric.html#g459eaa7149e799125acda24938114746">std::atan</a>(x));
+<a name="l00154"></a>00154         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_g459eaa7149e799125acda24938114746_icgraph.png" border="0" usemap="#group__core__func__trigonometric_g459eaa7149e799125acda24938114746_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_g459eaa7149e799125acda24938114746_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd" title="glm::pitch" alt="" coords="132,5,209,32"><area shape="rect" href="group__gtc__quaternion.html#g3f58a75c69ff56cb9c83ea237abc1414" title="glm::roll" alt="" coords="137,56,204,83"><area shape="rect" href="group__gtc__quaternion.html#gb7f90472a816598e7bc7b3606dbadcac" title="glm::eulerAngles" alt="" coords="260,31,377,57"></map>
+</div>
 
 </div>
 </div><p>
@@ -269,6 +393,37 @@ Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are use
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/atan.xml">GLSL atan man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00133">133</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>References <a class="el" href="compatibility_8hpp-source.html#l00083">glm::atan2()</a>.</p>
+
+<p>Referenced by <a class="el" href="reciprocal_8inl-source.html#l00107">glm::acot()</a>, <a class="el" href="compatibility_8hpp-source.html#l00080">glm::atan2()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00076">glm::log()</a>, <a class="el" href="polar__coordinates_8inl-source.html#l00014">glm::polar()</a>, and <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00173">glm::shortMix()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00137"></a>00137         {
+<a name="l00138"></a>00138                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'atan' only accept floating-point input"</span>);
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140                 <span class="keywordflow">return</span> genType(::<a class="code" href="group__gtx__compatibility.html#ga7c3a1b05bab87aa5a7cbc9efadfbc52" title="Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are used...">std::atan2</a>(y, x));
+<a name="l00141"></a>00141         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_gb89f4e2a1ea1426dc87ab3a06901b68a_cgraph.png" border="0" usemap="#group__core__func__trigonometric_gb89f4e2a1ea1426dc87ab3a06901b68a_cgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_gb89f4e2a1ea1426dc87ab3a06901b68a_cgraph_map">
+<area shape="rect" href="group__gtx__compatibility.html#ga7c3a1b05bab87aa5a7cbc9efadfbc52" title="Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are used..." alt="" coords="131,5,213,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_gb89f4e2a1ea1426dc87ab3a06901b68a_icgraph.png" border="0" usemap="#group__core__func__trigonometric_gb89f4e2a1ea1426dc87ab3a06901b68a_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_gb89f4e2a1ea1426dc87ab3a06901b68a_icgraph_map">
+<area shape="rect" href="group__gtc__reciprocal.html#ge06055493cfcf5e3732cf330d81fd186" title="glm::acot" alt="" coords="144,31,219,57"><area shape="rect" href="group__gtx__compatibility.html#g7af1203c97febe3c07958178aead3788" title="Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are used..." alt="" coords="140,81,223,108"><area shape="rect" href="group__gtx__quaternion.html#gbed81c73a777fce84fe442bbc17c13ce" title="glm::log" alt="" coords="148,132,215,159"><area shape="rect" href="group__gtx__polar__coordinates.html#g65a075c52ee1c699d77c4a98dd266006" title="glm::polar" alt="" coords="143,183,220,209"><area shape="rect" href="group__gtx__quaternion.html#g1d83d29dc8f5870d70d2833c64be777c" title="glm::shortMix" alt="" coords="132,233,231,260"><area shape="rect" href="group__core__func__exponential.html#gce8148db3949f9260f6f883f8dbae808" title="glm::log" alt="" coords="281,132,348,159"><area shape="rect" href="group__core__func__trigonometric.html#g7d91deddd26925a390f08448a1b9ab1a" title="glm::acosh" alt="" coords="416,5,501,32"><area shape="rect" href="group__core__func__trigonometric.html#gaedecffe9a7c10e5930c4ec938a0ca2e" title="glm::asinh" alt="" coords="419,56,499,83"><area shape="rect" href="group__core__func__trigonometric.html#g5207916954ad98477bf488a9a188f045" title="glm::atanh" alt="" coords="417,107,500,133"><area shape="rect" href="group__gtx__fast__exponential.html#g399b134d7015729817135440eb047d5a" title="glm::fastPow" alt="" coords="411,157,507,184"><area shape="rect" href="group__gtc__random.html#gc045638daf634b0221ef4baaaf643cb2" title="glm::gaussRand" alt="" coords="401,208,516,235"><area shape="rect" href="group__gtx__quaternion.html#ge94a070898e8be560a5dcf8e15854b2d" title="glm::intermediate" alt="" coords="399,259,519,285"><area shape="rect" href="group__gtc__reciprocal.html#g05d1bc30693d02a9a08c9044d75c5333" title="glm::asech" alt="" coords="568,5,653,32"><area shape="rect" href="group__gtc__reciprocal.html#gb24c5c23d9d3d10517ad80f5af515b0e" title="glm::acsch" alt="" coords="568,56,653,83"><area shape="rect" href="group__gtc__reciprocal.html#g651e435e3e8f63b1ea1da0e5e7581864" title="glm::acoth" alt="" coords="569,107,652,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g5207916954ad98477bf488a9a188f045"></a><!-- doxytag: member="glm::atanh" ref="g5207916954ad98477bf488a9a188f045" args="(genType const &amp;x)" -->
@@ -298,6 +453,39 @@ Arc hyperbolic tangent; returns the inverse of tanh. Results are undefined if ab
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/atanh.xml">GLSL atanh man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00233">233</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>References <a class="el" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">glm::abs()</a>, and <a class="el" href="func__exponential_8inl-source.html#l00116">glm::log()</a>.</p>
+
+<p>Referenced by <a class="el" href="reciprocal_8inl-source.html#l00192">glm::acoth()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00236"></a>00236         {
+<a name="l00237"></a>00237                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'atanh' only accept floating-point input"</span>);
+<a name="l00238"></a>00238                 
+<a name="l00239"></a>00239                 <span class="keywordflow">if</span>(<a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(x) &gt;= genType(1))
+<a name="l00240"></a>00240                         <span class="keywordflow">return</span> 0;
+<a name="l00241"></a>00241                 <span class="keywordflow">return</span> genType(0.5) * <a class="code" href="group__gtx__quaternion.html#gbed81c73a777fce84fe442bbc17c13ce">log</a>((genType(1) + x) / (genType(1) - x));
+<a name="l00242"></a>00242         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_g5207916954ad98477bf488a9a188f045_cgraph.png" border="0" usemap="#group__core__func__trigonometric_g5207916954ad98477bf488a9a188f045_cgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_g5207916954ad98477bf488a9a188f045_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="509,5,581,32"><area shape="rect" href="group__core__func__exponential.html#gce8148db3949f9260f6f883f8dbae808" title="glm::log" alt="" coords="137,56,204,83"><area shape="rect" href="group__gtx__quaternion.html#gbed81c73a777fce84fe442bbc17c13ce" title="glm::log" alt="" coords="255,56,321,83"><area shape="rect" href="group__core__func__trigonometric.html#gb89f4e2a1ea1426dc87ab3a06901b68a" title="glm::atan" alt="" coords="376,81,451,108"><area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="371,31,456,57"><area shape="rect" href="group__core__func__exponential.html#gfe49b7b63045b6ab94bffbcd7e7a7bc8" title="glm::sqrt" alt="" coords="377,132,449,159"><area shape="rect" href="group__gtx__compatibility.html#ga7c3a1b05bab87aa5a7cbc9efadfbc52" title="Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are used..." alt="" coords="504,81,587,108"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_g5207916954ad98477bf488a9a188f045_icgraph.png" border="0" usemap="#group__core__func__trigonometric_g5207916954ad98477bf488a9a188f045_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_g5207916954ad98477bf488a9a188f045_icgraph_map">
+<area shape="rect" href="group__gtc__reciprocal.html#g651e435e3e8f63b1ea1da0e5e7581864" title="glm::acoth" alt="" coords="136,5,219,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -329,6 +517,26 @@ The standard trigonometric cosine function. The values returned by this function
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/cos.xml">GLSL cos man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00079">79</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00826">glm::angleAxis()</a>, <a class="el" href="matrix__interpolation_8inl-source.html#l00089">glm::axisAngleMatrix()</a>, <a class="el" href="random_8inl-source.html#l00147">glm::circularRand()</a>, <a class="el" href="polar__coordinates_8inl-source.html#l00038">glm::euclidean()</a>, <a class="el" href="euler__angles_8inl-source.html#l00014">glm::eulerAngleX()</a>, <a class="el" href="euler__angles_8inl-source.html#l00062">glm::eulerAngleXY()</a>, <a class="el" href="euler__angles_8inl-source.html#l00030">glm::eulerAngleY()</a>, <a class="el" href="euler__angles_8inl-source.html#l00081">glm::eulerAngleYX()</a>, <a class="el" href="euler__angles_8inl-source.html#l00140">glm::eulerAngleYXZ()</a>, <a class="el" href="euler__angles_8inl-source.html#l00046">glm::eulerAngleZ()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00061">glm::exp()</a>, <a class="el" href="_player_8cpp-source.html#l00034">Player::MoveBackward()</a>, <a class="el" href="_player_8cpp-source.html#l00024">Player::MoveForward()</a>, <a class="el" href="euler__angles_8inl-source.html#l00210">glm::orientate2()</a>, <a class="el" href="euler__angles_8inl-source.html#l00227">glm::orientate3()</a>, <a class="el" href="matrix__transform_8inl-source.html#l00249">glm::perspectiveFov()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00102">glm::pow()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00600">glm::rotate()</a>, <a class="el" href="rotate__normalized__axis_8inl-source.html#l00033">glm::rotateNormalizedAxis()</a>, <a class="el" href="rotate__vector_8inl-source.html#l00068">glm::rotateX()</a>, <a class="el" href="rotate__vector_8inl-source.html#l00091">glm::rotateY()</a>, <a class="el" href="rotate__vector_8inl-source.html#l00114">glm::rotateZ()</a>, <a class="el" href="reciprocal_8inl-source.html#l00037">glm::sec()</a>, <a class="el" href="random_8inl-source.html#l00157">glm::sphericalRand()</a>, and <a class="el" href="euler__angles_8inl-source.html#l00175">glm::yawPitchRoll()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00080"></a>00080         {
+<a name="l00081"></a>00081                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'cos' only accept floating-point input"</span>);
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083                 <span class="keywordflow">return</span> genType(::<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">std::cos</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00084"></a>00084         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_gfef15df90786cd24fe786cc0ff2cbc98_icgraph.png" border="0" usemap="#group__core__func__trigonometric_gfef15df90786cd24fe786cc0ff2cbc98_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_gfef15df90786cd24fe786cc0ff2cbc98_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#g96dbce7a48d76fa63e65c4ba949a3bc4" title="glm::angleAxis" alt="" coords="160,5,267,32"><area shape="rect" href="group__gtx__matrix__interpolation.html#gf7c0106d03d55a7b670a6261b107f22b" title="glm::axisAngleMatrix" alt="" coords="141,56,285,83"><area shape="rect" href="group__gtc__random.html#gb633996dfedab1a7f45bb5cfa1b14443" title="glm::circularRand" alt="" coords="152,107,275,133"><area shape="rect" href="group__gtx__polar__coordinates.html#g3bd21c0f1b1d99a2f8e9cfc85bca488e" title="glm::euclidean" alt="" coords="161,157,265,184"><area shape="rect" href="group__gtx__euler__angles.html#g5fb8269b6795f95dec7ca7bbe61805f6" title="glm::eulerAngleX" alt="" coords="155,208,272,235"><area shape="rect" href="group__gtx__euler__angles.html#g6a2dc9bf80aecdffb3e5ab3bcede6647" title="glm::eulerAngleXY" alt="" coords="149,360,277,387"><area shape="rect" href="group__gtx__euler__angles.html#g558b0e0fd3c1f6a414d184a22c968b79" title="glm::eulerAngleY" alt="" coords="153,309,273,336"><area shape="rect" href="group__gtx__euler__angles.html#gd26afd5add0e121296d3b44dea32f32e" title="glm::eulerAngleYX" alt="" coords="149,411,277,437"><area shape="rect" href="group__gtx__euler__angles.html#g7ba74fb9419dd90256b682855e904159" title="glm::eulerAngleYXZ" alt="" coords="147,461,280,488"><area shape="rect" href="group__gtx__euler__angles.html#ge77e2c08c118ecd34ffc8ca425d2cf77" title="glm::eulerAngleZ" alt="" coords="155,259,272,285"><area shape="rect" href="group__gtx__quaternion.html#gd4ec8f59911f01bb4c298839017ba91f" title="glm::exp" alt="" coords="177,512,249,539"><area shape="rect" href="class_player.html#0de705c108e85cf8609ac827319fe11b" title="Moves the player backward." alt="" coords="137,563,289,589"><area shape="rect" href="class_player.html#afa223a6906cf925ac0f9ae1ad197cde" title="Moves the player forward." alt="" coords="143,613,284,640"><area shape="rect" href="group__gtx__euler__angles.html#g026f776506cd9c5b144c6d4b410a079b" title="glm::orientate2" alt="" coords="160,664,267,691"><area shape="rect" href="group__gtx__euler__angles.html#gce794db535af3056d97f4f62e7ed7509" title="glm::orientate3" alt="" coords="160,715,267,741"><area shape="rect" href="group__gtc__matrix__transform.html#gc9db4ea8ecdcb00f1d06d29603b5df52" title="glm::perspectiveFov" alt="" coords="145,765,281,792"><area shape="rect" href="group__gtx__quaternion.html#g49e7cd8958d474290778760d171a44d2" title="glm::pow" alt="" coords="177,816,249,843"><area shape="rect" href="group__gtc__quaternion.html#gca43bc964b553c2bde6a60499c1f2b50" title="glm::rotate" alt="" coords="172,867,255,893"><area shape="rect" href="group__gtx__rotate__normalized__axis.html#g9fc93bb16dd6719fc660a506cb833fb0" title="glm::rotateNormalizedAxis" alt="" coords="127,917,300,944"><area shape="rect" href="group__gtx__rotate__vector.html#g29ccc284b661dc52c457959f8cbf8af6" title="glm::rotateX" alt="" coords="168,968,259,995"><area shape="rect" href="group__gtx__rotate__vector.html#g8e792cb7fbd2ad57a4eafcccc62c523c" title="glm::rotateY" alt="" coords="168,1019,259,1045"><area shape="rect" href="group__gtx__rotate__vector.html#g67b56c3da73e7da777810b2a82bab4f8" title="glm::rotateZ" alt="" coords="168,1069,259,1096"><area shape="rect" href="group__gtc__reciprocal.html#gef67dab7093a4d0ccc9c06ca05ddafd4" title="glm::sec" alt="" coords="177,1120,249,1147"><area shape="rect" href="group__gtc__random.html#g02f5a6b98ae4e494eef340bcdd38ed35" title="glm::sphericalRand" alt="" coords="148,1171,279,1197"><area shape="rect" href="group__gtx__euler__angles.html#ga254d26a7a42b65101f4eee88d5b153f" title="glm::yawPitchRoll" alt="" coords="151,1221,276,1248"><area shape="rect" href="group__gtx__quaternion.html#gf7a15242ef69e5c997df231b28b92cef" title="glm::rotation" alt="" coords="367,5,460,32"><area shape="rect" href="group__gtx__matrix__interpolation.html#gc618bbef632f87be5c570aa5afe63f30" title="glm::interpolate" alt="" coords="359,56,468,83"><area shape="rect" href="group__gtx__euler__angles.html#g9b63e52fda0b7773c50bbf3c310bdcf2" title="glm::eulerAngleXZ" alt="" coords="351,233,476,260"><area shape="rect" href="group__gtx__euler__angles.html#g3709f9eb45b49ecf41d42bec91c031fa" title="glm::eulerAngleZX" alt="" coords="351,183,476,209"><area shape="rect" href="group__gtx__euler__angles.html#g9ac024a16439421d2a3c7c17b6df31b5" title="glm::eulerAngleYZ" alt="" coords="349,335,477,361"><area shape="rect" href="group__gtx__euler__angles.html#gfcd7d34bef520fd8bee6d4d865a8162a" title="glm::eulerAngleZY" alt="" coords="349,284,477,311"><area shape="rect" href="group__core__func__exponential.html#g0e7e69c5497cbbfe4afe08ee5449c553" title="glm::exp" alt="" coords="377,537,449,564"><area shape="rect" href="group__core__func__exponential.html#g85f6efedaa47799e8f406481baca2171" title="glm::exp2" alt="" coords="375,487,452,513"><area shape="rect" href="group__gtx__fast__exponential.html#g399b134d7015729817135440eb047d5a" title="glm::fastPow" alt="" coords="539,563,635,589"><area shape="rect" href="group__gtx__quaternion.html#ge94a070898e8be560a5dcf8e15854b2d" title="glm::intermediate" alt="" coords="527,512,647,539"><area shape="rect" href="group__core__func__exponential.html#gfdaffc3606f4ee7f415cd64ada108356" title="glm::pow" alt="" coords="377,816,449,843"><area shape="rect" href="group__gtx__norm.html#g2f42190c8743abab279d0a8f5a321692" title="glm::lxNorm" alt="" coords="541,816,632,843"><area shape="rect" href="group__gtx__euler__angles.html#g114ce533cc2f140cb17ca5a44214d973" title="glm::orientate3" alt="" coords="360,1247,467,1273"><area shape="rect" href="group__gtx__euler__angles.html#g98f6c8d3b6b97ff0ae2f64544142cb7f" title="glm::orientate4" alt="" coords="360,1196,467,1223"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g522e0c2f8dbac0df60a2bf436fb88e69"></a><!-- doxytag: member="glm::cosh" ref="g522e0c2f8dbac0df60a2bf436fb88e69" args="(genType const &amp;angle)" -->
@@ -358,6 +566,26 @@ Returns the hyperbolic cosine function, (exp(x) + exp(-x)) / 2<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/cosh.xml">GLSL cosh man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00175">175</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="reciprocal_8inl-source.html#l00150">glm::coth()</a>, and <a class="el" href="reciprocal_8inl-source.html#l00122">glm::sech()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00178"></a>00178         {
+<a name="l00179"></a>00179                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'cosh' only accept floating-point input"</span>);
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181                 <span class="keywordflow">return</span> genType(<a class="code" href="group__core__func__trigonometric.html#g522e0c2f8dbac0df60a2bf436fb88e69">std::cosh</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00182"></a>00182         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_g522e0c2f8dbac0df60a2bf436fb88e69_icgraph.png" border="0" usemap="#group__core__func__trigonometric_g522e0c2f8dbac0df60a2bf436fb88e69_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_g522e0c2f8dbac0df60a2bf436fb88e69_icgraph_map">
+<area shape="rect" href="group__gtc__reciprocal.html#g8bc5d51e10b478b061a071eb91258d35" title="glm::coth" alt="" coords="136,5,211,32"><area shape="rect" href="group__gtc__reciprocal.html#g6193b8e823dea616d6badca8076da066" title="glm::sech" alt="" coords="135,56,212,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -389,6 +617,26 @@ Converts radians to degrees and returns the result.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/degrees.xml">GLSL degrees man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00052">52</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00799">glm::angle()</a>, <a class="el" href="_camera_8cpp-source.html#l00022">Camera::GetRotationMatrix()</a>, <a class="el" href="rotate__vector_8inl-source.html#l00206">glm::orientation()</a>, <a class="el" href="vector__angle_8inl-source.html#l00053">glm::orientedAngle()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00655">glm::pitch()</a>, <a class="el" href="polar__coordinates_8inl-source.html#l00014">glm::polar()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00641">glm::roll()</a>, and <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00669">glm::yaw()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00055"></a>00055         {
+<a name="l00056"></a>00056                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'degrees' only accept floating-point input"</span>);
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058                 <span class="keywordflow">return</span> <a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a> * genType(57.295779513082320876798154814105);
+<a name="l00059"></a>00059         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_gcb63bdf23d5e084a5b6a2ed0ae395e64_icgraph.png" border="0" usemap="#group__core__func__trigonometric_gcb63bdf23d5e084a5b6a2ed0ae395e64_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_gcb63bdf23d5e084a5b6a2ed0ae395e64_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#g48c100d72c9c3295b75c9133ddbb83d1" title="glm::angle" alt="" coords="200,5,280,32"><area shape="rect" href="class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix." alt="" coords="151,56,329,83"><area shape="rect" href="group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e" title="glm::orientation" alt="" coords="185,107,295,133"><area shape="rect" href="group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36" title="glm::orientedAngle" alt="" coords="176,157,304,184"><area shape="rect" href="group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd" title="glm::pitch" alt="" coords="201,208,279,235"><area shape="rect" href="group__gtx__polar__coordinates.html#g65a075c52ee1c699d77c4a98dd266006" title="glm::polar" alt="" coords="201,259,279,285"><area shape="rect" href="group__gtc__quaternion.html#g3f58a75c69ff56cb9c83ea237abc1414" title="glm::roll" alt="" coords="207,309,273,336"><area shape="rect" href="group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1" title="glm::yaw" alt="" coords="204,360,276,387"><area shape="rect" href="class_camera.html#ff61f06284cca3216accdf556dfbd3c1" title="Gets the camera position." alt="" coords="403,5,515,32"><area shape="rect" href="class_camera.html#338c5baf20b57652828c53e0791adf9a" title="Gets the camera view." alt="" coords="397,56,520,83"><area shape="rect" href="class_camera.html#ffa333055635aed96518c4c66be9a70c" title="Gets the view matrix." alt="" coords="379,107,539,133"><area shape="rect" href="class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223" title="Moves the camera." alt="" coords="587,56,736,83"><area shape="rect" href="group__gtc__quaternion.html#gb7f90472a816598e7bc7b3606dbadcac" title="glm::eulerAngles" alt="" coords="400,309,517,336"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g87953103f3ac701b8440a7d904fa2e4d"></a><!-- doxytag: member="glm::radians" ref="g87953103f3ac701b8440a7d904fa2e4d" args="(genType const &amp;degrees)" -->
@@ -418,6 +666,26 @@ Converts degrees to radians and returns the result.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/radians.xml">GLSL radians man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00038">38</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00826">glm::angleAxis()</a>, <a class="el" href="polar__coordinates_8inl-source.html#l00038">glm::euclidean()</a>, <a class="el" href="matrix__transform_8inl-source.html#l00281">glm::infinitePerspective()</a>, <a class="el" href="matrix__transform_8inl-source.html#l00219">glm::perspective()</a>, <a class="el" href="matrix__transform_8inl-source.html#l00249">glm::perspectiveFov()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00600">glm::rotate()</a>, <a class="el" href="rotate__normalized__axis_8inl-source.html#l00033">glm::rotateNormalizedAxis()</a>, <a class="el" href="rotate__vector_8inl-source.html#l00068">glm::rotateX()</a>, <a class="el" href="rotate__vector_8inl-source.html#l00091">glm::rotateY()</a>, <a class="el" href="rotate__vector_8inl-source.html#l00114">glm::rotateZ()</a>, and <a class="el" href="matrix__transform_8inl-source.html#l00310">glm::tweakedInfinitePerspective()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00041"></a>00041         {
+<a name="l00042"></a>00042                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'radians' only accept floating-point input"</span>);
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044                 <span class="keywordflow">return</span> <a class="code" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64">degrees</a> * genType(0.01745329251994329576923690768489);
+<a name="l00045"></a>00045         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_g87953103f3ac701b8440a7d904fa2e4d_icgraph.png" border="0" usemap="#group__core__func__trigonometric_g87953103f3ac701b8440a7d904fa2e4d_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_g87953103f3ac701b8440a7d904fa2e4d_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#g96dbce7a48d76fa63e65c4ba949a3bc4" title="glm::angleAxis" alt="" coords="195,5,301,32"><area shape="rect" href="group__gtx__polar__coordinates.html#g3bd21c0f1b1d99a2f8e9cfc85bca488e" title="glm::euclidean" alt="" coords="196,56,300,83"><area shape="rect" href="group__gtc__matrix__transform.html#g2b5303a99580dc5a2ffe4cd9303397a9" title="glm::infinitePerspective" alt="" coords="171,107,325,133"><area shape="rect" href="group__gtc__matrix__transform.html#g6f705d60660ad2d4ef540ca0bb59273e" title="glm::perspective" alt="" coords="191,157,305,184"><area shape="rect" href="group__gtc__matrix__transform.html#gc9db4ea8ecdcb00f1d06d29603b5df52" title="glm::perspectiveFov" alt="" coords="180,208,316,235"><area shape="rect" href="group__gtc__quaternion.html#gca43bc964b553c2bde6a60499c1f2b50" title="glm::rotate" alt="" coords="207,259,289,285"><area shape="rect" href="group__gtx__rotate__normalized__axis.html#g9fc93bb16dd6719fc660a506cb833fb0" title="glm::rotateNormalizedAxis" alt="" coords="161,309,335,336"><area shape="rect" href="group__gtx__rotate__vector.html#g29ccc284b661dc52c457959f8cbf8af6" title="glm::rotateX" alt="" coords="203,360,293,387"><area shape="rect" href="group__gtx__rotate__vector.html#g8e792cb7fbd2ad57a4eafcccc62c523c" title="glm::rotateY" alt="" coords="203,411,293,437"><area shape="rect" href="group__gtx__rotate__vector.html#g67b56c3da73e7da777810b2a82bab4f8" title="glm::rotateZ" alt="" coords="203,461,293,488"><area shape="rect" href="group__gtc__matrix__transform.html#gb4748de5e549cbd83682c9d28a9ccdac" title="glm::tweakedInfinitePerspective" alt="" coords="147,512,349,539"><area shape="rect" href="group__gtx__quaternion.html#gf7a15242ef69e5c997df231b28b92cef" title="glm::rotation" alt="" coords="432,5,525,32"><area shape="rect" href="class_camera.html#621b0ca0ddcab43fb95ee754c443dfa4" title="Default constructor." alt="" coords="399,157,559,184"></map>
+</div>
 
 </div>
 </div><p>
@@ -449,6 +717,26 @@ The standard trigonometric sine function. The values returned by this function w
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/sin.xml">GLSL sin man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00066">66</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00826">glm::angleAxis()</a>, <a class="el" href="matrix__interpolation_8inl-source.html#l00089">glm::axisAngleMatrix()</a>, <a class="el" href="random_8inl-source.html#l00147">glm::circularRand()</a>, <a class="el" href="reciprocal_8inl-source.html#l00051">glm::csc()</a>, <a class="el" href="polar__coordinates_8inl-source.html#l00038">glm::euclidean()</a>, <a class="el" href="euler__angles_8inl-source.html#l00014">glm::eulerAngleX()</a>, <a class="el" href="euler__angles_8inl-source.html#l00062">glm::eulerAngleXY()</a>, <a class="el" href="euler__angles_8inl-source.html#l00030">glm::eulerAngleY()</a>, <a class="el" href="euler__angles_8inl-source.html#l00081">glm::eulerAngleYX()</a>, <a class="el" href="euler__angles_8inl-source.html#l00140">glm::eulerAngleYXZ()</a>, <a class="el" href="euler__angles_8inl-source.html#l00046">glm::eulerAngleZ()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00061">glm::exp()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00519">glm::mix()</a>, <a class="el" href="_player_8cpp-source.html#l00034">Player::MoveBackward()</a>, <a class="el" href="_player_8cpp-source.html#l00024">Player::MoveForward()</a>, <a class="el" href="euler__angles_8inl-source.html#l00210">glm::orientate2()</a>, <a class="el" href="euler__angles_8inl-source.html#l00227">glm::orientate3()</a>, <a class="el" href="matrix__transform_8inl-source.html#l00249">glm::perspectiveFov()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00102">glm::pow()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00600">glm::rotate()</a>, <a class="el" href="rotate__normalized__axis_8inl-source.html#l00033">glm::rotateNormalizedAxis()</a>, <a class="el" href="rotate__vector_8inl-source.html#l00068">glm::rotateX()</a>, <a class="el" href="rotate__vector_8inl-source.html#l00091">glm::rotateY()</a>, <a class="el" href="rotate__vector_8inl-source.html#l00114">glm::rotateZ()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00173">glm::shortMix()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00562">glm::slerp()</a>, <a class="el" href="random_8inl-source.html#l00157">glm::sphericalRand()</a>, and <a class="el" href="euler__angles_8inl-source.html#l00175">glm::yawPitchRoll()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00069"></a>00069         {
+<a name="l00070"></a>00070                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'sin' only accept floating-point input"</span>);
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072                 <span class="keywordflow">return</span> genType(::<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">std::sin</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00073"></a>00073         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_gd4d4eda735d915be9af695fe2b4cded2_icgraph.png" border="0" usemap="#group__core__func__trigonometric_gd4d4eda735d915be9af695fe2b4cded2_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_gd4d4eda735d915be9af695fe2b4cded2_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#g96dbce7a48d76fa63e65c4ba949a3bc4" title="glm::angleAxis" alt="" coords="157,5,264,32"><area shape="rect" href="group__gtx__matrix__interpolation.html#gf7c0106d03d55a7b670a6261b107f22b" title="glm::axisAngleMatrix" alt="" coords="139,56,283,83"><area shape="rect" href="group__gtc__random.html#gb633996dfedab1a7f45bb5cfa1b14443" title="glm::circularRand" alt="" coords="149,107,272,133"><area shape="rect" href="group__gtc__reciprocal.html#gdadd7293102fe18951a4acb4df1455a8" title="glm::csc" alt="" coords="175,157,247,184"><area shape="rect" href="group__gtx__polar__coordinates.html#g3bd21c0f1b1d99a2f8e9cfc85bca488e" title="glm::euclidean" alt="" coords="159,208,263,235"><area shape="rect" href="group__gtx__euler__angles.html#g5fb8269b6795f95dec7ca7bbe61805f6" title="glm::eulerAngleX" alt="" coords="152,259,269,285"><area shape="rect" href="group__gtx__euler__angles.html#g6a2dc9bf80aecdffb3e5ab3bcede6647" title="glm::eulerAngleXY" alt="" coords="147,411,275,437"><area shape="rect" href="group__gtx__euler__angles.html#g558b0e0fd3c1f6a414d184a22c968b79" title="glm::eulerAngleY" alt="" coords="151,360,271,387"><area shape="rect" href="group__gtx__euler__angles.html#gd26afd5add0e121296d3b44dea32f32e" title="glm::eulerAngleYX" alt="" coords="147,461,275,488"><area shape="rect" href="group__gtx__euler__angles.html#g7ba74fb9419dd90256b682855e904159" title="glm::eulerAngleYXZ" alt="" coords="144,512,277,539"><area shape="rect" href="group__gtx__euler__angles.html#ge77e2c08c118ecd34ffc8ca425d2cf77" title="glm::eulerAngleZ" alt="" coords="152,309,269,336"><area shape="rect" href="group__gtx__quaternion.html#gd4ec8f59911f01bb4c298839017ba91f" title="glm::exp" alt="" coords="175,563,247,589"><area shape="rect" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350" title="glm::mix" alt="" coords="175,664,247,691"><area shape="rect" href="group__gtc__quaternion.html#ga75cee4315cd8e7f15eaac3ea944106a" title="Returns the slurp interpolation between two quaternions." alt="" coords="372,652,449,679"><area shape="rect" href="class_player.html#0de705c108e85cf8609ac827319fe11b" title="Moves the player backward." alt="" coords="135,715,287,741"><area shape="rect" href="class_player.html#afa223a6906cf925ac0f9ae1ad197cde" title="Moves the player forward." alt="" coords="140,765,281,792"><area shape="rect" href="group__gtx__euler__angles.html#g026f776506cd9c5b144c6d4b410a079b" title="glm::orientate2" alt="" coords="157,816,264,843"><area shape="rect" href="group__gtx__euler__angles.html#gce794db535af3056d97f4f62e7ed7509" title="glm::orientate3" alt="" coords="157,867,264,893"><area shape="rect" href="group__gtc__matrix__transform.html#gc9db4ea8ecdcb00f1d06d29603b5df52" title="glm::perspectiveFov" alt="" coords="143,917,279,944"><area shape="rect" href="group__gtx__quaternion.html#g49e7cd8958d474290778760d171a44d2" title="glm::pow" alt="" coords="175,968,247,995"><area shape="rect" href="group__gtc__quaternion.html#gca43bc964b553c2bde6a60499c1f2b50" title="glm::rotate" alt="" coords="169,1019,252,1045"><area shape="rect" href="group__gtx__rotate__normalized__axis.html#g9fc93bb16dd6719fc660a506cb833fb0" title="glm::rotateNormalizedAxis" alt="" coords="124,1069,297,1096"><area shape="rect" href="group__gtx__rotate__vector.html#g29ccc284b661dc52c457959f8cbf8af6" title="glm::rotateX" alt="" coords="165,1120,256,1147"><area shape="rect" href="group__gtx__rotate__vector.html#g8e792cb7fbd2ad57a4eafcccc62c523c" title="glm::rotateY" alt="" coords="165,1171,256,1197"><area shape="rect" href="group__gtx__rotate__vector.html#g67b56c3da73e7da777810b2a82bab4f8" title="glm::rotateZ" alt="" coords="165,1221,256,1248"><area shape="rect" href="group__gtx__quaternion.html#g1d83d29dc8f5870d70d2833c64be777c" title="glm::shortMix" alt="" coords="161,1272,260,1299"><area shape="rect" href="group__gtc__random.html#g02f5a6b98ae4e494eef340bcdd38ed35" title="glm::sphericalRand" alt="" coords="145,1323,276,1349"><area shape="rect" href="group__gtx__euler__angles.html#ga254d26a7a42b65101f4eee88d5b153f" title="glm::yawPitchRoll" alt="" coords="148,1373,273,1400"><area shape="rect" href="group__gtx__quaternion.html#gf7a15242ef69e5c997df231b28b92cef" title="glm::rotation" alt="" coords="364,5,457,32"><area shape="rect" href="group__gtx__matrix__interpolation.html#gc618bbef632f87be5c570aa5afe63f30" title="glm::interpolate" alt="" coords="356,56,465,83"><area shape="rect" href="group__gtx__euler__angles.html#g9b63e52fda0b7773c50bbf3c310bdcf2" title="glm::eulerAngleXZ" alt="" coords="348,233,473,260"><area shape="rect" href="group__gtx__euler__angles.html#g3709f9eb45b49ecf41d42bec91c031fa" title="glm::eulerAngleZX" alt="" coords="348,284,473,311"><area shape="rect" href="group__gtx__euler__angles.html#g9ac024a16439421d2a3c7c17b6df31b5" title="glm::eulerAngleYZ" alt="" coords="347,335,475,361"><area shape="rect" href="group__gtx__euler__angles.html#gfcd7d34bef520fd8bee6d4d865a8162a" title="glm::eulerAngleZY" alt="" coords="347,385,475,412"><area shape="rect" href="group__core__func__exponential.html#g0e7e69c5497cbbfe4afe08ee5449c553" title="glm::exp" alt="" coords="375,525,447,552"><area shape="rect" href="group__core__func__exponential.html#g85f6efedaa47799e8f406481baca2171" title="glm::exp2" alt="" coords="372,576,449,603"><area shape="rect" href="group__gtx__fast__exponential.html#g399b134d7015729817135440eb047d5a" title="glm::fastPow" alt="" coords="536,551,632,577"><area shape="rect" href="group__gtx__quaternion.html#ge94a070898e8be560a5dcf8e15854b2d" title="glm::intermediate" alt="" coords="524,500,644,527"><area shape="rect" href="group__core__func__exponential.html#gfdaffc3606f4ee7f415cd64ada108356" title="glm::pow" alt="" coords="375,968,447,995"><area shape="rect" href="group__gtx__norm.html#g2f42190c8743abab279d0a8f5a321692" title="glm::lxNorm" alt="" coords="539,968,629,995"><area shape="rect" href="group__gtx__euler__angles.html#g114ce533cc2f140cb17ca5a44214d973" title="glm::orientate3" alt="" coords="357,1348,464,1375"><area shape="rect" href="group__gtx__euler__angles.html#g98f6c8d3b6b97ff0ae2f64544142cb7f" title="glm::orientate4" alt="" coords="357,1399,464,1425"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g925002c6a847894241278997d189429a"></a><!-- doxytag: member="glm::sinh" ref="g925002c6a847894241278997d189429a" args="(genType const &amp;angle)" -->
@@ -478,6 +766,26 @@ Returns the hyperbolic sine function, (exp(x) - exp(-x)) / 2<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/sinh.xml">GLSL sinh man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00161">161</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="reciprocal_8inl-source.html#l00150">glm::coth()</a>, and <a class="el" href="reciprocal_8inl-source.html#l00136">glm::csch()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00164"></a>00164         {
+<a name="l00165"></a>00165                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'sinh' only accept floating-point input"</span>);
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167                 <span class="keywordflow">return</span> genType(<a class="code" href="group__core__func__trigonometric.html#g925002c6a847894241278997d189429a">std::sinh</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00168"></a>00168         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_g925002c6a847894241278997d189429a_icgraph.png" border="0" usemap="#group__core__func__trigonometric_g925002c6a847894241278997d189429a_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_g925002c6a847894241278997d189429a_icgraph_map">
+<area shape="rect" href="group__gtc__reciprocal.html#g8bc5d51e10b478b061a071eb91258d35" title="glm::coth" alt="" coords="131,5,205,32"><area shape="rect" href="group__gtc__reciprocal.html#g094e1e421d5d9320d4364deb82adb428" title="glm::csch" alt="" coords="129,56,207,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -509,6 +817,26 @@ The standard trigonometric tangent function.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/tan.xml">GLSL tan man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00091">91</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="reciprocal_8inl-source.html#l00065">glm::cot()</a>, <a class="el" href="matrix__transform_8inl-source.html#l00281">glm::infinitePerspective()</a>, <a class="el" href="matrix__transform_8inl-source.html#l00219">glm::perspective()</a>, and <a class="el" href="matrix__transform_8inl-source.html#l00310">glm::tweakedInfinitePerspective()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00094"></a>00094         {
+<a name="l00095"></a>00095                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'tan' only accept floating-point input"</span>);
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097                 <span class="keywordflow">return</span> genType(::<a class="code" href="group__core__func__trigonometric.html#g93a81f04757351ba92d924e237cbeb61">std::tan</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00098"></a>00098         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__core__func__trigonometric_g93a81f04757351ba92d924e237cbeb61_icgraph.png" border="0" usemap="#group__core__func__trigonometric_g93a81f04757351ba92d924e237cbeb61_icgraph_map" alt=""></center>
+<map name="group__core__func__trigonometric_g93a81f04757351ba92d924e237cbeb61_icgraph_map">
+<area shape="rect" href="group__gtc__reciprocal.html#g8d3b73a481ad1115ca93da1410868e10" title="glm::cot" alt="" coords="191,5,257,32"><area shape="rect" href="group__gtc__matrix__transform.html#g2b5303a99580dc5a2ffe4cd9303397a9" title="glm::infinitePerspective" alt="" coords="147,56,301,83"><area shape="rect" href="group__gtc__matrix__transform.html#g6f705d60660ad2d4ef540ca0bb59273e" title="glm::perspective" alt="" coords="167,107,281,133"><area shape="rect" href="group__gtc__matrix__transform.html#gb4748de5e549cbd83682c9d28a9ccdac" title="glm::tweakedInfinitePerspective" alt="" coords="123,157,325,184"><area shape="rect" href="class_camera.html#621b0ca0ddcab43fb95ee754c443dfa4" title="Default constructor." alt="" coords="375,107,535,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gaa29bdd7f3b57755a7b6a9834d59887f"></a><!-- doxytag: member="glm::tanh" ref="gaa29bdd7f3b57755a7b6a9834d59887f" args="(genType const &amp;angle)" -->
@@ -539,10 +867,19 @@ Returns the hyperbolic tangent function, sinh(angle) / cosh(angle)<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a href="http://www.opengl.org/sdk/docs/manglsl/xhtml/tanh.xml">GLSL tanh man page</a> <p>
 <a href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf">GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="func__trigonometric_8inl-source.html#l00189">189</a> of file <a class="el" href="func__trigonometric_8inl-source.html">func_trigonometric.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00192"></a>00192         {
+<a name="l00193"></a>00193                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'tanh' only accept floating-point input"</span>);
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195                 <span class="keywordflow">return</span> genType(<a class="code" href="group__core__func__trigonometric.html#gaa29bdd7f3b57755a7b6a9834d59887f">std::tanh</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00196"></a>00196         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:20 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:58:16 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

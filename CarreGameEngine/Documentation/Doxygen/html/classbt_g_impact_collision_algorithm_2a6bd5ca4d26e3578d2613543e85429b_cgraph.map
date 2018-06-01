@@ -1,0 +1,17 @@
+<area shape="rect" href="$classbt_g_impact_shape_interface.html#9ea24ba36990721e4f55851afc421e06" title="if true, then its children must get transforms." alt="" coords="372,31,671,57">
+<area shape="rect" href="$classbt_g_impact_collision_algorithm.html#1cc907bcb394f7a95d609b1b56a5490e" title="btGImpactCollisionAlgorithm::collide_gjk_triangles" alt="" coords="367,81,676,108">
+<area shape="rect" href="$class_g_i_m___shape_retriever.html#83751e415bbb4c24f608ea786b7ddb6e" title="GIM_ShapeRetriever::getChildShape" alt="" coords="405,132,637,159">
+<area shape="rect" href="$classbt_g_impact_shape_interface.html#c06b1f597e2b628bf1e0523ab1c62d08" title="Gets the children transform." alt="" coords="381,183,661,209">
+<area shape="rect" href="$classbt_g_impact_shape_interface.html#25cacbe448997e3f8ec99cb2d4952859" title="Base method for determinig which kind of GIMPACT shape we get." alt="" coords="368,233,675,260">
+<area shape="rect" href="$classbt_g_impact_mesh_shape.html#bac8a0def4182767d8556d7ed8b08a7c" title="btGImpactMeshShape::getMeshPart" alt="" coords="405,284,637,311">
+<area shape="rect" href="$classbt_g_impact_mesh_shape.html#6cea13ee2675f58721e9cde9e7acc917" title="btGImpactMeshShape::getMeshPartCount" alt="" coords="388,335,655,361">
+<area shape="rect" href="$classbt_g_impact_shape_interface.html#e5de49e788c97a954ab9f2bde16adf60" title="call when reading child shapes" alt="" coords="385,385,657,412">
+<area shape="rect" href="$classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="433,436,609,463">
+<area shape="rect" href="$classbt_g_impact_shape_interface.html#c7da336fdb3165c1d086c766fe42114e" title="btGImpactShapeInterface::unlockChildShapes" alt="" coords="379,487,664,513">
+<area shape="rect" href="$classbt_g_impact_mesh_shape_part.html#5deaf3963fd7b8c337a322a5d775b478" title="btGImpactMeshShapePart::getBulletTriangle" alt="" coords="733,5,1011,32">
+<area shape="rect" href="$classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28" title="call when reading child shapes" alt="" coords="732,56,1012,83">
+<area shape="rect" href="$classbt_triangle_shape_ex.html#8642843da440361eecf27d5a074d6231" title="class btTriangleShapeEx: public btTriangleShape" alt="" coords="731,107,1013,133">
+<area shape="rect" href="$classbt_g_impact_mesh_shape_part.html#0624b4e736275809ea259a7144ac0a48" title="btGImpactMeshShapePart::unlockChildShapes" alt="" coords="725,157,1019,184">
+<area shape="rect" href="$classbt_g_impact_quantized_bvh.html#8954b68cdc557ffab6c4c0361cea109a" title="btGImpactQuantizedBvh::getPrimitiveManager" alt="" coords="1104,5,1389,32">
+<area shape="rect" href="$classbt_g_impact_mesh_shape_part_1_1_trimesh_primitive_manager.html#48a013e72b76f832638a54326a7cc709" title="btGImpactMeshShapePart::TrimeshPrimitiveManager::lock" alt="" coords="1067,56,1427,83">
+<area shape="rect" href="$classbt_triangle_shape_ex.html#004b61bd84c01fde9edd25e0c538bd1d" title="btTriangleShapeEx::buildTriPlane" alt="" coords="1141,107,1352,133">

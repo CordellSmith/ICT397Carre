@@ -1,9 +1,12 @@
-<area shape="rect" href="$classbt_collision_dispatcher.html" title="btCollisionDispatcher" alt="" coords="965,152,1109,179">
-<area shape="rect" href="$classbt_dispatcher.html" title="btDispatcher" alt="" coords="523,7,616,33">
-<area shape="rect" href="$classbt_collision_configuration.html" title="btCollisionConfiguration" alt="" coords="492,57,647,84">
-<area shape="rect" href="$classbt_pool_allocator.html" title="The btPoolAllocator class allows to efficiently allocate a large pool of objects..." alt="" coords="515,120,624,147">
-<area shape="rect" href="$classbt_spin_mutex.html" title="btSpinMutex" alt="" coords="109,120,203,147">
-<area shape="rect" href="$structbt_collision_algorithm_create_func.html" title="Used by the btCollisionDispatcher to register and create instances for btCollisionAlgorithm..." alt="" coords="468,180,671,207">
-<area shape="rect" href="$classbt_manifold_result.html" title="btManifoldResult is a helper class to manage contact results." alt="" coords="511,231,628,257">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btPersistentManifold * \&gt;" alt="" coords="421,281,717,308">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btPersistentManifold *, 16 \&gt;" alt="" coords="7,281,305,308">
+<area shape="rect" href="$classbt_collision_dispatcher.html" title="btCollisionDispatcher" alt="" coords="1901,152,2045,179">
+<area shape="rect" href="$classbt_dispatcher.html" title="btDispatcher" alt="" coords="1459,7,1552,33">
+<area shape="rect" href="$classbt_collision_configuration.html" title="btCollisionConfiguration" alt="" coords="1428,57,1583,84">
+<area shape="rect" href="$classbt_pool_allocator.html" title="The btPoolAllocator class allows to efficiently allocate a large pool of objects..." alt="" coords="1451,120,1560,147">
+<area shape="rect" href="$classbt_spin_mutex.html" title="btSpinMutex" alt="" coords="1023,120,1116,147">
+<area shape="rect" href="$structbt_collision_algorithm_create_func.html" title="Used by the btCollisionDispatcher to register and create instances for btCollisionAlgorithm..." alt="" coords="1404,180,1607,207">
+<area shape="rect" href="$classbt_manifold_result.html" title="btManifoldResult is a helper class to manage contact results." alt="" coords="1447,231,1564,257">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btPersistentManifold * \&gt;" alt="" coords="1357,281,1653,308">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btPersistentManifold *, 16 \&gt;" alt="" coords="657,257,956,284">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,284,229,311">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="452,311,631,337">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="981,317,1157,344">

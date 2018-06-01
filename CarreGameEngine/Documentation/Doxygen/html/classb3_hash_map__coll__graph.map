@@ -1,6 +1,9 @@
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; Key \&gt;" alt="" coords="333,8,528,35">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; Key, 16 \&gt;" alt="" coords="11,8,208,35">
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; int \&gt;" alt="" coords="339,69,523,96">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; int, 16 \&gt;" alt="" coords="15,69,204,96">
-<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; Value \&gt;" alt="" coords="329,120,532,147">
-<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; Value, 16 \&gt;" alt="" coords="5,120,213,147">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; Key \&gt;" alt="" coords="1109,29,1304,56">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; Key, 16 \&gt;" alt="" coords="559,5,756,32">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,136,232,163">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="351,89,532,116">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; int, 16 \&gt;" alt="" coords="563,169,752,196">
+<area shape="rect" href="$classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; Value, 16 \&gt;" alt="" coords="781,233,989,260">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; T \&gt;" alt="" coords="796,83,975,109">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; int \&gt;" alt="" coords="1115,91,1299,117">
+<area shape="rect" href="$classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; Value \&gt;" alt="" coords="1105,141,1308,168">

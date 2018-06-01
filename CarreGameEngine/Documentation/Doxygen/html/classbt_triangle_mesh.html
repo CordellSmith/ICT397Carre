@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btTriangleMesh Class Reference</title>
+<title>Assignment2 - OOber Taxi: btTriangleMesh Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,14 +25,14 @@
   </div>
 </div>
 <div class="contents">
-<h1>btTriangleMesh Class Reference</h1><!-- doxytag: class="btTriangleMesh" --><code>#include &lt;btTriangleMesh.h&gt;</code>
+<h1>btTriangleMesh Class Reference</h1><!-- doxytag: class="btTriangleMesh" --><code>#include &lt;<a class="el" href="bt_triangle_mesh_8h-source.html">btTriangleMesh.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for btTriangleMesh:</div>
 <div class="dynsection">
 <p><center><img src="classbt_triangle_mesh__coll__graph.png" border="0" usemap="#bt_triangle_mesh__coll__map" alt="Collaboration graph"></center>
 <map name="bt_triangle_mesh__coll__map">
-<area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; unsigned int \&gt;" alt="" coords="415,8,652,35"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; unsigned int, 16 \&gt;" alt="" coords="23,8,265,35"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; unsigned short int \&gt;" alt="" coords="397,59,669,85"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; unsigned short int, 16 \&gt;" alt="" coords="7,59,281,85"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btVector3 \&gt;" alt="" coords="421,109,645,136"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btVector3, 16 \&gt;" alt="" coords="31,109,257,136"></map>
+<area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; unsigned int \&gt;" alt="" coords="1356,33,1593,60"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; unsigned int, 16 \&gt;" alt="" coords="649,5,892,32"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,136,229,163"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="428,89,607,116"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; unsigned short int, 16 \&gt;" alt="" coords="633,169,908,196"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btVector3, 16 \&gt;" alt="" coords="935,233,1161,260"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="960,83,1136,109"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; unsigned short int \&gt;" alt="" coords="1339,84,1611,111"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btVector3 \&gt;" alt="" coords="1363,135,1587,161"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -54,7 +54,9 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">addIndex is an internal method, use addTriangle instead <br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The <a class="el" href="classbt_triangle_mesh.html">btTriangleMesh</a> class is a convenience class derived from btTriangleIndexVertexArray, that provides storage for a concave triangle mesh. It can be used as data for the btBvhTriangleMeshShape. It allows either 32bit or 16bit indices, and 4 (x-y-z-w) or 3 (x-y-z) component vertices. If you want to share triangle/index data between graphics mesh and collision mesh (btBvhTriangleMeshShape), you can directly use btTriangleIndexVertexArray or derive your own class from btStridingMeshInterface. Performance of <a class="el" href="classbt_triangle_mesh.html">btTriangleMesh</a> and btTriangleIndexVertexArray used in a btBvhTriangleMeshShape is the same. <hr><h2>Member Function Documentation</h2>
+The <a class="el" href="classbt_triangle_mesh.html">btTriangleMesh</a> class is a convenience class derived from btTriangleIndexVertexArray, that provides storage for a concave triangle mesh. It can be used as data for the btBvhTriangleMeshShape. It allows either 32bit or 16bit indices, and 4 (x-y-z-w) or 3 (x-y-z) component vertices. If you want to share triangle/index data between graphics mesh and collision mesh (btBvhTriangleMeshShape), you can directly use btTriangleIndexVertexArray or derive your own class from btStridingMeshInterface. Performance of <a class="el" href="classbt_triangle_mesh.html">btTriangleMesh</a> and btTriangleIndexVertexArray used in a btBvhTriangleMeshShape is the same. 
+<p>Definition at line <a class="el" href="bt_triangle_mesh_8h-source.html#l00027">27</a> of file <a class="el" href="bt_triangle_mesh_8h-source.html">btTriangleMesh.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="28551d57ae59248a210163a504558583"></a><!-- doxytag: member="btTriangleMesh::addTriangle" ref="28551d57ae59248a210163a504558583" args="(const btVector3 &amp;vertex0, const btVector3 &amp;vertex1, const btVector3 &amp;vertex2, bool removeDuplicateVertices=false)" -->
 <div class="memitem">
 <div class="memproto">
@@ -94,6 +96,27 @@ The <a class="el" href="classbt_triangle_mesh.html">btTriangleMesh</a> class is 
 
 <p>
 By default addTriangle won't search for duplicate vertices, because the search is very slow for large triangle meshes. In general it is better to directly use btTriangleIndexVertexArray instead. 
+<p>Definition at line <a class="el" href="bt_triangle_mesh_8cpp-source.html#l00132">132</a> of file <a class="el" href="bt_triangle_mesh_8cpp-source.html">btTriangleMesh.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_triangle_mesh_8cpp-source.html#l00065">addIndex()</a>, and <a class="el" href="bt_triangle_mesh_8cpp-source.html#l00086">findOrAddVertex()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00133"></a>00133 {
+<a name="l00134"></a>00134         m_indexedMeshes[0].m_numTriangles++;
+<a name="l00135"></a>00135         <a class="code" href="classbt_triangle_mesh.html#ceefc2d4c6a9abaff3bd58310533fd8a" title="addIndex is an internal method, use addTriangle instead">addIndex</a>(<a class="code" href="classbt_triangle_mesh.html#3b521a1faa5862a818d9f983230749a2" title="findOrAddVertex is an internal method, use addTriangle instead">findOrAddVertex</a>(vertex0,removeDuplicateVertices));
+<a name="l00136"></a>00136         <a class="code" href="classbt_triangle_mesh.html#ceefc2d4c6a9abaff3bd58310533fd8a" title="addIndex is an internal method, use addTriangle instead">addIndex</a>(<a class="code" href="classbt_triangle_mesh.html#3b521a1faa5862a818d9f983230749a2" title="findOrAddVertex is an internal method, use addTriangle instead">findOrAddVertex</a>(vertex1,removeDuplicateVertices));
+<a name="l00137"></a>00137         <a class="code" href="classbt_triangle_mesh.html#ceefc2d4c6a9abaff3bd58310533fd8a" title="addIndex is an internal method, use addTriangle instead">addIndex</a>(<a class="code" href="classbt_triangle_mesh.html#3b521a1faa5862a818d9f983230749a2" title="findOrAddVertex is an internal method, use addTriangle instead">findOrAddVertex</a>(vertex2,removeDuplicateVertices));
+<a name="l00138"></a>00138 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_triangle_mesh_28551d57ae59248a210163a504558583_cgraph.png" border="0" usemap="#classbt_triangle_mesh_28551d57ae59248a210163a504558583_cgraph_map" alt=""></center>
+<map name="classbt_triangle_mesh_28551d57ae59248a210163a504558583_cgraph_map">
+<area shape="rect" href="classbt_triangle_mesh.html#ceefc2d4c6a9abaff3bd58310533fd8a" title="addIndex is an internal method, use addTriangle instead" alt="" coords="260,5,428,32"><area shape="rect" href="classbt_triangle_mesh.html#3b521a1faa5862a818d9f983230749a2" title="findOrAddVertex is an internal method, use addTriangle instead" alt="" coords="239,56,449,83"><area shape="rect" href="classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1" title="btAlignedObjectArray::push_back" alt="" coords="499,5,715,32"><area shape="rect" href="group__gtx__quaternion.html#ge0ff959e757f5feba0bd375658673d0d" title="glm::length2" alt="" coords="561,56,652,83"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="519,107,695,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="3b521a1faa5862a818d9f983230749a2"></a><!-- doxytag: member="btTriangleMesh::findOrAddVertex" ref="3b521a1faa5862a818d9f983230749a2" args="(const btVector3 &amp;vertex, bool removeDuplicateVertices)" -->
@@ -128,12 +151,81 @@ findOrAddVertex is an internal method, use addTriangle instead
 <p>
 <dl compact><dt><b><a class="el" href="todo.html#_todo000024">Todo:</a></b></dt><dd>: could use acceleration structure for this </dd></dl>
 
+<p>Definition at line <a class="el" href="bt_triangle_mesh_8cpp-source.html#l00086">86</a> of file <a class="el" href="bt_triangle_mesh_8cpp-source.html">btTriangleMesh.cpp</a>.</p>
+
+<p>References <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00164">glm::length2()</a>, <a class="el" href="bt_aligned_object_array_8h-source.html#l00274">btAlignedObjectArray&lt; T &gt;::push_back()</a>, and <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_triangle_mesh_8cpp-source.html#l00132">addTriangle()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00087"></a>00087 {
+<a name="l00088"></a>00088         <span class="comment">//return index of new/existing vertex</span>
+<a name="l00090"></a>00090 <span class="comment"></span>        <span class="keywordflow">if</span> (m_use4componentVertices)
+<a name="l00091"></a>00091         {
+<a name="l00092"></a>00092                 <span class="keywordflow">if</span> (removeDuplicateVertices)
+<a name="l00093"></a>00093                         {
+<a name="l00094"></a>00094                         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt; m_4componentVertices.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>();i++)
+<a name="l00095"></a>00095                         {
+<a name="l00096"></a>00096                                 <span class="keywordflow">if</span> ((m_4componentVertices[i]-vertex).length2() &lt;= m_weldingThreshold)
+<a name="l00097"></a>00097                                 {
+<a name="l00098"></a>00098                                         <span class="keywordflow">return</span> i;
+<a name="l00099"></a>00099                                 }
+<a name="l00100"></a>00100                         }
+<a name="l00101"></a>00101                 }
+<a name="l00102"></a>00102                 m_indexedMeshes[0].m_numVertices++;
+<a name="l00103"></a>00103                 m_4componentVertices.<a class="code" href="classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1">push_back</a>(vertex);
+<a name="l00104"></a>00104                 m_indexedMeshes[0].m_vertexBase = (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*)&amp;m_4componentVertices[0];
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106                 <span class="keywordflow">return</span> m_4componentVertices.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>()-1;
+<a name="l00107"></a>00107                 
+<a name="l00108"></a>00108         } <span class="keywordflow">else</span>
+<a name="l00109"></a>00109         {
+<a name="l00110"></a>00110                 
+<a name="l00111"></a>00111                 <span class="keywordflow">if</span> (removeDuplicateVertices)
+<a name="l00112"></a>00112                 {
+<a name="l00113"></a>00113                         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt; m_3componentVertices.size();i+=3)
+<a name="l00114"></a>00114                         {
+<a name="l00115"></a>00115                                 btVector3 vtx(m_3componentVertices[i],m_3componentVertices[i+1],m_3componentVertices[i+2]);
+<a name="l00116"></a>00116                                 <span class="keywordflow">if</span> ((vtx-vertex).<a class="code" href="group__gtx__quaternion.html#ge0ff959e757f5feba0bd375658673d0d">length2</a>() &lt;= m_weldingThreshold)
+<a name="l00117"></a>00117                                 {
+<a name="l00118"></a>00118                                         <span class="keywordflow">return</span> i/3;
+<a name="l00119"></a>00119                                 }
+<a name="l00120"></a>00120                         }
+<a name="l00121"></a>00121                 }
+<a name="l00122"></a>00122                 m_3componentVertices.push_back(vertex.getX());
+<a name="l00123"></a>00123                 m_3componentVertices.push_back(vertex.getY());
+<a name="l00124"></a>00124                 m_3componentVertices.push_back(vertex.getZ());
+<a name="l00125"></a>00125                 m_indexedMeshes[0].m_numVertices++;
+<a name="l00126"></a>00126                 m_indexedMeshes[0].m_vertexBase = (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*)&amp;m_3componentVertices[0];
+<a name="l00127"></a>00127                 <span class="keywordflow">return</span> (m_3componentVertices.size()/3)-1;
+<a name="l00128"></a>00128         }
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_triangle_mesh_3b521a1faa5862a818d9f983230749a2_cgraph.png" border="0" usemap="#classbt_triangle_mesh_3b521a1faa5862a818d9f983230749a2_cgraph_map" alt=""></center>
+<map name="classbt_triangle_mesh_3b521a1faa5862a818d9f983230749a2_cgraph_map">
+<area shape="rect" href="group__gtx__quaternion.html#ge0ff959e757f5feba0bd375658673d0d" title="glm::length2" alt="" coords="329,5,420,32"><area shape="rect" href="classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1" title="btAlignedObjectArray::push_back" alt="" coords="267,56,483,83"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="287,107,463,133"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_triangle_mesh_3b521a1faa5862a818d9f983230749a2_icgraph.png" border="0" usemap="#classbt_triangle_mesh_3b521a1faa5862a818d9f983230749a2_icgraph_map" alt=""></center>
+<map name="classbt_triangle_mesh_3b521a1faa5862a818d9f983230749a2_icgraph_map">
+<area shape="rect" href="classbt_triangle_mesh.html#28551d57ae59248a210163a504558583" title="btTriangleMesh::addTriangle" alt="" coords="267,5,451,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionShapes/btTriangleMesh.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionShapes/btTriangleMesh.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionShapes/<a class="el" href="bt_triangle_mesh_8h-source.html">btTriangleMesh.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionShapes/<a class="el" href="bt_triangle_mesh_8cpp-source.html">btTriangleMesh.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:05:02 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:02:09 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

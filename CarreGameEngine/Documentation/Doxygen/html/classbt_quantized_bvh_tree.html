@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btQuantizedBvhTree Class Reference</title>
+<title>Assignment2 - OOber Taxi: btQuantizedBvhTree Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btQuantizedBvhTree Class Reference</h1><!-- doxytag: class="btQuantizedBvhTree" -->Basic Box tree structure.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btGImpactQuantizedBvh.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_g_impact_quantized_bvh_8h-source.html">btGImpactQuantizedBvh.h</a>&gt;</code>
 <p>
 
 <p>
@@ -49,7 +49,9 @@ SIMD_FORCE_INLINE bool&nbsp;</td><td class="memItemRight" valign="bottom"><a cla
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">tells if the node is a leaf <br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Basic Box tree structure. <hr><h2>Member Function Documentation</h2>
+Basic Box tree structure. 
+<p>Definition at line <a class="el" href="bt_g_impact_quantized_bvh_8h-source.html#l00039">39</a> of file <a class="el" href="bt_g_impact_quantized_bvh_8h-source.html">btGImpactQuantizedBvh.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="a2229fd3e3e2004cdf8151437535e936"></a><!-- doxytag: member="btQuantizedBvhTree::build_tree" ref="a2229fd3e3e2004cdf8151437535e936" args="(GIM_BVH_DATA_ARRAY &amp;primitive_boxes)" -->
 <div class="memitem">
 <div class="memproto">
@@ -70,12 +72,36 @@ Basic Box tree structure. <hr><h2>Member Function Documentation</h2>
 stackless build tree 
 <p>
 prototype functions for box tree management 
+<p>Definition at line <a class="el" href="bt_g_impact_quantized_bvh_8cpp-source.html#l00233">233</a> of file <a class="el" href="bt_g_impact_quantized_bvh_8cpp-source.html">btGImpactQuantizedBvh.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_g_impact_quantized_bvh_8cpp-source.html#l00287">btGImpactQuantizedBvh::buildSet()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00235"></a>00235 {
+<a name="l00236"></a>00236         calc_quantization(primitive_boxes);
+<a name="l00237"></a>00237         <span class="comment">// initialize node count to 0</span>
+<a name="l00238"></a>00238         m_num_nodes = 0;
+<a name="l00239"></a>00239         <span class="comment">// allocate nodes</span>
+<a name="l00240"></a>00240         m_node_array.resize(primitive_boxes.size()*2);
+<a name="l00241"></a>00241 
+<a name="l00242"></a>00242         _build_sub_tree(primitive_boxes, 0, primitive_boxes.size());
+<a name="l00243"></a>00243 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_quantized_bvh_tree_a2229fd3e3e2004cdf8151437535e936_icgraph.png" border="0" usemap="#classbt_quantized_bvh_tree_a2229fd3e3e2004cdf8151437535e936_icgraph_map" alt=""></center>
+<map name="classbt_quantized_bvh_tree_a2229fd3e3e2004cdf8151437535e936_icgraph_map">
+<area shape="rect" href="classbt_g_impact_quantized_bvh.html#2f061fbf0c6d8a81438861be4add7968" title="this rebuild the entire set" alt="" coords="256,5,472,32"><area shape="rect" href="classbt_g_impact_shape_interface.html#1712a4613e20aa9249514dcd97f0a086" title="use this function for perfofm refit in bounding boxes" alt="" coords="520,5,787,32"><area shape="rect" href="classbt_g_impact_shape_interface.html#cb26c2d7a2aecabd06b996b72b848492" title="performs refit operation" alt="" coords="836,5,1087,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_g_impact_quantized_bvh_8h.html">btGImpactQuantizedBvh.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactQuantizedBvh.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_g_impact_quantized_bvh_8h-source.html">btGImpactQuantizedBvh.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_g_impact_quantized_bvh_8cpp-source.html">btGImpactQuantizedBvh.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:43 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:37 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

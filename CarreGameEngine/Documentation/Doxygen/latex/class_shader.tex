@@ -16,7 +16,7 @@ Basic shader class.
 \begin{CompactList}\small\item\em Destructor. \item\end{CompactList}\item 
 std::string \hyperlink{class_shader_c843ecd8274ea7507df0edf2f4e6a794}{LoadShaderFile} (std::string filePath)
 \begin{CompactList}\small\item\em Loads the shader from file. \item\end{CompactList}\item 
-void \hyperlink{class_shader_10a1c46813a799c87556aa38a96007e7}{Initialize} (std::string vertFile, std::string fragFile)
+void \hyperlink{class_shader_750cae45b47ecb6d8b8ae334562e7c6f}{Initialize} (std::string vertShader, std::string fragShader)
 \begin{CompactList}\small\item\em Initializes the shader program. \item\end{CompactList}\item 
 GLint \hyperlink{class_shader_1230582b9f5d71bde3614683244e1a83}{GetVariable} (std::string variable)
 \begin{CompactList}\small\item\em Gets the uniform variable. \item\end{CompactList}\item 
@@ -38,6 +38,24 @@ void \hyperlink{class_shader_d94b005141a4ed31a3f4f801455e5590}{TurnOff} ()
 \begin{CompactList}\small\item\em Turns shader off. \item\end{CompactList}\item 
 void \hyperlink{class_shader_b6fc1a824cb122fcb0c902397e20f72f}{Destroy} ()
 \begin{CompactList}\small\item\em Destroys any linked shaders. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_shader_a4af62b65d664448eb086b7f1dee3c7c}{
+GLuint \hyperlink{class_shader_a4af62b65d664448eb086b7f1dee3c7c}{m\_\-vertexShaderId}}
+\label{class_shader_a4af62b65d664448eb086b7f1dee3c7c}
+
+\begin{CompactList}\small\item\em Stores vertex shader information. \item\end{CompactList}\item 
+\hypertarget{class_shader_7bad959241a440403646830cf23d6019}{
+GLuint \hyperlink{class_shader_7bad959241a440403646830cf23d6019}{m\_\-fragmentShaderId}}
+\label{class_shader_7bad959241a440403646830cf23d6019}
+
+\begin{CompactList}\small\item\em Stores fragment shader information. \item\end{CompactList}\item 
+\hypertarget{class_shader_b0449cf7ef18fc874a80156f11a781de}{
+GLuint \hyperlink{class_shader_b0449cf7ef18fc874a80156f11a781de}{m\_\-shaderProgramId}}
+\label{class_shader_b0449cf7ef18fc874a80156f11a781de}
+
+\begin{CompactList}\small\item\em Stores the program information. \item\end{CompactList}\end{CompactItemize}
 
 
 \subsection{Detailed Description}
@@ -48,8 +66,14 @@ This shader class is used to load and store our shader information as well as in
 \begin{Desc}
 \item[Version:]01 \end{Desc}
 \begin{Desc}
-\item[Date:]29/03/2018 \end{Desc}
+\item[Date:]29/03/2018\end{Desc}
+\begin{Desc}
+\item[Version:]02 \end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
 
+
+Definition at line 29 of file Shader.h.
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_shader_0d654ebaca4e0555197c0724c6d30610}{
@@ -65,6 +89,15 @@ This is the default constuctor that is empyty.
 
 \begin{Desc}
 \item[Returns:]null \end{Desc}
+
+
+Definition at line 39 of file Shader.h.
+
+\begin{Code}\begin{verbatim}39 { }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_shader_ff01df87e8a102f270b5b135a295e59d}{
 \index{Shader@{Shader}!$\sim$Shader@{$\sim$Shader}}
 \index{$\sim$Shader@{$\sim$Shader}!Shader@{Shader}}
@@ -80,6 +113,19 @@ The destructor calls destroy that will free up any used memory.
 \item[Returns:]null \end{Desc}
 
 
+Definition at line 48 of file Shader.h.
+
+References Destroy().
+
+\begin{Code}\begin{verbatim}48 { Destroy(); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 \subsection{Member Function Documentation}
 \hypertarget{class_shader_c843ecd8274ea7507df0edf2f4e6a794}{
 \index{Shader@{Shader}!LoadShaderFile@{LoadShaderFile}}
@@ -90,7 +136,7 @@ The destructor calls destroy that will free up any used memory.
 
 Loads the shader from file. 
 
-The function takes the file path given as a string parameter, opens up a file stream to read the file and stores the file as a string in a local variable that is then returned. It is used to read int and store the \hyperlink{struct_vertex}{Vertex} and Fragment shaders.
+The function takes the file path given as a string parameter, opens up a file stream to read the file and stores the file as a string in a local variable that is then returned. It is used to read int and store the \hyperlink{class_vertex}{Vertex} and Fragment shaders.
 
 \begin{Desc}
 \item[Parameters:]
@@ -99,11 +145,36 @@ The function takes the file path given as a string parameter, opens up a file st
 \end{Desc}
 \begin{Desc}
 \item[Returns:]std::string \end{Desc}
-\hypertarget{class_shader_10a1c46813a799c87556aa38a96007e7}{
+
+
+Definition at line 3 of file Shader.cpp.
+
+\begin{Code}\begin{verbatim}4 {
+5         std::ifstream fin(filePath.c_str());
+6 
+7         if ( !fin )
+8                 return "";
+9 
+10         std::string strLine = "";
+11         std::string strText = "";
+12 
+13         while ( getline(fin, strLine) )
+14         {
+15                 strText = strText + "\n" + strLine;
+16         }
+17         fin.close();
+18 
+19         return strText;
+20 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_shader_750cae45b47ecb6d8b8ae334562e7c6f}{
 \index{Shader@{Shader}!Initialize@{Initialize}}
 \index{Initialize@{Initialize}!Shader@{Shader}}
-\subsubsection[Initialize]{\setlength{\rightskip}{0pt plus 5cm}void Shader::Initialize (std::string {\em vertFile}, \/  std::string {\em fragFile})}}
-\label{class_shader_10a1c46813a799c87556aa38a96007e7}
+\subsubsection[Initialize]{\setlength{\rightskip}{0pt plus 5cm}void Shader::Initialize (std::string {\em vertShader}, \/  std::string {\em fragShader})}}
+\label{class_shader_750cae45b47ecb6d8b8ae334562e7c6f}
 
 
 Initializes the shader program. 
@@ -112,7 +183,69 @@ This function takes the vertex and fragment shaders given as string parameters a
 
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_shader_1230582b9f5d71bde3614683244e1a83}{
+
+
+Definition at line 22 of file Shader.cpp.
+
+References Destroy(), m\_\-fragmentShaderId, m\_\-shaderProgramId, and m\_\-vertexShaderId.
+
+Referenced by OpenGl::Prepare().
+
+\begin{Code}\begin{verbatim}23 {
+24         std::string vShaderStr, fShaderStr;
+25 
+26         if ( !strVertexFile.length() || !strFragmentFile.length() )
+27                 return;
+28 
+29         if ( m_vertexShaderId || m_fragmentShaderId || m_shaderProgramId )
+30                 Destroy();
+31 
+32         GLenum ErrorCheckValue = glGetError();
+33 
+34         // Assign VS and FS ids
+35         m_vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
+36         m_fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
+37 
+38         vShaderStr = strVertexFile.c_str();
+39         fShaderStr = strFragmentFile.c_str();
+40 
+41         const char *szVShader = vShaderStr.c_str();
+42         const char *szFShader = fShaderStr.c_str();
+43 
+44         glShaderSource(m_vertexShaderId, 1, &szVShader, nullptr);
+45         glShaderSource(m_fragmentShaderId, 1, &szFShader, nullptr);
+46         
+47         // Compile shaders
+48         glCompileShader(m_vertexShaderId);
+49         glCompileShader(m_fragmentShaderId);
+50 
+51         // Create shader program
+52         m_shaderProgramId = glCreateProgram();
+53 
+54         // Attach shdaers to program
+55         glAttachShader(m_shaderProgramId, m_vertexShaderId);
+56         glAttachShader(m_shaderProgramId, m_fragmentShaderId);
+57 
+58         // Link our program with OpenGL
+59         glLinkProgram(m_shaderProgramId);
+60 
+61         ErrorCheckValue = glGetError();
+62 
+63         if ( ErrorCheckValue != GL_NO_ERROR )
+64         {
+65                 std::cout << "ERROR: Could not create the shader program with error Id: " << ErrorCheckValue << std::endl;
+66                 exit(-1);
+67         }
+68 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{class_shader_1230582b9f5d71bde3614683244e1a83}{
 \index{Shader@{Shader}!GetVariable@{GetVariable}}
 \index{GetVariable@{GetVariable}!Shader@{Shader}}
 \subsubsection[GetVariable]{\setlength{\rightskip}{0pt plus 5cm}GLint Shader::GetVariable (std::string {\em variable})}}
@@ -130,7 +263,27 @@ Returns an ID with the same name as the string parameter in the shader.
 \end{Desc}
 \begin{Desc}
 \item[Returns:]GLint \end{Desc}
-\hypertarget{class_shader_3287589cdac47466a201e2d6702280ee}{
+
+
+Definition at line 70 of file Shader.cpp.
+
+References m\_\-shaderProgramId.
+
+Referenced by OpenGl::Render().
+
+\begin{Code}\begin{verbatim}71 {
+72         if(!m_shaderProgramId)
+73                 return -1;
+74 
+75         return glGetUniformLocation(m_shaderProgramId, strVariable.c_str());
+76 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_shader_3287589cdac47466a201e2d6702280ee}{
 \index{Shader@{Shader}!SetInt@{SetInt}}
 \index{SetInt@{SetInt}!Shader@{Shader}}
 \subsubsection[SetInt]{\setlength{\rightskip}{0pt plus 5cm}void Shader::SetInt (GLint {\em id}, \/  int {\em newValue})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -148,6 +301,15 @@ Calls glUniform1i() taking the id associated to the shader variable and changing
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
+
+
+Definition at line 97 of file Shader.h.
+
+\begin{Code}\begin{verbatim}97 { glUniform1i(id, newValue); }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_shader_df02f121177b2723321441701361fab4}{
 \index{Shader@{Shader}!SetFloat@{SetFloat}}
 \index{SetFloat@{SetFloat}!Shader@{Shader}}
@@ -166,7 +328,20 @@ Calls glUniform1f() taking the id associated to the shader variable and changing
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_shader_8c50bc3b65790489f1538867face7b81}{
+
+
+Definition at line 109 of file Shader.h.
+
+Referenced by OpenGl::Render().
+
+\begin{Code}\begin{verbatim}109 { glUniform1f(id, newValue); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_shader_8c50bc3b65790489f1538867face7b81}{
 \index{Shader@{Shader}!SetFloat2@{SetFloat2}}
 \index{SetFloat2@{SetFloat2}!Shader@{Shader}}
 \subsubsection[SetFloat2]{\setlength{\rightskip}{0pt plus 5cm}void Shader::SetFloat2 (GLint {\em id}, \/  GLfloat {\em v0}, \/  GLfloat {\em v1})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -184,6 +359,15 @@ Calls glUniform2f() taking the id associated to the shader variable and changing
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
+
+
+Definition at line 122 of file Shader.h.
+
+\begin{Code}\begin{verbatim}122 { glUniform2f(id, v0, v1); }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_shader_439aaf809ad7287862907ab1a36f3849}{
 \index{Shader@{Shader}!SetFloat3@{SetFloat3}}
 \index{SetFloat3@{SetFloat3}!Shader@{Shader}}
@@ -202,6 +386,15 @@ Calls glUniform3f() taking the id associated to the shader variable and changing
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
+
+
+Definition at line 136 of file Shader.h.
+
+\begin{Code}\begin{verbatim}136 { glUniform3f(id, v0, v1, v2);  }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_shader_4be6e8b9886f58bc5615d2f736c8885c}{
 \index{Shader@{Shader}!SetFloat4@{SetFloat4}}
 \index{SetFloat4@{SetFloat4}!Shader@{Shader}}
@@ -220,6 +413,15 @@ Calls glUniform4f() taking the id associated to the shader variable and changing
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
+
+
+Definition at line 151 of file Shader.h.
+
+\begin{Code}\begin{verbatim}151 { glUniform4f(id, v0, v1, v2, v3); }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_shader_61b49dc75fb1842ec58845e9912f824d}{
 \index{Shader@{Shader}!SetMatrix4@{SetMatrix4}}
 \index{SetMatrix4@{SetMatrix4}!Shader@{Shader}}
@@ -238,7 +440,20 @@ Calls glUniformMatrix4fv() taking the id associated to the shader variable and p
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_shader_01e9b0696a56a5c567ea4b369872c982}{
+
+
+Definition at line 165 of file Shader.h.
+
+Referenced by OpenGl::Render().
+
+\begin{Code}\begin{verbatim}165 { glUniformMatrix4fv(id, count, transpose, value); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_shader_01e9b0696a56a5c567ea4b369872c982}{
 \index{Shader@{Shader}!TurnOn@{TurnOn}}
 \index{TurnOn@{TurnOn}!Shader@{Shader}}
 \subsubsection[TurnOn]{\setlength{\rightskip}{0pt plus 5cm}void Shader::TurnOn ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -251,7 +466,22 @@ Calls glUseProgram() turning the shader on.
 
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_shader_d94b005141a4ed31a3f4f801455e5590}{
+
+
+Definition at line 174 of file Shader.h.
+
+References m\_\-shaderProgramId.
+
+Referenced by OpenGl::Render().
+
+\begin{Code}\begin{verbatim}174 {       glUseProgram(m_shaderProgramId); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_shader_d94b005141a4ed31a3f4f801455e5590}{
 \index{Shader@{Shader}!TurnOff@{TurnOff}}
 \index{TurnOff@{TurnOff}!Shader@{Shader}}
 \subsubsection[TurnOff]{\setlength{\rightskip}{0pt plus 5cm}void Shader::TurnOff ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -264,7 +494,20 @@ Calls glUseProgram(0) turning the shader off.
 
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_shader_b6fc1a824cb122fcb0c902397e20f72f}{
+
+
+Definition at line 183 of file Shader.h.
+
+Referenced by OpenGl::Render().
+
+\begin{Code}\begin{verbatim}183 { glUseProgram(0); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_shader_b6fc1a824cb122fcb0c902397e20f72f}{
 \index{Shader@{Shader}!Destroy@{Destroy}}
 \index{Destroy@{Destroy}!Shader@{Shader}}
 \subsubsection[Destroy]{\setlength{\rightskip}{0pt plus 5cm}void Shader::Destroy ()}}
@@ -279,7 +522,41 @@ Detatches and deletes the shader information. Sets the m\_\-vertexShaderId, m\_\
 \item[Returns:]void \end{Desc}
 
 
+Definition at line 78 of file Shader.cpp.
+
+References m\_\-fragmentShaderId, m\_\-shaderProgramId, and m\_\-vertexShaderId.
+
+Referenced by Initialize(), and $\sim$Shader().
+
+\begin{Code}\begin{verbatim}79 {
+80         if(m_vertexShaderId)
+81         {
+82                 glDetachShader(m_shaderProgramId, m_vertexShaderId);
+83                 glDeleteShader(m_vertexShaderId);
+84                 m_vertexShaderId = 0;
+85         }
+86 
+87         if(m_fragmentShaderId)
+88         {
+89                 glDetachShader(m_shaderProgramId, m_fragmentShaderId);
+90                 glDeleteShader(m_fragmentShaderId);
+91                 m_fragmentShaderId = 0;
+92         }
+93 
+94         if(m_shaderProgramId)
+95         {
+96                 glDeleteShader(m_shaderProgramId);
+97                 m_shaderProgramId = 0;
+98         }
+99 }\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/Shader.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/src/Shader.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/Shader.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/src/Shader.cpp\end{CompactItemize}

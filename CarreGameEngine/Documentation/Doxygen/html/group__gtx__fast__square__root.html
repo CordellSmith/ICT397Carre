@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_fast_square_root</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_fast_square_root</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -90,6 +90,24 @@ template&lt;typename genType&gt; </div>
 
 <p>
 Faster than the common distance function but less accurate. From GLM_GTX_fast_square_root extension. 
+<p>Definition at line <a class="el" href="fast__square__root_8inl-source.html#l00103">103</a> of file <a class="el" href="fast__square__root_8inl-source.html">fast_square_root.inl</a>.</p>
+
+<p>References <a class="el" href="fast__square__root_8inl-source.html#l00063">glm::fastLength()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00107"></a>00107         {
+<a name="l00108"></a>00108                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__fast__square__root.html#g49395da3932ad3f2b33d6b874aa1de0d">fastLength</a>(y - x);
+<a name="l00109"></a>00109         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__fast__square__root_g38aff4a231786efed3482b015da34b66_cgraph.png" border="0" usemap="#group__gtx__fast__square__root_g38aff4a231786efed3482b015da34b66_cgraph_map" alt=""></center>
+<map name="group__gtx__fast__square__root_g38aff4a231786efed3482b015da34b66_cgraph_map">
+<area shape="rect" href="group__gtx__fast__square__root.html#g49395da3932ad3f2b33d6b874aa1de0d" title="glm::fastLength" alt="" coords="177,5,287,32"><area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="336,5,408,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="ge34c9d81e02deb1042789aa4dc98cfc9"></a><!-- doxytag: member="glm::fastInverseSqrt" ref="ge34c9d81e02deb1042789aa4dc98cfc9" args="(vecType&lt; T, P &gt; const &amp;x)" -->
@@ -112,6 +130,13 @@ template&lt;typename T, precision P, template&lt; typename, precision &gt; class
 
 <p>
 Faster than the common inversesqrt function but less accurate. From GLM_GTX_fast_square_root extension. 
+<p>Definition at line <a class="el" href="fast__square__root_8inl-source.html#l00051">51</a> of file <a class="el" href="fast__square__root_8inl-source.html">fast_square_root.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00054"></a>00054         {
+<a name="l00055"></a>00055                 <span class="keywordflow">return</span> detail::compute_inversesqrt&lt;vecType, T, P&gt;::call(x);
+<a name="l00056"></a>00056         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g38b3acc3e6a37b2e6f78e2bb29585047"></a><!-- doxytag: member="glm::fastInverseSqrt" ref="g38b3acc3e6a37b2e6f78e2bb29585047" args="(genType const &amp;x)" -->
@@ -134,6 +159,17 @@ template&lt;typename genType&gt; </div>
 
 <p>
 Faster than the common inversesqrt function but less accurate. From GLM_GTX_fast_square_root extension. 
+<p>Referenced by <a class="el" href="normalize__dot_8inl-source.html#l00066">glm::fastNormalizeDot()</a>, and <a class="el" href="fast__square__root_8inl-source.html#l00015">glm::fastSqrt()</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__fast__square__root_g38b3acc3e6a37b2e6f78e2bb29585047_icgraph.png" border="0" usemap="#group__gtx__fast__square__root_g38b3acc3e6a37b2e6f78e2bb29585047_icgraph_map" alt=""></center>
+<map name="group__gtx__fast__square__root_g38b3acc3e6a37b2e6f78e2bb29585047_icgraph_map">
+<area shape="rect" href="group__gtx__normalize__dot.html#gb3967681366216d96699232dd5e86d31" title="glm::fastNormalizeDot" alt="" coords="189,5,339,32"><area shape="rect" href="group__gtx__fast__square__root.html#g4a192efe46a74d13ab40067f7e3714e3" title="glm::fastSqrt" alt="" coords="216,56,312,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g49395da3932ad3f2b33d6b874aa1de0d"></a><!-- doxytag: member="glm::fastLength" ref="g49395da3932ad3f2b33d6b874aa1de0d" args="(genType const &amp;x)" -->
@@ -156,6 +192,35 @@ template&lt;typename genType&gt; </div>
 
 <p>
 Faster than the common length function but less accurate. From GLM_GTX_fast_square_root extension. 
+<p>Definition at line <a class="el" href="fast__square__root_8inl-source.html#l00063">63</a> of file <a class="el" href="fast__square__root_8inl-source.html">fast_square_root.inl</a>.</p>
+
+<p>References <a class="el" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">glm::abs()</a>.</p>
+
+<p>Referenced by <a class="el" href="fast__square__root_8inl-source.html#l00103">glm::fastDistance()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00066"></a>00066         {
+<a name="l00067"></a>00067                 <span class="keywordflow">return</span> <a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(x);
+<a name="l00068"></a>00068         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__fast__square__root_g49395da3932ad3f2b33d6b874aa1de0d_cgraph.png" border="0" usemap="#group__gtx__fast__square__root_g49395da3932ad3f2b33d6b874aa1de0d_cgraph_map" alt=""></center>
+<map name="group__gtx__fast__square__root_g49395da3932ad3f2b33d6b874aa1de0d_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="165,5,237,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__fast__square__root_g49395da3932ad3f2b33d6b874aa1de0d_icgraph.png" border="0" usemap="#group__gtx__fast__square__root_g49395da3932ad3f2b33d6b874aa1de0d_icgraph_map" alt=""></center>
+<map name="group__gtx__fast__square__root_g49395da3932ad3f2b33d6b874aa1de0d_icgraph_map">
+<area shape="rect" href="group__gtx__fast__square__root.html#g38aff4a231786efed3482b015da34b66" title="glm::fastDistance" alt="" coords="165,5,288,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g06fee9a90e853107e9d70d690dccf478"></a><!-- doxytag: member="glm::fastNormalize" ref="g06fee9a90e853107e9d70d690dccf478" args="(genType const &amp;x)" -->
@@ -178,6 +243,13 @@ template&lt;typename genType&gt; </div>
 
 <p>
 Faster than the common normalize function but less accurate. From GLM_GTX_fast_square_root extension. 
+<p>Definition at line <a class="el" href="fast__square__root_8inl-source.html#l00144">144</a> of file <a class="el" href="fast__square__root_8inl-source.html">fast_square_root.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00147"></a>00147         {
+<a name="l00148"></a>00148                 <span class="keywordflow">return</span> x &gt; genType(0) ? genType(1) : -genType(1);
+<a name="l00149"></a>00149         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g4a192efe46a74d13ab40067f7e3714e3"></a><!-- doxytag: member="glm::fastSqrt" ref="g4a192efe46a74d13ab40067f7e3714e3" args="(genType const &amp;x)" -->
@@ -200,10 +272,30 @@ template&lt;typename genType&gt; </div>
 
 <p>
 Faster than the common sqrt function but less accurate. From GLM_GTX_fast_square_root extension. 
+<p>Definition at line <a class="el" href="fast__square__root_8inl-source.html#l00015">15</a> of file <a class="el" href="fast__square__root_8inl-source.html">fast_square_root.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtx__fast__square__root.html#g38b3acc3e6a37b2e6f78e2bb29585047">glm::fastInverseSqrt()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00018"></a>00018         {
+<a name="l00019"></a>00019                 GLM_STATIC_ASSERT(std::numeric_limits&lt;genType&gt;::is_iec559, <span class="stringliteral">"'fastSqrt' only accept floating-point input"</span>);
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021                 <span class="keywordflow">return</span> genType(1) / <a class="code" href="group__gtx__fast__square__root.html#ge34c9d81e02deb1042789aa4dc98cfc9">fastInverseSqrt</a>(x);
+<a name="l00022"></a>00022         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__fast__square__root_g4a192efe46a74d13ab40067f7e3714e3_cgraph.png" border="0" usemap="#group__gtx__fast__square__root_g4a192efe46a74d13ab40067f7e3714e3_cgraph_map" alt=""></center>
+<map name="group__gtx__fast__square__root_g4a192efe46a74d13ab40067f7e3714e3_cgraph_map">
+<area shape="rect" href="group__gtx__fast__square__root.html#g38b3acc3e6a37b2e6f78e2bb29585047" title="glm::fastInverseSqrt" alt="" coords="149,5,285,32"></map>
+</div>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:31 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:19 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

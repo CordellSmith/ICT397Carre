@@ -8,4 +8,11 @@ digraph G
   Node2 [label="b3AlignedObjectArray\< const b3DbvtNode * \>",height=0.2,width=0.4,color="black",URL="$classb3_aligned_object_array.html"];
   Node3 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
   Node3 [label="b3AlignedAllocator\< const b3DbvtNode *, 16 \>",height=0.2,width=0.4,color="black",URL="$classb3_aligned_allocator.html"];
+  Node4 -> Node3 [dir=back,color="orange",fontsize=10,style="dashed",label="\< const b3DbvtNode *, 16 \>"];
+  Node4 [label="b3AlignedAllocator\< T, Alignment \>",height=0.2,width=0.4,color="black",URL="$classb3_aligned_allocator.html"];
+  Node5 -> Node2 [dir=back,color="orange",fontsize=10,style="dashed",label="\< const b3DbvtNode * \>"];
+  Node5 [label="b3AlignedObjectArray\< T \>",height=0.2,width=0.4,color="black",URL="$classb3_aligned_object_array.html"];
+  Node6 -> Node5 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node6 [label="b3AlignedAllocator\< T, 16 \>",height=0.2,width=0.4,color="black",URL="$classb3_aligned_allocator.html"];
+  Node4 -> Node6 [dir=back,color="orange",fontsize=10,style="dashed",label="\< T, 16 \>"];
 }

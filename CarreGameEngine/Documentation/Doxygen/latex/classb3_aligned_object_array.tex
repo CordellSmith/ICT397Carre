@@ -46,6 +46,8 @@ int \hyperlink{classb3_aligned_object_array_0094f3242fba631391910c0a2e88da84}{fi
 
 The \hyperlink{classb3_aligned_object_array}{b3AlignedObjectArray} template class uses a subset of the stl::vector interface for its methods It is developed to replace stl::vector to avoid portability issues, including STL alignment issues to add SIMD/SSE data 
 
+Definition at line 47 of file b3AlignedObjectArray.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classb3_aligned_object_array_5f21071bc7b73c1a0b4fcfde123e5182}{
 \index{b3AlignedObjectArray@{b3AlignedObjectArray}!resizeNoInitialize@{resizeNoInitialize}}
@@ -56,6 +58,29 @@ The \hyperlink{classb3_aligned_object_array}{b3AlignedObjectArray} template clas
 
 resize changes the number of elements in the array. If the new size is larger, the new elements will be constructed using the optional second argument. when the new number of elements is smaller, the destructor will be called, but memory will not be freed, to reduce performance overhead of run-time memory (de)allocations. 
 
+Definition at line 203 of file b3AlignedObjectArray.h.
+
+\begin{Code}\begin{verbatim}204                 {
+205                         int curSize = size();
+206 
+207                         if (newsize < curSize)
+208                         {
+209                         } else
+210                         {
+211                                 if (newsize > size())
+212                                 {
+213                                         reserve(newsize);
+214                                 }
+215                                 //leave this uninitialized
+216                         }
+217                         m_size = newsize;
+218                 }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Common/b3AlignedObjectArray.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Common/b3AlignedObjectArray.h\end{CompactItemize}

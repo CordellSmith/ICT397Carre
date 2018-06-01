@@ -26,3 +26,18 @@ $<$glm/gtx/perpendicular.hpp$>$ need to be included to use these functionalities
 
 
 Projects x a perpendicular axis of Normal. From GLM\_\-GTX\_\-perpendicular extension. 
+
+Definition at line 14 of file perpendicular.inl.
+
+References glm::proj().
+
+\begin{Code}\begin{verbatim}18         {
+19                 return x - proj(x, Normal);
+20         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

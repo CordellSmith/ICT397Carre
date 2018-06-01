@@ -9,10 +9,17 @@ digraph G
   Node2 [label="btAlignedObjectArray\< btCollisionObject * \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
   Node3 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
   Node3 [label="btAlignedAllocator\< btCollisionObject *, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
-  Node4 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_dispatcher1"];
-  Node4 [label="btDispatcher",height=0.2,width=0.4,color="black",URL="$classbt_dispatcher.html"];
-  Node5 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_broadphasePairCache"];
-  Node5 [label="btBroadphaseInterface",height=0.2,width=0.4,color="black",URL="$classbt_broadphase_interface.html"];
-  Node6 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_debugDrawer"];
-  Node6 [label="btIDebugDraw",height=0.2,width=0.4,color="black",URL="$classbt_i_debug_draw.html"];
+  Node4 -> Node3 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btCollisionObject *, 16 \>"];
+  Node4 [label="btAlignedAllocator\< T, Alignment \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node5 -> Node2 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btCollisionObject * \>"];
+  Node5 [label="btAlignedObjectArray\< T \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node6 -> Node5 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node6 [label="btAlignedAllocator\< T, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node4 -> Node6 [dir=back,color="orange",fontsize=10,style="dashed",label="\< T, 16 \>"];
+  Node7 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_dispatcher1"];
+  Node7 [label="btDispatcher",height=0.2,width=0.4,color="black",URL="$classbt_dispatcher.html"];
+  Node8 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_broadphasePairCache"];
+  Node8 [label="btBroadphaseInterface",height=0.2,width=0.4,color="black",URL="$classbt_broadphase_interface.html"];
+  Node9 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_debugDrawer"];
+  Node9 [label="btIDebugDraw",height=0.2,width=0.4,color="black",URL="$classbt_i_debug_draw.html"];
 }

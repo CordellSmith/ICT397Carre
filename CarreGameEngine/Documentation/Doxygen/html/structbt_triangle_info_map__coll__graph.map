@@ -1,8 +1,16 @@
-<area shape="rect" href="$classbt_hash_map.html" title="btInternalTriangleInfoMap" alt="" coords="743,59,905,85">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; int \&gt;" alt="" coords="400,8,581,35">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; int, 16 \&gt;" alt="" coords="36,8,223,35">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btHashInt \&gt;" alt="" coords="379,59,603,85">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btHashInt, 16 \&gt;" alt="" coords="16,59,243,85">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btTriangleInfo \&gt;" alt="" coords="369,109,612,136">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btTriangleInfo, 16 \&gt;" alt="" coords="5,109,253,136">
-<area shape="rect" href="$structbt_triangle_info.html" title="btTriangleInfo" alt="" coords="81,160,177,187">
+<area shape="rect" href="$classbt_hash_map.html" title="btInternalTriangleInfoMap" alt="" coords="2009,165,2172,192">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; int \&gt;" alt="" coords="1280,136,1461,163">
+<area shape="rect" href="$classbt_hash_map.html" title="btHashMap\&lt; Key, Value \&gt;" alt="" coords="1621,216,1797,243">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; int, 16 \&gt;" alt="" coords="660,95,847,121">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,247,229,273">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="413,215,592,241">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btHashInt, 16 \&gt;" alt="" coords="640,5,867,32">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btTriangleInfo, 16 \&gt;" alt="" coords="629,449,877,476">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; Key, 16 \&gt;" alt="" coords="903,273,1097,300">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; Value, 16 \&gt;" alt="" coords="400,340,605,367">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="912,203,1088,229">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btHashInt \&gt;" alt="" coords="1259,56,1483,83">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btTriangleInfo \&gt;" alt="" coords="1249,389,1492,416">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; Key \&gt;" alt="" coords="1275,233,1467,260">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; Value \&gt;" alt="" coords="1271,284,1471,311">
+<area shape="rect" href="$structbt_triangle_info.html" title="btTriangleInfo" alt="" coords="952,409,1048,436">

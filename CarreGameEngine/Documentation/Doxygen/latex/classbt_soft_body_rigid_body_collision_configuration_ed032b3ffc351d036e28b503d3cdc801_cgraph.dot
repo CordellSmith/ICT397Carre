@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btSoftBodyRigidBodyCollisionConfiguration::btSoftBodyRigidBodyCollisionConfiguration",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btPoolAllocator::getElementSize",height=0.2,width=0.4,color="black",URL="$classbt_pool_allocator.html#2bdce19b1ffb5f6fb5cd597dc3f00a3e"];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btPoolAllocator::~btPoolAllocator",height=0.2,width=0.4,color="black",URL="$classbt_pool_allocator.html#a221b8352b1100ead608ef1b39d797ba"];
+}

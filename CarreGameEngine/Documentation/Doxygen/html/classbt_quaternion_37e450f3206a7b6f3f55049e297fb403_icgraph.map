@@ -1,0 +1,10 @@
+<area shape="rect" href="$classbt_quaternion.html#6398a143dbe4bbf6211d90bc8c2dd2bc" title="Return the ***half*** angle between this quaternion and the other." alt="" coords="409,5,543,32">
+<area shape="rect" href="$classbt_quaternion.html#3160453535401db05d3926d7bc0ca5de" title="Return the angle between this quaternion and the other along the shortest path." alt="" coords="371,56,581,83">
+<area shape="rect" href="$classbt_quaternion.html#deda27273475435a9e3223abeea73992" title="btQuaternion::farthest" alt="" coords="176,208,323,235">
+<area shape="rect" href="$classbt_quaternion.html#59cc2f3a2c732aba98cd43764165b8cd" title="Return the length squared of the quaternion." alt="" coords="177,107,321,133">
+<area shape="rect" href="$classbt_quaternion.html#c95a27feda1c165b2ce359e7415fec6f" title="Return the quaternion which is the result of Spherical Linear Interpolation between..." alt="" coords="411,157,541,184">
+<area shape="rect" href="$classbt_quaternion.html#821a38604c6333b95d954867315d8716" title="btQuaternion::nearest" alt="" coords="176,259,323,285">
+<area shape="rect" href="$classbt_quaternion.html#9041c1885648f81009f41fc2aa6c17df" title="Return the length of the quaternion." alt="" coords="407,107,545,133">
+<area shape="rect" href="$classbt_quaternion.html#db5cd1eb8145a906f9f47857c498d3d6" title="Normalize the quaternion Such that x^2 + y^2 + z^2 +w^2 = 1." alt="" coords="633,81,793,108">
+<area shape="rect" href="$classbt_quaternion.html#b74af1c81fd04a63c1697b25a063e507" title="Return a normalized version of this quaternion." alt="" coords="631,132,796,159">
+<area shape="rect" href="$classbt_transform_util.html#39f53b05940a57082053067bd5e337ec" title="btTransformUtil::calculateDiffAxisAngle" alt="" coords="845,81,1091,108">

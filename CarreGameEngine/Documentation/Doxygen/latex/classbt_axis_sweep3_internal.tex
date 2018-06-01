@@ -43,6 +43,8 @@ virtual void \hyperlink{classbt_axis_sweep3_internal_5f343e29ce818d0b96cb11260bc
 
 The internal templace class \hyperlink{classbt_axis_sweep3_internal}{btAxisSweep3Internal} implements the sweep and prune broadphase. It uses quantized integers to represent the begin and end points for each of the 3 axis. Dont use this class directly, use \hyperlink{classbt_axis_sweep3}{btAxisSweep3} or \hyperlink{classbt32_bit_axis_sweep3}{bt32BitAxisSweep3} instead. 
 
+Definition at line 36 of file btAxisSweep3Internal.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_axis_sweep3_internal_4e26f4f8acf63f26451f6396223001bb}{
 \index{btAxisSweep3Internal@{btAxisSweep3Internal}!removeHandle@{removeHandle}}
@@ -55,7 +57,72 @@ The internal templace class \hyperlink{classbt_axis_sweep3_internal}{btAxisSweep
 
 \begin{Desc}
 \item[\hyperlink{todo__todo000008}{Todo}]: compare performance \end{Desc}
-\hypertarget{classbt_axis_sweep3_internal_5f343e29ce818d0b96cb11260bca2a68}{
+
+
+Definition at line 560 of file btAxisSweep3Internal.h.
+
+References btOverlappingPairCache::hasDeferredRemoval(), and btOverlappingPairCallback::removeOverlappingPairsContainingProxy().
+
+\begin{Code}\begin{verbatim}561 {
+562 
+563         Handle* pHandle = getHandle(handle);
+564 
+565         //explicitly remove the pairs containing the proxy
+566         //we could do it also in the sortMinUp (passing true)
+568         if (!m_pairCache->hasDeferredRemoval())
+569         {
+570                 m_pairCache->removeOverlappingPairsContainingProxy(pHandle,dispatcher);
+571         }
+572 
+573         // compute current limit of edge arrays
+574         int limit = static_cast<int>(m_numHandles * 2);
+575         
+576         int axis;
+577 
+578         for (axis = 0;axis<3;axis++)
+579         {
+580                 m_pHandles[0].m_maxEdges[axis] -= 2;
+581         }
+582 
+583         // remove the edges by sorting them up to the end of the list
+584         for ( axis = 0; axis < 3; axis++)
+585         {
+586                 Edge* pEdges = m_pEdges[axis];
+587                 BP_FP_INT_TYPE max = pHandle->m_maxEdges[axis];
+588                 pEdges[max].m_pos = m_handleSentinel;
+589 
+590                 sortMaxUp(axis,max,dispatcher,false);
+591 
+592 
+593                 BP_FP_INT_TYPE i = pHandle->m_minEdges[axis];
+594                 pEdges[i].m_pos = m_handleSentinel;
+595 
+596 
+597                 sortMinUp(axis,i,dispatcher,false);
+598 
+599                 pEdges[limit-1].m_handle = 0;
+600                 pEdges[limit-1].m_pos = m_handleSentinel;
+601                 
+602 #ifdef DEBUG_BROADPHASE
+603                         debugPrintAxis(axis,false);
+604 #endif //DEBUG_BROADPHASE
+605 
+606 
+607         }
+608 
+609 
+610         // free the handle
+611         freeHandle(handle);
+612 
+613         
+614 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_axis_sweep3_internal_5f343e29ce818d0b96cb11260bca2a68}{
 \index{btAxisSweep3Internal@{btAxisSweep3Internal}!getBroadphaseAabb@{getBroadphaseAabb}}
 \index{getBroadphaseAabb@{getBroadphaseAabb}!btAxisSweep3Internal@{btAxisSweep3Internal}}
 \subsubsection[getBroadphaseAabb]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename BP\_\-FP\_\-INT\_\-TYPE$>$ virtual void {\bf btAxisSweep3Internal}$<$ BP\_\-FP\_\-INT\_\-TYPE $>$::getBroadphaseAabb (btVector3 \& {\em aabbMin}, \/  btVector3 \& {\em aabbMax}) const\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
@@ -65,6 +132,18 @@ The internal templace class \hyperlink{classbt_axis_sweep3_internal}{btAxisSweep
 getAabb returns the axis aligned bounding box in the 'global' coordinate frame will add some transform later 
 
 Implements \hyperlink{classbt_broadphase_interface_b5af9e26414f5a72a76040b8fab4d9e2}{btBroadphaseInterface}.
+
+Definition at line 182 of file btAxisSweep3Internal.h.
+
+\begin{Code}\begin{verbatim}183         {
+184                 aabbMin = m_worldAabbMin;
+185                 aabbMax = m_worldAabbMax;
+186         }
+\end{verbatim}
+\end{Code}
+
+
+
 
 \subsection{Member Data Documentation}
 \hypertarget{classbt_axis_sweep3_internal_a0c964a27cd6722bdd231890b1239528}{
@@ -76,6 +155,8 @@ Implements \hyperlink{classbt_broadphase_interface_b5af9e26414f5a72a76040b8fab4d
 
 additional dynamic aabb structure, used to accelerate ray cast queries. can be disabled using a optional argument in the constructor 
 
+Definition at line 99 of file btAxisSweep3Internal.h.
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btAxisSweep3Internal.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btAxisSweep3Internal.h\end{CompactItemize}

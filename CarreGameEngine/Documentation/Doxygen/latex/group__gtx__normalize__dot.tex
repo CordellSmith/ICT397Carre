@@ -27,7 +27,25 @@ $<$glm/gtx/normalized\_\-dot.hpp$>$ need to be included to use these functionali
 \label{group__gtx__normalize__dot_gb3967681366216d96699232dd5e86d31}
 
 
-Normalize parameters and returns the dot product of x and y. Faster that dot(fastNormalize(x), fastNormalize(y)). From GLM\_\-GTX\_\-normalize\_\-dot extension. \hypertarget{group__gtx__normalize__dot_g068b0c92713a438533628dd5d0b581d4}{
+Normalize parameters and returns the dot product of x and y. Faster that dot(fastNormalize(x), fastNormalize(y)). From GLM\_\-GTX\_\-normalize\_\-dot extension. 
+
+Definition at line 66 of file normalize\_\-dot.inl.
+
+References glm::dot(), and glm::fastInverseSqrt().
+
+\begin{Code}\begin{verbatim}70         {
+71                 return 
+72                         glm::dot(x, y) * 
+73                         fastInverseSqrt(glm::dot(x, x) * 
+74                         glm::dot(y, y));
+75         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__normalize__dot_g068b0c92713a438533628dd5d0b581d4}{
 \index{gtx\_\-normalize\_\-dot@{gtx\_\-normalize\_\-dot}!normalizeDot@{normalizeDot}}
 \index{normalizeDot@{normalizeDot}!gtx_normalize_dot@{gtx\_\-normalize\_\-dot}}
 \subsubsection[normalizeDot]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::normalizeDot (genType const \& {\em x}, \/  genType const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -35,3 +53,21 @@ Normalize parameters and returns the dot product of x and y. Faster that dot(fas
 
 
 Normalize parameters and returns the dot product of x and y. It's faster that dot(normalize(x), normalize(y)). From GLM\_\-GTX\_\-normalize\_\-dot extension. 
+
+Definition at line 14 of file normalize\_\-dot.inl.
+
+References glm::dot(), and glm::inversesqrt().
+
+\begin{Code}\begin{verbatim}18         {
+19                 return 
+20                         glm::dot(x, y) * 
+21                         glm::inversesqrt(glm::dot(x, x) * 
+22                         glm::dot(y, y));
+23         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

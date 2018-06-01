@@ -1,0 +1,18 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="b3TransformUtil::calculateDiffAxisAngle",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="b3Quaternion::getAngle",height=0.2,width=0.4,color="black",URL="$classb3_quaternion.html#b5c827a4e5e0733a2c93d0856cf86a47",tooltip="Return the angle of rotation represented by this quaternion."];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="b3Quaternion::normalize",height=0.2,width=0.4,color="black",URL="$classb3_quaternion.html#96d3f4aedcb4b645115ab5a7897fa0d1",tooltip="Normalize the quaternion Such that x^2 + y^2 + z^2 +w^2 = 1."];
+  Node3 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="b3Quaternion::length",height=0.2,width=0.4,color="black",URL="$classb3_quaternion.html#d008f8dd2f6dbd5ac86f3b02a10ef4a6",tooltip="Return the length of the quaternion."];
+  Node4 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="b3Quaternion::length2",height=0.2,width=0.4,color="black",URL="$classb3_quaternion.html#a8d3d563ea89e36794d63bd289934509",tooltip="Return the length squared of the quaternion."];
+  Node5 -> Node6 [color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="b3Quaternion::dot",height=0.2,width=0.4,color="black",URL="$classb3_quaternion.html#747537c86fc2d63a6fc43db811952634",tooltip="Return the dot product between this quaternion and another."];
+}

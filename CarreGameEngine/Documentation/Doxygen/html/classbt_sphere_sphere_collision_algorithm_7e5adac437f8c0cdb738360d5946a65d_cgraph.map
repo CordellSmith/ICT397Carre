@@ -1,0 +1,5 @@
+<area shape="rect" href="$classbt_manifold_result.html#ebe32f0c202d988d0458e88d768602c6" title="btManifoldResult::addContactPoint" alt="" coords="391,31,612,57">
+<area shape="rect" href="$classbt_manifold_result.html#dbcfd865252ac9dc8a3543f404e2dcf1" title="btManifoldResult::refreshContactPoints" alt="" coords="379,81,624,108">
+<area shape="rect" href="$classbt_manifold_result.html#7a46d46b9a13c2896695e458c1d6df1f" title="btManifoldResult::setPersistentManifold" alt="" coords="376,132,627,159">
+<area shape="rect" href="$classbt_manifold_result.html#162717dce3ef3a756ae55ec04a179ed5" title="User can override this material combiner by implementing gContactAddedCallback and..." alt="" coords="685,5,963,32">
+<area shape="rect" href="$classbt_manifold_result.html#a4419fc3b0d13ccc2cbfd7739b047c04" title="in the future we can let the user override the methods to combine restitution and..." alt="" coords="676,56,972,83">

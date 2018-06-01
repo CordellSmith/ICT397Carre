@@ -118,6 +118,8 @@ SIMD\_\-FORCE\_\-INLINE void \hyperlink{classbt_quaternion_23f1203633c7afb3750a9
 \subsection{Detailed Description}
 The \hyperlink{classbt_quaternion}{btQuaternion} implements quaternion to perform linear algebra rotations in combination with btMatrix3x3, btVector3 and btTransform. 
 
+Definition at line 55 of file btQuaternion.h.
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classbt_quaternion_2b2e9ed0014eb26ed076808fb76e9d69}{
 \index{btQuaternion@{btQuaternion}!btQuaternion@{btQuaternion}}
@@ -133,7 +135,22 @@ Axis angle Constructor.
 \begin{description}
 \item[{\em axis}]The axis which the rotation is around \item[{\em angle}]The magnitude of the rotation around the angle (Radians) \end{description}
 \end{Desc}
-\hypertarget{classbt_quaternion_8bd5d699377ba585749d325076616ffb}{
+
+
+Definition at line 93 of file btQuaternion.h.
+
+References setRotation().
+
+\begin{Code}\begin{verbatim}94         { 
+95                 setRotation(_axis, _angle); 
+96         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_quaternion_8bd5d699377ba585749d325076616ffb}{
 \index{btQuaternion@{btQuaternion}!btQuaternion@{btQuaternion}}
 \index{btQuaternion@{btQuaternion}!btQuaternion@{btQuaternion}}
 \subsubsection[btQuaternion]{\setlength{\rightskip}{0pt plus 5cm}btQuaternion::btQuaternion (const btScalar \& {\em yaw}, \/  const btScalar \& {\em pitch}, \/  const btScalar \& {\em roll})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -148,6 +165,25 @@ Constructor from Euler angles.
 \item[{\em yaw}]Angle around Y unless BT\_\-EULER\_\-DEFAULT\_\-ZYX defined then Z \item[{\em pitch}]Angle around X unless BT\_\-EULER\_\-DEFAULT\_\-ZYX defined then Y \item[{\em roll}]Angle around Z unless BT\_\-EULER\_\-DEFAULT\_\-ZYX defined then X \end{description}
 \end{Desc}
 
+
+Definition at line 101 of file btQuaternion.h.
+
+References setEuler(), and setEulerZYX().
+
+\begin{Code}\begin{verbatim}102         { 
+103 #ifndef BT_EULER_DEFAULT_ZYX
+104                 setEuler(yaw, pitch, roll); 
+105 #else
+106                 setEulerZYX(yaw, pitch, roll); 
+107 #endif 
+108         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
 
 \subsection{Member Function Documentation}
 \hypertarget{classbt_quaternion_de840b704d06ad0092b996b432b8a8a6}{
@@ -164,7 +200,26 @@ Set the rotation using axis angle notation.
 \begin{description}
 \item[{\em axis}]The axis around which to rotate \item[{\em angle}]The magnitude of the rotation in Radians \end{description}
 \end{Desc}
-\hypertarget{classbt_quaternion_ed0a6469d6c6c1e379f1143ad62b3439}{
+
+
+Definition at line 112 of file btQuaternion.h.
+
+Referenced by btQuaternion().
+
+\begin{Code}\begin{verbatim}113         {
+114                 btScalar d = axis.length();
+115                 btAssert(d != btScalar(0.0));
+116                 btScalar s = btSin(_angle * btScalar(0.5)) / d;
+117                 setValue(axis.x() * s, axis.y() * s, axis.z() * s, 
+118                         btCos(_angle * btScalar(0.5)));
+119         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_quaternion_ed0a6469d6c6c1e379f1143ad62b3439}{
 \index{btQuaternion@{btQuaternion}!setEuler@{setEuler}}
 \index{setEuler@{setEuler}!btQuaternion@{btQuaternion}}
 \subsubsection[setEuler]{\setlength{\rightskip}{0pt plus 5cm}void btQuaternion::setEuler (const btScalar \& {\em yaw}, \/  const btScalar \& {\em pitch}, \/  const btScalar \& {\em roll})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -178,7 +233,34 @@ Set the quaternion using Euler angles.
 \begin{description}
 \item[{\em yaw}]Angle around Y \item[{\em pitch}]Angle around X \item[{\em roll}]Angle around Z \end{description}
 \end{Desc}
-\hypertarget{classbt_quaternion_df15384cff65f630b0537f1b8aeee622}{
+
+
+Definition at line 124 of file btQuaternion.h.
+
+Referenced by btQuaternion().
+
+\begin{Code}\begin{verbatim}125         {
+126                 btScalar halfYaw = btScalar(yaw) * btScalar(0.5);  
+127                 btScalar halfPitch = btScalar(pitch) * btScalar(0.5);  
+128                 btScalar halfRoll = btScalar(roll) * btScalar(0.5);  
+129                 btScalar cosYaw = btCos(halfYaw);
+130                 btScalar sinYaw = btSin(halfYaw);
+131                 btScalar cosPitch = btCos(halfPitch);
+132                 btScalar sinPitch = btSin(halfPitch);
+133                 btScalar cosRoll = btCos(halfRoll);
+134                 btScalar sinRoll = btSin(halfRoll);
+135                 setValue(cosRoll * sinPitch * cosYaw + sinRoll * cosPitch * sinYaw,
+136                         cosRoll * cosPitch * sinYaw - sinRoll * sinPitch * cosYaw,
+137                         sinRoll * cosPitch * cosYaw - cosRoll * sinPitch * sinYaw,
+138                         cosRoll * cosPitch * cosYaw + sinRoll * sinPitch * sinYaw);
+139         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_quaternion_df15384cff65f630b0537f1b8aeee622}{
 \index{btQuaternion@{btQuaternion}!setEulerZYX@{setEulerZYX}}
 \index{setEulerZYX@{setEulerZYX}!btQuaternion@{btQuaternion}}
 \subsubsection[setEulerZYX]{\setlength{\rightskip}{0pt plus 5cm}void btQuaternion::setEulerZYX (const btScalar \& {\em yawZ}, \/  const btScalar \& {\em pitchY}, \/  const btScalar \& {\em rollX})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -192,7 +274,34 @@ Set the quaternion using euler angles.
 \begin{description}
 \item[{\em yaw}]Angle around Z \item[{\em pitch}]Angle around Y \item[{\em roll}]Angle around X \end{description}
 \end{Desc}
-\hypertarget{classbt_quaternion_9aef6f3c621a0a8493d1545c7043f075}{
+
+
+Definition at line 144 of file btQuaternion.h.
+
+Referenced by btQuaternion().
+
+\begin{Code}\begin{verbatim}145         {
+146                 btScalar halfYaw = btScalar(yawZ) * btScalar(0.5);  
+147                 btScalar halfPitch = btScalar(pitchY) * btScalar(0.5);  
+148                 btScalar halfRoll = btScalar(rollX) * btScalar(0.5);  
+149                 btScalar cosYaw = btCos(halfYaw);
+150                 btScalar sinYaw = btSin(halfYaw);
+151                 btScalar cosPitch = btCos(halfPitch);
+152                 btScalar sinPitch = btSin(halfPitch);
+153                 btScalar cosRoll = btCos(halfRoll);
+154                 btScalar sinRoll = btSin(halfRoll);
+155                 setValue(sinRoll * cosPitch * cosYaw - cosRoll * sinPitch * sinYaw, //x
+156                          cosRoll * sinPitch * cosYaw + sinRoll * cosPitch * sinYaw, //y
+157                          cosRoll * cosPitch * sinYaw - sinRoll * sinPitch * cosYaw, //z
+158                          cosRoll * cosPitch * cosYaw + sinRoll * sinPitch * sinYaw); //formerly yzx
+159         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_quaternion_9aef6f3c621a0a8493d1545c7043f075}{
 \index{btQuaternion@{btQuaternion}!getEulerZYX@{getEulerZYX}}
 \index{getEulerZYX@{getEulerZYX}!btQuaternion@{btQuaternion}}
 \subsubsection[getEulerZYX]{\setlength{\rightskip}{0pt plus 5cm}void btQuaternion::getEulerZYX (btScalar \& {\em yawZ}, \/  btScalar \& {\em pitchY}, \/  btScalar \& {\em rollX}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -206,6 +315,29 @@ Get the euler angles from this quaternion.
 \begin{description}
 \item[{\em yaw}]Angle around Z \item[{\em pitch}]Angle around Y \item[{\em roll}]Angle around X \end{description}
 \end{Desc}
+
+
+Definition at line 165 of file btQuaternion.h.
+
+\begin{Code}\begin{verbatim}166         {
+167                 btScalar squ;
+168                 btScalar sqx;
+169                 btScalar sqy;
+170                 btScalar sqz;
+171                 btScalar sarg;
+172                 sqx = m_floats[0] * m_floats[0];
+173                 sqy = m_floats[1] * m_floats[1];
+174                 sqz = m_floats[2] * m_floats[2];
+175                 squ = m_floats[3] * m_floats[3];
+176                 rollX = btAtan2(2 * (m_floats[1] * m_floats[2] + m_floats[3] * m_floats[0]), squ - sqx - sqy + sqz);
+177                 sarg = btScalar(-2.) * (m_floats[0] * m_floats[2] - m_floats[3] * m_floats[1]);
+178                 pitchY = sarg <= btScalar(-1.0) ? btScalar(-0.5) * SIMD_PI: (sarg >= btScalar(1.0) ? btScalar(0.5) * SIMD_PI : btAsin(sarg));
+179                 yawZ = btAtan2(2 * (m_floats[0] * m_floats[1] + m_floats[3] * m_floats[2]), squ + sqx - sqy - sqz);
+180         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_quaternion_1212e4cbaa71da187984d3c174a4cc04}{
 \index{btQuaternion@{btQuaternion}!operator+=@{operator+=}}
 \index{operator+=@{operator+=}!btQuaternion@{btQuaternion}}
@@ -220,6 +352,27 @@ Add two quaternions.
 \begin{description}
 \item[{\em q}]The quaternion to add to this one \end{description}
 \end{Desc}
+
+
+Definition at line 184 of file btQuaternion.h.
+
+\begin{Code}\begin{verbatim}185         {
+186 #if defined (BT_USE_SSE_IN_API) && defined (BT_USE_SSE)
+187                 mVec128 = _mm_add_ps(mVec128, q.mVec128);
+188 #elif defined(BT_USE_NEON)
+189                 mVec128 = vaddq_f32(mVec128, q.mVec128);
+190 #else   
+191                 m_floats[0] += q.x(); 
+192         m_floats[1] += q.y(); 
+193         m_floats[2] += q.z(); 
+194         m_floats[3] += q.m_floats[3];
+195 #endif
+196                 return *this;
+197         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_quaternion_c942e70c62d09538e3f6d9c42bc42c5c}{
 \index{btQuaternion@{btQuaternion}!operator-=@{operator-=}}
 \index{operator-=@{operator-=}!btQuaternion@{btQuaternion}}
@@ -234,6 +387,27 @@ Subtract out a quaternion.
 \begin{description}
 \item[{\em q}]The quaternion to subtract from this one \end{description}
 \end{Desc}
+
+
+Definition at line 201 of file btQuaternion.h.
+
+\begin{Code}\begin{verbatim}202         {
+203 #if defined (BT_USE_SSE_IN_API) && defined (BT_USE_SSE)
+204                 mVec128 = _mm_sub_ps(mVec128, q.mVec128);
+205 #elif defined(BT_USE_NEON)
+206                 mVec128 = vsubq_f32(mVec128, q.mVec128);
+207 #else   
+208                 m_floats[0] -= q.x(); 
+209         m_floats[1] -= q.y(); 
+210         m_floats[2] -= q.z(); 
+211         m_floats[3] -= q.m_floats[3];
+212 #endif
+213         return *this;
+214         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_quaternion_bd260487e98defbd77618f04d51fcc92}{
 \index{btQuaternion@{btQuaternion}!operator$\ast$=@{operator$\ast$=}}
 \index{operator$\ast$=@{operator$\ast$=}!btQuaternion@{btQuaternion}}
@@ -248,6 +422,29 @@ Scale this quaternion.
 \begin{description}
 \item[{\em s}]The scalar to scale by \end{description}
 \end{Desc}
+
+
+Definition at line 218 of file btQuaternion.h.
+
+\begin{Code}\begin{verbatim}219         {
+220 #if defined (BT_USE_SSE_IN_API) && defined (BT_USE_SSE)
+221                 __m128  vs = _mm_load_ss(&s);   //      (S 0 0 0)
+222                 vs = bt_pshufd_ps(vs, 0);       //      (S S S S)
+223                 mVec128 = _mm_mul_ps(mVec128, vs);
+224 #elif defined(BT_USE_NEON)
+225                 mVec128 = vmulq_n_f32(mVec128, s);
+226 #else
+227                 m_floats[0] *= s; 
+228         m_floats[1] *= s; 
+229         m_floats[2] *= s; 
+230         m_floats[3] *= s;
+231 #endif
+232                 return *this;
+233         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_quaternion_bfc6dee30a6f56e69343a31368713f95}{
 \index{btQuaternion@{btQuaternion}!operator$\ast$=@{operator$\ast$=}}
 \index{operator$\ast$=@{operator$\ast$=}!btQuaternion@{btQuaternion}}
@@ -262,6 +459,94 @@ Multiply this quaternion by q on the right.
 \begin{description}
 \item[{\em q}]The other quaternion Equivilant to this = this $\ast$ q \end{description}
 \end{Desc}
+
+
+Definition at line 238 of file btQuaternion.h.
+
+\begin{Code}\begin{verbatim}239         {
+240 #if defined (BT_USE_SSE_IN_API) && defined (BT_USE_SSE)
+241                 __m128 vQ2 = q.get128();
+242                 
+243                 __m128 A1 = bt_pshufd_ps(mVec128, BT_SHUFFLE(0,1,2,0));
+244                 __m128 B1 = bt_pshufd_ps(vQ2, BT_SHUFFLE(3,3,3,0));
+245                 
+246                 A1 = A1 * B1;
+247                 
+248                 __m128 A2 = bt_pshufd_ps(mVec128, BT_SHUFFLE(1,2,0,1));
+249                 __m128 B2 = bt_pshufd_ps(vQ2, BT_SHUFFLE(2,0,1,1));
+250                 
+251                 A2 = A2 * B2;
+252                 
+253                 B1 = bt_pshufd_ps(mVec128, BT_SHUFFLE(2,0,1,2));
+254                 B2 = bt_pshufd_ps(vQ2, BT_SHUFFLE(1,2,0,2));
+255                 
+256                 B1 = B1 * B2;   //      A3 *= B3
+257                 
+258                 mVec128 = bt_splat_ps(mVec128, 3);      //      A0
+259                 mVec128 = mVec128 * vQ2;        //      A0 * B0
+260                 
+261                 A1 = A1 + A2;   //      AB12
+262                 mVec128 = mVec128 - B1; //      AB03 = AB0 - AB3 
+263                 A1 = _mm_xor_ps(A1, vPPPM);     //      change sign of the last element
+264                 mVec128 = mVec128+ A1;  //      AB03 + AB12
+265 
+266 #elif defined(BT_USE_NEON)     
+267 
+268         float32x4_t vQ1 = mVec128;
+269         float32x4_t vQ2 = q.get128();
+270         float32x4_t A0, A1, B1, A2, B2, A3, B3;
+271         float32x2_t vQ1zx, vQ2wx, vQ1yz, vQ2zx, vQ2yz, vQ2xz;
+272         
+273         {
+274         float32x2x2_t tmp;
+275         tmp = vtrn_f32( vget_high_f32(vQ1), vget_low_f32(vQ1) );       // {z x}, {w y}
+276         vQ1zx = tmp.val[0];
+277 
+278         tmp = vtrn_f32( vget_high_f32(vQ2), vget_low_f32(vQ2) );       // {z x}, {w y}
+279         vQ2zx = tmp.val[0];
+280         }
+281         vQ2wx = vext_f32(vget_high_f32(vQ2), vget_low_f32(vQ2), 1); 
+282 
+283         vQ1yz = vext_f32(vget_low_f32(vQ1), vget_high_f32(vQ1), 1);
+284 
+285         vQ2yz = vext_f32(vget_low_f32(vQ2), vget_high_f32(vQ2), 1);
+286         vQ2xz = vext_f32(vQ2zx, vQ2zx, 1);
+287 
+288         A1 = vcombine_f32(vget_low_f32(vQ1), vQ1zx);                    // X Y  z x 
+289         B1 = vcombine_f32(vdup_lane_f32(vget_high_f32(vQ2), 1), vQ2wx); // W W  W X 
+290 
+291         A2 = vcombine_f32(vQ1yz, vget_low_f32(vQ1));
+292         B2 = vcombine_f32(vQ2zx, vdup_lane_f32(vget_low_f32(vQ2), 1));
+293 
+294         A3 = vcombine_f32(vQ1zx, vQ1yz);        // Z X Y Z
+295         B3 = vcombine_f32(vQ2yz, vQ2xz);        // Y Z x z
+296 
+297         A1 = vmulq_f32(A1, B1);
+298         A2 = vmulq_f32(A2, B2);
+299         A3 = vmulq_f32(A3, B3); //      A3 *= B3
+300         A0 = vmulq_lane_f32(vQ2, vget_high_f32(vQ1), 1); //     A0 * B0
+301 
+302         A1 = vaddq_f32(A1, A2); //      AB12 = AB1 + AB2
+303         A0 = vsubq_f32(A0, A3); //      AB03 = AB0 - AB3 
+304         
+305         //      change the sign of the last element
+306         A1 = (btSimdFloat4)veorq_s32((int32x4_t)A1, (int32x4_t)vPPPM);  
+307         A0 = vaddq_f32(A0, A1); //      AB03 + AB12
+308         
+309         mVec128 = A0;
+310 #else
+311                 setValue(
+312             m_floats[3] * q.x() + m_floats[0] * q.m_floats[3] + m_floats[1] * q.z() - m_floats[2] * q.y(),
+313                         m_floats[3] * q.y() + m_floats[1] * q.m_floats[3] + m_floats[2] * q.x() - m_floats[0] * q.z(),
+314                         m_floats[3] * q.z() + m_floats[2] * q.m_floats[3] + m_floats[0] * q.y() - m_floats[1] * q.x(),
+315                         m_floats[3] * q.m_floats[3] - m_floats[0] * q.x() - m_floats[1] * q.y() - m_floats[2] * q.z());
+316 #endif
+317                 return *this;
+318         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_quaternion_37e450f3206a7b6f3f55049e297fb403}{
 \index{btQuaternion@{btQuaternion}!dot@{dot}}
 \index{dot@{dot}!btQuaternion@{btQuaternion}}
@@ -276,7 +561,43 @@ Return the dot product between this quaternion and another.
 \begin{description}
 \item[{\em q}]The other quaternion \end{description}
 \end{Desc}
-\hypertarget{classbt_quaternion_cc3942c106bc598c0d4550d30128a7d1}{
+
+
+Definition at line 321 of file btQuaternion.h.
+
+Referenced by angle(), angleShortestPath(), farthest(), length2(), nearest(), and slerp().
+
+\begin{Code}\begin{verbatim}322         {
+323 #if defined BT_USE_SIMD_VECTOR3 && defined (BT_USE_SSE_IN_API) && defined (BT_USE_SSE)
+324                 __m128  vd;
+325                 
+326                 vd = _mm_mul_ps(mVec128, q.mVec128);
+327                 
+328         __m128 t = _mm_movehl_ps(vd, vd);
+329                 vd = _mm_add_ps(vd, t);
+330                 t = _mm_shuffle_ps(vd, vd, 0x55);
+331                 vd = _mm_add_ss(vd, t);
+332                 
+333         return _mm_cvtss_f32(vd);
+334 #elif defined(BT_USE_NEON)
+335                 float32x4_t vd = vmulq_f32(mVec128, q.mVec128);
+336                 float32x2_t x = vpadd_f32(vget_low_f32(vd), vget_high_f32(vd));  
+337                 x = vpadd_f32(x, x);
+338                 return vget_lane_f32(x, 0);
+339 #else    
+340                 return  m_floats[0] * q.x() + 
+341                 m_floats[1] * q.y() + 
+342                 m_floats[2] * q.z() + 
+343                 m_floats[3] * q.m_floats[3];
+344 #endif
+345         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_quaternion_cc3942c106bc598c0d4550d30128a7d1}{
 \index{btQuaternion@{btQuaternion}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!btQuaternion@{btQuaternion}}
 \subsubsection[operator$\ast$]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE {\bf btQuaternion} btQuaternion::operator$\ast$ (const btScalar \& {\em s}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -290,7 +611,31 @@ Return a scaled version of this quaternion.
 \begin{description}
 \item[{\em s}]The scale factor \end{description}
 \end{Desc}
-\hypertarget{classbt_quaternion_4208a1ae41ae01d4dfa0d25792441213}{
+
+
+Definition at line 395 of file btQuaternion.h.
+
+References btQuaternion().
+
+\begin{Code}\begin{verbatim}396         {
+397 #if defined (BT_USE_SSE_IN_API) && defined (BT_USE_SSE)
+398                 __m128  vs = _mm_load_ss(&s);   //      (S 0 0 0)
+399                 vs = bt_pshufd_ps(vs, 0x00);    //      (S S S S)
+400                 
+401                 return btQuaternion(_mm_mul_ps(mVec128, vs));
+402 #elif defined(BT_USE_NEON)
+403                 return btQuaternion(vmulq_n_f32(mVec128, s));
+404 #else
+405                 return btQuaternion(x() * s, y() * s, z() * s, m_floats[3] * s);
+406 #endif
+407         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_quaternion_4208a1ae41ae01d4dfa0d25792441213}{
 \index{btQuaternion@{btQuaternion}!operator/@{operator/}}
 \index{operator/@{operator/}!btQuaternion@{btQuaternion}}
 \subsubsection[operator/]{\setlength{\rightskip}{0pt plus 5cm}{\bf btQuaternion} btQuaternion::operator/ (const btScalar \& {\em s}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -304,6 +649,18 @@ Return an inversely scaled versionof this quaternion.
 \begin{description}
 \item[{\em s}]The inverse scale factor \end{description}
 \end{Desc}
+
+
+Definition at line 411 of file btQuaternion.h.
+
+\begin{Code}\begin{verbatim}412         {
+413                 btAssert(s != btScalar(0.0));
+414                 return *this * (btScalar(1.0) / s);
+415         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_quaternion_294fe99e7e5a8e0d45d111334e2e1552}{
 \index{btQuaternion@{btQuaternion}!operator/=@{operator/=}}
 \index{operator/=@{operator/=}!btQuaternion@{btQuaternion}}
@@ -318,6 +675,18 @@ Inversely scale this quaternion.
 \begin{description}
 \item[{\em s}]The scale factor \end{description}
 \end{Desc}
+
+
+Definition at line 419 of file btQuaternion.h.
+
+\begin{Code}\begin{verbatim}420         {
+421                 btAssert(s != btScalar(0.0));
+422                 return *this *= btScalar(1.0) / s;
+423         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_quaternion_6398a143dbe4bbf6211d90bc8c2dd2bc}{
 \index{btQuaternion@{btQuaternion}!angle@{angle}}
 \index{angle@{angle}!btQuaternion@{btQuaternion}}
@@ -332,7 +701,24 @@ Return the $\ast$$\ast$$\ast$half$\ast$$\ast$$\ast$ angle between this quaternio
 \begin{description}
 \item[{\em q}]The other quaternion \end{description}
 \end{Desc}
-\hypertarget{classbt_quaternion_3160453535401db05d3926d7bc0ca5de}{
+
+
+Definition at line 432 of file btQuaternion.h.
+
+References dot(), and length2().
+
+\begin{Code}\begin{verbatim}433         {
+434                 btScalar s = btSqrt(length2() * q.length2());
+435                 btAssert(s != btScalar(0.0));
+436                 return btAcos(dot(q) / s);
+437         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_quaternion_3160453535401db05d3926d7bc0ca5de}{
 \index{btQuaternion@{btQuaternion}!angleShortestPath@{angleShortestPath}}
 \index{angleShortestPath@{angleShortestPath}!btQuaternion@{btQuaternion}}
 \subsubsection[angleShortestPath]{\setlength{\rightskip}{0pt plus 5cm}btScalar btQuaternion::angleShortestPath (const {\bf btQuaternion} \& {\em q}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -346,7 +732,27 @@ Return the angle between this quaternion and the other along the shortest path.
 \begin{description}
 \item[{\em q}]The other quaternion \end{description}
 \end{Desc}
-\hypertarget{classbt_quaternion_e59598d8706cfaaf716509f93846010e}{
+
+
+Definition at line 441 of file btQuaternion.h.
+
+References dot(), and length2().
+
+\begin{Code}\begin{verbatim}442         {
+443                 btScalar s = btSqrt(length2() * q.length2());
+444                 btAssert(s != btScalar(0.0));
+445                 if (dot(q) < 0) // Take care of long angle case see http://en.wikipedia.org/wiki/Slerp
+446                         return btAcos(dot(-q) / s) * btScalar(2.0);
+447                 else 
+448                         return btAcos(dot(q) / s) * btScalar(2.0);
+449         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_quaternion_e59598d8706cfaaf716509f93846010e}{
 \index{btQuaternion@{btQuaternion}!operator+@{operator+}}
 \index{operator+@{operator+}!btQuaternion@{btQuaternion}}
 \subsubsection[operator+]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE {\bf btQuaternion} btQuaternion::operator+ (const {\bf btQuaternion} \& {\em q2}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -360,7 +766,29 @@ Return the sum of this quaternion and the other.
 \begin{description}
 \item[{\em q2}]The other quaternion \end{description}
 \end{Desc}
-\hypertarget{classbt_quaternion_10ee93d7c0a20d0630fa8e8de85bad0c}{
+
+
+Definition at line 496 of file btQuaternion.h.
+
+References btQuaternion().
+
+\begin{Code}\begin{verbatim}497         {
+498 #if defined (BT_USE_SSE_IN_API) && defined (BT_USE_SSE)
+499                 return btQuaternion(_mm_add_ps(mVec128, q2.mVec128));
+500 #elif defined(BT_USE_NEON)
+501         return btQuaternion(vaddq_f32(mVec128, q2.mVec128));
+502 #else   
+503                 const btQuaternion& q1 = *this;
+504                 return btQuaternion(q1.x() + q2.x(), q1.y() + q2.y(), q1.z() + q2.z(), q1.m_floats[3] + q2.m_floats[3]);
+505 #endif
+506         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_quaternion_10ee93d7c0a20d0630fa8e8de85bad0c}{
 \index{btQuaternion@{btQuaternion}!operator-@{operator-}}
 \index{operator-@{operator-}!btQuaternion@{btQuaternion}}
 \subsubsection[operator-]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE {\bf btQuaternion} btQuaternion::operator- (const {\bf btQuaternion} \& {\em q2}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -374,7 +802,29 @@ Return the difference between this quaternion and the other.
 \begin{description}
 \item[{\em q2}]The other quaternion \end{description}
 \end{Desc}
-\hypertarget{classbt_quaternion_deda27273475435a9e3223abeea73992}{
+
+
+Definition at line 511 of file btQuaternion.h.
+
+References btQuaternion().
+
+\begin{Code}\begin{verbatim}512         {
+513 #if defined (BT_USE_SSE_IN_API) && defined (BT_USE_SSE)
+514                 return btQuaternion(_mm_sub_ps(mVec128, q2.mVec128));
+515 #elif defined(BT_USE_NEON)
+516         return btQuaternion(vsubq_f32(mVec128, q2.mVec128));
+517 #else   
+518                 const btQuaternion& q1 = *this;
+519                 return btQuaternion(q1.x() - q2.x(), q1.y() - q2.y(), q1.z() - q2.z(), q1.m_floats[3] - q2.m_floats[3]);
+520 #endif
+521         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_quaternion_deda27273475435a9e3223abeea73992}{
 \index{btQuaternion@{btQuaternion}!farthest@{farthest}}
 \index{farthest@{farthest}!btQuaternion@{btQuaternion}}
 \subsubsection[farthest]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE {\bf btQuaternion} btQuaternion::farthest (const {\bf btQuaternion} \& {\em qd}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -383,7 +833,27 @@ Return the difference between this quaternion and the other.
 
 \begin{Desc}
 \item[\hyperlink{todo__todo000042}{Todo}]document this and it's use \end{Desc}
-\hypertarget{classbt_quaternion_821a38604c6333b95d954867315d8716}{
+
+
+Definition at line 537 of file btQuaternion.h.
+
+References dot().
+
+\begin{Code}\begin{verbatim}538         {
+539                 btQuaternion diff,sum;
+540                 diff = *this - qd;
+541                 sum = *this + qd;
+542                 if( diff.dot(diff) > sum.dot(sum) )
+543                         return qd;
+544                 return (-qd);
+545         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_quaternion_821a38604c6333b95d954867315d8716}{
 \index{btQuaternion@{btQuaternion}!nearest@{nearest}}
 \index{nearest@{nearest}!btQuaternion@{btQuaternion}}
 \subsubsection[nearest]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE {\bf btQuaternion} btQuaternion::nearest (const {\bf btQuaternion} \& {\em qd}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -392,7 +862,27 @@ Return the difference between this quaternion and the other.
 
 \begin{Desc}
 \item[\hyperlink{todo__todo000043}{Todo}]document this and it's use \end{Desc}
-\hypertarget{classbt_quaternion_c95a27feda1c165b2ce359e7415fec6f}{
+
+
+Definition at line 548 of file btQuaternion.h.
+
+References dot().
+
+\begin{Code}\begin{verbatim}549         {
+550                 btQuaternion diff,sum;
+551                 diff = *this - qd;
+552                 sum = *this + qd;
+553                 if( diff.dot(diff) < sum.dot(sum) )
+554                         return qd;
+555                 return (-qd);
+556         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_quaternion_c95a27feda1c165b2ce359e7415fec6f}{
 \index{btQuaternion@{btQuaternion}!slerp@{slerp}}
 \index{slerp@{slerp}!btQuaternion@{btQuaternion}}
 \subsubsection[slerp]{\setlength{\rightskip}{0pt plus 5cm}{\bf btQuaternion} btQuaternion::slerp (const {\bf btQuaternion} \& {\em q}, \/  const btScalar \& {\em t}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -406,7 +896,49 @@ Return the quaternion which is the result of Spherical Linear Interpolation betw
 \begin{description}
 \item[{\em q}]The other quaternion to interpolate with \item[{\em t}]The ratio between this and q to interpolate. If t = 0 the result is this, if t=1 the result is q. Slerp interpolates assuming constant velocity. \end{description}
 \end{Desc}
-\hypertarget{classbt_quaternion_8bc3a5908e5863652549ac6cf8830ee5}{
+
+
+Definition at line 563 of file btQuaternion.h.
+
+References btQuaternion(), dot(), length2(), and glm::sign().
+
+\begin{Code}\begin{verbatim}564         {
+565 
+566                 const btScalar magnitude = btSqrt(length2() * q.length2());
+567                 btAssert(magnitude > btScalar(0));
+568                 
+569                 const btScalar product = dot(q) / magnitude;
+570                 const btScalar absproduct = btFabs(product);
+571                 
+572                 if(absproduct < btScalar(1.0 - SIMD_EPSILON))
+573                 {
+574                         // Take care of long angle case see http://en.wikipedia.org/wiki/Slerp
+575                         const btScalar theta = btAcos(absproduct);
+576                         const btScalar d = btSin(theta);
+577                         btAssert(d > btScalar(0));
+578                         
+579                         const btScalar sign = (product < 0) ? btScalar(-1) : btScalar(1);
+580                         const btScalar s0 = btSin((btScalar(1.0) - t) * theta) / d;
+581                         const btScalar s1 = btSin(sign * t * theta) / d;
+582                         
+583                         return btQuaternion(
+584                                 (m_floats[0] * s0 + q.x() * s1),
+585                                 (m_floats[1] * s0 + q.y() * s1),
+586                                 (m_floats[2] * s0 + q.z() * s1),
+587                                 (m_floats[3] * s0 + q.w() * s1));
+588                 }
+589                 else
+590                 {
+591                         return *this;
+592                 }
+593         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_quaternion_8bc3a5908e5863652549ac6cf8830ee5}{
 \index{btQuaternion@{btQuaternion}!serialize@{serialize}}
 \index{serialize@{serialize}!btQuaternion@{btQuaternion}}
 \subsubsection[serialize]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void btQuaternion::serialize (struct btQuaternionData \& {\em dataOut}) const}}
@@ -415,7 +947,19 @@ Return the quaternion which is the result of Spherical Linear Interpolation betw
 
 
 
-could also do a memcpy, check if it is worth it \hypertarget{classbt_quaternion_239a6d8a3dc3904adc6ec07151895a85}{
+could also do a memcpy, check if it is worth it 
+
+Definition at line 999 of file btQuaternion.h.
+
+\begin{Code}\begin{verbatim}1000 {
+1002         for (int i=0;i<4;i++)
+1003                 dataOut.m_floats[i] = m_floats[i];
+1004 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{classbt_quaternion_239a6d8a3dc3904adc6ec07151895a85}{
 \index{btQuaternion@{btQuaternion}!serializeFloat@{serializeFloat}}
 \index{serializeFloat@{serializeFloat}!btQuaternion@{btQuaternion}}
 \subsubsection[serializeFloat]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void btQuaternion::serializeFloat (struct btQuaternionFloatData \& {\em dataOut}) const}}
@@ -424,7 +968,19 @@ could also do a memcpy, check if it is worth it \hypertarget{classbt_quaternion_
 
 
 
-could also do a memcpy, check if it is worth it \hypertarget{classbt_quaternion_23f1203633c7afb3750a9e95fae30f40}{
+could also do a memcpy, check if it is worth it 
+
+Definition at line 971 of file btQuaternion.h.
+
+\begin{Code}\begin{verbatim}972 {
+974         for (int i=0;i<4;i++)
+975                 dataOut.m_floats[i] = float(m_floats[i]);
+976 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{classbt_quaternion_23f1203633c7afb3750a9e95fae30f40}{
 \index{btQuaternion@{btQuaternion}!serializeDouble@{serializeDouble}}
 \index{serializeDouble@{serializeDouble}!btQuaternion@{btQuaternion}}
 \subsubsection[serializeDouble]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void btQuaternion::serializeDouble (struct btQuaternionDoubleData \& {\em dataOut}) const}}
@@ -435,6 +991,18 @@ could also do a memcpy, check if it is worth it \hypertarget{classbt_quaternion_
 
 could also do a memcpy, check if it is worth it 
 
+Definition at line 985 of file btQuaternion.h.
+
+\begin{Code}\begin{verbatim}986 {
+988         for (int i=0;i<4;i++)
+989                 dataOut.m_floats[i] = double(m_floats[i]);
+990 }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btQuaternion.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btQuaternion.h\end{CompactItemize}

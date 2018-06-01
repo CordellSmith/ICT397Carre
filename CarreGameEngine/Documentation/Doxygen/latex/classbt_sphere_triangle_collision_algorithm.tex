@@ -14,6 +14,8 @@ virtual void \hyperlink{classbt_sphere_triangle_collision_algorithm_f6de517d0a45
 \subsection{Detailed Description}
 \hyperlink{classbt_sphere_sphere_collision_algorithm}{btSphereSphereCollisionAlgorithm} provides sphere-sphere collision detection. Other features are frame-coherency (persistent data) and collision response. Also provides the most basic sample for custom/user \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm} 
 
+Definition at line 28 of file btSphereTriangleCollisionAlgorithm.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_sphere_triangle_collision_algorithm_f6de517d0a45abb91df4f61c5867c8f1}{
 \index{btSphereTriangleCollisionAlgorithm@{btSphereTriangleCollisionAlgorithm}!processCollision@{processCollision}}
@@ -32,7 +34,45 @@ report a contact. internally this will be kept persistent, and contact reduction
 
 Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.
 
+Definition at line 46 of file btSphereTriangleCollisionAlgorithm.cpp.
+
+References btManifoldResult::m\_\-closestPointDistanceThreshold, btManifoldResult::refreshContactPoints(), and btManifoldResult::setPersistentManifold().
+
+\begin{Code}\begin{verbatim}47 {
+48         if (!m_manifoldPtr)
+49                 return;
+50 
+51         const btCollisionObjectWrapper* sphereObjWrap = m_swapped? col1Wrap : col0Wrap;
+52         const btCollisionObjectWrapper* triObjWrap = m_swapped? col0Wrap : col1Wrap;
+53 
+54         btSphereShape* sphere = (btSphereShape*)sphereObjWrap->getCollisionShape();
+55         btTriangleShape* triangle = (btTriangleShape*)triObjWrap->getCollisionShape();
+56         
+58         resultOut->setPersistentManifold(m_manifoldPtr);
+59         SphereTriangleDetector detector(sphere,triangle, m_manifoldPtr->getContactBreakingThreshold()+ resultOut->m_closestPointDistanceThreshold);
+60         
+61         btDiscreteCollisionDetectorInterface::ClosestPointInput input;
+62         input.m_maximumDistanceSquared = btScalar(BT_LARGE_FLOAT);
+63         input.m_transformA = sphereObjWrap->getWorldTransform();
+64         input.m_transformB = triObjWrap->getWorldTransform();
+65 
+66         bool swapResults = m_swapped;
+67 
+68         detector.getClosestPoints(input,*resultOut,dispatchInfo.m_debugDraw,swapResults);
+69 
+70         if (m_ownManifold)
+71                 resultOut->refreshContactPoints();
+72         
+73 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereTriangleCollisionAlgorithm.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereTriangleCollisionAlgorithm.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereTriangleCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereTriangleCollisionAlgorithm.cpp\end{CompactItemize}

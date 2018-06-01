@@ -31,7 +31,11 @@ $<$glm/gtx/vector\_\-angle.hpp$>$ need to be included to use these functionaliti
 
 Returns the absolute angle between two vectors Parameters need to be normalized. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__vector__angle}{GLM\_\-GTX\_\-vector\_\-angle} extension \end{Desc}
-\hypertarget{group__gtx__vector__angle_gc56a6bdc5d430b476514d64cb185b772}{
+
+
+Referenced by glm::mix(), and glm::slerp().
+
+Here is the caller graph for this function:\hypertarget{group__gtx__vector__angle_gc56a6bdc5d430b476514d64cb185b772}{
 \index{gtx\_\-vector\_\-angle@{gtx\_\-vector\_\-angle}!orientedAngle@{orientedAngle}}
 \index{orientedAngle@{orientedAngle}!gtx_vector_angle@{gtx\_\-vector\_\-angle}}
 \subsubsection[orientedAngle]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::orientedAngle (detail::tvec3$<$ T, P $>$ const \& {\em x}, \/  detail::tvec3$<$ T, P $>$ const \& {\em y}, \/  detail::tvec3$<$ T, P $>$ const \& {\em ref})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -40,7 +44,36 @@ Returns the absolute angle between two vectors Parameters need to be normalized.
 
 Returns the oriented angle between two 3d vectors based from a reference axis. Parameters need to be normalized. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__vector__angle}{GLM\_\-GTX\_\-vector\_\-angle} extension. \end{Desc}
-\hypertarget{group__gtx__vector__angle_gfd969749b953f7a58da4a2563d06ea36}{
+
+
+Definition at line 77 of file vector\_\-angle.inl.
+
+References glm::acos(), glm::clamp(), glm::cross(), glm::degrees(), and glm::dot().
+
+\begin{Code}\begin{verbatim}82         {
+83                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'orientedAngle' only accept floating-point inputs");
+84 
+85                 T const Dot = clamp(dot(x, y), T(-1), T(1));
+86 
+87 #ifdef GLM_FORCE_RADIANS
+88                 T const Angle(acos(Dot));
+89 #else
+90 #               pragma message("GLM: orientedAngle function returning degrees is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+91                 T const Angle(degrees(acos(Dot)));
+92 #endif
+93 
+94                 if(dot(ref, cross(x, y)) < T(0))
+95                         return -Angle;
+96                 else
+97                         return Angle;
+98         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__vector__angle_gfd969749b953f7a58da4a2563d06ea36}{
 \index{gtx\_\-vector\_\-angle@{gtx\_\-vector\_\-angle}!orientedAngle@{orientedAngle}}
 \index{orientedAngle@{orientedAngle}!gtx_vector_angle@{gtx\_\-vector\_\-angle}}
 \subsubsection[orientedAngle]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::orientedAngle (detail::tvec2$<$ T, P $>$ const \& {\em x}, \/  detail::tvec2$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -51,3 +84,33 @@ Returns the oriented angle between two 2d vectors Parameters need to be normaliz
 \item[See also:]\hyperlink{group__gtx__vector__angle}{GLM\_\-GTX\_\-vector\_\-angle} extension.\end{Desc}
 \begin{Desc}
 \item[\hyperlink{todo__todo000052}{Todo}]epsilon is hard coded to 0.01 \end{Desc}
+
+
+Definition at line 53 of file vector\_\-angle.inl.
+
+References glm::acos(), glm::all(), glm::clamp(), glm::degrees(), glm::dot(), glm::epsilonEqual(), and glm::rotate().
+
+\begin{Code}\begin{verbatim}57         {
+58                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'orientedAngle' only accept floating-point inputs");
+59 
+60                 T const Dot = clamp(dot(x, y), T(-1), T(1));
+61 
+62 #ifdef GLM_FORCE_RADIANS
+63                 T const Angle(acos(Dot));
+64 #else
+65 #               pragma message("GLM: orientedAngle function returning degrees is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+66                 T const Angle(degrees(acos(Dot)));
+67 #endif
+68                 detail::tvec2<T, P> const TransformedVector(glm::rotate(x, Angle));
+69                 if(all(epsilonEqual(y, TransformedVector, T(0.01))))
+70                         return Angle;
+71                 else
+72                         return -Angle;
+73         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

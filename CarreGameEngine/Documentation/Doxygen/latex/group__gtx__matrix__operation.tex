@@ -41,56 +41,171 @@ $<$glm/gtx/matrix\_\-operation.hpp$>$ need to be included to use these functiona
 \label{group__gtx__matrix__operation_g8f6e3292b609cd9d959446d808ca3746}
 
 
-Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. \hypertarget{group__gtx__matrix__operation_g1d2984ab67cc886c70b1c4993c953d09}{
+Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. 
+
+Definition at line 14 of file matrix\_\-operation.inl.
+
+\begin{Code}\begin{verbatim}17         {
+18                 detail::tmat2x2<T, P> Result(static_cast<T>(1));
+19                 Result[0][0] = v[0];
+20                 Result[1][1] = v[1];
+21                 return Result;
+22         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__matrix__operation_g1d2984ab67cc886c70b1c4993c953d09}{
 \index{gtx\_\-matrix\_\-operation@{gtx\_\-matrix\_\-operation}!diagonal2x3@{diagonal2x3}}
 \index{diagonal2x3@{diagonal2x3}!gtx_matrix_operation@{gtx\_\-matrix\_\-operation}}
 \subsubsection[diagonal2x3]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat2x3$<$ T, P $>$ glm::diagonal2x3 (detail::tvec2$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__operation_g1d2984ab67cc886c70b1c4993c953d09}
 
 
-Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. \hypertarget{group__gtx__matrix__operation_gfba1800a8c3e19da77cb4cd4f1bd72e6}{
+Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. 
+
+Definition at line 26 of file matrix\_\-operation.inl.
+
+\begin{Code}\begin{verbatim}29         {
+30                 detail::tmat2x3<T, P> Result(static_cast<T>(1));
+31                 Result[0][0] = v[0];
+32                 Result[1][1] = v[1];
+33                 return Result;
+34         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__matrix__operation_gfba1800a8c3e19da77cb4cd4f1bd72e6}{
 \index{gtx\_\-matrix\_\-operation@{gtx\_\-matrix\_\-operation}!diagonal2x4@{diagonal2x4}}
 \index{diagonal2x4@{diagonal2x4}!gtx_matrix_operation@{gtx\_\-matrix\_\-operation}}
 \subsubsection[diagonal2x4]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat2x4$<$ T, P $>$ glm::diagonal2x4 (detail::tvec2$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__operation_gfba1800a8c3e19da77cb4cd4f1bd72e6}
 
 
-Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. \hypertarget{group__gtx__matrix__operation_g91808d304a0220c4e4c68e477ffa2fd2}{
+Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. 
+
+Definition at line 38 of file matrix\_\-operation.inl.
+
+\begin{Code}\begin{verbatim}41         {
+42                 detail::tmat2x4<T, P> Result(static_cast<T>(1));
+43                 Result[0][0] = v[0];
+44                 Result[1][1] = v[1];
+45                 return Result;
+46         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__matrix__operation_g91808d304a0220c4e4c68e477ffa2fd2}{
 \index{gtx\_\-matrix\_\-operation@{gtx\_\-matrix\_\-operation}!diagonal3x2@{diagonal3x2}}
 \index{diagonal3x2@{diagonal3x2}!gtx_matrix_operation@{gtx\_\-matrix\_\-operation}}
 \subsubsection[diagonal3x2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x2$<$ T, P $>$ glm::diagonal3x2 (detail::tvec2$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__operation_g91808d304a0220c4e4c68e477ffa2fd2}
 
 
-Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. \hypertarget{group__gtx__matrix__operation_g6cc2ba1eff14f0548370fe4df925975c}{
+Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. 
+
+Definition at line 50 of file matrix\_\-operation.inl.
+
+\begin{Code}\begin{verbatim}53         {
+54                 detail::tmat3x2<T, P> Result(static_cast<T>(1));
+55                 Result[0][0] = v[0];
+56                 Result[1][1] = v[1];
+57                 return Result;
+58         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__matrix__operation_g6cc2ba1eff14f0548370fe4df925975c}{
 \index{gtx\_\-matrix\_\-operation@{gtx\_\-matrix\_\-operation}!diagonal3x3@{diagonal3x3}}
 \index{diagonal3x3@{diagonal3x3}!gtx_matrix_operation@{gtx\_\-matrix\_\-operation}}
 \subsubsection[diagonal3x3]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::diagonal3x3 (detail::tvec3$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__operation_g6cc2ba1eff14f0548370fe4df925975c}
 
 
-Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. \hypertarget{group__gtx__matrix__operation_g57adf8191f7e67838ee97d9f366fef16}{
+Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. 
+
+Definition at line 62 of file matrix\_\-operation.inl.
+
+\begin{Code}\begin{verbatim}65         {
+66                 detail::tmat3x3<T, P> Result(static_cast<T>(1));
+67                 Result[0][0] = v[0];
+68                 Result[1][1] = v[1];
+69                 Result[2][2] = v[2];
+70                 return Result;
+71         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__matrix__operation_g57adf8191f7e67838ee97d9f366fef16}{
 \index{gtx\_\-matrix\_\-operation@{gtx\_\-matrix\_\-operation}!diagonal3x4@{diagonal3x4}}
 \index{diagonal3x4@{diagonal3x4}!gtx_matrix_operation@{gtx\_\-matrix\_\-operation}}
 \subsubsection[diagonal3x4]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x4$<$ T, P $>$ glm::diagonal3x4 (detail::tvec3$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__operation_g57adf8191f7e67838ee97d9f366fef16}
 
 
-Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. \hypertarget{group__gtx__matrix__operation_ge32f9a70411084d4b33464c23b04c997}{
+Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. 
+
+Definition at line 75 of file matrix\_\-operation.inl.
+
+\begin{Code}\begin{verbatim}78         {
+79                 detail::tmat3x4<T, P> Result(static_cast<T>(1));
+80                 Result[0][0] = v[0];
+81                 Result[1][1] = v[1];
+82                 Result[2][2] = v[2];
+83                 return Result;
+84         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__matrix__operation_ge32f9a70411084d4b33464c23b04c997}{
 \index{gtx\_\-matrix\_\-operation@{gtx\_\-matrix\_\-operation}!diagonal4x2@{diagonal4x2}}
 \index{diagonal4x2@{diagonal4x2}!gtx_matrix_operation@{gtx\_\-matrix\_\-operation}}
 \subsubsection[diagonal4x2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x2$<$ T, P $>$ glm::diagonal4x2 (detail::tvec2$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__operation_ge32f9a70411084d4b33464c23b04c997}
 
 
-Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. \hypertarget{group__gtx__matrix__operation_g9b918f5e6a6224398447d2c79861d8fd}{
+Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. 
+
+Definition at line 115 of file matrix\_\-operation.inl.
+
+\begin{Code}\begin{verbatim}118         {
+119                 detail::tmat4x2<T, P> Result(static_cast<T>(1));
+120                 Result[0][0] = v[0];
+121                 Result[1][1] = v[1];
+122                 return Result;          
+123         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__matrix__operation_g9b918f5e6a6224398447d2c79861d8fd}{
 \index{gtx\_\-matrix\_\-operation@{gtx\_\-matrix\_\-operation}!diagonal4x3@{diagonal4x3}}
 \index{diagonal4x3@{diagonal4x3}!gtx_matrix_operation@{gtx\_\-matrix\_\-operation}}
 \subsubsection[diagonal4x3]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x3$<$ T, P $>$ glm::diagonal4x3 (detail::tvec3$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__operation_g9b918f5e6a6224398447d2c79861d8fd}
 
 
-Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. \hypertarget{group__gtx__matrix__operation_g32c8da8ef592e0c0891d1593ffb524db}{
+Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. 
+
+Definition at line 102 of file matrix\_\-operation.inl.
+
+\begin{Code}\begin{verbatim}105         {
+106                 detail::tmat4x3<T, P> Result(static_cast<T>(1));
+107                 Result[0][0] = v[0];
+108                 Result[1][1] = v[1];
+109                 Result[2][2] = v[2];
+110                 return Result;          
+111         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__matrix__operation_g32c8da8ef592e0c0891d1593ffb524db}{
 \index{gtx\_\-matrix\_\-operation@{gtx\_\-matrix\_\-operation}!diagonal4x4@{diagonal4x4}}
 \index{diagonal4x4@{diagonal4x4}!gtx_matrix_operation@{gtx\_\-matrix\_\-operation}}
 \subsubsection[diagonal4x4]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::diagonal4x4 (detail::tvec4$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -98,3 +213,18 @@ Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. \hype
 
 
 Build a diagonal matrix. From GLM\_\-GTX\_\-matrix\_\-operation extension. 
+
+Definition at line 88 of file matrix\_\-operation.inl.
+
+\begin{Code}\begin{verbatim}91         {
+92                 detail::tmat4x4<T, P> Result(static_cast<T>(1));
+93                 Result[0][0] = v[0];
+94                 Result[1][1] = v[1];
+95                 Result[2][2] = v[2];
+96                 Result[3][3] = v[3];
+97                 return Result;          
+98         }
+\end{verbatim}
+\end{Code}
+
+

@@ -1,0 +1,8 @@
+<area shape="rect" href="$class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix." alt="" coords="140,56,319,83">
+<area shape="rect" href="$group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e" title="glm::orientation" alt="" coords="175,107,284,133">
+<area shape="rect" href="$group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36" title="glm::orientedAngle" alt="" coords="165,157,293,184">
+<area shape="rect" href="$group__gtx__rotate__vector.html#gf0809ae83e84fc9880b4c8b7093c349c" title="glm::rotate" alt="" coords="188,208,271,235">
+<area shape="rect" href="$class_camera.html#ff61f06284cca3216accdf556dfbd3c1" title="Gets the camera position." alt="" coords="392,5,504,32">
+<area shape="rect" href="$class_camera.html#338c5baf20b57652828c53e0791adf9a" title="Gets the camera view." alt="" coords="387,56,509,83">
+<area shape="rect" href="$class_camera.html#ffa333055635aed96518c4c66be9a70c" title="Gets the view matrix." alt="" coords="368,107,528,133">
+<area shape="rect" href="$class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223" title="Moves the camera." alt="" coords="576,56,725,83">

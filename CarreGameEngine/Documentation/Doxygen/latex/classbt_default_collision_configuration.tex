@@ -23,6 +23,8 @@ void \hyperlink{classbt_default_collision_configuration_39a173eedf0e8d55dd89ef3b
 \item[\hyperlink{todo__todo000012}{Todo}]: describe the meaning \end{Desc}
 
 
+Definition at line 48 of file btDefaultCollisionConfiguration.h.
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classbt_default_collision_configuration_d08e7d72b0bd0d3f98290c2a1649b0d9}{
 \index{btDefaultCollisionConfiguration@{btDefaultCollisionConfiguration}!btDefaultCollisionConfiguration@{btDefaultCollisionConfiguration}}
@@ -34,6 +36,108 @@ void \hyperlink{classbt_default_collision_configuration_39a173eedf0e8d55dd89ef3b
 
 
 calculate maximum element size, big enough to fit any collision algorithm in the memory pool 
+
+Definition at line 43 of file btDefaultCollisionConfiguration.cpp.
+
+References btCollisionAlgorithmCreateFunc::m\_\-swapped.
+
+\begin{Code}\begin{verbatim}45 {
+46 
+47     void* mem = NULL;
+48         if (constructionInfo.m_useEpaPenetrationAlgorithm)
+49         {
+50                 mem = btAlignedAlloc(sizeof(btGjkEpaPenetrationDepthSolver),16);
+51                 m_pdSolver = new (mem)btGjkEpaPenetrationDepthSolver;
+52         }else
+53         {
+54                 mem = btAlignedAlloc(sizeof(btMinkowskiPenetrationDepthSolver),16);
+55                 m_pdSolver = new (mem)btMinkowskiPenetrationDepthSolver;
+56         }
+57         
+58         //default CreationFunctions, filling the m_doubleDispatch table
+59         mem = btAlignedAlloc(sizeof(btConvexConvexAlgorithm::CreateFunc),16);
+60         m_convexConvexCreateFunc = new(mem) btConvexConvexAlgorithm::CreateFunc(m_pdSolver);
+61         mem = btAlignedAlloc(sizeof(btConvexConcaveCollisionAlgorithm::CreateFunc),16);
+62         m_convexConcaveCreateFunc = new (mem)btConvexConcaveCollisionAlgorithm::CreateFunc;
+63         mem = btAlignedAlloc(sizeof(btConvexConcaveCollisionAlgorithm::CreateFunc),16);
+64         m_swappedConvexConcaveCreateFunc = new (mem)btConvexConcaveCollisionAlgorithm::SwappedCreateFunc;
+65         mem = btAlignedAlloc(sizeof(btCompoundCollisionAlgorithm::CreateFunc),16);
+66         m_compoundCreateFunc = new (mem)btCompoundCollisionAlgorithm::CreateFunc;
+67 
+68         mem = btAlignedAlloc(sizeof(btCompoundCompoundCollisionAlgorithm::CreateFunc),16);
+69         m_compoundCompoundCreateFunc = new (mem)btCompoundCompoundCollisionAlgorithm::CreateFunc;
+70 
+71         mem = btAlignedAlloc(sizeof(btCompoundCollisionAlgorithm::SwappedCreateFunc),16);
+72         m_swappedCompoundCreateFunc = new (mem)btCompoundCollisionAlgorithm::SwappedCreateFunc;
+73         mem = btAlignedAlloc(sizeof(btEmptyAlgorithm::CreateFunc),16);
+74         m_emptyCreateFunc = new(mem) btEmptyAlgorithm::CreateFunc;
+75         
+76         mem = btAlignedAlloc(sizeof(btSphereSphereCollisionAlgorithm::CreateFunc),16);
+77         m_sphereSphereCF = new(mem) btSphereSphereCollisionAlgorithm::CreateFunc;
+78 #ifdef USE_BUGGY_SPHERE_BOX_ALGORITHM
+79         mem = btAlignedAlloc(sizeof(btSphereBoxCollisionAlgorithm::CreateFunc),16);
+80         m_sphereBoxCF = new(mem) btSphereBoxCollisionAlgorithm::CreateFunc;
+81         mem = btAlignedAlloc(sizeof(btSphereBoxCollisionAlgorithm::CreateFunc),16);
+82         m_boxSphereCF = new (mem)btSphereBoxCollisionAlgorithm::CreateFunc;
+83         m_boxSphereCF->m_swapped = true;
+84 #endif //USE_BUGGY_SPHERE_BOX_ALGORITHM
+85 
+86         mem = btAlignedAlloc(sizeof(btSphereTriangleCollisionAlgorithm::CreateFunc),16);
+87         m_sphereTriangleCF = new (mem)btSphereTriangleCollisionAlgorithm::CreateFunc;
+88         mem = btAlignedAlloc(sizeof(btSphereTriangleCollisionAlgorithm::CreateFunc),16);
+89         m_triangleSphereCF = new (mem)btSphereTriangleCollisionAlgorithm::CreateFunc;
+90         m_triangleSphereCF->m_swapped = true;
+91         
+92         mem = btAlignedAlloc(sizeof(btBoxBoxCollisionAlgorithm::CreateFunc),16);
+93         m_boxBoxCF = new(mem)btBoxBoxCollisionAlgorithm::CreateFunc;
+94 
+95         //convex versus plane
+96         mem = btAlignedAlloc (sizeof(btConvexPlaneCollisionAlgorithm::CreateFunc),16);
+97         m_convexPlaneCF = new (mem) btConvexPlaneCollisionAlgorithm::CreateFunc;
+98         mem = btAlignedAlloc (sizeof(btConvexPlaneCollisionAlgorithm::CreateFunc),16);
+99         m_planeConvexCF = new (mem) btConvexPlaneCollisionAlgorithm::CreateFunc;
+100         m_planeConvexCF->m_swapped = true;
+101         
+103         int maxSize = sizeof(btConvexConvexAlgorithm);
+104         int maxSize2 = sizeof(btConvexConcaveCollisionAlgorithm);
+105         int maxSize3 = sizeof(btCompoundCollisionAlgorithm);
+106         int maxSize4 = sizeof(btCompoundCompoundCollisionAlgorithm);
+107 
+108         int     collisionAlgorithmMaxElementSize = btMax(maxSize,constructionInfo.m_customCollisionAlgorithmMaxElementSize);
+109         collisionAlgorithmMaxElementSize = btMax(collisionAlgorithmMaxElementSize,maxSize2);
+110         collisionAlgorithmMaxElementSize = btMax(collisionAlgorithmMaxElementSize,maxSize3);
+111         collisionAlgorithmMaxElementSize = btMax(collisionAlgorithmMaxElementSize,maxSize4);
+112                 
+113         if (constructionInfo.m_persistentManifoldPool)
+114         {
+115                 m_ownsPersistentManifoldPool = false;
+116                 m_persistentManifoldPool = constructionInfo.m_persistentManifoldPool;
+117         } else
+118         {
+119                 m_ownsPersistentManifoldPool = true;
+120                 void* mem = btAlignedAlloc(sizeof(btPoolAllocator),16);
+121                 m_persistentManifoldPool = new (mem) btPoolAllocator(sizeof(btPersistentManifold),constructionInfo.m_defaultMaxPersistentManifoldPoolSize);
+122         }
+123         
+124         collisionAlgorithmMaxElementSize = (collisionAlgorithmMaxElementSize+16)&0xffffffffffff0;
+125         if (constructionInfo.m_collisionAlgorithmPool)
+126         {
+127                 m_ownsCollisionAlgorithmPool = false;
+128                 m_collisionAlgorithmPool = constructionInfo.m_collisionAlgorithmPool;
+129         } else
+130         {
+131                 m_ownsCollisionAlgorithmPool = true;
+132                 void* mem = btAlignedAlloc(sizeof(btPoolAllocator),16);
+133                 m_collisionAlgorithmPool = new(mem) btPoolAllocator(collisionAlgorithmMaxElementSize,constructionInfo.m_defaultMaxCollisionAlgorithmPoolSize);
+134         }
+135 
+136 
+137 }
+\end{verbatim}
+\end{Code}
+
+
+
 
 \subsection{Member Function Documentation}
 \hypertarget{classbt_default_collision_configuration_39a173eedf0e8d55dd89ef3b637925a9}{
@@ -52,7 +156,20 @@ Use this method to allow to generate multiple contact points between at once, be
 \item[\hyperlink{todo__todo000013}{Todo}]we could add a per-object setting of those parameters, for level-of-detail collision detection. \end{Desc}
 
 
+Definition at line 367 of file btDefaultCollisionConfiguration.cpp.
+
+\begin{Code}\begin{verbatim}368 {
+369         btConvexConvexAlgorithm::CreateFunc* convexConvex = (btConvexConvexAlgorithm::CreateFunc*) m_convexConvexCreateFunc;
+370         convexConvex->m_numPerturbationIterations = numPerturbationIterations;
+371         convexConvex->m_minimumPointsPerturbationThreshold = minimumPointsPerturbationThreshold;
+372 }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.cpp\end{CompactItemize}

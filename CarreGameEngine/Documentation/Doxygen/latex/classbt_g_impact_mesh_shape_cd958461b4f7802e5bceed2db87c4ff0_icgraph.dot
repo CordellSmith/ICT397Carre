@@ -1,0 +1,10 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btGImpactMeshShape::getGImpactShapeType",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btGImpactMeshShape::serialize",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_mesh_shape.html#52fb7b4c6cbb81e7041e88b04cd3e89c",tooltip="fills the dataBuffer and returns the struct name (and 0 on failure)"];
+}

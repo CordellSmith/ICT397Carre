@@ -27,7 +27,22 @@ $<$glm/gtx/orthonormalize.hpp$>$ need to be included to use these functionalitie
 \label{group__gtx__orthonormalize_g6e5ecb7642087e4ff470c8f068c903be}
 
 
-Orthonormalizes x according y. From GLM\_\-GTX\_\-orthonormalize extension. \hypertarget{group__gtx__orthonormalize_ge0c06d8312a13b38747271ea68f00121}{
+Orthonormalizes x according y. From GLM\_\-GTX\_\-orthonormalize extension. 
+
+Definition at line 36 of file orthonormalize.inl.
+
+References glm::dot(), and glm::normalize().
+
+\begin{Code}\begin{verbatim}40         {
+41                 return normalize(x - y * dot(y, x));
+42         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__orthonormalize_ge0c06d8312a13b38747271ea68f00121}{
 \index{gtx\_\-orthonormalize@{gtx\_\-orthonormalize}!orthonormalize@{orthonormalize}}
 \index{orthonormalize@{orthonormalize}!gtx_orthonormalize@{gtx\_\-orthonormalize}}
 \subsubsection[orthonormalize]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::orthonormalize (const detail::tmat3x3$<$ T, P $>$ \& {\em m})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -35,3 +50,31 @@ Orthonormalizes x according y. From GLM\_\-GTX\_\-orthonormalize extension. \hyp
 
 
 Returns the orthonormalized matrix of m. From GLM\_\-GTX\_\-orthonormalize extension. 
+
+Definition at line 14 of file orthonormalize.inl.
+
+References glm::dot(), and glm::normalize().
+
+\begin{Code}\begin{verbatim}17         {
+18                 detail::tmat3x3<T, P> r = m;
+19 
+20                 r[0] = normalize(r[0]);
+21 
+22                 float d0 = dot(r[0], r[1]);
+23                 r[1] -= r[0] * d0;
+24                 r[1] = normalize(r[1]);
+25 
+26                 float d1 = dot(r[1], r[2]);
+27                 d0 = dot(r[0], r[2]);
+28                 r[2] -= r[0] * d0 + r[1] * d1;
+29                 r[2] = normalize(r[2]);
+30 
+31                 return r;
+32         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

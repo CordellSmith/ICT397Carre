@@ -91,6 +91,20 @@ The first vector component specifies the 11 least-significant bits of the result
 \item[See also:]\hyperlink{group__gtc__packing}{GLM\_\-GTC\_\-packing} 
 
 \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{vec3} unpackF2x11\_\-1x10(uint32 const \& p) \end{Desc}
+
+
+Definition at line 480 of file packing.inl.
+
+\begin{Code}\begin{verbatim}481         {
+482                 return 
+483                         ((detail::floatTo11bit(v.x) & ((1 << 11) - 1)) <<  0) |
+484                         ((detail::floatTo11bit(v.y) & ((1 << 11) - 1)) << 11) |
+485                         ((detail::floatTo10bit(v.z) & ((1 << 10) - 1)) << 22);
+486         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_gba534b320836a35372e00af5771dd1a2}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packHalf1x16@{packHalf1x16}}
 \index{packHalf1x16@{packHalf1x16}!gtc_packing@{gtc\_\-packing}}
@@ -110,6 +124,19 @@ Returns an unsigned integer obtained by converting the components of a floating-
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packHalf2x16.xml}{\tt GLSL packHalf2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 357 of file packing.inl.
+
+\begin{Code}\begin{verbatim}358         {
+359                 int16 Topack = detail::toFloat16(v);
+360                 uint16* Packed = reinterpret_cast<uint16*>(&Topack);
+361                 return *Packed;
+362         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_g8104f0b719b7792491f2b789a6dd6f96}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packHalf4x16@{packHalf4x16}}
 \index{packHalf4x16@{packHalf4x16}!gtc_packing@{gtc\_\-packing}}
@@ -129,6 +156,24 @@ Returns an unsigned integer obtained by converting the components of a four-comp
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packHalf2x16.xml}{\tt GLSL packHalf2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 370 of file packing.inl.
+
+\begin{Code}\begin{verbatim}371         {
+372                 i16vec4 Unpack(
+373                         detail::toFloat16(v.x),
+374                         detail::toFloat16(v.y),
+375                         detail::toFloat16(v.z),
+376                         detail::toFloat16(v.w));
+377 
+378                 uint64* Packed = reinterpret_cast<uint64*>(&Unpack);
+379                 return *Packed;
+380         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_g032e18fa5bc5b8f3897104aeb2f1e195}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packI3x10\_\-1x2@{packI3x10\_\-1x2}}
 \index{packI3x10\_\-1x2@{packI3x10\_\-1x2}!gtc_packing@{gtc\_\-packing}}
@@ -148,6 +193,22 @@ Returns an unsigned integer obtained by converting the components of a four-comp
 \hyperlink{group__gtc__type__precision_g202b6a53c105fcb7e531f9b443518451}{uint32} \hyperlink{group__gtc__packing_g2cf2d11b40bd48639110456fd74c2e33}{packUnorm3x10\_\-1x2(vec4 const \& v)} 
 
 \hyperlink{group__core__types_ga4560ddc50320ea8f8a70d5c9c249fea}{ivec4} unpackI3x10\_\-1x2(uint32 const \& p) \end{Desc}
+
+
+Definition at line 394 of file packing.inl.
+
+\begin{Code}\begin{verbatim}395         {
+396                 detail::i10i10i10i2 Result;
+397                 Result.data.x = v.x;
+398                 Result.data.y = v.y;
+399                 Result.data.z = v.z;
+400                 Result.data.w = v.w;
+401                 return Result.pack; 
+402         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_gc29411d6c0f6ed0fe9f0396dfe92e0e8}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packSnorm1x16@{packSnorm1x16}}
 \index{packSnorm1x16@{packSnorm1x16}!gtc_packing@{gtc\_\-packing}}
@@ -169,7 +230,24 @@ The conversion to fixed point is done as follows: packSnorm1x8: round(clamp(s, -
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packSnorm4x8.xml}{\tt GLSL packSnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__gtc__packing_g26b6cd7a35c46c4b6a342f3b97b47423}{
+
+
+Definition at line 327 of file packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}328         {
+329                 int16 Topack = static_cast<int16>(round(clamp(v ,-1.0f, 1.0f) * 32767.0f));
+330                 uint16* Packed = reinterpret_cast<uint16*>(&Topack);
+331                 return *Packed;
+332         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_g26b6cd7a35c46c4b6a342f3b97b47423}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packSnorm1x8@{packSnorm1x8}}
 \index{packSnorm1x8@{packSnorm1x8}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[packSnorm1x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint8 glm::packSnorm1x8 (float {\em s})}}
@@ -190,7 +268,24 @@ The conversion to fixed point is done as follows: packSnorm1x8: round(clamp(s, -
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packSnorm4x8.xml}{\tt GLSL packSnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__gtc__packing_g05d08a82923166ec7cd5d0e6154c9953}{
+
+
+Definition at line 273 of file packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}274         {
+275                 int8 Topack(static_cast<int8>(round(clamp(v ,-1.0f, 1.0f) * 127.0f)));
+276                 uint8* Packed = reinterpret_cast<uint8*>(&Topack);
+277                 return *Packed;
+278         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_g05d08a82923166ec7cd5d0e6154c9953}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packSnorm2x8@{packSnorm2x8}}
 \index{packSnorm2x8@{packSnorm2x8}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[packSnorm2x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint16 glm::packSnorm2x8 (vec2 const \& {\em v})}}
@@ -213,7 +308,24 @@ The first component of the vector will be written to the least significant bits 
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packSnorm4x8.xml}{\tt GLSL packSnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__gtc__packing_g0d4157cec37c0312216a7be1cc92df54}{
+
+
+Definition at line 288 of file packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}289         {
+290                 i8vec2 Topack(round(clamp(v ,-1.0f, 1.0f) * 127.0f));
+291                 uint16* Packed = reinterpret_cast<uint16*>(&Topack);
+292                 return *Packed;
+293         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_g0d4157cec37c0312216a7be1cc92df54}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packSnorm3x10\_\-1x2@{packSnorm3x10\_\-1x2}}
 \index{packSnorm3x10\_\-1x2@{packSnorm3x10\_\-1x2}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[packSnorm3x10\_\-1x2]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint32 glm::packSnorm3x10\_\-1x2 (vec4 const \& {\em v})}}
@@ -236,7 +348,27 @@ The first vector component specifies the 10 least-significant bits of the result
 \hyperlink{group__gtc__type__precision_g202b6a53c105fcb7e531f9b443518451}{uint32} \hyperlink{group__gtc__packing_gf656d8862628f96b20de7a36eaa1fe56}{packU3x10\_\-1x2(uvec4 const \& v)} 
 
 \hyperlink{group__gtc__type__precision_g202b6a53c105fcb7e531f9b443518451}{uint32} \hyperlink{group__gtc__packing_g032e18fa5bc5b8f3897104aeb2f1e195}{packI3x10\_\-1x2(ivec4 const \& v)} \end{Desc}
-\hypertarget{group__gtc__packing_g9b237d7c66b7a71964e6d1f4dc06539f}{
+
+
+Definition at line 436 of file packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}437         {
+438                 detail::i10i10i10i2 Result;
+439                 Result.data.x = int(round(clamp(v.x,-1.0f, 1.0f) * 511.f));
+440                 Result.data.y = int(round(clamp(v.y,-1.0f, 1.0f) * 511.f));
+441                 Result.data.z = int(round(clamp(v.z,-1.0f, 1.0f) * 511.f));
+442                 Result.data.w = int(round(clamp(v.w,-1.0f, 1.0f) *   1.f));
+443                 return Result.pack;
+444         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_g9b237d7c66b7a71964e6d1f4dc06539f}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packSnorm4x16@{packSnorm4x16}}
 \index{packSnorm4x16@{packSnorm4x16}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[packSnorm4x16]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint64 glm::packSnorm4x16 (vec4 const \& {\em v})}}
@@ -259,7 +391,24 @@ The first component of the vector will be written to the least significant bits 
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packSnorm4x8.xml}{\tt GLSL packSnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__gtc__packing_gf656d8862628f96b20de7a36eaa1fe56}{
+
+
+Definition at line 342 of file packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}343         {
+344                 i16vec4 Topack = static_cast<i16vec4>(round(clamp(v ,-1.0f, 1.0f) * 32767.0f));
+345                 uint64* Packed = reinterpret_cast<uint64*>(&Topack);
+346                 return *Packed;
+347         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_gf656d8862628f96b20de7a36eaa1fe56}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packU3x10\_\-1x2@{packU3x10\_\-1x2}}
 \index{packU3x10\_\-1x2@{packU3x10\_\-1x2}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[packU3x10\_\-1x2]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint32 glm::packU3x10\_\-1x2 (uvec4 const \& {\em v})}}
@@ -278,6 +427,22 @@ Returns an unsigned integer obtained by converting the components of a four-comp
 \hyperlink{group__gtc__type__precision_g202b6a53c105fcb7e531f9b443518451}{uint32} \hyperlink{group__gtc__packing_g2cf2d11b40bd48639110456fd74c2e33}{packUnorm3x10\_\-1x2(vec4 const \& v)} 
 
 \hyperlink{group__core__types_ga4560ddc50320ea8f8a70d5c9c249fea}{ivec4} unpackU3x10\_\-1x2(uint32 const \& p) \end{Desc}
+
+
+Definition at line 415 of file packing.inl.
+
+\begin{Code}\begin{verbatim}416         {
+417                 detail::u10u10u10u2 Result;
+418                 Result.data.x = v.x;
+419                 Result.data.y = v.y;
+420                 Result.data.z = v.z;
+421                 Result.data.w = v.w;
+422                 return Result.pack; 
+423         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_g60c7d915f5653559ae02c2f79a8c5c1d}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packUnorm1x16@{packUnorm1x16}}
 \index{packUnorm1x16@{packUnorm1x16}!gtc_packing@{gtc\_\-packing}}
@@ -299,7 +464,22 @@ The conversion for component c of v to fixed point is done as follows: packUnorm
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packUnorm4x8.xml}{\tt GLSL packUnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__gtc__packing_g2f9963e5d762b10085b280d3662017ba}{
+
+
+Definition at line 303 of file packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}304         {
+305                 return static_cast<uint16>(round(clamp(s, 0.0f, 1.0f) * 65535.0f));
+306         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_g2f9963e5d762b10085b280d3662017ba}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packUnorm1x8@{packUnorm1x8}}
 \index{packUnorm1x8@{packUnorm1x8}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[packUnorm1x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint8 glm::packUnorm1x8 (float {\em v})}}
@@ -320,7 +500,22 @@ The conversion for component c of v to fixed point is done as follows: packUnorm
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packUnorm4x8.xml}{\tt GLSL packUnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__gtc__packing_g833288fc0d4a79f19d0db75a6843bfe6}{
+
+
+Definition at line 249 of file packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}250         {
+251                 return static_cast<uint8>(round(clamp(v, 0.0f, 1.0f) * 255.0f));
+252         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_g833288fc0d4a79f19d0db75a6843bfe6}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packUnorm2x8@{packUnorm2x8}}
 \index{packUnorm2x8@{packUnorm2x8}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[packUnorm2x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint16 glm::packUnorm2x8 (vec2 const \& {\em v})}}
@@ -343,7 +538,24 @@ The first component of the vector will be written to the least significant bits 
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packUnorm4x8.xml}{\tt GLSL packUnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__gtc__packing_g2cf2d11b40bd48639110456fd74c2e33}{
+
+
+Definition at line 260 of file packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}261         {
+262                 u8vec2 Topack(round(clamp(v, 0.0f, 1.0f) * 255.0f));
+263                 uint16* Packed = reinterpret_cast<uint16*>(&Topack);
+264                 return *Packed;
+265         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_g2cf2d11b40bd48639110456fd74c2e33}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packUnorm3x10\_\-1x2@{packUnorm3x10\_\-1x2}}
 \index{packUnorm3x10\_\-1x2@{packUnorm3x10\_\-1x2}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[packUnorm3x10\_\-1x2]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint32 glm::packUnorm3x10\_\-1x2 (vec4 const \& {\em v})}}
@@ -366,7 +578,27 @@ The first vector component specifies the 10 least-significant bits of the result
 \hyperlink{group__gtc__type__precision_g202b6a53c105fcb7e531f9b443518451}{uint32} \hyperlink{group__gtc__packing_gf656d8862628f96b20de7a36eaa1fe56}{packU3x10\_\-1x2(uvec4 const \& v)} 
 
 \hyperlink{group__gtc__type__precision_g202b6a53c105fcb7e531f9b443518451}{uint32} \hyperlink{group__gtc__packing_g032e18fa5bc5b8f3897104aeb2f1e195}{packI3x10\_\-1x2(ivec4 const \& v)} \end{Desc}
-\hypertarget{group__gtc__packing_gc561f06c908b7302537a8ef29fcb409e}{
+
+
+Definition at line 458 of file packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}459         {
+460                 detail::i10i10i10i2 Result;
+461                 Result.data.x = int(round(clamp(v.x, 0.0f, 1.0f) * 1023.f));
+462                 Result.data.y = int(round(clamp(v.y, 0.0f, 1.0f) * 1023.f));
+463                 Result.data.z = int(round(clamp(v.z, 0.0f, 1.0f) * 1023.f));
+464                 Result.data.w = int(round(clamp(v.w, 0.0f, 1.0f) *    3.f));
+465                 return Result.pack;
+466         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_gc561f06c908b7302537a8ef29fcb409e}{
 \index{gtc\_\-packing@{gtc\_\-packing}!packUnorm4x16@{packUnorm4x16}}
 \index{packUnorm4x16@{packUnorm4x16}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[packUnorm4x16]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER uint64 glm::packUnorm4x16 (vec4 const \& {\em v})}}
@@ -389,7 +621,24 @@ The first component of the vector will be written to the least significant bits 
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/packUnorm4x8.xml}{\tt GLSL packUnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__gtc__packing_g8b9c7991eb021d95c778bf5c0b2f7824}{
+
+
+Definition at line 314 of file packing.inl.
+
+References glm::clamp(), and glm::round().
+
+\begin{Code}\begin{verbatim}315         {
+316                 u16vec4 Topack(round(clamp(v , 0.0f, 1.0f) * 65535.0f));
+317                 uint64* Packed = reinterpret_cast<uint64*>(&Topack);
+318                 return *Packed;
+319         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_g8b9c7991eb021d95c778bf5c0b2f7824}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackF2x11\_\-1x10@{unpackF2x11\_\-1x10}}
 \index{unpackF2x11\_\-1x10@{unpackF2x11\_\-1x10}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[unpackF2x11\_\-1x10]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER vec3 glm::unpackF2x11\_\-1x10 (uint32 {\em p})}}
@@ -404,6 +653,20 @@ The first component of the returned vector will be extracted from the least sign
 \item[See also:]\hyperlink{group__gtc__packing}{GLM\_\-GTC\_\-packing} 
 
 \hyperlink{group__gtc__type__precision_g202b6a53c105fcb7e531f9b443518451}{uint32} \hyperlink{group__gtc__packing_g8c2a0eeee677ca4dafd9e093d9e81062}{packF2x11\_\-1x10(vec3 const \& v)} \end{Desc}
+
+
+Definition at line 488 of file packing.inl.
+
+\begin{Code}\begin{verbatim}489         {
+490                 return vec3(
+491                         detail::packed11bitToFloat(v >> 0), 
+492                         detail::packed11bitToFloat(v >> 11), 
+493                         detail::packed10bitToFloat(v >> 22));
+494         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_ga6eebcdfc746584b7d1823f1d5344fed}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackHalf1x16@{unpackHalf1x16}}
 \index{unpackHalf1x16@{unpackHalf1x16}!gtc_packing@{gtc\_\-packing}}
@@ -423,6 +686,18 @@ Returns a floating-point scalar with components obtained by unpacking a 16-bit u
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackHalf2x16.xml}{\tt GLSL unpackHalf2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 364 of file packing.inl.
+
+\begin{Code}\begin{verbatim}365         {
+366                 int16* Unpack = reinterpret_cast<int16*>(const_cast<uint16*>(&v));
+367                 return detail::toFloat32(*Unpack);
+368         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_gea526d6491ad40401eac34803984bf27}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackHalf4x16@{unpackHalf4x16}}
 \index{unpackHalf4x16@{unpackHalf4x16}!gtc_packing@{gtc\_\-packing}}
@@ -442,6 +717,24 @@ float unpackHalf1x16(uint16 const \& v)
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackHalf2x16.xml}{\tt GLSL unpackHalf2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 382 of file packing.inl.
+
+\begin{Code}\begin{verbatim}383         {
+384                 i16vec4* p = reinterpret_cast<i16vec4*>(const_cast<uint64*>(&v));
+385                 i16vec4 Unpack(*p);
+386         
+387                 return vec4(
+388                         detail::toFloat32(Unpack.x), 
+389                         detail::toFloat32(Unpack.y), 
+390                         detail::toFloat32(Unpack.z), 
+391                         detail::toFloat32(Unpack.w));
+392         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_g08bcd34cf9c34701d658dd861ee6e300}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackI3x10\_\-1x2@{unpackI3x10\_\-1x2}}
 \index{unpackI3x10\_\-1x2@{unpackI3x10\_\-1x2}!gtc_packing@{gtc\_\-packing}}
@@ -461,6 +754,23 @@ The first component of the returned vector will be extracted from the least sign
 \hyperlink{group__core__types_g5881b1b022d7fd1b7218f5916532dd02}{vec4} unpackSnorm3x10\_\-1x2(uint32 const \& p); 
 
 \hyperlink{group__core__types_g1c426d19627b32b14f0089f7f4ba7b1d}{uvec4} unpackI3x10\_\-1x2(uint32 const \& p); \end{Desc}
+
+
+Definition at line 404 of file packing.inl.
+
+\begin{Code}\begin{verbatim}405         {
+406                 detail::i10i10i10i2 Unpack;
+407                 Unpack.pack = v;
+408                 return ivec4(
+409                         Unpack.data.x,
+410                         Unpack.data.y,
+411                         Unpack.data.z,
+412                         Unpack.data.w);
+413         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_g246f451cebf590726324f7a283e3d65e}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackSnorm1x16@{unpackSnorm1x16}}
 \index{unpackSnorm1x16@{unpackSnorm1x16}!gtc_packing@{gtc\_\-packing}}
@@ -482,7 +792,25 @@ The conversion for unpacked fixed-point value f to floating point is done as fol
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackSnorm1x16.xml}{\tt GLSL unpackSnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__gtc__packing_g6f2bebf536fbf7c8b97d4b306bb3354e}{
+
+
+Definition at line 334 of file packing.inl.
+
+References glm::clamp(), and glm::e().
+
+\begin{Code}\begin{verbatim}335         {
+336                 float Unpack = static_cast<float>(*const_cast<uint16*>(&p));
+337                 return clamp(
+338                         Unpack * 3.0518509475997192297128208258309e-5f, //1.0f / 32767.0f, 
+339                         -1.0f, 1.0f);
+340         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_g6f2bebf536fbf7c8b97d4b306bb3354e}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackSnorm1x8@{unpackSnorm1x8}}
 \index{unpackSnorm1x8@{unpackSnorm1x8}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[unpackSnorm1x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER float glm::unpackSnorm1x8 (uint8 {\em p})}}
@@ -503,7 +831,25 @@ The conversion for unpacked fixed-point value f to floating point is done as fol
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackSnorm4x8.xml}{\tt GLSL unpackSnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__gtc__packing_g27f30f0281b88e152b0895f5e2ead878}{
+
+
+Definition at line 280 of file packing.inl.
+
+References glm::clamp().
+
+\begin{Code}\begin{verbatim}281         {
+282                 float Unpack(static_cast<float>(*const_cast<uint8*>(&p)));
+283                 return clamp(
+284                         Unpack * 0.00787401574803149606299212598425f, // 1.0f / 127.0f
+285                         -1.0f, 1.0f);
+286         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_g27f30f0281b88e152b0895f5e2ead878}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackSnorm2x8@{unpackSnorm2x8}}
 \index{unpackSnorm2x8@{unpackSnorm2x8}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[unpackSnorm2x8]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER vec2 glm::unpackSnorm2x8 (uint16 {\em p})}}
@@ -526,7 +872,25 @@ float \hyperlink{group__gtc__packing_g6f2bebf536fbf7c8b97d4b306bb3354e}{unpackSn
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackSnorm4x8.xml}{\tt GLSL unpackSnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
-\hypertarget{group__gtc__packing_g8b8bb827a3743ca553d8702d3e337101}{
+
+
+Definition at line 295 of file packing.inl.
+
+References glm::clamp().
+
+\begin{Code}\begin{verbatim}296         {
+297                 i8vec2* Unpack = reinterpret_cast<i8vec2*>(const_cast<uint16*>(&p));
+298                 return clamp(
+299                         vec2(*Unpack) * 0.00787401574803149606299212598425f, // 1.0f / 127.0f
+300                         -1.0f, 1.0f);
+301         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_g8b8bb827a3743ca553d8702d3e337101}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackSnorm3x10\_\-1x2@{unpackSnorm3x10\_\-1x2}}
 \index{unpackSnorm3x10\_\-1x2@{unpackSnorm3x10\_\-1x2}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[unpackSnorm3x10\_\-1x2]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-QUALIFIER vec4 glm::unpackSnorm3x10\_\-1x2 (uint32 {\em p})}}
@@ -549,7 +913,29 @@ The first component of the returned vector will be extracted from the least sign
 \hyperlink{group__core__types_g1c426d19627b32b14f0089f7f4ba7b1d}{uvec4} unpackI3x10\_\-1x2(uint32 const \& p) 
 
 \hyperlink{group__core__types_g1c426d19627b32b14f0089f7f4ba7b1d}{uvec4} unpackU3x10\_\-1x2(uint32 const \& p) \end{Desc}
-\hypertarget{group__gtc__packing_gdb01fc0530f07beb509c89d97b6f4d20}{
+
+
+Definition at line 446 of file packing.inl.
+
+References glm::clamp().
+
+\begin{Code}\begin{verbatim}447         {
+448                 detail::i10i10i10i2 Unpack;
+449                 Unpack.pack = v;
+450                 vec4 Result;
+451                 Result.x = clamp(float(Unpack.data.x) / 511.f, -1.0f, 1.0f);
+452                 Result.y = clamp(float(Unpack.data.y) / 511.f, -1.0f, 1.0f);
+453                 Result.z = clamp(float(Unpack.data.z) / 511.f, -1.0f, 1.0f);
+454                 Result.w = clamp(float(Unpack.data.w) /   1.f, -1.0f, 1.0f);
+455                 return Result;
+456         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__packing_gdb01fc0530f07beb509c89d97b6f4d20}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackSnorm4x16@{unpackSnorm4x16}}
 \index{unpackSnorm4x16@{unpackSnorm4x16}!gtc_packing@{gtc\_\-packing}}
 \subsubsection[unpackSnorm4x16]{\setlength{\rightskip}{0pt plus 5cm}GLM\_\-FUNC\_\-DECL vec4 glm::unpackSnorm4x16 (uint64 const \& {\em p})}}
@@ -591,6 +977,23 @@ The first component of the returned vector will be extracted from the least sign
 \hyperlink{group__core__types_g5881b1b022d7fd1b7218f5916532dd02}{vec4} unpackSnorm3x10\_\-1x2(uint32 const \& p); 
 
 \hyperlink{group__core__types_g1c426d19627b32b14f0089f7f4ba7b1d}{uvec4} unpackI3x10\_\-1x2(uint32 const \& p); \end{Desc}
+
+
+Definition at line 425 of file packing.inl.
+
+\begin{Code}\begin{verbatim}426         {
+427                 detail::u10u10u10u2 Unpack;
+428                 Unpack.pack = v;
+429                 return uvec4(
+430                         Unpack.data.x,
+431                         Unpack.data.y,
+432                         Unpack.data.z,
+433                         Unpack.data.w);
+434         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_g7770e3ade4f4764cc1b2eb42ac4ec188}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackUnorm1x16@{unpackUnorm1x16}}
 \index{unpackUnorm1x16@{unpackUnorm1x16}!gtc_packing@{gtc\_\-packing}}
@@ -612,6 +1015,18 @@ The conversion for unpacked fixed-point value f to floating point is done as fol
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackUnorm2x16.xml}{\tt GLSL unpackUnorm2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 308 of file packing.inl.
+
+\begin{Code}\begin{verbatim}309         {
+310                 float Unpack = static_cast<float>(*const_cast<uint16*>(&p));
+311                 return Unpack * 1.5259021896696421759365224689097e-5f; // 1.0 / 65535.0
+312         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_g32f3f2642df2ea87449d59fb614a8305}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackUnorm1x8@{unpackUnorm1x8}}
 \index{unpackUnorm1x8@{unpackUnorm1x8}!gtc_packing@{gtc\_\-packing}}
@@ -633,6 +1048,18 @@ The conversion for unpacked fixed-point value f to floating point is done as fol
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackUnorm4x8.xml}{\tt GLSL unpackUnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 254 of file packing.inl.
+
+\begin{Code}\begin{verbatim}255         {
+256                 float Unpack(static_cast<float>(p));
+257                 return Unpack * static_cast<float>(0.0039215686274509803921568627451); // 1 / 255
+258         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_g96ce0c24339ee676e28a027fffd1edf6}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackUnorm2x8@{unpackUnorm2x8}}
 \index{unpackUnorm2x8@{unpackUnorm2x8}!gtc_packing@{gtc\_\-packing}}
@@ -656,6 +1083,18 @@ float \hyperlink{group__gtc__packing_g32f3f2642df2ea87449d59fb614a8305}{unpackUn
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackUnorm4x8.xml}{\tt GLSL unpackUnorm4x8 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 267 of file packing.inl.
+
+\begin{Code}\begin{verbatim}268         {
+269                 u8vec2* Unpacked = reinterpret_cast<u8vec2*>(const_cast<uint16*>(&p));
+270                 return vec2(*Unpacked) * float(0.0039215686274509803921568627451); // 1 / 255
+271         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_gf69ace2b5e9234f8afb4e99c3df1193d}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackUnorm3x10\_\-1x2@{unpackUnorm3x10\_\-1x2}}
 \index{unpackUnorm3x10\_\-1x2@{unpackUnorm3x10\_\-1x2}!gtc_packing@{gtc\_\-packing}}
@@ -679,6 +1118,24 @@ The first component of the returned vector will be extracted from the least sign
 \hyperlink{group__core__types_g1c426d19627b32b14f0089f7f4ba7b1d}{uvec4} unpackI3x10\_\-1x2(uint32 const \& p) 
 
 \hyperlink{group__core__types_g1c426d19627b32b14f0089f7f4ba7b1d}{uvec4} unpackU3x10\_\-1x2(uint32 const \& p) \end{Desc}
+
+
+Definition at line 468 of file packing.inl.
+
+\begin{Code}\begin{verbatim}469         {
+470                 detail::i10i10i10i2 Unpack;
+471                 Unpack.pack = v;
+472                 vec4 Result;
+473                 Result.x = float(Unpack.data.x) / 1023.f;
+474                 Result.y = float(Unpack.data.y) / 1023.f;
+475                 Result.z = float(Unpack.data.z) / 1023.f;
+476                 Result.w = float(Unpack.data.w) /   3.f;
+477                 return Result;
+478         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__packing_gfb2b502bc406031a5618ce930139a9e3}{
 \index{gtc\_\-packing@{gtc\_\-packing}!unpackUnorm4x16@{unpackUnorm4x16}}
 \index{unpackUnorm4x16@{unpackUnorm4x16}!gtc_packing@{gtc\_\-packing}}
@@ -702,3 +1159,15 @@ float \hyperlink{group__gtc__packing_g7770e3ade4f4764cc1b2eb42ac4ec188}{unpackUn
 \href{http://www.opengl.org/sdk/docs/manglsl/xhtml/unpackUnorm2x16.xml}{\tt GLSL unpackUnorm2x16 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.4 Floating-Point Pack and Unpack Functions} \end{Desc}
+
+
+Definition at line 321 of file packing.inl.
+
+\begin{Code}\begin{verbatim}322         {
+323                 u16vec4* Unpack = reinterpret_cast<u16vec4*>(const_cast<uint64*>(&p));
+324                 return vec4(*Unpack) * 1.5259021896696421759365224689097e-5f; // 1.0 / 65535.0
+325         }
+\end{verbatim}
+\end{Code}
+
+

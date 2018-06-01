@@ -1,11 +1,14 @@
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btQuaternion \&gt;" alt="" coords="461,44,704,71">
-<area shape="rect" href="$classbt_quaternion.html" title="The btQuaternion implements quaternion to perform linear algebra rotations in combination..." alt="" coords="112,5,208,32">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btQuaternion, 16 \&gt;" alt="" coords="37,56,283,83">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btVector3 \&gt;" alt="" coords="471,119,695,145">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btVector3, 16 \&gt;" alt="" coords="47,119,273,145">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btMatrix3x3 \&gt;" alt="" coords="465,169,700,196">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btMatrix3x3, 16 \&gt;" alt="" coords="40,169,280,196">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btMultiBody * \&gt;" alt="" coords="460,220,705,247">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btMultiBody *, 16 \&gt;" alt="" coords="35,220,285,247">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btMultiBodyConstraint * \&gt;" alt="" coords="431,279,735,305">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btMultiBodyConstraint *, 16 \&gt;" alt="" coords="5,279,315,305">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btQuaternion \&gt;" alt="" coords="1560,55,1803,81">
+<area shape="rect" href="$classbt_quaternion.html" title="The btQuaternion implements quaternion to perform linear algebra rotations in combination..." alt="" coords="1144,41,1240,68">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btQuaternion, 16 \&gt;" alt="" coords="796,9,1041,36">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,284,229,311">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="527,245,705,272">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btVector3, 16 \&gt;" alt="" coords="805,120,1032,147">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btMatrix3x3, 16 \&gt;" alt="" coords="799,395,1039,421">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btMultiBody *, 16 \&gt;" alt="" coords="1067,311,1317,337">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btMultiBodyConstraint *, 16 \&gt;" alt="" coords="461,463,771,489">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="1104,220,1280,247">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btVector3 \&gt;" alt="" coords="1569,171,1793,197">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btMatrix3x3 \&gt;" alt="" coords="1564,272,1799,299">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btMultiBody * \&gt;" alt="" coords="1559,221,1804,248">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btMultiBodyConstraint * \&gt;" alt="" coords="1529,359,1833,385">

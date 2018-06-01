@@ -93,7 +93,11 @@ Returns x if x $>$= 0; otherwise, it returns -x.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/abs.xml}{\tt GLSL abs man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_g18be34b68c7f647b4455bafe4c7d7ecd}{
+
+
+Referenced by glm::areOrthogonal(), glm::areOrthonormal(), glm::asinh(), glm::atanh(), glm::axisAngle(), glm::epsilonEqual(), glm::fastAtan(), glm::fastLength(), glm::isIdentity(), glm::isNormalized(), glm::isPowerOfTwo(), glm::l1Norm(), glm::length(), glm::pow(), and glm::rotate().
+
+Here is the caller graph for this function:\hypertarget{group__core__func__common_g18be34b68c7f647b4455bafe4c7d7ecd}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!ceil@{ceil}}
 \index{ceil@{ceil}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[ceil]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::ceil (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -111,6 +115,21 @@ Returns a value equal to the nearest integer that is greater than or equal to x.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/ceil.xml}{\tt GLSL ceil man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 258 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}259         {
+260                 GLM_STATIC_ASSERT(
+261                         std::numeric_limits<genType>::is_iec559,
+262                         "'ceil' only accept floating-point inputs");
+263 
+264                 return ::std::ceil(x);
+265         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_g8b4808983e20c4c74b20e0a025787ab4}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!clamp@{clamp}}
 \index{clamp@{clamp}!core_func_common@{core\_\-func\_\-common}}
@@ -129,7 +148,30 @@ Returns min(max(x, minVal), maxVal) for each component in x using the floating-p
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/clamp.xml}{\tt GLSL clamp man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_gfddf54fe5089c73ff7216e1aa9f02620}{
+
+
+Definition at line 404 of file func\_\-common.inl.
+
+References glm::max(), and glm::min().
+
+Referenced by glm::clamp(), glm::orientedAngle(), glm::packSnorm1x16(), glm::packSnorm1x8(), glm::packSnorm2x16(), glm::packSnorm2x8(), glm::packSnorm3x10\_\-1x2(), glm::packSnorm4x16(), glm::packSnorm4x8(), glm::packUnorm1x16(), glm::packUnorm1x8(), glm::packUnorm2x16(), glm::packUnorm2x8(), glm::packUnorm3x10\_\-1x2(), glm::packUnorm4x16(), glm::packUnorm4x8(), glm::saturate(), glm::smoothstep(), glm::unpackSnorm1x16(), glm::unpackSnorm1x8(), glm::unpackSnorm2x16(), glm::unpackSnorm2x8(), glm::unpackSnorm3x10\_\-1x2(), and glm::unpackSnorm4x8().
+
+\begin{Code}\begin{verbatim}409         {
+410                 GLM_STATIC_ASSERT(
+411                         std::numeric_limits<genType>::is_iec559 || std::numeric_limits<genType>::is_integer,
+412                         "'clamp' only accept floating-point or integer inputs");
+413                 
+414                 return min(maxVal, max(minVal, x));
+415         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__core__func__common_gfddf54fe5089c73ff7216e1aa9f02620}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!floatBitsToInt@{floatBitsToInt}}
 \index{floatBitsToInt@{floatBitsToInt}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[floatBitsToInt]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename, precision $>$ class vecType, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ int, P $>$ glm::floatBitsToInt (vecType$<$ float, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -142,6 +184,17 @@ Returns a signed integer value representing the encoding of a floating-point val
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/floatBitsToInt.xml}{\tt GLSL floatBitsToInt man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 857 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}858         {
+859                 return reinterpret_cast<vecType<int, P>&>(const_cast<vecType<float, P>&>(v));
+860         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_gdc6a536a7bef046c3293d2ccad6d9ca2}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!floatBitsToInt@{floatBitsToInt}}
 \index{floatBitsToInt@{floatBitsToInt}!core_func_common@{core\_\-func\_\-common}}
@@ -155,6 +208,17 @@ Returns a signed integer value representing the encoding of a floating-point val
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/floatBitsToInt.xml}{\tt GLSL floatBitsToInt man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 851 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}852         {
+853                 return reinterpret_cast<int&>(const_cast<float&>(v));
+854         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_gd25f4b1449b40ee395b05552e98d103b}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!floatBitsToUint@{floatBitsToUint}}
 \index{floatBitsToUint@{floatBitsToUint}!core_func_common@{core\_\-func\_\-common}}
@@ -168,6 +232,17 @@ Returns a unsigned integer value representing the encoding of a floating-point v
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/floatBitsToUint.xml}{\tt GLSL floatBitsToUint man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 868 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}869         {
+870                 return reinterpret_cast<vecType<uint, P>&>(const_cast<vecType<float, P>&>(v));
+871         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_g748b4d2819b48d28ca09dc8733488873}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!floatBitsToUint@{floatBitsToUint}}
 \index{floatBitsToUint@{floatBitsToUint}!core_func_common@{core\_\-func\_\-common}}
@@ -181,6 +256,17 @@ Returns a unsigned integer value representing the encoding of a floating-point v
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/floatBitsToUint.xml}{\tt GLSL floatBitsToUint man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 862 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}863         {
+864                 return reinterpret_cast<uint&>(const_cast<float&>(v));
+865         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_gf87c2d5cbed8b293dcb7506b7c06c9e1}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!floor@{floor}}
 \index{floor@{floor}!core_func_common@{core\_\-func\_\-common}}
@@ -199,7 +285,26 @@ Returns a value equal to the nearest integer that is less then or equal to x.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/floor.xml}{\tt GLSL floor man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_ga9d229fca69599e027dd6a097938367b}{
+
+
+Definition at line 170 of file func\_\-common.inl.
+
+Referenced by glm::fract(), glm::mirrorRepeat(), glm::mod(), glm::rgbColor(), and glm::trunc().
+
+\begin{Code}\begin{verbatim}171         {
+172                 GLM_STATIC_ASSERT(
+173                         std::numeric_limits<genType>::is_iec559,
+174                         "'floor' only accept floating-point inputs");
+175 
+176                 return ::std::floor(x);
+177         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__common_ga9d229fca69599e027dd6a097938367b}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!fma@{fma}}
 \index{fma@{fma}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[fma]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::fma (genType const \& {\em a}, \/  genType const \& {\em b}, \/  genType const \& {\em c})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -217,6 +322,17 @@ Computes and returns a $\ast$ b + c.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/fma.xml}{\tt GLSL fma man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 897 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}902         {
+903                 return a * b + c;
+904         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_g7418318e0c1a82f21805628aabb0e24e}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!fract@{fract}}
 \index{fract@{fract}!core_func_common@{core\_\-func\_\-common}}
@@ -235,7 +351,30 @@ Return x - floor(x).
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/fract.xml}{\tt GLSL fract man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_g70c119cca554aacd36008191e2c4b2bb}{
+
+
+Definition at line 272 of file func\_\-common.inl.
+
+References glm::floor().
+
+Referenced by glm::repeat(), and glm::roundEven().
+
+\begin{Code}\begin{verbatim}275         {
+276                 GLM_STATIC_ASSERT(
+277                         std::numeric_limits<genType>::is_iec559,
+278                         "'fract' only accept floating-point inputs");
+279 
+280                 return x - floor(x);
+281         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__core__func__common_g70c119cca554aacd36008191e2c4b2bb}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!frexp@{frexp}}
 \index{frexp@{frexp}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[frexp]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType, typename genIType$>$ GLM\_\-FUNC\_\-DECL genType glm::frexp (genType const \& {\em x}, \/  genIType \& {\em exp})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -268,6 +407,17 @@ Returns a floating-point value corresponding to a signed integer encoding of a f
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/intBitsToFloat.xml}{\tt GLSL intBitsToFloat man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 879 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}880         {
+881                 return reinterpret_cast<vecType<float, P>&>(const_cast<vecType<int, P>&>(v));
+882         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_g2650dc57b2148a6ffbce20944fb4d97a}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!intBitsToFloat@{intBitsToFloat}}
 \index{intBitsToFloat@{intBitsToFloat}!core_func_common@{core\_\-func\_\-common}}
@@ -281,6 +431,17 @@ Returns a floating-point value corresponding to a signed integer encoding of a f
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/intBitsToFloat.xml}{\tt GLSL intBitsToFloat man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 873 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}874         {
+875                 return reinterpret_cast<float&>(const_cast<int&>(v));
+876         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_g9ab92804679f33124bd9575da9ac6a3a}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!isinf@{isinf}}
 \index{isinf@{isinf}!core_func_common@{core\_\-func\_\-common}}
@@ -299,6 +460,34 @@ Returns true if x holds a positive infinity or negative infinity representation 
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/isinf.xml}{\tt GLSL isinf man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 780 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}782         {
+783                 GLM_STATIC_ASSERT(
+784                         std::numeric_limits<genType>::is_iec559,
+785                         "'isinf' only accept floating-point inputs");
+786 
+787 #               if(GLM_COMPILER & (GLM_COMPILER_INTEL | GLM_COMPILER_VC))
+788                         return _fpclass(x) == _FPCLASS_NINF || _fpclass(x) == _FPCLASS_PINF;
+789 #               elif(GLM_COMPILER & (GLM_COMPILER_GCC | GLM_COMPILER_CLANG))
+790 #                       if(GLM_PLATFORM & GLM_PLATFORM_ANDROID && __cplusplus < 201103L)
+791                                 return _isinf(x) != 0;
+792 #                       else
+793                                 return std::isinf(x);
+794 #                       endif
+795 #               elif(GLM_COMPILER & GLM_COMPILER_CUDA)
+796                         // http://developer.download.nvidia.com/compute/cuda/4_2/rel/toolkit/docs/online/group__CUDA__MATH__DOUBLE_g13431dd2b40b51f9139cbb7f50c18fab.html#g13431dd2b40b51f9139cbb7f50c18fab
+797                         return isinf(double(x)) != 0;
+798 #               else
+799                         return std::isinf(x);
+800 #               endif
+801         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_g64fb2e954341050194ba445111be01f7}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!isnan@{isnan}}
 \index{isnan@{isnan}!core_func_common@{core\_\-func\_\-common}}
@@ -319,6 +508,33 @@ Returns true if x holds a NaN (not a number) representation in the underlying im
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/isnan.xml}{\tt GLSL isnan man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 710 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}711         {
+712                 GLM_STATIC_ASSERT(
+713                         std::numeric_limits<genType>::is_iec559,
+714                         "'isnan' only accept floating-point inputs");
+715 
+716 #               if(GLM_COMPILER & (GLM_COMPILER_VC | GLM_COMPILER_INTEL))
+717                         return _isnan(x) != 0;
+718 #               elif(GLM_COMPILER & (GLM_COMPILER_GCC | GLM_COMPILER_CLANG))
+719 #                       if(GLM_PLATFORM & GLM_PLATFORM_ANDROID && __cplusplus < 201103L)
+720                                 return _isnan(x) != 0;
+721 #                       else
+722                                 return std::isnan(x);
+723 #                       endif
+724 #               elif(GLM_COMPILER & GLM_COMPILER_CUDA)
+725                         return isnan(x) != 0;
+726 #               else
+727                         return std::isnan(x);
+728 #               endif
+729         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_g4b829eccd70b08b1a349e42ae3d4f4f7}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!ldexp@{ldexp}}
 \index{ldexp@{ldexp}!core_func_common@{core\_\-func\_\-common}}
@@ -357,7 +573,26 @@ Returns y if x $<$ y; otherwise, it returns x.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/max.xml}{\tt GLSL max man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_g7c4425eacc9498bb2ab8a7cfd662cd69}{
+
+
+Definition at line 386 of file func\_\-common.inl.
+
+Referenced by glm::areOrthogonal(), glm::clamp(), glm::hsvColor(), and glm::max().
+
+\begin{Code}\begin{verbatim}390         {
+391                 GLM_STATIC_ASSERT(
+392                         std::numeric_limits<genType>::is_iec559 || std::numeric_limits<genType>::is_integer,
+393                         "'max' only accept floating-point or integer inputs");
+394 
+395                 return x > y ? x : y;
+396         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__common_g7c4425eacc9498bb2ab8a7cfd662cd69}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!min@{min}}
 \index{min@{min}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[min]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::min (genType const \& {\em x}, \/  genType const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -375,7 +610,26 @@ Returns y if y $<$ x; otherwise, it returns x.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/min.xml}{\tt GLSL min man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions}$<$$<$$<$$<$$<$$<$$<$ HEAD \end{Desc}
-\hypertarget{group__core__func__common_gc208863c09fe827a44c976cc6d2aee33}{
+
+
+Definition at line 368 of file func\_\-common.inl.
+
+Referenced by glm::clamp(), glm::hsvColor(), and glm::min().
+
+\begin{Code}\begin{verbatim}372         {
+373                 GLM_STATIC_ASSERT(
+374                         std::numeric_limits<genType>::is_iec559 || std::numeric_limits<genType>::is_integer,
+375                         "'min' only accept floating-point or integer inputs");
+376 
+377                 return x < y ? x : y;
+378         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__common_gc208863c09fe827a44c976cc6d2aee33}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!mix@{mix}}
 \index{mix@{mix}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[mix]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename U, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ T, P $>$ glm::mix (vecType$<$ T, P $>$ const \& {\em x}, \/  vecType$<$ T, P $>$ const \& {\em y}, \/  vecType$<$ U, P $>$ const \& {\em a})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -418,7 +672,22 @@ If genTypeU is a boolean scalar or vector: Selects which vector each returned co
 \end{verbatim}
 \end{Code}
 
- \hypertarget{group__core__func__common_ge03755d98416b59e5d791665c6b6895a}{
+ 
+
+Definition at line 527 of file func\_\-common.inl.
+
+Referenced by glm::lerp(), glm::squad(), and glm::step().
+
+\begin{Code}\begin{verbatim}532         {
+533                 return detail::compute_mix_vector<T, U, P, vecType>::call(x, y, a);
+534         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__common_ge03755d98416b59e5d791665c6b6895a}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!mod@{mod}}
 \index{mod@{mod}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[mod]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::mod (genType const \& {\em x}, \/  typename genType::value\_\-type const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -454,7 +723,26 @@ Modulus. Returns x - y $\ast$ floor(x / y) for each component in x using the flo
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/mod.xml}{\tt GLSL mod man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_gcc8db4cd1d86780898c8b12e465eecf4}{
+
+
+Definition at line 288 of file func\_\-common.inl.
+
+References glm::floor().
+
+\begin{Code}\begin{verbatim}292         {
+293                 GLM_STATIC_ASSERT(
+294                         std::numeric_limits<genType>::is_iec559,
+295                         "'mod' only accept floating-point inputs");
+296 
+297                 return x - y * floor(x / y);
+298         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__common_gcc8db4cd1d86780898c8b12e465eecf4}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!modf@{modf}}
 \index{modf@{modf}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[modf]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::modf (genType const \& {\em x}, \/  genType \& {\em i})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -472,6 +760,21 @@ Returns the fractional part of x and sets i to the integer part (as a whole numb
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/modf.xml}{\tt GLSL modf man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 306 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}310         {
+311                 GLM_STATIC_ASSERT(
+312                         std::numeric_limits<genType>::is_iec559,
+313                         "'modf' only accept floating-point inputs");
+314 
+315                 return std::modf(x, &i);
+316         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_g931fae510be1b98fe22646fc649a50d2}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!round@{round}}
 \index{round@{round}!core_func_common@{core\_\-func\_\-common}}
@@ -490,7 +793,27 @@ Returns a value equal to the nearest integer to x. The fraction 0.5 will round i
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/round.xml}{\tt GLSL round man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_ge07e5945cc0443ab91a28da0aa2ba864}{
+
+
+Definition at line 197 of file func\_\-common.inl.
+
+Referenced by glm::packSnorm1x16(), glm::packSnorm1x8(), glm::packSnorm2x16(), glm::packSnorm2x8(), glm::packSnorm3x10\_\-1x2(), glm::packSnorm4x16(), glm::packSnorm4x8(), glm::packUnorm1x16(), glm::packUnorm1x8(), glm::packUnorm2x16(), glm::packUnorm2x8(), glm::packUnorm3x10\_\-1x2(), glm::packUnorm4x16(), glm::packUnorm4x8(), and glm::roundEven().
+
+\begin{Code}\begin{verbatim}198         {
+199                 GLM_STATIC_ASSERT(
+200                         std::numeric_limits<genType>::is_iec559,
+201                         "'round' only accept floating-point inputs");
+202 
+203                 // TODO, add C++11 std::round
+204                 return x < 0 ? genType(int(x - genType(0.5))) : genType(int(x + genType(0.5)));
+205         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__common_ge07e5945cc0443ab91a28da0aa2ba864}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!roundEven@{roundEven}}
 \index{roundEven@{roundEven}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[roundEven]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::roundEven (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -510,7 +833,49 @@ Returns a value equal to the nearest integer to x. A fractional part of 0.5 will
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} 
 
 \href{http://developer.amd.com/documentation/articles/pages/New-Round-to-Even-Technique.aspx}{\tt New round to even technique} \end{Desc}
-\hypertarget{group__core__func__common_g74ce53889485c33ac9d81d2b27165c80}{
+
+
+Definition at line 222 of file func\_\-common.inl.
+
+References glm::fract(), and glm::round().
+
+\begin{Code}\begin{verbatim}223         {
+224                 GLM_STATIC_ASSERT(
+225                         std::numeric_limits<genType>::is_iec559,
+226                         "'roundEven' only accept floating-point inputs");
+227                 
+228                 int Integer = static_cast<int>(x);
+229                 genType IntegerPart = static_cast<genType>(Integer);
+230                 genType FractionalPart = fract(x);
+231 
+232                 if(FractionalPart > static_cast<genType>(0.5) || FractionalPart < static_cast<genType>(0.5))
+233                 {
+234                         return round(x);
+235                 }
+236                 else if((Integer % 2) == 0)
+237                 {
+238                         return IntegerPart;
+239                 }
+240                 else if(x <= static_cast<genType>(0)) // Work around... 
+241                 {
+242                         return IntegerPart - static_cast<genType>(1);
+243                 }
+244                 else
+245                 {
+246                         return IntegerPart + static_cast<genType>(1);
+247                 }
+248                 //else // Bug on MinGW 4.5.2
+249                 //{
+250                 //      return mix(IntegerPart + genType(-1), IntegerPart + genType(1), x <= genType(0));
+251                 //}
+252         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__common_g74ce53889485c33ac9d81d2b27165c80}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!sign@{sign}}
 \index{sign@{sign}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[sign]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::sign (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -528,7 +893,11 @@ Returns 1.0 if x $>$ 0, 0.0 if x == 0, or -1.0 if x $<$ 0.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/sign.xml}{\tt GLSL sign man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_gcd449790122dcacf69b7e8a53f97fdd8}{
+
+
+Referenced by glm::fastAtan(), btQuaternion::slerp(), and b3Quaternion::slerp().
+
+Here is the caller graph for this function:\hypertarget{group__core__func__common_gcd449790122dcacf69b7e8a53f97fdd8}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!smoothstep@{smoothstep}}
 \index{smoothstep@{smoothstep}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[smoothstep]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::smoothstep (genType const \& {\em edge0}, \/  genType const \& {\em edge1}, \/  genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -546,7 +915,27 @@ Returns 0.0 if x $<$= edge0 and 1.0 if x $>$= edge1 and performs smooth Hermite 
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/smoothstep.xml}{\tt GLSL smoothstep man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_gdb27417a05ff516eda338a7047cea913}{
+
+
+Definition at line 586 of file func\_\-common.inl.
+
+References glm::clamp().
+
+\begin{Code}\begin{verbatim}591         {
+592                 GLM_STATIC_ASSERT(
+593                         std::numeric_limits<genType>::is_iec559,
+594                         "'smoothstep' only accept floating-point inputs");
+595 
+596                 genType tmp = clamp((x - edge0) / (edge1 - edge0), genType(0), genType(1));
+597                 return tmp * tmp * (genType(3) - genType(2) * tmp);
+598         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__common_gdb27417a05ff516eda338a7047cea913}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!step@{step}}
 \index{step@{step}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[step]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename, precision $>$ class vecType, typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ T, P $>$ glm::step (T const \& {\em edge}, \/  vecType$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -559,7 +948,26 @@ Returns 0.0 if x $<$ edge, otherwise it returns 1.0.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/step.xml}{\tt GLSL step man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_gcc889b24788725c04a80e29f6cc62c1e}{
+
+
+Definition at line 571 of file func\_\-common.inl.
+
+References glm::mix().
+
+\begin{Code}\begin{verbatim}575         {
+576                 GLM_STATIC_ASSERT(
+577                         std::numeric_limits<T>::is_iec559,
+578                         "'step' only accept floating-point inputs");
+579 
+580                 return mix(vecType<T, P>(1), vecType<T, P>(0), glm::lessThan(x, vecType<T, P>(edge)));
+581         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__common_gcc889b24788725c04a80e29f6cc62c1e}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!step@{step}}
 \index{step@{step}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[step]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::step (genType const \& {\em edge}, \/  genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -572,7 +980,22 @@ Returns 0.0 if x $<$ edge, otherwise it returns 1.0 for each component of a genT
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/step.xml}{\tt GLSL step man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_g30f4c901cd3ebdd26e8f0a73f15c1e89}{
+
+
+Definition at line 561 of file func\_\-common.inl.
+
+References glm::mix().
+
+\begin{Code}\begin{verbatim}565         {
+566                 return mix(genType(1), genType(0), glm::lessThan(x, edge));
+567         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__common_g30f4c901cd3ebdd26e8f0a73f15c1e89}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!trunc@{trunc}}
 \index{trunc@{trunc}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[trunc]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::trunc (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -590,7 +1013,27 @@ Returns a value equal to the nearest integer to x whose absolute value is not la
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/trunc.xml}{\tt GLSL trunc man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
-\hypertarget{group__core__func__common_gda31018f0dedd22004850229eb178b0d}{
+
+
+Definition at line 183 of file func\_\-common.inl.
+
+References glm::floor().
+
+\begin{Code}\begin{verbatim}184         {
+185                 GLM_STATIC_ASSERT(
+186                         std::numeric_limits<genType>::is_iec559,
+187                         "'trunc' only accept floating-point inputs");
+188 
+189                 // TODO, add C++11 std::trunk
+190                 return x < 0 ? -floor(-x) : floor(x);
+191         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__common_gda31018f0dedd22004850229eb178b0d}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!uintBitsToFloat@{uintBitsToFloat}}
 \index{uintBitsToFloat@{uintBitsToFloat}!core_func_common@{core\_\-func\_\-common}}
 \subsubsection[uintBitsToFloat]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename, precision $>$ class vecType, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ float, P $>$ glm::uintBitsToFloat (vecType$<$ uint, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -603,6 +1046,17 @@ Returns a floating-point value corresponding to a unsigned integer encoding of a
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/uintBitsToFloat.xml}{\tt GLSL uintBitsToFloat man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 890 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}891         {
+892                 return reinterpret_cast<vecType<float, P>&>(const_cast<vecType<uint, P>&>(v));
+893         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__common_g97464ca9ff4267de30ea408f700d4ca8}{
 \index{core\_\-func\_\-common@{core\_\-func\_\-common}!uintBitsToFloat@{uintBitsToFloat}}
 \index{uintBitsToFloat@{uintBitsToFloat}!core_func_common@{core\_\-func\_\-common}}
@@ -616,3 +1070,14 @@ Returns a floating-point value corresponding to a unsigned integer encoding of a
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/uintBitsToFloat.xml}{\tt GLSL uintBitsToFloat man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.3 Common Functions} \end{Desc}
+
+
+Definition at line 884 of file func\_\-common.inl.
+
+\begin{Code}\begin{verbatim}885         {
+886                 return reinterpret_cast<float&>(const_cast<uint&>(v));
+887         }
+\end{verbatim}
+\end{Code}
+
+

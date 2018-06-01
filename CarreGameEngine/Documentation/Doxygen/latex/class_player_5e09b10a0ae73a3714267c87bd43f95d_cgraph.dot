@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="Player::TurnAntiClock",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="Model::GetRotation",height=0.2,width=0.4,color="black",URL="$class_model.html#fc6593eeb0980053628cd00a75be51e9",tooltip="Gets the models rotation."];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="Model::SetRotation",height=0.2,width=0.4,color="black",URL="$class_model.html#71aa61e54f3f12bc86175fa359079d23",tooltip="Sets the models rotation."];
+}

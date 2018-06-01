@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="bt_plane_clip_polygon",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="bt_plane_clip_polygon_collect",height=0.2,width=0.4,color="black",URL="$bt_clip_polygon_8h.html#5d0b14854a98ea3902f6c914a292f83d",tooltip="This function calcs the distance from a 3D plane."];
+  Node2 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="bt_vec_blend",height=0.2,width=0.4,color="black",URL="$bt_clip_polygon_8h.html#1f80a57f63e11130a715c2bf42c389cb"];
+}

@@ -21,6 +21,8 @@ virtual void \hyperlink{classbt_multi_body_dynamics_world_96ca0256c11525090a831c
 \subsection{Detailed Description}
 The \hyperlink{classbt_multi_body_dynamics_world}{btMultiBodyDynamicsWorld} adds Featherstone multi body dynamics to Bullet This implementation is still preliminary/experimental. 
 
+Definition at line 30 of file btMultiBodyDynamicsWorld.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_multi_body_dynamics_world_96ca0256c11525090a831cc854fe0750}{
 \index{btMultiBodyDynamicsWorld@{btMultiBodyDynamicsWorld}!solveConstraints@{solveConstraints}}
@@ -31,7 +33,331 @@ The \hyperlink{classbt_multi_body_dynamics_world}{btMultiBodyDynamicsWorld} adds
 
 
 
-solve all the constraints for this island \hypertarget{classbt_multi_body_dynamics_world_6abe9896c6178b8d5bebdbca53fa7a74}{
+solve all the constraints for this island 
+
+Definition at line 406 of file btMultiBodyDynamicsWorld.cpp.
+
+References btAlignedObjectArray$<$ T $>$::quickSort(), btAlignedObjectArray$<$ T $>$::resize(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}407 {
+408         forwardKinematics();
+409 
+410 
+411 
+412         BT_PROFILE("solveConstraints");
+413         
+414         m_sortedConstraints.resize( m_constraints.size());
+415         int i; 
+416         for (i=0;i<getNumConstraints();i++)
+417         {
+418                 m_sortedConstraints[i] = m_constraints[i];
+419         }
+420         m_sortedConstraints.quickSort(btSortConstraintOnIslandPredicate2());
+421         btTypedConstraint** constraintsPtr = getNumConstraints() ? &m_sortedConstraints[0] : 0;
+422 
+423         m_sortedMultiBodyConstraints.resize(m_multiBodyConstraints.size());
+424         for (i=0;i<m_multiBodyConstraints.size();i++)
+425         {
+426                 m_sortedMultiBodyConstraints[i] = m_multiBodyConstraints[i];
+427         }
+428         m_sortedMultiBodyConstraints.quickSort(btSortMultiBodyConstraintOnIslandPredicate());
+429 
+430         btMultiBodyConstraint** sortedMultiBodyConstraints = m_sortedMultiBodyConstraints.size() ?  &m_sortedMultiBodyConstraints[0] : 0;
+431         
+432 
+433         m_solverMultiBodyIslandCallback->setup(&solverInfo,constraintsPtr,m_sortedConstraints.size(),sortedMultiBodyConstraints,m_sortedMultiBodyConstraints.size(), getDebugDrawer());
+434         m_constraintSolver->prepareSolve(getCollisionWorld()->getNumCollisionObjects(), getCollisionWorld()->getDispatcher()->getNumManifolds());
+435         
+437         m_islandManager->buildAndProcessIslands(getCollisionWorld()->getDispatcher(),getCollisionWorld(),m_solverMultiBodyIslandCallback);
+438 
+439 #ifndef BT_USE_VIRTUAL_CLEARFORCES_AND_GRAVITY
+440         {
+441                 BT_PROFILE("btMultiBody addForce");
+442                 for (int i=0;i<this->m_multiBodies.size();i++)
+443                 {
+444                         btMultiBody* bod = m_multiBodies[i];
+445 
+446                         bool isSleeping = false;
+447                         
+448                         if (bod->getBaseCollider() && bod->getBaseCollider()->getActivationState() == ISLAND_SLEEPING)
+449                         {
+450                                 isSleeping = true;
+451                         } 
+452                         for (int b=0;b<bod->getNumLinks();b++)
+453                         {
+454                                 if (bod->getLink(b).m_collider && bod->getLink(b).m_collider->getActivationState()==ISLAND_SLEEPING)
+455                                         isSleeping = true;
+456                         } 
+457 
+458                         if (!isSleeping)
+459                         {
+460                                 //useless? they get resized in stepVelocities once again (AND DIFFERENTLY)
+461                                 m_scratch_r.resize(bod->getNumLinks()+1);                       //multidof? ("Y"s use it and it is used to store qdd)
+462                                 m_scratch_v.resize(bod->getNumLinks()+1);
+463                                 m_scratch_m.resize(bod->getNumLinks()+1);
+464 
+465                                 bod->addBaseForce(m_gravity * bod->getBaseMass());
+466 
+467                                 for (int j = 0; j < bod->getNumLinks(); ++j) 
+468                                 {
+469                                         bod->addLinkForce(j, m_gravity * bod->getLinkMass(j));
+470                                 }
+471                         }//if (!isSleeping)
+472                 }
+473         }
+474 #endif //BT_USE_VIRTUAL_CLEARFORCES_AND_GRAVITY
+475         
+476 
+477         {
+478                 BT_PROFILE("btMultiBody stepVelocities");
+479                 for (int i=0;i<this->m_multiBodies.size();i++)
+480                 {
+481                         btMultiBody* bod = m_multiBodies[i];
+482 
+483                         bool isSleeping = false;
+484                         
+485                         if (bod->getBaseCollider() && bod->getBaseCollider()->getActivationState() == ISLAND_SLEEPING)
+486                         {
+487                                 isSleeping = true;
+488                         } 
+489                         for (int b=0;b<bod->getNumLinks();b++)
+490                         {
+491                                 if (bod->getLink(b).m_collider && bod->getLink(b).m_collider->getActivationState()==ISLAND_SLEEPING)
+492                                         isSleeping = true;
+493                         } 
+494 
+495                         if (!isSleeping)
+496                         {
+497                                 //useless? they get resized in stepVelocities once again (AND DIFFERENTLY)
+498                                 m_scratch_r.resize(bod->getNumLinks()+1);                       //multidof? ("Y"s use it and it is used to store qdd)
+499                                 m_scratch_v.resize(bod->getNumLinks()+1);
+500                                 m_scratch_m.resize(bod->getNumLinks()+1);
+501                                 bool doNotUpdatePos = false;
+502 
+503                                 {
+504                                         if(!bod->isUsingRK4Integration())
+505                                         {
+506                                                 bod->computeAccelerationsArticulatedBodyAlgorithmMultiDof(solverInfo.m_timeStep, m_scratch_r, m_scratch_v, m_scratch_m);
+507                                         }
+508                                         else
+509                                         {                                               
+510                                                 //
+511                                                 int numDofs = bod->getNumDofs() + 6;
+512                                                 int numPosVars = bod->getNumPosVars() + 7;
+513                                                 btAlignedObjectArray<btScalar> scratch_r2; scratch_r2.resize(2*numPosVars + 8*numDofs);
+514                                                 //convenience
+515                                                 btScalar *pMem = &scratch_r2[0];
+516                                                 btScalar *scratch_q0 = pMem; pMem += numPosVars;
+517                                                 btScalar *scratch_qx = pMem; pMem += numPosVars;
+518                                                 btScalar *scratch_qd0 = pMem; pMem += numDofs;
+519                                                 btScalar *scratch_qd1 = pMem; pMem += numDofs;
+520                                                 btScalar *scratch_qd2 = pMem; pMem += numDofs;
+521                                                 btScalar *scratch_qd3 = pMem; pMem += numDofs;
+522                                                 btScalar *scratch_qdd0 = pMem; pMem += numDofs;
+523                                                 btScalar *scratch_qdd1 = pMem; pMem += numDofs;
+524                                                 btScalar *scratch_qdd2 = pMem; pMem += numDofs;
+525                                                 btScalar *scratch_qdd3 = pMem; pMem += numDofs;
+526                                                 btAssert((pMem - (2*numPosVars + 8*numDofs)) == &scratch_r2[0]);
+527 
+529                                                 //copy q0 to scratch_q0 and qd0 to scratch_qd0
+530                                                 scratch_q0[0] = bod->getWorldToBaseRot().x();
+531                                                 scratch_q0[1] = bod->getWorldToBaseRot().y();
+532                                                 scratch_q0[2] = bod->getWorldToBaseRot().z();
+533                                                 scratch_q0[3] = bod->getWorldToBaseRot().w();
+534                                                 scratch_q0[4] = bod->getBasePos().x();
+535                                                 scratch_q0[5] = bod->getBasePos().y();
+536                                                 scratch_q0[6] = bod->getBasePos().z();
+537                                                 //
+538                                                 for(int link = 0; link < bod->getNumLinks(); ++link)
+539                                                 {
+540                                                         for(int dof = 0; dof < bod->getLink(link).m_posVarCount; ++dof)
+541                                                                 scratch_q0[7 + bod->getLink(link).m_cfgOffset + dof] = bod->getLink(link).m_jointPos[dof];                                                      
+542                                                 }
+543                                                 //
+544                                                 for(int dof = 0; dof < numDofs; ++dof)                                                          
+545                                                         scratch_qd0[dof] = bod->getVelocityVector()[dof];
+547                                                 struct
+548                                                 {
+549                                                     btMultiBody *bod;
+550                             btScalar *scratch_qx, *scratch_q0;
+551 
+552                                                     void operator()()
+553                                                     {
+554                                                         for(int dof = 0; dof < bod->getNumPosVars() + 7; ++dof)
+555                                     scratch_qx[dof] = scratch_q0[dof];
+556                                                     }
+557                                                 } pResetQx = {bod, scratch_qx, scratch_q0};
+558                                                 //
+559                                                 struct
+560                                                 {
+561                                                     void operator()(btScalar dt, const btScalar *pDer, const btScalar *pCurVal, btScalar *pVal, int size)
+562                                                     {
+563                                                         for(int i = 0; i < size; ++i)
+564                                     pVal[i] = pCurVal[i] + dt * pDer[i];
+565                                                     }
+566 
+567                                                 } pEulerIntegrate;
+568                                                 //
+569                                                 struct
+570                         {
+571                             void operator()(btMultiBody *pBody, const btScalar *pData)
+572                             {
+573                                 btScalar *pVel = const_cast<btScalar*>(pBody->getVelocityVector());
+574 
+575                                 for(int i = 0; i < pBody->getNumDofs() + 6; ++i)
+576                                     pVel[i] = pData[i];
+577 
+578                             }
+579                         } pCopyToVelocityVector;
+580                                                 //
+581                         struct
+582                                                 {
+583                                                     void operator()(const btScalar *pSrc, btScalar *pDst, int start, int size)
+584                                                     {
+585                                                         for(int i = 0; i < size; ++i)
+586                                     pDst[i] = pSrc[start + i];
+587                                                     }
+588                                                 } pCopy;
+589                                                 //
+590 
+591                                                 btScalar h = solverInfo.m_timeStep;
+592                                                 #define output &m_scratch_r[bod->getNumDofs()]
+593                                                 //calc qdd0 from: q0 & qd0      
+594                                                 bod->computeAccelerationsArticulatedBodyAlgorithmMultiDof(0., m_scratch_r, m_scratch_v, m_scratch_m);
+595                                                 pCopy(output, scratch_qdd0, 0, numDofs);
+596                                                 //calc q1 = q0 + h/2 * qd0
+597                                                 pResetQx();
+598                                                 bod->stepPositionsMultiDof(btScalar(.5)*h, scratch_qx, scratch_qd0);
+599                                                 //calc qd1 = qd0 + h/2 * qdd0
+600                                                 pEulerIntegrate(btScalar(.5)*h, scratch_qdd0, scratch_qd0, scratch_qd1, numDofs);
+601                                                 //
+602                                                 //calc qdd1 from: q1 & qd1
+603                                                 pCopyToVelocityVector(bod, scratch_qd1);
+604                                                 bod->computeAccelerationsArticulatedBodyAlgorithmMultiDof(0., m_scratch_r, m_scratch_v, m_scratch_m);
+605                                                 pCopy(output, scratch_qdd1, 0, numDofs);
+606                                                 //calc q2 = q0 + h/2 * qd1
+607                                                 pResetQx();
+608                                                 bod->stepPositionsMultiDof(btScalar(.5)*h, scratch_qx, scratch_qd1);
+609                                                 //calc qd2 = qd0 + h/2 * qdd1
+610                                                 pEulerIntegrate(btScalar(.5)*h, scratch_qdd1, scratch_qd0, scratch_qd2, numDofs);
+611                                                 //
+612                                                 //calc qdd2 from: q2 & qd2
+613                                                 pCopyToVelocityVector(bod, scratch_qd2);
+614                                                 bod->computeAccelerationsArticulatedBodyAlgorithmMultiDof(0., m_scratch_r, m_scratch_v, m_scratch_m);
+615                                                 pCopy(output, scratch_qdd2, 0, numDofs);
+616                                                 //calc q3 = q0 + h * qd2
+617                                                 pResetQx();
+618                                                 bod->stepPositionsMultiDof(h, scratch_qx, scratch_qd2);
+619                                                 //calc qd3 = qd0 + h * qdd2
+620                                                 pEulerIntegrate(h, scratch_qdd2, scratch_qd0, scratch_qd3, numDofs);
+621                                                 //
+622                                                 //calc qdd3 from: q3 & qd3
+623                                                 pCopyToVelocityVector(bod, scratch_qd3);
+624                                                 bod->computeAccelerationsArticulatedBodyAlgorithmMultiDof(0., m_scratch_r, m_scratch_v, m_scratch_m);
+625                                                 pCopy(output, scratch_qdd3, 0, numDofs);
+626 
+627                                                 //
+628                                                 //calc q = q0 + h/6(qd0 + 2*(qd1 + qd2) + qd3)
+629                                                 //calc qd = qd0 + h/6(qdd0 + 2*(qdd1 + qdd2) + qdd3)                                            
+630                                                 btAlignedObjectArray<btScalar> delta_q; delta_q.resize(numDofs);
+631                                                 btAlignedObjectArray<btScalar> delta_qd; delta_qd.resize(numDofs);
+632                                                 for(int i = 0; i < numDofs; ++i)
+633                                                 {
+634                                                         delta_q[i] = h/btScalar(6.)*(scratch_qd0[i] + 2*scratch_qd1[i] + 2*scratch_qd2[i] + scratch_qd3[i]);
+635                                                         delta_qd[i] = h/btScalar(6.)*(scratch_qdd0[i] + 2*scratch_qdd1[i] + 2*scratch_qdd2[i] + scratch_qdd3[i]);                                                       
+636                                                         //delta_q[i] = h*scratch_qd0[i];
+637                                                         //delta_qd[i] = h*scratch_qdd0[i];
+638                                                 }
+639                                                 //
+640                                                 pCopyToVelocityVector(bod, scratch_qd0);
+641                                                 bod->applyDeltaVeeMultiDof(&delta_qd[0], 1);                                            
+642                                                 //
+643                                                 if(!doNotUpdatePos)
+644                                                 {
+645                                                         btScalar *pRealBuf = const_cast<btScalar *>(bod->getVelocityVector());
+646                                                         pRealBuf += 6 + bod->getNumDofs() + bod->getNumDofs()*bod->getNumDofs();
+647 
+648                                                         for(int i = 0; i < numDofs; ++i)
+649                                                                 pRealBuf[i] = delta_q[i];
+650 
+651                                                         //bod->stepPositionsMultiDof(1, 0, &delta_q[0]);
+652                                                         bod->setPosUpdated(true);                                                       
+653                                                 }
+654 
+655                                                 //ugly hack which resets the cached data to t0 (needed for constraint solver)
+656                                                 {
+657                                                         for(int link = 0; link < bod->getNumLinks(); ++link)
+658                                                                 bod->getLink(link).updateCacheMultiDof();
+659                                                         bod->computeAccelerationsArticulatedBodyAlgorithmMultiDof(0, m_scratch_r, m_scratch_v, m_scratch_m);
+660                                                 }
+661                                                 
+662                                         }
+663                                 }
+664                                 
+665 #ifndef BT_USE_VIRTUAL_CLEARFORCES_AND_GRAVITY
+666                                 bod->clearForcesAndTorques();
+667 #endif //BT_USE_VIRTUAL_CLEARFORCES_AND_GRAVITY
+668                         }//if (!isSleeping)
+669                 }
+670         }
+671 
+672         clearMultiBodyConstraintForces();
+673 
+674         m_solverMultiBodyIslandCallback->processConstraints();
+675         
+676         m_constraintSolver->allSolved(solverInfo, m_debugDrawer);
+677 
+678         {
+679                 BT_PROFILE("btMultiBody stepVelocities");
+680                 for (int i=0;i<this->m_multiBodies.size();i++)
+681                 {
+682                         btMultiBody* bod = m_multiBodies[i];
+683 
+684                         bool isSleeping = false;
+685 
+686                         if (bod->getBaseCollider() && bod->getBaseCollider()->getActivationState() == ISLAND_SLEEPING)
+687                         {
+688                                 isSleeping = true;
+689                         }
+690                         for (int b=0;b<bod->getNumLinks();b++)
+691                         {
+692                                 if (bod->getLink(b).m_collider && bod->getLink(b).m_collider->getActivationState()==ISLAND_SLEEPING)
+693                                         isSleeping = true;
+694                         }
+695 
+696                         if (!isSleeping)
+697                         {
+698                                 //useless? they get resized in stepVelocities once again (AND DIFFERENTLY)
+699                                 m_scratch_r.resize(bod->getNumLinks()+1);                 //multidof? ("Y"s use it and it is used to store qdd)
+700                                 m_scratch_v.resize(bod->getNumLinks()+1);
+701                                 m_scratch_m.resize(bod->getNumLinks()+1);
+702 
+703                                 
+704                             {
+705                                 if(!bod->isUsingRK4Integration())
+706                                 {
+707                                                                         bool isConstraintPass = true;
+708                                     bod->computeAccelerationsArticulatedBodyAlgorithmMultiDof(solverInfo.m_timeStep, m_scratch_r, m_scratch_v, m_scratch_m, isConstraintPass);
+709                                 }
+710                                 }
+711                         }
+712                 }
+713         }
+714 
+715         for (int i=0;i<this->m_multiBodies.size();i++)
+716         {
+717                 btMultiBody* bod = m_multiBodies[i];
+718                 bod->processDeltaVeeMultiDof2();
+719         }
+720 
+721 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_multi_body_dynamics_world_6abe9896c6178b8d5bebdbca53fa7a74}{
 \index{btMultiBodyDynamicsWorld@{btMultiBodyDynamicsWorld}!integrateTransforms@{integrateTransforms}}
 \index{integrateTransforms@{integrateTransforms}!btMultiBodyDynamicsWorld@{btMultiBodyDynamicsWorld}}
 \subsubsection[integrateTransforms]{\setlength{\rightskip}{0pt plus 5cm}void btMultiBodyDynamicsWorld::integrateTransforms (btScalar {\em timeStep})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
@@ -42,7 +368,72 @@ solve all the constraints for this island \hypertarget{classbt_multi_body_dynami
 
 base + num m\_\-links 
 
+Definition at line 723 of file btMultiBodyDynamicsWorld.cpp.
+
+References btAlignedObjectArray$<$ T $>$::resize(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}724 {
+725         btDiscreteDynamicsWorld::integrateTransforms(timeStep);
+726 
+727         {
+728                 BT_PROFILE("btMultiBody stepPositions");
+729                 //integrate and update the Featherstone hierarchies
+730         
+731                 for (int b=0;b<m_multiBodies.size();b++)
+732                 {
+733                         btMultiBody* bod = m_multiBodies[b];
+734                         bool isSleeping = false;
+735                         if (bod->getBaseCollider() && bod->getBaseCollider()->getActivationState() == ISLAND_SLEEPING)
+736                         {
+737                                 isSleeping = true;
+738                         } 
+739                         for (int b=0;b<bod->getNumLinks();b++)
+740                         {
+741                                 if (bod->getLink(b).m_collider && bod->getLink(b).m_collider->getActivationState()==ISLAND_SLEEPING)
+742                                         isSleeping = true;
+743                         }
+744 
+745 
+746                         if (!isSleeping)
+747                         {
+748                                 int nLinks = bod->getNumLinks();
+749 
+751                         
+752                                 
+753                                 {
+754                                         if(!bod->isPosUpdated())
+755                                                 bod->stepPositionsMultiDof(timeStep);
+756                                         else
+757                                         {
+758                                                 btScalar *pRealBuf = const_cast<btScalar *>(bod->getVelocityVector());
+759                                                 pRealBuf += 6 + bod->getNumDofs() + bod->getNumDofs()*bod->getNumDofs();
+760 
+761                                                 bod->stepPositionsMultiDof(1, 0, pRealBuf);
+762                                                 bod->setPosUpdated(false);
+763                                         }
+764                                 }
+765                                 
+766                                 m_scratch_world_to_local.resize(nLinks+1);
+767                                 m_scratch_local_origin.resize(nLinks+1);
+768 
+769                                 bod->updateCollisionObjectWorldTransforms(m_scratch_world_to_local,m_scratch_local_origin);
+770                                 
+771                         } else
+772                         {
+773                                 bod->clearVelocities();
+774                         }
+775                 }
+776         }
+777 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.cpp\end{CompactItemize}

@@ -1,6 +1,6 @@
 \hypertarget{metadata_8h}{
-\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/metadata.h File Reference}
-\label{metadata_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/metadata.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/metadata.h}}
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/metadata.h File Reference}
+\label{metadata_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/metadata.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/metadata.h}}
 }
 Defines the data structures for holding node meta information. 
 
@@ -28,6 +28,8 @@ Defines the data structures for holding node meta information.
 
 
 
+Definition in file \hyperlink{metadata_8h-source}{metadata.h}.
+
 \subsection{Enumeration Type Documentation}
 \hypertarget{metadata_8h_a910906c37416da57bb36335a4d04232}{
 \index{metadata.h@{metadata.h}!aiMetadataType@{aiMetadataType}}
@@ -37,3 +39,23 @@ Defines the data structures for holding node meta information.
 
 
 Enum used to distinguish data types 
+
+Definition at line 61 of file metadata.h.
+
+\begin{Code}\begin{verbatim}61                             {
+62     AI_BOOL       = 0,
+63     AI_INT32      = 1,
+64     AI_UINT64     = 2,
+65     AI_FLOAT      = 3,
+66     AI_DOUBLE     = 4,
+67     AI_AISTRING   = 5,
+68     AI_AIVECTOR3D = 6,
+69 
+70 #ifndef SWIG
+71     FORCE_32BIT = INT_MAX
+72 #endif
+73 } aiMetadataType;
+\end{verbatim}
+\end{Code}
+
+

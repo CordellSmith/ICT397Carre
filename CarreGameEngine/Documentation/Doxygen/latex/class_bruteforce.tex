@@ -1,0 +1,476 @@
+\hypertarget{class_bruteforce}{
+\section{Bruteforce Class Reference}
+\label{class_bruteforce}\index{Bruteforce@{Bruteforce}}
+}
+\hyperlink{class_bruteforce}{Bruteforce} terrain generation class.  
+
+
+{\tt \#include $<$Bruteforce.h$>$}
+
+Inheritance diagram for Bruteforce:Collaboration diagram for Bruteforce:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_bruteforce_a34632542f0b77ed5f6faad3515130db}{Bruteforce} (float scaleX, float scaleY, float scaleZ)
+\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
+\hyperlink{class_bruteforce_61f92c7ada314e8e785231e86229af1a}{$\sim$Bruteforce} ()
+\begin{CompactList}\small\item\em Destructor. \item\end{CompactList}\item 
+virtual void \hyperlink{class_bruteforce_910463356742edd6703a19b46f4ed359}{GenerateTerrain} (GLuint textureId, std::string textureFilePath) override
+\begin{CompactList}\small\item\em Generates the terrain. \item\end{CompactList}\item 
+bool \hyperlink{class_bruteforce_adf9803b858d6d43bc887d7a3506fb2a}{LoadHeightfield} (std::string fileName, const int size)
+\begin{CompactList}\small\item\em Loads the heightfield data. \item\end{CompactList}\item 
+Texture \hyperlink{class_bruteforce_f4877e16df806562170ba403dc67298f}{AddTexture} (GLuint textureId, std::string filePath)
+\begin{CompactList}\small\item\em Adds texture to mesh. \item\end{CompactList}\item 
+bool \hyperlink{class_bruteforce_2b337f6ef80b5722a09f2e0c381923ff}{Inbounds} (int xpos, int zpos)
+\begin{CompactList}\small\item\em Checks if inbounds. \item\end{CompactList}\item 
+float \hyperlink{class_bruteforce_6ffaafd89058fdd7a2bdc946aa5aa24b}{GetHeight} (int xpos, int zpos)
+\begin{CompactList}\small\item\em Gets the height of the terrain. \item\end{CompactList}\item 
+unsigned char \hyperlink{class_bruteforce_05513f5064029203a0096d14147ad721}{GetHeightColour} (int xpos, int zpos)
+\begin{CompactList}\small\item\em Gets the colour at a specific height. \item\end{CompactList}\item 
+float \hyperlink{class_bruteforce_3919323bbf5e4dbcef81c4a929fb8254}{GetAverageHeight} (int xpos, int zpos)
+\begin{CompactList}\small\item\em Gets the average height. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_bruteforce}{Bruteforce} terrain generation class. 
+
+This class inherits from the base \hyperlink{class_terrain}{Terrain} class. It procedurally generates a terrain using the bruteforce method.
+
+\begin{Desc}
+\item[Author:]Cordell Smith \end{Desc}
+\begin{Desc}
+\item[Version:]01 \end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
+
+
+Definition at line 17 of file Bruteforce.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_bruteforce_a34632542f0b77ed5f6faad3515130db}{
+\index{Bruteforce@{Bruteforce}!Bruteforce@{Bruteforce}}
+\index{Bruteforce@{Bruteforce}!Bruteforce@{Bruteforce}}
+\subsubsection[Bruteforce]{\setlength{\rightskip}{0pt plus 5cm}Bruteforce::Bruteforce (float {\em scaleX}, \/  float {\em scaleY}, \/  float {\em scaleZ})}}
+\label{class_bruteforce_a34632542f0b77ed5f6faad3515130db}
+
+
+Constructor. 
+
+Parameterised constructor that takes the desired scale of the terrain to be generated. This is how large you want it to be in the X, Y and Z directions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em float}]scaleX \item[{\em float}]scaleY \item[{\em float}]scaleZ \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 3 of file Bruteforce.cpp.
+
+\begin{Code}\begin{verbatim}4 {
+5         m_scaleX = scaleX;
+6         m_scaleY = scaleY;
+7         m_scaleZ = scaleZ;
+8 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_bruteforce_61f92c7ada314e8e785231e86229af1a}{
+\index{Bruteforce@{Bruteforce}!$\sim$Bruteforce@{$\sim$Bruteforce}}
+\index{$\sim$Bruteforce@{$\sim$Bruteforce}!Bruteforce@{Bruteforce}}
+\subsubsection[$\sim$Bruteforce]{\setlength{\rightskip}{0pt plus 5cm}Bruteforce::$\sim$Bruteforce ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_bruteforce_61f92c7ada314e8e785231e86229af1a}
+
+
+Destructor. 
+
+Empty destructor.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 40 of file Bruteforce.h.
+
+\begin{Code}\begin{verbatim}40 { }
+\end{verbatim}
+\end{Code}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_bruteforce_910463356742edd6703a19b46f4ed359}{
+\index{Bruteforce@{Bruteforce}!GenerateTerrain@{GenerateTerrain}}
+\index{GenerateTerrain@{GenerateTerrain}!Bruteforce@{Bruteforce}}
+\subsubsection[GenerateTerrain]{\setlength{\rightskip}{0pt plus 5cm}void Bruteforce::GenerateTerrain (GLuint {\em textureId}, \/  std::string {\em textureFilePath})\hspace{0.3cm}{\tt  \mbox{[}override, virtual\mbox{]}}}}
+\label{class_bruteforce_910463356742edd6703a19b46f4ed359}
+
+
+Generates the terrain. 
+
+Takes the heightfield data of the terrain and generates a mesh for it. The two parameters are the textures to be assigned to the terrain for rendering.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em GLuint}]textureId \item[{\em std::string}]textureFilePath \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Implements \hyperlink{class_terrain_93fa5e9433a77d8f8bbe2a2f6aadf2ab}{Terrain}.
+
+Definition at line 10 of file Bruteforce.cpp.
+
+References AddTexture(), GetHeight(), GetHeightColour(), Model::GetMeshBatch(), Model::GetTextures(), Mesh::GetTextures(), Mesh::GetVertices(), and Model::SetScale().
+
+\begin{Code}\begin{verbatim}11 {
+12         Mesh tempMesh;
+13         float colour;
+14         float texLeft, texBottom, texTop;
+15 
+16         for (int z = 0; z < m_heightfieldSize - 1; z++)
+17         {
+18                 for (int x = 0; x < m_heightfieldSize - 1; x++)
+19                 {
+20                         Vertex3 vertex;
+21 
+22                         float tex00 = (float)x / (m_heightfieldSize); // U
+23                         float tex01 = (float)z / (m_heightfieldSize); // V
+24                         float tex10 = (float)(x + 1) / (m_heightfieldSize);
+25                         float tex11 = (float)(z + 1) / (m_heightfieldSize);
+26 
+27                         // Colour of triangle
+28                         colour = (float)GetHeightColour(x, z) / 255;
+29                         vertex.m_colour = glm::vec4(colour, colour, colour, 1.0);
+30 
+31                         // Vertices
+32                         vertex.m_position.x = (float)x * m_scaleX;
+33                         vertex.m_position.y = GetHeight(x, z);
+34                         vertex.m_position.z = (float)z * m_scaleZ;
+35 
+36                         vertex.m_texCoords.x = tex00;
+37                         vertex.m_texCoords.y = tex11;
+38                         
+39                         tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 0.0
+40 
+41                         vertex.m_position.x = (float)(x + 1) * m_scaleX;
+42                         vertex.m_position.y = GetHeight(x + 1, z);
+43                         vertex.m_position.z = (float)z * m_scaleZ;
+44 
+45                         vertex.m_texCoords.x = tex10;
+46                         vertex.m_texCoords.y = tex01;
+47 
+48                         tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 0.0
+49 
+50                         vertex.m_position.x = (float)(x + 1) * m_scaleX;
+51                         vertex.m_position.y = GetHeight(x + 1, z + 1);
+52                         vertex.m_position.z = (float)(z + 1) * m_scaleZ;
+53 
+54                         vertex.m_texCoords.x = tex10;
+55                         vertex.m_texCoords.y = tex11;
+56 
+57                         tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 1.0
+58                         
+59                         vertex.m_position.x = (float)x * m_scaleX;
+60                         vertex.m_position.y = GetHeight(x, z);
+61                         vertex.m_position.z = (float)z * m_scaleZ;
+62 
+63                         vertex.m_texCoords.x = tex00;
+64                         vertex.m_texCoords.y = tex01;
+65 
+66                         tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 0.0
+67 
+68                         vertex.m_position.x = (float)(x + 1) * m_scaleX;
+69                         vertex.m_position.y = GetHeight(x + 1, z + 1);
+70                         vertex.m_position.z = (float)(z + 1) * m_scaleZ;
+71 
+72                         vertex.m_texCoords.x = tex10;
+73                         vertex.m_texCoords.y = tex11;
+74 
+75                         tempMesh.GetVertices().push_back(vertex); // 1.0, 1.0, 1.0
+76 
+77                         vertex.m_position.x = (float)x * m_scaleX;
+78                         vertex.m_position.y = GetHeight(x, z + 1);
+79                         vertex.m_position.z = (float)(z + 1) * m_scaleZ;
+80 
+81                         vertex.m_texCoords.x = tex00;
+82                         vertex.m_texCoords.y = tex11;
+83                         
+84                         tempMesh.GetVertices().push_back(vertex); // 0.0, 1.0, 1.0
+85                 }
+86         }
+87         //tempMesh.SetupMesh();
+88         tempMesh.GetTextures().push_back(AddTexture(textureId, textureFilePath));
+89         m_terrainModel->GetTextures().push_back(AddTexture(textureId, textureFilePath));
+90         m_terrainModel->GetMeshBatch().push_back(tempMesh);
+91         m_terrainModel->SetScale(glm::vec3(1.0, 1.0, 1.0));
+92 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_bruteforce_adf9803b858d6d43bc887d7a3506fb2a}{
+\index{Bruteforce@{Bruteforce}!LoadHeightfield@{LoadHeightfield}}
+\index{LoadHeightfield@{LoadHeightfield}!Bruteforce@{Bruteforce}}
+\subsubsection[LoadHeightfield]{\setlength{\rightskip}{0pt plus 5cm}bool Bruteforce::LoadHeightfield (std::string {\em fileName}, \/  const int {\em size})}}
+\label{class_bruteforce_adf9803b858d6d43bc887d7a3506fb2a}
+
+
+Loads the heightfield data. 
+
+Takes the relative path to the file that is the .raw image that is to be used for the heightfield data. It also takes the images size which should be a power of 2 (eg. 128x128 or 32x32). Returns true if created successfully, false if not.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em std::string}]fileName \item[{\em const}]int size \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]bool \end{Desc}
+
+
+Definition at line 105 of file Bruteforce.cpp.
+
+References glm::length().
+
+\begin{Code}\begin{verbatim}106 {
+107         // Open for binary read, print error if error found
+108         std::ifstream infile(fileName.c_str(), std::ios::binary);
+109         if (!infile)
+110         {
+111                 std::cout << "Cannot open file: " << fileName << std::endl;
+112                 return false;
+113         }
+114 
+115         // Allocate memory, return false if no size = 0
+116         if (m_terrainData)
+117                 delete[] m_terrainData;
+118         if (size > 0)
+119                 m_terrainData = new unsigned char[size * size];
+120 
+121         // Read in heightfield and get length of file
+122         infile.seekg(0, std::ios::end);
+123         int length = infile.tellg();
+124 
+125         // Read data in as a block, cast to char*, set size, and close file
+126         infile.seekg(0, std::ios::beg);
+127         infile.read(reinterpret_cast<char*>(m_terrainData), length);
+128         infile.close();
+129         m_heightfieldSize = size;
+130         
+131         std::cout << "Heightfield Load Successful!" << std::endl;
+132         
+133         return true;
+134 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_bruteforce_f4877e16df806562170ba403dc67298f}{
+\index{Bruteforce@{Bruteforce}!AddTexture@{AddTexture}}
+\index{AddTexture@{AddTexture}!Bruteforce@{Bruteforce}}
+\subsubsection[AddTexture]{\setlength{\rightskip}{0pt plus 5cm}Texture Bruteforce::AddTexture (GLuint {\em textureId}, \/  std::string {\em filePath})}}
+\label{class_bruteforce_f4877e16df806562170ba403dc67298f}
+
+
+Adds texture to mesh. 
+
+Creates a temporary texture and returns it.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em GLuint}]textureId \item[{\em std::string}]filePath \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Texture \end{Desc}
+
+
+Definition at line 94 of file Bruteforce.cpp.
+
+Referenced by GenerateTerrain().
+
+\begin{Code}\begin{verbatim}95 {
+96         Texture temp;
+97 
+98         temp.m_id = textureId;
+99         temp.m_path = textureFilePath;
+100         temp.m_type = "texture_diffuse";
+101 
+102         return temp;
+103 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_bruteforce_2b337f6ef80b5722a09f2e0c381923ff}{
+\index{Bruteforce@{Bruteforce}!Inbounds@{Inbounds}}
+\index{Inbounds@{Inbounds}!Bruteforce@{Bruteforce}}
+\subsubsection[Inbounds]{\setlength{\rightskip}{0pt plus 5cm}bool Bruteforce::Inbounds (int {\em xpos}, \/  int {\em zpos})}}
+\label{class_bruteforce_2b337f6ef80b5722a09f2e0c381923ff}
+
+
+Checks if inbounds. 
+
+Checks if the parameter positions given are within that of the terrain. Returns true if it is, false if not.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em int}]xpos \item[{\em int}]ypos \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]bool \end{Desc}
+
+
+Definition at line 136 of file Bruteforce.cpp.
+
+Referenced by GetAverageHeight(), GetHeight(), and GetHeightColour().
+
+\begin{Code}\begin{verbatim}137 {
+138         if ((xpos >= 0 && xpos < m_heightfieldSize * m_scaleX) && (zpos >= 0 && zpos < m_heightfieldSize * m_scaleZ))
+139                 return true;
+140         else
+141                 return false;
+142 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_bruteforce_6ffaafd89058fdd7a2bdc946aa5aa24b}{
+\index{Bruteforce@{Bruteforce}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!Bruteforce@{Bruteforce}}
+\subsubsection[GetHeight]{\setlength{\rightskip}{0pt plus 5cm}float Bruteforce::GetHeight (int {\em xpos}, \/  int {\em zpos})}}
+\label{class_bruteforce_6ffaafd89058fdd7a2bdc946aa5aa24b}
+
+
+Gets the height of the terrain. 
+
+Returns the height value y of the terrain at the corresponding parameters given x and z values.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em int}]xpos \item[{\em int}]ypos \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]float \end{Desc}
+
+
+Definition at line 144 of file Bruteforce.cpp.
+
+References Inbounds().
+
+Referenced by GenerateTerrain().
+
+\begin{Code}\begin{verbatim}145 {
+146         if (Inbounds(xpos, zpos))
+147                 return ((float)(m_terrainData[(zpos * m_heightfieldSize) + xpos]) * m_scaleY);
+148         else
+149                 return ((float)(m_terrainData[(zpos - 1 * m_heightfieldSize) + xpos]) * m_scaleY);
+150 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{class_bruteforce_05513f5064029203a0096d14147ad721}{
+\index{Bruteforce@{Bruteforce}!GetHeightColour@{GetHeightColour}}
+\index{GetHeightColour@{GetHeightColour}!Bruteforce@{Bruteforce}}
+\subsubsection[GetHeightColour]{\setlength{\rightskip}{0pt plus 5cm}unsigned char Bruteforce::GetHeightColour (int {\em xpos}, \/  int {\em zpos})}}
+\label{class_bruteforce_05513f5064029203a0096d14147ad721}
+
+
+Gets the colour at a specific height. 
+
+Returns the height value y of the terrain at the corresponding parameters given x and z values to be used in determining the colour of the vertex.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em int}]xpos \item[{\em int}]ypos \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]unsigned char \end{Desc}
+
+
+Definition at line 152 of file Bruteforce.cpp.
+
+References Inbounds().
+
+Referenced by GenerateTerrain().
+
+\begin{Code}\begin{verbatim}153 {
+154         if (Inbounds(xpos, zpos))
+155         {
+156                 return m_terrainData[zpos * m_heightfieldSize + xpos];
+157         }
+158         return 1;
+159 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{class_bruteforce_3919323bbf5e4dbcef81c4a929fb8254}{
+\index{Bruteforce@{Bruteforce}!GetAverageHeight@{GetAverageHeight}}
+\index{GetAverageHeight@{GetAverageHeight}!Bruteforce@{Bruteforce}}
+\subsubsection[GetAverageHeight]{\setlength{\rightskip}{0pt plus 5cm}float Bruteforce::GetAverageHeight (int {\em xpos}, \/  int {\em zpos})}}
+\label{class_bruteforce_3919323bbf5e4dbcef81c4a929fb8254}
+
+
+Gets the average height. 
+
+Returns the y value of the x and z position parsed in as parameters. This function is used for terrain collision.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em int}]xpos \item[{\em int}]ypos \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]float \end{Desc}
+
+
+Definition at line 161 of file Bruteforce.cpp.
+
+References Inbounds().
+
+\begin{Code}\begin{verbatim}162 {
+163         if (Inbounds(xpos, zpos))
+164         {
+165                 return (float)(m_terrainData[((int)(zpos / m_scaleZ) * m_heightfieldSize + (int)(xpos / m_scaleX))]) * m_scaleY;
+166         }
+167         return 1;
+168 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Bruteforce.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Bruteforce.cpp\end{CompactItemize}

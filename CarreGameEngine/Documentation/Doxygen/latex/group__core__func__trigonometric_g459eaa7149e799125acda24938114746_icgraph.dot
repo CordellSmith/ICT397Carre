@@ -1,0 +1,15 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::atan",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::pitch",height=0.2,width=0.4,color="black",URL="$group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd"];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::eulerAngles",height=0.2,width=0.4,color="black",URL="$group__gtc__quaternion.html#gb7f90472a816598e7bc7b3606dbadcac"];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::roll",height=0.2,width=0.4,color="black",URL="$group__gtc__quaternion.html#g3f58a75c69ff56cb9c83ea237abc1414"];
+  Node4 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+}

@@ -1,11 +1,14 @@
-<area shape="rect" href="$classbt_action_interface.html" title="Basic interface to allow actions such as vehicles and characters to be updated inside..." alt="" coords="932,7,1049,33">
-<area shape="rect" href="$classbt_rigid_body.html" title="btRigidBody" alt="" coords="945,57,1036,84">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btTypedConstraint * \&gt;" alt="" coords="408,8,691,35">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btTypedConstraint *, 16 \&gt;" alt="" coords="7,8,292,35">
-<area shape="rect" href="$classbt_motion_state.html" title="btMotionState" alt="" coords="499,59,600,85">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btVector3 \&gt;" alt="" coords="879,113,1103,140">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btVector3, 16 \&gt;" alt="" coords="436,113,663,140">
-<area shape="rect" href="$structbt_vehicle_raycaster.html" title="btVehicleRaycaster is provides interface for between vehicle simulation and raycasting..." alt="" coords="924,164,1057,191">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btWheelInfo \&gt;" alt="" coords="873,215,1108,241">
-<area shape="rect" href="$structbt_wheel_info.html" title="btWheelInfo contains information per wheel about friction and suspension." alt="" coords="505,189,593,216">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btWheelInfo, 16 \&gt;" alt="" coords="429,240,669,267">
+<area shape="rect" href="$classbt_action_interface.html" title="Basic interface to allow actions such as vehicles and characters to be updated inside..." alt="" coords="1849,5,1967,32">
+<area shape="rect" href="$classbt_rigid_body.html" title="btRigidBody" alt="" coords="1863,56,1953,83">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btTypedConstraint * \&gt;" alt="" coords="1376,15,1659,41">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btTypedConstraint *, 16 \&gt;" alt="" coords="703,7,988,33">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,99,229,125">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="468,125,647,152">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btVector3, 16 \&gt;" alt="" coords="732,68,959,95">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btWheelInfo, 16 \&gt;" alt="" coords="437,208,677,235">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="1013,139,1189,165">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btVector3 \&gt;" alt="" coords="1405,125,1629,152">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btWheelInfo \&gt;" alt="" coords="1400,240,1635,267">
+<area shape="rect" href="$classbt_motion_state.html" title="btMotionState" alt="" coords="1467,65,1568,92">
+<area shape="rect" href="$structbt_vehicle_raycaster.html" title="btVehicleRaycaster is provides interface for between vehicle simulation and raycasting..." alt="" coords="1841,187,1975,213">
+<area shape="rect" href="$structbt_wheel_info.html" title="btWheelInfo contains information per wheel about friction and suspension." alt="" coords="1057,301,1145,328">

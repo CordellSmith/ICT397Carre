@@ -1,3 +1,1 @@
-<area shape="rect" href="$classbt_triangle_callback.html" title="btTriangleCallback" alt="" coords="5,31,133,57">
-<area shape="rect" href="$classbt_soft_body_triangle_callback.html" title="For each triangle in the concave mesh that overlaps with the AABB of a soft body..." alt="" coords="183,5,361,32">
-<area shape="rect" href="$classbt_triangle_buffer.html" title="btTriangleBuffer" alt="" coords="217,56,327,83">
+<area shape="rect" href="$structbt_transform_float_data.html" title="for serialization" alt="" coords="7,5,151,32">
