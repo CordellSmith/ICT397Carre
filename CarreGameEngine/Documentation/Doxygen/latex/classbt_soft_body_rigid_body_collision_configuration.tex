@@ -19,6 +19,8 @@ virtual \hyperlink{structbt_collision_algorithm_create_func}{btCollisionAlgorith
 \subsection{Detailed Description}
 \hyperlink{classbt_soft_body_rigid_body_collision_configuration}{btSoftBodyRigidBodyCollisionConfiguration} add softbody interaction on top of \hyperlink{classbt_default_collision_configuration}{btDefaultCollisionConfiguration} 
 
+Definition at line 26 of file btSoftBodyRigidBodyCollisionConfiguration.h.
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classbt_soft_body_rigid_body_collision_configuration_ed032b3ffc351d036e28b503d3cdc801}{
 \index{btSoftBodyRigidBodyCollisionConfiguration@{btSoftBodyRigidBodyCollisionConfiguration}!btSoftBodyRigidBodyCollisionConfiguration@{btSoftBodyRigidBodyCollisionConfiguration}}
@@ -30,6 +32,65 @@ virtual \hyperlink{structbt_collision_algorithm_create_func}{btCollisionAlgorith
 
 
 calculate maximum element size, big enough to fit any collision algorithm in the memory pool 
+
+Definition at line 25 of file btSoftBodyRigidBodyCollisionConfiguration.cpp.
+
+References btPoolAllocator::getElementSize(), btCollisionAlgorithmCreateFunc::m\_\-swapped, and btPoolAllocator::$\sim$btPoolAllocator().
+
+\begin{Code}\begin{verbatim}26 :btDefaultCollisionConfiguration(constructionInfo)
+27 {
+28         void* mem;
+29 
+30         mem = btAlignedAlloc(sizeof(btSoftSoftCollisionAlgorithm::CreateFunc),16);
+31         m_softSoftCreateFunc = new(mem) btSoftSoftCollisionAlgorithm::CreateFunc;
+32 
+33         mem = btAlignedAlloc(sizeof(btSoftRigidCollisionAlgorithm::CreateFunc),16);
+34         m_softRigidConvexCreateFunc = new(mem) btSoftRigidCollisionAlgorithm::CreateFunc;
+35 
+36         mem = btAlignedAlloc(sizeof(btSoftRigidCollisionAlgorithm::CreateFunc),16);
+37         m_swappedSoftRigidConvexCreateFunc = new(mem) btSoftRigidCollisionAlgorithm::CreateFunc;
+38         m_swappedSoftRigidConvexCreateFunc->m_swapped=true;
+39 
+40 #ifdef ENABLE_SOFTBODY_CONCAVE_COLLISIONS
+41         mem = btAlignedAlloc(sizeof(btSoftBodyConcaveCollisionAlgorithm::CreateFunc),16);
+42         m_softRigidConcaveCreateFunc = new(mem) btSoftBodyConcaveCollisionAlgorithm::CreateFunc;
+43 
+44         mem = btAlignedAlloc(sizeof(btSoftBodyConcaveCollisionAlgorithm::CreateFunc),16);
+45         m_swappedSoftRigidConcaveCreateFunc = new(mem) btSoftBodyConcaveCollisionAlgorithm::SwappedCreateFunc;
+46         m_swappedSoftRigidConcaveCreateFunc->m_swapped=true;
+47 #endif
+48 
+49         //replace pool by a new one, with potential larger size
+50 
+51         if (m_ownsCollisionAlgorithmPool && m_collisionAlgorithmPool)
+52         {
+53                 int curElemSize = m_collisionAlgorithmPool->getElementSize();
+55 
+56 
+57                 int maxSize0 = sizeof(btSoftSoftCollisionAlgorithm);
+58                 int maxSize1 = sizeof(btSoftRigidCollisionAlgorithm);
+59                 int maxSize2 = sizeof(btSoftBodyConcaveCollisionAlgorithm);
+60 
+61                 int     collisionAlgorithmMaxElementSize = btMax(maxSize0,maxSize1);
+62                 collisionAlgorithmMaxElementSize = btMax(collisionAlgorithmMaxElementSize,maxSize2);
+63                 
+64                 if (collisionAlgorithmMaxElementSize > curElemSize)
+65                 {
+66                         m_collisionAlgorithmPool->~btPoolAllocator();
+67                         btAlignedFree(m_collisionAlgorithmPool);
+68                         void* mem = btAlignedAlloc(sizeof(btPoolAllocator),16);
+69                         m_collisionAlgorithmPool = new(mem) btPoolAllocator(collisionAlgorithmMaxElementSize,constructionInfo.m_defaultMaxCollisionAlgorithmPoolSize);
+70                 }
+71         }
+72 
+73 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
 
 \subsection{Member Function Documentation}
 \hypertarget{classbt_soft_body_rigid_body_collision_configuration_81be88bc433469b4703fc0fb9d504a50}{
@@ -57,7 +118,47 @@ fallback to the regular rigid collision shape
 
 Reimplemented from \hyperlink{classbt_default_collision_configuration}{btDefaultCollisionConfiguration}.
 
+Definition at line 96 of file btSoftBodyRigidBodyCollisionConfiguration.cpp.
+
+\begin{Code}\begin{verbatim}97 {
+98 
+100 
+101         if ((proxyType0 == SOFTBODY_SHAPE_PROXYTYPE  ) && (proxyType1==SOFTBODY_SHAPE_PROXYTYPE))
+102         {
+103                 return  m_softSoftCreateFunc;
+104         }
+105 
+107         if (proxyType0 == SOFTBODY_SHAPE_PROXYTYPE  && btBroadphaseProxy::isConvex(proxyType1))
+108         {
+109                 return  m_softRigidConvexCreateFunc;
+110         }
+111 
+113         if (btBroadphaseProxy::isConvex(proxyType0) && proxyType1 == SOFTBODY_SHAPE_PROXYTYPE )
+114         {
+115                 return  m_swappedSoftRigidConvexCreateFunc;
+116         }
+117 
+118 #ifdef ENABLE_SOFTBODY_CONCAVE_COLLISIONS
+120         if (proxyType0 == SOFTBODY_SHAPE_PROXYTYPE  && btBroadphaseProxy::isConcave(proxyType1))
+121         {
+122                 return  m_softRigidConcaveCreateFunc;
+123         }
+124 
+126         if (btBroadphaseProxy::isConcave(proxyType0) && proxyType1 == SOFTBODY_SHAPE_PROXYTYPE )
+127         {
+128                 return  m_swappedSoftRigidConcaveCreateFunc;
+129         }
+130 #endif
+131 
+133         return btDefaultCollisionConfiguration::getCollisionAlgorithmCreateFunc(proxyType0,proxyType1);
+134 }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.cpp\end{CompactItemize}

@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::eulerAngleYX",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::cos",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98"];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::sin",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2"];
+}

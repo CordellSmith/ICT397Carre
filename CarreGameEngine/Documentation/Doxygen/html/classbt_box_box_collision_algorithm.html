@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btBoxBoxCollisionAlgorithm Class Reference</title>
+<title>Assignment2 - OOber Taxi: btBoxBoxCollisionAlgorithm Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btBoxBoxCollisionAlgorithm Class Reference</h1><!-- doxytag: class="btBoxBoxCollisionAlgorithm" --><!-- doxytag: inherits="btActivatingCollisionAlgorithm" -->box-box collision detection  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btBoxBoxCollisionAlgorithm.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_box_box_collision_algorithm_8h-source.html">btBoxBoxCollisionAlgorithm.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btBoxBoxCollisionAlgorithm:</div>
@@ -53,7 +53,9 @@ Collaboration diagram for btBoxBoxCollisionAlgorithm:</div>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-box-box collision detection <hr><h2>Member Function Documentation</h2>
+box-box collision detection 
+<p>Definition at line <a class="el" href="bt_box_box_collision_algorithm_8h-source.html#l00027">27</a> of file <a class="el" href="bt_box_box_collision_algorithm_8h-source.html">btBoxBoxCollisionAlgorithm.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="adde989098617a7679a8d907f4144adb"></a><!-- doxytag: member="btBoxBoxCollisionAlgorithm::processCollision" ref="adde989098617a7679a8d907f4144adb" args="(const btCollisionObjectWrapper *body0Wrap, const btCollisionObjectWrapper *body1Wrap, const btDispatcherInfo &amp;dispatchInfo, btManifoldResult *resultOut)" -->
 <div class="memitem">
 <div class="memproto">
@@ -97,12 +99,59 @@ box-box collision detection <hr><h2>Member Function Documentation</h2>
 report a contact. internally this will be kept persistent, and contact reduction is done 
 <p>Implements <a class="el" href="classbt_collision_algorithm.html">btCollisionAlgorithm</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_box_box_collision_algorithm_8cpp-source.html#l00045">45</a> of file <a class="el" href="bt_box_box_collision_algorithm_8cpp-source.html">btBoxBoxCollisionAlgorithm.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_box_box_detector_8cpp-source.html#l00673">btBoxBoxDetector::getClosestPoints()</a>, <a class="el" href="bt_manifold_result_8h-source.html#l00101">btManifoldResult::refreshContactPoints()</a>, and <a class="el" href="bt_manifold_result_8h-source.html#l00072">btManifoldResult::setPersistentManifold()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00046"></a>00046 {
+<a name="l00047"></a>00047         <span class="keywordflow">if</span> (!m_manifoldPtr)
+<a name="l00048"></a>00048                 <span class="keywordflow">return</span>;
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050         
+<a name="l00051"></a>00051         <span class="keyword">const</span> btBoxShape* box0 = (btBoxShape*)body0Wrap-&gt;getCollisionShape();
+<a name="l00052"></a>00052         <span class="keyword">const</span> btBoxShape* box1 = (btBoxShape*)body1Wrap-&gt;getCollisionShape();
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 
+<a name="l00057"></a>00057         resultOut-&gt;<a class="code" href="classbt_manifold_result.html#7a46d46b9a13c2896695e458c1d6df1f">setPersistentManifold</a>(m_manifoldPtr);
+<a name="l00058"></a>00058 <span class="preprocessor">#ifndef USE_PERSISTENT_CONTACTS </span>
+<a name="l00059"></a>00059 <span class="preprocessor"></span>        m_manifoldPtr-&gt;clearManifold();
+<a name="l00060"></a>00060 <span class="preprocessor">#endif //USE_PERSISTENT_CONTACTS</span>
+<a name="l00061"></a>00061 <span class="preprocessor"></span>
+<a name="l00062"></a>00062         btDiscreteCollisionDetectorInterface::ClosestPointInput input;
+<a name="l00063"></a>00063         input.m_maximumDistanceSquared = BT_LARGE_FLOAT;
+<a name="l00064"></a>00064         input.m_transformA = body0Wrap-&gt;getWorldTransform();
+<a name="l00065"></a>00065         input.m_transformB = body1Wrap-&gt;getWorldTransform();
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <a class="code" href="structbt_box_box_detector.html">btBoxBoxDetector</a> detector(box0,box1);
+<a name="l00068"></a>00068         detector.getClosestPoints(input,*resultOut,dispatchInfo.m_debugDraw);
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="preprocessor">#ifdef USE_PERSISTENT_CONTACTS</span>
+<a name="l00071"></a>00071 <span class="preprocessor"></span>        <span class="comment">//  refreshContactPoints is only necessary when using persistent contact points. otherwise all points are newly added</span>
+<a name="l00072"></a>00072         <span class="keywordflow">if</span> (m_ownManifold)
+<a name="l00073"></a>00073         {
+<a name="l00074"></a>00074                 resultOut-&gt;<a class="code" href="classbt_manifold_result.html#dbcfd865252ac9dc8a3543f404e2dcf1">refreshContactPoints</a>();
+<a name="l00075"></a>00075         }
+<a name="l00076"></a>00076 <span class="preprocessor">#endif //USE_PERSISTENT_CONTACTS</span>
+<a name="l00077"></a>00077 <span class="preprocessor"></span>
+<a name="l00078"></a>00078 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_box_box_collision_algorithm_adde989098617a7679a8d907f4144adb_cgraph.png" border="0" usemap="#classbt_box_box_collision_algorithm_adde989098617a7679a8d907f4144adb_cgraph_map" alt=""></center>
+<map name="classbt_box_box_collision_algorithm_adde989098617a7679a8d907f4144adb_cgraph_map">
+<area shape="rect" href="structbt_box_box_detector.html#5718cdb1491b53850c928a4185844cbf" title="btBoxBoxDetector::getClosestPoints" alt="" coords="347,5,581,32"><area shape="rect" href="classbt_manifold_result.html#dbcfd865252ac9dc8a3543f404e2dcf1" title="btManifoldResult::refreshContactPoints" alt="" coords="341,56,587,83"><area shape="rect" href="classbt_manifold_result.html#7a46d46b9a13c2896695e458c1d6df1f" title="btManifoldResult::setPersistentManifold" alt="" coords="339,107,589,133"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/<a class="el" href="bt_box_box_collision_algorithm_8h-source.html">btBoxBoxCollisionAlgorithm.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/<a class="el" href="bt_box_box_collision_algorithm_8cpp-source.html">btBoxBoxCollisionAlgorithm.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:06 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:39 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

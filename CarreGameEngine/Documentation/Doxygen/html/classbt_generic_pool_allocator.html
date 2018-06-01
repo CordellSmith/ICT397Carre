@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btGenericPoolAllocator Class Reference</title>
+<title>Assignment2 - OOber Taxi: btGenericPoolAllocator Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btGenericPoolAllocator Class Reference</h1><!-- doxytag: class="btGenericPoolAllocator" -->Generic Allocator with pools.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btGenericPoolAllocator.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_generic_pool_allocator_8h-source.html">btGenericPoolAllocator.h</a>&gt;</code>
 <p>
 Inherited by GIM_STANDARD_ALLOCATOR.
 <p>
@@ -55,7 +55,9 @@ virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Generic Allocator with pools. 
 <p>
-General purpose Allocator which can create Memory Pools dynamiacally as needed. <hr><h2>Member Function Documentation</h2>
+General purpose Allocator which can create Memory Pools dynamiacally as needed. 
+<p>Definition at line <a class="el" href="bt_generic_pool_allocator_8h-source.html#l00113">113</a> of file <a class="el" href="bt_generic_pool_allocator_8h-source.html">btGenericPoolAllocator.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="e07307fd61ffa9ce47b5f198b87d17e1"></a><!-- doxytag: member="btGenericPoolAllocator::allocate" ref="e07307fd61ffa9ce47b5f198b87d17e1" args="(size_t size_bytes)" -->
 <div class="memitem">
 <div class="memproto">
@@ -82,12 +84,41 @@ Allocates memory in pool.
   </table>
 </dl>
 
+<p>Definition at line <a class="el" href="bt_generic_pool_allocator_8cpp-source.html#l00215">215</a> of file <a class="el" href="bt_generic_pool_allocator_8cpp-source.html">btGenericPoolAllocator.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_generic_pool_allocator_8cpp-source.html#l00119">btGenericMemoryPool::allocate()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00216"></a>00216 {
+<a name="l00217"></a>00217         <span class="keywordtype">void</span> * ptr = NULL;
+<a name="l00218"></a>00218 
+<a name="l00219"></a>00219         <span class="keywordtype">size_t</span> i = 0;
+<a name="l00220"></a>00220         <span class="keywordflow">while</span>(i&lt;m_pool_count &amp;&amp; ptr == NULL)
+<a name="l00221"></a>00221         {
+<a name="l00222"></a>00222                 ptr = m_pools[i]-&gt;<a class="code" href="classbt_generic_memory_pool.html#cd47d75d6fbd7dbf6f0d7849e0bd9ec1" title="Allocates memory in pool.">allocate</a>(size_bytes);
+<a name="l00223"></a>00223                 ++i;
+<a name="l00224"></a>00224         }
+<a name="l00225"></a>00225 
+<a name="l00226"></a>00226         <span class="keywordflow">if</span>(ptr) <span class="keywordflow">return</span> ptr;
+<a name="l00227"></a>00227 
+<a name="l00228"></a>00228         <span class="keywordflow">return</span> failback_alloc(size_bytes);
+<a name="l00229"></a>00229 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_generic_pool_allocator_e07307fd61ffa9ce47b5f198b87d17e1_cgraph.png" border="0" usemap="#classbt_generic_pool_allocator_e07307fd61ffa9ce47b5f198b87d17e1_cgraph_map" alt=""></center>
+<map name="classbt_generic_pool_allocator_e07307fd61ffa9ce47b5f198b87d17e1_cgraph_map">
+<area shape="rect" href="classbt_generic_memory_pool.html#cd47d75d6fbd7dbf6f0d7849e0bd9ec1" title="Allocates memory in pool." alt="" coords="263,5,465,32"><area shape="rect" href="classbt_generic_memory_pool.html#b3d627fdeb0178314779ba9b2361462a" title="*************** btGenericMemoryPool ******************///////////" alt="" coords="516,5,820,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_generic_pool_allocator_8h.html">btGenericPoolAllocator.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_generic_pool_allocator_8cpp.html">btGenericPoolAllocator.cpp</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_generic_pool_allocator_8h-source.html">btGenericPoolAllocator.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_generic_pool_allocator_8cpp-source.html">btGenericPoolAllocator.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:26 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:09 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

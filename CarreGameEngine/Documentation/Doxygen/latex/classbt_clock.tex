@@ -31,6 +31,8 @@ btScalar \hyperlink{classbt_clock_3fd3c27b67fa12ff3a56a57679667936}{getTimeSecon
 \subsection{Detailed Description}
 The \hyperlink{classbt_clock}{btClock} is a portable basic clock that measures accurate time in seconds, use for profiling. 
 
+Definition at line 24 of file btQuickprof.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_clock_989e96af94f4ec3ae28635f5f843c066}{
 \index{btClock@{btClock}!getTimeMilliseconds@{getTimeMilliseconds}}
@@ -41,7 +43,46 @@ The \hyperlink{classbt_clock}{btClock} is a portable basic clock that measures a
 
 Returns the time in ms since the last call to reset or since the \hyperlink{classbt_clock}{btClock} was created.
 
-Returns the time in ms since the last call to reset or since the \hyperlink{classbt_clock}{btClock} was created. \hypertarget{classbt_clock_a58b76bfde0b0f3f33d0cb91ec6b6938}{
+Returns the time in ms since the last call to reset or since the \hyperlink{classbt_clock}{btClock} was created. 
+
+Definition at line 143 of file btQuickprof.cpp.
+
+\begin{Code}\begin{verbatim}144 {
+145 #ifdef BT_USE_WINDOWS_TIMERS
+146         LARGE_INTEGER currentTime;
+147         QueryPerformanceCounter(&currentTime);
+148         LONGLONG elapsedTime = currentTime.QuadPart -
+149                 m_data->mStartTime.QuadPart;
+150                 // Compute the number of millisecond ticks elapsed.
+151         unsigned long msecTicks = (unsigned long)(1000 * elapsedTime /
+152                 m_data->mClockFrequency.QuadPart);
+153 
+154                 return msecTicks;
+155 #else
+156 
+157 #ifdef __CELLOS_LV2__
+158                 uint64_t freq=sys_time_get_timebase_frequency();
+159                 double dFreq=((double) freq) / 1000.0;
+160                 typedef uint64_t  ClockSize;
+161                 ClockSize newTime;
+162                 SYS_TIMEBASE_GET( newTime );
+163                 //__asm __volatile__( "mftb %0" : "=r" (newTime) : : "memory");
+164 
+165                 return (unsigned long int)((double(newTime-m_data->mStartTime)) / dFreq);
+166 #else
+167 
+168                 struct timeval currentTime;
+169                 gettimeofday(&currentTime, 0);
+170                 return (currentTime.tv_sec - m_data->mStartTime.tv_sec) * 1000 +
+171                         (currentTime.tv_usec - m_data->mStartTime.tv_usec) / 1000;
+172 #endif //__CELLOS_LV2__
+173 #endif
+174 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{classbt_clock_a58b76bfde0b0f3f33d0cb91ec6b6938}{
 \index{btClock@{btClock}!getTimeMicroseconds@{getTimeMicroseconds}}
 \index{getTimeMicroseconds@{getTimeMicroseconds}!btClock@{btClock}}
 \subsubsection[getTimeMicroseconds]{\setlength{\rightskip}{0pt plus 5cm}unsigned long long int btClock::getTimeMicroseconds ()}}
@@ -50,7 +91,51 @@ Returns the time in ms since the last call to reset or since the \hyperlink{clas
 
 Returns the time in us since the last call to reset or since the Clock was created.
 
-Returns the time in us since the last call to reset or since the Clock was created. \hypertarget{classbt_clock_3fd3c27b67fa12ff3a56a57679667936}{
+Returns the time in us since the last call to reset or since the Clock was created. 
+
+Definition at line 178 of file btQuickprof.cpp.
+
+Referenced by getTimeSeconds().
+
+\begin{Code}\begin{verbatim}179 {
+180 #ifdef BT_USE_WINDOWS_TIMERS
+181         //see https://msdn.microsoft.com/en-us/library/windows/desktop/dn553408(v=vs.85).aspx   
+182                 LARGE_INTEGER currentTime, elapsedTime;
+183                 
+184                 QueryPerformanceCounter(&currentTime);
+185                 elapsedTime.QuadPart = currentTime.QuadPart - 
+186                         m_data->mStartTime.QuadPart;
+187                 elapsedTime.QuadPart *= 1000000;
+188                 elapsedTime.QuadPart /= m_data->mClockFrequency.QuadPart;
+189 
+190                 return (unsigned long long) elapsedTime.QuadPart;
+191 #else
+192 
+193 #ifdef __CELLOS_LV2__
+194                 uint64_t freq=sys_time_get_timebase_frequency();
+195                 double dFreq=((double) freq)/ 1000000.0;
+196                 typedef uint64_t  ClockSize;
+197                 ClockSize newTime;
+198                 //__asm __volatile__( "mftb %0" : "=r" (newTime) : : "memory");
+199                 SYS_TIMEBASE_GET( newTime );
+200 
+201                 return (unsigned long int)((double(newTime-m_data->mStartTime)) / dFreq);
+202 #else
+203 
+204                 struct timeval currentTime;
+205                 gettimeofday(&currentTime, 0);
+206                 return (currentTime.tv_sec - m_data->mStartTime.tv_sec) * 1000000 +
+207                         (currentTime.tv_usec - m_data->mStartTime.tv_usec);
+208 #endif//__CELLOS_LV2__
+209 #endif
+210 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_clock_3fd3c27b67fa12ff3a56a57679667936}{
 \index{btClock@{btClock}!getTimeSeconds@{getTimeSeconds}}
 \index{getTimeSeconds@{getTimeSeconds}!btClock@{btClock}}
 \subsubsection[getTimeSeconds]{\setlength{\rightskip}{0pt plus 5cm}btScalar btClock::getTimeSeconds ()}}
@@ -61,7 +146,23 @@ Returns the time in s since the last call to reset or since the Clock was create
 
 Returns the time in s since the last call to reset or since the Clock was created. 
 
+Definition at line 276 of file btQuickprof.cpp.
+
+References getTimeMicroseconds().
+
+\begin{Code}\begin{verbatim}277 {
+278         static const btScalar microseconds_to_seconds = btScalar(0.000001);
+279         return btScalar(getTimeMicroseconds()) * microseconds_to_seconds;
+280 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btQuickprof.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btQuickprof.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btQuickprof.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btQuickprof.cpp\end{CompactItemize}

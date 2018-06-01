@@ -17,6 +17,8 @@ virtual bool \hyperlink{classbt_gjk_convex_cast_814009e1ebc582495689f365a42ce2c1
 \subsection{Detailed Description}
 GjkConvexCast performs a raycast on a convex object using support mapping. 
 
+Definition at line 30 of file btGjkConvexCast.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_gjk_convex_cast_814009e1ebc582495689f365a42ce2c1}{
 \index{btGjkConvexCast@{btGjkConvexCast}!calcTimeOfImpact@{calcTimeOfImpact}}
@@ -33,7 +35,155 @@ compute linear velocity for this interval, to interpolate
 
 Implements \hyperlink{classbt_convex_cast_baf0f25a8cccfcafdaabada83c8d2bfb}{btConvexCast}.
 
+Definition at line 37 of file btGjkConvexCast.cpp.
+
+References btConvexCast::CastResult::DebugDraw(), btGjkPairDetector::getClosestPoints(), btConvexCast::CastResult::m\_\-allowedPenetration, btConvexCast::CastResult::m\_\-fraction, btConvexCast::CastResult::m\_\-hitPoint, and btConvexCast::CastResult::m\_\-normal.
+
+Referenced by btConvexConvexAlgorithm::calculateTimeOfImpact(), and btConvex2dConvex2dAlgorithm::calculateTimeOfImpact().
+
+\begin{Code}\begin{verbatim}43 {
+44 
+45 
+46         m_simplexSolver->reset();
+47 
+49         //assume no rotation/angular velocity, assert here?
+50         btVector3 linVelA,linVelB;
+51         linVelA = toA.getOrigin()-fromA.getOrigin();
+52         linVelB = toB.getOrigin()-fromB.getOrigin();
+53 
+54         btScalar radius = btScalar(0.001);
+55         btScalar lambda = btScalar(0.);
+56         btVector3 v(1,0,0);
+57 
+58         int maxIter = MAX_ITERATIONS;
+59 
+60         btVector3 n;
+61         n.setValue(btScalar(0.),btScalar(0.),btScalar(0.));
+62         bool hasResult = false;
+63         btVector3 c;
+64         btVector3 r = (linVelA-linVelB);
+65 
+66         btScalar lastLambda = lambda;
+67         //btScalar epsilon = btScalar(0.001);
+68 
+69         int numIter = 0;
+70         //first solution, using GJK
+71 
+72 
+73         btTransform identityTrans;
+74         identityTrans.setIdentity();
+75 
+76 
+77 //      result.drawCoordSystem(sphereTr);
+78 
+79         btPointCollector        pointCollector;
+80 
+81                 
+82         btGjkPairDetector gjk(m_convexA,m_convexB,m_simplexSolver,0);//m_penetrationDepthSolver);               
+83         btGjkPairDetector::ClosestPointInput input;
+84 
+85         //we don't use margins during CCD
+86         //      gjk.setIgnoreMargin(true);
+87 
+88         input.m_transformA = fromA;
+89         input.m_transformB = fromB;
+90         gjk.getClosestPoints(input,pointCollector,0);
+91 
+92         hasResult = pointCollector.m_hasResult;
+93         c = pointCollector.m_pointInWorld;
+94 
+95         if (hasResult)
+96         {
+97                 btScalar dist;
+98                 dist = pointCollector.m_distance;
+99                 n = pointCollector.m_normalOnBInWorld;
+100 
+101         
+102 
+103                 //not close enough
+104                 while (dist > radius)
+105                 {
+106                         numIter++;
+107                         if (numIter > maxIter)
+108                         {
+109                                 return false; //todo: report a failure
+110                         }
+111                         btScalar dLambda = btScalar(0.);
+112 
+113                         btScalar projectedLinearVelocity = r.dot(n);
+114                         
+115                         dLambda = dist / (projectedLinearVelocity);
+116 
+117                         lambda = lambda - dLambda;
+118 
+119                         if (lambda > btScalar(1.))
+120                                 return false;
+121 
+122                         if (lambda < btScalar(0.))
+123                                 return false;
+124 
+125                         //todo: next check with relative epsilon
+126                         if (lambda <= lastLambda)
+127                         {
+128                                 return false;
+129                                 //n.setValue(0,0,0);
+130                                 break;
+131                         }
+132                         lastLambda = lambda;
+133 
+134                         //interpolate to next lambda
+135                         result.DebugDraw( lambda );
+136                         input.m_transformA.getOrigin().setInterpolate3(fromA.getOrigin(),toA.getOrigin(),lambda);
+137                         input.m_transformB.getOrigin().setInterpolate3(fromB.getOrigin(),toB.getOrigin(),lambda);
+138                         
+139                         gjk.getClosestPoints(input,pointCollector,0);
+140                         if (pointCollector.m_hasResult)
+141                         {
+142                                 if (pointCollector.m_distance < btScalar(0.))
+143                                 {
+144                                         result.m_fraction = lastLambda;
+145                                         n = pointCollector.m_normalOnBInWorld;
+146                                         result.m_normal=n;
+147                                         result.m_hitPoint = pointCollector.m_pointInWorld;
+148                                         return true;
+149                                 }
+150                                 c = pointCollector.m_pointInWorld;              
+151                                 n = pointCollector.m_normalOnBInWorld;
+152                                 dist = pointCollector.m_distance;
+153                         } else
+154                         {
+155                                 //??
+156                                 return false;
+157                         }
+158 
+159                 }
+160 
+161                 //is n normalized?
+162                 //don't report time of impact for motion away from the contact normal (or causes minor penetration)
+163                 if (n.dot(r)>=-result.m_allowedPenetration)
+164                         return false;
+165 
+166                 result.m_fraction = lambda;
+167                 result.m_normal = n;
+168                 result.m_hitPoint = c;
+169                 return true;
+170         }
+171 
+172         return false;
+173 
+174 
+175 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.cpp\end{CompactItemize}

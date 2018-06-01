@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btDbvtBroadphase Struct Reference</title>
+<title>Assignment2 - OOber Taxi: btDbvtBroadphase Struct Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>btDbvtBroadphase Struct Reference</h1><!-- doxytag: class="btDbvtBroadphase" --><!-- doxytag: inherits="btBroadphaseInterface" --><code>#include &lt;btDbvtBroadphase.h&gt;</code>
+<h1>btDbvtBroadphase Struct Reference</h1><!-- doxytag: class="btDbvtBroadphase" --><!-- doxytag: inherits="btBroadphaseInterface" --><code>#include &lt;<a class="el" href="bt_dbvt_broadphase_8h-source.html">btDbvtBroadphase.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btDbvtBroadphase:</div>
@@ -60,7 +60,9 @@ virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The <a class="el" href="structbt_dbvt_broadphase.html">btDbvtBroadphase</a> implements a broadphase using two dynamic AABB bounding volume hierarchies/trees (see <a class="el" href="structbt_dbvt.html">btDbvt</a>). One tree is used for static/non-moving objects, and another tree is used for dynamic objects. Objects can move from one tree to the other. This is a very fast broadphase, especially for very dynamic worlds where many objects are moving. Its insert/add and remove of objects is generally faster than the sweep and prune broadphases <a class="el" href="classbt_axis_sweep3.html">btAxisSweep3</a> and <a class="el" href="classbt32_bit_axis_sweep3.html">bt32BitAxisSweep3</a>. <hr><h2>Member Function Documentation</h2>
+The <a class="el" href="structbt_dbvt_broadphase.html">btDbvtBroadphase</a> implements a broadphase using two dynamic AABB bounding volume hierarchies/trees (see <a class="el" href="structbt_dbvt.html">btDbvt</a>). One tree is used for static/non-moving objects, and another tree is used for dynamic objects. Objects can move from one tree to the other. This is a very fast broadphase, especially for very dynamic worlds where many objects are moving. Its insert/add and remove of objects is generally faster than the sweep and prune broadphases <a class="el" href="classbt_axis_sweep3.html">btAxisSweep3</a> and <a class="el" href="classbt32_bit_axis_sweep3.html">bt32BitAxisSweep3</a>. 
+<p>Definition at line <a class="el" href="bt_dbvt_broadphase_8h-source.html#l00062">62</a> of file <a class="el" href="bt_dbvt_broadphase_8h-source.html">btDbvtBroadphase.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="32ab55b5ef2616d0cc039cd037c05d7f"></a><!-- doxytag: member="btDbvtBroadphase::getBroadphaseAabb" ref="32ab55b5ef2616d0cc039cd037c05d7f" args="(btVector3 &amp;aabbMin, btVector3 &amp;aabbMax) const " -->
 <div class="memitem">
 <div class="memproto">
@@ -89,6 +91,27 @@ The <a class="el" href="structbt_dbvt_broadphase.html">btDbvtBroadphase</a> impl
 <p>
 getAabb returns the axis aligned bounding box in the 'global' coordinate frame will add some transform later 
 <p>Implements <a class="el" href="classbt_broadphase_interface.html#b5af9e26414f5a72a76040b8fab4d9e2">btBroadphaseInterface</a>.</p>
+
+<p>Definition at line <a class="el" href="bt_dbvt_broadphase_8cpp-source.html#l00641">641</a> of file <a class="el" href="bt_dbvt_broadphase_8cpp-source.html">btDbvtBroadphase.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_dbvt_8h-source.html#l00262">btDbvt::m_root</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00642"></a>00642 {
+<a name="l00643"></a>00643 
+<a name="l00644"></a>00644         ATTRIBUTE_ALIGNED16(btDbvtVolume)       bounds;
+<a name="l00645"></a>00645 
+<a name="l00646"></a>00646         if(!m_sets[0].empty())
+<a name="l00647"></a>00647                 if(!m_sets[1].empty())  Merge(  m_sets[0].m_root-&gt;volume,
+<a name="l00648"></a>00648                         m_sets[1].m_root-&gt;volume,bounds);
+<a name="l00649"></a>00649                 else
+<a name="l00650"></a>00650                         bounds=m_sets[0].m_root-&gt;volume;
+<a name="l00651"></a>00651         else if(!m_sets[1].empty())     bounds=m_sets[1].m_root-&gt;volume;
+<a name="l00652"></a>00652         else
+<a name="l00653"></a>00653                 bounds=btDbvtVolume::FromCR(btVector3(0,0,0),0);
+<a name="l00654"></a>00654         aabbMin=bounds.Mins();
+<a name="l00655"></a>00655         aabbMax=bounds.Maxs();
+<a name="l00656"></a>00656 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -131,12 +154,61 @@ getAabb returns the axis aligned bounding box in the 'global' coordinate frame w
 
 <p>
 this setAabbForceUpdate is similar to setAabb but always forces the aabb update. it is not part of the <a class="el" href="classbt_broadphase_interface.html">btBroadphaseInterface</a> but specific to <a class="el" href="structbt_dbvt_broadphase.html">btDbvtBroadphase</a>. it bypasses certain optimizations that prevent aabb updates (when the aabb shrinks), see <a href="http://code.google.com/p/bullet/issues/detail?id=223">http://code.google.com/p/bullet/issues/detail?id=223</a> 
+<p>Definition at line <a class="el" href="bt_dbvt_broadphase_8cpp-source.html#l00374">374</a> of file <a class="el" href="bt_dbvt_broadphase_8cpp-source.html">btDbvtBroadphase.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_dbvt_8h-source.html#l00803">btDbvt::collideTTpersistentStack()</a>, <a class="el" href="bt_dbvt_8cpp-source.html#l00517">btDbvt::insert()</a>, <a class="el" href="bt_dbvt_8cpp-source.html#l00589">btDbvt::remove()</a>, and <a class="el" href="bt_dbvt_8cpp-source.html#l00526">btDbvt::update()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00378"></a>00378 {
+<a name="l00379"></a>00379         btDbvtProxy*                                            proxy=(btDbvtProxy*)absproxy;
+<a name="l00380"></a>00380         ATTRIBUTE_ALIGNED16(btDbvtVolume)       aabb=btDbvtVolume::FromMM(aabbMin,aabbMax);
+<a name="l00381"></a>00381         <span class="keywordtype">bool</span>    docollide=false;
+<a name="l00382"></a>00382         if(proxy-&gt;stage==STAGECOUNT)
+<a name="l00383"></a>00383         {<span class="comment">/* fixed -&gt; dynamic set        */</span> 
+<a name="l00384"></a>00384                 m_sets[1].<a class="code" href="structbt_dbvt.html#e01b804da6734f4ce250f6fe7ef0b5fb">remove</a>(proxy-&gt;leaf);
+<a name="l00385"></a>00385                 proxy-&gt;leaf=m_sets[0].<a class="code" href="structbt_dbvt.html#0efd4485566228688870dc7340365d03">insert</a>(aabb,proxy);
+<a name="l00386"></a>00386                 docollide=<span class="keyword">true</span>;
+<a name="l00387"></a>00387         }
+<a name="l00388"></a>00388         <span class="keywordflow">else</span>
+<a name="l00389"></a>00389         {<span class="comment">/* dynamic set                         */</span> 
+<a name="l00390"></a>00390                 ++m_updates_call;
+<a name="l00391"></a>00391                 <span class="comment">/* Teleporting                  */</span> 
+<a name="l00392"></a>00392                 m_sets[0].<a class="code" href="structbt_dbvt.html#6efe1f6bb9abd80ea76d1bfa97cebd2b">update</a>(proxy-&gt;leaf,aabb);
+<a name="l00393"></a>00393                 ++m_updates_done;
+<a name="l00394"></a>00394                 docollide=<span class="keyword">true</span>;
+<a name="l00395"></a>00395         }
+<a name="l00396"></a>00396         listremove(proxy,m_stageRoots[proxy-&gt;stage]);
+<a name="l00397"></a>00397         proxy-&gt;m_aabbMin = aabbMin;
+<a name="l00398"></a>00398         proxy-&gt;m_aabbMax = aabbMax;
+<a name="l00399"></a>00399         proxy-&gt;stage    =       m_stageCurrent;
+<a name="l00400"></a>00400         listappend(proxy,m_stageRoots[m_stageCurrent]);
+<a name="l00401"></a>00401         <span class="keywordflow">if</span>(docollide)
+<a name="l00402"></a>00402         {
+<a name="l00403"></a>00403                 m_needcleanup=<span class="keyword">true</span>;
+<a name="l00404"></a>00404                 <span class="keywordflow">if</span>(!m_deferedcollide)
+<a name="l00405"></a>00405                 {
+<a name="l00406"></a>00406                         btDbvtTreeCollider      collider(<span class="keyword">this</span>);
+<a name="l00407"></a>00407                         m_sets[1].<a class="code" href="structbt_dbvt.html#d42b74ec72d83f4de65e1e78ad5bc012">collideTTpersistentStack</a>(m_sets[1].m_root,proxy-&gt;leaf,collider);
+<a name="l00408"></a>00408                         m_sets[0].<a class="code" href="structbt_dbvt.html#d42b74ec72d83f4de65e1e78ad5bc012">collideTTpersistentStack</a>(m_sets[0].m_root,proxy-&gt;leaf,collider);
+<a name="l00409"></a>00409                 }
+<a name="l00410"></a>00410         }       
+<a name="l00411"></a>00411 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="structbt_dbvt_broadphase_645dd617d0bbe7767859f424e2ee18c1_cgraph.png" border="0" usemap="#structbt_dbvt_broadphase_645dd617d0bbe7767859f424e2ee18c1_cgraph_map" alt=""></center>
+<map name="structbt_dbvt_broadphase_645dd617d0bbe7767859f424e2ee18c1_cgraph_map">
+<area shape="rect" href="structbt_dbvt.html#d42b74ec72d83f4de65e1e78ad5bc012" title="btDbvt::collideTTpersistentStack" alt="" coords="309,5,517,32"><area shape="rect" href="structbt_dbvt.html#0efd4485566228688870dc7340365d03" title="btDbvt::insert" alt="" coords="365,56,461,83"><area shape="rect" href="structbt_dbvt.html#e01b804da6734f4ce250f6fe7ef0b5fb" title="btDbvt::remove" alt="" coords="360,107,467,133"><area shape="rect" href="structbt_dbvt.html#6efe1f6bb9abd80ea76d1bfa97cebd2b" title="btDbvt::update" alt="" coords="361,157,465,184"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvtBroadphase.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/<a class="el" href="bt_dbvt_broadphase_8h-source.html">btDbvtBroadphase.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/<a class="el" href="bt_dbvt_broadphase_8cpp-source.html">btDbvtBroadphase.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:21 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:03 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

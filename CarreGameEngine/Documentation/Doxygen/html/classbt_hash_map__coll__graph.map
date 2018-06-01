@@ -1,6 +1,9 @@
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; Key \&gt;" alt="" coords="331,8,523,35">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; Key, 16 \&gt;" alt="" coords="11,8,205,35">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; int \&gt;" alt="" coords="336,69,517,96">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; int, 16 \&gt;" alt="" coords="15,69,201,96">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; Value \&gt;" alt="" coords="327,120,527,147">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; Value, 16 \&gt;" alt="" coords="5,120,211,147">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; Key \&gt;" alt="" coords="1099,29,1291,56">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; Key, 16 \&gt;" alt="" coords="553,5,748,32">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,136,229,163">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="348,89,527,116">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; int, 16 \&gt;" alt="" coords="557,169,744,196">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; Value, 16 \&gt;" alt="" coords="773,233,979,260">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="788,83,964,109">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; int \&gt;" alt="" coords="1104,91,1285,117">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; Value \&gt;" alt="" coords="1095,141,1295,168">

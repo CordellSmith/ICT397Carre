@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btSoftBodyRigidBodyCollisionConfiguration Class Reference</title>
+<title>Assignment2 - OOber Taxi: btSoftBodyRigidBodyCollisionConfiguration Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btSoftBodyRigidBodyCollisionConfiguration Class Reference</h1><!-- doxytag: class="btSoftBodyRigidBodyCollisionConfiguration" --><!-- doxytag: inherits="btDefaultCollisionConfiguration" --><a class="el" href="classbt_soft_body_rigid_body_collision_configuration.html" title="btSoftBodyRigidBodyCollisionConfiguration add softbody interaction on top of btDefaultCollisionConfi...">btSoftBodyRigidBodyCollisionConfiguration</a> add softbody interaction on top of <a class="el" href="classbt_default_collision_configuration.html">btDefaultCollisionConfiguration</a>  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btSoftBodyRigidBodyCollisionConfiguration.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_soft_body_rigid_body_collision_configuration_8h-source.html">btSoftBodyRigidBodyCollisionConfiguration.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btSoftBodyRigidBodyCollisionConfiguration:</div>
@@ -57,7 +57,9 @@ Collaboration diagram for btSoftBodyRigidBodyCollisionConfiguration:</div>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">creation of soft-soft and soft-rigid, and otherwise fallback to base class implementation  <a href="#81be88bc433469b4703fc0fb9d504a50"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-<a class="el" href="classbt_soft_body_rigid_body_collision_configuration.html" title="btSoftBodyRigidBodyCollisionConfiguration add softbody interaction on top of btDefaultCollisionConfi...">btSoftBodyRigidBodyCollisionConfiguration</a> add softbody interaction on top of <a class="el" href="classbt_default_collision_configuration.html">btDefaultCollisionConfiguration</a> <hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="el" href="classbt_soft_body_rigid_body_collision_configuration.html" title="btSoftBodyRigidBodyCollisionConfiguration add softbody interaction on top of btDefaultCollisionConfi...">btSoftBodyRigidBodyCollisionConfiguration</a> add softbody interaction on top of <a class="el" href="classbt_default_collision_configuration.html">btDefaultCollisionConfiguration</a> 
+<p>Definition at line <a class="el" href="bt_soft_body_rigid_body_collision_configuration_8h-source.html#l00026">26</a> of file <a class="el" href="bt_soft_body_rigid_body_collision_configuration_8h-source.html">btSoftBodyRigidBodyCollisionConfiguration.h</a>.</p>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="ed032b3ffc351d036e28b503d3cdc801"></a><!-- doxytag: member="btSoftBodyRigidBodyCollisionConfiguration::btSoftBodyRigidBodyCollisionConfiguration" ref="ed032b3ffc351d036e28b503d3cdc801" args="(const btDefaultCollisionConstructionInfo &amp;constructionInfo=btDefaultCollisionConstructionInfo())" -->
 <div class="memitem">
 <div class="memproto">
@@ -78,6 +80,68 @@ Collaboration diagram for btSoftBodyRigidBodyCollisionConfiguration:</div>
 
 <p>
 calculate maximum element size, big enough to fit any collision algorithm in the memory pool 
+<p>Definition at line <a class="el" href="bt_soft_body_rigid_body_collision_configuration_8cpp-source.html#l00025">25</a> of file <a class="el" href="bt_soft_body_rigid_body_collision_configuration_8cpp-source.html">btSoftBodyRigidBodyCollisionConfiguration.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_pool_allocator_8h-source.html#l00113">btPoolAllocator::getElementSize()</a>, <a class="el" href="bt_collision_create_func_8h-source.html#l00028">btCollisionAlgorithmCreateFunc::m_swapped</a>, and <a class="el" href="bt_pool_allocator_8h-source.html#l00052">btPoolAllocator::~btPoolAllocator()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00026"></a>00026 :<a class="code" href="classbt_default_collision_configuration.html#d08e7d72b0bd0d3f98290c2a1649b0d9">btDefaultCollisionConfiguration</a>(constructionInfo)
+<a name="l00027"></a>00027 {
+<a name="l00028"></a>00028         <span class="keywordtype">void</span>* mem;
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030         mem = btAlignedAlloc(<span class="keyword">sizeof</span>(btSoftSoftCollisionAlgorithm::CreateFunc),16);
+<a name="l00031"></a>00031         m_softSoftCreateFunc = <span class="keyword">new</span>(mem) btSoftSoftCollisionAlgorithm::CreateFunc;
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033         mem = btAlignedAlloc(<span class="keyword">sizeof</span>(btSoftRigidCollisionAlgorithm::CreateFunc),16);
+<a name="l00034"></a>00034         m_softRigidConvexCreateFunc = <span class="keyword">new</span>(mem) btSoftRigidCollisionAlgorithm::CreateFunc;
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036         mem = btAlignedAlloc(<span class="keyword">sizeof</span>(btSoftRigidCollisionAlgorithm::CreateFunc),16);
+<a name="l00037"></a>00037         m_swappedSoftRigidConvexCreateFunc = <span class="keyword">new</span>(mem) btSoftRigidCollisionAlgorithm::CreateFunc;
+<a name="l00038"></a>00038         m_swappedSoftRigidConvexCreateFunc-&gt;<a class="code" href="structbt_collision_algorithm_create_func.html#dbcd40f1d695f060dcb527942686e670">m_swapped</a>=<span class="keyword">true</span>;
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="preprocessor">#ifdef ENABLE_SOFTBODY_CONCAVE_COLLISIONS</span>
+<a name="l00041"></a>00041 <span class="preprocessor"></span>        mem = btAlignedAlloc(<span class="keyword">sizeof</span>(btSoftBodyConcaveCollisionAlgorithm::CreateFunc),16);
+<a name="l00042"></a>00042         m_softRigidConcaveCreateFunc = <span class="keyword">new</span>(mem) btSoftBodyConcaveCollisionAlgorithm::CreateFunc;
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044         mem = btAlignedAlloc(<span class="keyword">sizeof</span>(btSoftBodyConcaveCollisionAlgorithm::CreateFunc),16);
+<a name="l00045"></a>00045         m_swappedSoftRigidConcaveCreateFunc = <span class="keyword">new</span>(mem) btSoftBodyConcaveCollisionAlgorithm::SwappedCreateFunc;
+<a name="l00046"></a>00046         m_swappedSoftRigidConcaveCreateFunc-&gt;<a class="code" href="structbt_collision_algorithm_create_func.html#dbcd40f1d695f060dcb527942686e670">m_swapped</a>=<span class="keyword">true</span>;
+<a name="l00047"></a>00047 <span class="preprocessor">#endif</span>
+<a name="l00048"></a>00048 <span class="preprocessor"></span>
+<a name="l00049"></a>00049         <span class="comment">//replace pool by a new one, with potential larger size</span>
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051         <span class="keywordflow">if</span> (m_ownsCollisionAlgorithmPool &amp;&amp; m_collisionAlgorithmPool)
+<a name="l00052"></a>00052         {
+<a name="l00053"></a>00053                 <span class="keywordtype">int</span> curElemSize = m_collisionAlgorithmPool-&gt;<a class="code" href="classbt_pool_allocator.html#2bdce19b1ffb5f6fb5cd597dc3f00a3e">getElementSize</a>();
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057                 <span class="keywordtype">int</span> maxSize0 = <span class="keyword">sizeof</span>(<a class="code" href="classbt_soft_soft_collision_algorithm.html" title="collision detection between two btSoftBody shapes">btSoftSoftCollisionAlgorithm</a>);
+<a name="l00058"></a>00058                 <span class="keywordtype">int</span> maxSize1 = <span class="keyword">sizeof</span>(<a class="code" href="classbt_soft_rigid_collision_algorithm.html" title="btSoftRigidCollisionAlgorithm provides collision detection between btSoftBody and...">btSoftRigidCollisionAlgorithm</a>);
+<a name="l00059"></a>00059                 <span class="keywordtype">int</span> maxSize2 = <span class="keyword">sizeof</span>(<a class="code" href="classbt_soft_body_concave_collision_algorithm.html" title="btSoftBodyConcaveCollisionAlgorithm supports collision between soft body shapes and...">btSoftBodyConcaveCollisionAlgorithm</a>);
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061                 <span class="keywordtype">int</span>     collisionAlgorithmMaxElementSize = btMax(maxSize0,maxSize1);
+<a name="l00062"></a>00062                 collisionAlgorithmMaxElementSize = btMax(collisionAlgorithmMaxElementSize,maxSize2);
+<a name="l00063"></a>00063                 
+<a name="l00064"></a>00064                 <span class="keywordflow">if</span> (collisionAlgorithmMaxElementSize &gt; curElemSize)
+<a name="l00065"></a>00065                 {
+<a name="l00066"></a>00066                         m_collisionAlgorithmPool-&gt;<a class="code" href="classbt_pool_allocator.html#a221b8352b1100ead608ef1b39d797ba">~btPoolAllocator</a>();
+<a name="l00067"></a>00067                         btAlignedFree(m_collisionAlgorithmPool);
+<a name="l00068"></a>00068                         <span class="keywordtype">void</span>* mem = btAlignedAlloc(<span class="keyword">sizeof</span>(<a class="code" href="classbt_pool_allocator.html" title="The btPoolAllocator class allows to efficiently allocate a large pool of objects...">btPoolAllocator</a>),16);
+<a name="l00069"></a>00069                         m_collisionAlgorithmPool = <span class="keyword">new</span>(mem) <a class="code" href="classbt_pool_allocator.html" title="The btPoolAllocator class allows to efficiently allocate a large pool of objects...">btPoolAllocator</a>(collisionAlgorithmMaxElementSize,constructionInfo.m_defaultMaxCollisionAlgorithmPoolSize);
+<a name="l00070"></a>00070                 }
+<a name="l00071"></a>00071         }
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_soft_body_rigid_body_collision_configuration_ed032b3ffc351d036e28b503d3cdc801_cgraph.png" border="0" usemap="#classbt_soft_body_rigid_body_collision_configuration_ed032b3ffc351d036e28b503d3cdc801_cgraph_map" alt=""></center>
+<map name="classbt_soft_body_rigid_body_collision_configuration_ed032b3ffc351d036e28b503d3cdc801_cgraph_map">
+<area shape="rect" href="classbt_pool_allocator.html#2bdce19b1ffb5f6fb5cd597dc3f00a3e" title="btPoolAllocator::getElementSize" alt="" coords="581,5,789,32"><area shape="rect" href="classbt_pool_allocator.html#a221b8352b1100ead608ef1b39d797ba" title="btPoolAllocator::~btPoolAllocator" alt="" coords="579,56,792,83"></map>
+</div>
+
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -119,12 +183,48 @@ convex versus soft body<p>
 fallback to the regular rigid collision shape 
 <p>Reimplemented from <a class="el" href="classbt_default_collision_configuration.html">btDefaultCollisionConfiguration</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_soft_body_rigid_body_collision_configuration_8cpp-source.html#l00096">96</a> of file <a class="el" href="bt_soft_body_rigid_body_collision_configuration_8cpp-source.html">btSoftBodyRigidBodyCollisionConfiguration.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00097"></a>00097 {
+<a name="l00098"></a>00098 
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         <span class="keywordflow">if</span> ((proxyType0 == SOFTBODY_SHAPE_PROXYTYPE  ) &amp;&amp; (proxyType1==SOFTBODY_SHAPE_PROXYTYPE))
+<a name="l00102"></a>00102         {
+<a name="l00103"></a>00103                 <span class="keywordflow">return</span>  m_softSoftCreateFunc;
+<a name="l00104"></a>00104         }
+<a name="l00105"></a>00105 
+<a name="l00107"></a>00107         <span class="keywordflow">if</span> (proxyType0 == SOFTBODY_SHAPE_PROXYTYPE  &amp;&amp; btBroadphaseProxy::isConvex(proxyType1))
+<a name="l00108"></a>00108         {
+<a name="l00109"></a>00109                 <span class="keywordflow">return</span>  m_softRigidConvexCreateFunc;
+<a name="l00110"></a>00110         }
+<a name="l00111"></a>00111 
+<a name="l00113"></a>00113         <span class="keywordflow">if</span> (btBroadphaseProxy::isConvex(proxyType0) &amp;&amp; proxyType1 == SOFTBODY_SHAPE_PROXYTYPE )
+<a name="l00114"></a>00114         {
+<a name="l00115"></a>00115                 <span class="keywordflow">return</span>  m_swappedSoftRigidConvexCreateFunc;
+<a name="l00116"></a>00116         }
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118 <span class="preprocessor">#ifdef ENABLE_SOFTBODY_CONCAVE_COLLISIONS</span>
+<a name="l00120"></a>00120 <span class="preprocessor">        if (proxyType0 == SOFTBODY_SHAPE_PROXYTYPE  &amp;&amp; btBroadphaseProxy::isConcave(proxyType1))</span>
+<a name="l00121"></a>00121 <span class="preprocessor"></span>        {
+<a name="l00122"></a>00122                 <span class="keywordflow">return</span>  m_softRigidConcaveCreateFunc;
+<a name="l00123"></a>00123         }
+<a name="l00124"></a>00124 
+<a name="l00126"></a>00126         <span class="keywordflow">if</span> (btBroadphaseProxy::isConcave(proxyType0) &amp;&amp; proxyType1 == SOFTBODY_SHAPE_PROXYTYPE )
+<a name="l00127"></a>00127         {
+<a name="l00128"></a>00128                 <span class="keywordflow">return</span>  m_swappedSoftRigidConcaveCreateFunc;
+<a name="l00129"></a>00129         }
+<a name="l00130"></a>00130 <span class="preprocessor">#endif</span>
+<a name="l00131"></a>00131 <span class="preprocessor"></span>
+<a name="l00133"></a>00133         <span class="keywordflow">return</span> btDefaultCollisionConfiguration::getCollisionAlgorithmCreateFunc(proxyType0,proxyType1);
+<a name="l00134"></a>00134 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/<a class="el" href="bt_soft_body_rigid_body_collision_configuration_8h-source.html">btSoftBodyRigidBodyCollisionConfiguration.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/<a class="el" href="bt_soft_body_rigid_body_collision_configuration_8cpp-source.html">btSoftBodyRigidBodyCollisionConfiguration.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:52 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:57 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

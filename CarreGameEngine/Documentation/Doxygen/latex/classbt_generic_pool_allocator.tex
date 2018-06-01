@@ -26,6 +26,8 @@ Generic Allocator with pools.
 
 General purpose Allocator which can create Memory Pools dynamiacally as needed. 
 
+Definition at line 113 of file btGenericPoolAllocator.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_generic_pool_allocator_e07307fd61ffa9ce47b5f198b87d17e1}{
 \index{btGenericPoolAllocator@{btGenericPoolAllocator}!allocate@{allocate}}
@@ -43,7 +45,33 @@ Allocates memory in pool.
 \end{Desc}
 
 
+Definition at line 215 of file btGenericPoolAllocator.cpp.
+
+References btGenericMemoryPool::allocate().
+
+\begin{Code}\begin{verbatim}216 {
+217         void * ptr = NULL;
+218 
+219         size_t i = 0;
+220         while(i<m_pool_count && ptr == NULL)
+221         {
+222                 ptr = m_pools[i]->allocate(size_bytes);
+223                 ++i;
+224         }
+225 
+226         if(ptr) return ptr;
+227 
+228         return failback_alloc(size_bytes);
+229 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_generic_pool_allocator_8h}{btGenericPoolAllocator.h}\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_generic_pool_allocator_8cpp}{btGenericPoolAllocator.cpp}\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_generic_pool_allocator_8h}{btGenericPoolAllocator.h}\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_generic_pool_allocator_8cpp}{btGenericPoolAllocator.cpp}\end{CompactItemize}

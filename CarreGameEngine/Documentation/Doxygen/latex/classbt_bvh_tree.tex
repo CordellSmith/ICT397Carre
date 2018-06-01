@@ -29,6 +29,8 @@ SIMD\_\-FORCE\_\-INLINE bool \hyperlink{classbt_bvh_tree_f5d8776467b0f7c9e12091f
 \subsection{Detailed Description}
 Basic Box tree structure. 
 
+Definition at line 66 of file btGImpactBvh.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_bvh_tree_ed589b2985838c6268597f4f64a96c46}{
 \index{btBvhTree@{btBvhTree}!build\_\-tree@{build\_\-tree}}
@@ -41,7 +43,27 @@ stackless build tree
 
 prototype functions for box tree management 
 
+Definition at line 212 of file btGImpactBvh.cpp.
+
+Referenced by btGImpactBvh::buildSet().
+
+\begin{Code}\begin{verbatim}214 {
+215         // initialize node count to 0
+216         m_num_nodes = 0;
+217         // allocate nodes
+218         m_node_array.resize(primitive_boxes.size()*2);
+219 
+220         _build_sub_tree(primitive_boxes, 0, primitive_boxes.size());
+221 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactBvh.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactBvh.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactBvh.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactBvh.cpp\end{CompactItemize}

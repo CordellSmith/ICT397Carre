@@ -1,0 +1,252 @@
+\hypertarget{class_open_gl}{
+\section{OpenGl Class Reference}
+\label{class_open_gl}\index{OpenGl@{OpenGl}}
+}
+\hyperlink{class_open_gl}{OpenGl} renderer class.  
+
+
+{\tt \#include $<$OpenGl.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_open_gl_2daf1eb44fca97158f61ec6858cad898}{OpenGl} ()
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+\hyperlink{class_open_gl_7c5d27fb02db6c5d7d77f8b6be2f776e}{$\sim$OpenGl} ()
+\begin{CompactList}\small\item\em Destructor. \item\end{CompactList}\item 
+void \hyperlink{class_open_gl_d8259307bc0b851348b7afaa46965473}{Prepare} (\hyperlink{class_model}{Model} $\ast$model, std::string vertShader, std::string fragShader)
+\begin{CompactList}\small\item\em Prepare. \item\end{CompactList}\item 
+void \hyperlink{class_open_gl_5ee37b305288c0640f6c370bc7fc1192}{Render} (\hyperlink{class_model}{Model} $\ast$model)
+\begin{CompactList}\small\item\em Render. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_open_gl}{OpenGl} renderer class. 
+
+This class is the facade class that implements all the necessary functionalities of the \hyperlink{class_open_gl}{OpenGl} API into the game engine. It handles creating VAOs, VBOs and EBOs for model data as well as the 3D rendering and uniform calculations to be correctly rendered.
+
+\begin{Desc}
+\item[Author:]Cordell Smith \end{Desc}
+\begin{Desc}
+\item[Version:]01 \end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
+
+
+Definition at line 24 of file OpenGl.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_open_gl_2daf1eb44fca97158f61ec6858cad898}{
+\index{OpenGl@{OpenGl}!OpenGl@{OpenGl}}
+\index{OpenGl@{OpenGl}!OpenGl@{OpenGl}}
+\subsubsection[OpenGl]{\setlength{\rightskip}{0pt plus 5cm}OpenGl::OpenGl ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_open_gl_2daf1eb44fca97158f61ec6858cad898}
+
+
+Default constructor. 
+
+Empty default constructor.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 34 of file OpenGl.h.
+
+\begin{Code}\begin{verbatim}34 { }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_open_gl_7c5d27fb02db6c5d7d77f8b6be2f776e}{
+\index{OpenGl@{OpenGl}!$\sim$OpenGl@{$\sim$OpenGl}}
+\index{$\sim$OpenGl@{$\sim$OpenGl}!OpenGl@{OpenGl}}
+\subsubsection[$\sim$OpenGl]{\setlength{\rightskip}{0pt plus 5cm}OpenGl::$\sim$OpenGl ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_open_gl_7c5d27fb02db6c5d7d77f8b6be2f776e}
+
+
+Destructor. 
+
+Empty destructor.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 43 of file OpenGl.h.
+
+\begin{Code}\begin{verbatim}43 { }
+\end{verbatim}
+\end{Code}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_open_gl_d8259307bc0b851348b7afaa46965473}{
+\index{OpenGl@{OpenGl}!Prepare@{Prepare}}
+\index{Prepare@{Prepare}!OpenGl@{OpenGl}}
+\subsubsection[Prepare]{\setlength{\rightskip}{0pt plus 5cm}void OpenGl::Prepare ({\bf Model} $\ast$ {\em model}, \/  std::string {\em vertShader}, \/  std::string {\em fragShader})}}
+\label{class_open_gl_d8259307bc0b851348b7afaa46965473}
+
+
+Prepare. 
+
+Takes model data, vertex shader string and fragment shader string and prepares the VAO, VBO and EBO attribute data. It stored the correct data in each attribute of the models VAO, VBO and EBO to be used in the rendering process later on.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Model$\ast$}]model \item[{\em std::string}]vertShader \item[{\em std::string}]fragShader \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 3 of file OpenGl.cpp.
+
+References Model::GetMeshBatch(), Model::GetShader(), and Shader::Initialize().
+
+\begin{Code}\begin{verbatim}4 {
+5         model->GetShader()->Initialize(vertShader, fragShader);
+6 
+7         int meshBatchSize = model->GetMeshBatch().size();
+8         for (int i = 0; i < meshBatchSize; i++)
+9         {
+10                 glGenVertexArrays(1, &model->GetMeshBatch()[i].VAO);
+11                 glGenBuffers(1, &model->GetMeshBatch()[i].VBO);
+12                 glGenBuffers(1, &model->GetMeshBatch()[i].EBO);
+13 
+14                 glBindVertexArray(model->GetMeshBatch()[i].VAO);
+15                 glBindBuffer(GL_ARRAY_BUFFER, model->GetMeshBatch()[i].VBO);
+16 
+17                 glBufferData(GL_ARRAY_BUFFER, sizeof(model->GetMeshBatch()[i].GetVertices()[0]) * model->GetMeshBatch()[i].GetVertices().size(), &model->GetMeshBatch()[i].GetVertices()[0], GL_STATIC_DRAW);
+18 
+19                 glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model->GetMeshBatch()[i].EBO);
+20                 glBufferData(GL_ELEMENT_ARRAY_BUFFER, model->GetMeshBatch()[i].GetIndices().size() * sizeof(unsigned int), &model->GetMeshBatch()[i].GetIndices()[0], GL_STATIC_DRAW);
+21 
+22                 // vertex positions
+23                 glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), 0);
+24                 // vertex texture coords
+25                 glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_position));
+26                 // vertex normals
+27                 glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_texCoords));
+28                 // vertex colours
+29                 glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(model->GetMeshBatch()[i].GetVertices()[0]), (GLvoid*)sizeof(model->GetMeshBatch()[i].GetVertices()[0].m_normal));
+30 
+31                 glBindVertexArray(0);
+32         }
+33 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_open_gl_5ee37b305288c0640f6c370bc7fc1192}{
+\index{OpenGl@{OpenGl}!Render@{Render}}
+\index{Render@{Render}!OpenGl@{OpenGl}}
+\subsubsection[Render]{\setlength{\rightskip}{0pt plus 5cm}void OpenGl::Render ({\bf Model} $\ast$ {\em model})}}
+\label{class_open_gl_5ee37b305288c0640f6c370bc7fc1192}
+
+
+Render. 
+
+Takes model data that is parsed in as a parameter and accesses the necessary opneGl components to render the model to the screen. This includes the textures associated with the model data and its respective mesh data.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Model$\ast$}]model \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 35 of file OpenGl.cpp.
+
+References Model::GetCamera(), Model::GetMeshBatch(), Model::GetPosition(), Camera::GetProjectionMatrix(), Model::GetRotation(), Model::GetScale(), Model::GetShader(), Shader::GetVariable(), Shader::SetFloat(), Shader::SetMatrix4(), glm::to\_\-string(), Shader::TurnOff(), and Shader::TurnOn().
+
+\begin{Code}\begin{verbatim}36 {
+37         model->GetShader()->TurnOn();
+38 
+39         int meshBatchSize = model->GetMeshBatch().size();
+40         for (int i = 0; i < meshBatchSize; i++)
+41         {
+42                 unsigned int diffuseNr = 1;
+43                 unsigned int specularNr = 1;
+44                 unsigned int normalNr = 1;
+45                 unsigned int heightNr = 1;
+46 
+47                 int textureListSize = meshBatchSize;
+48                 for (int j = 0; j < textureListSize; j++)
+49                 {
+50                         glActiveTexture(GL_TEXTURE0 + j); // activate proper texture unit before binding
+51                                                                                                 // retrieve texture number (the N in diffuse_textureN)
+52                         std::string number;
+53                         std::string name = model->GetMeshBatch()[i].GetTextures()[0].m_type;
+54 
+55                         if (name == "texture_diffuse")
+56                                 number = std::to_string(diffuseNr++);
+57                         else if (name == "texture_specular")
+58                                 number = std::to_string(specularNr++);
+59                         else if (name == "texture_normal")
+60                                 number = std::to_string(normalNr++);
+61                         else if (name == "texture_height")
+62                                 number = std::to_string(heightNr++);
+63                         else
+64                                 std::cout << "Incorrect texture Id in OpenGl renderer" << std::endl;
+65 
+66                         GLuint textureUniformId = model->GetShader()->GetVariable((name + number).c_str());
+67                         model->GetShader()->SetFloat(textureUniformId, j);
+68                         glBindTexture(GL_TEXTURE_2D, model->GetMeshBatch()[i].GetTextures()[0].m_id);
+69 
+70                         if (meshBatchSize == 1)
+71                                 break;
+72                 }
+73                 glActiveTexture(GL_TEXTURE0);
+74 
+75                 glm::mat4 projectionMatrix = model->GetCamera()->GetProjectionMatrix();
+76                 glm::mat4 modelMatrix = CreateTransformationMatrix(model->GetPosition(), model->GetRotation(), model->GetScale());
+77                 glm::mat4 viewMatrix = CreateViewMatrix(model->GetCamera());
+78 
+79                 GLint modelMatrixId = model->GetShader()->GetVariable("model");
+80                 GLint viewMatrixId = model->GetShader()->GetVariable("view");
+81                 GLint projectionMatrixId = model->GetShader()->GetVariable("projection");
+82 
+83                 model->GetShader()->SetMatrix4(modelMatrixId, 1, false, &modelMatrix[0][0]);
+84                 model->GetShader()->SetMatrix4(viewMatrixId, 1, false, &viewMatrix[0][0]);
+85                 model->GetShader()->SetMatrix4(projectionMatrixId, 1, false, &projectionMatrix[0][0]);
+86 
+87                 glBindVertexArray(model->GetMeshBatch()[i].VAO);
+88 
+89                 glEnableVertexAttribArray(0);
+90                 glEnableVertexAttribArray(1);
+91                 glEnableVertexAttribArray(2);
+92                 glEnableVertexAttribArray(3);
+93 
+94                 glDrawArrays(GL_TRIANGLES, 0, model->GetMeshBatch()[i].GetVertices().size());
+95                 //glDrawElements(GL_TRIANGLES, model->GetMeshBatch()[i].GetIndices().size(), GL_UNSIGNED_INT, 0);
+96 
+97                 glDisableVertexAttribArray(0);
+98                 glDisableVertexAttribArray(1);
+99                 glDisableVertexAttribArray(2);
+100                 glDisableVertexAttribArray(3);
+101 
+102                 glBindVertexArray(0);
+103 
+104         }
+105         model->GetShader()->TurnOff();
+106 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/Renderer/OpenGl.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/Renderer/OpenGl.cpp\end{CompactItemize}

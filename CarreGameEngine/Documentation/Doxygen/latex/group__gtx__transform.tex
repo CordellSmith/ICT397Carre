@@ -31,7 +31,23 @@ $<$glm/gtx/transform.hpp$>$ need to be included to use these functionalities.
 
 Builds a rotation 4 $\ast$ 4 matrix created from an axis of 3 scalars and an angle expressed in degrees.\begin{itemize}
 \item From \hyperlink{group__gtx__transform}{GLM\_\-GTX\_\-transform } extension\item See also: \hyperlink{group__gtc__matrix__transform_g1a75da872120125437265872423e0b14}{GLM\_\-GTC\_\-matrix\_\-transform } \end{itemize}
-\hypertarget{group__gtx__transform_g70f2d33f150672b9faca3b477fcca2c4}{
+
+
+Definition at line 21 of file transform.inl.
+
+References glm::rotate().
+
+\begin{Code}\begin{verbatim}24         {
+25                 return rotate(
+26                         detail::tmat4x4<T, P>(1), angle, v);
+27         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__transform_g70f2d33f150672b9faca3b477fcca2c4}{
 \index{gtx\_\-transform@{gtx\_\-transform}!scale@{scale}}
 \index{scale@{scale}!gtx_transform@{gtx\_\-transform}}
 \subsubsection[scale]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::scale (detail::tvec3$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -40,7 +56,23 @@ Builds a rotation 4 $\ast$ 4 matrix created from an axis of 3 scalars and an ang
 
 Transforms a matrix with a scale 4 $\ast$ 4 matrix created from a vector of 3 components.\begin{itemize}
 \item From \hyperlink{group__gtx__transform}{GLM\_\-GTX\_\-transform } extension\item See also: \hyperlink{group__gtc__matrix__transform_g5e2bf1cdf124863558884751d611aea6}{GLM\_\-GTC\_\-matrix\_\-transform } \end{itemize}
-\hypertarget{group__gtx__transform_gc06efbcc43ab431cf6ae1ba0e6f03e86}{
+
+
+Definition at line 30 of file transform.inl.
+
+References glm::scale().
+
+\begin{Code}\begin{verbatim}32         {
+33                 return scale(
+34                         detail::tmat4x4<T, P>(1.0f), v);
+35         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__transform_gc06efbcc43ab431cf6ae1ba0e6f03e86}{
 \index{gtx\_\-transform@{gtx\_\-transform}!translate@{translate}}
 \index{translate@{translate}!gtx_transform@{gtx\_\-transform}}
 \subsubsection[translate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::translate (detail::tvec3$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -49,3 +81,20 @@ Transforms a matrix with a scale 4 $\ast$ 4 matrix created from a vector of 3 co
 
 Transforms a matrix with a translation 4 $\ast$ 4 matrix created from 3 scalars.\begin{itemize}
 \item From \hyperlink{group__gtx__transform}{GLM\_\-GTX\_\-transform } extension\item See also: \hyperlink{group__gtc__matrix__transform_gb05e6ebabf535a3d8f9d9bfc3df45143}{GLM\_\-GTC\_\-matrix\_\-transform } \end{itemize}
+
+
+Definition at line 13 of file transform.inl.
+
+References glm::translate().
+
+\begin{Code}\begin{verbatim}15         {
+16                 return translate(
+17                         detail::tmat4x4<T, P>(1.0f), v);
+18         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

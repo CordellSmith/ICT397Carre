@@ -1,0 +1,4 @@
+<area shape="rect" href="$class_player.html#0de705c108e85cf8609ac827319fe11b" title="Moves the player backward." alt="" coords="188,5,340,32">
+<area shape="rect" href="$class_player.html#afa223a6906cf925ac0f9ae1ad197cde" title="Moves the player forward." alt="" coords="193,56,335,83">
+<area shape="rect" href="$class_terrain.html#33990e5363ba3dc351abd313c2832edb" title="Sets the terrains position." alt="" coords="196,107,332,133">
+<area shape="rect" href="$class_player.html#2a58860a7169ad27fbb1eec6a64fc31b" title="Sets the position." alt="" coords="197,157,331,184">

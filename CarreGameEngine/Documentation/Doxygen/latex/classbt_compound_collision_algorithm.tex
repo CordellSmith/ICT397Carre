@@ -17,6 +17,8 @@ virtual void \hyperlink{classbt_compound_collision_algorithm_173ce993461795e0572
 \subsection{Detailed Description}
 \hyperlink{classbt_compound_collision_algorithm}{btCompoundCollisionAlgorithm} supports collision between CompoundCollisionShapes and other collision shapes 
 
+Definition at line 38 of file btCompoundCollisionAlgorithm.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_compound_collision_algorithm_173ce993461795e0572dd2924c54cdc0}{
 \index{btCompoundCollisionAlgorithm@{btCompoundCollisionAlgorithm}!processCollision@{processCollision}}
@@ -37,7 +39,129 @@ Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.
 
 Reimplemented in \hyperlink{classbt_compound_compound_collision_algorithm_5fb9d60f9713c0e3795c89390353beb3}{btCompoundCompoundCollisionAlgorithm}.
 
+Definition at line 237 of file btCompoundCollisionAlgorithm.cpp.
+
+References btDbvt::collideTVNoStackAlloc(), btDispatcher::freeCollisionAlgorithm(), btManifoldResult::m\_\-closestPointDistanceThreshold, btDbvt::m\_\-root, btManifoldResult::refreshContactPoints(), btAlignedObjectArray$<$ T $>$::resize(), btManifoldResult::setPersistentManifold(), and btAlignedObjectArray$<$ T $>$::size().
+
+Referenced by btCompoundCompoundCollisionAlgorithm::processCollision().
+
+\begin{Code}\begin{verbatim}238 {
+239         const btCollisionObjectWrapper* colObjWrap = m_isSwapped? body1Wrap : body0Wrap;
+240         const btCollisionObjectWrapper* otherObjWrap = m_isSwapped? body0Wrap : body1Wrap;
+241 
+242         btAssert (colObjWrap->getCollisionShape()->isCompound());
+243         const btCompoundShape* compoundShape = static_cast<const btCompoundShape*>(colObjWrap->getCollisionShape());
+244 
+247         if (compoundShape->getUpdateRevision() != m_compoundShapeRevision)
+248         {
+250                 removeChildAlgorithms();
+251                 
+252                 preallocateChildAlgorithms(body0Wrap,body1Wrap);
+253                 m_compoundShapeRevision = compoundShape->getUpdateRevision();
+254         }
+255 
+256     if (m_childCollisionAlgorithms.size()==0)
+257         return;
+258     
+259         const btDbvt* tree = compoundShape->getDynamicAabbTree();
+260         //use a dynamic aabb tree to cull potential child-overlaps
+261         btCompoundLeafCallback  callback(colObjWrap,otherObjWrap,m_dispatcher,dispatchInfo,resultOut,&m_childCollisionAlgorithms[0],m_sharedManifold);
+262 
+266         {
+267                 int i;
+268                 manifoldArray.resize(0);
+269                 for (i=0;i<m_childCollisionAlgorithms.size();i++)
+270                 {
+271                         if (m_childCollisionAlgorithms[i])
+272                         {
+273                                 m_childCollisionAlgorithms[i]->getAllContactManifolds(manifoldArray);
+274                                 for (int m=0;m<manifoldArray.size();m++)
+275                                 {
+276                                         if (manifoldArray[m]->getNumContacts())
+277                                         {
+278                                                 resultOut->setPersistentManifold(manifoldArray[m]);
+279                                                 resultOut->refreshContactPoints();
+280                                                 resultOut->setPersistentManifold(0);//??necessary?
+281                                         }
+282                                 }
+283                                 manifoldArray.resize(0);
+284                         }
+285                 }
+286         }
+287 
+288         if (tree)
+289         {
+290 
+291                 btVector3 localAabbMin,localAabbMax;
+292                 btTransform otherInCompoundSpace;
+293                 otherInCompoundSpace = colObjWrap->getWorldTransform().inverse() * otherObjWrap->getWorldTransform();
+294                 otherObjWrap->getCollisionShape()->getAabb(otherInCompoundSpace,localAabbMin,localAabbMax);
+295                 btVector3 extraExtends(resultOut->m_closestPointDistanceThreshold, resultOut->m_closestPointDistanceThreshold, resultOut->m_closestPointDistanceThreshold);
+296                 localAabbMin -= extraExtends;
+297                 localAabbMax += extraExtends;
+298 
+299                 const ATTRIBUTE_ALIGNED16(btDbvtVolume) bounds=btDbvtVolume::FromMM(localAabbMin,localAabbMax);
+300                 //process all children, that overlap with  the given AABB bounds
+301                 tree->collideTVNoStackAlloc(tree->m_root,bounds,stack2,callback);
+302 
+303         } else
+304         {
+305                 //iterate over all children, perform an AABB check inside ProcessChildShape
+306                 int numChildren = m_childCollisionAlgorithms.size();
+307                 int i;
+308                 for (i=0;i<numChildren;i++)
+309                 {
+310                         callback.ProcessChildShape(compoundShape->getChildShape(i),i);
+311                 }
+312         }
+313 
+314         {
+315                                 //iterate over all children, perform an AABB check inside ProcessChildShape
+316                 int numChildren = m_childCollisionAlgorithms.size();
+317                 int i;
+318                 manifoldArray.resize(0);
+319         const btCollisionShape* childShape = 0;
+320         btTransform     orgTrans;
+321         
+322         btTransform     newChildWorldTrans;
+323         btVector3 aabbMin0,aabbMax0,aabbMin1,aabbMax1;        
+324         
+325                 for (i=0;i<numChildren;i++)
+326                 {
+327                         if (m_childCollisionAlgorithms[i])
+328                         {
+329                                 childShape = compoundShape->getChildShape(i);
+330                         //if not longer overlapping, remove the algorithm
+331                                 orgTrans = colObjWrap->getWorldTransform();
+332                 
+333                                 const btTransform& childTrans = compoundShape->getChildTransform(i);
+334                 newChildWorldTrans = orgTrans*childTrans ;
+335 
+336                                 //perform an AABB check first
+337                                 childShape->getAabb(newChildWorldTrans,aabbMin0,aabbMax0);
+338                                 otherObjWrap->getCollisionShape()->getAabb(otherObjWrap->getWorldTransform(),aabbMin1,aabbMax1);
+339 
+340                                 if (!TestAabbAgainstAabb2(aabbMin0,aabbMax0,aabbMin1,aabbMax1))
+341                                 {
+342                                         m_childCollisionAlgorithms[i]->~btCollisionAlgorithm();
+343                                         m_dispatcher->freeCollisionAlgorithm(m_childCollisionAlgorithms[i]);
+344                                         m_childCollisionAlgorithms[i] = 0;
+345                                 }
+346                         }
+347                 }
+348         }
+349 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.cpp\end{CompactItemize}

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btCollisionWorld Class Reference</title>
+<title>Assignment2 - OOber Taxi: btCollisionWorld Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btCollisionWorld Class Reference</h1><!-- doxytag: class="btCollisionWorld" -->CollisionWorld is interface and container for the collision detection.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btCollisionWorld.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_collision_world_8h-source.html">btCollisionWorld.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btCollisionWorld:</div>
@@ -42,7 +42,7 @@ Collaboration diagram for btCollisionWorld:</div>
 <div class="dynsection">
 <p><center><img src="classbt_collision_world__coll__graph.png" border="0" usemap="#bt_collision_world__coll__map" alt="Collaboration graph"></center>
 <map name="bt_collision_world__coll__map">
-<area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionObject * \&gt;" alt="" coords="401,8,676,35"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionObject *, 16 \&gt;" alt="" coords="5,8,285,35"><area shape="rect" href="classbt_dispatcher.html" title="btDispatcher" alt="" coords="492,59,585,85"><area shape="rect" href="classbt_broadphase_interface.html" title="btBroadphaseInterface" alt="" coords="464,109,613,136"><area shape="rect" href="classbt_i_debug_draw.html" title="btIDebugDraw" alt="" coords="488,160,589,187"></map>
+<area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionObject * \&gt;" alt="" coords="1297,35,1572,61"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionObject *, 16 \&gt;" alt="" coords="637,5,917,32"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,32,229,59"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="433,59,612,85"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="941,65,1117,92"><area shape="rect" href="classbt_dispatcher.html" title="btDispatcher" alt="" coords="1388,85,1481,112"><area shape="rect" href="classbt_broadphase_interface.html" title="btBroadphaseInterface" alt="" coords="1360,136,1509,163"><area shape="rect" href="classbt_i_debug_draw.html" title="btIDebugDraw" alt="" coords="1384,187,1485,213"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -98,7 +98,9 @@ static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="structbt_collision_world_1_1_ray_result_callback.html" title="RayResultCallback is used to report new raycast results.">RayResultCallback</a> is used to report new raycast results.  <a href="structbt_collision_world_1_1_ray_result_callback.html#_details">More...</a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-CollisionWorld is interface and container for the collision detection. <hr><h2>Member Function Documentation</h2>
+CollisionWorld is interface and container for the collision detection. 
+<p>Definition at line <a class="el" href="bt_collision_world_8h-source.html#l00088">88</a> of file <a class="el" href="bt_collision_world_8h-source.html">btCollisionWorld.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="eed5861d66035fa72f40e27b04bdc056"></a><!-- doxytag: member="btCollisionWorld::serializeCollisionObjects" ref="eed5861d66035fa72f40e27b04bdc056" args="(btSerializer *serializer)" -->
 <div class="memitem">
 <div class="memproto">
@@ -119,6 +121,59 @@ CollisionWorld is interface and container for the collision detection. <hr><h2>M
 
 <p>
 keep track of shapes already serialized 
+<p>Definition at line <a class="el" href="bt_collision_world_8cpp-source.html#l01609">1609</a> of file <a class="el" href="bt_collision_world_8cpp-source.html">btCollisionWorld.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_hash_map_8h-source.html#l00434">btHashMap&lt; Key, Value &gt;::find()</a>, <a class="el" href="bt_hash_map_8h-source.html#l00274">btHashMap&lt; Key, Value &gt;::insert()</a>, and <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_collision_world_8cpp-source.html#l01640">serialize()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l01610"></a>01610 {
+<a name="l01611"></a>01611         <span class="keywordtype">int</span> i;
+<a name="l01612"></a>01612 
+<a name="l01614"></a>01614         <a class="code" href="classbt_hash_map.html">btHashMap&lt;btHashPtr,btCollisionShape*&gt;</a>  serializedShapes;
+<a name="l01615"></a>01615 
+<a name="l01616"></a>01616         <span class="keywordflow">for</span> (i=0;i&lt;m_collisionObjects.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>();i++)
+<a name="l01617"></a>01617         {
+<a name="l01618"></a>01618                 btCollisionObject* colObj = m_collisionObjects[i];
+<a name="l01619"></a>01619                 btCollisionShape* shape = colObj-&gt;getCollisionShape();
+<a name="l01620"></a>01620 
+<a name="l01621"></a>01621                 <span class="keywordflow">if</span> (!serializedShapes.<a class="code" href="classbt_hash_map.html#b04b49625760144b1e8a66dc8b7bf6b9">find</a>(shape))
+<a name="l01622"></a>01622                 {
+<a name="l01623"></a>01623                         serializedShapes.<a class="code" href="classbt_hash_map.html#15fc118df433a9b7f4350d42cd33bd13">insert</a>(shape,shape);
+<a name="l01624"></a>01624                         shape-&gt;serializeSingleShape(serializer);
+<a name="l01625"></a>01625                 }
+<a name="l01626"></a>01626         }
+<a name="l01627"></a>01627 
+<a name="l01628"></a>01628         <span class="comment">//serialize all collision objects</span>
+<a name="l01629"></a>01629         <span class="keywordflow">for</span> (i=0;i&lt;m_collisionObjects.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>();i++)
+<a name="l01630"></a>01630         {
+<a name="l01631"></a>01631                 btCollisionObject* colObj = m_collisionObjects[i];
+<a name="l01632"></a>01632                 <span class="keywordflow">if</span> ((colObj-&gt;getInternalType() == btCollisionObject::CO_COLLISION_OBJECT) || (colObj-&gt;getInternalType() == btCollisionObject::CO_FEATHERSTONE_LINK))
+<a name="l01633"></a>01633                 {
+<a name="l01634"></a>01634                         colObj-&gt;serializeSingleObject(serializer);
+<a name="l01635"></a>01635                 }
+<a name="l01636"></a>01636         }
+<a name="l01637"></a>01637 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_collision_world_eed5861d66035fa72f40e27b04bdc056_cgraph.png" border="0" usemap="#classbt_collision_world_eed5861d66035fa72f40e27b04bdc056_cgraph_map" alt=""></center>
+<map name="classbt_collision_world_eed5861d66035fa72f40e27b04bdc056_cgraph_map">
+<area shape="rect" href="classbt_hash_map.html#b04b49625760144b1e8a66dc8b7bf6b9" title="btHashMap::find" alt="" coords="351,5,465,32"><area shape="rect" href="classbt_hash_map.html#15fc118df433a9b7f4350d42cd33bd13" title="btHashMap::insert" alt="" coords="344,56,472,83"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="320,107,496,133"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_collision_world_eed5861d66035fa72f40e27b04bdc056_icgraph.png" border="0" usemap="#classbt_collision_world_eed5861d66035fa72f40e27b04bdc056_icgraph_map" alt=""></center>
+<map name="classbt_collision_world_eed5861d66035fa72f40e27b04bdc056_icgraph_map">
+<area shape="rect" href="classbt_collision_world.html#152b79ca83fdb13ed7f1cc86ac214f66" title="Preliminary serialization test for Bullet 2.76. Loading those files requires a separate..." alt="" coords="321,5,492,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="fb32fb7ecb40aa6247fd3df18ba81098"></a><!-- doxytag: member="btCollisionWorld::computeOverlappingPairs" ref="fb32fb7ecb40aa6247fd3df18ba81098" args="()" -->
@@ -138,6 +193,25 @@ keep track of shapes already serialized
 
 <p>
 the computeOverlappingPairs is usually already called by performDiscreteCollisionDetection (or stepSimulation) it can be useful to use if you perform ray tests without collision detection/simulation 
+<p>Definition at line <a class="el" href="bt_collision_world_8cpp-source.html#l00210">210</a> of file <a class="el" href="bt_collision_world_8cpp-source.html">btCollisionWorld.cpp</a>.</p>
+
+<p>References <a class="el" href="classbt_broadphase_interface.html#27e29cb6fd31e5fe626e7ba973e67ddb">btBroadphaseInterface::calculateOverlappingPairs()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00211"></a>00211 {
+<a name="l00212"></a>00212         BT_PROFILE(<span class="stringliteral">"calculateOverlappingPairs"</span>);
+<a name="l00213"></a>00213         m_broadphasePairCache-&gt;<a class="code" href="classbt_broadphase_interface.html#27e29cb6fd31e5fe626e7ba973e67ddb" title="calculateOverlappingPairs is optional: incremental algorithms (sweep and prune) might...">calculateOverlappingPairs</a>(m_dispatcher1);
+<a name="l00214"></a>00214 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_collision_world_fb32fb7ecb40aa6247fd3df18ba81098_cgraph.png" border="0" usemap="#classbt_collision_world_fb32fb7ecb40aa6247fd3df18ba81098_cgraph_map" alt=""></center>
+<map name="classbt_collision_world_fb32fb7ecb40aa6247fd3df18ba81098_cgraph_map">
+<area shape="rect" href="classbt_broadphase_interface.html#27e29cb6fd31e5fe626e7ba973e67ddb" title="calculateOverlappingPairs is optional: incremental algorithms (sweep and prune) might..." alt="" coords="327,5,633,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="c1ca6489c220005798069152c3df0d08"></a><!-- doxytag: member="btCollisionWorld::debugDrawObject" ref="c1ca6489c220005798069152c3df0d08" args="(const btTransform &amp;worldTransform, const btCollisionShape *shape, const btVector3 &amp;color)" -->
@@ -177,6 +251,198 @@ the computeOverlappingPairs is usually already called by performDiscreteCollisio
 for polyhedral shapes<p>
 <dl compact><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>pass camera, for some culling? no -&gt; we are not a graphics lib </dd></dl>
 
+<p>Definition at line <a class="el" href="bt_collision_world_8cpp-source.html#l01331">1331</a> of file <a class="el" href="bt_collision_world_8cpp-source.html">btCollisionWorld.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_i_debug_draw_8h-source.html#l00306">btIDebugDraw::drawBox()</a>, <a class="el" href="bt_i_debug_draw_8h-source.html#l00337">btIDebugDraw::drawCapsule()</a>, <a class="el" href="bt_i_debug_draw_8h-source.html#l00421">btIDebugDraw::drawCone()</a>, <a class="el" href="bt_i_debug_draw_8h-source.html#l00395">btIDebugDraw::drawCylinder()</a>, btIDebugDraw::drawLine(), <a class="el" href="bt_i_debug_draw_8h-source.html#l00458">btIDebugDraw::drawPlane()</a>, <a class="el" href="bt_i_debug_draw_8h-source.html#l00093">btIDebugDraw::drawSphere()</a>, and <a class="el" href="bt_i_debug_draw_8h-source.html#l00166">btIDebugDraw::drawTransform()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l01332"></a>01332 {
+<a name="l01333"></a>01333         <span class="comment">// Draw a small simplex at the center of the object</span>
+<a name="l01334"></a>01334         <span class="keywordflow">if</span> (getDebugDrawer() &amp;&amp; getDebugDrawer()-&gt;getDebugMode() &amp; btIDebugDraw::DBG_DrawFrames)
+<a name="l01335"></a>01335         {
+<a name="l01336"></a>01336                 getDebugDrawer()-&gt;<a class="code" href="classbt_i_debug_draw.html#6faa8214eebc450104325b6833448b1e">drawTransform</a>(worldTransform,.1);
+<a name="l01337"></a>01337         }
+<a name="l01338"></a>01338 
+<a name="l01339"></a>01339         <span class="keywordflow">if</span> (shape-&gt;getShapeType() == COMPOUND_SHAPE_PROXYTYPE)
+<a name="l01340"></a>01340         {
+<a name="l01341"></a>01341                 <span class="keyword">const</span> btCompoundShape* compoundShape = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>btCompoundShape*<span class="keyword">&gt;</span>(shape);
+<a name="l01342"></a>01342                 <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=compoundShape-&gt;getNumChildShapes()-1;i&gt;=0;i--)
+<a name="l01343"></a>01343                 {
+<a name="l01344"></a>01344                         btTransform childTrans = compoundShape-&gt;getChildTransform(i);
+<a name="l01345"></a>01345                         <span class="keyword">const</span> btCollisionShape* colShape = compoundShape-&gt;getChildShape(i);
+<a name="l01346"></a>01346                         <a class="code" href="classbt_collision_world.html#c1ca6489c220005798069152c3df0d08">debugDrawObject</a>(worldTransform*childTrans,colShape,color);
+<a name="l01347"></a>01347                 }
+<a name="l01348"></a>01348 
+<a name="l01349"></a>01349         } <span class="keywordflow">else</span>
+<a name="l01350"></a>01350         {
+<a name="l01351"></a>01351 
+<a name="l01352"></a>01352         <span class="keywordflow">switch</span> (shape-&gt;getShapeType())
+<a name="l01353"></a>01353         {
+<a name="l01354"></a>01354 
+<a name="l01355"></a>01355         <span class="keywordflow">case</span> BOX_SHAPE_PROXYTYPE:
+<a name="l01356"></a>01356             {
+<a name="l01357"></a>01357                 <span class="keyword">const</span> btBoxShape* boxShape = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>btBoxShape*<span class="keyword">&gt;</span>(shape);
+<a name="l01358"></a>01358                 btVector3 halfExtents = boxShape-&gt;getHalfExtentsWithMargin();
+<a name="l01359"></a>01359                 getDebugDrawer()-&gt;<a class="code" href="classbt_i_debug_draw.html#9c9e46fa03d6296f8b3f57538db6be7f">drawBox</a>(-halfExtents,halfExtents,worldTransform,color);
+<a name="l01360"></a>01360                 <span class="keywordflow">break</span>;
+<a name="l01361"></a>01361             }
+<a name="l01362"></a>01362 
+<a name="l01363"></a>01363         <span class="keywordflow">case</span> SPHERE_SHAPE_PROXYTYPE:
+<a name="l01364"></a>01364             {
+<a name="l01365"></a>01365                 <span class="keyword">const</span> btSphereShape* sphereShape = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>btSphereShape*<span class="keyword">&gt;</span>(shape);
+<a name="l01366"></a>01366                 btScalar radius = sphereShape-&gt;getMargin();<span class="comment">//radius doesn't include the margin, so draw with margin</span>
+<a name="l01367"></a>01367 
+<a name="l01368"></a>01368                 getDebugDrawer()-&gt;<a class="code" href="classbt_i_debug_draw.html#29033d7c4f7d8c1745301bc4b5253f3b">drawSphere</a>(radius, worldTransform, color);
+<a name="l01369"></a>01369                 <span class="keywordflow">break</span>;
+<a name="l01370"></a>01370             }
+<a name="l01371"></a>01371         <span class="keywordflow">case</span> MULTI_SPHERE_SHAPE_PROXYTYPE:
+<a name="l01372"></a>01372             {
+<a name="l01373"></a>01373                 <span class="keyword">const</span> btMultiSphereShape* multiSphereShape = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>btMultiSphereShape*<span class="keyword">&gt;</span>(shape);
+<a name="l01374"></a>01374 
+<a name="l01375"></a>01375                 btTransform childTransform;
+<a name="l01376"></a>01376                 childTransform.setIdentity();
+<a name="l01377"></a>01377 
+<a name="l01378"></a>01378                 <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = multiSphereShape-&gt;getSphereCount()-1; i&gt;=0;i--)
+<a name="l01379"></a>01379                 {
+<a name="l01380"></a>01380                     childTransform.setOrigin(multiSphereShape-&gt;getSpherePosition(i));
+<a name="l01381"></a>01381                     getDebugDrawer()-&gt;<a class="code" href="classbt_i_debug_draw.html#29033d7c4f7d8c1745301bc4b5253f3b">drawSphere</a>(multiSphereShape-&gt;getSphereRadius(i), worldTransform*childTransform, color);
+<a name="l01382"></a>01382                 }
+<a name="l01383"></a>01383 
+<a name="l01384"></a>01384                 <span class="keywordflow">break</span>;
+<a name="l01385"></a>01385             }
+<a name="l01386"></a>01386         <span class="keywordflow">case</span> CAPSULE_SHAPE_PROXYTYPE:
+<a name="l01387"></a>01387             {
+<a name="l01388"></a>01388                 <span class="keyword">const</span> btCapsuleShape* capsuleShape = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>btCapsuleShape*<span class="keyword">&gt;</span>(shape);
+<a name="l01389"></a>01389 
+<a name="l01390"></a>01390                 btScalar radius = capsuleShape-&gt;getRadius();
+<a name="l01391"></a>01391                 btScalar halfHeight = capsuleShape-&gt;getHalfHeight();
+<a name="l01392"></a>01392 
+<a name="l01393"></a>01393                 <span class="keywordtype">int</span> upAxis = capsuleShape-&gt;getUpAxis();
+<a name="l01394"></a>01394                 getDebugDrawer()-&gt;<a class="code" href="classbt_i_debug_draw.html#ec2ac4fe5ee1073a2eeb7f459a22dd87">drawCapsule</a>(radius, halfHeight, upAxis, worldTransform, color);
+<a name="l01395"></a>01395                 <span class="keywordflow">break</span>;
+<a name="l01396"></a>01396             }
+<a name="l01397"></a>01397         <span class="keywordflow">case</span> CONE_SHAPE_PROXYTYPE:
+<a name="l01398"></a>01398             {
+<a name="l01399"></a>01399                 <span class="keyword">const</span> btConeShape* coneShape = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>btConeShape*<span class="keyword">&gt;</span>(shape);
+<a name="l01400"></a>01400                 btScalar radius = coneShape-&gt;getRadius();<span class="comment">//+coneShape-&gt;getMargin();</span>
+<a name="l01401"></a>01401                 btScalar height = coneShape-&gt;getHeight();<span class="comment">//+coneShape-&gt;getMargin();</span>
+<a name="l01402"></a>01402 
+<a name="l01403"></a>01403                 <span class="keywordtype">int</span> upAxis= coneShape-&gt;getConeUpIndex();
+<a name="l01404"></a>01404                 getDebugDrawer()-&gt;<a class="code" href="classbt_i_debug_draw.html#0059af5b0a43dd6b2d464f94938d4d14">drawCone</a>(radius, height, upAxis, worldTransform, color);
+<a name="l01405"></a>01405                 <span class="keywordflow">break</span>;
+<a name="l01406"></a>01406 
+<a name="l01407"></a>01407             }
+<a name="l01408"></a>01408         <span class="keywordflow">case</span> CYLINDER_SHAPE_PROXYTYPE:
+<a name="l01409"></a>01409             {
+<a name="l01410"></a>01410                 <span class="keyword">const</span> btCylinderShape* cylinder = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>btCylinderShape*<span class="keyword">&gt;</span>(shape);
+<a name="l01411"></a>01411                 <span class="keywordtype">int</span> upAxis = cylinder-&gt;getUpAxis();
+<a name="l01412"></a>01412                 btScalar radius = cylinder-&gt;getRadius();
+<a name="l01413"></a>01413                 btScalar halfHeight = cylinder-&gt;getHalfExtentsWithMargin()[upAxis];
+<a name="l01414"></a>01414                 getDebugDrawer()-&gt;<a class="code" href="classbt_i_debug_draw.html#a0f2076c26f158ba5579a07a931fabd6">drawCylinder</a>(radius, halfHeight, upAxis, worldTransform, color);
+<a name="l01415"></a>01415                 <span class="keywordflow">break</span>;
+<a name="l01416"></a>01416             }
+<a name="l01417"></a>01417 
+<a name="l01418"></a>01418         <span class="keywordflow">case</span> STATIC_PLANE_PROXYTYPE:
+<a name="l01419"></a>01419             {
+<a name="l01420"></a>01420                 <span class="keyword">const</span> btStaticPlaneShape* staticPlaneShape = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>btStaticPlaneShape*<span class="keyword">&gt;</span>(shape);
+<a name="l01421"></a>01421                 btScalar planeConst = staticPlaneShape-&gt;getPlaneConstant();
+<a name="l01422"></a>01422                 <span class="keyword">const</span> btVector3&amp; planeNormal = staticPlaneShape-&gt;getPlaneNormal();
+<a name="l01423"></a>01423                 getDebugDrawer()-&gt;<a class="code" href="classbt_i_debug_draw.html#012926f8d101863d8d9d1af6f2fca0a0">drawPlane</a>(planeNormal, planeConst,worldTransform, color);
+<a name="l01424"></a>01424                 <span class="keywordflow">break</span>;
+<a name="l01425"></a>01425 
+<a name="l01426"></a>01426             }
+<a name="l01427"></a>01427         <span class="keywordflow">default</span>:
+<a name="l01428"></a>01428             {
+<a name="l01429"></a>01429 
+<a name="l01431"></a>01431                 <span class="keywordflow">if</span> (shape-&gt;isPolyhedral())
+<a name="l01432"></a>01432                 {
+<a name="l01433"></a>01433                     btPolyhedralConvexShape* polyshape = (btPolyhedralConvexShape*) shape;
+<a name="l01434"></a>01434                     
+<a name="l01435"></a>01435                     <span class="keywordtype">int</span> i;
+<a name="l01436"></a>01436                     <span class="keywordflow">if</span> (polyshape-&gt;getConvexPolyhedron())
+<a name="l01437"></a>01437                     {
+<a name="l01438"></a>01438                         <span class="keyword">const</span> btConvexPolyhedron* poly = polyshape-&gt;getConvexPolyhedron();
+<a name="l01439"></a>01439                         <span class="keywordflow">for</span> (i=0;i&lt;poly-&gt;m_faces.size();i++)
+<a name="l01440"></a>01440                         {
+<a name="l01441"></a>01441                             btVector3 centroid(0,0,0);
+<a name="l01442"></a>01442                             <span class="keywordtype">int</span> numVerts = poly-&gt;m_faces[i].m_indices.size();
+<a name="l01443"></a>01443                             <span class="keywordflow">if</span> (numVerts)
+<a name="l01444"></a>01444                             {
+<a name="l01445"></a>01445                                 <span class="keywordtype">int</span> lastV = poly-&gt;m_faces[i].m_indices[numVerts-1];
+<a name="l01446"></a>01446                                 <span class="keywordflow">for</span> (<span class="keywordtype">int</span> v=0;v&lt;poly-&gt;m_faces[i].m_indices.size();v++)
+<a name="l01447"></a>01447                                 {
+<a name="l01448"></a>01448                                     <span class="keywordtype">int</span> curVert = poly-&gt;m_faces[i].m_indices[v];
+<a name="l01449"></a>01449                                     centroid+=poly-&gt;m_vertices[curVert];
+<a name="l01450"></a>01450                                     getDebugDrawer()-&gt;<a class="code" href="classbt_i_debug_draw.html#07b08e255ab4607ab5aeb24399332aff">drawLine</a>(worldTransform*poly-&gt;m_vertices[lastV],worldTransform*poly-&gt;m_vertices[curVert],color);
+<a name="l01451"></a>01451                                     lastV = curVert;
+<a name="l01452"></a>01452                                 }
+<a name="l01453"></a>01453                             }
+<a name="l01454"></a>01454                             centroid*= btScalar(1.f)/btScalar(numVerts);
+<a name="l01455"></a>01455                             <span class="keywordflow">if</span> (getDebugDrawer()-&gt;getDebugMode() &amp; btIDebugDraw::DBG_DrawNormals)
+<a name="l01456"></a>01456                             {
+<a name="l01457"></a>01457                                 btVector3 normalColor(1,1,0);
+<a name="l01458"></a>01458                                 btVector3 faceNormal(poly-&gt;m_faces[i].m_plane[0],poly-&gt;m_faces[i].m_plane[1],poly-&gt;m_faces[i].m_plane[2]);
+<a name="l01459"></a>01459                                 getDebugDrawer()-&gt;<a class="code" href="classbt_i_debug_draw.html#07b08e255ab4607ab5aeb24399332aff">drawLine</a>(worldTransform*centroid,worldTransform*(centroid+faceNormal),normalColor);
+<a name="l01460"></a>01460                             }
+<a name="l01461"></a>01461                             
+<a name="l01462"></a>01462                         }
+<a name="l01463"></a>01463                         
+<a name="l01464"></a>01464                         
+<a name="l01465"></a>01465                     } <span class="keywordflow">else</span>
+<a name="l01466"></a>01466                     {
+<a name="l01467"></a>01467                         <span class="keywordflow">for</span> (i=0;i&lt;polyshape-&gt;getNumEdges();i++)
+<a name="l01468"></a>01468                         {
+<a name="l01469"></a>01469                             btVector3 a,b;
+<a name="l01470"></a>01470                             polyshape-&gt;getEdge(i,a,b);
+<a name="l01471"></a>01471                             btVector3 wa = worldTransform * a;
+<a name="l01472"></a>01472                             btVector3 wb = worldTransform * b;
+<a name="l01473"></a>01473                             getDebugDrawer()-&gt;<a class="code" href="classbt_i_debug_draw.html#07b08e255ab4607ab5aeb24399332aff">drawLine</a>(wa,wb,color);
+<a name="l01474"></a>01474                         }
+<a name="l01475"></a>01475                     }
+<a name="l01476"></a>01476                     
+<a name="l01477"></a>01477                     
+<a name="l01478"></a>01478                 }
+<a name="l01479"></a>01479                     
+<a name="l01480"></a>01480                 <span class="keywordflow">if</span> (shape-&gt;isConcave())
+<a name="l01481"></a>01481                 {
+<a name="l01482"></a>01482                     btConcaveShape* concaveMesh = (btConcaveShape*) shape;
+<a name="l01483"></a>01483 
+<a name="l01485"></a>01485                     btVector3 aabbMax(btScalar(BT_LARGE_FLOAT),btScalar(BT_LARGE_FLOAT),btScalar(BT_LARGE_FLOAT));
+<a name="l01486"></a>01486                     btVector3 aabbMin(btScalar(-BT_LARGE_FLOAT),btScalar(-BT_LARGE_FLOAT),btScalar(-BT_LARGE_FLOAT));
+<a name="l01487"></a>01487 
+<a name="l01488"></a>01488                     DebugDrawcallback drawCallback(getDebugDrawer(),worldTransform,color);
+<a name="l01489"></a>01489                     concaveMesh-&gt;processAllTriangles(&amp;drawCallback,aabbMin,aabbMax);
+<a name="l01490"></a>01490 
+<a name="l01491"></a>01491                 }
+<a name="l01492"></a>01492 
+<a name="l01493"></a>01493                 <span class="keywordflow">if</span> (shape-&gt;getShapeType() == CONVEX_TRIANGLEMESH_SHAPE_PROXYTYPE)
+<a name="l01494"></a>01494                 {
+<a name="l01495"></a>01495                     btConvexTriangleMeshShape* convexMesh = (btConvexTriangleMeshShape*) shape;
+<a name="l01496"></a>01496                     <span class="comment">//todo: pass camera for some culling                        </span>
+<a name="l01497"></a>01497                     btVector3 aabbMax(btScalar(BT_LARGE_FLOAT),btScalar(BT_LARGE_FLOAT),btScalar(BT_LARGE_FLOAT));
+<a name="l01498"></a>01498                     btVector3 aabbMin(btScalar(-BT_LARGE_FLOAT),btScalar(-BT_LARGE_FLOAT),btScalar(-BT_LARGE_FLOAT));
+<a name="l01499"></a>01499                     <span class="comment">//DebugDrawcallback drawCallback;</span>
+<a name="l01500"></a>01500                     DebugDrawcallback drawCallback(getDebugDrawer(),worldTransform,color);
+<a name="l01501"></a>01501                     convexMesh-&gt;getMeshInterface()-&gt;InternalProcessAllTriangles(&amp;drawCallback,aabbMin,aabbMax);
+<a name="l01502"></a>01502                 }
+<a name="l01503"></a>01503 
+<a name="l01504"></a>01504 
+<a name="l01505"></a>01505                 
+<a name="l01506"></a>01506             }
+<a name="l01507"></a>01507        
+<a name="l01508"></a>01508                 }
+<a name="l01509"></a>01509         }
+<a name="l01510"></a>01510 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_collision_world_c1ca6489c220005798069152c3df0d08_cgraph.png" border="0" usemap="#classbt_collision_world_c1ca6489c220005798069152c3df0d08_cgraph_map" alt=""></center>
+<map name="classbt_collision_world_c1ca6489c220005798069152c3df0d08_cgraph_map">
+<area shape="rect" href="classbt_i_debug_draw.html#9c9e46fa03d6296f8b3f57538db6be7f" title="btIDebugDraw::drawBox" alt="" coords="297,5,457,32"><area shape="rect" href="classbt_i_debug_draw.html#ec2ac4fe5ee1073a2eeb7f459a22dd87" title="btIDebugDraw::drawCapsule" alt="" coords="285,56,469,83"><area shape="rect" href="classbt_i_debug_draw.html#0059af5b0a43dd6b2d464f94938d4d14" title="btIDebugDraw::drawCone" alt="" coords="295,107,460,133"><area shape="rect" href="classbt_i_debug_draw.html#a0f2076c26f158ba5579a07a931fabd6" title="btIDebugDraw::drawCylinder" alt="" coords="285,157,469,184"><area shape="rect" href="classbt_i_debug_draw.html#07b08e255ab4607ab5aeb24399332aff" title="btIDebugDraw::drawLine" alt="" coords="297,208,457,235"><area shape="rect" href="classbt_i_debug_draw.html#012926f8d101863d8d9d1af6f2fca0a0" title="btIDebugDraw::drawPlane" alt="" coords="293,259,461,285"><area shape="rect" href="classbt_i_debug_draw.html#29033d7c4f7d8c1745301bc4b5253f3b" title="btIDebugDraw::drawSphere" alt="" coords="289,309,465,336"><area shape="rect" href="classbt_i_debug_draw.html#6faa8214eebc450104325b6833448b1e" title="btIDebugDraw::drawTransform" alt="" coords="281,360,473,387"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="aac6675c8134f6695fecb431c72b0a6a"></a><!-- doxytag: member="btCollisionWorld::rayTest" ref="aac6675c8134f6695fecb431c72b0a6a" args="(const btVector3 &amp;rayFromWorld, const btVector3 &amp;rayToWorld, RayResultCallback &amp;resultCallback) const " -->
@@ -214,6 +480,35 @@ for polyhedral shapes<p>
 rayTest performs a raycast on all objects in the <a class="el" href="classbt_collision_world.html" title="CollisionWorld is interface and container for the collision detection.">btCollisionWorld</a>, and calls the resultCallback This allows for several queries: first hit, all hits, any hit, dependent on the value returned by the callback. 
 <p>
 use the broadphase to accelerate the search for objects, based on their aabb and for each object with ray-aabb overlap, perform an exact ray test 
+<p>Definition at line <a class="el" href="bt_collision_world_8cpp-source.html#l01008">1008</a> of file <a class="el" href="bt_collision_world_8cpp-source.html">btCollisionWorld.cpp</a>.</p>
+
+<p>References btBroadphaseInterface::rayTest().</p>
+<div class="fragment"><pre class="fragment"><a name="l01009"></a>01009 {
+<a name="l01010"></a>01010         <span class="comment">//BT_PROFILE("rayTest");</span>
+<a name="l01013"></a>01013 <span class="comment"></span>        btSingleRayCallback rayCB(rayFromWorld,rayToWorld,<span class="keyword">this</span>,resultCallback);
+<a name="l01014"></a>01014 
+<a name="l01015"></a>01015 <span class="preprocessor">#ifndef USE_BRUTEFORCE_RAYBROADPHASE</span>
+<a name="l01016"></a>01016 <span class="preprocessor"></span>        m_broadphasePairCache-&gt;<a class="code" href="classbt_broadphase_interface.html#516bf7f981dc4540c32c67820de64e0c">rayTest</a>(rayFromWorld,rayToWorld,rayCB);
+<a name="l01017"></a>01017 <span class="preprocessor">#else</span>
+<a name="l01018"></a>01018 <span class="preprocessor"></span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;this-&gt;getNumCollisionObjects();i++)
+<a name="l01019"></a>01019         {
+<a name="l01020"></a>01020                 rayCB.process(m_collisionObjects[i]-&gt;getBroadphaseHandle());
+<a name="l01021"></a>01021         }       
+<a name="l01022"></a>01022 <span class="preprocessor">#endif //USE_BRUTEFORCE_RAYBROADPHASE</span>
+<a name="l01023"></a>01023 <span class="preprocessor"></span>
+<a name="l01024"></a>01024 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_collision_world_aac6675c8134f6695fecb431c72b0a6a_cgraph.png" border="0" usemap="#classbt_collision_world_aac6675c8134f6695fecb431c72b0a6a_cgraph_map" alt=""></center>
+<map name="classbt_collision_world_aac6675c8134f6695fecb431c72b0a6a_cgraph_map">
+<area shape="rect" href="classbt_broadphase_interface.html#516bf7f981dc4540c32c67820de64e0c" title="btBroadphaseInterface::rayTest" alt="" coords="223,5,423,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="eeee096b94a5eb31e8c88a29b6c69d37"></a><!-- doxytag: member="btCollisionWorld::convexSweepTest" ref="eeee096b94a5eb31e8c88a29b6c69d37" args="(const btConvexShape *castShape, const btTransform &amp;from, const btTransform &amp;to, ConvexResultCallback &amp;resultCallback, btScalar allowedCcdPenetration=btScalar(0.)) const " -->
@@ -263,6 +558,76 @@ use the broadphase to accelerate the search for objects, based on their aabb and
 convexTest performs a swept convex cast on all objects in the <a class="el" href="classbt_collision_world.html" title="CollisionWorld is interface and container for the collision detection.">btCollisionWorld</a>, and calls the resultCallback This allows for several queries: first hit, all hits, any hit, dependent on the value return by the callback. 
 <p>
 use the broadphase to accelerate the search for objects, based on their aabb and for each object with ray-aabb overlap, perform an exact ray test unfortunately the implementation for rayTest and convexSweepTest duplicated, albeit practically identical 
+<p>Definition at line <a class="el" href="bt_collision_world_8cpp-source.html#l01086">1086</a> of file <a class="el" href="bt_collision_world_8cpp-source.html">btCollisionWorld.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_collision_world_8h-source.html#l00364">btCollisionWorld::ConvexResultCallback::needsCollision()</a>, <a class="el" href="bt_collision_world_8cpp-source.html#l00590">objectQuerySingle()</a>, btBroadphaseInterface::rayTest(), and <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l01087"></a>01087 {
+<a name="l01088"></a>01088 
+<a name="l01089"></a>01089         BT_PROFILE(<span class="stringliteral">"convexSweepTest"</span>);
+<a name="l01093"></a>01093 
+<a name="l01094"></a>01094 
+<a name="l01095"></a>01095 
+<a name="l01096"></a>01096         btTransform     convexFromTrans,convexToTrans;
+<a name="l01097"></a>01097         convexFromTrans = convexFromWorld;
+<a name="l01098"></a>01098         convexToTrans = convexToWorld;
+<a name="l01099"></a>01099         btVector3 castShapeAabbMin, castShapeAabbMax;
+<a name="l01100"></a>01100         <span class="comment">/* Compute AABB that encompasses angular movement */</span>
+<a name="l01101"></a>01101         {
+<a name="l01102"></a>01102                 btVector3 linVel, angVel;
+<a name="l01103"></a>01103                 btTransformUtil::calculateVelocity (convexFromTrans, convexToTrans, 1.0f, linVel, angVel);
+<a name="l01104"></a>01104                 btVector3 zeroLinVel;
+<a name="l01105"></a>01105                 zeroLinVel.setValue(0,0,0);
+<a name="l01106"></a>01106                 btTransform R;
+<a name="l01107"></a>01107                 R.setIdentity ();
+<a name="l01108"></a>01108                 R.setRotation (convexFromTrans.getRotation());
+<a name="l01109"></a>01109                 castShape-&gt;calculateTemporalAabb (R, zeroLinVel, angVel, 1.0f, castShapeAabbMin, castShapeAabbMax);
+<a name="l01110"></a>01110         }
+<a name="l01111"></a>01111 
+<a name="l01112"></a>01112 <span class="preprocessor">#ifndef USE_BRUTEFORCE_RAYBROADPHASE</span>
+<a name="l01113"></a>01113 <span class="preprocessor"></span>
+<a name="l01114"></a>01114         btSingleSweepCallback   convexCB(castShape,convexFromWorld,convexToWorld,<span class="keyword">this</span>,resultCallback,allowedCcdPenetration);
+<a name="l01115"></a>01115 
+<a name="l01116"></a>01116         m_broadphasePairCache-&gt;<a class="code" href="classbt_broadphase_interface.html#516bf7f981dc4540c32c67820de64e0c">rayTest</a>(convexFromTrans.getOrigin(),convexToTrans.getOrigin(),convexCB,castShapeAabbMin,castShapeAabbMax);
+<a name="l01117"></a>01117 
+<a name="l01118"></a>01118 <span class="preprocessor">#else</span>
+<a name="l01120"></a>01120 <span class="preprocessor">        // do a ray-shape query using convexCaster (CCD)</span>
+<a name="l01121"></a>01121 <span class="preprocessor"></span>        <span class="keywordtype">int</span> i;
+<a name="l01122"></a>01122         <span class="keywordflow">for</span> (i=0;i&lt;m_collisionObjects.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>();i++)
+<a name="l01123"></a>01123         {
+<a name="l01124"></a>01124                 btCollisionObject*      collisionObject= m_collisionObjects[i];
+<a name="l01125"></a>01125                 <span class="comment">//only perform raycast if filterMask matches</span>
+<a name="l01126"></a>01126                 <span class="keywordflow">if</span>(resultCallback.needsCollision(collisionObject-&gt;getBroadphaseHandle())) {
+<a name="l01127"></a>01127                         <span class="comment">//RigidcollisionObject* collisionObject = ctrl-&gt;GetRigidcollisionObject();</span>
+<a name="l01128"></a>01128                         btVector3 collisionObjectAabbMin,collisionObjectAabbMax;
+<a name="l01129"></a>01129                         collisionObject-&gt;getCollisionShape()-&gt;getAabb(collisionObject-&gt;getWorldTransform(),collisionObjectAabbMin,collisionObjectAabbMax);
+<a name="l01130"></a>01130                         AabbExpand (collisionObjectAabbMin, collisionObjectAabbMax, castShapeAabbMin, castShapeAabbMax);
+<a name="l01131"></a>01131                         btScalar hitLambda = btScalar(1.); <span class="comment">//could use resultCallback.m_closestHitFraction, but needs testing</span>
+<a name="l01132"></a>01132                         btVector3 hitNormal;
+<a name="l01133"></a>01133                         <span class="keywordflow">if</span> (btRayAabb(convexFromWorld.getOrigin(),convexToWorld.getOrigin(),collisionObjectAabbMin,collisionObjectAabbMax,hitLambda,hitNormal))
+<a name="l01134"></a>01134                         {
+<a name="l01135"></a>01135                                 <a class="code" href="classbt_collision_world.html#a63de55ff9451a80c8c825cafd64d9ba" title="objectQuerySingle performs a collision detection query and calls the resultCallback...">objectQuerySingle</a>(castShape, convexFromTrans,convexToTrans,
+<a name="l01136"></a>01136                                         collisionObject,
+<a name="l01137"></a>01137                                         collisionObject-&gt;getCollisionShape(),
+<a name="l01138"></a>01138                                         collisionObject-&gt;getWorldTransform(),
+<a name="l01139"></a>01139                                         resultCallback,
+<a name="l01140"></a>01140                                         allowedCcdPenetration);
+<a name="l01141"></a>01141                         }
+<a name="l01142"></a>01142                 }
+<a name="l01143"></a>01143         }
+<a name="l01144"></a>01144 <span class="preprocessor">#endif //USE_BRUTEFORCE_RAYBROADPHASE</span>
+<a name="l01145"></a>01145 <span class="preprocessor"></span>}
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_collision_world_eeee096b94a5eb31e8c88a29b6c69d37_cgraph.png" border="0" usemap="#classbt_collision_world_eeee096b94a5eb31e8c88a29b6c69d37_cgraph_map" alt=""></center>
+<map name="classbt_collision_world_eeee096b94a5eb31e8c88a29b6c69d37_cgraph_map">
+<area shape="rect" href="structbt_collision_world_1_1_convex_result_callback.html#59ac8d9fbe0b4d416c7c1c950e9298a1" title="btCollisionWorld::ConvexResultCallback::needsCollision" alt="" coords="283,5,627,32"><area shape="rect" href="classbt_collision_world.html#a63de55ff9451a80c8c825cafd64d9ba" title="objectQuerySingle performs a collision detection query and calls the resultCallback..." alt="" coords="340,56,569,83"><area shape="rect" href="classbt_broadphase_interface.html#516bf7f981dc4540c32c67820de64e0c" title="btBroadphaseInterface::rayTest" alt="" coords="355,107,555,133"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="367,157,543,184"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="e1d167b53de82d4f97a47118f8480999"></a><!-- doxytag: member="btCollisionWorld::contactTest" ref="e1d167b53de82d4f97a47118f8480999" args="(btCollisionObject *colObj, ContactResultCallback &amp;resultCallback)" -->
@@ -293,6 +658,28 @@ use the broadphase to accelerate the search for objects, based on their aabb and
 <p>
 contactTest performs a discrete collision test between colObj against all objects in the <a class="el" href="classbt_collision_world.html" title="CollisionWorld is interface and container for the collision detection.">btCollisionWorld</a>, and calls the resultCallback. it reports one or more contact points for every overlapping object (including the one with deepest penetration)<p>
 contactTest performs a discrete collision test against all objects in the <a class="el" href="classbt_collision_world.html" title="CollisionWorld is interface and container for the collision detection.">btCollisionWorld</a>, and calls the resultCallback. it reports one or more contact points for every overlapping object (including the one with deepest penetration) 
+<p>Definition at line <a class="el" href="bt_collision_world_8cpp-source.html#l01252">1252</a> of file <a class="el" href="bt_collision_world_8cpp-source.html">btCollisionWorld.cpp</a>.</p>
+
+<p>References btBroadphaseInterface::aabbTest().</p>
+<div class="fragment"><pre class="fragment"><a name="l01253"></a>01253 {
+<a name="l01254"></a>01254         btVector3 aabbMin,aabbMax;
+<a name="l01255"></a>01255         colObj-&gt;getCollisionShape()-&gt;getAabb(colObj-&gt;getWorldTransform(),aabbMin,aabbMax);
+<a name="l01256"></a>01256         btSingleContactCallback contactCB(colObj,<span class="keyword">this</span>,resultCallback);
+<a name="l01257"></a>01257         
+<a name="l01258"></a>01258         m_broadphasePairCache-&gt;<a class="code" href="classbt_broadphase_interface.html#19d8d870968460c4a191937a3bb8ecc4">aabbTest</a>(aabbMin,aabbMax,contactCB);
+<a name="l01259"></a>01259 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_collision_world_e1d167b53de82d4f97a47118f8480999_cgraph.png" border="0" usemap="#classbt_collision_world_e1d167b53de82d4f97a47118f8480999_cgraph_map" alt=""></center>
+<map name="classbt_collision_world_e1d167b53de82d4f97a47118f8480999_cgraph_map">
+<area shape="rect" href="classbt_broadphase_interface.html#19d8d870968460c4a191937a3bb8ecc4" title="btBroadphaseInterface::aabbTest" alt="" coords="247,5,457,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="abbec542dcd348041db6d07b36a640c8"></a><!-- doxytag: member="btCollisionWorld::contactPairTest" ref="abbec542dcd348041db6d07b36a640c8" args="(btCollisionObject *colObjA, btCollisionObject *colObjB, ContactResultCallback &amp;resultCallback)" -->
@@ -329,6 +716,38 @@ contactTest performs a discrete collision test against all objects in the <a cla
 <p>
 contactTest performs a discrete collision test between two collision objects and calls the resultCallback if overlap if detected. it reports one or more contact points (including the one with deepest penetration)<p>
 contactTest performs a discrete collision test between two collision objects and calls the resultCallback if overlap if detected. it reports one or more contact points (including the one with deepest penetration) 
+<p>Definition at line <a class="el" href="bt_collision_world_8cpp-source.html#l01264">1264</a> of file <a class="el" href="bt_collision_world_8cpp-source.html">btCollisionWorld.cpp</a>.</p>
+
+<p>References btDispatcher::findAlgorithm(), btDispatcher::freeCollisionAlgorithm(), and <a class="el" href="bt_collision_world_8h-source.html#l00415">btCollisionWorld::ContactResultCallback::m_closestDistanceThreshold</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l01265"></a>01265 {
+<a name="l01266"></a>01266         btCollisionObjectWrapper obA(0,colObjA-&gt;getCollisionShape(),colObjA,colObjA-&gt;getWorldTransform(),-1,-1);
+<a name="l01267"></a>01267         btCollisionObjectWrapper obB(0,colObjB-&gt;getCollisionShape(),colObjB,colObjB-&gt;getWorldTransform(),-1,-1);
+<a name="l01268"></a>01268 
+<a name="l01269"></a>01269         <a class="code" href="classbt_collision_algorithm.html">btCollisionAlgorithm</a>* algorithm = getDispatcher()-&gt;<a class="code" href="classbt_dispatcher.html#92504c786a1a3847b9e4790217f4d3dc">findAlgorithm</a>(&amp;obA,&amp;obB, 0, BT_CLOSEST_POINT_ALGORITHMS);
+<a name="l01270"></a>01270         <span class="keywordflow">if</span> (algorithm)
+<a name="l01271"></a>01271         {
+<a name="l01272"></a>01272                 btBridgedManifoldResult contactPointResult(&amp;obA,&amp;obB, resultCallback);
+<a name="l01273"></a>01273                 contactPointResult.m_closestPointDistanceThreshold = resultCallback.m_closestDistanceThreshold;
+<a name="l01274"></a>01274                 <span class="comment">//discrete collision detection query</span>
+<a name="l01275"></a>01275                 algorithm-&gt;processCollision(&amp;obA,&amp;obB, getDispatchInfo(),&amp;contactPointResult);
+<a name="l01276"></a>01276 
+<a name="l01277"></a>01277                 algorithm-&gt;~btCollisionAlgorithm();
+<a name="l01278"></a>01278                 getDispatcher()-&gt;<a class="code" href="classbt_dispatcher.html#70380f4805e189f34a56fcbf3eab5aaf">freeCollisionAlgorithm</a>(algorithm);
+<a name="l01279"></a>01279         }
+<a name="l01280"></a>01280 
+<a name="l01281"></a>01281 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_collision_world_abbec542dcd348041db6d07b36a640c8_cgraph.png" border="0" usemap="#classbt_collision_world_abbec542dcd348041db6d07b36a640c8_cgraph_map" alt=""></center>
+<map name="classbt_collision_world_abbec542dcd348041db6d07b36a640c8_cgraph_map">
+<area shape="rect" href="classbt_dispatcher.html#92504c786a1a3847b9e4790217f4d3dc" title="btDispatcher::findAlgorithm" alt="" coords="296,5,472,32"><area shape="rect" href="classbt_dispatcher.html#70380f4805e189f34a56fcbf3eab5aaf" title="btDispatcher::freeCollisionAlgorithm" alt="" coords="271,56,497,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="ca2a9413508b4a2449fe83ff93ea564e"></a><!-- doxytag: member="btCollisionWorld::rayTestSingle" ref="ca2a9413508b4a2449fe83ff93ea564e" args="(const btTransform &amp;rayFromTrans, const btTransform &amp;rayToTrans, btCollisionObject *collisionObject, const btCollisionShape *collisionShape, const btTransform &amp;colObjWorldTransform, RayResultCallback &amp;resultCallback)" -->
@@ -382,6 +801,25 @@ contactTest performs a discrete collision test between two collision objects and
 
 <p>
 rayTestSingle performs a raycast call and calls the resultCallback. It is used internally by rayTest. In a future implementation, we consider moving the ray test as a virtual method in btCollisionShape. This allows more customization. 
+<p>Definition at line <a class="el" href="bt_collision_world_8cpp-source.html#l00280">280</a> of file <a class="el" href="bt_collision_world_8cpp-source.html">btCollisionWorld.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_collision_world_8cpp-source.html#l00290">rayTestSingleInternal()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00285"></a>00285 {
+<a name="l00286"></a>00286         btCollisionObjectWrapper colObWrap(0,collisionShape,collisionObject,colObjWorldTransform,-1,-1);
+<a name="l00287"></a>00287         <a class="code" href="classbt_collision_world.html#84bbeea09de9dc5c68e49826e58f7114">btCollisionWorld::rayTestSingleInternal</a>(rayFromTrans,rayToTrans,&amp;colObWrap,resultCallback);
+<a name="l00288"></a>00288 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_collision_world_ca2a9413508b4a2449fe83ff93ea564e_cgraph.png" border="0" usemap="#classbt_collision_world_ca2a9413508b4a2449fe83ff93ea564e_cgraph_map" alt=""></center>
+<map name="classbt_collision_world_ca2a9413508b4a2449fe83ff93ea564e_cgraph_map">
+<area shape="rect" href="classbt_collision_world.html#84bbeea09de9dc5c68e49826e58f7114" title="btCollisionWorld::rayTestSingleInternal" alt="" coords="257,56,500,83"><area shape="rect" href="structbt_collision_world_1_1_ray_result_callback.html#86c0f8b2333cc3460b37aa679f5c3b44" title="btCollisionWorld::RayResultCallback::addSingleResult" alt="" coords="549,5,885,32"><area shape="rect" href="classbt_convex_cast.html#baf0f25a8cccfcafdaabada83c8d2bfb" title="cast a convex against another convex object" alt="" coords="611,56,824,83"><area shape="rect" href="structbt_dbvt.html#8e316ee3bc9bd7b7354086c0c558cfb5" title="btDbvt::rayTest" alt="" coords="664,107,771,133"><area shape="rect" href="classbt_aligned_object_array.html#a8d21bd5fe47cfe0216990b78fef665e" title="btAlignedObjectArray::initializeFromBuffer" alt="" coords="935,56,1196,83"><area shape="rect" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190" title="btAlignedObjectArray::resize" alt="" coords="972,107,1159,133"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="977,157,1153,184"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="84bbeea09de9dc5c68e49826e58f7114"></a><!-- doxytag: member="btCollisionWorld::rayTestSingleInternal" ref="84bbeea09de9dc5c68e49826e58f7114" args="(const btTransform &amp;rayFromTrans, const btTransform &amp;rayToTrans, const btCollisionObjectWrapper *collisionObjectWrap, RayResultCallback &amp;resultCallback)" -->
@@ -425,6 +863,327 @@ rayTestSingle performs a raycast call and calls the resultCallback. It is used i
 
 <p>
 optimized version for btBvhTriangleMeshShape 
+<p>Definition at line <a class="el" href="bt_collision_world_8cpp-source.html#l00290">290</a> of file <a class="el" href="bt_collision_world_8cpp-source.html">btCollisionWorld.cpp</a>.</p>
+
+<p>References btCollisionWorld::RayResultCallback::addSingleResult(), <a class="el" href="classbt_convex_cast.html#baf0f25a8cccfcafdaabada83c8d2bfb">btConvexCast::calcTimeOfImpact()</a>, <a class="el" href="bt_collision_world_8h-source.html#l00206">btCollisionWorld::RayResultCallback::m_closestHitFraction</a>, <a class="el" href="bt_collision_world_8h-source.html#l00211">btCollisionWorld::RayResultCallback::m_flags</a>, <a class="el" href="bt_convex_cast_8h-source.html#l00057">btConvexCast::CastResult::m_fraction</a>, <a class="el" href="bt_convex_cast_8h-source.html#l00055">btConvexCast::CastResult::m_normal</a>, <a class="el" href="bt_dbvt_8h-source.html#l00262">btDbvt::m_root</a>, <a class="el" href="bt_collision_world_8h-source.html#l00176">btCollisionWorld::LocalShapeInfo::m_shapePart</a>, <a class="el" href="bt_collision_world_8h-source.html#l00177">btCollisionWorld::LocalShapeInfo::m_triangleIndex</a>, and <a class="el" href="bt_dbvt_8h-source.html#l01060">btDbvt::rayTest()</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_collision_world_8cpp-source.html#l00280">rayTestSingle()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00293"></a>00293 {
+<a name="l00294"></a>00294         btSphereShape pointShape(btScalar(0.0));
+<a name="l00295"></a>00295         pointShape.setMargin(0.f);
+<a name="l00296"></a>00296         <span class="keyword">const</span> btConvexShape* castShape = &amp;pointShape;
+<a name="l00297"></a>00297         <span class="keyword">const</span> btCollisionShape* collisionShape = collisionObjectWrap-&gt;getCollisionShape();
+<a name="l00298"></a>00298         <span class="keyword">const</span> btTransform&amp; colObjWorldTransform = collisionObjectWrap-&gt;getWorldTransform();
+<a name="l00299"></a>00299 
+<a name="l00300"></a>00300         <span class="keywordflow">if</span> (collisionShape-&gt;isConvex())
+<a name="l00301"></a>00301         {
+<a name="l00302"></a>00302                 <span class="comment">//              BT_PROFILE("rayTestConvex");</span>
+<a name="l00303"></a>00303                 <a class="code" href="structbt_convex_cast_1_1_cast_result.html">btConvexCast::CastResult</a> castResult;
+<a name="l00304"></a>00304                 castResult.<a class="code" href="structbt_convex_cast_1_1_cast_result.html#4685e4b6ea1dd8acc76738986555874a">m_fraction</a> = resultCallback.m_closestHitFraction;
+<a name="l00305"></a>00305 
+<a name="l00306"></a>00306                 btConvexShape* convexShape = (btConvexShape*) collisionShape;
+<a name="l00307"></a>00307                 btVoronoiSimplexSolver  simplexSolver;
+<a name="l00308"></a>00308                 <a class="code" href="classbt_subsimplex_convex_cast.html">btSubsimplexConvexCast</a> subSimplexConvexCaster(castShape,convexShape,&amp;simplexSolver);
+<a name="l00309"></a>00309                 
+<a name="l00310"></a>00310                 <a class="code" href="classbt_gjk_convex_cast.html" title="GjkConvexCast performs a raycast on a convex object using support mapping.">btGjkConvexCast</a> gjkConvexCaster(castShape,convexShape,&amp;simplexSolver);
+<a name="l00311"></a>00311                 
+<a name="l00312"></a>00312                 <span class="comment">//btContinuousConvexCollision convexCaster(castShape,convexShape,&amp;simplexSolver,0);</span>
+<a name="l00313"></a>00313 
+<a name="l00314"></a>00314                 <a class="code" href="classbt_convex_cast.html" title="btConvexCast is an interface for Casting">btConvexCast</a>* convexCasterPtr = 0;
+<a name="l00315"></a>00315                 <span class="comment">//use kF_UseSubSimplexConvexCastRaytest by default</span>
+<a name="l00316"></a>00316                 <span class="keywordflow">if</span> (resultCallback.m_flags &amp; btTriangleRaycastCallback::kF_UseGjkConvexCastRaytest)
+<a name="l00317"></a>00317                         convexCasterPtr = &amp;gjkConvexCaster;
+<a name="l00318"></a>00318                 <span class="keywordflow">else</span>
+<a name="l00319"></a>00319                         convexCasterPtr = &amp;subSimplexConvexCaster;
+<a name="l00320"></a>00320                 
+<a name="l00321"></a>00321                 <a class="code" href="classbt_convex_cast.html" title="btConvexCast is an interface for Casting">btConvexCast</a>&amp; convexCaster = *convexCasterPtr;
+<a name="l00322"></a>00322 
+<a name="l00323"></a>00323                 <span class="keywordflow">if</span> (convexCaster.<a class="code" href="classbt_convex_cast.html#baf0f25a8cccfcafdaabada83c8d2bfb" title="cast a convex against another convex object">calcTimeOfImpact</a>(rayFromTrans,rayToTrans,colObjWorldTransform,colObjWorldTransform,castResult))
+<a name="l00324"></a>00324                 {
+<a name="l00325"></a>00325                         <span class="comment">//add hit</span>
+<a name="l00326"></a>00326                         <span class="keywordflow">if</span> (castResult.<a class="code" href="structbt_convex_cast_1_1_cast_result.html#148656b35ce0209617a5f65d60260e5b">m_normal</a>.length2() &gt; btScalar(0.0001))
+<a name="l00327"></a>00327                         {
+<a name="l00328"></a>00328                                 <span class="keywordflow">if</span> (castResult.<a class="code" href="structbt_convex_cast_1_1_cast_result.html#4685e4b6ea1dd8acc76738986555874a">m_fraction</a> &lt; resultCallback.m_closestHitFraction)
+<a name="l00329"></a>00329                                 {
+<a name="l00330"></a>00330                                         <span class="comment">//todo: figure out what this is about. When is rayFromTest.getBasis() not identity?</span>
+<a name="l00331"></a>00331 <span class="preprocessor">#ifdef USE_SUBSIMPLEX_CONVEX_CAST</span>
+<a name="l00332"></a>00332 <span class="preprocessor"></span>                                        <span class="comment">//rotate normal into worldspace</span>
+<a name="l00333"></a>00333                                         castResult.<a class="code" href="structbt_convex_cast_1_1_cast_result.html#148656b35ce0209617a5f65d60260e5b">m_normal</a> = rayFromTrans.getBasis() * castResult.<a class="code" href="structbt_convex_cast_1_1_cast_result.html#148656b35ce0209617a5f65d60260e5b">m_normal</a>;
+<a name="l00334"></a>00334 <span class="preprocessor">#endif //USE_SUBSIMPLEX_CONVEX_CAST</span>
+<a name="l00335"></a>00335 <span class="preprocessor"></span>
+<a name="l00336"></a>00336                                         castResult.<a class="code" href="structbt_convex_cast_1_1_cast_result.html#148656b35ce0209617a5f65d60260e5b">m_normal</a>.normalize();
+<a name="l00337"></a>00337                                         btCollisionWorld::LocalRayResult localRayResult
+<a name="l00338"></a>00338                                                 (
+<a name="l00339"></a>00339                                                 collisionObjectWrap-&gt;getCollisionObject(),
+<a name="l00340"></a>00340                                                 0,
+<a name="l00341"></a>00341                                                 castResult.<a class="code" href="structbt_convex_cast_1_1_cast_result.html#148656b35ce0209617a5f65d60260e5b">m_normal</a>,
+<a name="l00342"></a>00342                                                 castResult.<a class="code" href="structbt_convex_cast_1_1_cast_result.html#4685e4b6ea1dd8acc76738986555874a">m_fraction</a>
+<a name="l00343"></a>00343                                                 );
+<a name="l00344"></a>00344 
+<a name="l00345"></a>00345                                         <span class="keywordtype">bool</span> normalInWorldSpace = <span class="keyword">true</span>;
+<a name="l00346"></a>00346                                         resultCallback.addSingleResult(localRayResult, normalInWorldSpace);
+<a name="l00347"></a>00347 
+<a name="l00348"></a>00348                                 }
+<a name="l00349"></a>00349                         }
+<a name="l00350"></a>00350                 }
+<a name="l00351"></a>00351         } <span class="keywordflow">else</span> {
+<a name="l00352"></a>00352                 <span class="keywordflow">if</span> (collisionShape-&gt;isConcave())
+<a name="l00353"></a>00353                 {
+<a name="l00354"></a>00354 
+<a name="l00355"></a>00355                         <span class="comment">//ConvexCast::CastResult</span>
+<a name="l00356"></a>00356                                 <span class="keyword">struct </span>BridgeTriangleRaycastCallback : <span class="keyword">public</span> btTriangleRaycastCallback
+<a name="l00357"></a>00357                                 {
+<a name="l00358"></a>00358                                         <a class="code" href="structbt_collision_world_1_1_ray_result_callback.html" title="RayResultCallback is used to report new raycast results.">btCollisionWorld::RayResultCallback</a>* m_resultCallback;
+<a name="l00359"></a>00359                                         <span class="keyword">const</span> btCollisionObject*        m_collisionObject;
+<a name="l00360"></a>00360                                         <span class="keyword">const</span> btConcaveShape*   m_triangleMesh;
+<a name="l00361"></a>00361 
+<a name="l00362"></a>00362                                         btTransform m_colObjWorldTransform;
+<a name="l00363"></a>00363 
+<a name="l00364"></a>00364                                         BridgeTriangleRaycastCallback( <span class="keyword">const</span> btVector3&amp; from,<span class="keyword">const</span> btVector3&amp; to,
+<a name="l00365"></a>00365                                         <a class="code" href="structbt_collision_world_1_1_ray_result_callback.html" title="RayResultCallback is used to report new raycast results.">btCollisionWorld::RayResultCallback</a>* resultCallback, <span class="keyword">const</span> btCollisionObject* collisionObject,<span class="keyword">const</span> btConcaveShape*     triangleMesh,<span class="keyword">const</span> btTransform&amp; colObjWorldTransform):
+<a name="l00366"></a>00366                                                 <span class="comment">//@BP Mod</span>
+<a name="l00367"></a>00367                                                 btTriangleRaycastCallback(from,to, resultCallback-&gt;m_flags),
+<a name="l00368"></a>00368                                                         m_resultCallback(resultCallback),
+<a name="l00369"></a>00369                                                         m_collisionObject(collisionObject),
+<a name="l00370"></a>00370                                                         m_triangleMesh(triangleMesh),
+<a name="l00371"></a>00371                                                         m_colObjWorldTransform(colObjWorldTransform)
+<a name="l00372"></a>00372                                                 {
+<a name="l00373"></a>00373                                                 }
+<a name="l00374"></a>00374 
+<a name="l00375"></a>00375 
+<a name="l00376"></a>00376                                         <span class="keyword">virtual</span> btScalar reportHit(<span class="keyword">const</span> btVector3&amp; hitNormalLocal, btScalar hitFraction, <span class="keywordtype">int</span> partId, <span class="keywordtype">int</span> triangleIndex )
+<a name="l00377"></a>00377                                         {
+<a name="l00378"></a>00378                                                 <a class="code" href="structbt_collision_world_1_1_local_shape_info.html">btCollisionWorld::LocalShapeInfo</a>        shapeInfo;
+<a name="l00379"></a>00379                                                 shapeInfo.<a class="code" href="structbt_collision_world_1_1_local_shape_info.html#3390c8534d107c52651b93180d6284d9">m_shapePart</a> = partId;
+<a name="l00380"></a>00380                                                 shapeInfo.<a class="code" href="structbt_collision_world_1_1_local_shape_info.html#2099265fc930533423ee8ef1af10d09e">m_triangleIndex</a> = triangleIndex;
+<a name="l00381"></a>00381 
+<a name="l00382"></a>00382                                                 btVector3 hitNormalWorld = m_colObjWorldTransform.getBasis() * hitNormalLocal;
+<a name="l00383"></a>00383 
+<a name="l00384"></a>00384                                                 btCollisionWorld::LocalRayResult rayResult
+<a name="l00385"></a>00385                                                         (m_collisionObject,
+<a name="l00386"></a>00386                                                         &amp;shapeInfo,
+<a name="l00387"></a>00387                                                         hitNormalWorld,
+<a name="l00388"></a>00388                                                         hitFraction);
+<a name="l00389"></a>00389 
+<a name="l00390"></a>00390                                                 <span class="keywordtype">bool</span>    normalInWorldSpace = <span class="keyword">true</span>;
+<a name="l00391"></a>00391                                                 <span class="keywordflow">return</span> m_resultCallback-&gt;addSingleResult(rayResult,normalInWorldSpace);
+<a name="l00392"></a>00392                                         }
+<a name="l00393"></a>00393 
+<a name="l00394"></a>00394                                 };
+<a name="l00395"></a>00395 
+<a name="l00396"></a>00396                         btTransform worldTocollisionObject = colObjWorldTransform.inverse();
+<a name="l00397"></a>00397                         btVector3 rayFromLocal = worldTocollisionObject * rayFromTrans.getOrigin();
+<a name="l00398"></a>00398                         btVector3 rayToLocal = worldTocollisionObject * rayToTrans.getOrigin();
+<a name="l00399"></a>00399 
+<a name="l00400"></a>00400                         <span class="comment">//                      BT_PROFILE("rayTestConcave");</span>
+<a name="l00401"></a>00401                         <span class="keywordflow">if</span> (collisionShape-&gt;getShapeType()==TRIANGLE_MESH_SHAPE_PROXYTYPE)
+<a name="l00402"></a>00402                         {
+<a name="l00404"></a>00404                                 btBvhTriangleMeshShape* triangleMesh = (btBvhTriangleMeshShape*)collisionShape;
+<a name="l00405"></a>00405                                 
+<a name="l00406"></a>00406                                 BridgeTriangleRaycastCallback rcb(rayFromLocal,rayToLocal,&amp;resultCallback,collisionObjectWrap-&gt;getCollisionObject(),triangleMesh,colObjWorldTransform);
+<a name="l00407"></a>00407                                 rcb.m_hitFraction = resultCallback.m_closestHitFraction;
+<a name="l00408"></a>00408                                 triangleMesh-&gt;performRaycast(&amp;rcb,rayFromLocal,rayToLocal);
+<a name="l00409"></a>00409                         }
+<a name="l00410"></a>00410                         <span class="keywordflow">else</span>
+<a name="l00411"></a>00411                         {
+<a name="l00412"></a>00412                                 <span class="comment">//generic (slower) case</span>
+<a name="l00413"></a>00413                                 btConcaveShape* concaveShape = (btConcaveShape*)collisionShape;
+<a name="l00414"></a>00414 
+<a name="l00415"></a>00415                                 btTransform worldTocollisionObject = colObjWorldTransform.inverse();
+<a name="l00416"></a>00416 
+<a name="l00417"></a>00417                                 btVector3 rayFromLocal = worldTocollisionObject * rayFromTrans.getOrigin();
+<a name="l00418"></a>00418                                 btVector3 rayToLocal = worldTocollisionObject * rayToTrans.getOrigin();
+<a name="l00419"></a>00419 
+<a name="l00420"></a>00420                                 <span class="comment">//ConvexCast::CastResult</span>
+<a name="l00421"></a>00421 
+<a name="l00422"></a>00422                                 <span class="keyword">struct </span>BridgeTriangleRaycastCallback : <span class="keyword">public</span> btTriangleRaycastCallback
+<a name="l00423"></a>00423                                 {
+<a name="l00424"></a>00424                                         <a class="code" href="structbt_collision_world_1_1_ray_result_callback.html" title="RayResultCallback is used to report new raycast results.">btCollisionWorld::RayResultCallback</a>* m_resultCallback;
+<a name="l00425"></a>00425                                         <span class="keyword">const</span> btCollisionObject*        m_collisionObject;
+<a name="l00426"></a>00426                                         btConcaveShape* m_triangleMesh;
+<a name="l00427"></a>00427 
+<a name="l00428"></a>00428                                         btTransform m_colObjWorldTransform;
+<a name="l00429"></a>00429 
+<a name="l00430"></a>00430                                         BridgeTriangleRaycastCallback( <span class="keyword">const</span> btVector3&amp; from,<span class="keyword">const</span> btVector3&amp; to,
+<a name="l00431"></a>00431                                                 <a class="code" href="structbt_collision_world_1_1_ray_result_callback.html" title="RayResultCallback is used to report new raycast results.">btCollisionWorld::RayResultCallback</a>* resultCallback, <span class="keyword">const</span> btCollisionObject* collisionObject,btConcaveShape*   triangleMesh, <span class="keyword">const</span> btTransform&amp; colObjWorldTransform):
+<a name="l00432"></a>00432                                         <span class="comment">//@BP Mod</span>
+<a name="l00433"></a>00433                                         btTriangleRaycastCallback(from,to, resultCallback-&gt;m_flags),
+<a name="l00434"></a>00434                                                 m_resultCallback(resultCallback),
+<a name="l00435"></a>00435                                                 m_collisionObject(collisionObject),
+<a name="l00436"></a>00436                                                 m_triangleMesh(triangleMesh),
+<a name="l00437"></a>00437                                                 m_colObjWorldTransform(colObjWorldTransform)
+<a name="l00438"></a>00438                                         {
+<a name="l00439"></a>00439                                         }
+<a name="l00440"></a>00440 
+<a name="l00441"></a>00441 
+<a name="l00442"></a>00442                                         <span class="keyword">virtual</span> btScalar reportHit(<span class="keyword">const</span> btVector3&amp; hitNormalLocal, btScalar hitFraction, <span class="keywordtype">int</span> partId, <span class="keywordtype">int</span> triangleIndex )
+<a name="l00443"></a>00443                                         {
+<a name="l00444"></a>00444                                                 <a class="code" href="structbt_collision_world_1_1_local_shape_info.html">btCollisionWorld::LocalShapeInfo</a>        shapeInfo;
+<a name="l00445"></a>00445                                                 shapeInfo.<a class="code" href="structbt_collision_world_1_1_local_shape_info.html#3390c8534d107c52651b93180d6284d9">m_shapePart</a> = partId;
+<a name="l00446"></a>00446                                                 shapeInfo.<a class="code" href="structbt_collision_world_1_1_local_shape_info.html#2099265fc930533423ee8ef1af10d09e">m_triangleIndex</a> = triangleIndex;
+<a name="l00447"></a>00447 
+<a name="l00448"></a>00448                                                 btVector3 hitNormalWorld = m_colObjWorldTransform.getBasis() * hitNormalLocal;
+<a name="l00449"></a>00449 
+<a name="l00450"></a>00450                                                 btCollisionWorld::LocalRayResult rayResult
+<a name="l00451"></a>00451                                                         (m_collisionObject,
+<a name="l00452"></a>00452                                                         &amp;shapeInfo,
+<a name="l00453"></a>00453                                                         hitNormalWorld,
+<a name="l00454"></a>00454                                                         hitFraction);
+<a name="l00455"></a>00455 
+<a name="l00456"></a>00456                                                 <span class="keywordtype">bool</span>    normalInWorldSpace = <span class="keyword">true</span>;
+<a name="l00457"></a>00457                                                 <span class="keywordflow">return</span> m_resultCallback-&gt;addSingleResult(rayResult,normalInWorldSpace);
+<a name="l00458"></a>00458                                         }
+<a name="l00459"></a>00459 
+<a name="l00460"></a>00460                                 };
+<a name="l00461"></a>00461 
+<a name="l00462"></a>00462 
+<a name="l00463"></a>00463                                 BridgeTriangleRaycastCallback   rcb(rayFromLocal,rayToLocal,&amp;resultCallback,collisionObjectWrap-&gt;getCollisionObject(),concaveShape, colObjWorldTransform);
+<a name="l00464"></a>00464                                 rcb.m_hitFraction = resultCallback.m_closestHitFraction;
+<a name="l00465"></a>00465 
+<a name="l00466"></a>00466                                 btVector3 rayAabbMinLocal = rayFromLocal;
+<a name="l00467"></a>00467                                 rayAabbMinLocal.setMin(rayToLocal);
+<a name="l00468"></a>00468                                 btVector3 rayAabbMaxLocal = rayFromLocal;
+<a name="l00469"></a>00469                                 rayAabbMaxLocal.setMax(rayToLocal);
+<a name="l00470"></a>00470 
+<a name="l00471"></a>00471                                 concaveShape-&gt;processAllTriangles(&amp;rcb,rayAabbMinLocal,rayAabbMaxLocal);
+<a name="l00472"></a>00472                         }
+<a name="l00473"></a>00473                 } <span class="keywordflow">else</span> {
+<a name="l00474"></a>00474                         <span class="comment">//                      BT_PROFILE("rayTestCompound");</span>
+<a name="l00475"></a>00475                         <span class="keywordflow">if</span> (collisionShape-&gt;isCompound())
+<a name="l00476"></a>00476                         {
+<a name="l00477"></a>00477                                 <span class="keyword">struct </span>LocalInfoAdder2 : <span class="keyword">public</span> RayResultCallback
+<a name="l00478"></a>00478                                 {
+<a name="l00479"></a>00479                                         RayResultCallback* m_userCallback;
+<a name="l00480"></a>00480                                         <span class="keywordtype">int</span> m_i;
+<a name="l00481"></a>00481                                         
+<a name="l00482"></a>00482                                         LocalInfoAdder2 (<span class="keywordtype">int</span> i, RayResultCallback *user)
+<a name="l00483"></a>00483                                                 : m_userCallback(user), m_i(i)
+<a name="l00484"></a>00484                                         { 
+<a name="l00485"></a>00485                                                 m_closestHitFraction = m_userCallback-&gt;m_closestHitFraction;
+<a name="l00486"></a>00486                                                 m_flags = m_userCallback-&gt;m_flags;
+<a name="l00487"></a>00487                                         }
+<a name="l00488"></a>00488                                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> needsCollision(btBroadphaseProxy* p)<span class="keyword"> const</span>
+<a name="l00489"></a>00489 <span class="keyword">                                        </span>{
+<a name="l00490"></a>00490                                                 <span class="keywordflow">return</span> m_userCallback-&gt;needsCollision(p);
+<a name="l00491"></a>00491                                         }
+<a name="l00492"></a>00492 
+<a name="l00493"></a>00493                                         <span class="keyword">virtual</span> btScalar addSingleResult (btCollisionWorld::LocalRayResult &amp;r, <span class="keywordtype">bool</span> b)
+<a name="l00494"></a>00494                                         {
+<a name="l00495"></a>00495                                                 <a class="code" href="structbt_collision_world_1_1_local_shape_info.html">btCollisionWorld::LocalShapeInfo</a> shapeInfo;
+<a name="l00496"></a>00496                                                 shapeInfo.<a class="code" href="structbt_collision_world_1_1_local_shape_info.html#3390c8534d107c52651b93180d6284d9">m_shapePart</a> = -1;
+<a name="l00497"></a>00497                                                 shapeInfo.<a class="code" href="structbt_collision_world_1_1_local_shape_info.html#2099265fc930533423ee8ef1af10d09e">m_triangleIndex</a> = m_i;
+<a name="l00498"></a>00498                                                 <span class="keywordflow">if</span> (r.m_localShapeInfo == NULL)
+<a name="l00499"></a>00499                                                         r.m_localShapeInfo = &amp;shapeInfo;
+<a name="l00500"></a>00500 
+<a name="l00501"></a>00501                                                 <span class="keyword">const</span> btScalar result = m_userCallback-&gt;addSingleResult(r, b);
+<a name="l00502"></a>00502                                                 m_closestHitFraction = m_userCallback-&gt;m_closestHitFraction;
+<a name="l00503"></a>00503                                                 <span class="keywordflow">return</span> result;
+<a name="l00504"></a>00504                                         }
+<a name="l00505"></a>00505                                 };
+<a name="l00506"></a>00506                                 
+<a name="l00507"></a>00507                                 <span class="keyword">struct </span>RayTester : <a class="code" href="structbt_dbvt.html">btDbvt</a>::ICollide
+<a name="l00508"></a>00508                                 {
+<a name="l00509"></a>00509                                         <span class="keyword">const</span> btCollisionObject* m_collisionObject;
+<a name="l00510"></a>00510                                         <span class="keyword">const</span> btCompoundShape* m_compoundShape;
+<a name="l00511"></a>00511                                         <span class="keyword">const</span> btTransform&amp; m_colObjWorldTransform;
+<a name="l00512"></a>00512                                         <span class="keyword">const</span> btTransform&amp; m_rayFromTrans;
+<a name="l00513"></a>00513                                         <span class="keyword">const</span> btTransform&amp; m_rayToTrans;
+<a name="l00514"></a>00514                                         RayResultCallback&amp; m_resultCallback;
+<a name="l00515"></a>00515                                         
+<a name="l00516"></a>00516                                         RayTester(<span class="keyword">const</span> btCollisionObject* collisionObject,
+<a name="l00517"></a>00517                                                         <span class="keyword">const</span> btCompoundShape* compoundShape,
+<a name="l00518"></a>00518                                                         <span class="keyword">const</span> btTransform&amp; colObjWorldTransform,
+<a name="l00519"></a>00519                                                         <span class="keyword">const</span> btTransform&amp; rayFromTrans,
+<a name="l00520"></a>00520                                                         <span class="keyword">const</span> btTransform&amp; rayToTrans,
+<a name="l00521"></a>00521                                                         RayResultCallback&amp; resultCallback):
+<a name="l00522"></a>00522                                                 m_collisionObject(collisionObject),
+<a name="l00523"></a>00523                                                 m_compoundShape(compoundShape),
+<a name="l00524"></a>00524                                                 m_colObjWorldTransform(colObjWorldTransform),
+<a name="l00525"></a>00525                                                 m_rayFromTrans(rayFromTrans),
+<a name="l00526"></a>00526                                                 m_rayToTrans(rayToTrans),
+<a name="l00527"></a>00527                                                 m_resultCallback(resultCallback)
+<a name="l00528"></a>00528                                         {
+<a name="l00529"></a>00529                                                 
+<a name="l00530"></a>00530                                         }
+<a name="l00531"></a>00531                                         
+<a name="l00532"></a>00532                                         <span class="keywordtype">void</span> ProcessLeaf(<span class="keywordtype">int</span> i)
+<a name="l00533"></a>00533                                         {
+<a name="l00534"></a>00534                                                 <span class="keyword">const</span> btCollisionShape* childCollisionShape = m_compoundShape-&gt;getChildShape(i);
+<a name="l00535"></a>00535                                                 <span class="keyword">const</span> btTransform&amp; childTrans = m_compoundShape-&gt;getChildTransform(i);
+<a name="l00536"></a>00536                                                 btTransform childWorldTrans = m_colObjWorldTransform * childTrans;
+<a name="l00537"></a>00537                                                 
+<a name="l00538"></a>00538                                                 btCollisionObjectWrapper tmpOb(0,childCollisionShape,m_collisionObject,childWorldTrans,-1,i);
+<a name="l00539"></a>00539                                                 <span class="comment">// replace collision shape so that callback can determine the triangle</span>
+<a name="l00540"></a>00540 
+<a name="l00541"></a>00541                                                 
+<a name="l00542"></a>00542 
+<a name="l00543"></a>00543                                                 LocalInfoAdder2 my_cb(i, &amp;m_resultCallback);
+<a name="l00544"></a>00544 
+<a name="l00545"></a>00545                                                 <a class="code" href="classbt_collision_world.html#84bbeea09de9dc5c68e49826e58f7114">rayTestSingleInternal</a>(
+<a name="l00546"></a>00546                                                         m_rayFromTrans,
+<a name="l00547"></a>00547                                                         m_rayToTrans,
+<a name="l00548"></a>00548                                                         &amp;tmpOb,
+<a name="l00549"></a>00549                                                         my_cb);
+<a name="l00550"></a>00550                                                 
+<a name="l00551"></a>00551                                         }
+<a name="l00552"></a>00552                                 
+<a name="l00553"></a>00553                                         <span class="keywordtype">void</span> Process(<span class="keyword">const</span> btDbvtNode* leaf)
+<a name="l00554"></a>00554                                         {
+<a name="l00555"></a>00555                                                 ProcessLeaf(leaf-&gt;dataAsInt);
+<a name="l00556"></a>00556                                         }
+<a name="l00557"></a>00557                                 };
+<a name="l00558"></a>00558                                 
+<a name="l00559"></a>00559                                 <span class="keyword">const</span> btCompoundShape* compoundShape = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>btCompoundShape*<span class="keyword">&gt;</span>(collisionShape);
+<a name="l00560"></a>00560                                 <span class="keyword">const</span> <a class="code" href="structbt_dbvt.html">btDbvt</a>* dbvt = compoundShape-&gt;getDynamicAabbTree();
+<a name="l00561"></a>00561 
+<a name="l00562"></a>00562 
+<a name="l00563"></a>00563                                 RayTester rayCB(
+<a name="l00564"></a>00564                                         collisionObjectWrap-&gt;getCollisionObject(),
+<a name="l00565"></a>00565                                         compoundShape,
+<a name="l00566"></a>00566                                         colObjWorldTransform,
+<a name="l00567"></a>00567                                         rayFromTrans,
+<a name="l00568"></a>00568                                         rayToTrans,
+<a name="l00569"></a>00569                                         resultCallback);
+<a name="l00570"></a>00570 <span class="preprocessor">#ifndef DISABLE_DBVT_COMPOUNDSHAPE_RAYCAST_ACCELERATION</span>
+<a name="l00571"></a>00571 <span class="preprocessor"></span>                                <span class="keywordflow">if</span> (dbvt)
+<a name="l00572"></a>00572                                 {
+<a name="l00573"></a>00573                                         btVector3 localRayFrom = colObjWorldTransform.inverseTimes(rayFromTrans).getOrigin();
+<a name="l00574"></a>00574                                         btVector3 localRayTo = colObjWorldTransform.inverseTimes(rayToTrans).getOrigin();
+<a name="l00575"></a>00575                                         <a class="code" href="structbt_dbvt.html#8e316ee3bc9bd7b7354086c0c558cfb5">btDbvt::rayTest</a>(dbvt-&gt;<a class="code" href="structbt_dbvt.html#c79cacfc8471aa681ee8756ca9d5683a">m_root</a>, localRayFrom , localRayTo, rayCB);
+<a name="l00576"></a>00576                                 }
+<a name="l00577"></a>00577                                 <span class="keywordflow">else</span>
+<a name="l00578"></a>00578 <span class="preprocessor">#endif //DISABLE_DBVT_COMPOUNDSHAPE_RAYCAST_ACCELERATION</span>
+<a name="l00579"></a>00579 <span class="preprocessor"></span>                                {
+<a name="l00580"></a>00580                                         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0, n = compoundShape-&gt;getNumChildShapes(); i &lt; n; ++i)
+<a name="l00581"></a>00581                                         {
+<a name="l00582"></a>00582                                                 rayCB.ProcessLeaf(i);
+<a name="l00583"></a>00583                                         }       
+<a name="l00584"></a>00584                                 }
+<a name="l00585"></a>00585                         }
+<a name="l00586"></a>00586                 }
+<a name="l00587"></a>00587         }
+<a name="l00588"></a>00588 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_collision_world_84bbeea09de9dc5c68e49826e58f7114_cgraph.png" border="0" usemap="#classbt_collision_world_84bbeea09de9dc5c68e49826e58f7114_cgraph_map" alt=""></center>
+<map name="classbt_collision_world_84bbeea09de9dc5c68e49826e58f7114_cgraph_map">
+<area shape="rect" href="structbt_collision_world_1_1_ray_result_callback.html#86c0f8b2333cc3460b37aa679f5c3b44" title="btCollisionWorld::RayResultCallback::addSingleResult" alt="" coords="299,5,635,32"><area shape="rect" href="classbt_convex_cast.html#baf0f25a8cccfcafdaabada83c8d2bfb" title="cast a convex against another convex object" alt="" coords="360,56,573,83"><area shape="rect" href="structbt_dbvt.html#8e316ee3bc9bd7b7354086c0c558cfb5" title="btDbvt::rayTest" alt="" coords="413,107,520,133"><area shape="rect" href="classbt_aligned_object_array.html#a8d21bd5fe47cfe0216990b78fef665e" title="btAlignedObjectArray::initializeFromBuffer" alt="" coords="684,56,945,83"><area shape="rect" href="classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190" title="btAlignedObjectArray::resize" alt="" coords="721,107,908,133"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="727,157,903,184"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_collision_world_84bbeea09de9dc5c68e49826e58f7114_icgraph.png" border="0" usemap="#classbt_collision_world_84bbeea09de9dc5c68e49826e58f7114_icgraph_map" alt=""></center>
+<map name="classbt_collision_world_84bbeea09de9dc5c68e49826e58f7114_icgraph_map">
+<area shape="rect" href="classbt_collision_world.html#ca2a9413508b4a2449fe83ff93ea564e" title="btCollisionWorld::rayTestSingle" alt="" coords="299,5,501,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
@@ -441,12 +1200,14 @@ optimized version for btBvhTriangleMeshShape
 
 <p>
 m_forceUpdateAllAabbs can be set to false as an optimization to only update active object AABBs it is true by default, because it is error-prone (setting the position of static objects wouldn't update their AABB) 
+<p>Definition at line <a class="el" href="bt_collision_world_8h-source.html#l00106">106</a> of file <a class="el" href="bt_collision_world_8h-source.html">btCollisionWorld.h</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCollisionWorld.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btCollisionWorld.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/<a class="el" href="bt_collision_world_8h-source.html">btCollisionWorld.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/<a class="el" href="bt_collision_world_8cpp-source.html">btCollisionWorld.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:11 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:49 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

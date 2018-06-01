@@ -1,3 +1,6 @@
-<area shape="rect" href="$classbt_triangle_callback.html" title="btTriangleCallback" alt="" coords="5,96,133,123">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btTriangle \&gt;" alt="" coords="157,96,381,123">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btTriangle, 16 \&gt;" alt="" coords="156,5,383,32">
+<area shape="rect" href="$classbt_triangle_callback.html" title="btTriangleCallback" alt="" coords="5,288,133,315">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btTriangle \&gt;" alt="" coords="157,288,381,315">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btTriangle, 16 \&gt;" alt="" coords="84,147,311,173">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="163,5,387,32">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="257,96,436,123">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="271,197,447,224">

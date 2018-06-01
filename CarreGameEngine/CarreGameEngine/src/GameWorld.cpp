@@ -156,17 +156,25 @@ void GameWorld::UpdatePhysics()
 			compAI->Update();
 
 			Vector2 tempPos = compAI->GetPosition();
+			std::cout << tempPos << std::endl;
 			itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));
+		}
+
+		if (itr->first == "knight2")
+		{
+			compAI = itr->second->GetAI();
+			compAI->Update();
+
+			Vector2 tempPos2 = compAI->GetPosition();
+
+			glm::vec3 temp2 = glm::vec3(tempPos2.x, m_terrains[0]->GetAverageHeight(tempPos2.x, tempPos2.z) + 100, tempPos2.z);
+
+			itr->second->SetPosition(glm::vec3(tempPos2.x, temp2.y, tempPos2.z));
+			m_glRenderer.Render(itr->second->GetModel());
 		}
 
 		if (itr->first == "knight")
 		{
-			/*compAI = itr->second->GetAI();
-			compAI->Update();
-
-			Vector2 tempPos = compAI->GetPosition();
-			itr->second->SetPosition(glm::vec3(tempPos.x, temp.y, tempPos.z));*/
-
 			for (int j = 0; j < numOfKnights; j++)
 			{
 				rX = m_collisionBodyPos[i].x();

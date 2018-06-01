@@ -1,0 +1,24 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btCollisionWorld::debugDrawObject",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btIDebugDraw::drawBox",height=0.2,width=0.4,color="black",URL="$classbt_i_debug_draw.html#9c9e46fa03d6296f8b3f57538db6be7f"];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btIDebugDraw::drawCapsule",height=0.2,width=0.4,color="black",URL="$classbt_i_debug_draw.html#ec2ac4fe5ee1073a2eeb7f459a22dd87"];
+  Node1 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="btIDebugDraw::drawCone",height=0.2,width=0.4,color="black",URL="$classbt_i_debug_draw.html#0059af5b0a43dd6b2d464f94938d4d14"];
+  Node1 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="btIDebugDraw::drawCylinder",height=0.2,width=0.4,color="black",URL="$classbt_i_debug_draw.html#a0f2076c26f158ba5579a07a931fabd6"];
+  Node1 -> Node6 [color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="btIDebugDraw::drawLine",height=0.2,width=0.4,color="black",URL="$classbt_i_debug_draw.html#07b08e255ab4607ab5aeb24399332aff"];
+  Node1 -> Node7 [color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="btIDebugDraw::drawPlane",height=0.2,width=0.4,color="black",URL="$classbt_i_debug_draw.html#012926f8d101863d8d9d1af6f2fca0a0"];
+  Node1 -> Node8 [color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="btIDebugDraw::drawSphere",height=0.2,width=0.4,color="black",URL="$classbt_i_debug_draw.html#29033d7c4f7d8c1745301bc4b5253f3b"];
+  Node1 -> Node9 [color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="btIDebugDraw::drawTransform",height=0.2,width=0.4,color="black",URL="$classbt_i_debug_draw.html#6faa8214eebc450104325b6833448b1e"];
+}

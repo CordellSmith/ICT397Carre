@@ -1,0 +1,5 @@
+<area shape="rect" href="$classb3_quaternion.html#b5c827a4e5e0733a2c93d0856cf86a47" title="Return the angle of rotation represented by this quaternion." alt="" coords="304,5,461,32">
+<area shape="rect" href="$classb3_quaternion.html#96d3f4aedcb4b645115ab5a7897fa0d1" title="Normalize the quaternion Such that x^2 + y^2 + z^2 +w^2 = 1." alt="" coords="301,56,464,83">
+<area shape="rect" href="$classb3_quaternion.html#d008f8dd2f6dbd5ac86f3b02a10ef4a6" title="Return the length of the quaternion." alt="" coords="512,56,653,83">
+<area shape="rect" href="$classb3_quaternion.html#a8d3d563ea89e36794d63bd289934509" title="Return the length squared of the quaternion." alt="" coords="703,56,849,83">
+<area shape="rect" href="$classb3_quaternion.html#747537c86fc2d63a6fc43db811952634" title="Return the dot product between this quaternion and another." alt="" coords="900,56,1023,83">

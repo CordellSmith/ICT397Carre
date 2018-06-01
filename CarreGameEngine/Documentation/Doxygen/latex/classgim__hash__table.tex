@@ -147,6 +147,8 @@ A memory aligned compact hash table that coud be treated as an array. It could b
 \item if node\_\-size = 0, then this container becomes a simple sorted array allocator. reserve\_\-size is used for reserve memory in m\_\-nodes. When the array size reaches the size equivalent to 'min\_\-hash\_\-table\_\-size', then it becomes a hash table by calling check\_\-for\_\-switching\_\-to\_\-hashtable. \item If node\_\-size != 0, then this container becomes a hash table for ever \end{itemize}
 
 
+Definition at line 191 of file gim\_\-hash\_\-table.h.
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classgim__hash__table_efe21c907c69c8077ec0886aaa778f6f}{
 \index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!gim\_\-hash\_\-table@{gim\_\-hash\_\-table}}
@@ -156,6 +158,46 @@ A memory aligned compact hash table that coud be treated as an array. It could b
 
 
 if node\_\-size = 0, then this container becomes a simple sorted array allocator. reserve\_\-size is used for reserve memory in m\_\-nodes. When the array size reaches the size equivalent to 'min\_\-hash\_\-table\_\-size', then it becomes a hash table by calling check\_\-for\_\-switching\_\-to\_\-hashtable.  If node\_\-size != 0, then this container becomes a hash table for ever  
+
+Definition at line 573 of file gim\_\-hash\_\-table.h.
+
+References gim\_\-hash\_\-table$<$ T $>$::\_\-reserve\_\-table\_\-memory(), gim\_\-hash\_\-table$<$ T $>$::m\_\-hash\_\-table, and gim\_\-hash\_\-table$<$ T $>$::m\_\-nodes.
+
+\begin{Code}\begin{verbatim}576     {
+577         m_hash_table = NULL;
+578         m_table_size = 0;
+579         m_sorted = false;
+580         m_node_size = node_size;
+581         m_min_hash_table_size = min_hash_table_size;
+582 
+583         if(m_node_size!=0)
+584         {
+585             if(reserve_size!=0)
+586             {
+587                 m_nodes.reserve(reserve_size);
+588                 _reserve_table_memory(reserve_size);
+589                 _invalidate_keys();
+590             }
+591             else
+592             {
+593                 m_nodes.reserve(GIM_DEFAULT_HASH_TABLE_SIZE);
+594                 _reserve_table_memory(GIM_DEFAULT_HASH_TABLE_SIZE);
+595                 _invalidate_keys();
+596             }
+597         }
+598         else if(reserve_size!=0)
+599         {
+600             m_nodes.reserve(reserve_size);
+601         }
+602 
+603     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
 
 \subsection{Member Function Documentation}
 \hypertarget{classgim__hash__table_4d9347e131c0e17ac2d4966c092817f8}{
@@ -171,7 +213,33 @@ reserves the memory for the hash table.
 \item[Precondition:]hash table must be empty \end{Desc}
 \begin{Desc}
 \item[Postcondition:]reserves the memory for the hash table, an initializes all elements to GIM\_\-INVALID\_\-HASH. \end{Desc}
-\hypertarget{classgim__hash__table_4339a279d721d1e687b8d8063332bac8}{
+
+
+Definition at line 263 of file gim\_\-hash\_\-table.h.
+
+References gim\_\-hash\_\-table$<$ T $>$::m\_\-hash\_\-table.
+
+Referenced by gim\_\-hash\_\-table$<$ T $>$::\_\-resize\_\-table(), and gim\_\-hash\_\-table$<$ T $>$::gim\_\-hash\_\-table().
+
+\begin{Code}\begin{verbatim}264     {
+265         if(newtablesize==0) return;
+266         if(m_node_size==0) return;
+267 
+268         //Get a Prime size
+269 
+270         m_table_size = gim_next_prime(newtablesize);
+271 
+272         GUINT datasize = m_table_size*m_node_size;
+273         //Alloc the data buffer
+274         m_hash_table =  (GUINT *)gim_alloc(datasize*sizeof(GUINT));
+275     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classgim__hash__table_4339a279d721d1e687b8d8063332bac8}{
 \index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!\_\-insert\_\-hash\_\-table@{\_\-insert\_\-hash\_\-table}}
 \index{\_\-insert\_\-hash\_\-table@{\_\-insert\_\-hash\_\-table}!gim_hash_table@{gim\_\-hash\_\-table}}
 \subsubsection[\_\-insert\_\-hash\_\-table]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ GUINT {\bf gim\_\-hash\_\-table}$<$ T $>$::\_\-insert\_\-hash\_\-table (GUINT {\em hashkey}, \/  const T \& {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
@@ -182,7 +250,42 @@ insert an element in hash table
 
 If the element exists, this won't insert the element \begin{Desc}
 \item[Returns:]the index in the array of the existing element,or GIM\_\-INVALID\_\-HASH if the element has been inserted If so, the element has been inserted at the last position of the array. \end{Desc}
-\hypertarget{classgim__hash__table_6ebfb7415bd946855ec5730651f7c191}{
+
+
+Definition at line 399 of file gim\_\-hash\_\-table.h.
+
+References gim\_\-hash\_\-table$<$ T $>$::\_\-assign\_\-hash\_\-table\_\-cell(), gim\_\-hash\_\-table$<$ T $>$::\_\-insert\_\-unsorted(), gim\_\-hash\_\-table$<$ T $>$::m\_\-hash\_\-table, and gim\_\-hash\_\-table$<$ T $>$::m\_\-nodes.
+
+Referenced by gim\_\-hash\_\-table$<$ T $>$::insert(), and gim\_\-hash\_\-table$<$ T $>$::insert\_\-unsorted().
+
+\begin{Code}\begin{verbatim}400     {
+401         if(hashkey==GIM_INVALID_HASH)
+402         {
+403             //Insert anyway
+404             _insert_unsorted(hashkey,value);
+405             return GIM_INVALID_HASH;
+406         }
+407 
+408         GUINT cell_index = _assign_hash_table_cell(hashkey);
+409 
+410         GUINT value_key = m_hash_table[cell_index];
+411 
+412         if(value_key!= GIM_INVALID_HASH) return value_key;// Not overrited
+413 
+414         m_hash_table[cell_index] = m_nodes.size();
+415 
+416         _insert_unsorted(hashkey,value);
+417         return GIM_INVALID_HASH;
+418     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classgim__hash__table_6ebfb7415bd946855ec5730651f7c191}{
 \index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!\_\-insert\_\-hash\_\-table\_\-replace@{\_\-insert\_\-hash\_\-table\_\-replace}}
 \index{\_\-insert\_\-hash\_\-table\_\-replace@{\_\-insert\_\-hash\_\-table\_\-replace}!gim_hash_table@{gim\_\-hash\_\-table}}
 \subsubsection[\_\-insert\_\-hash\_\-table\_\-replace]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ GUINT {\bf gim\_\-hash\_\-table}$<$ T $>$::\_\-insert\_\-hash\_\-table\_\-replace (GUINT {\em hashkey}, \/  const T \& {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
@@ -193,7 +296,47 @@ insert an element in hash table.
 
 If the element exists, this replaces the element. \begin{Desc}
 \item[Returns:]the index in the array of the existing element,or GIM\_\-INVALID\_\-HASH if the element has been inserted If so, the element has been inserted at the last position of the array. \end{Desc}
-\hypertarget{classgim__hash__table_3eacaf88e1b18815c0b89d368d77a93a}{
+
+
+Definition at line 426 of file gim\_\-hash\_\-table.h.
+
+References gim\_\-hash\_\-table$<$ T $>$::\_\-assign\_\-hash\_\-table\_\-cell(), gim\_\-hash\_\-table$<$ T $>$::\_\-insert\_\-unsorted(), gim\_\-hash\_\-table$<$ T $>$::m\_\-hash\_\-table, and gim\_\-hash\_\-table$<$ T $>$::m\_\-nodes.
+
+Referenced by gim\_\-hash\_\-table$<$ T $>$::insert\_\-override().
+
+\begin{Code}\begin{verbatim}427     {
+428         if(hashkey==GIM_INVALID_HASH)
+429         {
+430             //Insert anyway
+431             _insert_unsorted(hashkey,value);
+432             return GIM_INVALID_HASH;
+433         }
+434 
+435         GUINT cell_index = _assign_hash_table_cell(hashkey);
+436 
+437         GUINT value_key = m_hash_table[cell_index];
+438 
+439         if(value_key!= GIM_INVALID_HASH)
+440         {//replaces the existing
+441             m_nodes[value_key] = _node_type(hashkey,value);
+442             return value_key;// index of the replaced element
+443         }
+444 
+445         m_hash_table[cell_index] = m_nodes.size();
+446 
+447         _insert_unsorted(hashkey,value);
+448         return GIM_INVALID_HASH;
+449 
+450     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classgim__hash__table_3eacaf88e1b18815c0b89d368d77a93a}{
 \index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!\_\-insert\_\-in\_\-pos@{\_\-insert\_\-in\_\-pos}}
 \index{\_\-insert\_\-in\_\-pos@{\_\-insert\_\-in\_\-pos}!gim_hash_table@{gim\_\-hash\_\-table}}
 \subsubsection[\_\-insert\_\-in\_\-pos]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf gim\_\-hash\_\-table}$<$ T $>$::\_\-insert\_\-in\_\-pos (GUINT {\em hashkey}, \/  const T \& {\em value}, \/  GUINT {\em pos})\hspace{0.3cm}{\tt  \mbox{[}inline, protected\mbox{]}}}}
@@ -202,7 +345,27 @@ If the element exists, this replaces the element. \begin{Desc}
 
 Insert in position ordered. 
 
-Also checks if it is needed to transform this container to a hash table, by calling check\_\-for\_\-switching\_\-to\_\-hashtable \hypertarget{classgim__hash__table_14261b2d7de34188f8bc5179e4d60760}{
+Also checks if it is needed to transform this container to a hash table, by calling check\_\-for\_\-switching\_\-to\_\-hashtable 
+
+Definition at line 489 of file gim\_\-hash\_\-table.h.
+
+References gim\_\-hash\_\-table$<$ T $>$::check\_\-for\_\-switching\_\-to\_\-hashtable(), and gim\_\-hash\_\-table$<$ T $>$::m\_\-nodes.
+
+Referenced by gim\_\-hash\_\-table$<$ T $>$::\_\-insert\_\-sorted().
+
+\begin{Code}\begin{verbatim}490     {
+491         m_nodes.insert(_node_type(hashkey,value),pos);
+492         this->check_for_switching_to_hashtable();
+493     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classgim__hash__table_14261b2d7de34188f8bc5179e4d60760}{
 \index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!find@{find}}
 \index{find@{find}!gim_hash_table@{gim\_\-hash\_\-table}}
 \subsubsection[find]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ GUINT {\bf gim\_\-hash\_\-table}$<$ T $>$::find (GUINT {\em hashkey})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -213,7 +376,51 @@ Finds the index of the element with the key.
 
 \begin{Desc}
 \item[Returns:]the index in the array of the existing element,or GIM\_\-INVALID\_\-HASH if the element has been inserted If so, the element has been inserted at the last position of the array. \end{Desc}
-\hypertarget{classgim__hash__table_40b5c46a0117da3948cd1b093f185321}{
+
+
+Definition at line 723 of file gim\_\-hash\_\-table.h.
+
+References gim\_\-hash\_\-table$<$ T $>$::\_\-find\_\-cell(), gim\_\-binary\_\-search\_\-ex(), gim\_\-hash\_\-table$<$ T $>$::m\_\-hash\_\-table, and gim\_\-hash\_\-table$<$ T $>$::m\_\-nodes.
+
+Referenced by gim\_\-hash\_\-table$<$ T $>$::get\_\-value().
+
+\begin{Code}\begin{verbatim}724     {
+725         if(m_hash_table)
+726         {
+727             GUINT cell_index = _find_cell(hashkey);
+728             if(cell_index==GIM_INVALID_HASH) return GIM_INVALID_HASH;
+729             return m_hash_table[cell_index];
+730         }
+731                 GUINT last_index = m_nodes.size();
+732         if(last_index<2)
+733         {
+734                         if(last_index==0) return GIM_INVALID_HASH;
+735             if(m_nodes[0].m_key == hashkey) return 0;
+736             return GIM_INVALID_HASH;
+737         }
+738         else if(m_sorted)
+739         {
+740             //Binary search
+741             GUINT result_ind = 0;
+742                         last_index--;
+743             _node_type *  ptr =  m_nodes.pointer();
+744 
+745             bool found = gim_binary_search_ex(ptr,0,last_index,result_ind,hashkey,GIM_HASH_NODE_CMP_KEY_MACRO());
+746 
+747 
+748             if(found) return result_ind;
+749         }
+750         return GIM_INVALID_HASH;
+751     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classgim__hash__table_40b5c46a0117da3948cd1b093f185321}{
 \index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!get\_\-value@{get\_\-value}}
 \index{get\_\-value@{get\_\-value}!gim_hash_table@{gim\_\-hash\_\-table}}
 \subsubsection[get\_\-value]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T$\ast$ {\bf gim\_\-hash\_\-table}$<$ T $>$::get\_\-value (GUINT {\em hashkey})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -224,7 +431,24 @@ Retrieves the value associated with the index.
 
 \begin{Desc}
 \item[Returns:]the found element, or null \end{Desc}
-\hypertarget{classgim__hash__table_ff0e9bdb5bd6aacf9272db6789c514f7}{
+
+
+Definition at line 757 of file gim\_\-hash\_\-table.h.
+
+References gim\_\-hash\_\-table$<$ T $>$::find(), and gim\_\-hash\_\-table$<$ T $>$::m\_\-nodes.
+
+\begin{Code}\begin{verbatim}758     {
+759         GUINT index = find(hashkey);
+760         if(index == GIM_INVALID_HASH) return NULL;
+761         return &m_nodes[index].m_data;
+762     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classgim__hash__table_ff0e9bdb5bd6aacf9272db6789c514f7}{
 \index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!insert@{insert}}
 \index{insert@{insert}!gim_hash_table@{gim\_\-hash\_\-table}}
 \subsubsection[insert]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ GUINT {\bf gim\_\-hash\_\-table}$<$ T $>$::insert (GUINT {\em hashkey}, \/  const T \& {\em element})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -235,7 +459,30 @@ Insert an element into the hash.
 
 \begin{Desc}
 \item[Returns:]If GIM\_\-INVALID\_\-HASH, the object has been inserted succesfully. Else it returns the position of the existing element. \end{Desc}
-\hypertarget{classgim__hash__table_83987136757654921c71b183de8ec55e}{
+
+
+Definition at line 851 of file gim\_\-hash\_\-table.h.
+
+References gim\_\-hash\_\-table$<$ T $>$::\_\-insert\_\-hash\_\-table(), gim\_\-hash\_\-table$<$ T $>$::\_\-insert\_\-sorted(), gim\_\-hash\_\-table$<$ T $>$::\_\-insert\_\-unsorted(), and gim\_\-hash\_\-table$<$ T $>$::m\_\-hash\_\-table.
+
+\begin{Code}\begin{verbatim}852     {
+853         if(m_hash_table)
+854         {
+855             return this->_insert_hash_table(hashkey,element);
+856         }
+857         if(this->is_sorted())
+858         {
+859             return this->_insert_sorted(hashkey,element);
+860         }
+861         return this->_insert_unsorted(hashkey,element);
+862     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classgim__hash__table_83987136757654921c71b183de8ec55e}{
 \index{gim\_\-hash\_\-table@{gim\_\-hash\_\-table}!insert\_\-override@{insert\_\-override}}
 \index{insert\_\-override@{insert\_\-override}!gim_hash_table@{gim\_\-hash\_\-table}}
 \subsubsection[insert\_\-override]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ GUINT {\bf gim\_\-hash\_\-table}$<$ T $>$::insert\_\-override (GUINT {\em hashkey}, \/  const T \& {\em element})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -248,6 +495,30 @@ Insert an element into the hash, and could overrite an existing object with the 
 \item[Returns:]If GIM\_\-INVALID\_\-HASH, the object has been inserted succesfully. Else it returns the position of the replaced element. \end{Desc}
 
 
+Definition at line 869 of file gim\_\-hash\_\-table.h.
+
+References gim\_\-hash\_\-table$<$ T $>$::\_\-insert\_\-hash\_\-table\_\-replace(), gim\_\-hash\_\-table$<$ T $>$::\_\-insert\_\-unsorted(), gim\_\-hash\_\-table$<$ T $>$::m\_\-hash\_\-table, and gim\_\-hash\_\-table$<$ T $>$::m\_\-nodes.
+
+\begin{Code}\begin{verbatim}870     {
+871         if(m_hash_table)
+872         {
+873             return this->_insert_hash_table_replace(hashkey,element);
+874         }
+875         if(this->is_sorted())
+876         {
+877             return this->_insert_sorted_replace(hashkey,element);
+878         }
+879         this->_insert_unsorted(hashkey,element);
+880         return m_nodes.size();
+881     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-hash\_\-table.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-hash\_\-table.h\end{CompactItemize}

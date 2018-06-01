@@ -1,0 +1,16 @@
+<area shape="rect" href="$group__gtc__type__ptr.html#g49c18920c113e1e72caea1c3978c8e7f" title="glm::make_mat2x2" alt="" coords="156,5,287,32">
+<area shape="rect" href="$group__gtc__type__ptr.html#g86620b90c993ff8e31f0dff1611bd2da" title="glm::make_mat2x3" alt="" coords="156,56,287,83">
+<area shape="rect" href="$group__gtc__type__ptr.html#g50245f47c0e6f5a2ab5ce157dc3e97ac" title="glm::make_mat2x4" alt="" coords="156,107,287,133">
+<area shape="rect" href="$group__gtc__type__ptr.html#g6c7d94e71f8df512fca44427311baeae" title="glm::make_mat3x2" alt="" coords="156,157,287,184">
+<area shape="rect" href="$group__gtc__type__ptr.html#g206b172296286d333b0ff92e77b28b66" title="glm::make_mat3x3" alt="" coords="156,208,287,235">
+<area shape="rect" href="$group__gtc__type__ptr.html#g81d4d38acbaded29fb07ca282f089122" title="glm::make_mat3x4" alt="" coords="156,259,287,285">
+<area shape="rect" href="$group__gtc__type__ptr.html#gc253e8157af1e4ec366c80d4bd90cbb2" title="glm::make_mat4x2" alt="" coords="156,309,287,336">
+<area shape="rect" href="$group__gtc__type__ptr.html#gc375314134d9b3736395a4eda2602590" title="glm::make_mat4x3" alt="" coords="156,360,287,387">
+<area shape="rect" href="$group__gtc__type__ptr.html#g74e671ae9dc7e5e8f21aa44ea263d76e" title="glm::make_mat4x4" alt="" coords="156,411,287,437">
+<area shape="rect" href="$group__gtc__type__ptr.html#gac5b8f1104856835d3d65d854362c85b" title="glm::make_quat" alt="" coords="164,461,279,488">
+<area shape="rect" href="$group__gtc__type__ptr.html#g7009d8090f046d1ce98e59df584fff46" title="glm::make_vec2" alt="" coords="164,512,279,539">
+<area shape="rect" href="$group__gtc__type__ptr.html#g0b727d0acba617ec7b9af9f06892336a" title="glm::make_vec3" alt="" coords="164,563,279,589">
+<area shape="rect" href="$group__gtc__type__ptr.html#gf44d3c8aa09a7a8021ae5312e2f1f091" title="glm::make_vec4" alt="" coords="164,613,279,640">
+<area shape="rect" href="$group__gtc__type__ptr.html#g08f35700be4d2e627da4d894edfa1b60" title="glm::make_mat2" alt="" coords="337,5,455,32">
+<area shape="rect" href="$group__gtc__type__ptr.html#g63c04b2cd2367a06e9817a66b5025662" title="glm::make_mat3" alt="" coords="337,208,455,235">
+<area shape="rect" href="$group__gtc__type__ptr.html#g082261bc3bf4a6d320d6beaebcbaf1db" title="glm::make_mat4" alt="" coords="337,411,455,437">

@@ -1,0 +1,349 @@
+\hypertarget{class_state_machine}{
+\section{StateMachine$<$ entity\_\-type $>$ Class Template Reference}
+\label{class_state_machine}\index{StateMachine@{StateMachine}}
+}
+A template FSM class.  
+
+
+{\tt \#include $<$StateMachine.h$>$}
+
+Inheritance diagram for StateMachine$<$ entity\_\-type $>$:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_state_machine_4a60d2af8f9977d4f5cf2e9e18b93eae}{StateMachine} (entity\_\-type $\ast$FSMowner)
+\begin{CompactList}\small\item\em Non-default constructor. \item\end{CompactList}\item 
+void \hyperlink{class_state_machine_7563575ae8101c257dee16be4b196b3d}{SetPrevState} (\hyperlink{class_state}{State}$<$ entity\_\-type $>$ $\ast$state)
+\begin{CompactList}\small\item\em Set previous state. \item\end{CompactList}\item 
+void \hyperlink{class_state_machine_9411020a1ab0a925142bf615550a034d}{SetCurrState} (\hyperlink{class_state}{State}$<$ entity\_\-type $>$ $\ast$state)
+\begin{CompactList}\small\item\em Set current state. \item\end{CompactList}\item 
+void \hyperlink{class_state_machine_1236ff308ac7428c32703a5f77cbf3d7}{SetGlobalState} (\hyperlink{class_state}{State}$<$ entity\_\-type $>$ $\ast$state)
+\begin{CompactList}\small\item\em Set global state. \item\end{CompactList}\item 
+void \hyperlink{class_state_machine_24b1f38171537058ab8040b3b42adb6c}{Update} () const 
+\begin{CompactList}\small\item\em Updates the state. \item\end{CompactList}\item 
+void \hyperlink{class_state_machine_916699645fd8deb8f0d757825d300d01}{ChangeState} (\hyperlink{class_state}{State}$<$ entity\_\-type $>$ $\ast$newState)
+\begin{CompactList}\small\item\em Change state. \item\end{CompactList}\item 
+void \hyperlink{class_state_machine_93ba40368fa2e9d4985f1bb0c1b7e55a}{RevertToPrevState} ()
+\begin{CompactList}\small\item\em Revert to previous state. \item\end{CompactList}\item 
+\hyperlink{class_state}{State}$<$ entity\_\-type $>$ $\ast$ \hyperlink{class_state_machine_b319631fb8ea7e6f27f301631b1e1aab}{GetPrevState} ()
+\begin{CompactList}\small\item\em Accessor method. \item\end{CompactList}\item 
+\hyperlink{class_state}{State}$<$ entity\_\-type $>$ $\ast$ \hyperlink{class_state_machine_ac6d93ae87626985bdd2c831c36fd110}{GetCurrState} ()
+\begin{CompactList}\small\item\em Accessor method. \item\end{CompactList}\item 
+\hyperlink{class_state}{State}$<$ entity\_\-type $>$ $\ast$ \hyperlink{class_state_machine_35d0fd48873e42d21b309c1bfa7f83a3}{GetGlobalState} ()
+\begin{CompactList}\small\item\em Accessor method. \item\end{CompactList}\item 
+bool \hyperlink{class_state_machine_cc3b506f626a27632bebbdae15276650}{IsInState} (const \hyperlink{class_state}{State}$<$ entity\_\-type $>$ \&state) const 
+\begin{CompactList}\small\item\em Compare a state to current state. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class entity\_\-type$>$ class StateMachine$<$ entity\_\-type $>$}
+
+A template FSM class. 
+
+\begin{Desc}
+\item[Author:]Jack Matters\end{Desc}
+\begin{Desc}
+\item[Date:]27/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.0 Initial start. Created the layout of the class, using a template design.\end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]2.0 Final version for submission. \end{Desc}
+
+
+Definition at line 22 of file StateMachine.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_state_machine_4a60d2af8f9977d4f5cf2e9e18b93eae}{
+\index{StateMachine@{StateMachine}!StateMachine@{StateMachine}}
+\index{StateMachine@{StateMachine}!StateMachine@{StateMachine}}
+\subsubsection[StateMachine]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ {\bf StateMachine}$<$ entity\_\-type $>$::{\bf StateMachine} (entity\_\-type $\ast$ {\em FSMowner})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_state_machine_4a60d2af8f9977d4f5cf2e9e18b93eae}
+
+
+Non-default constructor. 
+
+The non-default constructor
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em FSMowner}]- Owner of the FSM \end{description}
+\end{Desc}
+
+
+Definition at line 33 of file StateMachine.h.
+
+\begin{Code}\begin{verbatim}34         {
+35                 m_owner = FSMowner;
+36                 m_prevState = NULL;
+37                 m_currState = NULL;
+38                 m_globalState = NULL;
+39         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_state_machine_7563575ae8101c257dee16be4b196b3d}{
+\index{StateMachine@{StateMachine}!SetPrevState@{SetPrevState}}
+\index{SetPrevState@{SetPrevState}!StateMachine@{StateMachine}}
+\subsubsection[SetPrevState]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ void {\bf StateMachine}$<$ entity\_\-type $>$::SetPrevState ({\bf State}$<$ entity\_\-type $>$ $\ast$ {\em state})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_state_machine_7563575ae8101c257dee16be4b196b3d}
+
+
+Set previous state. 
+
+Sets the previous state
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em state}]- The state to set\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 50 of file StateMachine.h.
+
+\begin{Code}\begin{verbatim}50 { m_prevState = state; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_state_machine_9411020a1ab0a925142bf615550a034d}{
+\index{StateMachine@{StateMachine}!SetCurrState@{SetCurrState}}
+\index{SetCurrState@{SetCurrState}!StateMachine@{StateMachine}}
+\subsubsection[SetCurrState]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ void {\bf StateMachine}$<$ entity\_\-type $>$::SetCurrState ({\bf State}$<$ entity\_\-type $>$ $\ast$ {\em state})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_state_machine_9411020a1ab0a925142bf615550a034d}
+
+
+Set current state. 
+
+Sets the current state
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em state}]- The state to set\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 61 of file StateMachine.h.
+
+\begin{Code}\begin{verbatim}61 { m_currState = state; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_state_machine_1236ff308ac7428c32703a5f77cbf3d7}{
+\index{StateMachine@{StateMachine}!SetGlobalState@{SetGlobalState}}
+\index{SetGlobalState@{SetGlobalState}!StateMachine@{StateMachine}}
+\subsubsection[SetGlobalState]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ void {\bf StateMachine}$<$ entity\_\-type $>$::SetGlobalState ({\bf State}$<$ entity\_\-type $>$ $\ast$ {\em state})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_state_machine_1236ff308ac7428c32703a5f77cbf3d7}
+
+
+Set global state. 
+
+Sets the global state
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em state}]- The state to set\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 72 of file StateMachine.h.
+
+\begin{Code}\begin{verbatim}72 { m_globalState = state; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_state_machine_24b1f38171537058ab8040b3b42adb6c}{
+\index{StateMachine@{StateMachine}!Update@{Update}}
+\index{Update@{Update}!StateMachine@{StateMachine}}
+\subsubsection[Update]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ void {\bf StateMachine}$<$ entity\_\-type $>$::Update () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_state_machine_24b1f38171537058ab8040b3b42adb6c}
+
+
+Updates the state. 
+
+Execute the current state
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 81 of file StateMachine.h.
+
+\begin{Code}\begin{verbatim}82         {
+83                 if (m_globalState)
+84                         m_globalState->Execute(m_owner);
+85                 if (m_currState)
+86                         m_currState->Execute(m_owner);
+87         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_state_machine_916699645fd8deb8f0d757825d300d01}{
+\index{StateMachine@{StateMachine}!ChangeState@{ChangeState}}
+\index{ChangeState@{ChangeState}!StateMachine@{StateMachine}}
+\subsubsection[ChangeState]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ void {\bf StateMachine}$<$ entity\_\-type $>$::ChangeState ({\bf State}$<$ entity\_\-type $>$ $\ast$ {\em newState})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_state_machine_916699645fd8deb8f0d757825d300d01}
+
+
+Change state. 
+
+Changes previous state to current state, and current state to newState
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em newState}]- New state to set\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 98 of file StateMachine.h.
+
+\begin{Code}\begin{verbatim}99         {
+100                 m_prevState = m_currState;
+101                 m_currState->Exit(m_owner);
+102                 m_currState = newState;
+103                 m_currState->Enter(m_owner);
+104         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_state_machine_93ba40368fa2e9d4985f1bb0c1b7e55a}{
+\index{StateMachine@{StateMachine}!RevertToPrevState@{RevertToPrevState}}
+\index{RevertToPrevState@{RevertToPrevState}!StateMachine@{StateMachine}}
+\subsubsection[RevertToPrevState]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ void {\bf StateMachine}$<$ entity\_\-type $>$::RevertToPrevState ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_state_machine_93ba40368fa2e9d4985f1bb0c1b7e55a}
+
+
+Revert to previous state. 
+
+Reverts to the previous state
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 113 of file StateMachine.h.
+
+\begin{Code}\begin{verbatim}113 { m_currState = m_prevState; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_state_machine_b319631fb8ea7e6f27f301631b1e1aab}{
+\index{StateMachine@{StateMachine}!GetPrevState@{GetPrevState}}
+\index{GetPrevState@{GetPrevState}!StateMachine@{StateMachine}}
+\subsubsection[GetPrevState]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ {\bf State}$<$entity\_\-type$>$$\ast$ {\bf StateMachine}$<$ entity\_\-type $>$::GetPrevState ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_state_machine_b319631fb8ea7e6f27f301631b1e1aab}
+
+
+Accessor method. 
+
+Access and return the previous state
+
+\begin{Desc}
+\item[Returns:]State$<$entity\_\-type$>$ - Previous state \end{Desc}
+
+
+Definition at line 122 of file StateMachine.h.
+
+\begin{Code}\begin{verbatim}122 { return m_prevState; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_state_machine_ac6d93ae87626985bdd2c831c36fd110}{
+\index{StateMachine@{StateMachine}!GetCurrState@{GetCurrState}}
+\index{GetCurrState@{GetCurrState}!StateMachine@{StateMachine}}
+\subsubsection[GetCurrState]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ {\bf State}$<$entity\_\-type$>$$\ast$ {\bf StateMachine}$<$ entity\_\-type $>$::GetCurrState ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_state_machine_ac6d93ae87626985bdd2c831c36fd110}
+
+
+Accessor method. 
+
+Access and return the current state
+
+\begin{Desc}
+\item[Returns:]State$<$entity\_\-type$>$ - Current state \end{Desc}
+
+
+Definition at line 131 of file StateMachine.h.
+
+\begin{Code}\begin{verbatim}131 { return m_currState; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_state_machine_35d0fd48873e42d21b309c1bfa7f83a3}{
+\index{StateMachine@{StateMachine}!GetGlobalState@{GetGlobalState}}
+\index{GetGlobalState@{GetGlobalState}!StateMachine@{StateMachine}}
+\subsubsection[GetGlobalState]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ {\bf State}$<$entity\_\-type$>$$\ast$ {\bf StateMachine}$<$ entity\_\-type $>$::GetGlobalState ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_state_machine_35d0fd48873e42d21b309c1bfa7f83a3}
+
+
+Accessor method. 
+
+Access and return the global state
+
+\begin{Desc}
+\item[Returns:]State$<$entity\_\-type$>$ - Global state \end{Desc}
+
+
+Definition at line 140 of file StateMachine.h.
+
+\begin{Code}\begin{verbatim}140 { return m_globalState; }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_state_machine_cc3b506f626a27632bebbdae15276650}{
+\index{StateMachine@{StateMachine}!IsInState@{IsInState}}
+\index{IsInState@{IsInState}!StateMachine@{StateMachine}}
+\subsubsection[IsInState]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ bool {\bf StateMachine}$<$ entity\_\-type $>$::IsInState (const {\bf State}$<$ entity\_\-type $>$ \& {\em state}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_state_machine_cc3b506f626a27632bebbdae15276650}
+
+
+Compare a state to current state. 
+
+Returns true if current state's type is equal to the type of class passed as parameter
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em state}]- \hyperlink{class_state}{State} to compare\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]bool - True if state types match, false otherwise \end{Desc}
+
+
+Definition at line 151 of file StateMachine.h.
+
+\begin{Code}\begin{verbatim}151 { return typeid(*m_currState) == typeid(state); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/StateMachine.h\end{CompactItemize}

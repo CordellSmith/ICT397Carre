@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: b3DynamicBvh Struct Reference</title>
+<title>Assignment2 - OOber Taxi: b3DynamicBvh Struct Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,14 +25,14 @@
   </div>
 </div>
 <div class="contents">
-<h1>b3DynamicBvh Struct Reference</h1><!-- doxytag: class="b3DynamicBvh" --><code>#include &lt;b3DynamicBvh.h&gt;</code>
+<h1>b3DynamicBvh Struct Reference</h1><!-- doxytag: class="b3DynamicBvh" --><code>#include &lt;<a class="el" href="b3_dynamic_bvh_8h-source.html">b3DynamicBvh.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for b3DynamicBvh:</div>
 <div class="dynsection">
 <p><center><img src="structb3_dynamic_bvh__coll__graph.png" border="0" usemap="#b3_dynamic_bvh__coll__map" alt="Collaboration graph"></center>
 <map name="b3_dynamic_bvh__coll__map">
-<area shape="rect" href="classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; const b3DbvtNode * \&gt;" alt="" coords="7,96,292,123"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; const b3DbvtNode *, 16 \&gt;" alt="" coords="5,5,293,32"></map>
+<area shape="rect" href="classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; const b3DbvtNode * \&gt;" alt="" coords="31,288,316,315"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; const b3DbvtNode *, 16 \&gt;" alt="" coords="5,147,293,173"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="131,5,357,32"><area shape="rect" href="classb3_aligned_allocator.html" title="b3AlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="248,96,429,123"><area shape="rect" href="classb3_aligned_object_array.html" title="b3AlignedObjectArray\&lt; T \&gt;" alt="" coords="248,197,427,224"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -46,7 +46,9 @@ Collaboration diagram for b3DynamicBvh:</div>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The <a class="el" href="structb3_dynamic_bvh.html">b3DynamicBvh</a> class implements a fast dynamic bounding volume tree based on axis aligned bounding boxes (aabb tree). This <a class="el" href="structb3_dynamic_bvh.html">b3DynamicBvh</a> is used for soft body collision detection and for the <a class="el" href="structb3_dynamic_bvh_broadphase.html">b3DynamicBvhBroadphase</a>. It has a fast insert, remove and update of nodes. Unlike the b3QuantizedBvh, nodes can be dynamically moved around, which allows for change in topology of the underlying data structure. <hr><h2>Member Function Documentation</h2>
+The <a class="el" href="structb3_dynamic_bvh.html">b3DynamicBvh</a> class implements a fast dynamic bounding volume tree based on axis aligned bounding boxes (aabb tree). This <a class="el" href="structb3_dynamic_bvh.html">b3DynamicBvh</a> is used for soft body collision detection and for the <a class="el" href="structb3_dynamic_bvh_broadphase.html">b3DynamicBvhBroadphase</a>. It has a fast insert, remove and update of nodes. Unlike the b3QuantizedBvh, nodes can be dynamically moved around, which allows for change in topology of the underlying data structure. 
+<p>Definition at line <a class="el" href="b3_dynamic_bvh_8h-source.html#l00194">194</a> of file <a class="el" href="b3_dynamic_bvh_8h-source.html">b3DynamicBvh.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="b913761020aef36751217a877fcf7e6d"></a><!-- doxytag: member="b3DynamicBvh::rayTest" ref="b913761020aef36751217a877fcf7e6d" args="(const b3DbvtNode *root, const b3Vector3 &amp;rayFrom, const b3Vector3 &amp;rayTo, B3_DBVT_IPOLICY)" -->
 <div class="memitem">
 <div class="memproto">
@@ -88,6 +90,83 @@ The <a class="el" href="structb3_dynamic_bvh.html">b3DynamicBvh</a> class implem
 rayTest is a re-entrant ray test, and can be called in parallel as long as the b3AlignedAlloc is thread-safe (uses locking etc) rayTest is slower than rayTestInternal, because it builds a local stack, using memory allocations, and it recomputes signs/rayDirectionInverses each time 
 <p>
 what about division by zero? --&gt; just set rayDirection[i] to INF/B3_LARGE_FLOAT 
+<p>Definition at line <a class="el" href="b3_dynamic_bvh_8h-source.html#l01005">1005</a> of file <a class="el" href="b3_dynamic_bvh_8h-source.html">b3DynamicBvh.h</a>.</p>
+
+<p>References <a class="el" href="b3_aligned_object_array_8h-source.html#l00220">b3AlignedObjectArray&lt; T &gt;::resize()</a>, and <a class="el" href="b3_aligned_object_array_8h-source.html#l00149">b3AlignedObjectArray&lt; T &gt;::size()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l01009"></a>01009 {
+<a name="l01010"></a>01010         B3_DBVT_CHECKTYPE
+<a name="l01011"></a>01011                 <span class="keywordflow">if</span>(root)
+<a name="l01012"></a>01012                 {
+<a name="l01013"></a>01013                         b3Vector3 rayDir = (rayTo-rayFrom);
+<a name="l01014"></a>01014                         rayDir.normalize ();
+<a name="l01015"></a>01015 
+<a name="l01017"></a>01017                         b3Vector3 rayDirectionInverse;
+<a name="l01018"></a>01018                         rayDirectionInverse[0] = rayDir[0] == b3Scalar(0.0) ? b3Scalar(B3_LARGE_FLOAT) : b3Scalar(1.0) / rayDir[0];
+<a name="l01019"></a>01019                         rayDirectionInverse[1] = rayDir[1] == b3Scalar(0.0) ? b3Scalar(B3_LARGE_FLOAT) : b3Scalar(1.0) / rayDir[1];
+<a name="l01020"></a>01020                         rayDirectionInverse[2] = rayDir[2] == b3Scalar(0.0) ? b3Scalar(B3_LARGE_FLOAT) : b3Scalar(1.0) / rayDir[2];
+<a name="l01021"></a>01021                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> signs[3] = { rayDirectionInverse[0] &lt; 0.0, rayDirectionInverse[1] &lt; 0.0, rayDirectionInverse[2] &lt; 0.0};
+<a name="l01022"></a>01022 
+<a name="l01023"></a>01023                         b3Scalar lambda_max = rayDir.dot(rayTo-rayFrom);
+<a name="l01024"></a>01024 <span class="preprocessor">#ifdef COMPARE_BTRAY_AABB2</span>
+<a name="l01025"></a>01025 <span class="preprocessor"></span>                        b3Vector3 resultNormal;
+<a name="l01026"></a>01026 <span class="preprocessor">#endif//COMPARE_BTRAY_AABB2</span>
+<a name="l01027"></a>01027 <span class="preprocessor"></span>                        
+<a name="l01028"></a>01028                         <a class="code" href="classb3_aligned_object_array.html">b3AlignedObjectArray&lt;const b3DbvtNode*&gt;</a> stack;
+<a name="l01029"></a>01029 
+<a name="l01030"></a>01030                         <span class="keywordtype">int</span>                                                             depth=1;
+<a name="l01031"></a>01031                         <span class="keywordtype">int</span>                                                             treshold=B3_DOUBLE_STACKSIZE-2;
+<a name="l01032"></a>01032 
+<a name="l01033"></a>01033                         stack.<a class="code" href="classb3_aligned_object_array.html#e9948e865d352bd7a0841be183d61a65">resize</a>(B3_DOUBLE_STACKSIZE);
+<a name="l01034"></a>01034                         stack[0]=root;
+<a name="l01035"></a>01035                         b3Vector3 bounds[2];
+<a name="l01036"></a>01036                         <span class="keywordflow">do</span>      {
+<a name="l01037"></a>01037                                 <span class="keyword">const</span> b3DbvtNode*       node=stack[--depth];
+<a name="l01038"></a>01038 
+<a name="l01039"></a>01039                                 bounds[0] = node-&gt;volume.Mins();
+<a name="l01040"></a>01040                                 bounds[1] = node-&gt;volume.Maxs();
+<a name="l01041"></a>01041                                 
+<a name="l01042"></a>01042                                 b3Scalar tmin=1.f,lambda_min=0.f;
+<a name="l01043"></a>01043                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> result1 = b3RayAabb2(rayFrom,rayDirectionInverse,signs,bounds,tmin,lambda_min,lambda_max);
+<a name="l01044"></a>01044 
+<a name="l01045"></a>01045 <span class="preprocessor">#ifdef COMPARE_BTRAY_AABB2</span>
+<a name="l01046"></a>01046 <span class="preprocessor"></span>                                b3Scalar param=1.f;
+<a name="l01047"></a>01047                                 <span class="keywordtype">bool</span> result2 = b3RayAabb(rayFrom,rayTo,node-&gt;volume.Mins(),node-&gt;volume.Maxs(),param,resultNormal);
+<a name="l01048"></a>01048                                 b3Assert(result1 == result2);
+<a name="l01049"></a>01049 <span class="preprocessor">#endif //TEST_BTRAY_AABB2</span>
+<a name="l01050"></a>01050 <span class="preprocessor"></span>
+<a name="l01051"></a>01051                                 <span class="keywordflow">if</span>(result1)
+<a name="l01052"></a>01052                                 {
+<a name="l01053"></a>01053                                         <span class="keywordflow">if</span>(node-&gt;isinternal())
+<a name="l01054"></a>01054                                         {
+<a name="l01055"></a>01055                                                 <span class="keywordflow">if</span>(depth&gt;treshold)
+<a name="l01056"></a>01056                                                 {
+<a name="l01057"></a>01057                                                         stack.<a class="code" href="classb3_aligned_object_array.html#e9948e865d352bd7a0841be183d61a65">resize</a>(stack.<a class="code" href="classb3_aligned_object_array.html#18672b9373a0a957d49677195fde6a85" title="return the number of elements in the array">size</a>()*2);
+<a name="l01058"></a>01058                                                         treshold=stack.<a class="code" href="classb3_aligned_object_array.html#18672b9373a0a957d49677195fde6a85" title="return the number of elements in the array">size</a>()-2;
+<a name="l01059"></a>01059                                                 }
+<a name="l01060"></a>01060                                                 stack[depth++]=node-&gt;childs[0];
+<a name="l01061"></a>01061                                                 stack[depth++]=node-&gt;childs[1];
+<a name="l01062"></a>01062                                         }
+<a name="l01063"></a>01063                                         <span class="keywordflow">else</span>
+<a name="l01064"></a>01064                                         {
+<a name="l01065"></a>01065                                                 policy.Process(node);
+<a name="l01066"></a>01066                                         }
+<a name="l01067"></a>01067                                 }
+<a name="l01068"></a>01068                         } <span class="keywordflow">while</span>(depth);
+<a name="l01069"></a>01069 
+<a name="l01070"></a>01070                 }
+<a name="l01071"></a>01071 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="structb3_dynamic_bvh_b913761020aef36751217a877fcf7e6d_cgraph.png" border="0" usemap="#structb3_dynamic_bvh_b913761020aef36751217a877fcf7e6d_cgraph_map" alt=""></center>
+<map name="structb3_dynamic_bvh_b913761020aef36751217a877fcf7e6d_cgraph_map">
+<area shape="rect" href="classb3_aligned_object_array.html#e9948e865d352bd7a0841be183d61a65" title="b3AlignedObjectArray::resize" alt="" coords="215,5,404,32"><area shape="rect" href="classb3_aligned_object_array.html#18672b9373a0a957d49677195fde6a85" title="return the number of elements in the array" alt="" coords="220,56,399,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="164303efd5eac767e608b09526734b59"></a><!-- doxytag: member="b3DynamicBvh::rayTestInternal" ref="164303efd5eac767e608b09526734b59" args="(const b3DbvtNode *root, const b3Vector3 &amp;rayFrom, const b3Vector3 &amp;rayTo, const b3Vector3 &amp;rayDirectionInverse, unsigned int signs[3], b3Scalar lambda_max, const b3Vector3 &amp;aabbMin, const b3Vector3 &amp;aabbMax, B3_DBVT_IPOLICY) const " -->
@@ -159,12 +238,66 @@ what about division by zero? --&gt; just set rayDirection[i] to INF/B3_LARGE_FLO
 
 <p>
 rayTestInternal is faster than rayTest, because it uses a persistent stack (to reduce dynamic memory allocations to a minimum) and it uses precomputed signs/rayInverseDirections rayTestInternal is used by <a class="el" href="structb3_dynamic_bvh_broadphase.html">b3DynamicBvhBroadphase</a> to accelerate world ray casts 
+<p>Definition at line <a class="el" href="b3_dynamic_bvh_8h-source.html#l00954">954</a> of file <a class="el" href="b3_dynamic_bvh_8h-source.html">b3DynamicBvh.h</a>.</p>
+
+<p>References <a class="el" href="b3_aligned_object_array_8h-source.html#l00220">b3AlignedObjectArray&lt; T &gt;::resize()</a>, and <a class="el" href="b3_aligned_object_array_8h-source.html#l00149">b3AlignedObjectArray&lt; T &gt;::size()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00963"></a>00963 {
+<a name="l00964"></a>00964         (void) rayTo;
+<a name="l00965"></a>00965         B3_DBVT_CHECKTYPE
+<a name="l00966"></a>00966         <span class="keywordflow">if</span>(root)
+<a name="l00967"></a>00967         {
+<a name="l00968"></a>00968                 <span class="keywordtype">int</span>                                                             depth=1;
+<a name="l00969"></a>00969                 <span class="keywordtype">int</span>                                                             treshold=B3_DOUBLE_STACKSIZE-2;
+<a name="l00970"></a>00970                 <a class="code" href="classb3_aligned_object_array.html">b3AlignedObjectArray&lt;const b3DbvtNode*&gt;</a>&amp;        stack = m_rayTestStack;
+<a name="l00971"></a>00971                 stack.<a class="code" href="classb3_aligned_object_array.html#e9948e865d352bd7a0841be183d61a65">resize</a>(B3_DOUBLE_STACKSIZE);
+<a name="l00972"></a>00972                 stack[0]=root;
+<a name="l00973"></a>00973                 b3Vector3 bounds[2];
+<a name="l00974"></a>00974                 <span class="keywordflow">do</span>      
+<a name="l00975"></a>00975                 {
+<a name="l00976"></a>00976                         <span class="keyword">const</span> b3DbvtNode*       node=stack[--depth];
+<a name="l00977"></a>00977                         bounds[0] = node-&gt;volume.Mins()-aabbMax;
+<a name="l00978"></a>00978                         bounds[1] = node-&gt;volume.Maxs()-aabbMin;
+<a name="l00979"></a>00979                         b3Scalar tmin=1.f,lambda_min=0.f;
+<a name="l00980"></a>00980                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> result1=<span class="keyword">false</span>;
+<a name="l00981"></a>00981                         result1 = b3RayAabb2(rayFrom,rayDirectionInverse,signs,bounds,tmin,lambda_min,lambda_max);
+<a name="l00982"></a>00982                         <span class="keywordflow">if</span>(result1)
+<a name="l00983"></a>00983                         {
+<a name="l00984"></a>00984                                 <span class="keywordflow">if</span>(node-&gt;isinternal())
+<a name="l00985"></a>00985                                 {
+<a name="l00986"></a>00986                                         <span class="keywordflow">if</span>(depth&gt;treshold)
+<a name="l00987"></a>00987                                         {
+<a name="l00988"></a>00988                                                 stack.<a class="code" href="classb3_aligned_object_array.html#e9948e865d352bd7a0841be183d61a65">resize</a>(stack.<a class="code" href="classb3_aligned_object_array.html#18672b9373a0a957d49677195fde6a85" title="return the number of elements in the array">size</a>()*2);
+<a name="l00989"></a>00989                                                 treshold=stack.<a class="code" href="classb3_aligned_object_array.html#18672b9373a0a957d49677195fde6a85" title="return the number of elements in the array">size</a>()-2;
+<a name="l00990"></a>00990                                         }
+<a name="l00991"></a>00991                                         stack[depth++]=node-&gt;childs[0];
+<a name="l00992"></a>00992                                         stack[depth++]=node-&gt;childs[1];
+<a name="l00993"></a>00993                                 }
+<a name="l00994"></a>00994                                 <span class="keywordflow">else</span>
+<a name="l00995"></a>00995                                 {
+<a name="l00996"></a>00996                                         policy.Process(node);
+<a name="l00997"></a>00997                                 }
+<a name="l00998"></a>00998                         }
+<a name="l00999"></a>00999                 } <span class="keywordflow">while</span>(depth);
+<a name="l01000"></a>01000         }
+<a name="l01001"></a>01001 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="structb3_dynamic_bvh_164303efd5eac767e608b09526734b59_cgraph.png" border="0" usemap="#structb3_dynamic_bvh_164303efd5eac767e608b09526734b59_cgraph_map" alt=""></center>
+<map name="structb3_dynamic_bvh_164303efd5eac767e608b09526734b59_cgraph_map">
+<area shape="rect" href="classb3_aligned_object_array.html#e9948e865d352bd7a0841be183d61a65" title="b3AlignedObjectArray::resize" alt="" coords="255,5,444,32"><area shape="rect" href="classb3_aligned_object_array.html#18672b9373a0a957d49677195fde6a85" title="return the number of elements in the array" alt="" coords="260,56,439,83"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3DynamicBvh.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3DynamicBvh.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/<a class="el" href="b3_dynamic_bvh_8h-source.html">b3DynamicBvh.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/<a class="el" href="b3_dynamic_bvh_8cpp-source.html">b3DynamicBvh.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:55 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:18 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

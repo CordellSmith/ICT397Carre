@@ -17,6 +17,8 @@ Inheritance diagram for btSoftRigidCollisionAlgorithm:Collaboration diagram for 
 \subsection{Detailed Description}
 \hyperlink{classbt_soft_rigid_collision_algorithm}{btSoftRigidCollisionAlgorithm} provides collision detection between \hyperlink{classbt_soft_body}{btSoftBody} and \hyperlink{classbt_rigid_body}{btRigidBody} 
 
+Definition at line 29 of file btSoftRigidCollisionAlgorithm.h.
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classbt_soft_rigid_collision_algorithm_a6f289e315d626acf0a47ba093f6d4eb}{
 \index{btSoftRigidCollisionAlgorithm@{btSoftRigidCollisionAlgorithm}!btSoftRigidCollisionAlgorithm@{btSoftRigidCollisionAlgorithm}}
@@ -27,7 +29,21 @@ Inheritance diagram for btSoftRigidCollisionAlgorithm:Collaboration diagram for 
 
 TODO: include all the shapes that the softbody can collide with alternatively, implement special case collision algorithms (just like for rigid collision shapes) 
 
+Definition at line 30 of file btSoftRigidCollisionAlgorithm.cpp.
+
+\begin{Code}\begin{verbatim}31 : btCollisionAlgorithm(ci),
+32 //m_ownManifold(false),
+33 //m_manifoldPtr(mf),
+34 m_isSwapped(isSwapped)
+35 {
+36 }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftRigidCollisionAlgorithm.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftRigidCollisionAlgorithm.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftRigidCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftRigidCollisionAlgorithm.cpp\end{CompactItemize}

@@ -1,0 +1,40 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::value_ptr",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::make_mat2x2",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g49c18920c113e1e72caea1c3978c8e7f"];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::make_mat2",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g08f35700be4d2e627da4d894edfa1b60"];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::make_mat2x3",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g86620b90c993ff8e31f0dff1611bd2da"];
+  Node1 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="glm::make_mat2x4",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g50245f47c0e6f5a2ab5ce157dc3e97ac"];
+  Node1 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="glm::make_mat3x2",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g6c7d94e71f8df512fca44427311baeae"];
+  Node1 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="glm::make_mat3x3",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g206b172296286d333b0ff92e77b28b66"];
+  Node7 -> Node8 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="glm::make_mat3",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g63c04b2cd2367a06e9817a66b5025662"];
+  Node1 -> Node9 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="glm::make_mat3x4",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g81d4d38acbaded29fb07ca282f089122"];
+  Node1 -> Node10 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="glm::make_mat4x2",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#gc253e8157af1e4ec366c80d4bd90cbb2"];
+  Node1 -> Node11 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="glm::make_mat4x3",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#gc375314134d9b3736395a4eda2602590"];
+  Node1 -> Node12 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node12 [label="glm::make_mat4x4",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g74e671ae9dc7e5e8f21aa44ea263d76e"];
+  Node12 -> Node13 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node13 [label="glm::make_mat4",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g082261bc3bf4a6d320d6beaebcbaf1db"];
+  Node1 -> Node14 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node14 [label="glm::make_quat",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#gac5b8f1104856835d3d65d854362c85b"];
+  Node1 -> Node15 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node15 [label="glm::make_vec2",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g7009d8090f046d1ce98e59df584fff46"];
+  Node1 -> Node16 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node16 [label="glm::make_vec3",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#g0b727d0acba617ec7b9af9f06892336a"];
+  Node1 -> Node17 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node17 [label="glm::make_vec4",height=0.2,width=0.4,color="black",URL="$group__gtc__type__ptr.html#gf44d3c8aa09a7a8021ae5312e2f1f091"];
+}

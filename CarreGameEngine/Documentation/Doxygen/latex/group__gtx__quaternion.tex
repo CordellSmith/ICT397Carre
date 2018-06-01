@@ -63,7 +63,26 @@ Compute a cross product between a vector and a quaternion.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_g968a8e63b616c369286b541a3ac96484}{
+
+
+Definition at line 17 of file quaternion.inl.
+
+References glm::inverse().
+
+Referenced by bt\_\-edge\_\-plane(), and btSoftBodyTriangleCallback::processTriangle().
+
+\begin{Code}\begin{verbatim}21         {
+22                 return inverse(q) * v;
+23         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtx__quaternion_g968a8e63b616c369286b541a3ac96484}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!cross@{cross}}
 \index{cross@{cross}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[cross]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::cross (detail::tquat$<$ T, P $>$ const \& {\em q}, \/  detail::tvec3$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -74,6 +93,17 @@ Compute a cross product between a quaternion and a vector.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
+
+
+Definition at line 27 of file quaternion.inl.
+
+\begin{Code}\begin{verbatim}31         {
+32                 return q * v;
+33         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__quaternion_gd4ec8f59911f01bb4c298839017ba91f}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!exp@{exp}}
 \index{exp@{exp}!gtx_quaternion@{gtx\_\-quaternion}}
@@ -85,7 +115,32 @@ Returns a exp of a quaternion.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_g1185beb6d3dd4bcf64ea30f5f12a7368}{
+
+
+Definition at line 61 of file quaternion.inl.
+
+References glm::cos(), glm::length(), and glm::sin().
+
+Referenced by glm::exp(), and glm::exp2().
+
+\begin{Code}\begin{verbatim}64         {
+65                 detail::tvec3<T, P> u(q.x, q.y, q.z);
+66                 T Angle = glm::length(u);
+67                 if (Angle < epsilon<T>())
+68                         return detail::tquat<T, P>();
+69 
+70                 detail::tvec3<T, P> v(u / Angle);
+71                 return detail::tquat<T, P>(cos(Angle), sin(Angle) * v);
+72         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtx__quaternion_g1185beb6d3dd4bcf64ea30f5f12a7368}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!extractRealComponent@{extractRealComponent}}
 \index{extractRealComponent@{extractRealComponent}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[extractRealComponent]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::extractRealComponent (detail::tquat$<$ T, P $>$ const \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -96,7 +151,26 @@ Extract the real component of a quaternion.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_g0538872e0a23bc7ba865700756c1a3a7}{
+
+
+Definition at line 151 of file quaternion.inl.
+
+References glm::sqrt().
+
+\begin{Code}\begin{verbatim}154         {
+155                 T w = static_cast<T>(1) - q.x * q.x - q.y * q.y - q.z * q.z;
+156                 if(w < T(0))
+157                         return T(0);
+158                 else
+159                         return -sqrt(w);
+160         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__quaternion_g0538872e0a23bc7ba865700756c1a3a7}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!fastMix@{fastMix}}
 \index{fastMix@{fastMix}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[fastMix]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::fastMix (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  detail::tquat$<$ T, P $>$ const \& {\em y}, \/  T const \& {\em a})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -107,7 +181,22 @@ Quaternion normalized linear interpolation.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_ge94a070898e8be560a5dcf8e15854b2d}{
+
+
+Definition at line 215 of file quaternion.inl.
+
+References glm::normalize().
+
+\begin{Code}\begin{verbatim}220         {
+221                 return glm::normalize(x * (static_cast<T>(1) - a) + (y * a));
+222         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__quaternion_ge94a070898e8be560a5dcf8e15854b2d}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!intermediate@{intermediate}}
 \index{intermediate@{intermediate}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[intermediate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::intermediate (detail::tquat$<$ T, P $>$ const \& {\em prev}, \/  detail::tquat$<$ T, P $>$ const \& {\em curr}, \/  detail::tquat$<$ T, P $>$ const \& {\em next})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -118,7 +207,23 @@ Returns an intermediate control point for squad interpolation.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_ge0ff959e757f5feba0bd375658673d0d}{
+
+
+Definition at line 49 of file quaternion.inl.
+
+References glm::exp(), glm::inverse(), and glm::log().
+
+\begin{Code}\begin{verbatim}54         {
+55                 detail::tquat<T, P> invQuat = inverse(curr);
+56                 return exp((log(next + invQuat) + log(prev + invQuat)) / static_cast<T>(-4)) * curr;
+57         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__quaternion_ge0ff959e757f5feba0bd375658673d0d}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!length2@{length2}}
 \index{length2@{length2}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[length2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::length2 (detail::tquat$<$ T, P $>$ const \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -129,7 +234,22 @@ Returns the squared length of x.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_gbed81c73a777fce84fe442bbc17c13ce}{
+
+
+Definition at line 164 of file quaternion.inl.
+
+Referenced by btConvexConvexAlgorithm::calculateTimeOfImpact(), btConvex2dConvex2dAlgorithm::calculateTimeOfImpact(), btTriangleMesh::findOrAddVertex(), and btSoftBody::generateClusters().
+
+\begin{Code}\begin{verbatim}167         {
+168                 return q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w;
+169         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtx__quaternion_gbed81c73a777fce84fe442bbc17c13ce}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!log@{log}}
 \index{log@{log}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[log]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::log (detail::tquat$<$ T, P $>$ const \& {\em q})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -140,7 +260,43 @@ Returns a log of a quaternion.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_g49e7cd8958d474290778760d171a44d2}{
+
+
+Definition at line 76 of file quaternion.inl.
+
+References glm::atan(), glm::length(), glm::log(), and glm::sqrt().
+
+Referenced by glm::log().
+
+\begin{Code}\begin{verbatim}79         {
+80                 detail::tvec3<T, P> u(q.x, q.y, q.z);
+81                 T Vec3Len = length(u);
+82 
+83                 if (Vec3Len < epsilon<T>())
+84                 {
+85                         if(q.w > static_cast<T>(0))
+86                                 return detail::tquat<T, P>(log(q.w), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0));
+87                         else if(q.w < static_cast<T>(0))
+88                                 return detail::tquat<T, P>(log(-q.w), pi<T>(), static_cast<T>(0), static_cast<T>(0));
+89                         else
+90                                 return detail::tquat<T, P>(std::numeric_limits<T>::infinity(), std::numeric_limits<T>::infinity(), std::numeric_limits<T>::infinity(), std::numeric_limits<T>::infinity());
+91                 }
+92                 else
+93                 {
+94                         T QuatLen = sqrt(Vec3Len * Vec3Len + q.w * q.w);
+95                         T t = atan(Vec3Len, T(q.w)) / Vec3Len;
+96                         return detail::tquat<T, P>(log(QuatLen), t * q.x, t * q.y, t * q.z);
+97                 }
+98         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtx__quaternion_g49e7cd8958d474290778760d171a44d2}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!pow@{pow}}
 \index{pow@{pow}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[pow]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::pow (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  T const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -151,7 +307,35 @@ Returns x raised to the y power.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_g9fd82cf89bc167ca12752f03a99329a4}{
+
+
+Definition at line 102 of file quaternion.inl.
+
+References glm::abs(), glm::acos(), glm::cos(), and glm::sin().
+
+Referenced by glm::pow().
+
+\begin{Code}\begin{verbatim}106         {
+107                 if(abs(x.w) > (static_cast<T>(1) - epsilon<T>()))
+108                         return x;
+109                 T Angle = acos(y);
+110                 T NewAngle = Angle * y;
+111                 T Div = sin(NewAngle) / sin(Angle);
+112                 return detail::tquat<T, P>(
+113                         cos(NewAngle),
+114                         x.x * Div,
+115                         x.y * Div,
+116                         x.z * Div);
+117         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtx__quaternion_g9fd82cf89bc167ca12752f03a99329a4}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!rotate@{rotate}}
 \index{rotate@{rotate}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[rotate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec4$<$ T, P $>$ glm::rotate (detail::tquat$<$ T, P $>$ const \& {\em q}, \/  detail::tvec4$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -162,6 +346,17 @@ Rotates a 4 components vector by a quaternion.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
+
+
+Definition at line 141 of file quaternion.inl.
+
+\begin{Code}\begin{verbatim}145         {
+146                 return q * v;
+147         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__quaternion_g3b9f985e75b852e9526d5c088a50c3d4}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!rotate@{rotate}}
 \index{rotate@{rotate}!gtx_quaternion@{gtx\_\-quaternion}}
@@ -175,6 +370,17 @@ Returns quarternion square root.
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} Rotates a 3 components vector by a quaternion.
 
 \hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
+
+
+Definition at line 131 of file quaternion.inl.
+
+\begin{Code}\begin{verbatim}135         {
+136                 return q * v;
+137         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__quaternion_gf7a15242ef69e5c997df231b28b92cef}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!rotation@{rotation}}
 \index{rotation@{rotation}!gtx_quaternion@{gtx\_\-quaternion}}
@@ -186,7 +392,50 @@ Compute the rotation between two vectors. param orig vector, needs to be normali
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_g1d83d29dc8f5870d70d2833c64be777c}{
+
+
+Definition at line 226 of file quaternion.inl.
+
+References glm::angleAxis(), glm::cross(), glm::dot(), glm::length2(), glm::normalize(), and glm::sqrt().
+
+\begin{Code}\begin{verbatim}230         {
+231                 T cosTheta = dot(orig, dest);
+232                 detail::tvec3<T, P> rotationAxis;
+233 
+234                 if(cosTheta < static_cast<T>(-1) + epsilon<T>())
+235                 {
+236                         // special case when vectors in opposite directions :
+237                         // there is no "ideal" rotation axis
+238                         // So guess one; any will do as long as it's perpendicular to start
+239                         // This implementation favors a rotation around the Up axis (Y),
+240                         // since it's often what you want to do.
+241                         rotationAxis = cross(detail::tvec3<T, P>(0, 0, 1), orig);
+242                         if(length2(rotationAxis) < epsilon<T>()) // bad luck, they were parallel, try again!
+243                                 rotationAxis = cross(detail::tvec3<T, P>(1, 0, 0), orig);
+244 
+245                         rotationAxis = normalize(rotationAxis);
+246                         return angleAxis(pi<T>(), rotationAxis);
+247                 }
+248 
+249                 // Implementation from Stan Melax's Game Programming Gems 1 article
+250                 rotationAxis = cross(orig, dest);
+251 
+252                 T s = sqrt((T(1) + cosTheta) * static_cast<T>(2));
+253                 T invs = static_cast<T>(1) / s;
+254 
+255                 return detail::tquat<T, P>(
+256                         s * static_cast<T>(0.5f), 
+257                         rotationAxis.x * invs,
+258                         rotationAxis.y * invs,
+259                         rotationAxis.z * invs);
+260         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__quaternion_g1d83d29dc8f5870d70d2833c64be777c}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!shortMix@{shortMix}}
 \index{shortMix@{shortMix}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[shortMix]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::shortMix (detail::tquat$<$ T, P $>$ const \& {\em x}, \/  detail::tquat$<$ T, P $>$ const \& {\em y}, \/  T const \& {\em a})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -197,7 +446,53 @@ Quaternion interpolation using the rotation short path.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_g8ed8845077927e9b8fc7bd74872c161a}{
+
+
+Definition at line 173 of file quaternion.inl.
+
+References glm::atan(), glm::dot(), glm::sin(), and glm::sqrt().
+
+\begin{Code}\begin{verbatim}178         {
+179                 if(a <= static_cast<T>(0)) return x;
+180                 if(a >= static_cast<T>(1)) return y;
+181 
+182                 T fCos = dot(x, y);
+183                 detail::tquat<T, P> y2(y); //BUG!!! tquat<T> y2;
+184                 if(fCos < static_cast<T>(0))
+185                 {
+186                         y2 = -y;
+187                         fCos = -fCos;
+188                 }
+189 
+190                 //if(fCos > 1.0f) // problem
+191                 T k0, k1;
+192                 if(fCos > (static_cast<T>(1) - epsilon<T>()))
+193                 {
+194                         k0 = static_cast<T>(1) - a;
+195                         k1 = static_cast<T>(0) + a; //BUG!!! 1.0f + a;
+196                 }
+197                 else
+198                 {
+199                         T fSin = sqrt(T(1) - fCos * fCos);
+200                         T fAngle = atan(fSin, fCos);
+201                         T fOneOverSin = static_cast<T>(1) / fSin;
+202                         k0 = sin((static_cast<T>(1) - a) * fAngle) * fOneOverSin;
+203                         k1 = sin((static_cast<T>(0) + a) * fAngle) * fOneOverSin;
+204                 }
+205 
+206                 return detail::tquat<T, P>(
+207                         k0 * x.w + k1 * y2.w,
+208                         k0 * x.x + k1 * y2.x,
+209                         k0 * x.y + k1 * y2.y,
+210                         k0 * x.z + k1 * y2.z);
+211         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__quaternion_g8ed8845077927e9b8fc7bd74872c161a}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!squad@{squad}}
 \index{squad@{squad}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[squad]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tquat$<$ T, P $>$ glm::squad (detail::tquat$<$ T, P $>$ const \& {\em q1}, \/  detail::tquat$<$ T, P $>$ const \& {\em q2}, \/  detail::tquat$<$ T, P $>$ const \& {\em s1}, \/  detail::tquat$<$ T, P $>$ const \& {\em s2}, \/  T const \& {\em h})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -208,7 +503,22 @@ Compute a point on a path according squad equation. q1 and q2 are control points
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_gdff49fcff8a70186d2fe32117cb565e0}{
+
+
+Definition at line 37 of file quaternion.inl.
+
+References glm::mix().
+
+\begin{Code}\begin{verbatim}43         {
+44                 return mix(mix(q1, q2, h), mix(s1, s2, h), static_cast<T>(2) * (static_cast<T>(1) - h) * h);
+45         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__quaternion_gdff49fcff8a70186d2fe32117cb565e0}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!toMat3@{toMat3}}
 \index{toMat3@{toMat3}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[toMat3]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-DECL detail::tmat3x3$<$T, P$>$ glm::toMat3 (detail::tquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -219,7 +529,20 @@ Converts a quaternion to a 3 $\ast$ 3 matrix.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_g79cbd9f8eecf24a7b9f23e4de5fcec29}{
+
+
+Definition at line 150 of file quaternion.hpp.
+
+References glm::mat3\_\-cast().
+
+\begin{Code}\begin{verbatim}151                                             {return mat3_cast(x);}
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__quaternion_g79cbd9f8eecf24a7b9f23e4de5fcec29}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!toMat4@{toMat4}}
 \index{toMat4@{toMat4}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[toMat4]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-DECL detail::tmat4x4$<$T, P$>$ glm::toMat4 (detail::tquat$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -230,7 +553,20 @@ Converts a quaternion to a 4 $\ast$ 4 matrix.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_g1d496c7c0d0b1a2edc5bb4c2ffcbc6e7}{
+
+
+Definition at line 157 of file quaternion.hpp.
+
+References glm::mat4\_\-cast().
+
+\begin{Code}\begin{verbatim}158                                             {return mat4_cast(x);}
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__quaternion_g1d496c7c0d0b1a2edc5bb4c2ffcbc6e7}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!toQuat@{toQuat}}
 \index{toQuat@{toQuat}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[toQuat]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-DECL detail::tquat$<$T, P$>$ glm::toQuat (detail::tmat4x4$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -241,7 +577,20 @@ Converts a 4 $\ast$ 4 matrix to a quaternion.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
-\hypertarget{group__gtx__quaternion_gdc8d8daae2f8d725dae576d6655e36d2}{
+
+
+Definition at line 171 of file quaternion.hpp.
+
+References glm::quat\_\-cast().
+
+\begin{Code}\begin{verbatim}172                                               {return quat_cast(x);}
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__quaternion_gdc8d8daae2f8d725dae576d6655e36d2}{
 \index{gtx\_\-quaternion@{gtx\_\-quaternion}!toQuat@{toQuat}}
 \index{toQuat@{toQuat}!gtx_quaternion@{gtx\_\-quaternion}}
 \subsubsection[toQuat]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-DECL detail::tquat$<$T, P$>$ glm::toQuat (detail::tmat3x3$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -252,3 +601,17 @@ Converts a 3 $\ast$ 3 matrix to a quaternion.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__quaternion}{GLM\_\-GTX\_\-quaternion} \end{Desc}
+
+
+Definition at line 164 of file quaternion.hpp.
+
+References glm::quat\_\-cast().
+
+\begin{Code}\begin{verbatim}165                                               {return quat_cast(x);}
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

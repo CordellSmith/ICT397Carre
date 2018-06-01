@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btPolarDecomposition Class Reference</title>
+<title>Assignment2 - OOber Taxi: btPolarDecomposition Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>btPolarDecomposition Class Reference</h1><!-- doxytag: class="btPolarDecomposition" --><code>#include &lt;btPolarDecomposition.h&gt;</code>
+<h1>btPolarDecomposition Class Reference</h1><!-- doxytag: class="btPolarDecomposition" --><code>#include &lt;<a class="el" href="bt_polar_decomposition_8h-source.html">btPolarDecomposition.h</a>&gt;</code>
 <p>
 
 <p>
@@ -40,7 +40,9 @@
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-This class is used to compute the polar decomposition of a matrix. In general, the polar decomposition factorizes a matrix, A, into two parts: a unitary matrix (U) and a positive, semi-definite Hermitian matrix (H). However, in this particular implementation the original matrix, A, is required to be a square 3x3 matrix with real elements. This means that U will be an orthogonal matrix and H with be a positive-definite, symmetric matrix. <hr><h2>Constructor &amp; Destructor Documentation</h2>
+This class is used to compute the polar decomposition of a matrix. In general, the polar decomposition factorizes a matrix, A, into two parts: a unitary matrix (U) and a positive, semi-definite Hermitian matrix (H). However, in this particular implementation the original matrix, A, is required to be a square 3x3 matrix with real elements. This means that U will be an orthogonal matrix and H with be a positive-definite, symmetric matrix. 
+<p>Definition at line <a class="el" href="bt_polar_decomposition_8h-source.html#l00014">14</a> of file <a class="el" href="bt_polar_decomposition_8h-source.html">btPolarDecomposition.h</a>.</p>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="10bfe3fb4d9163c9dce603bf77c0e1a0"></a><!-- doxytag: member="btPolarDecomposition::btPolarDecomposition" ref="10bfe3fb4d9163c9dce603bf77c0e1a0" args="(btScalar tolerance=btScalar(0.0001), unsigned int maxIterations=16)" -->
 <div class="memitem">
 <div class="memproto">
@@ -74,6 +76,14 @@ Creates an instance with optional parameters.<p>
     <tr><td valign="top"></td><td valign="top"><em>maxIterations</em>&nbsp;</td><td>- the maximum number of iterations used to achieve convergence </td></tr>
   </table>
 </dl>
+
+<p>Definition at line <a class="el" href="bt_polar_decomposition_8cpp-source.html#l00035">35</a> of file <a class="el" href="bt_polar_decomposition_8cpp-source.html">btPolarDecomposition.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00036"></a>00036 : m_tolerance(tolerance)
+<a name="l00037"></a>00037 , m_maxIterations(<a class="code" href="classbt_polar_decomposition.html#c999bd3afdcc94a43ddbea028b5d4867">maxIterations</a>)
+<a name="l00038"></a>00038 {
+<a name="l00039"></a>00039 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -120,6 +130,55 @@ Decomposes a matrix into orthogonal and symmetric, positive-definite parts. If t
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>the number of iterations performed by the algorithm. </dd></dl>
 
+<p>Definition at line <a class="el" href="bt_polar_decomposition_8cpp-source.html#l00041">41</a> of file <a class="el" href="bt_polar_decomposition_8cpp-source.html">btPolarDecomposition.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00042"></a>00042 {
+<a name="l00043"></a>00043   <span class="comment">// Use the 'u' and 'h' matrices for intermediate calculations</span>
+<a name="l00044"></a>00044   u = a;
+<a name="l00045"></a>00045   h = a.inverse();
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047   <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; m_maxIterations; ++i)
+<a name="l00048"></a>00048   {
+<a name="l00049"></a>00049     <span class="keyword">const</span> btScalar h_1 = p1_norm(h);
+<a name="l00050"></a>00050     <span class="keyword">const</span> btScalar h_inf = pinf_norm(h);
+<a name="l00051"></a>00051     <span class="keyword">const</span> btScalar u_1 = p1_norm(u);
+<a name="l00052"></a>00052     <span class="keyword">const</span> btScalar u_inf = pinf_norm(u);
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054     <span class="keyword">const</span> btScalar h_norm = h_1 * h_inf;
+<a name="l00055"></a>00055     <span class="keyword">const</span> btScalar u_norm = u_1 * u_inf;
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057     <span class="comment">// The matrix is effectively singular so we cannot invert it</span>
+<a name="l00058"></a>00058     <span class="keywordflow">if</span> (btFuzzyZero(h_norm) || btFuzzyZero(u_norm))
+<a name="l00059"></a>00059       <span class="keywordflow">break</span>;
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061     <span class="keyword">const</span> btScalar gamma = btPow(h_norm / u_norm, 0.25f);
+<a name="l00062"></a>00062     <span class="keyword">const</span> btScalar inv_gamma = btScalar(1.0) / gamma;
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064     <span class="comment">// Determine the delta to 'u'</span>
+<a name="l00065"></a>00065     <span class="keyword">const</span> btMatrix3x3 delta = (u * (gamma - btScalar(2.0)) + h.transpose() * inv_gamma) * btScalar(0.5);
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067     <span class="comment">// Update the matrices</span>
+<a name="l00068"></a>00068     u += delta;
+<a name="l00069"></a>00069     h = u.inverse();
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071     <span class="comment">// Check for convergence</span>
+<a name="l00072"></a>00072     <span class="keywordflow">if</span> (p1_norm(delta) &lt;= m_tolerance * u_1)
+<a name="l00073"></a>00073     {
+<a name="l00074"></a>00074       h = u.transpose() * a;
+<a name="l00075"></a>00075       h = (h + h.transpose()) * 0.5;
+<a name="l00076"></a>00076       <span class="keywordflow">return</span> i;
+<a name="l00077"></a>00077     }
+<a name="l00078"></a>00078   }
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080   <span class="comment">// The algorithm has failed to converge to the specified tolerance, but we</span>
+<a name="l00081"></a>00081   <span class="comment">// want to make sure that the matrices returned are in the right form.</span>
+<a name="l00082"></a>00082   h = u.transpose() * a;
+<a name="l00083"></a>00083   h = (h + h.transpose()) * 0.5;
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085   <span class="keywordflow">return</span> m_maxIterations;
+<a name="l00086"></a>00086 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="c999bd3afdcc94a43ddbea028b5d4867"></a><!-- doxytag: member="btPolarDecomposition::maxIterations" ref="c999bd3afdcc94a43ddbea028b5d4867" args="() const " -->
@@ -141,12 +200,19 @@ Decomposes a matrix into orthogonal and symmetric, positive-definite parts. If t
 Returns the maximum number of iterations that this algorithm will perform to achieve convergence.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>maximum number of iterations </dd></dl>
 
+<p>Definition at line <a class="el" href="bt_polar_decomposition_8cpp-source.html#l00088">88</a> of file <a class="el" href="bt_polar_decomposition_8cpp-source.html">btPolarDecomposition.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00089"></a>00089 {
+<a name="l00090"></a>00090   <span class="keywordflow">return</span> m_maxIterations;
+<a name="l00091"></a>00091 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btPolarDecomposition.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btPolarDecomposition.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/<a class="el" href="bt_polar_decomposition_8h-source.html">btPolarDecomposition.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/<a class="el" href="bt_polar_decomposition_8cpp-source.html">btPolarDecomposition.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:43 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:36 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -26,6 +26,8 @@ btScalar \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info_4cee9
 \subsection{Detailed Description}
 The \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info}{btRigidBodyConstructionInfo} structure provides information to create a rigid body. Setting mass to zero creates a fixed (non-dynamic) rigid body. For dynamic objects, you can use the collision shape to approximate the local inertia tensor, otherwise use the zero vector (default argument) You can use the motion state to synchronize the world transform between physics and graphics objects. And if the motion state is provided, the rigid body will initialize its initial world transform from the motion state, m\_\-startWorldTransform is only used when you don't provide a motion state. 
 
+Definition at line 119 of file btRigidBody.h.
+
 \subsection{Member Data Documentation}
 \hypertarget{structbt_rigid_body_1_1bt_rigid_body_construction_info_729b0b79412f36ac983d4adafbffa429}{
 \index{btRigidBody::btRigidBodyConstructionInfo@{btRigidBody::btRigidBodyConstructionInfo}!m\_\-motionState@{m\_\-motionState}}
@@ -34,7 +36,11 @@ The \hyperlink{structbt_rigid_body_1_1bt_rigid_body_construction_info}{btRigidBo
 \label{structbt_rigid_body_1_1bt_rigid_body_construction_info_729b0b79412f36ac983d4adafbffa429}
 
 
-When a motionState is provided, the rigid body will initialize its world transform from the motion state In this case, m\_\-startWorldTransform is ignored. \hypertarget{structbt_rigid_body_1_1bt_rigid_body_construction_info_bb72d0a00d035d2224a927810e9ed972}{
+When a motionState is provided, the rigid body will initialize its world transform from the motion state In this case, m\_\-startWorldTransform is ignored. 
+
+Definition at line 125 of file btRigidBody.h.
+
+Referenced by btRigidBody::setupRigidBody().\hypertarget{structbt_rigid_body_1_1bt_rigid_body_construction_info_bb72d0a00d035d2224a927810e9ed972}{
 \index{btRigidBody::btRigidBodyConstructionInfo@{btRigidBody::btRigidBodyConstructionInfo}!m\_\-rollingFriction@{m\_\-rollingFriction}}
 \index{m\_\-rollingFriction@{m\_\-rollingFriction}!btRigidBody::btRigidBodyConstructionInfo@{btRigidBody::btRigidBodyConstructionInfo}}
 \subsubsection[m\_\-rollingFriction]{\setlength{\rightskip}{0pt plus 5cm}btScalar {\bf btRigidBody::btRigidBodyConstructionInfo::m\_\-rollingFriction}}}
@@ -43,6 +49,10 @@ When a motionState is provided, the rigid body will initialize its world transfo
 
 the m\_\-rollingFriction prevents rounded shapes, such as spheres, cylinders and capsules from rolling forever. See Bullet/Demos/RollingFrictionDemo for usage 
 
+Definition at line 137 of file btRigidBody.h.
+
+Referenced by btRigidBody::setupRigidBody().
+
 The documentation for this struct was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.h\end{CompactItemize}

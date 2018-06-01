@@ -35,35 +35,183 @@ $<$glm/gtx/intersect.hpp$>$ need to be included to use these functionalities.
 \label{group__gtx__intersect_g28b9b80acf2ea35780709e01b27ab60f}
 
 
-Compute the intersection of a line and a sphere. From GLM\_\-GTX\_\-intersect extension \hypertarget{group__gtx__intersect_g1aa5d241478d1493ff4d8c22b8d9e293}{
+Compute the intersection of a line and a sphere. From GLM\_\-GTX\_\-intersect extension 
+
+Definition at line 192 of file intersect.inl.
+
+References glm::dot(), glm::epsilon(), glm::normalize(), and glm::sqrt().
+
+\begin{Code}\begin{verbatim}198         {
+199                 typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
+200                 genType dir = normalize(point1 - point0);
+201                 genType diff = sphereCenter - point0;
+202                 typename genType::value_type t0 = dot(diff, dir);
+203                 typename genType::value_type dSquared = dot(diff, diff) - t0 * t0;
+204                 if( dSquared > sphereRadius * sphereRadius )
+205                 {
+206                         return false;
+207                 }
+208                 typename genType::value_type t1 = sqrt( sphereRadius * sphereRadius - dSquared );
+209                 if( t0 < t1 + Epsilon )
+210                         t1 = -t1;
+211                 intersectionPoint1 = point0 + dir * (t0 - t1);
+212                 intersectionNormal1 = (intersectionPoint1 - sphereCenter) / sphereRadius;
+213                 intersectionPoint2 = point0 + dir * (t0 + t1);
+214                 intersectionNormal2 = (intersectionPoint2 - sphereCenter) / sphereRadius;
+215                 return true;
+216         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__intersect_g1aa5d241478d1493ff4d8c22b8d9e293}{
 \index{gtx\_\-intersect@{gtx\_\-intersect}!intersectLineTriangle@{intersectLineTriangle}}
 \index{intersectLineTriangle@{intersectLineTriangle}!gtx_intersect@{gtx\_\-intersect}}
 \subsubsection[intersectLineTriangle]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::intersectLineTriangle (genType const \& {\em orig}, \/  genType const \& {\em dir}, \/  genType const \& {\em vert0}, \/  genType const \& {\em vert1}, \/  genType const \& {\em vert2}, \/  genType \& {\em position})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__intersect_g1aa5d241478d1493ff4d8c22b8d9e293}
 
 
-Compute the intersection of a line and a triangle. From GLM\_\-GTX\_\-intersect extension. \hypertarget{group__gtx__intersect_g1699af184f5244ebe224fd653dd0bfc0}{
+Compute the intersection of a line and a triangle. From GLM\_\-GTX\_\-intersect extension. 
+
+Definition at line 115 of file intersect.inl.
+
+References glm::cross(), glm::dot(), and glm::epsilon().
+
+\begin{Code}\begin{verbatim}120         {
+121                 typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
+122 
+123                 genType edge1 = vert1 - vert0;
+124                 genType edge2 = vert2 - vert0;
+125 
+126                 genType pvec = cross(dir, edge2);
+127 
+128                 float det = dot(edge1, pvec);
+129 
+130                 if (det > -Epsilon && det < Epsilon)
+131                         return false;
+132                 float inv_det = typename genType::value_type(1) / det;
+133 
+134                 genType tvec = orig - vert0;
+135 
+136                 position.y = dot(tvec, pvec) * inv_det;
+137                 if (position.y < typename genType::value_type(0) || position.y > typename genType::value_type(1))
+138                         return false;
+139 
+140                 genType qvec = cross(tvec, edge1);
+141 
+142                 position.z = dot(dir, qvec) * inv_det;
+143                 if (position.z < typename genType::value_type(0) || position.y + position.z > typename genType::value_type(1))
+144                         return false;
+145 
+146                 position.x = dot(edge2, qvec) * inv_det;
+147 
+148                 return true;
+149         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__intersect_g1699af184f5244ebe224fd653dd0bfc0}{
 \index{gtx\_\-intersect@{gtx\_\-intersect}!intersectRayPlane@{intersectRayPlane}}
 \index{intersectRayPlane@{intersectRayPlane}!gtx_intersect@{gtx\_\-intersect}}
 \subsubsection[intersectRayPlane]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::intersectRayPlane (genType const \& {\em orig}, \/  genType const \& {\em dir}, \/  genType const \& {\em planeOrig}, \/  genType const \& {\em planeNormal}, \/  typename genType::value\_\-type \& {\em intersectionDistance})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__intersect_g1699af184f5244ebe224fd653dd0bfc0}
 
 
-Compute the intersection of a ray and a triangle. Ray direction and plane normal must be unit length. From GLM\_\-GTX\_\-intersect extension. \hypertarget{group__gtx__intersect_g2e6a97dd3fcdbf83c24dd3499f81014b}{
+Compute the intersection of a ray and a triangle. Ray direction and plane normal must be unit length. From GLM\_\-GTX\_\-intersect extension. 
+
+Definition at line 18 of file intersect.inl.
+
+References glm::dot(), and glm::epsilon().
+
+\begin{Code}\begin{verbatim}23         {
+24                 typename genType::value_type d = glm::dot(dir, planeNormal);
+25                 typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
+26 
+27                 if(d < Epsilon)
+28                 {
+29                         intersectionDistance = glm::dot(planeOrig - orig, planeNormal) / d;
+30                         return true;
+31                 }
+32 
+33                 return false;
+34         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__intersect_g2e6a97dd3fcdbf83c24dd3499f81014b}{
 \index{gtx\_\-intersect@{gtx\_\-intersect}!intersectRaySphere@{intersectRaySphere}}
 \index{intersectRaySphere@{intersectRaySphere}!gtx_intersect@{gtx\_\-intersect}}
 \subsubsection[intersectRaySphere]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::intersectRaySphere (genType const \& {\em rayStarting}, \/  genType const \& {\em rayNormalizedDirection}, \/  genType const \& {\em sphereCenter}, \/  const typename genType::value\_\-type {\em sphereRadius}, \/  genType \& {\em intersectionPosition}, \/  genType \& {\em intersectionNormal})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__intersect_g2e6a97dd3fcdbf83c24dd3499f81014b}
 
 
-Compute the intersection of a ray and a sphere. From GLM\_\-GTX\_\-intersect extension. \hypertarget{group__gtx__intersect_g95b17f6f08015c92fc8ac3e83010492d}{
+Compute the intersection of a ray and a sphere. From GLM\_\-GTX\_\-intersect extension. 
+
+Definition at line 174 of file intersect.inl.
+
+References glm::distance(), and glm::intersectRaySphere().
+
+\begin{Code}\begin{verbatim}179         {
+180                 typename genType::value_type distance;
+181                 if( intersectRaySphere( rayStarting, rayNormalizedDirection, sphereCenter, sphereRadius * sphereRadius, distance ) )
+182                 {
+183                         intersectionPosition = rayStarting + rayNormalizedDirection * distance;
+184                         intersectionNormal = (intersectionPosition - sphereCenter) / sphereRadius;
+185                         return true;
+186                 }
+187                 return false;
+188         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__intersect_g95b17f6f08015c92fc8ac3e83010492d}{
 \index{gtx\_\-intersect@{gtx\_\-intersect}!intersectRaySphere@{intersectRaySphere}}
 \index{intersectRaySphere@{intersectRaySphere}!gtx_intersect@{gtx\_\-intersect}}
 \subsubsection[intersectRaySphere]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::intersectRaySphere (genType const \& {\em rayStarting}, \/  genType const \& {\em rayNormalizedDirection}, \/  genType const \& {\em sphereCenter}, \/  typename genType::value\_\-type const {\em sphereRadiusSquered}, \/  typename genType::value\_\-type \& {\em intersectionDistance})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__intersect_g95b17f6f08015c92fc8ac3e83010492d}
 
 
-Compute the intersection distance of a ray and a sphere. The ray direction vector is unit length. From GLM\_\-GTX\_\-intersect extension. \hypertarget{group__gtx__intersect_gbf48f0fca6a10a8edb001b3d546de5fe}{
+Compute the intersection distance of a ray and a sphere. The ray direction vector is unit length. From GLM\_\-GTX\_\-intersect extension. 
+
+Definition at line 153 of file intersect.inl.
+
+References glm::dot(), glm::epsilon(), and glm::sqrt().
+
+Referenced by glm::intersectRaySphere().
+
+\begin{Code}\begin{verbatim}158         {
+159                 typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
+160                 genType diff = sphereCenter - rayStarting;
+161                 typename genType::value_type t0 = dot(diff, rayNormalizedDirection);
+162                 typename genType::value_type dSquared = dot(diff, diff) - t0 * t0;
+163                 if( dSquared > sphereRadiusSquered )
+164                 {
+165                         return false;
+166                 }
+167                 typename genType::value_type t1 = sqrt( sphereRadiusSquered - dSquared );
+168                 intersectionDistance = t0 > t1 + Epsilon ? t0 - t1 : t0 + t1;
+169                 return intersectionDistance > Epsilon;
+170         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtx__intersect_gbf48f0fca6a10a8edb001b3d546de5fe}{
 \index{gtx\_\-intersect@{gtx\_\-intersect}!intersectRayTriangle@{intersectRayTriangle}}
 \index{intersectRayTriangle@{intersectRayTriangle}!gtx_intersect@{gtx\_\-intersect}}
 \subsubsection[intersectRayTriangle]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::intersectRayTriangle (genType const \& {\em orig}, \/  genType const \& {\em dir}, \/  genType const \& {\em vert0}, \/  genType const \& {\em vert1}, \/  genType const \& {\em vert2}, \/  genType \& {\em baryPosition})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -71,3 +219,47 @@ Compute the intersection distance of a ray and a sphere. The ray direction vecto
 
 
 Compute the intersection of a ray and a triangle. From GLM\_\-GTX\_\-intersect extension. 
+
+Definition at line 38 of file intersect.inl.
+
+References glm::cross(), glm::dot(), and glm::epsilon().
+
+\begin{Code}\begin{verbatim}43         {
+44                 genType e1 = v1 - v0;
+45                 genType e2 = v2 - v0;
+46 
+47                 genType p = glm::cross(dir, e2);
+48 
+49                 typename genType::value_type a = glm::dot(e1, p);
+50 
+51                 typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
+52                 if(a < Epsilon)
+53                         return false;
+54 
+55                 typename genType::value_type f = typename genType::value_type(1.0f) / a;
+56 
+57                 genType s = orig - v0;
+58                 baryPosition.x = f * glm::dot(s, p);
+59                 if(baryPosition.x < typename genType::value_type(0.0f))
+60                         return false;
+61                 if(baryPosition.x > typename genType::value_type(1.0f))
+62                         return false;
+63 
+64                 genType q = glm::cross(s, e1);
+65                 baryPosition.y = f * glm::dot(dir, q);
+66                 if(baryPosition.y < typename genType::value_type(0.0f))
+67                         return false;
+68                 if(baryPosition.y + baryPosition.x > typename genType::value_type(1.0f))
+69                         return false;
+70 
+71                 baryPosition.z = f * glm::dot(e2, q);
+72 
+73                 return baryPosition.z >= typename genType::value_type(0.0f);
+74         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

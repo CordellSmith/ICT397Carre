@@ -29,7 +29,23 @@ Functions that return the color of procedural gradient for specific coordinates.
 
 Return a color from a linear gradient. \begin{Desc}
 \item[See also:]- \hyperlink{group__gtx__gradient__paint}{GLM\_\-GTX\_\-gradient\_\-paint} \end{Desc}
-\hypertarget{group__gtx__gradient__paint_g5e9373dad017d6547ce8db966d02394e}{
+
+
+Definition at line 34 of file gradient\_\-paint.inl.
+
+References glm::dot().
+
+\begin{Code}\begin{verbatim}39         {
+40                 detail::tvec2<T, P> Dist = Point1 - Point0;
+41                 return (Dist.x * (Position.x - Point0.x) + Dist.y * (Position.y - Point0.y)) / glm::dot(Dist, Dist);
+42         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__gradient__paint_g5e9373dad017d6547ce8db966d02394e}{
 \index{gtx\_\-gradient\_\-paint@{gtx\_\-gradient\_\-paint}!radialGradient@{radialGradient}}
 \index{radialGradient@{radialGradient}!gtx_gradient_paint@{gtx\_\-gradient\_\-paint}}
 \subsubsection[radialGradient]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::radialGradient (detail::tvec2$<$ T, P $>$ const \& {\em Center}, \/  T const \& {\em Radius}, \/  detail::tvec2$<$ T, P $>$ const \& {\em Focal}, \/  detail::tvec2$<$ T, P $>$ const \& {\em Position})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -38,3 +54,27 @@ Return a color from a linear gradient. \begin{Desc}
 
 Return a color from a radial gradient. \begin{Desc}
 \item[See also:]- \hyperlink{group__gtx__gradient__paint}{GLM\_\-GTX\_\-gradient\_\-paint} \end{Desc}
+
+
+Definition at line 14 of file gradient\_\-paint.inl.
+
+References glm::pow2(), and glm::sqrt().
+
+\begin{Code}\begin{verbatim}20         {
+21                 detail::tvec2<T, P> F = Focal - Center;
+22                 detail::tvec2<T, P> D = Position - Focal;
+23                 T Radius2 = pow2(Radius);
+24                 T Fx2 = pow2(F.x);
+25                 T Fy2 = pow2(F.y);
+26 
+27                 T Numerator = (D.x * F.x + D.y * F.y) + sqrt(Radius2 * (pow2(D.x) + pow2(D.y)) - pow2(D.x * F.y - D.y * F.x));
+28                 T Denominator = Radius2 - (Fx2 + Fy2);
+29                 return Numerator / Denominator;
+30         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

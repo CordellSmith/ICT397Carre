@@ -26,3 +26,18 @@ $<$glm/gtx/normal.hpp$>$ need to be included to use these functionalities.
 
 
 Computes triangle normal from triangle points. From GLM\_\-GTX\_\-normal extension. 
+
+Definition at line 14 of file normal.inl.
+
+References glm::cross(), and glm::normalize().
+
+\begin{Code}\begin{verbatim}19         {
+20                 return normalize(cross(p1 - p2, p1 - p3));
+21         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

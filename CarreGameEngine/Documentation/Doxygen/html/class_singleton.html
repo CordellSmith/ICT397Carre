@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Singleton&lt; T &gt; Class Template Reference</title>
+<title>Assignment2 - OOber Taxi: Singleton&lt; T &gt; Class Template Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,16 +28,16 @@
 <h1>Singleton&lt; T &gt; Class Template Reference</h1><!-- doxytag: class="Singleton" -->Template singleton class.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;Singleton.h&gt;</code>
+<code>#include &lt;<a class="el" href="_singleton_8h-source.html">Singleton.h</a>&gt;</code>
 <p>
 
 <p>
 <a href="class_singleton-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
-<tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Static T *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_singleton.html#cc947ffd8470f2b8050db362b112f596">GetInstance</a> ()</td></tr>
+<tr><td colspan="2"><br><h2>Static Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static T &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_singleton.html#db2c49abf86f1ada00d6811f30edd9e6">GetInstance</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the instance of singleton.  <a href="#cc947ffd8470f2b8050db362b112f596"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the instance of singleton.  <a href="#db2c49abf86f1ada00d6811f30edd9e6"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 <h3>template&lt;class T&gt;<br>
@@ -47,20 +47,24 @@ Template singleton class.
 <p>
 This singleton class is used to create single instances of a given type.<p>
 <dl class="version" compact><dt><b>Version:</b></dt><dd>01 </dd></dl>
-<dl class="date" compact><dt><b>Date:</b></dt><dd>29/03/2018 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>29/03/2018</dd></dl>
+<dl class="version" compact><dt><b>Version:</b></dt><dd>02 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>31/05/2018 </dd></dl>
+
+<p>Definition at line <a class="el" href="_singleton_8h-source.html#l00016">16</a> of file <a class="el" href="_singleton_8h-source.html">Singleton.h</a>.</p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="cc947ffd8470f2b8050db362b112f596"></a><!-- doxytag: member="Singleton::GetInstance" ref="cc947ffd8470f2b8050db362b112f596" args="()" -->
+<a class="anchor" name="db2c49abf86f1ada00d6811f30edd9e6"></a><!-- doxytag: member="Singleton::GetInstance" ref="db2c49abf86f1ada00d6811f30edd9e6" args="()" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Static T* <a class="el" href="class_singleton.html">Singleton</a>&lt; T &gt;::GetInstance           </td>
+          <td class="memname">static T&amp; <a class="el" href="class_singleton.html">Singleton</a>&lt; T &gt;::GetInstance           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td><code> [inline, static]</code></td>
         </tr>
       </table>
 </div>
@@ -72,12 +76,21 @@ Gets the instance of singleton.
 This function returns the singleton instance of the class type.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>static Static T* </dd></dl>
 
+<p>Definition at line <a class="el" href="_singleton_8h-source.html#l00026">26</a> of file <a class="el" href="_singleton_8h-source.html">Singleton.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00026"></a>00026                                 {
+<a name="l00027"></a>00027                 <span class="keyword">static</span> T _instance;
+<a name="l00028"></a>00028                 
+<a name="l00029"></a>00029                 <span class="keywordflow">return</span> _instance;
+<a name="l00030"></a>00030         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/Singleton.h</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/<a class="el" href="_singleton_8h-source.html">Singleton.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:05:08 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:02:44 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

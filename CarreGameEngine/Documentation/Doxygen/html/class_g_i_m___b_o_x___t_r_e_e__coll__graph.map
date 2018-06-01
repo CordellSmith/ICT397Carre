@@ -1,3 +1,4 @@
-<area shape="rect" href="$classgim__array.html" title="gim_array\&lt; GIM_BOX_TREE_NODE \&gt;" alt="" coords="5,187,248,213">
-<area shape="rect" href="$struct_g_i_m___b_o_x___t_r_e_e___n_o_d_e.html" title="Node Structure for trees." alt="" coords="45,96,208,123">
-<area shape="rect" href="$class_g_i_m___a_a_b_b.html" title="Axis aligned box." alt="" coords="83,5,171,32">
+<area shape="rect" href="$classgim__array.html" title="gim_array\&lt; GIM_BOX_TREE_NODE \&gt;" alt="" coords="85,187,328,213">
+<area shape="rect" href="$struct_g_i_m___b_o_x___t_r_e_e___n_o_d_e.html" title="Node Structure for trees." alt="" coords="5,96,168,123">
+<area shape="rect" href="$class_g_i_m___a_a_b_b.html" title="Axis aligned box." alt="" coords="43,5,131,32">
+<area shape="rect" href="$classgim__array.html" title="Very simple array container with fast access and simd memory." alt="" coords="192,96,301,123">

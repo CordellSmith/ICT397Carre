@@ -1,0 +1,13 @@
+<area shape="rect" href="$class_model.html#8c6429a35a1376657357e6e770470f13" title="Gets the camera object." alt="" coords="197,5,328,32">
+<area shape="rect" href="$class_model.html#e8189e0eb940a7a994591ca71dafae5b" title="Gets the mesh batch." alt="" coords="187,56,339,83">
+<area shape="rect" href="$class_model.html#f4b5a0bae6b0b057c118444189c5dfa9" title="Gets the models position." alt="" coords="197,107,328,133">
+<area shape="rect" href="$class_camera.html#b0a4bf5a65d45f25529e3cffda1c361b" title="Gets the projection matrix." alt="" coords="168,157,357,184">
+<area shape="rect" href="$class_model.html#fc6593eeb0980053628cd00a75be51e9" title="Gets the models rotation." alt="" coords="196,208,329,235">
+<area shape="rect" href="$class_model.html#a0fecf0d42fd4ab4d3c4a49a84bd830e" title="Gets the models scale." alt="" coords="204,259,321,285">
+<area shape="rect" href="$class_model.html#985c54c42525ea8e9885977eff7027de" title="Gets the shader." alt="" coords="200,309,325,336">
+<area shape="rect" href="$class_shader.html#1230582b9f5d71bde3614683244e1a83" title="Gets the uniform variable." alt="" coords="193,360,332,387">
+<area shape="rect" href="$class_shader.html#df02f121177b2723321441701361fab4" title="Sets uniform value to float." alt="" coords="203,411,323,437">
+<area shape="rect" href="$class_shader.html#61b49dc75fb1842ec58845e9912f824d" title="Selects uniform value to be changed." alt="" coords="196,461,329,488">
+<area shape="rect" href="$group__gtx__string__cast.html#ga805c20a3b3ed546b5fccf481697565d" title="glm::to_string" alt="" coords="213,512,312,539">
+<area shape="rect" href="$class_shader.html#d94b005141a4ed31a3f4f801455e5590" title="Turns shader off." alt="" coords="207,563,319,589">
+<area shape="rect" href="$class_shader.html#01e9b0696a56a5c567ea4b369872c982" title="Turns shader on." alt="" coords="207,613,319,640">

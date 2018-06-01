@@ -42,6 +42,8 @@ Helper structure to describe a light source.
 
 \hyperlink{namespace_assimp}{Assimp} supports multiple sorts of light sources, including directional, point and spot lights. All of them are defined with just a single structure and distinguished by their parameters. Note - some file formats (such as 3DS, ASE) export a \char`\"{}target point\char`\"{} - the point a spot light is looking at (it can even be animated). \hyperlink{namespace_assimp}{Assimp} writes the target point as a subnode of a spotlights's main node, called \char`\"{}$<$spotName$>$.Target\char`\"{}. However, this is just additional information then, the transformation tracks of the main node make the spot light already point in the right direction. 
 
+Definition at line 113 of file light.h.
+
 \subsection{Member Data Documentation}
 \hypertarget{structai_light_92806413f16230728b04e5f379fd00c0}{
 \index{aiLight@{aiLight}!mName@{mName}}
@@ -52,7 +54,9 @@ Helper structure to describe a light source.
 
 The name of the light source.
 
-There must be a node in the scenegraph with the same name. This node specifies the position of the light in the scene hierarchy and can be animated. \hypertarget{structai_light_4cba1741875dd92724ff55be91c60c2b}{
+There must be a node in the scenegraph with the same name. This node specifies the position of the light in the scene hierarchy and can be animated. 
+
+Definition at line 121 of file light.h.\hypertarget{structai_light_4cba1741875dd92724ff55be91c60c2b}{
 \index{aiLight@{aiLight}!mType@{mType}}
 \index{mType@{mType}!aiLight@{aiLight}}
 \subsubsection[mType]{\setlength{\rightskip}{0pt plus 5cm}C\_\-ENUM {\bf aiLightSourceType} {\bf aiLight::mType}}}
@@ -61,7 +65,9 @@ There must be a node in the scenegraph with the same name. This node specifies t
 
 The type of the light source.
 
-aiLightSource\_\-UNDEFINED is not a valid value for this member. \hypertarget{structai_light_5daf9c9ad2613603b847a527123611f0}{
+aiLightSource\_\-UNDEFINED is not a valid value for this member. 
+
+Definition at line 127 of file light.h.\hypertarget{structai_light_5daf9c9ad2613603b847a527123611f0}{
 \index{aiLight@{aiLight}!mPosition@{mPosition}}
 \index{mPosition@{mPosition}!aiLight@{aiLight}}
 \subsubsection[mPosition]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D {\bf aiLight::mPosition}}}
@@ -70,7 +76,9 @@ aiLightSource\_\-UNDEFINED is not a valid value for this member. \hypertarget{st
 
 Position of the light source in space. Relative to the transformation of the node corresponding to the light.
 
-The position is undefined for directional lights. \hypertarget{structai_light_f3776d5e4e6065cb6dd7e10dc656dada}{
+The position is undefined for directional lights. 
+
+Definition at line 134 of file light.h.\hypertarget{structai_light_f3776d5e4e6065cb6dd7e10dc656dada}{
 \index{aiLight@{aiLight}!mDirection@{mDirection}}
 \index{mDirection@{mDirection}!aiLight@{aiLight}}
 \subsubsection[mDirection]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D {\bf aiLight::mDirection}}}
@@ -79,7 +87,9 @@ The position is undefined for directional lights. \hypertarget{structai_light_f3
 
 Direction of the light source in space. Relative to the transformation of the node corresponding to the light.
 
-The direction is undefined for point lights. The vector may be normalized, but it needn't. \hypertarget{structai_light_c6d03040085bf88979bc55e19ff3a7d6}{
+The direction is undefined for point lights. The vector may be normalized, but it needn't. 
+
+Definition at line 142 of file light.h.\hypertarget{structai_light_c6d03040085bf88979bc55e19ff3a7d6}{
 \index{aiLight@{aiLight}!mUp@{mUp}}
 \index{mUp@{mUp}!aiLight@{aiLight}}
 \subsubsection[mUp]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D {\bf aiLight::mUp}}}
@@ -88,7 +98,9 @@ The direction is undefined for point lights. The vector may be normalized, but i
 
 Up direction of the light source in space. Relative to the transformation of the node corresponding to the light.
 
-The direction is undefined for point lights. The vector may be normalized, but it needn't. \hypertarget{structai_light_e8804b3c309527ca0f85d676bab55710}{
+The direction is undefined for point lights. The vector may be normalized, but it needn't. 
+
+Definition at line 150 of file light.h.\hypertarget{structai_light_e8804b3c309527ca0f85d676bab55710}{
 \index{aiLight@{aiLight}!mAttenuationConstant@{mAttenuationConstant}}
 \index{mAttenuationConstant@{mAttenuationConstant}!aiLight@{aiLight}}
 \subsubsection[mAttenuationConstant]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aiLight::mAttenuationConstant}}}
@@ -103,7 +115,9 @@ The intensity of the light source at a given distance 'd' from the light's posit
 \end{verbatim}
 \end{Code}
 
- This member corresponds to the att0 variable in the equation. Naturally undefined for directional lights. \hypertarget{structai_light_efda311eaa785ea345782dfa95be817c}{
+ This member corresponds to the att0 variable in the equation. Naturally undefined for directional lights. 
+
+Definition at line 162 of file light.h.\hypertarget{structai_light_efda311eaa785ea345782dfa95be817c}{
 \index{aiLight@{aiLight}!mAttenuationLinear@{mAttenuationLinear}}
 \index{mAttenuationLinear@{mAttenuationLinear}!aiLight@{aiLight}}
 \subsubsection[mAttenuationLinear]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aiLight::mAttenuationLinear}}}
@@ -118,7 +132,9 @@ The intensity of the light source at a given distance 'd' from the light's posit
 \end{verbatim}
 \end{Code}
 
- This member corresponds to the att1 variable in the equation. Naturally undefined for directional lights. \hypertarget{structai_light_b4fb07bfa40a807661b1ed1791838a6d}{
+ This member corresponds to the att1 variable in the equation. Naturally undefined for directional lights. 
+
+Definition at line 174 of file light.h.\hypertarget{structai_light_b4fb07bfa40a807661b1ed1791838a6d}{
 \index{aiLight@{aiLight}!mAttenuationQuadratic@{mAttenuationQuadratic}}
 \index{mAttenuationQuadratic@{mAttenuationQuadratic}!aiLight@{aiLight}}
 \subsubsection[mAttenuationQuadratic]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aiLight::mAttenuationQuadratic}}}
@@ -133,7 +149,9 @@ The intensity of the light source at a given distance 'd' from the light's posit
 \end{verbatim}
 \end{Code}
 
- This member corresponds to the att2 variable in the equation. Naturally undefined for directional lights. \hypertarget{structai_light_22e7feebbfaf53adf73bd9f581636efd}{
+ This member corresponds to the att2 variable in the equation. Naturally undefined for directional lights. 
+
+Definition at line 186 of file light.h.\hypertarget{structai_light_22e7feebbfaf53adf73bd9f581636efd}{
 \index{aiLight@{aiLight}!mColorDiffuse@{mColorDiffuse}}
 \index{mColorDiffuse@{mColorDiffuse}!aiLight@{aiLight}}
 \subsubsection[mColorDiffuse]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiColor3D} {\bf aiLight::mColorDiffuse}}}
@@ -142,7 +160,9 @@ The intensity of the light source at a given distance 'd' from the light's posit
 
 Diffuse color of the light source
 
-The diffuse light color is multiplied with the diffuse material color to obtain the final color that contributes to the diffuse shading term. \hypertarget{structai_light_a79ae6ad6a10f0cb9c740e23b6bb01bf}{
+The diffuse light color is multiplied with the diffuse material color to obtain the final color that contributes to the diffuse shading term. 
+
+Definition at line 194 of file light.h.\hypertarget{structai_light_a79ae6ad6a10f0cb9c740e23b6bb01bf}{
 \index{aiLight@{aiLight}!mColorSpecular@{mColorSpecular}}
 \index{mColorSpecular@{mColorSpecular}!aiLight@{aiLight}}
 \subsubsection[mColorSpecular]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiColor3D} {\bf aiLight::mColorSpecular}}}
@@ -151,7 +171,9 @@ The diffuse light color is multiplied with the diffuse material color to obtain 
 
 Specular color of the light source
 
-The specular light color is multiplied with the specular material color to obtain the final color that contributes to the specular shading term. \hypertarget{structai_light_5188b60e6fbaf1635fa780913508e3cd}{
+The specular light color is multiplied with the specular material color to obtain the final color that contributes to the specular shading term. 
+
+Definition at line 202 of file light.h.\hypertarget{structai_light_5188b60e6fbaf1635fa780913508e3cd}{
 \index{aiLight@{aiLight}!mColorAmbient@{mColorAmbient}}
 \index{mColorAmbient@{mColorAmbient}!aiLight@{aiLight}}
 \subsubsection[mColorAmbient]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiColor3D} {\bf aiLight::mColorAmbient}}}
@@ -160,7 +182,9 @@ The specular light color is multiplied with the specular material color to obtai
 
 Ambient color of the light source
 
-The ambient light color is multiplied with the ambient material color to obtain the final color that contributes to the ambient shading term. Most renderers will ignore this value it, is just a remaining of the fixed-function pipeline that is still supported by quite many file formats. \hypertarget{structai_light_bad0466811938623e98bf1d334143f9a}{
+The ambient light color is multiplied with the ambient material color to obtain the final color that contributes to the ambient shading term. Most renderers will ignore this value it, is just a remaining of the fixed-function pipeline that is still supported by quite many file formats. 
+
+Definition at line 212 of file light.h.\hypertarget{structai_light_bad0466811938623e98bf1d334143f9a}{
 \index{aiLight@{aiLight}!mAngleInnerCone@{mAngleInnerCone}}
 \index{mAngleInnerCone@{mAngleInnerCone}!aiLight@{aiLight}}
 \subsubsection[mAngleInnerCone]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aiLight::mAngleInnerCone}}}
@@ -169,7 +193,9 @@ The ambient light color is multiplied with the ambient material color to obtain 
 
 Inner angle of a spot light's light cone.
 
-The spot light has maximum influence on objects inside this angle. The angle is given in radians. It is 2PI for point lights and undefined for directional lights. \hypertarget{structai_light_20fd332a5f9d8e8cb94816ff2b0ae7f4}{
+The spot light has maximum influence on objects inside this angle. The angle is given in radians. It is 2PI for point lights and undefined for directional lights. 
+
+Definition at line 220 of file light.h.\hypertarget{structai_light_20fd332a5f9d8e8cb94816ff2b0ae7f4}{
 \index{aiLight@{aiLight}!mAngleOuterCone@{mAngleOuterCone}}
 \index{mAngleOuterCone@{mAngleOuterCone}!aiLight@{aiLight}}
 \subsubsection[mAngleOuterCone]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aiLight::mAngleOuterCone}}}
@@ -178,7 +204,9 @@ The spot light has maximum influence on objects inside this angle. The angle is 
 
 Outer angle of a spot light's light cone.
 
-The spot light does not affect objects outside this angle. The angle is given in radians. It is 2PI for point lights and undefined for directional lights. The outer angle must be greater than or equal to the inner angle. It is assumed that the application uses a smooth interpolation between the inner and the outer cone of the spot light. \hypertarget{structai_light_e2494aac85acce5e4fa3920b92b9d7b5}{
+The spot light does not affect objects outside this angle. The angle is given in radians. It is 2PI for point lights and undefined for directional lights. The outer angle must be greater than or equal to the inner angle. It is assumed that the application uses a smooth interpolation between the inner and the outer cone of the spot light. 
+
+Definition at line 232 of file light.h.\hypertarget{structai_light_e2494aac85acce5e4fa3920b92b9d7b5}{
 \index{aiLight@{aiLight}!mSize@{mSize}}
 \index{mSize@{mSize}!aiLight@{aiLight}}
 \subsubsection[mSize]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiVector2D} {\bf aiLight::mSize}}}
@@ -187,6 +215,8 @@ The spot light does not affect objects outside this angle. The angle is given in
 
 Size of area light source. 
 
+Definition at line 235 of file light.h.
+
 The documentation for this struct was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{light_8h}{light.h}\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{light_8h}{light.h}\end{CompactItemize}

@@ -1,0 +1,14 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::unpackSnorm3x10_1x2",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::clamp",height=0.2,width=0.4,color="black",URL="$group__core__func__common.html#g8b4808983e20c4c74b20e0a025787ab4"];
+  Node2 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::max",height=0.2,width=0.4,color="black",URL="$group__core__func__common.html#g4e4d7b280fec55e5dfeb1367a1a2597d"];
+  Node2 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::min",height=0.2,width=0.4,color="black",URL="$group__core__func__common.html#g7c4425eacc9498bb2ab8a7cfd662cd69"];
+}

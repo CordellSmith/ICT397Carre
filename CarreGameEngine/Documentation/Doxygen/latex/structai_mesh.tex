@@ -51,9 +51,9 @@ unsigned int \hyperlink{structai_mesh_3a6c8c5f1d6543bfdd930f6b07467665}{mMethod}
 \subsection{Detailed Description}
 enum aiMorphingMethod 
 
-A mesh represents a geometry or model with a single material. It usually consists of a number of vertices and a series of primitives/faces referencing the vertices. In addition there might be a series of bones, each of them addressing a number of vertices with a certain weight. \hyperlink{struct_vertex}{Vertex} data is presented in channels with each channel containing a single per-vertex information such as a set of texture coords or a normal vector. If a data pointer is non-null, the corresponding data stream is present. From C++-programs you can also use the comfort functions Has$\ast$() to test for the presence of various data streams.
+A mesh represents a geometry or model with a single material. It usually consists of a number of vertices and a series of primitives/faces referencing the vertices. In addition there might be a series of bones, each of them addressing a number of vertices with a certain weight. \hyperlink{class_vertex}{Vertex} data is presented in channels with each channel containing a single per-vertex information such as a set of texture coords or a normal vector. If a data pointer is non-null, the corresponding data stream is present. From C++-programs you can also use the comfort functions Has$\ast$() to test for the presence of various data streams.
 
-A Mesh uses only a single material which is referenced by a material ID. \begin{Desc}
+A \hyperlink{class_mesh}{Mesh} uses only a single material which is referenced by a material ID. \begin{Desc}
 \item[Note:]The mPositions member is usually not optional. However, vertex positions $\ast$could$\ast$ be missing if the \hyperlink{scene_8h_64c3b662e066126207bb842fc406a745}{AI\_\-SCENE\_\-FLAGS\_\-INCOMPLETE} flag is set in 
 
 \begin{Code}\begin{verbatim} aiScene::mFlags
@@ -63,6 +63,8 @@ A Mesh uses only a single material which is referenced by a material ID. \begin{
  \end{Desc}
 
 
+Definition at line 496 of file mesh.h.
+
 \subsection{Member Data Documentation}
 \hypertarget{structai_mesh_99d66ac0a444068c1b252b30265cbf53}{
 \index{aiMesh@{aiMesh}!mPrimitiveTypes@{mPrimitiveTypes}}
@@ -71,35 +73,47 @@ A Mesh uses only a single material which is referenced by a material ID. \begin{
 \label{structai_mesh_99d66ac0a444068c1b252b30265cbf53}
 
 
-Bitwise combination of the members of the aiPrimitiveType enum. This specifies which types of primitives are present in the mesh. The \char`\"{}SortByPrimitiveType\char`\"{}-Step can be used to make sure the output meshes consist of one primitive type each. \hypertarget{structai_mesh_b34b7b5941e6636f1c08f615cbb072ef}{
+Bitwise combination of the members of the aiPrimitiveType enum. This specifies which types of primitives are present in the mesh. The \char`\"{}SortByPrimitiveType\char`\"{}-Step can be used to make sure the output meshes consist of one primitive type each. 
+
+Definition at line 503 of file mesh.h.\hypertarget{structai_mesh_b34b7b5941e6636f1c08f615cbb072ef}{
 \index{aiMesh@{aiMesh}!mNumVertices@{mNumVertices}}
 \index{mNumVertices@{mNumVertices}!aiMesh@{aiMesh}}
 \subsubsection[mNumVertices]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiMesh::mNumVertices}}}
 \label{structai_mesh_b34b7b5941e6636f1c08f615cbb072ef}
 
 
-The number of vertices in this mesh. This is also the size of all of the per-vertex data arrays. The maximum value for this member is AI\_\-MAX\_\-VERTICES. \hypertarget{structai_mesh_eed22ee6963b79548f3877b3c905518e}{
+The number of vertices in this mesh. This is also the size of all of the per-vertex data arrays. The maximum value for this member is AI\_\-MAX\_\-VERTICES. 
+
+Definition at line 509 of file mesh.h.\hypertarget{structai_mesh_eed22ee6963b79548f3877b3c905518e}{
 \index{aiMesh@{aiMesh}!mNumFaces@{mNumFaces}}
 \index{mNumFaces@{mNumFaces}!aiMesh@{aiMesh}}
 \subsubsection[mNumFaces]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiMesh::mNumFaces}}}
 \label{structai_mesh_eed22ee6963b79548f3877b3c905518e}
 
 
-The number of primitives (triangles, polygons, lines) in this mesh. This is also the size of the mFaces array. The maximum value for this member is AI\_\-MAX\_\-FACES. \hypertarget{structai_mesh_fd4588abb3e1c72821ae0234a3850662}{
+The number of primitives (triangles, polygons, lines) in this mesh. This is also the size of the mFaces array. The maximum value for this member is AI\_\-MAX\_\-FACES. 
+
+Definition at line 515 of file mesh.h.
+
+Referenced by Model::ProcessMesh().\hypertarget{structai_mesh_fd4588abb3e1c72821ae0234a3850662}{
 \index{aiMesh@{aiMesh}!mVertices@{mVertices}}
 \index{mVertices@{mVertices}!aiMesh@{aiMesh}}
 \subsubsection[mVertices]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D$\ast$ {\bf aiMesh::mVertices}}}
 \label{structai_mesh_fd4588abb3e1c72821ae0234a3850662}
 
 
-\hyperlink{struct_vertex}{Vertex} positions. This array is always present in a mesh. The array is mNumVertices in size. \hypertarget{structai_mesh_ec81b496b4d93838cef038933dabe9b9}{
+\hyperlink{class_vertex}{Vertex} positions. This array is always present in a mesh. The array is mNumVertices in size. 
+
+Definition at line 521 of file mesh.h.
+
+Referenced by Model::ProcessMesh().\hypertarget{structai_mesh_ec81b496b4d93838cef038933dabe9b9}{
 \index{aiMesh@{aiMesh}!mNormals@{mNormals}}
 \index{mNormals@{mNormals}!aiMesh@{aiMesh}}
 \subsubsection[mNormals]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D$\ast$ {\bf aiMesh::mNormals}}}
 \label{structai_mesh_ec81b496b4d93838cef038933dabe9b9}
 
 
-\hyperlink{struct_vertex}{Vertex} normals. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. Normals are undefined for point and line primitives. A mesh consisting of points and lines only may not have normal vectors. Meshes with mixed primitive types (i.e. lines and triangles) may have normals, but the normals for vertices that are only referenced by point or line primitives are undefined and set to QNaN (WARN: qNaN compares to inequal to $\ast$everything$\ast$, even to qNaN itself. Using code like this to check whether a field is qnan is: 
+\hyperlink{class_vertex}{Vertex} normals. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. Normals are undefined for point and line primitives. A mesh consisting of points and lines only may not have normal vectors. Meshes with mixed primitive types (i.e. lines and triangles) may have normals, but the normals for vertices that are only referenced by point or line primitives are undefined and set to QNaN (WARN: qNaN compares to inequal to $\ast$everything$\ast$, even to qNaN itself. Using code like this to check whether a field is qnan is: 
 
 \begin{Code}\begin{verbatim} #define IS_QNAN(f) (f != f)
 \end{verbatim}
@@ -107,39 +121,53 @@ The number of primitives (triangles, polygons, lines) in this mesh. This is also
 
  still dangerous because even 1.f == 1.f could evaluate to false! ( remember the subtleties of IEEE754 artithmetics). Use stuff like {\tt fpclassify} instead. \begin{Desc}
 \item[Note:]Normal vectors computed by \hyperlink{namespace_assimp}{Assimp} are always unit-length. However, this needn't apply for normals that have been taken directly from the model file. \end{Desc}
-\hypertarget{structai_mesh_f367ff78bd69f3e83d7edc8ad67dc5df}{
+
+
+Definition at line 543 of file mesh.h.
+
+Referenced by Model::ProcessMesh().\hypertarget{structai_mesh_f367ff78bd69f3e83d7edc8ad67dc5df}{
 \index{aiMesh@{aiMesh}!mTangents@{mTangents}}
 \index{mTangents@{mTangents}!aiMesh@{aiMesh}}
 \subsubsection[mTangents]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D$\ast$ {\bf aiMesh::mTangents}}}
 \label{structai_mesh_f367ff78bd69f3e83d7edc8ad67dc5df}
 
 
-\hyperlink{struct_vertex}{Vertex} tangents. The tangent of a vertex points in the direction of the positive X texture axis. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. A mesh consisting of points and lines only may not have normal vectors. Meshes with mixed primitive types (i.e. lines and triangles) may have normals, but the normals for vertices that are only referenced by point or line primitives are undefined and set to qNaN. See the \hyperlink{structai_mesh_ec81b496b4d93838cef038933dabe9b9}{mNormals} member for a detailed discussion of qNaNs. \begin{Desc}
+\hyperlink{class_vertex}{Vertex} tangents. The tangent of a vertex points in the direction of the positive X texture axis. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. A mesh consisting of points and lines only may not have normal vectors. Meshes with mixed primitive types (i.e. lines and triangles) may have normals, but the normals for vertices that are only referenced by point or line primitives are undefined and set to qNaN. See the \hyperlink{structai_mesh_ec81b496b4d93838cef038933dabe9b9}{mNormals} member for a detailed discussion of qNaNs. \begin{Desc}
 \item[Note:]If the mesh contains tangents, it automatically also contains bitangents. \end{Desc}
-\hypertarget{structai_mesh_b2a81bfe1731f01271ebab274a8f01c4}{
+
+
+Definition at line 557 of file mesh.h.\hypertarget{structai_mesh_b2a81bfe1731f01271ebab274a8f01c4}{
 \index{aiMesh@{aiMesh}!mBitangents@{mBitangents}}
 \index{mBitangents@{mBitangents}!aiMesh@{aiMesh}}
 \subsubsection[mBitangents]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D$\ast$ {\bf aiMesh::mBitangents}}}
 \label{structai_mesh_b2a81bfe1731f01271ebab274a8f01c4}
 
 
-\hyperlink{struct_vertex}{Vertex} bitangents. The bitangent of a vertex points in the direction of the positive Y texture axis. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. \begin{Desc}
+\hyperlink{class_vertex}{Vertex} bitangents. The bitangent of a vertex points in the direction of the positive Y texture axis. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. \begin{Desc}
 \item[Note:]If the mesh contains tangents, it automatically also contains bitangents. \end{Desc}
-\hypertarget{structai_mesh_d9215f67bd0c2277b10775a8adb66b96}{
+
+
+Definition at line 566 of file mesh.h.\hypertarget{structai_mesh_d9215f67bd0c2277b10775a8adb66b96}{
 \index{aiMesh@{aiMesh}!mColors@{mColors}}
 \index{mColors@{mColors}!aiMesh@{aiMesh}}
 \subsubsection[mColors]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiColor4D$\ast$ {\bf aiMesh::mColors}\mbox{[}AI\_\-MAX\_\-NUMBER\_\-OF\_\-COLOR\_\-SETS\mbox{]}}}
 \label{structai_mesh_d9215f67bd0c2277b10775a8adb66b96}
 
 
-\hyperlink{struct_vertex}{Vertex} color sets. A mesh may contain 0 to AI\_\-MAX\_\-NUMBER\_\-OF\_\-COLOR\_\-SETS vertex colors per vertex. NULL if not present. Each array is mNumVertices in size if present. \hypertarget{structai_mesh_4a50b11d00ef50f419c75cab0f6bddd6}{
+\hyperlink{class_vertex}{Vertex} color sets. A mesh may contain 0 to AI\_\-MAX\_\-NUMBER\_\-OF\_\-COLOR\_\-SETS vertex colors per vertex. NULL if not present. Each array is mNumVertices in size if present. 
+
+Definition at line 573 of file mesh.h.\hypertarget{structai_mesh_4a50b11d00ef50f419c75cab0f6bddd6}{
 \index{aiMesh@{aiMesh}!mTextureCoords@{mTextureCoords}}
 \index{mTextureCoords@{mTextureCoords}!aiMesh@{aiMesh}}
 \subsubsection[mTextureCoords]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D$\ast$ {\bf aiMesh::mTextureCoords}\mbox{[}AI\_\-MAX\_\-NUMBER\_\-OF\_\-TEXTURECOORDS\mbox{]}}}
 \label{structai_mesh_4a50b11d00ef50f419c75cab0f6bddd6}
 
 
-\hyperlink{struct_vertex}{Vertex} texture coords, also known as UV channels. A mesh may contain 0 to AI\_\-MAX\_\-NUMBER\_\-OF\_\-TEXTURECOORDS per vertex. NULL if not present. The array is mNumVertices in size. \hypertarget{structai_mesh_635c631a6e66d32989d6b25b2a892d86}{
+\hyperlink{class_vertex}{Vertex} texture coords, also known as UV channels. A mesh may contain 0 to AI\_\-MAX\_\-NUMBER\_\-OF\_\-TEXTURECOORDS per vertex. NULL if not present. The array is mNumVertices in size. 
+
+Definition at line 579 of file mesh.h.
+
+Referenced by Model::ProcessMesh().\hypertarget{structai_mesh_635c631a6e66d32989d6b25b2a892d86}{
 \index{aiMesh@{aiMesh}!mNumUVComponents@{mNumUVComponents}}
 \index{mNumUVComponents@{mNumUVComponents}!aiMesh@{aiMesh}}
 \subsubsection[mNumUVComponents]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiMesh::mNumUVComponents}\mbox{[}AI\_\-MAX\_\-NUMBER\_\-OF\_\-TEXTURECOORDS\mbox{]}}}
@@ -148,35 +176,49 @@ The number of primitives (triangles, polygons, lines) in this mesh. This is also
 
 Specifies the number of components for a given UV channel. Up to three channels are supported (UVW, for accessing volume or cube maps). If the value is 2 for a given channel n, the component p.z of mTextureCoords\mbox{[}n\mbox{]}\mbox{[}p\mbox{]} is set to 0.0f. If the value is 1 for a given channel, p.y is set to 0.0f, too. \begin{Desc}
 \item[Note:]4D coords are not supported \end{Desc}
-\hypertarget{structai_mesh_5a65fbc7fdea7f8d36f39047425ece07}{
+
+
+Definition at line 588 of file mesh.h.\hypertarget{structai_mesh_5a65fbc7fdea7f8d36f39047425ece07}{
 \index{aiMesh@{aiMesh}!mFaces@{mFaces}}
 \index{mFaces@{mFaces}!aiMesh@{aiMesh}}
 \subsubsection[mFaces]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiFace}$\ast$ {\bf aiMesh::mFaces}}}
 \label{structai_mesh_5a65fbc7fdea7f8d36f39047425ece07}
 
 
-The faces the mesh is constructed from. Each face refers to a number of vertices by their indices. This array is always present in a mesh, its size is given in mNumFaces. If the \hyperlink{scene_8h_e17f4a0adb51e554db9575cc4e1126f9}{AI\_\-SCENE\_\-FLAGS\_\-NON\_\-VERBOSE\_\-FORMAT} is NOT set each face references an unique set of vertices. \hypertarget{structai_mesh_0f9d5425b6300e32a842a94f943fd79e}{
+The faces the mesh is constructed from. Each face refers to a number of vertices by their indices. This array is always present in a mesh, its size is given in mNumFaces. If the \hyperlink{scene_8h_e17f4a0adb51e554db9575cc4e1126f9}{AI\_\-SCENE\_\-FLAGS\_\-NON\_\-VERBOSE\_\-FORMAT} is NOT set each face references an unique set of vertices. 
+
+Definition at line 596 of file mesh.h.
+
+Referenced by Model::ProcessMesh().\hypertarget{structai_mesh_0f9d5425b6300e32a842a94f943fd79e}{
 \index{aiMesh@{aiMesh}!mNumBones@{mNumBones}}
 \index{mNumBones@{mNumBones}!aiMesh@{aiMesh}}
 \subsubsection[mNumBones]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiMesh::mNumBones}}}
 \label{structai_mesh_0f9d5425b6300e32a842a94f943fd79e}
 
 
-The number of bones this mesh contains. Can be 0, in which case the mBones array is NULL. \hypertarget{structai_mesh_0c0582a7f45b340b6a33552c53232539}{
+The number of bones this mesh contains. Can be 0, in which case the mBones array is NULL. 
+
+Definition at line 601 of file mesh.h.\hypertarget{structai_mesh_0c0582a7f45b340b6a33552c53232539}{
 \index{aiMesh@{aiMesh}!mBones@{mBones}}
 \index{mBones@{mBones}!aiMesh@{aiMesh}}
 \subsubsection[mBones]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiBone}$\ast$$\ast$ {\bf aiMesh::mBones}}}
 \label{structai_mesh_0c0582a7f45b340b6a33552c53232539}
 
 
-The bones of this mesh. A bone consists of a name by which it can be found in the frame hierarchy and a set of vertex weights. \hypertarget{structai_mesh_a2807c7ba172115203ed16047ad65f9e}{
+The bones of this mesh. A bone consists of a name by which it can be found in the frame hierarchy and a set of vertex weights. 
+
+Definition at line 607 of file mesh.h.\hypertarget{structai_mesh_a2807c7ba172115203ed16047ad65f9e}{
 \index{aiMesh@{aiMesh}!mMaterialIndex@{mMaterialIndex}}
 \index{mMaterialIndex@{mMaterialIndex}!aiMesh@{aiMesh}}
 \subsubsection[mMaterialIndex]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiMesh::mMaterialIndex}}}
 \label{structai_mesh_a2807c7ba172115203ed16047ad65f9e}
 
 
-The material used by this mesh. A mesh uses only a single material. If an imported model uses multiple materials, the import splits up the mesh. Use this value as index into the scene's material list. \hypertarget{structai_mesh_8dd9433e0c5b008e3e5aee6c801d3b74}{
+The material used by this mesh. A mesh uses only a single material. If an imported model uses multiple materials, the import splits up the mesh. Use this value as index into the scene's material list. 
+
+Definition at line 614 of file mesh.h.
+
+Referenced by Model::ProcessMesh().\hypertarget{structai_mesh_8dd9433e0c5b008e3e5aee6c801d3b74}{
 \index{aiMesh@{aiMesh}!mName@{mName}}
 \index{mName@{mName}!aiMesh@{aiMesh}}
 \subsubsection[mName]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiString} {\bf aiMesh::mName}}}
@@ -184,22 +226,28 @@ The material used by this mesh. A mesh uses only a single material. If an import
 
 
 Name of the mesh. Meshes can be named, but this is not a requirement and leaving this field empty is totally fine. There are mainly three uses for mesh names:\begin{itemize}
-\item some formats name nodes and meshes independently.\item importers tend to split meshes up to meet the one-material-per-mesh requirement. Assigning the same (dummy) name to each of the result meshes aids the caller at recovering the original mesh partitioning.\item \hyperlink{struct_vertex}{Vertex} animations refer to meshes by their names. \end{itemize}
-\hypertarget{structai_mesh_1692a300222b32348ae51779df4a697e}{
+\item some formats name nodes and meshes independently.\item importers tend to split meshes up to meet the one-material-per-mesh requirement. Assigning the same (dummy) name to each of the result meshes aids the caller at recovering the original mesh partitioning.\item \hyperlink{class_vertex}{Vertex} animations refer to meshes by their names. \end{itemize}
+
+
+Definition at line 627 of file mesh.h.\hypertarget{structai_mesh_1692a300222b32348ae51779df4a697e}{
 \index{aiMesh@{aiMesh}!mNumAnimMeshes@{mNumAnimMeshes}}
 \index{mNumAnimMeshes@{mNumAnimMeshes}!aiMesh@{aiMesh}}
 \subsubsection[mNumAnimMeshes]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiMesh::mNumAnimMeshes}}}
 \label{structai_mesh_1692a300222b32348ae51779df4a697e}
 
 
-The number of attachment meshes. Note! Currently only works with Collada loader. \hypertarget{structai_mesh_5078f7db7e99ed05db89dfa412f0e990}{
+The number of attachment meshes. Note! Currently only works with Collada loader. 
+
+Definition at line 631 of file mesh.h.\hypertarget{structai_mesh_5078f7db7e99ed05db89dfa412f0e990}{
 \index{aiMesh@{aiMesh}!mAnimMeshes@{mAnimMeshes}}
 \index{mAnimMeshes@{mAnimMeshes}!aiMesh@{aiMesh}}
 \subsubsection[mAnimMeshes]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT {\bf aiAnimMesh}$\ast$$\ast$ {\bf aiMesh::mAnimMeshes}}}
 \label{structai_mesh_5078f7db7e99ed05db89dfa412f0e990}
 
 
-Attachment meshes for this mesh, for vertex-based animation. Attachment meshes carry replacement data for some of the mesh'es vertex components (usually positions, normals). Note! Currently only works with Collada loader. \hypertarget{structai_mesh_3a6c8c5f1d6543bfdd930f6b07467665}{
+Attachment meshes for this mesh, for vertex-based animation. Attachment meshes carry replacement data for some of the mesh'es vertex components (usually positions, normals). Note! Currently only works with Collada loader. 
+
+Definition at line 637 of file mesh.h.\hypertarget{structai_mesh_3a6c8c5f1d6543bfdd930f6b07467665}{
 \index{aiMesh@{aiMesh}!mMethod@{mMethod}}
 \index{mMethod@{mMethod}!aiMesh@{aiMesh}}
 \subsubsection[mMethod]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiMesh::mMethod}}}
@@ -208,6 +256,8 @@ Attachment meshes for this mesh, for vertex-based animation. Attachment meshes c
 
 Method of morphing when animeshes are specified. 
 
+Definition at line 642 of file mesh.h.
+
 The documentation for this struct was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/mesh.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/mesh.h\end{CompactItemize}

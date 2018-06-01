@@ -1,0 +1,16 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::eulerAngleZ",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::eulerAngleXZ",height=0.2,width=0.4,color="black",URL="$group__gtx__euler__angles.html#g9b63e52fda0b7773c50bbf3c310bdcf2"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::eulerAngleYZ",height=0.2,width=0.4,color="black",URL="$group__gtx__euler__angles.html#g9ac024a16439421d2a3c7c17b6df31b5"];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::eulerAngleZX",height=0.2,width=0.4,color="black",URL="$group__gtx__euler__angles.html#g3709f9eb45b49ecf41d42bec91c031fa"];
+  Node1 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="glm::eulerAngleZY",height=0.2,width=0.4,color="black",URL="$group__gtx__euler__angles.html#gfcd7d34bef520fd8bee6d4d865a8162a"];
+}

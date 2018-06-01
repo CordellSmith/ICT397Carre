@@ -39,49 +39,203 @@ $<$glm/gtx/matrix\_\-query.hpp$>$ need to be included to use these functionaliti
 \label{group__gtx__matrix__query_gb4ab3ce59ca59a610875732215027cc3}
 
 
-Return whether a matrix is an identity matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_g0005612df8bcf46d6dda35d373a61fbb}{
+Return whether a matrix is an identity matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. 
+
+Definition at line 43 of file matrix\_\-query.inl.
+
+References glm::abs().
+
+\begin{Code}\begin{verbatim}44         {
+45                 bool result = true;
+46                 for(length_t i(0); result && i < m[0].length(); ++i)
+47                 {
+48                         for(length_t j(0); result && j < i ; ++j)
+49                                 result = abs(m[i][j]) <= epsilon;
+50                         if(result)
+51                                 result = abs(m[i][i] - 1) <= epsilon;
+52                         for(length_t j(i + 1); result && j < m.length(); ++j)
+53                                 result = abs(m[i][j]) <= epsilon;
+54                 }
+55                 return result;
+56         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__matrix__query_g0005612df8bcf46d6dda35d373a61fbb}{
 \index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNormalized@{isNormalized}}
 \index{isNormalized@{isNormalized}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
 \subsubsection[isNormalized]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNormalized (detail::tmat4x4$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__query_g0005612df8bcf46d6dda35d373a61fbb}
 
 
-Return whether a matrix is a normalized matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_g31396988209969ac17b2764cff154c36}{
+Return whether a matrix is a normalized matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. 
+
+Definition at line 91 of file matrix\_\-query.inl.
+
+References glm::isNormalized().
+
+\begin{Code}\begin{verbatim}92         {
+93                 bool result(true);
+94                 for(length_t i(0); result && i < m.length(); ++i)
+95                         result = isNormalized(m[i], epsilon);
+96                 for(length_t i(0); result && i < m.length(); ++i)
+97                 {
+98                         typename detail::tmat4x4<T, P>::col_type v;
+99                         for(length_t j(0); j < m.length(); ++j)
+100                                 v[j] = m[j][i];
+101                         result = isNormalized(v, epsilon);
+102                 }
+103                 return result;
+104         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__matrix__query_g31396988209969ac17b2764cff154c36}{
 \index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNormalized@{isNormalized}}
 \index{isNormalized@{isNormalized}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
 \subsubsection[isNormalized]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNormalized (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__query_g31396988209969ac17b2764cff154c36}
 
 
-Return whether a matrix is a normalized matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_g08507235ac0ddb0a274ac1e1b10cbf39}{
+Return whether a matrix is a normalized matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. 
+
+Definition at line 75 of file matrix\_\-query.inl.
+
+References glm::isNormalized().
+
+\begin{Code}\begin{verbatim}76         {
+77                 bool result(true);
+78                 for(length_t i(0); result && i < m.length(); ++i)
+79                         result = isNormalized(m[i], epsilon);
+80                 for(length_t i(0); result && i < m.length(); ++i)
+81                 {
+82                         typename detail::tmat3x3<T, P>::col_type v;
+83                         for(length_t j(0); j < m.length(); ++j)
+84                                 v[j] = m[j][i];
+85                         result = isNormalized(v, epsilon);
+86                 }
+87                 return result;
+88         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__matrix__query_g08507235ac0ddb0a274ac1e1b10cbf39}{
 \index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNormalized@{isNormalized}}
 \index{isNormalized@{isNormalized}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
 \subsubsection[isNormalized]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNormalized (detail::tmat2x2$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__query_g08507235ac0ddb0a274ac1e1b10cbf39}
 
 
-Return whether a matrix is a normalized matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_g227812585b9411f506b157afcda55e9c}{
+Return whether a matrix is a normalized matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. 
+
+Definition at line 59 of file matrix\_\-query.inl.
+
+Referenced by glm::areOrthonormal(), and glm::isNormalized().
+
+\begin{Code}\begin{verbatim}60         {
+61                 bool result(true);
+62                 for(length_t i(0); result && i < m.length(); ++i)
+63                         result = isNormalized(m[i], epsilon);
+64                 for(length_t i(0); result && i < m.length(); ++i)
+65                 {
+66                         typename detail::tmat2x2<T, P>::col_type v;
+67                         for(length_t j(0); j < m.length(); ++j)
+68                                 v[j] = m[j][i];
+69                         result = isNormalized(v, epsilon);
+70                 }
+71                 return result;
+72         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtx__matrix__query_g227812585b9411f506b157afcda55e9c}{
 \index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNull@{isNull}}
 \index{isNull@{isNull}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
 \subsubsection[isNull]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNull (detail::tmat4x4$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__query_g227812585b9411f506b157afcda55e9c}
 
 
-Return whether a matrix is a null matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_ge3db03e8b4aea5dc381bc45d1d3935eb}{
+Return whether a matrix is a null matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. 
+
+Definition at line 34 of file matrix\_\-query.inl.
+
+References glm::isNull().
+
+\begin{Code}\begin{verbatim}35         {
+36                 bool result = true;
+37                 for(length_t i = 0; result && i < 4 ; ++i)
+38                         result = isNull(m[i], epsilon);
+39                 return result;
+40         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__matrix__query_ge3db03e8b4aea5dc381bc45d1d3935eb}{
 \index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNull@{isNull}}
 \index{isNull@{isNull}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
 \subsubsection[isNull]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNull (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__query_ge3db03e8b4aea5dc381bc45d1d3935eb}
 
 
-Return whether a matrix a null matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_g54401e84073257d2bab8680e207ef405}{
+Return whether a matrix a null matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. 
+
+Definition at line 25 of file matrix\_\-query.inl.
+
+References glm::isNull().
+
+\begin{Code}\begin{verbatim}26         {
+27                 bool result = true;
+28                 for(length_t i = 0; result && i < 3 ; ++i)
+29                         result = isNull(m[i], epsilon);
+30                 return result;
+31         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__matrix__query_g54401e84073257d2bab8680e207ef405}{
 \index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isNull@{isNull}}
 \index{isNull@{isNull}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
 \subsubsection[isNull]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNull (detail::tmat2x2$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__matrix__query_g54401e84073257d2bab8680e207ef405}
 
 
-Return whether a matrix a null matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. \hypertarget{group__gtx__matrix__query_gbaeee016acd42f7a58bd1de063a3061b}{
+Return whether a matrix a null matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. 
+
+Definition at line 16 of file matrix\_\-query.inl.
+
+Referenced by glm::isNull().
+
+\begin{Code}\begin{verbatim}17         {
+18                 bool result = true;
+19                 for(length_t i = 0; result && i < 2 ; ++i)
+20                         result = isNull(m[i], epsilon);
+21                 return result;
+22         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtx__matrix__query_gbaeee016acd42f7a58bd1de063a3061b}{
 \index{gtx\_\-matrix\_\-query@{gtx\_\-matrix\_\-query}!isOrthogonal@{isOrthogonal}}
 \index{isOrthogonal@{isOrthogonal}!gtx_matrix_query@{gtx\_\-matrix\_\-query}}
 \subsubsection[isOrthogonal]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class matType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isOrthogonal (matType$<$ T, P $>$ const \& {\em m}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -89,3 +243,30 @@ Return whether a matrix a null matrix. From GLM\_\-GTX\_\-matrix\_\-query extens
 
 
 Return whether a matrix is an orthonormalized matrix. From GLM\_\-GTX\_\-matrix\_\-query extension. 
+
+Definition at line 107 of file matrix\_\-query.inl.
+
+References glm::areOrthogonal().
+
+\begin{Code}\begin{verbatim}108         {
+109                 bool result(true);
+110                 for(length_t i(0); result && i < m.length() - 1; ++i)
+111                 for(length_t j(i + 1); result && j < m.length(); ++j)
+112                         result = areOrthogonal(m[i], m[j], epsilon);
+113 
+114                 if(result)
+115                 {
+116                         matType<T, P> tmp = transpose(m);
+117                         for(length_t i(0); result && i < m.length() - 1 ; ++i)
+118                         for(length_t j(i + 1); result && j < m.length(); ++j)
+119                                 result = areOrthogonal(tmp[i], tmp[j], epsilon);
+120                 }
+121                 return result;
+122         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

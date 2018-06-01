@@ -1,0 +1,4 @@
+<area shape="rect" href="$class_model.html#e8189e0eb940a7a994591ca71dafae5b" title="Gets the mesh batch." alt="" coords="173,5,325,32">
+<area shape="rect" href="$class_model.html#985c54c42525ea8e9885977eff7027de" title="Gets the shader." alt="" coords="187,56,312,83">
+<area shape="rect" href="$class_shader.html#750cae45b47ecb6d8b8ae334562e7c6f" title="Initializes the shader program." alt="" coords="191,107,308,133">
+<area shape="rect" href="$class_shader.html#b6fc1a824cb122fcb0c902397e20f72f" title="Destroys any linked shaders." alt="" coords="375,107,489,133">

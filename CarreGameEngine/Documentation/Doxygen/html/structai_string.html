@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: aiString Struct Reference</title>
+<title>Assignment2 - OOber Taxi: aiString Struct Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>aiString Struct Reference</h1><!-- doxytag: class="aiString" --><code>#include &lt;types.h&gt;</code>
+<h1>aiString Struct Reference</h1><!-- doxytag: class="aiString" --><code>#include &lt;<a class="el" href="types_8h-source.html">types.h</a>&gt;</code>
 <p>
 
 <p>
@@ -42,7 +42,9 @@ Represents an UTF-8 string, zero byte terminated.<p>
 The character set of an <a class="el" href="structai_string.html">aiString</a> is explicitly defined to be UTF-8. This Unicode transformation was chosen in the belief that most strings in 3d files are limited to ASCII, thus the character set needed to be strictly ASCII compatible.<p>
 Most text file loaders provide proper Unicode input file handling, special unicode characters are correctly transcoded to UTF8 and are kept throughout the libraries' import pipeline.<p>
 For most applications, it will be absolutely sufficient to interpret the <a class="el" href="structai_string.html">aiString</a> as ASCII data and work with it as one would work with a plain char*. Windows users in need of proper support for i.e asian characters can use the MultiByteToWideChar(), WideCharToMultiByte() WinAPI functionality to convert the UTF-8 strings to their working character set (i.e. MBCS, WideChar).<p>
-We use this representation instead of std::string to be C-compatible. The (binary) length of such a string is limited to MAXLEN characters (including the the terminating zero). <hr><h2>Member Data Documentation</h2>
+We use this representation instead of std::string to be C-compatible. The (binary) length of such a string is limited to MAXLEN characters (including the the terminating zero). 
+<p>Definition at line <a class="el" href="types_8h-source.html#l00252">252</a> of file <a class="el" href="types_8h-source.html">types.h</a>.</p>
+<hr><h2>Member Data Documentation</h2>
 <a class="anchor" name="7d77c2031ff0340746aa046f7fbcf313"></a><!-- doxytag: member="aiString::length" ref="7d77c2031ff0340746aa046f7fbcf313" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -56,6 +58,8 @@ We use this representation instead of std::string to be C-compatible. The (binar
 
 <p>
 Binary length of the string excluding the terminal 0. This is NOT the logical length of strings containing UTF-8 multibyte sequences! It's the number of bytes from the beginning of the string to its end. 
+<p>Definition at line <a class="el" href="types_8h-source.html#l00364">364</a> of file <a class="el" href="types_8h-source.html">types.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="a90b1da7d347a3dcca0a95061e6ea41d"></a><!-- doxytag: member="aiString::data" ref="a90b1da7d347a3dcca0a95061e6ea41d" args="[MAXLEN]" -->
@@ -71,12 +75,16 @@ Binary length of the string excluding the terminal 0. This is NOT the logical le
 
 <p>
 String buffer. Size limit is MAXLEN 
+<p>Definition at line <a class="el" href="types_8h-source.html#l00367">367</a> of file <a class="el" href="types_8h-source.html">types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_importer_8hpp-source.html#l00641">Assimp::Importer::GetExtensionList()</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="types_8h.html">types.h</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="types_8h-source.html">types.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:52 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:14 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -1,0 +1,37 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btGImpactMeshShapePart::processAllTrianglesRay",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btGImpactShapeInterface::getPrimitiveTriangle",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_shape_interface.html#8b5c48d7831cebf1099b8c983cb3f149",tooltip="if this trimesh"];
+  Node2 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btPrimitiveManagerBase::get_primitive_triangle",height=0.2,width=0.4,color="black",URL="$classbt_primitive_manager_base.html#2eb95b960e4259da38c5ee4ac080fdf7",tooltip="retrieves only the points of the triangle, and the collision margin"];
+  Node2 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="btGImpactShapeInterface::getPrimitiveManager",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_shape_interface.html#291328e80a5f22cffc50924ebb90040a",tooltip="Obtains the primitive manager."];
+  Node1 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="btGImpactMeshShapePart::lockChildShapes",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28",tooltip="call when reading child shapes"];
+  Node5 -> Node6 [color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="btGImpactQuantizedBvh::getPrimitiveManager",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_quantized_bvh.html#8954b68cdc557ffab6c4c0361cea109a"];
+  Node5 -> Node7 [color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="btGImpactMeshShapePart::TrimeshPrimitiveManager::lock",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_mesh_shape_part_1_1_trimesh_primitive_manager.html#48a013e72b76f832638a54326a7cc709"];
+  Node1 -> Node8 [color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="btTriangleCallback::processTriangle",height=0.2,width=0.4,color="black",URL="$classbt_triangle_callback.html#3850755f2c1fd71c4ca5877db1e6f891"];
+  Node1 -> Node9 [color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="btGImpactQuantizedBvh::rayQuery",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_quantized_bvh.html#284ae5b0d5e813bb0bcc02d76cff8b1b",tooltip="returns the indices of the primitives in the m_primitive_manager"];
+  Node9 -> Node10 [color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="btGImpactQuantizedBvh::getNodeCount",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_quantized_bvh.html#5ffe3a11330ab3bce0d6eaffb9b3f689",tooltip="node count"];
+  Node10 -> Node11 [color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="btQuantizedBvhTree::getNodeCount",height=0.2,width=0.4,color="black",URL="$classbt_quantized_bvh_tree.html#8f8b4acde8a974cb57d9d19b37009100",tooltip="node count"];
+  Node9 -> Node12 [color="midnightblue",fontsize=10,style="solid"];
+  Node12 [label="btGImpactQuantizedBvh::isLeafNode",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_quantized_bvh.html#2c4d9b99bc0e575b3f02e9cefda1fb18",tooltip="tells if the node is a leaf"];
+  Node12 -> Node13 [color="midnightblue",fontsize=10,style="solid"];
+  Node13 [label="btQuantizedBvhTree::isLeafNode",height=0.2,width=0.4,color="black",URL="$classbt_quantized_bvh_tree.html#004ff2bf4b2ef3d80d0e01a2ab249e5d",tooltip="tells if the node is a leaf"];
+  Node9 -> Node14 [color="midnightblue",fontsize=10,style="solid"];
+  Node14 [label="btAlignedObjectArray::push_back",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1"];
+  Node9 -> Node15 [color="midnightblue",fontsize=10,style="solid"];
+  Node15 [label="btAlignedObjectArray::size",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7",tooltip="return the number of elements in the array"];
+  Node1 -> Node15 [color="midnightblue",fontsize=10,style="solid"];
+}

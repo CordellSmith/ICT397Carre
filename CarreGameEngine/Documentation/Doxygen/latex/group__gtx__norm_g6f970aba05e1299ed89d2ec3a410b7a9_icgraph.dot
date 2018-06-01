@@ -1,0 +1,14 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::length2",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::distance2",height=0.2,width=0.4,color="black",URL="$group__gtx__norm.html#gaf6befa643aa9616f3c19e5548b11b54"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::mat3x4_cast",height=0.2,width=0.4,color="black",URL="$group__gtc__dual__quaternion.html#gbd9f9dad6fbec2e89d5b239b8dc37096"];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::rotation",height=0.2,width=0.4,color="black",URL="$group__gtx__quaternion.html#gf7a15242ef69e5c997df231b28b92cef"];
+}

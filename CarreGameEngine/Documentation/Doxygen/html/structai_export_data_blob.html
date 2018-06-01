@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: aiExportDataBlob Struct Reference</title>
+<title>Assignment2 - OOber Taxi: aiExportDataBlob Struct Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>aiExportDataBlob Struct Reference</h1><!-- doxytag: class="aiExportDataBlob" --><code>#include &lt;cexport.h&gt;</code>
+<h1>aiExportDataBlob Struct Reference</h1><!-- doxytag: class="aiExportDataBlob" --><code>#include &lt;<a class="el" href="cexport_8h-source.html">cexport.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for aiExportDataBlob:</div>
@@ -54,7 +54,9 @@ void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Describes a blob of exported scene data. Use <a class="el" href="cexport_8h.html#33b02f2dbfd79980bf29e62f3a64139f">aiExportSceneToBlob()</a> to create a blob containing an exported scene. The memory referred by this structure is owned by <a class="el" href="namespace_assimp.html">Assimp</a>. to free its resources. Don't try to free the memory on your side - it will crash for most build configurations due to conflicting heaps.<p>
-Blobs can be nested - each blob may reference another blob, which may in turn reference another blob and so on. This is used when exporters write more than one output file for a given <a class="el" href="structai_scene.html">aiScene</a>. See the remarks for <a class="el" href="structai_export_data_blob.html#f7f006ac5ad818c0d81d520a84f74c3e">aiExportDataBlob::name</a> for more information. <hr><h2>Member Data Documentation</h2>
+Blobs can be nested - each blob may reference another blob, which may in turn reference another blob and so on. This is used when exporters write more than one output file for a given <a class="el" href="structai_scene.html">aiScene</a>. See the remarks for <a class="el" href="structai_export_data_blob.html#f7f006ac5ad818c0d81d520a84f74c3e">aiExportDataBlob::name</a> for more information. 
+<p>Definition at line <a class="el" href="cexport_8h-source.html#l00200">200</a> of file <a class="el" href="cexport_8h-source.html">cexport.h</a>.</p>
+<hr><h2>Member Data Documentation</h2>
 <a class="anchor" name="f7f006ac5ad818c0d81d520a84f74c3e"></a><!-- doxytag: member="aiExportDataBlob::name" ref="f7f006ac5ad818c0d81d520a84f74c3e" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -69,6 +71,8 @@ Blobs can be nested - each blob may reference another blob, which may in turn re
 <p>
 Name of the blob. An empty string always indicates the first (and primary) blob, which contains the actual file data. Any other blobs are auxiliary files produced by exporters (i.e. material files). Existence of such files depends on the file format. Most formats don't split assets across multiple files.<p>
 If used, blob names usually contain the file extension that should be used when writing the data to disc. 
+<p>Definition at line <a class="el" href="cexport_8h-source.html#l00220">220</a> of file <a class="el" href="cexport_8h-source.html">cexport.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="3e98fa760f45983ff1bccec6715f3817"></a><!-- doxytag: member="aiExportDataBlob::next" ref="3e98fa760f45983ff1bccec6715f3817" args="" -->
@@ -84,12 +88,14 @@ If used, blob names usually contain the file extension that should be used when 
 
 <p>
 Pointer to the next blob in the chain or NULL if there is none. 
+<p>Definition at line <a class="el" href="cexport_8h-source.html#l00223">223</a> of file <a class="el" href="cexport_8h-source.html">cexport.h</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="cexport_8h.html">cexport.h</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="cexport_8h-source.html">cexport.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:48 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:11 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

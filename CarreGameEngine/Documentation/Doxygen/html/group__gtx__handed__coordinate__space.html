@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_handed_coordinate_space</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_handed_coordinate_space</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -80,6 +80,24 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return if a trihedron left handed or not. From GLM_GTX_handed_coordinate_space extension. 
+<p>Definition at line <a class="el" href="handed__coordinate__space_8inl-source.html#l00025">25</a> of file <a class="el" href="handed__coordinate__space_8inl-source.html">handed_coordinate_space.inl</a>.</p>
+
+<p>References <a class="el" href="func__geometric_8inl-source.html#l00217">glm::cross()</a>, and <a class="el" href="func__geometric_8inl-source.html#l00188">glm::dot()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00030"></a>00030         {
+<a name="l00031"></a>00031                 <span class="keywordflow">return</span> <a class="code" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">dot</a>(<a class="code" href="group__gtx__quaternion.html#gd81a2ea5c1048d8101ce2876eb6569f7">cross</a>(normal, tangent), binormal) &lt; T(0);
+<a name="l00032"></a>00032         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__handed__coordinate__space_g5613515e0fdb693d30e9e8db0aa17176_cgraph.png" border="0" usemap="#group__gtx__handed__coordinate__space_g5613515e0fdb693d30e9e8db0aa17176_cgraph_map" alt=""></center>
+<map name="group__gtx__handed__coordinate__space_g5613515e0fdb693d30e9e8db0aa17176_cgraph_map">
+<area shape="rect" href="group__core__func__geometric.html#g9a325364ff3650c4a85c33704c646e76" title="glm::cross" alt="" coords="165,5,248,32"><area shape="rect" href="group__core__func__geometric.html#gc64a3b29d01336161a668d328cac97eb" title="glm::dot" alt="" coords="173,56,240,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g65f766ab3c8924b90eabc0e1ecf014d1"></a><!-- doxytag: member="glm::rightHanded" ref="g65f766ab3c8924b90eabc0e1ecf014d1" args="(detail::tvec3&lt; T, P &gt; const &amp;tangent, detail::tvec3&lt; T, P &gt; const &amp;binormal, detail::tvec3&lt; T, P &gt; const &amp;normal)" -->
@@ -117,10 +135,28 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return if a trihedron right handed or not. From GLM_GTX_handed_coordinate_space extension. 
+<p>Definition at line <a class="el" href="handed__coordinate__space_8inl-source.html#l00014">14</a> of file <a class="el" href="handed__coordinate__space_8inl-source.html">handed_coordinate_space.inl</a>.</p>
+
+<p>References <a class="el" href="func__geometric_8inl-source.html#l00217">glm::cross()</a>, and <a class="el" href="func__geometric_8inl-source.html#l00188">glm::dot()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00019"></a>00019         {
+<a name="l00020"></a>00020                 <span class="keywordflow">return</span> <a class="code" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">dot</a>(<a class="code" href="group__gtx__quaternion.html#gd81a2ea5c1048d8101ce2876eb6569f7">cross</a>(normal, tangent), binormal) &gt; T(0);
+<a name="l00021"></a>00021         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__handed__coordinate__space_g65f766ab3c8924b90eabc0e1ecf014d1_cgraph.png" border="0" usemap="#group__gtx__handed__coordinate__space_g65f766ab3c8924b90eabc0e1ecf014d1_cgraph_map" alt=""></center>
+<map name="group__gtx__handed__coordinate__space_g65f766ab3c8924b90eabc0e1ecf014d1_cgraph_map">
+<area shape="rect" href="group__core__func__geometric.html#g9a325364ff3650c4a85c33704c646e76" title="glm::cross" alt="" coords="173,5,256,32"><area shape="rect" href="group__core__func__geometric.html#gc64a3b29d01336161a668d328cac97eb" title="glm::dot" alt="" coords="181,56,248,83"></map>
+</div>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:32 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:22 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

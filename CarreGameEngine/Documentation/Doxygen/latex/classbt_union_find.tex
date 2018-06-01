@@ -17,6 +17,8 @@ void \hyperlink{classbt_union_find_8bf4647f84d20b033e0d0a7188f3b798}{sortIslands
 \subsection{Detailed Description}
 UnionFind calculates connected subsets. 
 
+Definition at line 35 of file btUnionFind.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_union_find_8bf4647f84d20b033e0d0a7188f3b798}{
 \index{btUnionFind@{btUnionFind}!sortIslands@{sortIslands}}
@@ -27,7 +29,41 @@ UnionFind calculates connected subsets.
 
 this is a special operation, destroying the content of \hyperlink{classbt_union_find}{btUnionFind}. it sorts the elements, based on island id, in order to make it easy to iterate over islands 
 
+Definition at line 64 of file btUnionFind.cpp.
+
+References btAlignedObjectArray$<$ T $>$::quickSort(), and btAlignedObjectArray$<$ T $>$::size().
+
+Referenced by btSimulationIslandManager::buildIslands().
+
+\begin{Code}\begin{verbatim}65 {
+66 
+67         //first store the original body index, and islandId
+68         int numElements = m_elements.size();
+69         
+70         for (int i=0;i<numElements;i++)
+71         {
+72                 m_elements[i].m_id = find(i);
+73 #ifndef STATIC_SIMULATION_ISLAND_OPTIMIZATION
+74                 m_elements[i].m_sz = i;
+75 #endif //STATIC_SIMULATION_ISLAND_OPTIMIZATION
+76         }
+77         
+78          // Sort the vector using predicate and std::sort
+79           //std::sort(m_elements.begin(), m_elements.end(), btUnionFindElementSortPredicate);
+80           m_elements.quickSort(btUnionFindElementSortPredicate());
+81 
+82 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btUnionFind.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btUnionFind.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btUnionFind.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btUnionFind.cpp\end{CompactItemize}

@@ -16,6 +16,8 @@ void \hyperlink{classbt_convex_plane_collision_algorithm_79f8384fcdc2145be9fca00
 \subsection{Detailed Description}
 \hyperlink{classbt_sphere_box_collision_algorithm}{btSphereBoxCollisionAlgorithm} provides sphere-box collision detection. Other features are frame-coherency (persistent data) and collision response. 
 
+Definition at line 29 of file btConvexPlaneCollisionAlgorithm.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_convex_plane_collision_algorithm_ce95b966a346d00f7666549220f6afb8}{
 \index{btConvexPlaneCollisionAlgorithm@{btConvexPlaneCollisionAlgorithm}!processCollision@{processCollision}}
@@ -28,7 +30,87 @@ void \hyperlink{classbt_convex_plane_collision_algorithm_79f8384fcdc2145be9fca00
 
 report a contact. internally this will be kept persistent, and contact reduction is done 
 
-Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.\hypertarget{classbt_convex_plane_collision_algorithm_79f8384fcdc2145be9fca0057edc8b69}{
+Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.
+
+Definition at line 94 of file btConvexPlaneCollisionAlgorithm.cpp.
+
+References btManifoldResult::addContactPoint(), collideSingleContact(), glm::distance(), btManifoldResult::getPersistentManifold(), btManifoldResult::refreshContactPoints(), and btManifoldResult::setPersistentManifold().
+
+\begin{Code}\begin{verbatim}95 {
+96         (void)dispatchInfo;
+97         if (!m_manifoldPtr)
+98                 return;
+99 
+100         const btCollisionObjectWrapper* convexObjWrap = m_isSwapped? body1Wrap : body0Wrap;
+101         const btCollisionObjectWrapper* planeObjWrap = m_isSwapped? body0Wrap: body1Wrap;
+102 
+103         btConvexShape* convexShape = (btConvexShape*) convexObjWrap->getCollisionShape();
+104         btStaticPlaneShape* planeShape = (btStaticPlaneShape*) planeObjWrap->getCollisionShape();
+105 
+106         bool hasCollision = false;
+107         const btVector3& planeNormal = planeShape->getPlaneNormal();
+108         const btScalar& planeConstant = planeShape->getPlaneConstant();
+109         btTransform planeInConvex;
+110         planeInConvex= convexObjWrap->getWorldTransform().inverse() * planeObjWrap->getWorldTransform();
+111         btTransform convexInPlaneTrans;
+112         convexInPlaneTrans= planeObjWrap->getWorldTransform().inverse() * convexObjWrap->getWorldTransform();
+113 
+114         btVector3 vtx = convexShape->localGetSupportingVertex(planeInConvex.getBasis()*-planeNormal);
+115         btVector3 vtxInPlane = convexInPlaneTrans(vtx);
+116         btScalar distance = (planeNormal.dot(vtxInPlane) - planeConstant);
+117 
+118         btVector3 vtxInPlaneProjected = vtxInPlane - distance*planeNormal;
+119         btVector3 vtxInPlaneWorld = planeObjWrap->getWorldTransform() * vtxInPlaneProjected;
+120 
+121         hasCollision = distance < m_manifoldPtr->getContactBreakingThreshold();
+122         resultOut->setPersistentManifold(m_manifoldPtr);
+123         if (hasCollision)
+124         {
+126                 btVector3 normalOnSurfaceB = planeObjWrap->getWorldTransform().getBasis() * planeNormal;
+127                 btVector3 pOnB = vtxInPlaneWorld;
+128                 resultOut->addContactPoint(normalOnSurfaceB,pOnB,distance);
+129         }
+130 
+131         //the perturbation algorithm doesn't work well with implicit surfaces such as spheres, cylinder and cones:
+132         //they keep on rolling forever because of the additional off-center contact points
+133         //so only enable the feature for polyhedral shapes (btBoxShape, btConvexHullShape etc)
+134         if (convexShape->isPolyhedral() && resultOut->getPersistentManifold()->getNumContacts()<m_minimumPointsPerturbationThreshold)
+135         {
+136                 btVector3 v0,v1;
+137                 btPlaneSpace1(planeNormal,v0,v1);
+138                 //now perform 'm_numPerturbationIterations' collision queries with the perturbated collision objects
+139 
+140                 const btScalar angleLimit = 0.125f * SIMD_PI;
+141                 btScalar perturbeAngle;
+142                 btScalar radius = convexShape->getAngularMotionDisc();
+143                 perturbeAngle = gContactBreakingThreshold / radius;
+144                 if ( perturbeAngle > angleLimit ) 
+145                                 perturbeAngle = angleLimit;
+146 
+147                 btQuaternion perturbeRot(v0,perturbeAngle);
+148                 for (int i=0;i<m_numPerturbationIterations;i++)
+149                 {
+150                         btScalar iterationAngle = i*(SIMD_2_PI/btScalar(m_numPerturbationIterations));
+151                         btQuaternion rotq(planeNormal,iterationAngle);
+152                         collideSingleContact(rotq.inverse()*perturbeRot*rotq,body0Wrap,body1Wrap,dispatchInfo,resultOut);
+153                 }
+154         }
+155 
+156         if (m_ownManifold)
+157         {
+158                 if (m_manifoldPtr->getNumContacts())
+159                 {
+160                         resultOut->refreshContactPoints();
+161                 }
+162         }
+163 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_convex_plane_collision_algorithm_79f8384fcdc2145be9fca0057edc8b69}{
 \index{btConvexPlaneCollisionAlgorithm@{btConvexPlaneCollisionAlgorithm}!collideSingleContact@{collideSingleContact}}
 \index{collideSingleContact@{collideSingleContact}!btConvexPlaneCollisionAlgorithm@{btConvexPlaneCollisionAlgorithm}}
 \subsubsection[collideSingleContact]{\setlength{\rightskip}{0pt plus 5cm}void btConvexPlaneCollisionAlgorithm::collideSingleContact (const {\bf btQuaternion} \& {\em perturbeRot}, \/  const btCollisionObjectWrapper $\ast$ {\em body0Wrap}, \/  const btCollisionObjectWrapper $\ast$ {\em body1Wrap}, \/  const btDispatcherInfo \& {\em dispatchInfo}, \/  {\bf btManifoldResult} $\ast$ {\em resultOut})}}
@@ -39,7 +121,59 @@ Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.\hypert
 
 report a contact. internally this will be kept persistent, and contact reduction is done 
 
+Definition at line 54 of file btConvexPlaneCollisionAlgorithm.cpp.
+
+References btManifoldResult::addContactPoint(), glm::distance(), and btManifoldResult::setPersistentManifold().
+
+Referenced by processCollision().
+
+\begin{Code}\begin{verbatim}55 {
+56     const btCollisionObjectWrapper* convexObjWrap = m_isSwapped? body1Wrap : body0Wrap;
+57         const btCollisionObjectWrapper* planeObjWrap = m_isSwapped? body0Wrap: body1Wrap;
+58 
+59         btConvexShape* convexShape = (btConvexShape*) convexObjWrap->getCollisionShape();
+60         btStaticPlaneShape* planeShape = (btStaticPlaneShape*) planeObjWrap->getCollisionShape();
+61 
+62     bool hasCollision = false;
+63         const btVector3& planeNormal = planeShape->getPlaneNormal();
+64         const btScalar& planeConstant = planeShape->getPlaneConstant();
+65         
+66         btTransform convexWorldTransform = convexObjWrap->getWorldTransform();
+67         btTransform convexInPlaneTrans;
+68         convexInPlaneTrans= planeObjWrap->getWorldTransform().inverse() * convexWorldTransform;
+69         //now perturbe the convex-world transform
+70         convexWorldTransform.getBasis()*=btMatrix3x3(perturbeRot);
+71         btTransform planeInConvex;
+72         planeInConvex= convexWorldTransform.inverse() * planeObjWrap->getWorldTransform();
+73         
+74         btVector3 vtx = convexShape->localGetSupportingVertex(planeInConvex.getBasis()*-planeNormal);
+75 
+76         btVector3 vtxInPlane = convexInPlaneTrans(vtx);
+77         btScalar distance = (planeNormal.dot(vtxInPlane) - planeConstant);
+78 
+79         btVector3 vtxInPlaneProjected = vtxInPlane - distance*planeNormal;
+80         btVector3 vtxInPlaneWorld = planeObjWrap->getWorldTransform() * vtxInPlaneProjected;
+81 
+82         hasCollision = distance < m_manifoldPtr->getContactBreakingThreshold();
+83         resultOut->setPersistentManifold(m_manifoldPtr);
+84         if (hasCollision)
+85         {
+87                 btVector3 normalOnSurfaceB = planeObjWrap->getWorldTransform().getBasis() * planeNormal;
+88                 btVector3 pOnB = vtxInPlaneWorld;
+89                 resultOut->addContactPoint(normalOnSurfaceB,pOnB,distance);
+90         }
+91 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btConvexPlaneCollisionAlgorithm.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btConvexPlaneCollisionAlgorithm.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btConvexPlaneCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btConvexPlaneCollisionAlgorithm.cpp\end{CompactItemize}

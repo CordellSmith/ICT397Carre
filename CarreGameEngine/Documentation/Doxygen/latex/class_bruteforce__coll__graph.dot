@@ -1,0 +1,15 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  Node1 [label="Bruteforce",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="Terrain",height=0.2,width=0.4,color="black",URL="$class_terrain.html",tooltip="Terrain Interface class."];
+  Node3 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_terrainModel"];
+  Node3 [label="Model",height=0.2,width=0.4,color="black",URL="$class_model.html",tooltip="Model class to store model data."];
+  Node4 -> Node3 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_shader"];
+  Node4 [label="Shader",height=0.2,width=0.4,color="black",URL="$class_shader.html",tooltip="Basic shader class."];
+  Node5 -> Node3 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_camera"];
+  Node5 [label="Camera",height=0.2,width=0.4,color="black",URL="$class_camera.html",tooltip="Used for the GLM math library."];
+}

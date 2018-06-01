@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btGImpactMeshShapePart Class Reference</title>
+<title>Assignment2 - OOber Taxi: btGImpactMeshShapePart Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btGImpactMeshShapePart Class Reference</h1><!-- doxytag: class="btGImpactMeshShapePart" --><!-- doxytag: inherits="btGImpactShapeInterface" -->This class manages a sub part of a mesh supplied by the btStridingMeshInterface interface.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btGImpactShape.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btGImpactMeshShapePart:</div>
@@ -110,6 +110,8 @@ This class manages a sub part of a mesh supplied by the btStridingMeshInterface 
 <p>
 <ul>
 <li>Simply create this shape by passing the btStridingMeshInterface to the constructor <a class="el" href="classbt_g_impact_mesh_shape_part.html" title="This class manages a sub part of a mesh supplied by the btStridingMeshInterface interface...">btGImpactMeshShapePart</a>, then you must call <a class="el" href="classbt_g_impact_shape_interface.html#cb26c2d7a2aecabd06b996b72b848492" title="performs refit operation">updateBound()</a> after creating the mesh</li><li>When making operations with this shape, you must call <b>lock</b> before accessing to the trimesh primitives, and then call <b>unlock</b></li><li>You can handle deformable meshes with this shape, by calling <a class="el" href="classbt_g_impact_shape_interface.html#c430754948ac92d6f70b81e88416c96a" title="Tells to this object that is needed to refit the box set.">postUpdate()</a> every time when changing the mesh vertices. </li></ul>
+
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8h-source.html#l00531">531</a> of file <a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>.</p>
 <hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="0a97d3769fb7d3f583e41da6b284bcc1"></a><!-- doxytag: member="btGImpactMeshShapePart::setChildTransform" ref="0a97d3769fb7d3f583e41da6b284bcc1" args="(int index, const btTransform &amp;transform)" -->
 <div class="memitem">
@@ -143,6 +145,15 @@ Sets the children transform.
 
 <p>Implements <a class="el" href="classbt_g_impact_shape_interface.html#83392f97bd7dfeb71ccdce6913a465b0">btGImpactShapeInterface</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8h-source.html#l00776">776</a> of file <a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00777"></a>00777         {
+<a name="l00778"></a>00778         (void) index;
+<a name="l00779"></a>00779         (void) transform;
+<a name="l00780"></a>00780                 btAssert(0);
+<a name="l00781"></a>00781         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="5ff615b55a2bdaeba511fb116a9ab546"></a><!-- doxytag: member="btGImpactMeshShapePart::getGImpactShapeType" ref="5ff615b55a2bdaeba511fb116a9ab546" args="() const " -->
@@ -166,6 +177,13 @@ Base method for determinig which kind of GIMPACT shape we get.
 Subshape member functions 
 <p>Implements <a class="el" href="classbt_g_impact_shape_interface.html#25cacbe448997e3f8ec99cb2d4952859">btGImpactShapeInterface</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8h-source.html#l00809">809</a> of file <a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00810"></a>00810         {
+<a name="l00811"></a>00811                 <span class="keywordflow">return</span> CONST_GIMPACT_TRIMESH_SHAPE_PART;
+<a name="l00812"></a>00812         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="2c1de297d020a75e1ab0f10f7c71478f"></a><!-- doxytag: member="btGImpactMeshShapePart::setLocalScaling" ref="2c1de297d020a75e1ab0f10f7c71478f" args="(const btVector3 &amp;scaling)" -->
@@ -188,6 +206,36 @@ Subshape member functions
 <dl class="post" compact><dt><b>Postcondition:</b></dt><dd>You must call <a class="el" href="classbt_g_impact_shape_interface.html#cb26c2d7a2aecabd06b996b72b848492" title="performs refit operation">updateBound()</a> for update the box set. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classbt_g_impact_shape_interface.html#dec0bd43cd0105b1d0dc172bc7db50d8">btGImpactShapeInterface</a>.</p>
+
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8h-source.html#l00861">861</a> of file <a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a>.</p>
+
+<p>References <a class="el" href="bt_g_impact_shape_8h-source.html#l00543">btGImpactMeshShapePart::TrimeshPrimitiveManager::m_scale</a>, and <a class="el" href="bt_g_impact_shape_8h-source.html#l00143">btGImpactShapeInterface::postUpdate()</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_g_impact_shape_8h-source.html#l00964">btGImpactMeshShape::setLocalScaling()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00862"></a>00862     {
+<a name="l00863"></a>00863         m_primitive_manager.<a class="code" href="classbt_g_impact_mesh_shape_part_1_1_trimesh_primitive_manager.html#e153a4cac52bb18615db6a1a69379d04">m_scale</a> = scaling;
+<a name="l00864"></a>00864         <a class="code" href="classbt_g_impact_shape_interface.html#c430754948ac92d6f70b81e88416c96a" title="Tells to this object that is needed to refit the box set.">postUpdate</a>();
+<a name="l00865"></a>00865     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_mesh_shape_part_2c1de297d020a75e1ab0f10f7c71478f_cgraph.png" border="0" usemap="#classbt_g_impact_mesh_shape_part_2c1de297d020a75e1ab0f10f7c71478f_cgraph_map" alt=""></center>
+<map name="classbt_g_impact_mesh_shape_part_2c1de297d020a75e1ab0f10f7c71478f_cgraph_map">
+<area shape="rect" href="classbt_g_impact_shape_interface.html#c430754948ac92d6f70b81e88416c96a" title="Tells to this object that is needed to refit the box set." alt="" coords="329,5,569,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_mesh_shape_part_2c1de297d020a75e1ab0f10f7c71478f_icgraph.png" border="0" usemap="#classbt_g_impact_mesh_shape_part_2c1de297d020a75e1ab0f10f7c71478f_icgraph_map" alt=""></center>
+<map name="classbt_g_impact_mesh_shape_part_2c1de297d020a75e1ab0f10f7c71478f_icgraph_map">
+<area shape="rect" href="classbt_g_impact_mesh_shape.html#ed8d5e4b2e75538109909d44b244bc35" title="btGImpactMeshShape::setLocalScaling" alt="" coords="328,5,579,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -228,6 +276,47 @@ Function for retrieve triangles.
 It gives the triangles in local space 
 <p>Reimplemented from <a class="el" href="classbt_g_impact_shape_interface.html#2faf9adce39854a9a66dd658f646be25">btGImpactShapeInterface</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8cpp-source.html#l00227">227</a> of file <a class="el" href="bt_g_impact_shape_8cpp-source.html">btGImpactShape.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_g_impact_quantized_bvh_8cpp-source.html#l00303">btGImpactQuantizedBvh::boxQuery()</a>, <a class="el" href="bt_g_impact_shape_8h-source.html#l00240">btGImpactShapeInterface::getPrimitiveTriangle()</a>, <a class="el" href="bt_g_impact_shape_8cpp-source.html#l00056">lockChildShapes()</a>, btTriangleCallback::processTriangle(), and <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00228"></a>00228 {
+<a name="l00229"></a>00229         <a class="code" href="classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28" title="call when reading child shapes">lockChildShapes</a>();
+<a name="l00230"></a>00230         btAABB box;
+<a name="l00231"></a>00231         box.m_min = aabbMin;
+<a name="l00232"></a>00232         box.m_max = aabbMax;
+<a name="l00233"></a>00233 
+<a name="l00234"></a>00234         <a class="code" href="classbt_aligned_object_array.html">btAlignedObjectArray&lt;int&gt;</a> collided;
+<a name="l00235"></a>00235         m_box_set.<a class="code" href="classbt_g_impact_quantized_bvh.html#b265ffaec21d729bb4d148e843de938c" title="returns the indices of the primitives in the m_primitive_manager">boxQuery</a>(box,collided);
+<a name="l00236"></a>00236 
+<a name="l00237"></a>00237         <span class="keywordflow">if</span>(collided.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>()==0)
+<a name="l00238"></a>00238         {
+<a name="l00239"></a>00239                 unlockChildShapes();
+<a name="l00240"></a>00240                 <span class="keywordflow">return</span>;
+<a name="l00241"></a>00241         }
+<a name="l00242"></a>00242 
+<a name="l00243"></a>00243         <span class="keywordtype">int</span> part = (int)getPart();
+<a name="l00244"></a>00244         btPrimitiveTriangle triangle;
+<a name="l00245"></a>00245         <span class="keywordtype">int</span> i = collided.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>();
+<a name="l00246"></a>00246         <span class="keywordflow">while</span>(i--)
+<a name="l00247"></a>00247         {
+<a name="l00248"></a>00248                 this-&gt;<a class="code" href="classbt_g_impact_shape_interface.html#8b5c48d7831cebf1099b8c983cb3f149" title="if this trimesh">getPrimitiveTriangle</a>(collided[i],triangle);
+<a name="l00249"></a>00249                 callback-&gt;<a class="code" href="classbt_triangle_callback.html#3850755f2c1fd71c4ca5877db1e6f891">processTriangle</a>(triangle.m_vertices,part,collided[i]);
+<a name="l00250"></a>00250         }
+<a name="l00251"></a>00251         unlockChildShapes();
+<a name="l00252"></a>00252 
+<a name="l00253"></a>00253 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_mesh_shape_part_230a814ad9f784638e8bcbf0592cdd39_cgraph.png" border="0" usemap="#classbt_g_impact_mesh_shape_part_230a814ad9f784638e8bcbf0592cdd39_cgraph_map" alt=""></center>
+<map name="classbt_g_impact_mesh_shape_part_230a814ad9f784638e8bcbf0592cdd39_cgraph_map">
+<area shape="rect" href="classbt_g_impact_quantized_bvh.html#b265ffaec21d729bb4d148e843de938c" title="returns the indices of the primitives in the m_primitive_manager" alt="" coords="381,157,605,184"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="777,259,953,285"><area shape="rect" href="classbt_g_impact_shape_interface.html#8b5c48d7831cebf1099b8c983cb3f149" title="if this trimesh" alt="" coords="349,348,637,375"><area shape="rect" href="classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28" title="call when reading child shapes" alt="" coords="353,399,633,425"><area shape="rect" href="classbt_triangle_callback.html#3850755f2c1fd71c4ca5877db1e6f891" title="btTriangleCallback::processTriangle" alt="" coords="380,449,607,476"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#5ffe3a11330ab3bce0d6eaffb9b3f689" title="node count" alt="" coords="740,5,991,32"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#2c4d9b99bc0e575b3f02e9cefda1fb18" title="tells if the node is a leaf" alt="" coords="749,56,981,83"><area shape="rect" href="classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1" title="btAlignedObjectArray::push_back" alt="" coords="757,107,973,133"><area shape="rect" href="classbt_quantized_bvh_tree.html#26648de243e317c8b4399d04c763edee" title="btQuantizedBvhTree::quantizePoint" alt="" coords="753,157,977,184"><area shape="rect" href="classbt_quantized_bvh_tree.html#9f6c3be722fa73a6907970f1ed99b731" title="btQuantizedBvhTree::testQuantizedBoxOverlapp" alt="" coords="716,208,1015,235"><area shape="rect" href="classbt_quantized_bvh_tree.html#8f8b4acde8a974cb57d9d19b37009100" title="node count" alt="" coords="1095,5,1321,32"><area shape="rect" href="classbt_quantized_bvh_tree.html#004ff2bf4b2ef3d80d0e01a2ab249e5d" title="tells if the node is a leaf" alt="" coords="1104,56,1312,83"><area shape="rect" href="classbt_primitive_manager_base.html#2eb95b960e4259da38c5ee4ac080fdf7" title="retrieves only the points of the triangle, and the collision margin" alt="" coords="720,309,1011,336"><area shape="rect" href="classbt_g_impact_shape_interface.html#291328e80a5f22cffc50924ebb90040a" title="Obtains the primitive manager." alt="" coords="720,360,1011,387"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#8954b68cdc557ffab6c4c0361cea109a" title="btGImpactQuantizedBvh::getPrimitiveManager" alt="" coords="723,411,1008,437"><area shape="rect" href="classbt_g_impact_mesh_shape_part_1_1_trimesh_primitive_manager.html#48a013e72b76f832638a54326a7cc709" title="btGImpactMeshShapePart::TrimeshPrimitiveManager::lock" alt="" coords="685,461,1045,488"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="0e35b55bd50911911f8164cf3a2dd5c8"></a><!-- doxytag: member="btGImpactMeshShapePart::processAllTrianglesRay" ref="0e35b55bd50911911f8164cf3a2dd5c8" args="(btTriangleCallback *callback, const btVector3 &amp;rayFrom, const btVector3 &amp;rayTo) const " -->
@@ -267,12 +356,51 @@ Function for retrieve triangles.
 It gives the triangles in local space 
 <p>Reimplemented from <a class="el" href="classbt_g_impact_shape_interface.html#646ad13b4aa116d58df110c2f407e5a8">btGImpactShapeInterface</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_g_impact_shape_8cpp-source.html#l00201">201</a> of file <a class="el" href="bt_g_impact_shape_8cpp-source.html">btGImpactShape.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_g_impact_shape_8h-source.html#l00240">btGImpactShapeInterface::getPrimitiveTriangle()</a>, <a class="el" href="bt_g_impact_shape_8cpp-source.html#l00056">lockChildShapes()</a>, btTriangleCallback::processTriangle(), <a class="el" href="bt_g_impact_quantized_bvh_8cpp-source.html#l00348">btGImpactQuantizedBvh::rayQuery()</a>, and <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00202"></a>00202 {
+<a name="l00203"></a>00203         <a class="code" href="classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28" title="call when reading child shapes">lockChildShapes</a>();
+<a name="l00204"></a>00204 
+<a name="l00205"></a>00205         <a class="code" href="classbt_aligned_object_array.html">btAlignedObjectArray&lt;int&gt;</a> collided;
+<a name="l00206"></a>00206         btVector3 rayDir(rayTo - rayFrom);
+<a name="l00207"></a>00207         rayDir.normalize();
+<a name="l00208"></a>00208         m_box_set.<a class="code" href="classbt_g_impact_quantized_bvh.html#284ae5b0d5e813bb0bcc02d76cff8b1b" title="returns the indices of the primitives in the m_primitive_manager">rayQuery</a>(rayDir, rayFrom, collided);
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210         <span class="keywordflow">if</span>(collided.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>()==0)
+<a name="l00211"></a>00211         {
+<a name="l00212"></a>00212                 unlockChildShapes();
+<a name="l00213"></a>00213                 <span class="keywordflow">return</span>;
+<a name="l00214"></a>00214         }
+<a name="l00215"></a>00215 
+<a name="l00216"></a>00216         <span class="keywordtype">int</span> part = (int)getPart();
+<a name="l00217"></a>00217         btPrimitiveTriangle triangle;
+<a name="l00218"></a>00218         <span class="keywordtype">int</span> i = collided.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>();
+<a name="l00219"></a>00219         <span class="keywordflow">while</span>(i--)
+<a name="l00220"></a>00220         {
+<a name="l00221"></a>00221                 <a class="code" href="classbt_g_impact_shape_interface.html#8b5c48d7831cebf1099b8c983cb3f149" title="if this trimesh">getPrimitiveTriangle</a>(collided[i],triangle);
+<a name="l00222"></a>00222                 callback-&gt;processTriangle(triangle.m_vertices,part,collided[i]);
+<a name="l00223"></a>00223         }
+<a name="l00224"></a>00224         unlockChildShapes();
+<a name="l00225"></a>00225 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_g_impact_mesh_shape_part_0e35b55bd50911911f8164cf3a2dd5c8_cgraph.png" border="0" usemap="#classbt_g_impact_mesh_shape_part_0e35b55bd50911911f8164cf3a2dd5c8_cgraph_map" alt=""></center>
+<map name="classbt_g_impact_mesh_shape_part_0e35b55bd50911911f8164cf3a2dd5c8_cgraph_map">
+<area shape="rect" href="classbt_g_impact_shape_interface.html#8b5c48d7831cebf1099b8c983cb3f149" title="if this trimesh" alt="" coords="373,56,661,83"><area shape="rect" href="classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28" title="call when reading child shapes" alt="" coords="377,157,657,184"><area shape="rect" href="classbt_triangle_callback.html#3850755f2c1fd71c4ca5877db1e6f891" title="btTriangleCallback::processTriangle" alt="" coords="404,208,631,235"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#284ae5b0d5e813bb0bcc02d76cff8b1b" title="returns the indices of the primitives in the m_primitive_manager" alt="" coords="407,259,628,285"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="801,360,977,387"><area shape="rect" href="classbt_primitive_manager_base.html#2eb95b960e4259da38c5ee4ac080fdf7" title="retrieves only the points of the triangle, and the collision margin" alt="" coords="744,5,1035,32"><area shape="rect" href="classbt_g_impact_shape_interface.html#291328e80a5f22cffc50924ebb90040a" title="Obtains the primitive manager." alt="" coords="744,56,1035,83"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#8954b68cdc557ffab6c4c0361cea109a" title="btGImpactQuantizedBvh::getPrimitiveManager" alt="" coords="747,107,1032,133"><area shape="rect" href="classbt_g_impact_mesh_shape_part_1_1_trimesh_primitive_manager.html#48a013e72b76f832638a54326a7cc709" title="btGImpactMeshShapePart::TrimeshPrimitiveManager::lock" alt="" coords="709,157,1069,184"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#5ffe3a11330ab3bce0d6eaffb9b3f689" title="node count" alt="" coords="764,208,1015,235"><area shape="rect" href="classbt_g_impact_quantized_bvh.html#2c4d9b99bc0e575b3f02e9cefda1fb18" title="tells if the node is a leaf" alt="" coords="773,259,1005,285"><area shape="rect" href="classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1" title="btAlignedObjectArray::push_back" alt="" coords="781,309,997,336"><area shape="rect" href="classbt_quantized_bvh_tree.html#8f8b4acde8a974cb57d9d19b37009100" title="node count" alt="" coords="1119,208,1345,235"><area shape="rect" href="classbt_quantized_bvh_tree.html#004ff2bf4b2ef3d80d0e01a2ab249e5d" title="tells if the node is a leaf" alt="" coords="1128,259,1336,285"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_g_impact_shape_8h.html">btGImpactShape.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactShape.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_g_impact_shape_8h-source.html">btGImpactShape.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="bt_g_impact_shape_8cpp-source.html">btGImpactShape.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:31 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:18 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

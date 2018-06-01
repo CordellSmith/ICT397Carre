@@ -151,6 +151,8 @@ TODO - force element interface (friction, springs, dampers, etc)\begin{itemize}
 \item gears and motor inertia \end{itemize}
 
 
+Definition at line 52 of file MultiBodyTree.hpp.
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_75c5f172165331d0c64f7fc02301b12a}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!MultiBodyTree@{MultiBodyTree}}
@@ -160,6 +162,21 @@ TODO - force element interface (friction, springs, dampers, etc)\begin{itemize}
 
 
 The contructor. Initialization \& allocation is via addBody and buildSystem calls. 
+
+Definition at line 13 of file MultiBodyTree.cpp.
+
+\begin{Code}\begin{verbatim}14         : m_is_finalized(false),
+15           m_mass_parameters_are_valid(true),
+16           m_accept_invalid_mass_parameters(false),
+17           m_impl(0x0),
+18           m_init_cache(0x0) {
+19         m_init_cache = new InitCache();
+20 }
+\end{verbatim}
+\end{Code}
+
+
+
 
 \subsection{Member Function Documentation}
 \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_d1f6d18e60ec7be3ec03b5aa9b8875b6}{
@@ -176,7 +193,77 @@ Add body to the system. this allocates memory and not real-time safe. This only 
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_5ba35645225ad53584dcd0908d26c8ea}{
+
+
+Definition at line 211 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::InitCache::addBody(), glm::length(), and glm::min().
+
+\begin{Code}\begin{verbatim}215                                                                                        {
+216         if (body_index < 0) {
+217                 error_message("body index must be positive (got %d)\n", body_index);
+218                 return -1;
+219         }
+220         vec3 body_axis_of_motion(body_axis_of_motion_);
+221         switch (joint_type) {
+222                 case REVOLUTE:
+223                 case PRISMATIC:
+224                         // check if axis is unit vector
+225                         if (!isUnitVector(body_axis_of_motion)) {
+226                                 warning_message(
+227                                         "axis of motion not a unit axis ([%f %f %f]), will use normalized vector\n",
+228                                         body_axis_of_motion(0), body_axis_of_motion(1), body_axis_of_motion(2));
+229                                 idScalar length = BT_ID_SQRT(BT_ID_POW(body_axis_of_motion(0), 2) +
+230                                                                            BT_ID_POW(body_axis_of_motion(1), 2) +
+231                                                                            BT_ID_POW(body_axis_of_motion(2), 2));
+232                                 if (length < BT_ID_SQRT(std::numeric_limits<idScalar>::min())) {
+233                                         error_message("axis of motion vector too short (%e)\n", length);
+234                                         return -1;
+235                                 }
+236                                 body_axis_of_motion = (1.0 / length) * body_axis_of_motion;
+237                         }
+238                         break;
+239                 case FIXED:
+240                         break;
+241                 case FLOATING:
+242                         break;
+243                 default:
+244                         error_message("unknown joint type %d\n", joint_type);
+245                         return -1;
+246         }
+247 
+248         // sanity check for mass properties. Zero mass is OK.
+249         if (mass < 0) {
+250                 m_mass_parameters_are_valid = false;
+251                 error_message("Body %d has invalid mass %e\n", body_index, mass);
+252                 if (!m_accept_invalid_mass_parameters) {
+253                         return -1;
+254                 }
+255         }
+256 
+257         if (!isValidInertiaMatrix(body_I_body, body_index, FIXED == joint_type)) {
+258                 m_mass_parameters_are_valid = false;
+259                 // error message printed in function call
+260                 if (!m_accept_invalid_mass_parameters) {
+261                         return -1;
+262                 }
+263         }
+264 
+265         if (!isValidTransformMatrix(body_T_parent_ref)) {
+266                 return -1;
+267         }
+268 
+269         return m_init_cache->addBody(body_index, parent_index, joint_type, parent_r_parent_body_ref,
+270                                                                  body_T_parent_ref, body_axis_of_motion, mass, body_r_body_com,
+271                                                                  body_I_body, user_int, user_ptr);
+272 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_5ba35645225ad53584dcd0908d26c8ea}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setAcceptInvalidMassParameters@{setAcceptInvalidMassParameters}}
 \index{setAcceptInvalidMassParameters@{setAcceptInvalidMassParameters}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[setAcceptInvalidMassParameters]{\setlength{\rightskip}{0pt plus 5cm}void btInverseDynamics::MultiBodyTree::setAcceptInvalidMassParameters (bool {\em flag})}}
@@ -188,6 +275,17 @@ set policy for invalid mass properties \begin{Desc}
 \begin{description}
 \item[{\em flag}]if true, invalid mass properties are accepted, the default is false \end{description}
 \end{Desc}
+
+
+Definition at line 27 of file MultiBodyTree.cpp.
+
+\begin{Code}\begin{verbatim}27                                                             {
+28         m_accept_invalid_mass_parameters = flag;
+29 }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_ea23f21f50889b30dbf41ad57957dcee}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getAcceptInvalidMassProperties@{getAcceptInvalidMassProperties}}
 \index{getAcceptInvalidMassProperties@{getAcceptInvalidMassProperties}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
@@ -197,6 +295,17 @@ set policy for invalid mass properties \begin{Desc}
 
 \begin{Desc}
 \item[Returns:]the mass properties policy flag \end{Desc}
+
+
+Definition at line 31 of file MultiBodyTree.cpp.
+
+\begin{Code}\begin{verbatim}31                                                          {
+32         return m_accept_invalid_mass_parameters;
+33 }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_c82772ed5bebb1edd6513c03ebd719c2}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!finalize@{finalize}}
 \index{finalize@{finalize}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
@@ -206,7 +315,119 @@ set policy for invalid mass properties \begin{Desc}
 
 build internal data structures call this after all bodies have been added via addBody \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_20e281422ee7504a25357275c08d5690}{
+
+
+Definition at line 294 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::InitCache::buildIndexSets(), btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateStaticData(), btInverseDynamics::MultiBodyTree::MultiBodyImpl::clearAllUserForcesAndMoments(), btInverseDynamics::MultiBodyTree::MultiBodyImpl::generateIndexSets(), btInverseDynamics::MultiBodyTree::InitCache::getInertiaData(), btInverseDynamics::MultiBodyTree::InitCache::getJointData(), btInverseDynamics::MultiBodyTree::InitCache::getParentIndexArray(), btInverseDynamics::InertiaData::m\_\-body\_\-I\_\-body, btInverseDynamics::RigidBody::m\_\-body\_\-I\_\-body, btInverseDynamics::MultiBodyTree::MultiBodyImpl::m\_\-body\_\-list, btInverseDynamics::RigidBody::m\_\-body\_\-mass\_\-com, btInverseDynamics::InertiaData::m\_\-body\_\-pos\_\-body\_\-com, btInverseDynamics::RigidBody::m\_\-body\_\-T\_\-parent\_\-ref, btInverseDynamics::JointData::m\_\-child\_\-axis\_\-of\_\-motion, btInverseDynamics::JointData::m\_\-child\_\-T\_\-parent\_\-ref, btInverseDynamics::RigidBody::m\_\-Jac\_\-JR, btInverseDynamics::RigidBody::m\_\-Jac\_\-JT, btInverseDynamics::RigidBody::m\_\-joint\_\-type, btInverseDynamics::InertiaData::m\_\-mass, btInverseDynamics::RigidBody::m\_\-mass, btInverseDynamics::MultiBodyTree::MultiBodyImpl::m\_\-parent\_\-index, btInverseDynamics::RigidBody::m\_\-parent\_\-pos\_\-parent\_\-body\_\-ref, btInverseDynamics::JointData::m\_\-parent\_\-pos\_\-parent\_\-child\_\-ref, btInverseDynamics::JointData::m\_\-type, btInverseDynamics::MultiBodyTree::InitCache::numBodies(), and btInverseDynamics::MultiBodyTree::InitCache::numDoFs().
+
+\begin{Code}\begin{verbatim}294                             {
+295         const int &num_bodies = m_init_cache->numBodies();
+296         const int &num_dofs = m_init_cache->numDoFs();
+297 
+298         if(num_dofs<=0) {
+299             error_message("Need num_dofs>=1, but num_dofs= %d\n", num_dofs);
+300             //return -1;
+301         }
+302 
+303         // 1 allocate internal MultiBody structure
+304         m_impl = new MultiBodyImpl(num_bodies, num_dofs);
+305 
+306         // 2 build new index set assuring index(parent) < index(child)
+307         if (-1 == m_init_cache->buildIndexSets()) {
+308                 return -1;
+309         }
+310         m_init_cache->getParentIndexArray(&m_impl->m_parent_index);
+311 
+312         // 3 setup internal kinematic and dynamic data
+313         for (int index = 0; index < num_bodies; index++) {
+314                 InertiaData inertia;
+315                 JointData joint;
+316                 if (-1 == m_init_cache->getInertiaData(index, &inertia)) {
+317                         return -1;
+318                 }
+319                 if (-1 == m_init_cache->getJointData(index, &joint)) {
+320                         return -1;
+321                 }
+322 
+323                 RigidBody &rigid_body = m_impl->m_body_list[index];
+324 
+325                 rigid_body.m_mass = inertia.m_mass;
+326                 rigid_body.m_body_mass_com = inertia.m_mass * inertia.m_body_pos_body_com;
+327                 rigid_body.m_body_I_body = inertia.m_body_I_body;
+328                 rigid_body.m_joint_type = joint.m_type;
+329                 rigid_body.m_parent_pos_parent_body_ref = joint.m_parent_pos_parent_child_ref;
+330                 rigid_body.m_body_T_parent_ref = joint.m_child_T_parent_ref;
+331                 rigid_body.m_parent_pos_parent_body_ref = joint.m_parent_pos_parent_child_ref;
+332                 rigid_body.m_joint_type = joint.m_type;
+333 
+334                 // Set joint Jacobians. Note that the dimension is always 3x1 here to avoid variable sized
+335                 // matrices.
+336                 switch (rigid_body.m_joint_type) {
+337                         case REVOLUTE:
+338                                 rigid_body.m_Jac_JR(0) = joint.m_child_axis_of_motion(0);
+339                                 rigid_body.m_Jac_JR(1) = joint.m_child_axis_of_motion(1);
+340                                 rigid_body.m_Jac_JR(2) = joint.m_child_axis_of_motion(2);
+341                                 rigid_body.m_Jac_JT(0) = 0.0;
+342                                 rigid_body.m_Jac_JT(1) = 0.0;
+343                                 rigid_body.m_Jac_JT(2) = 0.0;
+344                                 break;
+345                         case PRISMATIC:
+346                                 rigid_body.m_Jac_JR(0) = 0.0;
+347                                 rigid_body.m_Jac_JR(1) = 0.0;
+348                                 rigid_body.m_Jac_JR(2) = 0.0;
+349                                 rigid_body.m_Jac_JT(0) = joint.m_child_axis_of_motion(0);
+350                                 rigid_body.m_Jac_JT(1) = joint.m_child_axis_of_motion(1);
+351                                 rigid_body.m_Jac_JT(2) = joint.m_child_axis_of_motion(2);
+352                                 break;
+353                         case FIXED:
+354                                 // NOTE/TODO: dimension really should be zero ..
+355                                 rigid_body.m_Jac_JR(0) = 0.0;
+356                                 rigid_body.m_Jac_JR(1) = 0.0;
+357                                 rigid_body.m_Jac_JR(2) = 0.0;
+358                                 rigid_body.m_Jac_JT(0) = 0.0;
+359                                 rigid_body.m_Jac_JT(1) = 0.0;
+360                                 rigid_body.m_Jac_JT(2) = 0.0;
+361                                 break;
+362                         case FLOATING:
+363                                 // NOTE/TODO: this is not really correct.
+364                                 // the Jacobians should be 3x3 matrices here !
+365                                 rigid_body.m_Jac_JR(0) = 0.0;
+366                                 rigid_body.m_Jac_JR(1) = 0.0;
+367                                 rigid_body.m_Jac_JR(2) = 0.0;
+368                                 rigid_body.m_Jac_JT(0) = 0.0;
+369                                 rigid_body.m_Jac_JT(1) = 0.0;
+370                                 rigid_body.m_Jac_JT(2) = 0.0;
+371                                 break;
+372                         default:
+373                                 error_message("unsupported joint type %d\n", rigid_body.m_joint_type);
+374                                 return -1;
+375                 }
+376         }
+377 
+378         // 4 assign degree of freedom indices & build per-joint-type index arrays
+379         if (-1 == m_impl->generateIndexSets()) {
+380                 error_message("generating index sets\n");
+381                 return -1;
+382         }
+383 
+384         // 5 do some pre-computations ..
+385         m_impl->calculateStaticData();
+386 
+387         // 6. make sure all user forces are set to zero, as this might not happen
+388         //      in the vector ctors.
+389         m_impl->clearAllUserForcesAndMoments();
+390 
+391         m_is_finalized = true;
+392         return 0;
+393 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_20e281422ee7504a25357275c08d5690}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateInverseDynamics@{calculateInverseDynamics}}
 \index{calculateInverseDynamics@{calculateInverseDynamics}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[calculateInverseDynamics]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateInverseDynamics (const vecx \& {\em q}, \/  const vecx \& {\em u}, \/  const vecx \& {\em dot\_\-u}, \/  vecx $\ast$ {\em joint\_\-forces})}}
@@ -220,7 +441,30 @@ Calculate joint forces for given generalized state \& derivatives. This also upd
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_0a767d639bb90ad3b1cb529eb26baa75}{
+
+
+Definition at line 83 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateInverseDynamics().
+
+\begin{Code}\begin{verbatim}84                                                                                                             {
+85         if (false == m_is_finalized) {
+86                 error_message("system has not been initialized\n");
+87                 return -1;
+88         }
+89         if (-1 == m_impl->calculateInverseDynamics(q, u, dot_u, joint_forces)) {
+90                 error_message("error in inverse dynamics calculation\n");
+91                 return -1;
+92         }
+93         return 0;
+94 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_0a767d639bb90ad3b1cb529eb26baa75}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateMassMatrix@{calculateMassMatrix}}
 \index{calculateMassMatrix@{calculateMassMatrix}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[calculateMassMatrix]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateMassMatrix (const vecx \& {\em q}, \/  const bool {\em update\_\-kinematics}, \/  const bool {\em initialize\_\-matrix}, \/  const bool {\em set\_\-lower\_\-triangular\_\-matrix}, \/  matxx $\ast$ {\em mass\_\-matrix})}}
@@ -234,7 +478,36 @@ Calculate joint space mass matrix \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]-1 on error, 0 on success \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_07b710ad4cbbe4cdadd8e2b5ad7c854a}{
+
+
+Definition at line 96 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateMassMatrix().
+
+Referenced by calculateMassMatrix().
+
+\begin{Code}\begin{verbatim}98                                                                                                                                        {
+99         if (false == m_is_finalized) {
+100                 error_message("system has not been initialized\n");
+101                 return -1;
+102         }
+103         if (-1 ==
+104                 m_impl->calculateMassMatrix(q, update_kinematics, initialize_matrix,
+105                                                                         set_lower_triangular_matrix, mass_matrix)) {
+106                 error_message("error in mass matrix calculation\n");
+107                 return -1;
+108         }
+109         return 0;
+110 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_07b710ad4cbbe4cdadd8e2b5ad7c854a}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateMassMatrix@{calculateMassMatrix}}
 \index{calculateMassMatrix@{calculateMassMatrix}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[calculateMassMatrix]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateMassMatrix (const vecx \& {\em q}, \/  matxx $\ast$ {\em mass\_\-matrix})}}
@@ -248,28 +521,121 @@ Calculate joint space mass matrix. This version will update kinematics, initiali
 \end{Desc}
 \begin{Desc}
 \item[Returns:]-1 on error, 0 on success \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_fa6df6ee25f28a4de404d82c6bbf78ff}{
+
+
+Definition at line 112 of file MultiBodyTree.cpp.
+
+References calculateMassMatrix().
+
+\begin{Code}\begin{verbatim}112                                                                         {
+113         return calculateMassMatrix(q, true, true, true, mass_matrix);
+114 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_fa6df6ee25f28a4de404d82c6bbf78ff}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateKinematics@{calculateKinematics}}
 \index{calculateKinematics@{calculateKinematics}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[calculateKinematics]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateKinematics (const vecx \& {\em q}, \/  const vecx \& {\em u}, \/  const vecx \& {\em dot\_\-u})}}
 \label{classbt_inverse_dynamics_1_1_multi_body_tree_fa6df6ee25f28a4de404d82c6bbf78ff}
 
 
-Calculates kinematics also calculated in calculateInverseDynamics, but not dynamics. This function ensures that correct accelerations are computed that do not contain gravitational acceleration terms. Does not calculate Jacobians, but only vector quantities (positions, velocities \& accelerations) \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_b28d924ffc2226b224e2046497162227}{
+Calculates kinematics also calculated in calculateInverseDynamics, but not dynamics. This function ensures that correct accelerations are computed that do not contain gravitational acceleration terms. Does not calculate Jacobians, but only vector quantities (positions, velocities \& accelerations) 
+
+Definition at line 118 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateKinematics(), and btInverseDynamics::MultiBodyTree::MultiBodyImpl::m\_\-world\_\-gravity.
+
+\begin{Code}\begin{verbatim}118                                                                                       {
+119     vec3 world_gravity(m_impl->m_world_gravity);
+120     // temporarily set gravity to zero, to ensure we get the actual accelerations
+121     setZero(m_impl->m_world_gravity);
+122 
+123     if (false == m_is_finalized) {
+124         error_message("system has not been initialized\n");
+125         return -1;
+126     }
+127     if (-1 == m_impl->calculateKinematics(q, u, dot_u,
+128                                           MultiBodyTree::MultiBodyImpl::POSITION_VELOCITY_ACCELERATION)) {
+129         error_message("error in kinematics calculation\n");
+130         return -1;
+131     }
+132 
+133     m_impl->m_world_gravity=world_gravity;
+134     return 0;
+135 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_b28d924ffc2226b224e2046497162227}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateJacobians@{calculateJacobians}}
 \index{calculateJacobians@{calculateJacobians}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[calculateJacobians]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateJacobians (const vecx \& {\em q}, \/  const vecx \& {\em u})}}
 \label{classbt_inverse_dynamics_1_1_multi_body_tree_b28d924ffc2226b224e2046497162227}
 
 
-Calculate Jacobians (dvel/du), as well as velocity-dependent accelearation components d(Jacobian)/dt$\ast$u This function assumes that calculateInverseDynamics was called, or calculateKinematics, or calculatePositionAndVelocityKinematics \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_d036684dcd9a68f732bc37ba2a4ed894}{
+Calculate Jacobians (dvel/du), as well as velocity-dependent accelearation components d(Jacobian)/dt$\ast$u This function assumes that calculateInverseDynamics was called, or calculateKinematics, or calculatePositionAndVelocityKinematics 
+
+Definition at line 166 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateJacobians().
+
+\begin{Code}\begin{verbatim}166                                                                   {
+167     if (false == m_is_finalized) {
+168         error_message("system has not been initialized\n");
+169         return -1;
+170     }
+171     if (-1 == m_impl->calculateJacobians(q, u,
+172                                          MultiBodyTree::MultiBodyImpl::POSITION_VELOCITY)) {
+173         error_message("error in jacobian calculation\n");
+174         return -1;
+175     }
+176     return 0;
+177 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_d036684dcd9a68f732bc37ba2a4ed894}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!calculateJacobians@{calculateJacobians}}
 \index{calculateJacobians@{calculateJacobians}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[calculateJacobians]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::calculateJacobians (const vecx \& {\em q})}}
 \label{classbt_inverse_dynamics_1_1_multi_body_tree_d036684dcd9a68f732bc37ba2a4ed894}
 
 
-Calculate Jacobians (dvel/du) This function assumes that calculateInverseDynamics was called, or one of the calculateKineamtics functions \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_103b593ab2c8759489fbf6673f664288}{
+Calculate Jacobians (dvel/du) This function assumes that calculateInverseDynamics was called, or one of the calculateKineamtics functions 
+
+Definition at line 179 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateJacobians().
+
+\begin{Code}\begin{verbatim}179                                                   {
+180     if (false == m_is_finalized) {
+181         error_message("system has not been initialized\n");
+182         return -1;
+183     }
+184     if (-1 == m_impl->calculateJacobians(q, q,
+185                                          MultiBodyTree::MultiBodyImpl::POSITION_ONLY)) {
+186         error_message("error in jacobian calculation\n");
+187         return -1;
+188     }
+189     return 0;
+190 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_103b593ab2c8759489fbf6673f664288}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setGravityInWorldFrame@{setGravityInWorldFrame}}
 \index{setGravityInWorldFrame@{setGravityInWorldFrame}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[setGravityInWorldFrame]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setGravityInWorldFrame (const {\bf vec3} \& {\em gravity})}}
@@ -283,7 +649,22 @@ set gravitational acceleration the default is \mbox{[}0;0;-9.8\mbox{]} in the wo
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_14722e25a8c6cc0cb0d1ba848577e174}{
+
+
+Definition at line 395 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::setGravityInWorldFrame().
+
+\begin{Code}\begin{verbatim}395                                                              {
+396         return m_impl->setGravityInWorldFrame(gravity);
+397 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_14722e25a8c6cc0cb0d1ba848577e174}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyOrigin@{getBodyOrigin}}
 \index{getBodyOrigin@{getBodyOrigin}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyOrigin]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyOrigin (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-origin}) const}}
@@ -297,7 +678,22 @@ get origin of a body-fixed frame, represented in world frame \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_86d4152e8487c354a725e71e92851002}{
+
+
+Definition at line 35 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyOrigin().
+
+\begin{Code}\begin{verbatim}35                                                                                {
+36         return m_impl->getBodyOrigin(body_index, world_origin);
+37 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_86d4152e8487c354a725e71e92851002}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyCoM@{getBodyCoM}}
 \index{getBodyCoM@{getBodyCoM}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyCoM]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyCoM (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-com}) const}}
@@ -311,7 +707,22 @@ get center of mass of a body, represented in world frame \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_582514119940a8dcc10d06cd97019143}{
+
+
+Definition at line 39 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyCoM().
+
+\begin{Code}\begin{verbatim}39                                                                          {
+40         return m_impl->getBodyCoM(body_index, world_com);
+41 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_582514119940a8dcc10d06cd97019143}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyTransform@{getBodyTransform}}
 \index{getBodyTransform@{getBodyTransform}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyTransform]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyTransform (const int {\em body\_\-index}, \/  mat33 $\ast$ {\em world\_\-T\_\-body}) const}}
@@ -325,7 +736,22 @@ get transform from of a body-fixed frame to the world frame \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_441236989196e2c5f7219f420ddc6620}{
+
+
+Definition at line 43 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyTransform().
+
+\begin{Code}\begin{verbatim}43                                                                                    {
+44         return m_impl->getBodyTransform(body_index, world_T_body);
+45 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_441236989196e2c5f7219f420ddc6620}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyAngularVelocity@{getBodyAngularVelocity}}
 \index{getBodyAngularVelocity@{getBodyAngularVelocity}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyAngularVelocity]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyAngularVelocity (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-omega}) const}}
@@ -339,7 +765,22 @@ get absolute angular velocity for a body, represented in the world frame \begin{
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_c8076ba03722eb2744d1cccd09bfeb41}{
+
+
+Definition at line 46 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyAngularVelocity().
+
+\begin{Code}\begin{verbatim}46                                                                                        {
+47         return m_impl->getBodyAngularVelocity(body_index, world_omega);
+48 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_c8076ba03722eb2744d1cccd09bfeb41}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyLinearVelocity@{getBodyLinearVelocity}}
 \index{getBodyLinearVelocity@{getBodyLinearVelocity}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyLinearVelocity]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyLinearVelocity (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-velocity}) const}}
@@ -353,7 +794,22 @@ get linear velocity of a body, represented in world frame \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_0e3e87b9f2531a8771fa7193449ca26d}{
+
+
+Definition at line 49 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyLinearVelocity().
+
+\begin{Code}\begin{verbatim}49                                                                                          {
+50         return m_impl->getBodyLinearVelocity(body_index, world_velocity);
+51 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_0e3e87b9f2531a8771fa7193449ca26d}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyLinearVelocityCoM@{getBodyLinearVelocityCoM}}
 \index{getBodyLinearVelocityCoM@{getBodyLinearVelocityCoM}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyLinearVelocityCoM]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyLinearVelocityCoM (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-velocity}) const}}
@@ -367,7 +823,22 @@ get linear velocity of a body's CoM, represented in world frame (not required fo
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1f216eaec9b229133a1a59ac0b415d13}{
+
+
+Definition at line 53 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyLinearVelocityCoM().
+
+\begin{Code}\begin{verbatim}53                                                                                             {
+54         return m_impl->getBodyLinearVelocityCoM(body_index, world_velocity);
+55 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1f216eaec9b229133a1a59ac0b415d13}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyAngularAcceleration@{getBodyAngularAcceleration}}
 \index{getBodyAngularAcceleration@{getBodyAngularAcceleration}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyAngularAcceleration]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyAngularAcceleration (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-dot\_\-omega}) const}}
@@ -381,7 +852,22 @@ get origin of a body-fixed frame, represented in world frame \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_07aeba9ee7505e1c2a4c8a5f317bcf22}{
+
+
+Definition at line 57 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyAngularAcceleration().
+
+\begin{Code}\begin{verbatim}57                                                                                                {
+58         return m_impl->getBodyAngularAcceleration(body_index, world_dot_omega);
+59 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_07aeba9ee7505e1c2a4c8a5f317bcf22}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyLinearAcceleration@{getBodyLinearAcceleration}}
 \index{getBodyLinearAcceleration@{getBodyLinearAcceleration}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyLinearAcceleration]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyLinearAcceleration (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em world\_\-acceleration}) const}}
@@ -395,7 +881,22 @@ get origin of a body-fixed frame, represented in world frame NOTE: this will inc
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_fc4f7fc8066ceaa8f666fbad2fcbd33d}{
+
+
+Definition at line 60 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyLinearAcceleration().
+
+\begin{Code}\begin{verbatim}60                                                                                                  {
+61         return m_impl->getBodyLinearAcceleration(body_index, world_acceleration);
+62 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_fc4f7fc8066ceaa8f666fbad2fcbd33d}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getParentIndex@{getParentIndex}}
 \index{getParentIndex@{getParentIndex}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getParentIndex]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getParentIndex (const int {\em body\_\-index}, \/  int $\ast$ {\em parent\_\-index}) const}}
@@ -409,7 +910,22 @@ returns the (internal) index of body \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_364bd17e226b15ab6615de4bf8de110d}{
+
+
+Definition at line 274 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getParentIndex().
+
+\begin{Code}\begin{verbatim}274                                                                                {
+275         return m_impl->getParentIndex(body_index, parent_index);
+276 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_364bd17e226b15ab6615de4bf8de110d}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getJointType@{getJointType}}
 \index{getJointType@{getJointType}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getJointType]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getJointType (const int {\em body\_\-index}, \/  JointType $\ast$ {\em joint\_\-type}) const}}
@@ -423,7 +939,22 @@ get joint type \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_6591655d73601c531baed6121f89add5}{
+
+
+Definition at line 399 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getJointType().
+
+\begin{Code}\begin{verbatim}399                                                                                  {
+400         return m_impl->getJointType(body_index, joint_type);
+401 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_6591655d73601c531baed6121f89add5}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getJointTypeStr@{getJointTypeStr}}
 \index{getJointTypeStr@{getJointTypeStr}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getJointTypeStr]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getJointTypeStr (const int {\em body\_\-index}, \/  const char $\ast$$\ast$ {\em joint\_\-type}) const}}
@@ -437,7 +968,22 @@ get joint type as string \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_d7b1596a98a55cd32c3af072a82dcade}{
+
+
+Definition at line 403 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getJointTypeStr().
+
+\begin{Code}\begin{verbatim}403                                                                                       {
+404         return m_impl->getJointTypeStr(body_index, joint_type);
+405 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_d7b1596a98a55cd32c3af072a82dcade}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getParentRParentBodyRef@{getParentRParentBodyRef}}
 \index{getParentRParentBodyRef@{getParentRParentBodyRef}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getParentRParentBodyRef]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getParentRParentBodyRef (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em r}) const}}
@@ -451,7 +997,22 @@ get offset translation to parent body (see addBody) \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_3781cd90824117bc9f483b4f13b26f1c}{
+
+
+Definition at line 64 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getParentRParentBodyRef().
+
+\begin{Code}\begin{verbatim}64                                                                               {
+65     return m_impl->getParentRParentBodyRef(body_index, r);
+66 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_3781cd90824117bc9f483b4f13b26f1c}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyTParentRef@{getBodyTParentRef}}
 \index{getBodyTParentRef@{getBodyTParentRef}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyTParentRef]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyTParentRef (const int {\em body\_\-index}, \/  mat33 $\ast$ {\em T}) const}}
@@ -465,7 +1026,22 @@ get offset rotation to parent body (see addBody) \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_07d19dbfe7c35c0b455b7d58e9f4b014}{
+
+
+Definition at line 68 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyTParentRef().
+
+\begin{Code}\begin{verbatim}68                                                                          {
+69     return m_impl->getBodyTParentRef(body_index, T);
+70 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_07d19dbfe7c35c0b455b7d58e9f4b014}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyAxisOfMotion@{getBodyAxisOfMotion}}
 \index{getBodyAxisOfMotion@{getBodyAxisOfMotion}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyAxisOfMotion]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyAxisOfMotion (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em axis}) const}}
@@ -479,7 +1055,22 @@ get axis of motion (see addBody) \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_fd9a288177719c951a7b851a6491f308}{
+
+
+Definition at line 72 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyAxisOfMotion().
+
+\begin{Code}\begin{verbatim}72                                                                              {
+73     return m_impl->getBodyAxisOfMotion(body_index, axis);
+74 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_fd9a288177719c951a7b851a6491f308}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getDoFOffset@{getDoFOffset}}
 \index{getDoFOffset@{getDoFOffset}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getDoFOffset]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getDoFOffset (const int {\em body\_\-index}, \/  int $\ast$ {\em q\_\-offset}) const}}
@@ -493,7 +1084,22 @@ get offset for degrees of freedom of this body into the q-vector \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]-1 on error, 0 on success \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_65a04485f338b3c3c1ace010d460a453}{
+
+
+Definition at line 407 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getDoFOffset().
+
+\begin{Code}\begin{verbatim}407                                                                          {
+408         return m_impl->getDoFOffset(body_index, q_offset);
+409 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_65a04485f338b3c3c1ace010d460a453}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getUserInt@{getUserInt}}
 \index{getUserInt@{getUserInt}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getUserInt]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getUserInt (const int {\em body\_\-index}, \/  int $\ast$ {\em user\_\-int}) const}}
@@ -507,7 +1113,22 @@ get user integer. not used by the library. \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_32df6e169921b17d1bce944dc83918e9}{
+
+
+Definition at line 278 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getUserInt().
+
+\begin{Code}\begin{verbatim}278                                                                        {
+279         return m_impl->getUserInt(body_index, user_int);
+280 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_32df6e169921b17d1bce944dc83918e9}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getUserPtr@{getUserPtr}}
 \index{getUserPtr@{getUserPtr}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getUserPtr]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getUserPtr (const int {\em body\_\-index}, \/  void $\ast$$\ast$ {\em user\_\-ptr}) const}}
@@ -521,7 +1142,22 @@ get user pointer. not used by the library. \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_f93f698a6d22d8f735f162c326649342}{
+
+
+Definition at line 282 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getUserPtr().
+
+\begin{Code}\begin{verbatim}282                                                                          {
+283         return m_impl->getUserPtr(body_index, user_ptr);
+284 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_f93f698a6d22d8f735f162c326649342}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setUserInt@{setUserInt}}
 \index{setUserInt@{setUserInt}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[setUserInt]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setUserInt (const int {\em body\_\-index}, \/  const int {\em user\_\-int})}}
@@ -535,7 +1171,22 @@ set user integer. not used by the library. \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_d2c37fb7a6cb73b1af87e0b7884717c0}{
+
+
+Definition at line 286 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::setUserInt().
+
+\begin{Code}\begin{verbatim}286                                                                       {
+287         return m_impl->setUserInt(body_index, user_int);
+288 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_d2c37fb7a6cb73b1af87e0b7884717c0}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setUserPtr@{setUserPtr}}
 \index{setUserPtr@{setUserPtr}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[setUserPtr]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setUserPtr (const int {\em body\_\-index}, \/  void $\ast$const  {\em user\_\-ptr})}}
@@ -549,7 +1200,22 @@ set user pointer. not used by the library. \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_aec1f7c8093f74529f49e7b36bc59ed7}{
+
+
+Definition at line 290 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::setUserPtr().
+
+\begin{Code}\begin{verbatim}290                                                                         {
+291         return m_impl->setUserPtr(body_index, user_ptr);
+292 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_aec1f7c8093f74529f49e7b36bc59ed7}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setBodyMass@{setBodyMass}}
 \index{setBodyMass@{setBodyMass}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[setBodyMass]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setBodyMass (const int {\em body\_\-index}, \/  const idScalar {\em mass})}}
@@ -563,7 +1229,22 @@ set mass for a body \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_5d8c853cf45160f049977e16175fa288}{
+
+
+Definition at line 411 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::setBodyMass().
+
+\begin{Code}\begin{verbatim}411                                                                   {
+412         return m_impl->setBodyMass(body_index, mass);
+413 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_5d8c853cf45160f049977e16175fa288}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setBodyFirstMassMoment@{setBodyFirstMassMoment}}
 \index{setBodyFirstMassMoment@{setBodyFirstMassMoment}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[setBodyFirstMassMoment]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setBodyFirstMassMoment (const int {\em body\_\-index}, \/  const {\bf vec3} \& {\em first\_\-mass\_\-moment})}}
@@ -577,7 +1258,22 @@ set first moment of mass for a body (mass $\ast$ center of mass, in body fixed f
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_f3c9c78481d8ee170e00946c8499c433}{
+
+
+Definition at line 415 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::setBodyFirstMassMoment().
+
+\begin{Code}\begin{verbatim}415                                                                                              {
+416         return m_impl->setBodyFirstMassMoment(body_index, first_mass_moment);
+417 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_f3c9c78481d8ee170e00946c8499c433}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!setBodySecondMassMoment@{setBodySecondMassMoment}}
 \index{setBodySecondMassMoment@{setBodySecondMassMoment}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[setBodySecondMassMoment]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::setBodySecondMassMoment (const int {\em body\_\-index}, \/  const mat33 \& {\em second\_\-mass\_\-moment})}}
@@ -591,7 +1287,22 @@ set second moment of mass for a body (moment of inertia, in body fixed frame, re
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_ca41d87e7d3717d7d621eb20ce968b23}{
+
+
+Definition at line 419 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::setBodySecondMassMoment().
+
+\begin{Code}\begin{verbatim}419                                                                                                 {
+420         return m_impl->setBodySecondMassMoment(body_index, second_mass_moment);
+421 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_ca41d87e7d3717d7d621eb20ce968b23}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyMass@{getBodyMass}}
 \index{getBodyMass@{getBodyMass}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyMass]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyMass (const int {\em body\_\-index}, \/  idScalar $\ast$ {\em mass}) const}}
@@ -605,7 +1316,22 @@ get mass for a body \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_65cf073d371fb6c028649964d21fedce}{
+
+
+Definition at line 423 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyMass().
+
+\begin{Code}\begin{verbatim}423                                                                          {
+424         return m_impl->getBodyMass(body_index, mass);
+425 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_65cf073d371fb6c028649964d21fedce}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodyFirstMassMoment@{getBodyFirstMassMoment}}
 \index{getBodyFirstMassMoment@{getBodyFirstMassMoment}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodyFirstMassMoment]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodyFirstMassMoment (const int {\em body\_\-index}, \/  {\bf vec3} $\ast$ {\em first\_\-mass\_\-moment}) const}}
@@ -619,7 +1345,22 @@ get first moment of mass for a body (mass $\ast$ center of mass, in body fixed f
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_be2ffbd34157198fed40e005f7b154ee}{
+
+
+Definition at line 427 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyFirstMassMoment().
+
+\begin{Code}\begin{verbatim}427                                                                                              {
+428         return m_impl->getBodyFirstMassMoment(body_index, first_mass_moment);
+429 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_be2ffbd34157198fed40e005f7b154ee}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!getBodySecondMassMoment@{getBodySecondMassMoment}}
 \index{getBodySecondMassMoment@{getBodySecondMassMoment}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[getBodySecondMassMoment]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::getBodySecondMassMoment (const int {\em body\_\-index}, \/  mat33 $\ast$ {\em second\_\-mass\_\-moment}) const}}
@@ -633,7 +1374,22 @@ get second moment of mass for a body (moment of inertia, in body fixed frame, re
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_629ed5024a2d1cb7500ebe935231f5e8}{
+
+
+Definition at line 431 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodySecondMassMoment().
+
+\begin{Code}\begin{verbatim}431                                                                                                 {
+432         return m_impl->getBodySecondMassMoment(body_index, second_mass_moment);
+433 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_629ed5024a2d1cb7500ebe935231f5e8}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!addUserForce@{addUserForce}}
 \index{addUserForce@{addUserForce}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[addUserForce]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::addUserForce (const int {\em body\_\-index}, \/  const {\bf vec3} \& {\em body\_\-force})}}
@@ -647,7 +1403,22 @@ Add an external force to a body, acting at the origin of the body-fixed frame. C
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_63096d466e1def1657da8eb3a99850fa}{
+
+
+Definition at line 437 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::addUserForce().
+
+\begin{Code}\begin{verbatim}437                                                                             {
+438         return m_impl->addUserForce(body_index, body_force);
+439 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_63096d466e1def1657da8eb3a99850fa}{
 \index{btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}!addUserMoment@{addUserMoment}}
 \index{addUserMoment@{addUserMoment}!btInverseDynamics::MultiBodyTree@{btInverseDynamics::MultiBodyTree}}
 \subsubsection[addUserMoment]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::addUserMoment (const int {\em body\_\-index}, \/  const {\bf vec3} \& {\em body\_\-moment})}}
@@ -663,7 +1434,22 @@ Add an external moment to a body. Calls to addUserMoment are cumulative. Set the
 \item[Returns:]0 on success, -1 on error \end{Desc}
 
 
+Definition at line 441 of file MultiBodyTree.cpp.
+
+References btInverseDynamics::MultiBodyTree::MultiBodyImpl::addUserMoment().
+
+\begin{Code}\begin{verbatim}441                                                                               {
+442         return m_impl->addUserMoment(body_index, body_moment);
+443 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/MultiBodyTree.hpp\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/MultiBodyTree.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/MultiBodyTree.hpp\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/MultiBodyTree.cpp\end{CompactItemize}

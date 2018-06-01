@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btConstraintSolverPoolMt Class Reference</title>
+<title>Assignment2 - OOber Taxi: btConstraintSolverPoolMt Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>btConstraintSolverPoolMt Class Reference</h1><!-- doxytag: class="btConstraintSolverPoolMt" --><!-- doxytag: inherits="btConstraintSolver" --><code>#include &lt;btDiscreteDynamicsWorldMt.h&gt;</code>
+<h1>btConstraintSolverPoolMt Class Reference</h1><!-- doxytag: class="btConstraintSolverPoolMt" --><!-- doxytag: inherits="btConstraintSolver" --><code>#include &lt;<a class="el" href="bt_discrete_dynamics_world_mt_8h-source.html">btDiscreteDynamicsWorldMt.h</a>&gt;</code>
 <p>
 Inherits btConstraintSolver.
 <p>
@@ -41,10 +41,12 @@ virtual btScalar&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 <a class="el" href="classbt_constraint_solver_pool_mt.html">btConstraintSolverPoolMt</a> - masquerades as a constraint solver, but really it is a threadsafe pool of them.<p>
-Each solver in the pool is protected by a mutex. When solveGroup is called from a thread, the pool looks for a solver that isn't being used by another thread, locks it, and dispatches the call to the solver. So long as there are at least as many solvers as there are hardware threads, it should never need to spin wait. <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btDiscreteDynamicsWorldMt.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btDiscreteDynamicsWorldMt.cpp</ul>
+Each solver in the pool is protected by a mutex. When solveGroup is called from a thread, the pool looks for a solver that isn't being used by another thread, locks it, and dispatches the call to the solver. So long as there are at least as many solvers as there are hardware threads, it should never need to spin wait. 
+<p>Definition at line <a class="el" href="bt_discrete_dynamics_world_mt_8h-source.html#l00035">35</a> of file <a class="el" href="bt_discrete_dynamics_world_mt_8h-source.html">btDiscreteDynamicsWorldMt.h</a>.</p>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/<a class="el" href="bt_discrete_dynamics_world_mt_8h-source.html">btDiscreteDynamicsWorldMt.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/<a class="el" href="bt_discrete_dynamics_world_mt_8cpp-source.html">btDiscreteDynamicsWorldMt.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:14 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:53 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_vector_query</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_vector_query</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -93,6 +93,15 @@ template&lt;typename T, precision P, template&lt; typename, precision &gt; class
 <p>
 Check whether two vectors are collinears. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__vector__query.html" title="Query informations of vector types.">GLM_GTX_vector_query</a> extensions. </dd></dl>
 
+<p>Definition at line <a class="el" href="vector__query_8inl-source.html#l00091">91</a> of file <a class="el" href="vector__query_8inl-source.html">vector_query.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00096"></a>00096         {
+<a name="l00097"></a>00097                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559, <span class="stringliteral">"'areCollinear' only accept floating-point inputs"</span>);
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099                 <span class="keywordflow">return</span> detail::compute_areCollinear&lt;T, P, vecType&gt;::call(v0, v1, <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00100"></a>00100         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g9af1cd34fdb7c3cdeb11c0235fe7c468"></a><!-- doxytag: member="glm::areOrthogonal" ref="g9af1cd34fdb7c3cdeb11c0235fe7c468" args="(vecType&lt; T, P &gt; const &amp;v0, vecType&lt; T, P &gt; const &amp;v1, T const &amp;epsilon)" -->
@@ -130,6 +139,39 @@ template&lt;typename T, precision P, template&lt; typename, precision &gt; class
 
 <p>
 Check whether two vectors are orthogonals. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__vector__query.html" title="Query informations of vector types.">GLM_GTX_vector_query</a> extensions. </dd></dl>
+
+<p>Definition at line <a class="el" href="vector__query_8inl-source.html#l00104">104</a> of file <a class="el" href="vector__query_8inl-source.html">vector_query.inl</a>.</p>
+
+<p>References <a class="el" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">glm::abs()</a>, <a class="el" href="func__geometric_8inl-source.html#l00188">glm::dot()</a>, <a class="el" href="func__geometric_8inl-source.html#l00089">glm::length()</a>, and <a class="el" href="func__common_8inl-source.html#l00386">glm::max()</a>.</p>
+
+<p>Referenced by <a class="el" href="matrix__query_8inl-source.html#l00107">glm::isOrthogonal()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00109"></a>00109         {
+<a name="l00110"></a>00110                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559, <span class="stringliteral">"'areOrthogonal' only accept floating-point inputs"</span>);
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112                 <span class="keywordflow">return</span> <a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(<a class="code" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">dot</a>(v0, v1)) &lt;= <a class="code" href="group__gtx__extented__min__max.html#g56246e6ce859dc617425497eab1bdbd8">max</a>(
+<a name="l00113"></a>00113                         static_cast&lt;T&gt;(1),
+<a name="l00114"></a>00114                         <a class="code" href="group__gtc__quaternion.html#g286560b01bedb4e046ffb71de22464f4">length</a>(v0)) * <a class="code" href="group__gtx__extented__min__max.html#g56246e6ce859dc617425497eab1bdbd8">max</a>(static_cast&lt;T&gt;(1), <a class="code" href="group__gtc__quaternion.html#g286560b01bedb4e046ffb71de22464f4">length</a>(v1)) * <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>;
+<a name="l00115"></a>00115         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__vector__query_g9af1cd34fdb7c3cdeb11c0235fe7c468_cgraph.png" border="0" usemap="#group__gtx__vector__query_g9af1cd34fdb7c3cdeb11c0235fe7c468_cgraph_map" alt=""></center>
+<map name="group__gtx__vector__query_g9af1cd34fdb7c3cdeb11c0235fe7c468_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="320,23,392,49"><area shape="rect" href="group__core__func__geometric.html#gc64a3b29d01336161a668d328cac97eb" title="glm::dot" alt="" coords="196,23,263,49"><area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="187,73,272,100"><area shape="rect" href="group__core__func__common.html#g4e4d7b280fec55e5dfeb1367a1a2597d" title="glm::max" alt="" coords="192,124,267,151"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__vector__query_g9af1cd34fdb7c3cdeb11c0235fe7c468_icgraph.png" border="0" usemap="#group__gtx__vector__query_g9af1cd34fdb7c3cdeb11c0235fe7c468_icgraph_map" alt=""></center>
+<map name="group__gtx__vector__query_g9af1cd34fdb7c3cdeb11c0235fe7c468_icgraph_map">
+<area shape="rect" href="group__gtx__matrix__query.html#gbaeee016acd42f7a58bd1de063a3061b" title="glm::isOrthogonal" alt="" coords="188,5,311,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -169,6 +211,24 @@ template&lt;typename T, precision P, template&lt; typename, precision &gt; class
 <p>
 Check whether two vectors are orthonormal. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__vector__query.html" title="Query informations of vector types.">GLM_GTX_vector_query</a> extensions. </dd></dl>
 
+<p>Definition at line <a class="el" href="vector__query_8inl-source.html#l00193">193</a> of file <a class="el" href="vector__query_8inl-source.html">vector_query.inl</a>.</p>
+
+<p>References <a class="el" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">glm::abs()</a>, <a class="el" href="func__geometric_8inl-source.html#l00188">glm::dot()</a>, and <a class="el" href="matrix__query_8inl-source.html#l00059">glm::isNormalized()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00198"></a>00198         {
+<a name="l00199"></a>00199                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__vector__query.html#g70f64c6df21ad40303809d76b1474fbe">isNormalized</a>(v0, <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>) &amp;&amp; <a class="code" href="group__gtx__vector__query.html#g70f64c6df21ad40303809d76b1474fbe">isNormalized</a>(v1, <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>) &amp;&amp; (<a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(<a class="code" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">dot</a>(v0, v1)) &lt;= <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00200"></a>00200         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__vector__query_g78e84684059effca3c44c549476db51a_cgraph.png" border="0" usemap="#group__gtx__vector__query_g78e84684059effca3c44c549476db51a_cgraph_map" alt=""></center>
+<map name="group__gtx__vector__query_g78e84684059effca3c44c549476db51a_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="221,5,293,32"><area shape="rect" href="group__core__func__geometric.html#gc64a3b29d01336161a668d328cac97eb" title="glm::dot" alt="" coords="224,56,291,83"><area shape="rect" href="group__gtx__matrix__query.html#g08507235ac0ddb0a274ac1e1b10cbf39" title="glm::isNormalized" alt="" coords="195,107,320,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g91e10972d2d748d78f0a5f6234f8b088"></a><!-- doxytag: member="glm::isCompNull" ref="g91e10972d2d748d78f0a5f6234f8b088" args="(vecType&lt; T, P &gt; const &amp;v, T const &amp;epsilon)" -->
@@ -200,6 +260,15 @@ template&lt;typename T, precision P, template&lt; typename, precision &gt; class
 
 <p>
 Check whether a each component of a vector is null. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__vector__query.html" title="Query informations of vector types.">GLM_GTX_vector_query</a> extensions. </dd></dl>
+
+<p>Definition at line <a class="el" href="vector__query_8inl-source.html#l00143">143</a> of file <a class="el" href="vector__query_8inl-source.html">vector_query.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00147"></a>00147         {
+<a name="l00148"></a>00148                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559, <span class="stringliteral">"'isCompNull' only accept floating-point inputs"</span>);
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150                 <span class="keywordflow">return</span> detail::compute_isCompNull&lt;T, P, vecType&gt;::call(v, <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00151"></a>00151         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -233,6 +302,26 @@ template&lt;typename T, precision P, template&lt; typename, precision &gt; class
 <p>
 Check whether a vector is normalized. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__vector__query.html" title="Query informations of vector types.">GLM_GTX_vector_query</a> extensions. </dd></dl>
 
+<p>Definition at line <a class="el" href="vector__query_8inl-source.html#l00119">119</a> of file <a class="el" href="vector__query_8inl-source.html">vector_query.inl</a>.</p>
+
+<p>References <a class="el" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">glm::abs()</a>, and <a class="el" href="func__geometric_8inl-source.html#l00089">glm::length()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00123"></a>00123         {
+<a name="l00124"></a>00124                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559, <span class="stringliteral">"'isNormalized' only accept floating-point inputs"</span>);
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126                 <span class="keywordflow">return</span> <a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(<a class="code" href="group__gtc__quaternion.html#g286560b01bedb4e046ffb71de22464f4">length</a>(v) - static_cast&lt;T&gt;(1)) &lt;= <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(2) * <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>;
+<a name="l00127"></a>00127         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__vector__query_g70f64c6df21ad40303809d76b1474fbe_cgraph.png" border="0" usemap="#group__gtx__vector__query_g70f64c6df21ad40303809d76b1474fbe_cgraph_map" alt=""></center>
+<map name="group__gtx__vector__query_g70f64c6df21ad40303809d76b1474fbe_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="312,5,384,32"><area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="179,31,264,57"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g368e458df5a70d885f5d8a87ec7b8ef8"></a><!-- doxytag: member="glm::isNull" ref="g368e458df5a70d885f5d8a87ec7b8ef8" args="(vecType&lt; T, P &gt; const &amp;v, T const &amp;epsilon)" -->
@@ -265,10 +354,30 @@ template&lt;typename T, precision P, template&lt; typename, precision &gt; class
 <p>
 Check whether a vector is null. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__vector__query.html" title="Query informations of vector types.">GLM_GTX_vector_query</a> extensions. </dd></dl>
 
+<p>Definition at line <a class="el" href="vector__query_8inl-source.html#l00131">131</a> of file <a class="el" href="vector__query_8inl-source.html">vector_query.inl</a>.</p>
+
+<p>References <a class="el" href="func__geometric_8inl-source.html#l00089">glm::length()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00135"></a>00135         {
+<a name="l00136"></a>00136                 GLM_STATIC_ASSERT(std::numeric_limits&lt;T&gt;::is_iec559, <span class="stringliteral">"'isNull' only accept floating-point inputs"</span>);
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138                 <span class="keywordflow">return</span> <a class="code" href="group__gtc__quaternion.html#g286560b01bedb4e046ffb71de22464f4">length</a>(v) &lt;= <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>;
+<a name="l00139"></a>00139         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__vector__query_g368e458df5a70d885f5d8a87ec7b8ef8_cgraph.png" border="0" usemap="#group__gtx__vector__query_g368e458df5a70d885f5d8a87ec7b8ef8_cgraph_map" alt=""></center>
+<map name="group__gtx__vector__query_g368e458df5a70d885f5d8a87ec7b8ef8_cgraph_map">
+<area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="136,5,221,32"><area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="269,5,341,32"></map>
+</div>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:46 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:03 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

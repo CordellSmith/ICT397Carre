@@ -1,0 +1,13 @@
+<area shape="rect" href="$group__gtc__quaternion.html#g48c100d72c9c3295b75c9133ddbb83d1" title="glm::angle" alt="" coords="200,5,280,32">
+<area shape="rect" href="$class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix." alt="" coords="151,56,329,83">
+<area shape="rect" href="$group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e" title="glm::orientation" alt="" coords="185,107,295,133">
+<area shape="rect" href="$group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36" title="glm::orientedAngle" alt="" coords="176,157,304,184">
+<area shape="rect" href="$group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd" title="glm::pitch" alt="" coords="201,208,279,235">
+<area shape="rect" href="$group__gtx__polar__coordinates.html#g65a075c52ee1c699d77c4a98dd266006" title="glm::polar" alt="" coords="201,259,279,285">
+<area shape="rect" href="$group__gtc__quaternion.html#g3f58a75c69ff56cb9c83ea237abc1414" title="glm::roll" alt="" coords="207,309,273,336">
+<area shape="rect" href="$group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1" title="glm::yaw" alt="" coords="204,360,276,387">
+<area shape="rect" href="$class_camera.html#ff61f06284cca3216accdf556dfbd3c1" title="Gets the camera position." alt="" coords="403,5,515,32">
+<area shape="rect" href="$class_camera.html#338c5baf20b57652828c53e0791adf9a" title="Gets the camera view." alt="" coords="397,56,520,83">
+<area shape="rect" href="$class_camera.html#ffa333055635aed96518c4c66be9a70c" title="Gets the view matrix." alt="" coords="379,107,539,133">
+<area shape="rect" href="$class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223" title="Moves the camera." alt="" coords="587,56,736,83">
+<area shape="rect" href="$group__gtc__quaternion.html#gb7f90472a816598e7bc7b3606dbadcac" title="glm::eulerAngles" alt="" coords="400,309,517,336">

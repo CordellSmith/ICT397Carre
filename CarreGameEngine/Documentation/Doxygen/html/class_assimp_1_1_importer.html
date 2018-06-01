@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Assimp::Importer Class Reference</title>
+<title>Assignment2 - OOber Taxi: Assimp::Importer Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -27,7 +27,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>Assimp::Importer Class Reference</h1><!-- doxytag: class="Assimp::Importer" --><code>#include &lt;Importer.hpp&gt;</code>
+<h1>Assimp::Importer Class Reference</h1><!-- doxytag: class="Assimp::Importer" --><code>#include &lt;<a class="el" href="_importer_8hpp-source.html">Importer.hpp</a>&gt;</code>
 <p>
 
 <p>
@@ -137,6 +137,8 @@ CPP-API: The <a class="el" href="class_assimp_1_1_importer.html">Importer</a> cl
 Create an object of this class and call <a class="el" href="class_assimp_1_1_importer.html#174418ab41d5b8bc51a044895cb991e5">ReadFile()</a> to import a file. If the import succeeds, the function returns a pointer to the imported data. The data remains property of the object, it is intended to be accessed read-only. The imported data will be destroyed along with the <a class="el" href="class_assimp_1_1_importer.html">Importer</a> object. If the import fails, <a class="el" href="class_assimp_1_1_importer.html#174418ab41d5b8bc51a044895cb991e5">ReadFile()</a> returns a NULL pointer. In this case you can retrieve a human-readable error description be calling <a class="el" href="class_assimp_1_1_importer.html#23bab5ba8cb9b6886c690a610766668b">GetErrorString()</a>. You can call <a class="el" href="class_assimp_1_1_importer.html#174418ab41d5b8bc51a044895cb991e5">ReadFile()</a> multiple times with a single <a class="el" href="class_assimp_1_1_importer.html">Importer</a> instance. Actually, constructing <a class="el" href="class_assimp_1_1_importer.html">Importer</a> objects involves quite many allocations and may take some time, so it's better to reuse them as often as possible.<p>
 If you need the <a class="el" href="class_assimp_1_1_importer.html">Importer</a> to do custom file handling to access the files, implement <a class="el" href="class_assimp_1_1_i_o_system.html" title="CPP-API: Interface to the file system.">IOSystem</a> and <a class="el" href="class_assimp_1_1_i_o_stream.html" title="CPP-API: Class to handle file I/O for C++.">IOStream</a> and supply an instance of your custom <a class="el" href="class_assimp_1_1_i_o_system.html" title="CPP-API: Interface to the file system.">IOSystem</a> implementation by calling <a class="el" href="class_assimp_1_1_importer.html#1161f46318af18bb86dfe0fc3edea4df">SetIOHandler()</a> before calling <a class="el" href="class_assimp_1_1_importer.html#174418ab41d5b8bc51a044895cb991e5">ReadFile()</a>. If you do not assign a custion IO handler, a default handler using the standard C++ IO logic will be used.<p>
 <dl class="note" compact><dt><b>Note:</b></dt><dd>One <a class="el" href="class_assimp_1_1_importer.html">Importer</a> instance is not thread-safe. If you use multiple threads for loading, each thread should maintain its own <a class="el" href="class_assimp_1_1_importer.html">Importer</a> instance. </dd></dl>
+
+<p>Definition at line <a class="el" href="_importer_8hpp-source.html#l00115">115</a> of file <a class="el" href="_importer_8hpp-source.html">Importer.hpp</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="2c207299ed05f1db1ad1e6dab005f719"></a><!-- doxytag: member="Assimp::Importer::Importer" ref="2c207299ed05f1db1ad1e6dab005f719" args="()" -->
 <div class="memitem">
@@ -372,6 +374,13 @@ Set an integer configuration property. <dl compact><dt><b>Parameters:</b></dt><d
 <p>
 Set a boolean configuration property. Boolean properties are stored on the integer stack internally so it's possible to set them via <a class="el" href="class_assimp_1_1_importer.html#4af22a88eddf464d949a761149c72825">SetPropertyBool</a> and query them with <a class="el" href="class_assimp_1_1_importer.html#90f5d35d25e5d2a0ef8bc0c6545b2010">GetPropertyBool</a> and vice versa. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="class_assimp_1_1_importer.html#2542eed3d5f491025c4095b4e55fa068">SetPropertyInteger()</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_importer_8hpp-source.html#l00216">216</a> of file <a class="el" href="_importer_8hpp-source.html">Importer.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00216"></a>00216                                                             {
+<a name="l00217"></a>00217         <span class="keywordflow">return</span> <a class="code" href="class_assimp_1_1_importer.html#2542eed3d5f491025c4095b4e55fa068">SetPropertyInteger</a>(szName,value);
+<a name="l00218"></a>00218     }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="d38af78d6fe4b1f132d2534d8a84deea"></a><!-- doxytag: member="Assimp::Importer::SetPropertyFloat" ref="d38af78d6fe4b1f132d2534d8a84deea" args="(const char *szName, ai_real fValue)" -->
@@ -528,6 +537,13 @@ Get a configuration property. <dl compact><dt><b>Parameters:</b></dt><dd>
 
 <p>
 Get a boolean configuration property. Boolean properties are stored on the integer stack internally so it's possible to set them via <a class="el" href="class_assimp_1_1_importer.html#4af22a88eddf464d949a761149c72825">SetPropertyBool</a> and query them with <a class="el" href="class_assimp_1_1_importer.html#90f5d35d25e5d2a0ef8bc0c6545b2010">GetPropertyBool</a> and vice versa. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="class_assimp_1_1_importer.html#3e796a0758a9f10f13107f44c542ad41">GetPropertyInteger()</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_importer_8hpp-source.html#l00261">261</a> of file <a class="el" href="_importer_8hpp-source.html">Importer.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00261"></a>00261                                                                               {
+<a name="l00262"></a>00262         <span class="keywordflow">return</span> <a class="code" href="class_assimp_1_1_importer.html#3e796a0758a9f10f13107f44c542ad41">GetPropertyInteger</a>(szName,bErrorReturn)!=0;
+<a name="l00263"></a>00263     }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -821,6 +837,17 @@ If the call succeeds, the contents of the file are returned as a pointer to an <
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>A pointer to the imported data, NULL if the import failed. The pointer to the scene remains in possession of the <a class="el" href="class_assimp_1_1_importer.html">Importer</a> instance. Use <a class="el" href="class_assimp_1_1_importer.html#60eb9042fb85bfbd61a863e131a56ecd">GetOrphanedScene()</a> to take ownership of it.</dd></dl>
 <dl class="note" compact><dt><b>Note:</b></dt><dd><a class="el" href="namespace_assimp.html">Assimp</a> is able to determine the file format of a file automatically. </dd></dl>
 
+<p>Referenced by <a class="el" href="_importer_8hpp-source.html#l00637">ReadFile()</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5_icgraph.png" border="0" usemap="#class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5_icgraph_map" alt=""></center>
+<map name="class_assimp_1_1_importer_174418ab41d5b8bc51a044895cb991e5_icgraph_map">
+<area shape="rect" href="class_assimp_1_1_importer.html#339882c7acb47d5b5110bbd078d870a9" title="Reads the given file and returns its contents if successful." alt="" coords="236,5,415,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="9b3c5e8b1042702f449e84a95b3324f6"></a><!-- doxytag: member="Assimp::Importer::ReadFileFromMemory" ref="9b3c5e8b1042702f449e84a95b3324f6" args="(const void *pBuffer, size_t pLength, unsigned int pFlags, const char *pHint=&quot;&quot;)" -->
@@ -934,6 +961,24 @@ Reads the given file and returns its contents if successful.
 class <a class="el" href="class_assimp_1_1_importer.html">Importer</a><p>
 This function is provided for backward compatibility. See the const char* version for detailed docs. <dl class="see" compact><dt><b>See also:</b></dt><dd>ReadFile(const char*, pFlags) </dd></dl>
 
+<p>Definition at line <a class="el" href="_importer_8hpp-source.html#l00637">637</a> of file <a class="el" href="_importer_8hpp-source.html">Importer.hpp</a>.</p>
+
+<p>References <a class="el" href="class_assimp_1_1_importer.html#174418ab41d5b8bc51a044895cb991e5">ReadFile()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00637"></a>00637                                                                                             {
+<a name="l00638"></a>00638     <span class="keywordflow">return</span> <a class="code" href="class_assimp_1_1_importer.html#174418ab41d5b8bc51a044895cb991e5">ReadFile</a>(pFile.c_str(),pFlags);
+<a name="l00639"></a>00639 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_importer_339882c7acb47d5b5110bbd078d870a9_cgraph.png" border="0" usemap="#class_assimp_1_1_importer_339882c7acb47d5b5110bbd078d870a9_cgraph_map" alt=""></center>
+<map name="class_assimp_1_1_importer_339882c7acb47d5b5110bbd078d870a9_cgraph_map">
+<area shape="rect" href="class_assimp_1_1_importer.html#174418ab41d5b8bc51a044895cb991e5" title="Assimp::Importer::ReadFile" alt="" coords="236,5,415,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="53dafc3046abc33365a07c605716c5d4"></a><!-- doxytag: member="Assimp::Importer::FreeScene" ref="53dafc3046abc33365a07c605716c5d4" args="()" -->
@@ -1046,6 +1091,17 @@ Returns whether a given file extension is supported by ASSIMP.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>true if the extension is supported, false otherwise </dd></dl>
 
+<p>Referenced by <a class="el" href="_importer_8hpp-source.html#l00647">IsExtensionSupported()</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_importer_9146ea75c33c0aac0310195346877388_icgraph.png" border="0" usemap="#class_assimp_1_1_importer_9146ea75c33c0aac0310195346877388_icgraph_map" alt=""></center>
+<map name="class_assimp_1_1_importer_9146ea75c33c0aac0310195346877388_icgraph_map">
+<area shape="rect" href="class_assimp_1_1_importer.html#5b01905366f5bf8d1f89d51f755bf7d2" title="Returns whether a given file extension is supported by ASSIMP." alt="" coords="309,5,565,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="5b01905366f5bf8d1f89d51f755bf7d2"></a><!-- doxytag: member="Assimp::Importer::IsExtensionSupported" ref="5b01905366f5bf8d1f89d51f755bf7d2" args="(const std::string &amp;szExtension) const " -->
@@ -1068,6 +1124,24 @@ Returns whether a given file extension is supported by ASSIMP.<p>
 Returns whether a given file extension is supported by ASSIMP. 
 <p>
 This function is provided for backward compatibility. See the const char* version for detailed and up-to-date docs. <dl class="see" compact><dt><b>See also:</b></dt><dd>IsExtensionSupported(const char*) </dd></dl>
+
+<p>Definition at line <a class="el" href="_importer_8hpp-source.html#l00647">647</a> of file <a class="el" href="_importer_8hpp-source.html">Importer.hpp</a>.</p>
+
+<p>References <a class="el" href="class_assimp_1_1_importer.html#9146ea75c33c0aac0310195346877388">IsExtensionSupported()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00647"></a>00647                                                                                         {
+<a name="l00648"></a>00648     <span class="keywordflow">return</span> <a class="code" href="class_assimp_1_1_importer.html#9146ea75c33c0aac0310195346877388">IsExtensionSupported</a>(szExtension.c_str());
+<a name="l00649"></a>00649 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_importer_5b01905366f5bf8d1f89d51f755bf7d2_cgraph.png" border="0" usemap="#class_assimp_1_1_importer_5b01905366f5bf8d1f89d51f755bf7d2_cgraph_map" alt=""></center>
+<map name="class_assimp_1_1_importer_5b01905366f5bf8d1f89d51f755bf7d2_cgraph_map">
+<area shape="rect" href="class_assimp_1_1_importer.html#9146ea75c33c0aac0310195346877388" title="Assimp::Importer::IsExtensionSupported" alt="" coords="309,5,565,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -1095,6 +1169,17 @@ If a file extension is contained in the list this does of course not mean that A
   </table>
 </dl>
 
+<p>Referenced by <a class="el" href="_importer_8hpp-source.html#l00641">GetExtensionList()</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_importer_23c85647f7977012d9fef20b36c2d579_icgraph.png" border="0" usemap="#class_assimp_1_1_importer_23c85647f7977012d9fef20b36c2d579_icgraph_map" alt=""></center>
+<map name="class_assimp_1_1_importer_23c85647f7977012d9fef20b36c2d579_icgraph_map">
+<area shape="rect" href="class_assimp_1_1_importer.html#6ab684351c55e170de3c5b7d730b306d" title="Get a full list of all file extensions supported by ASSIMP." alt="" coords="284,5,511,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="6ab684351c55e170de3c5b7d730b306d"></a><!-- doxytag: member="Assimp::Importer::GetExtensionList" ref="6ab684351c55e170de3c5b7d730b306d" args="(std::string &amp;szOut) const " -->
@@ -1117,6 +1202,26 @@ If a file extension is contained in the list this does of course not mean that A
 Get a full list of all file extensions supported by ASSIMP. 
 <p>
 This function is provided for backward compatibility. See the <a class="el" href="structai_string.html">aiString</a> version for detailed and up-to-date docs. <dl class="see" compact><dt><b>See also:</b></dt><dd>GetExtensionList(aiString&amp;) </dd></dl>
+
+<p>Definition at line <a class="el" href="_importer_8hpp-source.html#l00641">641</a> of file <a class="el" href="_importer_8hpp-source.html">Importer.hpp</a>.</p>
+
+<p>References <a class="el" href="types_8h-source.html#l00367">aiString::data</a>, and <a class="el" href="class_assimp_1_1_importer.html#23c85647f7977012d9fef20b36c2d579">GetExtensionList()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00641"></a>00641                                                                         {
+<a name="l00642"></a>00642     <a class="code" href="structai_string.html">aiString</a> s;
+<a name="l00643"></a>00643     <a class="code" href="class_assimp_1_1_importer.html#23c85647f7977012d9fef20b36c2d579">GetExtensionList</a>(s);
+<a name="l00644"></a>00644     szOut = s.<a class="code" href="structai_string.html#a90b1da7d347a3dcca0a95061e6ea41d">data</a>;
+<a name="l00645"></a>00645 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_importer_6ab684351c55e170de3c5b7d730b306d_cgraph.png" border="0" usemap="#class_assimp_1_1_importer_6ab684351c55e170de3c5b7d730b306d_cgraph_map" alt=""></center>
+<map name="class_assimp_1_1_importer_6ab684351c55e170de3c5b7d730b306d_cgraph_map">
+<area shape="rect" href="class_assimp_1_1_importer.html#23c85647f7977012d9fef20b36c2d579" title="Assimp::Importer::GetExtensionList" alt="" coords="284,5,511,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -1312,12 +1417,17 @@ Enables "extra verbose" mode.<p>
 
 <p>
 Private, do not use. 
+<p>Definition at line <a class="el" href="_importer_8hpp-source.html#l00620">620</a> of file <a class="el" href="_importer_8hpp-source.html">Importer.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00620"></a>00620 { <span class="keywordflow">return</span> pimpl; }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="_importer_8hpp.html">Importer.hpp</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="_importer_8hpp-source.html">Importer.hpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:06:14 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:03:56 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -1,0 +1,11 @@
+<area shape="rect" href="$class_camera.html#338c5baf20b57652828c53e0791adf9a" title="Gets the camera view." alt="" coords="204,107,327,133">
+<area shape="rect" href="$class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix." alt="" coords="377,81,556,108">
+<area shape="rect" href="$group__core__func__matrix.html#g4b56decdc6560a13b616c6312bdcc17e" title="glm::inverse" alt="" coords="421,132,512,159">
+<area shape="rect" href="$group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="605,56,701,83">
+<area shape="rect" href="$group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="612,107,695,133">
+<area shape="rect" href="$group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b" title="glm::axis" alt="" coords="765,5,840,32">
+<area shape="rect" href="$group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="767,56,839,83">
+<area shape="rect" href="$group__core__func__geometric.html#g0feb2bb89ee2743677ad2cb84544bd83" title="glm::normalize" alt="" coords="749,107,856,133">
+<area shape="rect" href="$group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="757,157,848,184">
+<area shape="rect" href="$group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="769,208,836,235">
+<area shape="rect" href="$group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f" title="glm::sqrt" alt="" coords="904,5,976,32">

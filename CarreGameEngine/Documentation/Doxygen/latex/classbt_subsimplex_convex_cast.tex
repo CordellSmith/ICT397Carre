@@ -14,6 +14,8 @@ virtual bool \hyperlink{classbt_subsimplex_convex_cast_93202199b82c9d2f3074617f8
 \subsection{Detailed Description}
 \hyperlink{classbt_subsimplex_convex_cast}{btSubsimplexConvexCast} implements Gino van den Bergens' paper \char`\"{}Ray Casting against bteral Convex Objects with Application to Continuous Collision Detection\char`\"{} GJK based Ray Cast, optimized version Objects should not start in overlap, otherwise results are not defined. 
 
+Definition at line 28 of file btSubSimplexConvexCast.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_subsimplex_convex_cast_93202199b82c9d2f3074617f8db72e17}{
 \index{btSubsimplexConvexCast@{btSubsimplexConvexCast}!calcTimeOfImpact@{calcTimeOfImpact}}
@@ -30,7 +32,130 @@ Just like regular GJK only add the vertex if it isn't already (close) to current
 
 Implements \hyperlink{classbt_convex_cast_baf0f25a8cccfcafdaabada83c8d2bfb}{btConvexCast}.
 
+Definition at line 38 of file btSubSimplexConvexCast.cpp.
+
+References glm::epsilon(), btConvexCast::CastResult::m\_\-allowedPenetration, btConvexCast::CastResult::m\_\-fraction, btConvexCast::CastResult::m\_\-hitPoint, and btConvexCast::CastResult::m\_\-normal.
+
+\begin{Code}\begin{verbatim}44 {
+45 
+46         m_simplexSolver->reset();
+47 
+48         btVector3 linVelA,linVelB;
+49         linVelA = toA.getOrigin()-fromA.getOrigin();
+50         linVelB = toB.getOrigin()-fromB.getOrigin();
+51 
+52         btScalar lambda = btScalar(0.);
+53 
+54         btTransform interpolatedTransA = fromA;
+55         btTransform interpolatedTransB = fromB;
+56 
+58         btVector3 r = (linVelA-linVelB);
+59         btVector3 v;
+60         
+61         btVector3 supVertexA = fromA(m_convexA->localGetSupportingVertex(-r*fromA.getBasis()));
+62         btVector3 supVertexB = fromB(m_convexB->localGetSupportingVertex(r*fromB.getBasis()));
+63         v = supVertexA-supVertexB;
+64         int maxIter = MAX_ITERATIONS;
+65 
+66         btVector3 n;
+67         n.setValue(btScalar(0.),btScalar(0.),btScalar(0.));
+68         
+69         btVector3 c;
+70 
+71         
+72 
+73 
+74         btScalar dist2 = v.length2();
+75 #ifdef BT_USE_DOUBLE_PRECISION
+76         btScalar epsilon = btScalar(0.0001);
+77 #else
+78         btScalar epsilon = btScalar(0.0001);
+79 #endif //BT_USE_DOUBLE_PRECISION
+80         btVector3       w,p;
+81         btScalar VdotR;
+82         
+83         while ( (dist2 > epsilon) && maxIter--)
+84         {
+85                 supVertexA = interpolatedTransA(m_convexA->localGetSupportingVertex(-v*interpolatedTransA.getBasis()));
+86                 supVertexB = interpolatedTransB(m_convexB->localGetSupportingVertex(v*interpolatedTransB.getBasis()));
+87                 w = supVertexA-supVertexB;
+88 
+89                 btScalar VdotW = v.dot(w);
+90 
+91                 if (lambda > btScalar(1.0))
+92                 {
+93                         return false;
+94                 }
+95 
+96                 if ( VdotW > btScalar(0.))
+97                 {
+98                         VdotR = v.dot(r);
+99 
+100                         if (VdotR >= -(SIMD_EPSILON*SIMD_EPSILON))
+101                                 return false;
+102                         else
+103                         {
+104                                 lambda = lambda - VdotW / VdotR;
+105                                 //interpolate to next lambda
+106                                 //      x = s + lambda * r;
+107                                 interpolatedTransA.getOrigin().setInterpolate3(fromA.getOrigin(),toA.getOrigin(),lambda);
+108                                 interpolatedTransB.getOrigin().setInterpolate3(fromB.getOrigin(),toB.getOrigin(),lambda);
+109                                 //m_simplexSolver->reset();
+110                                 //check next line
+111                                  w = supVertexA-supVertexB;
+112                                 
+113                                 n = v;
+114                                 
+115                         }
+116                 } 
+118                 if (!m_simplexSolver->inSimplex(w))
+119                         m_simplexSolver->addVertex( w, supVertexA , supVertexB);
+120 
+121                 if (m_simplexSolver->closest(v))
+122                 {
+123                         dist2 = v.length2();
+124                         
+125                         //todo: check this normal for validity
+126                         //n=v;
+127                         //printf("V=%f , %f, %f\n",v[0],v[1],v[2]);
+128                         //printf("DIST2=%f\n",dist2);
+129                         //printf("numverts = %i\n",m_simplexSolver->numVertices());
+130                 } else
+131                 {
+132                         dist2 = btScalar(0.);
+133                 } 
+134         }
+135 
+136         //int numiter = MAX_ITERATIONS - maxIter;
+137 //      printf("number of iterations: %d", numiter);
+138         
+139         //don't report a time of impact when moving 'away' from the hitnormal
+140         
+141 
+142         result.m_fraction = lambda;
+143         if (n.length2() >= (SIMD_EPSILON*SIMD_EPSILON))
+144                 result.m_normal = n.normalized();
+145         else
+146                 result.m_normal = btVector3(btScalar(0.0), btScalar(0.0), btScalar(0.0));
+147 
+148         //don't report time of impact for motion away from the contact normal (or causes minor penetration)
+149         if (result.m_normal.dot(r)>=-result.m_allowedPenetration)
+150                 return false;
+151 
+152         btVector3 hitA,hitB;
+153         m_simplexSolver->compute_points(hitA,hitB);
+154         result.m_hitPoint=hitB;
+155         return true;
+156 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.cpp\end{CompactItemize}

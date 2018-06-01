@@ -1,0 +1,16 @@
+<area shape="rect" href="$classbt_g_impact_quantized_bvh.html#b265ffaec21d729bb4d148e843de938c" title="returns the indices of the primitives in the m_primitive_manager" alt="" coords="381,157,605,184">
+<area shape="rect" href="$classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="777,259,953,285">
+<area shape="rect" href="$classbt_g_impact_shape_interface.html#8b5c48d7831cebf1099b8c983cb3f149" title="if this trimesh" alt="" coords="349,348,637,375">
+<area shape="rect" href="$classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28" title="call when reading child shapes" alt="" coords="353,399,633,425">
+<area shape="rect" href="$classbt_triangle_callback.html#3850755f2c1fd71c4ca5877db1e6f891" title="btTriangleCallback::processTriangle" alt="" coords="380,449,607,476">
+<area shape="rect" href="$classbt_g_impact_quantized_bvh.html#5ffe3a11330ab3bce0d6eaffb9b3f689" title="node count" alt="" coords="740,5,991,32">
+<area shape="rect" href="$classbt_g_impact_quantized_bvh.html#2c4d9b99bc0e575b3f02e9cefda1fb18" title="tells if the node is a leaf" alt="" coords="749,56,981,83">
+<area shape="rect" href="$classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1" title="btAlignedObjectArray::push_back" alt="" coords="757,107,973,133">
+<area shape="rect" href="$classbt_quantized_bvh_tree.html#26648de243e317c8b4399d04c763edee" title="btQuantizedBvhTree::quantizePoint" alt="" coords="753,157,977,184">
+<area shape="rect" href="$classbt_quantized_bvh_tree.html#9f6c3be722fa73a6907970f1ed99b731" title="btQuantizedBvhTree::testQuantizedBoxOverlapp" alt="" coords="716,208,1015,235">
+<area shape="rect" href="$classbt_quantized_bvh_tree.html#8f8b4acde8a974cb57d9d19b37009100" title="node count" alt="" coords="1095,5,1321,32">
+<area shape="rect" href="$classbt_quantized_bvh_tree.html#004ff2bf4b2ef3d80d0e01a2ab249e5d" title="tells if the node is a leaf" alt="" coords="1104,56,1312,83">
+<area shape="rect" href="$classbt_primitive_manager_base.html#2eb95b960e4259da38c5ee4ac080fdf7" title="retrieves only the points of the triangle, and the collision margin" alt="" coords="720,309,1011,336">
+<area shape="rect" href="$classbt_g_impact_shape_interface.html#291328e80a5f22cffc50924ebb90040a" title="Obtains the primitive manager." alt="" coords="720,360,1011,387">
+<area shape="rect" href="$classbt_g_impact_quantized_bvh.html#8954b68cdc557ffab6c4c0361cea109a" title="btGImpactQuantizedBvh::getPrimitiveManager" alt="" coords="723,411,1008,437">
+<area shape="rect" href="$classbt_g_impact_mesh_shape_part_1_1_trimesh_primitive_manager.html#48a013e72b76f832638a54326a7cc709" title="btGImpactMeshShapePart::TrimeshPrimitiveManager::lock" alt="" coords="685,461,1045,488">

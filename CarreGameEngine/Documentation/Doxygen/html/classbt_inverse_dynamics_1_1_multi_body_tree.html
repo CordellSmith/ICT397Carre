@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btInverseDynamics::MultiBodyTree Class Reference</title>
+<title>Assignment2 - OOber Taxi: btInverseDynamics::MultiBodyTree Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -27,7 +27,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>btInverseDynamics::MultiBodyTree Class Reference</h1><!-- doxytag: class="btInverseDynamics::MultiBodyTree" --><code>#include &lt;MultiBodyTree.hpp&gt;</code>
+<h1>btInverseDynamics::MultiBodyTree Class Reference</h1><!-- doxytag: class="btInverseDynamics::MultiBodyTree" --><code>#include &lt;<a class="el" href="_multi_body_tree_8hpp-source.html">MultiBodyTree.hpp</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for btInverseDynamics::MultiBodyTree:</div>
@@ -169,6 +169,8 @@ Note on generalized forces: analogous to u, i.e.,<ul>
 <p>
 TODO - force element interface (friction, springs, dampers, etc)<ul>
 <li>gears and motor inertia </li></ul>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8hpp-source.html#l00052">52</a> of file <a class="el" href="_multi_body_tree_8hpp-source.html">MultiBodyTree.hpp</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="75c5f172165331d0c64f7fc02301b12a"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::MultiBodyTree" ref="75c5f172165331d0c64f7fc02301b12a" args="()" -->
 <div class="memitem">
@@ -187,6 +189,17 @@ TODO - force element interface (friction, springs, dampers, etc)<ul>
 
 <p>
 The contructor. Initialization &amp; allocation is via addBody and buildSystem calls. 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00013">13</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00014"></a>00014         : m_is_finalized(<span class="keyword">false</span>),
+<a name="l00015"></a>00015           m_mass_parameters_are_valid(<span class="keyword">true</span>),
+<a name="l00016"></a>00016           m_accept_invalid_mass_parameters(<span class="keyword">false</span>),
+<a name="l00017"></a>00017           m_impl(0x0),
+<a name="l00018"></a>00018           m_init_cache(0x0) {
+<a name="l00019"></a>00019         m_init_cache = <span class="keyword">new</span> InitCache();
+<a name="l00020"></a>00020 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -287,6 +300,79 @@ Add body to the system. this allocates memory and not real-time safe. This only 
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00211">211</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_init_cache_8cpp-source.html#l00012">btInverseDynamics::MultiBodyTree::InitCache::addBody()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00402">glm::length()</a>, and <a class="el" href="extented__min__max_8inl-source.html#l00069">glm::min()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00215"></a>00215                                                                                        {
+<a name="l00216"></a>00216         <span class="keywordflow">if</span> (body_index &lt; 0) {
+<a name="l00217"></a>00217                 error_message(<span class="stringliteral">"body index must be positive (got %d)\n"</span>, body_index);
+<a name="l00218"></a>00218                 <span class="keywordflow">return</span> -1;
+<a name="l00219"></a>00219         }
+<a name="l00220"></a>00220         <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">vec3</a> body_axis_of_motion(body_axis_of_motion_);
+<a name="l00221"></a>00221         <span class="keywordflow">switch</span> (joint_type) {
+<a name="l00222"></a>00222                 <span class="keywordflow">case</span> REVOLUTE:
+<a name="l00223"></a>00223                 <span class="keywordflow">case</span> PRISMATIC:
+<a name="l00224"></a>00224                         <span class="comment">// check if axis is unit vector</span>
+<a name="l00225"></a>00225                         <span class="keywordflow">if</span> (!isUnitVector(body_axis_of_motion)) {
+<a name="l00226"></a>00226                                 warning_message(
+<a name="l00227"></a>00227                                         <span class="stringliteral">"axis of motion not a unit axis ([%f %f %f]), will use normalized vector\n"</span>,
+<a name="l00228"></a>00228                                         body_axis_of_motion(0), body_axis_of_motion(1), body_axis_of_motion(2));
+<a name="l00229"></a>00229                                 idScalar <a class="code" href="group__gtc__quaternion.html#g286560b01bedb4e046ffb71de22464f4">length</a> = BT_ID_SQRT(BT_ID_POW(body_axis_of_motion(0), 2) +
+<a name="l00230"></a>00230                                                                            BT_ID_POW(body_axis_of_motion(1), 2) +
+<a name="l00231"></a>00231                                                                            BT_ID_POW(body_axis_of_motion(2), 2));
+<a name="l00232"></a>00232                                 <span class="keywordflow">if</span> (length &lt; BT_ID_SQRT(<a class="code" href="group__gtx__extented__min__max.html#gca95a5fd4be0ad53f4474e69867bf974">std::numeric_limits&lt;idScalar&gt;::min</a>())) {
+<a name="l00233"></a>00233                                         error_message(<span class="stringliteral">"axis of motion vector too short (%e)\n"</span>, length);
+<a name="l00234"></a>00234                                         <span class="keywordflow">return</span> -1;
+<a name="l00235"></a>00235                                 }
+<a name="l00236"></a>00236                                 body_axis_of_motion = (1.0 / length) * body_axis_of_motion;
+<a name="l00237"></a>00237                         }
+<a name="l00238"></a>00238                         <span class="keywordflow">break</span>;
+<a name="l00239"></a>00239                 <span class="keywordflow">case</span> FIXED:
+<a name="l00240"></a>00240                         <span class="keywordflow">break</span>;
+<a name="l00241"></a>00241                 <span class="keywordflow">case</span> FLOATING:
+<a name="l00242"></a>00242                         <span class="keywordflow">break</span>;
+<a name="l00243"></a>00243                 <span class="keywordflow">default</span>:
+<a name="l00244"></a>00244                         error_message(<span class="stringliteral">"unknown joint type %d\n"</span>, joint_type);
+<a name="l00245"></a>00245                         <span class="keywordflow">return</span> -1;
+<a name="l00246"></a>00246         }
+<a name="l00247"></a>00247 
+<a name="l00248"></a>00248         <span class="comment">// sanity check for mass properties. Zero mass is OK.</span>
+<a name="l00249"></a>00249         <span class="keywordflow">if</span> (mass &lt; 0) {
+<a name="l00250"></a>00250                 m_mass_parameters_are_valid = <span class="keyword">false</span>;
+<a name="l00251"></a>00251                 error_message(<span class="stringliteral">"Body %d has invalid mass %e\n"</span>, body_index, mass);
+<a name="l00252"></a>00252                 <span class="keywordflow">if</span> (!m_accept_invalid_mass_parameters) {
+<a name="l00253"></a>00253                         <span class="keywordflow">return</span> -1;
+<a name="l00254"></a>00254                 }
+<a name="l00255"></a>00255         }
+<a name="l00256"></a>00256 
+<a name="l00257"></a>00257         <span class="keywordflow">if</span> (!isValidInertiaMatrix(body_I_body, body_index, FIXED == joint_type)) {
+<a name="l00258"></a>00258                 m_mass_parameters_are_valid = <span class="keyword">false</span>;
+<a name="l00259"></a>00259                 <span class="comment">// error message printed in function call</span>
+<a name="l00260"></a>00260                 <span class="keywordflow">if</span> (!m_accept_invalid_mass_parameters) {
+<a name="l00261"></a>00261                         <span class="keywordflow">return</span> -1;
+<a name="l00262"></a>00262                 }
+<a name="l00263"></a>00263         }
+<a name="l00264"></a>00264 
+<a name="l00265"></a>00265         <span class="keywordflow">if</span> (!isValidTransformMatrix(body_T_parent_ref)) {
+<a name="l00266"></a>00266                 <span class="keywordflow">return</span> -1;
+<a name="l00267"></a>00267         }
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269         <span class="keywordflow">return</span> m_init_cache-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#3140b788b6cdc6c5a74cf2da2e8f5fac">addBody</a>(body_index, parent_index, joint_type, parent_r_parent_body_ref,
+<a name="l00270"></a>00270                                                                  body_T_parent_ref, body_axis_of_motion, mass, body_r_body_com,
+<a name="l00271"></a>00271                                                                  body_I_body, user_int, user_ptr);
+<a name="l00272"></a>00272 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_d1f6d18e60ec7be3ec03b5aa9b8875b6_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_d1f6d18e60ec7be3ec03b5aa9b8875b6_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_d1f6d18e60ec7be3ec03b5aa9b8875b6_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#3140b788b6cdc6c5a74cf2da2e8f5fac" title="btInverseDynamics::MultiBodyTree::InitCache::addBody" alt="" coords="335,5,676,32"><area shape="rect" href="group__gtc__quaternion.html#g286560b01bedb4e046ffb71de22464f4" title="glm::length" alt="" coords="463,56,548,83"><area shape="rect" href="group__gtx__extented__min__max.html#gca95a5fd4be0ad53f4474e69867bf974" title="glm::min" alt="" coords="469,107,541,133"><area shape="rect" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76" title="glm::dot" alt="" coords="728,5,795,32"><area shape="rect" href="group__core__func__exponential.html#gfe49b7b63045b6ab94bffbcd7e7a7bc8" title="glm::sqrt" alt="" coords="725,56,797,83"><area shape="rect" href="group__core__func__common.html#g7c4425eacc9498bb2ab8a7cfd662cd69" title="glm::min" alt="" coords="725,107,797,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="5ba35645225ad53584dcd0908d26c8ea"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::setAcceptInvalidMassParameters" ref="5ba35645225ad53584dcd0908d26c8ea" args="(bool flag)" -->
@@ -312,6 +398,13 @@ set policy for invalid mass properties <dl compact><dt><b>Parameters:</b></dt><d
   </table>
 </dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00027">27</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00027"></a>00027                                                             {
+<a name="l00028"></a>00028         m_accept_invalid_mass_parameters = flag;
+<a name="l00029"></a>00029 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="ea23f21f50889b30dbf41ad57957dcee"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::getAcceptInvalidMassProperties" ref="ea23f21f50889b30dbf41ad57957dcee" args="() const " -->
@@ -332,6 +425,13 @@ set policy for invalid mass properties <dl compact><dt><b>Parameters:</b></dt><d
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>the mass properties policy flag </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00031">31</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00031"></a>00031                                                          {
+<a name="l00032"></a>00032         <span class="keywordflow">return</span> m_accept_invalid_mass_parameters;
+<a name="l00033"></a>00033 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="c82772ed5bebb1edd6513c03ebd719c2"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::finalize" ref="c82772ed5bebb1edd6513c03ebd719c2" args="()" -->
@@ -351,6 +451,121 @@ set policy for invalid mass properties <dl compact><dt><b>Parameters:</b></dt><d
 
 <p>
 build internal data structures call this after all bodies have been added via addBody <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00294">294</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_init_cache_8cpp-source.html#l00101">btInverseDynamics::MultiBodyTree::InitCache::buildIndexSets()</a>, <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00172">btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateStaticData()</a>, <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00978">btInverseDynamics::MultiBodyTree::MultiBodyImpl::clearAllUserForcesAndMoments()</a>, <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00112">btInverseDynamics::MultiBodyTree::MultiBodyImpl::generateIndexSets()</a>, <a class="el" href="_multi_body_tree_init_cache_8cpp-source.html#l00064">btInverseDynamics::MultiBodyTree::InitCache::getInertiaData()</a>, <a class="el" href="_multi_body_tree_init_cache_8cpp-source.html#l00092">btInverseDynamics::MultiBodyTree::InitCache::getJointData()</a>, <a class="el" href="_multi_body_tree_init_cache_8hpp-source.html#l00080">btInverseDynamics::MultiBodyTree::InitCache::getParentIndexArray()</a>, <a class="el" href="_multi_body_tree_init_cache_8hpp-source.html#l00020">btInverseDynamics::InertiaData::m_body_I_body</a>, <a class="el" href="_multi_body_tree_impl_8hpp-source.html#l00024">btInverseDynamics::RigidBody::m_body_I_body</a>, <a class="el" href="_multi_body_tree_impl_8hpp-source.html#l00261">btInverseDynamics::MultiBodyTree::MultiBodyImpl::m_body_list</a>, <a class="el" href="_multi_body_tree_impl_8hpp-source.html#l00022">btInverseDynamics::RigidBody::m_body_mass_com</a>, <a class="el" href="_multi_body_tree_init_cache_8hpp-source.html#l00017">btInverseDynamics::InertiaData::m_body_pos_body_com</a>, <a class="el" href="_multi_body_tree_impl_8hpp-source.html#l00088">btInverseDynamics::RigidBody::m_body_T_parent_ref</a>, <a class="el" href="_multi_body_tree_init_cache_8hpp-source.html#l00046">btInverseDynamics::JointData::m_child_axis_of_motion</a>, <a class="el" href="_multi_body_tree_init_cache_8hpp-source.html#l00039">btInverseDynamics::JointData::m_child_T_parent_ref</a>, <a class="el" href="_multi_body_tree_impl_8hpp-source.html#l00093">btInverseDynamics::RigidBody::m_Jac_JR</a>, <a class="el" href="_multi_body_tree_impl_8hpp-source.html#l00098">btInverseDynamics::RigidBody::m_Jac_JT</a>, <a class="el" href="_multi_body_tree_impl_8hpp-source.html#l00083">btInverseDynamics::RigidBody::m_joint_type</a>, <a class="el" href="_multi_body_tree_init_cache_8hpp-source.html#l00014">btInverseDynamics::InertiaData::m_mass</a>, <a class="el" href="_multi_body_tree_impl_8hpp-source.html#l00020">btInverseDynamics::RigidBody::m_mass</a>, <a class="el" href="_multi_body_tree_impl_8hpp-source.html#l00264">btInverseDynamics::MultiBodyTree::MultiBodyImpl::m_parent_index</a>, <a class="el" href="_multi_body_tree_impl_8hpp-source.html#l00086">btInverseDynamics::RigidBody::m_parent_pos_parent_body_ref</a>, <a class="el" href="_multi_body_tree_init_cache_8hpp-source.html#l00035">btInverseDynamics::JointData::m_parent_pos_parent_child_ref</a>, <a class="el" href="_multi_body_tree_init_cache_8hpp-source.html#l00028">btInverseDynamics::JointData::m_type</a>, <a class="el" href="_multi_body_tree_init_cache_8hpp-source.html#l00067">btInverseDynamics::MultiBodyTree::InitCache::numBodies()</a>, and <a class="el" href="_multi_body_tree_init_cache_8hpp-source.html#l00065">btInverseDynamics::MultiBodyTree::InitCache::numDoFs()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00294"></a>00294                             {
+<a name="l00295"></a>00295         <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;num_bodies = m_init_cache-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#6203870a6e9093f6c26280feaee27832">numBodies</a>();
+<a name="l00296"></a>00296         <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;num_dofs = m_init_cache-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#38d366cfeb082b06f72eff27befae30b">numDoFs</a>();
+<a name="l00297"></a>00297 
+<a name="l00298"></a>00298         <span class="keywordflow">if</span>(num_dofs&lt;=0) {
+<a name="l00299"></a>00299             error_message(<span class="stringliteral">"Need num_dofs&gt;=1, but num_dofs= %d\n"</span>, num_dofs);
+<a name="l00300"></a>00300             <span class="comment">//return -1;</span>
+<a name="l00301"></a>00301         }
+<a name="l00302"></a>00302 
+<a name="l00303"></a>00303         <span class="comment">// 1 allocate internal MultiBody structure</span>
+<a name="l00304"></a>00304         m_impl = <span class="keyword">new</span> MultiBodyImpl(num_bodies, num_dofs);
+<a name="l00305"></a>00305 
+<a name="l00306"></a>00306         <span class="comment">// 2 build new index set assuring index(parent) &lt; index(child)</span>
+<a name="l00307"></a>00307         <span class="keywordflow">if</span> (-1 == m_init_cache-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#41e961d85dcd9e9f9aa9b18ac33289c9">buildIndexSets</a>()) {
+<a name="l00308"></a>00308                 <span class="keywordflow">return</span> -1;
+<a name="l00309"></a>00309         }
+<a name="l00310"></a>00310         m_init_cache-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#e176197bd93ec8b395b9f9c0b538458c">getParentIndexArray</a>(&amp;m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#f49282dfb6eb33da36c6c0a40808bbd5">m_parent_index</a>);
+<a name="l00311"></a>00311 
+<a name="l00312"></a>00312         <span class="comment">// 3 setup internal kinematic and dynamic data</span>
+<a name="l00313"></a>00313         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> index = 0; index &lt; num_bodies; index++) {
+<a name="l00314"></a>00314                 InertiaData inertia;
+<a name="l00315"></a>00315                 JointData joint;
+<a name="l00316"></a>00316                 <span class="keywordflow">if</span> (-1 == m_init_cache-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#ee00442cb04aaf00db41cac11b046567">getInertiaData</a>(index, &amp;inertia)) {
+<a name="l00317"></a>00317                         <span class="keywordflow">return</span> -1;
+<a name="l00318"></a>00318                 }
+<a name="l00319"></a>00319                 <span class="keywordflow">if</span> (-1 == m_init_cache-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#b877d886f33dd223c33d6629d7531b2d">getJointData</a>(index, &amp;joint)) {
+<a name="l00320"></a>00320                         <span class="keywordflow">return</span> -1;
+<a name="l00321"></a>00321                 }
+<a name="l00322"></a>00322 
+<a name="l00323"></a>00323                 RigidBody &amp;rigid_body = m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#98949c9df6318d9e39e11ae85904f0b7">m_body_list</a>[index];
+<a name="l00324"></a>00324 
+<a name="l00325"></a>00325                 rigid_body.m_mass = inertia.m_mass;
+<a name="l00326"></a>00326                 rigid_body.m_body_mass_com = inertia.m_mass * inertia.m_body_pos_body_com;
+<a name="l00327"></a>00327                 rigid_body.m_body_I_body = inertia.m_body_I_body;
+<a name="l00328"></a>00328                 rigid_body.m_joint_type = joint.m_type;
+<a name="l00329"></a>00329                 rigid_body.m_parent_pos_parent_body_ref = joint.m_parent_pos_parent_child_ref;
+<a name="l00330"></a>00330                 rigid_body.m_body_T_parent_ref = joint.m_child_T_parent_ref;
+<a name="l00331"></a>00331                 rigid_body.m_parent_pos_parent_body_ref = joint.m_parent_pos_parent_child_ref;
+<a name="l00332"></a>00332                 rigid_body.m_joint_type = joint.m_type;
+<a name="l00333"></a>00333 
+<a name="l00334"></a>00334                 <span class="comment">// Set joint Jacobians. Note that the dimension is always 3x1 here to avoid variable sized</span>
+<a name="l00335"></a>00335                 <span class="comment">// matrices.</span>
+<a name="l00336"></a>00336                 <span class="keywordflow">switch</span> (rigid_body.m_joint_type) {
+<a name="l00337"></a>00337                         <span class="keywordflow">case</span> REVOLUTE:
+<a name="l00338"></a>00338                                 rigid_body.m_Jac_JR(0) = joint.m_child_axis_of_motion(0);
+<a name="l00339"></a>00339                                 rigid_body.m_Jac_JR(1) = joint.m_child_axis_of_motion(1);
+<a name="l00340"></a>00340                                 rigid_body.m_Jac_JR(2) = joint.m_child_axis_of_motion(2);
+<a name="l00341"></a>00341                                 rigid_body.m_Jac_JT(0) = 0.0;
+<a name="l00342"></a>00342                                 rigid_body.m_Jac_JT(1) = 0.0;
+<a name="l00343"></a>00343                                 rigid_body.m_Jac_JT(2) = 0.0;
+<a name="l00344"></a>00344                                 <span class="keywordflow">break</span>;
+<a name="l00345"></a>00345                         <span class="keywordflow">case</span> PRISMATIC:
+<a name="l00346"></a>00346                                 rigid_body.m_Jac_JR(0) = 0.0;
+<a name="l00347"></a>00347                                 rigid_body.m_Jac_JR(1) = 0.0;
+<a name="l00348"></a>00348                                 rigid_body.m_Jac_JR(2) = 0.0;
+<a name="l00349"></a>00349                                 rigid_body.m_Jac_JT(0) = joint.m_child_axis_of_motion(0);
+<a name="l00350"></a>00350                                 rigid_body.m_Jac_JT(1) = joint.m_child_axis_of_motion(1);
+<a name="l00351"></a>00351                                 rigid_body.m_Jac_JT(2) = joint.m_child_axis_of_motion(2);
+<a name="l00352"></a>00352                                 <span class="keywordflow">break</span>;
+<a name="l00353"></a>00353                         <span class="keywordflow">case</span> FIXED:
+<a name="l00354"></a>00354                                 <span class="comment">// NOTE/TODO: dimension really should be zero ..</span>
+<a name="l00355"></a>00355                                 rigid_body.m_Jac_JR(0) = 0.0;
+<a name="l00356"></a>00356                                 rigid_body.m_Jac_JR(1) = 0.0;
+<a name="l00357"></a>00357                                 rigid_body.m_Jac_JR(2) = 0.0;
+<a name="l00358"></a>00358                                 rigid_body.m_Jac_JT(0) = 0.0;
+<a name="l00359"></a>00359                                 rigid_body.m_Jac_JT(1) = 0.0;
+<a name="l00360"></a>00360                                 rigid_body.m_Jac_JT(2) = 0.0;
+<a name="l00361"></a>00361                                 <span class="keywordflow">break</span>;
+<a name="l00362"></a>00362                         <span class="keywordflow">case</span> FLOATING:
+<a name="l00363"></a>00363                                 <span class="comment">// NOTE/TODO: this is not really correct.</span>
+<a name="l00364"></a>00364                                 <span class="comment">// the Jacobians should be 3x3 matrices here !</span>
+<a name="l00365"></a>00365                                 rigid_body.m_Jac_JR(0) = 0.0;
+<a name="l00366"></a>00366                                 rigid_body.m_Jac_JR(1) = 0.0;
+<a name="l00367"></a>00367                                 rigid_body.m_Jac_JR(2) = 0.0;
+<a name="l00368"></a>00368                                 rigid_body.m_Jac_JT(0) = 0.0;
+<a name="l00369"></a>00369                                 rigid_body.m_Jac_JT(1) = 0.0;
+<a name="l00370"></a>00370                                 rigid_body.m_Jac_JT(2) = 0.0;
+<a name="l00371"></a>00371                                 <span class="keywordflow">break</span>;
+<a name="l00372"></a>00372                         <span class="keywordflow">default</span>:
+<a name="l00373"></a>00373                                 error_message(<span class="stringliteral">"unsupported joint type %d\n"</span>, rigid_body.m_joint_type);
+<a name="l00374"></a>00374                                 <span class="keywordflow">return</span> -1;
+<a name="l00375"></a>00375                 }
+<a name="l00376"></a>00376         }
+<a name="l00377"></a>00377 
+<a name="l00378"></a>00378         <span class="comment">// 4 assign degree of freedom indices &amp; build per-joint-type index arrays</span>
+<a name="l00379"></a>00379         <span class="keywordflow">if</span> (-1 == m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#8e65f0c1da65e68e3a482862f3b866c7">generateIndexSets</a>()) {
+<a name="l00380"></a>00380                 error_message(<span class="stringliteral">"generating index sets\n"</span>);
+<a name="l00381"></a>00381                 <span class="keywordflow">return</span> -1;
+<a name="l00382"></a>00382         }
+<a name="l00383"></a>00383 
+<a name="l00384"></a>00384         <span class="comment">// 5 do some pre-computations ..</span>
+<a name="l00385"></a>00385         m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#72bf41dcbbf7d8b5d2a17bbaaeaa5029" title="initialize fixed data">calculateStaticData</a>();
+<a name="l00386"></a>00386 
+<a name="l00387"></a>00387         <span class="comment">// 6. make sure all user forces are set to zero, as this might not happen</span>
+<a name="l00388"></a>00388         <span class="comment">//      in the vector ctors.</span>
+<a name="l00389"></a>00389         m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#b3b1f5f6819d8c5529b4d029ea775d10">clearAllUserForcesAndMoments</a>();
+<a name="l00390"></a>00390 
+<a name="l00391"></a>00391         m_is_finalized = <span class="keyword">true</span>;
+<a name="l00392"></a>00392         <span class="keywordflow">return</span> 0;
+<a name="l00393"></a>00393 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_c82772ed5bebb1edd6513c03ebd719c2_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_c82772ed5bebb1edd6513c03ebd719c2_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_c82772ed5bebb1edd6513c03ebd719c2_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#41e961d85dcd9e9f9aa9b18ac33289c9" title="btInverseDynamics::MultiBodyTree::InitCache::buildIndexSets" alt="" coords="388,5,764,32"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#6203870a6e9093f6c26280feaee27832" title="btInverseDynamics::MultiBodyTree::InitCache::numBodies" alt="" coords="879,31,1233,57"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#72bf41dcbbf7d8b5d2a17bbaaeaa5029" title="initialize fixed data" alt="" coords="360,107,792,133"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#b3b1f5f6819d8c5529b4d029ea775d10" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::clearAllUserForcesAndMoments" alt="" coords="323,157,829,184"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#8e65f0c1da65e68e3a482862f3b866c7" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::generateIndexSets" alt="" coords="363,208,789,235"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#ee00442cb04aaf00db41cac11b046567" title="btInverseDynamics::MultiBodyTree::InitCache::getInertiaData" alt="" coords="391,259,761,285"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#b877d886f33dd223c33d6629d7531b2d" title="btInverseDynamics::MultiBodyTree::InitCache::getJointData" alt="" coords="395,309,757,336"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#e176197bd93ec8b395b9f9c0b538458c" title="btInverseDynamics::MultiBodyTree::InitCache::getParentIndexArray" alt="" coords="372,360,780,387"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache.html#38d366cfeb082b06f72eff27befae30b" title="btInverseDynamics::MultiBodyTree::InitCache::numDoFs" alt="" coords="403,411,749,437"></map>
+</div>
 
 </div>
 </div><p>
@@ -401,6 +616,32 @@ Calculate joint forces for given generalized state &amp; derivatives. This also 
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00083">83</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00233">btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateInverseDynamics()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00084"></a>00084                                                                                                             {
+<a name="l00085"></a>00085         <span class="keywordflow">if</span> (<span class="keyword">false</span> == m_is_finalized) {
+<a name="l00086"></a>00086                 error_message(<span class="stringliteral">"system has not been initialized\n"</span>);
+<a name="l00087"></a>00087                 <span class="keywordflow">return</span> -1;
+<a name="l00088"></a>00088         }
+<a name="l00089"></a>00089         <span class="keywordflow">if</span> (-1 == m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#408ca0c5fe8fcd75b2b8672e96c2237a">calculateInverseDynamics</a>(q, u, dot_u, joint_forces)) {
+<a name="l00090"></a>00090                 error_message(<span class="stringliteral">"error in inverse dynamics calculation\n"</span>);
+<a name="l00091"></a>00091                 <span class="keywordflow">return</span> -1;
+<a name="l00092"></a>00092         }
+<a name="l00093"></a>00093         <span class="keywordflow">return</span> 0;
+<a name="l00094"></a>00094 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_20e281422ee7504a25357275c08d5690_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_20e281422ee7504a25357275c08d5690_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_20e281422ee7504a25357275c08d5690_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#408ca0c5fe8fcd75b2b8672e96c2237a" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateInverseDynamics" alt="" coords="435,56,904,83"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#32cb26dc4a94027f8206182f5a528bea" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateKinematics" alt="" coords="953,5,1388,32"><area shape="rect" href="classbt_inverse_dynamics_1_1vec3.html#8b7c85249b7140506c6652b3a1d9934e" title="btInverseDynamics::vec3::cross" alt="" coords="1439,31,1641,57"><area shape="rect" href="classbt_inverse_dynamics_1_1vec3.html#2f7c586c9b43e5167f0ebba4dab7e3de" title="btInverseDynamics::vec3::dot" alt="" coords="1076,107,1265,133"></map>
+</div>
 
 </div>
 </div><p>
@@ -458,6 +699,45 @@ Calculate joint space mass matrix <dl compact><dt><b>Parameters:</b></dt><dd>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>-1 on error, 0 on success </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00096">96</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00615">btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateMassMatrix()</a>.</p>
+
+<p>Referenced by <a class="el" href="_multi_body_tree_8cpp-source.html#l00112">calculateMassMatrix()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00098"></a>00098                                                                                                                                        {
+<a name="l00099"></a>00099         <span class="keywordflow">if</span> (<span class="keyword">false</span> == m_is_finalized) {
+<a name="l00100"></a>00100                 error_message(<span class="stringliteral">"system has not been initialized\n"</span>);
+<a name="l00101"></a>00101                 <span class="keywordflow">return</span> -1;
+<a name="l00102"></a>00102         }
+<a name="l00103"></a>00103         <span class="keywordflow">if</span> (-1 ==
+<a name="l00104"></a>00104                 m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#6e4b376b92377b3350d4ebfd94652a0f">calculateMassMatrix</a>(q, update_kinematics, initialize_matrix,
+<a name="l00105"></a>00105                                                                         set_lower_triangular_matrix, mass_matrix)) {
+<a name="l00106"></a>00106                 error_message(<span class="stringliteral">"error in mass matrix calculation\n"</span>);
+<a name="l00107"></a>00107                 <span class="keywordflow">return</span> -1;
+<a name="l00108"></a>00108         }
+<a name="l00109"></a>00109         <span class="keywordflow">return</span> 0;
+<a name="l00110"></a>00110 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_0a767d639bb90ad3b1cb529eb26baa75_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_0a767d639bb90ad3b1cb529eb26baa75_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_0a767d639bb90ad3b1cb529eb26baa75_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#6e4b376b92377b3350d4ebfd94652a0f" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateMassMatrix" alt="" coords="403,56,843,83"><area shape="rect" href="classbt_inverse_dynamics_1_1vec3.html#8b7c85249b7140506c6652b3a1d9934e" title="btInverseDynamics::vec3::cross" alt="" coords="892,5,1095,32"><area shape="rect" href="classbt_inverse_dynamics_1_1vec3.html#2f7c586c9b43e5167f0ebba4dab7e3de" title="btInverseDynamics::vec3::dot" alt="" coords="899,56,1088,83"><area shape="rect" href="group__gtc__matrix__access.html#g4409b9c0604f3ed3e6f116b6680eae44" title="glm::row" alt="" coords="959,107,1028,133"><area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="1144,107,1229,133"><area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="1277,107,1349,133"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_0a767d639bb90ad3b1cb529eb26baa75_icgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_0a767d639bb90ad3b1cb529eb26baa75_icgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_0a767d639bb90ad3b1cb529eb26baa75_icgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree.html#07b710ad4cbbe4cdadd8e2b5ad7c854a" title="btInverseDynamics::MultiBodyTree::calculateMassMatrix" alt="" coords="403,5,752,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="07b710ad4cbbe4cdadd8e2b5ad7c854a"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::calculateMassMatrix" ref="07b710ad4cbbe4cdadd8e2b5ad7c854a" args="(const vecx &amp;q, matxx *mass_matrix)" -->
@@ -494,6 +774,24 @@ Calculate joint space mass matrix. This version will update kinematics, initiali
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>-1 on error, 0 on success </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00112">112</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_8cpp-source.html#l00096">calculateMassMatrix()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00112"></a>00112                                                                         {
+<a name="l00113"></a>00113         <span class="keywordflow">return</span> <a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree.html#0a767d639bb90ad3b1cb529eb26baa75">calculateMassMatrix</a>(q, <span class="keyword">true</span>, <span class="keyword">true</span>, <span class="keyword">true</span>, mass_matrix);
+<a name="l00114"></a>00114 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_07b710ad4cbbe4cdadd8e2b5ad7c854a_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_07b710ad4cbbe4cdadd8e2b5ad7c854a_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_07b710ad4cbbe4cdadd8e2b5ad7c854a_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree.html#0a767d639bb90ad3b1cb529eb26baa75" title="btInverseDynamics::MultiBodyTree::calculateMassMatrix" alt="" coords="403,56,752,83"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#6e4b376b92377b3350d4ebfd94652a0f" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateMassMatrix" alt="" coords="800,56,1240,83"><area shape="rect" href="classbt_inverse_dynamics_1_1vec3.html#8b7c85249b7140506c6652b3a1d9934e" title="btInverseDynamics::vec3::cross" alt="" coords="1289,5,1492,32"><area shape="rect" href="classbt_inverse_dynamics_1_1vec3.html#2f7c586c9b43e5167f0ebba4dab7e3de" title="btInverseDynamics::vec3::dot" alt="" coords="1296,56,1485,83"><area shape="rect" href="group__gtc__matrix__access.html#g4409b9c0604f3ed3e6f116b6680eae44" title="glm::row" alt="" coords="1356,107,1425,133"><area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="1541,107,1627,133"><area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="1675,107,1747,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="fa6df6ee25f28a4de404d82c6bbf78ff"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::calculateKinematics" ref="fa6df6ee25f28a4de404d82c6bbf78ff" args="(const vecx &amp;q, const vecx &amp;u, const vecx &amp;dot_u)" -->
@@ -529,6 +827,39 @@ Calculate joint space mass matrix. This version will update kinematics, initiali
 
 <p>
 Calculates kinematics also calculated in calculateInverseDynamics, but not dynamics. This function ensures that correct accelerations are computed that do not contain gravitational acceleration terms. Does not calculate Jacobians, but only vector quantities (positions, velocities &amp; accelerations) 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00118">118</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00322">btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateKinematics()</a>, and <a class="el" href="_multi_body_tree_impl_8hpp-source.html#l00256">btInverseDynamics::MultiBodyTree::MultiBodyImpl::m_world_gravity</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00118"></a>00118                                                                                       {
+<a name="l00119"></a>00119     <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">vec3</a> world_gravity(m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#27e9624bdea2f330189f7b55786a6dbd">m_world_gravity</a>);
+<a name="l00120"></a>00120     <span class="comment">// temporarily set gravity to zero, to ensure we get the actual accelerations</span>
+<a name="l00121"></a>00121     setZero(m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#27e9624bdea2f330189f7b55786a6dbd">m_world_gravity</a>);
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123     <span class="keywordflow">if</span> (<span class="keyword">false</span> == m_is_finalized) {
+<a name="l00124"></a>00124         error_message(<span class="stringliteral">"system has not been initialized\n"</span>);
+<a name="l00125"></a>00125         <span class="keywordflow">return</span> -1;
+<a name="l00126"></a>00126     }
+<a name="l00127"></a>00127     <span class="keywordflow">if</span> (-1 == m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#32cb26dc4a94027f8206182f5a528bea">calculateKinematics</a>(q, u, dot_u,
+<a name="l00128"></a>00128                                           MultiBodyTree::MultiBodyImpl::POSITION_VELOCITY_ACCELERATION)) {
+<a name="l00129"></a>00129         error_message(<span class="stringliteral">"error in kinematics calculation\n"</span>);
+<a name="l00130"></a>00130         <span class="keywordflow">return</span> -1;
+<a name="l00131"></a>00131     }
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133     m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#27e9624bdea2f330189f7b55786a6dbd">m_world_gravity</a>=world_gravity;
+<a name="l00134"></a>00134     <span class="keywordflow">return</span> 0;
+<a name="l00135"></a>00135 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_fa6df6ee25f28a4de404d82c6bbf78ff_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_fa6df6ee25f28a4de404d82c6bbf78ff_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_fa6df6ee25f28a4de404d82c6bbf78ff_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#32cb26dc4a94027f8206182f5a528bea" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateKinematics" alt="" coords="401,5,836,32"><area shape="rect" href="classbt_inverse_dynamics_1_1vec3.html#8b7c85249b7140506c6652b3a1d9934e" title="btInverseDynamics::vec3::cross" alt="" coords="887,5,1089,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="b28d924ffc2226b224e2046497162227"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::calculateJacobians" ref="b28d924ffc2226b224e2046497162227" args="(const vecx &amp;q, const vecx &amp;u)" -->
@@ -558,6 +889,33 @@ Calculates kinematics also calculated in calculateInverseDynamics, but not dynam
 
 <p>
 Calculate Jacobians (dvel/du), as well as velocity-dependent accelearation components d(Jacobian)/dt*u This function assumes that calculateInverseDynamics was called, or calculateKinematics, or calculatePositionAndVelocityKinematics 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00166">166</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00517">btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateJacobians()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00166"></a>00166                                                                   {
+<a name="l00167"></a>00167     <span class="keywordflow">if</span> (<span class="keyword">false</span> == m_is_finalized) {
+<a name="l00168"></a>00168         error_message(<span class="stringliteral">"system has not been initialized\n"</span>);
+<a name="l00169"></a>00169         <span class="keywordflow">return</span> -1;
+<a name="l00170"></a>00170     }
+<a name="l00171"></a>00171     <span class="keywordflow">if</span> (-1 == m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#3864ebdf6fe5e3589945f347e8d188a7" title="calculate jacobians and (if type == POSITION_VELOCITY), also velocity-dependent accelration...">calculateJacobians</a>(q, u,
+<a name="l00172"></a>00172                                          MultiBodyTree::MultiBodyImpl::POSITION_VELOCITY)) {
+<a name="l00173"></a>00173         error_message(<span class="stringliteral">"error in jacobian calculation\n"</span>);
+<a name="l00174"></a>00174         <span class="keywordflow">return</span> -1;
+<a name="l00175"></a>00175     }
+<a name="l00176"></a>00176     <span class="keywordflow">return</span> 0;
+<a name="l00177"></a>00177 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_b28d924ffc2226b224e2046497162227_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_b28d924ffc2226b224e2046497162227_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_b28d924ffc2226b224e2046497162227_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#3864ebdf6fe5e3589945f347e8d188a7" title="calculate jacobians and (if type == POSITION_VELOCITY), also velocity&#45;dependent accelration..." alt="" coords="395,31,824,57"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#6facecec947e6b43378ba20e6b98eea7" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::addRelativeJacobianComponent" alt="" coords="873,5,1375,32"><area shape="rect" href="classbt_inverse_dynamics_1_1vec3.html#8b7c85249b7140506c6652b3a1d9934e" title="btInverseDynamics::vec3::cross" alt="" coords="1023,56,1225,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="d036684dcd9a68f732bc37ba2a4ed894"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::calculateJacobians" ref="d036684dcd9a68f732bc37ba2a4ed894" args="(const vecx &amp;q)" -->
@@ -578,6 +936,33 @@ Calculate Jacobians (dvel/du), as well as velocity-dependent accelearation compo
 
 <p>
 Calculate Jacobians (dvel/du) This function assumes that calculateInverseDynamics was called, or one of the calculateKineamtics functions 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00179">179</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00517">btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateJacobians()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00179"></a>00179                                                   {
+<a name="l00180"></a>00180     <span class="keywordflow">if</span> (<span class="keyword">false</span> == m_is_finalized) {
+<a name="l00181"></a>00181         error_message(<span class="stringliteral">"system has not been initialized\n"</span>);
+<a name="l00182"></a>00182         <span class="keywordflow">return</span> -1;
+<a name="l00183"></a>00183     }
+<a name="l00184"></a>00184     <span class="keywordflow">if</span> (-1 == m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#3864ebdf6fe5e3589945f347e8d188a7" title="calculate jacobians and (if type == POSITION_VELOCITY), also velocity-dependent accelration...">calculateJacobians</a>(q, q,
+<a name="l00185"></a>00185                                          MultiBodyTree::MultiBodyImpl::POSITION_ONLY)) {
+<a name="l00186"></a>00186         error_message(<span class="stringliteral">"error in jacobian calculation\n"</span>);
+<a name="l00187"></a>00187         <span class="keywordflow">return</span> -1;
+<a name="l00188"></a>00188     }
+<a name="l00189"></a>00189     <span class="keywordflow">return</span> 0;
+<a name="l00190"></a>00190 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_d036684dcd9a68f732bc37ba2a4ed894_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_d036684dcd9a68f732bc37ba2a4ed894_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_d036684dcd9a68f732bc37ba2a4ed894_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#3864ebdf6fe5e3589945f347e8d188a7" title="calculate jacobians and (if type == POSITION_VELOCITY), also velocity&#45;dependent accelration..." alt="" coords="395,31,824,57"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#6facecec947e6b43378ba20e6b98eea7" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::addRelativeJacobianComponent" alt="" coords="873,5,1375,32"><area shape="rect" href="classbt_inverse_dynamics_1_1vec3.html#8b7c85249b7140506c6652b3a1d9934e" title="btInverseDynamics::vec3::cross" alt="" coords="1023,56,1225,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="103b593ab2c8759489fbf6673f664288"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::setGravityInWorldFrame" ref="103b593ab2c8759489fbf6673f664288" args="(const vec3 &amp;gravity)" -->
@@ -603,6 +988,24 @@ set gravitational acceleration the default is [0;0;-9.8] in the world frame <dl 
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00395">395</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00107">btInverseDynamics::MultiBodyTree::MultiBodyImpl::setGravityInWorldFrame()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00395"></a>00395                                                              {
+<a name="l00396"></a>00396         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#6a9262d27208b099f1753bfb34178686">setGravityInWorldFrame</a>(gravity);
+<a name="l00397"></a>00397 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_103b593ab2c8759489fbf6673f664288_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_103b593ab2c8759489fbf6673f664288_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_103b593ab2c8759489fbf6673f664288_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#6a9262d27208b099f1753bfb34178686" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::setGravityInWorldFrame" alt="" coords="421,5,880,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -640,6 +1043,24 @@ get origin of a body-fixed frame, represented in world frame <dl compact><dt><b>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00035">35</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00825">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyOrigin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00035"></a>00035                                                                                {
+<a name="l00036"></a>00036         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#efc23817afea0d39e6a3786a6f5ba504">getBodyOrigin</a>(body_index, world_origin);
+<a name="l00037"></a>00037 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_14722e25a8c6cc0cb0d1ba848577e174_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_14722e25a8c6cc0cb0d1ba848577e174_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_14722e25a8c6cc0cb0d1ba848577e174_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#efc23817afea0d39e6a3786a6f5ba504" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyOrigin" alt="" coords="367,5,767,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="86d4152e8487c354a725e71e92851002"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::getBodyCoM" ref="86d4152e8487c354a725e71e92851002" args="(const int body_index, vec3 *world_com) const " -->
@@ -675,6 +1096,24 @@ get center of mass of a body, represented in world frame <dl compact><dt><b>Para
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00039">39</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00832">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyCoM()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00039"></a>00039                                                                          {
+<a name="l00040"></a>00040         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#7787b44956c65fc638368273382070df">getBodyCoM</a>(body_index, world_com);
+<a name="l00041"></a>00041 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_86d4152e8487c354a725e71e92851002_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_86d4152e8487c354a725e71e92851002_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_86d4152e8487c354a725e71e92851002_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#7787b44956c65fc638368273382070df" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyCoM" alt="" coords="357,5,752,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -712,6 +1151,24 @@ get transform from of a body-fixed frame to the world frame <dl compact><dt><b>P
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00043">43</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00844">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyTransform()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00043"></a>00043                                                                                    {
+<a name="l00044"></a>00044         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#2ed9b926162aaf1eacf4f85190b014c7">getBodyTransform</a>(body_index, world_T_body);
+<a name="l00045"></a>00045 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_582514119940a8dcc10d06cd97019143_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_582514119940a8dcc10d06cd97019143_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_582514119940a8dcc10d06cd97019143_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#2ed9b926162aaf1eacf4f85190b014c7" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyTransform" alt="" coords="389,5,813,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="441236989196e2c5f7219f420ddc6620"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::getBodyAngularVelocity" ref="441236989196e2c5f7219f420ddc6620" args="(const int body_index, vec3 *world_omega) const " -->
@@ -747,6 +1204,24 @@ get absolute angular velocity for a body, represented in the world frame <dl com
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00046">46</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00850">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyAngularVelocity()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00046"></a>00046                                                                                        {
+<a name="l00047"></a>00047         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#82fbc5d66ecc8e9392f4cf62ec5bf239">getBodyAngularVelocity</a>(body_index, world_omega);
+<a name="l00048"></a>00048 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_441236989196e2c5f7219f420ddc6620_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_441236989196e2c5f7219f420ddc6620_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_441236989196e2c5f7219f420ddc6620_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#82fbc5d66ecc8e9392f4cf62ec5bf239" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyAngularVelocity" alt="" coords="421,5,880,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -784,6 +1259,24 @@ get linear velocity of a body, represented in world frame <dl compact><dt><b>Par
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00049">49</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00856">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyLinearVelocity()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00049"></a>00049                                                                                          {
+<a name="l00050"></a>00050         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#87604495df09957e2ecd33336bcb8c0f">getBodyLinearVelocity</a>(body_index, world_velocity);
+<a name="l00051"></a>00051 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_c8076ba03722eb2744d1cccd09bfeb41_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_c8076ba03722eb2744d1cccd09bfeb41_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_c8076ba03722eb2744d1cccd09bfeb41_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#87604495df09957e2ecd33336bcb8c0f" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyLinearVelocity" alt="" coords="415,5,863,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="0e3e87b9f2531a8771fa7193449ca26d"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::getBodyLinearVelocityCoM" ref="0e3e87b9f2531a8771fa7193449ca26d" args="(const int body_index, vec3 *world_velocity) const " -->
@@ -819,6 +1312,24 @@ get linear velocity of a body's CoM, represented in world frame (not required fo
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00053">53</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00864">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyLinearVelocityCoM()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00053"></a>00053                                                                                             {
+<a name="l00054"></a>00054         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#0e79f2666001d56b28eb1df102aa970d">getBodyLinearVelocityCoM</a>(body_index, world_velocity);
+<a name="l00055"></a>00055 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_0e3e87b9f2531a8771fa7193449ca26d_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_0e3e87b9f2531a8771fa7193449ca26d_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_0e3e87b9f2531a8771fa7193449ca26d_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#0e79f2666001d56b28eb1df102aa970d" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyLinearVelocityCoM" alt="" coords="441,5,916,32"><area shape="rect" href="classbt_inverse_dynamics_1_1vec3.html#8b7c85249b7140506c6652b3a1d9934e" title="btInverseDynamics::vec3::cross" alt="" coords="967,5,1169,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -856,6 +1367,24 @@ get origin of a body-fixed frame, represented in world frame <dl compact><dt><b>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00057">57</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00882">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyAngularAcceleration()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00057"></a>00057                                                                                                {
+<a name="l00058"></a>00058         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#b63dfaa8b761e8258317835648c78358">getBodyAngularAcceleration</a>(body_index, world_dot_omega);
+<a name="l00059"></a>00059 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_1f216eaec9b229133a1a59ac0b415d13_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_1f216eaec9b229133a1a59ac0b415d13_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_1f216eaec9b229133a1a59ac0b415d13_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#b63dfaa8b761e8258317835648c78358" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyAngularAcceleration" alt="" coords="449,5,932,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="07aeba9ee7505e1c2a4c8a5f317bcf22"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::getBodyLinearAcceleration" ref="07aeba9ee7505e1c2a4c8a5f317bcf22" args="(const int body_index, vec3 *world_acceleration) const " -->
@@ -891,6 +1420,24 @@ get origin of a body-fixed frame, represented in world frame NOTE: this will inc
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00060">60</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00889">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyLinearAcceleration()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00060"></a>00060                                                                                                  {
+<a name="l00061"></a>00061         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#86e8d45849ab884db42e9fc53fd155ca">getBodyLinearAcceleration</a>(body_index, world_acceleration);
+<a name="l00062"></a>00062 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_07aeba9ee7505e1c2a4c8a5f317bcf22_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_07aeba9ee7505e1c2a4c8a5f317bcf22_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_07aeba9ee7505e1c2a4c8a5f317bcf22_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#86e8d45849ab884db42e9fc53fd155ca" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyLinearAcceleration" alt="" coords="437,5,912,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -928,6 +1475,24 @@ returns the (internal) index of body <dl compact><dt><b>Parameters:</b></dt><dd>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00274">274</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00796">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getParentIndex()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00274"></a>00274                                                                                {
+<a name="l00275"></a>00275         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#ce5ed2225ecc96810f7b385ada048dd6">getParentIndex</a>(body_index, parent_index);
+<a name="l00276"></a>00276 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_fc4f7fc8066ceaa8f666fbad2fcbd33d_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_fc4f7fc8066ceaa8f666fbad2fcbd33d_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_fc4f7fc8066ceaa8f666fbad2fcbd33d_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#ce5ed2225ecc96810f7b385ada048dd6" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getParentIndex" alt="" coords="372,5,777,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="364bd17e226b15ab6615de4bf8de110d"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::getJointType" ref="364bd17e226b15ab6615de4bf8de110d" args="(const int body_index, JointType *joint_type) const " -->
@@ -963,6 +1528,24 @@ get joint type <dl compact><dt><b>Parameters:</b></dt><dd>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on failure </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00399">399</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00897">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getJointType()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00399"></a>00399                                                                                  {
+<a name="l00400"></a>00400         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#74c65f858a7a5c93466f6d02a23b4663">getJointType</a>(body_index, joint_type);
+<a name="l00401"></a>00401 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_364bd17e226b15ab6615de4bf8de110d_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_364bd17e226b15ab6615de4bf8de110d_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_364bd17e226b15ab6615de4bf8de110d_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#74c65f858a7a5c93466f6d02a23b4663" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getJointType" alt="" coords="357,5,749,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -1000,6 +1583,24 @@ get joint type as string <dl compact><dt><b>Parameters:</b></dt><dd>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on failure </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00403">403</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00903">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getJointTypeStr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00403"></a>00403                                                                                       {
+<a name="l00404"></a>00404         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#42b50ff5d4a4dad7687d8716e737cf04">getJointTypeStr</a>(body_index, joint_type);
+<a name="l00405"></a>00405 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_6591655d73601c531baed6121f89add5_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_6591655d73601c531baed6121f89add5_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_6591655d73601c531baed6121f89add5_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#42b50ff5d4a4dad7687d8716e737cf04" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getJointTypeStr" alt="" coords="375,5,783,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="d7b1596a98a55cd32c3af072a82dcade"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::getParentRParentBodyRef" ref="d7b1596a98a55cd32c3af072a82dcade" args="(const int body_index, vec3 *r) const " -->
@@ -1035,6 +1636,24 @@ get offset translation to parent body (see addBody) <dl compact><dt><b>Parameter
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on failure </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00064">64</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00910">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getParentRParentBodyRef()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00064"></a>00064                                                                               {
+<a name="l00065"></a>00065     <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#92f65125b9ebf8c347e4f52df440f69b">getParentRParentBodyRef</a>(body_index, r);
+<a name="l00066"></a>00066 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_d7b1596a98a55cd32c3af072a82dcade_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_d7b1596a98a55cd32c3af072a82dcade_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_d7b1596a98a55cd32c3af072a82dcade_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#92f65125b9ebf8c347e4f52df440f69b" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getParentRParentBodyRef" alt="" coords="435,5,907,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -1072,6 +1691,24 @@ get offset rotation to parent body (see addBody) <dl compact><dt><b>Parameters:<
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on failure </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00068">68</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00916">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyTParentRef()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00068"></a>00068                                                                          {
+<a name="l00069"></a>00069     <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#e42c54a737ebba57e2d0e30f4cce7af4">getBodyTParentRef</a>(body_index, T);
+<a name="l00070"></a>00070 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_3781cd90824117bc9f483b4f13b26f1c_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_3781cd90824117bc9f483b4f13b26f1c_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_3781cd90824117bc9f483b4f13b26f1c_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#e42c54a737ebba57e2d0e30f4cce7af4" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyTParentRef" alt="" coords="395,5,827,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="07d19dbfe7c35c0b455b7d58e9f4b014"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::getBodyAxisOfMotion" ref="07d19dbfe7c35c0b455b7d58e9f4b014" args="(const int body_index, vec3 *axis) const " -->
@@ -1107,6 +1744,24 @@ get axis of motion (see addBody) <dl compact><dt><b>Parameters:</b></dt><dd>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on failure </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00072">72</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00922">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyAxisOfMotion()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00072"></a>00072                                                                              {
+<a name="l00073"></a>00073     <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#3a0e4f72e0c1f41332e738014fd5f257">getBodyAxisOfMotion</a>(body_index, <a class="code" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b">axis</a>);
+<a name="l00074"></a>00074 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_07d19dbfe7c35c0b455b7d58e9f4b014_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_07d19dbfe7c35c0b455b7d58e9f4b014_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_07d19dbfe7c35c0b455b7d58e9f4b014_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#3a0e4f72e0c1f41332e738014fd5f257" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyAxisOfMotion" alt="" coords="411,5,856,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -1144,6 +1799,24 @@ get offset for degrees of freedom of this body into the q-vector <dl compact><dt
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>-1 on error, 0 on success </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00407">407</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00936">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getDoFOffset()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00407"></a>00407                                                                          {
+<a name="l00408"></a>00408         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#4c00fcbd892f06e452ae3c8a8ffa6f19">getDoFOffset</a>(body_index, q_offset);
+<a name="l00409"></a>00409 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_fd9a288177719c951a7b851a6491f308_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_fd9a288177719c951a7b851a6491f308_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_fd9a288177719c951a7b851a6491f308_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#4c00fcbd892f06e452ae3c8a8ffa6f19" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getDoFOffset" alt="" coords="361,5,756,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="65a04485f338b3c3c1ace010d460a453"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::getUserInt" ref="65a04485f338b3c3c1ace010d460a453" args="(const int body_index, int *user_int) const " -->
@@ -1179,6 +1852,24 @@ get user integer. not used by the library. <dl compact><dt><b>Parameters:</b></d
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00278">278</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00802">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getUserInt()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00278"></a>00278                                                                        {
+<a name="l00279"></a>00279         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#8deabb1a28e38824027d3515a655cdd3">getUserInt</a>(body_index, user_int);
+<a name="l00280"></a>00280 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_65a04485f338b3c3c1ace010d460a453_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_65a04485f338b3c3c1ace010d460a453_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_65a04485f338b3c3c1ace010d460a453_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#8deabb1a28e38824027d3515a655cdd3" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getUserInt" alt="" coords="341,5,720,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -1216,6 +1907,24 @@ get user pointer. not used by the library. <dl compact><dt><b>Parameters:</b></d
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00282">282</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00807">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getUserPtr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00282"></a>00282                                                                          {
+<a name="l00283"></a>00283         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#53ffec14bf9450a22e881b75f80d8495">getUserPtr</a>(body_index, user_ptr);
+<a name="l00284"></a>00284 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_32df6e169921b17d1bce944dc83918e9_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_32df6e169921b17d1bce944dc83918e9_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_32df6e169921b17d1bce944dc83918e9_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#53ffec14bf9450a22e881b75f80d8495" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getUserPtr" alt="" coords="347,5,728,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="f93f698a6d22d8f735f162c326649342"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::setUserInt" ref="f93f698a6d22d8f735f162c326649342" args="(const int body_index, const int user_int)" -->
@@ -1251,6 +1960,24 @@ set user integer. not used by the library. <dl compact><dt><b>Parameters:</b></d
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00286">286</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00813">btInverseDynamics::MultiBodyTree::MultiBodyImpl::setUserInt()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00286"></a>00286                                                                       {
+<a name="l00287"></a>00287         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#975f98e25ccfc364e3e5b6f49bdce2f2">setUserInt</a>(body_index, user_int);
+<a name="l00288"></a>00288 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_f93f698a6d22d8f735f162c326649342_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_f93f698a6d22d8f735f162c326649342_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_f93f698a6d22d8f735f162c326649342_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#975f98e25ccfc364e3e5b6f49bdce2f2" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::setUserInt" alt="" coords="341,5,720,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -1288,6 +2015,24 @@ set user pointer. not used by the library. <dl compact><dt><b>Parameters:</b></d
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00290">290</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00819">btInverseDynamics::MultiBodyTree::MultiBodyImpl::setUserPtr()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00290"></a>00290                                                                         {
+<a name="l00291"></a>00291         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#e3d149282a6c90ea6b0bcfe9c25066be">setUserPtr</a>(body_index, user_ptr);
+<a name="l00292"></a>00292 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_d2c37fb7a6cb73b1af87e0b7884717c0_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_d2c37fb7a6cb73b1af87e0b7884717c0_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_d2c37fb7a6cb73b1af87e0b7884717c0_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#e3d149282a6c90ea6b0bcfe9c25066be" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::setUserPtr" alt="" coords="347,5,728,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="aec1f7c8093f74529f49e7b36bc59ed7"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::setBodyMass" ref="aec1f7c8093f74529f49e7b36bc59ed7" args="(const int body_index, const idScalar mass)" -->
@@ -1323,6 +2068,24 @@ set mass for a body <dl compact><dt><b>Parameters:</b></dt><dd>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on failure </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00411">411</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00942">btInverseDynamics::MultiBodyTree::MultiBodyImpl::setBodyMass()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00411"></a>00411                                                                   {
+<a name="l00412"></a>00412         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#39c5abc3579669646d6c669a7e86032e">setBodyMass</a>(body_index, mass);
+<a name="l00413"></a>00413 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_aec1f7c8093f74529f49e7b36bc59ed7_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_aec1f7c8093f74529f49e7b36bc59ed7_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_aec1f7c8093f74529f49e7b36bc59ed7_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#39c5abc3579669646d6c669a7e86032e" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::setBodyMass" alt="" coords="363,5,763,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -1360,6 +2123,24 @@ set first moment of mass for a body (mass * center of mass, in body fixed frame,
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on failure </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00415">415</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00948">btInverseDynamics::MultiBodyTree::MultiBodyImpl::setBodyFirstMassMoment()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00415"></a>00415                                                                                              {
+<a name="l00416"></a>00416         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#bf4ba386bf4546e4bf05588d46cd82b5">setBodyFirstMassMoment</a>(body_index, first_mass_moment);
+<a name="l00417"></a>00417 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_5d8c853cf45160f049977e16175fa288_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_5d8c853cf45160f049977e16175fa288_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_5d8c853cf45160f049977e16175fa288_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#bf4ba386bf4546e4bf05588d46cd82b5" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::setBodyFirstMassMoment" alt="" coords="437,5,909,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="f3c9c78481d8ee170e00946c8499c433"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::setBodySecondMassMoment" ref="f3c9c78481d8ee170e00946c8499c433" args="(const int body_index, const mat33 &amp;second_mass_moment)" -->
@@ -1395,6 +2176,24 @@ set second moment of mass for a body (moment of inertia, in body fixed frame, re
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on failure </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00419">419</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00954">btInverseDynamics::MultiBodyTree::MultiBodyImpl::setBodySecondMassMoment()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00419"></a>00419                                                                                                 {
+<a name="l00420"></a>00420         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#dc1e2a8408ad2e37469f47280d19536f">setBodySecondMassMoment</a>(body_index, second_mass_moment);
+<a name="l00421"></a>00421 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_f3c9c78481d8ee170e00946c8499c433_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_f3c9c78481d8ee170e00946c8499c433_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_f3c9c78481d8ee170e00946c8499c433_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#dc1e2a8408ad2e37469f47280d19536f" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::setBodySecondMassMoment" alt="" coords="453,5,944,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -1432,6 +2231,24 @@ get mass for a body <dl compact><dt><b>Parameters:</b></dt><dd>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on failure </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00423">423</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00960">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyMass()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00423"></a>00423                                                                          {
+<a name="l00424"></a>00424         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#979fa0066a08422f5b8c1c32e02de8a7">getBodyMass</a>(body_index, mass);
+<a name="l00425"></a>00425 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_ca41d87e7d3717d7d621eb20ce968b23_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_ca41d87e7d3717d7d621eb20ce968b23_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_ca41d87e7d3717d7d621eb20ce968b23_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#979fa0066a08422f5b8c1c32e02de8a7" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyMass" alt="" coords="363,5,763,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="65cf073d371fb6c028649964d21fedce"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::getBodyFirstMassMoment" ref="65cf073d371fb6c028649964d21fedce" args="(const int body_index, vec3 *first_mass_moment) const " -->
@@ -1467,6 +2284,24 @@ get first moment of mass for a body (mass * center of mass, in body fixed frame,
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on failure </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00427">427</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00965">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyFirstMassMoment()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00427"></a>00427                                                                                              {
+<a name="l00428"></a>00428         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#67093942de357aa1b3013ed4c342c1de">getBodyFirstMassMoment</a>(body_index, first_mass_moment);
+<a name="l00429"></a>00429 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_65cf073d371fb6c028649964d21fedce_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_65cf073d371fb6c028649964d21fedce_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_65cf073d371fb6c028649964d21fedce_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#67093942de357aa1b3013ed4c342c1de" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodyFirstMassMoment" alt="" coords="437,5,909,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -1504,6 +2339,24 @@ get second moment of mass for a body (moment of inertia, in body fixed frame, re
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on failure </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00431">431</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00971">btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodySecondMassMoment()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00431"></a>00431                                                                                                 {
+<a name="l00432"></a>00432         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#8e530e85b355eb2bee0bdd3256529e28">getBodySecondMassMoment</a>(body_index, second_mass_moment);
+<a name="l00433"></a>00433 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_be2ffbd34157198fed40e005f7b154ee_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_be2ffbd34157198fed40e005f7b154ee_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_be2ffbd34157198fed40e005f7b154ee_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#8e530e85b355eb2bee0bdd3256529e28" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::getBodySecondMassMoment" alt="" coords="453,5,944,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="629ed5024a2d1cb7500ebe935231f5e8"></a><!-- doxytag: member="btInverseDynamics::MultiBodyTree::addUserForce" ref="629ed5024a2d1cb7500ebe935231f5e8" args="(const int body_index, const vec3 &amp;body_force)" -->
@@ -1538,6 +2391,24 @@ Add an external force to a body, acting at the origin of the body-fixed frame. C
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
+
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00437">437</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00986">btInverseDynamics::MultiBodyTree::MultiBodyImpl::addUserForce()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00437"></a>00437                                                                             {
+<a name="l00438"></a>00438         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#4f1786c829da5d57e4758437a38b469c">addUserForce</a>(body_index, body_force);
+<a name="l00439"></a>00439 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_629ed5024a2d1cb7500ebe935231f5e8_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_629ed5024a2d1cb7500ebe935231f5e8_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_629ed5024a2d1cb7500ebe935231f5e8_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#4f1786c829da5d57e4758437a38b469c" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::addUserForce" alt="" coords="365,5,765,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -1574,12 +2445,30 @@ Add an external moment to a body. Calls to addUserMoment are cumulative. Set the
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 on success, -1 on error </dd></dl>
 
+<p>Definition at line <a class="el" href="_multi_body_tree_8cpp-source.html#l00441">441</a> of file <a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a>.</p>
+
+<p>References <a class="el" href="_multi_body_tree_impl_8cpp-source.html#l00992">btInverseDynamics::MultiBodyTree::MultiBodyImpl::addUserMoment()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00441"></a>00441                                                                               {
+<a name="l00442"></a>00442         <span class="keywordflow">return</span> m_impl-&gt;<a class="code" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#ef25e8becc20bc0ceb7dcdfd853098e0">addUserMoment</a>(body_index, body_moment);
+<a name="l00443"></a>00443 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_inverse_dynamics_1_1_multi_body_tree_63096d466e1def1657da8eb3a99850fa_cgraph.png" border="0" usemap="#classbt_inverse_dynamics_1_1_multi_body_tree_63096d466e1def1657da8eb3a99850fa_cgraph_map" alt=""></center>
+<map name="classbt_inverse_dynamics_1_1_multi_body_tree_63096d466e1def1657da8eb3a99850fa_cgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree_1_1_multi_body_impl.html#ef25e8becc20bc0ceb7dcdfd853098e0" title="btInverseDynamics::MultiBodyTree::MultiBodyImpl::addUserMoment" alt="" coords="380,5,793,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/MultiBodyTree.hpp<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/MultiBodyTree.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/<a class="el" href="_multi_body_tree_8hpp-source.html">MultiBodyTree.hpp</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/<a class="el" href="_multi_body_tree_8cpp-source.html">MultiBodyTree.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:06:17 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:04:12 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -35,6 +35,8 @@ int \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_d5bbb
 \subsection{Detailed Description}
 Data structure to store data passed by the user. This is used in \hyperlink{classbt_inverse_dynamics_1_1_multi_body_tree_c82772ed5bebb1edd6513c03ebd719c2}{MultiBodyTree::finalize} to build internal data structures. 
 
+Definition at line 51 of file MultiBodyTreeInitCache.hpp.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_3140b788b6cdc6c5a74cf2da2e8f5fac}{
 \index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!addBody@{addBody}}
@@ -50,7 +52,67 @@ Add body to the system. this allocates memory and not real-time safe. This only 
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on error \end{Desc}
- \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_41e961d85dcd9e9f9aa9b18ac33289c9}{
+ 
+
+Definition at line 12 of file MultiBodyTreeInitCache.cpp.
+
+References btInverseDynamics::InertiaData::m\_\-body\_\-I\_\-body, btInverseDynamics::InertiaData::m\_\-body\_\-pos\_\-body\_\-com, btInverseDynamics::JointData::m\_\-child, btInverseDynamics::JointData::m\_\-child\_\-axis\_\-of\_\-motion, btInverseDynamics::JointData::m\_\-child\_\-T\_\-parent\_\-ref, btInverseDynamics::InertiaData::m\_\-mass, btInverseDynamics::JointData::m\_\-parent, btInverseDynamics::JointData::m\_\-parent\_\-pos\_\-parent\_\-child\_\-ref, and btInverseDynamics::JointData::m\_\-type.
+
+Referenced by btInverseDynamics::MultiBodyTree::addBody().
+
+\begin{Code}\begin{verbatim}18                                                                                                               {
+19         switch (joint_type) {
+20                 case REVOLUTE:
+21                 case PRISMATIC:
+22                         m_num_dofs += 1;
+23                         break;
+24                 case FIXED:
+25                         // does not add a degree of freedom
+26                         // m_num_dofs+=0;
+27                         break;
+28                 case FLOATING:
+29                         m_num_dofs += 6;
+30                         break;
+31                 default:
+32                         error_message("unknown joint type %d\n", joint_type);
+33                         return -1;
+34         }
+35 
+36         if(-1 == parent_index) {
+37                 if(m_root_index>=0) {
+38                         error_message("trying to add body %d as root, but already added %d as root body\n",
+39                                                   body_index, m_root_index);
+40                         return -1;
+41                 }
+42                 m_root_index=body_index;
+43         }
+44 
+45         JointData joint;
+46         joint.m_child = body_index;
+47         joint.m_parent = parent_index;
+48         joint.m_type = joint_type;
+49         joint.m_parent_pos_parent_child_ref = parent_r_parent_body_ref;
+50         joint.m_child_T_parent_ref = body_T_parent_ref;
+51         joint.m_child_axis_of_motion = body_axis_of_motion;
+52 
+53         InertiaData body;
+54         body.m_mass = mass;
+55         body.m_body_pos_body_com = body_r_body_com;
+56         body.m_body_I_body = body_I_body;
+57 
+58         m_inertias.push_back(body);
+59         m_joints.push_back(joint);
+60         m_user_int.push_back(user_int);
+61         m_user_ptr.push_back(user_ptr);
+62         return 0;
+63 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_41e961d85dcd9e9f9aa9b18ac33289c9}{
 \index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!buildIndexSets@{buildIndexSets}}
 \index{buildIndexSets@{buildIndexSets}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
 \subsubsection[buildIndexSets]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::buildIndexSets ()}}
@@ -59,7 +121,35 @@ Add body to the system. this allocates memory and not real-time safe. This only 
 
 build index arrays \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_38d366cfeb082b06f72eff27befae30b}{
+
+
+Definition at line 101 of file MultiBodyTreeInitCache.cpp.
+
+References btInverseDynamics::JointData::m\_\-child, btInverseDynamics::JointData::m\_\-parent, and numBodies().
+
+Referenced by btInverseDynamics::MultiBodyTree::finalize().
+
+\begin{Code}\begin{verbatim}101                                            {
+102         // NOTE: This function assumes that proper indices were provided
+103         //         User2InternalIndex from utils can be used to facilitate this.
+104 
+105         m_parent_index.resize(numBodies());
+106         for (idArrayIdx j = 0; j < m_joints.size(); j++) {
+107                 const JointData& joint = m_joints[j];
+108                 m_parent_index[joint.m_child] = joint.m_parent;
+109         }
+110 
+111         return 0;
+112 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_38d366cfeb082b06f72eff27befae30b}{
 \index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!numDoFs@{numDoFs}}
 \index{numDoFs@{numDoFs}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
 \subsubsection[numDoFs]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::numDoFs () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -68,7 +158,20 @@ build index arrays \begin{Desc}
 
 \begin{Desc}
 \item[Returns:]number of degrees of freedom \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_6203870a6e9093f6c26280feaee27832}{
+
+
+Definition at line 65 of file MultiBodyTreeInitCache.hpp.
+
+Referenced by btInverseDynamics::MultiBodyTree::finalize().
+
+\begin{Code}\begin{verbatim}65 { return m_num_dofs; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_6203870a6e9093f6c26280feaee27832}{
 \index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!numBodies@{numBodies}}
 \index{numBodies@{numBodies}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
 \subsubsection[numBodies]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::numBodies () const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -77,7 +180,20 @@ build index arrays \begin{Desc}
 
 \begin{Desc}
 \item[Returns:]number of bodies \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_ee00442cb04aaf00db41cac11b046567}{
+
+
+Definition at line 67 of file MultiBodyTreeInitCache.hpp.
+
+Referenced by buildIndexSets(), and btInverseDynamics::MultiBodyTree::finalize().
+
+\begin{Code}\begin{verbatim}67 { return m_inertias.size(); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_ee00442cb04aaf00db41cac11b046567}{
 \index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!getInertiaData@{getInertiaData}}
 \index{getInertiaData@{getInertiaData}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
 \subsubsection[getInertiaData]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::getInertiaData (const int {\em index}, \/  {\bf InertiaData} $\ast$ {\em inertia}) const}}
@@ -91,7 +207,28 @@ get inertia data for index \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_b877d886f33dd223c33d6629d7531b2d}{
+
+
+Definition at line 64 of file MultiBodyTreeInitCache.cpp.
+
+Referenced by btInverseDynamics::MultiBodyTree::finalize().
+
+\begin{Code}\begin{verbatim}64                                                                                       {
+65         if (index < 0 || index > static_cast<int>(m_inertias.size())) {
+66                 error_message("index out of range\n");
+67                 return -1;
+68         }
+69 
+70         *inertia = m_inertias[index];
+71         return 0;
+72 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_b877d886f33dd223c33d6629d7531b2d}{
 \index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!getJointData@{getJointData}}
 \index{getJointData@{getJointData}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
 \subsubsection[getJointData]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::getJointData (const int {\em index}, \/  {\bf JointData} $\ast$ {\em joint}) const}}
@@ -105,7 +242,27 @@ get joint data for index \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_e176197bd93ec8b395b9f9c0b538458c}{
+
+
+Definition at line 92 of file MultiBodyTreeInitCache.cpp.
+
+Referenced by btInverseDynamics::MultiBodyTree::finalize().
+
+\begin{Code}\begin{verbatim}92                                                                                 {
+93         if (index < 0 || index > static_cast<int>(m_joints.size())) {
+94                 error_message("index out of range\n");
+95                 return -1;
+96         }
+97         *joint = m_joints[index];
+98         return 0;
+99 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_e176197bd93ec8b395b9f9c0b538458c}{
 \index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!getParentIndexArray@{getParentIndexArray}}
 \index{getParentIndexArray@{getParentIndexArray}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
 \subsubsection[getParentIndexArray]{\setlength{\rightskip}{0pt plus 5cm}void btInverseDynamics::MultiBodyTree::InitCache::getParentIndexArray (idArray$<$ int $>$::type $\ast$ {\em parent\_\-index})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -117,7 +274,20 @@ get parent index array (paren\_\-index\mbox{[}i\mbox{]} is the index of the pare
 \begin{description}
 \item[{\em parent\_\-index}]pointer for return data \end{description}
 \end{Desc}
-\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_88ec979065d527a5ee6759e8dfb8a768}{
+
+
+Definition at line 80 of file MultiBodyTreeInitCache.hpp.
+
+Referenced by btInverseDynamics::MultiBodyTree::finalize().
+
+\begin{Code}\begin{verbatim}80 { *parent_index = m_parent_index; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_88ec979065d527a5ee6759e8dfb8a768}{
 \index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!getUserInt@{getUserInt}}
 \index{getUserInt@{getUserInt}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
 \subsubsection[getUserInt]{\setlength{\rightskip}{0pt plus 5cm}int btInverseDynamics::MultiBodyTree::InitCache::getUserInt (const int {\em index}, \/  int $\ast$ {\em user\_\-int}) const}}
@@ -131,6 +301,22 @@ get user integer \begin{Desc}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
+
+
+Definition at line 74 of file MultiBodyTreeInitCache.cpp.
+
+\begin{Code}\begin{verbatim}74                                                                            {
+75         if (index < 0 || index > static_cast<int>(m_user_int.size())) {
+76                 error_message("index out of range\n");
+77                 return -1;
+78         }
+79         *user_int = m_user_int[index];
+80         return 0;
+81 }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_inverse_dynamics_1_1_multi_body_tree_1_1_init_cache_d5bbbbb03bdeeca34fe740f45c86274b}{
 \index{btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}!getUserPtr@{getUserPtr}}
 \index{getUserPtr@{getUserPtr}!btInverseDynamics::MultiBodyTree::InitCache@{btInverseDynamics::MultiBodyTree::InitCache}}
@@ -147,7 +333,23 @@ get user pointer \begin{Desc}
 \item[Returns:]0 on success, -1 on failure \end{Desc}
 
 
+Definition at line 83 of file MultiBodyTreeInitCache.cpp.
+
+\begin{Code}\begin{verbatim}83                                                                              {
+84         if (index < 0 || index > static_cast<int>(m_user_ptr.size())) {
+85                 error_message("index out of range\n");
+86                 return -1;
+87         }
+88         *user_ptr = m_user_ptr[index];
+89         return 0;
+90 }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/details/MultiBodyTreeInitCache.hpp\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/details/MultiBodyTreeInitCache.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/details/MultiBodyTreeInitCache.hpp\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/details/MultiBodyTreeInitCache.cpp\end{CompactItemize}

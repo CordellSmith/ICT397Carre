@@ -1,0 +1,422 @@
+\hypertarget{class_texture_manager}{
+\section{TextureManager Class Reference}
+\label{class_texture_manager}\index{TextureManager@{TextureManager}}
+}
+Texture manager class that handles the loading, storing, and managing of all textures.  
+
+
+{\tt \#include $<$TextureManager.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+bool \hyperlink{class_texture_manager_48839479b7a9dd52b56960b584663c4c}{SetActiveTexture} (unsigned int texID)
+\begin{CompactList}\small\item\em Activate a texture. \item\end{CompactList}\item 
+int \hyperlink{class_texture_manager_f36ff195338c11f9e39e0b773d7c71e2}{LoadTexture} (std::string filename)
+\begin{CompactList}\small\item\em Load a texture. \item\end{CompactList}\item 
+void \hyperlink{class_texture_manager_6e3172f00d0eacef527ee64a0a76622f}{AddTextureToMap} (std::string filename, int texID)
+\begin{CompactList}\small\item\em Add a texture to the map. \item\end{CompactList}\item 
+int \hyperlink{class_texture_manager_5dbb010f1a5779a8231e3aa02c1ccc0e}{GetTextureID} (std::string filename)
+\begin{CompactList}\small\item\em Return a texture. \item\end{CompactList}\item 
+void \hyperlink{class_texture_manager_d8dca8bd689671a1186a093ae54c57d3}{ReleaseAllTextures} ()
+\begin{CompactList}\small\item\em Release all textures. \item\end{CompactList}\item 
+int \hyperlink{class_texture_manager_d8ff7cb104088eaa2099f59f179aa92e}{TexLoaded} (std::string filePath)
+\begin{CompactList}\small\item\em Find out if texture is loaded. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static \hyperlink{class_texture_manager}{TextureManager} \& \hyperlink{class_texture_manager_81a2f2ac1876be84e0a0a472199679d5}{Instance} ()
+\begin{CompactList}\small\item\em \hyperlink{class_singleton}{Singleton} instance. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{class_texture_manager_289ca60892d452574645e7e31b6de897}{
+int \hyperlink{class_texture_manager_289ca60892d452574645e7e31b6de897}{m\_\-width}}
+\label{class_texture_manager_289ca60892d452574645e7e31b6de897}
+
+\begin{CompactList}\small\item\em Width of texture loaded. \item\end{CompactList}\item 
+\hypertarget{class_texture_manager_efa958081c8ef466c115e60d4f605449}{
+int \hyperlink{class_texture_manager_efa958081c8ef466c115e60d4f605449}{m\_\-height}}
+\label{class_texture_manager_efa958081c8ef466c115e60d4f605449}
+
+\begin{CompactList}\small\item\em Height of texture loaded. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Texture manager class that handles the loading, storing, and managing of all textures. 
+
+\begin{Desc}
+\item[Author:]Jack Matters\end{Desc}
+\begin{Desc}
+\item[Date:]03/07/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.0 Initial start. Created the layout of the class, using a singleton and the SOIL API.\end{Desc}
+\begin{Desc}
+\item[Date:]07/07/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.1 Changed from SOIL to SOIL2, as SOIL was deprecated. Got file loading and storing in map working. Next to work on is a better system for loading files (from lua), and using the loaded in textures.\end{Desc}
+\begin{Desc}
+\item[Date:]10/07/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.2 Added a few more useful functions, and some tidy up.\end{Desc}
+\begin{Desc}
+\item[Date:]17/07/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.3 Altered LoadTexture to check to see if texture is already in map before loading the texture. Also added an function to help with that check.\end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]2.0 Final version for submission. \end{Desc}
+
+
+Definition at line 45 of file TextureManager.h.
+
+\subsection{Member Function Documentation}
+\hypertarget{class_texture_manager_81a2f2ac1876be84e0a0a472199679d5}{
+\index{TextureManager@{TextureManager}!Instance@{Instance}}
+\index{Instance@{Instance}!TextureManager@{TextureManager}}
+\subsubsection[Instance]{\setlength{\rightskip}{0pt plus 5cm}static {\bf TextureManager}\& TextureManager::Instance ()\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{class_texture_manager_81a2f2ac1876be84e0a0a472199679d5}
+
+
+\hyperlink{class_singleton}{Singleton} instance. 
+
+This function returns a singleton instance of the texture manager class so that there is only one instance of a texture manager.
+
+\begin{Desc}
+\item[Returns:]static \hyperlink{class_texture_manager}{TextureManager}\& \end{Desc}
+
+
+Definition at line 57 of file TextureManager.h.
+
+Referenced by ScriptManager::LoadTexturesInitLua().
+
+\begin{Code}\begin{verbatim}58                 {
+59                         static TextureManager instance;
+60 
+61                         return instance;
+62                 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_texture_manager_48839479b7a9dd52b56960b584663c4c}{
+\index{TextureManager@{TextureManager}!SetActiveTexture@{SetActiveTexture}}
+\index{SetActiveTexture@{SetActiveTexture}!TextureManager@{TextureManager}}
+\subsubsection[SetActiveTexture]{\setlength{\rightskip}{0pt plus 5cm}bool TextureManager::SetActiveTexture (unsigned int {\em texID})}}
+\label{class_texture_manager_48839479b7a9dd52b56960b584663c4c}
+
+
+Activate a texture. 
+
+Sets the given texture to be active
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em texID}]- Texture to set active\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]bool - True \end{Desc}
+
+
+Definition at line 23 of file TextureManager.cpp.
+
+\begin{Code}\begin{verbatim}24 {
+25         // Enable and bind the passed in texture
+26         glEnable(GL_TEXTURE_2D);
+27         glBindTexture(GL_TEXTURE_2D, texID);
+28 
+29         return true;
+30 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_texture_manager_f36ff195338c11f9e39e0b773d7c71e2}{
+\index{TextureManager@{TextureManager}!LoadTexture@{LoadTexture}}
+\index{LoadTexture@{LoadTexture}!TextureManager@{TextureManager}}
+\subsubsection[LoadTexture]{\setlength{\rightskip}{0pt plus 5cm}int TextureManager::LoadTexture (std::string {\em filename})}}
+\label{class_texture_manager_f36ff195338c11f9e39e0b773d7c71e2}
+
+
+Load a texture. 
+
+Load a texture from file using the SOIL API
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em filename}]- Name of file to load\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int - texID (given ID of loaded texture) \end{Desc}
+
+
+Definition at line 33 of file TextureManager.cpp.
+
+References AddTextureToMap(), m\_\-height, m\_\-width, and TexLoaded().
+
+Referenced by GetTextureID(), and ScriptManager::LoadTexturesInitLua().
+
+\begin{Code}\begin{verbatim}34 {
+35         // Check to see if texture is already loaded and in map, and return texID if true
+36         if (TexLoaded(filePath) != 0)
+37         {
+38                 std::cout << "File already loaded: " << filePath << std::endl;
+39                 return TexLoaded(filePath);
+40         }
+41 
+42         // Load in the file
+43         //GLuint newTex = SOIL_load_OGL_texture
+44         //(
+45         //      file,
+46         //      SOIL_LOAD_AUTO,
+47         //      SOIL_CREATE_NEW_ID,
+48         //      SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_DDS_LOAD_DIRECT
+49         //);
+50 
+52         //if (newTex == 0)
+53         //{
+54         //      std::cout << "SOIL loading error: " << filename << " - " << SOIL_last_result() << std::endl;
+55         //      return -1;
+56         //}
+57 
+58         // Generate a new texID
+59         GLuint newTex;
+60         glGenTextures(1, &newTex);
+61 
+62         int width, height, nrComponents;
+63         unsigned char* data = stbi_load(filePath.c_str(), &width, &height, &nrComponents, 0);
+64         if (data)
+65         {
+66                 GLenum format;
+67                 if (nrComponents == 1)
+68                         format = GL_RED;
+69                 else if (nrComponents == 3)
+70                         format = GL_RGB;
+71                 else if (nrComponents == 4)
+72                         format = GL_RGBA;
+73 
+74                 m_width = width;
+75                 m_height = height;
+76 
+77                 // Bind the texture
+78                 glBindTexture(GL_TEXTURE_2D, newTex);
+79                 glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+80                 glGenerateMipmap(GL_TEXTURE_2D);
+81 
+82                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+83                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+84                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+85                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+86 
+87                 stbi_image_free(data);
+88 
+89                 // Increment number of textures and return ID
+90                 m_numTextures++;
+91                 std::cout << "Successfully added Texture. Texture Count = " << m_numTextures << std::endl;
+92         }
+93         else
+94         {
+95                 std::cout << "Texture failed to load: " << filePath << std::endl;
+96                 stbi_image_free(data);
+97         }
+98 
+99         // Add new texture to make
+100         AddTextureToMap(filePath, newTex);
+101 
+102         return newTex;
+103 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{class_texture_manager_6e3172f00d0eacef527ee64a0a76622f}{
+\index{TextureManager@{TextureManager}!AddTextureToMap@{AddTextureToMap}}
+\index{AddTextureToMap@{AddTextureToMap}!TextureManager@{TextureManager}}
+\subsubsection[AddTextureToMap]{\setlength{\rightskip}{0pt plus 5cm}void TextureManager::AddTextureToMap (std::string {\em filename}, \/  int {\em texID})}}
+\label{class_texture_manager_6e3172f00d0eacef527ee64a0a76622f}
+
+
+Add a texture to the map. 
+
+Adds a texture that is loaded into the map for storing and later access
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em filename}]- Name of file loaded \item[{\em texID}]- ID of texture\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 106 of file TextureManager.cpp.
+
+Referenced by LoadTexture().
+
+\begin{Code}\begin{verbatim}107 {
+108         // If loaded texture is not already in map, load it
+109         if (!m_textureMap[filename])
+110         {
+111                 m_textureMap[filename] = texID;
+112         }
+113 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_texture_manager_5dbb010f1a5779a8231e3aa02c1ccc0e}{
+\index{TextureManager@{TextureManager}!GetTextureID@{GetTextureID}}
+\index{GetTextureID@{GetTextureID}!TextureManager@{TextureManager}}
+\subsubsection[GetTextureID]{\setlength{\rightskip}{0pt plus 5cm}int TextureManager::GetTextureID (std::string {\em filename})}}
+\label{class_texture_manager_5dbb010f1a5779a8231e3aa02c1ccc0e}
+
+
+Return a texture. 
+
+Returns a texture ID to be used
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em filename}]- Name of texture file to be returned\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int - texID (given ID and requested texture) \end{Desc}
+
+
+Definition at line 116 of file TextureManager.cpp.
+
+References LoadTexture().
+
+\begin{Code}\begin{verbatim}117 {
+118         // Get iterator to start of map
+119         std::unordered_map<std::string, unsigned int>::iterator it = m_textureMap.begin();
+120 
+121         // Search map for texture
+122         while (it != m_textureMap.end())
+123         {
+124                 // If texture found, return the given ID
+125                 if ((*it).first == filename)
+126                 {
+127                         return (*it).second;
+128                 }
+129 
+130                 // Increment iterator
+131                 it++;
+132         }
+133 
+134         // If texture is not in map, load it in and add to map
+135         int texID = LoadTexture(filename);
+136 
+137         // Return texture ID
+138         return texID;
+139 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_texture_manager_d8dca8bd689671a1186a093ae54c57d3}{
+\index{TextureManager@{TextureManager}!ReleaseAllTextures@{ReleaseAllTextures}}
+\index{ReleaseAllTextures@{ReleaseAllTextures}!TextureManager@{TextureManager}}
+\subsubsection[ReleaseAllTextures]{\setlength{\rightskip}{0pt plus 5cm}void TextureManager::ReleaseAllTextures ()}}
+\label{class_texture_manager_d8dca8bd689671a1186a093ae54c57d3}
+
+
+Release all textures. 
+
+Releases all textures from memory (called in de-constructor
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 142 of file TextureManager.cpp.
+
+\begin{Code}\begin{verbatim}143 {
+144         // Get iterator to start of map
+145         std::unordered_map<std::string, unsigned int>::iterator it = m_textureMap.begin();
+146 
+147         // Loop through map, unloading all textures from map
+148         while (it != m_textureMap.end())
+149         {
+150                 std::cout << "unloading Texture: " << (*it).first << ", ID: " << (*it).second;
+151                 glDeleteTextures(1, &(*it).second);
+152                 std::cout << " ... done" << std::endl;
+153                 ++it;
+154         }
+155 
+156         // Clear the map
+157         m_textureMap.clear();
+158 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_texture_manager_d8ff7cb104088eaa2099f59f179aa92e}{
+\index{TextureManager@{TextureManager}!TexLoaded@{TexLoaded}}
+\index{TexLoaded@{TexLoaded}!TextureManager@{TextureManager}}
+\subsubsection[TexLoaded]{\setlength{\rightskip}{0pt plus 5cm}int TextureManager::TexLoaded (std::string {\em filePath})}}
+\label{class_texture_manager_d8ff7cb104088eaa2099f59f179aa92e}
+
+
+Find out if texture is loaded. 
+
+Checks map to see if a texture is already loaded, prior to loading it
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em filePath}]- File path of texture\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int - texID of loaded texture, or 0 if not in map \end{Desc}
+
+
+Definition at line 161 of file TextureManager.cpp.
+
+Referenced by LoadTexture().
+
+\begin{Code}\begin{verbatim}162 {
+163         // Get iterator to start of map
+164         std::unordered_map<std::string, unsigned int>::iterator it = m_textureMap.begin();
+165 
+166         // Search map for texture
+167         while (it != m_textureMap.end())
+168         {
+169                 // If texture found, return true
+170                 if ((*it).first == filePath)
+171                 {
+172                         return (*it).second;;
+173                 }
+174 
+175                 // Increment iterator
+176                 it++;
+177         }
+178 
+179         // If texture not found, return 0
+180         return 0;
+181 }\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/TextureManager.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/src/TextureManager.cpp\end{CompactItemize}

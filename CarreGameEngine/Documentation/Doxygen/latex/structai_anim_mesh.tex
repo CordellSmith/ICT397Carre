@@ -33,6 +33,8 @@ NOT CURRENTLY IN USE. An AnimMesh is an attachment to an \hyperlink{structai_mes
 
 You may think of an \hyperlink{structai_anim_mesh}{aiAnimMesh} as a `patch` for the host mesh, which replaces only certain vertex data streams at a particular time. Each mesh stores n attached attached meshes (\hyperlink{structai_mesh_5078f7db7e99ed05db89dfa412f0e990}{aiMesh::mAnimMeshes}). The actual relationship between the time line and anim meshes is established by \hyperlink{structai_mesh_anim}{aiMeshAnim}, which references singular mesh attachments by their ID and binds them to a time offset. 
 
+Definition at line 346 of file mesh.h.
+
 \subsection{Member Data Documentation}
 \hypertarget{structai_anim_mesh_0ac2dd4c1afd23e6a9293b1d0ded3060}{
 \index{aiAnimMesh@{aiAnimMesh}!mVertices@{mVertices}}
@@ -41,42 +43,54 @@ You may think of an \hyperlink{structai_anim_mesh}{aiAnimMesh} as a `patch` for 
 \label{structai_anim_mesh_0ac2dd4c1afd23e6a9293b1d0ded3060}
 
 
-Replacement for \hyperlink{structai_mesh_fd4588abb3e1c72821ae0234a3850662}{aiMesh::mVertices}. If this array is non-NULL, it $\ast$must$\ast$ contain mNumVertices entries. The corresponding array in the host mesh must be non-NULL as well - animation meshes may neither add or nor remove vertex components (if a replacement array is NULL and the corresponding source array is not, the source data is taken instead) \hypertarget{structai_anim_mesh_64a07a8c5c419b1e006c5302bca4d334}{
+Replacement for \hyperlink{structai_mesh_fd4588abb3e1c72821ae0234a3850662}{aiMesh::mVertices}. If this array is non-NULL, it $\ast$must$\ast$ contain mNumVertices entries. The corresponding array in the host mesh must be non-NULL as well - animation meshes may neither add or nor remove vertex components (if a replacement array is NULL and the corresponding source array is not, the source data is taken instead) 
+
+Definition at line 354 of file mesh.h.\hypertarget{structai_anim_mesh_64a07a8c5c419b1e006c5302bca4d334}{
 \index{aiAnimMesh@{aiAnimMesh}!mNormals@{mNormals}}
 \index{mNormals@{mNormals}!aiAnimMesh@{aiAnimMesh}}
 \subsubsection[mNormals]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D$\ast$ {\bf aiAnimMesh::mNormals}}}
 \label{structai_anim_mesh_64a07a8c5c419b1e006c5302bca4d334}
 
 
-Replacement for \hyperlink{structai_mesh_ec81b496b4d93838cef038933dabe9b9}{aiMesh::mNormals}. \hypertarget{structai_anim_mesh_95dcc49c6d5ecc570ceb54552a0a9625}{
+Replacement for \hyperlink{structai_mesh_ec81b496b4d93838cef038933dabe9b9}{aiMesh::mNormals}. 
+
+Definition at line 357 of file mesh.h.\hypertarget{structai_anim_mesh_95dcc49c6d5ecc570ceb54552a0a9625}{
 \index{aiAnimMesh@{aiAnimMesh}!mTangents@{mTangents}}
 \index{mTangents@{mTangents}!aiAnimMesh@{aiAnimMesh}}
 \subsubsection[mTangents]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D$\ast$ {\bf aiAnimMesh::mTangents}}}
 \label{structai_anim_mesh_95dcc49c6d5ecc570ceb54552a0a9625}
 
 
-Replacement for \hyperlink{structai_mesh_f367ff78bd69f3e83d7edc8ad67dc5df}{aiMesh::mTangents}. \hypertarget{structai_anim_mesh_7d60acf4d2b4b59dcc6c88956bfae85f}{
+Replacement for \hyperlink{structai_mesh_f367ff78bd69f3e83d7edc8ad67dc5df}{aiMesh::mTangents}. 
+
+Definition at line 360 of file mesh.h.\hypertarget{structai_anim_mesh_7d60acf4d2b4b59dcc6c88956bfae85f}{
 \index{aiAnimMesh@{aiAnimMesh}!mBitangents@{mBitangents}}
 \index{mBitangents@{mBitangents}!aiAnimMesh@{aiAnimMesh}}
 \subsubsection[mBitangents]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D$\ast$ {\bf aiAnimMesh::mBitangents}}}
 \label{structai_anim_mesh_7d60acf4d2b4b59dcc6c88956bfae85f}
 
 
-Replacement for \hyperlink{structai_mesh_b2a81bfe1731f01271ebab274a8f01c4}{aiMesh::mBitangents}. \hypertarget{structai_anim_mesh_4f062d9fac71c6b367fdf0f8638e1ca5}{
+Replacement for \hyperlink{structai_mesh_b2a81bfe1731f01271ebab274a8f01c4}{aiMesh::mBitangents}. 
+
+Definition at line 363 of file mesh.h.\hypertarget{structai_anim_mesh_4f062d9fac71c6b367fdf0f8638e1ca5}{
 \index{aiAnimMesh@{aiAnimMesh}!mColors@{mColors}}
 \index{mColors@{mColors}!aiAnimMesh@{aiAnimMesh}}
 \subsubsection[mColors]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiColor4D$\ast$ {\bf aiAnimMesh::mColors}\mbox{[}AI\_\-MAX\_\-NUMBER\_\-OF\_\-COLOR\_\-SETS\mbox{]}}}
 \label{structai_anim_mesh_4f062d9fac71c6b367fdf0f8638e1ca5}
 
 
-Replacement for \hyperlink{structai_mesh_d9215f67bd0c2277b10775a8adb66b96}{aiMesh::mColors} \hypertarget{structai_anim_mesh_d24a0451adeb845a53eb2351b9462e0a}{
+Replacement for \hyperlink{structai_mesh_d9215f67bd0c2277b10775a8adb66b96}{aiMesh::mColors} 
+
+Definition at line 366 of file mesh.h.\hypertarget{structai_anim_mesh_d24a0451adeb845a53eb2351b9462e0a}{
 \index{aiAnimMesh@{aiAnimMesh}!mTextureCoords@{mTextureCoords}}
 \index{mTextureCoords@{mTextureCoords}!aiAnimMesh@{aiAnimMesh}}
 \subsubsection[mTextureCoords]{\setlength{\rightskip}{0pt plus 5cm}C\_\-STRUCT aiVector3D$\ast$ {\bf aiAnimMesh::mTextureCoords}\mbox{[}AI\_\-MAX\_\-NUMBER\_\-OF\_\-TEXTURECOORDS\mbox{]}}}
 \label{structai_anim_mesh_d24a0451adeb845a53eb2351b9462e0a}
 
 
-Replacement for \hyperlink{structai_mesh_4a50b11d00ef50f419c75cab0f6bddd6}{aiMesh::mTextureCoords} \hypertarget{structai_anim_mesh_6bb0d45317a1bbea7f2b7f8191d0c436}{
+Replacement for \hyperlink{structai_mesh_4a50b11d00ef50f419c75cab0f6bddd6}{aiMesh::mTextureCoords} 
+
+Definition at line 369 of file mesh.h.\hypertarget{structai_anim_mesh_6bb0d45317a1bbea7f2b7f8191d0c436}{
 \index{aiAnimMesh@{aiAnimMesh}!mNumVertices@{mNumVertices}}
 \index{mNumVertices@{mNumVertices}!aiAnimMesh@{aiAnimMesh}}
 \subsubsection[mNumVertices]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiAnimMesh::mNumVertices}}}
@@ -85,7 +99,9 @@ Replacement for \hyperlink{structai_mesh_4a50b11d00ef50f419c75cab0f6bddd6}{aiMes
 
 The number of vertices in the \hyperlink{structai_anim_mesh}{aiAnimMesh}, and thus the length of all the member arrays.
 
-This has always the same value as the mNumVertices property in the corresponding \hyperlink{structai_mesh}{aiMesh}. It is duplicated here merely to make the length of the member arrays accessible even if the \hyperlink{structai_mesh}{aiMesh} is not known, e.g. from language bindings. \hypertarget{structai_anim_mesh_3554843cf6bb042369be1e75a2eff88a}{
+This has always the same value as the mNumVertices property in the corresponding \hyperlink{structai_mesh}{aiMesh}. It is duplicated here merely to make the length of the member arrays accessible even if the \hyperlink{structai_mesh}{aiMesh} is not known, e.g. from language bindings. 
+
+Definition at line 379 of file mesh.h.\hypertarget{structai_anim_mesh_3554843cf6bb042369be1e75a2eff88a}{
 \index{aiAnimMesh@{aiAnimMesh}!mWeight@{mWeight}}
 \index{mWeight@{mWeight}!aiAnimMesh@{aiAnimMesh}}
 \subsubsection[mWeight]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aiAnimMesh::mWeight}}}
@@ -94,6 +110,8 @@ This has always the same value as the mNumVertices property in the corresponding
 
 Weight of the AnimMesh. 
 
+Definition at line 384 of file mesh.h.
+
 The documentation for this struct was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/mesh.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/mesh.h\end{CompactItemize}

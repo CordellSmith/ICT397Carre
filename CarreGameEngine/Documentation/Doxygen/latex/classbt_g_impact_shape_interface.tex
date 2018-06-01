@@ -118,6 +118,8 @@ virtual void \hyperlink{classbt_g_impact_shape_interface_1712a4613e20aa9249514dc
 \subsection{Detailed Description}
 Base class for gimpact shapes. 
 
+Definition at line 79 of file btGImpactShape.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_g_impact_shape_interface_1712a4613e20aa9249514dcd97f0a086}{
 \index{btGImpactShapeInterface@{btGImpactShapeInterface}!calcLocalAABB@{calcLocalAABB}}
@@ -130,7 +132,37 @@ use this function for perfofm refit in bounding boxes
 
 use this function for perfofm refit in bounding boxes 
 
-Reimplemented in \hyperlink{classbt_g_impact_mesh_shape_a9273d609f4872c7a4c05e9873edbda8}{btGImpactMeshShape}.\hypertarget{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{
+Reimplemented in \hyperlink{classbt_g_impact_mesh_shape_a9273d609f4872c7a4c05e9873edbda8}{btGImpactMeshShape}.
+
+Definition at line 89 of file btGImpactShape.h.
+
+References btGImpactQuantizedBvh::buildSet(), btGImpactQuantizedBvh::getGlobalBox(), btGImpactQuantizedBvh::getNodeCount(), lockChildShapes(), and btGImpactQuantizedBvh::update().
+
+Referenced by updateBound().
+
+\begin{Code}\begin{verbatim}90     {
+91                 lockChildShapes();
+92         if(m_box_set.getNodeCount() == 0)
+93         {
+94                 m_box_set.buildSet();
+95         }
+96         else
+97         {
+98                 m_box_set.update();
+99         }
+100         unlockChildShapes();
+101 
+102         m_localAABB = m_box_set.getGlobalBox();
+103     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{
 \index{btGImpactShapeInterface@{btGImpactShapeInterface}!updateBound@{updateBound}}
 \index{updateBound@{updateBound}!btGImpactShapeInterface@{btGImpactShapeInterface}}
 \subsubsection[updateBound]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void btGImpactShapeInterface::updateBound ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -143,7 +175,24 @@ Updates the entire Box set of this shape. \begin{Desc}
 \item[Precondition:]\hyperlink{classbt_g_impact_shape_interface_c430754948ac92d6f70b81e88416c96a}{postUpdate()} must be called for attemps to calculating the box set, else this function will does nothing. \end{Desc}
 \begin{Desc}
 \item[Postcondition:]if m\_\-needs\_\-update == true, then it calls \hyperlink{classbt_g_impact_shape_interface_1712a4613e20aa9249514dcd97f0a086}{calcLocalAABB()}; \end{Desc}
-\hypertarget{classbt_g_impact_shape_interface_418d1f35f4dd58e4d3195aee639b615b}{
+
+
+Definition at line 123 of file btGImpactShape.h.
+
+References calcLocalAABB().
+
+\begin{Code}\begin{verbatim}124     {
+125         if(!m_needs_update) return;
+126         calcLocalAABB();
+127         m_needs_update  = false;
+128     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_g_impact_shape_interface_418d1f35f4dd58e4d3195aee639b615b}{
 \index{btGImpactShapeInterface@{btGImpactShapeInterface}!getAabb@{getAabb}}
 \index{getAabb@{getAabb}!btGImpactShapeInterface@{btGImpactShapeInterface}}
 \subsubsection[getAabb]{\setlength{\rightskip}{0pt plus 5cm}void btGImpactShapeInterface::getAabb (const btTransform \& {\em t}, \/  btVector3 \& {\em aabbMin}, \/  btVector3 \& {\em aabbMax}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -154,6 +203,20 @@ If the Bounding box is not updated, then this class attemps to calculate it.
 
 \begin{Desc}
 \item[Postcondition:]Calls \hyperlink{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{updateBound()} for update the box set. \end{Desc}
+
+
+Definition at line 134 of file btGImpactShape.h.
+
+\begin{Code}\begin{verbatim}135     {
+136         btAABB transformedbox = m_localAABB;
+137         transformedbox.appy_transform(t);
+138         aabbMin = transformedbox.m_min;
+139         aabbMax = transformedbox.m_max;
+140     }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_g_impact_shape_interface_dec0bd43cd0105b1d0dc172bc7db50d8}{
 \index{btGImpactShapeInterface@{btGImpactShapeInterface}!setLocalScaling@{setLocalScaling}}
 \index{setLocalScaling@{setLocalScaling}!btGImpactShapeInterface@{btGImpactShapeInterface}}
@@ -165,7 +228,23 @@ If the Bounding box is not updated, then this class attemps to calculate it.
 \item[Postcondition:]You must call \hyperlink{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{updateBound()} for update the box set. \end{Desc}
 
 
-Reimplemented in \hyperlink{classbt_g_impact_mesh_shape_part_2c1de297d020a75e1ab0f10f7c71478f}{btGImpactMeshShapePart}, and \hyperlink{classbt_g_impact_mesh_shape_ed8d5e4b2e75538109909d44b244bc35}{btGImpactMeshShape}.\hypertarget{classbt_g_impact_shape_interface_25cacbe448997e3f8ec99cb2d4952859}{
+Reimplemented in \hyperlink{classbt_g_impact_mesh_shape_part_2c1de297d020a75e1ab0f10f7c71478f}{btGImpactMeshShapePart}, and \hyperlink{classbt_g_impact_mesh_shape_ed8d5e4b2e75538109909d44b244bc35}{btGImpactMeshShape}.
+
+Definition at line 163 of file btGImpactShape.h.
+
+References postUpdate().
+
+\begin{Code}\begin{verbatim}164         {
+165                 localScaling = scaling;
+166                 postUpdate();
+167         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_g_impact_shape_interface_25cacbe448997e3f8ec99cb2d4952859}{
 \index{btGImpactShapeInterface@{btGImpactShapeInterface}!getGImpactShapeType@{getGImpactShapeType}}
 \index{getGImpactShapeType@{getGImpactShapeType}!btGImpactShapeInterface@{btGImpactShapeInterface}}
 \subsubsection[getGImpactShapeType]{\setlength{\rightskip}{0pt plus 5cm}virtual eGIMPACT\_\-SHAPE\_\-TYPE btGImpactShapeInterface::getGImpactShapeType () const\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
@@ -176,7 +255,11 @@ Base method for determinig which kind of GIMPACT shape we get.
 
 Subshape member functions 
 
-Implemented in \hyperlink{classbt_g_impact_compound_shape_861967c52cb52a358b8d99aa4c65e306}{btGImpactCompoundShape}, \hyperlink{classbt_g_impact_mesh_shape_part_5ff615b55a2bdaeba511fb116a9ab546}{btGImpactMeshShapePart}, and \hyperlink{classbt_g_impact_mesh_shape_cd958461b4f7802e5bceed2db87c4ff0}{btGImpactMeshShape}.\hypertarget{classbt_g_impact_shape_interface_83392f97bd7dfeb71ccdce6913a465b0}{
+Implemented in \hyperlink{classbt_g_impact_compound_shape_861967c52cb52a358b8d99aa4c65e306}{btGImpactCompoundShape}, \hyperlink{classbt_g_impact_mesh_shape_part_5ff615b55a2bdaeba511fb116a9ab546}{btGImpactMeshShapePart}, and \hyperlink{classbt_g_impact_mesh_shape_cd958461b4f7802e5bceed2db87c4ff0}{btGImpactMeshShape}.
+
+Referenced by btGImpactCollisionAlgorithm::gimpact\_\-vs\_\-gimpact().
+
+Here is the caller graph for this function:\hypertarget{classbt_g_impact_shape_interface_83392f97bd7dfeb71ccdce6913a465b0}{
 \index{btGImpactShapeInterface@{btGImpactShapeInterface}!setChildTransform@{setChildTransform}}
 \index{setChildTransform@{setChildTransform}!btGImpactShapeInterface@{btGImpactShapeInterface}}
 \subsubsection[setChildTransform]{\setlength{\rightskip}{0pt plus 5cm}virtual void btGImpactShapeInterface::setChildTransform (int {\em index}, \/  const btTransform \& {\em transform})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
@@ -200,7 +283,18 @@ Function for retrieve triangles.
 
 It gives the triangles in local space 
 
-Reimplemented in \hyperlink{classbt_g_impact_mesh_shape_part_230a814ad9f784638e8bcbf0592cdd39}{btGImpactMeshShapePart}, and \hyperlink{classbt_g_impact_mesh_shape_0b3a0f7b06feb5e2e1fa94f2b5fcd4c7}{btGImpactMeshShape}.\hypertarget{classbt_g_impact_shape_interface_646ad13b4aa116d58df110c2f407e5a8}{
+Reimplemented in \hyperlink{classbt_g_impact_mesh_shape_part_230a814ad9f784638e8bcbf0592cdd39}{btGImpactMeshShapePart}, and \hyperlink{classbt_g_impact_mesh_shape_0b3a0f7b06feb5e2e1fa94f2b5fcd4c7}{btGImpactMeshShape}.
+
+Definition at line 287 of file btGImpactShape.h.
+
+\begin{Code}\begin{verbatim}288         {
+289         (void) callback; (void) aabbMin; (void) aabbMax;
+290         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{classbt_g_impact_shape_interface_646ad13b4aa116d58df110c2f407e5a8}{
 \index{btGImpactShapeInterface@{btGImpactShapeInterface}!processAllTrianglesRay@{processAllTrianglesRay}}
 \index{processAllTrianglesRay@{processAllTrianglesRay}!btGImpactShapeInterface@{btGImpactShapeInterface}}
 \subsubsection[processAllTrianglesRay]{\setlength{\rightskip}{0pt plus 5cm}virtual void btGImpactShapeInterface::processAllTrianglesRay ({\bf btTriangleCallback} $\ast$, \/  const btVector3 \&, \/  const btVector3 \&) const\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
@@ -213,6 +307,17 @@ It gives the triangles in local space
 
 Reimplemented in \hyperlink{classbt_g_impact_mesh_shape_part_0e35b55bd50911911f8164cf3a2dd5c8}{btGImpactMeshShapePart}, and \hyperlink{classbt_g_impact_mesh_shape_80b60d4ca87b2739b2389258e901900d}{btGImpactMeshShape}.
 
+Definition at line 296 of file btGImpactShape.h.
+
+\begin{Code}\begin{verbatim}297         {
+298                 
+299         }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_g_impact_shape_8h}{btGImpactShape.h}\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_g_impact_shape_8h}{btGImpactShape.h}\end{CompactItemize}

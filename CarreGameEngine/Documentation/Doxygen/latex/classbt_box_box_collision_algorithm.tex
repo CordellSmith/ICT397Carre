@@ -17,6 +17,8 @@ virtual void \hyperlink{classbt_box_box_collision_algorithm_adde989098617a7679a8
 \subsection{Detailed Description}
 box-box collision detection 
 
+Definition at line 27 of file btBoxBoxCollisionAlgorithm.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_box_box_collision_algorithm_adde989098617a7679a8d907f4144adb}{
 \index{btBoxBoxCollisionAlgorithm@{btBoxBoxCollisionAlgorithm}!processCollision@{processCollision}}
@@ -31,7 +33,51 @@ report a contact. internally this will be kept persistent, and contact reduction
 
 Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.
 
+Definition at line 45 of file btBoxBoxCollisionAlgorithm.cpp.
+
+References btBoxBoxDetector::getClosestPoints(), btManifoldResult::refreshContactPoints(), and btManifoldResult::setPersistentManifold().
+
+\begin{Code}\begin{verbatim}46 {
+47         if (!m_manifoldPtr)
+48                 return;
+49 
+50         
+51         const btBoxShape* box0 = (btBoxShape*)body0Wrap->getCollisionShape();
+52         const btBoxShape* box1 = (btBoxShape*)body1Wrap->getCollisionShape();
+53 
+54 
+55 
+57         resultOut->setPersistentManifold(m_manifoldPtr);
+58 #ifndef USE_PERSISTENT_CONTACTS 
+59         m_manifoldPtr->clearManifold();
+60 #endif //USE_PERSISTENT_CONTACTS
+61 
+62         btDiscreteCollisionDetectorInterface::ClosestPointInput input;
+63         input.m_maximumDistanceSquared = BT_LARGE_FLOAT;
+64         input.m_transformA = body0Wrap->getWorldTransform();
+65         input.m_transformB = body1Wrap->getWorldTransform();
+66 
+67         btBoxBoxDetector detector(box0,box1);
+68         detector.getClosestPoints(input,*resultOut,dispatchInfo.m_debugDraw);
+69 
+70 #ifdef USE_PERSISTENT_CONTACTS
+71         //  refreshContactPoints is only necessary when using persistent contact points. otherwise all points are newly added
+72         if (m_ownManifold)
+73         {
+74                 resultOut->refreshContactPoints();
+75         }
+76 #endif //USE_PERSISTENT_CONTACTS
+77 
+78 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.cpp\end{CompactItemize}

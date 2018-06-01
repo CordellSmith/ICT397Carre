@@ -116,6 +116,8 @@ If you need the \hyperlink{class_assimp_1_1_importer}{Importer} to do custom fil
 \item[Note:]One \hyperlink{class_assimp_1_1_importer}{Importer} instance is not thread-safe. If you use multiple threads for loading, each thread should maintain its own \hyperlink{class_assimp_1_1_importer}{Importer} instance. \end{Desc}
 
 
+Definition at line 115 of file Importer.hpp.
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_assimp_1_1_importer_2c207299ed05f1db1ad1e6dab005f719}{
 \index{Assimp::Importer@{Assimp::Importer}!Importer@{Importer}}
@@ -234,6 +236,17 @@ Set an integer configuration property. \begin{Desc}
 
 Set a boolean configuration property. Boolean properties are stored on the integer stack internally so it's possible to set them via \hyperlink{class_assimp_1_1_importer_4af22a88eddf464d949a761149c72825}{SetPropertyBool} and query them with \hyperlink{class_assimp_1_1_importer_90f5d35d25e5d2a0ef8bc0c6545b2010}{GetPropertyBool} and vice versa. \begin{Desc}
 \item[See also:]\hyperlink{class_assimp_1_1_importer_2542eed3d5f491025c4095b4e55fa068}{SetPropertyInteger()} \end{Desc}
+
+
+Definition at line 216 of file Importer.hpp.
+
+\begin{Code}\begin{verbatim}216                                                             {
+217         return SetPropertyInteger(szName,value);
+218     }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_assimp_1_1_importer_d38af78d6fe4b1f132d2534d8a84deea}{
 \index{Assimp::Importer@{Assimp::Importer}!SetPropertyFloat@{SetPropertyFloat}}
 \index{SetPropertyFloat@{SetPropertyFloat}!Assimp::Importer@{Assimp::Importer}}
@@ -286,6 +299,17 @@ Get a configuration property. \begin{Desc}
 
 Get a boolean configuration property. Boolean properties are stored on the integer stack internally so it's possible to set them via \hyperlink{class_assimp_1_1_importer_4af22a88eddf464d949a761149c72825}{SetPropertyBool} and query them with \hyperlink{class_assimp_1_1_importer_90f5d35d25e5d2a0ef8bc0c6545b2010}{GetPropertyBool} and vice versa. \begin{Desc}
 \item[See also:]\hyperlink{class_assimp_1_1_importer_3e796a0758a9f10f13107f44c542ad41}{GetPropertyInteger()} \end{Desc}
+
+
+Definition at line 261 of file Importer.hpp.
+
+\begin{Code}\begin{verbatim}261                                                                               {
+262         return GetPropertyInteger(szName,bErrorReturn)!=0;
+263     }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_assimp_1_1_importer_dfe1387ccc837fd59bf620e8216637fa}{
 \index{Assimp::Importer@{Assimp::Importer}!GetPropertyFloat@{GetPropertyFloat}}
 \index{GetPropertyFloat@{GetPropertyFloat}!Assimp::Importer@{Assimp::Importer}}
@@ -419,7 +443,11 @@ If the call succeeds, the contents of the file are returned as a pointer to an \
 \item[Returns:]A pointer to the imported data, NULL if the import failed. The pointer to the scene remains in possession of the \hyperlink{class_assimp_1_1_importer}{Importer} instance. Use \hyperlink{class_assimp_1_1_importer_60eb9042fb85bfbd61a863e131a56ecd}{GetOrphanedScene()} to take ownership of it.\end{Desc}
 \begin{Desc}
 \item[Note:]\hyperlink{namespace_assimp}{Assimp} is able to determine the file format of a file automatically. \end{Desc}
-\hypertarget{class_assimp_1_1_importer_9b3c5e8b1042702f449e84a95b3324f6}{
+
+
+Referenced by ReadFile().
+
+Here is the caller graph for this function:\hypertarget{class_assimp_1_1_importer_9b3c5e8b1042702f449e84a95b3324f6}{
 \index{Assimp::Importer@{Assimp::Importer}!ReadFileFromMemory@{ReadFileFromMemory}}
 \index{ReadFileFromMemory@{ReadFileFromMemory}!Assimp::Importer@{Assimp::Importer}}
 \subsubsection[ReadFileFromMemory]{\setlength{\rightskip}{0pt plus 5cm}const {\bf aiScene}$\ast$ Assimp::Importer::ReadFileFromMemory (const void $\ast$ {\em pBuffer}, \/  size\_\-t {\em pLength}, \/  unsigned int {\em pFlags}, \/  const char $\ast$ {\em pHint} = {\tt \char`\"{}\char`\"{}})}}
@@ -468,7 +496,22 @@ class \hyperlink{class_assimp_1_1_importer}{Importer}
 
 This function is provided for backward compatibility. See the const char$\ast$ version for detailed docs. \begin{Desc}
 \item[See also:]ReadFile(const char$\ast$, pFlags) \end{Desc}
-\hypertarget{class_assimp_1_1_importer_53dafc3046abc33365a07c605716c5d4}{
+
+
+Definition at line 637 of file Importer.hpp.
+
+References ReadFile().
+
+\begin{Code}\begin{verbatim}637                                                                                             {
+638     return ReadFile(pFile.c_str(),pFlags);
+639 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_assimp_1_1_importer_53dafc3046abc33365a07c605716c5d4}{
 \index{Assimp::Importer@{Assimp::Importer}!FreeScene@{FreeScene}}
 \index{FreeScene@{FreeScene}!Assimp::Importer@{Assimp::Importer}}
 \subsubsection[FreeScene]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Importer::FreeScene ()}}
@@ -530,7 +573,11 @@ Returns whether a given file extension is supported by ASSIMP.
 \end{Desc}
 \begin{Desc}
 \item[Returns:]true if the extension is supported, false otherwise \end{Desc}
-\hypertarget{class_assimp_1_1_importer_5b01905366f5bf8d1f89d51f755bf7d2}{
+
+
+Referenced by IsExtensionSupported().
+
+Here is the caller graph for this function:\hypertarget{class_assimp_1_1_importer_5b01905366f5bf8d1f89d51f755bf7d2}{
 \index{Assimp::Importer@{Assimp::Importer}!IsExtensionSupported@{IsExtensionSupported}}
 \index{IsExtensionSupported@{IsExtensionSupported}!Assimp::Importer@{Assimp::Importer}}
 \subsubsection[IsExtensionSupported]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE bool Assimp::Importer::IsExtensionSupported (const std::string \& {\em szExtension}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -541,7 +588,22 @@ Returns whether a given file extension is supported by ASSIMP.
 
 This function is provided for backward compatibility. See the const char$\ast$ version for detailed and up-to-date docs. \begin{Desc}
 \item[See also:]IsExtensionSupported(const char$\ast$) \end{Desc}
-\hypertarget{class_assimp_1_1_importer_23c85647f7977012d9fef20b36c2d579}{
+
+
+Definition at line 647 of file Importer.hpp.
+
+References IsExtensionSupported().
+
+\begin{Code}\begin{verbatim}647                                                                                         {
+648     return IsExtensionSupported(szExtension.c_str());
+649 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_assimp_1_1_importer_23c85647f7977012d9fef20b36c2d579}{
 \index{Assimp::Importer@{Assimp::Importer}!GetExtensionList@{GetExtensionList}}
 \index{GetExtensionList@{GetExtensionList}!Assimp::Importer@{Assimp::Importer}}
 \subsubsection[GetExtensionList]{\setlength{\rightskip}{0pt plus 5cm}void Assimp::Importer::GetExtensionList ({\bf aiString} \& {\em szOut}) const}}
@@ -555,7 +617,11 @@ If a file extension is contained in the list this does of course not mean that A
 \begin{description}
 \item[{\em szOut}]String to receive the extension list. Format of the list: \char`\"{}$\ast$.3ds;$\ast$.obj;$\ast$.dae\char`\"{}. This is useful for use with the WinAPI call GetOpenFileName(Ex). \end{description}
 \end{Desc}
-\hypertarget{class_assimp_1_1_importer_6ab684351c55e170de3c5b7d730b306d}{
+
+
+Referenced by GetExtensionList().
+
+Here is the caller graph for this function:\hypertarget{class_assimp_1_1_importer_6ab684351c55e170de3c5b7d730b306d}{
 \index{Assimp::Importer@{Assimp::Importer}!GetExtensionList@{GetExtensionList}}
 \index{GetExtensionList@{GetExtensionList}!Assimp::Importer@{Assimp::Importer}}
 \subsubsection[GetExtensionList]{\setlength{\rightskip}{0pt plus 5cm}AI\_\-FORCE\_\-INLINE void Assimp::Importer::GetExtensionList (std::string \& {\em szOut}) const\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -566,7 +632,24 @@ Get a full list of all file extensions supported by ASSIMP.
 
 This function is provided for backward compatibility. See the \hyperlink{structai_string}{aiString} version for detailed and up-to-date docs. \begin{Desc}
 \item[See also:]GetExtensionList(aiString\&) \end{Desc}
-\hypertarget{class_assimp_1_1_importer_fe982451f1a1c9b0b59c788f9329ccc1}{
+
+
+Definition at line 641 of file Importer.hpp.
+
+References aiString::data, and GetExtensionList().
+
+\begin{Code}\begin{verbatim}641                                                                         {
+642     aiString s;
+643     GetExtensionList(s);
+644     szOut = s.data;
+645 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_assimp_1_1_importer_fe982451f1a1c9b0b59c788f9329ccc1}{
 \index{Assimp::Importer@{Assimp::Importer}!GetImporterCount@{GetImporterCount}}
 \index{GetImporterCount@{GetImporterCount}!Assimp::Importer@{Assimp::Importer}}
 \subsubsection[GetImporterCount]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Assimp::Importer::GetImporterCount () const}}
@@ -671,6 +754,15 @@ Enables \char`\"{}extra verbose\char`\"{} mode.
 
 Private, do not use. 
 
+Definition at line 620 of file Importer.hpp.
+
+\begin{Code}\begin{verbatim}620 { return pimpl; }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_importer_8hpp}{Importer.hpp}\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_importer_8hpp}{Importer.hpp}\end{CompactItemize}

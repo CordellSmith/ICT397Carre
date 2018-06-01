@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTC_quaternion</title>
+<title>Assignment2 - OOber Taxi: GLM_GTC_quaternion</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -148,6 +148,29 @@ template&lt;typename T, precision P&gt; </div>
 Returns the quaternion rotation angle.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00799">799</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00119">glm::acos()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00052">glm::degrees()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00802"></a>00802         {
+<a name="l00803"></a>00803 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00804"></a>00804 <span class="preprocessor"></span>                <span class="keywordflow">return</span> <a class="code" href="group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078">acos</a>(x.w) * T(2);
+<a name="l00805"></a>00805 <span class="preprocessor">#else</span>
+<a name="l00806"></a>00806 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: angle function returning degrees is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00807"></a>00807 <span class="preprocessor"></span>                <span class="keywordflow">return</span> <a class="code" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64">glm::degrees</a>(<a class="code" href="group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078">acos</a>(x.w) * T(2));
+<a name="l00808"></a>00808 <span class="preprocessor">#endif</span>
+<a name="l00809"></a>00809 <span class="preprocessor"></span>        }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g48c100d72c9c3295b75c9133ddbb83d1_cgraph.png" border="0" usemap="#group__gtc__quaternion_g48c100d72c9c3295b75c9133ddbb83d1_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g48c100d72c9c3295b75c9133ddbb83d1_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078" title="glm::acos" alt="" coords="145,5,223,32"><area shape="rect" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="136,56,232,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g96dbce7a48d76fa63e65c4ba949a3bc4"></a><!-- doxytag: member="glm::angleAxis" ref="g96dbce7a48d76fa63e65c4ba949a3bc4" args="(T const &amp;angle, detail::tvec3&lt; T, P &gt; const &amp;axis)" -->
@@ -187,6 +210,49 @@ Build a quaternion from an angle and a normalized axis.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00826">826</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00038">glm::radians()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtx_2quaternion_8inl-source.html#l00226">glm::rotation()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00830"></a>00830         {
+<a name="l00831"></a>00831                 detail::tquat&lt;T, P&gt; result;
+<a name="l00832"></a>00832 
+<a name="l00833"></a>00833 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00834"></a>00834 <span class="preprocessor"></span>                T <span class="keyword">const</span> a(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>);
+<a name="l00835"></a>00835 <span class="preprocessor">#else</span>
+<a name="l00836"></a>00836 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: angleAxis function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00837"></a>00837 <span class="preprocessor"></span>                T <span class="keyword">const</span> a(<a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">glm::radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>));
+<a name="l00838"></a>00838 <span class="preprocessor">#endif</span>
+<a name="l00839"></a>00839 <span class="preprocessor"></span>                T s = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">glm::sin</a>(a * T(0.5));
+<a name="l00840"></a>00840 
+<a name="l00841"></a>00841                 result.w = <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">glm::cos</a>(a * T(0.5));
+<a name="l00842"></a>00842                 result.x = v.x * s;
+<a name="l00843"></a>00843                 result.y = v.y * s;
+<a name="l00844"></a>00844                 result.z = v.z * s;
+<a name="l00845"></a>00845                 <span class="keywordflow">return</span> result;
+<a name="l00846"></a>00846         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g96dbce7a48d76fa63e65c4ba949a3bc4_cgraph.png" border="0" usemap="#group__gtc__quaternion_g96dbce7a48d76fa63e65c4ba949a3bc4_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g96dbce7a48d76fa63e65c4ba949a3bc4_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="173,5,245,32"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="164,56,255,83"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="176,107,243,133"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g96dbce7a48d76fa63e65c4ba949a3bc4_icgraph.png" border="0" usemap="#group__gtc__quaternion_g96dbce7a48d76fa63e65c4ba949a3bc4_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g96dbce7a48d76fa63e65c4ba949a3bc4_icgraph_map">
+<area shape="rect" href="group__gtx__quaternion.html#gf7a15242ef69e5c997df231b28b92cef" title="glm::rotation" alt="" coords="163,5,256,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g5c243b588291c790bf1b5ec3f0f08d1b"></a><!-- doxytag: member="glm::axis" ref="g5c243b588291c790bf1b5ec3f0f08d1b" args="(detail::tquat&lt; T, P &gt; const &amp;x)" -->
@@ -211,6 +277,39 @@ template&lt;typename T, precision P&gt; </div>
 Returns the q rotation axis.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00813">813</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="integer_8inl-source.html#l00140">glm::sqrt()</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_gear_constraint_8h-source.html#l00089">btGearConstraint::getParam()</a>, <a class="el" href="matrix__transform_8inl-source.html#l00049">glm::rotate()</a>, and <a class="el" href="rotate__normalized__axis_8inl-source.html#l00033">glm::rotateNormalizedAxis()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00816"></a>00816         {
+<a name="l00817"></a>00817                 T tmp1 = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(1) - x.w * x.w;
+<a name="l00818"></a>00818                 <span class="keywordflow">if</span>(tmp1 &lt;= static_cast&lt;T&gt;(0))
+<a name="l00819"></a>00819                         <span class="keywordflow">return</span> detail::tvec3&lt;T, P&gt;(0, 0, 1);
+<a name="l00820"></a>00820                 T tmp2 = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(1) / <a class="code" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f">sqrt</a>(tmp1);
+<a name="l00821"></a>00821                 <span class="keywordflow">return</span> detail::tvec3&lt;T, P&gt;(x.x * tmp2, x.y * tmp2, x.z * tmp2);
+<a name="l00822"></a>00822         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g5c243b588291c790bf1b5ec3f0f08d1b_cgraph.png" border="0" usemap="#group__gtc__quaternion_g5c243b588291c790bf1b5ec3f0f08d1b_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g5c243b588291c790bf1b5ec3f0f08d1b_cgraph_map">
+<area shape="rect" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f" title="glm::sqrt" alt="" coords="128,5,200,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g5c243b588291c790bf1b5ec3f0f08d1b_icgraph.png" border="0" usemap="#group__gtc__quaternion_g5c243b588291c790bf1b5ec3f0f08d1b_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g5c243b588291c790bf1b5ec3f0f08d1b_icgraph_map">
+<area shape="rect" href="classbt_gear_constraint.html#a08a0ddb52aacfa0141b41b388238aa6" title="return the local value of parameter" alt="" coords="128,81,312,108"><area shape="rect" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="179,132,261,159"><area shape="rect" href="group__gtx__rotate__normalized__axis.html#g9fc93bb16dd6719fc660a506cb833fb0" title="glm::rotateNormalizedAxis" alt="" coords="133,183,307,209"><area shape="rect" href="class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix." alt="" coords="361,56,540,83"><area shape="rect" href="group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e" title="glm::orientation" alt="" coords="396,107,505,133"><area shape="rect" href="group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36" title="glm::orientedAngle" alt="" coords="387,157,515,184"><area shape="rect" href="group__gtx__rotate__vector.html#gf0809ae83e84fc9880b4c8b7093c349c" title="glm::rotate" alt="" coords="409,208,492,235"><area shape="rect" href="class_camera.html#ff61f06284cca3216accdf556dfbd3c1" title="Gets the camera position." alt="" coords="613,5,725,32"><area shape="rect" href="class_camera.html#338c5baf20b57652828c53e0791adf9a" title="Gets the camera view." alt="" coords="608,56,731,83"><area shape="rect" href="class_camera.html#ffa333055635aed96518c4c66be9a70c" title="Gets the view matrix." alt="" coords="589,107,749,133"><area shape="rect" href="class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223" title="Moves the camera." alt="" coords="797,56,947,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gdbb01a11c8e4f4e0602f6cc649896066"></a><!-- doxytag: member="glm::conjugate" ref="gdbb01a11c8e4f4e0602f6cc649896066" args="(detail::tquat&lt; T, P &gt; const &amp;q)" -->
@@ -234,6 +333,24 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Returns the q conjugate.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00177">177</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00186">glm::inverse()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00180"></a>00180         {
+<a name="l00181"></a>00181                 <span class="keywordflow">return</span> detail::tquat&lt;T, P&gt;(q.w, -q.x, -q.y, -q.z);
+<a name="l00182"></a>00182         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_gdbb01a11c8e4f4e0602f6cc649896066_icgraph.png" border="0" usemap="#group__gtc__quaternion_gdbb01a11c8e4f4e0602f6cc649896066_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_gdbb01a11c8e4f4e0602f6cc649896066_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#g105dc7d1f84cc6cf4ba6e3634c671688" title="glm::inverse" alt="" coords="160,5,251,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -267,6 +384,17 @@ template&lt;typename T, precision P, template&lt; typename, precision &gt; class
 <p>
 Returns dot product of q1 and q2, i.e., q1[0] * q2[0] + q1[1] * q2[1] + ...<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
+
+<p>Referenced by <a class="el" href="bt_gjk_pair_detector_8cpp-source.html#l00089">btGjkPairDetector::getClosestPointsNonVirtual()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00186">glm::inverse()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00402">glm::length()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00519">glm::mix()</a>, and <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00562">glm::slerp()</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g4ce8bce2b7dc8206a31cfb8e7b779b76_icgraph.png" border="0" usemap="#group__gtc__quaternion_g4ce8bce2b7dc8206a31cfb8e7b779b76_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g4ce8bce2b7dc8206a31cfb8e7b779b76_icgraph_map">
+<area shape="rect" href="classbt_gjk_pair_detector.html#bc29953dd7aee59e9ca887963c26c8c2" title="btGjkPairDetector::getClosestPointsNonVirtual" alt="" coords="267,5,557,32"><area shape="rect" href="group__gtc__quaternion.html#g105dc7d1f84cc6cf4ba6e3634c671688" title="glm::inverse" alt="" coords="123,132,213,159"><area shape="rect" href="group__gtc__quaternion.html#g286560b01bedb4e046ffb71de22464f4" title="glm::length" alt="" coords="125,183,211,209"><area shape="rect" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350" title="glm::mix" alt="" coords="132,245,204,272"><area shape="rect" href="group__gtc__quaternion.html#ga75cee4315cd8e7f15eaac3ea944106a" title="Returns the slurp interpolation between two quaternions." alt="" coords="373,360,451,387"><area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree.html#d1f6d18e60ec7be3ec03b5aa9b8875b6" title="btInverseDynamics::MultiBodyTree::addBody" alt="" coords="272,56,552,83"><area shape="rect" href="classbt_continuous_convex_collision.html#fc75a57bddfeded52781bbd65ee16f37" title="cast a convex against another convex object" alt="" coords="263,107,561,133"><area shape="rect" href="class_physics_engine.html#f951fe2e462f4b487b653199298a1bb3" title="Create a heightfield terrain shape." alt="" coords="267,157,557,184"><area shape="rect" href="class_bruteforce.html#adf9803b858d6d43bc887d7a3506fb2a" title="Loads the heightfield data." alt="" coords="324,208,500,235"><area shape="rect" href="group__gtc__quaternion.html#g396b587a47d7e611895b2c95892a2e17" title="glm::normalize" alt="" coords="359,259,465,285"><area shape="rect" href="struct_vector2.html#34d1ee65e90865a7078dbc7e80e3c7e8" title="Calculates a normalized version of the vector." alt="" coords="343,309,481,336"></map>
+</div>
 
 </div>
 </div><p>
@@ -306,6 +434,16 @@ Returns the component-wise comparison of result x == y.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00902">902</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00906"></a>00906         {
+<a name="l00907"></a>00907                 detail::tvec4&lt;bool, P&gt; Result;
+<a name="l00908"></a>00908                 <span class="keywordflow">for</span>(length_t i = 0; i &lt; x.length(); ++i)
+<a name="l00909"></a>00909                         Result[i] = x[i] == y[i];
+<a name="l00910"></a>00910                 <span class="keywordflow">return</span> Result;
+<a name="l00911"></a>00911         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gb7f90472a816598e7bc7b3606dbadcac"></a><!-- doxytag: member="glm::eulerAngles" ref="gb7f90472a816598e7bc7b3606dbadcac" args="(detail::tquat&lt; T, P &gt; const &amp;x)" -->
@@ -329,6 +467,24 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Returns euler angles, yitch as x, yaw as y, roll as z. The result is expressed in radians if GLM_FORCE_RADIANS is defined or degrees otherwise.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00632">632</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00655">glm::pitch()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00641">glm::roll()</a>, and <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00669">glm::yaw()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00635"></a>00635         {
+<a name="l00636"></a>00636                 <span class="keywordflow">return</span> detail::tvec3&lt;T, P&gt;(<a class="code" href="group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd">pitch</a>(x), <a class="code" href="group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1">yaw</a>(x), <a class="code" href="group__gtc__quaternion.html#g3f58a75c69ff56cb9c83ea237abc1414">roll</a>(x));
+<a name="l00637"></a>00637         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_gb7f90472a816598e7bc7b3606dbadcac_cgraph.png" border="0" usemap="#group__gtc__quaternion_gb7f90472a816598e7bc7b3606dbadcac_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_gb7f90472a816598e7bc7b3606dbadcac_cgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd" title="glm::pitch" alt="" coords="175,56,252,83"><area shape="rect" href="group__gtc__quaternion.html#g3f58a75c69ff56cb9c83ea237abc1414" title="glm::roll" alt="" coords="180,5,247,32"><area shape="rect" href="group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1" title="glm::yaw" alt="" coords="177,107,249,133"><area shape="rect" href="group__core__func__trigonometric.html#g459eaa7149e799125acda24938114746" title="glm::atan" alt="" coords="312,5,387,32"><area shape="rect" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="301,56,397,83"><area shape="rect" href="group__core__func__trigonometric.html#gb87756fced3e8d3f58b24b65c8166b77" title="glm::asin" alt="" coords="312,107,387,133"></map>
+</div>
 
 </div>
 </div><p>
@@ -368,6 +524,16 @@ Returns the component-wise comparison of result x &gt; y.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00876">876</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00880"></a>00880         {
+<a name="l00881"></a>00881                 detail::tvec4&lt;bool, P&gt; Result;
+<a name="l00882"></a>00882                 <span class="keywordflow">for</span>(length_t i = 0; i &lt; x.length(); ++i)
+<a name="l00883"></a>00883                         Result[i] = x[i] &gt; y[i];
+<a name="l00884"></a>00884                 <span class="keywordflow">return</span> Result;
+<a name="l00885"></a>00885         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="ge52fe15caa6daaf39c02a5d5827f8473"></a><!-- doxytag: member="glm::greaterThanEqual" ref="ge52fe15caa6daaf39c02a5d5827f8473" args="(detail::tquat&lt; T, P &gt; const &amp;x, detail::tquat&lt; T, P &gt; const &amp;y)" -->
@@ -406,6 +572,16 @@ Returns the component-wise comparison of result x &gt;= y.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00889">889</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00893"></a>00893         {
+<a name="l00894"></a>00894                 detail::tvec4&lt;bool, P&gt; Result;
+<a name="l00895"></a>00895                 <span class="keywordflow">for</span>(length_t i = 0; i &lt; x.length(); ++i)
+<a name="l00896"></a>00896                         Result[i] = x[i] &gt;= y[i];
+<a name="l00897"></a>00897                 <span class="keywordflow">return</span> Result;
+<a name="l00898"></a>00898         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g105dc7d1f84cc6cf4ba6e3634c671688"></a><!-- doxytag: member="glm::inverse" ref="g105dc7d1f84cc6cf4ba6e3634c671688" args="(detail::tquat&lt; T, P &gt; const &amp;q)" -->
@@ -430,6 +606,24 @@ template&lt;typename T, precision P&gt; </div>
 Returns the q inverse.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00186">186</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00177">glm::conjugate()</a>, and <a class="el" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">glm::dot()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00189"></a>00189         {
+<a name="l00190"></a>00190                 <span class="keywordflow">return</span> <a class="code" href="group__gtc__quaternion.html#gdbb01a11c8e4f4e0602f6cc649896066">conjugate</a>(q) / <a class="code" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">dot</a>(q, q);
+<a name="l00191"></a>00191         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g105dc7d1f84cc6cf4ba6e3634c671688_cgraph.png" border="0" usemap="#group__gtc__quaternion_g105dc7d1f84cc6cf4ba6e3634c671688_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g105dc7d1f84cc6cf4ba6e3634c671688_cgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#gdbb01a11c8e4f4e0602f6cc649896066" title="glm::conjugate" alt="" coords="144,5,251,32"><area shape="rect" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76" title="glm::dot" alt="" coords="164,56,231,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g286560b01bedb4e046ffb71de22464f4"></a><!-- doxytag: member="glm::length" ref="g286560b01bedb4e046ffb71de22464f4" args="(detail::tquat&lt; T, P &gt; const &amp;q)" -->
@@ -453,6 +647,35 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Returns the length of the quaternion.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00402">402</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">glm::dot()</a>, and <a class="el" href="func__exponential_8inl-source.html#l00219">glm::sqrt()</a>.</p>
+
+<p>Referenced by <a class="el" href="_multi_body_tree_8cpp-source.html#l00211">btInverseDynamics::MultiBodyTree::addBody()</a>, <a class="el" href="bt_continuous_convex_collision_8cpp-source.html#l00090">btContinuousConvexCollision::calcTimeOfImpact()</a>, <a class="el" href="_physics_engine_8cpp-source.html#l00233">PhysicsEngine::CreateHeightfieldTerrainShape()</a>, <a class="el" href="bt_gjk_pair_detector_8cpp-source.html#l00089">btGjkPairDetector::getClosestPointsNonVirtual()</a>, <a class="el" href="_bruteforce_8cpp-source.html#l00105">Bruteforce::LoadHeightfield()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00411">glm::normalize()</a>, and <a class="el" href="_structs_8h-source.html#l00224">Vector2::Normalized()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00405"></a>00405         {
+<a name="l00406"></a>00406                 <span class="keywordflow">return</span> <a class="code" href="group__core__func__exponential.html#gfe49b7b63045b6ab94bffbcd7e7a7bc8">glm::sqrt</a>(<a class="code" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">dot</a>(q, q));
+<a name="l00407"></a>00407         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g286560b01bedb4e046ffb71de22464f4_cgraph.png" border="0" usemap="#group__gtc__quaternion_g286560b01bedb4e046ffb71de22464f4_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g286560b01bedb4e046ffb71de22464f4_cgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76" title="glm::dot" alt="" coords="141,5,208,32"><area shape="rect" href="group__core__func__exponential.html#gfe49b7b63045b6ab94bffbcd7e7a7bc8" title="glm::sqrt" alt="" coords="139,56,211,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g286560b01bedb4e046ffb71de22464f4_icgraph.png" border="0" usemap="#group__gtc__quaternion_g286560b01bedb4e046ffb71de22464f4_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g286560b01bedb4e046ffb71de22464f4_icgraph_map">
+<area shape="rect" href="classbt_inverse_dynamics_1_1_multi_body_tree.html#d1f6d18e60ec7be3ec03b5aa9b8875b6" title="btInverseDynamics::MultiBodyTree::addBody" alt="" coords="149,5,429,32"><area shape="rect" href="classbt_continuous_convex_collision.html#fc75a57bddfeded52781bbd65ee16f37" title="cast a convex against another convex object" alt="" coords="140,56,439,83"><area shape="rect" href="class_physics_engine.html#f951fe2e462f4b487b653199298a1bb3" title="Create a heightfield terrain shape." alt="" coords="144,107,435,133"><area shape="rect" href="classbt_gjk_pair_detector.html#bc29953dd7aee59e9ca887963c26c8c2" title="btGjkPairDetector::getClosestPointsNonVirtual" alt="" coords="144,157,435,184"><area shape="rect" href="class_bruteforce.html#adf9803b858d6d43bc887d7a3506fb2a" title="Loads the heightfield data." alt="" coords="201,208,377,235"><area shape="rect" href="group__gtc__quaternion.html#g396b587a47d7e611895b2c95892a2e17" title="glm::normalize" alt="" coords="236,259,343,285"><area shape="rect" href="struct_vector2.html#34d1ee65e90865a7078dbc7e80e3c7e8" title="Calculates a normalized version of the vector." alt="" coords="220,309,359,336"></map>
+</div>
 
 </div>
 </div><p>
@@ -505,6 +728,17 @@ Linear interpolation of two quaternions. The interpolation is oriented.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00547">547</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00552"></a>00552         {
+<a name="l00553"></a>00553                 <span class="comment">// Lerp is only defined in [0, 1]</span>
+<a name="l00554"></a>00554                 assert(a &gt;= static_cast&lt;T&gt;(0));
+<a name="l00555"></a>00555                 assert(a &lt;= static_cast&lt;T&gt;(1));
+<a name="l00556"></a>00556 
+<a name="l00557"></a>00557                 <span class="keywordflow">return</span> x * (T(1) - a) + (y * a);
+<a name="l00558"></a>00558         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gf0ab4cfbc0f3e16f060fa4dd501b5dc1"></a><!-- doxytag: member="glm::lessThan" ref="gf0ab4cfbc0f3e16f060fa4dd501b5dc1" args="(detail::tquat&lt; T, P &gt; const &amp;x, detail::tquat&lt; T, P &gt; const &amp;y)" -->
@@ -542,6 +776,16 @@ Returns the component-wise comparison result of x &lt; y.<p>
   </table>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00850">850</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00854"></a>00854         {
+<a name="l00855"></a>00855                 detail::tvec4&lt;bool, P&gt; Result;
+<a name="l00856"></a>00856                 <span class="keywordflow">for</span>(length_t i = 0; i &lt; x.length(); ++i)
+<a name="l00857"></a>00857                         Result[i] = x[i] &lt; y[i];
+<a name="l00858"></a>00858                 <span class="keywordflow">return</span> Result;
+<a name="l00859"></a>00859         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -581,6 +825,16 @@ Returns the component-wise comparison of result x &lt;= y.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00863">863</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00867"></a>00867         {
+<a name="l00868"></a>00868                 detail::tvec4&lt;bool, P&gt; Result;
+<a name="l00869"></a>00869                 <span class="keywordflow">for</span>(length_t i = 0; i &lt; x.length(); ++i)
+<a name="l00870"></a>00870                         Result[i] = x[i] &lt;= y[i];
+<a name="l00871"></a>00871                 <span class="keywordflow">return</span> Result;
+<a name="l00872"></a>00872         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gbbfeeb474bc34d9c73cfdc8af78cfb8b"></a><!-- doxytag: member="glm::mat3_cast" ref="gbbfeeb474bc34d9c73cfdc8af78cfb8b" args="(detail::tquat&lt; T, P &gt; const &amp;x)" -->
@@ -605,6 +859,46 @@ template&lt;typename T, precision P&gt; </div>
 Converts a quaternion to a 3 * 3 matrix.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00683">683</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00714">glm::mat4_cast()</a>, and <a class="el" href="gtx_2quaternion_8hpp-source.html#l00150">glm::toMat3()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00686"></a>00686         {
+<a name="l00687"></a>00687                 detail::tmat3x3&lt;T, P&gt; Result(T(1));
+<a name="l00688"></a>00688                 T qxx(q.x * q.x);
+<a name="l00689"></a>00689                 T qyy(q.y * q.y);
+<a name="l00690"></a>00690                 T qzz(q.z * q.z);
+<a name="l00691"></a>00691                 T qxz(q.x * q.z);
+<a name="l00692"></a>00692                 T qxy(q.x * q.y);
+<a name="l00693"></a>00693                 T qyz(q.y * q.z);
+<a name="l00694"></a>00694                 T qwx(q.w * q.x);
+<a name="l00695"></a>00695                 T qwy(q.w * q.y);
+<a name="l00696"></a>00696                 T qwz(q.w * q.z);
+<a name="l00697"></a>00697 
+<a name="l00698"></a>00698                 Result[0][0] = 1 - 2 * (qyy +  qzz);
+<a name="l00699"></a>00699                 Result[0][1] = 2 * (qxy + qwz);
+<a name="l00700"></a>00700                 Result[0][2] = 2 * (qxz - qwy);
+<a name="l00701"></a>00701 
+<a name="l00702"></a>00702                 Result[1][0] = 2 * (qxy - qwz);
+<a name="l00703"></a>00703                 Result[1][1] = 1 - 2 * (qxx +  qzz);
+<a name="l00704"></a>00704                 Result[1][2] = 2 * (qyz + qwx);
+<a name="l00705"></a>00705 
+<a name="l00706"></a>00706                 Result[2][0] = 2 * (qxz + qwy);
+<a name="l00707"></a>00707                 Result[2][1] = 2 * (qyz - qwx);
+<a name="l00708"></a>00708                 Result[2][2] = 1 - 2 * (qxx +  qyy);
+<a name="l00709"></a>00709                 <span class="keywordflow">return</span> Result;
+<a name="l00710"></a>00710         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_gbbfeeb474bc34d9c73cfdc8af78cfb8b_icgraph.png" border="0" usemap="#group__gtc__quaternion_gbbfeeb474bc34d9c73cfdc8af78cfb8b_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_gbbfeeb474bc34d9c73cfdc8af78cfb8b_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#gbe87795cddd91732acb07830f8125a2d" title="glm::mat4_cast" alt="" coords="165,5,277,32"><area shape="rect" href="group__gtx__quaternion.html#gdff49fcff8a70186d2fe32117cb565e0" title="glm::toMat3" alt="" coords="176,56,267,83"><area shape="rect" href="group__gtx__quaternion.html#g79cbd9f8eecf24a7b9f23e4de5fcec29" title="glm::toMat4" alt="" coords="325,5,416,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gbe87795cddd91732acb07830f8125a2d"></a><!-- doxytag: member="glm::mat4_cast" ref="gbe87795cddd91732acb07830f8125a2d" args="(detail::tquat&lt; T, P &gt; const &amp;x)" -->
@@ -628,6 +922,35 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Converts a quaternion to a 4 * 4 matrix.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00714">714</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00683">glm::mat3_cast()</a>.</p>
+
+<p>Referenced by <a class="el" href="gtx_2quaternion_8hpp-source.html#l00157">glm::toMat4()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00717"></a>00717         {
+<a name="l00718"></a>00718                 <span class="keywordflow">return</span> detail::tmat4x4&lt;T, P&gt;(<a class="code" href="group__gtc__quaternion.html#gbbfeeb474bc34d9c73cfdc8af78cfb8b">mat3_cast</a>(q));
+<a name="l00719"></a>00719         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_gbe87795cddd91732acb07830f8125a2d_cgraph.png" border="0" usemap="#group__gtc__quaternion_gbe87795cddd91732acb07830f8125a2d_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_gbe87795cddd91732acb07830f8125a2d_cgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#gbbfeeb474bc34d9c73cfdc8af78cfb8b" title="glm::mat3_cast" alt="" coords="165,5,277,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_gbe87795cddd91732acb07830f8125a2d_icgraph.png" border="0" usemap="#group__gtc__quaternion_gbe87795cddd91732acb07830f8125a2d_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_gbe87795cddd91732acb07830f8125a2d_icgraph_map">
+<area shape="rect" href="group__gtx__quaternion.html#g79cbd9f8eecf24a7b9f23e4de5fcec29" title="glm::toMat4" alt="" coords="165,5,256,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -681,6 +1004,52 @@ Spherical linear interpolation of two quaternions. The interpolation is oriented
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> <p>
 - <a class="el" href="group__gtc__quaternion.html#ga75cee4315cd8e7f15eaac3ea944106a" title="Returns the slurp interpolation between two quaternions.">slerp(detail::tquat&lt;T, P&gt; const &amp; x, detail::tquat&lt;T, P&gt; const &amp; y, T const &amp; a)</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00519">519</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00119">glm::acos()</a>, <a class="el" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">glm::angle()</a>, <a class="el" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">glm::dot()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00562">glm::slerp()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00524"></a>00524         {
+<a name="l00525"></a>00525                 T cosTheta = <a class="code" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">dot</a>(x, y);
+<a name="l00526"></a>00526 
+<a name="l00527"></a>00527                 <span class="comment">// Perform a linear interpolation when cosTheta is close to 1 to avoid side effect of sin(angle) becoming a zero denominator</span>
+<a name="l00528"></a>00528                 <span class="keywordflow">if</span>(cosTheta &gt; T(1) - epsilon&lt;T&gt;())
+<a name="l00529"></a>00529                 {
+<a name="l00530"></a>00530                         <span class="comment">// Linear interpolation</span>
+<a name="l00531"></a>00531                         <span class="keywordflow">return</span> detail::tquat&lt;T, P&gt;(
+<a name="l00532"></a>00532                                 <a class="code" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350">mix</a>(x.w, y.w, a),
+<a name="l00533"></a>00533                                 <a class="code" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350">mix</a>(x.x, y.x, a),
+<a name="l00534"></a>00534                                 <a class="code" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350">mix</a>(x.y, y.y, a),
+<a name="l00535"></a>00535                                 <a class="code" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350">mix</a>(x.z, y.z, a));
+<a name="l00536"></a>00536                 }
+<a name="l00537"></a>00537                 <span class="keywordflow">else</span>
+<a name="l00538"></a>00538                 {
+<a name="l00539"></a>00539                         <span class="comment">// Essential Mathematics, page 467</span>
+<a name="l00540"></a>00540                         T <a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a> = <a class="code" href="group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078">acos</a>(cosTheta);
+<a name="l00541"></a>00541                         <span class="keywordflow">return</span> (<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>((T(1) - a) * angle) * x + <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(a * angle) * y) / <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(angle);
+<a name="l00542"></a>00542                 }
+<a name="l00543"></a>00543         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_gd53916e67eedc8bb259548504b713350_cgraph.png" border="0" usemap="#group__gtc__quaternion_gd53916e67eedc8bb259548504b713350_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_gd53916e67eedc8bb259548504b713350_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078" title="glm::acos" alt="" coords="128,5,205,32"><area shape="rect" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678" title="glm::angle" alt="" coords="127,56,207,83"><area shape="rect" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76" title="glm::dot" alt="" coords="133,107,200,133"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="133,157,200,184"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_gd53916e67eedc8bb259548504b713350_icgraph.png" border="0" usemap="#group__gtc__quaternion_gd53916e67eedc8bb259548504b713350_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_gd53916e67eedc8bb259548504b713350_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#ga75cee4315cd8e7f15eaac3ea944106a" title="Returns the slurp interpolation between two quaternions." alt="" coords="127,5,204,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g396b587a47d7e611895b2c95892a2e17"></a><!-- doxytag: member="glm::normalize" ref="g396b587a47d7e611895b2c95892a2e17" args="(detail::tquat&lt; T, P &gt; const &amp;q)" -->
@@ -704,6 +1073,28 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Returns the normalized quaternion.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00411">411</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00402">glm::length()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00414"></a>00414         {
+<a name="l00415"></a>00415                 T len = <a class="code" href="group__gtc__quaternion.html#g286560b01bedb4e046ffb71de22464f4">length</a>(q);
+<a name="l00416"></a>00416                 <span class="keywordflow">if</span>(len &lt;= T(0)) <span class="comment">// Problem</span>
+<a name="l00417"></a>00417                         <span class="keywordflow">return</span> detail::tquat&lt;T, P&gt;(1, 0, 0, 0);
+<a name="l00418"></a>00418                 T oneOverLen = T(1) / len;
+<a name="l00419"></a>00419                 <span class="keywordflow">return</span> detail::tquat&lt;T, P&gt;(q.w * oneOverLen, q.x * oneOverLen, q.y * oneOverLen, q.z * oneOverLen);
+<a name="l00420"></a>00420         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g396b587a47d7e611895b2c95892a2e17_cgraph.png" border="0" usemap="#group__gtc__quaternion_g396b587a47d7e611895b2c95892a2e17_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g396b587a47d7e611895b2c95892a2e17_cgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#g286560b01bedb4e046ffb71de22464f4" title="glm::length" alt="" coords="160,31,245,57"><area shape="rect" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76" title="glm::dot" alt="" coords="296,5,363,32"><area shape="rect" href="group__core__func__exponential.html#gfe49b7b63045b6ab94bffbcd7e7a7bc8" title="glm::sqrt" alt="" coords="293,56,365,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -743,6 +1134,16 @@ Returns the component-wise comparison of result x != y.<p>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00915">915</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00919"></a>00919         {
+<a name="l00920"></a>00920                 detail::tvec4&lt;bool, P&gt; Result;
+<a name="l00921"></a>00921                 <span class="keywordflow">for</span>(length_t i = 0; i &lt; x.length(); ++i)
+<a name="l00922"></a>00922                         Result[i] = x[i] != y[i];
+<a name="l00923"></a>00923                 <span class="keywordflow">return</span> Result;
+<a name="l00924"></a>00924         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g091250a9d0674463c4c9342563184bcd"></a><!-- doxytag: member="glm::pitch" ref="g091250a9d0674463c4c9342563184bcd" args="(detail::tquat&lt; T, P &gt; const &amp;x)" -->
@@ -766,6 +1167,40 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Returns pitch value of euler angles expressed in radians if GLM_FORCE_RADIANS is defined or degrees otherwise.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__quaternion.html" title="Extented quaternion types and functions.">GLM_GTX_quaternion</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00655">655</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00147">glm::atan()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00052">glm::degrees()</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00632">glm::eulerAngles()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00658"></a>00658         {
+<a name="l00659"></a>00659 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00660"></a>00660 <span class="preprocessor"></span>                <span class="keywordflow">return</span> T(<a class="code" href="group__core__func__trigonometric.html#g459eaa7149e799125acda24938114746">atan</a>(T(2) * (q.y * q.z + q.w * q.x), q.w * q.w - q.x * q.x - q.y * q.y + q.z * q.z));
+<a name="l00661"></a>00661 <span class="preprocessor">#else</span>
+<a name="l00662"></a>00662 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: pitch function returning degrees is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00663"></a>00663 <span class="preprocessor"></span>                <span class="keywordflow">return</span> <a class="code" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64">glm::degrees</a>(<a class="code" href="group__core__func__trigonometric.html#g459eaa7149e799125acda24938114746">atan</a>(T(2) * (q.y * q.z + q.w * q.x), q.w * q.w - q.x * q.x - q.y * q.y + q.z * q.z));
+<a name="l00664"></a>00664 <span class="preprocessor">#endif</span>
+<a name="l00665"></a>00665 <span class="preprocessor"></span>        }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g091250a9d0674463c4c9342563184bcd_cgraph.png" border="0" usemap="#group__gtc__quaternion_g091250a9d0674463c4c9342563184bcd_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g091250a9d0674463c4c9342563184bcd_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#g459eaa7149e799125acda24938114746" title="glm::atan" alt="" coords="144,5,219,32"><area shape="rect" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="133,56,229,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g091250a9d0674463c4c9342563184bcd_icgraph.png" border="0" usemap="#group__gtc__quaternion_g091250a9d0674463c4c9342563184bcd_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g091250a9d0674463c4c9342563184bcd_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#gb7f90472a816598e7bc7b3606dbadcac" title="glm::eulerAngles" alt="" coords="135,5,252,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -791,6 +1226,13 @@ template&lt;typename T, precision P&gt; </div>
 Converts a 4 * 4 matrix to a quaternion.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00790">790</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00793"></a>00793         {
+<a name="l00794"></a>00794                 <span class="keywordflow">return</span> <a class="code" href="group__gtc__quaternion.html#ge2011ef54746786bc5a93314dfcf54b5">quat_cast</a>(detail::tmat3x3&lt;T, P&gt;(m4));
+<a name="l00795"></a>00795         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="ga615768cdd09816fd42da38f484fb4c0"></a><!-- doxytag: member="glm::quat_cast" ref="ga615768cdd09816fd42da38f484fb4c0" args="(detail::tmat3x3&lt; T, P &gt; const &amp;x)" -->
@@ -815,6 +1257,93 @@ template&lt;typename T, precision P&gt; </div>
 Converts a 3 * 3 matrix to a quaternion.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00723">723</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="integer_8inl-source.html#l00140">glm::sqrt()</a>.</p>
+
+<p>Referenced by <a class="el" href="gtx_2quaternion_8hpp-source.html#l00164">glm::toQuat()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00726"></a>00726         {
+<a name="l00727"></a>00727                 T fourXSquaredMinus1 = m[0][0] - m[1][1] - m[2][2];
+<a name="l00728"></a>00728                 T fourYSquaredMinus1 = m[1][1] - m[0][0] - m[2][2];
+<a name="l00729"></a>00729                 T fourZSquaredMinus1 = m[2][2] - m[0][0] - m[1][1];
+<a name="l00730"></a>00730                 T fourWSquaredMinus1 = m[0][0] + m[1][1] + m[2][2];
+<a name="l00731"></a>00731 
+<a name="l00732"></a>00732                 <span class="keywordtype">int</span> biggestIndex = 0;
+<a name="l00733"></a>00733                 T fourBiggestSquaredMinus1 = fourWSquaredMinus1;
+<a name="l00734"></a>00734                 <span class="keywordflow">if</span>(fourXSquaredMinus1 &gt; fourBiggestSquaredMinus1)
+<a name="l00735"></a>00735                 {
+<a name="l00736"></a>00736                         fourBiggestSquaredMinus1 = fourXSquaredMinus1;
+<a name="l00737"></a>00737                         biggestIndex = 1;
+<a name="l00738"></a>00738                 }
+<a name="l00739"></a>00739                 <span class="keywordflow">if</span>(fourYSquaredMinus1 &gt; fourBiggestSquaredMinus1)
+<a name="l00740"></a>00740                 {
+<a name="l00741"></a>00741                         fourBiggestSquaredMinus1 = fourYSquaredMinus1;
+<a name="l00742"></a>00742                         biggestIndex = 2;
+<a name="l00743"></a>00743                 }
+<a name="l00744"></a>00744                 <span class="keywordflow">if</span>(fourZSquaredMinus1 &gt; fourBiggestSquaredMinus1)
+<a name="l00745"></a>00745                 {
+<a name="l00746"></a>00746                         fourBiggestSquaredMinus1 = fourZSquaredMinus1;
+<a name="l00747"></a>00747                         biggestIndex = 3;
+<a name="l00748"></a>00748                 }
+<a name="l00749"></a>00749 
+<a name="l00750"></a>00750                 T biggestVal = <a class="code" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f">sqrt</a>(fourBiggestSquaredMinus1 + T(1)) * T(0.5);
+<a name="l00751"></a>00751                 T mult = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0.25) / biggestVal;
+<a name="l00752"></a>00752 
+<a name="l00753"></a>00753                 detail::tquat&lt;T, P&gt; Result;
+<a name="l00754"></a>00754                 <span class="keywordflow">switch</span>(biggestIndex)
+<a name="l00755"></a>00755                 {
+<a name="l00756"></a>00756                 <span class="keywordflow">case</span> 0:
+<a name="l00757"></a>00757                         Result.w = biggestVal;
+<a name="l00758"></a>00758                         Result.x = (m[1][2] - m[2][1]) * mult;
+<a name="l00759"></a>00759                         Result.y = (m[2][0] - m[0][2]) * mult;
+<a name="l00760"></a>00760                         Result.z = (m[0][1] - m[1][0]) * mult;
+<a name="l00761"></a>00761                         <span class="keywordflow">break</span>;
+<a name="l00762"></a>00762                 <span class="keywordflow">case</span> 1:
+<a name="l00763"></a>00763                         Result.w = (m[1][2] - m[2][1]) * mult;
+<a name="l00764"></a>00764                         Result.x = biggestVal;
+<a name="l00765"></a>00765                         Result.y = (m[0][1] + m[1][0]) * mult;
+<a name="l00766"></a>00766                         Result.z = (m[2][0] + m[0][2]) * mult;
+<a name="l00767"></a>00767                         <span class="keywordflow">break</span>;
+<a name="l00768"></a>00768                 <span class="keywordflow">case</span> 2:
+<a name="l00769"></a>00769                         Result.w = (m[2][0] - m[0][2]) * mult;
+<a name="l00770"></a>00770                         Result.x = (m[0][1] + m[1][0]) * mult;
+<a name="l00771"></a>00771                         Result.y = biggestVal;
+<a name="l00772"></a>00772                         Result.z = (m[1][2] + m[2][1]) * mult;
+<a name="l00773"></a>00773                         <span class="keywordflow">break</span>;
+<a name="l00774"></a>00774                 <span class="keywordflow">case</span> 3:
+<a name="l00775"></a>00775                         Result.w = (m[0][1] - m[1][0]) * mult;
+<a name="l00776"></a>00776                         Result.x = (m[2][0] + m[0][2]) * mult;
+<a name="l00777"></a>00777                         Result.y = (m[1][2] + m[2][1]) * mult;
+<a name="l00778"></a>00778                         Result.z = biggestVal;
+<a name="l00779"></a>00779                         <span class="keywordflow">break</span>;
+<a name="l00780"></a>00780                         
+<a name="l00781"></a>00781                 <span class="keywordflow">default</span>:                                        <span class="comment">// Silence a -Wswitch-default warning in GCC. Should never actually get here. Assert is just for sanity.</span>
+<a name="l00782"></a>00782                         assert(<span class="keyword">false</span>);
+<a name="l00783"></a>00783                         <span class="keywordflow">break</span>;
+<a name="l00784"></a>00784                 }
+<a name="l00785"></a>00785                 <span class="keywordflow">return</span> Result;
+<a name="l00786"></a>00786         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_ga615768cdd09816fd42da38f484fb4c0_cgraph.png" border="0" usemap="#group__gtc__quaternion_ga615768cdd09816fd42da38f484fb4c0_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_ga615768cdd09816fd42da38f484fb4c0_cgraph_map">
+<area shape="rect" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f" title="glm::sqrt" alt="" coords="163,5,235,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_ga615768cdd09816fd42da38f484fb4c0_icgraph.png" border="0" usemap="#group__gtc__quaternion_ga615768cdd09816fd42da38f484fb4c0_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_ga615768cdd09816fd42da38f484fb4c0_icgraph_map">
+<area shape="rect" href="group__gtx__quaternion.html#gdc8d8daae2f8d725dae576d6655e36d2" title="glm::toQuat" alt="" coords="164,5,252,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g3f58a75c69ff56cb9c83ea237abc1414"></a><!-- doxytag: member="glm::roll" ref="g3f58a75c69ff56cb9c83ea237abc1414" args="(detail::tquat&lt; T, P &gt; const &amp;x)" -->
@@ -838,6 +1367,40 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Returns roll value of euler angles expressed in radians if GLM_FORCE_RADIANS is defined or degrees otherwise.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__quaternion.html" title="Extented quaternion types and functions.">GLM_GTX_quaternion</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00641">641</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00147">glm::atan()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00052">glm::degrees()</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00632">glm::eulerAngles()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00644"></a>00644         {
+<a name="l00645"></a>00645 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00646"></a>00646 <span class="preprocessor"></span>                <span class="keywordflow">return</span> T(<a class="code" href="group__core__func__trigonometric.html#g459eaa7149e799125acda24938114746">atan</a>(T(2) * (q.x * q.y + q.w * q.z), q.w * q.w + q.x * q.x - q.y * q.y - q.z * q.z));
+<a name="l00647"></a>00647 <span class="preprocessor">#else</span>
+<a name="l00648"></a>00648 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: roll function returning degrees is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00649"></a>00649 <span class="preprocessor"></span>                <span class="keywordflow">return</span> <a class="code" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64">glm::degrees</a>(<a class="code" href="group__core__func__trigonometric.html#g459eaa7149e799125acda24938114746">atan</a>(T(2) * (q.x * q.y + q.w * q.z), q.w * q.w + q.x * q.x - q.y * q.y - q.z * q.z));
+<a name="l00650"></a>00650 <span class="preprocessor">#endif</span>
+<a name="l00651"></a>00651 <span class="preprocessor"></span>        }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g3f58a75c69ff56cb9c83ea237abc1414_cgraph.png" border="0" usemap="#group__gtc__quaternion_g3f58a75c69ff56cb9c83ea237abc1414_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g3f58a75c69ff56cb9c83ea237abc1414_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#g459eaa7149e799125acda24938114746" title="glm::atan" alt="" coords="133,5,208,32"><area shape="rect" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="123,56,219,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g3f58a75c69ff56cb9c83ea237abc1414_icgraph.png" border="0" usemap="#group__gtc__quaternion_g3f58a75c69ff56cb9c83ea237abc1414_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g3f58a75c69ff56cb9c83ea237abc1414_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#gb7f90472a816598e7bc7b3606dbadcac" title="glm::eulerAngles" alt="" coords="124,5,241,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -884,6 +1447,45 @@ Rotates a quaternion from a vector of 3 components axis and an angle.<p>
   </table>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00600">600</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">glm::abs()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, <a class="el" href="func__geometric_8inl-source.html#l00089">glm::length()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00038">glm::radians()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00605"></a>00605         {
+<a name="l00606"></a>00606                 detail::tvec3&lt;T, P&gt; Tmp = v;
+<a name="l00607"></a>00607 
+<a name="l00608"></a>00608                 <span class="comment">// Axis of rotation must be normalised</span>
+<a name="l00609"></a>00609                 T len = <a class="code" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e">glm::length</a>(Tmp);
+<a name="l00610"></a>00610                 <span class="keywordflow">if</span>(<a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(len - T(1)) &gt; T(0.001))
+<a name="l00611"></a>00611                 {
+<a name="l00612"></a>00612                         T oneOverLen = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(1) / len;
+<a name="l00613"></a>00613                         Tmp.x *= oneOverLen;
+<a name="l00614"></a>00614                         Tmp.y *= oneOverLen;
+<a name="l00615"></a>00615                         Tmp.z *= oneOverLen;
+<a name="l00616"></a>00616                 }
+<a name="l00617"></a>00617 
+<a name="l00618"></a>00618 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00619"></a>00619 <span class="preprocessor"></span>                T <span class="keyword">const</span> AngleRad(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>);
+<a name="l00620"></a>00620 <span class="preprocessor">#else</span>
+<a name="l00621"></a>00621 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: rotate function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00622"></a>00622 <span class="preprocessor"></span>                T <span class="keyword">const</span> AngleRad = <a class="code" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d">radians</a>(<a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a>);
+<a name="l00623"></a>00623 <span class="preprocessor">#endif</span>
+<a name="l00624"></a>00624 <span class="preprocessor"></span>                T <span class="keyword">const</span> Sin = <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(AngleRad * T(0.5));
+<a name="l00625"></a>00625 
+<a name="l00626"></a>00626                 <span class="keywordflow">return</span> q * detail::tquat&lt;T, P&gt;(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(AngleRad * T(0.5)), Tmp.x * Sin, Tmp.y * Sin, Tmp.z * Sin);
+<a name="l00627"></a>00627                 <span class="comment">//return gtc::quaternion::cross(q, detail::tquat&lt;T, P&gt;(cos(AngleRad * T(0.5)), Tmp.x * fSin, Tmp.y * fSin, Tmp.z * fSin));</span>
+<a name="l00628"></a>00628         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_gca43bc964b553c2bde6a60499c1f2b50_cgraph.png" border="0" usemap="#group__gtc__quaternion_gca43bc964b553c2bde6a60499c1f2b50_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_gca43bc964b553c2bde6a60499c1f2b50_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="280,27,352,53"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="149,27,221,53"><area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="143,77,228,104"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="140,128,231,155"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="152,179,219,205"></map>
+</div>
 
 </div>
 </div><p>
@@ -938,6 +1540,51 @@ Spherical linear interpolation of two quaternions. The interpolation always take
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__quaternion.html" title="Defines a templated quaternion type and several quaternion operations.">GLM_GTC_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00562">562</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00119">glm::acos()</a>, <a class="el" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">glm::angle()</a>, <a class="el" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">glm::dot()</a>, <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00519">glm::mix()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00567"></a>00567         {
+<a name="l00568"></a>00568                 detail::tquat&lt;T, P&gt; z = y;
+<a name="l00569"></a>00569 
+<a name="l00570"></a>00570                 T cosTheta = <a class="code" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">dot</a>(x, y);
+<a name="l00571"></a>00571 
+<a name="l00572"></a>00572                 <span class="comment">// If cosTheta &lt; 0, the interpolation will take the long way around the sphere. </span>
+<a name="l00573"></a>00573                 <span class="comment">// To fix this, one quat must be negated.</span>
+<a name="l00574"></a>00574                 <span class="keywordflow">if</span> (cosTheta &lt; T(0))
+<a name="l00575"></a>00575                 {
+<a name="l00576"></a>00576                         z        = -y;
+<a name="l00577"></a>00577                         cosTheta = -cosTheta;
+<a name="l00578"></a>00578                 }
+<a name="l00579"></a>00579 
+<a name="l00580"></a>00580                 <span class="comment">// Perform a linear interpolation when cosTheta is close to 1 to avoid side effect of sin(angle) becoming a zero denominator</span>
+<a name="l00581"></a>00581                 <span class="keywordflow">if</span>(cosTheta &gt; T(1) - epsilon&lt;T&gt;())
+<a name="l00582"></a>00582                 {
+<a name="l00583"></a>00583                         <span class="comment">// Linear interpolation</span>
+<a name="l00584"></a>00584                         <span class="keywordflow">return</span> detail::tquat&lt;T, P&gt;(
+<a name="l00585"></a>00585                                 <a class="code" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350">mix</a>(x.w, z.w, a),
+<a name="l00586"></a>00586                                 <a class="code" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350">mix</a>(x.x, z.x, a),
+<a name="l00587"></a>00587                                 <a class="code" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350">mix</a>(x.y, z.y, a),
+<a name="l00588"></a>00588                                 <a class="code" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350">mix</a>(x.z, z.z, a));
+<a name="l00589"></a>00589                 }
+<a name="l00590"></a>00590                 <span class="keywordflow">else</span>
+<a name="l00591"></a>00591                 {
+<a name="l00592"></a>00592                         <span class="comment">// Essential Mathematics, page 467</span>
+<a name="l00593"></a>00593                         T <a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a> = <a class="code" href="group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078">acos</a>(cosTheta);
+<a name="l00594"></a>00594                         <span class="keywordflow">return</span> (<a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>((T(1) - a) * angle) * x + <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(a * angle) * z) / <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(angle);
+<a name="l00595"></a>00595                 }
+<a name="l00596"></a>00596         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_ga75cee4315cd8e7f15eaac3ea944106a_cgraph.png" border="0" usemap="#group__gtc__quaternion_ga75cee4315cd8e7f15eaac3ea944106a_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_ga75cee4315cd8e7f15eaac3ea944106a_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078" title="glm::acos" alt="" coords="256,5,333,32"><area shape="rect" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678" title="glm::angle" alt="" coords="255,81,335,108"><area shape="rect" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76" title="glm::dot" alt="" coords="261,144,328,171"><area shape="rect" href="group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350" title="glm::mix" alt="" coords="133,100,205,127"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="261,195,328,221"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g36e24dea9793778d8b1093daed17eba1"></a><!-- doxytag: member="glm::yaw" ref="g36e24dea9793778d8b1093daed17eba1" args="(detail::tquat&lt; T, P &gt; const &amp;x)" -->
@@ -962,10 +1609,44 @@ template&lt;typename T, precision P&gt; </div>
 Returns yaw value of euler angles expressed in radians if GLM_FORCE_RADIANS is defined or degrees otherwise.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__quaternion.html" title="Extented quaternion types and functions.">GLM_GTX_quaternion</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00669">669</a> of file <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html">quaternion.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00105">glm::asin()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00052">glm::degrees()</a>.</p>
+
+<p>Referenced by <a class="el" href="_g_l_m_2include_2_g_l_m_2gtc_2quaternion_8inl-source.html#l00632">glm::eulerAngles()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00672"></a>00672         {
+<a name="l00673"></a>00673 <span class="preprocessor">#ifdef GLM_FORCE_RADIANS</span>
+<a name="l00674"></a>00674 <span class="preprocessor"></span>                <span class="keywordflow">return</span> <a class="code" href="group__core__func__trigonometric.html#gb87756fced3e8d3f58b24b65c8166b77">asin</a>(T(-2) * (q.x * q.z - q.w * q.y));
+<a name="l00675"></a>00675 <span class="preprocessor">#else</span>
+<a name="l00676"></a>00676 <span class="preprocessor"></span><span class="preprocessor">#               pragma message("GLM: yaw function returning degrees is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")</span>
+<a name="l00677"></a>00677 <span class="preprocessor"></span>                <span class="keywordflow">return</span> <a class="code" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64">glm::degrees</a>(<a class="code" href="group__core__func__trigonometric.html#gb87756fced3e8d3f58b24b65c8166b77">asin</a>(T(-2) * (q.x * q.z - q.w * q.y)));
+<a name="l00678"></a>00678 <span class="preprocessor">#endif</span>
+<a name="l00679"></a>00679 <span class="preprocessor"></span>        }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g36e24dea9793778d8b1093daed17eba1_cgraph.png" border="0" usemap="#group__gtc__quaternion_g36e24dea9793778d8b1093daed17eba1_cgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g36e24dea9793778d8b1093daed17eba1_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gb87756fced3e8d3f58b24b65c8166b77" title="glm::asin" alt="" coords="139,5,213,32"><area shape="rect" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="128,56,224,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__quaternion_g36e24dea9793778d8b1093daed17eba1_icgraph.png" border="0" usemap="#group__gtc__quaternion_g36e24dea9793778d8b1093daed17eba1_icgraph_map" alt=""></center>
+<map name="group__gtc__quaternion_g36e24dea9793778d8b1093daed17eba1_icgraph_map">
+<area shape="rect" href="group__gtc__quaternion.html#gb7f90472a816598e7bc7b3606dbadcac" title="glm::eulerAngles" alt="" coords="129,5,247,32"></map>
+</div>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:25 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:58:40 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

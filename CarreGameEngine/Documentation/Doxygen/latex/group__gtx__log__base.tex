@@ -26,3 +26,20 @@ $<$glm/gtx/log\_\-base.hpp$>$ need to be included to use these functionalities.
 
 
 Logarithm for any base. From GLM\_\-GTX\_\-log\_\-base. 
+
+Definition at line 13 of file log\_\-base.inl.
+
+References glm::log().
+
+\begin{Code}\begin{verbatim}16         {
+17                 assert(x != genType(0));
+18 
+19                 return glm::log(x) / glm::log(base);
+20         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

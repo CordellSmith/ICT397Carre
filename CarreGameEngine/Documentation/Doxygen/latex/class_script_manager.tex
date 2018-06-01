@@ -1,0 +1,673 @@
+\hypertarget{class_script_manager}{
+\section{ScriptManager Class Reference}
+\label{class_script_manager}\index{ScriptManager@{ScriptManager}}
+}
+Script manager class that handles the loading of all scripts.  
+
+
+{\tt \#include $<$ScriptManager.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{class_script_manager_5dbb77caa57366fc35feaaecc9c11032}{LoadAllLuaScripts} ()
+\begin{CompactList}\small\item\em Load all lua scripts. \item\end{CompactList}\item 
+bool \hyperlink{class_script_manager_a44d4ea00ccf0edb0cda447e084b3efc}{LoadWindowInitLua} (int \&width, int \&height, std::string \&name, bool \&fullScreen)
+\begin{CompactList}\small\item\em Load window initilization. \item\end{CompactList}\item 
+bool \hyperlink{class_script_manager_c8b552d0d8d0550e4425fcdaebee2ced}{LoadCamInitLua} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} \&camPos, float \&yaw, float \&pitch, float \&fov, float \&near, float \&far)
+\begin{CompactList}\small\item\em Load cam initilization. \item\end{CompactList}\item 
+bool \hyperlink{class_script_manager_ad8b6e301a1718048869040f83689ec1}{LoadTexturesInitLua} ()
+\begin{CompactList}\small\item\em Load all textures. \item\end{CompactList}\item 
+bool \hyperlink{class_script_manager_6d85eb0c7b7cdb99e4e6d98300cf47c8}{LoadModelsInitLua} (std::unordered\_\-map$<$ std::string, \hyperlink{struct_models_data}{ModelsData} $>$ \&allModelData, \hyperlink{struct_models_data}{ModelsData} \&modelData)
+\begin{CompactList}\small\item\em Load all models. \item\end{CompactList}\item 
+bool \hyperlink{class_script_manager_3d83ba0f6648aad0eb0bca48665e93d4}{LoadHeightmapsInitLua} (std::unordered\_\-map$<$ std::string, \hyperlink{struct_heightmaps_data}{HeightmapsData} $>$ \&allHeightmapData, \hyperlink{struct_heightmaps_data}{HeightmapsData} \&heightmapsData)
+\begin{CompactList}\small\item\em Load all models. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static \hyperlink{class_script_manager}{ScriptManager} \& \hyperlink{class_script_manager_2d9fe01b9c07cdc83d2da4168f4f6cc5}{Instance} ()
+\begin{CompactList}\small\item\em \hyperlink{class_singleton}{Singleton} instance. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Script manager class that handles the loading of all scripts. 
+
+\begin{Desc}
+\item[Author:]Jack Matters\end{Desc}
+\begin{Desc}
+\item[Date:]14/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.0 Initial start. Created the layout of the class, using a singleton.\end{Desc}
+\begin{Desc}
+\item[Date:]14/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.1 Added LoadWindowInitLua and got it all working properly.\end{Desc}
+\begin{Desc}
+\item[Date:]17/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.2 Finally had time to work on this again. Made LoadCamInitLua and got it all working. Also started on loading of all textures at the start of program.\end{Desc}
+\begin{Desc}
+\item[Date:]17/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.3 Finished loading in of all textures.\end{Desc}
+\begin{Desc}
+\item[Date:]21/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.4 Started on loading of all models. Got loading done correctly, just need to store them.\end{Desc}
+\begin{Desc}
+\item[Date:]22/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.5 Finished loading of all model data (number of each model, positions, scales).\end{Desc}
+\begin{Desc}
+\item[Date:]23/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.6 Started loading of heightmap data. Planned to do this in ModelsInit.lua, but heightmaps have extra information that is needed, so a new function was created.\end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]2.0 Final version for submission. \end{Desc}
+
+
+Definition at line 43 of file ScriptManager.h.
+
+\subsection{Member Function Documentation}
+\hypertarget{class_script_manager_2d9fe01b9c07cdc83d2da4168f4f6cc5}{
+\index{ScriptManager@{ScriptManager}!Instance@{Instance}}
+\index{Instance@{Instance}!ScriptManager@{ScriptManager}}
+\subsubsection[Instance]{\setlength{\rightskip}{0pt plus 5cm}static {\bf ScriptManager}\& ScriptManager::Instance ()\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{class_script_manager_2d9fe01b9c07cdc83d2da4168f4f6cc5}
+
+
+\hyperlink{class_singleton}{Singleton} instance. 
+
+This function returns a singleton instance of the script manager class so that there is only one instance of a script manager.
+
+\begin{Desc}
+\item[Returns:]static \hyperlink{class_script_manager}{ScriptManager}\& \end{Desc}
+
+
+Definition at line 55 of file ScriptManager.h.
+
+\begin{Code}\begin{verbatim}56                 {
+57                         static ScriptManager instance;
+58 
+59                         return instance;
+60                 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_script_manager_5dbb77caa57366fc35feaaecc9c11032}{
+\index{ScriptManager@{ScriptManager}!LoadAllLuaScripts@{LoadAllLuaScripts}}
+\index{LoadAllLuaScripts@{LoadAllLuaScripts}!ScriptManager@{ScriptManager}}
+\subsubsection[LoadAllLuaScripts]{\setlength{\rightskip}{0pt plus 5cm}void ScriptManager::LoadAllLuaScripts ()}}
+\label{class_script_manager_5dbb77caa57366fc35feaaecc9c11032}
+
+
+Load all lua scripts. 
+
+Public function that calls a private function for each type of script to load
+
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 17 of file ScriptManager.cpp.
+
+\begin{Code}\begin{verbatim}17 {}
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_script_manager_a44d4ea00ccf0edb0cda447e084b3efc}{
+\index{ScriptManager@{ScriptManager}!LoadWindowInitLua@{LoadWindowInitLua}}
+\index{LoadWindowInitLua@{LoadWindowInitLua}!ScriptManager@{ScriptManager}}
+\subsubsection[LoadWindowInitLua]{\setlength{\rightskip}{0pt plus 5cm}bool ScriptManager::LoadWindowInitLua (int \& {\em width}, \/  int \& {\em height}, \/  std::string \& {\em name}, \/  bool \& {\em fullScreen})}}
+\label{class_script_manager_a44d4ea00ccf0edb0cda447e084b3efc}
+
+
+Load window initilization. 
+
+Loads all window initialisation variables in
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em width}]- Screen width \item[{\em height}]- Screen height \item[{\em name}]- Screen name \item[{\em fullScreen}]- True if fullscreen, false otherwise\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]bool - True if load success, else false \end{Desc}
+
+
+Definition at line 20 of file ScriptManager.cpp.
+
+\begin{Code}\begin{verbatim}21 {
+22         // Create lua state
+23         lua_State* Environment = lua_open();
+24         if (Environment == NULL)
+25         {
+26                 // Show error and exit program
+27                 std::cout << "Error Initializing lua.." << std::endl;
+28                 getchar();
+29                 exit(0);
+30         }
+31 
+32         // Load standard lua library functions
+33         luaL_openlibs(Environment);
+34 
+35         // Load and run script
+36         if (luaL_dofile(Environment, "res/scripts/WindowInit.lua"))
+37         {
+38                 std::cout << "Error opening file.." << std::endl;
+39                 getchar();
+40                 return false;
+41         }
+42 
+43         // Read from script
+44         lua_settop(Environment, 0);
+45         lua_getglobal(Environment, "screenWidth");
+46         lua_getglobal(Environment, "screenHeight");
+47         lua_getglobal(Environment, "screenTitle");
+48         lua_getglobal(Environment, "fullScreen");
+49 
+50         // Set values
+51         width = (int)lua_tonumber(Environment, 1);
+52         height = (int)lua_tonumber(Environment, 2);
+53         name = lua_tostring(Environment, 3);
+54         fullScreen = lua_toboolean(Environment, 4);
+55 
+56         // Close environment
+57         lua_close(Environment);
+58 
+59         // Return true for successful loading and reading
+60         return true;
+61 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_script_manager_c8b552d0d8d0550e4425fcdaebee2ced}{
+\index{ScriptManager@{ScriptManager}!LoadCamInitLua@{LoadCamInitLua}}
+\index{LoadCamInitLua@{LoadCamInitLua}!ScriptManager@{ScriptManager}}
+\subsubsection[LoadCamInitLua]{\setlength{\rightskip}{0pt plus 5cm}bool ScriptManager::LoadCamInitLua ({\bf glm::vec3} \& {\em camPos}, \/  float \& {\em yaw}, \/  float \& {\em pitch}, \/  float \& {\em fov}, \/  float \& {\em near}, \/  float \& {\em far})}}
+\label{class_script_manager_c8b552d0d8d0550e4425fcdaebee2ced}
+
+
+Load cam initilization. 
+
+Loads all camera initialisation variables in
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em camPos}]- Position of camera \item[{\em yaw}]- \hyperlink{class_camera}{Camera} yaw \item[{\em pitch}]- \hyperlink{class_camera}{Camera} pitch \item[{\em fov}]- \hyperlink{class_camera}{Camera} FOV \item[{\em near}]- Projection matrix near plane \item[{\em far}]- Projection matrix far plane\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]bool - True if load success, else false \end{Desc}
+
+
+Definition at line 64 of file ScriptManager.cpp.
+
+\begin{Code}\begin{verbatim}65 {
+66         // Create lua state
+67         lua_State* Environment = lua_open();
+68         if (Environment == NULL)
+69         {
+70                 // Show error and exit program
+71                 std::cout << "Error Initializing lua.." << std::endl;
+72                 getchar();
+73                 exit(0);
+74         }
+75 
+76         // Load standard lua library functions
+77         luaL_openlibs(Environment);
+78 
+79         // Load and run script
+80         if (luaL_dofile(Environment, "res/scripts/CameraInit.lua"))
+81         {
+82                 std::cout << "Error opening file.." << std::endl;
+83                 getchar();
+84                 return false;
+85         }
+86 
+87         // Read from script
+88         lua_settop(Environment, 0);
+89         lua_getglobal(Environment, "camPosX");
+90         lua_getglobal(Environment, "camPosY");
+91         lua_getglobal(Environment, "camPosZ");
+92         lua_getglobal(Environment, "yaw");
+93         lua_getglobal(Environment, "pitch");
+94         lua_getglobal(Environment, "camFOV");
+95         lua_getglobal(Environment, "camNearPlane");
+96         lua_getglobal(Environment, "camFarPlane");
+97 
+98         // Set values
+99         camPos.x = (int)lua_tonumber(Environment, 1);
+100         camPos.y = (float)lua_tonumber(Environment, 2);
+101         camPos.z = (float)lua_tonumber(Environment, 3);
+102         yaw = (float)lua_tonumber(Environment, 4);
+103         pitch = (float)lua_tonumber(Environment, 5);
+104         fov = (float)lua_tonumber(Environment, 6);
+105         near = (float)lua_tonumber(Environment, 7);
+106         far = (float)lua_tonumber(Environment, 8);
+107 
+108         // Close environment
+109         lua_close(Environment);
+110 
+111         // Return true for successful loading and reading
+112         return true;
+113 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_script_manager_ad8b6e301a1718048869040f83689ec1}{
+\index{ScriptManager@{ScriptManager}!LoadTexturesInitLua@{LoadTexturesInitLua}}
+\index{LoadTexturesInitLua@{LoadTexturesInitLua}!ScriptManager@{ScriptManager}}
+\subsubsection[LoadTexturesInitLua]{\setlength{\rightskip}{0pt plus 5cm}bool ScriptManager::LoadTexturesInitLua ()}}
+\label{class_script_manager_ad8b6e301a1718048869040f83689ec1}
+
+
+Load all textures. 
+
+Loads all textures in
+
+\begin{Desc}
+\item[Returns:]bool - True if load success, else false \end{Desc}
+
+
+Definition at line 116 of file ScriptManager.cpp.
+
+References TextureManager::Instance(), and TextureManager::LoadTexture().
+
+\begin{Code}\begin{verbatim}117 {
+118         // Create lua state
+119         lua_State* Environment = lua_open();
+120         if (Environment == NULL)
+121         {
+122                 // Show error and exit program
+123                 std::cout << "Error Initializing lua.." << std::endl;
+124                 getchar();
+125                 exit(0);
+126         }
+127 
+128         // Load standard lua library functions
+129         luaL_openlibs(Environment);
+130 
+131         // Load and run script
+132         if (luaL_dofile(Environment, "res/scripts/TexturesInit.lua"))
+133         {
+134                 std::cout << "Error opening file.." << std::endl;
+135                 getchar();
+136                 return false;
+137         }
+138 
+139         // Read from script
+140         lua_settop(Environment, 0);
+141         lua_getglobal(Environment, "AllTextures");
+142 
+143         // File path of texture to load
+144         std::string filePath;
+145 
+146         // Push to first table
+147         lua_pushnil(Environment);
+148 
+149         // Keep reading while there is data in table
+150         while (lua_next(Environment, -2) != 0)
+151         {
+152                 // Push to next table
+153                 lua_pushnil(Environment);
+154                 while (lua_next(Environment, -2) != 0)
+155                 {
+156                         // Push to next table
+157                         lua_pushnil(Environment);
+158                         while (lua_next(Environment, -2) != 0)
+159                         {
+160                                 // Get file path and load it
+161                                 filePath = lua_tostring(Environment, -1);
+162                                 TextureManager::Instance().LoadTexture(filePath);
+163 
+164                                 // Pop out of current table
+165                                 lua_pop(Environment, 1);
+166                         }
+167                         // Pop out of current table
+168                         lua_pop(Environment, 1);
+169                 }
+170                 // Pop out of current table
+171                 lua_pop(Environment, 1);
+172         }
+173 
+174         // Close environment
+175         lua_close(Environment);
+176 
+177         // Return true for successful loading and reading
+178         return true;
+179 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_script_manager_6d85eb0c7b7cdb99e4e6d98300cf47c8}{
+\index{ScriptManager@{ScriptManager}!LoadModelsInitLua@{LoadModelsInitLua}}
+\index{LoadModelsInitLua@{LoadModelsInitLua}!ScriptManager@{ScriptManager}}
+\subsubsection[LoadModelsInitLua]{\setlength{\rightskip}{0pt plus 5cm}bool ScriptManager::LoadModelsInitLua (std::unordered\_\-map$<$ std::string, {\bf ModelsData} $>$ \& {\em allModelData}, \/  {\bf ModelsData} \& {\em modelData})}}
+\label{class_script_manager_6d85eb0c7b7cdb99e4e6d98300cf47c8}
+
+
+Load all models. 
+
+Loads all models, their xyz position, and their xyz scale
+
+\begin{Desc}
+\item[Returns:]bool - True if load success, else false \end{Desc}
+
+
+Definition at line 182 of file ScriptManager.cpp.
+
+References ModelsData::filePath, and ModelsData::texFilePath.
+
+\begin{Code}\begin{verbatim}183 {
+184         // Create lua state
+185         lua_State* Environment = lua_open();
+186         if (Environment == NULL)
+187         {
+188                 // Show error and exit program
+189                 std::cout << "Error Initializing lua.." << std::endl;
+190                 getchar();
+191                 exit(0);
+192         }
+193 
+194         // Load standard lua library functions
+195         luaL_openlibs(Environment);
+196 
+197         // Load and run script
+198         if (luaL_dofile(Environment, "res/scripts/ModelsInit.lua"))
+199         {
+200                 std::cout << "Error opening file.." << std::endl;
+201                 getchar();
+202                 return false;
+203         }
+204 
+205         // Read from script
+206         lua_settop(Environment, 0);
+207         lua_getglobal(Environment, "AllModels");
+208 
+209         // File path of model to load
+210         std::string filePath;
+211 
+212         // Name of current model being read in
+213         std::string modelName;
+214         std::string texFilePath;
+215 
+216         // Different types of data being read in
+217         std::string values[9];
+218         values[0] = "filePath";
+219         values[1] = "texFilePath";
+220         values[2] = "scaleX";
+221         values[3] = "scaleY";
+222         values[4] = "scaleZ";
+223         values[5] = "posX";
+224         values[6] = "posY";
+225         values[7] = "posZ";
+226         values[8] = "AI";
+227 
+228         //temp values
+229         std::string temp;
+230         std::vector<float> tempData;
+231         glm::vec3 tempPos;
+232         glm::vec3 tempScale;
+233         bool isAI = false;
+234 
+235         // Push to first table
+236         lua_pushnil(Environment);
+237 
+238         // Keep reading while there is data in table
+239         while (lua_next(Environment, -2) != 0)
+240         {
+241                 // Get current model name being read in
+242                 modelName = lua_tostring(Environment, -2);
+243                 
+244                 // Push to next table
+245                 lua_pushnil(Environment);
+246                 while (lua_next(Environment, -2) != 0)
+247                 {
+248                         // Push to next table
+249                         lua_pushnil(Environment);
+250                         while (lua_next(Environment, -2) != 0)
+251                         {
+252                                 // Load data into correct variable
+253                                 temp = lua_tostring(Environment, -2);
+254                                 if (temp.compare(values[0]) == 0)
+255                                         filePath = lua_tostring(Environment, -1);
+256                                 if (temp.compare(values[1]) == 0)
+257                                         texFilePath = lua_tostring(Environment, -1);
+258                                 if (temp.compare(values[2]) == 0)
+259                                         tempScale.x = lua_tonumber(Environment, -1);
+260                                 if (temp.compare(values[3]) == 0)
+261                                         tempScale.y = lua_tonumber(Environment, -1);
+262                                 if (temp.compare(values[4]) == 0)
+263                                         tempScale.z = lua_tonumber(Environment, -1);
+264                                 if (temp.compare(values[5]) == 0)
+265                                         tempPos.x = lua_tonumber(Environment, -1);
+266                                 if (temp.compare(values[6]) == 0)
+267                                         tempPos.y = lua_tonumber(Environment, -1);
+268                                 if (temp.compare(values[7]) == 0)
+269                                         tempPos.z = lua_tonumber(Environment, -1);
+270                                 if (temp.compare(values[8]) == 0)
+271                                         isAI = lua_toboolean(Environment, -1);
+272 
+273                                 // Pop out of current table
+274                                 lua_pop(Environment, 1);
+275                         }       
+276                         // Pass in filePath to modelData
+277                         modelData.filePath = filePath;
+278                         modelData.texFilePath = texFilePath;
+279 
+280                         // Pass in model scales and push to modelData
+281                         tempData.push_back(tempScale.x);
+282                         tempData.push_back(tempScale.y);
+283                         tempData.push_back(tempScale.z);
+284                         modelData.modelScales.push_back(tempData);
+285 
+286                         // Clear for next batch of data
+287                         tempData.clear();
+288 
+289                         // Pass in positions and push to modelData
+290                         tempData.push_back(tempPos.x);
+291                         tempData.push_back(tempPos.y);
+292                         tempData.push_back(tempPos.z);
+293                         modelData.modelPositions.push_back(tempData);
+294 
+295                         // Clear for next batch of data
+296                         tempData.clear();
+297 
+298                         // Pass in if AI or not
+299                         modelData.isAI.push_back(isAI);
+300 
+301                         // Pop out of current table
+302                         lua_pop(Environment, 1);
+303                 }
+304                 // Add to map
+305                 allModelData[modelName] = modelData;
+306 
+307                 // Clear vectors of any data before adding more, and reset string
+308                 modelData.modelPositions.clear();
+309                 modelData.modelScales.clear();
+310                 modelData.filePath = "";
+311                 modelData.isAI.clear();
+312 
+313                 // Pop out of current table
+314                 lua_pop(Environment, 1);
+315         }
+316 
+317         // Close environment
+318         lua_close(Environment);
+319 
+320         // Return true for successful loading and reading
+321         return true;
+322 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_script_manager_3d83ba0f6648aad0eb0bca48665e93d4}{
+\index{ScriptManager@{ScriptManager}!LoadHeightmapsInitLua@{LoadHeightmapsInitLua}}
+\index{LoadHeightmapsInitLua@{LoadHeightmapsInitLua}!ScriptManager@{ScriptManager}}
+\subsubsection[LoadHeightmapsInitLua]{\setlength{\rightskip}{0pt plus 5cm}bool ScriptManager::LoadHeightmapsInitLua (std::unordered\_\-map$<$ std::string, {\bf HeightmapsData} $>$ \& {\em allHeightmapData}, \/  {\bf HeightmapsData} \& {\em heightmapsData})}}
+\label{class_script_manager_3d83ba0f6648aad0eb0bca48665e93d4}
+
+
+Load all models. 
+
+Loads all models, their xyz position, and their xyz scale
+
+\begin{Desc}
+\item[Returns:]bool - True if load success, else false \end{Desc}
+
+
+Definition at line 325 of file ScriptManager.cpp.
+
+References HeightmapsData::filePath, HeightmapsData::fileSize, HeightmapsData::modelPositions, HeightmapsData::modelScales, and HeightmapsData::texFilePath.
+
+\begin{Code}\begin{verbatim}326 {
+327         // Create lua state
+328         lua_State* Environment = lua_open();
+329         if (Environment == NULL)
+330         {
+331                 // Show error and exit program
+332                 std::cout << "Error Initializing lua.." << std::endl;
+333                 getchar();
+334                 exit(0);
+335         }
+336 
+337         // Load standard lua library functions
+338         luaL_openlibs(Environment);
+339 
+340         // Load and run script
+341         if (luaL_dofile(Environment, "res/scripts/TerrainsInit.lua"))
+342         {
+343                 std::cout << "Error opening file.." << std::endl;
+344                 getchar();
+345                 return false;
+346         }
+347 
+348         // Read from script
+349         lua_settop(Environment, 0);
+350         lua_getglobal(Environment, "AllHeightmaps");
+351 
+352         // File path of heightmap and texture applied
+353         std::string filePath;
+354         std::string texFilePath;
+355         std::string heightfieldType;
+356 
+357         // Different types of data being read in
+358         std::string values[9];
+359         values[0] = "filePath";
+360         values[1] = "texFilePath";
+361         values[2] = "fileSize";
+362         values[3] = "scaleX";
+363         values[4] = "scaleY";
+364         values[5] = "scaleZ";
+365         values[6] = "posX";
+366         values[7] = "posY";
+367         values[8] = "posZ";
+368 
+369         //temp values
+370         std::string temp;
+371         glm::vec3 tempPos;
+372         glm::vec3 tempScale;
+373         int size;
+374 
+375         // Push to first table
+376         lua_pushnil(Environment);
+377 
+378         // Keep reading while there is data in table
+379         while (lua_next(Environment, -2) != 0)
+380         {
+381                 // Get type of heightfield
+382                 heightfieldType = lua_tostring(Environment, -2);
+383 
+384                 // Push to next table
+385                 lua_pushnil(Environment);
+386                 while (lua_next(Environment, -2) != 0)
+387                 {
+388                         // Push to next table
+389                         lua_pushnil(Environment);
+390                         while (lua_next(Environment, -2) != 0)
+391                         {
+392                                 // Load data into correct variable
+393                                 temp = lua_tostring(Environment, -2);
+394                                 if (temp.compare(values[0]) == 0)
+395                                         filePath = lua_tostring(Environment, -1);
+396                                 if (temp.compare(values[1]) == 0)
+397                                         texFilePath = lua_tostring(Environment, -1);
+398                                 if (temp.compare(values[2]) == 0)
+399                                         size = lua_tonumber(Environment, -1);
+400                                 if (temp.compare(values[3]) == 0)
+401                                         tempScale.x = lua_tonumber(Environment, -1);
+402                                 if (temp.compare(values[4]) == 0)
+403                                         tempScale.y = lua_tonumber(Environment, -1);
+404                                 if (temp.compare(values[5]) == 0)
+405                                         tempScale.z = lua_tonumber(Environment, -1);
+406                                 if (temp.compare(values[6]) == 0)
+407                                         tempPos.x = lua_tonumber(Environment, -1);
+408                                 if (temp.compare(values[7]) == 0)
+409                                         tempPos.y = lua_tonumber(Environment, -1);
+410                                 if (temp.compare(values[8]) == 0)
+411                                         tempPos.z = lua_tonumber(Environment, -1);
+412 
+413                                 // Pop out of current table
+414                                 lua_pop(Environment, 1);
+415                         }
+416                         // Pass in filePath and texFilePath and size to heightmapsData
+417                         heightmapsData.filePath = filePath;
+418                         heightmapsData.texFilePath = texFilePath;
+419                         heightmapsData.fileSize = size;
+420 
+421                         // Pass in model scales and push to modelData
+422                         heightmapsData.modelScales.push_back(tempScale.x);
+423                         heightmapsData.modelScales.push_back(tempScale.y);
+424                         heightmapsData.modelScales.push_back(tempScale.z);
+425 
+426                         // Pass in positions and push to modelData
+427                         heightmapsData.modelPositions.push_back(tempPos.x);
+428                         heightmapsData.modelPositions.push_back(tempPos.y);
+429                         heightmapsData.modelPositions.push_back(tempPos.z);
+430 
+431                         // Add to map (should only be ONE terrain heightfield, and this is used to set cam height later)
+432                         if(heightfieldType == "terrain")
+433                                 allHeightmapData[heightfieldType] = heightmapsData;
+434                         else
+435                                 allHeightmapData[filePath] = heightmapsData;
+436 
+437                         // Clear vectors of any data before adding more, and reset strings
+438                         heightmapsData.modelPositions.clear();
+439                         heightmapsData.modelScales.clear();
+440                         heightmapsData.fileSize = 0;
+441                         heightmapsData.filePath = "";
+442                         heightmapsData.texFilePath = "";
+443 
+444                         // Pop out of current table
+445                         lua_pop(Environment, 1);
+446                 }
+447                 // Pop out of current table
+448                 lua_pop(Environment, 1);
+449         }
+450 
+451         // Close environment
+452         lua_close(Environment);
+453 
+454         // Return true for successful loading and reading
+455         return true;
+456 }\end{verbatim}
+\end{Code}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/ScriptManager.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/src/ScriptManager.cpp\end{CompactItemize}

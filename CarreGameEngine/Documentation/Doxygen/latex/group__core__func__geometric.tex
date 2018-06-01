@@ -49,7 +49,27 @@ Returns the cross product of x and y.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/cross.xml}{\tt GLSL cross man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
-\hypertarget{group__core__func__geometric_gd21e00cab9f8b4eb6d1214a16dee06c7}{
+
+
+Definition at line 217 of file func\_\-geometric.inl.
+
+Referenced by glm::intersectLineTriangle(), glm::intersectRayTriangle(), glm::leftHanded(), glm::lookAt(), glm::mixedProduct(), glm::orientation(), glm::orientedAngle(), glm::rightHanded(), glm::rotation(), and glm::triangleNormal().
+
+\begin{Code}\begin{verbatim}221         {
+222                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'cross' only accept floating-point inputs");
+223 
+224                 return detail::tvec3<T, P>(
+225                         x.y * y.z - y.y * x.z,
+226                         x.z * y.x - y.z * x.x,
+227                         x.x * y.y - y.x * x.y);
+228         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__geometric_gd21e00cab9f8b4eb6d1214a16dee06c7}{
 \index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!distance@{distance}}
 \index{distance@{distance}!core_func_geometric@{core\_\-func\_\-geometric}}
 \subsubsection[distance]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::distance (genType const \& {\em p0}, \/  genType const \& {\em p1})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -67,7 +87,28 @@ Returns the distance betwwen p0 and p1, i.e., length(p0 - p1).
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/distance.xml}{\tt GLSL distance man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
-\hypertarget{group__core__func__geometric_g93acafc6005a3433ccf1dc3fa4230d51}{
+
+
+Definition at line 128 of file func\_\-geometric.inl.
+
+References glm::length().
+
+Referenced by glm::closestPointOnLine(), btConvexPlaneCollisionAlgorithm::collideSingleContact(), btGjkPairDetector::getClosestPointsNonVirtual(), glm::intersectRaySphere(), and btConvexPlaneCollisionAlgorithm::processCollision().
+
+\begin{Code}\begin{verbatim}132         {
+133                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'distance' only accept floating-point inputs");
+134 
+135                 return length(p1 - p0);
+136         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__core__func__geometric_g93acafc6005a3433ccf1dc3fa4230d51}{
 \index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!dot@{dot}}
 \index{dot@{dot}!core_func_geometric@{core\_\-func\_\-geometric}}
 \subsubsection[dot]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::dot (genType const \& {\em x}, \/  genType const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -103,7 +144,23 @@ Returns the dot product of x and y, i.e., result = x $\ast$ y.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/dot.xml}{\tt GLSL dot man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
-\hypertarget{group__core__func__geometric_ga4cdf87f6fd660e7086776d9abb6cbae}{
+
+
+Definition at line 188 of file func\_\-geometric.inl.
+
+Referenced by glm::areOrthogonal(), glm::areOrthonormal(), glm::closestPointOnLine(), glm::faceforward(), glm::fastNormalizeDot(), glm::intersectLineSphere(), glm::intersectLineTriangle(), glm::intersectRayPlane(), glm::intersectRaySphere(), glm::intersectRayTriangle(), glm::inverse(), glm::leftHanded(), glm::lerp(), glm::linearGradient(), glm::lookAt(), glm::luminosity(), glm::mixedProduct(), glm::normalizeDot(), glm::orientation(), glm::orientedAngle(), glm::orthonormalize(), glm::proj(), glm::reflect(), glm::refract(), glm::rightHanded(), glm::rotation(), and glm::shortMix().
+
+\begin{Code}\begin{verbatim}192         {
+193                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'dot' only accept floating-point inputs");
+194                 return detail::compute_dot<vecType, T, P>::call(x, y);
+195         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__geometric_ga4cdf87f6fd660e7086776d9abb6cbae}{
 \index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!faceforward@{faceforward}}
 \index{faceforward@{faceforward}!core_func_geometric@{core\_\-func\_\-geometric}}
 \subsubsection[faceforward]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::faceforward (genType const \& {\em N}, \/  genType const \& {\em I}, \/  genType const \& {\em Nref})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -121,7 +178,22 @@ If dot(Nref, I) $<$ 0.0, return N, otherwise, return -N.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/faceforward.xml}{\tt GLSL faceforward man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
-\hypertarget{group__core__func__geometric_gd73a94d9c967e619e670156356e93b7e}{
+
+
+Definition at line 282 of file func\_\-geometric.inl.
+
+References glm::dot().
+
+\begin{Code}\begin{verbatim}287         {
+288                 return dot(Nref, I) < 0 ? N : -N;
+289         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__geometric_gd73a94d9c967e619e670156356e93b7e}{
 \index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!length@{length}}
 \index{length@{length}!core_func_geometric@{core\_\-func\_\-geometric}}
 \subsubsection[length]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::length (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -139,7 +211,28 @@ Returns the length of x, i.e., sqrt(x $\ast$ x).
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/length.xml}{\tt GLSL length man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
-\hypertarget{group__core__func__geometric_g0feb2bb89ee2743677ad2cb84544bd83}{
+
+
+Definition at line 89 of file func\_\-geometric.inl.
+
+References glm::abs().
+
+Referenced by glm::areOrthogonal(), glm::ballRand(), glm::diskRand(), glm::distance(), glm::exp(), glm::isNormalized(), glm::isNull(), glm::l2Norm(), glm::log(), glm::normalize(), glm::polar(), glm::rotate(), and glm::row().
+
+\begin{Code}\begin{verbatim}92         {
+93                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'length' only accept floating-point inputs");
+94 
+95                 return abs(x);
+96         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__core__func__geometric_g0feb2bb89ee2743677ad2cb84544bd83}{
 \index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!normalize@{normalize}}
 \index{normalize@{normalize}!core_func_geometric@{core\_\-func\_\-geometric}}
 \subsubsection[normalize]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::normalize (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -152,7 +245,24 @@ Returns a vector in the same direction as x but with length of 1.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/normalize.xml}{\tt GLSL normalize man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
-\hypertarget{group__core__func__geometric_gc973ce2bc49f749a469d3ed2e2ac5a54}{
+
+
+Definition at line 233 of file func\_\-geometric.inl.
+
+Referenced by glm::axisAngleMatrix(), glm::fastMix(), glm::intersectLineSphere(), glm::lookAt(), glm::orthonormalize(), glm::rotate(), glm::rotation(), and glm::triangleNormal().
+
+\begin{Code}\begin{verbatim}236         {
+237                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'normalize' only accept floating-point inputs");
+238 
+239                 return x < genType(0) ? genType(-1) : genType(1);
+240         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__geometric_gc973ce2bc49f749a469d3ed2e2ac5a54}{
 \index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!reflect@{reflect}}
 \index{reflect@{reflect}!core_func_geometric@{core\_\-func\_\-geometric}}
 \subsubsection[reflect]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::reflect (genType const \& {\em I}, \/  genType const \& {\em N})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -170,7 +280,22 @@ For the incident vector I and surface orientation N, returns the reflection dire
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/reflect.xml}{\tt GLSL reflect man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
-\hypertarget{group__core__func__geometric_g2020e01c134ebe03c1690306ff93af53}{
+
+
+Definition at line 294 of file func\_\-geometric.inl.
+
+References glm::dot().
+
+\begin{Code}\begin{verbatim}298         {
+299                 return I - N * dot(N, I) * genType(2);
+300         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__geometric_g2020e01c134ebe03c1690306ff93af53}{
 \index{core\_\-func\_\-geometric@{core\_\-func\_\-geometric}!refract@{refract}}
 \index{refract@{refract}!core_func_geometric@{core\_\-func\_\-geometric}}
 \subsubsection[refract]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ T, P $>$ glm::refract (vecType$<$ T, P $>$ const \& {\em I}, \/  vecType$<$ T, P $>$ const \& {\em N}, \/  T const \& {\em eta})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -188,3 +313,26 @@ For the incident vector I and surface normal N, and the ratio of indices of refr
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/refract.xml}{\tt GLSL refract man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.5 Geometric Functions} \end{Desc}
+
+
+Definition at line 323 of file func\_\-geometric.inl.
+
+References glm::dot(), and glm::sqrt().
+
+\begin{Code}\begin{verbatim}328         {
+329                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'refract' only accept floating-point inputs");
+330 
+331                 T dotValue = dot(N, I);
+332                 T k = T(1) - eta * eta * (T(1) - dotValue * dotValue);
+333                 if(k < T(0))
+334                         return vecType<T, P>(0);
+335                 else
+336                         return eta * I - (eta * dotValue + std::sqrt(k)) * N;
+337         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

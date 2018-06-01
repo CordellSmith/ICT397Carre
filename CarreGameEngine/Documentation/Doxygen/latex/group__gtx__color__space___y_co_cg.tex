@@ -33,6 +33,21 @@ $<$glm/gtx/color\_\-space\_\-YCoCg.hpp$>$ need to be included to use these funct
 
 Convert a color from RGB color space to YCoCg color space. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__color__space___y_co_cg}{GLM\_\-GTX\_\-color\_\-space\_\-YCoCg} \end{Desc}
+
+
+Definition at line 14 of file color\_\-space\_\-YCoCg.inl.
+
+\begin{Code}\begin{verbatim}17         {
+18                 detail::tvec3<T, P> result;
+19                 result.x/*Y */ =   rgbColor.r / T(4) + rgbColor.g / T(2) + rgbColor.b / T(4);
+20                 result.y/*Co*/ =   rgbColor.r / T(2) + rgbColor.g * T(0) - rgbColor.b / T(2);
+21                 result.z/*Cg*/ = - rgbColor.r / T(4) + rgbColor.g / T(2) - rgbColor.b / T(4);
+22                 return result;
+23         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__color__space___y_co_cg_gda2dcb113c669093c7099dc58f26fb7c}{
 \index{gtx\_\-color\_\-space\_\-YCoCg@{gtx\_\-color\_\-space\_\-YCoCg}!rgb2YCoCgR@{rgb2YCoCgR}}
 \index{rgb2YCoCgR@{rgb2YCoCgR}!gtx_color_space_YCoCg@{gtx\_\-color\_\-space\_\-YCoCg}}
@@ -44,6 +59,21 @@ Convert a color from RGB color space to YCoCgR color space. \begin{Desc}
 \item[See also:]\char`\"{}YCoCg-R: A Color Space with RGB Reversibility and Low Dynamic Range\char`\"{} 
 
 \hyperlink{group__gtx__color__space___y_co_cg}{GLM\_\-GTX\_\-color\_\-space\_\-YCoCg} \end{Desc}
+
+
+Definition at line 27 of file color\_\-space\_\-YCoCg.inl.
+
+\begin{Code}\begin{verbatim}30         {
+31                 detail::tvec3<T, P> result;
+32                 result.x/*Y */ = rgbColor.g / T(2) + (rgbColor.r + rgbColor.b) / T(4);
+33                 result.y/*Co*/ = rgbColor.r - rgbColor.b;
+34                 result.z/*Cg*/ = rgbColor.g - (rgbColor.r + rgbColor.b) / T(2);
+35                 return result;
+36         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__color__space___y_co_cg_g68b8a9930f61718c6e819245e04f52a1}{
 \index{gtx\_\-color\_\-space\_\-YCoCg@{gtx\_\-color\_\-space\_\-YCoCg}!YCoCg2rgb@{YCoCg2rgb}}
 \index{YCoCg2rgb@{YCoCg2rgb}!gtx_color_space_YCoCg@{gtx\_\-color\_\-space\_\-YCoCg}}
@@ -53,6 +83,21 @@ Convert a color from RGB color space to YCoCgR color space. \begin{Desc}
 
 Convert a color from YCoCg color space to RGB color space. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__color__space___y_co_cg}{GLM\_\-GTX\_\-color\_\-space\_\-YCoCg} \end{Desc}
+
+
+Definition at line 40 of file color\_\-space\_\-YCoCg.inl.
+
+\begin{Code}\begin{verbatim}43         {
+44                 detail::tvec3<T, P> result;
+45                 result.r = YCoCgColor.x + YCoCgColor.y - YCoCgColor.z;
+46                 result.g = YCoCgColor.x                + YCoCgColor.z;
+47                 result.b = YCoCgColor.x - YCoCgColor.y - YCoCgColor.z;
+48                 return result;
+49         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__color__space___y_co_cg_gecf0b1d1103554b9ec4e274f8284f7ad}{
 \index{gtx\_\-color\_\-space\_\-YCoCg@{gtx\_\-color\_\-space\_\-YCoCg}!YCoCgR2rgb@{YCoCgR2rgb}}
 \index{YCoCgR2rgb@{YCoCgR2rgb}!gtx_color_space_YCoCg@{gtx\_\-color\_\-space\_\-YCoCg}}
@@ -64,3 +109,19 @@ Convert a color from YCoCgR color space to RGB color space. \begin{Desc}
 \item[See also:]\char`\"{}YCoCg-R: A Color Space with RGB Reversibility and Low Dynamic Range\char`\"{} 
 
 \hyperlink{group__gtx__color__space___y_co_cg}{GLM\_\-GTX\_\-color\_\-space\_\-YCoCg} \end{Desc}
+
+
+Definition at line 53 of file color\_\-space\_\-YCoCg.inl.
+
+\begin{Code}\begin{verbatim}56         {
+57                 detail::tvec3<T, P> result;
+58                 T tmp = YCoCgRColor.x - (YCoCgRColor.z / T(2));
+59                 result.g = YCoCgRColor.z + tmp;
+60                 result.b = tmp - (YCoCgRColor.y / T(2));
+61                 result.r = result.b + YCoCgRColor.y;
+62                 return result;
+63         }
+\end{verbatim}
+\end{Code}
+
+

@@ -1,0 +1,36 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btHashMap\< Key, Value \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashString, int \>"];
+  Node2 [label="btHashMap\< btHashString, int \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node1 -> Node3 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashKey\< btTriIndex \>, btTriIndex \>"];
+  Node3 [label="btHashMap\< btHashKey\< btTriIndex \>, btTriIndex \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node1 -> Node4 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashPtr, btTriangleInfoMap * \>"];
+  Node4 [label="btHashMap\< btHashPtr, btTriangleInfoMap * \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node1 -> Node5 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashInt, int \>"];
+  Node5 [label="btHashMap\< btHashInt, int \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node1 -> Node6 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashPtr, btCollisionObject * \>"];
+  Node6 [label="btHashMap\< btHashPtr, btCollisionObject * \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node1 -> Node7 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashInt, btTriangleInfo \>"];
+  Node7 [label="btHashMap\< btHashInt, btTriangleInfo \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node7 -> Node8 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="btTriangleInfoMap",height=0.2,width=0.4,color="black",URL="$structbt_triangle_info_map.html",tooltip="The btTriangleInfoMap stores edge angle information for some triangles. You can compute..."];
+  Node1 -> Node9 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashPtr, btOptimizedBvh * \>"];
+  Node9 [label="btHashMap\< btHashPtr, btOptimizedBvh * \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node1 -> Node10 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashString, btCollisionObject * \>"];
+  Node10 [label="btHashMap\< btHashString, btCollisionObject * \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node1 -> Node11 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashString, btCollisionShape * \>"];
+  Node11 [label="btHashMap\< btHashString, btCollisionShape * \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node1 -> Node12 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashPtr, void void **typedef void *typedef void *typedef void *typedef * \>"];
+  Node12 [label="btHashMap\< btHashPtr, void void **typedef void *typedef void *typedef void *typedef * \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node1 -> Node13 [dir=back,color="orange",fontsize=10,style="dashed",label="\< const btHashPtr, char * \>"];
+  Node13 [label="btHashMap\< const btHashPtr, char * \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node1 -> Node14 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashPtr, btCollisionShape * \>"];
+  Node14 [label="btHashMap\< btHashPtr, btCollisionShape * \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+  Node1 -> Node15 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btHashPtr, btPointerUid \>"];
+  Node15 [label="btHashMap\< btHashPtr, btPointerUid \>",height=0.2,width=0.4,color="black",URL="$classbt_hash_map.html"];
+}

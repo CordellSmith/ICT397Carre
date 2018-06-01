@@ -30,6 +30,21 @@ Defines functions to access rows or columns of a matrix easily. $<$glm/gtc/matri
 
 Set a specific column to a matrix. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__access}{GLM\_\-GTC\_\-matrix\_\-access} \end{Desc}
+
+
+Definition at line 64 of file matrix\_\-access.inl.
+
+\begin{Code}\begin{verbatim}69         {
+70                 assert(index >= 0 && index < m.length());
+71 
+72                 genType Result = m;
+73                 Result[index] = x;
+74                 return Result;
+75         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__matrix__access_g8cd6c920268e4e2eb90ed2b30665d9e5}{
 \index{gtc\_\-matrix\_\-access@{gtc\_\-matrix\_\-access}!column@{column}}
 \index{column@{column}!gtc_matrix_access@{gtc\_\-matrix\_\-access}}
@@ -39,6 +54,19 @@ Set a specific column to a matrix. \begin{Desc}
 
 Get a specific column of a matrix. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__access}{GLM\_\-GTC\_\-matrix\_\-access} \end{Desc}
+
+
+Definition at line 79 of file matrix\_\-access.inl.
+
+\begin{Code}\begin{verbatim}83         {
+84                 assert(index >= 0 && index < m.length());
+85 
+86                 return m[index];
+87         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__matrix__access_g4409b9c0604f3ed3e6f116b6680eae44}{
 \index{gtc\_\-matrix\_\-access@{gtc\_\-matrix\_\-access}!row@{row}}
 \index{row@{row}!gtc_matrix_access@{gtc\_\-matrix\_\-access}}
@@ -48,7 +76,31 @@ Get a specific column of a matrix. \begin{Desc}
 
 Set a specific row to a matrix. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__access}{GLM\_\-GTC\_\-matrix\_\-access} \end{Desc}
-\hypertarget{group__gtc__matrix__access_g46e78366e4057c64e554cc442e407cca}{
+
+
+Definition at line 33 of file matrix\_\-access.inl.
+
+References glm::length().
+
+Referenced by btInverseDynamics::MultiBodyTree::MultiBodyImpl::calculateMassMatrix(), and btMLCPSolver::createMLCPFast().
+
+\begin{Code}\begin{verbatim}38         {
+39                 assert(index >= 0 && index < m[0].length());
+40 
+41                 genType Result = m;
+42                 for(length_t i = 0; i < m.length(); ++i)
+43                         Result[i][index] = x[i];
+44                 return Result;
+45         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtc__matrix__access_g46e78366e4057c64e554cc442e407cca}{
 \index{gtc\_\-matrix\_\-access@{gtc\_\-matrix\_\-access}!row@{row}}
 \index{row@{row}!gtc_matrix_access@{gtc\_\-matrix\_\-access}}
 \subsubsection[row]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType::row\_\-type glm::row (genType const \& {\em m}, \/  length\_\-t const \& {\em index})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -57,3 +109,24 @@ Set a specific row to a matrix. \begin{Desc}
 
 Get a specific row of a matrix. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__access}{GLM\_\-GTC\_\-matrix\_\-access} \end{Desc}
+
+
+Definition at line 49 of file matrix\_\-access.inl.
+
+References glm::length().
+
+\begin{Code}\begin{verbatim}53         {
+54                 assert(index >= 0 && index < m[0].length());
+55 
+56                 typename genType::row_type Result;
+57                 for(length_t i = 0; i < m.length(); ++i)
+58                         Result[i] = m[i][index];
+59                 return Result;
+60         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

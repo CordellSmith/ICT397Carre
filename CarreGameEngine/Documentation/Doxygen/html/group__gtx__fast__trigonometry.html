@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_fast_trigonometry</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_fast_trigonometry</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -80,6 +80,24 @@ template&lt;typename T&gt; </div>
 
 <p>
 Faster than the common acos function but less accurate. Defined between -2pi and 2pi. From GLM_GTX_fast_trigonometry extension. 
+<p>Definition at line <a class="el" href="fast__trigonometry_8inl-source.html#l00050">50</a> of file <a class="el" href="fast__trigonometry_8inl-source.html">fast_trigonometry.inl</a>.</p>
+
+<p>References <a class="el" href="fast__trigonometry_8inl-source.html#l00041">glm::fastAsin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00051"></a>00051         {
+<a name="l00052"></a>00052                 <span class="keywordflow">return</span> T(1.5707963267948966192313216916398) - <a class="code" href="group__gtx__fast__trigonometry.html#g8c49efe243e7ad6ed58a3bcf07b560a0">fastAsin</a>(x); <span class="comment">//(PI / 2)</span>
+<a name="l00053"></a>00053         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__fast__trigonometry_g7f5301bad6bd3a073be8882ac1f4f5d4_cgraph.png" border="0" usemap="#group__gtx__fast__trigonometry_g7f5301bad6bd3a073be8882ac1f4f5d4_cgraph_map" alt=""></center>
+<map name="group__gtx__fast__trigonometry_g7f5301bad6bd3a073be8882ac1f4f5d4_cgraph_map">
+<area shape="rect" href="group__gtx__fast__trigonometry.html#g8c49efe243e7ad6ed58a3bcf07b560a0" title="glm::fastAsin" alt="" coords="156,5,252,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g8c49efe243e7ad6ed58a3bcf07b560a0"></a><!-- doxytag: member="glm::fastAsin" ref="g8c49efe243e7ad6ed58a3bcf07b560a0" args="(const T &amp;angle)" -->
@@ -102,6 +120,24 @@ template&lt;typename T&gt; </div>
 
 <p>
 Faster than the common asin function but less accurate. Defined between -2pi and 2pi. From GLM_GTX_fast_trigonometry extension. 
+<p>Definition at line <a class="el" href="fast__trigonometry_8inl-source.html#l00041">41</a> of file <a class="el" href="fast__trigonometry_8inl-source.html">fast_trigonometry.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="fast__trigonometry_8inl-source.html#l00050">glm::fastAcos()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00042"></a>00042         {
+<a name="l00043"></a>00043                 <span class="keywordflow">return</span> x + (x * x * x * T(0.166666667)) + (x * x * x * x * x * T(0.075)) + (x * x * x * x * x * x * x * T(0.0446428571)) + (x * x * x * x * x * x * x * x * x * T(0.0303819444));<span class="comment">// + (x * x * x * x * x * x * x * x * x * x * x * T(0.022372159));</span>
+<a name="l00044"></a>00044         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__fast__trigonometry_g8c49efe243e7ad6ed58a3bcf07b560a0_icgraph.png" border="0" usemap="#group__gtx__fast__trigonometry_g8c49efe243e7ad6ed58a3bcf07b560a0_icgraph_map" alt=""></center>
+<map name="group__gtx__fast__trigonometry_g8c49efe243e7ad6ed58a3bcf07b560a0_icgraph_map">
+<area shape="rect" href="group__gtx__fast__trigonometry.html#g7f5301bad6bd3a073be8882ac1f4f5d4" title="glm::fastAcos" alt="" coords="152,5,253,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g0f10c61865500e4cfe86ad070e5d6312"></a><!-- doxytag: member="glm::fastAtan" ref="g0f10c61865500e4cfe86ad070e5d6312" args="(const T &amp;angle)" -->
@@ -124,6 +160,13 @@ template&lt;typename T&gt; </div>
 
 <p>
 Faster than the common atan function but less accurate. Defined between -2pi and 2pi. From GLM_GTX_fast_trigonometry extension. 
+<p>Definition at line <a class="el" href="fast__trigonometry_8inl-source.html#l00068">68</a> of file <a class="el" href="fast__trigonometry_8inl-source.html">fast_trigonometry.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00069"></a>00069         {
+<a name="l00070"></a>00070                 <span class="keywordflow">return</span> x - (x * x * x * T(0.333333333333)) + (x * x * x * x * x * T(0.2)) - (x * x * x * x * x * x * x * T(0.1428571429)) + (x * x * x * x * x * x * x * x * x * T(0.111111111111)) - (x * x * x * x * x * x * x * x * x * x * x * T(0.0909090909));
+<a name="l00071"></a>00071         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gc6605aad8dce8278938f58b6e68b036a"></a><!-- doxytag: member="glm::fastAtan" ref="gc6605aad8dce8278938f58b6e68b036a" args="(const T &amp;y, const T &amp;x)" -->
@@ -155,6 +198,25 @@ template&lt;typename T&gt; </div>
 
 <p>
 Faster than the common atan function but less accurate. Defined between -2pi and 2pi. From GLM_GTX_fast_trigonometry extension. 
+<p>Definition at line <a class="el" href="fast__trigonometry_8inl-source.html#l00059">59</a> of file <a class="el" href="fast__trigonometry_8inl-source.html">fast_trigonometry.inl</a>.</p>
+
+<p>References <a class="el" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">glm::abs()</a>, and <a class="el" href="group__core__func__common.html#g74ce53889485c33ac9d81d2b27165c80">glm::sign()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00060"></a>00060         {
+<a name="l00061"></a>00061                 T sgn = <a class="code" href="group__core__func__common.html#g74ce53889485c33ac9d81d2b27165c80">sign</a>(y) * <a class="code" href="group__core__func__common.html#g74ce53889485c33ac9d81d2b27165c80">sign</a>(x);
+<a name="l00062"></a>00062                 <span class="keywordflow">return</span> <a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(<a class="code" href="group__gtx__fast__trigonometry.html#g0f10c61865500e4cfe86ad070e5d6312">fastAtan</a>(y / x)) * sgn;
+<a name="l00063"></a>00063         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__fast__trigonometry_gc6605aad8dce8278938f58b6e68b036a_cgraph.png" border="0" usemap="#group__gtx__fast__trigonometry_gc6605aad8dce8278938f58b6e68b036a_cgraph_map" alt=""></center>
+<map name="group__gtx__fast__trigonometry_gc6605aad8dce8278938f58b6e68b036a_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="153,5,225,32"><area shape="rect" href="group__core__func__common.html#g74ce53889485c33ac9d81d2b27165c80" title="glm::sign" alt="" coords="152,56,227,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g40743124db6dc2a59de72aa81bc1cf93"></a><!-- doxytag: member="glm::fastCos" ref="g40743124db6dc2a59de72aa81bc1cf93" args="(const T &amp;angle)" -->
@@ -177,6 +239,13 @@ template&lt;typename T&gt; </div>
 
 <p>
 Faster than the common cos function but less accurate. Defined between -2pi and 2pi. From GLM_GTX_fast_trigonometry extension. 
+<p>Definition at line <a class="el" href="fast__trigonometry_8inl-source.html#l00023">23</a> of file <a class="el" href="fast__trigonometry_8inl-source.html">fast_trigonometry.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00024"></a>00024         {
+<a name="l00025"></a>00025                 <span class="keywordflow">return</span> T(1) - (x * x * T(0.5)) + (x * x * x * x * T(0.041666666666)) - (x * x * x * x * x * x * T(0.00138888888888));
+<a name="l00026"></a>00026         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g2f7a014f1fb9b16ede8b0cac0beba9f1"></a><!-- doxytag: member="glm::fastSin" ref="g2f7a014f1fb9b16ede8b0cac0beba9f1" args="(const T &amp;angle)" -->
@@ -199,6 +268,13 @@ template&lt;typename T&gt; </div>
 
 <p>
 Faster than the common sin function but less accurate. Defined between -2pi and 2pi. From GLM_GTX_fast_trigonometry extension. 
+<p>Definition at line <a class="el" href="fast__trigonometry_8inl-source.html#l00014">14</a> of file <a class="el" href="fast__trigonometry_8inl-source.html">fast_trigonometry.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00015"></a>00015         {
+<a name="l00016"></a>00016                 <span class="keywordflow">return</span> x - ((x * x * x) / T(6)) + ((x * x * x * x * x) / T(120)) - ((x * x * x * x * x * x * x) / T(5040));
+<a name="l00017"></a>00017         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gd182bf6a962a33e47d5f6daf06ca3d6b"></a><!-- doxytag: member="glm::fastTan" ref="gd182bf6a962a33e47d5f6daf06ca3d6b" args="(const T &amp;angle)" -->
@@ -221,10 +297,17 @@ template&lt;typename T&gt; </div>
 
 <p>
 Faster than the common tan function but less accurate. Defined between -2pi and 2pi. From GLM_GTX_fast_trigonometry extension. 
+<p>Definition at line <a class="el" href="fast__trigonometry_8inl-source.html#l00032">32</a> of file <a class="el" href="fast__trigonometry_8inl-source.html">fast_trigonometry.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00033"></a>00033         {
+<a name="l00034"></a>00034                 <span class="keywordflow">return</span> x + (x * x * x * T(0.3333333333)) + (x * x * x * x * x * T(0.1333333333333)) + (x * x * x * x * x * x * x * T(0.0539682539));
+<a name="l00035"></a>00035         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:32 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:20 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btSubsimplexConvexCast Class Reference</title>
+<title>Assignment2 - OOber Taxi: btSubsimplexConvexCast Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>btSubsimplexConvexCast Class Reference</h1><!-- doxytag: class="btSubsimplexConvexCast" --><!-- doxytag: inherits="btConvexCast" --><code>#include &lt;btSubSimplexConvexCast.h&gt;</code>
+<h1>btSubsimplexConvexCast Class Reference</h1><!-- doxytag: class="btSubsimplexConvexCast" --><!-- doxytag: inherits="btConvexCast" --><code>#include &lt;<a class="el" href="bt_sub_simplex_convex_cast_8h-source.html">btSubSimplexConvexCast.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btSubsimplexConvexCast:</div>
@@ -50,7 +50,9 @@ Collaboration diagram for btSubsimplexConvexCast:</div>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-<a class="el" href="classbt_subsimplex_convex_cast.html">btSubsimplexConvexCast</a> implements Gino van den Bergens' paper "Ray Casting against bteral Convex Objects with Application to Continuous Collision Detection" GJK based Ray Cast, optimized version Objects should not start in overlap, otherwise results are not defined. <hr><h2>Member Function Documentation</h2>
+<a class="el" href="classbt_subsimplex_convex_cast.html">btSubsimplexConvexCast</a> implements Gino van den Bergens' paper "Ray Casting against bteral Convex Objects with Application to Continuous Collision Detection" GJK based Ray Cast, optimized version Objects should not start in overlap, otherwise results are not defined. 
+<p>Definition at line <a class="el" href="bt_sub_simplex_convex_cast_8h-source.html#l00028">28</a> of file <a class="el" href="bt_sub_simplex_convex_cast_8h-source.html">btSubSimplexConvexCast.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="93202199b82c9d2f3074617f8db72e17"></a><!-- doxytag: member="btSubsimplexConvexCast::calcTimeOfImpact" ref="93202199b82c9d2f3074617f8db72e17" args="(const btTransform &amp;fromA, const btTransform &amp;toA, const btTransform &amp;fromB, const btTransform &amp;toB, CastResult &amp;result)" -->
 <div class="memitem">
 <div class="memproto">
@@ -101,12 +103,138 @@ take relative motion<p>
 Just like regular GJK only add the vertex if it isn't already (close) to current vertex, it would lead to divisions by zero and NaN etc. 
 <p>Implements <a class="el" href="classbt_convex_cast.html#baf0f25a8cccfcafdaabada83c8d2bfb">btConvexCast</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_sub_simplex_convex_cast_8cpp-source.html#l00038">38</a> of file <a class="el" href="bt_sub_simplex_convex_cast_8cpp-source.html">btSubSimplexConvexCast.cpp</a>.</p>
+
+<p>References <a class="el" href="constants_8inl-source.html#l00034">glm::epsilon()</a>, <a class="el" href="bt_convex_cast_8h-source.html#l00059">btConvexCast::CastResult::m_allowedPenetration</a>, <a class="el" href="bt_convex_cast_8h-source.html#l00057">btConvexCast::CastResult::m_fraction</a>, <a class="el" href="bt_convex_cast_8h-source.html#l00056">btConvexCast::CastResult::m_hitPoint</a>, and <a class="el" href="bt_convex_cast_8h-source.html#l00055">btConvexCast::CastResult::m_normal</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00044"></a>00044 {
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046         m_simplexSolver-&gt;reset();
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048         btVector3 linVelA,linVelB;
+<a name="l00049"></a>00049         linVelA = toA.getOrigin()-fromA.getOrigin();
+<a name="l00050"></a>00050         linVelB = toB.getOrigin()-fromB.getOrigin();
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         btScalar lambda = btScalar(0.);
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054         btTransform interpolatedTransA = fromA;
+<a name="l00055"></a>00055         btTransform interpolatedTransB = fromB;
+<a name="l00056"></a>00056 
+<a name="l00058"></a>00058         btVector3 r = (linVelA-linVelB);
+<a name="l00059"></a>00059         btVector3 v;
+<a name="l00060"></a>00060         
+<a name="l00061"></a>00061         btVector3 supVertexA = fromA(m_convexA-&gt;localGetSupportingVertex(-r*fromA.getBasis()));
+<a name="l00062"></a>00062         btVector3 supVertexB = fromB(m_convexB-&gt;localGetSupportingVertex(r*fromB.getBasis()));
+<a name="l00063"></a>00063         v = supVertexA-supVertexB;
+<a name="l00064"></a>00064         <span class="keywordtype">int</span> maxIter = MAX_ITERATIONS;
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066         btVector3 n;
+<a name="l00067"></a>00067         n.setValue(btScalar(0.),btScalar(0.),btScalar(0.));
+<a name="l00068"></a>00068         
+<a name="l00069"></a>00069         btVector3 c;
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071         
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074         btScalar dist2 = v.length2();
+<a name="l00075"></a>00075 <span class="preprocessor">#ifdef BT_USE_DOUBLE_PRECISION</span>
+<a name="l00076"></a>00076 <span class="preprocessor"></span>        btScalar <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a> = btScalar(0.0001);
+<a name="l00077"></a>00077 <span class="preprocessor">#else</span>
+<a name="l00078"></a>00078 <span class="preprocessor"></span>        btScalar epsilon = btScalar(0.0001);
+<a name="l00079"></a>00079 <span class="preprocessor">#endif //BT_USE_DOUBLE_PRECISION</span>
+<a name="l00080"></a>00080 <span class="preprocessor"></span>        btVector3       w,p;
+<a name="l00081"></a>00081         btScalar VdotR;
+<a name="l00082"></a>00082         
+<a name="l00083"></a>00083         <span class="keywordflow">while</span> ( (dist2 &gt; epsilon) &amp;&amp; maxIter--)
+<a name="l00084"></a>00084         {
+<a name="l00085"></a>00085                 supVertexA = interpolatedTransA(m_convexA-&gt;localGetSupportingVertex(-v*interpolatedTransA.getBasis()));
+<a name="l00086"></a>00086                 supVertexB = interpolatedTransB(m_convexB-&gt;localGetSupportingVertex(v*interpolatedTransB.getBasis()));
+<a name="l00087"></a>00087                 w = supVertexA-supVertexB;
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089                 btScalar VdotW = v.dot(w);
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091                 <span class="keywordflow">if</span> (lambda &gt; btScalar(1.0))
+<a name="l00092"></a>00092                 {
+<a name="l00093"></a>00093                         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00094"></a>00094                 }
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096                 <span class="keywordflow">if</span> ( VdotW &gt; btScalar(0.))
+<a name="l00097"></a>00097                 {
+<a name="l00098"></a>00098                         VdotR = v.dot(r);
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100                         <span class="keywordflow">if</span> (VdotR &gt;= -(SIMD_EPSILON*SIMD_EPSILON))
+<a name="l00101"></a>00101                                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00102"></a>00102                         <span class="keywordflow">else</span>
+<a name="l00103"></a>00103                         {
+<a name="l00104"></a>00104                                 lambda = lambda - VdotW / VdotR;
+<a name="l00105"></a>00105                                 <span class="comment">//interpolate to next lambda</span>
+<a name="l00106"></a>00106                                 <span class="comment">//      x = s + lambda * r;</span>
+<a name="l00107"></a>00107                                 interpolatedTransA.getOrigin().setInterpolate3(fromA.getOrigin(),toA.getOrigin(),lambda);
+<a name="l00108"></a>00108                                 interpolatedTransB.getOrigin().setInterpolate3(fromB.getOrigin(),toB.getOrigin(),lambda);
+<a name="l00109"></a>00109                                 <span class="comment">//m_simplexSolver-&gt;reset();</span>
+<a name="l00110"></a>00110                                 <span class="comment">//check next line</span>
+<a name="l00111"></a>00111                                  w = supVertexA-supVertexB;
+<a name="l00112"></a>00112                                 
+<a name="l00113"></a>00113                                 n = v;
+<a name="l00114"></a>00114                                 
+<a name="l00115"></a>00115                         }
+<a name="l00116"></a>00116                 } 
+<a name="l00118"></a>00118                 <span class="keywordflow">if</span> (!m_simplexSolver-&gt;inSimplex(w))
+<a name="l00119"></a>00119                         m_simplexSolver-&gt;addVertex( w, supVertexA , supVertexB);
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121                 <span class="keywordflow">if</span> (m_simplexSolver-&gt;closest(v))
+<a name="l00122"></a>00122                 {
+<a name="l00123"></a>00123                         dist2 = v.length2();
+<a name="l00124"></a>00124                         
+<a name="l00125"></a>00125                         <span class="comment">//todo: check this normal for validity</span>
+<a name="l00126"></a>00126                         <span class="comment">//n=v;</span>
+<a name="l00127"></a>00127                         <span class="comment">//printf("V=%f , %f, %f\n",v[0],v[1],v[2]);</span>
+<a name="l00128"></a>00128                         <span class="comment">//printf("DIST2=%f\n",dist2);</span>
+<a name="l00129"></a>00129                         <span class="comment">//printf("numverts = %i\n",m_simplexSolver-&gt;numVertices());</span>
+<a name="l00130"></a>00130                 } <span class="keywordflow">else</span>
+<a name="l00131"></a>00131                 {
+<a name="l00132"></a>00132                         dist2 = btScalar(0.);
+<a name="l00133"></a>00133                 } 
+<a name="l00134"></a>00134         }
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136         <span class="comment">//int numiter = MAX_ITERATIONS - maxIter;</span>
+<a name="l00137"></a>00137 <span class="comment">//      printf("number of iterations: %d", numiter);</span>
+<a name="l00138"></a>00138         
+<a name="l00139"></a>00139         <span class="comment">//don't report a time of impact when moving 'away' from the hitnormal</span>
+<a name="l00140"></a>00140         
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142         result.m_fraction = lambda;
+<a name="l00143"></a>00143         <span class="keywordflow">if</span> (n.length2() &gt;= (SIMD_EPSILON*SIMD_EPSILON))
+<a name="l00144"></a>00144                 result.m_normal = n.normalized();
+<a name="l00145"></a>00145         <span class="keywordflow">else</span>
+<a name="l00146"></a>00146                 result.m_normal = btVector3(btScalar(0.0), btScalar(0.0), btScalar(0.0));
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148         <span class="comment">//don't report time of impact for motion away from the contact normal (or causes minor penetration)</span>
+<a name="l00149"></a>00149         <span class="keywordflow">if</span> (result.m_normal.dot(r)&gt;=-result.m_allowedPenetration)
+<a name="l00150"></a>00150                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152         btVector3 hitA,hitB;
+<a name="l00153"></a>00153         m_simplexSolver-&gt;compute_points(hitA,hitB);
+<a name="l00154"></a>00154         result.m_hitPoint=hitB;
+<a name="l00155"></a>00155         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00156"></a>00156 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_subsimplex_convex_cast_93202199b82c9d2f3074617f8db72e17_cgraph.png" border="0" usemap="#classbt_subsimplex_convex_cast_93202199b82c9d2f3074617f8db72e17_cgraph_map" alt=""></center>
+<map name="classbt_subsimplex_convex_cast_93202199b82c9d2f3074617f8db72e17_cgraph_map">
+<area shape="rect" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b" title="glm::epsilon" alt="" coords="337,5,428,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/<a class="el" href="bt_sub_simplex_convex_cast_8h-source.html">btSubSimplexConvexCast.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/NarrowPhaseCollision/<a class="el" href="bt_sub_simplex_convex_cast_8cpp-source.html">btSubSimplexConvexCast.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:59 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:02:06 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

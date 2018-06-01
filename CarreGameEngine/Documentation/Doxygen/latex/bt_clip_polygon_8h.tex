@@ -1,10 +1,14 @@
 \hypertarget{bt_clip_polygon_8h}{
-\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btClipPolygon.h File Reference}
-\label{bt_clip_polygon_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btClipPolygon.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btClipPolygon.h}}
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btClipPolygon.h File Reference}
+\label{bt_clip_polygon_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btClipPolygon.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btClipPolygon.h}}
 }
 {\tt \#include \char`\"{}LinearMath/btTransform.h\char`\"{}}\par
 {\tt \#include \char`\"{}LinearMath/btGeometryUtil.h\char`\"{}}\par
-\subsection*{Functions}
+
+
+Include dependency graph for btClipPolygon.h:
+
+This graph shows which files directly or indirectly include this file:\subsection*{Functions}
 \begin{CompactItemize}
 \item 
 SIMD\_\-FORCE\_\-INLINE void \hyperlink{bt_clip_polygon_8h_1f80a57f63e11130a715c2bf42c389cb}{bt\_\-vec\_\-blend} (btVector3 \&vr, const btVector3 \&va, const btVector3 \&vb, btScalar blend\_\-factor)
@@ -25,6 +29,8 @@ SIMD\_\-FORCE\_\-INLINE int \hyperlink{bt_clip_polygon_8h_42c9a19345a31093d177bd
 \item[Author:]Francisco Leon Najera \end{Desc}
 
 
+Definition in file \hyperlink{bt_clip_polygon_8h-source}{btClipPolygon.h}.
+
 \subsection{Function Documentation}
 \hypertarget{bt_clip_polygon_8h_afbc2084e879509f77c833957061ba5c}{
 \index{btClipPolygon.h@{btClipPolygon.h}!bt\_\-plane\_\-clip\_\-polygon@{bt\_\-plane\_\-clip\_\-polygon}}
@@ -37,7 +43,58 @@ Clips a polygon by a plane.
 
 \begin{Desc}
 \item[Returns:]The count of the clipped counts \end{Desc}
-\hypertarget{bt_clip_polygon_8h_42c9a19345a31093d177bde5692d39e9}{
+
+
+Definition at line 72 of file btClipPolygon.h.
+
+References bt\_\-plane\_\-clip\_\-polygon\_\-collect().
+
+\begin{Code}\begin{verbatim}77 {
+78     int clipped_count = 0;
+79 
+80 
+81     //clip first point
+82         btScalar firstdist = bt_distance_point_plane(plane,polygon_points[0]);;
+83         if(!(firstdist>SIMD_EPSILON))
+84         {
+85                 clipped[clipped_count] = polygon_points[0];
+86                 clipped_count++;
+87         }
+88 
+89         btScalar olddist = firstdist;
+90         for(int i=1;i<polygon_point_count;i++)
+91         {
+92                 btScalar dist = bt_distance_point_plane(plane,polygon_points[i]);
+93 
+94                 bt_plane_clip_polygon_collect(
+95                                                 polygon_points[i-1],polygon_points[i],
+96                                                 olddist,
+97                                                 dist,
+98                                                 clipped,
+99                                                 clipped_count);
+100 
+101 
+102                 olddist = dist;
+103         }
+104 
+105         //RETURN TO FIRST  point
+106 
+107         bt_plane_clip_polygon_collect(
+108                                         polygon_points[polygon_point_count-1],polygon_points[0],
+109                                         olddist,
+110                                         firstdist,
+111                                         clipped,
+112                                         clipped_count);
+113 
+114         return clipped_count;
+115 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{bt_clip_polygon_8h_42c9a19345a31093d177bde5692d39e9}{
 \index{btClipPolygon.h@{btClipPolygon.h}!bt\_\-plane\_\-clip\_\-triangle@{bt\_\-plane\_\-clip\_\-triangle}}
 \index{bt\_\-plane\_\-clip\_\-triangle@{bt\_\-plane\_\-clip\_\-triangle}!btClipPolygon.h@{btClipPolygon.h}}
 \subsubsection[bt\_\-plane\_\-clip\_\-triangle]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE int bt\_\-plane\_\-clip\_\-triangle (const btVector4 \& {\em plane}, \/  const btVector3 \& {\em point0}, \/  const btVector3 \& {\em point1}, \/  const btVector3 \& {\em point2}, \/  btVector3 $\ast$ {\em clipped})}}
@@ -53,7 +110,67 @@ Clips a polygon by a plane.
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The count of the clipped counts \end{Desc}
-\hypertarget{bt_clip_polygon_8h_1f80a57f63e11130a715c2bf42c389cb}{
+
+
+Definition at line 122 of file btClipPolygon.h.
+
+References bt\_\-plane\_\-clip\_\-polygon\_\-collect().
+
+\begin{Code}\begin{verbatim}129 {
+130     int clipped_count = 0;
+131 
+132     //clip first point0
+133         btScalar firstdist = bt_distance_point_plane(plane,point0);;
+134         if(!(firstdist>SIMD_EPSILON))
+135         {
+136                 clipped[clipped_count] = point0;
+137                 clipped_count++;
+138         }
+139 
+140         // point 1
+141         btScalar olddist = firstdist;
+142         btScalar dist = bt_distance_point_plane(plane,point1);
+143 
+144         bt_plane_clip_polygon_collect(
+145                                         point0,point1,
+146                                         olddist,
+147                                         dist,
+148                                         clipped,
+149                                         clipped_count);
+150 
+151         olddist = dist;
+152 
+153 
+154         // point 2
+155         dist = bt_distance_point_plane(plane,point2);
+156 
+157         bt_plane_clip_polygon_collect(
+158                                         point1,point2,
+159                                         olddist,
+160                                         dist,
+161                                         clipped,
+162                                         clipped_count);
+163         olddist = dist;
+164 
+165 
+166 
+167         //RETURN TO FIRST  point0
+168         bt_plane_clip_polygon_collect(
+169                                         point2,point0,
+170                                         olddist,
+171                                         firstdist,
+172                                         clipped,
+173                                         clipped_count);
+174 
+175         return clipped_count;
+176 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{bt_clip_polygon_8h_1f80a57f63e11130a715c2bf42c389cb}{
 \index{btClipPolygon.h@{btClipPolygon.h}!bt\_\-vec\_\-blend@{bt\_\-vec\_\-blend}}
 \index{bt\_\-vec\_\-blend@{bt\_\-vec\_\-blend}!btClipPolygon.h@{btClipPolygon.h}}
 \subsubsection[bt\_\-vec\_\-blend]{\setlength{\rightskip}{0pt plus 5cm}SIMD\_\-FORCE\_\-INLINE void bt\_\-vec\_\-blend (btVector3 \& {\em vr}, \/  const btVector3 \& {\em va}, \/  const btVector3 \& {\em vb}, \/  btScalar {\em blend\_\-factor})}}
@@ -61,3 +178,18 @@ Clips a polygon by a plane.
 
 
 Vector blending Takes two vectors a, b, blends them together 
+
+Definition at line 38 of file btClipPolygon.h.
+
+Referenced by bt\_\-plane\_\-clip\_\-polygon\_\-collect().
+
+\begin{Code}\begin{verbatim}39 {
+40         vr = (1-blend_factor)*va + blend_factor*vb;
+41 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:

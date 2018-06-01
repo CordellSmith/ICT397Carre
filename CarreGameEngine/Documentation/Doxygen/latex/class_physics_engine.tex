@@ -26,7 +26,7 @@ enum \hyperlink{class_physics_engine_f9cf664e8df4f9a518448aa122957077}{RIGID\_\-
 \begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
 \hyperlink{class_physics_engine_e5f076ee99bbfdbc79ab2d27366d8476}{$\sim$PhysicsEngine} ()
 \begin{CompactList}\small\item\em De-constructor. \item\end{CompactList}\item 
-void \hyperlink{class_physics_engine_758fafb4fe8d295b3710644de4d22d4a}{CreateStaticRigidBody} ()
+void \hyperlink{class_physics_engine_2f5bb835773d64a6ff21933d5137c427}{CreateStaticRigidBody} (btVector3 \&pos, std::string type)
 \begin{CompactList}\small\item\em Creates static rigid body. \item\end{CompactList}\item 
 void \hyperlink{class_physics_engine_549c7e9116d06e8f7599497c3c4f6fd1}{CreateDynamicRigidBody} (btVector3 \&pos)
 \begin{CompactList}\small\item\em Creates dynamic rigid body. \item\end{CompactList}\item 
@@ -58,24 +58,30 @@ This software is provided 'as-is', without any express or implied warranty. In n
 \begin{Desc}
 \item[Date:]05/04/2018 \end{Desc}
 \begin{Desc}
-\item[Version:]2.0 Altered code to draw a square dynamic rigid body instead of a sphere for testing purposes. Started work on camera collision.\end{Desc}
+\item[Version:]1.1 Altered code to draw a square dynamic rigid body instead of a sphere for testing purposes. Started work on camera collision.\end{Desc}
 \begin{Desc}
 \item[Date:]06/04/2018 \end{Desc}
 \begin{Desc}
-\item[Version:]2.1 Tidied up camera (player object) code. Force is now applied in direction camera was moved, calculations are done, then camera is moved to updated position. Still needs some work, but will do for now.\end{Desc}
+\item[Version:]1.2 Tidied up camera (player object) code. Force is now applied in direction camera was moved, calculations are done, then camera is moved to updated position. Still needs some work, but will do for now.\end{Desc}
 \begin{Desc}
 \item[Date:]18/04/2018 \end{Desc}
 \begin{Desc}
-\item[Version:]3.0 Big gap between versions due to other units requirements. Set up functions for initializing all object rigid bodies. Will need changing.\end{Desc}
+\item[Version:]1.3 Big gap between versions due to other units requirements. Set up functions for initializing all object rigid bodies. Will need changing.\end{Desc}
 \begin{Desc}
 \item[Date:]19/04/2018 \end{Desc}
 \begin{Desc}
-\item[Version:]3.1 Added testing for heightfield terrain shape. Got it loading and working, but without a visual terrain it is not possible to see if it is working correctly or not. Have commented it out until I am able to keep working on it. Also added some more doxygen comments.\end{Desc}
+\item[Version:]1.4 Added testing for heightfield terrain shape. Got it loading and working, but without a visual terrain it is not possible to see if it is working correctly or not. Have commented it out until I am able to keep working on it. Also added some more doxygen comments.\end{Desc}
 \begin{Desc}
 \item[Date:]20/04/2018 \end{Desc}
 \begin{Desc}
-\item[Version:]3.2 Did some research and found out that objects become inactive after a set time of inactivity. Created new function to ensure all objects are always active. This fixed the camera getting stuck, as well as other objects getting stuck in the air. \end{Desc}
+\item[Version:]1.5 Did some research and found out that objects become inactive after a set time of inactivity. Created new function to ensure all objects are always active. This fixed the camera getting stuck, as well as other objects getting stuck in the air.\end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]2.0 Final version for submission. \end{Desc}
 
+
+Definition at line 56 of file PhysicsEngine.h.
 
 \subsection{Member Enumeration Documentation}
 \hypertarget{class_physics_engine_f9cf664e8df4f9a518448aa122957077}{
@@ -115,6 +121,21 @@ PLANE}
 
 
 
+Definition at line 65 of file PhysicsEngine.h.
+
+\begin{Code}\begin{verbatim}66                 {
+67                         CAMERA = 1,                     
+68                         BOX = 2,                        
+69                         SPHERE = 3,                     
+70                         HEIGHTFIELD = 4,        
+71                         PLANE = 5                       
+72                 }RIGID_BODY_TYPE;
+\end{verbatim}
+\end{Code}
+
+
+
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_physics_engine_7fc9180ea453680df0b863fa157c5b92}{
 \index{PhysicsEngine@{PhysicsEngine}!PhysicsEngine@{PhysicsEngine}}
@@ -129,6 +150,47 @@ This is the default constructor
 
 \begin{Desc}
 \item[Returns:]null \end{Desc}
+
+
+Definition at line 12 of file PhysicsEngine.cpp.
+
+\begin{Code}\begin{verbatim}13 {
+14         // Collision configuration contains default setup for memory, collision setup
+15         btDefaultCollisionConfiguration* collisionConfiguration = new btDefaultCollisionConfiguration();
+16 
+17         // Use the default collision dispatcher
+18         btCollisionDispatcher* dispatcher = new btCollisionDispatcher(collisionConfiguration);
+19 
+20         // A good general purpose broadphase
+21         btBroadphaseInterface* overlappingPairCache = new btDbvtBroadphase();
+22 
+23         // The default constraint solver
+24         btSequentialImpulseConstraintSolver* solver = new btSequentialImpulseConstraintSolver;
+25 
+26         // The dynamic world
+27         m_dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
+28 
+29         // Set the gravity
+30         m_dynamicsWorld->setGravity(btVector3(0, 0, 0));
+31 
+32         // Initialize all objects to static
+33         m_isDynamic = false;
+34 
+35         // Initialize player object location
+36         m_playerObject.setZero();
+37 
+38         m_oldForce.setZero();
+39         m_newForce.setZero();
+40 
+41 
+42         /*btIDebugDraw tempp;
+43         m_dynamicsWorld->setDebugDrawer(btIDebugDraw::DebugDrawModes::DBG_MAX_DEBUG_DRAW_MODE);
+44         m_dynamicsWorld->deb*/
+45 }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_physics_engine_e5f076ee99bbfdbc79ab2d27366d8476}{
 \index{PhysicsEngine@{PhysicsEngine}!$\sim$PhysicsEngine@{$\sim$PhysicsEngine}}
 \index{$\sim$PhysicsEngine@{$\sim$PhysicsEngine}!PhysicsEngine@{PhysicsEngine}}
@@ -146,21 +208,90 @@ This is the de-constructor
 \item[Returns:]null \end{Desc}
 
 
+Definition at line 48 of file PhysicsEngine.cpp.
+
+\begin{Code}\begin{verbatim}48 {};
+\end{verbatim}
+\end{Code}
+
+
+
+
 \subsection{Member Function Documentation}
-\hypertarget{class_physics_engine_758fafb4fe8d295b3710644de4d22d4a}{
+\hypertarget{class_physics_engine_2f5bb835773d64a6ff21933d5137c427}{
 \index{PhysicsEngine@{PhysicsEngine}!CreateStaticRigidBody@{CreateStaticRigidBody}}
 \index{CreateStaticRigidBody@{CreateStaticRigidBody}!PhysicsEngine@{PhysicsEngine}}
-\subsubsection[CreateStaticRigidBody]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::CreateStaticRigidBody ()}}
-\label{class_physics_engine_758fafb4fe8d295b3710644de4d22d4a}
+\subsubsection[CreateStaticRigidBody]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::CreateStaticRigidBody (btVector3 \& {\em pos}, \/  std::string {\em type})}}
+\label{class_physics_engine_2f5bb835773d64a6ff21933d5137c427}
 
 
 Creates static rigid body. 
 
-This is a test function that is used to create a static body (as of now, it creates a floor)
+Create a static box shape rigid body at the given xyz position
 
 \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]- Position to create body\end{description}
+\end{Desc}
+\begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_physics_engine_549c7e9116d06e8f7599497c3c4f6fd1}{
+
+
+Definition at line 51 of file PhysicsEngine.cpp.
+
+References BOX, and btAlignedObjectArray$<$ T $>$::push\_\-back().
+
+\begin{Code}\begin{verbatim}52 {
+53         btCollisionShape* groundShape;
+54 
+55         if (type == "knight")
+56                 groundShape = new btBoxShape(btVector3(btScalar(80.0), btScalar(100.0), btScalar(80.0)));
+57         else if (type == "rock")
+58                 groundShape = new btBoxShape(btVector3(btScalar(225.0), btScalar(100.0), btScalar(200.0)));
+59         else
+60                 groundShape = new btBoxShape(btVector3(btScalar(0.0), btScalar(0.0), btScalar(0.0)));
+61 
+62         m_collisionShapes.push_back(groundShape);
+63 
+64         btVector3 temp = pos;
+65         //temp.setX(temp.getX() - 3000);
+66         //temp.setZ(temp.getZ() - 50);
+67 
+68         // Initialize transform and location
+69         btTransform groundTransform;
+70         groundTransform.setIdentity();
+71         groundTransform.setOrigin(temp);
+72 
+73         // Set mass (zero for static)
+74         m_mass = 0.0;
+75 
+76         // Set dynamic objects to objects with mass that is non-zero
+77         m_isDynamic = (m_mass != 0.0f);
+78 
+79         btVector3 localInertia(0.0, 0.0, 0.0);
+80 
+81         if (m_isDynamic)
+82                 groundShape->calculateLocalInertia(m_mass, localInertia);
+83 
+84         //using motionstate is optional, it provides interpolation capabilities, and only synchronizes 'active' objects
+85         btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
+86         btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, groundShape, localInertia);
+87         btRigidBody* body = new btRigidBody(rbInfo);
+88 
+89         // Set the index for the type of rigid body that is being created
+90         body->setUserIndex(BOX);
+91 
+92         // Add the body to the dynamic world
+93         m_dynamicsWorld->addRigidBody(body);
+94 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_physics_engine_549c7e9116d06e8f7599497c3c4f6fd1}{
 \index{PhysicsEngine@{PhysicsEngine}!CreateDynamicRigidBody@{CreateDynamicRigidBody}}
 \index{CreateDynamicRigidBody@{CreateDynamicRigidBody}!PhysicsEngine@{PhysicsEngine}}
 \subsubsection[CreateDynamicRigidBody]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::CreateDynamicRigidBody (btVector3 \& {\em pos})}}
@@ -178,7 +309,53 @@ This is a test function that creates dynamic rigid bodies for testing purposes
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_physics_engine_6096d332305e50fba86f377c00ec27e0}{
+
+
+Definition at line 140 of file PhysicsEngine.cpp.
+
+References BOX, and btAlignedObjectArray$<$ T $>$::push\_\-back().
+
+\begin{Code}\begin{verbatim}141 {
+142         // Create box shape and add to shape array
+143         btCollisionShape* boxShape = new btBoxShape(btVector3(btScalar(20), btScalar(50), btScalar(20)));
+144         m_collisionShapes.push_back(boxShape);
+145 
+146         // Create a dynamic object
+147         btTransform startTransform;
+148         startTransform.setIdentity();
+149 
+150         // Set mass (non-zero for dynamic)
+151         m_mass = 100.0f;
+152 
+153         // Set dynamic objects to objects with mass that is non-zero
+154         m_isDynamic = (m_mass != 0.0f);
+155 
+156         btVector3 localInertia(0.0, 0.0, 0.0);
+157 
+158         if (m_isDynamic)
+159                 boxShape->calculateLocalInertia(m_mass, localInertia);
+160 
+161         // Set origin of body
+162         startTransform.setOrigin(pos);
+163 
+164         //using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
+165         btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
+166         btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, boxShape, localInertia);
+167         btRigidBody* body = new btRigidBody(rbInfo);
+168 
+169         // Set the index for the type of rigid body that is being created
+170         body->setUserIndex(BOX);
+171         
+172         // Add the body to the dynamic world
+173         m_dynamicsWorld->addRigidBody(body);
+174 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_physics_engine_6096d332305e50fba86f377c00ec27e0}{
 \index{PhysicsEngine@{PhysicsEngine}!CreatePlayerControlledRigidBody@{CreatePlayerControlledRigidBody}}
 \index{CreatePlayerControlledRigidBody@{CreatePlayerControlledRigidBody}!PhysicsEngine@{PhysicsEngine}}
 \subsubsection[CreatePlayerControlledRigidBody]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::CreatePlayerControlledRigidBody (btVector3 \& {\em playerObj})}}
@@ -196,7 +373,59 @@ This is a test function that creates a dynamic rigid body for the player control
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_physics_engine_9d6bec05e95efd4b9168b507a90883b9}{
+
+
+Definition at line 97 of file PhysicsEngine.cpp.
+
+References CAMERA, and btAlignedObjectArray$<$ T $>$::push\_\-back().
+
+\begin{Code}\begin{verbatim}98 {
+99         // Create box shape and add to shape array
+100         btCollisionShape* camShape = new btBoxShape(btVector3(btScalar(30), btScalar(20), btScalar(50)));
+101         m_collisionShapes.push_back(camShape);
+102 
+103         // Create a dynamic object
+104         btTransform startTransform;
+105         startTransform.setIdentity();
+106 
+107         // Set origin of body
+108         startTransform.setOrigin(playerObj);
+109 
+110         // Set mass (non-zero for dynamic)
+111         m_mass = 2.0f;
+112 
+113         // Set dynamic objects to objects with mass that is non-zero
+114         m_isDynamic = (m_mass != 0.0f);
+115 
+116         btVector3 localInertia(0.0, 0.0, 0.0);
+117 
+118         if (m_isDynamic)
+119                 camShape->calculateLocalInertia(m_mass, localInertia);
+120 
+121         //using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
+122         btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
+123         btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, camShape, localInertia);
+124         btRigidBody* body = new btRigidBody(rbInfo);
+125 
+126         // Set the index for the type of rigid body that is being created
+127         body->setUserIndex(CAMERA);
+128 
+129         // Add the body to the dynamic world
+130         m_dynamicsWorld->addRigidBody(body);
+131 
+132         // Set new player object coordinates
+133         m_playerObject = playerObj;
+134 
+135         // Disable gravity for this object
+136         //body->setGravity(btVector3(0.0, 0.0, 0.0));
+137 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_physics_engine_9d6bec05e95efd4b9168b507a90883b9}{
 \index{PhysicsEngine@{PhysicsEngine}!Simulate@{Simulate}}
 \index{Simulate@{Simulate}!PhysicsEngine@{PhysicsEngine}}
 \subsubsection[Simulate]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::Simulate (std::vector$<$ btVector3 $>$ \& {\em bodyPos}, \/  btVector3 \& {\em playerObj})}}
@@ -214,7 +443,72 @@ This function simulates the dynamic world by handling all physics calculations e
 \end{Desc}
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_physics_engine_f951fe2e462f4b487b653199298a1bb3}{
+
+
+Definition at line 177 of file PhysicsEngine.cpp.
+
+References btRigidBody::applyCentralForce(), CAMERA, btRigidBody::getLinearVelocity(), btRigidBody::getMotionState(), btMotionState::getWorldTransform(), btRigidBody::setLinearVelocity(), and btRigidBody::upcast().
+
+\begin{Code}\begin{verbatim}178 {
+179         m_dynamicsWorld->stepSimulation(1.f / 60.f, 10);
+180 
+181         // Update positions of all dynamic objects
+182         for (int j = m_dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
+183         {
+184                 // Get the next object, and activate it
+185                 btCollisionObject* obj = m_dynamicsWorld->getCollisionObjectArray()[j];
+186                 btRigidBody* body = btRigidBody::upcast(obj);
+187                 btTransform trans;
+188 
+189                 // Reset forces on player object prior to next step simulation
+190                 if (body->getUserIndex() == CAMERA)
+191                 {
+192                         //body->clearForces();
+193                         btVector3 tempVel = body->getLinearVelocity();
+194                         //body->setLinearVelocity(btVector3(0,tempVel.getY(),0));
+195                         body->setLinearVelocity(btVector3(0, 0, 0));
+196                 }
+197 
+198                 // Update rigid body positions
+199                 if (body && body->getMotionState())
+200                 {
+201                         body->getMotionState()->getWorldTransform(trans);
+202                 }
+203                 else
+204                 {
+205                         trans = obj->getWorldTransform();
+206                 }
+207                 
+208                 // Check to see if player object
+209                 if (body->getUserIndex() == CAMERA)
+210                 {
+211                         // TODO: Make this better (Jack)
+212                         // Apply force in direction camera was moved
+213                         m_newForce.setX((playerObj.x() - m_playerObject.x()) * 10000);
+214                         //m_newForce.setY((playerObj.y() - m_playerObject.y()) * 10000);
+215                         m_newForce.setZ((playerObj.z() - m_playerObject.z()) * 10000);
+216 
+217                         // Update rigid body location for drawing
+218                         body->applyCentralForce(m_newForce);
+219                         m_playerObject = trans.getOrigin();
+220                         playerObj = m_playerObject;
+221                 }
+222                 else
+223                 {
+224                         // Update object positions for drawing
+225                         bodyPos[j].setX(trans.getOrigin().getX());
+226                         bodyPos[j].setY(trans.getOrigin().getY());
+227                         bodyPos[j].setZ(trans.getOrigin().getZ());
+228                 }       
+229         }
+230 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_physics_engine_f951fe2e462f4b487b653199298a1bb3}{
 \index{PhysicsEngine@{PhysicsEngine}!CreateHeightfieldTerrainShape@{CreateHeightfieldTerrainShape}}
 \index{CreateHeightfieldTerrainShape@{CreateHeightfieldTerrainShape}!PhysicsEngine@{PhysicsEngine}}
 \subsubsection[CreateHeightfieldTerrainShape]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::CreateHeightfieldTerrainShape ()}}
@@ -227,7 +521,75 @@ This is a test function that creates a heightfield terrain shape
 
 \begin{Desc}
 \item[Returns:]void \end{Desc}
-\hypertarget{class_physics_engine_2e877a86ca85b2ec58b3c046af057d76}{
+
+
+Definition at line 233 of file PhysicsEngine.cpp.
+
+References HEIGHTFIELD, glm::length(), and btAlignedObjectArray$<$ T $>$::push\_\-back().
+
+\begin{Code}\begin{verbatim}234 {
+235         //unsigned char *terrainData;
+236         int sizet = 128;
+237 
+238         // Open for binary read, print error if error found
+239         std::ifstream infile("res/terrain/height128.raw", std::ios::binary);
+240         if (!infile)
+241         {
+242                 exit(0);
+243         }
+244 
+245         // Allocate memory, return false if no size = 0
+246         if (m_terrainData)
+247                 delete[] m_terrainData;
+248         if (sizet>0)
+249                 m_terrainData = new unsigned char[sizet*sizet];
+250         if (m_terrainData == NULL)
+251                 exit(0);
+252 
+253         // Read in heightfield and get length of file
+254         infile.seekg(0, std::ios::end);
+255         int length = infile.tellg();
+256 
+257         // Read data in as a block, cast to char*, set size, and close file
+258         infile.seekg(0, std::ios::beg);
+259         infile.read(reinterpret_cast<char *>(m_terrainData), length);
+260         infile.close();
+261         this->m_size = sizet;
+262 
+263         // Create heightfield shape
+264         btCollisionShape* heightfieldShape = new btHeightfieldTerrainShape(128, 128, &m_terrainData, 1, 1, 128, 1, PHY_UCHAR, false);
+265         m_collisionShapes.push_back(heightfieldShape);
+266 
+267         // Initialize transform and location
+268         btTransform startTransform;
+269         startTransform.setIdentity();
+270         startTransform.setOrigin(btVector3(0.0, 0.0, 0.0));
+271 
+272         // Set mass (non-zero for dynamic)
+273         m_mass = 0.0;
+274         m_isDynamic = (m_mass != 0.0f);
+275 
+276         // Set initial inertia
+277         btVector3 localInertia(0.0, 0.0, 0.0);
+278 
+279         // Using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
+280         btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
+281         btRigidBody::btRigidBodyConstructionInfo rbInfo(m_mass, myMotionState, heightfieldShape, localInertia);
+282         btRigidBody* body = new btRigidBody(rbInfo);
+283 
+284         // Set the index for the type of rigid body that is being created
+285         body->setUserIndex(HEIGHTFIELD);
+286 
+287         // Add the body to the dynamic world
+288         m_dynamicsWorld->addRigidBody(body);
+289 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_physics_engine_2e877a86ca85b2ec58b3c046af057d76}{
 \index{PhysicsEngine@{PhysicsEngine}!ActivateAllObjects@{ActivateAllObjects}}
 \index{ActivateAllObjects@{ActivateAllObjects}!PhysicsEngine@{PhysicsEngine}}
 \subsubsection[ActivateAllObjects]{\setlength{\rightskip}{0pt plus 5cm}void PhysicsEngine::ActivateAllObjects ()}}
@@ -242,7 +604,24 @@ Ensures that every rigid body remains active throughout simulation. Otherwise th
 \item[Returns:]void \end{Desc}
 
 
+Definition at line 291 of file PhysicsEngine.cpp.
+
+\begin{Code}\begin{verbatim}292 {
+293         // Loop through every rigid body object
+294         for (int j = m_dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
+295         {
+296                 // Get the next object, and activate it
+297                 btCollisionObject* obj = m_dynamicsWorld->getCollisionObjectArray()[j];
+298                 obj->forceActivationState(DISABLE_DEACTIVATION);
+299         }
+300 }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/PhysicsEngine.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/src/PhysicsEngine.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/PhysicsEngine.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/src/PhysicsEngine.cpp\end{CompactItemize}

@@ -8,4 +8,6 @@ digraph G
   Node2 [label="gim_array\< GIM_PAIR \>",height=0.2,width=0.4,color="black",URL="$classgim__array.html"];
   Node3 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_data"];
   Node3 [label="GIM_PAIR",height=0.2,width=0.4,color="black",URL="$struct_g_i_m___p_a_i_r.html",tooltip="Overlapping pair."];
+  Node4 -> Node2 [dir=back,color="orange",fontsize=10,style="dashed",label="\< GIM_PAIR \>"];
+  Node4 [label="gim_array\< T \>",height=0.2,width=0.4,color="black",URL="$classgim__array.html",tooltip="Very simple array container with fast access and simd memory."];
 }

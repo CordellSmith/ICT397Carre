@@ -57,6 +57,8 @@ SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___a_a_b_b_4a1ffa196d3981313f
 \subsection{Detailed Description}
 Axis aligned box. 
 
+Definition at line 201 of file gim\_\-box\_\-collision.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{class_g_i_m___a_a_b_b_1fafc37703d288fd0fe862b861829287}{
 \index{GIM\_\-AABB@{GIM\_\-AABB}!collide\_\-ray@{collide\_\-ray}}
@@ -74,6 +76,38 @@ Finds the Ray intersection parameter.
 \end{Desc}
 
 
+Definition at line 409 of file gim\_\-box\_\-collision.h.
+
+Referenced by GIM\_\-BOX\_\-TREE\_\-TEMPLATE\_\-SET$<$ \_\-GIM\_\-PRIMITIVE\_\-MANAGER\_\-PROTOTYPE, GIM\_\-BOX\_\-TREE $>$::rayQuery().
+
+\begin{Code}\begin{verbatim}410         {
+411                 btVector3 extents,center;
+412                 this->get_center_extend(center,extents);;
+413 
+414                 btScalar Dx = vorigin[0] - center[0];
+415                 if(GIM_GREATER(Dx, extents[0]) && Dx*vdir[0]>=0.0f)     return false;
+416                 btScalar Dy = vorigin[1] - center[1];
+417                 if(GIM_GREATER(Dy, extents[1]) && Dy*vdir[1]>=0.0f)     return false;
+418                 btScalar Dz = vorigin[2] - center[2];
+419                 if(GIM_GREATER(Dz, extents[2]) && Dz*vdir[2]>=0.0f)     return false;
+420 
+421 
+422                 btScalar f = vdir[1] * Dz - vdir[2] * Dy;
+423                 if(btFabs(f) > extents[1]*btFabs(vdir[2]) + extents[2]*btFabs(vdir[1])) return false;
+424                 f = vdir[2] * Dx - vdir[0] * Dz;
+425                 if(btFabs(f) > extents[0]*btFabs(vdir[2]) + extents[2]*btFabs(vdir[0]))return false;
+426                 f = vdir[0] * Dy - vdir[1] * Dx;
+427                 if(btFabs(f) > extents[0]*btFabs(vdir[1]) + extents[1]*btFabs(vdir[0]))return false;
+428                 return true;
+429         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__box__collision_8h}{gim\_\-box\_\-collision.h}\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__box__collision_8h}{gim\_\-box\_\-collision.h}\end{CompactItemize}

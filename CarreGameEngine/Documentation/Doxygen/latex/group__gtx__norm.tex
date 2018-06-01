@@ -43,42 +43,121 @@ $<$glm/gtx/norm.hpp$>$ need to be included to use these functionalities.
 \label{group__gtx__norm_g205e08f24b9e35f9f892b563f2b8dd94}
 
 
-Returns the squared distance between p0 and p1, i.e., length(p0 - p1). From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_gaf6befa643aa9616f3c19e5548b11b54}{
+Returns the squared distance between p0 and p1, i.e., length(p0 - p1). From GLM\_\-GTX\_\-norm extension. 
+
+Referenced by btGjkPairDetector::getClosestPointsNonVirtual().
+
+Here is the caller graph for this function:\hypertarget{group__gtx__norm_gaf6befa643aa9616f3c19e5548b11b54}{
 \index{gtx\_\-norm@{gtx\_\-norm}!distance2@{distance2}}
 \index{distance2@{distance2}!gtx_norm@{gtx\_\-norm}}
 \subsubsection[distance2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::distance2 (T const \& {\em p0}, \/  T const \& {\em p1})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__norm_gaf6befa643aa9616f3c19e5548b11b54}
 
 
-Returns the squared distance between p0 and p1, i.e., length(p0 - p1). From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g5a6d616a6e0340b9329d5018f04c1aca}{
+Returns the squared distance between p0 and p1, i.e., length(p0 - p1). From GLM\_\-GTX\_\-norm extension. 
+
+Definition at line 50 of file norm.inl.
+
+References glm::length2().
+
+\begin{Code}\begin{verbatim}54         {
+55                 return length2(p1 - p0);
+56         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__norm_g5a6d616a6e0340b9329d5018f04c1aca}{
 \index{gtx\_\-norm@{gtx\_\-norm}!l1Norm@{l1Norm}}
 \index{l1Norm@{l1Norm}!gtx_norm@{gtx\_\-norm}}
 \subsubsection[l1Norm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::l1Norm (detail::tvec3$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__norm_g5a6d616a6e0340b9329d5018f04c1aca}
 
 
-Returns the L1 norm of v. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_gf20fc187dfe66a474ecdba26e32ce4c6}{
+Returns the L1 norm of v. From GLM\_\-GTX\_\-norm extension. 
+
+Definition at line 100 of file norm.inl.
+
+References glm::abs().
+
+\begin{Code}\begin{verbatim}103         {
+104                 return abs(v.x) + abs(v.y) + abs(v.z);
+105         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__norm_gf20fc187dfe66a474ecdba26e32ce4c6}{
 \index{gtx\_\-norm@{gtx\_\-norm}!l1Norm@{l1Norm}}
 \index{l1Norm@{l1Norm}!gtx_norm@{gtx\_\-norm}}
 \subsubsection[l1Norm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::l1Norm (detail::tvec3$<$ T, P $>$ const \& {\em x}, \/  detail::tvec3$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__norm_gf20fc187dfe66a474ecdba26e32ce4c6}
 
 
-Returns the L1 norm between x and y. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g17bb46915f9694cbae612a7bae4c5116}{
+Returns the L1 norm between x and y. From GLM\_\-GTX\_\-norm extension. 
+
+Definition at line 90 of file norm.inl.
+
+References glm::abs().
+
+\begin{Code}\begin{verbatim}94         {
+95                 return abs(b.x - a.x) + abs(b.y - a.y) + abs(b.z - a.z);
+96         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__norm_g17bb46915f9694cbae612a7bae4c5116}{
 \index{gtx\_\-norm@{gtx\_\-norm}!l2Norm@{l2Norm}}
 \index{l2Norm@{l2Norm}!gtx_norm@{gtx\_\-norm}}
 \subsubsection[l2Norm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::l2Norm (detail::tvec3$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__norm_g17bb46915f9694cbae612a7bae4c5116}
 
 
-Returns the L2 norm of v. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g2c87568b2888f01baf0133320c09b8ca}{
+Returns the L2 norm of v. From GLM\_\-GTX\_\-norm extension. 
+
+Definition at line 119 of file norm.inl.
+
+References glm::length().
+
+\begin{Code}\begin{verbatim}122         {
+123                 return length(v);
+124         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__norm_g2c87568b2888f01baf0133320c09b8ca}{
 \index{gtx\_\-norm@{gtx\_\-norm}!l2Norm@{l2Norm}}
 \index{l2Norm@{l2Norm}!gtx_norm@{gtx\_\-norm}}
 \subsubsection[l2Norm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::l2Norm (detail::tvec3$<$ T, P $>$ const \& {\em x}, \/  detail::tvec3$<$ T, P $>$ const \& {\em y})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__norm_g2c87568b2888f01baf0133320c09b8ca}
 
 
-Returns the L2 norm between x and y. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g2dfcdff0cc9119aa37c501d2c7a45020}{
+Returns the L2 norm between x and y. From GLM\_\-GTX\_\-norm extension. 
+
+Definition at line 109 of file norm.inl.
+
+References glm::length().
+
+\begin{Code}\begin{verbatim}113         {
+114                 return length(b - a);
+115         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__norm_g2dfcdff0cc9119aa37c501d2c7a45020}{
 \index{gtx\_\-norm@{gtx\_\-norm}!length2@{length2}}
 \index{length2@{length2}!gtx_norm@{gtx\_\-norm}}
 \subsubsection[length2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType::value\_\-type glm::length2 (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -92,14 +171,44 @@ Returns the squared length of x. From GLM\_\-GTX\_\-norm extension. \hypertarget
 \label{group__gtx__norm_g6f970aba05e1299ed89d2ec3a410b7a9}
 
 
-Returns the squared length of x. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g955869c61ab902e4e3cf061303efdaef}{
+Returns the squared length of x. From GLM\_\-GTX\_\-norm extension. 
+
+Definition at line 14 of file norm.inl.
+
+Referenced by glm::distance2(), glm::mat3x4\_\-cast(), and glm::rotation().
+
+\begin{Code}\begin{verbatim}17         {
+18                 return x * x;
+19         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtx__norm_g955869c61ab902e4e3cf061303efdaef}{
 \index{gtx\_\-norm@{gtx\_\-norm}!lxNorm@{lxNorm}}
 \index{lxNorm@{lxNorm}!gtx_norm@{gtx\_\-norm}}
 \subsubsection[lxNorm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::lxNorm (detail::tvec3$<$ T, P $>$ const \& {\em x}, \/  unsigned int {\em Depth})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
 \label{group__gtx__norm_g955869c61ab902e4e3cf061303efdaef}
 
 
-Returns the L norm of v. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__gtx__norm_g2f42190c8743abab279d0a8f5a321692}{
+Returns the L norm of v. From GLM\_\-GTX\_\-norm extension. 
+
+Definition at line 139 of file norm.inl.
+
+References glm::pow().
+
+\begin{Code}\begin{verbatim}143         {
+144                 return pow(pow(v.x, T(Depth)) + pow(v.y, T(Depth)) + pow(v.z, T(Depth)), T(1) / T(Depth));
+145         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__norm_g2f42190c8743abab279d0a8f5a321692}{
 \index{gtx\_\-norm@{gtx\_\-norm}!lxNorm@{lxNorm}}
 \index{lxNorm@{lxNorm}!gtx_norm@{gtx\_\-norm}}
 \subsubsection[lxNorm]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER T glm::lxNorm (detail::tvec3$<$ T, P $>$ const \& {\em x}, \/  detail::tvec3$<$ T, P $>$ const \& {\em y}, \/  unsigned int {\em Depth})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -107,3 +216,18 @@ Returns the L norm of v. From GLM\_\-GTX\_\-norm extension. \hypertarget{group__
 
 
 Returns the L norm between x and y. From GLM\_\-GTX\_\-norm extension. 
+
+Definition at line 128 of file norm.inl.
+
+References glm::pow().
+
+\begin{Code}\begin{verbatim}133         {
+134                 return pow(pow(y.x - x.x, T(Depth)) + pow(y.y - x.y, T(Depth)) + pow(y.z - x.z, T(Depth)), T(1) / T(Depth));
+135         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

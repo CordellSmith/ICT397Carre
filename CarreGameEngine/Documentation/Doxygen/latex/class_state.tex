@@ -1,0 +1,101 @@
+\hypertarget{class_state}{
+\section{State$<$ entity\_\-type $>$ Class Template Reference}
+\label{class_state}\index{State@{State}}
+}
+ComputerAI class that handles all AI behaviour.  
+
+
+{\tt \#include $<$ComputerAI.h$>$}
+
+Inheritance diagram for State$<$ entity\_\-type $>$:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual void \hyperlink{class_state_88e14ab108f9e28a53630c4557b9743d}{Enter} (entity\_\-type $\ast$)=0
+\begin{CompactList}\small\item\em De-constructor. \item\end{CompactList}\item 
+virtual void \hyperlink{class_state_f12fe8dcc213356992ae0ad9f8d315ff}{Execute} (entity\_\-type $\ast$)=0
+\begin{CompactList}\small\item\em Execute the state. \item\end{CompactList}\item 
+virtual void \hyperlink{class_state_1dc07d3a42d904b7e954fcfa3d27f23f}{Exit} (entity\_\-type $\ast$)=0
+\begin{CompactList}\small\item\em Exit the state. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class entity\_\-type$>$ class State$<$ entity\_\-type $>$}
+
+ComputerAI class that handles all AI behaviour. 
+
+A template state class.
+
+\begin{Desc}
+\item[Author:]Jack Matters\end{Desc}
+\begin{Desc}
+\item[Date:]27/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]1.0 Initial start. Created the layout of the class.\end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
+\begin{Desc}
+\item[Version:]2.0 Final version for submission. \end{Desc}
+
+
+Definition at line 17 of file State.h.
+
+\subsection{Member Function Documentation}
+\hypertarget{class_state_88e14ab108f9e28a53630c4557b9743d}{
+\index{State@{State}!Enter@{Enter}}
+\index{Enter@{Enter}!State@{State}}
+\subsubsection[Enter]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ virtual void {\bf State}$<$ entity\_\-type $>$::Enter (entity\_\-type $\ast$)\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_state_88e14ab108f9e28a53630c4557b9743d}
+
+
+De-constructor. 
+
+This is the de-constructor Enter the state Inititializes all data when entering a different state
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em entity\_\-type}]- Type of entity using the \hyperlink{class_state_machine}{StateMachine}\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_state_f12fe8dcc213356992ae0ad9f8d315ff}{
+\index{State@{State}!Execute@{Execute}}
+\index{Execute@{Execute}!State@{State}}
+\subsubsection[Execute]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ virtual void {\bf State}$<$ entity\_\-type $>$::Execute (entity\_\-type $\ast$)\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_state_f12fe8dcc213356992ae0ad9f8d315ff}
+
+
+Execute the state. 
+
+Main loop of the current state. Gets called every frame
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em entity\_\-type}]- Type of entity using the \hyperlink{class_state_machine}{StateMachine}\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{class_state_1dc07d3a42d904b7e954fcfa3d27f23f}{
+\index{State@{State}!Exit@{Exit}}
+\index{Exit@{Exit}!State@{State}}
+\subsubsection[Exit]{\setlength{\rightskip}{0pt plus 5cm}template$<$class entity\_\-type$>$ virtual void {\bf State}$<$ entity\_\-type $>$::Exit (entity\_\-type $\ast$)\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_state_1dc07d3a42d904b7e954fcfa3d27f23f}
+
+
+Exit the state. 
+
+Frees data from this state when changing to another one
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em entity\_\-type}]- Type of entity using the \hyperlink{class_state_machine}{StateMachine}\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/State.h\end{CompactItemize}

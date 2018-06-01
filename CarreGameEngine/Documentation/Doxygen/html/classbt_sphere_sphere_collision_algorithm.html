@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btSphereSphereCollisionAlgorithm Class Reference</title>
+<title>Assignment2 - OOber Taxi: btSphereSphereCollisionAlgorithm Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>btSphereSphereCollisionAlgorithm Class Reference</h1><!-- doxytag: class="btSphereSphereCollisionAlgorithm" --><!-- doxytag: inherits="btActivatingCollisionAlgorithm" --><code>#include &lt;btSphereSphereCollisionAlgorithm.h&gt;</code>
+<h1>btSphereSphereCollisionAlgorithm Class Reference</h1><!-- doxytag: class="btSphereSphereCollisionAlgorithm" --><!-- doxytag: inherits="btActivatingCollisionAlgorithm" --><code>#include &lt;<a class="el" href="bt_sphere_sphere_collision_algorithm_8h-source.html">btSphereSphereCollisionAlgorithm.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for btSphereSphereCollisionAlgorithm:</div>
@@ -50,7 +50,9 @@ Collaboration diagram for btSphereSphereCollisionAlgorithm:</div>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-<a class="el" href="classbt_sphere_sphere_collision_algorithm.html">btSphereSphereCollisionAlgorithm</a> provides sphere-sphere collision detection. Other features are frame-coherency (persistent data) and collision response. Also provides the most basic sample for custom/user <a class="el" href="classbt_collision_algorithm.html">btCollisionAlgorithm</a> <hr><h2>Member Function Documentation</h2>
+<a class="el" href="classbt_sphere_sphere_collision_algorithm.html">btSphereSphereCollisionAlgorithm</a> provides sphere-sphere collision detection. Other features are frame-coherency (persistent data) and collision response. Also provides the most basic sample for custom/user <a class="el" href="classbt_collision_algorithm.html">btCollisionAlgorithm</a> 
+<p>Definition at line <a class="el" href="bt_sphere_sphere_collision_algorithm_8h-source.html#l00029">29</a> of file <a class="el" href="bt_sphere_sphere_collision_algorithm_8h-source.html">btSphereSphereCollisionAlgorithm.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="7e5adac437f8c0cdb738360d5946a65d"></a><!-- doxytag: member="btSphereSphereCollisionAlgorithm::processCollision" ref="7e5adac437f8c0cdb738360d5946a65d" args="(const btCollisionObjectWrapper *body0Wrap, const btCollisionObjectWrapper *body1Wrap, const btDispatcherInfo &amp;dispatchInfo, btManifoldResult *resultOut)" -->
 <div class="memitem">
 <div class="memproto">
@@ -97,12 +99,73 @@ point on A (worldspace) btVector3 pos0 = col0-&gt;getWorldTransform().getOrigin(
 report a contact. internally this will be kept persistent, and contact reduction is done 
 <p>Implements <a class="el" href="classbt_collision_algorithm.html">btCollisionAlgorithm</a>.</p>
 
+<p>Definition at line <a class="el" href="bt_sphere_sphere_collision_algorithm_8cpp-source.html#l00044">44</a> of file <a class="el" href="bt_sphere_sphere_collision_algorithm_8cpp-source.html">btSphereSphereCollisionAlgorithm.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_manifold_result_8cpp-source.html#l00104">btManifoldResult::addContactPoint()</a>, <a class="el" href="bt_manifold_result_8h-source.html#l00147">btManifoldResult::m_closestPointDistanceThreshold</a>, <a class="el" href="bt_manifold_result_8h-source.html#l00101">btManifoldResult::refreshContactPoints()</a>, and <a class="el" href="bt_manifold_result_8h-source.html#l00072">btManifoldResult::setPersistentManifold()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00045"></a>00045 {
+<a name="l00046"></a>00046         (void)dispatchInfo;
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048         <span class="keywordflow">if</span> (!m_manifoldPtr)
+<a name="l00049"></a>00049                 <span class="keywordflow">return</span>;
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051         resultOut-&gt;<a class="code" href="classbt_manifold_result.html#7a46d46b9a13c2896695e458c1d6df1f">setPersistentManifold</a>(m_manifoldPtr);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053         btSphereShape* sphere0 = (btSphereShape*)col0Wrap-&gt;getCollisionShape();
+<a name="l00054"></a>00054         btSphereShape* sphere1 = (btSphereShape*)col1Wrap-&gt;getCollisionShape();
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056         btVector3 diff = col0Wrap-&gt;getWorldTransform().getOrigin()-  col1Wrap-&gt;getWorldTransform().getOrigin();
+<a name="l00057"></a>00057         btScalar len = diff.length();
+<a name="l00058"></a>00058         btScalar radius0 = sphere0-&gt;getRadius();
+<a name="l00059"></a>00059         btScalar radius1 = sphere1-&gt;getRadius();
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 <span class="preprocessor">#ifdef CLEAR_MANIFOLD</span>
+<a name="l00062"></a>00062 <span class="preprocessor"></span>        m_manifoldPtr-&gt;clearManifold(); <span class="comment">//don't do this, it disables warmstarting</span>
+<a name="l00063"></a>00063 <span class="preprocessor">#endif</span>
+<a name="l00064"></a>00064 <span class="preprocessor"></span>
+<a name="l00066"></a>00066         <span class="keywordflow">if</span> ( len &gt; (radius0+radius1+resultOut-&gt;<a class="code" href="classbt_manifold_result.html#a582b802c2131a6072e313fb8b028b55">m_closestPointDistanceThreshold</a>))
+<a name="l00067"></a>00067         {
+<a name="l00068"></a>00068 <span class="preprocessor">#ifndef CLEAR_MANIFOLD</span>
+<a name="l00069"></a>00069 <span class="preprocessor"></span>                resultOut-&gt;<a class="code" href="classbt_manifold_result.html#dbcfd865252ac9dc8a3543f404e2dcf1">refreshContactPoints</a>();
+<a name="l00070"></a>00070 <span class="preprocessor">#endif //CLEAR_MANIFOLD</span>
+<a name="l00071"></a>00071 <span class="preprocessor"></span>                <span class="keywordflow">return</span>;
+<a name="l00072"></a>00072         }
+<a name="l00074"></a>00074         btScalar dist = len - (radius0+radius1);
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076         btVector3 normalOnSurfaceB(1,0,0);
+<a name="l00077"></a>00077         <span class="keywordflow">if</span> (len &gt; SIMD_EPSILON)
+<a name="l00078"></a>00078         {
+<a name="l00079"></a>00079                 normalOnSurfaceB = diff / len;
+<a name="l00080"></a>00080         }
+<a name="l00081"></a>00081 
+<a name="l00085"></a>00085         btVector3 pos1 = col1Wrap-&gt;getWorldTransform().getOrigin() + radius1* normalOnSurfaceB;
+<a name="l00086"></a>00086 
+<a name="l00088"></a>00088         
+<a name="l00089"></a>00089         
+<a name="l00090"></a>00090         resultOut-&gt;<a class="code" href="classbt_manifold_result.html#ebe32f0c202d988d0458e88d768602c6">addContactPoint</a>(normalOnSurfaceB,pos1,dist);
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 <span class="preprocessor">#ifndef CLEAR_MANIFOLD</span>
+<a name="l00093"></a>00093 <span class="preprocessor"></span>        resultOut-&gt;<a class="code" href="classbt_manifold_result.html#dbcfd865252ac9dc8a3543f404e2dcf1">refreshContactPoints</a>();
+<a name="l00094"></a>00094 <span class="preprocessor">#endif //CLEAR_MANIFOLD</span>
+<a name="l00095"></a>00095 <span class="preprocessor"></span>
+<a name="l00096"></a>00096 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_sphere_sphere_collision_algorithm_7e5adac437f8c0cdb738360d5946a65d_cgraph.png" border="0" usemap="#classbt_sphere_sphere_collision_algorithm_7e5adac437f8c0cdb738360d5946a65d_cgraph_map" alt=""></center>
+<map name="classbt_sphere_sphere_collision_algorithm_7e5adac437f8c0cdb738360d5946a65d_cgraph_map">
+<area shape="rect" href="classbt_manifold_result.html#ebe32f0c202d988d0458e88d768602c6" title="btManifoldResult::addContactPoint" alt="" coords="391,31,612,57"><area shape="rect" href="classbt_manifold_result.html#dbcfd865252ac9dc8a3543f404e2dcf1" title="btManifoldResult::refreshContactPoints" alt="" coords="379,81,624,108"><area shape="rect" href="classbt_manifold_result.html#7a46d46b9a13c2896695e458c1d6df1f" title="btManifoldResult::setPersistentManifold" alt="" coords="376,132,627,159"><area shape="rect" href="classbt_manifold_result.html#162717dce3ef3a756ae55ec04a179ed5" title="User can override this material combiner by implementing gContactAddedCallback and..." alt="" coords="685,5,963,32"><area shape="rect" href="classbt_manifold_result.html#a4419fc3b0d13ccc2cbfd7739b047c04" title="in the future we can let the user override the methods to combine restitution and..." alt="" coords="676,56,972,83"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/<a class="el" href="bt_sphere_sphere_collision_algorithm_8h-source.html">btSphereSphereCollisionAlgorithm.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/<a class="el" href="bt_sphere_sphere_collision_algorithm_8cpp-source.html">btSphereSphereCollisionAlgorithm.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:57 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:02:03 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

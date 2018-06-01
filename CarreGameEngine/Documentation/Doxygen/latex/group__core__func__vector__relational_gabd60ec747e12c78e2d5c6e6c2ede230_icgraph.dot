@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::all",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::orientation",height=0.2,width=0.4,color="black",URL="$group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::orientedAngle",height=0.2,width=0.4,color="black",URL="$group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36"];
+}

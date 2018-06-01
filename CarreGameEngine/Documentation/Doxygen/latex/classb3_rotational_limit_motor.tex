@@ -94,6 +94,8 @@ int \hyperlink{classb3_rotational_limit_motor_04210dff8941deee039e6c290a50f301}{
 \subsection{Detailed Description}
 Rotation Limit structure for generic joints. 
 
+Definition at line 40 of file b3Generic6DofConstraint.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classb3_rotational_limit_motor_27246819c09d6029fb7f7c2f506ac9fd}{
 \index{b3RotationalLimitMotor@{b3RotationalLimitMotor}!testLimitValue@{testLimitValue}}
@@ -106,6 +108,47 @@ calculates error
 
 calculates m\_\-currentLimit and m\_\-currentLimitError. 
 
+Definition at line 109 of file b3Generic6DofConstraint.cpp.
+
+References m\_\-currentLimit, m\_\-currentLimitError, m\_\-hiLimit, and m\_\-loLimit.
+
+\begin{Code}\begin{verbatim}110 {
+111         if(m_loLimit>m_hiLimit)
+112         {
+113                 m_currentLimit = 0;//Free from violation
+114                 return 0;
+115         }
+116         if (test_value < m_loLimit)
+117         {
+118                 m_currentLimit = 1;//low limit violation
+119                 m_currentLimitError =  test_value - m_loLimit;
+120                 if(m_currentLimitError>B3_PI) 
+121                         m_currentLimitError-=B3_2_PI;
+122                 else if(m_currentLimitError<-B3_PI) 
+123                         m_currentLimitError+=B3_2_PI;
+124                 return 1;
+125         }
+126         else if (test_value> m_hiLimit)
+127         {
+128                 m_currentLimit = 2;//High limit violation
+129                 m_currentLimitError = test_value - m_hiLimit;
+130                 if(m_currentLimitError>B3_PI) 
+131                         m_currentLimitError-=B3_2_PI;
+132                 else if(m_currentLimitError<-B3_PI) 
+133                         m_currentLimitError+=B3_2_PI;
+134                 return 2;
+135         };
+136 
+137         m_currentLimit = 0;//Free from violation
+138         return 0;
+139 
+140 }
+\end{verbatim}
+\end{Code}
+
+
+
+
 \subsection{Member Data Documentation}
 \hypertarget{classb3_rotational_limit_motor_1ec51980cf1c20f39290b10f971ef378}{
 \index{b3RotationalLimitMotor@{b3RotationalLimitMotor}!m\_\-loLimit@{m\_\-loLimit}}
@@ -116,7 +159,11 @@ calculates m\_\-currentLimit and m\_\-currentLimitError.
 
 joint limit 
 
-limit\_\-parameters \hypertarget{classb3_rotational_limit_motor_bf008f6f2ecc5a97eed73825db97678e}{
+limit\_\-parameters 
+
+Definition at line 45 of file b3Generic6DofConstraint.h.
+
+Referenced by isLimited(), and testLimitValue().\hypertarget{classb3_rotational_limit_motor_bf008f6f2ecc5a97eed73825db97678e}{
 \index{b3RotationalLimitMotor@{b3RotationalLimitMotor}!m\_\-normalCFM@{m\_\-normalCFM}}
 \index{m\_\-normalCFM@{m\_\-normalCFM}!b3RotationalLimitMotor@{b3RotationalLimitMotor}}
 \subsubsection[m\_\-normalCFM]{\setlength{\rightskip}{0pt plus 5cm}b3Scalar {\bf b3RotationalLimitMotor::m\_\-normalCFM}}}
@@ -125,14 +172,20 @@ limit\_\-parameters \hypertarget{classb3_rotational_limit_motor_bf008f6f2ecc5a97
 
 Relaxation factor. 
 
-Constraint force mixing factor \hypertarget{classb3_rotational_limit_motor_63167fcd92370cd81b058b9013aa2342}{
+Constraint force mixing factor 
+
+Definition at line 52 of file b3Generic6DofConstraint.h.\hypertarget{classb3_rotational_limit_motor_63167fcd92370cd81b058b9013aa2342}{
 \index{b3RotationalLimitMotor@{b3RotationalLimitMotor}!m\_\-currentLimitError@{m\_\-currentLimitError}}
 \index{m\_\-currentLimitError@{m\_\-currentLimitError}!b3RotationalLimitMotor@{b3RotationalLimitMotor}}
 \subsubsection[m\_\-currentLimitError]{\setlength{\rightskip}{0pt plus 5cm}b3Scalar {\bf b3RotationalLimitMotor::m\_\-currentLimitError}}}
 \label{classb3_rotational_limit_motor_63167fcd92370cd81b058b9013aa2342}
 
 
-temp\_\-variables \hypertarget{classb3_rotational_limit_motor_04210dff8941deee039e6c290a50f301}{
+temp\_\-variables 
+
+Definition at line 62 of file b3Generic6DofConstraint.h.
+
+Referenced by testLimitValue().\hypertarget{classb3_rotational_limit_motor_04210dff8941deee039e6c290a50f301}{
 \index{b3RotationalLimitMotor@{b3RotationalLimitMotor}!m\_\-currentLimit@{m\_\-currentLimit}}
 \index{m\_\-currentLimit@{m\_\-currentLimit}!b3RotationalLimitMotor@{b3RotationalLimitMotor}}
 \subsubsection[m\_\-currentLimit]{\setlength{\rightskip}{0pt plus 5cm}int {\bf b3RotationalLimitMotor::m\_\-currentLimit}}}
@@ -143,7 +196,11 @@ current value of angle
 
 0=free, 1=at lo limit, 2=at hi limit 
 
+Definition at line 64 of file b3Generic6DofConstraint.h.
+
+Referenced by needApplyTorques(), and testLimitValue().
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Dynamics/ConstraintSolver/b3Generic6DofConstraint.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Dynamics/ConstraintSolver/b3Generic6DofConstraint.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Dynamics/ConstraintSolver/b3Generic6DofConstraint.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Dynamics/ConstraintSolver/b3Generic6DofConstraint.cpp\end{CompactItemize}

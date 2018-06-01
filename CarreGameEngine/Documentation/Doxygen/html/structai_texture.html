@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: aiTexture Struct Reference</title>
+<title>Assignment2 - OOber Taxi: aiTexture Struct Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>aiTexture Struct Reference</h1><!-- doxytag: class="aiTexture" --><code>#include &lt;texture.h&gt;</code>
+<h1>aiTexture Struct Reference</h1><!-- doxytag: class="aiTexture" --><code>#include &lt;<a class="el" href="texture_8h-source.html">texture.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for aiTexture:</div>
@@ -51,7 +51,9 @@ Collaboration diagram for aiTexture:</div>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Helper structure to describe an embedded texture<p>
 Normally textures are contained in external files but some file formats embed them directly in the model file. There are two types of embedded textures: 1. Uncompressed textures. The color data is given in an uncompressed format. 2. Compressed textures stored in a file format like png or jpg. The raw file bytes are given so the application must utilize an image decoder (e.g. DevIL) to get access to the actual color data.<p>
-Embedded textures are referenced from materials using strings like "*0", "*1", etc. as the texture paths (a single asterisk character followed by the zero-based index of the texture in the <a class="el" href="structai_scene.html#0fd0d29fbc439e3715b4975ccb68d2d3">aiScene::mTextures</a> array). <hr><h2>Member Data Documentation</h2>
+Embedded textures are referenced from materials using strings like "*0", "*1", etc. as the texture paths (a single asterisk character followed by the zero-based index of the texture in the <a class="el" href="structai_scene.html#0fd0d29fbc439e3715b4975ccb68d2d3">aiScene::mTextures</a> array). 
+<p>Definition at line <a class="el" href="texture_8h-source.html#l00133">133</a> of file <a class="el" href="texture_8h-source.html">texture.h</a>.</p>
+<hr><h2>Member Data Documentation</h2>
 <a class="anchor" name="aa3ad8cfe44fdc4dea2db91977d92234"></a><!-- doxytag: member="aiTexture::mWidth" ref="aa3ad8cfe44fdc4dea2db91977d92234" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -66,6 +68,8 @@ Embedded textures are referenced from materials using strings like "*0", "*1", e
 <p>
 Width of the texture, in pixels<p>
 If mHeight is zero the texture is compressed in a format like JPEG. In this case mWidth specifies the size of the memory area pcData is pointing to, in bytes. 
+<p>Definition at line <a class="el" href="texture_8h-source.html#l00141">141</a> of file <a class="el" href="texture_8h-source.html">texture.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="c1e2fa6f1f646e9c55e3985d4418a752"></a><!-- doxytag: member="aiTexture::mHeight" ref="c1e2fa6f1f646e9c55e3985d4418a752" args="" -->
@@ -82,6 +86,8 @@ If mHeight is zero the texture is compressed in a format like JPEG. In this case
 <p>
 Height of the texture, in pixels<p>
 If this value is zero, pcData points to an compressed texture in any format (e.g. JPEG). 
+<p>Definition at line <a class="el" href="texture_8h-source.html#l00148">148</a> of file <a class="el" href="texture_8h-source.html">texture.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="8e281d19486df620af1b2869464fa5c0"></a><!-- doxytag: member="aiTexture::achFormatHint" ref="8e281d19486df620af1b2869464fa5c0" args="[9]" -->
@@ -98,6 +104,8 @@ If this value is zero, pcData points to an compressed texture in any format (e.g
 <p>
 A hint from the loader to make it easier for applications to determine the type of embedded textures.<p>
 If mHeight != 0 this member is show how data is packed. Hint will consist of two parts: channel order and channel bitness (count of the bits for every color channel). For simple parsing by the viewer it's better to not omit absent color channel and just use 0 for bitness. For example: 1. Image contain RGBA and 8 bit per channel, achFormatHint == "rgba8888"; 2. Image contain ARGB and 8 bit per channel, achFormatHint == "argb8888"; 3. Image contain RGB and 5 bit for R and B channels and 6 bit for G channel, achFormatHint == "rgba5650"; 4. One color image with B channel and 1 bit for it, achFormatHint == "rgba0010"; If mHeight == 0 then achFormatHint is set set to '\0\0\0\0' if the loader has no additional information about the texture file format used OR the file extension of the format without a trailing dot. If there are multiple file extensions for a format, the shortest extension is chosen (JPEG maps to 'jpg', not to 'jpeg'). E.g. 'dds\0', 'pcx\0', 'jpg\0'. All characters are lower-case. The fourth character will always be '\0'. 
+<p>Definition at line <a class="el" href="texture_8h-source.html#l00169">169</a> of file <a class="el" href="texture_8h-source.html">texture.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="eb07528748b6e49d2d81c60006024f9a"></a><!-- doxytag: member="aiTexture::pcData" ref="eb07528748b6e49d2d81c60006024f9a" args="" -->
@@ -114,12 +122,14 @@ If mHeight != 0 this member is show how data is packed. Hint will consist of two
 <p>
 Data of the texture.<p>
 Points to an array of mWidth * mHeight aiTexel's. The format of the texture data is always ARGB8888 to make the implementation for user of the library as easy as possible. If mHeight = 0 this is a pointer to a memory buffer of size mWidth containing the compressed texture data. Good luck, have fun! 
+<p>Definition at line <a class="el" href="texture_8h-source.html#l00180">180</a> of file <a class="el" href="texture_8h-source.html">texture.h</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="texture_8h.html">texture.h</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="texture_8h-source.html">texture.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:52 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:15 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

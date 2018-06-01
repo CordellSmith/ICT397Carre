@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Assimp::Logger Class Reference</title>
+<title>Assignment2 - OOber Taxi: Assimp::Logger Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -30,7 +30,7 @@
 <h1>Assimp::Logger Class Reference</h1><!-- doxytag: class="Assimp::Logger" -->CPP-API: Abstract interface for logger implementations. <a class="el" href="namespace_assimp.html">Assimp</a> provides a default implementation and uses it for almost all logging stuff ('DefaultLogger'). This class defines just basic logging behaviour and is not of interest for you. Instead, take a look at DefaultLogger.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;Logger.hpp&gt;</code>
+<code>#include &lt;<a class="el" href="_logger_8hpp-source.html">Logger.hpp</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for Assimp::Logger:</div>
@@ -110,7 +110,9 @@ virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="class_assimp_1_1_logger.html" title="CPP-API: Abstract interface for logger implementations. Assimp provides a default...">Logger</a> severity. <br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-CPP-API: Abstract interface for logger implementations. <a class="el" href="namespace_assimp.html">Assimp</a> provides a default implementation and uses it for almost all logging stuff ('DefaultLogger'). This class defines just basic logging behaviour and is not of interest for you. Instead, take a look at DefaultLogger. <hr><h2>Member Enumeration Documentation</h2>
+CPP-API: Abstract interface for logger implementations. <a class="el" href="namespace_assimp.html">Assimp</a> provides a default implementation and uses it for almost all logging stuff ('DefaultLogger'). This class defines just basic logging behaviour and is not of interest for you. Instead, take a look at DefaultLogger. 
+<p>Definition at line <a class="el" href="_logger_8hpp-source.html#l00062">62</a> of file <a class="el" href="_logger_8hpp-source.html">Logger.hpp</a>.</p>
+<hr><h2>Member Enumeration Documentation</h2>
 <a class="anchor" name="8b6248a0fd062431e8572556350d29e6"></a><!-- doxytag: member="Assimp::Logger::LogSeverity" ref="8b6248a0fd062431e8572556350d29e6" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -133,6 +135,14 @@ Normal granularity of logging. </td></tr>
 Debug infos will be logged, too. </td></tr>
 </table>
 </dl>
+
+<p>Definition at line <a class="el" href="_logger_8hpp-source.html#l00073">73</a> of file <a class="el" href="_logger_8hpp-source.html">Logger.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00074"></a>00074     {
+<a name="l00075"></a>00075         <a class="code" href="class_assimp_1_1_logger.html#8b6248a0fd062431e8572556350d29e679d16f85dc21486ee489f300027e8eda" title="Normal granularity of logging.">NORMAL</a>,     
+<a name="l00076"></a>00076         <a class="code" href="class_assimp_1_1_logger.html#8b6248a0fd062431e8572556350d29e6fc9d1d86aa82fdb80e00c99b3c1ce486" title="Debug infos will be logged, too.">VERBOSE</a>     
+<a name="l00077"></a>00077     };
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -163,6 +173,16 @@ Error log message. </td></tr>
 </table>
 </dl>
 
+<p>Definition at line <a class="el" href="_logger_8hpp-source.html#l00087">87</a> of file <a class="el" href="_logger_8hpp-source.html">Logger.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00088"></a>00088     {
+<a name="l00089"></a>00089         <a class="code" href="class_assimp_1_1_logger.html#cd0b52a87d6fc11e957ed2c6e2ad75b60cb475014d27098c3423738c571d857f" title="Debug log message.">Debugging</a>   = 1,    
+<a name="l00090"></a>00090         <a class="code" href="class_assimp_1_1_logger.html#cd0b52a87d6fc11e957ed2c6e2ad75b6a3377a574928b86f7de55c5df154f461" title="Info log message.">Info</a>        = 2,    
+<a name="l00091"></a>00091         <a class="code" href="class_assimp_1_1_logger.html#cd0b52a87d6fc11e957ed2c6e2ad75b61279c77aaee5a3d7df835a9b9305a697" title="Warn log message.">Warn</a>        = 4,    
+<a name="l00092"></a>00092         <a class="code" href="class_assimp_1_1_logger.html#cd0b52a87d6fc11e957ed2c6e2ad75b671054d0b1323abcea46d050d69013d27" title="Error log message.">Err</a>         = 8     
+<a name="l00093"></a>00093     };
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
@@ -183,6 +203,24 @@ Error log message. </td></tr>
 
 <p>
 Default constructor 
+<p>Definition at line <a class="el" href="_logger_8hpp-source.html#l00212">212</a> of file <a class="el" href="_logger_8hpp-source.html">Logger.hpp</a>.</p>
+
+<p>References <a class="el" href="_logger_8hpp-source.html#l00075">NORMAL</a>, and <a class="el" href="_logger_8hpp-source.html#l00230">setLogSeverity()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00212"></a>00212                       {
+<a name="l00213"></a>00213     <a class="code" href="class_assimp_1_1_logger.html#8fb4fa4c2c329a36ac39bc9c743925f1" title="Set a new log severity.">setLogSeverity</a>(<a class="code" href="class_assimp_1_1_logger.html#8b6248a0fd062431e8572556350d29e679d16f85dc21486ee489f300027e8eda" title="Normal granularity of logging.">NORMAL</a>);
+<a name="l00214"></a>00214 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8_cgraph.png" border="0" usemap="#class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8_cgraph_map" alt=""></center>
+<map name="class_assimp_1_1_logger_784e6d1a741072b17bab32a6a41055e8_cgraph_map">
+<area shape="rect" href="class_assimp_1_1_logger.html#8fb4fa4c2c329a36ac39bc9c743925f1" title="Set a new log severity." alt="" coords="213,5,419,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="ccc0ffea63ddf0982d8c2ba7e07f0716"></a><!-- doxytag: member="Assimp::Logger::Logger" ref="ccc0ffea63ddf0982d8c2ba7e07f0716" args="(LogSeverity severity)" -->
@@ -203,6 +241,24 @@ Default constructor
 
 <p>
 Construction with a given log severity 
+<p>Definition at line <a class="el" href="_logger_8hpp-source.html#l00224">224</a> of file <a class="el" href="_logger_8hpp-source.html">Logger.hpp</a>.</p>
+
+<p>References <a class="el" href="_logger_8hpp-source.html#l00230">setLogSeverity()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00224"></a>00224                                           {
+<a name="l00225"></a>00225     <a class="code" href="class_assimp_1_1_logger.html#8fb4fa4c2c329a36ac39bc9c743925f1" title="Set a new log severity.">setLogSeverity</a>(severity);
+<a name="l00226"></a>00226 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_logger_ccc0ffea63ddf0982d8c2ba7e07f0716_cgraph.png" border="0" usemap="#class_assimp_1_1_logger_ccc0ffea63ddf0982d8c2ba7e07f0716_cgraph_map" alt=""></center>
+<map name="class_assimp_1_1_logger_ccc0ffea63ddf0982d8c2ba7e07f0716_cgraph_map">
+<area shape="rect" href="class_assimp_1_1_logger.html#8fb4fa4c2c329a36ac39bc9c743925f1" title="Set a new log severity." alt="" coords="213,5,419,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -338,6 +394,26 @@ Set a new log severity.
     <tr><td valign="top"></td><td valign="top"><em>log_severity</em>&nbsp;</td><td>New severity for logging </td></tr>
   </table>
 </dl>
+
+<p>Definition at line <a class="el" href="_logger_8hpp-source.html#l00230">230</a> of file <a class="el" href="_logger_8hpp-source.html">Logger.hpp</a>.</p>
+
+<p>References <a class="el" href="_logger_8hpp-source.html#l00207">m_Severity</a>.</p>
+
+<p>Referenced by <a class="el" href="_logger_8hpp-source.html#l00212">Logger()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00230"></a>00230                                                           {
+<a name="l00231"></a>00231     <a class="code" href="class_assimp_1_1_logger.html#e1c96711eb927a5b33745a6211e93f56" title="Logger severity.">m_Severity</a> = log_severity;
+<a name="l00232"></a>00232 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_logger_8fb4fa4c2c329a36ac39bc9c743925f1_icgraph.png" border="0" usemap="#class_assimp_1_1_logger_8fb4fa4c2c329a36ac39bc9c743925f1_icgraph_map" alt=""></center>
+<map name="class_assimp_1_1_logger_8fb4fa4c2c329a36ac39bc9c743925f1_icgraph_map">
+<area shape="rect" href="class_assimp_1_1_logger.html#784e6d1a741072b17bab32a6a41055e8" title="Assimp::Logger::Logger" alt="" coords="259,5,419,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -542,9 +618,9 @@ Called as a request to write a specific error message.
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="_logger_8hpp.html">Logger.hpp</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="_logger_8hpp-source.html">Logger.hpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:06:15 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:03:59 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

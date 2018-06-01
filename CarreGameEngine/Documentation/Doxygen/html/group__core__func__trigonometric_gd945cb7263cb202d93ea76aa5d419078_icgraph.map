@@ -1,0 +1,11 @@
+<area shape="rect" href="$group__gtc__quaternion.html#g48c100d72c9c3295b75c9133ddbb83d1" title="glm::angle" alt="" coords="159,5,239,32">
+<area shape="rect" href="$group__gtc__reciprocal.html#g79e2b1e9949a6c514eef05d462ab01a0" title="glm::asec" alt="" coords="160,56,237,83">
+<area shape="rect" href="$group__gtx__matrix__interpolation.html#g16474d44af6a32a07c50df2409526d95" title="glm::axisAngle" alt="" coords="145,107,252,133">
+<area shape="rect" href="$group__gtc__quaternion.html#gd53916e67eedc8bb259548504b713350" title="glm::mix" alt="" coords="163,157,235,184">
+<area shape="rect" href="$group__gtc__quaternion.html#ga75cee4315cd8e7f15eaac3ea944106a" title="Returns the slurp interpolation between two quaternions." alt="" coords="329,183,407,209">
+<area shape="rect" href="$group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e" title="glm::orientation" alt="" coords="144,259,253,285">
+<area shape="rect" href="$group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36" title="glm::orientedAngle" alt="" coords="135,309,263,336">
+<area shape="rect" href="$group__gtx__quaternion.html#g49e7cd8958d474290778760d171a44d2" title="glm::pow" alt="" coords="163,360,235,387">
+<area shape="rect" href="$group__gtx__matrix__interpolation.html#gc618bbef632f87be5c570aa5afe63f30" title="glm::interpolate" alt="" coords="313,107,423,133">
+<area shape="rect" href="$group__core__func__exponential.html#gfdaffc3606f4ee7f415cd64ada108356" title="glm::pow" alt="" coords="332,360,404,387">
+<area shape="rect" href="$group__gtx__norm.html#g2f42190c8743abab279d0a8f5a321692" title="glm::lxNorm" alt="" coords="473,360,564,387">

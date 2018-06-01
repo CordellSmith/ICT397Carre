@@ -14,6 +14,8 @@ virtual void \hyperlink{classbt_sphere_box_collision_algorithm_b171b2afeabaaaa8a
 \subsection{Detailed Description}
 \hyperlink{classbt_sphere_box_collision_algorithm}{btSphereBoxCollisionAlgorithm} provides sphere-box collision detection. Other features are frame-coherency (persistent data) and collision response. 
 
+Definition at line 29 of file btSphereBoxCollisionAlgorithm.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_sphere_box_collision_algorithm_b171b2afeabaaaa8a51728426643c369}{
 \index{btSphereBoxCollisionAlgorithm@{btSphereBoxCollisionAlgorithm}!processCollision@{processCollision}}
@@ -28,7 +30,53 @@ report a contact. internally this will be kept persistent, and contact reduction
 
 Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.
 
+Definition at line 52 of file btSphereBoxCollisionAlgorithm.cpp.
+
+References btManifoldResult::addContactPoint(), btManifoldResult::refreshContactPoints(), and btManifoldResult::setPersistentManifold().
+
+\begin{Code}\begin{verbatim}53 {
+54         (void)dispatchInfo;
+55         (void)resultOut;
+56         if (!m_manifoldPtr)
+57                 return;
+58 
+59         const btCollisionObjectWrapper* sphereObjWrap = m_isSwapped? body1Wrap : body0Wrap;
+60         const btCollisionObjectWrapper* boxObjWrap = m_isSwapped? body0Wrap : body1Wrap;
+61 
+62         btVector3 pOnBox;
+63 
+64         btVector3 normalOnSurfaceB;
+65         btScalar penetrationDepth;
+66         btVector3 sphereCenter = sphereObjWrap->getWorldTransform().getOrigin();
+67         const btSphereShape* sphere0 = (const btSphereShape*)sphereObjWrap->getCollisionShape();
+68         btScalar radius = sphere0->getRadius();
+69         btScalar maxContactDistance = m_manifoldPtr->getContactBreakingThreshold();
+70 
+71         resultOut->setPersistentManifold(m_manifoldPtr);
+72 
+73         if (getSphereDistance(boxObjWrap, pOnBox, normalOnSurfaceB, penetrationDepth, sphereCenter, radius, maxContactDistance))
+74         {
+76                 resultOut->addContactPoint(normalOnSurfaceB, pOnBox, penetrationDepth);
+77         }
+78 
+79         if (m_ownManifold)
+80         {
+81                 if (m_manifoldPtr->getNumContacts())
+82                 {
+83                         resultOut->refreshContactPoints();
+84                 }
+85         }
+86 
+87 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereBoxCollisionAlgorithm.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereBoxCollisionAlgorithm.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereBoxCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereBoxCollisionAlgorithm.cpp\end{CompactItemize}

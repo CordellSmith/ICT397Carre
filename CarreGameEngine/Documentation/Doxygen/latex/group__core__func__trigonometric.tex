@@ -63,7 +63,24 @@ Arc cosine. Returns an angle whose sine is x. The range of values returned by th
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/acos.xml}{\tt GLSL acos man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_g7d91deddd26925a390f08448a1b9ab1a}{
+
+
+Definition at line 119 of file func\_\-trigonometric.inl.
+
+Referenced by glm::angle(), glm::asec(), glm::axisAngle(), glm::mix(), glm::orientation(), glm::orientedAngle(), glm::pow(), and glm::slerp().
+
+\begin{Code}\begin{verbatim}122         {
+123                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'acos' only accept floating-point input");
+124 
+125                 return genType(::std::acos(x));
+126         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_g7d91deddd26925a390f08448a1b9ab1a}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!acosh@{acosh}}
 \index{acosh@{acosh}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[acosh]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::acosh (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -81,7 +98,30 @@ Arc hyperbolic cosine; returns the non-negative inverse of cosh. Results are und
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/acosh.xml}{\tt GLSL acosh man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_gb87756fced3e8d3f58b24b65c8166b77}{
+
+
+Definition at line 217 of file func\_\-trigonometric.inl.
+
+References glm::log(), and glm::sqrt().
+
+Referenced by glm::asech().
+
+\begin{Code}\begin{verbatim}220         {
+221                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'acosh' only accept floating-point input");
+222 
+223                 if(x < genType(1))
+224                         return genType(0);
+225                 return log(x + sqrt(x * x - genType(1)));
+226         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_gb87756fced3e8d3f58b24b65c8166b77}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!asin@{asin}}
 \index{asin@{asin}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[asin]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::asin (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -99,7 +139,24 @@ Arc sine. Returns an angle whose sine is x. The range of values returned by this
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/asin.xml}{\tt GLSL asin man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_gaedecffe9a7c10e5930c4ec938a0ca2e}{
+
+
+Definition at line 105 of file func\_\-trigonometric.inl.
+
+Referenced by glm::acsc(), and glm::yaw().
+
+\begin{Code}\begin{verbatim}108         {
+109                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'asin' only accept floating-point input");
+110 
+111                 return genType(::std::asin(x));
+112         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_gaedecffe9a7c10e5930c4ec938a0ca2e}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!asinh@{asinh}}
 \index{asinh@{asinh}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[asinh]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::asinh (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -117,7 +174,28 @@ Arc hyperbolic sine; returns the inverse of sinh.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/asinh.xml}{\tt GLSL asinh man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_g459eaa7149e799125acda24938114746}{
+
+
+Definition at line 203 of file func\_\-trigonometric.inl.
+
+References glm::abs(), glm::log(), and glm::sqrt().
+
+Referenced by glm::acsch().
+
+\begin{Code}\begin{verbatim}206         {
+207                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'asinh' only accept floating-point input");
+208                 
+209                 return (x < genType(0) ? genType(-1) : (x > genType(0) ? genType(1) : genType(0))) * log(abs(x) + sqrt(genType(1) + x * x));
+210         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_g459eaa7149e799125acda24938114746}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!atan@{atan}}
 \index{atan@{atan}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[atan]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::atan (genType const \& {\em y\_\-over\_\-x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -135,7 +213,24 @@ Arc tangent. Returns an angle whose tangent is y\_\-over\_\-x. The range of valu
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/atan.xml}{\tt GLSL atan man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_gb89f4e2a1ea1426dc87ab3a06901b68a}{
+
+
+Definition at line 147 of file func\_\-trigonometric.inl.
+
+Referenced by glm::pitch(), and glm::roll().
+
+\begin{Code}\begin{verbatim}150         {
+151                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'atan' only accept floating-point input");
+152 
+153                 return genType(::std::atan(x));
+154         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_gb89f4e2a1ea1426dc87ab3a06901b68a}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!atan@{atan}}
 \index{atan@{atan}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[atan]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::atan (genType const \& {\em y}, \/  genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -153,7 +248,28 @@ Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are use
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/atan.xml}{\tt GLSL atan man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_g5207916954ad98477bf488a9a188f045}{
+
+
+Definition at line 133 of file func\_\-trigonometric.inl.
+
+References glm::atan2().
+
+Referenced by glm::acot(), glm::atan2(), glm::log(), glm::polar(), and glm::shortMix().
+
+\begin{Code}\begin{verbatim}137         {
+138                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'atan' only accept floating-point input");
+139 
+140                 return genType(::std::atan2(y, x));
+141         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_g5207916954ad98477bf488a9a188f045}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!atanh@{atanh}}
 \index{atanh@{atanh}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[atanh]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::atanh (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -171,7 +287,30 @@ Arc hyperbolic tangent; returns the inverse of tanh. Results are undefined if ab
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/atanh.xml}{\tt GLSL atanh man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_gfef15df90786cd24fe786cc0ff2cbc98}{
+
+
+Definition at line 233 of file func\_\-trigonometric.inl.
+
+References glm::abs(), and glm::log().
+
+Referenced by glm::acoth().
+
+\begin{Code}\begin{verbatim}236         {
+237                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'atanh' only accept floating-point input");
+238                 
+239                 if(abs(x) >= genType(1))
+240                         return 0;
+241                 return genType(0.5) * log((genType(1) + x) / (genType(1) - x));
+242         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_gfef15df90786cd24fe786cc0ff2cbc98}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!cos@{cos}}
 \index{cos@{cos}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[cos]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::cos (genType const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -189,7 +328,24 @@ The standard trigonometric cosine function. The values returned by this function
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/cos.xml}{\tt GLSL cos man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_g522e0c2f8dbac0df60a2bf436fb88e69}{
+
+
+Definition at line 79 of file func\_\-trigonometric.inl.
+
+Referenced by glm::angleAxis(), glm::axisAngleMatrix(), glm::circularRand(), glm::euclidean(), glm::eulerAngleX(), glm::eulerAngleXY(), glm::eulerAngleY(), glm::eulerAngleYX(), glm::eulerAngleYXZ(), glm::eulerAngleZ(), glm::exp(), Player::MoveBackward(), Player::MoveForward(), glm::orientate2(), glm::orientate3(), glm::perspectiveFov(), glm::pow(), glm::rotate(), glm::rotateNormalizedAxis(), glm::rotateX(), glm::rotateY(), glm::rotateZ(), glm::sec(), glm::sphericalRand(), and glm::yawPitchRoll().
+
+\begin{Code}\begin{verbatim}80         {
+81                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'cos' only accept floating-point input");
+82 
+83                 return genType(::std::cos(angle));
+84         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_g522e0c2f8dbac0df60a2bf436fb88e69}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!cosh@{cosh}}
 \index{cosh@{cosh}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[cosh]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::cosh (genType const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -207,7 +363,24 @@ Returns the hyperbolic cosine function, (exp(x) + exp(-x)) / 2
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/cosh.xml}{\tt GLSL cosh man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_gcb63bdf23d5e084a5b6a2ed0ae395e64}{
+
+
+Definition at line 175 of file func\_\-trigonometric.inl.
+
+Referenced by glm::coth(), and glm::sech().
+
+\begin{Code}\begin{verbatim}178         {
+179                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'cosh' only accept floating-point input");
+180 
+181                 return genType(std::cosh(angle));
+182         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_gcb63bdf23d5e084a5b6a2ed0ae395e64}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!degrees@{degrees}}
 \index{degrees@{degrees}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[degrees]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::degrees (genType const \& {\em radians})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -225,7 +398,24 @@ Converts radians to degrees and returns the result.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/degrees.xml}{\tt GLSL degrees man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_g87953103f3ac701b8440a7d904fa2e4d}{
+
+
+Definition at line 52 of file func\_\-trigonometric.inl.
+
+Referenced by glm::angle(), Camera::GetRotationMatrix(), glm::orientation(), glm::orientedAngle(), glm::pitch(), glm::polar(), glm::roll(), and glm::yaw().
+
+\begin{Code}\begin{verbatim}55         {
+56                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'degrees' only accept floating-point input");
+57 
+58                 return radians * genType(57.295779513082320876798154814105);
+59         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_g87953103f3ac701b8440a7d904fa2e4d}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!radians@{radians}}
 \index{radians@{radians}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[radians]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::radians (genType const \& {\em degrees})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -243,7 +433,24 @@ Converts degrees to radians and returns the result.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/radians.xml}{\tt GLSL radians man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_gd4d4eda735d915be9af695fe2b4cded2}{
+
+
+Definition at line 38 of file func\_\-trigonometric.inl.
+
+Referenced by glm::angleAxis(), glm::euclidean(), glm::infinitePerspective(), glm::perspective(), glm::perspectiveFov(), glm::rotate(), glm::rotateNormalizedAxis(), glm::rotateX(), glm::rotateY(), glm::rotateZ(), and glm::tweakedInfinitePerspective().
+
+\begin{Code}\begin{verbatim}41         {
+42                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'radians' only accept floating-point input");
+43 
+44                 return degrees * genType(0.01745329251994329576923690768489);
+45         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_gd4d4eda735d915be9af695fe2b4cded2}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!sin@{sin}}
 \index{sin@{sin}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[sin]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::sin (genType const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -261,7 +468,24 @@ The standard trigonometric sine function. The values returned by this function w
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/sin.xml}{\tt GLSL sin man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_g925002c6a847894241278997d189429a}{
+
+
+Definition at line 66 of file func\_\-trigonometric.inl.
+
+Referenced by glm::angleAxis(), glm::axisAngleMatrix(), glm::circularRand(), glm::csc(), glm::euclidean(), glm::eulerAngleX(), glm::eulerAngleXY(), glm::eulerAngleY(), glm::eulerAngleYX(), glm::eulerAngleYXZ(), glm::eulerAngleZ(), glm::exp(), glm::mix(), Player::MoveBackward(), Player::MoveForward(), glm::orientate2(), glm::orientate3(), glm::perspectiveFov(), glm::pow(), glm::rotate(), glm::rotateNormalizedAxis(), glm::rotateX(), glm::rotateY(), glm::rotateZ(), glm::shortMix(), glm::slerp(), glm::sphericalRand(), and glm::yawPitchRoll().
+
+\begin{Code}\begin{verbatim}69         {
+70                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'sin' only accept floating-point input");
+71 
+72                 return genType(::std::sin(angle));
+73         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_g925002c6a847894241278997d189429a}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!sinh@{sinh}}
 \index{sinh@{sinh}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[sinh]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::sinh (genType const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -279,7 +503,24 @@ Returns the hyperbolic sine function, (exp(x) - exp(-x)) / 2
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/sinh.xml}{\tt GLSL sinh man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_g93a81f04757351ba92d924e237cbeb61}{
+
+
+Definition at line 161 of file func\_\-trigonometric.inl.
+
+Referenced by glm::coth(), and glm::csch().
+
+\begin{Code}\begin{verbatim}164         {
+165                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'sinh' only accept floating-point input");
+166 
+167                 return genType(std::sinh(angle));
+168         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_g93a81f04757351ba92d924e237cbeb61}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!tan@{tan}}
 \index{tan@{tan}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[tan]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::tan (genType const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -297,7 +538,24 @@ The standard trigonometric tangent function.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/tan.xml}{\tt GLSL tan man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
-\hypertarget{group__core__func__trigonometric_gaa29bdd7f3b57755a7b6a9834d59887f}{
+
+
+Definition at line 91 of file func\_\-trigonometric.inl.
+
+Referenced by glm::cot(), glm::infinitePerspective(), glm::perspective(), and glm::tweakedInfinitePerspective().
+
+\begin{Code}\begin{verbatim}94         {
+95                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'tan' only accept floating-point input");
+96 
+97                 return genType(::std::tan(angle));
+98         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__trigonometric_gaa29bdd7f3b57755a7b6a9834d59887f}{
 \index{core\_\-func\_\-trigonometric@{core\_\-func\_\-trigonometric}!tanh@{tanh}}
 \index{tanh@{tanh}!core_func_trigonometric@{core\_\-func\_\-trigonometric}}
 \subsubsection[tanh]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::tanh (genType const \& {\em angle})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -315,3 +573,16 @@ Returns the hyperbolic tangent function, sinh(angle) / cosh(angle)
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/tanh.xml}{\tt GLSL tanh man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.1 Angle and Trigonometry Functions} \end{Desc}
+
+
+Definition at line 189 of file func\_\-trigonometric.inl.
+
+\begin{Code}\begin{verbatim}192         {
+193                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'tanh' only accept floating-point input");
+194 
+195                 return genType(std::tanh(angle));
+196         }
+\end{verbatim}
+\end{Code}
+
+

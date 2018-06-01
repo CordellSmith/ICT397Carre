@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_color_space_YCoCg</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_color_space_YCoCg</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -72,6 +72,17 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Convert a color from RGB color space to YCoCg color space. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__color__space___y_co_cg.html" title="RGB to YCoCg conversions and operations.">GLM_GTX_color_space_YCoCg</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="color__space___y_co_cg_8inl-source.html#l00014">14</a> of file <a class="el" href="color__space___y_co_cg_8inl-source.html">color_space_YCoCg.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00017"></a>00017         {
+<a name="l00018"></a>00018                 detail::tvec3&lt;T, P&gt; result;
+<a name="l00019"></a>00019                 result.x<span class="comment">/*Y */</span> =   <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.r / T(4) + <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.g / T(2) + <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.b / T(4);
+<a name="l00020"></a>00020                 result.y<span class="comment">/*Co*/</span> =   <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.r / T(2) + <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.g * T(0) - <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.b / T(2);
+<a name="l00021"></a>00021                 result.z<span class="comment">/*Cg*/</span> = - <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.r / T(4) + <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.g / T(2) - <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.b / T(4);
+<a name="l00022"></a>00022                 <span class="keywordflow">return</span> result;
+<a name="l00023"></a>00023         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="gda2dcb113c669093c7099dc58f26fb7c"></a><!-- doxytag: member="glm::rgb2YCoCgR" ref="gda2dcb113c669093c7099dc58f26fb7c" args="(detail::tvec3&lt; T, P &gt; const &amp;rgbColor)" -->
@@ -96,6 +107,17 @@ template&lt;typename T, precision P&gt; </div>
 Convert a color from RGB color space to YCoCgR color space. <dl class="see" compact><dt><b>See also:</b></dt><dd>"YCoCg-R: A Color Space with RGB Reversibility and Low Dynamic Range" <p>
 <a class="el" href="group__gtx__color__space___y_co_cg.html" title="RGB to YCoCg conversions and operations.">GLM_GTX_color_space_YCoCg</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="color__space___y_co_cg_8inl-source.html#l00027">27</a> of file <a class="el" href="color__space___y_co_cg_8inl-source.html">color_space_YCoCg.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00030"></a>00030         {
+<a name="l00031"></a>00031                 detail::tvec3&lt;T, P&gt; result;
+<a name="l00032"></a>00032                 result.x<span class="comment">/*Y */</span> = <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.g / T(2) + (<a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.r + <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.b) / T(4);
+<a name="l00033"></a>00033                 result.y<span class="comment">/*Co*/</span> = <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.r - <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.b;
+<a name="l00034"></a>00034                 result.z<span class="comment">/*Cg*/</span> = <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.g - (<a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.r + <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.b) / T(2);
+<a name="l00035"></a>00035                 <span class="keywordflow">return</span> result;
+<a name="l00036"></a>00036         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="g68b8a9930f61718c6e819245e04f52a1"></a><!-- doxytag: member="glm::YCoCg2rgb" ref="g68b8a9930f61718c6e819245e04f52a1" args="(detail::tvec3&lt; T, P &gt; const &amp;YCoCgColor)" -->
@@ -118,6 +140,17 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Convert a color from YCoCg color space to RGB color space. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__color__space___y_co_cg.html" title="RGB to YCoCg conversions and operations.">GLM_GTX_color_space_YCoCg</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="color__space___y_co_cg_8inl-source.html#l00040">40</a> of file <a class="el" href="color__space___y_co_cg_8inl-source.html">color_space_YCoCg.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00043"></a>00043         {
+<a name="l00044"></a>00044                 detail::tvec3&lt;T, P&gt; result;
+<a name="l00045"></a>00045                 result.r = YCoCgColor.x + YCoCgColor.y - YCoCgColor.z;
+<a name="l00046"></a>00046                 result.g = YCoCgColor.x                + YCoCgColor.z;
+<a name="l00047"></a>00047                 result.b = YCoCgColor.x - YCoCgColor.y - YCoCgColor.z;
+<a name="l00048"></a>00048                 <span class="keywordflow">return</span> result;
+<a name="l00049"></a>00049         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -143,10 +176,22 @@ template&lt;typename T, precision P&gt; </div>
 Convert a color from YCoCgR color space to RGB color space. <dl class="see" compact><dt><b>See also:</b></dt><dd>"YCoCg-R: A Color Space with RGB Reversibility and Low Dynamic Range" <p>
 <a class="el" href="group__gtx__color__space___y_co_cg.html" title="RGB to YCoCg conversions and operations.">GLM_GTX_color_space_YCoCg</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="color__space___y_co_cg_8inl-source.html#l00053">53</a> of file <a class="el" href="color__space___y_co_cg_8inl-source.html">color_space_YCoCg.inl</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00056"></a>00056         {
+<a name="l00057"></a>00057                 detail::tvec3&lt;T, P&gt; result;
+<a name="l00058"></a>00058                 T tmp = YCoCgRColor.x - (YCoCgRColor.z / T(2));
+<a name="l00059"></a>00059                 result.g = YCoCgRColor.z + tmp;
+<a name="l00060"></a>00060                 result.b = tmp - (YCoCgRColor.y / T(2));
+<a name="l00061"></a>00061                 result.r = result.b + YCoCgRColor.y;
+<a name="l00062"></a>00062                 <span class="keywordflow">return</span> result;
+<a name="l00063"></a>00063         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:29 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:02 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

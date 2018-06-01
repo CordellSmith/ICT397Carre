@@ -79,6 +79,8 @@ This class manages a sub part of a mesh supplied by the btStridingMeshInterface 
 \item Simply create this shape by passing the btStridingMeshInterface to the constructor \hyperlink{classbt_g_impact_mesh_shape_part}{btGImpactMeshShapePart}, then you must call \hyperlink{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{updateBound()} after creating the mesh\item When making operations with this shape, you must call {\bf lock} before accessing to the trimesh primitives, and then call {\bf unlock}\item You can handle deformable meshes with this shape, by calling \hyperlink{classbt_g_impact_shape_interface_c430754948ac92d6f70b81e88416c96a}{postUpdate()} every time when changing the mesh vertices. \end{itemize}
 
 
+Definition at line 531 of file btGImpactShape.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_g_impact_mesh_shape_part_0a97d3769fb7d3f583e41da6b284bcc1}{
 \index{btGImpactMeshShapePart@{btGImpactMeshShapePart}!setChildTransform@{setChildTransform}}
@@ -93,7 +95,20 @@ Sets the children transform.
 \item[Postcondition:]You must call \hyperlink{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{updateBound()} for update the box set. \end{Desc}
 
 
-Implements \hyperlink{classbt_g_impact_shape_interface_83392f97bd7dfeb71ccdce6913a465b0}{btGImpactShapeInterface}.\hypertarget{classbt_g_impact_mesh_shape_part_5ff615b55a2bdaeba511fb116a9ab546}{
+Implements \hyperlink{classbt_g_impact_shape_interface_83392f97bd7dfeb71ccdce6913a465b0}{btGImpactShapeInterface}.
+
+Definition at line 776 of file btGImpactShape.h.
+
+\begin{Code}\begin{verbatim}777         {
+778         (void) index;
+779         (void) transform;
+780                 btAssert(0);
+781         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{classbt_g_impact_mesh_shape_part_5ff615b55a2bdaeba511fb116a9ab546}{
 \index{btGImpactMeshShapePart@{btGImpactMeshShapePart}!getGImpactShapeType@{getGImpactShapeType}}
 \index{getGImpactShapeType@{getGImpactShapeType}!btGImpactMeshShapePart@{btGImpactMeshShapePart}}
 \subsubsection[getGImpactShapeType]{\setlength{\rightskip}{0pt plus 5cm}virtual eGIMPACT\_\-SHAPE\_\-TYPE btGImpactMeshShapePart::getGImpactShapeType () const\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
@@ -104,7 +119,18 @@ Base method for determinig which kind of GIMPACT shape we get.
 
 Subshape member functions 
 
-Implements \hyperlink{classbt_g_impact_shape_interface_25cacbe448997e3f8ec99cb2d4952859}{btGImpactShapeInterface}.\hypertarget{classbt_g_impact_mesh_shape_part_2c1de297d020a75e1ab0f10f7c71478f}{
+Implements \hyperlink{classbt_g_impact_shape_interface_25cacbe448997e3f8ec99cb2d4952859}{btGImpactShapeInterface}.
+
+Definition at line 809 of file btGImpactShape.h.
+
+\begin{Code}\begin{verbatim}810         {
+811                 return CONST_GIMPACT_TRIMESH_SHAPE_PART;
+812         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{classbt_g_impact_mesh_shape_part_2c1de297d020a75e1ab0f10f7c71478f}{
 \index{btGImpactMeshShapePart@{btGImpactMeshShapePart}!setLocalScaling@{setLocalScaling}}
 \index{setLocalScaling@{setLocalScaling}!btGImpactMeshShapePart@{btGImpactMeshShapePart}}
 \subsubsection[setLocalScaling]{\setlength{\rightskip}{0pt plus 5cm}virtual void btGImpactMeshShapePart::setLocalScaling (const btVector3 \& {\em scaling})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
@@ -115,7 +141,27 @@ Implements \hyperlink{classbt_g_impact_shape_interface_25cacbe448997e3f8ec99cb2d
 \item[Postcondition:]You must call \hyperlink{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{updateBound()} for update the box set. \end{Desc}
 
 
-Reimplemented from \hyperlink{classbt_g_impact_shape_interface_dec0bd43cd0105b1d0dc172bc7db50d8}{btGImpactShapeInterface}.\hypertarget{classbt_g_impact_mesh_shape_part_230a814ad9f784638e8bcbf0592cdd39}{
+Reimplemented from \hyperlink{classbt_g_impact_shape_interface_dec0bd43cd0105b1d0dc172bc7db50d8}{btGImpactShapeInterface}.
+
+Definition at line 861 of file btGImpactShape.h.
+
+References btGImpactMeshShapePart::TrimeshPrimitiveManager::m\_\-scale, and btGImpactShapeInterface::postUpdate().
+
+Referenced by btGImpactMeshShape::setLocalScaling().
+
+\begin{Code}\begin{verbatim}862     {
+863         m_primitive_manager.m_scale = scaling;
+864         postUpdate();
+865     }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classbt_g_impact_mesh_shape_part_230a814ad9f784638e8bcbf0592cdd39}{
 \index{btGImpactMeshShapePart@{btGImpactMeshShapePart}!processAllTriangles@{processAllTriangles}}
 \index{processAllTriangles@{processAllTriangles}!btGImpactMeshShapePart@{btGImpactMeshShapePart}}
 \subsubsection[processAllTriangles]{\setlength{\rightskip}{0pt plus 5cm}void btGImpactMeshShapePart::processAllTriangles ({\bf btTriangleCallback} $\ast$ {\em callback}, \/  const btVector3 \& {\em aabbMin}, \/  const btVector3 \& {\em aabbMax}) const\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
@@ -126,7 +172,45 @@ Function for retrieve triangles.
 
 It gives the triangles in local space 
 
-Reimplemented from \hyperlink{classbt_g_impact_shape_interface_2faf9adce39854a9a66dd658f646be25}{btGImpactShapeInterface}.\hypertarget{classbt_g_impact_mesh_shape_part_0e35b55bd50911911f8164cf3a2dd5c8}{
+Reimplemented from \hyperlink{classbt_g_impact_shape_interface_2faf9adce39854a9a66dd658f646be25}{btGImpactShapeInterface}.
+
+Definition at line 227 of file btGImpactShape.cpp.
+
+References btGImpactQuantizedBvh::boxQuery(), btGImpactShapeInterface::getPrimitiveTriangle(), lockChildShapes(), btTriangleCallback::processTriangle(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}228 {
+229         lockChildShapes();
+230         btAABB box;
+231         box.m_min = aabbMin;
+232         box.m_max = aabbMax;
+233 
+234         btAlignedObjectArray<int> collided;
+235         m_box_set.boxQuery(box,collided);
+236 
+237         if(collided.size()==0)
+238         {
+239                 unlockChildShapes();
+240                 return;
+241         }
+242 
+243         int part = (int)getPart();
+244         btPrimitiveTriangle triangle;
+245         int i = collided.size();
+246         while(i--)
+247         {
+248                 this->getPrimitiveTriangle(collided[i],triangle);
+249                 callback->processTriangle(triangle.m_vertices,part,collided[i]);
+250         }
+251         unlockChildShapes();
+252 
+253 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_g_impact_mesh_shape_part_0e35b55bd50911911f8164cf3a2dd5c8}{
 \index{btGImpactMeshShapePart@{btGImpactMeshShapePart}!processAllTrianglesRay@{processAllTrianglesRay}}
 \index{processAllTrianglesRay@{processAllTrianglesRay}!btGImpactMeshShapePart@{btGImpactMeshShapePart}}
 \subsubsection[processAllTrianglesRay]{\setlength{\rightskip}{0pt plus 5cm}void btGImpactMeshShapePart::processAllTrianglesRay ({\bf btTriangleCallback} $\ast$, \/  const btVector3 \&, \/  const btVector3 \&) const\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
@@ -139,7 +223,43 @@ It gives the triangles in local space
 
 Reimplemented from \hyperlink{classbt_g_impact_shape_interface_646ad13b4aa116d58df110c2f407e5a8}{btGImpactShapeInterface}.
 
+Definition at line 201 of file btGImpactShape.cpp.
+
+References btGImpactShapeInterface::getPrimitiveTriangle(), lockChildShapes(), btTriangleCallback::processTriangle(), btGImpactQuantizedBvh::rayQuery(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}202 {
+203         lockChildShapes();
+204 
+205         btAlignedObjectArray<int> collided;
+206         btVector3 rayDir(rayTo - rayFrom);
+207         rayDir.normalize();
+208         m_box_set.rayQuery(rayDir, rayFrom, collided);
+209 
+210         if(collided.size()==0)
+211         {
+212                 unlockChildShapes();
+213                 return;
+214         }
+215 
+216         int part = (int)getPart();
+217         btPrimitiveTriangle triangle;
+218         int i = collided.size();
+219         while(i--)
+220         {
+221                 getPrimitiveTriangle(collided[i],triangle);
+222                 callback->processTriangle(triangle.m_vertices,part,collided[i]);
+223         }
+224         unlockChildShapes();
+225 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_g_impact_shape_8h}{btGImpactShape.h}\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactShape.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_g_impact_shape_8h}{btGImpactShape.h}\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactShape.cpp\end{CompactItemize}

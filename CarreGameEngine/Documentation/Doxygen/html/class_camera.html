@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Camera Struct Reference</title>
+<title>Assignment2 - OOber Taxi: Camera Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,14 +25,14 @@
   </div>
 </div>
 <div class="contents">
-<h1>Camera Struct Reference</h1><!-- doxytag: class="Camera" -->Used for the GLM math library.  
+<h1>Camera Class Reference</h1><!-- doxytag: class="Camera" -->Used for the GLM math library.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;Camera.h&gt;</code>
+<code>#include &lt;<a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>&gt;</code>
 <p>
 
 <p>
-<a href="struct_camera-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
+<a href="class_camera-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#01f94c3543f56ede7af49dc778f19331">Camera</a> ()</td></tr>
@@ -41,6 +41,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#621b0ca0ddcab43fb95ee754c443dfa4">SetPerspective</a> (float fov, float aspectRatio, float nearPlane, float farPlane)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Default constructor.  <a href="#621b0ca0ddcab43fb95ee754c443dfa4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#e32a72f519739a0b4dce07433cfbe9ef">PositionCamera</a> (float positionX, float positionY, float positionZ, float yaw, float pitch)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets up the camera.  <a href="#e32a72f519739a0b4dce07433cfbe9ef"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#3518233b244af839db6eefe59e7002de">GetRotationMatrix</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the rotation matrix.  <a href="#3518233b244af839db6eefe59e7002de"></a><br></td></tr>
@@ -53,24 +56,24 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#513c43647fdc22a1f1f2ce75d67e6c43">SetPosition</a> (<a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> position)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets camera position.  <a href="#513c43647fdc22a1f1f2ce75d67e6c43"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#7166b8466c94d0b5c127fc74c7881beb">GetPosition</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#0eabfe3e807623f2ff69b121e65d8b8e">GetPosition</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the camera position.  <a href="#7166b8466c94d0b5c127fc74c7881beb"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the camera position.  <a href="#0eabfe3e807623f2ff69b121e65d8b8e"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#338c5baf20b57652828c53e0791adf9a">GetView</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the camera view.  <a href="#338c5baf20b57652828c53e0791adf9a"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#ff61f06284cca3216accdf556dfbd3c1">GetUp</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the camera position.  <a href="#ff61f06284cca3216accdf556dfbd3c1"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#6318f73a8c7364eb477b7b5aa0ee930e">GetYaw</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">float &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#614e2fb59605eaff3d57be570805a1c2">GetYaw</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the camera yaw.  <a href="#6318f73a8c7364eb477b7b5aa0ee930e"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the camera yaw.  <a href="#614e2fb59605eaff3d57be570805a1c2"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#0f3853ee0b4a1c1fcf3c136decbbe056">SetYaw</a> (float yaw)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the yaw.  <a href="#0f3853ee0b4a1c1fcf3c136decbbe056"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#498895884e11402ffaf248c32aa31856">GetPitch</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">float &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#7cdeaf63fbab2011eca767f238668a06">GetPitch</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the camera pitch.  <a href="#498895884e11402ffaf248c32aa31856"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the camera pitch.  <a href="#7cdeaf63fbab2011eca767f238668a06"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#bd3daba04eb01231eec1d5fdbe862d52">SetPitch</a> (float pitch)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the camera pitch.  <a href="#bd3daba04eb01231eec1d5fdbe862d52"></a><br></td></tr>
@@ -89,9 +92,6 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#05c4a137b939bfdee2b7efea6d67d0e7">SetViewByMouse</a> (float mouseX, float mouseY)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the view of the camera according to the mouse movement.  <a href="#05c4a137b939bfdee2b7efea6d67d0e7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#e32a72f519739a0b4dce07433cfbe9ef">PositionCamera</a> (float positionX, float positionY, float positionZ, float yaw, float pitch)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets up the camera.  <a href="#e32a72f519739a0b4dce07433cfbe9ef"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223">MoveCamera</a> (float speed)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Moves the camera.  <a href="#ec3a27aa4de4ad2d10d421ee2fa54223"></a><br></td></tr>
@@ -105,7 +105,7 @@
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The camera's position. <br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="809774c9955a53755048ea80d934e912"></a><!-- doxytag: member="Camera::m_speed" ref="809774c9955a53755048ea80d934e912" args="" -->
-float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#809774c9955a53755048ea80d934e912">m_speed</a> = 5.0</td></tr>
+float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#809774c9955a53755048ea80d934e912">m_speed</a> = 50.0</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The camera's speed that is used with a time slice. <br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="0b1c75781c142e6bb28761224d0b67ce"></a><!-- doxytag: member="Camera::m_rotationSpeed" ref="0b1c75781c142e6bb28761224d0b67ce" args="" -->
@@ -124,13 +124,33 @@ float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#2202e419e9440bbb26e6997248268b0b">m_pitch</a> = 0</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The vertical rotation angle (in radians) x-axis. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a404a4e057fa16fb82ce8668d7a661b6"></a><!-- doxytag: member="Camera::m_fov" ref="a404a4e057fa16fb82ce8668d7a661b6" args="" -->
+float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a404a4e057fa16fb82ce8668d7a661b6">m_fov</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The fov. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="9a5b3abea53ca97854696258029ee6cd"></a><!-- doxytag: member="Camera::m_aspectRatio" ref="9a5b3abea53ca97854696258029ee6cd" args="" -->
+float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#9a5b3abea53ca97854696258029ee6cd">m_aspectRatio</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">aspect ratio of the screen <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="826a6508eec1868dbc1d57aa1c65e243"></a><!-- doxytag: member="Camera::m_nearPlane" ref="826a6508eec1868dbc1d57aa1c65e243" args="" -->
+float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#826a6508eec1868dbc1d57aa1c65e243">m_nearPlane</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">minimum rendering distance <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="0b272c81cc3d92714421c3cb15d1d31a"></a><!-- doxytag: member="Camera::m_farPlane" ref="0b272c81cc3d92714421c3cb15d1d31a" args="" -->
+float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#0b272c81cc3d92714421c3cb15d1d31a">m_farPlane</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">maximum rendering distance <br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Used for the GLM math library. 
 <p>
 Basic camera class This class contains the camera object that will allow us to move around and view the world.<p>
 <dl class="version" compact><dt><b>Version:</b></dt><dd>01 </dd></dl>
-<dl class="date" compact><dt><b>Date:</b></dt><dd>29/03/2018 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>29/03/2018</dd></dl>
+<dl class="version" compact><dt><b>Version:</b></dt><dd>02 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>31/05/2018 </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00027">27</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="01f94c3543f56ede7af49dc778f19331"></a><!-- doxytag: member="Camera::Camera" ref="01f94c3543f56ede7af49dc778f19331" args="()" -->
 <div class="memitem">
@@ -152,6 +172,17 @@ Default constructor.
 <p>
 Constructor sets the default origin of the camera at 0,0,0.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>null </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00037">37</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00250">m_position</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00037"></a>00037                  { 
+<a name="l00038"></a>00038                 <a class="code" href="class_camera.html#a4d06d49524248f81823444fa2544da0" title="The camera&amp;#39;s position.">m_position</a> = <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>(0.0, 0.0, 0.0); 
+<a name="l00039"></a>00039                 m_distanceFromPlayer = 450.0;
+<a name="l00040"></a>00040                 m_angleAroundPlayer = 0.0;
+<a name="l00041"></a>00041         }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -207,414 +238,30 @@ This sets the perspective matrix that is built from the field of fiew, aspect ra
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> </dd></dl>
 
-</div>
-</div><p>
-<a class="anchor" name="3518233b244af839db6eefe59e7002de"></a><!-- doxytag: member="Camera::GetRotationMatrix" ref="3518233b244af839db6eefe59e7002de" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> Camera::GetRotationMatrix           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
+<p>Definition at line <a class="el" href="_camera_8cpp-source.html#l00003">3</a> of file <a class="el" href="_camera_8cpp-source.html">Camera.cpp</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00265">m_aspectRatio</a>, <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00269">m_farPlane</a>, <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00263">m_fov</a>, <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00267">m_nearPlane</a>, <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00248">m_projectionMatrix</a>, and <a class="el" href="matrix__transform_8inl-source.html#l00219">glm::perspective()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00004"></a>00004 {
+<a name="l00005"></a>00005         <a class="code" href="class_camera.html#a404a4e057fa16fb82ce8668d7a661b6" title="The fov.">m_fov</a> = fov;
+<a name="l00006"></a>00006         <a class="code" href="class_camera.html#9a5b3abea53ca97854696258029ee6cd" title="aspect ratio of the screen">m_aspectRatio</a> = aspectRatio;
+<a name="l00007"></a>00007         <a class="code" href="class_camera.html#826a6508eec1868dbc1d57aa1c65e243" title="minimum rendering distance">m_nearPlane</a> = near;
+<a name="l00008"></a>00008         <a class="code" href="class_camera.html#0b272c81cc3d92714421c3cb15d1d31a" title="maximum rendering distance">m_farPlane</a> = far;
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010         <a class="code" href="class_camera.html#26d7567bf34d14260f887a0382aeae29" title="The camera&amp;#39;s projection matrix.">m_projectionMatrix</a> = <a class="code" href="group__gtc__matrix__transform.html#g6f705d60660ad2d4ef540ca0bb59273e">glm::perspective</a>(<a class="code" href="class_camera.html#a404a4e057fa16fb82ce8668d7a661b6" title="The fov.">m_fov</a>, <a class="code" href="class_camera.html#9a5b3abea53ca97854696258029ee6cd" title="aspect ratio of the screen">m_aspectRatio</a>, <a class="code" href="class_camera.html#826a6508eec1868dbc1d57aa1c65e243" title="minimum rendering distance">m_nearPlane</a>, <a class="code" href="class_camera.html#0b272c81cc3d92714421c3cb15d1d31a" title="maximum rendering distance">m_farPlane</a>);
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012         <span class="keywordflow">return</span> <a class="code" href="class_camera.html#26d7567bf34d14260f887a0382aeae29" title="The camera&amp;#39;s projection matrix.">m_projectionMatrix</a>;
+<a name="l00013"></a>00013 }
+</pre></div>
+<p>
 
 <p>
-Gets the rotation matrix. 
-<p>
-This function builds and returns a rotation matrix from the yaw and pitch rotations.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> </dd></dl>
-
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_camera_621b0ca0ddcab43fb95ee754c443dfa4_cgraph.png" border="0" usemap="#class_camera_621b0ca0ddcab43fb95ee754c443dfa4_cgraph_map" alt=""></center>
+<map name="class_camera_621b0ca0ddcab43fb95ee754c443dfa4_cgraph_map">
+<area shape="rect" href="group__gtc__matrix__transform.html#g6f705d60660ad2d4ef540ca0bb59273e" title="glm::perspective" alt="" coords="217,31,332,57"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="383,5,473,32"><area shape="rect" href="group__core__func__trigonometric.html#g93a81f04757351ba92d924e237cbeb61" title="glm::tan" alt="" coords="395,56,461,83"></map>
 </div>
-</div><p>
-<a class="anchor" name="b0a4bf5a65d45f25529e3cffda1c361b"></a><!-- doxytag: member="Camera::GetProjectionMatrix" ref="b0a4bf5a65d45f25529e3cffda1c361b" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> Camera::GetProjectionMatrix           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Gets the projection matrix. 
-<p>
-This function returns the current projection matrix.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="ffa333055635aed96518c4c66be9a70c"></a><!-- doxytag: member="Camera::GetViewMatrix" ref="ffa333055635aed96518c4c66be9a70c" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> Camera::GetViewMatrix           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Gets the view matrix. 
-<p>
-This function returns the current view matrix.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="513c43647fdc22a1f1f2ce75d67e6c43"></a><!-- doxytag: member="Camera::SetPosition" ref="513c43647fdc22a1f1f2ce75d67e6c43" args="(glm::vec3 position)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Camera::SetPosition           </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td>
-          <td class="paramname"> <em>position</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Sets camera position. 
-<p>
-This function sets the camera's position to the parameter given vec3.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="7166b8466c94d0b5c127fc74c7881beb"></a><!-- doxytag: member="Camera::GetPosition" ref="7166b8466c94d0b5c127fc74c7881beb" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> Camera::GetPosition           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Gets the camera position. 
-<p>
-This function returns the cameras position in a vec3.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="338c5baf20b57652828c53e0791adf9a"></a><!-- doxytag: member="Camera::GetView" ref="338c5baf20b57652828c53e0791adf9a" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> Camera::GetView           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Gets the camera view. 
-<p>
-This function returns the cameras position in a vec3.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="ff61f06284cca3216accdf556dfbd3c1"></a><!-- doxytag: member="Camera::GetUp" ref="ff61f06284cca3216accdf556dfbd3c1" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> Camera::GetUp           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Gets the camera position. 
-<p>
-This function returns the camera's up vector (the direction pointing up) from the rotation matrix.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="6318f73a8c7364eb477b7b5aa0ee930e"></a><!-- doxytag: member="Camera::GetYaw" ref="6318f73a8c7364eb477b7b5aa0ee930e" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Camera::GetYaw           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Gets the camera yaw. 
-<p>
-This function returns the yaw of the camera.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>float </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="0f3853ee0b4a1c1fcf3c136decbbe056"></a><!-- doxytag: member="Camera::SetYaw" ref="0f3853ee0b4a1c1fcf3c136decbbe056" args="(float yaw)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Camera::SetYaw           </td>
-          <td>(</td>
-          <td class="paramtype">float&nbsp;</td>
-          <td class="paramname"> <em>yaw</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Sets the yaw. 
-<p>
-This function sets the yaw of the camera to the float parameter given.<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>float</em>&nbsp;</td><td>yaw </td></tr>
-  </table>
-</dl>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="498895884e11402ffaf248c32aa31856"></a><!-- doxytag: member="Camera::GetPitch" ref="498895884e11402ffaf248c32aa31856" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Camera::GetPitch           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Gets the camera pitch. 
-<p>
-This function returns the pitch of the camera.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>float </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="bd3daba04eb01231eec1d5fdbe862d52"></a><!-- doxytag: member="Camera::SetPitch" ref="bd3daba04eb01231eec1d5fdbe862d52" args="(float pitch)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Camera::SetPitch           </td>
-          <td>(</td>
-          <td class="paramtype">float&nbsp;</td>
-          <td class="paramname"> <em>pitch</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Sets the camera pitch. 
-<p>
-This function sets the pitch of the camera to the float parameter given.<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>float</em>&nbsp;</td><td>pitch </td></tr>
-  </table>
-</dl>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="8cb555aeca85fcd988978105178cc0f3"></a><!-- doxytag: member="Camera::SetSpeed" ref="8cb555aeca85fcd988978105178cc0f3" args="(double speed)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Camera::SetSpeed           </td>
-          <td>(</td>
-          <td class="paramtype">double&nbsp;</td>
-          <td class="paramname"> <em>speed</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Sets the camera movement speed. 
-<p>
-This function sets the movement speed of the camera to the double parameter given.<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>double</em>&nbsp;</td><td>speed </td></tr>
-  </table>
-</dl>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="6d305ab5442a489253a321b2a45b11b6"></a><!-- doxytag: member="Camera::GetSpeed" ref="6d305ab5442a489253a321b2a45b11b6" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double Camera::GetSpeed           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Gets the camera speed. 
-<p>
-This function returns the speed of the camera.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>double </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="bce25d2360c703fb5ac6da02d3991bda"></a><!-- doxytag: member="Camera::SetRotationSpeed" ref="bce25d2360c703fb5ac6da02d3991bda" args="(double speed)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Camera::SetRotationSpeed           </td>
-          <td>(</td>
-          <td class="paramtype">double&nbsp;</td>
-          <td class="paramname"> <em>speed</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Sets the camera rotation speed. 
-<p>
-This function sets the rotation speed of the camera to the double parameter given.<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>double</em>&nbsp;</td><td>speed </td></tr>
-  </table>
-</dl>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="eebe84aaf8b615505ef2ad7f7bbffbb9"></a><!-- doxytag: member="Camera::GetRotationSpeed" ref="eebe84aaf8b615505ef2ad7f7bbffbb9" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double Camera::GetRotationSpeed           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Gets the camera rotation speed. 
-<p>
-This function returns the rotation speed of the camera.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>double </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="05c4a137b939bfdee2b7efea6d67d0e7"></a><!-- doxytag: member="Camera::SetViewByMouse" ref="05c4a137b939bfdee2b7efea6d67d0e7" args="(float mouseX, float mouseY)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Camera::SetViewByMouse           </td>
-          <td>(</td>
-          <td class="paramtype">float&nbsp;</td>
-          <td class="paramname"> <em>mouseX</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&nbsp;</td>
-          <td class="paramname"> <em>mouseY</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Sets the view of the camera according to the mouse movement. 
-<p>
-This sets the pitch and yaw of our camera from the mouse x and y deltas from the last frame.<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>float</em>&nbsp;</td><td>mouseX </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>float</em>&nbsp;</td><td>mouseY </td></tr>
-  </table>
-</dl>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
 
 </div>
 </div><p>
@@ -676,6 +323,620 @@ This sets the Position and the yaw and pitch rotations (in radians).<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
 
+<p>Definition at line <a class="el" href="_camera_8cpp-source.html#l00015">15</a> of file <a class="el" href="_camera_8cpp-source.html">Camera.cpp</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00261">m_pitch</a>, <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00250">m_position</a>, and <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00259">m_yaw</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00016"></a>00016 {
+<a name="l00017"></a>00017         <a class="code" href="class_camera.html#a4d06d49524248f81823444fa2544da0" title="The camera&amp;#39;s position.">m_position</a> = <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>(positionX, positionY, positionZ);
+<a name="l00018"></a>00018         <a class="code" href="class_camera.html#0f8807da02d4a1bb695be51793279873" title="The horizontal rotation angle (in radians) y-axis.">m_yaw</a> = <a class="code" href="group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1">yaw</a>;
+<a name="l00019"></a>00019         <a class="code" href="class_camera.html#2202e419e9440bbb26e6997248268b0b" title="The vertical rotation angle (in radians) x-axis.">m_pitch</a> = <a class="code" href="group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd">pitch</a>;
+<a name="l00020"></a>00020 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3518233b244af839db6eefe59e7002de"></a><!-- doxytag: member="Camera::GetRotationMatrix" ref="3518233b244af839db6eefe59e7002de" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> Camera::GetRotationMatrix           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the rotation matrix. 
+<p>
+This function builds and returns a rotation matrix from the yaw and pitch rotations.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_camera_8cpp-source.html#l00022">22</a> of file <a class="el" href="_camera_8cpp-source.html">Camera.cpp</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00052">glm::degrees()</a>, <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00261">m_pitch</a>, <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00259">m_yaw</a>, and <a class="el" href="matrix__transform_8inl-source.html#l00049">glm::rotate()</a>.</p>
+
+<p>Referenced by <a class="el" href="_camera_8cpp-source.html#l00047">GetUp()</a>, <a class="el" href="_camera_8cpp-source.html#l00039">GetView()</a>, and <a class="el" href="_camera_8cpp-source.html#l00033">GetViewMatrix()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00023"></a>00023 {
+<a name="l00024"></a>00024         <a class="code" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> rotationMatrix(0.5f);
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026         <span class="comment">// Add the Pitch rotation along the x and y axis</span>
+<a name="l00027"></a>00027         rotationMatrix = <a class="code" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14">glm::rotate</a>(rotationMatrix, <a class="code" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64">glm::degrees</a>(<a class="code" href="class_camera.html#2202e419e9440bbb26e6997248268b0b" title="The vertical rotation angle (in radians) x-axis.">m_pitch</a>), <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>(1, 0, 0));
+<a name="l00028"></a>00028         rotationMatrix = <a class="code" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14">glm::rotate</a>(rotationMatrix, <a class="code" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64">glm::degrees</a>(<a class="code" href="class_camera.html#0f8807da02d4a1bb695be51793279873" title="The horizontal rotation angle (in radians) y-axis.">m_yaw</a>), <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>(0, 1, 0));
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030         <span class="keywordflow">return</span> rotationMatrix;
+<a name="l00031"></a>00031 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_camera_3518233b244af839db6eefe59e7002de_cgraph.png" border="0" usemap="#class_camera_3518233b244af839db6eefe59e7002de_cgraph_map" alt=""></center>
+<map name="class_camera_3518233b244af839db6eefe59e7002de_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="235,56,331,83"><area shape="rect" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="241,107,324,133"><area shape="rect" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b" title="glm::axis" alt="" coords="395,5,469,32"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="396,56,468,83"><area shape="rect" href="group__core__func__geometric.html#g0feb2bb89ee2743677ad2cb84544bd83" title="glm::normalize" alt="" coords="379,107,485,133"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="387,157,477,184"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="399,208,465,235"><area shape="rect" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f" title="glm::sqrt" alt="" coords="533,5,605,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_camera_3518233b244af839db6eefe59e7002de_icgraph.png" border="0" usemap="#class_camera_3518233b244af839db6eefe59e7002de_icgraph_map" alt=""></center>
+<map name="class_camera_3518233b244af839db6eefe59e7002de_icgraph_map">
+<area shape="rect" href="class_camera.html#ff61f06284cca3216accdf556dfbd3c1" title="Gets the camera position." alt="" coords="259,5,371,32"><area shape="rect" href="class_camera.html#338c5baf20b57652828c53e0791adf9a" title="Gets the camera view." alt="" coords="253,56,376,83"><area shape="rect" href="class_camera.html#ffa333055635aed96518c4c66be9a70c" title="Gets the view matrix." alt="" coords="235,107,395,133"><area shape="rect" href="class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223" title="Moves the camera." alt="" coords="443,56,592,83"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="b0a4bf5a65d45f25529e3cffda1c361b"></a><!-- doxytag: member="Camera::GetProjectionMatrix" ref="b0a4bf5a65d45f25529e3cffda1c361b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> Camera::GetProjectionMatrix           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the projection matrix. 
+<p>
+This function returns the current projection matrix.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00087">87</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00248">m_projectionMatrix</a>.</p>
+
+<p>Referenced by <a class="el" href="_open_gl_8cpp-source.html#l00035">OpenGl::Render()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00087"></a>00087 { <span class="keywordflow">return</span> <a class="code" href="class_camera.html#26d7567bf34d14260f887a0382aeae29" title="The camera&amp;#39;s projection matrix.">m_projectionMatrix</a>; }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_camera_b0a4bf5a65d45f25529e3cffda1c361b_icgraph.png" border="0" usemap="#class_camera_b0a4bf5a65d45f25529e3cffda1c361b_icgraph_map" alt=""></center>
+<map name="class_camera_b0a4bf5a65d45f25529e3cffda1c361b_icgraph_map">
+<area shape="rect" href="class_open_gl.html#5ee37b305288c0640f6c370bc7fc1192" title="Render." alt="" coords="243,5,357,32"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="ffa333055635aed96518c4c66be9a70c"></a><!-- doxytag: member="Camera::GetViewMatrix" ref="ffa333055635aed96518c4c66be9a70c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> Camera::GetViewMatrix           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the view matrix. 
+<p>
+This function returns the current view matrix.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_camera_8cpp-source.html#l00033">33</a> of file <a class="el" href="_camera_8cpp-source.html">Camera.cpp</a>.</p>
+
+<p>References <a class="el" href="_camera_8cpp-source.html#l00022">GetRotationMatrix()</a>, <a class="el" href="func__matrix_8inl-source.html#l00454">glm::inverse()</a>, <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00250">m_position</a>, and <a class="el" href="matrix__transform_8inl-source.html#l00037">glm::translate()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00034"></a>00034 {
+<a name="l00035"></a>00035         <span class="comment">// Return a view matrix by multiplying our rotation matrix by the inverse of a translation matrix</span>
+<a name="l00036"></a>00036         <span class="keywordflow">return</span> <a class="code" href="class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix.">GetRotationMatrix</a>() * <a class="code" href="group__core__func__matrix.html#g4b56decdc6560a13b616c6312bdcc17e">glm::inverse</a>(<a class="code" href="group__gtc__matrix__transform.html#gb05e6ebabf535a3d8f9d9bfc3df45143">glm::translate</a>(<a class="code" href="group__core__types.html#g7dcd2365c2e368e6af5b7adeb6a9c8df">glm::mat4</a>(), <a class="code" href="class_camera.html#a4d06d49524248f81823444fa2544da0" title="The camera&amp;#39;s position.">m_position</a>));
+<a name="l00037"></a>00037 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_camera_ffa333055635aed96518c4c66be9a70c_cgraph.png" border="0" usemap="#class_camera_ffa333055635aed96518c4c66be9a70c_cgraph_map" alt=""></center>
+<map name="class_camera_ffa333055635aed96518c4c66be9a70c_cgraph_map">
+<area shape="rect" href="class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix." alt="" coords="215,81,393,108"><area shape="rect" href="group__core__func__matrix.html#g4b56decdc6560a13b616c6312bdcc17e" title="glm::inverse" alt="" coords="259,132,349,159"><area shape="rect" href="group__gtc__matrix__transform.html#gb05e6ebabf535a3d8f9d9bfc3df45143" title="glm::translate" alt="" coords="255,183,353,209"><area shape="rect" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="443,56,539,83"><area shape="rect" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="449,107,532,133"><area shape="rect" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b" title="glm::axis" alt="" coords="603,5,677,32"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="604,56,676,83"><area shape="rect" href="group__core__func__geometric.html#g0feb2bb89ee2743677ad2cb84544bd83" title="glm::normalize" alt="" coords="587,107,693,133"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="595,157,685,184"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="607,208,673,235"><area shape="rect" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f" title="glm::sqrt" alt="" coords="741,5,813,32"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="513c43647fdc22a1f1f2ce75d67e6c43"></a><!-- doxytag: member="Camera::SetPosition" ref="513c43647fdc22a1f1f2ce75d67e6c43" args="(glm::vec3 position)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::SetPosition           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td>
+          <td class="paramname"> <em>position</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets camera position. 
+<p>
+This function sets the camera's position to the parameter given vec3.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00105">105</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00250">m_position</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00105"></a>00105 { <a class="code" href="class_camera.html#a4d06d49524248f81823444fa2544da0" title="The camera&amp;#39;s position.">m_position</a> = position; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0eabfe3e807623f2ff69b121e65d8b8e"></a><!-- doxytag: member="Camera::GetPosition" ref="0eabfe3e807623f2ff69b121e65d8b8e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&amp; Camera::GetPosition           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the camera position. 
+<p>
+This function returns the cameras position in a vec3.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00114">114</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00250">m_position</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00114"></a>00114 { <span class="keywordflow">return</span> <a class="code" href="class_camera.html#a4d06d49524248f81823444fa2544da0" title="The camera&amp;#39;s position.">m_position</a>; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="338c5baf20b57652828c53e0791adf9a"></a><!-- doxytag: member="Camera::GetView" ref="338c5baf20b57652828c53e0791adf9a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> Camera::GetView           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the camera view. 
+<p>
+This function returns the cameras position in a vec3.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_camera_8cpp-source.html#l00039">39</a> of file <a class="el" href="_camera_8cpp-source.html">Camera.cpp</a>.</p>
+
+<p>References <a class="el" href="_camera_8cpp-source.html#l00022">GetRotationMatrix()</a>, and <a class="el" href="func__matrix_8inl-source.html#l00454">glm::inverse()</a>.</p>
+
+<p>Referenced by <a class="el" href="_camera_8cpp-source.html#l00054">MoveCamera()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00040"></a>00040 {
+<a name="l00041"></a>00041         <span class="comment">// Looking down the negative z-axis.</span>
+<a name="l00042"></a>00042         <a class="code" href="group__core__types.html#g5881b1b022d7fd1b7218f5916532dd02">glm::vec4</a> viewVector = <a class="code" href="group__core__func__matrix.html#g4b56decdc6560a13b616c6312bdcc17e">glm::inverse</a>(<a class="code" href="class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix.">GetRotationMatrix</a>()) * <a class="code" href="group__core__types.html#g5881b1b022d7fd1b7218f5916532dd02">glm::vec4</a>(0, 0, -1, 1);
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044         <span class="keywordflow">return</span> <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>(viewVector);
+<a name="l00045"></a>00045 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_camera_338c5baf20b57652828c53e0791adf9a_cgraph.png" border="0" usemap="#class_camera_338c5baf20b57652828c53e0791adf9a_cgraph_map" alt=""></center>
+<map name="class_camera_338c5baf20b57652828c53e0791adf9a_cgraph_map">
+<area shape="rect" href="class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix." alt="" coords="180,81,359,108"><area shape="rect" href="group__core__func__matrix.html#g4b56decdc6560a13b616c6312bdcc17e" title="glm::inverse" alt="" coords="224,132,315,159"><area shape="rect" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="408,56,504,83"><area shape="rect" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="415,107,497,133"><area shape="rect" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b" title="glm::axis" alt="" coords="568,5,643,32"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="569,56,641,83"><area shape="rect" href="group__core__func__geometric.html#g0feb2bb89ee2743677ad2cb84544bd83" title="glm::normalize" alt="" coords="552,107,659,133"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="560,157,651,184"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="572,208,639,235"><area shape="rect" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f" title="glm::sqrt" alt="" coords="707,5,779,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_camera_338c5baf20b57652828c53e0791adf9a_icgraph.png" border="0" usemap="#class_camera_338c5baf20b57652828c53e0791adf9a_icgraph_map" alt=""></center>
+<map name="class_camera_338c5baf20b57652828c53e0791adf9a_icgraph_map">
+<area shape="rect" href="class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223" title="Moves the camera." alt="" coords="179,5,328,32"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="ff61f06284cca3216accdf556dfbd3c1"></a><!-- doxytag: member="Camera::GetUp" ref="ff61f06284cca3216accdf556dfbd3c1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> Camera::GetUp           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the camera position. 
+<p>
+This function returns the camera's up vector (the direction pointing up) from the rotation matrix.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_camera_8cpp-source.html#l00047">47</a> of file <a class="el" href="_camera_8cpp-source.html">Camera.cpp</a>.</p>
+
+<p>References <a class="el" href="_camera_8cpp-source.html#l00022">GetRotationMatrix()</a>, and <a class="el" href="func__matrix_8inl-source.html#l00454">glm::inverse()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00048"></a>00048 {
+<a name="l00049"></a>00049         <a class="code" href="group__core__types.html#g5881b1b022d7fd1b7218f5916532dd02">glm::vec4</a> upVector = <a class="code" href="group__core__func__matrix.html#g4b56decdc6560a13b616c6312bdcc17e">glm::inverse</a>(<a class="code" href="class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix.">GetRotationMatrix</a>()) * <a class="code" href="group__core__types.html#g5881b1b022d7fd1b7218f5916532dd02">glm::vec4</a>(0, 1, 0, 1);
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051         <span class="keywordflow">return</span> <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>(upVector);
+<a name="l00052"></a>00052 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_camera_ff61f06284cca3216accdf556dfbd3c1_cgraph.png" border="0" usemap="#class_camera_ff61f06284cca3216accdf556dfbd3c1_cgraph_map" alt=""></center>
+<map name="class_camera_ff61f06284cca3216accdf556dfbd3c1_cgraph_map">
+<area shape="rect" href="class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix." alt="" coords="167,81,345,108"><area shape="rect" href="group__core__func__matrix.html#g4b56decdc6560a13b616c6312bdcc17e" title="glm::inverse" alt="" coords="211,132,301,159"><area shape="rect" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="395,56,491,83"><area shape="rect" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="401,107,484,133"><area shape="rect" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b" title="glm::axis" alt="" coords="555,5,629,32"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="556,56,628,83"><area shape="rect" href="group__core__func__geometric.html#g0feb2bb89ee2743677ad2cb84544bd83" title="glm::normalize" alt="" coords="539,107,645,133"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="547,157,637,184"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="559,208,625,235"><area shape="rect" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f" title="glm::sqrt" alt="" coords="693,5,765,32"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="614e2fb59605eaff3d57be570805a1c2"></a><!-- doxytag: member="Camera::GetYaw" ref="614e2fb59605eaff3d57be570805a1c2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float&amp; Camera::GetYaw           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the camera yaw. 
+<p>
+This function returns the yaw of the camera.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>float </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00142">142</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00259">m_yaw</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00142"></a>00142 { <span class="keywordflow">return</span> <a class="code" href="class_camera.html#0f8807da02d4a1bb695be51793279873" title="The horizontal rotation angle (in radians) y-axis.">m_yaw</a>; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0f3853ee0b4a1c1fcf3c136decbbe056"></a><!-- doxytag: member="Camera::SetYaw" ref="0f3853ee0b4a1c1fcf3c136decbbe056" args="(float yaw)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::SetYaw           </td>
+          <td>(</td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>yaw</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the yaw. 
+<p>
+This function sets the yaw of the camera to the float parameter given.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>float</em>&nbsp;</td><td>yaw </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00152">152</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00259">m_yaw</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00152"></a>00152 { <a class="code" href="class_camera.html#0f8807da02d4a1bb695be51793279873" title="The horizontal rotation angle (in radians) y-axis.">m_yaw</a> = <a class="code" href="group__gtc__quaternion.html#g36e24dea9793778d8b1093daed17eba1">yaw</a>; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7cdeaf63fbab2011eca767f238668a06"></a><!-- doxytag: member="Camera::GetPitch" ref="7cdeaf63fbab2011eca767f238668a06" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float&amp; Camera::GetPitch           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the camera pitch. 
+<p>
+This function returns the pitch of the camera.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>float </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00161">161</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00261">m_pitch</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00161"></a>00161 { <span class="keywordflow">return</span> <a class="code" href="class_camera.html#2202e419e9440bbb26e6997248268b0b" title="The vertical rotation angle (in radians) x-axis.">m_pitch</a>; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="bd3daba04eb01231eec1d5fdbe862d52"></a><!-- doxytag: member="Camera::SetPitch" ref="bd3daba04eb01231eec1d5fdbe862d52" args="(float pitch)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::SetPitch           </td>
+          <td>(</td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>pitch</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the camera pitch. 
+<p>
+This function sets the pitch of the camera to the float parameter given.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>float</em>&nbsp;</td><td>pitch </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00171">171</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00261">m_pitch</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00171"></a>00171 { <a class="code" href="class_camera.html#2202e419e9440bbb26e6997248268b0b" title="The vertical rotation angle (in radians) x-axis.">m_pitch</a> = <a class="code" href="group__gtc__quaternion.html#g091250a9d0674463c4c9342563184bcd">pitch</a>; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8cb555aeca85fcd988978105178cc0f3"></a><!-- doxytag: member="Camera::SetSpeed" ref="8cb555aeca85fcd988978105178cc0f3" args="(double speed)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::SetSpeed           </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>speed</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the camera movement speed. 
+<p>
+This function sets the movement speed of the camera to the double parameter given.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>double</em>&nbsp;</td><td>speed </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00181">181</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00253">m_speed</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00181"></a>00181 { <a class="code" href="class_camera.html#809774c9955a53755048ea80d934e912" title="The camera&amp;#39;s speed that is used with a time slice.">m_speed</a> = (float)speed; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6d305ab5442a489253a321b2a45b11b6"></a><!-- doxytag: member="Camera::GetSpeed" ref="6d305ab5442a489253a321b2a45b11b6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Camera::GetSpeed           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the camera speed. 
+<p>
+This function returns the speed of the camera.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>double </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00190">190</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00253">m_speed</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00190"></a>00190 { <span class="keywordflow">return</span> <a class="code" href="class_camera.html#809774c9955a53755048ea80d934e912" title="The camera&amp;#39;s speed that is used with a time slice.">m_speed</a>; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="bce25d2360c703fb5ac6da02d3991bda"></a><!-- doxytag: member="Camera::SetRotationSpeed" ref="bce25d2360c703fb5ac6da02d3991bda" args="(double speed)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::SetRotationSpeed           </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>speed</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the camera rotation speed. 
+<p>
+This function sets the rotation speed of the camera to the double parameter given.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>double</em>&nbsp;</td><td>speed </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00200">200</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00255">m_rotationSpeed</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00200"></a>00200 { <a class="code" href="class_camera.html#0b1c75781c142e6bb28761224d0b67ce" title="The rotation speed for the camera.">m_rotationSpeed</a> = (float)speed; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="eebe84aaf8b615505ef2ad7f7bbffbb9"></a><!-- doxytag: member="Camera::GetRotationSpeed" ref="eebe84aaf8b615505ef2ad7f7bbffbb9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Camera::GetRotationSpeed           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the camera rotation speed. 
+<p>
+This function returns the rotation speed of the camera.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>double </dd></dl>
+
+<p>Definition at line <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00209">209</a> of file <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a>.</p>
+
+<p>References <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00255">m_rotationSpeed</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00209"></a>00209 { <span class="keywordflow">return</span> <a class="code" href="class_camera.html#0b1c75781c142e6bb28761224d0b67ce" title="The rotation speed for the camera.">m_rotationSpeed</a>; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="05c4a137b939bfdee2b7efea6d67d0e7"></a><!-- doxytag: member="Camera::SetViewByMouse" ref="05c4a137b939bfdee2b7efea6d67d0e7" args="(float mouseX, float mouseY)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::SetViewByMouse           </td>
+          <td>(</td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>mouseX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>mouseY</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the view of the camera according to the mouse movement. 
+<p>
+This sets the pitch and yaw of our camera from the mouse x and y deltas from the last frame.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>float</em>&nbsp;</td><td>mouseX </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>float</em>&nbsp;</td><td>mouseY </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
 </div>
 </div><p>
 <a class="anchor" name="ec3a27aa4de4ad2d10d421ee2fa54223"></a><!-- doxytag: member="Camera::MoveCamera" ref="ec3a27aa4de4ad2d10d421ee2fa54223" args="(float speed)" -->
@@ -705,12 +966,34 @@ This function will move the camera forward or backwards depending on the speed (
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
 
+<p>Definition at line <a class="el" href="_camera_8cpp-source.html#l00054">54</a> of file <a class="el" href="_camera_8cpp-source.html">Camera.cpp</a>.</p>
+
+<p>References <a class="el" href="_camera_8cpp-source.html#l00039">GetView()</a>, and <a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html#l00250">m_position</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00055"></a>00055 {
+<a name="l00056"></a>00056         <span class="comment">// Get our normalized view vector</span>
+<a name="l00057"></a>00057         <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> viewVector = <a class="code" href="class_camera.html#338c5baf20b57652828c53e0791adf9a" title="Gets the camera view.">GetView</a>();
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059         <a class="code" href="class_camera.html#a4d06d49524248f81823444fa2544da0" title="The camera&amp;#39;s position.">m_position</a>.x += viewVector.x * speed;
+<a name="l00060"></a>00060         <a class="code" href="class_camera.html#a4d06d49524248f81823444fa2544da0" title="The camera&amp;#39;s position.">m_position</a>.z += viewVector.z * speed;
+<a name="l00061"></a>00061 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_camera_ec3a27aa4de4ad2d10d421ee2fa54223_cgraph.png" border="0" usemap="#class_camera_ec3a27aa4de4ad2d10d421ee2fa54223_cgraph_map" alt=""></center>
+<map name="class_camera_ec3a27aa4de4ad2d10d421ee2fa54223_cgraph_map">
+<area shape="rect" href="class_camera.html#338c5baf20b57652828c53e0791adf9a" title="Gets the camera view." alt="" coords="204,107,327,133"><area shape="rect" href="class_camera.html#3518233b244af839db6eefe59e7002de" title="Gets the rotation matrix." alt="" coords="377,81,556,108"><area shape="rect" href="group__core__func__matrix.html#g4b56decdc6560a13b616c6312bdcc17e" title="glm::inverse" alt="" coords="421,132,512,159"><area shape="rect" href="group__core__func__trigonometric.html#gcb63bdf23d5e084a5b6a2ed0ae395e64" title="glm::degrees" alt="" coords="605,56,701,83"><area shape="rect" href="group__gtc__matrix__transform.html#g1a75da872120125437265872423e0b14" title="glm::rotate" alt="" coords="612,107,695,133"><area shape="rect" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b" title="glm::axis" alt="" coords="765,5,840,32"><area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="767,56,839,83"><area shape="rect" href="group__core__func__geometric.html#g0feb2bb89ee2743677ad2cb84544bd83" title="glm::normalize" alt="" coords="749,107,856,133"><area shape="rect" href="group__core__func__trigonometric.html#g87953103f3ac701b8440a7d904fa2e4d" title="glm::radians" alt="" coords="757,157,848,184"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="769,208,836,235"><area shape="rect" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f" title="glm::sqrt" alt="" coords="904,5,976,32"></map>
+</div>
+
 </div>
 </div><p>
-<hr>The documentation for this struct was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/Camera.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/src/Camera.cpp</ul>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/<a class="el" href="_carre_game_engine_2headers_2_camera_8h-source.html">Camera.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/src/<a class="el" href="_camera_8cpp-source.html">Camera.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:05:03 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:02:14 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

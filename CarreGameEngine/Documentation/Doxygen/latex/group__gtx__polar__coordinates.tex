@@ -31,7 +31,34 @@ Convert Polar to Euclidean coordinates.
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__polar__coordinates}{GLM\_\-GTX\_\-polar\_\-coordinates} \end{Desc}
-\hypertarget{group__gtx__polar__coordinates_g65a075c52ee1c699d77c4a98dd266006}{
+
+
+Definition at line 38 of file polar\_\-coordinates.inl.
+
+References glm::cos(), glm::radians(), and glm::sin().
+
+\begin{Code}\begin{verbatim}41         {
+42 #ifdef GLM_FORCE_RADIANS
+43                 T const latitude(polar.x);
+44                 T const longitude(polar.y);
+45 #else
+46 #               pragma message("GLM: euclidean function taking degrees as parameters is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+47                 T const latitude(radians(polar.x));
+48                 T const longitude(radians(polar.y));
+49 #endif
+50 
+51                 return detail::tvec3<T, P>(
+52                         cos(latitude) * sin(longitude),
+53                         sin(latitude),
+54                         cos(latitude) * cos(longitude));
+55         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__polar__coordinates_g65a075c52ee1c699d77c4a98dd266006}{
 \index{gtx\_\-polar\_\-coordinates@{gtx\_\-polar\_\-coordinates}!polar@{polar}}
 \index{polar@{polar}!gtx_polar_coordinates@{gtx\_\-polar\_\-coordinates}}
 \subsubsection[polar]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::polar (detail::tvec3$<$ T, P $>$ const \& {\em euclidean})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -42,3 +69,34 @@ Convert Euclidean to Polar coordinates, x is the xz distance, y, the latitude an
 
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__polar__coordinates}{GLM\_\-GTX\_\-polar\_\-coordinates} \end{Desc}
+
+
+Definition at line 14 of file polar\_\-coordinates.inl.
+
+References glm::atan(), glm::degrees(), glm::length(), and glm::sqrt().
+
+\begin{Code}\begin{verbatim}17         {
+18                 T const Length(length(euclidean));
+19                 detail::tvec3<T, P> const tmp(euclidean / Length);
+20                 T const xz_dist(sqrt(tmp.x * tmp.x + tmp.z * tmp.z));
+21 
+22 #ifdef GLM_FORCE_RADIANS
+23                 return detail::tvec3<T, P>(
+24                         atan(xz_dist, tmp.y),   // latitude
+25                         atan(tmp.x, tmp.z),             // longitude
+26                         xz_dist);                               // xz distance
+27 #else
+28 #               pragma message("GLM: polar function returning degrees is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+29                 return detail::tvec3<T, P>(
+30                         degrees(atan(xz_dist, tmp.y)),  // latitude
+31                         degrees(atan(tmp.x, tmp.z)),    // longitude
+32                         xz_dist);                                               // xz distance
+33 #endif
+34         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

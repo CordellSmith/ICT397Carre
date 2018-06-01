@@ -87,7 +87,7 @@ void PhysicsEngine::CreateStaticRigidBody(btVector3 &pos, std::string type)
 	btRigidBody* body = new btRigidBody(rbInfo);
 
 	// Set the index for the type of rigid body that is being created
-	body->setUserIndex(PLANE);
+	body->setUserIndex(BOX);
 
 	// Add the body to the dynamic world
 	m_dynamicsWorld->addRigidBody(body);

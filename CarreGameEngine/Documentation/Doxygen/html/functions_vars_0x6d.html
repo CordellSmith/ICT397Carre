@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Class Members - Variables</title>
+<title>Assignment2 - OOber Taxi: Class Members - Variables</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -30,6 +30,7 @@
       <li class="current"><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
       <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
+      <li><a href="functions_rela.html"><span>Related&nbsp;Functions</span></a></li>
     </ul>
   </div>
   <div class="tabs">
@@ -52,7 +53,6 @@
       <li><a href="functions_vars_0x74.html#index_t"><span>t</span></a></li>
       <li><a href="functions_vars_0x75.html#index_u"><span>u</span></a></li>
       <li><a href="functions_vars_0x77.html#index_w"><span>w</span></a></li>
-      <li><a href="functions_vars_0x78.html#index_x"><span>x</span></a></li>
     </ul>
   </div>
 </div>
@@ -62,6 +62,12 @@
 <h3><a class="anchor" name="index_m">- m -</a></h3><ul>
 <li>m_AR
 : <a class="el" href="class_g_i_m___b_o_x___b_o_x___t_r_a_n_s_f_o_r_m___c_a_c_h_e.html#c6241a28e1c1c1e4a581ba547e30409e">GIM_BOX_BOX_TRANSFORM_CACHE</a>
+<li>m_aspectRatio
+: <a class="el" href="class_camera.html#9a5b3abea53ca97854696258029ee6cd">Camera</a>
+<li>m_assetName
+: <a class="el" href="class_i_game_asset.html#cdc07b73c5cade61a1a38fa515576716">IGameAsset</a>
+<li>m_assetType
+: <a class="el" href="class_i_game_asset.html#076aef4c07705e50ee4bfca6e16db742">IGameAsset</a>
 <li>m_body_acc
 : <a class="el" href="structbt_inverse_dynamics_1_1_rigid_body.html#67bb39b2dbbd0180395b251bdbae00c7">btInverseDynamics::RigidBody</a>
 <li>m_body_ang_acc
@@ -110,8 +116,6 @@
 , <a class="el" href="classbt_rotational_limit_motor.html#4cfd3d5d8d3ba75f1ce4b59f01017364">btRotationalLimitMotor</a>
 <li>m_bSplit
 : <a class="el" href="classbt_m_l_c_p_solver.html#9c1feb6855fa296c8ca582842f8e4fe3">btMLCPSolver</a>
-<li>m_camera
-: <a class="el" href="class_model.html#7dae1bc84476979aa5c44335c63054b8">Model</a>
 <li>m_child
 : <a class="el" href="structbt_inverse_dynamics_1_1_joint_data.html#7ba728d0c348f3ef533d17c44a6526cf">btInverseDynamics::JointData</a>
 <li>m_child_axis_of_motion
@@ -119,8 +123,8 @@
 <li>m_child_T_parent_ref
 : <a class="el" href="structbt_inverse_dynamics_1_1_joint_data.html#6725b907ac280e9fd3d1fa8f0032fda4">btInverseDynamics::JointData</a>
 <li>m_currentLimit
-: <a class="el" href="classbt_rotational_limit_motor.html#d1e4fa6cb3ea2e4b78c96feab97448e8">btRotationalLimitMotor</a>
-, <a class="el" href="classb3_rotational_limit_motor.html#04210dff8941deee039e6c290a50f301">b3RotationalLimitMotor</a>
+: <a class="el" href="classb3_rotational_limit_motor.html#04210dff8941deee039e6c290a50f301">b3RotationalLimitMotor</a>
+, <a class="el" href="classbt_rotational_limit_motor.html#d1e4fa6cb3ea2e4b78c96feab97448e8">btRotationalLimitMotor</a>
 <li>m_currentLimitError
 : <a class="el" href="classb3_rotational_limit_motor.html#63167fcd92370cd81b058b9013aa2342">b3RotationalLimitMotor</a>
 , <a class="el" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">btRotationalLimitMotor</a>
@@ -133,8 +137,6 @@
 <li>m_data
 : <a class="el" href="classgim__array.html#afb886b0fb48bed8c878d8a82dc4099c">gim_array&lt; T &gt;</a>
 , <a class="el" href="struct_g_i_m___b_o_x___t_r_e_e___n_o_d_e.html#bba76fb81b6f50d11a0dccec69d0feec">GIM_BOX_TREE_NODE</a>
-<li>m_EBO
-: <a class="el" href="class_model.html#cc674d063b027e3fdfb687b0e72d9322">Model</a>
 <li>m_edgeDistanceThreshold
 : <a class="el" href="structbt_triangle_info_map.html#521c0769aefc5c02b8394f924127dfc5">btTriangleInfoMap</a>
 <li>m_eom_lhs_rotational
@@ -145,10 +147,16 @@
 : <a class="el" href="structbt_triangle_info_map.html#a980d33e5be082442a128f0ba2efb064">btTriangleInfoMap</a>
 <li>m_escapeIndex
 : <a class="el" href="struct_g_i_m___b_o_x___t_r_e_e___n_o_d_e.html#5a112d2bd3fcfb2699964f94d1fcfbcd">GIM_BOX_TREE_NODE</a>
+<li>m_farPlane
+: <a class="el" href="class_camera.html#0b272c81cc3d92714421c3cb15d1d31a">Camera</a>
 <li>m_force_at_joint
 : <a class="el" href="structbt_inverse_dynamics_1_1_rigid_body.html#00b16b69c8a91774162c934ca8ec1e2c">btInverseDynamics::RigidBody</a>
 <li>m_forceUpdateAllAabbs
 : <a class="el" href="classbt_collision_world.html#91b110fc2501b965cdcaa2a6e1d89999">btCollisionWorld</a>
+<li>m_fov
+: <a class="el" href="class_camera.html#a404a4e057fa16fb82ce8668d7a661b6">Camera</a>
+<li>m_fragmentShaderId
+: <a class="el" href="class_shader.html#7bad959241a440403646830cf23d6019">Shader</a>
 <li>m_friction
 : <a class="el" href="structbt_rigid_body_1_1bt_rigid_body_construction_info.html#096d36f8308c4ca9b225d7c7ad43a0bf">btRigidBody::btRigidBodyConstructionInfo</a>
 <li>m_hasDeferredRemoval
@@ -156,6 +164,8 @@
 , <a class="el" href="classbt_sorted_overlapping_pair_cache.html#af79926dc15005b65c34248053af42b9">btSortedOverlappingPairCache</a>
 <li>m_hash_table
 : <a class="el" href="classgim__hash__table.html#35f6b0d640222067b9c76e61887e0354">gim_hash_table&lt; T &gt;</a>
+<li>m_height
+: <a class="el" href="class_texture_manager.html#efa958081c8ef466c115e60d4f605449">TextureManager</a>
 <li>m_hiLimit
 : <a class="el" href="classb3_rotational_limit_motor.html#7357fb509dcd2350c9e877a1fe94e3e3">b3RotationalLimitMotor</a>
 , <a class="el" href="classbt_rotational_limit_motor.html#3201531c631a779615146a373840239c">btRotationalLimitMotor</a>
@@ -189,6 +199,8 @@
 : <a class="el" href="structbt_rigid_body_1_1bt_rigid_body_construction_info.html#729b0b79412f36ac983d4adafbffa429">btRigidBody::btRigidBodyConstructionInfo</a>
 <li>m_mouseSpeed
 : <a class="el" href="class_camera.html#800e33ab274f130f97e5e51d821476ac">Camera</a>
+<li>m_nearPlane
+: <a class="el" href="class_camera.html#826a6508eec1868dbc1d57aa1c65e243">Camera</a>
 <li>m_nodes
 : <a class="el" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4">gim_hash_table&lt; T &gt;</a>
 <li>m_normalCFM
@@ -216,8 +228,6 @@
 : <a class="el" href="class_camera.html#a4d06d49524248f81823444fa2544da0">Camera</a>
 <li>m_positionWorldOnA
 : <a class="el" href="classbt_manifold_point.html#5fd89785a2e081dd658b15af8bedf04b">btManifoldPoint</a>
-<li>m_positon
-: <a class="el" href="class_model.html#427b7834b2b4a8e3f41aec118fbb8e58">Model</a>
 <li>m_projectionMatrix
 : <a class="el" href="class_camera.html#26d7567bf34d14260f887a0382aeae29">Camera</a>
 <li>m_q_index
@@ -232,18 +242,14 @@
 : <a class="el" href="struct_g_i_m___b_o_x___t_r_e_e___n_o_d_e.html#6ee254a3c0101d107a45ea9add325723">GIM_BOX_TREE_NODE</a>
 <li>m_rollingFriction
 : <a class="el" href="structbt_rigid_body_1_1bt_rigid_body_construction_info.html#bb72d0a00d035d2224a927810e9ed972">btRigidBody::btRigidBodyConstructionInfo</a>
-<li>m_rotation
-: <a class="el" href="class_model.html#5cacbaf83f7abedb413670a877ca0342">Model</a>
 <li>m_rotationSpeed
 : <a class="el" href="class_camera.html#0b1c75781c142e6bb28761224d0b67ce">Camera</a>
-<li>m_scale
-: <a class="el" href="class_model.html#bc23ecdbd0ec986ed2ccd00fe20b817a">Model</a>
 <li>m_scratchJ3
 : <a class="el" href="classbt_m_l_c_p_solver.html#8430698267e9572498e04e8dba3cda3b">btMLCPSolver</a>
 <li>m_Severity
 : <a class="el" href="class_assimp_1_1_logger.html#e1c96711eb927a5b33745a6211e93f56">Assimp::Logger</a>
-<li>m_shader
-: <a class="el" href="class_model.html#02e541e1a8ad04eb05e0729abcc7e0d5">Model</a>
+<li>m_shaderProgramId
+: <a class="el" href="class_shader.html#b0449cf7ef18fc874a80156f11a781de">Shader</a>
 <li>m_singleAxisRollingFrictionThreshold
 : <a class="el" href="structbt_contact_solver_info_double_data.html#9fb9abe1a4fa5c342f93fe3867093d31">btContactSolverInfoDoubleData</a>
 <li>m_speed
@@ -265,12 +271,10 @@
 : <a class="el" href="structbt_inverse_dynamics_1_1_joint_data.html#a1137097b6a384ab20ff337ec971f952">btInverseDynamics::JointData</a>
 <li>m_userPairCallback
 : <a class="el" href="classbt_axis_sweep3_internal.html#d26657cfc4245f099042178daf885563">btAxisSweep3Internal&lt; BP_FP_INT_TYPE &gt;</a>
-<li>m_VAO
-: <a class="el" href="class_model.html#b3675205d8830c998e19f00497429f20">Model</a>
-<li>m_VBO
-: <a class="el" href="class_model.html#20a4832d570e33d3a1868d92ac81cc49">Model</a>
-<li>m_vertexIndex
-: <a class="el" href="class_model.html#7ee034d94e2f05fb2a48712bcfa8e4dd">Model</a>
+<li>m_vertexShaderId
+: <a class="el" href="class_shader.html#a4af62b65d664448eb086b7f1dee3c7c">Shader</a>
+<li>m_width
+: <a class="el" href="class_texture_manager.html#289ca60892d452574645e7e31b6de897">TextureManager</a>
 <li>m_yaw
 : <a class="el" href="class_camera.html#0f8807da02d4a1bb695be51793279873">Camera</a>
 <li>mAngleInnerCone
@@ -296,8 +300,8 @@
 <li>MaxLenHint
 : <a class="el" href="class_assimp_1_1_importer.html#3affe8f98fc9a3b75fc3cb4c4415b37c">Assimp::Importer</a>
 <li>mBitangents
-: <a class="el" href="structai_mesh.html#b2a81bfe1731f01271ebab274a8f01c4">aiMesh</a>
-, <a class="el" href="structai_anim_mesh.html#7d60acf4d2b4b59dcc6c88956bfae85f">aiAnimMesh</a>
+: <a class="el" href="structai_anim_mesh.html#7d60acf4d2b4b59dcc6c88956bfae85f">aiAnimMesh</a>
+, <a class="el" href="structai_mesh.html#b2a81bfe1731f01271ebab274a8f01c4">aiMesh</a>
 <li>mBones
 : <a class="el" href="structai_mesh.html#0c0582a7f45b340b6a33552c53232539">aiMesh</a>
 <li>mCameras
@@ -315,8 +319,8 @@
 <li>mColorDiffuse
 : <a class="el" href="structai_light.html#22e7feebbfaf53adf73bd9f581636efd">aiLight</a>
 <li>mColors
-: <a class="el" href="structai_anim_mesh.html#4f062d9fac71c6b367fdf0f8638e1ca5">aiAnimMesh</a>
-, <a class="el" href="structai_mesh.html#d9215f67bd0c2277b10775a8adb66b96">aiMesh</a>
+: <a class="el" href="structai_mesh.html#d9215f67bd0c2277b10775a8adb66b96">aiMesh</a>
+, <a class="el" href="structai_anim_mesh.html#4f062d9fac71c6b367fdf0f8638e1ca5">aiAnimMesh</a>
 <li>mColorSpecular
 : <a class="el" href="structai_light.html#a79ae6ad6a10f0cb9c740e23b6bb01bf">aiLight</a>
 <li>mComments
@@ -344,8 +348,8 @@
 : <a class="el" href="structai_face.html#2026b434c40cf1636f9f464a592ec36c">aiFace</a>
 <li>mKeys
 : <a class="el" href="structai_mesh_anim.html#bc78e9f6d7583c541447e8c389488f1b">aiMeshAnim</a>
-, <a class="el" href="structai_mesh_morph_anim.html#0d4f98ee7eb4e2aaabf31eba48bd14c2">aiMeshMorphAnim</a>
 , <a class="el" href="structai_metadata.html#a8c77a263443658737ee51a74e3c292e">aiMetadata</a>
+, <a class="el" href="structai_mesh_morph_anim.html#0d4f98ee7eb4e2aaabf31eba48bd14c2">aiMeshMorphAnim</a>
 <li>mLights
 : <a class="el" href="structai_scene.html#2e64a69ade81cae0b3901bea90b6bb47">aiScene</a>
 <li>mLookAt
@@ -372,15 +376,15 @@
 <li>mMorphMeshChannels
 : <a class="el" href="structai_animation.html#bcc055a00bed8ce3329fdf4a9c22ec9c">aiAnimation</a>
 <li>mName
-: <a class="el" href="structai_bone.html#cfb9bfd2a2c6302181d7c3cc1bb8bbf0">aiBone</a>
+: <a class="el" href="structai_animation.html#1be7d78d88694173a7ceef658fea77f1">aiAnimation</a>
 , <a class="el" href="structai_importer_desc.html#2a9d5fd818c01bba1a0a782722ab9495">aiImporterDesc</a>
 , <a class="el" href="structai_camera.html#a6a5fe5e04b3db1b23f69eb9910c6816">aiCamera</a>
 , <a class="el" href="structai_mesh_anim.html#20751a739377fdba514c676ef4bda4c7">aiMeshAnim</a>
-, <a class="el" href="structai_animation.html#1be7d78d88694173a7ceef658fea77f1">aiAnimation</a>
 , <a class="el" href="structai_mesh_morph_anim.html#21de91fb9c9fcf58a0bd0c761ea25cf5">aiMeshMorphAnim</a>
 , <a class="el" href="structai_node.html#fa528a7e43e15d92a920229b1ff094f6">aiNode</a>
-, <a class="el" href="structai_light.html#92806413f16230728b04e5f379fd00c0">aiLight</a>
+, <a class="el" href="structai_bone.html#cfb9bfd2a2c6302181d7c3cc1bb8bbf0">aiBone</a>
 , <a class="el" href="structai_mesh.html#8dd9433e0c5b008e3e5aee6c801d3b74">aiMesh</a>
+, <a class="el" href="structai_light.html#92806413f16230728b04e5f379fd00c0">aiLight</a>
 <li>mNodeName
 : <a class="el" href="structai_node_anim.html#22a591381e75214ba03c6aaa770638f3">aiNodeAnim</a>
 <li>mNormals
@@ -405,8 +409,8 @@
 <li>mNumIndices
 : <a class="el" href="structai_face.html#dda2698cec0ebfe651572f4a5701360b">aiFace</a>
 <li>mNumKeys
-: <a class="el" href="structai_mesh_anim.html#a8702d42bf619ccc8414a556f41634d8">aiMeshAnim</a>
-, <a class="el" href="structai_mesh_morph_anim.html#f9c8a3e37613a196ed33d2746cf6f0c8">aiMeshMorphAnim</a>
+: <a class="el" href="structai_mesh_morph_anim.html#f9c8a3e37613a196ed33d2746cf6f0c8">aiMeshMorphAnim</a>
+, <a class="el" href="structai_mesh_anim.html#a8702d42bf619ccc8414a556f41634d8">aiMeshAnim</a>
 <li>mNumLights
 : <a class="el" href="structai_scene.html#0c90fc5f15b979e0bb0d3e8f1e246307">aiScene</a>
 <li>mNumMaterials
@@ -443,8 +447,8 @@
 <li>mParent
 : <a class="el" href="structai_node.html#a6896b42c78e784db85d822a4c8dd404">aiNode</a>
 <li>mPosition
-: <a class="el" href="structai_camera.html#518617ea192ca0698e748a4399e7c3a5">aiCamera</a>
-, <a class="el" href="structai_light.html#5daf9c9ad2613603b847a527123611f0">aiLight</a>
+: <a class="el" href="structai_light.html#5daf9c9ad2613603b847a527123611f0">aiLight</a>
+, <a class="el" href="structai_camera.html#518617ea192ca0698e748a4399e7c3a5">aiCamera</a>
 <li>mPositionKeys
 : <a class="el" href="structai_node_anim.html#983d0db426ac7e5fce442beb19552db3">aiNodeAnim</a>
 <li>mPostState
@@ -473,17 +477,17 @@
 : <a class="el" href="structai_anim_mesh.html#95dcc49c6d5ecc570ceb54552a0a9625">aiAnimMesh</a>
 , <a class="el" href="structai_mesh.html#f367ff78bd69f3e83d7edc8ad67dc5df">aiMesh</a>
 <li>mTextureCoords
-: <a class="el" href="structai_mesh.html#4a50b11d00ef50f419c75cab0f6bddd6">aiMesh</a>
-, <a class="el" href="structai_anim_mesh.html#d24a0451adeb845a53eb2351b9462e0a">aiAnimMesh</a>
+: <a class="el" href="structai_anim_mesh.html#d24a0451adeb845a53eb2351b9462e0a">aiAnimMesh</a>
+, <a class="el" href="structai_mesh.html#4a50b11d00ef50f419c75cab0f6bddd6">aiMesh</a>
 <li>mTextures
 : <a class="el" href="structai_scene.html#0fd0d29fbc439e3715b4975ccb68d2d3">aiScene</a>
 <li>mTicksPerSecond
 : <a class="el" href="structai_animation.html#fd26a40c3f16b6aa6e150effa3eaeab1">aiAnimation</a>
 <li>mTime
-: <a class="el" href="structai_quat_key.html#fb56b697e491c918bdeb1b32d03bbcf8">aiQuatKey</a>
-, <a class="el" href="structai_vector_key.html#b3c43c166434c7a505083d1929f675bc">aiVectorKey</a>
+: <a class="el" href="structai_vector_key.html#b3c43c166434c7a505083d1929f675bc">aiVectorKey</a>
 , <a class="el" href="structai_mesh_morph_key.html#1429195df415bf1288002b45bba30994">aiMeshMorphKey</a>
 , <a class="el" href="structai_mesh_key.html#0814e4b14ed162295ba19331410a51ab">aiMeshKey</a>
+, <a class="el" href="structai_quat_key.html#fb56b697e491c918bdeb1b32d03bbcf8">aiQuatKey</a>
 <li>mTransformation
 : <a class="el" href="structai_node.html#adb69c766c7658bba9d2195af16d6831">aiNode</a>
 <li>mTranslation
@@ -491,30 +495,30 @@
 <li>mType
 : <a class="el" href="structai_light.html#4cba1741875dd92724ff55be91c60c2b">aiLight</a>
 <li>mUp
-: <a class="el" href="structai_camera.html#7fb42b287389b4f99c883098268d6d1a">aiCamera</a>
-, <a class="el" href="structai_light.html#c6d03040085bf88979bc55e19ff3a7d6">aiLight</a>
+: <a class="el" href="structai_light.html#c6d03040085bf88979bc55e19ff3a7d6">aiLight</a>
+, <a class="el" href="structai_camera.html#7fb42b287389b4f99c883098268d6d1a">aiCamera</a>
 <li>mValue
 : <a class="el" href="structai_quat_key.html#08bf706065137951fd89c5914bb5a2aa">aiQuatKey</a>
 , <a class="el" href="structai_mesh_key.html#bdd5914697609a9d876f63b6ca090a18">aiMeshKey</a>
 , <a class="el" href="structai_vector_key.html#6f73649028b136a193dac21de35188ad">aiVectorKey</a>
 <li>mValues
-: <a class="el" href="structai_mesh_morph_key.html#33bdd586aca85e5bb27162203f780dc3">aiMeshMorphKey</a>
-, <a class="el" href="structai_metadata.html#34b515fcb5b806c471d3c6ce7bc76beb">aiMetadata</a>
+: <a class="el" href="structai_metadata.html#34b515fcb5b806c471d3c6ce7bc76beb">aiMetadata</a>
+, <a class="el" href="structai_mesh_morph_key.html#33bdd586aca85e5bb27162203f780dc3">aiMeshMorphKey</a>
 <li>mVertexId
 : <a class="el" href="structai_vertex_weight.html#f6269cf6a0f02e5ae870a72046d58f4f">aiVertexWeight</a>
 <li>mVertices
-: <a class="el" href="structai_mesh.html#fd4588abb3e1c72821ae0234a3850662">aiMesh</a>
-, <a class="el" href="structai_anim_mesh.html#0ac2dd4c1afd23e6a9293b1d0ded3060">aiAnimMesh</a>
+: <a class="el" href="structai_anim_mesh.html#0ac2dd4c1afd23e6a9293b1d0ded3060">aiAnimMesh</a>
+, <a class="el" href="structai_mesh.html#fd4588abb3e1c72821ae0234a3850662">aiMesh</a>
 <li>mWeight
-: <a class="el" href="structai_vertex_weight.html#bab9c49baabc2cafef9ac840f59e61b8">aiVertexWeight</a>
-, <a class="el" href="structai_anim_mesh.html#3554843cf6bb042369be1e75a2eff88a">aiAnimMesh</a>
+: <a class="el" href="structai_anim_mesh.html#3554843cf6bb042369be1e75a2eff88a">aiAnimMesh</a>
+, <a class="el" href="structai_vertex_weight.html#bab9c49baabc2cafef9ac840f59e61b8">aiVertexWeight</a>
 <li>mWeights
 : <a class="el" href="structai_bone.html#de36319714b58c03ad46aae30a2724a4">aiBone</a>
 <li>mWidth
 : <a class="el" href="structai_texture.html#aa3ad8cfe44fdc4dea2db91977d92234">aiTexture</a>
 </ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:46 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:10 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

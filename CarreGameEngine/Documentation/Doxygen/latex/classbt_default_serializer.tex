@@ -16,6 +16,8 @@ void \hyperlink{classbt_default_serializer_086b9ce0a49cb08de90528644bfe9d83}{ini
 \subsection{Detailed Description}
 The \hyperlink{classbt_default_serializer}{btDefaultSerializer} is the main Bullet serialization class. The constructor takes an optional argument for backwards compatibility, it is recommended to leave this empty/zero. 
 
+Definition at line 167 of file btSerializer.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_default_serializer_086b9ce0a49cb08de90528644bfe9d83}{
 \index{btDefaultSerializer@{btDefaultSerializer}!initDNA@{initDNA}}
@@ -28,6 +30,171 @@ The \hyperlink{classbt_default_serializer}{btDefaultSerializer} is the main Bull
 
 was already initialized 
 
+Definition at line 232 of file btSerializer.h.
+
+References btAlignedObjectArray$<$ T $>$::at(), btHashMap$<$ Key, Value $>$::insert(), btAlignedObjectArray$<$ T $>$::push\_\-back(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}233                 {
+235                         if (m_dna)
+236                                 return;
+237 
+238                         int littleEndian= 1;
+239                         littleEndian= ((char*)&littleEndian)[0];
+240 
+241 
+242                         m_dna = btAlignedAlloc(dnalen,16);
+243                         memcpy(m_dna,bdnaOrg,dnalen);
+244                         m_dnaLength = dnalen;
+245 
+246                         int *intPtr=0;
+247                         short *shtPtr=0;
+248                         char *cp = 0;int dataLen =0;
+249                         intPtr = (int*)m_dna;
+250 
+251                         /*
+252                                 SDNA (4 bytes) (magic number)
+253                                 NAME (4 bytes)
+254                                 <nr> (4 bytes) amount of names (int)
+255                                 <string>
+256                                 <string>
+257                         */
+258 
+259                         if (strncmp((const char*)m_dna, "SDNA", 4)==0)
+260                         {
+261                                 // skip ++ NAME
+262                                 intPtr++; intPtr++;
+263                         }
+264 
+265                         // Parse names
+266                         if (!littleEndian)
+267                                 *intPtr = btSwapEndian(*intPtr);
+268 
+269                         dataLen = *intPtr;
+270 
+271                         intPtr++;
+272 
+273                         cp = (char*)intPtr;
+274                         int i;
+275                         for ( i=0; i<dataLen; i++)
+276                         {
+277 
+278                                 while (*cp)cp++;
+279                                 cp++;
+280                         }
+281                         cp = btAlignPointer(cp,4);
+282 
+283                         /*
+284                                 TYPE (4 bytes)
+285                                 <nr> amount of types (int)
+286                                 <string>
+287                                 <string>
+288                         */
+289 
+290                         intPtr = (int*)cp;
+291                         btAssert(strncmp(cp, "TYPE", 4)==0); intPtr++;
+292 
+293                         if (!littleEndian)
+294                                 *intPtr =  btSwapEndian(*intPtr);
+295 
+296                         dataLen = *intPtr;
+297                         intPtr++;
+298 
+299 
+300                         cp = (char*)intPtr;
+301                         for (i=0; i<dataLen; i++)
+302                         {
+303                                 mTypes.push_back(cp);
+304                                 while (*cp)cp++;
+305                                 cp++;
+306                         }
+307 
+308                         cp = btAlignPointer(cp,4);
+309 
+310 
+311                         /*
+312                                 TLEN (4 bytes)
+313                                 <len> (short) the lengths of types
+314                                 <len>
+315                         */
+316 
+317                         // Parse type lens
+318                         intPtr = (int*)cp;
+319                         btAssert(strncmp(cp, "TLEN", 4)==0); intPtr++;
+320 
+321                         dataLen = (int)mTypes.size();
+322 
+323                         shtPtr = (short*)intPtr;
+324                         for (i=0; i<dataLen; i++, shtPtr++)
+325                         {
+326                                 if (!littleEndian)
+327                                         shtPtr[0] = btSwapEndian(shtPtr[0]);
+328                                 mTlens.push_back(shtPtr[0]);
+329                         }
+330 
+331                         if (dataLen & 1) shtPtr++;
+332 
+333                         /*
+334                                 STRC (4 bytes)
+335                                 <nr> amount of structs (int)
+336                                 <typenr>
+337                                 <nr_of_elems>
+338                                 <typenr>
+339                                 <namenr>
+340                                 <typenr>
+341                                 <namenr>
+342                         */
+343 
+344                         intPtr = (int*)shtPtr;
+345                         cp = (char*)intPtr;
+346                         btAssert(strncmp(cp, "STRC", 4)==0); intPtr++;
+347 
+348                         if (!littleEndian)
+349                                 *intPtr = btSwapEndian(*intPtr);
+350                         dataLen = *intPtr ;
+351                         intPtr++;
+352 
+353 
+354                         shtPtr = (short*)intPtr;
+355                         for (i=0; i<dataLen; i++)
+356                         {
+357                                 mStructs.push_back (shtPtr);
+358 
+359                                 if (!littleEndian)
+360                                 {
+361                                         shtPtr[0]= btSwapEndian(shtPtr[0]);
+362                                         shtPtr[1]= btSwapEndian(shtPtr[1]);
+363 
+364                                         int len = shtPtr[1];
+365                                         shtPtr+= 2;
+366 
+367                                         for (int a=0; a<len; a++, shtPtr+=2)
+368                                         {
+369                                                         shtPtr[0]= btSwapEndian(shtPtr[0]);
+370                                                         shtPtr[1]= btSwapEndian(shtPtr[1]);
+371                                         }
+372 
+373                                 } else
+374                                 {
+375                                         shtPtr+= (2*shtPtr[1])+2;
+376                                 }
+377                         }
+378 
+379                         // build reverse lookups
+380                         for (i=0; i<(int)mStructs.size(); i++)
+381                         {
+382                                 short *strc = mStructs.at(i);
+383                                 mStructReverse.insert(strc[0], i);
+384                                 mTypeLookup.insert(btHashString(mTypes[strc[0]]),i);
+385                         }
+386                 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btSerializer.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btSerializer.h\end{CompactItemize}

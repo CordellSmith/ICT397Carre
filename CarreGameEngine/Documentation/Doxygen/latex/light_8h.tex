@@ -1,6 +1,6 @@
 \hypertarget{light_8h}{
-\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/light.h File Reference}
-\label{light_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/light.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/light.h}}
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/light.h File Reference}
+\label{light_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/light.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/light.h}}
 }
 Defines the \hyperlink{structai_light}{aiLight} data structure. 
 
@@ -33,6 +33,8 @@ enum \hyperlink{light_8h_7a75cb224d903e71e8daede432449766}{aiLightSourceType} \{
 Defines the \hyperlink{structai_light}{aiLight} data structure. 
 
 
+
+Definition in file \hyperlink{light_8h-source}{light.h}.
 
 \subsection{Enumeration Type Documentation}
 \hypertarget{light_8h_7a75cb224d903e71e8daede432449766}{
@@ -71,4 +73,29 @@ aiLightSource\_\-AREA}
 \label{light_8h_7a75cb224d903e71e8daede432449766110c3b047ed41a1656849921d75e83a1}
 }]This value is not used. It is just there to force the compiler to map this enum to a 32 Bit integer. \end{description}
 \end{Desc}
+
+
+
+Definition at line 60 of file light.h.
+
+\begin{Code}\begin{verbatim}61 {
+62     aiLightSource_UNDEFINED     = 0x0,
+63 
+67     aiLightSource_DIRECTIONAL   = 0x1,
+68 
+72     aiLightSource_POINT         = 0x2,
+73 
+78     aiLightSource_SPOT          = 0x3,
+79 
+85     aiLightSource_AMBIENT       = 0x4,
+86 
+90     aiLightSource_AREA          = 0x5,
+91 
+95 #ifndef SWIG
+96     _aiLightSource_Force32Bit = INT_MAX
+97 #endif
+98 };
+\end{verbatim}
+\end{Code}
+
 

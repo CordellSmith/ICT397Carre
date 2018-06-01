@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Model Class Reference</title>
+<title>Assignment2 - OOber Taxi: Model Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,17 +25,17 @@
   </div>
 </div>
 <div class="contents">
-<h1>Model Class Reference</h1><!-- doxytag: class="Model" --><a class="el" href="class_model.html" title="Model class to create a 3D model.">Model</a> class to create a 3D model.  
+<h1>Model Class Reference</h1><!-- doxytag: class="Model" --><a class="el" href="class_model.html" title="Model class to store model data.">Model</a> class to store model data.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;Model.h&gt;</code>
+<code>#include &lt;<a class="el" href="_model_8h-source.html">Model.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for Model:</div>
 <div class="dynsection">
 <p><center><img src="class_model__coll__graph.png" border="0" usemap="#_model__coll__map" alt="Collaboration graph"></center>
 <map name="_model__coll__map">
-<area shape="rect" href="struct_vertex.html" title="Basic vertex struct." alt="" coords="5,5,64,32"><area shape="rect" href="class_shader.html" title="Basic shader class." alt="" coords="97,5,159,32"><area shape="rect" href="class_camera.html" title="Used for the GLM math library." alt="" coords="183,5,249,32"></map>
+<area shape="rect" href="class_shader.html" title="Basic shader class." alt="" coords="5,5,67,32"><area shape="rect" href="class_camera.html" title="Used for the GLM math library." alt="" coords="91,5,157,32"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -44,88 +44,77 @@ Collaboration diagram for Model:</div>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#e3b375de5f6df4faf74a95d64748e048">Model</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Default constructor.  <a href="#e3b375de5f6df4faf74a95d64748e048"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#e3b375de5f6df4faf74a95d64748e048"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#d6ebd2062a0b823db841a0b88baac4c0">~Model</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Destructor.  <a href="#d6ebd2062a0b823db841a0b88baac4c0"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#bb9bbb4050349e0c775dd383474aca37">Initialize</a> (<a class="el" href="struct_vertex.html">Vertex</a> vertices[], int length, std::vector&lt; unsigned int &gt; &amp;indices, std::string vertShaderString, std::string fragShaderString)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#d7e2859170e157f9c6393b16e54c3fd8">LoadModel</a> (std::string filePath)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initializes the model.  <a href="#bb9bbb4050349e0c775dd383474aca37"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#0a3de8a969bada5a82ffa727f8c216b5">Render</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads the model data.  <a href="#d7e2859170e157f9c6393b16e54c3fd8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#9bb9d5cd67e4cd9dc95c01bedd92034a">ProcessNode</a> (<a class="el" href="structai_node.html">aiNode</a> *node, const <a class="el" href="structai_scene.html">aiScene</a> *scene)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders the model.  <a href="#0a3de8a969bada5a82ffa727f8c216b5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#5fe059a355fdb0531110696dafcec43b">GetPosition</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Processes the node of an <a class="el" href="structai_scene.html">aiScene</a>.  <a href="#9bb9d5cd67e4cd9dc95c01bedd92034a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_mesh.html">Mesh</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#2cc9f43dc71e2781369f6106392e560e">ProcessMesh</a> (<a class="el" href="structai_mesh.html">aiMesh</a> *mesh, const <a class="el" href="structai_scene.html">aiScene</a> *scene)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the models position.  <a href="#5fe059a355fdb0531110696dafcec43b"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Processes the mesh.  <a href="#2cc9f43dc71e2781369f6106392e560e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; Texture &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#43da250403b6d11aa1a0f54c9021ac45">LoadMaterialTextures</a> (<a class="el" href="structai_material.html">aiMaterial</a> *mat, <a class="el" href="material_8h.html#7dd415ff703a2cc53d1c22ddbbd7dde0">aiTextureType</a> type, std::string typeName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads the material textures.  <a href="#43da250403b6d11aa1a0f54c9021ac45"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#d60ed0ed7eaa7dcdd58398e6efacc7c4">Destroy</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Destroys the model.  <a href="#d60ed0ed7eaa7dcdd58398e6efacc7c4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#f4b5a0bae6b0b057c118444189c5dfa9">GetPosition</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the models position.  <a href="#f4b5a0bae6b0b057c118444189c5dfa9"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#3a615a604e26270bd0849462718703b2">SetPosition</a> (<a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> position)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the models position.  <a href="#3a615a604e26270bd0849462718703b2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#4000e7bcd78069bc4584da37d2bf3d66">GetRotation</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#fc6593eeb0980053628cd00a75be51e9">GetRotation</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the models rotation.  <a href="#4000e7bcd78069bc4584da37d2bf3d66"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the models rotation.  <a href="#fc6593eeb0980053628cd00a75be51e9"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#71aa61e54f3f12bc86175fa359079d23">SetRotation</a> (<a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> rotation)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the models rotation.  <a href="#71aa61e54f3f12bc86175fa359079d23"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#1b61b8298674542ad929bf582b4de262">GetScale</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a0fecf0d42fd4ab4d3c4a49a84bd830e">GetScale</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the models scale.  <a href="#1b61b8298674542ad929bf582b4de262"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the models scale.  <a href="#a0fecf0d42fd4ab4d3c4a49a84bd830e"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#76860d36c983eb38250588899775aab7">SetScale</a> (<a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> scale)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the models scale.  <a href="#76860d36c983eb38250588899775aab7"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_camera.html">Camera</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#8c6429a35a1376657357e6e770470f13">GetCamera</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the camera object.  <a href="#8c6429a35a1376657357e6e770470f13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#19b6689d4a5e80e187df85a5ab6f03b8">SetCamera</a> (<a class="el" href="class_camera.html">Camera</a> *camera)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#5efc69bc9e86c4946aec2be4b190351f">SetCamera</a> (<a class="el" href="class_camera.html">Camera</a> *camera)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the camera object.  <a href="#19b6689d4a5e80e187df85a5ab6f03b8"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#d60ed0ed7eaa7dcdd58398e6efacc7c4">Destroy</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the camera object.  <a href="#5efc69bc9e86c4946aec2be4b190351f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt; &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#e8189e0eb940a7a994591ca71dafae5b">GetMeshBatch</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cleans up the VAO and VBOs.  <a href="#d60ed0ed7eaa7dcdd58398e6efacc7c4"></a><br></td></tr>
-<tr><td colspan="2"><br><h2>Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="5cacbaf83f7abedb413670a877ca0342"></a><!-- doxytag: member="Model::m_rotation" ref="5cacbaf83f7abedb413670a877ca0342" args="" -->
-<a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#5cacbaf83f7abedb413670a877ca0342">m_rotation</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the mesh batch.  <a href="#e8189e0eb940a7a994591ca71dafae5b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; Texture &gt; &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#3ba990a64ec154e543ffe4a529220cc4">GetTextures</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The model's rotation. <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="bc23ecdbd0ec986ed2ccd00fe20b817a"></a><!-- doxytag: member="Model::m_scale" ref="bc23ecdbd0ec986ed2ccd00fe20b817a" args="" -->
-<a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#bc23ecdbd0ec986ed2ccd00fe20b817a">m_scale</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the textures.  <a href="#3ba990a64ec154e543ffe4a529220cc4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_shader.html">Shader</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#985c54c42525ea8e9885977eff7027de">GetShader</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The model's scale. <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="b3675205d8830c998e19f00497429f20"></a><!-- doxytag: member="Model::m_VAO" ref="b3675205d8830c998e19f00497429f20" args="" -->
-GLuint&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#b3675205d8830c998e19f00497429f20">m_VAO</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the shader.  <a href="#985c54c42525ea8e9885977eff7027de"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a1a4b42427c675bccfdd93d3b049cee5">SetShader</a> (<a class="el" href="class_shader.html">Shader</a> *shader)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">VAO id. <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="20a4832d570e33d3a1868d92ac81cc49"></a><!-- doxytag: member="Model::m_VBO" ref="20a4832d570e33d3a1868d92ac81cc49" args="" -->
-GLuint&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#20a4832d570e33d3a1868d92ac81cc49">m_VBO</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the shader.  <a href="#a1a4b42427c675bccfdd93d3b049cee5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#88a59a41b18480246ade2f6a22b4e61d">SetAI</a> (ComputerAI *compAI)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">VBO id. <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="cc674d063b027e3fdfb687b0e72d9322"></a><!-- doxytag: member="Model::m_EBO" ref="cc674d063b027e3fdfb687b0e72d9322" args="" -->
-GLuint&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#cc674d063b027e3fdfb687b0e72d9322">m_EBO</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the AI of the model.  <a href="#88a59a41b18480246ade2f6a22b4e61d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">ComputerAI *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#cadb88d0d8d9839884f9b55aa6eb9235">GetAI</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">EBO id. <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="427b7834b2b4a8e3f41aec118fbb8e58"></a><!-- doxytag: member="Model::m_positon" ref="427b7834b2b4a8e3f41aec118fbb8e58" args="" -->
-<a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#427b7834b2b4a8e3f41aec118fbb8e58">m_positon</a></td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The model's position. <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="02e541e1a8ad04eb05e0729abcc7e0d5"></a><!-- doxytag: member="Model::m_shader" ref="02e541e1a8ad04eb05e0729abcc7e0d5" args="" -->
-<a class="el" href="class_shader.html">Shader</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#02e541e1a8ad04eb05e0729abcc7e0d5">m_shader</a></td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="class_shader.html" title="Basic shader class.">Shader</a> object. <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="7dae1bc84476979aa5c44335c63054b8"></a><!-- doxytag: member="Model::m_camera" ref="7dae1bc84476979aa5c44335c63054b8" args="" -->
-<a class="el" href="class_camera.html">Camera</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#7dae1bc84476979aa5c44335c63054b8">m_camera</a></td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="class_camera.html" title="Used for the GLM math library.">Camera</a> object. <br></td></tr>
-<tr><td colspan="2"><br><h2>Static Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="7ee034d94e2f05fb2a48712bcfa8e4dd"></a><!-- doxytag: member="Model::m_vertexIndex" ref="7ee034d94e2f05fb2a48712bcfa8e4dd" args="" -->
-static const GLuint&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#7ee034d94e2f05fb2a48712bcfa8e4dd">m_vertexIndex</a> = 0</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">These are used as pointers to each index where each information is stored within the vertex buffer object. <br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the AI of the model.  <a href="#cadb88d0d8d9839884f9b55aa6eb9235"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-<a class="el" href="class_model.html" title="Model class to create a 3D model.">Model</a> class to create a 3D model. 
+<a class="el" href="class_model.html" title="Model class to store model data.">Model</a> class to store model data. 
 <p>
-This class is used to store all model information including initializion of the model to be rendered and drawn onto the screen using shaders.<p>
+The model class is used to read in and store model data that is read in using the assimp import asset library. It contains all the functionality to load in a model of many different file types and store the information in various data structures to be accessed later.<p>
+<dl class="author" compact><dt><b>Author:</b></dt><dd>Cordell Smith </dd></dl>
 <dl class="version" compact><dt><b>Version:</b></dt><dd>01 </dd></dl>
-<dl class="date" compact><dt><b>Date:</b></dt><dd>29/03/2018 </dd></dl>
+<dl class="date" compact><dt><b>Date:</b></dt><dd>31/05/2018 </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00032">32</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="e3b375de5f6df4faf74a95d64748e048"></a><!-- doxytag: member="Model::Model" ref="e3b375de5f6df4faf74a95d64748e048" args="()" -->
 <div class="memitem">
@@ -136,17 +125,37 @@ This class is used to store all model information including initializion of the 
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-Default constructor. 
+Constructor. 
 <p>
-This is the default constuctor that sets the scale value of the model to 1.<p>
+This is the default constuctor that sets the scale value of the model to 1, initializes the models shader as well as setting the AI of the model to NULL.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>null </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8cpp-source.html#l00007">7</a> of file <a class="el" href="_model_8cpp-source.html">Model.cpp</a>.</p>
+
+<p>References <a class="el" href="_model_8cpp-source.html#l00200">SetScale()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00008"></a>00008 {
+<a name="l00009"></a>00009         <a class="code" href="class_model.html#76860d36c983eb38250588899775aab7" title="Sets the models scale.">SetScale</a>(<a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>(1.0, 1.0, 1.0));
+<a name="l00010"></a>00010         m_shader = <span class="keyword">new</span> <a class="code" href="class_shader.html" title="Basic shader class.">Shader</a>();
+<a name="l00011"></a>00011         m_compAI = NULL;
+<a name="l00012"></a>00012 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_e3b375de5f6df4faf74a95d64748e048_cgraph.png" border="0" usemap="#class_model_e3b375de5f6df4faf74a95d64748e048_cgraph_map" alt=""></center>
+<map name="class_model_e3b375de5f6df4faf74a95d64748e048_cgraph_map">
+<area shape="rect" href="class_model.html#76860d36c983eb38250588899775aab7" title="Sets the models scale." alt="" coords="155,5,272,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -168,45 +177,115 @@ This is the default constuctor that sets the scale value of the model to 1.<p>
 <p>
 Destructor. 
 <p>
-This is the destructor that calls <a class="el" href="class_model.html#d60ed0ed7eaa7dcdd58398e6efacc7c4" title="Cleans up the VAO and VBOs.">Destroy()</a> to free up the used memory.<p>
+This is the default destructor that calls the <a class="el" href="class_model.html#d60ed0ed7eaa7dcdd58398e6efacc7c4" title="Destroys the model.">Destroy()</a> function to free up any resources used by the model, incorporating memory management.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>null </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00053">53</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+
+<p>References <a class="el" href="_model_8cpp-source.html#l00175">Destroy()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00053"></a>00053 { <a class="code" href="class_model.html#d60ed0ed7eaa7dcdd58398e6efacc7c4" title="Destroys the model.">Destroy</a>(); }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_d6ebd2062a0b823db841a0b88baac4c0_cgraph.png" border="0" usemap="#class_model_d6ebd2062a0b823db841a0b88baac4c0_cgraph_map" alt=""></center>
+<map name="class_model_d6ebd2062a0b823db841a0b88baac4c0_cgraph_map">
+<area shape="rect" href="class_model.html#d60ed0ed7eaa7dcdd58398e6efacc7c4" title="Destroys the model." alt="" coords="163,5,272,32"></map>
+</div>
 
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="bb9bbb4050349e0c775dd383474aca37"></a><!-- doxytag: member="Model::Initialize" ref="bb9bbb4050349e0c775dd383474aca37" args="(Vertex vertices[], int length, std::vector&lt; unsigned int &gt; &amp;indices, std::string vertShaderString, std::string fragShaderString)" -->
+<a class="anchor" name="d7e2859170e157f9c6393b16e54c3fd8"></a><!-- doxytag: member="Model::LoadModel" ref="d7e2859170e157f9c6393b16e54c3fd8" args="(std::string filePath)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Model::Initialize           </td>
+          <td class="memname">void Model::LoadModel           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_vertex.html">Vertex</a>&nbsp;</td>
-          <td class="paramname"> <em>vertices</em>[], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>length</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; unsigned int &gt; &amp;&nbsp;</td>
-          <td class="paramname"> <em>indices</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">std::string&nbsp;</td>
-          <td class="paramname"> <em>vertShaderString</em>, </td>
+          <td class="paramname"> <em>filePath</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Loads the model data. 
+<p>
+This function loads the model data taking in a relative string file path. The function then uses the assimp import asset library to read the file and with other helper functions, store the data in the correct member variable data structures.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>std::string</em>&nbsp;</td><td>filePath </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8cpp-source.html#l00014">14</a> of file <a class="el" href="_model_8cpp-source.html">Model.cpp</a>.</p>
+
+<p>References <a class="el" href="scene_8h-source.html#l00182">AI_SCENE_FLAGS_INCOMPLETE</a>, <a class="el" href="postprocess_8h-source.html#l00080">aiProcess_CalcTangentSpace</a>, <a class="el" href="postprocess_8h-source.html#l00492">aiProcess_FlipUVs</a>, <a class="el" href="postprocess_8h-source.html#l00093">aiProcess_JoinIdenticalVertices</a>, <a class="el" href="postprocess_8h-source.html#l00330">aiProcess_SortByPType</a>, <a class="el" href="postprocess_8h-source.html#l00125">aiProcess_Triangulate</a>, <a class="el" href="scene_8h-source.html#l00247">aiScene::mFlags</a>, <a class="el" href="scene_8h-source.html#l00256">aiScene::mRootNode</a>, and <a class="el" href="_model_8cpp-source.html#l00033">ProcessNode()</a>.</p>
+
+<p>Referenced by <a class="el" href="_player_8cpp-source.html#l00014">Player::LoadFromFilePath()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00015"></a>00015 {
+<a name="l00016"></a>00016         <a class="code" href="class_assimp_1_1_importer.html">Assimp::Importer</a> <span class="keyword">import</span>;
+<a name="l00017"></a>00017         <span class="keyword">const</span> <a class="code" href="structai_scene.html">aiScene</a> *scene = <span class="keyword">import</span>.ReadFile(filePath, <a class="code" href="postprocess_8h.html#64795260b95f5a4b3f3dc1be4f52e41006922b6a1f1cd8186f9fdafb471c813e">aiProcess_FlipUVs</a> 
+<a name="l00018"></a>00018                 | <a class="code" href="postprocess_8h.html#64795260b95f5a4b3f3dc1be4f52e4108857a0e30688127a82c7b8939958c6dc">aiProcess_CalcTangentSpace</a>
+<a name="l00019"></a>00019                 | <a class="code" href="postprocess_8h.html#64795260b95f5a4b3f3dc1be4f52e4109c3de834f0307f31fa2b1b6d05dd592b">aiProcess_Triangulate</a> 
+<a name="l00020"></a>00020                 | <a class="code" href="postprocess_8h.html#64795260b95f5a4b3f3dc1be4f52e410444a6c9d8b63e6dc9e1e2e1edd3cbcd4">aiProcess_JoinIdenticalVertices</a> 
+<a name="l00021"></a>00021                 | <a class="code" href="postprocess_8h.html#64795260b95f5a4b3f3dc1be4f52e410b4484f73635d633cd79973bac1431ed6">aiProcess_SortByPType</a>);
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023         m_directory = filePath.substr(0, filePath.find_last_of(<span class="charliteral">'/'</span>));
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025         <span class="keywordflow">if</span> (!scene || scene-&gt;<a class="code" href="structai_scene.html#4091f10bb81e05db00ebc34f40c48f38">mFlags</a> &amp; <a class="code" href="scene_8h.html#64c3b662e066126207bb842fc406a745">AI_SCENE_FLAGS_INCOMPLETE</a> || !scene-&gt;<a class="code" href="structai_scene.html#d0e9a7e68f2ed6b3120a7c19ef20307a">mRootNode</a>)
+<a name="l00026"></a>00026         {
+<a name="l00027"></a>00027                 std::cout &lt;&lt; <span class="stringliteral">"ERROR::ASSIMP::"</span> &lt;&lt; <span class="keyword">import</span>.GetErrorString() &lt;&lt; std::endl;
+<a name="l00028"></a>00028         }
+<a name="l00029"></a>00029         <span class="keywordflow">else</span>
+<a name="l00030"></a>00030                 <a class="code" href="class_model.html#9bb9d5cd67e4cd9dc95c01bedd92034a" title="Processes the node of an aiScene.">ProcessNode</a>(scene-&gt;<a class="code" href="structai_scene.html#d0e9a7e68f2ed6b3120a7c19ef20307a">mRootNode</a>, scene);
+<a name="l00031"></a>00031 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_d7e2859170e157f9c6393b16e54c3fd8_cgraph.png" border="0" usemap="#class_model_d7e2859170e157f9c6393b16e54c3fd8_cgraph_map" alt=""></center>
+<map name="class_model_d7e2859170e157f9c6393b16e54c3fd8_cgraph_map">
+<area shape="rect" href="class_model.html#9bb9d5cd67e4cd9dc95c01bedd92034a" title="Processes the node of an aiScene." alt="" coords="183,5,324,32"><area shape="rect" href="class_model.html#2cc9f43dc71e2781369f6106392e560e" title="Processes the mesh." alt="" coords="373,5,517,32"><area shape="rect" href="class_model.html#43da250403b6d11aa1a0f54c9021ac45" title="Loads the material textures." alt="" coords="567,5,753,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_d7e2859170e157f9c6393b16e54c3fd8_icgraph.png" border="0" usemap="#class_model_d7e2859170e157f9c6393b16e54c3fd8_icgraph_map" alt=""></center>
+<map name="class_model_d7e2859170e157f9c6393b16e54c3fd8_icgraph_map">
+<area shape="rect" href="class_player.html#394737f2360c0e14e21401044ffe74ff" title="Load object from file path." alt="" coords="183,5,353,32"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="9bb9d5cd67e4cd9dc95c01bedd92034a"></a><!-- doxytag: member="Model::ProcessNode" ref="9bb9d5cd67e4cd9dc95c01bedd92034a" args="(aiNode *node, const aiScene *scene)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Model::ProcessNode           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structai_node.html">aiNode</a> *&nbsp;</td>
+          <td class="paramname"> <em>node</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string&nbsp;</td>
-          <td class="paramname"> <em>fragShaderString</em></td><td>&nbsp;</td>
+          <td class="paramtype">const <a class="el" href="structai_scene.html">aiScene</a> *&nbsp;</td>
+          <td class="paramname"> <em>scene</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -218,27 +297,312 @@ This is the destructor that calls <a class="el" href="class_model.html#d60ed0ed7
 <div class="memdoc">
 
 <p>
-Initializes the model. 
+Processes the node of an <a class="el" href="structai_scene.html">aiScene</a>. 
 <p>
-This function takes a list of x, y, z vertices and its length to create a vertex buffer object (VBO) and vertex array object (VBO) as well as the corresponding vertex and fragment shaders as strings.<p>
+<a class="el" href="namespace_assimp.html">Assimp</a> reads the loaded file as a scene that contains many nodes. The nodes are stored in a linked list data structure. This function processes the specific node that is being examined.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="struct_vertex.html" title="Basic vertex struct.">Vertex</a></em>&nbsp;</td><td>vertices[] </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>length </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>std::string</em>&nbsp;</td><td>vertShaderString </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>std::string</em>&nbsp;</td><td>fragShaderString </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>aiNode*</em>&nbsp;</td><td>node </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>aiScene* scene </td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
 
+<p>Definition at line <a class="el" href="_model_8cpp-source.html#l00033">33</a> of file <a class="el" href="_model_8cpp-source.html">Model.cpp</a>.</p>
+
+<p>References <a class="el" href="scene_8h-source.html#l00114">aiNode::mChildren</a>, <a class="el" href="scene_8h-source.html#l00122">aiNode::mMeshes</a>, <a class="el" href="scene_8h-source.html#l00268">aiScene::mMeshes</a>, <a class="el" href="scene_8h-source.html#l00111">aiNode::mNumChildren</a>, <a class="el" href="scene_8h-source.html#l00117">aiNode::mNumMeshes</a>, and <a class="el" href="_model_8cpp-source.html#l00048">ProcessMesh()</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00014">LoadModel()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00034"></a>00034 {
+<a name="l00035"></a>00035         <span class="comment">// process all the node's meshes (if any)</span>
+<a name="l00036"></a>00036         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; node-&gt;<a class="code" href="structai_node.html#7a411079096f86d1e96b6368d237d897">mNumMeshes</a>; i++)
+<a name="l00037"></a>00037         {
+<a name="l00038"></a>00038                 <a class="code" href="structai_mesh.html" title="enum aiMorphingMethod">aiMesh</a> *mesh = scene-&gt;<a class="code" href="structai_scene.html#d1c7000f0f28ea747868db9f94d32a3d">mMeshes</a>[node-&gt;<a class="code" href="structai_node.html#cd1706d6508b31916c18e39b7085ca63">mMeshes</a>[i]];
+<a name="l00039"></a>00039                 m_meshBatch.push_back(<a class="code" href="class_model.html#2cc9f43dc71e2781369f6106392e560e" title="Processes the mesh.">ProcessMesh</a>(mesh, scene));
+<a name="l00040"></a>00040         }
+<a name="l00041"></a>00041         <span class="comment">// then do the same for each of its children</span>
+<a name="l00042"></a>00042         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; node-&gt;<a class="code" href="structai_node.html#f5030494b156ec54632e6182a6e386ca">mNumChildren</a>; i++)
+<a name="l00043"></a>00043         {
+<a name="l00044"></a>00044                 <a class="code" href="class_model.html#9bb9d5cd67e4cd9dc95c01bedd92034a" title="Processes the node of an aiScene.">ProcessNode</a>(node-&gt;<a class="code" href="structai_node.html#c700679f0d4971f124e8444f68057291">mChildren</a>[i], scene);
+<a name="l00045"></a>00045         }
+<a name="l00046"></a>00046 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_9bb9d5cd67e4cd9dc95c01bedd92034a_cgraph.png" border="0" usemap="#class_model_9bb9d5cd67e4cd9dc95c01bedd92034a_cgraph_map" alt=""></center>
+<map name="class_model_9bb9d5cd67e4cd9dc95c01bedd92034a_cgraph_map">
+<area shape="rect" href="class_model.html#2cc9f43dc71e2781369f6106392e560e" title="Processes the mesh." alt="" coords="197,5,341,32"><area shape="rect" href="class_model.html#43da250403b6d11aa1a0f54c9021ac45" title="Loads the material textures." alt="" coords="391,5,577,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_9bb9d5cd67e4cd9dc95c01bedd92034a_icgraph.png" border="0" usemap="#class_model_9bb9d5cd67e4cd9dc95c01bedd92034a_icgraph_map" alt=""></center>
+<map name="class_model_9bb9d5cd67e4cd9dc95c01bedd92034a_icgraph_map">
+<area shape="rect" href="class_model.html#d7e2859170e157f9c6393b16e54c3fd8" title="Loads the model data." alt="" coords="197,5,325,32"><area shape="rect" href="class_player.html#394737f2360c0e14e21401044ffe74ff" title="Load object from file path." alt="" coords="375,5,545,32"></map>
+</div>
+
 </div>
 </div><p>
-<a class="anchor" name="0a3de8a969bada5a82ffa727f8c216b5"></a><!-- doxytag: member="Model::Render" ref="0a3de8a969bada5a82ffa727f8c216b5" args="()" -->
+<a class="anchor" name="2cc9f43dc71e2781369f6106392e560e"></a><!-- doxytag: member="Model::ProcessMesh" ref="2cc9f43dc71e2781369f6106392e560e" args="(aiMesh *mesh, const aiScene *scene)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Model::Render           </td>
+          <td class="memname"><a class="el" href="class_mesh.html">Mesh</a> Model::ProcessMesh           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structai_mesh.html">aiMesh</a> *&nbsp;</td>
+          <td class="paramname"> <em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structai_scene.html">aiScene</a> *&nbsp;</td>
+          <td class="paramname"> <em>scene</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Processes the mesh. 
+<p>
+For each node that is contained in a scene, if it contains a mesh, then this function processes it. It reads the vertex data in the <a class="el" href="structai_node.html">aiNode</a> object and stores them in the correct member data structures.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>aiMesh*</em>&nbsp;</td><td>mesh </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>aiScene* scene </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8cpp-source.html#l00048">48</a> of file <a class="el" href="_model_8cpp-source.html">Model.cpp</a>.</p>
+
+<p>References <a class="el" href="material_8h-source.html#l00215">aiTextureType_AMBIENT</a>, <a class="el" href="material_8h-source.html#l00205">aiTextureType_DIFFUSE</a>, <a class="el" href="material_8h-source.html#l00227">aiTextureType_HEIGHT</a>, <a class="el" href="material_8h-source.html#l00210">aiTextureType_SPECULAR</a>, <a class="el" href="_model_8cpp-source.html#l00140">LoadMaterialTextures()</a>, <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00596">aiMesh::mFaces</a>, <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00133">aiFace::mIndices</a>, <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00614">aiMesh::mMaterialIndex</a>, <a class="el" href="scene_8h-source.html#l00280">aiScene::mMaterials</a>, <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00543">aiMesh::mNormals</a>, <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00515">aiMesh::mNumFaces</a>, <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00579">aiMesh::mTextureCoords</a>, and <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00521">aiMesh::mVertices</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00033">ProcessNode()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00049"></a>00049 {
+<a name="l00050"></a>00050         std::vector&lt;Vertex3&gt; vertices;
+<a name="l00051"></a>00051         std::vector&lt;unsigned int&gt; indices;
+<a name="l00052"></a>00052         std::vector&lt;Texture&gt; textures;
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054         <span class="comment">// process face data</span>
+<a name="l00055"></a>00055         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; mesh-&gt;<a class="code" href="structai_mesh.html#eed22ee6963b79548f3877b3c905518e">mNumFaces</a>; i++)
+<a name="l00056"></a>00056         {
+<a name="l00057"></a>00057                 Vertex3 vertex;
+<a name="l00058"></a>00058                 <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> vertexPos;
+<a name="l00059"></a>00059                 <a class="code" href="group__core__types.html#g5881b1b022d7fd1b7218f5916532dd02">glm::vec4</a> colour;
+<a name="l00060"></a>00060                 <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> normalCoord;
+<a name="l00061"></a>00061                 <a class="code" href="group__core__types.html#ga1618f51db67eaa145db101d8c8431d8">glm::vec2</a> texCoord;
+<a name="l00062"></a>00062                 <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> tangent;
+<a name="l00063"></a>00063                 <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> biTangent;
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065                 <a class="code" href="structai_face.html" title="A single face in a mesh, referring to multiple vertices.">aiFace</a> face = mesh-&gt;<a class="code" href="structai_mesh.html#5a65fbc7fdea7f8d36f39047425ece07">mFaces</a>[i];
+<a name="l00066"></a>00066                 <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0; j &lt; 3; j++)
+<a name="l00067"></a>00067                 {
+<a name="l00068"></a>00068                         <span class="comment">// vertex positions</span>
+<a name="l00069"></a>00069                         <span class="keyword">auto</span> <span class="keyword">const</span> &amp;v = mesh-&gt;<a class="code" href="structai_mesh.html#fd4588abb3e1c72821ae0234a3850662">mVertices</a>[face.<a class="code" href="structai_face.html#2026b434c40cf1636f9f464a592ec36c" title="Pointer to the indices array. Size of the array is given in numIndices.">mIndices</a>[j]];
+<a name="l00070"></a>00070                         vertexPos.x = v.x; 
+<a name="l00071"></a>00071                         vertexPos.y = v.y; 
+<a name="l00072"></a>00072                         vertexPos.z = v.z;
+<a name="l00073"></a>00073                         vertex.m_position = vertexPos;
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075                         <span class="comment">// colours (randomised)</span>
+<a name="l00076"></a>00076                         colour = <a class="code" href="group__core__types.html#g5881b1b022d7fd1b7218f5916532dd02">glm::vec4</a>(((<span class="keywordtype">float</span>)rand() / (RAND_MAX)), ((<span class="keywordtype">float</span>)rand() / (RAND_MAX)), ((<span class="keywordtype">float</span>)rand() / (RAND_MAX)), 1.0f);
+<a name="l00077"></a>00077                         vertex.m_colour = colour;
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079                         <span class="comment">// normals</span>
+<a name="l00080"></a>00080                         <span class="keywordflow">if</span> (mesh-&gt;HasNormals())
+<a name="l00081"></a>00081                         {
+<a name="l00082"></a>00082                                 <span class="keyword">auto</span> <span class="keyword">const</span> &amp;n = mesh-&gt;<a class="code" href="structai_mesh.html#ec81b496b4d93838cef038933dabe9b9">mNormals</a>[face.<a class="code" href="structai_face.html#2026b434c40cf1636f9f464a592ec36c" title="Pointer to the indices array. Size of the array is given in numIndices.">mIndices</a>[j]];
+<a name="l00083"></a>00083                                 normalCoord.x = n.x;
+<a name="l00084"></a>00084                                 normalCoord.y = n.y;
+<a name="l00085"></a>00085                                 normalCoord.z = n.z;
+<a name="l00086"></a>00086                                 vertex.m_normal = normalCoord;
+<a name="l00087"></a>00087                         }
+<a name="l00088"></a>00088                         <span class="keywordflow">else</span>
+<a name="l00089"></a>00089                                 vertex.m_normal = <a class="code" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>(0.0f, 0.0f, 0.0f);
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091                         <span class="comment">// texture coordinates</span>
+<a name="l00092"></a>00092                         <span class="keywordflow">if</span> (mesh-&gt;<a class="code" href="structai_mesh.html#4a50b11d00ef50f419c75cab0f6bddd6">mTextureCoords</a>[0])
+<a name="l00093"></a>00093                         {
+<a name="l00094"></a>00094                                 <span class="keyword">auto</span> <span class="keyword">const</span> &amp;uv = mesh-&gt;<a class="code" href="structai_mesh.html#4a50b11d00ef50f419c75cab0f6bddd6">mTextureCoords</a>[0][face.<a class="code" href="structai_face.html#2026b434c40cf1636f9f464a592ec36c" title="Pointer to the indices array. Size of the array is given in numIndices.">mIndices</a>[j]];
+<a name="l00095"></a>00095                                 texCoord.x = uv.x;
+<a name="l00096"></a>00096                                 texCoord.y = uv.y;
+<a name="l00097"></a>00097                                 vertex.m_texCoords = texCoord;
+<a name="l00098"></a>00098                         }
+<a name="l00099"></a>00099                         <span class="keywordflow">else</span>
+<a name="l00100"></a>00100                                 vertex.m_texCoords = <a class="code" href="group__core__types.html#ga1618f51db67eaa145db101d8c8431d8">glm::vec2</a>(0.0f, 0.0f);
+<a name="l00101"></a>00101 
+<a name="l00103"></a>00103                         <span class="comment">//if (mesh-&gt;HasTangentsAndBitangents())</span>
+<a name="l00104"></a>00104                         <span class="comment">//{</span>
+<a name="l00105"></a>00105                         <span class="comment">//      auto const &amp;t = mesh-&gt;mTangents[face.mIndices[j]];</span>
+<a name="l00106"></a>00106                         <span class="comment">//      tangent.x = t.x;</span>
+<a name="l00107"></a>00107                         <span class="comment">//      tangent.y = t.y;</span>
+<a name="l00108"></a>00108                         <span class="comment">//      tangent.z = t.z;</span>
+<a name="l00109"></a>00109                         <span class="comment">//      vertex.m_tangent = tangent;</span>
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111                         <span class="comment">//      auto const &amp;bt = mesh-&gt;mBitangents[face.mIndices[j]];</span>
+<a name="l00112"></a>00112                         <span class="comment">//      biTangent.x = bt.x;</span>
+<a name="l00113"></a>00113                         <span class="comment">//      biTangent.y = bt.y;</span>
+<a name="l00114"></a>00114                         <span class="comment">//      biTangent.z = bt.z;</span>
+<a name="l00115"></a>00115                         <span class="comment">//      vertex.m_biTangent = biTangent;</span>
+<a name="l00116"></a>00116                         <span class="comment">//}</span>
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118                         vertices.push_back(vertex);
+<a name="l00119"></a>00119                         indices.push_back(face.<a class="code" href="structai_face.html#2026b434c40cf1636f9f464a592ec36c" title="Pointer to the indices array. Size of the array is given in numIndices.">mIndices</a>[j]);
+<a name="l00120"></a>00120                 }
+<a name="l00121"></a>00121         }
+<a name="l00122"></a>00122         <span class="comment">// process materials</span>
+<a name="l00123"></a>00123         <a class="code" href="structai_material.html" title="Data structure for a material.">aiMaterial</a>* material = scene-&gt;<a class="code" href="structai_scene.html#52bc7089a5b943ad7c7c386e616df35e">mMaterials</a>[mesh-&gt;<a class="code" href="structai_mesh.html#a2807c7ba172115203ed16047ad65f9e">mMaterialIndex</a>];
+<a name="l00124"></a>00124         <span class="comment">// diffuse maps</span>
+<a name="l00125"></a>00125         std::vector&lt;Texture&gt; diffuseMaps = <a class="code" href="class_model.html#43da250403b6d11aa1a0f54c9021ac45" title="Loads the material textures.">LoadMaterialTextures</a>(material, <a class="code" href="material_8h.html#7dd415ff703a2cc53d1c22ddbbd7dde03027af56603d5babd7e2efcf5ed1debd">aiTextureType_DIFFUSE</a>, <span class="stringliteral">"texture_diffuse"</span>);
+<a name="l00126"></a>00126         textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+<a name="l00127"></a>00127         <span class="comment">// specular maps</span>
+<a name="l00128"></a>00128         std::vector&lt;Texture&gt; specularMaps = <a class="code" href="class_model.html#43da250403b6d11aa1a0f54c9021ac45" title="Loads the material textures.">LoadMaterialTextures</a>(material, <a class="code" href="material_8h.html#7dd415ff703a2cc53d1c22ddbbd7dde00fdc17eca73119fe7c4e7d17043aba6b">aiTextureType_SPECULAR</a>, <span class="stringliteral">"texture_specular"</span>);
+<a name="l00129"></a>00129         textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+<a name="l00130"></a>00130         <span class="comment">// normal maps</span>
+<a name="l00131"></a>00131         std::vector&lt;Texture&gt; normalMaps = <a class="code" href="class_model.html#43da250403b6d11aa1a0f54c9021ac45" title="Loads the material textures.">LoadMaterialTextures</a>(material, <a class="code" href="material_8h.html#7dd415ff703a2cc53d1c22ddbbd7dde05cff2209ef767617b00c2875afe7d5a7">aiTextureType_HEIGHT</a>, <span class="stringliteral">"texture_normal"</span>);
+<a name="l00132"></a>00132         textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+<a name="l00133"></a>00133         <span class="comment">// height maps</span>
+<a name="l00134"></a>00134         std::vector&lt;Texture&gt; heightMaps = <a class="code" href="class_model.html#43da250403b6d11aa1a0f54c9021ac45" title="Loads the material textures.">LoadMaterialTextures</a>(material, <a class="code" href="material_8h.html#7dd415ff703a2cc53d1c22ddbbd7dde088d7fc7cc800d2641fd481067eca0dc4">aiTextureType_AMBIENT</a>, <span class="stringliteral">"texture_height"</span>);
+<a name="l00135"></a>00135         textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137         <span class="keywordflow">return</span> <a class="code" href="class_mesh.html" title="Used to store mesh data.">Mesh</a>(vertices, indices, textures);
+<a name="l00138"></a>00138 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_2cc9f43dc71e2781369f6106392e560e_cgraph.png" border="0" usemap="#class_model_2cc9f43dc71e2781369f6106392e560e_cgraph_map" alt=""></center>
+<map name="class_model_2cc9f43dc71e2781369f6106392e560e_cgraph_map">
+<area shape="rect" href="class_model.html#43da250403b6d11aa1a0f54c9021ac45" title="Loads the material textures." alt="" coords="199,5,385,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_2cc9f43dc71e2781369f6106392e560e_icgraph.png" border="0" usemap="#class_model_2cc9f43dc71e2781369f6106392e560e_icgraph_map" alt=""></center>
+<map name="class_model_2cc9f43dc71e2781369f6106392e560e_icgraph_map">
+<area shape="rect" href="class_model.html#9bb9d5cd67e4cd9dc95c01bedd92034a" title="Processes the node of an aiScene." alt="" coords="199,5,340,32"><area shape="rect" href="class_model.html#d7e2859170e157f9c6393b16e54c3fd8" title="Loads the model data." alt="" coords="389,5,517,32"><area shape="rect" href="class_player.html#394737f2360c0e14e21401044ffe74ff" title="Load object from file path." alt="" coords="567,5,737,32"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="43da250403b6d11aa1a0f54c9021ac45"></a><!-- doxytag: member="Model::LoadMaterialTextures" ref="43da250403b6d11aa1a0f54c9021ac45" args="(aiMaterial *mat, aiTextureType type, std::string typeName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; Texture &gt; Model::LoadMaterialTextures           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structai_material.html">aiMaterial</a> *&nbsp;</td>
+          <td class="paramname"> <em>mat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="material_8h.html#7dd415ff703a2cc53d1c22ddbbd7dde0">aiTextureType</a>&nbsp;</td>
+          <td class="paramname"> <em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>typeName</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Loads the material textures. 
+<p>
+Reads in the materials of the <a class="el" href="structai_mesh.html" title="enum aiMorphingMethod">aiMesh</a> and stores them in a temporary Texture data structure that is then returned.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>aiMaterial*</em>&nbsp;</td><td>mat </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>aiTextureType</em>&nbsp;</td><td>type </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>std::string</em>&nbsp;</td><td>typeName </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>std::vector&lt;Texture&gt; </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8cpp-source.html#l00140">140</a> of file <a class="el" href="_model_8cpp-source.html">Model.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00048">ProcessMesh()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00141"></a>00141 {
+<a name="l00142"></a>00142         std::vector&lt;Texture&gt; textures;
+<a name="l00143"></a>00143         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; mat-&gt;GetTextureCount(type); i++)
+<a name="l00144"></a>00144         {
+<a name="l00145"></a>00145                 <a class="code" href="structai_string.html">aiString</a> str;
+<a name="l00146"></a>00146                 mat-&gt;GetTexture(type, i, &amp;str);
+<a name="l00147"></a>00147                 <span class="comment">// check if texture was loaded before and if so, continue to next iteration: skip loading a new texture</span>
+<a name="l00148"></a>00148                 <span class="keywordtype">bool</span> skip = <span class="keyword">false</span>;
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150                 <span class="keywordflow">if</span> (std::strcmp(str.C_Str(), <span class="stringliteral">"$texture_dummy.bmp"</span>) == 0)
+<a name="l00151"></a>00151                         skip = <span class="keyword">true</span>;
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153                 <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0; j &lt; m_texturesLoaded.size(); j++)
+<a name="l00154"></a>00154                 {
+<a name="l00155"></a>00155                         <span class="keywordflow">if</span> (std::strcmp(m_texturesLoaded[j].m_path.data(), str.C_Str()) == 0)
+<a name="l00156"></a>00156                         {
+<a name="l00157"></a>00157                                 textures.push_back(m_texturesLoaded[j]);
+<a name="l00158"></a>00158                                 skip = <span class="keyword">true</span>; <span class="comment">// a texture with the same filepath has already been loaded, continue to next one. (optimization)</span>
+<a name="l00159"></a>00159                                 <span class="keywordflow">break</span>;
+<a name="l00160"></a>00160                         }
+<a name="l00161"></a>00161                 }
+<a name="l00162"></a>00162                 <span class="keywordflow">if</span> (!skip)
+<a name="l00163"></a>00163                 {   <span class="comment">// if texture hasn't been loaded already, load it</span>
+<a name="l00164"></a>00164                         Texture texture;
+<a name="l00165"></a>00165                         texture.m_id = TextureFromFile(str.C_Str(), this-&gt;m_directory);
+<a name="l00166"></a>00166                         texture.m_type = typeName;
+<a name="l00167"></a>00167                         texture.m_path = str.C_Str();
+<a name="l00168"></a>00168                         textures.push_back(texture);
+<a name="l00169"></a>00169                         m_texturesLoaded.push_back(texture);  <span class="comment">// store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.</span>
+<a name="l00170"></a>00170                 }
+<a name="l00171"></a>00171         }
+<a name="l00172"></a>00172         <span class="keywordflow">return</span> textures;
+<a name="l00173"></a>00173 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_43da250403b6d11aa1a0f54c9021ac45_icgraph.png" border="0" usemap="#class_model_43da250403b6d11aa1a0f54c9021ac45_icgraph_map" alt=""></center>
+<map name="class_model_43da250403b6d11aa1a0f54c9021ac45_icgraph_map">
+<area shape="rect" href="class_model.html#2cc9f43dc71e2781369f6106392e560e" title="Processes the mesh." alt="" coords="243,5,387,32"><area shape="rect" href="class_model.html#9bb9d5cd67e4cd9dc95c01bedd92034a" title="Processes the node of an aiScene." alt="" coords="436,5,577,32"><area shape="rect" href="class_model.html#d7e2859170e157f9c6393b16e54c3fd8" title="Loads the model data." alt="" coords="627,5,755,32"><area shape="rect" href="class_player.html#394737f2360c0e14e21401044ffe74ff" title="Load object from file path." alt="" coords="804,5,975,32"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="d60ed0ed7eaa7dcdd58398e6efacc7c4"></a><!-- doxytag: member="Model::Destroy" ref="d60ed0ed7eaa7dcdd58398e6efacc7c4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Model::Destroy           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -249,19 +613,38 @@ This function takes a list of x, y, z vertices and its length to create a vertex
 <div class="memdoc">
 
 <p>
-Renders the model. 
+Destroys the model. 
 <p>
-This function draws the model to the backbuffer by first initializing the shader, turning it on and binding the vertex array. Each vertex attribute is enabled and glDrawArrays() function is called to draw the vertices to the screen. The attributes are disabled and the shader is then turned off.<p>
+Deallocates any memory used by the model object.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8cpp-source.html#l00175">175</a> of file <a class="el" href="_model_8cpp-source.html">Model.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8h-source.html#l00053">~Model()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00176"></a>00176 {
+<a name="l00177"></a>00177         <span class="comment">// Todo: implement destroy function of all meshes of the model</span>
+<a name="l00178"></a>00178         <span class="keywordflow">return</span> void();
+<a name="l00179"></a>00179 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4_icgraph.png" border="0" usemap="#class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4_icgraph_map" alt=""></center>
+<map name="class_model_d60ed0ed7eaa7dcdd58398e6efacc7c4_icgraph_map">
+<area shape="rect" href="class_model.html#d6ebd2062a0b823db841a0b88baac4c0" title="Destructor." alt="" coords="164,5,271,32"></map>
+</div>
 
 </div>
 </div><p>
-<a class="anchor" name="5fe059a355fdb0531110696dafcec43b"></a><!-- doxytag: member="Model::GetPosition" ref="5fe059a355fdb0531110696dafcec43b" args="()" -->
+<a class="anchor" name="f4b5a0bae6b0b057c118444189c5dfa9"></a><!-- doxytag: member="Model::GetPosition" ref="f4b5a0bae6b0b057c118444189c5dfa9" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> Model::GetPosition           </td>
+          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&amp; Model::GetPosition           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -275,7 +658,23 @@ This function draws the model to the backbuffer by first initializing the shader
 Gets the models position. 
 <p>
 Returns the position of the model as a <a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> </dd></dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&amp; </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00120">120</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_player_8h-source.html#l00145">Player::GetPosition()</a>, <a class="el" href="_player_8cpp-source.html#l00034">Player::MoveBackward()</a>, <a class="el" href="_player_8cpp-source.html#l00024">Player::MoveForward()</a>, and <a class="el" href="_open_gl_8cpp-source.html#l00035">OpenGl::Render()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00120"></a>00120 { <span class="keywordflow">return</span> m_position; }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_f4b5a0bae6b0b057c118444189c5dfa9_icgraph.png" border="0" usemap="#class_model_f4b5a0bae6b0b057c118444189c5dfa9_icgraph_map" alt=""></center>
+<map name="class_model_f4b5a0bae6b0b057c118444189c5dfa9_icgraph_map">
+<area shape="rect" href="class_player.html#78a1bb11afc7985ce85e93b496d72879" title="Gets the position." alt="" coords="197,5,331,32"><area shape="rect" href="class_player.html#0de705c108e85cf8609ac827319fe11b" title="Moves the player backward." alt="" coords="188,56,340,83"><area shape="rect" href="class_player.html#afa223a6906cf925ac0f9ae1ad197cde" title="Moves the player forward." alt="" coords="193,107,335,133"><area shape="rect" href="class_open_gl.html#5ee37b305288c0640f6c370bc7fc1192" title="Render." alt="" coords="207,157,321,184"></map>
+</div>
 
 </div>
 </div><p>
@@ -289,7 +688,7 @@ Returns the position of the model as a <a class="el" href="group__core__types.ht
           <td class="paramtype"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td>
           <td class="paramname"> <em>position</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -306,14 +705,36 @@ Sets the position of the model using the parameter given.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
 
+<p>Definition at line <a class="el" href="_model_8cpp-source.html#l00182">182</a> of file <a class="el" href="_model_8cpp-source.html">Model.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="_player_8cpp-source.html#l00034">Player::MoveBackward()</a>, <a class="el" href="_player_8cpp-source.html#l00024">Player::MoveForward()</a>, <a class="el" href="_terrain_8h-source.html#l00087">Terrain::SetPosition()</a>, and <a class="el" href="_player_8h-source.html#l00155">Player::SetPosition()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00183"></a>00183 {
+<a name="l00184"></a>00184         m_position = position;
+<a name="l00185"></a>00185         <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; m_meshBatch.size(); i++)
+<a name="l00186"></a>00186         {
+<a name="l00187"></a>00187                 m_meshBatch[i].SetPosition(position);
+<a name="l00188"></a>00188         }
+<a name="l00189"></a>00189 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_3a615a604e26270bd0849462718703b2_icgraph.png" border="0" usemap="#class_model_3a615a604e26270bd0849462718703b2_icgraph_map" alt=""></center>
+<map name="class_model_3a615a604e26270bd0849462718703b2_icgraph_map">
+<area shape="rect" href="class_player.html#0de705c108e85cf8609ac827319fe11b" title="Moves the player backward." alt="" coords="188,5,340,32"><area shape="rect" href="class_player.html#afa223a6906cf925ac0f9ae1ad197cde" title="Moves the player forward." alt="" coords="193,56,335,83"><area shape="rect" href="class_terrain.html#33990e5363ba3dc351abd313c2832edb" title="Sets the terrains position." alt="" coords="196,107,332,133"><area shape="rect" href="class_player.html#2a58860a7169ad27fbb1eec6a64fc31b" title="Sets the position." alt="" coords="197,157,331,184"></map>
+</div>
+
 </div>
 </div><p>
-<a class="anchor" name="4000e7bcd78069bc4584da37d2bf3d66"></a><!-- doxytag: member="Model::GetRotation" ref="4000e7bcd78069bc4584da37d2bf3d66" args="()" -->
+<a class="anchor" name="fc6593eeb0980053628cd00a75be51e9"></a><!-- doxytag: member="Model::GetRotation" ref="fc6593eeb0980053628cd00a75be51e9" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> Model::GetRotation           </td>
+          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&amp; Model::GetRotation           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -327,7 +748,23 @@ Sets the position of the model using the parameter given.<p>
 Gets the models rotation. 
 <p>
 Returns the rotation of the model as a <a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> </dd></dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&amp; </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00139">139</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_player_8h-source.html#l00164">Player::GetRotation()</a>, <a class="el" href="_player_8cpp-source.html#l00034">Player::MoveBackward()</a>, <a class="el" href="_player_8cpp-source.html#l00024">Player::MoveForward()</a>, <a class="el" href="_open_gl_8cpp-source.html#l00035">OpenGl::Render()</a>, <a class="el" href="_player_8cpp-source.html#l00050">Player::TurnAntiClock()</a>, and <a class="el" href="_player_8cpp-source.html#l00044">Player::TurnClock()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00139"></a>00139 { <span class="keywordflow">return</span> m_rotation; }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_fc6593eeb0980053628cd00a75be51e9_icgraph.png" border="0" usemap="#class_model_fc6593eeb0980053628cd00a75be51e9_icgraph_map" alt=""></center>
+<map name="class_model_fc6593eeb0980053628cd00a75be51e9_icgraph_map">
+<area shape="rect" href="class_player.html#df9696bac0f5ef8d18b7faff9b75e21e" title="Gets the rotation." alt="" coords="196,5,332,32"><area shape="rect" href="class_player.html#0de705c108e85cf8609ac827319fe11b" title="Moves the player backward." alt="" coords="188,56,340,83"><area shape="rect" href="class_player.html#afa223a6906cf925ac0f9ae1ad197cde" title="Moves the player forward." alt="" coords="193,107,335,133"><area shape="rect" href="class_open_gl.html#5ee37b305288c0640f6c370bc7fc1192" title="Render." alt="" coords="207,157,321,184"><area shape="rect" href="class_player.html#5e09b10a0ae73a3714267c87bd43f95d" title="Turns the player anti&#45;clockwise." alt="" coords="191,208,337,235"><area shape="rect" href="class_player.html#f7ca641f9d3134c96b8039919b6f8876" title="Turns the player clockwise." alt="" coords="203,259,325,285"></map>
+</div>
 
 </div>
 </div><p>
@@ -341,7 +778,7 @@ Returns the rotation of the model as a <a class="el" href="group__core__types.ht
           <td class="paramtype"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td>
           <td class="paramname"> <em>rotation</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -358,14 +795,36 @@ Sets the rotation of the model using the parameter given.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
 
+<p>Definition at line <a class="el" href="_model_8cpp-source.html#l00191">191</a> of file <a class="el" href="_model_8cpp-source.html">Model.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="_player_8h-source.html#l00174">Player::SetRotation()</a>, <a class="el" href="_player_8cpp-source.html#l00050">Player::TurnAntiClock()</a>, and <a class="el" href="_player_8cpp-source.html#l00044">Player::TurnClock()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00192"></a>00192 {
+<a name="l00193"></a>00193         m_rotation = <a class="code" href="group__gtx__quaternion.html#gf7a15242ef69e5c997df231b28b92cef">rotation</a>;
+<a name="l00194"></a>00194         <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; m_meshBatch.size(); i++)
+<a name="l00195"></a>00195         {
+<a name="l00196"></a>00196                 m_meshBatch[i].SetRotation(<a class="code" href="group__gtx__quaternion.html#gf7a15242ef69e5c997df231b28b92cef">rotation</a>);
+<a name="l00197"></a>00197         }
+<a name="l00198"></a>00198 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_71aa61e54f3f12bc86175fa359079d23_icgraph.png" border="0" usemap="#class_model_71aa61e54f3f12bc86175fa359079d23_icgraph_map" alt=""></center>
+<map name="class_model_71aa61e54f3f12bc86175fa359079d23_icgraph_map">
+<area shape="rect" href="class_player.html#2e3d2df5baf6a9b83e06bcae3aaeccd6" title="Sets the rotation." alt="" coords="195,5,328,32"><area shape="rect" href="class_player.html#5e09b10a0ae73a3714267c87bd43f95d" title="Turns the player anti&#45;clockwise." alt="" coords="188,56,335,83"><area shape="rect" href="class_player.html#f7ca641f9d3134c96b8039919b6f8876" title="Turns the player clockwise." alt="" coords="200,107,323,133"></map>
+</div>
+
 </div>
 </div><p>
-<a class="anchor" name="1b61b8298674542ad929bf582b4de262"></a><!-- doxytag: member="Model::GetScale" ref="1b61b8298674542ad929bf582b4de262" args="()" -->
+<a class="anchor" name="a0fecf0d42fd4ab4d3c4a49a84bd830e"></a><!-- doxytag: member="Model::GetScale" ref="a0fecf0d42fd4ab4d3c4a49a84bd830e" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> Model::GetScale           </td>
+          <td class="memname"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&amp; Model::GetScale           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -379,7 +838,23 @@ Sets the rotation of the model using the parameter given.<p>
 Gets the models scale. 
 <p>
 Returns the scale of the model as a <a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>.<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> </dd></dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&amp; </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00158">158</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_open_gl_8cpp-source.html#l00035">OpenGl::Render()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00158"></a>00158 { <span class="keywordflow">return</span> m_scale; }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_a0fecf0d42fd4ab4d3c4a49a84bd830e_icgraph.png" border="0" usemap="#class_model_a0fecf0d42fd4ab4d3c4a49a84bd830e_icgraph_map" alt=""></center>
+<map name="class_model_a0fecf0d42fd4ab4d3c4a49a84bd830e_icgraph_map">
+<area shape="rect" href="class_open_gl.html#5ee37b305288c0640f6c370bc7fc1192" title="Render." alt="" coords="173,5,288,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -393,7 +868,7 @@ Returns the scale of the model as a <a class="el" href="group__core__types.html#
           <td class="paramtype"><a class="el" href="group__core__types.html#g1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&nbsp;</td>
           <td class="paramname"> <em>scale</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -409,6 +884,28 @@ Sets the rotation of the model using the parameter given.<p>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8cpp-source.html#l00200">200</a> of file <a class="el" href="_model_8cpp-source.html">Model.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="_bruteforce_8cpp-source.html#l00010">Bruteforce::GenerateTerrain()</a>, <a class="el" href="_model_8cpp-source.html#l00007">Model()</a>, <a class="el" href="_terrain_8h-source.html#l00097">Terrain::SetScale()</a>, and <a class="el" href="_player_8h-source.html#l00184">Player::SetScale()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00201"></a>00201 {
+<a name="l00202"></a>00202         m_scale = <a class="code" href="group__gtx__transform.html#g70f2d33f150672b9faca3b477fcca2c4">scale</a>;
+<a name="l00203"></a>00203         <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; m_meshBatch.size(); i++)
+<a name="l00204"></a>00204         {
+<a name="l00205"></a>00205                 m_meshBatch[i].SetScale(<a class="code" href="group__gtx__transform.html#g70f2d33f150672b9faca3b477fcca2c4">scale</a>);
+<a name="l00206"></a>00206         }
+<a name="l00207"></a>00207 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_76860d36c983eb38250588899775aab7_icgraph.png" border="0" usemap="#class_model_76860d36c983eb38250588899775aab7_icgraph_map" alt=""></center>
+<map name="class_model_76860d36c983eb38250588899775aab7_icgraph_map">
+<area shape="rect" href="class_bruteforce.html#910463356742edd6703a19b46f4ed359" title="Generates the terrain." alt="" coords="172,5,351,32"><area shape="rect" href="class_model.html#e3b375de5f6df4faf74a95d64748e048" title="Constructor." alt="" coords="212,56,311,83"><area shape="rect" href="class_terrain.html#ebecef9a3ffd4cedb898013e7087ec58" title="Sets the terrains scale." alt="" coords="201,107,321,133"><area shape="rect" href="class_player.html#454ad879bdf9073c89b1055647e6f8c6" title="Sets the scale." alt="" coords="201,157,321,184"></map>
+</div>
 
 </div>
 </div><p>
@@ -433,14 +930,30 @@ Gets the camera object.
 Returns a pointer to the camera object to access the view and projection matrices.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>Camera* </dd></dl>
 
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00177">177</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_open_gl_8cpp-source.html#l00035">OpenGl::Render()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00177"></a>00177 { <span class="keywordflow">return</span> m_camera; }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_8c6429a35a1376657357e6e770470f13_icgraph.png" border="0" usemap="#class_model_8c6429a35a1376657357e6e770470f13_icgraph_map" alt=""></center>
+<map name="class_model_8c6429a35a1376657357e6e770470f13_icgraph_map">
+<area shape="rect" href="class_open_gl.html#5ee37b305288c0640f6c370bc7fc1192" title="Render." alt="" coords="184,5,299,32"></map>
+</div>
+
 </div>
 </div><p>
-<a class="anchor" name="19b6689d4a5e80e187df85a5ab6f03b8"></a><!-- doxytag: member="Model::SetCamera" ref="19b6689d4a5e80e187df85a5ab6f03b8" args="(Camera *camera)" -->
+<a class="anchor" name="5efc69bc9e86c4946aec2be4b190351f"></a><!-- doxytag: member="Model::SetCamera" ref="5efc69bc9e86c4946aec2be4b190351f" args="(Camera *camera)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Model::SetCamera           </td>
+          <td class="memname">const void Model::SetCamera           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_camera.html">Camera</a> *&nbsp;</td>
           <td class="paramname"> <em>camera</em>          </td>
@@ -457,40 +970,246 @@ Sets the camera object.
 Sets the camera object to the world camera object to retrieve the view and projection matrices.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>Camera*</em>&nbsp;</td><td>pCamera </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Camera*</em>&nbsp;</td><td>camera </td></tr>
   </table>
 </dl>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>const void </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00188">188</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_terrain_8h-source.html#l00077">Terrain::SetCamera()</a>, and <a class="el" href="_player_8h-source.html#l00136">Player::SetCamera()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00188"></a>00188 { m_camera = camera; }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_5efc69bc9e86c4946aec2be4b190351f_icgraph.png" border="0" usemap="#class_model_5efc69bc9e86c4946aec2be4b190351f_icgraph_map" alt=""></center>
+<map name="class_model_5efc69bc9e86c4946aec2be4b190351f_icgraph_map">
+<area shape="rect" href="class_terrain.html#d24a0b962c0bff2328d45c716a4b2788" title="Sets the camera object." alt="" coords="184,5,317,32"><area shape="rect" href="class_player.html#4747c299dc385f1aeb6ade65d67962bf" title="Sets the camera object." alt="" coords="185,56,316,83"></map>
+</div>
 
 </div>
 </div><p>
-<a class="anchor" name="d60ed0ed7eaa7dcdd58398e6efacc7c4"></a><!-- doxytag: member="Model::Destroy" ref="d60ed0ed7eaa7dcdd58398e6efacc7c4" args="()" -->
+<a class="anchor" name="e8189e0eb940a7a994591ca71dafae5b"></a><!-- doxytag: member="Model::GetMeshBatch" ref="e8189e0eb940a7a994591ca71dafae5b" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Model::Destroy           </td>
+          <td class="memname">std::vector&lt;<a class="el" href="class_mesh.html">Mesh</a>&gt;&amp; Model::GetMeshBatch           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-Cleans up the VAO and VBOs. 
+Gets the mesh batch. 
 <p>
-Unbinds any VAO and VBOs and frees up any memory used.<p>
+Returns the vector of meshes of the model by reference.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>std::vector&lt;Mesh&gt;&amp; </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00197">197</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_bruteforce_8cpp-source.html#l00010">Bruteforce::GenerateTerrain()</a>, <a class="el" href="_open_gl_8cpp-source.html#l00003">OpenGl::Prepare()</a>, and <a class="el" href="_open_gl_8cpp-source.html#l00035">OpenGl::Render()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00197"></a>00197 { <span class="keywordflow">return</span> m_meshBatch; }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_e8189e0eb940a7a994591ca71dafae5b_icgraph.png" border="0" usemap="#class_model_e8189e0eb940a7a994591ca71dafae5b_icgraph_map" alt=""></center>
+<map name="class_model_e8189e0eb940a7a994591ca71dafae5b_icgraph_map">
+<area shape="rect" href="class_bruteforce.html#910463356742edd6703a19b46f4ed359" title="Generates the terrain." alt="" coords="207,5,385,32"><area shape="rect" href="class_open_gl.html#d8259307bc0b851348b7afaa46965473" title="Prepare." alt="" coords="237,56,355,83"><area shape="rect" href="class_open_gl.html#5ee37b305288c0640f6c370bc7fc1192" title="Render." alt="" coords="239,107,353,133"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="3ba990a64ec154e543ffe4a529220cc4"></a><!-- doxytag: member="Model::GetTextures" ref="3ba990a64ec154e543ffe4a529220cc4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;Texture&gt;&amp; Model::GetTextures           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the textures. 
+<p>
+Returns the vector of textures of the model by reference.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>std::vector&lt;Texture&gt;&amp; </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00206">206</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_bruteforce_8cpp-source.html#l00010">Bruteforce::GenerateTerrain()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00206"></a>00206 { <span class="keywordflow">return</span> m_texturesLoaded; }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_3ba990a64ec154e543ffe4a529220cc4_icgraph.png" border="0" usemap="#class_model_3ba990a64ec154e543ffe4a529220cc4_icgraph_map" alt=""></center>
+<map name="class_model_3ba990a64ec154e543ffe4a529220cc4_icgraph_map">
+<area shape="rect" href="class_bruteforce.html#910463356742edd6703a19b46f4ed359" title="Generates the terrain." alt="" coords="191,5,369,32"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="985c54c42525ea8e9885977eff7027de"></a><!-- doxytag: member="Model::GetShader" ref="985c54c42525ea8e9885977eff7027de" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_shader.html">Shader</a>* Model::GetShader           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the shader. 
+<p>
+Returns the shader object of the model.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>Shader* </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00215">215</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_open_gl_8cpp-source.html#l00003">OpenGl::Prepare()</a>, and <a class="el" href="_open_gl_8cpp-source.html#l00035">OpenGl::Render()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00215"></a>00215 { <span class="keywordflow">return</span> m_shader; }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_model_985c54c42525ea8e9885977eff7027de_icgraph.png" border="0" usemap="#class_model_985c54c42525ea8e9885977eff7027de_icgraph_map" alt=""></center>
+<map name="class_model_985c54c42525ea8e9885977eff7027de_icgraph_map">
+<area shape="rect" href="class_open_gl.html#d8259307bc0b851348b7afaa46965473" title="Prepare." alt="" coords="183,5,300,32"><area shape="rect" href="class_open_gl.html#5ee37b305288c0640f6c370bc7fc1192" title="Render." alt="" coords="184,56,299,83"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="a1a4b42427c675bccfdd93d3b049cee5"></a><!-- doxytag: member="Model::SetShader" ref="a1a4b42427c675bccfdd93d3b049cee5" args="(Shader *shader)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Model::SetShader           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_shader.html">Shader</a> *&nbsp;</td>
+          <td class="paramname"> <em>shader</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the shader. 
+<p>
+Sets the shader member variable to the parameter shader parsed in.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Shader*</em>&nbsp;</td><td>shader </td></tr>
+  </table>
+</dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00225">225</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00225"></a>00225 { m_shader = shader; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="88a59a41b18480246ade2f6a22b4e61d"></a><!-- doxytag: member="Model::SetAI" ref="88a59a41b18480246ade2f6a22b4e61d" args="(ComputerAI *compAI)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Model::SetAI           </td>
+          <td>(</td>
+          <td class="paramtype">ComputerAI *&nbsp;</td>
+          <td class="paramname"> <em>compAI</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the AI of the model. 
+<p>
+Sets the ComputerAI member variable of the model to tha parameter ComputerAI parsed in.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>ComputerAI*</em>&nbsp;</td><td>compAI </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00236">236</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00236"></a>00236 { m_compAI = compAI; }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="cadb88d0d8d9839884f9b55aa6eb9235"></a><!-- doxytag: member="Model::GetAI" ref="cadb88d0d8d9839884f9b55aa6eb9235" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ComputerAI* Model::GetAI           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the AI of the model. 
+<p>
+Returns the ComputerAI member variable of the model as a pointer.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>ComputerAI* </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8h-source.html#l00245">245</a> of file <a class="el" href="_model_8h-source.html">Model.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00245"></a>00245 { <span class="keywordflow">return</span> m_compAI; }
+</pre></div>
+<p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Model.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/Model.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Model.cpp<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/src/Model.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/<a class="el" href="_model_8h-source.html">Model.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/<a class="el" href="_model_8cpp-source.html">Model.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:05:07 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:02:34 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

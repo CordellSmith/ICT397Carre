@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btRotationalLimitMotor Class Reference</title>
+<title>Assignment2 - OOber Taxi: btRotationalLimitMotor Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>btRotationalLimitMotor Class Reference</h1><!-- doxytag: class="btRotationalLimitMotor" -->Rotation Limit structure for generic joints.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;btGeneric6DofConstraint.h&gt;</code>
+<code>#include &lt;<a class="el" href="bt_generic6_dof_constraint_8h-source.html">btGeneric6DofConstraint.h</a>&gt;</code>
 <p>
 
 <p>
@@ -101,7 +101,9 @@ btScalar&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">current value of angle  <a href="#d1e4fa6cb3ea2e4b78c96feab97448e8"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Rotation Limit structure for generic joints. <hr><h2>Member Function Documentation</h2>
+Rotation Limit structure for generic joints. 
+<p>Definition at line <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00048">48</a> of file <a class="el" href="bt_generic6_dof_constraint_8h-source.html">btGeneric6DofConstraint.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="c0651bd36beda2dbb23c45a90dc1cccd"></a><!-- doxytag: member="btRotationalLimitMotor::testLimitValue" ref="c0651bd36beda2dbb23c45a90dc1cccd" args="(btScalar test_value)" -->
 <div class="memitem">
 <div class="memproto">
@@ -122,6 +124,43 @@ Rotation Limit structure for generic joints. <hr><h2>Member Function Documentati
 calculates error 
 <p>
 calculates m_currentLimit and m_currentLimitError. 
+<p>Definition at line <a class="el" href="bt_generic6_dof_constraint_8cpp-source.html#l00122">122</a> of file <a class="el" href="bt_generic6_dof_constraint_8cpp-source.html">btGeneric6DofConstraint.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00072">m_currentLimit</a>, <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00070">m_currentLimitError</a>, <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00054">m_hiLimit</a>, and <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00053">m_loLimit</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00123"></a>00123 {
+<a name="l00124"></a>00124         <span class="keywordflow">if</span>(<a class="code" href="classbt_rotational_limit_motor.html#57ff414e1856d661d81b797702c4f986" title="joint limit">m_loLimit</a>&gt;<a class="code" href="classbt_rotational_limit_motor.html#3201531c631a779615146a373840239c" title="joint limit">m_hiLimit</a>)
+<a name="l00125"></a>00125         {
+<a name="l00126"></a>00126                 <a class="code" href="classbt_rotational_limit_motor.html#d1e4fa6cb3ea2e4b78c96feab97448e8" title="current value of angle">m_currentLimit</a> = 0;<span class="comment">//Free from violation</span>
+<a name="l00127"></a>00127                 <span class="keywordflow">return</span> 0;
+<a name="l00128"></a>00128         }
+<a name="l00129"></a>00129         <span class="keywordflow">if</span> (test_value &lt; <a class="code" href="classbt_rotational_limit_motor.html#57ff414e1856d661d81b797702c4f986" title="joint limit">m_loLimit</a>)
+<a name="l00130"></a>00130         {
+<a name="l00131"></a>00131                 <a class="code" href="classbt_rotational_limit_motor.html#d1e4fa6cb3ea2e4b78c96feab97448e8" title="current value of angle">m_currentLimit</a> = 1;<span class="comment">//low limit violation</span>
+<a name="l00132"></a>00132                 <a class="code" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">m_currentLimitError</a> =  test_value - <a class="code" href="classbt_rotational_limit_motor.html#57ff414e1856d661d81b797702c4f986" title="joint limit">m_loLimit</a>;
+<a name="l00133"></a>00133                 <span class="keywordflow">if</span>(<a class="code" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">m_currentLimitError</a>&gt;SIMD_PI) 
+<a name="l00134"></a>00134                         <a class="code" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">m_currentLimitError</a>-=SIMD_2_PI;
+<a name="l00135"></a>00135                 <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">m_currentLimitError</a>&lt;-SIMD_PI) 
+<a name="l00136"></a>00136                         <a class="code" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">m_currentLimitError</a>+=SIMD_2_PI;
+<a name="l00137"></a>00137                 <span class="keywordflow">return</span> 1;
+<a name="l00138"></a>00138         }
+<a name="l00139"></a>00139         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (test_value&gt; <a class="code" href="classbt_rotational_limit_motor.html#3201531c631a779615146a373840239c" title="joint limit">m_hiLimit</a>)
+<a name="l00140"></a>00140         {
+<a name="l00141"></a>00141                 <a class="code" href="classbt_rotational_limit_motor.html#d1e4fa6cb3ea2e4b78c96feab97448e8" title="current value of angle">m_currentLimit</a> = 2;<span class="comment">//High limit violation</span>
+<a name="l00142"></a>00142                 <a class="code" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">m_currentLimitError</a> = test_value - <a class="code" href="classbt_rotational_limit_motor.html#3201531c631a779615146a373840239c" title="joint limit">m_hiLimit</a>;
+<a name="l00143"></a>00143                 <span class="keywordflow">if</span>(<a class="code" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">m_currentLimitError</a>&gt;SIMD_PI) 
+<a name="l00144"></a>00144                         <a class="code" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">m_currentLimitError</a>-=SIMD_2_PI;
+<a name="l00145"></a>00145                 <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">m_currentLimitError</a>&lt;-SIMD_PI) 
+<a name="l00146"></a>00146                         <a class="code" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">m_currentLimitError</a>+=SIMD_2_PI;
+<a name="l00147"></a>00147                 <span class="keywordflow">return</span> 2;
+<a name="l00148"></a>00148         };
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150         <a class="code" href="classbt_rotational_limit_motor.html#d1e4fa6cb3ea2e4b78c96feab97448e8" title="current value of angle">m_currentLimit</a> = 0;<span class="comment">//Free from violation</span>
+<a name="l00151"></a>00151         <span class="keywordflow">return</span> 0;
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="d52e9b1c402c7bdd47fb1a9de28afb7e"></a><!-- doxytag: member="btRotationalLimitMotor::solveAngularLimits" ref="d52e9b1c402c7bdd47fb1a9de28afb7e" args="(btScalar timeStep, btVector3 &amp;axis, btScalar jacDiagABInv, btRigidBody *body0, btRigidBody *body1)" -->
@@ -174,6 +213,93 @@ apply the correction impulses for two bodies
 <p>
 <dl compact><dt><b><a class="el" href="todo.html#_todo000028">Todo:</a></b></dt><dd>: should clip against accumulated impulse </dd></dl>
 
+<p>Definition at line <a class="el" href="bt_generic6_dof_constraint_8cpp-source.html#l00157">157</a> of file <a class="el" href="bt_generic6_dof_constraint_8cpp-source.html">btGeneric6DofConstraint.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_rigid_body_8h-source.html#l00329">btRigidBody::applyTorqueImpulse()</a>, <a class="el" href="bt_rigid_body_8h-source.html#l00365">btRigidBody::getAngularVelocity()</a>, <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00063">m_bounce</a>, <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00072">m_currentLimit</a>, <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00070">m_currentLimitError</a>, <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00058">m_damping</a>, <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00057">m_maxLimitForce</a>, <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00056">m_maxMotorForce</a>, <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00061">m_stopERP</a>, <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00055">m_targetVelocity</a>, and <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00121">needApplyTorques()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00160"></a>00160 {
+<a name="l00161"></a>00161         <span class="keywordflow">if</span> (<a class="code" href="classbt_rotational_limit_motor.html#5ab6c5d80964fb373b30c25a2d0efb4a" title="Need apply correction.">needApplyTorques</a>()==<span class="keyword">false</span>) <span class="keywordflow">return</span> 0.0f;
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163         btScalar target_velocity = <a class="code" href="classbt_rotational_limit_motor.html#2860fd161d1628ecadd9d39af888cd28" title="target motor velocity">m_targetVelocity</a>;
+<a name="l00164"></a>00164         btScalar maxMotorForce = <a class="code" href="classbt_rotational_limit_motor.html#3dfeda127bd08b83bb709ec2b40d63ec" title="max force on motor">m_maxMotorForce</a>;
+<a name="l00165"></a>00165 
+<a name="l00166"></a>00166         <span class="comment">//current error correction</span>
+<a name="l00167"></a>00167         <span class="keywordflow">if</span> (<a class="code" href="classbt_rotational_limit_motor.html#d1e4fa6cb3ea2e4b78c96feab97448e8" title="current value of angle">m_currentLimit</a>!=0)
+<a name="l00168"></a>00168         {
+<a name="l00169"></a>00169                 target_velocity = -<a class="code" href="classbt_rotational_limit_motor.html#88139c248dfa9b9ab4a8a2431e86aa45" title="Error tolerance factor when joint is at limit.">m_stopERP</a>*<a class="code" href="classbt_rotational_limit_motor.html#7128feccb391176842f287b584e375d3">m_currentLimitError</a>/(timeStep);
+<a name="l00170"></a>00170                 maxMotorForce = <a class="code" href="classbt_rotational_limit_motor.html#cab8742c3e12050bd168fc8d45319721" title="max force on limit">m_maxLimitForce</a>;
+<a name="l00171"></a>00171         }
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173         maxMotorForce *= timeStep;
+<a name="l00174"></a>00174 
+<a name="l00175"></a>00175         <span class="comment">// current velocity difference</span>
+<a name="l00176"></a>00176 
+<a name="l00177"></a>00177         btVector3 angVelA = body0-&gt;<a class="code" href="classbt_rigid_body.html#dc19d8e39a18aeabfb04be61de2c984e">getAngularVelocity</a>();
+<a name="l00178"></a>00178         btVector3 angVelB = body1-&gt;<a class="code" href="classbt_rigid_body.html#dc19d8e39a18aeabfb04be61de2c984e">getAngularVelocity</a>();
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180         btVector3 vel_diff;
+<a name="l00181"></a>00181         vel_diff = angVelA-angVelB;
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185         btScalar rel_vel = <a class="code" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b">axis</a>.dot(vel_diff);
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187         <span class="comment">// correction velocity</span>
+<a name="l00188"></a>00188         btScalar motor_relvel = m_limitSoftness*(target_velocity  - <a class="code" href="classbt_rotational_limit_motor.html#4aaabbd7dac171217b2ac36c3f2bc240" title="Damping.">m_damping</a>*rel_vel);
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191         <span class="keywordflow">if</span> ( motor_relvel &lt; SIMD_EPSILON &amp;&amp; motor_relvel &gt; -SIMD_EPSILON  )
+<a name="l00192"></a>00192         {
+<a name="l00193"></a>00193                 <span class="keywordflow">return</span> 0.0f;<span class="comment">//no need for applying force</span>
+<a name="l00194"></a>00194         }
+<a name="l00195"></a>00195 
+<a name="l00196"></a>00196 
+<a name="l00197"></a>00197         <span class="comment">// correction impulse</span>
+<a name="l00198"></a>00198         btScalar unclippedMotorImpulse = (1+<a class="code" href="classbt_rotational_limit_motor.html#4cfd3d5d8d3ba75f1ce4b59f01017364" title="restitution factor">m_bounce</a>)*motor_relvel*jacDiagABInv;
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200         <span class="comment">// clip correction impulse</span>
+<a name="l00201"></a>00201         btScalar clippedMotorImpulse;
+<a name="l00202"></a>00202 
+<a name="l00204"></a>00204         <span class="keywordflow">if</span> (unclippedMotorImpulse&gt;0.0f)
+<a name="l00205"></a>00205         {
+<a name="l00206"></a>00206                 clippedMotorImpulse =  unclippedMotorImpulse &gt; maxMotorForce? maxMotorForce: unclippedMotorImpulse;
+<a name="l00207"></a>00207         }
+<a name="l00208"></a>00208         <span class="keywordflow">else</span>
+<a name="l00209"></a>00209         {
+<a name="l00210"></a>00210                 clippedMotorImpulse =  unclippedMotorImpulse &lt; -maxMotorForce ? -maxMotorForce: unclippedMotorImpulse;
+<a name="l00211"></a>00211         }
+<a name="l00212"></a>00212 
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214         <span class="comment">// sort with accumulated impulses</span>
+<a name="l00215"></a>00215         btScalar        lo = btScalar(-BT_LARGE_FLOAT);
+<a name="l00216"></a>00216         btScalar        hi = btScalar(BT_LARGE_FLOAT);
+<a name="l00217"></a>00217 
+<a name="l00218"></a>00218         btScalar oldaccumImpulse = m_accumulatedImpulse;
+<a name="l00219"></a>00219         btScalar sum = oldaccumImpulse + clippedMotorImpulse;
+<a name="l00220"></a>00220         m_accumulatedImpulse = sum &gt; hi ? btScalar(0.) : sum &lt; lo ? btScalar(0.) : sum;
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222         clippedMotorImpulse = m_accumulatedImpulse - oldaccumImpulse;
+<a name="l00223"></a>00223 
+<a name="l00224"></a>00224         btVector3 motorImp = clippedMotorImpulse * <a class="code" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b">axis</a>;
+<a name="l00225"></a>00225 
+<a name="l00226"></a>00226         body0-&gt;<a class="code" href="classbt_rigid_body.html#0084ebc850f06cd043d70ee87e6a3457">applyTorqueImpulse</a>(motorImp);
+<a name="l00227"></a>00227         body1-&gt;<a class="code" href="classbt_rigid_body.html#0084ebc850f06cd043d70ee87e6a3457">applyTorqueImpulse</a>(-motorImp);
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229         <span class="keywordflow">return</span> clippedMotorImpulse;
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_rotational_limit_motor_d52e9b1c402c7bdd47fb1a9de28afb7e_cgraph.png" border="0" usemap="#classbt_rotational_limit_motor_d52e9b1c402c7bdd47fb1a9de28afb7e_cgraph_map" alt=""></center>
+<map name="classbt_rotational_limit_motor_d52e9b1c402c7bdd47fb1a9de28afb7e_cgraph_map">
+<area shape="rect" href="classbt_rigid_body.html#0084ebc850f06cd043d70ee87e6a3457" title="btRigidBody::applyTorqueImpulse" alt="" coords="349,5,563,32"><area shape="rect" href="classbt_rigid_body.html#dc19d8e39a18aeabfb04be61de2c984e" title="btRigidBody::getAngularVelocity" alt="" coords="352,56,560,83"><area shape="rect" href="classbt_rotational_limit_motor.html#5ab6c5d80964fb373b30c25a2d0efb4a" title="Need apply correction." alt="" coords="323,107,589,133"></map>
+</div>
+
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
@@ -192,6 +318,10 @@ apply the correction impulses for two bodies
 joint limit 
 <p>
 limit_parameters 
+<p>Definition at line <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00053">53</a> of file <a class="el" href="bt_generic6_dof_constraint_8h-source.html">btGeneric6DofConstraint.h</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00114">isLimited()</a>, and <a class="el" href="bt_generic6_dof_constraint_8cpp-source.html#l00122">testLimitValue()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="3d06f5a5de013fd97f39cf63273dce45"></a><!-- doxytag: member="btRotationalLimitMotor::m_normalCFM" ref="3d06f5a5de013fd97f39cf63273dce45" args="" -->
@@ -209,6 +339,8 @@ limit_parameters
 Relaxation factor. 
 <p>
 Constraint force mixing factor 
+<p>Definition at line <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00060">60</a> of file <a class="el" href="bt_generic6_dof_constraint_8h-source.html">btGeneric6DofConstraint.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="7128feccb391176842f287b584e375d3"></a><!-- doxytag: member="btRotationalLimitMotor::m_currentLimitError" ref="7128feccb391176842f287b584e375d3" args="" -->
@@ -224,6 +356,10 @@ Constraint force mixing factor
 
 <p>
 temp_variables 
+<p>Definition at line <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00070">70</a> of file <a class="el" href="bt_generic6_dof_constraint_8h-source.html">btGeneric6DofConstraint.h</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_generic6_dof_constraint_8cpp-source.html#l00157">solveAngularLimits()</a>, and <a class="el" href="bt_generic6_dof_constraint_8cpp-source.html#l00122">testLimitValue()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="d1e4fa6cb3ea2e4b78c96feab97448e8"></a><!-- doxytag: member="btRotationalLimitMotor::m_currentLimit" ref="d1e4fa6cb3ea2e4b78c96feab97448e8" args="" -->
@@ -241,12 +377,16 @@ temp_variables
 current value of angle 
 <p>
 0=free, 1=at lo limit, 2=at hi limit 
+<p>Definition at line <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00072">72</a> of file <a class="el" href="bt_generic6_dof_constraint_8h-source.html">btGeneric6DofConstraint.h</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_generic6_dof_constraint_8h-source.html#l00121">needApplyTorques()</a>, <a class="el" href="bt_generic6_dof_constraint_8cpp-source.html#l00157">solveAngularLimits()</a>, and <a class="el" href="bt_generic6_dof_constraint_8cpp-source.html#l00122">testLimitValue()</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/ConstraintSolver/<a class="el" href="bt_generic6_dof_constraint_8h-source.html">btGeneric6DofConstraint.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/ConstraintSolver/<a class="el" href="bt_generic6_dof_constraint_8cpp-source.html">btGeneric6DofConstraint.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:46 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:46 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -1,6 +1,6 @@
 \hypertarget{anim_8h}{
-\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/anim.h File Reference}
-\label{anim_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/anim.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/anim.h}}
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/anim.h File Reference}
+\label{anim_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/anim.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/anim.h}}
 }
 Defines the data structures in which the imported animations are returned. 
 
@@ -48,6 +48,8 @@ Defines the data structures in which the imported animations are returned.
 
 
 
+Definition in file \hyperlink{anim_8h-source}{anim.h}.
+
 \subsection{Enumeration Type Documentation}
 \hypertarget{anim_8h_201b9e9429b82cd6423ff4a4daf01cef}{
 \index{anim.h@{anim.h}!aiAnimBehaviour@{aiAnimBehaviour}}
@@ -83,4 +85,25 @@ If the animation key go from n to m and the current time is t, use the value at 
 \label{anim_8h_201b9e9429b82cd6423ff4a4daf01cef8e18d19abc297d6f6ed86c7a7ab9b4fc}
 }]This value is not used, it is just here to force the the compiler to map this enum to a 32 Bit integer \end{description}
 \end{Desc}
+
+
+
+Definition at line 231 of file anim.h.
+
+\begin{Code}\begin{verbatim}232 {
+234     aiAnimBehaviour_DEFAULT  = 0x0,
+235 
+237     aiAnimBehaviour_CONSTANT = 0x1,
+238 
+241     aiAnimBehaviour_LINEAR   = 0x2,
+242 
+247     aiAnimBehaviour_REPEAT   = 0x3,
+248 
+251 #ifndef SWIG
+252     _aiAnimBehaviour_Force32Bit = INT_MAX
+253 #endif
+254 };
+\end{verbatim}
+\end{Code}
+
 

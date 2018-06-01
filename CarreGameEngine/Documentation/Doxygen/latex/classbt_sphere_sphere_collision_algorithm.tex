@@ -14,6 +14,8 @@ virtual void \hyperlink{classbt_sphere_sphere_collision_algorithm_7e5adac437f8c0
 \subsection{Detailed Description}
 \hyperlink{classbt_sphere_sphere_collision_algorithm}{btSphereSphereCollisionAlgorithm} provides sphere-sphere collision detection. Other features are frame-coherency (persistent data) and collision response. Also provides the most basic sample for custom/user \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm} 
 
+Definition at line 29 of file btSphereSphereCollisionAlgorithm.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_sphere_sphere_collision_algorithm_7e5adac437f8c0cdb738360d5946a65d}{
 \index{btSphereSphereCollisionAlgorithm@{btSphereSphereCollisionAlgorithm}!processCollision@{processCollision}}
@@ -34,7 +36,65 @@ report a contact. internally this will be kept persistent, and contact reduction
 
 Implements \hyperlink{classbt_collision_algorithm}{btCollisionAlgorithm}.
 
+Definition at line 44 of file btSphereSphereCollisionAlgorithm.cpp.
+
+References btManifoldResult::addContactPoint(), btManifoldResult::m\_\-closestPointDistanceThreshold, btManifoldResult::refreshContactPoints(), and btManifoldResult::setPersistentManifold().
+
+\begin{Code}\begin{verbatim}45 {
+46         (void)dispatchInfo;
+47 
+48         if (!m_manifoldPtr)
+49                 return;
+50 
+51         resultOut->setPersistentManifold(m_manifoldPtr);
+52 
+53         btSphereShape* sphere0 = (btSphereShape*)col0Wrap->getCollisionShape();
+54         btSphereShape* sphere1 = (btSphereShape*)col1Wrap->getCollisionShape();
+55 
+56         btVector3 diff = col0Wrap->getWorldTransform().getOrigin()-  col1Wrap->getWorldTransform().getOrigin();
+57         btScalar len = diff.length();
+58         btScalar radius0 = sphere0->getRadius();
+59         btScalar radius1 = sphere1->getRadius();
+60 
+61 #ifdef CLEAR_MANIFOLD
+62         m_manifoldPtr->clearManifold(); //don't do this, it disables warmstarting
+63 #endif
+64 
+66         if ( len > (radius0+radius1+resultOut->m_closestPointDistanceThreshold))
+67         {
+68 #ifndef CLEAR_MANIFOLD
+69                 resultOut->refreshContactPoints();
+70 #endif //CLEAR_MANIFOLD
+71                 return;
+72         }
+74         btScalar dist = len - (radius0+radius1);
+75 
+76         btVector3 normalOnSurfaceB(1,0,0);
+77         if (len > SIMD_EPSILON)
+78         {
+79                 normalOnSurfaceB = diff / len;
+80         }
+81 
+85         btVector3 pos1 = col1Wrap->getWorldTransform().getOrigin() + radius1* normalOnSurfaceB;
+86 
+88         
+89         
+90         resultOut->addContactPoint(normalOnSurfaceB,pos1,dist);
+91 
+92 #ifndef CLEAR_MANIFOLD
+93         resultOut->refreshContactPoints();
+94 #endif //CLEAR_MANIFOLD
+95 
+96 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.cpp\end{CompactItemize}

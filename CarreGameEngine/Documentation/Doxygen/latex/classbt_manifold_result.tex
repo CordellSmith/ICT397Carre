@@ -34,6 +34,8 @@ static btScalar \hyperlink{classbt_manifold_result_162717dce3ef3a756ae55ec04a179
 \subsection{Detailed Description}
 \hyperlink{classbt_manifold_result}{btManifoldResult} is a helper class to manage contact results. 
 
+Definition at line 39 of file btManifoldResult.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_manifold_result_ebe32f0c202d988d0458e88d768602c6}{
 \index{btManifoldResult@{btManifoldResult}!addContactPoint@{addContactPoint}}
@@ -48,7 +50,119 @@ static btScalar \hyperlink{classbt_manifold_result_162717dce3ef3a756ae55ec04a179
 \item[\hyperlink{todo__todo000015}{Todo}], check this for any side effects \end{Desc}
 
 
+Definition at line 104 of file btManifoldResult.cpp.
+
+References calculateCombinedFriction(), calculateCombinedRestitution(), btManifoldPoint::m\_\-combinedContactDamping1, btManifoldPoint::m\_\-combinedContactStiffness1, btManifoldPoint::m\_\-combinedFriction, btManifoldPoint::m\_\-combinedRestitution, btManifoldPoint::m\_\-combinedRollingFriction, btManifoldPoint::m\_\-combinedSpinningFriction, btManifoldPoint::m\_\-contactPointFlags, btManifoldPoint::m\_\-index0, btManifoldPoint::m\_\-index1, btManifoldPoint::m\_\-lateralFrictionDir1, btManifoldPoint::m\_\-lateralFrictionDir2, btManifoldPoint::m\_\-normalWorldOnB, btManifoldPoint::m\_\-partId0, btManifoldPoint::m\_\-partId1, btManifoldPoint::m\_\-positionWorldOnA, and btManifoldPoint::m\_\-positionWorldOnB.
+
+Referenced by btConvexPlaneCollisionAlgorithm::collideSingleContact(), btConvexConvexAlgorithm::processCollision(), btConvexPlaneCollisionAlgorithm::processCollision(), btSphereBoxCollisionAlgorithm::processCollision(), and btSphereSphereCollisionAlgorithm::processCollision().
+
+\begin{Code}\begin{verbatim}105 {
+106         btAssert(m_manifoldPtr);
+107         //order in manifold needs to match
+108 
+109         if (depth > m_manifoldPtr->getContactBreakingThreshold())
+110 //      if (depth > m_manifoldPtr->getContactProcessingThreshold())
+111                 return;
+112 
+113         bool isSwapped = m_manifoldPtr->getBody0() != m_body0Wrap->getCollisionObject();
+114         bool isNewCollision = m_manifoldPtr->getNumContacts() == 0;
+115 
+116         btVector3 pointA = pointInWorld + normalOnBInWorld * depth;
+117 
+118         btVector3 localA;
+119         btVector3 localB;
+120         
+121         if (isSwapped)
+122         {
+123                 localA = m_body1Wrap->getCollisionObject()->getWorldTransform().invXform(pointA );
+124                 localB = m_body0Wrap->getCollisionObject()->getWorldTransform().invXform(pointInWorld);
+125         } else
+126         {
+127                 localA = m_body0Wrap->getCollisionObject()->getWorldTransform().invXform(pointA );
+128                 localB = m_body1Wrap->getCollisionObject()->getWorldTransform().invXform(pointInWorld);
+129         }
+130 
+131         btManifoldPoint newPt(localA,localB,normalOnBInWorld,depth);
+132         newPt.m_positionWorldOnA = pointA;
+133         newPt.m_positionWorldOnB = pointInWorld;
+134         
+135         int insertIndex = m_manifoldPtr->getCacheEntry(newPt);
+136 
+137         newPt.m_combinedFriction = calculateCombinedFriction(m_body0Wrap->getCollisionObject(),m_body1Wrap->getCollisionObject());
+138         newPt.m_combinedRestitution = calculateCombinedRestitution(m_body0Wrap->getCollisionObject(),m_body1Wrap->getCollisionObject());
+139         newPt.m_combinedRollingFriction = calculateCombinedRollingFriction(m_body0Wrap->getCollisionObject(),m_body1Wrap->getCollisionObject());
+140     newPt.m_combinedSpinningFriction = calculateCombinedSpinningFriction(m_body0Wrap->getCollisionObject(),m_body1Wrap->getCollisionObject());
+141         
+142         if (    (m_body0Wrap->getCollisionObject()->getCollisionFlags()& btCollisionObject::CF_HAS_CONTACT_STIFFNESS_DAMPING) ||
+143             (m_body1Wrap->getCollisionObject()->getCollisionFlags()& btCollisionObject::CF_HAS_CONTACT_STIFFNESS_DAMPING))
+144     {
+145         newPt.m_combinedContactDamping1 = calculateCombinedContactDamping(m_body0Wrap->getCollisionObject(),m_body1Wrap->getCollisionObject());
+146         newPt.m_combinedContactStiffness1 = calculateCombinedContactStiffness(m_body0Wrap->getCollisionObject(),m_body1Wrap->getCollisionObject());
+147         newPt.m_contactPointFlags |= BT_CONTACT_FLAG_CONTACT_STIFFNESS_DAMPING;
+148     }
+149 
+150         if (    (m_body0Wrap->getCollisionObject()->getCollisionFlags()& btCollisionObject::CF_HAS_FRICTION_ANCHOR) ||
+151             (m_body1Wrap->getCollisionObject()->getCollisionFlags()& btCollisionObject::CF_HAS_FRICTION_ANCHOR))
+152     {
+153         newPt.m_contactPointFlags |= BT_CONTACT_FLAG_FRICTION_ANCHOR;
+154     }
+155 
+156         btPlaneSpace1(newPt.m_normalWorldOnB,newPt.m_lateralFrictionDir1,newPt.m_lateralFrictionDir2);
+157         
+158 
+159         
+160    //BP mod, store contact triangles.
+161         if (isSwapped)
+162         {
+163                 newPt.m_partId0 = m_partId1;
+164                 newPt.m_partId1 = m_partId0;
+165                 newPt.m_index0  = m_index1;
+166                 newPt.m_index1  = m_index0;
+167         } else
+168         {
+169                 newPt.m_partId0 = m_partId0;
+170                 newPt.m_partId1 = m_partId1;
+171                 newPt.m_index0  = m_index0;
+172                 newPt.m_index1  = m_index1;
+173         }
+174         //printf("depth=%f\n",depth);
+176         if (insertIndex >= 0)
+177         {
+178                 //const btManifoldPoint& oldPoint = m_manifoldPtr->getContactPoint(insertIndex);
+179                 m_manifoldPtr->replaceContactPoint(newPt,insertIndex);
+180         } else
+181         {
+182                 insertIndex = m_manifoldPtr->addManifoldPoint(newPt);
+183         }
+184         
+185         //User can override friction and/or restitution
+186         if (gContactAddedCallback &&
+187                 //and if either of the two bodies requires custom material
+188                  ((m_body0Wrap->getCollisionObject()->getCollisionFlags() & btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK) ||
+189                    (m_body1Wrap->getCollisionObject()->getCollisionFlags() & btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK)))
+190         {
+191                 //experimental feature info, for per-triangle material etc.
+192                 const btCollisionObjectWrapper* obj0Wrap = isSwapped? m_body1Wrap : m_body0Wrap;
+193                 const btCollisionObjectWrapper* obj1Wrap = isSwapped? m_body0Wrap : m_body1Wrap;
+194                 (*gContactAddedCallback)(m_manifoldPtr->getContactPoint(insertIndex),obj0Wrap,newPt.m_partId0,newPt.m_index0,obj1Wrap,newPt.m_partId1,newPt.m_index1);
+195         }
+196 
+197         if (gContactStartedCallback && isNewCollision)
+198         {
+199                 gContactStartedCallback(m_manifoldPtr);
+200         }
+201 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btManifoldResult.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btManifoldResult.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btManifoldResult.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/CollisionDispatch/btManifoldResult.cpp\end{CompactItemize}

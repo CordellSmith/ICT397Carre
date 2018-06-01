@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_color_space</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_color_space</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -79,6 +79,58 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Converts a color from RGB color space to its color in HSV color space. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__color__space.html" title="Related to RGB to HSV conversions and operations.">GLM_GTX_color_space</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="color__space_8inl-source.html#l00070">70</a> of file <a class="el" href="color__space_8inl-source.html">color_space.inl</a>.</p>
+
+<p>References <a class="el" href="func__common_8inl-source.html#l00386">glm::max()</a>, and <a class="el" href="func__common_8inl-source.html#l00368">glm::min()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00071"></a>00071         {
+<a name="l00072"></a>00072                 detail::tvec3&lt;T, P&gt; hsv = <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>;
+<a name="l00073"></a>00073                 <span class="keywordtype">float</span> Min   = <a class="code" href="group__gtx__extented__min__max.html#gca95a5fd4be0ad53f4474e69867bf974">min</a>(<a class="code" href="group__gtx__extented__min__max.html#gca95a5fd4be0ad53f4474e69867bf974">min</a>(<a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.r, <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.g), <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.b);
+<a name="l00074"></a>00074                 <span class="keywordtype">float</span> Max   = <a class="code" href="group__gtx__extented__min__max.html#g56246e6ce859dc617425497eab1bdbd8">max</a>(<a class="code" href="group__gtx__extented__min__max.html#g56246e6ce859dc617425497eab1bdbd8">max</a>(<a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.r, <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.g), <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.b);
+<a name="l00075"></a>00075                 <span class="keywordtype">float</span> Delta = Max - Min;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077                 hsv.z = Max;                               
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079                 <span class="keywordflow">if</span>(Max != static_cast&lt;T&gt;(0))
+<a name="l00080"></a>00080                 {
+<a name="l00081"></a>00081                         hsv.y = Delta / hsv.z;    
+<a name="l00082"></a>00082                         T h = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084                         <span class="keywordflow">if</span>(<a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.r == Max)
+<a name="l00085"></a>00085                                 <span class="comment">// between yellow &amp; magenta</span>
+<a name="l00086"></a>00086                                 h = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0) + T(60) * (<a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.g - <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.b) / Delta;
+<a name="l00087"></a>00087                         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.g == Max)
+<a name="l00088"></a>00088                                 <span class="comment">// between cyan &amp; yellow</span>
+<a name="l00089"></a>00089                                 h = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(120) + T(60) * (<a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.b - <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.r) / Delta;
+<a name="l00090"></a>00090                         <span class="keywordflow">else</span>
+<a name="l00091"></a>00091                                 <span class="comment">// between magenta &amp; cyan</span>
+<a name="l00092"></a>00092                                 h = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(240) + T(60) * (<a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.r - <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>.g) / Delta;
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094                         <span class="keywordflow">if</span>(h &lt; T(0)) 
+<a name="l00095"></a>00095                                 hsv.x = h + T(360);
+<a name="l00096"></a>00096                         <span class="keywordflow">else</span>
+<a name="l00097"></a>00097                                 hsv.x = h;
+<a name="l00098"></a>00098                 }
+<a name="l00099"></a>00099                 <span class="keywordflow">else</span>
+<a name="l00100"></a>00100                 {
+<a name="l00101"></a>00101                         <span class="comment">// If r = g = b = 0 then s = 0, h is undefined</span>
+<a name="l00102"></a>00102                         hsv.y = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00103"></a>00103                         hsv.x = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(0);
+<a name="l00104"></a>00104                 }
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106                 <span class="keywordflow">return</span> hsv;
+<a name="l00107"></a>00107         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__color__space_g2532e85174ba333c4f60127d03d71655_cgraph.png" border="0" usemap="#group__gtx__color__space_g2532e85174ba333c4f60127d03d71655_cgraph_map" alt=""></center>
+<map name="group__gtx__color__space_g2532e85174ba333c4f60127d03d71655_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#g4e4d7b280fec55e5dfeb1367a1a2597d" title="glm::max" alt="" coords="156,5,231,32"><area shape="rect" href="group__core__func__common.html#g7c4425eacc9498bb2ab8a7cfd662cd69" title="glm::min" alt="" coords="157,56,229,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gdd1c8feae48a4fcf9e575648b25b914f"></a><!-- doxytag: member="glm::luminosity" ref="gdd1c8feae48a4fcf9e575648b25b914f" args="(detail::tvec3&lt; T, P &gt; const &amp;color)" -->
@@ -102,6 +154,25 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Compute color luminosity associating ratios (0.33, 0.59, 0.11) to RGB canals. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__color__space.html" title="Related to RGB to HSV conversions and operations.">GLM_GTX_color_space</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="color__space_8inl-source.html#l00144">144</a> of file <a class="el" href="color__space_8inl-source.html">color_space.inl</a>.</p>
+
+<p>References <a class="el" href="func__geometric_8inl-source.html#l00188">glm::dot()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00145"></a>00145         {
+<a name="l00146"></a>00146                 <span class="keyword">const</span> detail::tvec3&lt;T, P&gt; tmp = detail::tvec3&lt;T, P&gt;(0.33, 0.59, 0.11);
+<a name="l00147"></a>00147                 <span class="keywordflow">return</span> <a class="code" href="group__gtc__quaternion.html#g4ce8bce2b7dc8206a31cfb8e7b779b76">dot</a>(color, tmp);
+<a name="l00148"></a>00148         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__color__space_gdd1c8feae48a4fcf9e575648b25b914f_cgraph.png" border="0" usemap="#group__gtx__color__space_gdd1c8feae48a4fcf9e575648b25b914f_cgraph_map" alt=""></center>
+<map name="group__gtx__color__space_gdd1c8feae48a4fcf9e575648b25b914f_cgraph_map">
+<area shape="rect" href="group__core__func__geometric.html#gc64a3b29d01336161a668d328cac97eb" title="glm::dot" alt="" coords="164,5,231,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g35a9210371395c95b185f5aac6c0020e"></a><!-- doxytag: member="glm::rgbColor" ref="g35a9210371395c95b185f5aac6c0020e" args="(detail::tvec3&lt; T, P &gt; const &amp;hsvValue)" -->
@@ -124,6 +195,75 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Converts a color from HSV color space to its color in RGB color space. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__color__space.html" title="Related to RGB to HSV conversions and operations.">GLM_GTX_color_space</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="color__space_8inl-source.html#l00013">13</a> of file <a class="el" href="color__space_8inl-source.html">color_space.inl</a>.</p>
+
+<p>References <a class="el" href="func__common_8inl-source.html#l00170">glm::floor()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00014"></a>00014         {
+<a name="l00015"></a>00015                 detail::tvec3&lt;T, P&gt; hsv = <a class="code" href="group__gtx__color__space.html#g2532e85174ba333c4f60127d03d71655">hsvColor</a>;
+<a name="l00016"></a>00016                 detail::tvec3&lt;T, P&gt; <a class="code" href="group__gtx__color__space.html#g35a9210371395c95b185f5aac6c0020e">rgbColor</a>;
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018                 <span class="keywordflow">if</span>(hsv.y == static_cast&lt;T&gt;(0))
+<a name="l00019"></a>00019                         <span class="comment">// achromatic (grey)</span>
+<a name="l00020"></a>00020                         rgbColor = detail::tvec3&lt;T, P&gt;(hsv.z);
+<a name="l00021"></a>00021                 <span class="keywordflow">else</span>
+<a name="l00022"></a>00022                 {
+<a name="l00023"></a>00023                         T sector = <a class="code" href="group__core__func__common.html#gf87c2d5cbed8b293dcb7506b7c06c9e1">floor</a>(hsv.x / T(60));
+<a name="l00024"></a>00024                         T frac = (hsv.x / T(60)) - sector;
+<a name="l00025"></a>00025                         <span class="comment">// factorial part of h</span>
+<a name="l00026"></a>00026                         T o = hsv.z * (T(1) - hsv.y);
+<a name="l00027"></a>00027                         T p = hsv.z * (T(1) - hsv.y * frac);
+<a name="l00028"></a>00028                         T q = hsv.z * (T(1) - hsv.y * (T(1) - frac));
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030                         <span class="keywordflow">switch</span>(<span class="keywordtype">int</span>(sector))
+<a name="l00031"></a>00031                         {
+<a name="l00032"></a>00032                         <span class="keywordflow">default</span>:
+<a name="l00033"></a>00033                         <span class="keywordflow">case</span> 0:
+<a name="l00034"></a>00034                                 rgbColor.r = hsv.z;
+<a name="l00035"></a>00035                                 rgbColor.g = q;
+<a name="l00036"></a>00036                                 rgbColor.b = o;
+<a name="l00037"></a>00037                                 <span class="keywordflow">break</span>;
+<a name="l00038"></a>00038                         <span class="keywordflow">case</span> 1:
+<a name="l00039"></a>00039                                 rgbColor.r = p;
+<a name="l00040"></a>00040                                 rgbColor.g = hsv.z;
+<a name="l00041"></a>00041                                 rgbColor.b = o;
+<a name="l00042"></a>00042                                 <span class="keywordflow">break</span>;
+<a name="l00043"></a>00043                         <span class="keywordflow">case</span> 2:
+<a name="l00044"></a>00044                                 rgbColor.r = o;
+<a name="l00045"></a>00045                                 rgbColor.g = hsv.z;
+<a name="l00046"></a>00046                                 rgbColor.b = q;
+<a name="l00047"></a>00047                                 <span class="keywordflow">break</span>;
+<a name="l00048"></a>00048                         <span class="keywordflow">case</span> 3:
+<a name="l00049"></a>00049                                 rgbColor.r = o;
+<a name="l00050"></a>00050                                 rgbColor.g = p;
+<a name="l00051"></a>00051                                 rgbColor.b = hsv.z;
+<a name="l00052"></a>00052                                 <span class="keywordflow">break</span>;
+<a name="l00053"></a>00053                         <span class="keywordflow">case</span> 4:
+<a name="l00054"></a>00054                                 rgbColor.r = q; 
+<a name="l00055"></a>00055                                 rgbColor.g = o; 
+<a name="l00056"></a>00056                                 rgbColor.b = hsv.z;
+<a name="l00057"></a>00057                                 <span class="keywordflow">break</span>;
+<a name="l00058"></a>00058                         <span class="keywordflow">case</span> 5:
+<a name="l00059"></a>00059                                 rgbColor.r = hsv.z; 
+<a name="l00060"></a>00060                                 rgbColor.g = o; 
+<a name="l00061"></a>00061                                 rgbColor.b = p;
+<a name="l00062"></a>00062                                 <span class="keywordflow">break</span>;
+<a name="l00063"></a>00063                         }
+<a name="l00064"></a>00064                 }
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066                 <span class="keywordflow">return</span> rgbColor;
+<a name="l00067"></a>00067         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__color__space_g35a9210371395c95b185f5aac6c0020e_cgraph.png" border="0" usemap="#group__gtx__color__space_g35a9210371395c95b185f5aac6c0020e_cgraph_map" alt=""></center>
+<map name="group__gtx__color__space_g35a9210371395c95b185f5aac6c0020e_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#gf87c2d5cbed8b293dcb7506b7c06c9e1" title="glm::floor" alt="" coords="152,5,227,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -157,6 +297,24 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Modify the saturation of a color. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__color__space.html" title="Related to RGB to HSV conversions and operations.">GLM_GTX_color_space</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="color__space_8inl-source.html#l00138">138</a> of file <a class="el" href="color__space_8inl-source.html">color_space.inl</a>.</p>
+
+<p>References <a class="el" href="color__space_8inl-source.html#l00110">glm::saturation()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00139"></a>00139         {
+<a name="l00140"></a>00140                 <span class="keywordflow">return</span> <a class="code" href="group__gtx__color__space.html#g1ab05270ac2afa8e67b0d268e5c92573">saturation</a>(s) * color;
+<a name="l00141"></a>00141         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__color__space_g1ab05270ac2afa8e67b0d268e5c92573_cgraph.png" border="0" usemap="#group__gtx__color__space_g1ab05270ac2afa8e67b0d268e5c92573_cgraph_map" alt=""></center>
+<map name="group__gtx__color__space_g1ab05270ac2afa8e67b0d268e5c92573_cgraph_map">
+<area shape="rect" href="group__gtx__color__space.html#g53a08c053e194bad0bfc172ef950bfe7" title="glm::saturation" alt="" coords="164,5,271,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gc45433ff3d2f2f3657edfcf9ee24800d"></a><!-- doxytag: member="glm::saturation" ref="gc45433ff3d2f2f3657edfcf9ee24800d" args="(T const s, detail::tvec3&lt; T, P &gt; const &amp;color)" -->
@@ -189,6 +347,24 @@ template&lt;typename T, precision P&gt; </div>
 <p>
 Modify the saturation of a color. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__color__space.html" title="Related to RGB to HSV conversions and operations.">GLM_GTX_color_space</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="color__space_8inl-source.html#l00132">132</a> of file <a class="el" href="color__space_8inl-source.html">color_space.inl</a>.</p>
+
+<p>References <a class="el" href="color__space_8inl-source.html#l00110">glm::saturation()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00133"></a>00133         {
+<a name="l00134"></a>00134                 <span class="keywordflow">return</span> detail::tvec3&lt;T, P&gt;(<a class="code" href="group__gtx__color__space.html#g1ab05270ac2afa8e67b0d268e5c92573">saturation</a>(s) * detail::tvec4&lt;T, P&gt;(color, T(0)));
+<a name="l00135"></a>00135         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__color__space_gc45433ff3d2f2f3657edfcf9ee24800d_cgraph.png" border="0" usemap="#group__gtx__color__space_gc45433ff3d2f2f3657edfcf9ee24800d_cgraph_map" alt=""></center>
+<map name="group__gtx__color__space_gc45433ff3d2f2f3657edfcf9ee24800d_cgraph_map">
+<area shape="rect" href="group__gtx__color__space.html#g53a08c053e194bad0bfc172ef950bfe7" title="glm::saturation" alt="" coords="164,5,271,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g53a08c053e194bad0bfc172ef950bfe7"></a><!-- doxytag: member="glm::saturation" ref="g53a08c053e194bad0bfc172ef950bfe7" args="(T const s)" -->
@@ -212,10 +388,44 @@ template&lt;typename T&gt; </div>
 <p>
 Build a saturation matrix. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtx__color__space.html" title="Related to RGB to HSV conversions and operations.">GLM_GTX_color_space</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="color__space_8inl-source.html#l00110">110</a> of file <a class="el" href="color__space_8inl-source.html">color_space.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="color__space_8inl-source.html#l00132">glm::saturation()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00111"></a>00111         {
+<a name="l00112"></a>00112                 detail::tvec3&lt;T, defaultp&gt; rgbw = detail::tvec3&lt;T, defaultp&gt;(T(0.2126), T(0.7152), T(0.0722));
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114                 T col0 = (T(1) - s) * rgbw.r;
+<a name="l00115"></a>00115                 T col1 = (T(1) - s) * rgbw.g;
+<a name="l00116"></a>00116                 T col2 = (T(1) - s) * rgbw.b;
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118                 detail::tmat4x4&lt;T, defaultp&gt; result(T(1));
+<a name="l00119"></a>00119                 result[0][0] = col0 + s;
+<a name="l00120"></a>00120                 result[0][1] = col0;
+<a name="l00121"></a>00121                 result[0][2] = col0;
+<a name="l00122"></a>00122                 result[1][0] = col1;
+<a name="l00123"></a>00123                 result[1][1] = col1 + s;
+<a name="l00124"></a>00124                 result[1][2] = col1;
+<a name="l00125"></a>00125                 result[2][0] = col2;
+<a name="l00126"></a>00126                 result[2][1] = col2;
+<a name="l00127"></a>00127                 result[2][2] = col2 + s;
+<a name="l00128"></a>00128                 <span class="keywordflow">return</span> result;
+<a name="l00129"></a>00129         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__color__space_g53a08c053e194bad0bfc172ef950bfe7_icgraph.png" border="0" usemap="#group__gtx__color__space_g53a08c053e194bad0bfc172ef950bfe7_icgraph_map" alt=""></center>
+<map name="group__gtx__color__space_g53a08c053e194bad0bfc172ef950bfe7_icgraph_map">
+<area shape="rect" href="group__gtx__color__space.html#gc45433ff3d2f2f3657edfcf9ee24800d" title="glm::saturation" alt="" coords="164,5,271,32"></map>
+</div>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:28 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:02 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

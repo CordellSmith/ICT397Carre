@@ -1,0 +1,14 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btGImpactMeshShape::setLocalScaling",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btGImpactMeshShapePart::setLocalScaling",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_mesh_shape_part.html#2c1de297d020a75e1ab0f10f7c71478f"];
+  Node2 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btGImpactShapeInterface::postUpdate",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_shape_interface.html#c430754948ac92d6f70b81e88416c96a",tooltip="Tells to this object that is needed to refit the box set."];
+  Node1 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="btAlignedObjectArray::size",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7",tooltip="return the number of elements in the array"];
+}

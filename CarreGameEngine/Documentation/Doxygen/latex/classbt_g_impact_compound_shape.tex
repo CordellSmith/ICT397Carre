@@ -91,6 +91,8 @@ class \hyperlink{classbt_g_impact_compound_shape_1_1_compound_primitive_manager}
 
 This class only can manage Convex subshapes 
 
+Definition at line 310 of file btGImpactShape.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_g_impact_compound_shape_560410e20842ad73227d7712a574385c}{
 \index{btGImpactCompoundShape@{btGImpactCompoundShape}!setChildTransform@{setChildTransform}}
@@ -105,7 +107,24 @@ Sets the children transform.
 \item[Postcondition:]You must call \hyperlink{classbt_g_impact_shape_interface_cb26c2d7a2aecabd06b996b72b848492}{updateBound()} for update the box set. \end{Desc}
 
 
-Implements \hyperlink{classbt_g_impact_shape_interface_83392f97bd7dfeb71ccdce6913a465b0}{btGImpactShapeInterface}.\hypertarget{classbt_g_impact_compound_shape_861967c52cb52a358b8d99aa4c65e306}{
+Implements \hyperlink{classbt_g_impact_shape_interface_83392f97bd7dfeb71ccdce6913a465b0}{btGImpactShapeInterface}.
+
+Definition at line 474 of file btGImpactShape.h.
+
+References btGImpactShapeInterface::postUpdate(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}475         {
+476                 btAssert(m_childTransforms.size() == m_childShapes.size());
+477                 m_childTransforms[index] = transform;
+478                 postUpdate();
+479         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_g_impact_compound_shape_861967c52cb52a358b8d99aa4c65e306}{
 \index{btGImpactCompoundShape@{btGImpactCompoundShape}!getGImpactShapeType@{getGImpactShapeType}}
 \index{getGImpactShapeType@{getGImpactShapeType}!btGImpactCompoundShape@{btGImpactCompoundShape}}
 \subsubsection[getGImpactShapeType]{\setlength{\rightskip}{0pt plus 5cm}virtual eGIMPACT\_\-SHAPE\_\-TYPE btGImpactCompoundShape::getGImpactShapeType () const\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
@@ -118,7 +137,18 @@ Subshape member functions
 
 Implements \hyperlink{classbt_g_impact_shape_interface_25cacbe448997e3f8ec99cb2d4952859}{btGImpactShapeInterface}.
 
+Definition at line 515 of file btGImpactShape.h.
+
+\begin{Code}\begin{verbatim}516         {
+517                 return CONST_GIMPACT_COMPOUND_SHAPE;
+518         }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_g_impact_shape_8h}{btGImpactShape.h}\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactShape.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_g_impact_shape_8h}{btGImpactShape.h}\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactShape.cpp\end{CompactItemize}

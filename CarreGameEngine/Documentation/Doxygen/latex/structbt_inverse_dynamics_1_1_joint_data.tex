@@ -36,6 +36,8 @@ mat33 \hyperlink{structbt_inverse_dynamics_1_1_joint_data_6725b907ac280e9fd3d1fa
 \subsection{Detailed Description}
 Joint properties. 
 
+Definition at line 24 of file MultiBodyTreeInitCache.hpp.
+
 \subsection{Member Data Documentation}
 \hypertarget{structbt_inverse_dynamics_1_1_joint_data_56c1cd9b4021ca0c202cd059e0759993}{
 \index{btInverseDynamics::JointData@{btInverseDynamics::JointData}!m\_\-parent\_\-pos\_\-parent\_\-child\_\-ref@{m\_\-parent\_\-pos\_\-parent\_\-child\_\-ref}}
@@ -44,14 +46,22 @@ Joint properties.
 \label{structbt_inverse_dynamics_1_1_joint_data_56c1cd9b4021ca0c202cd059e0759993}
 
 
-vector from parent's body-fixed frame to child's body-fixed frame for q=0, written in the parent's body fixed frame \hypertarget{structbt_inverse_dynamics_1_1_joint_data_6725b907ac280e9fd3d1fa8f0032fda4}{
+vector from parent's body-fixed frame to child's body-fixed frame for q=0, written in the parent's body fixed frame 
+
+Definition at line 35 of file MultiBodyTreeInitCache.hpp.
+
+Referenced by btInverseDynamics::MultiBodyTree::InitCache::addBody(), and btInverseDynamics::MultiBodyTree::finalize().\hypertarget{structbt_inverse_dynamics_1_1_joint_data_6725b907ac280e9fd3d1fa8f0032fda4}{
 \index{btInverseDynamics::JointData@{btInverseDynamics::JointData}!m\_\-child\_\-T\_\-parent\_\-ref@{m\_\-child\_\-T\_\-parent\_\-ref}}
 \index{m\_\-child\_\-T\_\-parent\_\-ref@{m\_\-child\_\-T\_\-parent\_\-ref}!btInverseDynamics::JointData@{btInverseDynamics::JointData}}
 \subsubsection[m\_\-child\_\-T\_\-parent\_\-ref]{\setlength{\rightskip}{0pt plus 5cm}mat33 {\bf btInverseDynamics::JointData::m\_\-child\_\-T\_\-parent\_\-ref}}}
 \label{structbt_inverse_dynamics_1_1_joint_data_6725b907ac280e9fd3d1fa8f0032fda4}
 
 
-Transform matrix converting vectors written in the parent's frame into vectors written in the child's frame for q=0 ie, child\_\-vector = child\_\-T\_\-parent\_\-ref $\ast$ parent\_\-vector; \hypertarget{structbt_inverse_dynamics_1_1_joint_data_e237c62f233031b18eec950090a1f576}{
+Transform matrix converting vectors written in the parent's frame into vectors written in the child's frame for q=0 ie, child\_\-vector = child\_\-T\_\-parent\_\-ref $\ast$ parent\_\-vector; 
+
+Definition at line 39 of file MultiBodyTreeInitCache.hpp.
+
+Referenced by btInverseDynamics::MultiBodyTree::InitCache::addBody(), and btInverseDynamics::MultiBodyTree::finalize().\hypertarget{structbt_inverse_dynamics_1_1_joint_data_e237c62f233031b18eec950090a1f576}{
 \index{btInverseDynamics::JointData@{btInverseDynamics::JointData}!m\_\-child\_\-axis\_\-of\_\-motion@{m\_\-child\_\-axis\_\-of\_\-motion}}
 \index{m\_\-child\_\-axis\_\-of\_\-motion@{m\_\-child\_\-axis\_\-of\_\-motion}!btInverseDynamics::JointData@{btInverseDynamics::JointData}}
 \subsubsection[m\_\-child\_\-axis\_\-of\_\-motion]{\setlength{\rightskip}{0pt plus 5cm}{\bf vec3} {\bf btInverseDynamics::JointData::m\_\-child\_\-axis\_\-of\_\-motion}}}
@@ -60,6 +70,10 @@ Transform matrix converting vectors written in the parent's frame into vectors w
 
 Axis of motion for 1 degree-of-freedom joints, written in the child's frame For revolute joints, the q-value is positive for a positive rotation about this axis. For prismatic joints, the q-value is positive for a positive translation is this direction. 
 
+Definition at line 46 of file MultiBodyTreeInitCache.hpp.
+
+Referenced by btInverseDynamics::MultiBodyTree::InitCache::addBody(), and btInverseDynamics::MultiBodyTree::finalize().
+
 The documentation for this struct was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/details/MultiBodyTreeInitCache.hpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletInverseDynamics/details/MultiBodyTreeInitCache.hpp\end{CompactItemize}

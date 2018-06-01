@@ -1,9 +1,12 @@
-<area shape="rect" href="$classbt_activating_collision_algorithm.html" title="This class is not enabled yet (work&#45;in&#45;progress) to more aggressively activate objects..." alt="" coords="697,96,889,123">
-<area shape="rect" href="$classbt_collision_algorithm.html" title="btCollisionAlgorithm" alt="" coords="312,76,448,103">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionAlgorithm * \&gt;" alt="" coords="648,45,939,72">
-<area shape="rect" href="$classbt_dispatcher.html" title="btDispatcher" alt="" coords="7,76,100,103">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; const btDbvtNode * \&gt;" alt="" coords="653,147,933,173">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; const btDbvtNode *, 16 \&gt;" alt="" coords="239,147,521,173">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionAlgorithm *, 16 \&gt;" alt="" coords="232,5,528,32">
-<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btPersistentManifold * \&gt;" alt="" coords="645,197,941,224">
-<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btPersistentManifold *, 16 \&gt;" alt="" coords="231,197,529,224">
+<area shape="rect" href="$classbt_activating_collision_algorithm.html" title="This class is not enabled yet (work&#45;in&#45;progress) to more aggressively activate objects..." alt="" coords="1409,249,1601,276">
+<area shape="rect" href="$classbt_collision_algorithm.html" title="btCollisionAlgorithm" alt="" coords="1001,231,1137,257">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btCollisionAlgorithm * \&gt;" alt="" coords="1360,199,1651,225">
+<area shape="rect" href="$classbt_dispatcher.html" title="btDispatcher" alt="" coords="495,231,588,257">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; const btDbvtNode * \&gt;" alt="" coords="1365,32,1645,59">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; const btDbvtNode *, 16 \&gt;" alt="" coords="665,5,948,32">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,119,229,145">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="452,91,631,117">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btCollisionAlgorithm *, 16 \&gt;" alt="" coords="659,284,955,311">
+<area shape="rect" href="$classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btPersistentManifold *, 16 \&gt;" alt="" coords="657,164,956,191">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="981,80,1157,107">
+<area shape="rect" href="$classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btPersistentManifold * \&gt;" alt="" coords="1357,148,1653,175">

@@ -1,0 +1,20 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::lxNorm",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::pow",height=0.2,width=0.4,color="black",URL="$group__core__func__exponential.html#gfdaffc3606f4ee7f415cd64ada108356"];
+  Node2 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::pow",height=0.2,width=0.4,color="black",URL="$group__gtx__quaternion.html#g49e7cd8958d474290778760d171a44d2"];
+  Node3 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::abs",height=0.2,width=0.4,color="black",URL="$group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1"];
+  Node3 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="glm::acos",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gd945cb7263cb202d93ea76aa5d419078"];
+  Node3 -> Node6 [color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="glm::cos",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98"];
+  Node3 -> Node7 [color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="glm::sin",height=0.2,width=0.4,color="black",URL="$group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2"];
+}

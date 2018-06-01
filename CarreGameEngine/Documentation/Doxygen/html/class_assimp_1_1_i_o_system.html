@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Assimp::IOSystem Class Reference</title>
+<title>Assignment2 - OOber Taxi: Assimp::IOSystem Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -30,7 +30,7 @@
 <h1>Assimp::IOSystem Class Reference</h1><!-- doxytag: class="Assimp::IOSystem" -->CPP-API: Interface to the file system.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;IOSystem.hpp&gt;</code>
+<code>#include &lt;<a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for Assimp::IOSystem:</div>
@@ -98,6 +98,8 @@ CPP-API: Interface to the file system.
 <p>
 Derive an own implementation from this interface to supply custom file handling to the importer library. If you implement this interface, you also want to supply a custom implementation for <a class="el" href="class_assimp_1_1_i_o_stream.html" title="CPP-API: Class to handle file I/O for C++.">IOStream</a>.<p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="class_assimp_1_1_importer.html#1161f46318af18bb86dfe0fc3edea4df">Importer::SetIOHandler()</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00084">84</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="f8ba1ee2dc0686da8fc9e3dad49af801"></a><!-- doxytag: member="Assimp::IOSystem::IOSystem" ref="f8ba1ee2dc0686da8fc9e3dad49af801" args="()" -->
 <div class="memitem">
@@ -118,6 +120,13 @@ Derive an own implementation from this interface to supply custom file handling 
 Default constructor. 
 <p>
 Create an instance of your derived class and assign it to an <a class="el" href="class_assimp_1_1_importer.html">Assimp::Importer</a> instance by calling <a class="el" href="class_assimp_1_1_importer.html#1161f46318af18bb86dfe0fc3edea4df">Importer::SetIOHandler()</a>. 
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00235">235</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00236"></a>00236 : m_pathStack() {
+<a name="l00237"></a>00237     <span class="comment">// empty</span>
+<a name="l00238"></a>00238 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="617417f1c5125770606fea3b41068b36"></a><!-- doxytag: member="Assimp::IOSystem::~IOSystem" ref="617417f1c5125770606fea3b41068b36" args="()" -->
@@ -139,6 +148,13 @@ Create an instance of your derived class and assign it to an <a class="el" href=
 Virtual destructor. 
 <p>
 It is safe to be called from within DLL <a class="el" href="namespace_assimp.html">Assimp</a>, we're constructed on Assimp's heap. 
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00242">242</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00242"></a>00242                     {
+<a name="l00243"></a>00243     <span class="comment">// empty</span>
+<a name="l00244"></a>00244 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -162,6 +178,16 @@ It is safe to be called from within DLL <a class="el" href="namespace_assimp.htm
 For backward compatibility. 
 <p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd>Exists(const char*) </dd></dl>
+
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00263">263</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00263"></a>00263                                                    {
+<a name="l00264"></a>00264     <span class="comment">// NOTE:</span>
+<a name="l00265"></a>00265     <span class="comment">// For compatibility, interface was changed to const char* to</span>
+<a name="l00266"></a>00266     <span class="comment">// avoid crashes between binary incompatible STL versions</span>
+<a name="l00267"></a>00267     <span class="keywordflow">return</span> <a class="code" href="class_assimp_1_1_i_o_system.html#7ae6cfaea4957408967463bfc3b84b27" title="For backward compatibility.">Exists</a>(pFile.c_str());
+<a name="l00268"></a>00268 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -259,6 +285,17 @@ When the access to the file is finished, call <a class="el" href="class_assimp_1
 
 <p>Implemented in <a class="el" href="class_assimp_1_1_default_i_o_system.html#9c8da3d63312f47b2dec83ec90aa2c4d">Assimp::DefaultIOSystem</a>.</p>
 
+<p>Referenced by <a class="el" href="_i_o_system_8hpp-source.html#l00254">Open()</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_i_o_system_c512ece3b0701de5682553007a4c0816_icgraph.png" border="0" usemap="#class_assimp_1_1_i_o_system_c512ece3b0701de5682553007a4c0816_icgraph_map" alt=""></center>
+<map name="class_assimp_1_1_i_o_system_c512ece3b0701de5682553007a4c0816_icgraph_map">
+<area shape="rect" href="class_assimp_1_1_i_o_system.html#ef35fabc9bd49fb83bfd4f12a94083c3" title="For backward compatibility." alt="" coords="224,5,395,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="ef35fabc9bd49fb83bfd4f12a94083c3"></a><!-- doxytag: member="Assimp::IOSystem::Open" ref="ef35fabc9bd49fb83bfd4f12a94083c3" args="(const std::string &amp;pFile, const std::string &amp;pMode=std::string(&quot;rb&quot;))" -->
@@ -290,6 +327,27 @@ When the access to the file is finished, call <a class="el" href="class_assimp_1
 For backward compatibility. 
 <p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="class_assimp_1_1_i_o_system.html#c512ece3b0701de5682553007a4c0816" title="Open a new file with a given path.">Open(const char*, const char*)</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00254">254</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
+
+<p>References <a class="el" href="class_assimp_1_1_i_o_system.html#c512ece3b0701de5682553007a4c0816">Open()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00254"></a>00254                                                                        {
+<a name="l00255"></a>00255     <span class="comment">// NOTE:</span>
+<a name="l00256"></a>00256     <span class="comment">// For compatibility, interface was changed to const char* to</span>
+<a name="l00257"></a>00257     <span class="comment">// avoid crashes between binary incompatible STL versions</span>
+<a name="l00258"></a>00258     <span class="keywordflow">return</span> <a class="code" href="class_assimp_1_1_i_o_system.html#c512ece3b0701de5682553007a4c0816" title="Open a new file with a given path.">Open</a>(pFile.c_str(),pMode.c_str());
+<a name="l00259"></a>00259 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_i_o_system_ef35fabc9bd49fb83bfd4f12a94083c3_cgraph.png" border="0" usemap="#class_assimp_1_1_i_o_system_ef35fabc9bd49fb83bfd4f12a94083c3_cgraph_map" alt=""></center>
+<map name="class_assimp_1_1_i_o_system_ef35fabc9bd49fb83bfd4f12a94083c3_cgraph_map">
+<area shape="rect" href="class_assimp_1_1_i_o_system.html#c512ece3b0701de5682553007a4c0816" title="Open a new file with a given path." alt="" coords="224,5,395,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -360,6 +418,17 @@ The dummy implementation of this virtual member performs a case-insensitive comp
 
 <p>Reimplemented in <a class="el" href="class_assimp_1_1_default_i_o_system.html#0eb1be0b288bdad621f9036bd5290fe7">Assimp::DefaultIOSystem</a>.</p>
 
+<p>Referenced by <a class="el" href="_i_o_system_8hpp-source.html#l00272">ComparePaths()</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_i_o_system_11349a65b353ed62f655c3dd802b9062_icgraph.png" border="0" usemap="#class_assimp_1_1_i_o_system_11349a65b353ed62f655c3dd802b9062_icgraph_map" alt=""></center>
+<map name="class_assimp_1_1_i_o_system_11349a65b353ed62f655c3dd802b9062_icgraph_map">
+<area shape="rect" href="class_assimp_1_1_i_o_system.html#39a29f6ee6b76deaa59aed2b7494b182" title="For backward compatibility." alt="" coords="281,5,505,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="39a29f6ee6b76deaa59aed2b7494b182"></a><!-- doxytag: member="Assimp::IOSystem::ComparePaths" ref="39a29f6ee6b76deaa59aed2b7494b182" args="(const std::string &amp;one, const std::string &amp;second) const " -->
@@ -392,6 +461,27 @@ For backward compatibility.
 <p>
 <dl class="see" compact><dt><b>See also:</b></dt><dd>ComparePaths(const char*, const char*) </dd></dl>
 
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00272">272</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
+
+<p>References <a class="el" href="class_assimp_1_1_i_o_system.html#11349a65b353ed62f655c3dd802b9062">ComparePaths()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00272"></a>00272                                                                                 {
+<a name="l00273"></a>00273     <span class="comment">// NOTE:</span>
+<a name="l00274"></a>00274     <span class="comment">// For compatibility, interface was changed to const char* to</span>
+<a name="l00275"></a>00275     <span class="comment">// avoid crashes between binary incompatible STL versions</span>
+<a name="l00276"></a>00276     <span class="keywordflow">return</span> <a class="code" href="class_assimp_1_1_i_o_system.html#11349a65b353ed62f655c3dd802b9062" title="Compares two paths and check whether the point to identical files.">ComparePaths</a>(<a class="code" href="group__gtc__constants.html#gbc71dfc97639e8010a39c1892e68ed9b">one</a>.c_str(),second.c_str());
+<a name="l00277"></a>00277 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_assimp_1_1_i_o_system_39a29f6ee6b76deaa59aed2b7494b182_cgraph.png" border="0" usemap="#class_assimp_1_1_i_o_system_39a29f6ee6b76deaa59aed2b7494b182_cgraph_map" alt=""></center>
+<map name="class_assimp_1_1_i_o_system_39a29f6ee6b76deaa59aed2b7494b182_cgraph_map">
+<area shape="rect" href="class_assimp_1_1_i_o_system.html#11349a65b353ed62f655c3dd802b9062" title="Compares two paths and check whether the point to identical files." alt="" coords="281,5,505,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="07c2c93fac300df44c756174fcea71e8"></a><!-- doxytag: member="Assimp::IOSystem::PushDirectory" ref="07c2c93fac300df44c756174fcea71e8" args="(const std::string &amp;path)" -->
@@ -420,6 +510,19 @@ Pushes a new directory onto the directory stack.
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>True, when push was successful, false if path is empty. </dd></dl>
 
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00281">281</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00281"></a>00281                                                     {
+<a name="l00282"></a>00282     <span class="keywordflow">if</span> ( path.empty() ) {
+<a name="l00283"></a>00283         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00284"></a>00284     }
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286     m_pathStack.push_back( path );
+<a name="l00287"></a>00287 
+<a name="l00288"></a>00288     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00289"></a>00289 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="9b30a76a279c6559488bdef10d5c2315"></a><!-- doxytag: member="Assimp::IOSystem::CurrentDirectory" ref="9b30a76a279c6559488bdef10d5c2315" args="() const " -->
@@ -441,6 +544,17 @@ Pushes a new directory onto the directory stack.
 Returns the top directory from the stack. 
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>The directory on the top of the stack. Returns empty when no directory was pushed to the stack. </dd></dl>
+
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00293">293</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00293"></a>00293                                                   {
+<a name="l00294"></a>00294     <span class="keywordflow">if</span> ( m_pathStack.empty() ) {
+<a name="l00295"></a>00295         <span class="keyword">static</span> <span class="keyword">const</span> std::string Dummy(<span class="stringliteral">""</span>);
+<a name="l00296"></a>00296         <span class="keywordflow">return</span> Dummy;
+<a name="l00297"></a>00297     }
+<a name="l00298"></a>00298     <span class="keywordflow">return</span> m_pathStack[ m_pathStack.size()-1 ];
+<a name="l00299"></a>00299 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -464,6 +578,13 @@ Returns the number of directories stored on the stack.
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>The number of directories of the stack. </dd></dl>
 
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00303">303</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00303"></a>00303                                  {
+<a name="l00304"></a>00304     <span class="keywordflow">return</span> m_pathStack.size();
+<a name="l00305"></a>00305 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="a00f3ee1c44576364e8ce00206fb9dd2"></a><!-- doxytag: member="Assimp::IOSystem::PopDirectory" ref="a00f3ee1c44576364e8ce00206fb9dd2" args="()" -->
@@ -485,6 +606,19 @@ Returns the number of directories stored on the stack.
 Pops the top directory from the stack. 
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>True, when a directory was on the stack. False if no directory was on the stack. </dd></dl>
+
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00309">309</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00309"></a>00309                             {
+<a name="l00310"></a>00310     <span class="keywordflow">if</span> ( m_pathStack.empty() ) {
+<a name="l00311"></a>00311         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00312"></a>00312     }
+<a name="l00313"></a>00313 
+<a name="l00314"></a>00314     m_pathStack.pop_back();
+<a name="l00315"></a>00315 
+<a name="l00316"></a>00316     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00317"></a>00317 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -514,6 +648,21 @@ CReates an new directory at the given path.
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>True, when a directory was created. False if the directory cannot be created. </dd></dl>
 
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00321">321</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00321"></a>00321                                                       {
+<a name="l00322"></a>00322     <span class="keywordflow">if</span> ( path.empty() ) {
+<a name="l00323"></a>00323         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00324"></a>00324     }
+<a name="l00325"></a>00325 
+<a name="l00326"></a>00326 <span class="preprocessor">#ifdef _WIN32</span>
+<a name="l00327"></a>00327 <span class="preprocessor"></span>    <span class="keywordflow">return</span> 0 != ::_mkdir( path.c_str() );
+<a name="l00328"></a>00328 <span class="preprocessor">#else</span>
+<a name="l00329"></a>00329 <span class="preprocessor"></span>    <span class="keywordflow">return</span> 0 != ::mkdir( path.c_str(), 0777 );
+<a name="l00330"></a>00330 <span class="preprocessor">#endif // _WIN32</span>
+<a name="l00331"></a>00331 <span class="preprocessor"></span>}
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="93e80760bd5d5239ba8eab3bd31efa6b"></a><!-- doxytag: member="Assimp::IOSystem::ChangeDirectory" ref="93e80760bd5d5239ba8eab3bd31efa6b" args="(const std::string &amp;path)" -->
@@ -542,12 +691,27 @@ Will change the current directory to the given path.
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>True, when the directory has changed successfully. </dd></dl>
 
+<p>Definition at line <a class="el" href="_i_o_system_8hpp-source.html#l00335">335</a> of file <a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00335"></a>00335                                                       {
+<a name="l00336"></a>00336     <span class="keywordflow">if</span> ( path.empty() ) {
+<a name="l00337"></a>00337         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00338"></a>00338     }
+<a name="l00339"></a>00339 
+<a name="l00340"></a>00340 <span class="preprocessor">#ifdef _WIN32</span>
+<a name="l00341"></a>00341 <span class="preprocessor"></span>    <span class="keywordflow">return</span> 0 != ::_chdir( path.c_str() );
+<a name="l00342"></a>00342 <span class="preprocessor">#else</span>
+<a name="l00343"></a>00343 <span class="preprocessor"></span>    <span class="keywordflow">return</span> 0 != ::chdir( path.c_str() );
+<a name="l00344"></a>00344 <span class="preprocessor">#endif // _WIN32</span>
+<a name="l00345"></a>00345 <span class="preprocessor"></span>}
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="_i_o_system_8hpp.html">IOSystem.hpp</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="_i_o_system_8hpp-source.html">IOSystem.hpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:06:14 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:03:57 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

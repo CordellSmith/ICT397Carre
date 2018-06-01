@@ -1,0 +1,28 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btGImpactShapeInterface::updateBound",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btGImpactShapeInterface::calcLocalAABB",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_shape_interface.html#1712a4613e20aa9249514dcd97f0a086",tooltip="use this function for perfofm refit in bounding boxes"];
+  Node2 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btGImpactQuantizedBvh::buildSet",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_quantized_bvh.html#2f061fbf0c6d8a81438861be4add7968",tooltip="this rebuild the entire set"];
+  Node3 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="btQuantizedBvhTree::build_tree",height=0.2,width=0.4,color="black",URL="$classbt_quantized_bvh_tree.html#a2229fd3e3e2004cdf8151437535e936",tooltip="stackless build tree"];
+  Node3 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="btPrimitiveManagerBase::get_primitive_box",height=0.2,width=0.4,color="black",URL="$classbt_primitive_manager_base.html#c826409d978724f266d4e3453118de4e"];
+  Node3 -> Node6 [color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="btPrimitiveManagerBase::get_primitive_count",height=0.2,width=0.4,color="black",URL="$classbt_primitive_manager_base.html#9799cc93c1cf51471d22c5295f276ae8"];
+  Node2 -> Node7 [color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="btGImpactQuantizedBvh::getGlobalBox",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_quantized_bvh.html#f2309fdcd1f0cb289a64c64864c29459"];
+  Node2 -> Node8 [color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="btGImpactQuantizedBvh::getNodeCount",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_quantized_bvh.html#5ffe3a11330ab3bce0d6eaffb9b3f689",tooltip="node count"];
+  Node8 -> Node9 [color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="btQuantizedBvhTree::getNodeCount",height=0.2,width=0.4,color="black",URL="$classbt_quantized_bvh_tree.html#8f8b4acde8a974cb57d9d19b37009100",tooltip="node count"];
+  Node2 -> Node10 [color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="btGImpactShapeInterface::lockChildShapes",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_shape_interface.html#e5de49e788c97a954ab9f2bde16adf60",tooltip="call when reading child shapes"];
+  Node2 -> Node11 [color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="btGImpactQuantizedBvh::update",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_quantized_bvh.html#71665f5245b8f7de1c54f107ef262cd0",tooltip="this attemps to refit the box set."];
+}

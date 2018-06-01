@@ -1,0 +1,4 @@
+<area shape="rect" href="$classb3_quaternion.html#e4b6e029b2e987e463249e4e14f5da4d" title="No initialization constructor." alt="" coords="189,5,373,32">
+<area shape="rect" href="$classb3_quaternion.html#747537c86fc2d63a6fc43db811952634" title="Return the dot product between this quaternion and another." alt="" coords="423,81,545,108">
+<area shape="rect" href="$classb3_quaternion.html#a8d3d563ea89e36794d63bd289934509" title="Return the length squared of the quaternion." alt="" coords="208,107,355,133">
+<area shape="rect" href="$group__core__func__common.html#g74ce53889485c33ac9d81d2b27165c80" title="glm::sign" alt="" coords="244,157,319,184">

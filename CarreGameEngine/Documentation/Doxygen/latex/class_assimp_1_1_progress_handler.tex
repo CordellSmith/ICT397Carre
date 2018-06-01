@@ -36,6 +36,8 @@ CPP-API: Abstract interface for custom progress report receivers.
 
 Each Importer instance maintains its own \hyperlink{class_assimp_1_1_progress_handler_53b192913e9904c674b851c46e1ea9e8}{ProgressHandler}. The default implementation provided by \hyperlink{namespace_assimp}{Assimp} doesn't do anything at all. 
 
+Definition at line 58 of file ProgressHandler.hpp.
+
 \subsection{Member Function Documentation}
 \hypertarget{class_assimp_1_1_progress_handler_b08a1d300d434f6dd86ca41747cba448}{
 \index{Assimp::ProgressHandler@{Assimp::ProgressHandler}!Update@{Update}}
@@ -71,6 +73,18 @@ Progress callback for file loading steps.
 \end{Desc}
 \begin{Desc}
 \item[Note:]This is currently only used at the start and the end of the file parsing. \end{Desc}
+
+
+Definition at line 103 of file ProgressHandler.hpp.
+
+\begin{Code}\begin{verbatim}103                                                                                     {
+104         float f = numberOfSteps ? currentStep / (float)numberOfSteps : 1.0f;
+105         Update( f * 0.5f );
+106     }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_assimp_1_1_progress_handler_57b30d2a9b2ae1f932918f18c30196ed}{
 \index{Assimp::ProgressHandler@{Assimp::ProgressHandler}!UpdatePostProcess@{UpdatePostProcess}}
 \index{UpdatePostProcess@{UpdatePostProcess}!Assimp::ProgressHandler@{Assimp::ProgressHandler}}
@@ -87,6 +101,18 @@ Progress callback for post-processing steps.
 \end{Desc}
 
 
+Definition at line 117 of file ProgressHandler.hpp.
+
+\begin{Code}\begin{verbatim}117                                                                                        {
+118         float f = numberOfSteps ? currentStep / (float)numberOfSteps : 1.0f;
+119         Update( f * 0.5f + 0.5f );
+120     }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_progress_handler_8hpp}{ProgressHandler.hpp}\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{_progress_handler_8hpp}{ProgressHandler.hpp}\end{CompactItemize}

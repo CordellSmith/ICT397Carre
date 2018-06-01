@@ -1,0 +1,34 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="OpenGl::Render",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="Model::GetCamera",height=0.2,width=0.4,color="black",URL="$class_model.html#8c6429a35a1376657357e6e770470f13",tooltip="Gets the camera object."];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="Model::GetMeshBatch",height=0.2,width=0.4,color="black",URL="$class_model.html#e8189e0eb940a7a994591ca71dafae5b",tooltip="Gets the mesh batch."];
+  Node1 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="Model::GetPosition",height=0.2,width=0.4,color="black",URL="$class_model.html#f4b5a0bae6b0b057c118444189c5dfa9",tooltip="Gets the models position."];
+  Node1 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="Camera::GetProjectionMatrix",height=0.2,width=0.4,color="black",URL="$class_camera.html#b0a4bf5a65d45f25529e3cffda1c361b",tooltip="Gets the projection matrix."];
+  Node1 -> Node6 [color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="Model::GetRotation",height=0.2,width=0.4,color="black",URL="$class_model.html#fc6593eeb0980053628cd00a75be51e9",tooltip="Gets the models rotation."];
+  Node1 -> Node7 [color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="Model::GetScale",height=0.2,width=0.4,color="black",URL="$class_model.html#a0fecf0d42fd4ab4d3c4a49a84bd830e",tooltip="Gets the models scale."];
+  Node1 -> Node8 [color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="Model::GetShader",height=0.2,width=0.4,color="black",URL="$class_model.html#985c54c42525ea8e9885977eff7027de",tooltip="Gets the shader."];
+  Node1 -> Node9 [color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="Shader::GetVariable",height=0.2,width=0.4,color="black",URL="$class_shader.html#1230582b9f5d71bde3614683244e1a83",tooltip="Gets the uniform variable."];
+  Node1 -> Node10 [color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="Shader::SetFloat",height=0.2,width=0.4,color="black",URL="$class_shader.html#df02f121177b2723321441701361fab4",tooltip="Sets uniform value to float."];
+  Node1 -> Node11 [color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="Shader::SetMatrix4",height=0.2,width=0.4,color="black",URL="$class_shader.html#61b49dc75fb1842ec58845e9912f824d",tooltip="Selects uniform value to be changed."];
+  Node1 -> Node12 [color="midnightblue",fontsize=10,style="solid"];
+  Node12 [label="glm::to_string",height=0.2,width=0.4,color="black",URL="$group__gtx__string__cast.html#ga805c20a3b3ed546b5fccf481697565d"];
+  Node1 -> Node13 [color="midnightblue",fontsize=10,style="solid"];
+  Node13 [label="Shader::TurnOff",height=0.2,width=0.4,color="black",URL="$class_shader.html#d94b005141a4ed31a3f4f801455e5590",tooltip="Turns shader off."];
+  Node1 -> Node14 [color="midnightblue",fontsize=10,style="solid"];
+  Node14 [label="Shader::TurnOn",height=0.2,width=0.4,color="black",URL="$class_shader.html#01e9b0696a56a5c567ea4b369872c982",tooltip="Turns shader on."];
+}

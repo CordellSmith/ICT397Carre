@@ -50,7 +50,30 @@ Returns the natural exponentiation of x, i.e., e$^\wedge$x.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/exp.xml}{\tt GLSL exp man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
-\hypertarget{group__core__func__exponential_g85f6efedaa47799e8f406481baca2171}{
+
+
+Definition at line 100 of file func\_\-exponential.inl.
+
+References glm::exp().
+
+Referenced by glm::fastPow(), and glm::intermediate().
+
+\begin{Code}\begin{verbatim}103         {
+104                 GLM_STATIC_ASSERT(
+105                         std::numeric_limits<genType>::is_iec559,
+106                         "'exp' only accept floating-point inputs");
+107 
+108                 return std::exp(x);
+109         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__core__func__exponential_g85f6efedaa47799e8f406481baca2171}{
 \index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!exp2@{exp2}}
 \index{exp2@{exp2}!core_func_exponential@{core\_\-func\_\-exponential}}
 \subsubsection[exp2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::exp2 (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -73,7 +96,26 @@ Returns 2 raised to the x power.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/exp2.xml}{\tt GLSL exp2 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
-\hypertarget{group__core__func__exponential_ga190c750b7eefaeb15431987d41177d1}{
+
+
+Definition at line 131 of file func\_\-exponential.inl.
+
+References glm::exp().
+
+\begin{Code}\begin{verbatim}132         {
+133                 GLM_STATIC_ASSERT(
+134                         std::numeric_limits<genType>::is_iec559,
+135                         "'exp2' only accept floating-point inputs");
+136 
+137                 return std::exp(static_cast<genType>(0.69314718055994530941723212145818) * x);
+138         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__core__func__exponential_ga190c750b7eefaeb15431987d41177d1}{
 \index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!inversesqrt@{inversesqrt}}
 \index{inversesqrt@{inversesqrt}!core_func_exponential@{core\_\-func\_\-exponential}}
 \subsubsection[inversesqrt]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::inversesqrt (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -96,7 +138,11 @@ Returns the reciprocal of the positive square root of x.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/inversesqrt.xml}{\tt GLSL inversesqrt man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
-\hypertarget{group__core__func__exponential_gce8148db3949f9260f6f883f8dbae808}{
+
+
+Referenced by glm::normalizeDot().
+
+Here is the caller graph for this function:\hypertarget{group__core__func__exponential_gce8148db3949f9260f6f883f8dbae808}{
 \index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!log@{log}}
 \index{log@{log}!core_func_exponential@{core\_\-func\_\-exponential}}
 \subsubsection[log]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::log (genType const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -119,7 +165,30 @@ Returns the natural logarithm of x, i.e., returns the value y which satisfies th
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/log.xml}{\tt GLSL log man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
-\hypertarget{group__core__func__exponential_g501534b7328bab23128aa15b316e483d}{
+
+
+Definition at line 116 of file func\_\-exponential.inl.
+
+References glm::log().
+
+Referenced by glm::acosh(), glm::asinh(), glm::atanh(), glm::fastPow(), glm::gaussRand(), glm::intermediate(), and glm::log().
+
+\begin{Code}\begin{verbatim}119         {
+120                 GLM_STATIC_ASSERT(
+121                         std::numeric_limits<genType>::is_iec559,
+122                         "'log' only accept floating-point inputs");
+123 
+124                 return std::log(x);
+125         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__core__func__exponential_g501534b7328bab23128aa15b316e483d}{
 \index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!log2@{log2}}
 \index{log2@{log2}!core_func_exponential@{core\_\-func\_\-exponential}}
 \subsubsection[log2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-QUALIFIER genType glm::log2 (genType {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -142,6 +211,21 @@ Returns the base 2 log of x, i.e., returns the value y, which satisfies the equa
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/log2.xml}{\tt GLSL log2 man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
+
+
+Definition at line 144 of file func\_\-exponential.inl.
+
+\begin{Code}\begin{verbatim}145         {
+146                 GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559 || std::numeric_limits<genType>::is_integer,
+147                         "GLM core 'log2' only accept floating-point inputs. Include <glm/gtx/integer.hpp> for additional integer support.");
+148 
+149                 assert(x > genType(0)); // log2 is only defined on the range (0, inf]
+150                 return detail::compute_log2<std::numeric_limits<genType>::is_iec559>()(x);
+151         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__exponential_gfdaffc3606f4ee7f415cd64ada108356}{
 \index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!pow@{pow}}
 \index{pow@{pow}!core_func_exponential@{core\_\-func\_\-exponential}}
@@ -165,7 +249,30 @@ Returns 'base' raised to the power 'exponent'.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/pow.xml}{\tt GLSL pow man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
-\hypertarget{group__core__func__exponential_gfe49b7b63045b6ab94bffbcd7e7a7bc8}{
+
+
+Definition at line 83 of file func\_\-exponential.inl.
+
+References glm::pow().
+
+Referenced by glm::lxNorm().
+
+\begin{Code}\begin{verbatim}87         {
+88                 GLM_STATIC_ASSERT(
+89                         std::numeric_limits<genType>::is_iec559,
+90                         "'pow' only accept floating-point inputs");
+91 
+92                 return std::pow(x, y);
+93         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__core__func__exponential_gfe49b7b63045b6ab94bffbcd7e7a7bc8}{
 \index{core\_\-func\_\-exponential@{core\_\-func\_\-exponential}!sqrt@{sqrt}}
 \index{sqrt@{sqrt}!core_func_exponential@{core\_\-func\_\-exponential}}
 \subsubsection[sqrt]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ T, P $>$ glm::sqrt (vecType$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -188,3 +295,20 @@ Returns the positive square root of x.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/sqrt.xml}{\tt GLSL sqrt man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.2 Exponential Functions} \end{Desc}
+
+
+Definition at line 219 of file func\_\-exponential.inl.
+
+Referenced by glm::acosh(), glm::asinh(), glm::axisAngle(), glm::dualquat\_\-cast(), glm::extractRealComponent(), glm::gaussRand(), glm::intersectLineSphere(), glm::intersectRaySphere(), glm::length(), glm::log(), glm::polar(), glm::radialGradient(), glm::rotation(), glm::shortMix(), and glm::sphericalRand().
+
+\begin{Code}\begin{verbatim}220         {
+221                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'sqrt' only accept floating-point inputs");
+222                 return detail::compute_sqrt<vecType, T, P>::call(x);
+223         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:

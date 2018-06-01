@@ -60,3 +60,5 @@ The interface is modeled after the importer interface and mostly symmetric. The 
 In a nutshell, there are two export interfaces: Export, which writes the output file(s) either to the regular file system or to a user-supplied IOSystem, and ExportToBlob which returns a linked list of memory buffers (blob), each referring to one output file (in most cases there will be only one output file of course, but this extra complexity is needed since \hyperlink{namespace_assimp}{Assimp} aims at supporting a wide range of file formats).
 
 ExportToBlob is especially useful if you intend to work with the data in-memory. 
+
+Definition at line 78 of file Exporter.hpp.

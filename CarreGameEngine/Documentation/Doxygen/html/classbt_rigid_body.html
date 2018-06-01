@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btRigidBody Class Reference</title>
+<title>Assignment2 - OOber Taxi: btRigidBody Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,14 +25,14 @@
   </div>
 </div>
 <div class="contents">
-<h1>btRigidBody Class Reference</h1><!-- doxytag: class="btRigidBody" --><code>#include &lt;btRigidBody.h&gt;</code>
+<h1>btRigidBody Class Reference</h1><!-- doxytag: class="btRigidBody" --><code>#include &lt;<a class="el" href="bt_rigid_body_8h-source.html">btRigidBody.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for btRigidBody:</div>
 <div class="dynsection">
 <p><center><img src="classbt_rigid_body__coll__graph.png" border="0" usemap="#bt_rigid_body__coll__map" alt="Collaboration graph"></center>
 <map name="bt_rigid_body__coll__map">
-<area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btTypedConstraint * \&gt;" alt="" coords="7,96,289,123"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btTypedConstraint *, 16 \&gt;" alt="" coords="5,5,291,32"><area shape="rect" href="classbt_motion_state.html" title="btMotionState" alt="" coords="313,96,415,123"></map>
+<area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; btTypedConstraint * \&gt;" alt="" coords="31,288,313,315"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; btTypedConstraint *, 16 \&gt;" alt="" coords="5,147,291,173"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="129,5,353,32"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="247,96,425,123"><area shape="rect" href="classbt_aligned_object_array.html" title="btAlignedObjectArray\&lt; T \&gt;" alt="" coords="247,197,423,224"><area shape="rect" href="classbt_motion_state.html" title="btMotionState" alt="" coords="337,288,439,315"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -88,6 +88,8 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 The <a class="el" href="classbt_rigid_body.html">btRigidBody</a> is the main class for rigid body objects. It is derived from btCollisionObject, so it keeps a pointer to a btCollisionShape. It is recommended for performance and memory use to share btCollisionShape objects whenever possible. There are 3 types of rigid bodies:<ul>
 <li>A) Dynamic rigid bodies, with positive mass. Motion is controlled by rigid body dynamics.</li><li>B) Fixed objects with zero mass. They are not moving (basically collision objects)</li><li>C) Kinematic objects, which are objects without mass, but the user can move them. There is on-way interaction, and Bullet calculates a velocity based on the timestep and previous and current world transform. Bullet automatically deactivates dynamic rigid bodies, when the velocity is below a threshold for a given time. Deactivated (sleeping) rigid bodies don't take any processing time, except a minor broadphase collision detection impact (to allow active objects to activate/wake up sleeping objects) </li></ul>
+
+<p>Definition at line <a class="el" href="bt_rigid_body_8h-source.html#l00062">62</a> of file <a class="el" href="bt_rigid_body_8h-source.html">btRigidBody.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="ac9b7d050bc87644d38e9ffe4fe4c5ab"></a><!-- doxytag: member="btRigidBody::btRigidBody" ref="ac9b7d050bc87644d38e9ffe4fe4c5ab" args="(btScalar mass, btMotionState *motionState, btCollisionShape *collisionShape, const btVector3 &amp;localInertia=btVector3(0, 0, 0))" -->
 <div class="memitem">
@@ -128,6 +130,25 @@ The <a class="el" href="classbt_rigid_body.html">btRigidBody</a> is the main cla
 
 <p>
 <a class="el" href="classbt_rigid_body.html">btRigidBody</a> constructor for backwards compatibility. To specify friction (etc) during rigid body construction, please use the other constructor (using <a class="el" href="structbt_rigid_body_1_1bt_rigid_body_construction_info.html">btRigidBodyConstructionInfo</a>) 
+<p>Definition at line <a class="el" href="bt_rigid_body_8cpp-source.html#l00035">35</a> of file <a class="el" href="bt_rigid_body_8cpp-source.html">btRigidBody.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_rigid_body_8cpp-source.html#l00041">setupRigidBody()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00036"></a>00036 {
+<a name="l00037"></a>00037         btRigidBodyConstructionInfo cinfo(mass,motionState,collisionShape,localInertia);
+<a name="l00038"></a>00038         <a class="code" href="classbt_rigid_body.html#daa57210b4f5388b63a11db376358dd0" title="setupRigidBody is only used internally by the constructor">setupRigidBody</a>(cinfo);
+<a name="l00039"></a>00039 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_rigid_body_ac9b7d050bc87644d38e9ffe4fe4c5ab_cgraph.png" border="0" usemap="#classbt_rigid_body_ac9b7d050bc87644d38e9ffe4fe4c5ab_cgraph_map" alt=""></center>
+<map name="classbt_rigid_body_ac9b7d050bc87644d38e9ffe4fe4c5ab_cgraph_map">
+<area shape="rect" href="classbt_rigid_body.html#daa57210b4f5388b63a11db376358dd0" title="setupRigidBody is only used internally by the constructor" alt="" coords="225,5,415,32"><area shape="rect" href="classbt_motion_state.html#5d30ed64161a4f36fe2affc3d3501412" title="btMotionState::getWorldTransform" alt="" coords="465,5,684,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -149,6 +170,26 @@ The <a class="el" href="classbt_rigid_body.html">btRigidBody</a> is the main cla
 
 <p>
 to keep collision detection and dynamics separate we don't store a rigidbody pointer but a rigidbody is derived from btCollisionObject, so we can safely perform an upcast 
+<p>Definition at line <a class="el" href="bt_rigid_body_8h-source.html#l00203">203</a> of file <a class="el" href="bt_rigid_body_8h-source.html">btRigidBody.h</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_simple_dynamics_world_8cpp-source.html#l00098">btSimpleDynamicsWorld::clearForces()</a>, <a class="el" href="bt_simple_dynamics_world_8cpp-source.html#l00138">btSimpleDynamicsWorld::removeCollisionObject()</a>, <a class="el" href="_physics_engine_8cpp-source.html#l00177">PhysicsEngine::Simulate()</a>, and <a class="el" href="bt_simple_dynamics_world_8cpp-source.html#l00248">btSimpleDynamicsWorld::synchronizeMotionStates()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00204"></a>00204         {
+<a name="l00205"></a>00205                 <span class="keywordflow">if</span> (colObj-&gt;getInternalType()&amp;btCollisionObject::CO_RIGID_BODY)
+<a name="l00206"></a>00206                         <span class="keywordflow">return</span> (<span class="keyword">const</span> <a class="code" href="classbt_rigid_body.html">btRigidBody</a>*)colObj;
+<a name="l00207"></a>00207                 <span class="keywordflow">return</span> 0;
+<a name="l00208"></a>00208         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_rigid_body_59077fce3d2efd193a3fd7d7de2c97e8_icgraph.png" border="0" usemap="#classbt_rigid_body_59077fce3d2efd193a3fd7d7de2c97e8_icgraph_map" alt=""></center>
+<map name="classbt_rigid_body_59077fce3d2efd193a3fd7d7de2c97e8_icgraph_map">
+<area shape="rect" href="classbt_simple_dynamics_world.html#c44c80444f4d6d4e3c2955dd43b7a93a" title="btSimpleDynamicsWorld::clearForces" alt="" coords="232,5,472,32"><area shape="rect" href="classbt_simple_dynamics_world.html#7c9255653135c9117d6a27738a3077ab" title="removeCollisionObject will first check if it is a rigid body, if so call removeRigidBody..." alt="" coords="203,56,501,83"><area shape="rect" href="class_physics_engine.html#9d6bec05e95efd4b9168b507a90883b9" title="Simulate the dynamic world." alt="" coords="268,107,436,133"><area shape="rect" href="classbt_simple_dynamics_world.html#91e996f5ce6e465e805565ee0ba14824" title="btSimpleDynamicsWorld::synchronizeMotionStates" alt="" coords="192,157,512,184"><area shape="rect" href="classbt_simple_dynamics_world.html#f6b4810b5018cbaf09f82839111a243d" title="maxSubSteps/fixedTimeStep for interpolation is currently ignored for btSimpleDynamicsWorld..." alt="" coords="560,81,819,108"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="16029bc5aabcbb33aaf7e6e6e819283a"></a><!-- doxytag: member="btRigidBody::integrateVelocities" ref="16029bc5aabcbb33aaf7e6e6e819283a" args="(btScalar step)" -->
@@ -171,6 +212,25 @@ to keep collision detection and dynamics separate we don't store a rigidbody poi
 
 <p>
 clamp angular velocity. collision calculations will fail on higher angular velocities 
+<p>Definition at line <a class="el" href="bt_rigid_body_8cpp-source.html#l00387">387</a> of file <a class="el" href="bt_rigid_body_8cpp-source.html">btRigidBody.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00388"></a>00388 {
+<a name="l00389"></a>00389         <span class="keywordflow">if</span> (isStaticOrKinematicObject())
+<a name="l00390"></a>00390                 <span class="keywordflow">return</span>;
+<a name="l00391"></a>00391 
+<a name="l00392"></a>00392         m_linearVelocity += m_totalForce * (m_inverseMass * <a class="code" href="group__core__func__common.html#gdb27417a05ff516eda338a7047cea913">step</a>);
+<a name="l00393"></a>00393         m_angularVelocity += m_invInertiaTensorWorld * m_totalTorque * <a class="code" href="group__core__func__common.html#gdb27417a05ff516eda338a7047cea913">step</a>;
+<a name="l00394"></a>00394 
+<a name="l00395"></a>00395 <span class="preprocessor">#define MAX_ANGVEL SIMD_HALF_PI</span>
+<a name="l00397"></a>00397 <span class="preprocessor">        btScalar angvel = m_angularVelocity.length();</span>
+<a name="l00398"></a>00398 <span class="preprocessor"></span>        <span class="keywordflow">if</span> (angvel*step &gt; MAX_ANGVEL)
+<a name="l00399"></a>00399         {
+<a name="l00400"></a>00400                 m_angularVelocity *= (MAX_ANGVEL/step) /angvel;
+<a name="l00401"></a>00401         }
+<a name="l00402"></a>00402 
+<a name="l00403"></a>00403 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="1c89df31d2a10f06cc81da0e4b573297"></a><!-- doxytag: member="btRigidBody::addConstraintRef" ref="1c89df31d2a10f06cc81da0e4b573297" args="(btTypedConstraint *c)" -->
@@ -193,12 +253,47 @@ clamp angular velocity. collision calculations will fail on higher angular veloc
 
 <p>
 disable collision with the 'other' body 
+<p>Definition at line <a class="el" href="bt_rigid_body_8cpp-source.html#l00433">433</a> of file <a class="el" href="bt_rigid_body_8cpp-source.html">btRigidBody.cpp</a>.</p>
+
+<p>References <a class="el" href="bt_aligned_object_array_8h-source.html#l00463">btAlignedObjectArray&lt; T &gt;::findLinearSearch()</a>, <a class="el" href="bt_aligned_object_array_8h-source.html#l00274">btAlignedObjectArray&lt; T &gt;::push_back()</a>, and <a class="el" href="bt_aligned_object_array_8h-source.html#l00155">btAlignedObjectArray&lt; T &gt;::size()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00434"></a>00434 {
+<a name="l00436"></a>00436 
+<a name="l00437"></a>00437         <span class="keywordtype">int</span> index = m_constraintRefs.<a class="code" href="classbt_aligned_object_array.html#e7b14c469b51e0ea010d3b9d701bc1b8">findLinearSearch</a>(c);
+<a name="l00438"></a>00438         <span class="comment">//don't add constraints that are already referenced</span>
+<a name="l00439"></a>00439         <span class="comment">//btAssert(index == m_constraintRefs.size());</span>
+<a name="l00440"></a>00440         <span class="keywordflow">if</span> (index == m_constraintRefs.<a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>())
+<a name="l00441"></a>00441         {
+<a name="l00442"></a>00442                 m_constraintRefs.<a class="code" href="classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1">push_back</a>(c);
+<a name="l00443"></a>00443                 btCollisionObject* colObjA = &amp;c-&gt;getRigidBodyA();
+<a name="l00444"></a>00444                 btCollisionObject* colObjB = &amp;c-&gt;getRigidBodyB();
+<a name="l00445"></a>00445                 <span class="keywordflow">if</span> (colObjA == <span class="keyword">this</span>)
+<a name="l00446"></a>00446                 {
+<a name="l00447"></a>00447                         colObjA-&gt;setIgnoreCollisionCheck(colObjB, <span class="keyword">true</span>);
+<a name="l00448"></a>00448                 }
+<a name="l00449"></a>00449                 <span class="keywordflow">else</span>
+<a name="l00450"></a>00450                 {
+<a name="l00451"></a>00451                         colObjB-&gt;setIgnoreCollisionCheck(colObjA, <span class="keyword">true</span>);
+<a name="l00452"></a>00452                 }
+<a name="l00453"></a>00453         } 
+<a name="l00454"></a>00454 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_rigid_body_1c89df31d2a10f06cc81da0e4b573297_cgraph.png" border="0" usemap="#classbt_rigid_body_1c89df31d2a10f06cc81da0e4b573297_cgraph_map" alt=""></center>
+<map name="classbt_rigid_body_1c89df31d2a10f06cc81da0e4b573297_cgraph_map">
+<area shape="rect" href="classbt_aligned_object_array.html#e7b14c469b51e0ea010d3b9d701bc1b8" title="btAlignedObjectArray::findLinearSearch" alt="" coords="253,5,501,32"><area shape="rect" href="classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1" title="btAlignedObjectArray::push_back" alt="" coords="269,56,485,83"><area shape="rect" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array" alt="" coords="289,107,465,133"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btRigidBody.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/<a class="el" href="bt_rigid_body_8h-source.html">btRigidBody.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/<a class="el" href="bt_rigid_body_8cpp-source.html">btRigidBody.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:45 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:01:45 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

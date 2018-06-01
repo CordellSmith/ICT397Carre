@@ -19,6 +19,8 @@ virtual void \hyperlink{classbt_simulation_island_manager_mt_77eadf262f5a0e63053
 \subsection{Detailed Description}
 SimulationIslandManagerMt -- Multithread capable version of SimulationIslandManager Splits the world up into islands which can be solved in parallel. In order to solve islands in parallel, an IslandDispatch function must be provided which will dispatch calls to multiple threads. The amount of parallelism that can be achieved depends on the number of islands. If only a single island exists, then no parallelism is possible. 
 
+Definition at line 33 of file btSimulationIslandManagerMt.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_simulation_island_manager_mt_77eadf262f5a0e63053e3efcc9ccfec9}{
 \index{btSimulationIslandManagerMt@{btSimulationIslandManagerMt}!addManifoldsToIslands@{addManifoldsToIslands}}
@@ -31,7 +33,62 @@ SimulationIslandManagerMt -- Multithread capable version of SimulationIslandMana
 
 \begin{Desc}
 \item[\hyperlink{todo__todo000035}{Todo}]: check sleeping conditions! \end{Desc}
-\hypertarget{classbt_simulation_island_manager_mt_9be20c991c57ec972eb33a160d6276fd}{
+
+
+Definition at line 424 of file btSimulationIslandManagerMt.cpp.
+
+References btDispatcher::getManifoldByIndexInternal(), btDispatcher::getNumManifolds(), and btDispatcher::needsResponse().
+
+Referenced by buildAndProcessIslands().
+
+\begin{Code}\begin{verbatim}425 {
+426     // walk all the manifolds, activating bodies touched by kinematic objects, and add each manifold to its Island
+427     int maxNumManifolds = dispatcher->getNumManifolds();
+428     for ( int i = 0; i < maxNumManifolds; i++ )
+429     {
+430         btPersistentManifold* manifold = dispatcher->getManifoldByIndexInternal( i );
+431 
+432         const btCollisionObject* colObj0 = static_cast<const btCollisionObject*>( manifold->getBody0() );
+433         const btCollisionObject* colObj1 = static_cast<const btCollisionObject*>( manifold->getBody1() );
+434 
+436         if ( ( ( colObj0 ) && colObj0->getActivationState() != ISLAND_SLEEPING ) ||
+437              ( ( colObj1 ) && colObj1->getActivationState() != ISLAND_SLEEPING ) )
+438         {
+439 
+440             //kinematic objects don't merge islands, but wake up all connected objects
+441             if ( colObj0->isKinematicObject() && colObj0->getActivationState() != ISLAND_SLEEPING )
+442             {
+443                 if ( colObj0->hasContactResponse() )
+444                     colObj1->activate();
+445             }
+446             if ( colObj1->isKinematicObject() && colObj1->getActivationState() != ISLAND_SLEEPING )
+447             {
+448                 if ( colObj1->hasContactResponse() )
+449                     colObj0->activate();
+450             }
+451             //filtering for response
+452             if ( dispatcher->needsResponse( colObj0, colObj1 ) )
+453             {
+454                 // scatter manifolds into various islands
+455                 int islandId = getIslandId( manifold );
+456                 // if island not sleeping,
+457                 if ( Island* island = getIsland( islandId ) )
+458                 {
+459                     island->manifoldArray.push_back( manifold );
+460                 }
+461             }
+462         }
+463     }
+464 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classbt_simulation_island_manager_mt_9be20c991c57ec972eb33a160d6276fd}{
 \index{btSimulationIslandManagerMt@{btSimulationIslandManagerMt}!buildAndProcessIslands@{buildAndProcessIslands}}
 \index{buildAndProcessIslands@{buildAndProcessIslands}!btSimulationIslandManagerMt@{btSimulationIslandManagerMt}}
 \subsubsection[buildAndProcessIslands]{\setlength{\rightskip}{0pt plus 5cm}void btSimulationIslandManagerMt::buildAndProcessIslands ({\bf btDispatcher} $\ast$ {\em dispatcher}, \/  {\bf btCollisionWorld} $\ast$ {\em collisionWorld}, \/  {\bf btAlignedObjectArray}$<$ btTypedConstraint $\ast$ $>$ \& {\em constraints}, \/  IslandCallback $\ast$ {\em callback})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
@@ -46,7 +103,86 @@ SimulationIslandManagerMt -- Multithread capable version of SimulationIslandMana
 \item[\hyperlink{todo__todo000036}{Todo}]: check sleeping conditions! \end{Desc}
 
 
+Definition at line 606 of file btSimulationIslandManagerMt.cpp.
+
+References addManifoldsToIslands(), btCollisionWorld::getCollisionObjectArray(), btDispatcher::getInternalManifoldPointer(), btDispatcher::getNumManifolds(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}611 {
+612         btCollisionObjectArray& collisionObjects = collisionWorld->getCollisionObjectArray();
+613 
+614         buildIslands(dispatcher,collisionWorld);
+615 
+616         BT_PROFILE("processIslands");
+617 
+618         if(!getSplitIslands())
+619         {
+620         btPersistentManifold** manifolds = dispatcher->getInternalManifoldPointer();
+621         int maxNumManifolds = dispatcher->getNumManifolds();
+622 
+623         for ( int i = 0; i < maxNumManifolds; i++ )
+624         {
+625             btPersistentManifold* manifold = manifolds[ i ];
+626 
+627             const btCollisionObject* colObj0 = static_cast<const btCollisionObject*>( manifold->getBody0() );
+628             const btCollisionObject* colObj1 = static_cast<const btCollisionObject*>( manifold->getBody1() );
+629 
+631             if ( ( ( colObj0 ) && colObj0->getActivationState() != ISLAND_SLEEPING ) ||
+632                  ( ( colObj1 ) && colObj1->getActivationState() != ISLAND_SLEEPING ) )
+633             {
+634 
+635                 //kinematic objects don't merge islands, but wake up all connected objects
+636                 if ( colObj0->isKinematicObject() && colObj0->getActivationState() != ISLAND_SLEEPING )
+637                 {
+638                     if ( colObj0->hasContactResponse() )
+639                         colObj1->activate();
+640                 }
+641                 if ( colObj1->isKinematicObject() && colObj1->getActivationState() != ISLAND_SLEEPING )
+642                 {
+643                     if ( colObj1->hasContactResponse() )
+644                         colObj0->activate();
+645                 }
+646             }
+647         }
+648         btTypedConstraint** constraintsPtr = constraints.size() ? &constraints[ 0 ] : NULL;
+649                 callback->processIsland(&collisionObjects[0],
+650                                  collisionObjects.size(),
+651                                  manifolds,
+652                                  maxNumManifolds,
+653                                  constraintsPtr,
+654                                  constraints.size(),
+655                                  -1
+656                                  );
+657         }
+658         else
+659         {
+660         initIslandPools();
+661 
+662         //traverse the simulation islands, and call the solver, unless all objects are sleeping/deactivated
+663         addBodiesToIslands( collisionWorld );
+664         addManifoldsToIslands( dispatcher );
+665         addConstraintsToIslands( constraints );
+666 
+667         // m_activeIslands array should now contain all non-sleeping Islands, and each Island should
+668         // have all the necessary bodies, manifolds and constraints.
+669 
+670         // if we want to merge islands with small batch counts,
+671         if ( m_minimumSolverBatchSize > 1 )
+672         {
+673             mergeIslands();
+674         }
+675         // dispatch islands to solver
+676         m_islandDispatch( &m_activeIslands, callback );
+677         }
+678 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimulationIslandManagerMt.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimulationIslandManagerMt.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimulationIslandManagerMt.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btSimulationIslandManagerMt.cpp\end{CompactItemize}

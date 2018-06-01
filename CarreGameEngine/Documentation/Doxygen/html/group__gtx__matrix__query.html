@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTX_matrix_query</title>
+<title>Assignment2 - OOber Taxi: GLM_GTX_matrix_query</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -92,6 +92,34 @@ template&lt;typename T, precision P, template&lt; typename, precision &gt; class
 
 <p>
 Return whether a matrix is an identity matrix. From GLM_GTX_matrix_query extension. 
+<p>Definition at line <a class="el" href="matrix__query_8inl-source.html#l00043">43</a> of file <a class="el" href="matrix__query_8inl-source.html">matrix_query.inl</a>.</p>
+
+<p>References <a class="el" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">glm::abs()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00044"></a>00044         {
+<a name="l00045"></a>00045                 <span class="keywordtype">bool</span> result = <span class="keyword">true</span>;
+<a name="l00046"></a>00046                 <span class="keywordflow">for</span>(length_t i(0); result &amp;&amp; i &lt; m[0].length(); ++i)
+<a name="l00047"></a>00047                 {
+<a name="l00048"></a>00048                         <span class="keywordflow">for</span>(length_t j(0); result &amp;&amp; j &lt; i ; ++j)
+<a name="l00049"></a>00049                                 result = <a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(m[i][j]) &lt;= <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>;
+<a name="l00050"></a>00050                         <span class="keywordflow">if</span>(result)
+<a name="l00051"></a>00051                                 result = <a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(m[i][i] - 1) &lt;= <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>;
+<a name="l00052"></a>00052                         <span class="keywordflow">for</span>(length_t j(i + 1); result &amp;&amp; j &lt; m.length(); ++j)
+<a name="l00053"></a>00053                                 result = <a class="code" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1">abs</a>(m[i][j]) &lt;= <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>;
+<a name="l00054"></a>00054                 }
+<a name="l00055"></a>00055                 <span class="keywordflow">return</span> result;
+<a name="l00056"></a>00056         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__matrix__query_gb4ab3ce59ca59a610875732215027cc3_cgraph.png" border="0" usemap="#group__gtx__matrix__query_gb4ab3ce59ca59a610875732215027cc3_cgraph_map" alt=""></center>
+<map name="group__gtx__matrix__query_gb4ab3ce59ca59a610875732215027cc3_cgraph_map">
+<area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="157,5,229,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g0005612df8bcf46d6dda35d373a61fbb"></a><!-- doxytag: member="glm::isNormalized" ref="g0005612df8bcf46d6dda35d373a61fbb" args="(detail::tmat4x4&lt; T, P &gt; const &amp;m, T const &amp;epsilon)" -->
@@ -123,6 +151,34 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return whether a matrix is a normalized matrix. From GLM_GTX_matrix_query extension. 
+<p>Definition at line <a class="el" href="matrix__query_8inl-source.html#l00091">91</a> of file <a class="el" href="matrix__query_8inl-source.html">matrix_query.inl</a>.</p>
+
+<p>References <a class="el" href="matrix__query_8inl-source.html#l00059">glm::isNormalized()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00092"></a>00092         {
+<a name="l00093"></a>00093                 <span class="keywordtype">bool</span> result(<span class="keyword">true</span>);
+<a name="l00094"></a>00094                 <span class="keywordflow">for</span>(length_t i(0); result &amp;&amp; i &lt; m.length(); ++i)
+<a name="l00095"></a>00095                         result = <a class="code" href="group__gtx__vector__query.html#g70f64c6df21ad40303809d76b1474fbe">isNormalized</a>(m[i], <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00096"></a>00096                 <span class="keywordflow">for</span>(length_t i(0); result &amp;&amp; i &lt; m.length(); ++i)
+<a name="l00097"></a>00097                 {
+<a name="l00098"></a>00098                         <span class="keyword">typename</span> detail::tmat4x4&lt;T, P&gt;::col_type v;
+<a name="l00099"></a>00099                         <span class="keywordflow">for</span>(length_t j(0); j &lt; m.length(); ++j)
+<a name="l00100"></a>00100                                 v[j] = m[j][i];
+<a name="l00101"></a>00101                         result = <a class="code" href="group__gtx__vector__query.html#g70f64c6df21ad40303809d76b1474fbe">isNormalized</a>(v, <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00102"></a>00102                 }
+<a name="l00103"></a>00103                 <span class="keywordflow">return</span> result;
+<a name="l00104"></a>00104         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__matrix__query_g0005612df8bcf46d6dda35d373a61fbb_cgraph.png" border="0" usemap="#group__gtx__matrix__query_g0005612df8bcf46d6dda35d373a61fbb_cgraph_map" alt=""></center>
+<map name="group__gtx__matrix__query_g0005612df8bcf46d6dda35d373a61fbb_cgraph_map">
+<area shape="rect" href="group__gtx__matrix__query.html#g08507235ac0ddb0a274ac1e1b10cbf39" title="glm::isNormalized" alt="" coords="179,5,304,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g31396988209969ac17b2764cff154c36"></a><!-- doxytag: member="glm::isNormalized" ref="g31396988209969ac17b2764cff154c36" args="(detail::tmat3x3&lt; T, P &gt; const &amp;m, T const &amp;epsilon)" -->
@@ -154,6 +210,34 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return whether a matrix is a normalized matrix. From GLM_GTX_matrix_query extension. 
+<p>Definition at line <a class="el" href="matrix__query_8inl-source.html#l00075">75</a> of file <a class="el" href="matrix__query_8inl-source.html">matrix_query.inl</a>.</p>
+
+<p>References <a class="el" href="matrix__query_8inl-source.html#l00059">glm::isNormalized()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00076"></a>00076         {
+<a name="l00077"></a>00077                 <span class="keywordtype">bool</span> result(<span class="keyword">true</span>);
+<a name="l00078"></a>00078                 <span class="keywordflow">for</span>(length_t i(0); result &amp;&amp; i &lt; m.length(); ++i)
+<a name="l00079"></a>00079                         result = <a class="code" href="group__gtx__vector__query.html#g70f64c6df21ad40303809d76b1474fbe">isNormalized</a>(m[i], <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00080"></a>00080                 <span class="keywordflow">for</span>(length_t i(0); result &amp;&amp; i &lt; m.length(); ++i)
+<a name="l00081"></a>00081                 {
+<a name="l00082"></a>00082                         <span class="keyword">typename</span> detail::tmat3x3&lt;T, P&gt;::col_type v;
+<a name="l00083"></a>00083                         <span class="keywordflow">for</span>(length_t j(0); j &lt; m.length(); ++j)
+<a name="l00084"></a>00084                                 v[j] = m[j][i];
+<a name="l00085"></a>00085                         result = <a class="code" href="group__gtx__vector__query.html#g70f64c6df21ad40303809d76b1474fbe">isNormalized</a>(v, <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00086"></a>00086                 }
+<a name="l00087"></a>00087                 <span class="keywordflow">return</span> result;
+<a name="l00088"></a>00088         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__matrix__query_g31396988209969ac17b2764cff154c36_cgraph.png" border="0" usemap="#group__gtx__matrix__query_g31396988209969ac17b2764cff154c36_cgraph_map" alt=""></center>
+<map name="group__gtx__matrix__query_g31396988209969ac17b2764cff154c36_cgraph_map">
+<area shape="rect" href="group__gtx__matrix__query.html#g08507235ac0ddb0a274ac1e1b10cbf39" title="glm::isNormalized" alt="" coords="179,5,304,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g08507235ac0ddb0a274ac1e1b10cbf39"></a><!-- doxytag: member="glm::isNormalized" ref="g08507235ac0ddb0a274ac1e1b10cbf39" args="(detail::tmat2x2&lt; T, P &gt; const &amp;m, T const &amp;epsilon)" -->
@@ -185,6 +269,34 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return whether a matrix is a normalized matrix. From GLM_GTX_matrix_query extension. 
+<p>Definition at line <a class="el" href="matrix__query_8inl-source.html#l00059">59</a> of file <a class="el" href="matrix__query_8inl-source.html">matrix_query.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="vector__query_8inl-source.html#l00193">glm::areOrthonormal()</a>, and <a class="el" href="matrix__query_8inl-source.html#l00075">glm::isNormalized()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00060"></a>00060         {
+<a name="l00061"></a>00061                 <span class="keywordtype">bool</span> result(<span class="keyword">true</span>);
+<a name="l00062"></a>00062                 <span class="keywordflow">for</span>(length_t i(0); result &amp;&amp; i &lt; m.length(); ++i)
+<a name="l00063"></a>00063                         result = <a class="code" href="group__gtx__vector__query.html#g70f64c6df21ad40303809d76b1474fbe">isNormalized</a>(m[i], <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00064"></a>00064                 <span class="keywordflow">for</span>(length_t i(0); result &amp;&amp; i &lt; m.length(); ++i)
+<a name="l00065"></a>00065                 {
+<a name="l00066"></a>00066                         <span class="keyword">typename</span> detail::tmat2x2&lt;T, P&gt;::col_type v;
+<a name="l00067"></a>00067                         <span class="keywordflow">for</span>(length_t j(0); j &lt; m.length(); ++j)
+<a name="l00068"></a>00068                                 v[j] = m[j][i];
+<a name="l00069"></a>00069                         result = <a class="code" href="group__gtx__vector__query.html#g70f64c6df21ad40303809d76b1474fbe">isNormalized</a>(v, <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00070"></a>00070                 }
+<a name="l00071"></a>00071                 <span class="keywordflow">return</span> result;
+<a name="l00072"></a>00072         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__matrix__query_g08507235ac0ddb0a274ac1e1b10cbf39_icgraph.png" border="0" usemap="#group__gtx__matrix__query_g08507235ac0ddb0a274ac1e1b10cbf39_icgraph_map" alt=""></center>
+<map name="group__gtx__matrix__query_g08507235ac0ddb0a274ac1e1b10cbf39_icgraph_map">
+<area shape="rect" href="group__gtx__vector__query.html#g78e84684059effca3c44c549476db51a" title="glm::areOrthonormal" alt="" coords="180,5,319,32"><area shape="rect" href="group__gtx__matrix__query.html#g31396988209969ac17b2764cff154c36" title="glm::isNormalized" alt="" coords="187,56,312,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g227812585b9411f506b157afcda55e9c"></a><!-- doxytag: member="glm::isNull" ref="g227812585b9411f506b157afcda55e9c" args="(detail::tmat4x4&lt; T, P &gt; const &amp;m, T const &amp;epsilon)" -->
@@ -216,6 +328,27 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return whether a matrix is a null matrix. From GLM_GTX_matrix_query extension. 
+<p>Definition at line <a class="el" href="matrix__query_8inl-source.html#l00034">34</a> of file <a class="el" href="matrix__query_8inl-source.html">matrix_query.inl</a>.</p>
+
+<p>References <a class="el" href="matrix__query_8inl-source.html#l00016">glm::isNull()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00035"></a>00035         {
+<a name="l00036"></a>00036                 <span class="keywordtype">bool</span> result = <span class="keyword">true</span>;
+<a name="l00037"></a>00037                 <span class="keywordflow">for</span>(length_t i = 0; result &amp;&amp; i &lt; 4 ; ++i)
+<a name="l00038"></a>00038                         result = <a class="code" href="group__gtx__vector__query.html#g368e458df5a70d885f5d8a87ec7b8ef8">isNull</a>(m[i], <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00039"></a>00039                 <span class="keywordflow">return</span> result;
+<a name="l00040"></a>00040         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__matrix__query_g227812585b9411f506b157afcda55e9c_cgraph.png" border="0" usemap="#group__gtx__matrix__query_g227812585b9411f506b157afcda55e9c_cgraph_map" alt=""></center>
+<map name="group__gtx__matrix__query_g227812585b9411f506b157afcda55e9c_cgraph_map">
+<area shape="rect" href="group__gtx__matrix__query.html#g54401e84073257d2bab8680e207ef405" title="glm::isNull" alt="" coords="136,5,219,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="ge3db03e8b4aea5dc381bc45d1d3935eb"></a><!-- doxytag: member="glm::isNull" ref="ge3db03e8b4aea5dc381bc45d1d3935eb" args="(detail::tmat3x3&lt; T, P &gt; const &amp;m, T const &amp;epsilon)" -->
@@ -247,6 +380,27 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return whether a matrix a null matrix. From GLM_GTX_matrix_query extension. 
+<p>Definition at line <a class="el" href="matrix__query_8inl-source.html#l00025">25</a> of file <a class="el" href="matrix__query_8inl-source.html">matrix_query.inl</a>.</p>
+
+<p>References <a class="el" href="matrix__query_8inl-source.html#l00016">glm::isNull()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00026"></a>00026         {
+<a name="l00027"></a>00027                 <span class="keywordtype">bool</span> result = <span class="keyword">true</span>;
+<a name="l00028"></a>00028                 <span class="keywordflow">for</span>(length_t i = 0; result &amp;&amp; i &lt; 3 ; ++i)
+<a name="l00029"></a>00029                         result = <a class="code" href="group__gtx__vector__query.html#g368e458df5a70d885f5d8a87ec7b8ef8">isNull</a>(m[i], <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00030"></a>00030                 <span class="keywordflow">return</span> result;
+<a name="l00031"></a>00031         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__matrix__query_ge3db03e8b4aea5dc381bc45d1d3935eb_cgraph.png" border="0" usemap="#group__gtx__matrix__query_ge3db03e8b4aea5dc381bc45d1d3935eb_cgraph_map" alt=""></center>
+<map name="group__gtx__matrix__query_ge3db03e8b4aea5dc381bc45d1d3935eb_cgraph_map">
+<area shape="rect" href="group__gtx__matrix__query.html#g54401e84073257d2bab8680e207ef405" title="glm::isNull" alt="" coords="136,5,219,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g54401e84073257d2bab8680e207ef405"></a><!-- doxytag: member="glm::isNull" ref="g54401e84073257d2bab8680e207ef405" args="(detail::tmat2x2&lt; T, P &gt; const &amp;m, T const &amp;epsilon)" -->
@@ -278,6 +432,27 @@ template&lt;typename T, precision P&gt; </div>
 
 <p>
 Return whether a matrix a null matrix. From GLM_GTX_matrix_query extension. 
+<p>Definition at line <a class="el" href="matrix__query_8inl-source.html#l00016">16</a> of file <a class="el" href="matrix__query_8inl-source.html">matrix_query.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="matrix__query_8inl-source.html#l00025">glm::isNull()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00017"></a>00017         {
+<a name="l00018"></a>00018                 <span class="keywordtype">bool</span> result = <span class="keyword">true</span>;
+<a name="l00019"></a>00019                 <span class="keywordflow">for</span>(length_t i = 0; result &amp;&amp; i &lt; 2 ; ++i)
+<a name="l00020"></a>00020                         result = <a class="code" href="group__gtx__vector__query.html#g368e458df5a70d885f5d8a87ec7b8ef8">isNull</a>(m[i], <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00021"></a>00021                 <span class="keywordflow">return</span> result;
+<a name="l00022"></a>00022         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__matrix__query_g54401e84073257d2bab8680e207ef405_icgraph.png" border="0" usemap="#group__gtx__matrix__query_g54401e84073257d2bab8680e207ef405_icgraph_map" alt=""></center>
+<map name="group__gtx__matrix__query_g54401e84073257d2bab8680e207ef405_icgraph_map">
+<area shape="rect" href="group__gtx__matrix__query.html#ge3db03e8b4aea5dc381bc45d1d3935eb" title="glm::isNull" alt="" coords="136,5,219,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gbaeee016acd42f7a58bd1de063a3061b"></a><!-- doxytag: member="glm::isOrthogonal" ref="gbaeee016acd42f7a58bd1de063a3061b" args="(matType&lt; T, P &gt; const &amp;m, T const &amp;epsilon)" -->
@@ -309,10 +484,40 @@ template&lt;typename T, precision P, template&lt; typename, precision &gt; class
 
 <p>
 Return whether a matrix is an orthonormalized matrix. From GLM_GTX_matrix_query extension. 
+<p>Definition at line <a class="el" href="matrix__query_8inl-source.html#l00107">107</a> of file <a class="el" href="matrix__query_8inl-source.html">matrix_query.inl</a>.</p>
+
+<p>References <a class="el" href="vector__query_8inl-source.html#l00104">glm::areOrthogonal()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00108"></a>00108         {
+<a name="l00109"></a>00109                 <span class="keywordtype">bool</span> result(<span class="keyword">true</span>);
+<a name="l00110"></a>00110                 <span class="keywordflow">for</span>(length_t i(0); result &amp;&amp; i &lt; m.length() - 1; ++i)
+<a name="l00111"></a>00111                 <span class="keywordflow">for</span>(length_t j(i + 1); result &amp;&amp; j &lt; m.length(); ++j)
+<a name="l00112"></a>00112                         result = <a class="code" href="group__gtx__vector__query.html#g9af1cd34fdb7c3cdeb11c0235fe7c468">areOrthogonal</a>(m[i], m[j], <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114                 <span class="keywordflow">if</span>(result)
+<a name="l00115"></a>00115                 {
+<a name="l00116"></a>00116                         matType&lt;T, P&gt; tmp = transpose(m);
+<a name="l00117"></a>00117                         <span class="keywordflow">for</span>(length_t i(0); result &amp;&amp; i &lt; m.length() - 1 ; ++i)
+<a name="l00118"></a>00118                         <span class="keywordflow">for</span>(length_t j(i + 1); result &amp;&amp; j &lt; m.length(); ++j)
+<a name="l00119"></a>00119                                 result = <a class="code" href="group__gtx__vector__query.html#g9af1cd34fdb7c3cdeb11c0235fe7c468">areOrthogonal</a>(tmp[i], tmp[j], <a class="code" href="group__gtc__constants.html#g136c74927d8ab624f3c008bcd8c4445b">epsilon</a>);
+<a name="l00120"></a>00120                 }
+<a name="l00121"></a>00121                 <span class="keywordflow">return</span> result;
+<a name="l00122"></a>00122         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtx__matrix__query_gbaeee016acd42f7a58bd1de063a3061b_cgraph.png" border="0" usemap="#group__gtx__matrix__query_gbaeee016acd42f7a58bd1de063a3061b_cgraph_map" alt=""></center>
+<map name="group__gtx__matrix__query_gbaeee016acd42f7a58bd1de063a3061b_cgraph_map">
+<area shape="rect" href="group__gtx__vector__query.html#g9af1cd34fdb7c3cdeb11c0235fe7c468" title="glm::areOrthogonal" alt="" coords="180,48,311,75"><area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="493,23,565,49"><area shape="rect" href="group__core__func__geometric.html#gc64a3b29d01336161a668d328cac97eb" title="glm::dot" alt="" coords="369,23,436,49"><area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="360,73,445,100"><area shape="rect" href="group__core__func__common.html#g4e4d7b280fec55e5dfeb1367a1a2597d" title="glm::max" alt="" coords="365,124,440,151"></map>
+</div>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:36 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:59:33 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

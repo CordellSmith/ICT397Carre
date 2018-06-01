@@ -1,0 +1,16 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="OpenGl::Prepare",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="Model::GetMeshBatch",height=0.2,width=0.4,color="black",URL="$class_model.html#e8189e0eb940a7a994591ca71dafae5b",tooltip="Gets the mesh batch."];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="Model::GetShader",height=0.2,width=0.4,color="black",URL="$class_model.html#985c54c42525ea8e9885977eff7027de",tooltip="Gets the shader."];
+  Node1 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="Shader::Initialize",height=0.2,width=0.4,color="black",URL="$class_shader.html#750cae45b47ecb6d8b8ae334562e7c6f",tooltip="Initializes the shader program."];
+  Node4 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="Shader::Destroy",height=0.2,width=0.4,color="black",URL="$class_shader.html#b6fc1a824cb122fcb0c902397e20f72f",tooltip="Destroys any linked shaders."];
+}

@@ -69,6 +69,25 @@ Creates a frustum matrix.
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} \end{Desc}
+
+
+Definition at line 197 of file matrix\_\-transform.inl.
+
+\begin{Code}\begin{verbatim}205         {
+206                 detail::tmat4x4<T, defaultp> Result(0);
+207                 Result[0][0] = (static_cast<T>(2) * nearVal) / (right - left);
+208                 Result[1][1] = (static_cast<T>(2) * nearVal) / (top - bottom);
+209                 Result[2][0] = (right + left) / (right - left);
+210                 Result[2][1] = (top + bottom) / (top - bottom);
+211                 Result[2][2] = -(farVal + nearVal) / (farVal - nearVal);
+212                 Result[2][3] = static_cast<T>(-1);
+213                 Result[3][2] = -(static_cast<T>(2) * farVal * nearVal) / (farVal - nearVal);
+214                 return Result;
+215         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__matrix__transform_g2b5303a99580dc5a2ffe4cd9303397a9}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!infinitePerspective@{infinitePerspective}}
 \index{infinitePerspective@{infinitePerspective}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
@@ -90,7 +109,39 @@ Creates a matrix for a symmetric perspective-view frustum with far plane at infi
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} \end{Desc}
-\hypertarget{group__gtc__matrix__transform_g7f4f81d4b0d7b492112eb4d5b184d9be}{
+
+
+Definition at line 281 of file matrix\_\-transform.inl.
+
+References glm::radians(), and glm::tan().
+
+\begin{Code}\begin{verbatim}286         {
+287 #ifdef GLM_FORCE_RADIANS
+288                 T const range = tan(fovy / T(2)) * zNear;       
+289 #else
+290 #               pragma message("GLM: infinitePerspective function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+291                 T const range = tan(radians(fovy / T(2))) * zNear;      
+292 #endif
+293                 T left = -range * aspect;
+294                 T right = range * aspect;
+295                 T bottom = -range;
+296                 T top = range;
+297 
+298                 detail::tmat4x4<T, defaultp> Result(T(0));
+299                 Result[0][0] = (T(2) * zNear) / (right - left);
+300                 Result[1][1] = (T(2) * zNear) / (top - bottom);
+301                 Result[2][2] = - T(1);
+302                 Result[2][3] = - T(1);
+303                 Result[3][2] = - T(2) * zNear;
+304                 return Result;
+305         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__matrix__transform_g7f4f81d4b0d7b492112eb4d5b184d9be}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!lookAt@{lookAt}}
 \index{lookAt@{lookAt}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
 \subsubsection[lookAt]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::lookAt (detail::tvec3$<$ T, P $>$ const \& {\em eye}, \/  detail::tvec3$<$ T, P $>$ const \& {\em center}, \/  detail::tvec3$<$ T, P $>$ const \& {\em up})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -108,7 +159,39 @@ Build a look at view matrix.
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} 
 
 - \hyperlink{group__gtc__matrix__transform_g0ef39da6d6c83806dea5ff455eb225cf}{frustum(T const \& left, T const \& right, T const \& bottom, T const \& top, T const \& nearVal, T const \& farVal)} \hyperlink{group__gtc__matrix__transform_g0ef39da6d6c83806dea5ff455eb225cf}{frustum(T const \& left, T const \& right, T const \& bottom, T const \& top, T const \& nearVal, T const \& farVal)} \end{Desc}
-\hypertarget{group__gtc__matrix__transform_gdab1dbf2b9ceda856624bafa09b3de07}{
+
+
+Definition at line 417 of file matrix\_\-transform.inl.
+
+References glm::cross(), glm::dot(), and glm::normalize().
+
+\begin{Code}\begin{verbatim}422         {
+423                 detail::tvec3<T, P> f(normalize(center - eye));
+424                 detail::tvec3<T, P> s(normalize(cross(f, up)));
+425                 detail::tvec3<T, P> u(cross(s, f));
+426 
+427                 detail::tmat4x4<T, P> Result(1);
+428                 Result[0][0] = s.x;
+429                 Result[1][0] = s.y;
+430                 Result[2][0] = s.z;
+431                 Result[0][1] = u.x;
+432                 Result[1][1] = u.y;
+433                 Result[2][1] = u.z;
+434                 Result[0][2] =-f.x;
+435                 Result[1][2] =-f.y;
+436                 Result[2][2] =-f.z;
+437                 Result[3][0] =-dot(s, eye);
+438                 Result[3][1] =-dot(u, eye);
+439                 Result[3][2] = dot(f, eye);
+440                 return Result;
+441         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__matrix__transform_gdab1dbf2b9ceda856624bafa09b3de07}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!ortho@{ortho}}
 \index{ortho@{ortho}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
 \subsubsection[ortho]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, defaultp $>$ glm::ortho (T const \& {\em left}, \/  T const \& {\em right}, \/  T const \& {\em bottom}, \/  T const \& {\em top})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -131,6 +214,23 @@ Creates a matrix for projecting two-dimensional coordinates onto the screen.
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} 
 
 - \hyperlink{group__gtc__matrix__transform_gf420978f35ff47883f417cef1e4d6a15}{glm::ortho(T const \& left, T const \& right, T const \& bottom, T const \& top, T const \& zNear, T const \& zFar)} \end{Desc}
+
+
+Definition at line 179 of file matrix\_\-transform.inl.
+
+\begin{Code}\begin{verbatim}185         {
+186                 detail::tmat4x4<T, defaultp> Result(1);
+187                 Result[0][0] = static_cast<T>(2) / (right - left);
+188                 Result[1][1] = static_cast<T>(2) / (top - bottom);
+189                 Result[2][2] = - T(1);
+190                 Result[3][0] = - (right + left) / (right - left);
+191                 Result[3][1] = - (top + bottom) / (top - bottom);
+192                 return Result;
+193         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__matrix__transform_gf420978f35ff47883f417cef1e4d6a15}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!ortho@{ortho}}
 \index{ortho@{ortho}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
@@ -154,6 +254,24 @@ Creates a matrix for an orthographic parallel viewing volume.
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} 
 
 - \hyperlink{group__gtc__matrix__transform_gdab1dbf2b9ceda856624bafa09b3de07}{glm::ortho(T const \& left, T const \& right, T const \& bottom, T const \& top)} \end{Desc}
+
+
+Definition at line 158 of file matrix\_\-transform.inl.
+
+\begin{Code}\begin{verbatim}166         {
+167                 detail::tmat4x4<T, defaultp> Result(1);
+168                 Result[0][0] = static_cast<T>(2) / (right - left);
+169                 Result[1][1] = static_cast<T>(2) / (top - bottom);
+170                 Result[2][2] = - T(2) / (zFar - zNear);
+171                 Result[3][0] = - (right + left) / (right - left);
+172                 Result[3][1] = - (top + bottom) / (top - bottom);
+173                 Result[3][2] = - (zFar + zNear) / (zFar - zNear);
+174                 return Result;
+175         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__matrix__transform_g6f705d60660ad2d4ef540ca0bb59273e}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!perspective@{perspective}}
 \index{perspective@{perspective}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
@@ -175,7 +293,44 @@ Creates a matrix for a symetric perspective-view frustum.
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} \end{Desc}
-\hypertarget{group__gtc__matrix__transform_gc9db4ea8ecdcb00f1d06d29603b5df52}{
+
+
+Definition at line 219 of file matrix\_\-transform.inl.
+
+References glm::radians(), and glm::tan().
+
+Referenced by Camera::SetPerspective().
+
+\begin{Code}\begin{verbatim}225         {
+226                 assert(aspect != static_cast<T>(0));
+227                 assert(zFar != zNear);
+228 
+229 #ifdef GLM_FORCE_RADIANS
+230                 T const rad = fovy;
+231 #else
+232 #               pragma message("GLM: perspective function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+233                 T const rad = glm::radians(fovy);
+234 #endif
+235 
+236                 T tanHalfFovy = tan(rad / static_cast<T>(2));
+237 
+238                 detail::tmat4x4<T, defaultp> Result(static_cast<T>(0));
+239                 Result[0][0] = static_cast<T>(1) / (aspect * tanHalfFovy);
+240                 Result[1][1] = static_cast<T>(1) / (tanHalfFovy);
+241                 Result[2][2] = - (zFar + zNear) / (zFar - zNear);
+242                 Result[2][3] = - static_cast<T>(1);
+243                 Result[3][2] = - (static_cast<T>(2) * zFar * zNear) / (zFar - zNear);
+244                 return Result;
+245         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtc__matrix__transform_gc9db4ea8ecdcb00f1d06d29603b5df52}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!perspectiveFov@{perspectiveFov}}
 \index{perspectiveFov@{perspectiveFov}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
 \subsubsection[perspectiveFov]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, defaultp $>$ glm::perspectiveFov (T const \& {\em fov}, \/  T const \& {\em width}, \/  T const \& {\em height}, \/  T const \& {\em near}, \/  T const \& {\em far})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -198,7 +353,41 @@ Builds a perspective projection matrix based on a field of view.
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} \end{Desc}
 
 
-todo max(width , Height) / min(width , Height)? \hypertarget{group__gtc__matrix__transform_g42972db8a1c73829999a8454d11fa4a3}{
+todo max(width , Height) / min(width , Height)? 
+
+Definition at line 249 of file matrix\_\-transform.inl.
+
+References glm::cos(), glm::radians(), and glm::sin().
+
+\begin{Code}\begin{verbatim}256         {
+257                 assert(width > static_cast<T>(0));
+258                 assert(height > static_cast<T>(0));
+259                 assert(fov > static_cast<T>(0));
+260         
+261 #ifdef GLM_FORCE_RADIANS
+262                 T rad = fov;
+263 #else
+264 #               pragma message("GLM: perspectiveFov function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+265                 T rad = glm::radians(fov);
+266 #endif
+267                 T h = glm::cos(static_cast<T>(0.5) * rad) / glm::sin(static_cast<T>(0.5) * rad);
+268                 T w = h * height / width; 
+269 
+270                 detail::tmat4x4<T, defaultp> Result(static_cast<T>(0));
+271                 Result[0][0] = w;
+272                 Result[1][1] = h;
+273                 Result[2][2] = - (zFar + zNear) / (zFar - zNear);
+274                 Result[2][3] = - static_cast<T>(1);
+275                 Result[3][2] = - (static_cast<T>(2) * zFar * zNear) / (zFar - zNear);
+276                 return Result;
+277         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__matrix__transform_g42972db8a1c73829999a8454d11fa4a3}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!pickMatrix@{pickMatrix}}
 \index{pickMatrix@{pickMatrix}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
 \subsubsection[pickMatrix]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, typename U$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::pickMatrix (detail::tvec2$<$ T, P $>$ const \& {\em center}, \/  detail::tvec2$<$ T, P $>$ const \& {\em delta}, \/  detail::tvec4$<$ U, P $>$ const \& {\em viewport})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -219,7 +408,35 @@ Define a picking region
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} \end{Desc}
-\hypertarget{group__gtc__matrix__transform_ge6de64f8b0a55befb0e296475c6f0c79}{
+
+
+Definition at line 393 of file matrix\_\-transform.inl.
+
+References glm::scale(), and glm::translate().
+
+\begin{Code}\begin{verbatim}398         {
+399                 assert(delta.x > T(0) && delta.y > T(0));
+400                 detail::tmat4x4<T, P> Result(1.0f);
+401 
+402                 if(!(delta.x > T(0) && delta.y > T(0)))
+403                         return Result; // Error
+404 
+405                 detail::tvec3<T, P> Temp(
+406                         (T(viewport[2]) - T(2) * (center.x - T(viewport[0]))) / delta.x,
+407                         (T(viewport[3]) - T(2) * (center.y - T(viewport[1]))) / delta.y,
+408                         T(0));
+409 
+410                 // Translate and scale the picked region to the entire window
+411                 Result = translate(Result, Temp);
+412                 return scale(Result, detail::tvec3<T, P>(T(viewport[2]) / delta.x, T(viewport[3]) / delta.y, T(1)));
+413         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__matrix__transform_ge6de64f8b0a55befb0e296475c6f0c79}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!project@{project}}
 \index{project@{project}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
 \subsubsection[project]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename U, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tvec3$<$ T, P $>$ glm::project (detail::tvec3$<$ T, P $>$ const \& {\em obj}, \/  detail::tmat4x4$<$ T, P $>$ const \& {\em model}, \/  detail::tmat4x4$<$ T, P $>$ const \& {\em proj}, \/  detail::tvec4$<$ U, P $>$ const \& {\em viewport})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -240,6 +457,26 @@ Map the specified object coordinates (obj.x, obj.y, obj.z) into window coordinat
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} \end{Desc}
+
+
+Definition at line 350 of file matrix\_\-transform.inl.
+
+\begin{Code}\begin{verbatim}356         {
+357                 detail::tvec4<T, P> tmp = detail::tvec4<T, P>(obj, T(1));
+358                 tmp = model * tmp;
+359                 tmp = proj * tmp;
+360 
+361                 tmp /= tmp.w;
+362                 tmp = tmp * T(0.5) + T(0.5);
+363                 tmp[0] = tmp[0] * T(viewport[2]) + T(viewport[0]);
+364                 tmp[1] = tmp[1] * T(viewport[3]) + T(viewport[1]);
+365 
+366                 return detail::tvec3<T, P>(tmp);
+367         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__matrix__transform_g1a75da872120125437265872423e0b14}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!rotate@{rotate}}
 \index{rotate@{rotate}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
@@ -269,7 +506,56 @@ Builds a rotation 4 $\ast$ 4 matrix created from an axis vector and an angle.
 - rotate(detail::tmat4x4$<$T, P$>$ const \& m, T angle, T x, T y, T z) 
 
 - \hyperlink{group__gtx__transform_g52e753e0ad1cb6ae700855cc9ca921ca}{rotate(T angle, detail::tvec3$<$T, P$>$ const \& v)} \end{Desc}
-\hypertarget{group__gtc__matrix__transform_g5e2bf1cdf124863558884751d611aea6}{
+
+
+Definition at line 49 of file matrix\_\-transform.inl.
+
+References glm::axis(), glm::cos(), glm::normalize(), glm::radians(), and glm::sin().
+
+Referenced by Camera::GetRotationMatrix(), glm::orientation(), glm::orientedAngle(), and glm::rotate().
+
+\begin{Code}\begin{verbatim}54         {
+55 #ifdef GLM_FORCE_RADIANS
+56                 T a = angle;
+57 #else
+58 #               pragma message("GLM: rotate function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+59                 T a = radians(angle);
+60 #endif
+61                 T c = cos(a);
+62                 T s = sin(a);
+63 
+64                 detail::tvec3<T, P> axis(normalize(v));
+65                 detail::tvec3<T, P> temp((T(1) - c) * axis);
+66 
+67                 detail::tmat4x4<T, P> Rotate(detail::tmat4x4<T, P>::_null);
+68                 Rotate[0][0] = c + temp[0] * axis[0];
+69                 Rotate[0][1] = 0 + temp[0] * axis[1] + s * axis[2];
+70                 Rotate[0][2] = 0 + temp[0] * axis[2] - s * axis[1];
+71 
+72                 Rotate[1][0] = 0 + temp[1] * axis[0] - s * axis[2];
+73                 Rotate[1][1] = c + temp[1] * axis[1];
+74                 Rotate[1][2] = 0 + temp[1] * axis[2] + s * axis[0];
+75 
+76                 Rotate[2][0] = 0 + temp[2] * axis[0] + s * axis[1];
+77                 Rotate[2][1] = 0 + temp[2] * axis[1] - s * axis[0];
+78                 Rotate[2][2] = c + temp[2] * axis[2];
+79 
+80                 detail::tmat4x4<T, P> Result(detail::tmat4x4<T, P>::_null);
+81                 Result[0] = m[0] * Rotate[0][0] + m[1] * Rotate[0][1] + m[2] * Rotate[0][2];
+82                 Result[1] = m[0] * Rotate[1][0] + m[1] * Rotate[1][1] + m[2] * Rotate[1][2];
+83                 Result[2] = m[0] * Rotate[2][0] + m[1] * Rotate[2][1] + m[2] * Rotate[2][2];
+84                 Result[3] = m[3];
+85                 return Result;
+86         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtc__matrix__transform_g5e2bf1cdf124863558884751d611aea6}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!scale@{scale}}
 \index{scale@{scale}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
 \subsubsection[scale]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::scale (detail::tmat4x4$<$ T, P $>$ const \& {\em m}, \/  detail::tvec3$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -298,7 +584,27 @@ Builds a scale 4 $\ast$ 4 matrix created from 3 scalars.
 - scale(detail::tmat4x4$<$T, P$>$ const \& m, T x, T y, T z) 
 
 - \hyperlink{group__gtx__transform_g70f2d33f150672b9faca3b477fcca2c4}{scale(detail::tvec3$<$T, P$>$ const \& v)} \end{Desc}
-\hypertarget{group__gtc__matrix__transform_gb05e6ebabf535a3d8f9d9bfc3df45143}{
+
+
+Definition at line 129 of file matrix\_\-transform.inl.
+
+Referenced by glm::pickMatrix(), and glm::scale().
+
+\begin{Code}\begin{verbatim}133         {
+134                 detail::tmat4x4<T, P> Result(detail::tmat4x4<T, P>::_null);
+135                 Result[0] = m[0] * v[0];
+136                 Result[1] = m[1] * v[1];
+137                 Result[2] = m[2] * v[2];
+138                 Result[3] = m[3];
+139                 return Result;
+140         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtc__matrix__transform_gb05e6ebabf535a3d8f9d9bfc3df45143}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!translate@{translate}}
 \index{translate@{translate}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
 \subsubsection[translate]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::translate (detail::tmat4x4$<$ T, P $>$ const \& {\em m}, \/  detail::tvec3$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -340,7 +646,24 @@ Builds a translation 4 $\ast$ 4 matrix created from a vector of 3 components.
 - translate(detail::tmat4x4$<$T, P$>$ const \& m, T x, T y, T z) 
 
 - \hyperlink{group__gtx__transform_gc06efbcc43ab431cf6ae1ba0e6f03e86}{translate(detail::tvec3$<$T, P$>$ const \& v)} \end{Desc}
-\hypertarget{group__gtc__matrix__transform_gb4748de5e549cbd83682c9d28a9ccdac}{
+
+
+Definition at line 37 of file matrix\_\-transform.inl.
+
+Referenced by Camera::GetViewMatrix(), glm::pickMatrix(), and glm::translate().
+
+\begin{Code}\begin{verbatim}41         {
+42                 detail::tmat4x4<T, P> Result(m);
+43                 Result[3] = m[0] * v[0] + m[1] * v[1] + m[2] * v[2] + m[3];
+44                 return Result;
+45         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__gtc__matrix__transform_gb4748de5e549cbd83682c9d28a9ccdac}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!tweakedInfinitePerspective@{tweakedInfinitePerspective}}
 \index{tweakedInfinitePerspective@{tweakedInfinitePerspective}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
 \subsubsection[tweakedInfinitePerspective]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, defaultp $>$ glm::tweakedInfinitePerspective (T {\em fovy}, \/  T {\em aspect}, \/  T {\em near}, \/  T {\em ep})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -361,7 +684,39 @@ Creates a matrix for a symmetric perspective-view frustum with far plane at infi
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} \end{Desc}
-\hypertarget{group__gtc__matrix__transform_ge918d92c6d1fc5c0f97ac96d66e90b6a}{
+
+
+Definition at line 310 of file matrix\_\-transform.inl.
+
+References glm::radians(), and glm::tan().
+
+\begin{Code}\begin{verbatim}316         {
+317 #ifdef GLM_FORCE_RADIANS
+318                 T range = tan(fovy / T(2)) * zNear;     
+319 #else
+320 #               pragma message("GLM: tweakedInfinitePerspective function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.")
+321                 T range = tan(radians(fovy / T(2))) * zNear;    
+322 #endif
+323                 T left = -range * aspect;
+324                 T right = range * aspect;
+325                 T bottom = -range;
+326                 T top = range;
+327 
+328                 detail::tmat4x4<T, defaultp> Result(T(0));
+329                 Result[0][0] = (static_cast<T>(2) * zNear) / (right - left);
+330                 Result[1][1] = (static_cast<T>(2) * zNear) / (top - bottom);
+331                 Result[2][2] = ep - static_cast<T>(1);
+332                 Result[2][3] = static_cast<T>(-1);
+333                 Result[3][2] = (ep - static_cast<T>(2)) * zNear;
+334                 return Result;
+335         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__matrix__transform_ge918d92c6d1fc5c0f97ac96d66e90b6a}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!tweakedInfinitePerspective@{tweakedInfinitePerspective}}
 \index{tweakedInfinitePerspective@{tweakedInfinitePerspective}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
 \subsubsection[tweakedInfinitePerspective]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, defaultp $>$ glm::tweakedInfinitePerspective (T {\em fovy}, \/  T {\em aspect}, \/  T {\em near})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -382,6 +737,17 @@ Creates a matrix for a symmetric perspective-view frustum with far plane at infi
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} \end{Desc}
+
+
+Definition at line 339 of file matrix\_\-transform.inl.
+
+\begin{Code}\begin{verbatim}344         {
+345                 return tweakedInfinitePerspective(fovy, aspect, zNear, epsilon<T>());
+346         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtc__matrix__transform_g90b6f19047316d870f88e0a50d8b13f3}{
 \index{gtc\_\-matrix\_\-transform@{gtc\_\-matrix\_\-transform}!unProject@{unProject}}
 \index{unProject@{unProject}!gtc_matrix_transform@{gtc\_\-matrix\_\-transform}}
@@ -403,3 +769,29 @@ Map the specified window coordinates (win.x, win.y, win.z) into object coordinat
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__matrix__transform}{GLM\_\-GTC\_\-matrix\_\-transform} \end{Desc}
+
+
+Definition at line 371 of file matrix\_\-transform.inl.
+
+References glm::inverse().
+
+\begin{Code}\begin{verbatim}377         {
+378                 detail::tmat4x4<T, P> Inverse = inverse(proj * model);
+379 
+380                 detail::tvec4<T, P> tmp = detail::tvec4<T, P>(win, T(1));
+381                 tmp.x = (tmp.x - T(viewport[0])) / T(viewport[2]);
+382                 tmp.y = (tmp.y - T(viewport[1])) / T(viewport[3]);
+383                 tmp = tmp * T(2) - T(1);
+384 
+385                 detail::tvec4<T, P> obj = Inverse * tmp;
+386                 obj /= obj.w;
+387 
+388                 return detail::tvec3<T, P>(obj);
+389         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

@@ -47,7 +47,25 @@ Returns true if all components of x are true.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/all.xml}{\tt GLSL all man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
-\hypertarget{group__core__func__vector__relational_ge1073be2b9f4c5ffa77eec25400e8121}{
+
+
+Definition at line 142 of file func\_\-vector\_\-relational.inl.
+
+Referenced by glm::orientation(), and glm::orientedAngle().
+
+\begin{Code}\begin{verbatim}143         {
+144                 bool Result = true;
+145                 for(int i = 0; i < v.length(); ++i)
+146                         Result = Result && v[i];
+147                 return Result;
+148         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{group__core__func__vector__relational_ge1073be2b9f4c5ffa77eec25400e8121}{
 \index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!any@{any}}
 \index{any@{any}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
 \subsubsection[any]{\setlength{\rightskip}{0pt plus 5cm}template$<$precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::any (vecType$<$ bool, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -65,6 +83,20 @@ Returns true if any component of x is true.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/any.xml}{\tt GLSL any man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+
+
+Definition at line 133 of file func\_\-vector\_\-relational.inl.
+
+\begin{Code}\begin{verbatim}134         {
+135                 bool Result = false;
+136                 for(int i = 0; i < v.length(); ++i)
+137                         Result = Result || v[i];
+138                 return Result;
+139         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__vector__relational_g752f4c03f55a280172de9ceff7a02b51}{
 \index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!greaterThan@{greaterThan}}
 \index{greaterThan@{greaterThan}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
@@ -83,6 +115,24 @@ Returns the component-wise comparison of result x $>$ y.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/greaterThan.xml}{\tt GLSL greaterThan man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+
+
+Definition at line 70 of file func\_\-vector\_\-relational.inl.
+
+\begin{Code}\begin{verbatim}74         {
+75                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || std::numeric_limits<T>::is_integer,
+76                         "Invalid template instantiation of 'greaterThan', GLM vector types required floating-point or integer value types vectors");
+77                 assert(x.length() == y.length());
+78 
+79                 typename vecType<bool, P>::bool_type Result(vecType<bool, P>::_null);
+80                 for(int i = 0; i < x.length(); ++i)
+81                         Result[i] = x[i] > y[i];
+82                 return Result;
+83         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__vector__relational_ga384b9c124d40d56bf5bd02ea9b04926}{
 \index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!greaterThanEqual@{greaterThanEqual}}
 \index{greaterThanEqual@{greaterThanEqual}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
@@ -101,6 +151,24 @@ Returns the component-wise comparison of result x $>$= y.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/greaterThanEqual.xml}{\tt GLSL greaterThanEqual man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+
+
+Definition at line 87 of file func\_\-vector\_\-relational.inl.
+
+\begin{Code}\begin{verbatim}91         {
+92                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || std::numeric_limits<T>::is_integer,
+93                         "Invalid template instantiation of 'greaterThanEqual', GLM vector types required floating-point or integer value types vectors");
+94                 assert(x.length() == y.length());
+95 
+96                 typename vecType<bool, P>::bool_type Result(vecType<bool, P>::_null);
+97                 for(int i = 0; i < x.length(); ++i)
+98                         Result[i] = x[i] >= y[i];
+99                 return Result;
+100         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__vector__relational_g9792ee46fa6f48a7f750984128c24d03}{
 \index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!lessThanEqual@{lessThanEqual}}
 \index{lessThanEqual@{lessThanEqual}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
@@ -128,6 +196,24 @@ Returns the component-wise comparison result of x $<$ y.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/lessThanEqual.xml}{\tt GLSL lessThanEqual man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+
+
+Definition at line 53 of file func\_\-vector\_\-relational.inl.
+
+\begin{Code}\begin{verbatim}57         {
+58                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559 || std::numeric_limits<T>::is_integer,
+59                         "Invalid template instantiation of 'lessThanEqual', GLM vector types required floating-point or integer value types vectors");
+60                 assert(x.length() == y.length());
+61 
+62                 typename vecType<bool, P>::bool_type Result(vecType<bool, P>::_null);
+63                 for(int i = 0; i < x.length(); ++i)
+64                         Result[i] = x[i] <= y[i];
+65                 return Result;
+66         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__vector__relational_g3f686b22d487d7d06447b15d3c621d2f}{
 \index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!not\_\-@{not\_\-}}
 \index{not\_\-@{not\_\-}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
@@ -146,6 +232,20 @@ Returns the component-wise logical complement of x. /!$\backslash$ Because of la
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/not.xml}{\tt GLSL not man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+
+
+Definition at line 151 of file func\_\-vector\_\-relational.inl.
+
+\begin{Code}\begin{verbatim}152         {
+153                 typename vecType<bool, P>::bool_type Result(vecType<bool, P>::_null);
+154                 for(int i = 0; i < v.length(); ++i)
+155                         Result[i] = !v[i];
+156                 return Result;
+157         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__vector__relational_g520b77f15b84fffa9131cfa39db6c766}{
 \index{core\_\-func\_\-vector\_\-relational@{core\_\-func\_\-vector\_\-relational}!notEqual@{notEqual}}
 \index{notEqual@{notEqual}!core_func_vector_relational@{core\_\-func\_\-vector\_\-relational}}
@@ -173,3 +273,19 @@ Returns the component-wise comparison of result x == y.
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/notEqual.xml}{\tt GLSL notEqual man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.7 Vector Relational Functions} \end{Desc}
+
+
+Definition at line 119 of file func\_\-vector\_\-relational.inl.
+
+\begin{Code}\begin{verbatim}123         {
+124                 assert(x.length() == y.length());
+125 
+126                 typename vecType<bool, P>::bool_type Result(vecType<bool, P>::_null);
+127                 for(int i = 0; i < x.length(); ++i)
+128                         Result[i] = x[i] != y[i];
+129                 return Result;
+130         }
+\end{verbatim}
+\end{Code}
+
+

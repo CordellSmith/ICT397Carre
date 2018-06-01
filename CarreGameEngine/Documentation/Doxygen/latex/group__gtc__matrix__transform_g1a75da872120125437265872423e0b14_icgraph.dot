@@ -1,0 +1,24 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::rotate",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="Camera::GetRotationMatrix",height=0.2,width=0.4,color="black",URL="$class_camera.html#3518233b244af839db6eefe59e7002de",tooltip="Gets the rotation matrix."];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="Camera::GetUp",height=0.2,width=0.4,color="black",URL="$class_camera.html#ff61f06284cca3216accdf556dfbd3c1",tooltip="Gets the camera position."];
+  Node2 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="Camera::GetView",height=0.2,width=0.4,color="black",URL="$class_camera.html#338c5baf20b57652828c53e0791adf9a",tooltip="Gets the camera view."];
+  Node4 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="Camera::MoveCamera",height=0.2,width=0.4,color="black",URL="$class_camera.html#ec3a27aa4de4ad2d10d421ee2fa54223",tooltip="Moves the camera."];
+  Node2 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="Camera::GetViewMatrix",height=0.2,width=0.4,color="black",URL="$class_camera.html#ffa333055635aed96518c4c66be9a70c",tooltip="Gets the view matrix."];
+  Node1 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="glm::orientation",height=0.2,width=0.4,color="black",URL="$group__gtx__rotate__vector.html#g6388a91274507ab81224d8f5d434875e"];
+  Node1 -> Node8 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="glm::orientedAngle",height=0.2,width=0.4,color="black",URL="$group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36"];
+  Node1 -> Node9 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="glm::rotate",height=0.2,width=0.4,color="black",URL="$group__gtx__rotate__vector.html#gf0809ae83e84fc9880b4c8b7093c349c"];
+}

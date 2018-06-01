@@ -7,10 +7,10 @@ Template singleton class.
 
 {\tt \#include $<$Singleton.h$>$}
 
-\subsection*{Public Member Functions}
+\subsection*{Static Public Member Functions}
 \begin{CompactItemize}
 \item 
-Static T $\ast$ \hyperlink{class_singleton_cc947ffd8470f2b8050db362b112f596}{GetInstance} ()
+static T \& \hyperlink{class_singleton_db2c49abf86f1ada00d6811f30edd9e6}{GetInstance} ()
 \begin{CompactList}\small\item\em Gets the instance of singleton. \item\end{CompactList}\end{CompactItemize}
 
 
@@ -24,15 +24,21 @@ This singleton class is used to create single instances of a given type.
 \begin{Desc}
 \item[Version:]01 \end{Desc}
 \begin{Desc}
-\item[Date:]29/03/2018 \end{Desc}
+\item[Date:]29/03/2018\end{Desc}
+\begin{Desc}
+\item[Version:]02 \end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
 
+
+Definition at line 16 of file Singleton.h.
 
 \subsection{Member Function Documentation}
-\hypertarget{class_singleton_cc947ffd8470f2b8050db362b112f596}{
+\hypertarget{class_singleton_db2c49abf86f1ada00d6811f30edd9e6}{
 \index{Singleton@{Singleton}!GetInstance@{GetInstance}}
 \index{GetInstance@{GetInstance}!Singleton@{Singleton}}
-\subsubsection[GetInstance]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ Static T$\ast$ {\bf Singleton}$<$ T $>$::GetInstance ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
-\label{class_singleton_cc947ffd8470f2b8050db362b112f596}
+\subsubsection[GetInstance]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ static T\& {\bf Singleton}$<$ T $>$::GetInstance ()\hspace{0.3cm}{\tt  \mbox{[}inline, static\mbox{]}}}}
+\label{class_singleton_db2c49abf86f1ada00d6811f30edd9e6}
 
 
 Gets the instance of singleton. 
@@ -43,6 +49,19 @@ This function returns the singleton instance of the class type.
 \item[Returns:]static Static T$\ast$ \end{Desc}
 
 
+Definition at line 26 of file Singleton.h.
+
+\begin{Code}\begin{verbatim}26                                 {
+27                 static T _instance;
+28                 
+29                 return _instance;
+30         }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/Singleton.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/Singleton.h\end{CompactItemize}

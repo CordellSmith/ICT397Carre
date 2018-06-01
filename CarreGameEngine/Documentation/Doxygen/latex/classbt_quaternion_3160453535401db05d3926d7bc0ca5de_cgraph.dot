@@ -1,0 +1,13 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btQuaternion::angleShortestPath",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btQuaternion::dot",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#37e450f3206a7b6f3f55049e297fb403",tooltip="Return the dot product between this quaternion and another."];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btQuaternion::length2",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#59cc2f3a2c732aba98cd43764165b8cd",tooltip="Return the length squared of the quaternion."];
+  Node3 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+}

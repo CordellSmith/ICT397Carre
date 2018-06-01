@@ -1,0 +1,261 @@
+\hypertarget{class_terrain}{
+\section{Terrain Class Reference}
+\label{class_terrain}\index{Terrain@{Terrain}}
+}
+\hyperlink{class_terrain}{Terrain} Interface class.  
+
+
+{\tt \#include $<$Terrain.h$>$}
+
+Inheritance diagram for Terrain:Collaboration diagram for Terrain:\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_terrain_7160a06ab07a86ed97d23374405e8ef6}{Terrain} ()
+\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
+\hyperlink{class_terrain_2f7f0a2aee54886324ccf48a6f321de0}{$\sim$Terrain} ()
+\begin{CompactList}\small\item\em Destructor. \item\end{CompactList}\item 
+\hyperlink{class_terrain_6ddefba9b991f9d08871bacad4734143}{Terrain} (float scaleX, float scaleY, float scaleZ)
+\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
+virtual void \hyperlink{class_terrain_93fa5e9433a77d8f8bbe2a2f6aadf2ab}{GenerateTerrain} (GLuint textureId, std::string textureFilePath)=0
+\begin{CompactList}\small\item\em Generates the terrain. \item\end{CompactList}\item 
+void \hyperlink{class_terrain_d24a0b962c0bff2328d45c716a4b2788}{SetCamera} (\hyperlink{class_camera}{Camera} $\ast$camera)
+\begin{CompactList}\small\item\em Sets the camera object. \item\end{CompactList}\item 
+void \hyperlink{class_terrain_33990e5363ba3dc351abd313c2832edb}{SetPosition} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} position)
+\begin{CompactList}\small\item\em Sets the terrains position. \item\end{CompactList}\item 
+void \hyperlink{class_terrain_ebecef9a3ffd4cedb898013e7087ec58}{SetScale} (\hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3} scale)
+\begin{CompactList}\small\item\em Sets the terrains scale. \item\end{CompactList}\item 
+\hyperlink{class_model}{Model} $\ast$ \hyperlink{class_terrain_3a0c740b9ab0a9f68617ee6fb893bf94}{GetModel} ()
+\begin{CompactList}\small\item\em Gets the camera \hyperlink{class_model}{Model} object. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_terrain}{Terrain} Interface class. 
+
+This terrain class is used as a base class for other methods of terrain generation classes to inherit from. It contains all the core member variables and functionalities that a terrain may have.
+
+\begin{Desc}
+\item[Author:]Cordell Smith \end{Desc}
+\begin{Desc}
+\item[Version:]01 \end{Desc}
+\begin{Desc}
+\item[Date:]31/05/2018 \end{Desc}
+
+
+Definition at line 23 of file Terrain.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_terrain_7160a06ab07a86ed97d23374405e8ef6}{
+\index{Terrain@{Terrain}!Terrain@{Terrain}}
+\index{Terrain@{Terrain}!Terrain@{Terrain}}
+\subsubsection[Terrain]{\setlength{\rightskip}{0pt plus 5cm}Terrain::Terrain ()}}
+\label{class_terrain_7160a06ab07a86ed97d23374405e8ef6}
+
+
+Constructor. 
+
+This constructor sets the initial scales of the x, y, z components of the terrain to 1.0 and heightfield size to 0. It also initializes the terrains model.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 3 of file Terrain.cpp.
+
+\begin{Code}\begin{verbatim}4         : m_scaleX(1.0), m_scaleY(1.0), m_scaleZ(1.0), m_heightfieldSize(0)
+5 {
+6         m_terrainModel = new Model();
+7 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_terrain_2f7f0a2aee54886324ccf48a6f321de0}{
+\index{Terrain@{Terrain}!$\sim$Terrain@{$\sim$Terrain}}
+\index{$\sim$Terrain@{$\sim$Terrain}!Terrain@{Terrain}}
+\subsubsection[$\sim$Terrain]{\setlength{\rightskip}{0pt plus 5cm}Terrain::$\sim$Terrain ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_terrain_2f7f0a2aee54886324ccf48a6f321de0}
+
+
+Destructor. 
+
+Empty default destructor.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 44 of file Terrain.h.
+
+\begin{Code}\begin{verbatim}44 { }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_terrain_6ddefba9b991f9d08871bacad4734143}{
+\index{Terrain@{Terrain}!Terrain@{Terrain}}
+\index{Terrain@{Terrain}!Terrain@{Terrain}}
+\subsubsection[Terrain]{\setlength{\rightskip}{0pt plus 5cm}Terrain::Terrain (float {\em scaleX}, \/  float {\em scaleY}, \/  float {\em scaleZ})}}
+\label{class_terrain_6ddefba9b991f9d08871bacad4734143}
+
+
+Constructor. 
+
+This constructor takes an x, y, z scale and sets the member variables of the terrain to these parsed in.
+
+\begin{Desc}
+\item[Returns:]null \end{Desc}
+
+
+Definition at line 9 of file Terrain.cpp.
+
+\begin{Code}\begin{verbatim}10         : m_scaleX(scaleX), m_scaleY(scaleY), m_scaleZ(scaleZ), m_heightfieldSize(0)
+11 {
+12         m_terrainModel = new Model();
+13 }\end{verbatim}
+\end{Code}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_terrain_93fa5e9433a77d8f8bbe2a2f6aadf2ab}{
+\index{Terrain@{Terrain}!GenerateTerrain@{GenerateTerrain}}
+\index{GenerateTerrain@{GenerateTerrain}!Terrain@{Terrain}}
+\subsubsection[GenerateTerrain]{\setlength{\rightskip}{0pt plus 5cm}virtual void Terrain::GenerateTerrain (GLuint {\em textureId}, \/  std::string {\em textureFilePath})\hspace{0.3cm}{\tt  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_terrain_93fa5e9433a77d8f8bbe2a2f6aadf2ab}
+
+
+Generates the terrain. 
+
+This virtual method is used to generate a terrain. It is overridden by the inherited class.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em GLuint}]textureId \item[{\em std::string}]textureFilePath \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Implemented in \hyperlink{class_bruteforce_910463356742edd6703a19b46f4ed359}{Bruteforce}.\hypertarget{class_terrain_d24a0b962c0bff2328d45c716a4b2788}{
+\index{Terrain@{Terrain}!SetCamera@{SetCamera}}
+\index{SetCamera@{SetCamera}!Terrain@{Terrain}}
+\subsubsection[SetCamera]{\setlength{\rightskip}{0pt plus 5cm}void Terrain::SetCamera ({\bf Camera} $\ast$ {\em camera})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_terrain_d24a0b962c0bff2328d45c716a4b2788}
+
+
+Sets the camera object. 
+
+Parses the parameter given Camera$\ast$ object to the terrains model. This is to be able to access the view and projection matrices when rendering.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Camera$\ast$}]camera \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 77 of file Terrain.h.
+
+References Model::SetCamera().
+
+\begin{Code}\begin{verbatim}77 { m_terrainModel->SetCamera(camera); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_terrain_33990e5363ba3dc351abd313c2832edb}{
+\index{Terrain@{Terrain}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Terrain@{Terrain}}
+\subsubsection[SetPosition]{\setlength{\rightskip}{0pt plus 5cm}void Terrain::SetPosition ({\bf glm::vec3} {\em position})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_terrain_33990e5363ba3dc351abd313c2832edb}
+
+
+Sets the terrains position. 
+
+Sets the position of the terrain using the parameter given.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]position \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 87 of file Terrain.h.
+
+References Model::SetPosition().
+
+\begin{Code}\begin{verbatim}87 { m_terrainModel->SetPosition(position); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_terrain_ebecef9a3ffd4cedb898013e7087ec58}{
+\index{Terrain@{Terrain}!SetScale@{SetScale}}
+\index{SetScale@{SetScale}!Terrain@{Terrain}}
+\subsubsection[SetScale]{\setlength{\rightskip}{0pt plus 5cm}void Terrain::SetScale ({\bf glm::vec3} {\em scale})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_terrain_ebecef9a3ffd4cedb898013e7087ec58}
+
+
+Sets the terrains scale. 
+
+Sets the scale of the terrain using the parameter given.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \hyperlink{group__core__types_g1c47e8b3386109bc992b6c48e91b0be7}{glm::vec3}}]scale \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 97 of file Terrain.h.
+
+References Model::SetScale().
+
+\begin{Code}\begin{verbatim}97 { m_terrainModel->SetScale(scale); }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_terrain_3a0c740b9ab0a9f68617ee6fb893bf94}{
+\index{Terrain@{Terrain}!GetModel@{GetModel}}
+\index{GetModel@{GetModel}!Terrain@{Terrain}}
+\subsubsection[GetModel]{\setlength{\rightskip}{0pt plus 5cm}{\bf Model}$\ast$ Terrain::GetModel ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_terrain_3a0c740b9ab0a9f68617ee6fb893bf94}
+
+
+Gets the camera \hyperlink{class_model}{Model} object. 
+
+Returns a pointer to the terrains model object.
+
+\begin{Desc}
+\item[Returns:]Model$\ast$ \end{Desc}
+
+
+Definition at line 106 of file Terrain.h.
+
+\begin{Code}\begin{verbatim}106 { return m_terrainModel; }
+\end{verbatim}
+\end{Code}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Terrain.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/AssetFactory/Terrain.cpp\end{CompactItemize}

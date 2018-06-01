@@ -1,0 +1,38 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btConvexConvexAlgorithm::processCollision",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btManifoldResult::addContactPoint",height=0.2,width=0.4,color="black",URL="$classbt_manifold_result.html#ebe32f0c202d988d0458e88d768602c6"];
+  Node2 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btManifoldResult::calculateCombinedFriction",height=0.2,width=0.4,color="black",URL="$classbt_manifold_result.html#162717dce3ef3a756ae55ec04a179ed5",tooltip="User can override this material combiner by implementing gContactAddedCallback and..."];
+  Node2 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="btManifoldResult::calculateCombinedRestitution",height=0.2,width=0.4,color="black",URL="$classbt_manifold_result.html#a4419fc3b0d13ccc2cbfd7739b047c04",tooltip="in the future we can let the user override the methods to combine restitution and..."];
+  Node1 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="btGjkPairDetector::getCachedSeparatingAxis",height=0.2,width=0.4,color="black",URL="$classbt_gjk_pair_detector.html#1a812a6b875660bc66de1a60bf6a76ab"];
+  Node1 -> Node6 [color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="btGjkPairDetector::getCachedSeparatingDistance",height=0.2,width=0.4,color="black",URL="$classbt_gjk_pair_detector.html#e27d863f35ce718af83c46a896e80fd6"];
+  Node1 -> Node7 [color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="btGjkPairDetector::getClosestPoints",height=0.2,width=0.4,color="black",URL="$classbt_gjk_pair_detector.html#42505a0ccc728c82595febe9af3a3bc8"];
+  Node1 -> Node8 [color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="btDispatcher::getNewManifold",height=0.2,width=0.4,color="black",URL="$classbt_dispatcher.html#8c7798c84a4ec8da239b70797fa5abf2"];
+  Node1 -> Node9 [color="midnightblue",fontsize=10,style="solid"];
+  Node9 [label="btManifoldResult::getPersistentManifold",height=0.2,width=0.4,color="black",URL="$classbt_manifold_result.html#1c5ab928075fd6a12ebcf54e7e95b534"];
+  Node1 -> Node10 [color="midnightblue",fontsize=10,style="solid"];
+  Node10 [label="btAlignedObjectArray::push_back",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html#d61e10166e2c00f487095d3482b9edd1"];
+  Node1 -> Node11 [color="midnightblue",fontsize=10,style="solid"];
+  Node11 [label="btManifoldResult::refreshContactPoints",height=0.2,width=0.4,color="black",URL="$classbt_manifold_result.html#dbcfd865252ac9dc8a3543f404e2dcf1"];
+  Node1 -> Node12 [color="midnightblue",fontsize=10,style="solid"];
+  Node12 [label="btAlignedObjectArray::resize",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html#6a48cd9cb91d0cfa50ee1c70ef485190"];
+  Node1 -> Node13 [color="midnightblue",fontsize=10,style="solid"];
+  Node13 [label="btGjkPairDetector::setIgnoreMargin",height=0.2,width=0.4,color="black",URL="$classbt_gjk_pair_detector.html#93e9752920c57c39faca247fc005750e",tooltip="don&#39;t use setIgnoreMargin, it&#39;s for Bullet&#39;s internal use"];
+  Node1 -> Node14 [color="midnightblue",fontsize=10,style="solid"];
+  Node14 [label="btGjkPairDetector::setMinkowskiA",height=0.2,width=0.4,color="black",URL="$classbt_gjk_pair_detector.html#a1c126f716f8c80f355ad48a5234ca73"];
+  Node1 -> Node15 [color="midnightblue",fontsize=10,style="solid"];
+  Node15 [label="btGjkPairDetector::setMinkowskiB",height=0.2,width=0.4,color="black",URL="$classbt_gjk_pair_detector.html#ee8fc2c182e482574ba9e819eea7b23a"];
+  Node1 -> Node16 [color="midnightblue",fontsize=10,style="solid"];
+  Node16 [label="btManifoldResult::setPersistentManifold",height=0.2,width=0.4,color="black",URL="$classbt_manifold_result.html#7a46d46b9a13c2896695e458c1d6df1f"];
+}

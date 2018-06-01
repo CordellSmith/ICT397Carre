@@ -26,6 +26,8 @@ void \hyperlink{structbt_dbvt_broadphase_645dd617d0bbe7767859f424e2ee18c1}{setAa
 \subsection{Detailed Description}
 The \hyperlink{structbt_dbvt_broadphase}{btDbvtBroadphase} implements a broadphase using two dynamic AABB bounding volume hierarchies/trees (see \hyperlink{structbt_dbvt}{btDbvt}). One tree is used for static/non-moving objects, and another tree is used for dynamic objects. Objects can move from one tree to the other. This is a very fast broadphase, especially for very dynamic worlds where many objects are moving. Its insert/add and remove of objects is generally faster than the sweep and prune broadphases \hyperlink{classbt_axis_sweep3}{btAxisSweep3} and \hyperlink{classbt32_bit_axis_sweep3}{bt32BitAxisSweep3}. 
 
+Definition at line 62 of file btDbvtBroadphase.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{structbt_dbvt_broadphase_32ab55b5ef2616d0cc039cd037c05d7f}{
 \index{btDbvtBroadphase@{btDbvtBroadphase}!getBroadphaseAabb@{getBroadphaseAabb}}
@@ -36,7 +38,32 @@ The \hyperlink{structbt_dbvt_broadphase}{btDbvtBroadphase} implements a broadpha
 
 getAabb returns the axis aligned bounding box in the 'global' coordinate frame will add some transform later 
 
-Implements \hyperlink{classbt_broadphase_interface_b5af9e26414f5a72a76040b8fab4d9e2}{btBroadphaseInterface}.\hypertarget{structbt_dbvt_broadphase_645dd617d0bbe7767859f424e2ee18c1}{
+Implements \hyperlink{classbt_broadphase_interface_b5af9e26414f5a72a76040b8fab4d9e2}{btBroadphaseInterface}.
+
+Definition at line 641 of file btDbvtBroadphase.cpp.
+
+References btDbvt::m\_\-root.
+
+\begin{Code}\begin{verbatim}642 {
+643 
+644         ATTRIBUTE_ALIGNED16(btDbvtVolume)       bounds;
+645 
+646         if(!m_sets[0].empty())
+647                 if(!m_sets[1].empty())  Merge(  m_sets[0].m_root->volume,
+648                         m_sets[1].m_root->volume,bounds);
+649                 else
+650                         bounds=m_sets[0].m_root->volume;
+651         else if(!m_sets[1].empty())     bounds=m_sets[1].m_root->volume;
+652         else
+653                 bounds=btDbvtVolume::FromCR(btVector3(0,0,0),0);
+654         aabbMin=bounds.Mins();
+655         aabbMax=bounds.Maxs();
+656 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{structbt_dbvt_broadphase_645dd617d0bbe7767859f424e2ee18c1}{
 \index{btDbvtBroadphase@{btDbvtBroadphase}!setAabbForceUpdate@{setAabbForceUpdate}}
 \index{setAabbForceUpdate@{setAabbForceUpdate}!btDbvtBroadphase@{btDbvtBroadphase}}
 \subsubsection[setAabbForceUpdate]{\setlength{\rightskip}{0pt plus 5cm}void btDbvtBroadphase::setAabbForceUpdate (btBroadphaseProxy $\ast$ {\em absproxy}, \/  const btVector3 \& {\em aabbMin}, \/  const btVector3 \& {\em aabbMax}, \/  {\bf btDispatcher} $\ast$)}}
@@ -45,7 +72,53 @@ Implements \hyperlink{classbt_broadphase_interface_b5af9e26414f5a72a76040b8fab4d
 
 this setAabbForceUpdate is similar to setAabb but always forces the aabb update. it is not part of the \hyperlink{classbt_broadphase_interface}{btBroadphaseInterface} but specific to \hyperlink{structbt_dbvt_broadphase}{btDbvtBroadphase}. it bypasses certain optimizations that prevent aabb updates (when the aabb shrinks), see \href{http://code.google.com/p/bullet/issues/detail?id=223}{\tt http://code.google.com/p/bullet/issues/detail?id=223} 
 
+Definition at line 374 of file btDbvtBroadphase.cpp.
+
+References btDbvt::collideTTpersistentStack(), btDbvt::insert(), btDbvt::remove(), and btDbvt::update().
+
+\begin{Code}\begin{verbatim}378 {
+379         btDbvtProxy*                                            proxy=(btDbvtProxy*)absproxy;
+380         ATTRIBUTE_ALIGNED16(btDbvtVolume)       aabb=btDbvtVolume::FromMM(aabbMin,aabbMax);
+381         bool    docollide=false;
+382         if(proxy->stage==STAGECOUNT)
+383         {/* fixed -> dynamic set        */ 
+384                 m_sets[1].remove(proxy->leaf);
+385                 proxy->leaf=m_sets[0].insert(aabb,proxy);
+386                 docollide=true;
+387         }
+388         else
+389         {/* dynamic set                         */ 
+390                 ++m_updates_call;
+391                 /* Teleporting                  */ 
+392                 m_sets[0].update(proxy->leaf,aabb);
+393                 ++m_updates_done;
+394                 docollide=true;
+395         }
+396         listremove(proxy,m_stageRoots[proxy->stage]);
+397         proxy->m_aabbMin = aabbMin;
+398         proxy->m_aabbMax = aabbMax;
+399         proxy->stage    =       m_stageCurrent;
+400         listappend(proxy,m_stageRoots[m_stageCurrent]);
+401         if(docollide)
+402         {
+403                 m_needcleanup=true;
+404                 if(!m_deferedcollide)
+405                 {
+406                         btDbvtTreeCollider      collider(this);
+407                         m_sets[1].collideTTpersistentStack(m_sets[1].m_root,proxy->leaf,collider);
+408                         m_sets[0].collideTTpersistentStack(m_sets[0].m_root,proxy->leaf,collider);
+409                 }
+410         }       
+411 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this struct was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvtBroadphase.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/BroadphaseCollision/btDbvtBroadphase.cpp\end{CompactItemize}

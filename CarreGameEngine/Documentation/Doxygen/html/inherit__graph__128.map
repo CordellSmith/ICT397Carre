@@ -1,1 +1,4 @@
-<area shape="rect" href="$classbt_convex_hull_computer.html" title="btConvexHullComputer" alt="" coords="5,5,157,32">
+<area shape="rect" href="$classbt_convex_cast.html" title="btConvexCast is an interface for Casting" alt="" coords="5,56,107,83">
+<area shape="rect" href="$classbt_continuous_convex_collision.html" title="btContinuousConvexCollision" alt="" coords="156,5,343,32">
+<area shape="rect" href="$classbt_gjk_convex_cast.html" title="GjkConvexCast performs a raycast on a convex object using support mapping." alt="" coords="189,56,309,83">
+<area shape="rect" href="$classbt_subsimplex_convex_cast.html" title="btSubsimplexConvexCast" alt="" coords="165,107,333,133">

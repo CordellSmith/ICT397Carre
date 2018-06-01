@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btQuaternion::btQuaternion",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btQuaternion::setEuler",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#ed0a6469d6c6c1e379f1143ad62b3439",tooltip="Set the quaternion using Euler angles."];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btQuaternion::setEulerZYX",height=0.2,width=0.4,color="black",URL="$classbt_quaternion.html#df15384cff65f630b0537f1b8aeee622",tooltip="Set the quaternion using euler angles."];
+}

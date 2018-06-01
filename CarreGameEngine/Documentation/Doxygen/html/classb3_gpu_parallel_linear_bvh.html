@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: b3GpuParallelLinearBvh Class Reference</title>
+<title>Assignment2 - OOber Taxi: b3GpuParallelLinearBvh Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>b3GpuParallelLinearBvh Class Reference</h1><!-- doxytag: class="b3GpuParallelLinearBvh" -->GPU Parallel Linearized Bounding Volume Heirarchy(LBVH) that is reconstructed every frame.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;b3GpuParallelLinearBvh.h&gt;</code>
+<code>#include &lt;<a class="el" href="b3_gpu_parallel_linear_bvh_8h-source.html">b3GpuParallelLinearBvh.h</a>&gt;</code>
 <p>
 
 <p>
@@ -56,6 +56,8 @@ GPU Parallel Linearized Bounding Volume Heirarchy(LBVH) that is reconstructed ev
 <li>[fully parallel] Assign morton codes for each AABB using its center (after quantizing the AABB centers into a virtual grid)</li><li>[fully parallel] Sort morton codes</li><li>[somewhat parallel] Build binary radix tree (assign parent/child pointers for internal nodes of the BVH)</li><li>[somewhat parallel] Set internal node AABBs </li></ul>
 </dd></dl>
 <dl class="user" compact><dt><b></b></dt><dd>[Karras 2012] improves on the algorithm by introducing fully parallel methods for the last 2 stages. The BVH implementation here shares many concepts with [Karras 2012], but a different method is used for constructing the tree. Instead of searching for the child nodes of each internal node, we search for the parent node of each node. Additionally, a non-atomic traversal that starts from the leaf nodes and moves towards the root node is used to set the AABBs. </dd></dl>
+
+<p>Definition at line <a class="el" href="b3_gpu_parallel_linear_bvh_8h-source.html#l00049">49</a> of file <a class="el" href="b3_gpu_parallel_linear_bvh_8h-source.html">b3GpuParallelLinearBvh.h</a>.</p>
 <hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="c0208fca9279bdfd66eabd321d98420b"></a><!-- doxytag: member="b3GpuParallelLinearBvh::calculateOverlappingPairs" ref="c0208fca9279bdfd66eabd321d98420b" args="(b3OpenCLArray&lt; b3Int4 &gt; &amp;out_overlappingPairs)" -->
 <div class="memitem">
@@ -79,6 +81,86 @@ GPU Parallel Linearized Bounding Volume Heirarchy(LBVH) that is reconstructed ev
     <tr><td valign="top"></td><td valign="top"><em>out_overlappingPairs</em>&nbsp;</td><td>The size() of this array is used to determine the max number of pairs. If the number of overlapping pairs is &lt; out_overlappingPairs.size(), out_overlappingPairs is resized. </td></tr>
   </table>
 </dl>
+
+<p>Definition at line <a class="el" href="b3_gpu_parallel_linear_bvh_8cpp-source.html#l00292">292</a> of file <a class="el" href="b3_gpu_parallel_linear_bvh_8cpp-source.html">b3GpuParallelLinearBvh.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00293"></a>00293 {
+<a name="l00294"></a>00294         <span class="keywordtype">int</span> maxPairs = out_overlappingPairs.size();
+<a name="l00295"></a>00295         b3OpenCLArray&lt;int&gt;&amp; numPairsGpu = m_temp;
+<a name="l00296"></a>00296         
+<a name="l00297"></a>00297         <span class="keywordtype">int</span> reset = 0;
+<a name="l00298"></a>00298         numPairsGpu.copyFromHostPointer(&amp;reset, 1);
+<a name="l00299"></a>00299         
+<a name="l00300"></a>00300         <span class="comment">//</span>
+<a name="l00301"></a>00301         <span class="keywordflow">if</span>( m_leafNodeAabbs.size() &gt; 1 )
+<a name="l00302"></a>00302         {
+<a name="l00303"></a>00303                 B3_PROFILE(<span class="stringliteral">"PLBVH small-small AABB test"</span>);
+<a name="l00304"></a>00304         
+<a name="l00305"></a>00305                 <span class="keywordtype">int</span> numQueryAabbs = m_leafNodeAabbs.size();
+<a name="l00306"></a>00306                 
+<a name="l00307"></a>00307                 b3BufferInfoCL bufferInfo[] = 
+<a name="l00308"></a>00308                 {
+<a name="l00309"></a>00309                         b3BufferInfoCL( m_leafNodeAabbs.getBufferCL() ),
+<a name="l00310"></a>00310                         
+<a name="l00311"></a>00311                         b3BufferInfoCL( m_rootNodeIndex.getBufferCL() ),
+<a name="l00312"></a>00312                         b3BufferInfoCL( m_internalNodeChildNodes.getBufferCL() ),
+<a name="l00313"></a>00313                         b3BufferInfoCL( m_internalNodeAabbs.getBufferCL() ),
+<a name="l00314"></a>00314                         b3BufferInfoCL( m_internalNodeLeafIndexRanges.getBufferCL() ),
+<a name="l00315"></a>00315                         b3BufferInfoCL( m_mortonCodesAndAabbIndicies.getBufferCL() ),
+<a name="l00316"></a>00316                         
+<a name="l00317"></a>00317                         b3BufferInfoCL( numPairsGpu.getBufferCL() ),
+<a name="l00318"></a>00318                         b3BufferInfoCL( out_overlappingPairs.getBufferCL() )
+<a name="l00319"></a>00319                 };
+<a name="l00320"></a>00320                 
+<a name="l00321"></a>00321                 b3LauncherCL launcher(m_queue, m_plbvhCalculateOverlappingPairsKernel, <span class="stringliteral">"m_plbvhCalculateOverlappingPairsKernel"</span>);
+<a name="l00322"></a>00322                 launcher.setBuffers( bufferInfo, <span class="keyword">sizeof</span>(bufferInfo)/<span class="keyword">sizeof</span>(b3BufferInfoCL) );
+<a name="l00323"></a>00323                 launcher.setConst(maxPairs);
+<a name="l00324"></a>00324                 launcher.setConst(numQueryAabbs);
+<a name="l00325"></a>00325                 
+<a name="l00326"></a>00326                 launcher.launch1D(numQueryAabbs);
+<a name="l00327"></a>00327                 clFinish(m_queue);
+<a name="l00328"></a>00328         }
+<a name="l00329"></a>00329         
+<a name="l00330"></a>00330         <span class="keywordtype">int</span> numLargeAabbRigids = m_largeAabbs.size();
+<a name="l00331"></a>00331         <span class="keywordflow">if</span>( numLargeAabbRigids &gt; 0 &amp;&amp; m_leafNodeAabbs.size() &gt; 0 )
+<a name="l00332"></a>00332         {
+<a name="l00333"></a>00333                 B3_PROFILE(<span class="stringliteral">"PLBVH large-small AABB test"</span>);
+<a name="l00334"></a>00334         
+<a name="l00335"></a>00335                 <span class="keywordtype">int</span> numQueryAabbs = m_leafNodeAabbs.size();
+<a name="l00336"></a>00336                 
+<a name="l00337"></a>00337                 b3BufferInfoCL bufferInfo[] = 
+<a name="l00338"></a>00338                 {
+<a name="l00339"></a>00339                         b3BufferInfoCL( m_leafNodeAabbs.getBufferCL() ),
+<a name="l00340"></a>00340                         b3BufferInfoCL( m_largeAabbs.getBufferCL() ),
+<a name="l00341"></a>00341                         
+<a name="l00342"></a>00342                         b3BufferInfoCL( numPairsGpu.getBufferCL() ),
+<a name="l00343"></a>00343                         b3BufferInfoCL( out_overlappingPairs.getBufferCL() )
+<a name="l00344"></a>00344                 };
+<a name="l00345"></a>00345                 
+<a name="l00346"></a>00346                 b3LauncherCL launcher(m_queue, m_plbvhLargeAabbAabbTestKernel, <span class="stringliteral">"m_plbvhLargeAabbAabbTestKernel"</span>);
+<a name="l00347"></a>00347                 launcher.setBuffers( bufferInfo, <span class="keyword">sizeof</span>(bufferInfo)/<span class="keyword">sizeof</span>(b3BufferInfoCL) );
+<a name="l00348"></a>00348                 launcher.setConst(maxPairs);
+<a name="l00349"></a>00349                 launcher.setConst(numLargeAabbRigids);
+<a name="l00350"></a>00350                 launcher.setConst(numQueryAabbs);
+<a name="l00351"></a>00351                 
+<a name="l00352"></a>00352                 launcher.launch1D(numQueryAabbs);
+<a name="l00353"></a>00353                 clFinish(m_queue);
+<a name="l00354"></a>00354         }
+<a name="l00355"></a>00355         
+<a name="l00356"></a>00356         
+<a name="l00357"></a>00357         <span class="comment">//</span>
+<a name="l00358"></a>00358         <span class="keywordtype">int</span> numPairs = -1;
+<a name="l00359"></a>00359         numPairsGpu.copyToHostPointer(&amp;numPairs, 1);
+<a name="l00360"></a>00360         <span class="keywordflow">if</span>(numPairs &gt; maxPairs)
+<a name="l00361"></a>00361         {
+<a name="l00362"></a>00362                 b3Error(<span class="stringliteral">"Error running out of pairs: numPairs = %d, maxPairs = %d.\n"</span>, numPairs, maxPairs);
+<a name="l00363"></a>00363                 numPairs = maxPairs;
+<a name="l00364"></a>00364                 numPairsGpu.copyFromHostPointer(&amp;maxPairs, 1);
+<a name="l00365"></a>00365         }
+<a name="l00366"></a>00366         
+<a name="l00367"></a>00367         out_overlappingPairs.resize(numPairs);
+<a name="l00368"></a>00368 }
+</pre></div>
+<p>
 
 </div>
 </div><p>
@@ -121,12 +203,87 @@ GPU Parallel Linearized Bounding Volume Heirarchy(LBVH) that is reconstructed ev
   </table>
 </dl>
 
+<p>Definition at line <a class="el" href="b3_gpu_parallel_linear_bvh_8cpp-source.html#l00371">371</a> of file <a class="el" href="b3_gpu_parallel_linear_bvh_8cpp-source.html">b3GpuParallelLinearBvh.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00373"></a>00373 {
+<a name="l00374"></a>00374         B3_PROFILE(<span class="stringliteral">"PLBVH testRaysAgainstBvhAabbs()"</span>);
+<a name="l00375"></a>00375         
+<a name="l00376"></a>00376         <span class="keywordtype">int</span> numRays = rays.size();
+<a name="l00377"></a>00377         <span class="keywordtype">int</span> maxRayRigidPairs = out_rayRigidPairs.size();
+<a name="l00378"></a>00378         
+<a name="l00379"></a>00379         <span class="keywordtype">int</span> reset = 0;
+<a name="l00380"></a>00380         out_numRayRigidPairs.copyFromHostPointer(&amp;reset, 1);
+<a name="l00381"></a>00381         
+<a name="l00382"></a>00382         <span class="comment">//</span>
+<a name="l00383"></a>00383         <span class="keywordflow">if</span>( m_leafNodeAabbs.size() &gt; 0 )
+<a name="l00384"></a>00384         {
+<a name="l00385"></a>00385                 B3_PROFILE(<span class="stringliteral">"PLBVH ray test small AABB"</span>);
+<a name="l00386"></a>00386         
+<a name="l00387"></a>00387                 b3BufferInfoCL bufferInfo[] = 
+<a name="l00388"></a>00388                 {
+<a name="l00389"></a>00389                         b3BufferInfoCL( m_leafNodeAabbs.getBufferCL() ),
+<a name="l00390"></a>00390                         
+<a name="l00391"></a>00391                         b3BufferInfoCL( m_rootNodeIndex.getBufferCL() ),
+<a name="l00392"></a>00392                         b3BufferInfoCL( m_internalNodeChildNodes.getBufferCL() ),
+<a name="l00393"></a>00393                         b3BufferInfoCL( m_internalNodeAabbs.getBufferCL() ),
+<a name="l00394"></a>00394                         b3BufferInfoCL( m_internalNodeLeafIndexRanges.getBufferCL() ),
+<a name="l00395"></a>00395                         b3BufferInfoCL( m_mortonCodesAndAabbIndicies.getBufferCL() ),
+<a name="l00396"></a>00396                         
+<a name="l00397"></a>00397                         b3BufferInfoCL( rays.getBufferCL() ),
+<a name="l00398"></a>00398                         
+<a name="l00399"></a>00399                         b3BufferInfoCL( out_numRayRigidPairs.getBufferCL() ),
+<a name="l00400"></a>00400                         b3BufferInfoCL( out_rayRigidPairs.getBufferCL() )
+<a name="l00401"></a>00401                 };
+<a name="l00402"></a>00402                 
+<a name="l00403"></a>00403                 b3LauncherCL launcher(m_queue, m_plbvhRayTraverseKernel, <span class="stringliteral">"m_plbvhRayTraverseKernel"</span>);
+<a name="l00404"></a>00404                 launcher.setBuffers( bufferInfo, <span class="keyword">sizeof</span>(bufferInfo)/<span class="keyword">sizeof</span>(b3BufferInfoCL) );
+<a name="l00405"></a>00405                 launcher.setConst(maxRayRigidPairs);
+<a name="l00406"></a>00406                 launcher.setConst(numRays);
+<a name="l00407"></a>00407                 
+<a name="l00408"></a>00408                 launcher.launch1D(numRays);
+<a name="l00409"></a>00409                 clFinish(m_queue);
+<a name="l00410"></a>00410         }
+<a name="l00411"></a>00411         
+<a name="l00412"></a>00412         <span class="keywordtype">int</span> numLargeAabbRigids = m_largeAabbs.size();
+<a name="l00413"></a>00413         <span class="keywordflow">if</span>(numLargeAabbRigids &gt; 0)
+<a name="l00414"></a>00414         {
+<a name="l00415"></a>00415                 B3_PROFILE(<span class="stringliteral">"PLBVH ray test large AABB"</span>);
+<a name="l00416"></a>00416                 
+<a name="l00417"></a>00417                 b3BufferInfoCL bufferInfo[] = 
+<a name="l00418"></a>00418                 {
+<a name="l00419"></a>00419                         b3BufferInfoCL( m_largeAabbs.getBufferCL() ),
+<a name="l00420"></a>00420                         b3BufferInfoCL( rays.getBufferCL() ),
+<a name="l00421"></a>00421                         
+<a name="l00422"></a>00422                         b3BufferInfoCL( out_numRayRigidPairs.getBufferCL() ),
+<a name="l00423"></a>00423                         b3BufferInfoCL( out_rayRigidPairs.getBufferCL() )
+<a name="l00424"></a>00424                 };
+<a name="l00425"></a>00425                 
+<a name="l00426"></a>00426                 b3LauncherCL launcher(m_queue, m_plbvhLargeAabbRayTestKernel, <span class="stringliteral">"m_plbvhLargeAabbRayTestKernel"</span>);
+<a name="l00427"></a>00427                 launcher.setBuffers( bufferInfo, <span class="keyword">sizeof</span>(bufferInfo)/<span class="keyword">sizeof</span>(b3BufferInfoCL) );
+<a name="l00428"></a>00428                 launcher.setConst(numLargeAabbRigids);
+<a name="l00429"></a>00429                 launcher.setConst(maxRayRigidPairs);
+<a name="l00430"></a>00430                 launcher.setConst(numRays);
+<a name="l00431"></a>00431                 
+<a name="l00432"></a>00432                 launcher.launch1D(numRays);
+<a name="l00433"></a>00433                 clFinish(m_queue);
+<a name="l00434"></a>00434         }
+<a name="l00435"></a>00435         
+<a name="l00436"></a>00436         <span class="comment">//</span>
+<a name="l00437"></a>00437         <span class="keywordtype">int</span> numRayRigidPairs = -1;
+<a name="l00438"></a>00438         out_numRayRigidPairs.copyToHostPointer(&amp;numRayRigidPairs, 1);
+<a name="l00439"></a>00439         
+<a name="l00440"></a>00440         <span class="keywordflow">if</span>(numRayRigidPairs &gt; maxRayRigidPairs)
+<a name="l00441"></a>00441                 b3Error(<span class="stringliteral">"Error running out of rayRigid pairs: numRayRigidPairs = %d, maxRayRigidPairs = %d.\n"</span>, numRayRigidPairs, maxRayRigidPairs);
+<a name="l00442"></a>00442         
+<a name="l00443"></a>00443 }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3OpenCL/BroadphaseCollision/b3GpuParallelLinearBvh.h<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3OpenCL/BroadphaseCollision/b3GpuParallelLinearBvh.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3OpenCL/BroadphaseCollision/<a class="el" href="b3_gpu_parallel_linear_bvh_8h-source.html">b3GpuParallelLinearBvh.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3OpenCL/BroadphaseCollision/<a class="el" href="b3_gpu_parallel_linear_bvh_8cpp-source.html">b3GpuParallelLinearBvh.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:55 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:19 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

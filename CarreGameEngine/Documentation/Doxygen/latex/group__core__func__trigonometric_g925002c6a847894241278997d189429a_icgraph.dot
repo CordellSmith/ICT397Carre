@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::sinh",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::coth",height=0.2,width=0.4,color="black",URL="$group__gtc__reciprocal.html#g8bc5d51e10b478b061a071eb91258d35"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::csch",height=0.2,width=0.4,color="black",URL="$group__gtc__reciprocal.html#g094e1e421d5d9320d4364deb82adb428"];
+}

@@ -1,0 +1,22 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btGImpactCollisionAlgorithm::collide_gjk_triangles",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btGImpactMeshShapePart::getBulletTriangle",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_mesh_shape_part.html#5deaf3963fd7b8c337a322a5d775b478"];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btGImpactMeshShapePart::lockChildShapes",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_mesh_shape_part.html#9204e51eefb25e0733cef4791c937f28",tooltip="call when reading child shapes"];
+  Node3 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="btGImpactQuantizedBvh::getPrimitiveManager",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_quantized_bvh.html#8954b68cdc557ffab6c4c0361cea109a"];
+  Node3 -> Node5 [color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="btGImpactMeshShapePart::TrimeshPrimitiveManager::lock",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_mesh_shape_part_1_1_trimesh_primitive_manager.html#48a013e72b76f832638a54326a7cc709"];
+  Node1 -> Node6 [color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="btTriangleShapeEx::overlap_test_conservative",height=0.2,width=0.4,color="black",URL="$classbt_triangle_shape_ex.html#8642843da440361eecf27d5a074d6231",tooltip="class btTriangleShapeEx: public btTriangleShape"];
+  Node6 -> Node7 [color="midnightblue",fontsize=10,style="solid"];
+  Node7 [label="btTriangleShapeEx::buildTriPlane",height=0.2,width=0.4,color="black",URL="$classbt_triangle_shape_ex.html#004b61bd84c01fde9edd25e0c538bd1d"];
+  Node1 -> Node8 [color="midnightblue",fontsize=10,style="solid"];
+  Node8 [label="btGImpactMeshShapePart::unlockChildShapes",height=0.2,width=0.4,color="black",URL="$classbt_g_impact_mesh_shape_part.html#0624b4e736275809ea259a7144ac0a48"];
+}

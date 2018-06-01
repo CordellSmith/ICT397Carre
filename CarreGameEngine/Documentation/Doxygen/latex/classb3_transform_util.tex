@@ -17,6 +17,8 @@ static void \hyperlink{classb3_transform_util_077905e76e231101930678ace3bd444a}{
 \subsection{Detailed Description}
 Utils related to temporal transforms. 
 
+Definition at line 38 of file b3TransformUtil.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classb3_transform_util_077905e76e231101930678ace3bd444a}{
 \index{b3TransformUtil@{b3TransformUtil}!calculateDiffAxisAngle@{calculateDiffAxisAngle}}
@@ -29,6 +31,35 @@ Utils related to temporal transforms.
 
 floating point inaccuracy can lead to w component $>$ 1..., which breaks 
 
+Definition at line 121 of file b3TransformUtil.h.
+
+References b3Quaternion::getAngle(), and b3Quaternion::normalize().
+
+\begin{Code}\begin{verbatim}122         {
+123                 b3Matrix3x3 dmat = transform1.getBasis() * transform0.getBasis().inverse();
+124                 b3Quaternion dorn;
+125                 dmat.getRotation(dorn);
+126 
+128                 dorn.normalize();
+129                 
+130                 angle = dorn.getAngle();
+131                 axis = b3MakeVector3(dorn.getX(),dorn.getY(),dorn.getZ());
+132                 axis[3] = b3Scalar(0.);
+133                 //check for axis length
+134                 b3Scalar len = axis.length2();
+135                 if (len < B3_EPSILON*B3_EPSILON)
+136                         axis = b3MakeVector3(b3Scalar(1.),b3Scalar(0.),b3Scalar(0.));
+137                 else
+138                         axis /= b3Sqrt(len);
+139         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Common/b3TransformUtil.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Common/b3TransformUtil.h\end{CompactItemize}

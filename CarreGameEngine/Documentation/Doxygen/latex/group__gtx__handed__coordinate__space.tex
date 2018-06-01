@@ -27,7 +27,22 @@ $<$glm/gtx/handed\_\-coordinate\_\-system.hpp$>$ need to be included to use thes
 \label{group__gtx__handed__coordinate__space_g5613515e0fdb693d30e9e8db0aa17176}
 
 
-Return if a trihedron left handed or not. From GLM\_\-GTX\_\-handed\_\-coordinate\_\-space extension. \hypertarget{group__gtx__handed__coordinate__space_g65f766ab3c8924b90eabc0e1ecf014d1}{
+Return if a trihedron left handed or not. From GLM\_\-GTX\_\-handed\_\-coordinate\_\-space extension. 
+
+Definition at line 25 of file handed\_\-coordinate\_\-space.inl.
+
+References glm::cross(), and glm::dot().
+
+\begin{Code}\begin{verbatim}30         {
+31                 return dot(cross(normal, tangent), binormal) < T(0);
+32         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__handed__coordinate__space_g65f766ab3c8924b90eabc0e1ecf014d1}{
 \index{gtx\_\-handed\_\-coordinate\_\-space@{gtx\_\-handed\_\-coordinate\_\-space}!rightHanded@{rightHanded}}
 \index{rightHanded@{rightHanded}!gtx_handed_coordinate_space@{gtx\_\-handed\_\-coordinate\_\-space}}
 \subsubsection[rightHanded]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::rightHanded (detail::tvec3$<$ T, P $>$ const \& {\em tangent}, \/  detail::tvec3$<$ T, P $>$ const \& {\em binormal}, \/  detail::tvec3$<$ T, P $>$ const \& {\em normal})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -35,3 +50,18 @@ Return if a trihedron left handed or not. From GLM\_\-GTX\_\-handed\_\-coordinat
 
 
 Return if a trihedron right handed or not. From GLM\_\-GTX\_\-handed\_\-coordinate\_\-space extension. 
+
+Definition at line 14 of file handed\_\-coordinate\_\-space.inl.
+
+References glm::cross(), and glm::dot().
+
+\begin{Code}\begin{verbatim}19         {
+20                 return dot(cross(normal, tangent), binormal) > T(0);
+21         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

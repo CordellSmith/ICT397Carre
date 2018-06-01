@@ -37,6 +37,19 @@ $<$glm/gtx/vector\_\-query.hpp$>$ need to be included to use these functionaliti
 
 Check whether two vectors are collinears. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__vector__query}{GLM\_\-GTX\_\-vector\_\-query} extensions. \end{Desc}
+
+
+Definition at line 91 of file vector\_\-query.inl.
+
+\begin{Code}\begin{verbatim}96         {
+97                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'areCollinear' only accept floating-point inputs");
+98 
+99                 return detail::compute_areCollinear<T, P, vecType>::call(v0, v1, epsilon);
+100         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__vector__query_g9af1cd34fdb7c3cdeb11c0235fe7c468}{
 \index{gtx\_\-vector\_\-query@{gtx\_\-vector\_\-query}!areOrthogonal@{areOrthogonal}}
 \index{areOrthogonal@{areOrthogonal}!gtx_vector_query@{gtx\_\-vector\_\-query}}
@@ -46,7 +59,30 @@ Check whether two vectors are collinears. \begin{Desc}
 
 Check whether two vectors are orthogonals. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__vector__query}{GLM\_\-GTX\_\-vector\_\-query} extensions. \end{Desc}
-\hypertarget{group__gtx__vector__query_g78e84684059effca3c44c549476db51a}{
+
+
+Definition at line 104 of file vector\_\-query.inl.
+
+References glm::abs(), glm::dot(), glm::length(), and glm::max().
+
+Referenced by glm::isOrthogonal().
+
+\begin{Code}\begin{verbatim}109         {
+110                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'areOrthogonal' only accept floating-point inputs");
+111 
+112                 return abs(dot(v0, v1)) <= max(
+113                         static_cast<T>(1),
+114                         length(v0)) * max(static_cast<T>(1), length(v1)) * epsilon;
+115         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{group__gtx__vector__query_g78e84684059effca3c44c549476db51a}{
 \index{gtx\_\-vector\_\-query@{gtx\_\-vector\_\-query}!areOrthonormal@{areOrthonormal}}
 \index{areOrthonormal@{areOrthonormal}!gtx_vector_query@{gtx\_\-vector\_\-query}}
 \subsubsection[areOrthonormal]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::areOrthonormal (vecType$<$ T, P $>$ const \& {\em v0}, \/  vecType$<$ T, P $>$ const \& {\em v1}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -55,7 +91,22 @@ Check whether two vectors are orthogonals. \begin{Desc}
 
 Check whether two vectors are orthonormal. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__vector__query}{GLM\_\-GTX\_\-vector\_\-query} extensions. \end{Desc}
-\hypertarget{group__gtx__vector__query_g91e10972d2d748d78f0a5f6234f8b088}{
+
+
+Definition at line 193 of file vector\_\-query.inl.
+
+References glm::abs(), glm::dot(), and glm::isNormalized().
+
+\begin{Code}\begin{verbatim}198         {
+199                 return isNormalized(v0, epsilon) && isNormalized(v1, epsilon) && (abs(dot(v0, v1)) <= epsilon);
+200         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__vector__query_g91e10972d2d748d78f0a5f6234f8b088}{
 \index{gtx\_\-vector\_\-query@{gtx\_\-vector\_\-query}!isCompNull@{isCompNull}}
 \index{isCompNull@{isCompNull}!gtx_vector_query@{gtx\_\-vector\_\-query}}
 \subsubsection[isCompNull]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER vecType$<$ bool, P $>$ glm::isCompNull (vecType$<$ T, P $>$ const \& {\em v}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -64,6 +115,19 @@ Check whether two vectors are orthonormal. \begin{Desc}
 
 Check whether a each component of a vector is null. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__vector__query}{GLM\_\-GTX\_\-vector\_\-query} extensions. \end{Desc}
+
+
+Definition at line 143 of file vector\_\-query.inl.
+
+\begin{Code}\begin{verbatim}147         {
+148                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isCompNull' only accept floating-point inputs");
+149 
+150                 return detail::compute_isCompNull<T, P, vecType>::call(v, epsilon);
+151         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__vector__query_g70f64c6df21ad40303809d76b1474fbe}{
 \index{gtx\_\-vector\_\-query@{gtx\_\-vector\_\-query}!isNormalized@{isNormalized}}
 \index{isNormalized@{isNormalized}!gtx_vector_query@{gtx\_\-vector\_\-query}}
@@ -73,7 +137,24 @@ Check whether a each component of a vector is null. \begin{Desc}
 
 Check whether a vector is normalized. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__vector__query}{GLM\_\-GTX\_\-vector\_\-query} extensions. \end{Desc}
-\hypertarget{group__gtx__vector__query_g368e458df5a70d885f5d8a87ec7b8ef8}{
+
+
+Definition at line 119 of file vector\_\-query.inl.
+
+References glm::abs(), and glm::length().
+
+\begin{Code}\begin{verbatim}123         {
+124                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isNormalized' only accept floating-point inputs");
+125 
+126                 return abs(length(v) - static_cast<T>(1)) <= static_cast<T>(2) * epsilon;
+127         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__vector__query_g368e458df5a70d885f5d8a87ec7b8ef8}{
 \index{gtx\_\-vector\_\-query@{gtx\_\-vector\_\-query}!isNull@{isNull}}
 \index{isNull@{isNull}!gtx_vector_query@{gtx\_\-vector\_\-query}}
 \subsubsection[isNull]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P, template$<$ typename, precision $>$ class vecType$>$ GLM\_\-FUNC\_\-QUALIFIER bool glm::isNull (vecType$<$ T, P $>$ const \& {\em v}, \/  T const \& {\em epsilon})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -82,3 +163,21 @@ Check whether a vector is normalized. \begin{Desc}
 
 Check whether a vector is null. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__vector__query}{GLM\_\-GTX\_\-vector\_\-query} extensions. \end{Desc}
+
+
+Definition at line 131 of file vector\_\-query.inl.
+
+References glm::length().
+
+\begin{Code}\begin{verbatim}135         {
+136                 GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isNull' only accept floating-point inputs");
+137 
+138                 return length(v) <= epsilon;
+139         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

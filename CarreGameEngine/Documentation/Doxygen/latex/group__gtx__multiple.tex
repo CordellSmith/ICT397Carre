@@ -41,6 +41,18 @@ Higher multiple number of Source.
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__multiple}{GLM\_\-GTX\_\-multiple} \end{Desc}
+
+
+Definition at line 57 of file multiple.inl.
+
+\begin{Code}\begin{verbatim}61         {
+62                 detail::higherMultiple<std::numeric_limits<genType>::is_signed> Compute;
+63                 return Compute(Source, Multiple);
+64         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__multiple_gecccd82257351764e3c2bec8973458e3}{
 \index{gtx\_\-multiple@{gtx\_\-multiple}!lowerMultiple@{lowerMultiple}}
 \index{lowerMultiple@{lowerMultiple}!gtx_multiple@{gtx\_\-multiple}}
@@ -62,3 +74,20 @@ Lower multiple number of Source.
 \end{Desc}
 \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__multiple}{GLM\_\-GTX\_\-multiple} \end{Desc}
+
+
+Definition at line 105 of file multiple.inl.
+
+\begin{Code}\begin{verbatim}109         {
+110                 if (Source >= genType(0))
+111                         return Source - Source % Multiple;
+112                 else
+113                 {
+114                         genType Tmp = Source + genType(1);
+115                         return Tmp - Tmp % Multiple - Multiple;
+116                 }
+117         }
+\end{verbatim}
+\end{Code}
+
+

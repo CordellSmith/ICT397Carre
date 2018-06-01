@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btAxisSweep3Internal::removeHandle",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btOverlappingPairCache::hasDeferredRemoval",height=0.2,width=0.4,color="black",URL="$classbt_overlapping_pair_cache.html#ec4b6f27f7a6f6ef39ff4e37cf3f4514"];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btOverlappingPairCallback::removeOverlappingPairsContainingProxy",height=0.2,width=0.4,color="black",URL="$classbt_overlapping_pair_callback.html#c6bd83bc84c9db75b194096b4f4abb82"];
+}

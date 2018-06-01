@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::leftHanded",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::cross",height=0.2,width=0.4,color="black",URL="$group__core__func__geometric.html#g9a325364ff3650c4a85c33704c646e76"];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::dot",height=0.2,width=0.4,color="black",URL="$group__core__func__geometric.html#gc64a3b29d01336161a668d328cac97eb"];
+}

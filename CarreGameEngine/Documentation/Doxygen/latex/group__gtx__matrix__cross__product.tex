@@ -27,7 +27,25 @@ $<$glm/gtx/matrix\_\-cross\_\-product.hpp$>$ need to be included to use these fu
 \label{group__gtx__matrix__cross__product_g028629befca6d86f24f58e314827895c}
 
 
-Build a cross product matrix. From GLM\_\-GTX\_\-matrix\_\-cross\_\-product extension. \hypertarget{group__gtx__matrix__cross__product_g9fae5322a4e4afe9742157f22b505635}{
+Build a cross product matrix. From GLM\_\-GTX\_\-matrix\_\-cross\_\-product extension. 
+
+Definition at line 14 of file matrix\_\-cross\_\-product.inl.
+
+\begin{Code}\begin{verbatim}17         {
+18                 detail::tmat3x3<T, P> Result(T(0));
+19                 Result[0][1] = x.z;
+20                 Result[1][0] = -x.z;
+21                 Result[0][2] = -x.y;
+22                 Result[2][0] = x.y;
+23                 Result[1][2] = x.x;
+24                 Result[2][1] = -x.x;
+25                 return Result;
+26         }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{group__gtx__matrix__cross__product_g9fae5322a4e4afe9742157f22b505635}{
 \index{gtx\_\-matrix\_\-cross\_\-product@{gtx\_\-matrix\_\-cross\_\-product}!matrixCross4@{matrixCross4}}
 \index{matrixCross4@{matrixCross4}!gtx_matrix_cross_product@{gtx\_\-matrix\_\-cross\_\-product}}
 \subsubsection[matrixCross4]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat4x4$<$ T, P $>$ glm::matrixCross4 (detail::tvec3$<$ T, P $>$ const \& {\em x})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -35,3 +53,20 @@ Build a cross product matrix. From GLM\_\-GTX\_\-matrix\_\-cross\_\-product exte
 
 
 Build a cross product matrix. From GLM\_\-GTX\_\-matrix\_\-cross\_\-product extension. 
+
+Definition at line 30 of file matrix\_\-cross\_\-product.inl.
+
+\begin{Code}\begin{verbatim}33         {
+34                 detail::tmat4x4<T, P> Result(T(0));
+35                 Result[0][1] = x.z;
+36                 Result[1][0] = -x.z;
+37                 Result[0][2] = -x.y;
+38                 Result[2][0] = x.y;
+39                 Result[1][2] = x.x;
+40                 Result[2][1] = -x.x;
+41                 return Result;
+42         }
+\end{verbatim}
+\end{Code}
+
+

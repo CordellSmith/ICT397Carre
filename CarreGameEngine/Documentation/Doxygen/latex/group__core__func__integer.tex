@@ -73,6 +73,24 @@ If bits is zero, the result will be zero. The result will be undefined if offset
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/bitfieldExtract.xml}{\tt GLSL bitfieldExtract man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions} \end{Desc}
+
+
+Definition at line 286 of file func\_\-integer.inl.
+
+\begin{Code}\begin{verbatim}291         {
+292                 int GenSize = int(sizeof(genIUType)) << int(3);
+293 
+294                 assert(Offset + Bits <= GenSize);
+295 
+296                 genIUType ShiftLeft = Bits ? Value << (GenSize - (Bits + Offset)) : genIUType(0);
+297                 genIUType ShiftBack = ShiftLeft >> genIUType(GenSize - Bits);
+298 
+299                 return ShiftBack;
+300         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__integer_g33b112990d40ef4c8bf91591dc7d9cd9}{
 \index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!bitfieldInsert@{bitfieldInsert}}
 \index{bitfieldInsert@{bitfieldInsert}!core_func_integer@{core\_\-func\_\-integer}}
@@ -93,6 +111,27 @@ The result will have bits \mbox{[}offset, offset + bits - 1\mbox{]} taken from b
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/bitfieldInsert.xml}{\tt GLSL bitfieldInsert man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions} \end{Desc}
+
+
+Definition at line 347 of file func\_\-integer.inl.
+
+\begin{Code}\begin{verbatim}353         {
+354                 GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'bitfieldInsert' only accept integer values");
+355                 assert(Offset + Bits <= sizeof(genIUType));
+356 
+357                 if(Bits == 0)
+358                         return Base;
+359 
+360                 genIUType Mask = 0;
+361                 for(int Bit = Offset; Bit < Offset + Bits; ++Bit)
+362                         Mask |= (1 << Bit);
+363 
+364                 return (Base & ~Mask) | (Insert & Mask);
+365         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__integer_ge55354ee3125593fc17f4cff052e6a10}{
 \index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!bitfieldReverse@{bitfieldReverse}}
 \index{bitfieldReverse@{bitfieldReverse}!core_func_integer@{core\_\-func\_\-integer}}
@@ -111,6 +150,24 @@ Returns the reversal of the bits of value. The bit numbered n of the result will
 \item[See also:]\href{http://www.opengl.org/sdk/docs/manglsl/xhtml/bitfieldReverse.xml}{\tt GLSL bitfieldReverse man page} 
 
 \href{http://www.opengl.org/registry/doc/GLSLangSpec.4.20.8.pdf}{\tt GLSL 4.20.8 specification, section 8.8 Integer Functions} \end{Desc}
+
+
+Definition at line 414 of file func\_\-integer.inl.
+
+\begin{Code}\begin{verbatim}415         {
+416                 GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'bitfieldReverse' only accept integer values");
+417 
+418                 genIUType Out = 0;
+419                 std::size_t BitSize = sizeof(genIUType) * 8;
+420                 for(std::size_t i = 0; i < BitSize; ++i)
+421                         if(Value & (genIUType(1) << i))
+422                                 Out |= genIUType(1) << (BitSize - 1 - i);
+423                 return Out;
+424         }       
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__core__func__integer_gdda1c11511dea60cd3f0b414d8baa9c2}{
 \index{core\_\-func\_\-integer@{core\_\-func\_\-integer}!findLSB@{findLSB}}
 \index{findLSB@{findLSB}!core_func_integer@{core\_\-func\_\-integer}}

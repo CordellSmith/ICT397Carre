@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: Assimp::ProgressHandler Class Reference</title>
+<title>Assignment2 - OOber Taxi: Assimp::ProgressHandler Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -30,7 +30,7 @@
 <h1>Assimp::ProgressHandler Class Reference</h1><!-- doxytag: class="Assimp::ProgressHandler" -->CPP-API: Abstract interface for custom progress report receivers.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;ProgressHandler.hpp&gt;</code>
+<code>#include &lt;<a class="el" href="_progress_handler_8hpp-source.html">ProgressHandler.hpp</a>&gt;</code>
 <p>
 
 <p>
@@ -59,7 +59,9 @@ virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 CPP-API: Abstract interface for custom progress report receivers. 
 <p>
-Each Importer instance maintains its own <a class="el" href="class_assimp_1_1_progress_handler.html#53b192913e9904c674b851c46e1ea9e8" title="Default constructor.">ProgressHandler</a>. The default implementation provided by <a class="el" href="namespace_assimp.html">Assimp</a> doesn't do anything at all. <hr><h2>Member Function Documentation</h2>
+Each Importer instance maintains its own <a class="el" href="class_assimp_1_1_progress_handler.html#53b192913e9904c674b851c46e1ea9e8" title="Default constructor.">ProgressHandler</a>. The default implementation provided by <a class="el" href="namespace_assimp.html">Assimp</a> doesn't do anything at all. 
+<p>Definition at line <a class="el" href="_progress_handler_8hpp-source.html#l00058">58</a> of file <a class="el" href="_progress_handler_8hpp-source.html">ProgressHandler.hpp</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="b08a1d300d434f6dd86ca41747cba448"></a><!-- doxytag: member="Assimp::ProgressHandler::Update" ref="b08a1d300d434f6dd86ca41747cba448" args="(float percentage=-1.f)=0" -->
 <div class="memitem">
 <div class="memproto">
@@ -125,6 +127,14 @@ Progress callback for file loading steps.
 </dl>
 <dl class="note" compact><dt><b>Note:</b></dt><dd>This is currently only used at the start and the end of the file parsing. </dd></dl>
 
+<p>Definition at line <a class="el" href="_progress_handler_8hpp-source.html#l00103">103</a> of file <a class="el" href="_progress_handler_8hpp-source.html">ProgressHandler.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00103"></a>00103                                                                                     {
+<a name="l00104"></a>00104         <span class="keywordtype">float</span> f = numberOfSteps ? currentStep / (float)numberOfSteps : 1.0f;
+<a name="l00105"></a>00105         <a class="code" href="class_assimp_1_1_progress_handler.html#b08a1d300d434f6dd86ca41747cba448" title="Progress callback.">Update</a>( f * 0.5f );
+<a name="l00106"></a>00106     }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="57b30d2a9b2ae1f932918f18c30196ed"></a><!-- doxytag: member="Assimp::ProgressHandler::UpdatePostProcess" ref="57b30d2a9b2ae1f932918f18c30196ed" args="(int currentStep, int numberOfSteps)" -->
@@ -162,12 +172,20 @@ Progress callback for post-processing steps.
   </table>
 </dl>
 
+<p>Definition at line <a class="el" href="_progress_handler_8hpp-source.html#l00117">117</a> of file <a class="el" href="_progress_handler_8hpp-source.html">ProgressHandler.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00117"></a>00117                                                                                        {
+<a name="l00118"></a>00118         <span class="keywordtype">float</span> f = numberOfSteps ? currentStep / (float)numberOfSteps : 1.0f;
+<a name="l00119"></a>00119         <a class="code" href="class_assimp_1_1_progress_handler.html#b08a1d300d434f6dd86ca41747cba448" title="Progress callback.">Update</a>( f * 0.5f + 0.5f );
+<a name="l00120"></a>00120     }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="_progress_handler_8hpp.html">ProgressHandler.hpp</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="_progress_handler_8hpp-source.html">ProgressHandler.hpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:06:15 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:03:59 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

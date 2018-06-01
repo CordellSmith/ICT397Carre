@@ -8,6 +8,13 @@ digraph G
   Node2 [label="btAlignedObjectArray\< btTypedConstraint * \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
   Node3 -> Node2 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
   Node3 [label="btAlignedAllocator\< btTypedConstraint *, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
-  Node4 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_optionalMotionState"];
-  Node4 [label="btMotionState",height=0.2,width=0.4,color="black",URL="$classbt_motion_state.html"];
+  Node4 -> Node3 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btTypedConstraint *, 16 \>"];
+  Node4 [label="btAlignedAllocator\< T, Alignment \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node5 -> Node2 [dir=back,color="orange",fontsize=10,style="dashed",label="\< btTypedConstraint * \>"];
+  Node5 [label="btAlignedObjectArray\< T \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_object_array.html"];
+  Node6 -> Node5 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_allocator"];
+  Node6 [label="btAlignedAllocator\< T, 16 \>",height=0.2,width=0.4,color="black",URL="$classbt_aligned_allocator.html"];
+  Node4 -> Node6 [dir=back,color="orange",fontsize=10,style="dashed",label="\< T, 16 \>"];
+  Node7 -> Node1 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_optionalMotionState"];
+  Node7 [label="btMotionState",height=0.2,width=0.4,color="black",URL="$classbt_motion_state.html"];
 }

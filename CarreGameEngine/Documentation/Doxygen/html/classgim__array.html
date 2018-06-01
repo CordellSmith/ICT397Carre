@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: gim_array&lt; T &gt; Class Template Reference</title>
+<title>Assignment2 - OOber Taxi: gim_array&lt; T &gt; Class Template Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,8 +28,15 @@
 <h1>gim_array&lt; T &gt; Class Template Reference</h1><!-- doxytag: class="gim_array" -->Very simple array container with fast access and simd memory.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;gim_array.h&gt;</code>
+<code>#include &lt;<a class="el" href="gim__array_8h-source.html">gim_array.h</a>&gt;</code>
 <p>
+<div class="dynheader">
+Inheritance diagram for gim_array&lt; T &gt;:</div>
+<div class="dynsection">
+<p><center><img src="classgim__array__inherit__graph.png" border="0" usemap="#gim__array_3_01_t_01_4__inherit__map" alt="Inheritance graph"></center>
+<map name="gim__array_3_01_t_01_4__inherit__map">
+<area shape="rect" href="classgim__array.html" title="gim_array\&lt; GIM_PAIR \&gt;" alt="" coords="396,9,559,36"><area shape="rect" href="classgim__array.html" title="gim_array\&lt; GIM_BOX_TREE_NODE \&gt;" alt="" coords="356,60,599,87"><area shape="rect" href="classgim__array.html" title="gim_array\&lt; GIM_HASH_TABLE_NODE \&gt;" alt="" coords="347,111,608,137"><area shape="rect" href="classgim__array.html" title="gim_array\&lt; GUINT \&gt;" alt="" coords="408,161,547,188"><area shape="rect" href="classgim__array.html" title="gim_array\&lt; GIM_CONTACT \&gt;" alt="" coords="381,212,573,239"><area shape="rect" href="classgim__pair__set.html" title="A pairset array." alt="" coords="659,9,755,36"></map>
+<center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
 <a href="classgim__array-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
@@ -62,7 +69,9 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <h3>template&lt;typename T&gt;<br>
  class gim_array&lt; T &gt;</h3>
 
-Very simple array container with fast access and simd memory. <hr><h2>Member Function Documentation</h2>
+Very simple array container with fast access and simd memory. 
+<p>Definition at line <a class="el" href="gim__array_8h-source.html#l00043">43</a> of file <a class="el" href="gim__array_8h-source.html">gim_array.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="a7a9dca42674415635846cd077cb4a97"></a><!-- doxytag: member="gim_array::destroyData" ref="a7a9dca42674415635846cd077cb4a97" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -82,6 +91,16 @@ template&lt;typename T&gt; </div>
 
 <p>
 protected operations 
+<p>Definition at line <a class="el" href="gim__array_8h-source.html#l00055">55</a> of file <a class="el" href="gim__array_8h-source.html">gim_array.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00056"></a>00056         {
+<a name="l00057"></a>00057             m_allocated_size = 0;
+<a name="l00058"></a>00058                 <span class="keywordflow">if</span>(<a class="code" href="classgim__array.html#afb886b0fb48bed8c878d8a82dc4099c">m_data</a>==NULL) <span class="keywordflow">return</span>;
+<a name="l00059"></a>00059                 gim_free(<a class="code" href="classgim__array.html#afb886b0fb48bed8c878d8a82dc4099c">m_data</a>);
+<a name="l00060"></a>00060                 <a class="code" href="classgim__array.html#afb886b0fb48bed8c878d8a82dc4099c">m_data</a> = NULL;
+<a name="l00061"></a>00061         }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <a class="anchor" name="572f94b5b67d505335150a2dea8a7e3d"></a><!-- doxytag: member="gim_array::reserve" ref="572f94b5b67d505335150a2dea8a7e3d" args="(GUINT size)" -->
@@ -104,6 +123,14 @@ template&lt;typename T&gt; </div>
 
 <p>
 public operations 
+<p>Definition at line <a class="el" href="gim__array_8h-source.html#l00097">97</a> of file <a class="el" href="gim__array_8h-source.html">gim_array.h</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00098"></a>00098     {
+<a name="l00099"></a>00099         <span class="keywordflow">if</span>(m_allocated_size&gt;=size) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00100"></a>00100         <span class="keywordflow">return</span> resizeData(size);
+<a name="l00101"></a>00101     }
+</pre></div>
+<p>
+
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
@@ -122,12 +149,16 @@ template&lt;typename T&gt; </div>
 
 <p>
 properties 
+<p>Definition at line <a class="el" href="gim__array_8h-source.html#l00048">48</a> of file <a class="el" href="gim__array_8h-source.html">gim_array.h</a>.</p>
+
+<p>Referenced by <a class="el" href="gim__box__set_8h-source.html#l00287">GIM_BOX_TREE_TEMPLATE_SET&lt; _GIM_PRIMITIVE_MANAGER_PROTOTYPE, GIM_BOX_TREE &gt;::buildSet()</a>, and <a class="el" href="gim__array_8h-source.html#l00055">gim_array&lt; GIM_CONTACT &gt;::destroyData()</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="gim__array_8h.html">gim_array.h</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="gim__array_8h-source.html">gim_array.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:05:03 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:02:16 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

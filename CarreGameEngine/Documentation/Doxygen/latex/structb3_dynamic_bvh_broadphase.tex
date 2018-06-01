@@ -19,6 +19,8 @@ void \hyperlink{structb3_dynamic_bvh_broadphase_c18c206ccd45e8e2f0c817381d6840a0
 \subsection{Detailed Description}
 The \hyperlink{structb3_dynamic_bvh_broadphase}{b3DynamicBvhBroadphase} implements a broadphase using two dynamic AABB bounding volume hierarchies/trees (see \hyperlink{structb3_dynamic_bvh}{b3DynamicBvh}). One tree is used for static/non-moving objects, and another tree is used for dynamic objects. Objects can move from one tree to the other. This is a very fast broadphase, especially for very dynamic worlds where many objects are moving. Its insert/add and remove of objects is generally faster than the sweep and prune broadphases b3AxisSweep3 and b332BitAxisSweep3. 
 
+Definition at line 120 of file b3DynamicBvhBroadphase.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{structb3_dynamic_bvh_broadphase_c18c206ccd45e8e2f0c817381d6840a0}{
 \index{b3DynamicBvhBroadphase@{b3DynamicBvhBroadphase}!setAabbForceUpdate@{setAabbForceUpdate}}
@@ -29,7 +31,53 @@ The \hyperlink{structb3_dynamic_bvh_broadphase}{b3DynamicBvhBroadphase} implemen
 
 this setAabbForceUpdate is similar to setAabb but always forces the aabb update. it is not part of the b3BroadphaseInterface but specific to \hyperlink{structb3_dynamic_bvh_broadphase}{b3DynamicBvhBroadphase}. it bypasses certain optimizations that prevent aabb updates (when the aabb shrinks), see \href{http://code.google.com/p/bullet/issues/detail?id=223}{\tt http://code.google.com/p/bullet/issues/detail?id=223} 
 
+Definition at line 361 of file b3DynamicBvhBroadphase.cpp.
+
+References b3DynamicBvh::collideTTpersistentStack(), b3DynamicBvh::insert(), b3DynamicBvh::remove(), and b3DynamicBvh::update().
+
+\begin{Code}\begin{verbatim}365 {
+366         b3DbvtProxy*                                            proxy=(b3DbvtProxy*)absproxy;
+367         B3_ATTRIBUTE_ALIGNED16(b3DbvtVolume)    aabb=b3DbvtVolume::FromMM(aabbMin,aabbMax);
+368         bool    docollide=false;
+369         if(proxy->stage==STAGECOUNT)
+370         {/* fixed -> dynamic set        */ 
+371                 m_sets[1].remove(proxy->leaf);
+372                 proxy->leaf=m_sets[0].insert(aabb,proxy);
+373                 docollide=true;
+374         }
+375         else
+376         {/* dynamic set                         */ 
+377                 ++m_updates_call;
+378                 /* Teleporting                  */ 
+379                 m_sets[0].update(proxy->leaf,aabb);
+380                 ++m_updates_done;
+381                 docollide=true;
+382         }
+383         b3ListRemove(proxy,m_stageRoots[proxy->stage]);
+384         proxy->m_aabbMin = aabbMin;
+385         proxy->m_aabbMax = aabbMax;
+386         proxy->stage    =       m_stageCurrent;
+387         b3ListAppend(proxy,m_stageRoots[m_stageCurrent]);
+388         if(docollide)
+389         {
+390                 m_needcleanup=true;
+391                 if(!m_deferedcollide)
+392                 {
+393                         b3DbvtTreeCollider      collider(this);
+394                         m_sets[1].collideTTpersistentStack(m_sets[1].m_root,proxy->leaf,collider);
+395                         m_sets[0].collideTTpersistentStack(m_sets[0].m_root,proxy->leaf,collider);
+396                 }
+397         }       
+398 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this struct was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3DynamicBvhBroadphase.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3DynamicBvhBroadphase.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3DynamicBvhBroadphase.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Collision/BroadPhaseCollision/b3DynamicBvhBroadphase.cpp\end{CompactItemize}

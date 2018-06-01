@@ -1,6 +1,6 @@
 \hypertarget{gim__radixsort_8h}{
-\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-radixsort.h File Reference}
-\label{gim__radixsort_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-radixsort.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-radixsort.h}}
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-radixsort.h File Reference}
+\label{gim__radixsort_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-radixsort.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-radixsort.h}}
 }
 {\tt \#include \char`\"{}gim\_\-memory.h\char`\"{}}\par
 
@@ -49,6 +49,8 @@ void \hyperlink{gim__radixsort_8h_7465b49642a34b13aaaf84bc5b38ab67}{gim\_\-radix
 \item[Author:]Francisco Leon Najera. Based on the work of Michael Herf : \char`\"{}fast floating-point radix sort\char`\"{} Avaliable on \href{http://www.stereopsis.com/radix.html}{\tt http://www.stereopsis.com/radix.html} \end{Desc}
 
 
+Definition in file \hyperlink{gim__radixsort_8h-source}{gim\_\-radixsort.h}.
+
 \subsection{Function Documentation}
 \hypertarget{gim__radixsort_8h_f8659fc44c5ded1334ef6957654bc76b}{
 \index{gim\_\-radixsort.h@{gim\_\-radixsort.h}!gim\_\-binary\_\-search@{gim\_\-binary\_\-search}}
@@ -66,6 +68,38 @@ If the element is not found, it returns the nearest upper element position, may 
 \end{Desc}
 \begin{Desc}
 \item[Returns:]true if found, else false \end{Desc}
+
+
+Definition at line 318 of file gim\_\-radixsort.h.
+
+\begin{Code}\begin{verbatim}322 {
+323         GUINT _i = _start_i;
+324         GUINT _j = _end_i+1;
+325         GUINT _k;
+326         while(_i < _j)
+327         {
+328                 _k = (_j+_i-1)/2;
+329                 if(_array[_k]==_search_key)
+330                 {
+331                         _result_index = _k;
+332                         return true;
+333                 }
+334                 else if (_array[_k]<_search_key)
+335                 {
+336                         _i = _k+1;
+337                 }
+338                 else
+339                 {
+340                         _j = _k;
+341                 }
+342         }
+343         _result_index = _i;
+344         return false;
+345 }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{gim__radixsort_8h_7be883eaa7e11dab454089d654537e35}{
 \index{gim\_\-radixsort.h@{gim\_\-radixsort.h}!gim\_\-binary\_\-search\_\-ex@{gim\_\-binary\_\-search\_\-ex}}
 \index{gim\_\-binary\_\-search\_\-ex@{gim\_\-binary\_\-search\_\-ex}!gim_radixsort.h@{gim\_\-radixsort.h}}
@@ -80,7 +114,45 @@ If the element is not found, it returns the nearest upper element position, may 
 \begin{description}
 \item[{\em \_\-array}]\item[{\em \_\-start\_\-i}]the beginning of the array \item[{\em \_\-end\_\-i}]the ending index of the array \item[{\em \_\-search\_\-key}]Value to find \item[{\em \_\-comp\_\-macro}]macro for comparing elements \item[{\em \_\-found}]If true the value has found. Boolean \item[{\em \_\-result\_\-index}]the index of the found element, or if not found then it will get the index of the closest bigger value \end{description}
 \end{Desc}
-\hypertarget{gim__radixsort_8h_41009ea63c51a0a22ff221b583dc391d}{
+
+
+Definition at line 273 of file gim\_\-radixsort.h.
+
+Referenced by gim\_\-hash\_\-table$<$ T $>$::\_\-insert\_\-sorted(), and gim\_\-hash\_\-table$<$ T $>$::find().
+
+\begin{Code}\begin{verbatim}278 {
+279         GUINT _k;
+280         int _comp_result;
+281         GUINT _i = _start_i;
+282         GUINT _j = _end_i+1;
+283         while (_i < _j)
+284         {
+285                 _k = (_j+_i-1)/2;
+286                 _comp_result = _comp_macro(_array[_k], _search_key);
+287                 if (_comp_result == 0)
+288                 {
+289                         _result_index = _k;
+290                         return true;
+291                 }
+292                 else if (_comp_result < 0)
+293                 {
+294                         _i = _k+1;
+295                 }
+296                 else
+297                 {
+298                         _j = _k;
+299                 }
+300         }
+301         _result_index = _i;
+302         return false;
+303 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{gim__radixsort_8h_41009ea63c51a0a22ff221b583dc391d}{
 \index{gim\_\-radixsort.h@{gim\_\-radixsort.h}!gim\_\-radix\_\-sort@{gim\_\-radix\_\-sort}}
 \index{gim\_\-radix\_\-sort@{gim\_\-radix\_\-sort}!gim_radixsort.h@{gim\_\-radixsort.h}}
 \subsubsection[gim\_\-radix\_\-sort]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, class GETKEY\_\-CLASS, class COPY\_\-CLASS$>$ void gim\_\-radix\_\-sort (T $\ast$ {\em array}, \/  GUINT {\em element\_\-count}, \/  GETKEY\_\-CLASS {\em get\_\-uintkey\_\-macro}, \/  COPY\_\-CLASS {\em copy\_\-elements\_\-macro})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -94,7 +166,31 @@ Sorts array in place. For generic use.
 \begin{description}
 \item[{\em type}]Type of the array \item[{\em array}]\item[{\em element\_\-count}]\item[{\em get\_\-uintkey\_\-macro}]Macro for extract the Integer value of the element. Similar to SIMPLE\_\-GET\_\-UINTKEY \item[{\em copy\_\-elements\_\-macro}]Macro for copy elements, similar to SIMPLE\_\-COPY\_\-ELEMENTS \end{description}
 \end{Desc}
-\hypertarget{gim__radixsort_8h_dc804c6eb5898638d59eeed4b400f1d5}{
+
+
+Definition at line 245 of file gim\_\-radixsort.h.
+
+References gim\_\-radix\_\-sort\_\-array\_\-tokens().
+
+\begin{Code}\begin{verbatim}248 {
+249         GIM_RSORT_TOKEN * _sorted = (GIM_RSORT_TOKEN  *) gim_alloc(sizeof(GIM_RSORT_TOKEN)*element_count);
+250     gim_radix_sort_array_tokens(array,_sorted,element_count,get_uintkey_macro);
+251     T * _original_array = (T *) gim_alloc(sizeof(T)*element_count);
+252     gim_simd_memcpy(_original_array,array,sizeof(T)*element_count);
+253     for (GUINT _i=0;_i<element_count;++_i)
+254     {
+255         copy_elements_macro(array[_i],_original_array[_sorted[_i].m_value]);
+256     }
+257     gim_free(_original_array);
+258     gim_free(_sorted);
+259 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{gim__radixsort_8h_dc804c6eb5898638d59eeed4b400f1d5}{
 \index{gim\_\-radixsort.h@{gim\_\-radixsort.h}!gim\_\-radix\_\-sort\_\-array\_\-tokens@{gim\_\-radix\_\-sort\_\-array\_\-tokens}}
 \index{gim\_\-radix\_\-sort\_\-array\_\-tokens@{gim\_\-radix\_\-sort\_\-array\_\-tokens}!gim_radixsort.h@{gim\_\-radixsort.h}}
 \subsubsection[gim\_\-radix\_\-sort\_\-array\_\-tokens]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, class GETKEY\_\-CLASS$>$ void gim\_\-radix\_\-sort\_\-array\_\-tokens (T $\ast$ {\em array}, \/  GIM\_\-RSORT\_\-TOKEN $\ast$ {\em sorted\_\-tokens}, \/  GUINT {\em element\_\-count}, \/  GETKEY\_\-CLASS {\em uintkey\_\-macro})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -108,3 +204,31 @@ Get the sorted tokens from an array. For generic use. Tokens are IRR\_\-RSORT\_\
 \begin{description}
 \item[{\em array}]Array of elements to sort \item[{\em sorted\_\-tokens}]Tokens of sorted elements \item[{\em element\_\-count}]element count \item[{\em uintkey\_\-macro}]Functor which retrieves the integer representation of an array element \end{description}
 \end{Desc}
+
+
+Definition at line 220 of file gim\_\-radixsort.h.
+
+References gim\_\-radix\_\-sort\_\-rtokens().
+
+Referenced by gim\_\-radix\_\-sort().
+
+\begin{Code}\begin{verbatim}224 {
+225         GIM_RSORT_TOKEN * _unsorted = (GIM_RSORT_TOKEN *) gim_alloc(sizeof(GIM_RSORT_TOKEN)*element_count);
+226     for (GUINT _i=0;_i<element_count;++_i)
+227     {
+228         _unsorted[_i].m_key = uintkey_macro(array[_i]);
+229         _unsorted[_i].m_value = _i;
+230     }
+231     gim_radix_sort_rtokens(_unsorted,sorted_tokens,element_count);
+232     gim_free(_unsorted);
+233     gim_free(_unsorted);
+234 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:

@@ -10,4 +10,6 @@ digraph G
   Node3 [label="GIM_BOX_TREE_NODE",height=0.2,width=0.4,color="black",URL="$struct_g_i_m___b_o_x___t_r_e_e___n_o_d_e.html",tooltip="Node Structure for trees."];
   Node4 -> Node3 [dir=back,color="darkorchid3",fontsize=10,style="dashed",label="m_bound"];
   Node4 [label="GIM_AABB",height=0.2,width=0.4,color="black",URL="$class_g_i_m___a_a_b_b.html",tooltip="Axis aligned box."];
+  Node5 -> Node2 [dir=back,color="orange",fontsize=10,style="dashed",label="\< GIM_BOX_TREE_NODE \>"];
+  Node5 [label="gim_array\< T \>",height=0.2,width=0.4,color="black",URL="$classgim__array.html",tooltip="Very simple array container with fast access and simd memory."];
 }

@@ -1,0 +1,10 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="Assimp::Logger::Logger",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="Assimp::Logger::setLogSeverity",height=0.2,width=0.4,color="black",URL="$class_assimp_1_1_logger.html#8fb4fa4c2c329a36ac39bc9c743925f1",tooltip="Set a new log severity."];
+}

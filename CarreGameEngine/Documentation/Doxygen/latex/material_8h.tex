@@ -1,6 +1,6 @@
 \hypertarget{material_8h}{
-\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/material.h File Reference}
-\label{material_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/material.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/material.h}}
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/material.h File Reference}
+\label{material_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/material.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/material.h}}
 }
 Defines the material system of the library. 
 
@@ -102,6 +102,8 @@ Defines the material system of the library.
 
 
 
+Definition in file \hyperlink{material_8h-source}{material.h}.
+
 \subsection{Enumeration Type Documentation}
 \hypertarget{material_8h_e1236da1ccfbf4f23bb490287a4d61ac}{
 \index{material.h@{material.h}!aiBlendMode@{aiBlendMode}}
@@ -146,6 +148,26 @@ Formula:
 
  \end{description}
 \end{Desc}
+
+
+
+Definition at line 421 of file material.h.
+
+\begin{Code}\begin{verbatim}422 {
+429     aiBlendMode_Default = 0x0,
+430 
+438     aiBlendMode_Additive = 0x1,
+439 
+440     // we don't need more for the moment, but we might need them
+441     // in future versions ...
+442 
+443 #ifndef SWIG
+444     _aiBlendMode_Force32Bit = INT_MAX
+445 #endif
+446 };
+\end{verbatim}
+\end{Code}
+
 
 \hypertarget{material_8h_93e23e0201d6ed86fb4287e15218e4cf}{
 \index{material.h@{material.h}!aiShadingMode@{aiShadingMode}}
@@ -211,6 +233,40 @@ aiShadingMode\_\-Fresnel}
 }]Fresnel shading \end{description}
 \end{Desc}
 
+
+
+Definition at line 304 of file material.h.
+
+\begin{Code}\begin{verbatim}305 {
+309     aiShadingMode_Flat = 0x1,
+310 
+313     aiShadingMode_Gouraud = 0x2,
+314 
+317     aiShadingMode_Phong = 0x3,
+318 
+321     aiShadingMode_Blinn = 0x4,
+322 
+327     aiShadingMode_Toon = 0x5,
+328 
+334     aiShadingMode_OrenNayar = 0x6,
+335 
+341     aiShadingMode_Minnaert = 0x7,
+342 
+347     aiShadingMode_CookTorrance = 0x8,
+348 
+351     aiShadingMode_NoShading = 0x9,
+352 
+355     aiShadingMode_Fresnel = 0xa,
+356 
+357 
+358 #ifndef SWIG
+359     _aiShadingMode_Force32Bit = INT_MAX
+360 #endif
+361 };
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{material_8h_6d003e078617e4e80d1313a6250b2dfd}{
 \index{material.h@{material.h}!aiTextureFlags@{aiTextureFlags}}
 \index{aiTextureFlags@{aiTextureFlags}!material.h@{material.h}}
@@ -244,6 +300,25 @@ aiTextureFlags\_\-IgnoreAlpha}
 Mutually exclusive with \hyperlink{material_8h_6d003e078617e4e80d1313a6250b2dfd5712da7264ec0c6e90b45580e5badbe0}{aiTextureFlags\_\-UseAlpha}. \end{description}
 \end{Desc}
 
+
+
+Definition at line 375 of file material.h.
+
+\begin{Code}\begin{verbatim}376 {
+379     aiTextureFlags_Invert = 0x1,
+380 
+390     aiTextureFlags_UseAlpha = 0x2,
+391 
+397     aiTextureFlags_IgnoreAlpha = 0x4,
+398 
+399 #ifndef SWIG
+400       _aiTextureFlags_Force32Bit = INT_MAX
+401 #endif
+402 };
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{material_8h_6cbe56056751aa80e8dd714632a49de0}{
 \index{material.h@{material.h}!aiTextureMapMode@{aiTextureMapMode}}
 \index{aiTextureMapMode@{aiTextureMapMode}!material.h@{material.h}}
@@ -274,6 +349,27 @@ aiTextureMapMode\_\-Mirror}
 \label{material_8h_6cbe56056751aa80e8dd714632a49de0e0105c73fb2e7e6d10e80395b6995337}
 }]A texture coordinate u$|$v becomes u1$|$v1 if (u-(u1))2 is zero and 1-(u1)$|$1-(v1) otherwise \end{description}
 \end{Desc}
+
+
+
+Definition at line 109 of file material.h.
+
+\begin{Code}\begin{verbatim}110 {
+113     aiTextureMapMode_Wrap = 0x0,
+114 
+118     aiTextureMapMode_Clamp = 0x1,
+119 
+123     aiTextureMapMode_Decal = 0x3,
+124 
+128     aiTextureMapMode_Mirror = 0x2,
+129 
+130 #ifndef SWIG
+131     _aiTextureMapMode_Force32Bit = INT_MAX
+132 #endif
+133 };
+\end{verbatim}
+\end{Code}
+
 
 \hypertarget{material_8h_6186e909f1ae28133ab10f1b4635b0f9}{
 \index{material.h@{material.h}!aiTextureMapping@{aiTextureMapping}}
@@ -315,6 +411,32 @@ aiTextureMapping\_\-OTHER}
 \label{material_8h_6186e909f1ae28133ab10f1b4635b0f9585fb9423e1e77a52c9096fc0b907881}
 }]Undefined mapping. Have fun. \end{description}
 \end{Desc}
+
+
+
+Definition at line 144 of file material.h.
+
+\begin{Code}\begin{verbatim}145 {
+152     aiTextureMapping_UV = 0x0,
+153 
+155     aiTextureMapping_SPHERE = 0x1,
+156 
+158     aiTextureMapping_CYLINDER = 0x2,
+159 
+161     aiTextureMapping_BOX = 0x3,
+162 
+164     aiTextureMapping_PLANE = 0x4,
+165 
+167     aiTextureMapping_OTHER = 0x5,
+168 
+169 
+170 #ifndef SWIG
+171     _aiTextureMapping_Force32Bit = INT_MAX
+172 #endif
+173 };
+\end{verbatim}
+\end{Code}
+
 
 \hypertarget{material_8h_fcd3096d69affba13114cedfc6f9ee6b}{
 \index{material.h@{material.h}!aiTextureOp@{aiTextureOp}}
@@ -372,6 +494,32 @@ aiTextureOp\_\-SignedAdd}
 \label{material_8h_fcd3096d69affba13114cedfc6f9ee6bbe30ac3d3c7bff0fe1d69c70fbd646ff}
 }]T = T1 + (T2-0.5) \end{description}
 \end{Desc}
+
+
+
+Definition at line 78 of file material.h.
+
+\begin{Code}\begin{verbatim}79 {
+81     aiTextureOp_Multiply = 0x0,
+82 
+84     aiTextureOp_Add = 0x1,
+85 
+87     aiTextureOp_Subtract = 0x2,
+88 
+90     aiTextureOp_Divide = 0x3,
+91 
+93     aiTextureOp_SmoothAdd = 0x4,
+94 
+96     aiTextureOp_SignedAdd = 0x5,
+97 
+98 
+99 #ifndef SWIG
+100     _aiTextureOp_Force32Bit = INT_MAX
+101 #endif
+102 };
+\end{verbatim}
+\end{Code}
+
 
 \hypertarget{material_8h_7dd415ff703a2cc53d1c22ddbbd7dde0}{
 \index{material.h@{material.h}!aiTextureType@{aiTextureType}}
@@ -460,6 +608,48 @@ aiTextureType\_\-UNKNOWN}
 
 A texture reference that does not match any of the definitions above is considered to be 'unknown'. It is still imported, but is excluded from any further postprocessing. \end{description}
 \end{Desc}
+
+
+
+Definition at line 190 of file material.h.
+
+\begin{Code}\begin{verbatim}191 {
+198     aiTextureType_NONE = 0x0,
+199 
+200 
+201 
+205     aiTextureType_DIFFUSE = 0x1,
+206 
+210     aiTextureType_SPECULAR = 0x2,
+211 
+215     aiTextureType_AMBIENT = 0x3,
+216 
+220     aiTextureType_EMISSIVE = 0x4,
+221 
+227     aiTextureType_HEIGHT = 0x5,
+228 
+235     aiTextureType_NORMALS = 0x6,
+236 
+244     aiTextureType_SHININESS = 0x7,
+245 
+251     aiTextureType_OPACITY = 0x8,
+252 
+258     aiTextureType_DISPLACEMENT = 0x9,
+259 
+267     aiTextureType_LIGHTMAP = 0xA,
+268 
+274     aiTextureType_REFLECTION = 0xB,
+275 
+282     aiTextureType_UNKNOWN = 0xC,
+283 
+284 
+285 #ifndef SWIG
+286     _aiTextureType_Force32Bit = INT_MAX
+287 #endif
+288 };
+\end{verbatim}
+\end{Code}
+
 
 
 

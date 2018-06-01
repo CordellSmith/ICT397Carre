@@ -1,0 +1,421 @@
+\hypertarget{class_dynamic_object}{
+\section{DynamicObject Class Reference}
+\label{class_dynamic_object}\index{DynamicObject@{DynamicObject}}
+}
+{\tt \#include $<$DynamicObject.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_dynamic_object_ded38f8769ea3994d03742f79f72ee07}{DynamicObject} (GLfloat velocity, GLuint Width, GLuint Height, GLint start, GLint end)
+\begin{CompactList}\small\item\em Default constructor. \item\end{CompactList}\item 
+\hyperlink{class_dynamic_object_149b612e1f0288b115178874bd0cba93}{$\sim$DynamicObject} ()
+\begin{CompactList}\small\item\em Default destructor. \item\end{CompactList}\item 
+void \hyperlink{class_dynamic_object_051bb345c635c976355223d3e5586bf9}{Import} (const char $\ast$filename, const \hyperlink{group__core__types_g7dcd2365c2e368e6af5b7adeb6a9c8df}{glm::mat4} \&TransformationMatrix)
+\begin{CompactList}\small\item\em Load an MD2 model from file. \item\end{CompactList}\item 
+void \hyperlink{class_dynamic_object_c22d80000f1cb3aeb9837224e54f23a3}{Animate} (float time)
+\begin{CompactList}\small\item\em Calculate the current frame in animation. \item\end{CompactList}\item 
+void \hyperlink{class_dynamic_object_2730ff294914d7fe0a66bad8378bcda8}{Draw} ()
+\begin{CompactList}\small\item\em Render MD2 using \hyperlink{class_vertex}{Vertex} Buffer Object. \item\end{CompactList}\item 
+void \hyperlink{class_dynamic_object_cc2b12c7d159ced09674c2146cde899b}{UpdateVAO} ()
+\begin{CompactList}\small\item\em Update \hyperlink{class_vertex}{Vertex} Buffer Object. \item\end{CompactList}\item 
+GLuint \hyperlink{class_dynamic_object_dacee7650d9d71a9f1ea7dc6a3c9c774}{GetTextureWidth} ()
+\begin{CompactList}\small\item\em Get Texture Width. \item\end{CompactList}\item 
+GLuint \hyperlink{class_dynamic_object_86d1a6d8afebc7d9499fe7a26a1faaf1}{GetTextureHeight} ()
+\begin{CompactList}\small\item\em Get Texture Height. \item\end{CompactList}\item 
+void \hyperlink{class_dynamic_object_056fb17fa06596d19a9fd3a269cb9da3}{SetVelocity} (float vel)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{class_dynamic_object}{DynamicObject}. A Class to track the GPU time from different part of the program Also includes a log to print all the times 
+
+Definition at line 120 of file DynamicObject.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_dynamic_object_ded38f8769ea3994d03742f79f72ee07}{
+\index{DynamicObject@{DynamicObject}!DynamicObject@{DynamicObject}}
+\index{DynamicObject@{DynamicObject}!DynamicObject@{DynamicObject}}
+\subsubsection[DynamicObject]{\setlength{\rightskip}{0pt plus 5cm}DynamicObject::DynamicObject (GLfloat {\em velocity}, \/  GLuint {\em Width}, \/  GLuint {\em Height}, \/  GLint {\em start}, \/  GLint {\em end})}}
+\label{class_dynamic_object_ded38f8769ea3994d03742f79f72ee07}
+
+
+Default constructor. 
+
+Default constructor
+
+velocity the velocity of the animation  Width the width of the texture atlas  Height the height of the texture atlas  start the start frame of the animation  end the end frame of the animation 
+
+Definition at line 29 of file DynamicObject.cpp.
+
+\begin{Code}\begin{verbatim}30 {
+31         m_fAnimationVelocity = velocity;
+32 
+33         m_iWidth = Width;
+34         m_iHeight = Height;
+35 
+36         m_iStart = start;
+37         m_iEnd = end;
+38 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_dynamic_object_149b612e1f0288b115178874bd0cba93}{
+\index{DynamicObject@{DynamicObject}!$\sim$DynamicObject@{$\sim$DynamicObject}}
+\index{$\sim$DynamicObject@{$\sim$DynamicObject}!DynamicObject@{DynamicObject}}
+\subsubsection[$\sim$DynamicObject]{\setlength{\rightskip}{0pt plus 5cm}DynamicObject::$\sim$DynamicObject ()}}
+\label{class_dynamic_object_149b612e1f0288b115178874bd0cba93}
+
+
+Default destructor. 
+
+Default destructor 
+
+Definition at line 43 of file DynamicObject.cpp.
+
+\begin{Code}\begin{verbatim}44 {
+45         glDeleteBuffers(1, &m_Vbo);
+46         glDeleteVertexArrays(1, &m_iVao);
+47 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_dynamic_object_051bb345c635c976355223d3e5586bf9}{
+\index{DynamicObject@{DynamicObject}!Import@{Import}}
+\index{Import@{Import}!DynamicObject@{DynamicObject}}
+\subsubsection[Import]{\setlength{\rightskip}{0pt plus 5cm}void DynamicObject::Import (const char $\ast$ {\em filename}, \/  const {\bf glm::mat4} \& {\em TransformationMatrix})}}
+\label{class_dynamic_object_051bb345c635c976355223d3e5586bf9}
+
+
+Load an MD2 model from file. 
+
+Load an MD2 model from file.
+
+Note: MD2 format stores model's data in little-endian ordering. On big-endian machines, you'll have to perform proper conversions.
+
+filename the name of the model to be loaded  TransformationMatrix a Matrix with all the transformations to be made to the model 
+
+Definition at line 61 of file DynamicObject.cpp.
+
+\begin{Code}\begin{verbatim}62 {
+63         FILE *fp;
+64         int i;
+65 
+66         m_sFile = filename;
+67 
+68         fopen_s (&fp, filename, "rb");
+69         
+70         if (!fp)
+71         {
+72                 fprintf (stderr, "Error: couldn't open \"%s\"!\n", filename);
+73                 system("pause");
+74                 exit(0);
+75         }
+76 
+77         md2_model_t m_Object;
+78 
+79         /* Read header */
+80         fread (&m_Object.header, 1, sizeof (md2_header_t), fp);
+81 
+82         if ((m_Object.header.ident != 844121161) ||
+83                 (m_Object.header.version != 8))
+84         {
+85                 /* Error! */
+86                 fprintf (stderr, "Error: bad version or identifier\n");
+87                 fclose (fp);
+88                 system("pause");
+89                 exit(0);
+90         }
+91 
+92         /* Memory allocations */
+93         m_Object.skins.resize(m_Object.header.num_skins);
+94         m_Object.texcoords.resize(m_Object.header.num_st);
+95         m_Object.triangles.resize(m_Object.header.num_tris);
+96         m_Object.frames.resize(m_Object.header.num_frames);
+97         m_Object.glcmds.resize(m_Object.header.num_glcmds);
+98 
+99 
+100         /* Read model data */
+101         if(m_Object.header.num_skins != 0)
+102         {
+103                 fseek (fp, m_Object.header.offset_skins, SEEK_SET);
+104                 fread (&m_Object.skins[0], sizeof (md2_skin_t),
+105                         m_Object.header.num_skins, fp);
+106         }
+107 
+108         if(m_Object.header.num_st != 0)
+109         {
+110                 fseek (fp, m_Object.header.offset_st, SEEK_SET);
+111                 fread (&m_Object.texcoords[0], sizeof (md2_texCoord_t),
+112                         m_Object.header.num_st, fp);
+113         }
+114 
+115         if(m_Object.header.num_tris != 0)
+116         {
+117                 fseek (fp, m_Object.header.offset_tris, SEEK_SET);
+118                 fread (&m_Object.triangles[0], sizeof (md2_triangle_t),
+119                         m_Object.header.num_tris, fp);
+120         }
+121 
+122         if(m_Object.header.num_glcmds != 0)
+123         {
+124                 fseek (fp, m_Object.header.offset_glcmds, SEEK_SET);
+125                 fread (&m_Object.glcmds[0], sizeof (int), m_Object.header.num_glcmds, fp);
+126         }
+127 
+128         /* Read frames */
+129         fseek (fp, m_Object.header.offset_frames, SEEK_SET);
+130         for (i = 0; i < m_Object.header.num_frames; ++i)
+131         {
+132                 /* Memory allocation for vertices of this frame */
+133                 m_Object.frames[i].verts.resize(m_Object.header.num_vertices);
+134 
+135                 /* Read frame data */
+136                 fread (m_Object.frames[i].scale, sizeof (vec3_t), 1, fp);
+137                 fread (m_Object.frames[i].translate, sizeof (vec3_t), 1, fp);
+138                 fread (m_Object.frames[i].name, sizeof (char), 16, fp);
+139                 fread (&m_Object.frames[i].verts[0], sizeof (md2_vertex_t),
+140                         m_Object.header.num_vertices, fp);
+141         }
+142 
+143         fclose (fp);
+144 
+145 
+147 
+148         LoadTexture(&m_Object);
+149         Transform(&m_Object, TransformationMatrix);
+150         
+151         //Free the memory from the auxiliar data structure
+152         m_Object.skins.clear();
+153         m_Object.texcoords.clear();
+154         m_Object.triangles.clear();
+155         m_Object.glcmds.clear();
+156  
+157     for (int i = 0; i < m_Object.header.num_frames; ++i)
+158         {
+159                 m_Object.frames[i].verts.clear();
+160         }
+161 
+162     m_Object.frames.clear();
+163 
+164         //End of freeing memory
+165         
+166         InitVAO();
+167 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_dynamic_object_c22d80000f1cb3aeb9837224e54f23a3}{
+\index{DynamicObject@{DynamicObject}!Animate@{Animate}}
+\index{Animate@{Animate}!DynamicObject@{DynamicObject}}
+\subsubsection[Animate]{\setlength{\rightskip}{0pt plus 5cm}void DynamicObject::Animate (float {\em time})}}
+\label{class_dynamic_object_c22d80000f1cb3aeb9837224e54f23a3}
+
+
+Calculate the current frame in animation. 
+
+Calculate the current frame in animation beginning at frame 'start' and ending at frame 'end', given interpolation percent. interp will be reseted to 0.0 if the next frame is reached.
+
+time is the time elapsed from the previos time 
+
+Definition at line 415 of file DynamicObject.cpp.
+
+\begin{Code}\begin{verbatim}416 {
+417         if(m_fInterpolation <= 0.0f)
+418                 m_fInterpolation  = 0.0f;
+419         
+420         m_fInterpolation += time * m_fAnimationVelocity;
+421 
+422         if ((m_iFrame < m_iStart) || (m_iFrame > m_iEnd))
+423         m_iFrame = m_iStart;
+424 
+425         if (m_fInterpolation >= 1.0f)
+426         {
+427                 /* Move to next frame */
+428                 m_fInterpolation = 0.0f;
+429                 (m_iFrame)++;
+430 
+431                 if (m_iFrame >= m_iEnd)
+432                         m_iFrame = m_iStart;
+433         }
+434 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_dynamic_object_2730ff294914d7fe0a66bad8378bcda8}{
+\index{DynamicObject@{DynamicObject}!Draw@{Draw}}
+\index{Draw@{Draw}!DynamicObject@{DynamicObject}}
+\subsubsection[Draw]{\setlength{\rightskip}{0pt plus 5cm}void DynamicObject::Draw ()}}
+\label{class_dynamic_object_2730ff294914d7fe0a66bad8378bcda8}
+
+
+Render MD2 using \hyperlink{class_vertex}{Vertex} Buffer Object. 
+
+Render MD2 using \hyperlink{class_vertex}{Vertex} Buffer Object 
+
+Definition at line 440 of file DynamicObject.cpp.
+
+\begin{Code}\begin{verbatim}441 {
+442         //Enable Texture
+443         glActiveTexture(GL_TEXTURE0);
+444         //TextureManager::Instance()->BindTexture(m_textureId);
+445 
+446 
+447         //Bind Buffers
+448         glBindVertexArray(m_iVao);
+449         
+450         glDrawArrays(GL_TRIANGLES,0, m_vVertex.size());
+451 
+452 
+453         //Unbid Buffer
+454         glBindVertexArray(0);
+455 
+456         /*glDisableVertexAttribArray(WORLD_COORD_LOCATION);
+457         glDisableVertexAttribArray(NORMAL_COORD_LOCATION);
+458         glDisableVertexAttribArray(TEXTURE_COORD_LOCATION);*/
+459 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_dynamic_object_cc2b12c7d159ced09674c2146cde899b}{
+\index{DynamicObject@{DynamicObject}!UpdateVAO@{UpdateVAO}}
+\index{UpdateVAO@{UpdateVAO}!DynamicObject@{DynamicObject}}
+\subsubsection[UpdateVAO]{\setlength{\rightskip}{0pt plus 5cm}void DynamicObject::UpdateVAO ()}}
+\label{class_dynamic_object_cc2b12c7d159ced09674c2146cde899b}
+
+
+Update \hyperlink{class_vertex}{Vertex} Buffer Object. 
+
+Update \hyperlink{class_vertex}{Vertex} Buffer Object 
+
+Definition at line 509 of file DynamicObject.cpp.
+
+References Vertex::NormalCoord, Vertex::TextureCoord, and Vertex::WorldCoord.
+
+\begin{Code}\begin{verbatim}510 {
+511         
+512         /* Check if n is in a valid range */
+513         if ((m_iFrame < 0) || (m_iFrame + 1 > m_finalObject.size() - 1))
+514         return;
+515         
+516         Vertex aux_vertex;
+517 
+518         for(GLuint i=0 ;i < m_finalObject[m_iFrame].size();++i)
+519         {
+520                 
+521                 /* Compute texture coordinates */
+522                 aux_vertex.TextureCoord = m_finalObject[m_iFrame][i].TextureCoord;
+523 
+524                         
+525                 /* Interpolate normals */
+526                 aux_vertex.NormalCoord =        m_finalObject[m_iFrame][i].NormalCoord + 
+527                                                                         m_fInterpolation * ( m_finalObject[m_iFrame + 1][i].NormalCoord
+528                                                                                                                 - m_finalObject[m_iFrame][i].NormalCoord);
+529 
+530                 /* Interpolate vertices */
+531                 aux_vertex.WorldCoord = m_finalObject[m_iFrame][i].WorldCoord + 
+532                                                                 m_fInterpolation * ( m_finalObject[m_iFrame + 1][i].WorldCoord
+533                                                                                                                 - m_finalObject[m_iFrame][i].WorldCoord);
+534 
+535                 m_vVertex[i] = aux_vertex;
+536         }
+537 
+538         //Bind Buffer to copy new data
+539         glBindBuffer(GL_ARRAY_BUFFER, m_Vbo);
+540  
+541         //Free the buffer
+542         glBufferData(GL_ARRAY_BUFFER, 0, NULL, GL_STREAM_DRAW);
+543 
+544         //Fill it with new data
+545         glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * m_vVertex.size(), &m_vVertex[0], GL_STREAM_DRAW);
+546 
+547         //Disable Buffers and vertex attributes
+548         glBindBuffer(GL_ARRAY_BUFFER, 0);
+549 
+550 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_dynamic_object_dacee7650d9d71a9f1ea7dc6a3c9c774}{
+\index{DynamicObject@{DynamicObject}!GetTextureWidth@{GetTextureWidth}}
+\index{GetTextureWidth@{GetTextureWidth}!DynamicObject@{DynamicObject}}
+\subsubsection[GetTextureWidth]{\setlength{\rightskip}{0pt plus 5cm}GLuint DynamicObject::GetTextureWidth ()}}
+\label{class_dynamic_object_dacee7650d9d71a9f1ea7dc6a3c9c774}
+
+
+Get Texture Width. 
+
+Get Texture Width
+
+\begin{Desc}
+\item[Returns:]width of the Texture \end{Desc}
+
+
+Definition at line 588 of file DynamicObject.cpp.
+
+\begin{Code}\begin{verbatim}589 {
+590         return m_iWidth;
+591 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_dynamic_object_86d1a6d8afebc7d9499fe7a26a1faaf1}{
+\index{DynamicObject@{DynamicObject}!GetTextureHeight@{GetTextureHeight}}
+\index{GetTextureHeight@{GetTextureHeight}!DynamicObject@{DynamicObject}}
+\subsubsection[GetTextureHeight]{\setlength{\rightskip}{0pt plus 5cm}GLuint DynamicObject::GetTextureHeight ()}}
+\label{class_dynamic_object_86d1a6d8afebc7d9499fe7a26a1faaf1}
+
+
+Get Texture Height. 
+
+Get Texture Height
+
+\begin{Desc}
+\item[Returns:]height of the Texture \end{Desc}
+
+
+Definition at line 599 of file DynamicObject.cpp.
+
+\begin{Code}\begin{verbatim}600 {
+601         return m_iHeight;
+602 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{class_dynamic_object_056fb17fa06596d19a9fd3a269cb9da3}{
+\index{DynamicObject@{DynamicObject}!SetVelocity@{SetVelocity}}
+\index{SetVelocity@{SetVelocity}!DynamicObject@{DynamicObject}}
+\subsubsection[SetVelocity]{\setlength{\rightskip}{0pt plus 5cm}void DynamicObject::SetVelocity (float {\em vel})}}
+\label{class_dynamic_object_056fb17fa06596d19a9fd3a269cb9da3}
+
+
+Method to get Bounding Box
+
+vel new velocity 
+
+Definition at line 610 of file DynamicObject.cpp.
+
+\begin{Code}\begin{verbatim}610                                         {
+611         m_fAnimationVelocity = vel;
+612 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/Animation/DynamicObject.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/Animation/DynamicObject.cpp\end{CompactItemize}

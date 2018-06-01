@@ -45,6 +45,8 @@ btGImpactCollisionAlgorithm::registerAlgorithm(dispatcher);
 
  
 
+Definition at line 54 of file btGImpactCollisionAlgorithm.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_g_impact_collision_algorithm_1cc907bcb394f7a95d609b1b56a5490e}{
 \index{btGImpactCollisionAlgorithm@{btGImpactCollisionAlgorithm}!collide\_\-gjk\_\-triangles@{collide\_\-gjk\_\-triangles}}
@@ -53,7 +55,56 @@ btGImpactCollisionAlgorithm::registerAlgorithm(dispatcher);
 \label{classbt_g_impact_collision_algorithm_1cc907bcb394f7a95d609b1b56a5490e}
 
 
-Collision routines \hypertarget{classbt_g_impact_collision_algorithm_2a6bd5ca4d26e3578d2613543e85429b}{
+Collision routines 
+
+Definition at line 349 of file btGImpactCollisionAlgorithm.cpp.
+
+References btGImpactMeshShapePart::getBulletTriangle(), btGImpactMeshShapePart::lockChildShapes(), btTriangleShapeEx::overlap\_\-test\_\-conservative(), and btGImpactMeshShapePart::unlockChildShapes().
+
+Referenced by gimpact\_\-vs\_\-gimpact().
+
+\begin{Code}\begin{verbatim}354 {
+355         btTriangleShapeEx tri0;
+356         btTriangleShapeEx tri1;
+357 
+358         shape0->lockChildShapes();
+359         shape1->lockChildShapes();
+360 
+361         const int * pair_pointer = pairs;
+362 
+363         while(pair_count--)
+364         {
+365 
+366                 m_triface0 = *(pair_pointer);
+367                 m_triface1 = *(pair_pointer+1);
+368                 pair_pointer+=2;
+369 
+370 
+371 
+372                 shape0->getBulletTriangle(m_triface0,tri0);
+373                 shape1->getBulletTriangle(m_triface1,tri1);
+374 
+375 
+376                 //collide two convex shapes
+377                 if(tri0.overlap_test_conservative(tri1))
+378                 {
+379                         convex_vs_convex_collision(body0Wrap,body1Wrap,&tri0,&tri1);
+380                 }
+381 
+382         }
+383 
+384         shape0->unlockChildShapes();
+385         shape1->unlockChildShapes();
+386 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
+Here is the caller graph for this function:\hypertarget{classbt_g_impact_collision_algorithm_2a6bd5ca4d26e3578d2613543e85429b}{
 \index{btGImpactCollisionAlgorithm@{btGImpactCollisionAlgorithm}!gimpact\_\-vs\_\-gimpact@{gimpact\_\-vs\_\-gimpact}}
 \index{gimpact\_\-vs\_\-gimpact@{gimpact\_\-vs\_\-gimpact}!btGImpactCollisionAlgorithm@{btGImpactCollisionAlgorithm}}
 \subsubsection[gimpact\_\-vs\_\-gimpact]{\setlength{\rightskip}{0pt plus 5cm}void btGImpactCollisionAlgorithm::gimpact\_\-vs\_\-gimpact (const btCollisionObjectWrapper $\ast$ {\em body0Wrap}, \/  const btCollisionObjectWrapper $\ast$ {\em body1Wrap}, \/  const {\bf btGImpactShapeInterface} $\ast$ {\em shape0}, \/  const {\bf btGImpactShapeInterface} $\ast$ {\em shape1})}}
@@ -66,7 +117,117 @@ Collides two gimpact shapes.
 \item[Precondition:]shape0 and shape1 couldn't be \hyperlink{classbt_g_impact_mesh_shape}{btGImpactMeshShape} objects \end{Desc}
 
 
+Definition at line 461 of file btGImpactCollisionAlgorithm.cpp.
+
+References btGImpactShapeInterface::childrenHasTransform(), collide\_\-gjk\_\-triangles(), GIM\_\-ShapeRetriever::getChildShape(), btGImpactShapeInterface::getChildTransform(), btGImpactShapeInterface::getGImpactShapeType(), btGImpactMeshShape::getMeshPart(), btGImpactMeshShape::getMeshPartCount(), btGImpactShapeInterface::lockChildShapes(), GIM\_\-PAIR::m\_\-index1, GIM\_\-PAIR::m\_\-index2, btAlignedObjectArray$<$ T $>$::size(), and btGImpactShapeInterface::unlockChildShapes().
+
+\begin{Code}\begin{verbatim}466 {
+467 
+468         if(shape0->getGImpactShapeType()==CONST_GIMPACT_TRIMESH_SHAPE)
+469         {
+470                 const btGImpactMeshShape * meshshape0 = static_cast<const btGImpactMeshShape *>(shape0);
+471                 m_part0 = meshshape0->getMeshPartCount();
+472 
+473                 while(m_part0--)
+474                 {
+475                         gimpact_vs_gimpact(body0Wrap,body1Wrap,meshshape0->getMeshPart(m_part0),shape1);
+476                 }
+477 
+478                 return;
+479         }
+480 
+481         if(shape1->getGImpactShapeType()==CONST_GIMPACT_TRIMESH_SHAPE)
+482         {
+483                 const btGImpactMeshShape * meshshape1 = static_cast<const btGImpactMeshShape *>(shape1);
+484                 m_part1 = meshshape1->getMeshPartCount();
+485 
+486                 while(m_part1--)
+487                 {
+488 
+489                         gimpact_vs_gimpact(body0Wrap,body1Wrap,shape0,meshshape1->getMeshPart(m_part1));
+490 
+491                 }
+492 
+493                 return;
+494         }
+495 
+496 
+497         btTransform orgtrans0 = body0Wrap->getWorldTransform();
+498         btTransform orgtrans1 = body1Wrap->getWorldTransform();
+499 
+500         btPairSet pairset;
+501 
+502         gimpact_vs_gimpact_find_pairs(orgtrans0,orgtrans1,shape0,shape1,pairset);
+503 
+504         if(pairset.size()== 0) return;
+505 
+506         if(shape0->getGImpactShapeType() == CONST_GIMPACT_TRIMESH_SHAPE_PART &&
+507                 shape1->getGImpactShapeType() == CONST_GIMPACT_TRIMESH_SHAPE_PART)
+508         {
+509                 const btGImpactMeshShapePart * shapepart0 = static_cast<const btGImpactMeshShapePart * >(shape0);
+510                 const btGImpactMeshShapePart * shapepart1 = static_cast<const btGImpactMeshShapePart * >(shape1);
+511                 //specialized function
+512                 #ifdef BULLET_TRIANGLE_COLLISION
+513                 collide_gjk_triangles(body0Wrap,body1Wrap,shapepart0,shapepart1,&pairset[0].m_index1,pairset.size());
+514                 #else
+515                 collide_sat_triangles(body0Wrap,body1Wrap,shapepart0,shapepart1,&pairset[0].m_index1,pairset.size());
+516                 #endif
+517 
+518                 return;
+519         }
+520 
+521         //general function
+522 
+523         shape0->lockChildShapes();
+524         shape1->lockChildShapes();
+525 
+526         GIM_ShapeRetriever retriever0(shape0);
+527         GIM_ShapeRetriever retriever1(shape1);
+528 
+529         bool child_has_transform0 = shape0->childrenHasTransform();
+530         bool child_has_transform1 = shape1->childrenHasTransform();
+531 
+532         int i = pairset.size();
+533         while(i--)
+534         {
+535                 GIM_PAIR * pair = &pairset[i];
+536                 m_triface0 = pair->m_index1;
+537                 m_triface1 = pair->m_index2;
+538                 const btCollisionShape * colshape0 = retriever0.getChildShape(m_triface0);
+539                 const btCollisionShape * colshape1 = retriever1.getChildShape(m_triface1);
+540 
+541                 btTransform tr0 = body0Wrap->getWorldTransform();
+542                 btTransform tr1 = body1Wrap->getWorldTransform();
+543 
+544                 if(child_has_transform0)
+545                 {
+546                         tr0 = orgtrans0*shape0->getChildTransform(m_triface0);
+547                 }
+548 
+549                 if(child_has_transform1)
+550                 {
+551                         tr1 = orgtrans1*shape1->getChildTransform(m_triface1);
+552                 }
+553 
+554                 btCollisionObjectWrapper ob0(body0Wrap,colshape0,body0Wrap->getCollisionObject(),tr0,m_part0,m_triface0);
+555                 btCollisionObjectWrapper ob1(body1Wrap,colshape1,body1Wrap->getCollisionObject(),tr1,m_part1,m_triface1);
+556 
+557                 //collide two convex shapes
+558                 convex_vs_convex_collision(&ob0,&ob1,colshape0,colshape1);
+559         }
+560 
+561         shape0->unlockChildShapes();
+562         shape1->unlockChildShapes();
+563 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.cpp\end{CompactItemize}

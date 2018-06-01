@@ -29,6 +29,8 @@ SIMD\_\-FORCE\_\-INLINE bool \hyperlink{classbt_quantized_bvh_tree_004ff2bf4b2ef
 \subsection{Detailed Description}
 Basic Box tree structure. 
 
+Definition at line 39 of file btGImpactQuantizedBvh.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_quantized_bvh_tree_a2229fd3e3e2004cdf8151437535e936}{
 \index{btQuantizedBvhTree@{btQuantizedBvhTree}!build\_\-tree@{build\_\-tree}}
@@ -41,7 +43,28 @@ stackless build tree
 
 prototype functions for box tree management 
 
+Definition at line 233 of file btGImpactQuantizedBvh.cpp.
+
+Referenced by btGImpactQuantizedBvh::buildSet().
+
+\begin{Code}\begin{verbatim}235 {
+236         calc_quantization(primitive_boxes);
+237         // initialize node count to 0
+238         m_num_nodes = 0;
+239         // allocate nodes
+240         m_node_array.resize(primitive_boxes.size()*2);
+241 
+242         _build_sub_tree(primitive_boxes, 0, primitive_boxes.size());
+243 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_g_impact_quantized_bvh_8h}{btGImpactQuantizedBvh.h}\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactQuantizedBvh.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{bt_g_impact_quantized_bvh_8h}{btGImpactQuantizedBvh.h}\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/btGImpactQuantizedBvh.cpp\end{CompactItemize}

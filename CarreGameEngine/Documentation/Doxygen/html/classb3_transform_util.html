@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: b3TransformUtil Class Reference</title>
+<title>Assignment2 - OOber Taxi: b3TransformUtil Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>b3TransformUtil Class Reference</h1><!-- doxytag: class="b3TransformUtil" -->Utils related to temporal transforms.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;b3TransformUtil.h&gt;</code>
+<code>#include &lt;<a class="el" href="b3_transform_util_8h-source.html">b3TransformUtil.h</a>&gt;</code>
 <p>
 
 <p>
@@ -39,7 +39,9 @@
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Utils related to temporal transforms. <hr><h2>Member Function Documentation</h2>
+Utils related to temporal transforms. 
+<p>Definition at line <a class="el" href="b3_transform_util_8h-source.html#l00038">38</a> of file <a class="el" href="b3_transform_util_8h-source.html">b3TransformUtil.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="077905e76e231101930678ace3bd444a"></a><!-- doxytag: member="b3TransformUtil::calculateDiffAxisAngle" ref="077905e76e231101930678ace3bd444a" args="(const b3Transform &amp;transform0, const b3Transform &amp;transform1, b3Vector3 &amp;axis, b3Scalar &amp;angle)" -->
 <div class="memitem">
 <div class="memproto">
@@ -81,12 +83,44 @@ Utils related to temporal transforms. <hr><h2>Member Function Documentation</h2>
 
 <p>
 floating point inaccuracy can lead to w component &gt; 1..., which breaks 
+<p>Definition at line <a class="el" href="b3_transform_util_8h-source.html#l00121">121</a> of file <a class="el" href="b3_transform_util_8h-source.html">b3TransformUtil.h</a>.</p>
+
+<p>References <a class="el" href="b3_quaternion_8h-source.html#l00422">b3Quaternion::getAngle()</a>, and <a class="el" href="b3_quaternion_8h-source.html#l00352">b3Quaternion::normalize()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00122"></a>00122         {
+<a name="l00123"></a>00123                 b3Matrix3x3 dmat = transform1.getBasis() * transform0.getBasis().inverse();
+<a name="l00124"></a>00124                 <a class="code" href="classb3_quaternion.html" title="The b3Quaternion implements quaternion to perform linear algebra rotations in combination...">b3Quaternion</a> dorn;
+<a name="l00125"></a>00125                 dmat.getRotation(dorn);
+<a name="l00126"></a>00126 
+<a name="l00128"></a>00128                 dorn.<a class="code" href="classb3_quaternion.html#96d3f4aedcb4b645115ab5a7897fa0d1" title="Normalize the quaternion Such that x^2 + y^2 + z^2 +w^2 = 1.">normalize</a>();
+<a name="l00129"></a>00129                 
+<a name="l00130"></a>00130                 <a class="code" href="group__gtx__vector__angle.html#gb57ebeaf612eb26ab8e47e80b9af2678">angle</a> = dorn.<a class="code" href="classb3_quaternion.html#b5c827a4e5e0733a2c93d0856cf86a47" title="Return the angle of rotation represented by this quaternion.">getAngle</a>();
+<a name="l00131"></a>00131                 <a class="code" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b">axis</a> = b3MakeVector3(dorn.getX(),dorn.getY(),dorn.getZ());
+<a name="l00132"></a>00132                 <a class="code" href="group__gtc__quaternion.html#g5c243b588291c790bf1b5ec3f0f08d1b">axis</a>[3] = b3Scalar(0.);
+<a name="l00133"></a>00133                 <span class="comment">//check for axis length</span>
+<a name="l00134"></a>00134                 b3Scalar len = axis.length2();
+<a name="l00135"></a>00135                 <span class="keywordflow">if</span> (len &lt; B3_EPSILON*B3_EPSILON)
+<a name="l00136"></a>00136                         axis = b3MakeVector3(b3Scalar(1.),b3Scalar(0.),b3Scalar(0.));
+<a name="l00137"></a>00137                 <span class="keywordflow">else</span>
+<a name="l00138"></a>00138                         axis /= b3Sqrt(len);
+<a name="l00139"></a>00139         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classb3_transform_util_077905e76e231101930678ace3bd444a_cgraph.png" border="0" usemap="#classb3_transform_util_077905e76e231101930678ace3bd444a_cgraph_map" alt=""></center>
+<map name="classb3_transform_util_077905e76e231101930678ace3bd444a_cgraph_map">
+<area shape="rect" href="classb3_quaternion.html#b5c827a4e5e0733a2c93d0856cf86a47" title="Return the angle of rotation represented by this quaternion." alt="" coords="304,5,461,32"><area shape="rect" href="classb3_quaternion.html#96d3f4aedcb4b645115ab5a7897fa0d1" title="Normalize the quaternion Such that x^2 + y^2 + z^2 +w^2 = 1." alt="" coords="301,56,464,83"><area shape="rect" href="classb3_quaternion.html#d008f8dd2f6dbd5ac86f3b02a10ef4a6" title="Return the length of the quaternion." alt="" coords="512,56,653,83"><area shape="rect" href="classb3_quaternion.html#a8d3d563ea89e36794d63bd289934509" title="Return the length squared of the quaternion." alt="" coords="703,56,849,83"><area shape="rect" href="classb3_quaternion.html#747537c86fc2d63a6fc43db811952634" title="Return the dot product between this quaternion and another." alt="" coords="900,56,1023,83"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Common/b3TransformUtil.h</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/Bullet3Common/<a class="el" href="b3_transform_util_8h-source.html">b3TransformUtil.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:00 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:29 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

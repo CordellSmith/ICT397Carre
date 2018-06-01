@@ -63,6 +63,8 @@ struct \hyperlink{structbt_soft_body_1_1_ray_from_to_caster}{RayFromToCaster}
 \subsection{Detailed Description}
 The \hyperlink{classbt_soft_body}{btSoftBody} is an class to simulate cloth and volumetric soft bodies. There is two-way interaction between \hyperlink{classbt_soft_body}{btSoftBody} and btRigidBody/btCollisionObject. 
 
+Definition at line 71 of file btSoftBody.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_soft_body_e07c09d9c2937897c3690c1a3970bf61}{
 \index{btSoftBody@{btSoftBody}!initDefaults@{initDefaults}}
@@ -73,7 +75,72 @@ The \hyperlink{classbt_soft_body}{btSoftBody} is an class to simulate cloth and 
 
 
 
-for now, create a collision shape internally \hypertarget{classbt_soft_body_ced0f5421eeb1491a3fd77bb91e2e5af}{
+for now, create a collision shape internally 
+
+Definition at line 64 of file btSoftBody.cpp.
+
+References btSoftBody::fCollision::Default.
+
+Referenced by btSoftBody().
+
+\begin{Code}\begin{verbatim}65 {
+66         m_internalType          =       CO_SOFT_BODY;
+67         m_cfg.aeromodel         =       eAeroModel::V_Point;
+68         m_cfg.kVCF                      =       1;
+69         m_cfg.kDG                       =       0;
+70         m_cfg.kLF                       =       0;
+71         m_cfg.kDP                       =       0;
+72         m_cfg.kPR                       =       0;
+73         m_cfg.kVC                       =       0;
+74         m_cfg.kDF                       =       (btScalar)0.2;
+75         m_cfg.kMT                       =       0;
+76         m_cfg.kCHR                      =       (btScalar)1.0;
+77         m_cfg.kKHR                      =       (btScalar)0.1;
+78         m_cfg.kSHR                      =       (btScalar)1.0;
+79         m_cfg.kAHR                      =       (btScalar)0.7;
+80         m_cfg.kSRHR_CL          =       (btScalar)0.1;
+81         m_cfg.kSKHR_CL          =       (btScalar)1;
+82         m_cfg.kSSHR_CL          =       (btScalar)0.5;
+83         m_cfg.kSR_SPLT_CL       =       (btScalar)0.5;
+84         m_cfg.kSK_SPLT_CL       =       (btScalar)0.5;
+85         m_cfg.kSS_SPLT_CL       =       (btScalar)0.5;
+86         m_cfg.maxvolume         =       (btScalar)1;
+87         m_cfg.timescale         =       1;
+88         m_cfg.viterations       =       0;
+89         m_cfg.piterations       =       1;      
+90         m_cfg.diterations       =       0;
+91         m_cfg.citerations       =       4;
+92         m_cfg.collisions        =       fCollision::Default;
+93         m_pose.m_bvolume        =       false;
+94         m_pose.m_bframe         =       false;
+95         m_pose.m_volume         =       0;
+96         m_pose.m_com            =       btVector3(0,0,0);
+97         m_pose.m_rot.setIdentity();
+98         m_pose.m_scl.setIdentity();
+99         m_tag                           =       0;
+100         m_timeacc                       =       0;
+101         m_bUpdateRtCst          =       true;
+102         m_bounds[0]                     =       btVector3(0,0,0);
+103         m_bounds[1]                     =       btVector3(0,0,0);
+104         m_worldTransform.setIdentity();
+105         setSolver(eSolverPresets::Positions);
+106         
+107         /* Collision shape      */ 
+109         m_collisionShape = new btSoftBodyCollisionShape(this);
+110         m_collisionShape->setMargin(0.25f);
+111         
+112         m_initialWorldTransform.setIdentity();
+113 
+114         m_windVelocity = btVector3(0,0,0);
+115         m_restLengthScale = btScalar(1.0);
+116 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{classbt_soft_body_ced0f5421eeb1491a3fd77bb91e2e5af}{
 \index{btSoftBody@{btSoftBody}!setCollisionShape@{setCollisionShape}}
 \index{setCollisionShape@{setCollisionShape}!btSoftBody@{btSoftBody}}
 \subsubsection[setCollisionShape]{\setlength{\rightskip}{0pt plus 5cm}virtual void btSoftBody::setCollisionShape (btCollisionShape $\ast$ {\em collisionShape})\hspace{0.3cm}{\tt  \mbox{[}inline, virtual\mbox{]}}}}
@@ -82,6 +149,17 @@ for now, create a collision shape internally \hypertarget{classbt_soft_body_ced0
 
 \begin{Desc}
 \item[\hyperlink{todo__todo000039}{Todo}]: avoid internal softbody shape hack and move collision code to collision library \end{Desc}
+
+
+Definition at line 708 of file btSoftBody.h.
+
+\begin{Code}\begin{verbatim}709         {
+710                 
+711         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{classbt_soft_body_f31b03f0ff5eecec1ec9eee5a7582d20}{
 \index{btSoftBody@{btSoftBody}!generateBendingConstraints@{generateBendingConstraints}}
 \index{generateBendingConstraints@{generateBendingConstraints}!btSoftBody@{btSoftBody}}
@@ -91,14 +169,344 @@ for now, create a collision shape internally \hypertarget{classbt_soft_body_ced0
 
 
 
-generic Floyd's algorithm \hypertarget{classbt_soft_body_9915ca0d99dbeb9f39221dab218d5208}{
+generic Floyd's algorithm 
+
+Definition at line 1040 of file btSoftBody.cpp.
+
+References btAlignedObjectArray$<$ T $>$::findLinearSearch(), btAlignedObjectArray$<$ T $>$::push\_\-back(), btAlignedObjectArray$<$ T $>$::resize(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}1041 {
+1042         int i,j;
+1043 
+1044         if(distance>1)
+1045         {
+1046                 /* Build graph  */ 
+1047                 const int               n=m_nodes.size();
+1048                 const unsigned  inf=(~(unsigned)0)>>1;
+1049                 unsigned*               adj=new unsigned[n*n];
+1050                 
+1051 
+1052 #define IDX(_x_,_y_)    ((_y_)*n+(_x_))
+1053                 for(j=0;j<n;++j)
+1054                 {
+1055                         for(i=0;i<n;++i)
+1056                         {
+1057                                 if(i!=j)
+1058                                 {
+1059                                         adj[IDX(i,j)]=adj[IDX(j,i)]=inf;
+1060                                 }
+1061                                 else
+1062                                 {
+1063                                         adj[IDX(i,j)]=adj[IDX(j,i)]=0;
+1064                                 }
+1065                         }
+1066                 }
+1067                 for( i=0;i<m_links.size();++i)
+1068                 {
+1069                         const int       ia=(int)(m_links[i].m_n[0]-&m_nodes[0]);
+1070                         const int       ib=(int)(m_links[i].m_n[1]-&m_nodes[0]);
+1071                         adj[IDX(ia,ib)]=1;
+1072                         adj[IDX(ib,ia)]=1;
+1073                 }
+1074 
+1075 
+1076                 //special optimized case for distance == 2
+1077                 if (distance == 2)
+1078                 {
+1079 
+1080                         btAlignedObjectArray<NodeLinks> nodeLinks;
+1081 
+1082 
+1083                         /* Build node links */
+1084                         nodeLinks.resize(m_nodes.size());
+1085 
+1086                         for( i=0;i<m_links.size();++i)
+1087                         {
+1088                                 const int       ia=(int)(m_links[i].m_n[0]-&m_nodes[0]);
+1089                                 const int       ib=(int)(m_links[i].m_n[1]-&m_nodes[0]);
+1090                                 if (nodeLinks[ia].m_links.findLinearSearch(ib)==nodeLinks[ia].m_links.size())
+1091                                         nodeLinks[ia].m_links.push_back(ib);
+1092 
+1093                                 if (nodeLinks[ib].m_links.findLinearSearch(ia)==nodeLinks[ib].m_links.size())
+1094                                         nodeLinks[ib].m_links.push_back(ia);
+1095                         }
+1096                         for (int ii=0;ii<nodeLinks.size();ii++)
+1097                         {
+1098                                 int i=ii;
+1099 
+1100                                 for (int jj=0;jj<nodeLinks[ii].m_links.size();jj++)
+1101                                 {
+1102                                         int k = nodeLinks[ii].m_links[jj];
+1103                                         for (int kk=0;kk<nodeLinks[k].m_links.size();kk++)
+1104                                         {
+1105                                                 int j = nodeLinks[k].m_links[kk];
+1106                                                 if (i!=j)
+1107                                                 {
+1108                                                         const unsigned  sum=adj[IDX(i,k)]+adj[IDX(k,j)];
+1109                                                         btAssert(sum==2);
+1110                                                         if(adj[IDX(i,j)]>sum)
+1111                                                         {
+1112                                                                 adj[IDX(i,j)]=adj[IDX(j,i)]=sum;
+1113                                                         }
+1114                                                 }
+1115 
+1116                                         }
+1117                                 }
+1118                         }
+1119                 } else
+1120                 {
+1122                         for(int k=0;k<n;++k)
+1123                         {
+1124                                 for(j=0;j<n;++j)
+1125                                 {
+1126                                         for(i=j+1;i<n;++i)
+1127                                         {
+1128                                                 const unsigned  sum=adj[IDX(i,k)]+adj[IDX(k,j)];
+1129                                                 if(adj[IDX(i,j)]>sum)
+1130                                                 {
+1131                                                         adj[IDX(i,j)]=adj[IDX(j,i)]=sum;
+1132                                                 }
+1133                                         }
+1134                                 }
+1135                         }
+1136                 }
+1137 
+1138 
+1139                 /* Build links  */ 
+1140                 int     nlinks=0;
+1141                 for(j=0;j<n;++j)
+1142                 {
+1143                         for(i=j+1;i<n;++i)
+1144                         {
+1145                                 if(adj[IDX(i,j)]==(unsigned)distance)
+1146                                 {
+1147                                         appendLink(i,j,mat);
+1148                                         m_links[m_links.size()-1].m_bbending=1;
+1149                                         ++nlinks;
+1150                                 }
+1151                         }
+1152                 }
+1153                 delete[] adj;           
+1154                 return(nlinks);
+1155         }
+1156         return(0);
+1157 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_soft_body_9915ca0d99dbeb9f39221dab218d5208}{
 \index{btSoftBody@{btSoftBody}!generateClusters@{generateClusters}}
 \index{generateClusters@{generateClusters}!btSoftBody@{btSoftBody}}
 \subsubsection[generateClusters]{\setlength{\rightskip}{0pt plus 5cm}int btSoftBody::generateClusters (int {\em k}, \/  int {\em maxiterations} = {\tt 8192})}}
 \label{classbt_soft_body_9915ca0d99dbeb9f39221dab218d5208}
 
 
-generateClusters with k=0 will create a convex cluster for each tetrahedron or triangle otherwise an approximation will be used (better performance) \hypertarget{classbt_soft_body_e8a2fc459b2afc985fbb03c1b0203bec}{
+generateClusters with k=0 will create a convex cluster for each tetrahedron or triangle otherwise an approximation will be used (better performance) 
+
+Definition at line 1194 of file btSoftBody.cpp.
+
+References btAlignedObjectArray$<$ T $>$::findLinearSearch(), glm::length2(), btAlignedObjectArray$<$ T $>$::push\_\-back(), btAlignedObjectArray$<$ T $>$::resize(), and btAlignedObjectArray$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}1195 {
+1196         int i;
+1197         releaseClusters();
+1198         m_clusters.resize(btMin(k,m_nodes.size()));
+1199         for(i=0;i<m_clusters.size();++i)
+1200         {
+1201                 m_clusters[i]                   =       new(btAlignedAlloc(sizeof(Cluster),16)) Cluster();
+1202                 m_clusters[i]->m_collide=       true;
+1203         }
+1204         k=m_clusters.size();
+1205         if(k>0)
+1206         {
+1207                 /* Initialize           */ 
+1208                 btAlignedObjectArray<btVector3> centers;
+1209                 btVector3                                               cog(0,0,0);
+1210                 int                                                             i;
+1211                 for(i=0;i<m_nodes.size();++i)
+1212                 {
+1213                         cog+=m_nodes[i].m_x;
+1214                         m_clusters[(i*29873)%m_clusters.size()]->m_nodes.push_back(&m_nodes[i]);
+1215                 }
+1216                 cog/=(btScalar)m_nodes.size();
+1217                 centers.resize(k,cog);
+1218                 /* Iterate                      */ 
+1219                 const btScalar  slope=16;
+1220                 bool                    changed;
+1221                 int                             iterations=0;
+1222                 do      {
+1223                         const btScalar  w=2-btMin<btScalar>(1,iterations/slope);
+1224                         changed=false;
+1225                         iterations++;   
+1226                         int i;
+1227 
+1228                         for(i=0;i<k;++i)
+1229                         {
+1230                                 btVector3       c(0,0,0);
+1231                                 for(int j=0;j<m_clusters[i]->m_nodes.size();++j)
+1232                                 {
+1233                                         c+=m_clusters[i]->m_nodes[j]->m_x;
+1234                                 }
+1235                                 if(m_clusters[i]->m_nodes.size())
+1236                                 {
+1237                                         c                       /=      (btScalar)m_clusters[i]->m_nodes.size();
+1238                                         c                       =       centers[i]+(c-centers[i])*w;
+1239                                         changed         |=      ((c-centers[i]).length2()>SIMD_EPSILON);
+1240                                         centers[i]      =       c;
+1241                                         m_clusters[i]->m_nodes.resize(0);
+1242                                 }                       
+1243                         }
+1244                         for(i=0;i<m_nodes.size();++i)
+1245                         {
+1246                                 const btVector3 nx=m_nodes[i].m_x;
+1247                                 int                             kbest=0;
+1248                                 btScalar                kdist=ClusterMetric(centers[0],nx);
+1249                                 for(int j=1;j<k;++j)
+1250                                 {
+1251                                         const btScalar  d=ClusterMetric(centers[j],nx);
+1252                                         if(d<kdist)
+1253                                         {
+1254                                                 kbest=j;
+1255                                                 kdist=d;
+1256                                         }
+1257                                 }
+1258                                 m_clusters[kbest]->m_nodes.push_back(&m_nodes[i]);
+1259                         }               
+1260                 } while(changed&&(iterations<maxiterations));
+1261                 /* Merge                */ 
+1262                 btAlignedObjectArray<int>       cids;
+1263                 cids.resize(m_nodes.size(),-1);
+1264                 for(i=0;i<m_clusters.size();++i)
+1265                 {
+1266                         for(int j=0;j<m_clusters[i]->m_nodes.size();++j)
+1267                         {
+1268                                 cids[int(m_clusters[i]->m_nodes[j]-&m_nodes[0])]=i;
+1269                         }
+1270                 }
+1271                 for(i=0;i<m_faces.size();++i)
+1272                 {
+1273                         const int idx[]={       int(m_faces[i].m_n[0]-&m_nodes[0]),
+1274                                 int(m_faces[i].m_n[1]-&m_nodes[0]),
+1275                                 int(m_faces[i].m_n[2]-&m_nodes[0])};
+1276                         for(int j=0;j<3;++j)
+1277                         {
+1278                                 const int cid=cids[idx[j]];
+1279                                 for(int q=1;q<3;++q)
+1280                                 {
+1281                                         const int kid=idx[(j+q)%3];
+1282                                         if(cids[kid]!=cid)
+1283                                         {
+1284                                                 if(m_clusters[cid]->m_nodes.findLinearSearch(&m_nodes[kid])==m_clusters[cid]->m_nodes.size())
+1285                                                 {
+1286                                                         m_clusters[cid]->m_nodes.push_back(&m_nodes[kid]);
+1287                                                 }
+1288                                         }
+1289                                 }
+1290                         }
+1291                 }
+1292                 /* Master               */ 
+1293                 if(m_clusters.size()>1)
+1294                 {
+1295                         Cluster*        pmaster=new(btAlignedAlloc(sizeof(Cluster),16)) Cluster();
+1296                         pmaster->m_collide      =       false;
+1297                         pmaster->m_nodes.reserve(m_nodes.size());
+1298                         for(int i=0;i<m_nodes.size();++i) pmaster->m_nodes.push_back(&m_nodes[i]);
+1299                         m_clusters.push_back(pmaster);
+1300                         btSwap(m_clusters[0],m_clusters[m_clusters.size()-1]);
+1301                 }
+1302                 /* Terminate    */ 
+1303                 for(i=0;i<m_clusters.size();++i)
+1304                 {
+1305                         if(m_clusters[i]->m_nodes.size()==0)
+1306                         {
+1307                                 releaseCluster(i--);
+1308                         }
+1309                 }
+1310         } else
+1311         {
+1312                 //create a cluster for each tetrahedron (if tetrahedra exist) or each face
+1313                 if (m_tetras.size())
+1314                 {
+1315                         m_clusters.resize(m_tetras.size());
+1316                         for(i=0;i<m_clusters.size();++i)
+1317                         {
+1318                                 m_clusters[i]                   =       new(btAlignedAlloc(sizeof(Cluster),16)) Cluster();
+1319                                 m_clusters[i]->m_collide=       true;
+1320                         }
+1321                         for (i=0;i<m_tetras.size();i++)
+1322                         {
+1323                                 for (int j=0;j<4;j++)
+1324                                 {
+1325                                         m_clusters[i]->m_nodes.push_back(m_tetras[i].m_n[j]);
+1326                                 }
+1327                         }
+1328 
+1329                 } else
+1330                 {
+1331                         m_clusters.resize(m_faces.size());
+1332                         for(i=0;i<m_clusters.size();++i)
+1333                         {
+1334                                 m_clusters[i]                   =       new(btAlignedAlloc(sizeof(Cluster),16)) Cluster();
+1335                                 m_clusters[i]->m_collide=       true;
+1336                         }
+1337 
+1338                         for(i=0;i<m_faces.size();++i)
+1339                         {
+1340                                 for(int j=0;j<3;++j)
+1341                                 {
+1342                                         m_clusters[i]->m_nodes.push_back(m_faces[i].m_n[j]);
+1343                                 }
+1344                         }
+1345                 }
+1346         }
+1347 
+1348         if (m_clusters.size())
+1349         {
+1350                 initializeClusters();
+1351                 updateClusters();
+1352 
+1353 
+1354                 //for self-collision
+1355                 m_clusterConnectivity.resize(m_clusters.size()*m_clusters.size());
+1356                 {
+1357                         for (int c0=0;c0<m_clusters.size();c0++)
+1358                         {
+1359                                 m_clusters[c0]->m_clusterIndex=c0;
+1360                                 for (int c1=0;c1<m_clusters.size();c1++)
+1361                                 {
+1362                                         
+1363                                         bool connected=false;
+1364                                         Cluster* cla = m_clusters[c0];
+1365                                         Cluster* clb = m_clusters[c1];
+1366                                         for (int i=0;!connected&&i<cla->m_nodes.size();i++)
+1367                                         {
+1368                                                 for (int j=0;j<clb->m_nodes.size();j++)
+1369                                                 {
+1370                                                         if (cla->m_nodes[i] == clb->m_nodes[j])
+1371                                                         {
+1372                                                                 connected=true;
+1373                                                                 break;
+1374                                                         }
+1375                                                 }
+1376                                         }
+1377                                         m_clusterConnectivity[c0+c1*m_clusters.size()]=connected;
+1378                                 }
+1379                         }
+1380                 }
+1381         }
+1382 
+1383         return(m_clusters.size());
+1384 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{classbt_soft_body_e8a2fc459b2afc985fbb03c1b0203bec}{
 \index{btSoftBody@{btSoftBody}!solveCommonConstraints@{solveCommonConstraints}}
 \index{solveCommonConstraints@{solveCommonConstraints}!btSoftBody@{btSoftBody}}
 \subsubsection[solveCommonConstraints]{\setlength{\rightskip}{0pt plus 5cm}void btSoftBody::solveCommonConstraints ({\bf btSoftBody} $\ast$$\ast$ {\em bodies}, \/  int {\em count}, \/  int {\em iterations})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
@@ -107,14 +515,35 @@ generateClusters with k=0 will create a convex cluster for each tetrahedron or t
 
 
 
-placeholder \hypertarget{classbt_soft_body_ee9ac69662731fa96ae2357522972ef9}{
+placeholder 
+
+Definition at line 1955 of file btSoftBody.cpp.
+
+\begin{Code}\begin{verbatim}1956 {
+1958 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{classbt_soft_body_ee9ac69662731fa96ae2357522972ef9}{
 \index{btSoftBody@{btSoftBody}!setWindVelocity@{setWindVelocity}}
 \index{setWindVelocity@{setWindVelocity}!btSoftBody@{btSoftBody}}
 \subsubsection[setWindVelocity]{\setlength{\rightskip}{0pt plus 5cm}void btSoftBody::setWindVelocity (const btVector3 \& {\em velocity})}}
 \label{classbt_soft_body_ee9ac69662731fa96ae2357522972ef9}
 
 
-Set a wind velocity for interaction with the air. \hypertarget{classbt_soft_body_71de05c3c56952a4d76e09ca9ca9cce0}{
+Set a wind velocity for interaction with the air. 
+
+Definition at line 3296 of file btSoftBody.cpp.
+
+\begin{Code}\begin{verbatim}3297 {
+3298         m_windVelocity = velocity;
+3299 }
+\end{verbatim}
+\end{Code}
+
+
+\hypertarget{classbt_soft_body_71de05c3c56952a4d76e09ca9ca9cce0}{
 \index{btSoftBody@{btSoftBody}!getWindVelocity@{getWindVelocity}}
 \index{getWindVelocity@{getWindVelocity}!btSoftBody@{btSoftBody}}
 \subsubsection[getWindVelocity]{\setlength{\rightskip}{0pt plus 5cm}const btVector3 \& btSoftBody::getWindVelocity ()}}
@@ -123,7 +552,18 @@ Set a wind velocity for interaction with the air. \hypertarget{classbt_soft_body
 
 Return the wind velocity for interaction with the air. 
 
+Definition at line 3302 of file btSoftBody.cpp.
+
+\begin{Code}\begin{verbatim}3303 {
+3304         return m_windVelocity;
+3305 }
+\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBody.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBody.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBody.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBody.cpp\end{CompactItemize}

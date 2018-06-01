@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GLM_GTC_random</title>
+<title>Assignment2 - OOber Taxi: GLM_GTC_random</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -88,6 +88,36 @@ Generate a random 3D vector which coordinates are regulary distributed within th
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__random.html" title="Generate random number from various distribution methods.">GLM_GTC_random</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="random_8inl-source.html#l00126">126</a> of file <a class="el" href="random_8inl-source.html">random.inl</a>.</p>
+
+<p>References <a class="el" href="func__geometric_8inl-source.html#l00089">glm::length()</a>, and <a class="el" href="random_8inl-source.html#l00071">glm::linearRand()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00129"></a>00129         {               
+<a name="l00130"></a>00130                 detail::tvec3&lt;T, defaultp&gt; Result(T(0));
+<a name="l00131"></a>00131                 T LenRadius(T(0));
+<a name="l00132"></a>00132                 
+<a name="l00133"></a>00133                 <span class="keywordflow">do</span>
+<a name="l00134"></a>00134                 {
+<a name="l00135"></a>00135                         Result = <a class="code" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492">linearRand</a>(
+<a name="l00136"></a>00136                                 detail::tvec3&lt;T, defaultp&gt;(-Radius),
+<a name="l00137"></a>00137                                 detail::tvec3&lt;T, defaultp&gt;(Radius));
+<a name="l00138"></a>00138                         LenRadius = <a class="code" href="group__gtc__quaternion.html#g286560b01bedb4e046ffb71de22464f4">length</a>(Result);
+<a name="l00139"></a>00139                 }
+<a name="l00140"></a>00140                 <span class="keywordflow">while</span>(LenRadius &gt; Radius);
+<a name="l00141"></a>00141                 
+<a name="l00142"></a>00142                 <span class="keywordflow">return</span> Result;
+<a name="l00143"></a>00143         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__random_g8543dd05af529c33cb10deb832aab03a_cgraph.png" border="0" usemap="#group__gtc__random_g8543dd05af529c33cb10deb832aab03a_cgraph_map" alt=""></center>
+<map name="group__gtc__random_g8543dd05af529c33cb10deb832aab03a_cgraph_map">
+<area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="168,5,253,32"><area shape="rect" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492" title="glm::linearRand" alt="" coords="155,56,267,83"><area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="315,5,387,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gb633996dfedab1a7f45bb5cfa1b14443"></a><!-- doxytag: member="glm::circularRand" ref="gb633996dfedab1a7f45bb5cfa1b14443" args="(T const &amp;Radius)" -->
@@ -117,6 +147,25 @@ Generate a random 2D vector which coordinates are regulary distributed on a circ
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__random.html" title="Generate random number from various distribution methods.">GLM_GTC_random</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="random_8inl-source.html#l00147">147</a> of file <a class="el" href="random_8inl-source.html">random.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, <a class="el" href="random_8inl-source.html#l00071">glm::linearRand()</a>, and <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00150"></a>00150         {
+<a name="l00151"></a>00151                 T a = <a class="code" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492">linearRand</a>(T(0), T(6.283185307179586476925286766559f));
+<a name="l00152"></a>00152                 <span class="keywordflow">return</span> detail::tvec2&lt;T, defaultp&gt;(<a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(a), <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(a)) * Radius;             
+<a name="l00153"></a>00153         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__random_gb633996dfedab1a7f45bb5cfa1b14443_cgraph.png" border="0" usemap="#group__gtc__random_gb633996dfedab1a7f45bb5cfa1b14443_cgraph_map" alt=""></center>
+<map name="group__gtc__random_gb633996dfedab1a7f45bb5cfa1b14443_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="196,5,268,32"><area shape="rect" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492" title="glm::linearRand" alt="" coords="176,56,288,83"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="199,107,265,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="gea707507f941467133dfdd4f3de9eeed"></a><!-- doxytag: member="glm::diskRand" ref="gea707507f941467133dfdd4f3de9eeed" args="(T const &amp;Radius)" -->
@@ -145,6 +194,36 @@ Generate a random 2D vector which coordinates are regulary distributed within th
   </table>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__random.html" title="Generate random number from various distribution methods.">GLM_GTC_random</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="random_8inl-source.html#l00105">105</a> of file <a class="el" href="random_8inl-source.html">random.inl</a>.</p>
+
+<p>References <a class="el" href="func__geometric_8inl-source.html#l00089">glm::length()</a>, and <a class="el" href="random_8inl-source.html#l00071">glm::linearRand()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00108"></a>00108         {               
+<a name="l00109"></a>00109                 detail::tvec2&lt;T, defaultp&gt; Result(T(0));
+<a name="l00110"></a>00110                 T LenRadius(T(0));
+<a name="l00111"></a>00111                 
+<a name="l00112"></a>00112                 <span class="keywordflow">do</span>
+<a name="l00113"></a>00113                 {
+<a name="l00114"></a>00114                         Result = <a class="code" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492">linearRand</a>(
+<a name="l00115"></a>00115                                 detail::tvec2&lt;T, defaultp&gt;(-Radius),
+<a name="l00116"></a>00116                                 detail::tvec2&lt;T, defaultp&gt;(Radius));
+<a name="l00117"></a>00117                         LenRadius = <a class="code" href="group__gtc__quaternion.html#g286560b01bedb4e046ffb71de22464f4">length</a>(Result);
+<a name="l00118"></a>00118                 }
+<a name="l00119"></a>00119                 <span class="keywordflow">while</span>(LenRadius &gt; Radius);
+<a name="l00120"></a>00120                 
+<a name="l00121"></a>00121                 <span class="keywordflow">return</span> Result;
+<a name="l00122"></a>00122         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__random_gea707507f941467133dfdd4f3de9eeed_cgraph.png" border="0" usemap="#group__gtc__random_gea707507f941467133dfdd4f3de9eeed_cgraph_map" alt=""></center>
+<map name="group__gtc__random_gea707507f941467133dfdd4f3de9eeed_cgraph_map">
+<area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="171,5,256,32"><area shape="rect" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492" title="glm::linearRand" alt="" coords="157,56,269,83"><area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="317,5,389,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -184,6 +263,34 @@ Generate random numbers in the interval [Min, Max], according a gaussian distrib
   </table>
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__random.html" title="Generate random number from various distribution methods.">GLM_GTC_random</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="random_8inl-source.html#l00083">83</a> of file <a class="el" href="random_8inl-source.html">random.inl</a>.</p>
+
+<p>References <a class="el" href="random_8inl-source.html#l00071">glm::linearRand()</a>, <a class="el" href="func__exponential_8inl-source.html#l00116">glm::log()</a>, and <a class="el" href="func__exponential_8inl-source.html#l00219">glm::sqrt()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00087"></a>00087         {
+<a name="l00088"></a>00088                 genType w, x1, x2;
+<a name="l00089"></a>00089         
+<a name="l00090"></a>00090                 <span class="keywordflow">do</span>
+<a name="l00091"></a>00091                 {
+<a name="l00092"></a>00092                         x1 = <a class="code" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492">linearRand</a>(genType(-1), genType(1));
+<a name="l00093"></a>00093                         x2 = <a class="code" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492">linearRand</a>(genType(-1), genType(1));
+<a name="l00094"></a>00094                 
+<a name="l00095"></a>00095                         w = x1 * x1 + x2 * x2;
+<a name="l00096"></a>00096                 } <span class="keywordflow">while</span>(w &gt; genType(1));
+<a name="l00097"></a>00097         
+<a name="l00098"></a>00098                 <span class="keywordflow">return</span> x2 * Deviation * Deviation * <a class="code" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f">sqrt</a>((genType(-2) * <a class="code" href="group__gtx__quaternion.html#gbed81c73a777fce84fe442bbc17c13ce">log</a>(w)) / w) + Mean;
+<a name="l00099"></a>00099         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__random_gc045638daf634b0221ef4baaaf643cb2_cgraph.png" border="0" usemap="#group__gtc__random_gc045638daf634b0221ef4baaaf643cb2_cgraph_map" alt=""></center>
+<map name="group__gtc__random_gc045638daf634b0221ef4baaaf643cb2_cgraph_map">
+<area shape="rect" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492" title="glm::linearRand" alt="" coords="171,5,283,32"><area shape="rect" href="group__core__func__exponential.html#gce8148db3949f9260f6f883f8dbae808" title="glm::log" alt="" coords="193,56,260,83"><area shape="rect" href="group__core__func__exponential.html#gfe49b7b63045b6ab94bffbcd7e7a7bc8" title="glm::sqrt" alt="" coords="455,107,527,133"><area shape="rect" href="group__gtx__quaternion.html#gbed81c73a777fce84fe442bbc17c13ce" title="glm::log" alt="" coords="332,56,399,83"><area shape="rect" href="group__core__func__trigonometric.html#gb89f4e2a1ea1426dc87ab3a06901b68a" title="glm::atan" alt="" coords="453,5,528,32"><area shape="rect" href="group__core__func__geometric.html#gd73a94d9c967e619e670156356e93b7e" title="glm::length" alt="" coords="448,56,533,83"><area shape="rect" href="group__gtx__compatibility.html#ga7c3a1b05bab87aa5a7cbc9efadfbc52" title="Arc tangent. Returns an angle whose tangent is y/x. The signs of x and y are used..." alt="" coords="581,5,664,32"><area shape="rect" href="group__core__func__common.html#gab4b95b47f2918ce6e7ac279a0ba27c1" title="glm::abs" alt="" coords="587,56,659,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -229,6 +336,24 @@ Generate random numbers in the interval [Min, Max], according a linear distribut
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__random.html" title="Generate random number from various distribution methods.">GLM_GTC_random</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="random_8inl-source.html#l00071">71</a> of file <a class="el" href="random_8inl-source.html">random.inl</a>.</p>
+
+<p>Referenced by <a class="el" href="random_8inl-source.html#l00126">glm::ballRand()</a>, <a class="el" href="random_8inl-source.html#l00147">glm::circularRand()</a>, <a class="el" href="random_8inl-source.html#l00105">glm::diskRand()</a>, <a class="el" href="random_8inl-source.html#l00083">glm::gaussRand()</a>, and <a class="el" href="random_8inl-source.html#l00157">glm::sphericalRand()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00075"></a>00075         {
+<a name="l00076"></a>00076                 <span class="keywordflow">return</span> detail::compute_linearRand()(Min, Max);
+<a name="l00077"></a>00077         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__random_gb955b990407d8d4b62cfe2a2a89d9492_icgraph.png" border="0" usemap="#group__gtc__random_gb955b990407d8d4b62cfe2a2a89d9492_icgraph_map" alt=""></center>
+<map name="group__gtc__random_gb955b990407d8d4b62cfe2a2a89d9492_icgraph_map">
+<area shape="rect" href="group__gtc__random.html#g8543dd05af529c33cb10deb832aab03a" title="glm::ballRand" alt="" coords="183,5,281,32"><area shape="rect" href="group__gtc__random.html#gb633996dfedab1a7f45bb5cfa1b14443" title="glm::circularRand" alt="" coords="171,56,293,83"><area shape="rect" href="group__gtc__random.html#gea707507f941467133dfdd4f3de9eeed" title="glm::diskRand" alt="" coords="180,107,284,133"><area shape="rect" href="group__gtc__random.html#gc045638daf634b0221ef4baaaf643cb2" title="glm::gaussRand" alt="" coords="175,157,289,184"><area shape="rect" href="group__gtc__random.html#g02f5a6b98ae4e494eef340bcdd38ed35" title="glm::sphericalRand" alt="" coords="167,208,297,235"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="g02f5a6b98ae4e494eef340bcdd38ed35"></a><!-- doxytag: member="glm::sphericalRand" ref="g02f5a6b98ae4e494eef340bcdd38ed35" args="(T const &amp;Radius)" -->
@@ -258,10 +383,36 @@ Generate a random 3D vector which coordinates are regulary distributed on a sphe
 </dl>
 <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="group__gtc__random.html" title="Generate random number from various distribution methods.">GLM_GTC_random</a> </dd></dl>
 
+<p>Definition at line <a class="el" href="random_8inl-source.html#l00157">157</a> of file <a class="el" href="random_8inl-source.html">random.inl</a>.</p>
+
+<p>References <a class="el" href="func__trigonometric_8inl-source.html#l00079">glm::cos()</a>, <a class="el" href="random_8inl-source.html#l00071">glm::linearRand()</a>, <a class="el" href="func__trigonometric_8inl-source.html#l00066">glm::sin()</a>, and <a class="el" href="func__exponential_8inl-source.html#l00219">glm::sqrt()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00160"></a>00160         {
+<a name="l00161"></a>00161                 T z = <a class="code" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492">linearRand</a>(T(-1), T(1));
+<a name="l00162"></a>00162                 T a = <a class="code" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492">linearRand</a>(T(0), T(6.283185307179586476925286766559f));
+<a name="l00163"></a>00163         
+<a name="l00164"></a>00164                 T r = <a class="code" href="group__gtx__integer.html#g457e9efca8339bf918d319e9c55f7c8f">sqrt</a>(T(1) - z * z);
+<a name="l00165"></a>00165         
+<a name="l00166"></a>00166                 T x = r * <a class="code" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98">cos</a>(a);
+<a name="l00167"></a>00167                 T y = r * <a class="code" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2">sin</a>(a);
+<a name="l00168"></a>00168         
+<a name="l00169"></a>00169                 <span class="keywordflow">return</span> detail::tvec3&lt;T, defaultp&gt;(x, y, z) * Radius;    
+<a name="l00170"></a>00170         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="group__gtc__random_g02f5a6b98ae4e494eef340bcdd38ed35_cgraph.png" border="0" usemap="#group__gtc__random_g02f5a6b98ae4e494eef340bcdd38ed35_cgraph_map" alt=""></center>
+<map name="group__gtc__random_g02f5a6b98ae4e494eef340bcdd38ed35_cgraph_map">
+<area shape="rect" href="group__core__func__trigonometric.html#gfef15df90786cd24fe786cc0ff2cbc98" title="glm::cos" alt="" coords="207,5,279,32"><area shape="rect" href="group__gtc__random.html#gb955b990407d8d4b62cfe2a2a89d9492" title="glm::linearRand" alt="" coords="187,56,299,83"><area shape="rect" href="group__core__func__trigonometric.html#gd4d4eda735d915be9af695fe2b4cded2" title="glm::sin" alt="" coords="209,107,276,133"><area shape="rect" href="group__core__func__exponential.html#gfe49b7b63045b6ab94bffbcd7e7a7bc8" title="glm::sqrt" alt="" coords="207,157,279,184"></map>
+</div>
+
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:26 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 12:58:42 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

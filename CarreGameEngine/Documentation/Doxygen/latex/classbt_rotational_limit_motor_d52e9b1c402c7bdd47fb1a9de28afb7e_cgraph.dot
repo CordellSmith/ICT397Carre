@@ -1,0 +1,14 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="btRotationalLimitMotor::solveAngularLimits",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="btRigidBody::applyTorqueImpulse",height=0.2,width=0.4,color="black",URL="$classbt_rigid_body.html#0084ebc850f06cd043d70ee87e6a3457"];
+  Node1 -> Node3 [color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="btRigidBody::getAngularVelocity",height=0.2,width=0.4,color="black",URL="$classbt_rigid_body.html#dc19d8e39a18aeabfb04be61de2c984e"];
+  Node1 -> Node4 [color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="btRotationalLimitMotor::needApplyTorques",height=0.2,width=0.4,color="black",URL="$classbt_rotational_limit_motor.html#5ab6c5d80964fb373b30c25a2d0efb4a",tooltip="Need apply correction."];
+}

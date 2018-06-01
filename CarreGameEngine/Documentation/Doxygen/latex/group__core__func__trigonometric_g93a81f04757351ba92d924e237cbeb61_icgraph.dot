@@ -1,0 +1,18 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::tan",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::cot",height=0.2,width=0.4,color="black",URL="$group__gtc__reciprocal.html#g8d3b73a481ad1115ca93da1410868e10"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::infinitePerspective",height=0.2,width=0.4,color="black",URL="$group__gtc__matrix__transform.html#g2b5303a99580dc5a2ffe4cd9303397a9"];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::perspective",height=0.2,width=0.4,color="black",URL="$group__gtc__matrix__transform.html#g6f705d60660ad2d4ef540ca0bb59273e"];
+  Node4 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="Camera::SetPerspective",height=0.2,width=0.4,color="black",URL="$class_camera.html#621b0ca0ddcab43fb95ee754c443dfa4",tooltip="Default constructor."];
+  Node1 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node6 [label="glm::tweakedInfinitePerspective",height=0.2,width=0.4,color="black",URL="$group__gtc__matrix__transform.html#gb4748de5e549cbd83682c9d28a9ccdac"];
+}

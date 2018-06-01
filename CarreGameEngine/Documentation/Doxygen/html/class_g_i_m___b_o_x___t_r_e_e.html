@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GIM_BOX_TREE Class Reference</title>
+<title>Assignment2 - OOber Taxi: GIM_BOX_TREE Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,14 +28,14 @@
 <h1>GIM_BOX_TREE Class Reference</h1><!-- doxytag: class="GIM_BOX_TREE" -->Basic Box tree structure.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;gim_box_set.h&gt;</code>
+<code>#include &lt;<a class="el" href="gim__box__set_8h-source.html">gim_box_set.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for GIM_BOX_TREE:</div>
 <div class="dynsection">
 <p><center><img src="class_g_i_m___b_o_x___t_r_e_e__coll__graph.png" border="0" usemap="#_g_i_m___b_o_x___t_r_e_e__coll__map" alt="Collaboration graph"></center>
 <map name="_g_i_m___b_o_x___t_r_e_e__coll__map">
-<area shape="rect" href="classgim__array.html" title="gim_array\&lt; GIM_BOX_TREE_NODE \&gt;" alt="" coords="5,187,248,213"><area shape="rect" href="struct_g_i_m___b_o_x___t_r_e_e___n_o_d_e.html" title="Node Structure for trees." alt="" coords="45,96,208,123"><area shape="rect" href="class_g_i_m___a_a_b_b.html" title="Axis aligned box." alt="" coords="83,5,171,32"></map>
+<area shape="rect" href="classgim__array.html" title="gim_array\&lt; GIM_BOX_TREE_NODE \&gt;" alt="" coords="85,187,328,213"><area shape="rect" href="struct_g_i_m___b_o_x___t_r_e_e___n_o_d_e.html" title="Node Structure for trees." alt="" coords="5,96,168,123"><area shape="rect" href="class_g_i_m___a_a_b_b.html" title="Axis aligned box." alt="" coords="43,5,131,32"><area shape="rect" href="classgim__array.html" title="Very simple array container with fast access and simd memory." alt="" coords="192,96,301,123"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -56,7 +56,9 @@ SIMD_FORCE_INLINE bool&nbsp;</td><td class="memItemRight" valign="bottom"><a cla
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">tells if the node is a leaf <br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Basic Box tree structure. <hr><h2>Member Function Documentation</h2>
+Basic Box tree structure. 
+<p>Definition at line <a class="el" href="gim__box__set_8h-source.html#l00133">133</a> of file <a class="el" href="gim__box__set_8h-source.html">gim_box_set.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="f76fa1d2f5e20c8979120fa72cf7575f"></a><!-- doxytag: member="GIM_BOX_TREE::build_tree" ref="f76fa1d2f5e20c8979120fa72cf7575f" args="(gim_array&lt; GIM_AABB_DATA &gt; &amp;primitive_boxes)" -->
 <div class="memitem">
 <div class="memproto">
@@ -77,12 +79,35 @@ Basic Box tree structure. <hr><h2>Member Function Documentation</h2>
 stackless build tree 
 <p>
 prototype functions for box tree management 
+<p>Definition at line <a class="el" href="gim__box__set_8cpp-source.html#l00171">171</a> of file <a class="el" href="gim__box__set_8cpp-source.html">gim_box_set.cpp</a>.</p>
+
+<p>References <a class="el" href="gim__array_8h-source.html#l00288">gim_array&lt; T &gt;::resize()</a>, and <a class="el" href="gim__array_8h-source.html#l00144">gim_array&lt; T &gt;::size()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00173"></a>00173 {
+<a name="l00174"></a>00174         <span class="comment">// initialize node count to 0</span>
+<a name="l00175"></a>00175         m_num_nodes = 0;
+<a name="l00176"></a>00176         <span class="comment">// allocate nodes</span>
+<a name="l00177"></a>00177         m_node_array.<a class="code" href="classgim__array.html#a4a78ae4cec9771904e3b461c494431a">resize</a>(primitive_boxes.<a class="code" href="classgim__array.html#c43689700269894bb574595c329e919a">size</a>()*2);
+<a name="l00178"></a>00178         
+<a name="l00179"></a>00179         _build_sub_tree(primitive_boxes, 0, primitive_boxes.<a class="code" href="classgim__array.html#c43689700269894bb574595c329e919a">size</a>());
+<a name="l00180"></a>00180 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_g_i_m___b_o_x___t_r_e_e_f76fa1d2f5e20c8979120fa72cf7575f_cgraph.png" border="0" usemap="#class_g_i_m___b_o_x___t_r_e_e_f76fa1d2f5e20c8979120fa72cf7575f_cgraph_map" alt=""></center>
+<map name="class_g_i_m___b_o_x___t_r_e_e_f76fa1d2f5e20c8979120fa72cf7575f_cgraph_map">
+<area shape="rect" href="classgim__array.html#a4a78ae4cec9771904e3b461c494431a" title="gim_array::resize" alt="" coords="239,5,359,32"><area shape="rect" href="classgim__array.html#c43689700269894bb574595c329e919a" title="gim_array::size" alt="" coords="244,56,353,83"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="gim__box__set_8h.html">gim_box_set.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim_box_set.cpp</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="gim__box__set_8h-source.html">gim_box_set.h</a><li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="gim__box__set_8cpp-source.html">gim_box_set.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:05:04 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:02:17 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

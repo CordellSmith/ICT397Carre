@@ -4,9 +4,9 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = "Assignment1 - OOber Taxi"
-PROJECT_NUMBER         = "Version 1.0"
-OUTPUT_DIRECTORY       = "C:\Users\New\Documents\Games_Technology\Year4_Semester1\ICT397\~My Work\Assignment1\ICT397Carre\CarreGameEngine\Documentation\Doxygen"
+PROJECT_NAME           = "Assignment2 - OOber Taxi"
+PROJECT_NUMBER         = "Version 2.0"
+OUTPUT_DIRECTORY       = "C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Documentation/Doxygen"
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = YES
@@ -93,7 +93,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = "C:\Users\New\Documents\Games_Technology\Year4_Semester1\ICT397\~My Work\Assignment1\ICT397Carre\CarreGameEngine"
+INPUT                  = "C:\Users\New\Documents\Games_Technology\Year4_Semester1\ICT397\~My Work\Assignment2\ICT397Carre\CarreGameEngine"
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
@@ -141,14 +141,14 @@ FILTER_SOURCE_FILES    = NO
 #---------------------------------------------------------------------------
 # configuration options related to source browsing
 #---------------------------------------------------------------------------
-SOURCE_BROWSER         = NO
-INLINE_SOURCES         = NO
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
 STRIP_CODE_COMMENTS    = YES
-REFERENCED_BY_RELATION = NO
-REFERENCES_RELATION    = NO
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
 REFERENCES_LINK_SOURCE = YES
 USE_HTAGS              = NO
-VERBATIM_HEADERS       = NO
+VERBATIM_HEADERS       = YES
 #---------------------------------------------------------------------------
 # configuration options related to the alphabetical class index
 #---------------------------------------------------------------------------
@@ -264,11 +264,11 @@ CLASS_GRAPH            = YES
 COLLABORATION_GRAPH    = YES
 GROUP_GRAPHS           = YES
 UML_LOOK               = NO
-TEMPLATE_RELATIONS     = NO
+TEMPLATE_RELATIONS     = YES
 INCLUDE_GRAPH          = YES
 INCLUDED_BY_GRAPH      = YES
-CALL_GRAPH             = NO
-CALLER_GRAPH           = NO
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
 GRAPHICAL_HIERARCHY    = YES
 DIRECTORY_GRAPH        = YES
 DOT_IMAGE_FORMAT       = png

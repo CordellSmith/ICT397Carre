@@ -21,7 +21,9 @@ virtual btScalar \hyperlink{classbt_constraint_solver_pool_mt_9ec644111717d84550
 
 Each solver in the pool is protected by a mutex. When solveGroup is called from a thread, the pool looks for a solver that isn't being used by another thread, locks it, and dispatches the call to the solver. So long as there are at least as many solvers as there are hardware threads, it should never need to spin wait. 
 
+Definition at line 35 of file btDiscreteDynamicsWorldMt.h.
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btDiscreteDynamicsWorldMt.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btDiscreteDynamicsWorldMt.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btDiscreteDynamicsWorldMt.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletDynamics/Dynamics/btDiscreteDynamicsWorldMt.cpp\end{CompactItemize}

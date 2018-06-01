@@ -27,3 +27,28 @@ $<$glm/gtx/closest\_\-point.hpp$>$ need to be included to use these functionalit
 
 Find the point on a straight line which is the closet of a point. \begin{Desc}
 \item[See also:]\hyperlink{group__gtx__closest__point}{GLM\_\-GTX\_\-closest\_\-point} \end{Desc}
+
+
+Definition at line 17 of file closest\_\-point.inl.
+
+References glm::distance(), and glm::dot().
+
+\begin{Code}\begin{verbatim}22         {
+23                 T LineLength = distance(a, b);
+24                 detail::tvec3<T, P> Vector = point - a;
+25                 detail::tvec3<T, P> LineDirection = (b - a) / LineLength;
+26 
+27                 // Project Vector to LineDirection to get the distance of point from a
+28                 T Distance = dot(Vector, LineDirection);
+29 
+30                 if(Distance <= T(0)) return a;
+31                 if(Distance >= LineLength) return b;
+32                 return a + LineDirection * Distance;
+33         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:

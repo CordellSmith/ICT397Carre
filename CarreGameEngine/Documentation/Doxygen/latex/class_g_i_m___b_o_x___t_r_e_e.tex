@@ -29,6 +29,8 @@ SIMD\_\-FORCE\_\-INLINE bool \hyperlink{class_g_i_m___b_o_x___t_r_e_e_cdbffa778f
 \subsection{Detailed Description}
 Basic Box tree structure. 
 
+Definition at line 133 of file gim\_\-box\_\-set.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{class_g_i_m___b_o_x___t_r_e_e_f76fa1d2f5e20c8979120fa72cf7575f}{
 \index{GIM\_\-BOX\_\-TREE@{GIM\_\-BOX\_\-TREE}!build\_\-tree@{build\_\-tree}}
@@ -41,7 +43,27 @@ stackless build tree
 
 prototype functions for box tree management 
 
+Definition at line 171 of file gim\_\-box\_\-set.cpp.
+
+References gim\_\-array$<$ T $>$::resize(), and gim\_\-array$<$ T $>$::size().
+
+\begin{Code}\begin{verbatim}173 {
+174         // initialize node count to 0
+175         m_num_nodes = 0;
+176         // allocate nodes
+177         m_node_array.resize(primitive_boxes.size()*2);
+178         
+179         _build_sub_tree(primitive_boxes, 0, primitive_boxes.size());
+180 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__box__set_8h}{gim\_\-box\_\-set.h}\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-box\_\-set.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/\hyperlink{gim__box__set_8h}{gim\_\-box\_\-set.h}\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-box\_\-set.cpp\end{CompactItemize}

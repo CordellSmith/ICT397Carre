@@ -28,6 +28,8 @@ const char $\ast$ \hyperlink{structai_importer_desc_074bd688ffd15d7f4df32e794111
 \subsection{Detailed Description}
 Meta information about a particular importer. Importers need to fill this structure, but they can freely decide how talkative they are. A common use case for loader meta info is a user interface in which the user can choose between various import/export file formats. Building such an UI by hand means a lot of maintenance as importers/exporters are added to \hyperlink{namespace_assimp}{Assimp}, so it might be useful to have a common mechanism to query some rough importer characteristics. 
 
+Definition at line 89 of file importerdesc.h.
+
 \subsection{Member Data Documentation}
 \hypertarget{structai_importer_desc_2a9d5fd818c01bba1a0a782722ab9495}{
 \index{aiImporterDesc@{aiImporterDesc}!mName@{mName}}
@@ -36,49 +38,63 @@ Meta information about a particular importer. Importers need to fill this struct
 \label{structai_importer_desc_2a9d5fd818c01bba1a0a782722ab9495}
 
 
-Full name of the importer (i.e. Blender3D importer) \hypertarget{structai_importer_desc_8e050453324b1e855701c7c082c1b24b}{
+Full name of the importer (i.e. Blender3D importer) 
+
+Definition at line 92 of file importerdesc.h.\hypertarget{structai_importer_desc_8e050453324b1e855701c7c082c1b24b}{
 \index{aiImporterDesc@{aiImporterDesc}!mAuthor@{mAuthor}}
 \index{mAuthor@{mAuthor}!aiImporterDesc@{aiImporterDesc}}
 \subsubsection[mAuthor]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf aiImporterDesc::mAuthor}}}
 \label{structai_importer_desc_8e050453324b1e855701c7c082c1b24b}
 
 
-Original author (left blank if unknown or whole assimp team) \hypertarget{structai_importer_desc_53bf0ecb36ce0b97018b4b6bd2748f02}{
+Original author (left blank if unknown or whole assimp team) 
+
+Definition at line 95 of file importerdesc.h.\hypertarget{structai_importer_desc_53bf0ecb36ce0b97018b4b6bd2748f02}{
 \index{aiImporterDesc@{aiImporterDesc}!mMaintainer@{mMaintainer}}
 \index{mMaintainer@{mMaintainer}!aiImporterDesc@{aiImporterDesc}}
 \subsubsection[mMaintainer]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf aiImporterDesc::mMaintainer}}}
 \label{structai_importer_desc_53bf0ecb36ce0b97018b4b6bd2748f02}
 
 
-Current maintainer, left blank if the author maintains \hypertarget{structai_importer_desc_2d8ad562f6c18ee9e8bfdb2da4871118}{
+Current maintainer, left blank if the author maintains 
+
+Definition at line 98 of file importerdesc.h.\hypertarget{structai_importer_desc_2d8ad562f6c18ee9e8bfdb2da4871118}{
 \index{aiImporterDesc@{aiImporterDesc}!mComments@{mComments}}
 \index{mComments@{mComments}!aiImporterDesc@{aiImporterDesc}}
 \subsubsection[mComments]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf aiImporterDesc::mComments}}}
 \label{structai_importer_desc_2d8ad562f6c18ee9e8bfdb2da4871118}
 
 
-Implementation comments, i.e. unimplemented features \hypertarget{structai_importer_desc_9939db58b9f95a537f9f5a749524b6b2}{
+Implementation comments, i.e. unimplemented features 
+
+Definition at line 101 of file importerdesc.h.\hypertarget{structai_importer_desc_9939db58b9f95a537f9f5a749524b6b2}{
 \index{aiImporterDesc@{aiImporterDesc}!mFlags@{mFlags}}
 \index{mFlags@{mFlags}!aiImporterDesc@{aiImporterDesc}}
 \subsubsection[mFlags]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiImporterDesc::mFlags}}}
 \label{structai_importer_desc_9939db58b9f95a537f9f5a749524b6b2}
 
 
-These flags indicate some characteristics common to many importers. \hypertarget{structai_importer_desc_ee34d348f522807f0a36607664e92a57}{
+These flags indicate some characteristics common to many importers. 
+
+Definition at line 105 of file importerdesc.h.\hypertarget{structai_importer_desc_ee34d348f522807f0a36607664e92a57}{
 \index{aiImporterDesc@{aiImporterDesc}!mMinMajor@{mMinMajor}}
 \index{mMinMajor@{mMinMajor}!aiImporterDesc@{aiImporterDesc}}
 \subsubsection[mMinMajor]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiImporterDesc::mMinMajor}}}
 \label{structai_importer_desc_ee34d348f522807f0a36607664e92a57}
 
 
-Minimum format version that can be loaded im major.minor format, both are set to 0 if there is either no version scheme or if the loader doesn't care. \hypertarget{structai_importer_desc_9d33eac3be20f7f4630f838a228ada63}{
+Minimum format version that can be loaded im major.minor format, both are set to 0 if there is either no version scheme or if the loader doesn't care. 
+
+Definition at line 110 of file importerdesc.h.\hypertarget{structai_importer_desc_9d33eac3be20f7f4630f838a228ada63}{
 \index{aiImporterDesc@{aiImporterDesc}!mMaxMajor@{mMaxMajor}}
 \index{mMaxMajor@{mMaxMajor}!aiImporterDesc@{aiImporterDesc}}
 \subsubsection[mMaxMajor]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf aiImporterDesc::mMaxMajor}}}
 \label{structai_importer_desc_9d33eac3be20f7f4630f838a228ada63}
 
 
-Maximum format version that can be loaded im major.minor format, both are set to 0 if there is either no version scheme or if the loader doesn't care. Loaders that expect to be forward-compatible to potential future format versions should indicate zero, otherwise they should specify the current maximum version. \hypertarget{structai_importer_desc_074bd688ffd15d7f4df32e794111a413}{
+Maximum format version that can be loaded im major.minor format, both are set to 0 if there is either no version scheme or if the loader doesn't care. Loaders that expect to be forward-compatible to potential future format versions should indicate zero, otherwise they should specify the current maximum version. 
+
+Definition at line 119 of file importerdesc.h.\hypertarget{structai_importer_desc_074bd688ffd15d7f4df32e794111a413}{
 \index{aiImporterDesc@{aiImporterDesc}!mFileExtensions@{mFileExtensions}}
 \index{mFileExtensions@{mFileExtensions}!aiImporterDesc@{aiImporterDesc}}
 \subsubsection[mFileExtensions]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf aiImporterDesc::mFileExtensions}}}
@@ -87,6 +103,8 @@ Maximum format version that can be loaded im major.minor format, both are set to
 
 List of file extensions this importer can handle. List entries are separated by space characters. All entries are lower case without a leading dot (i.e. \char`\"{}xml dae\char`\"{} would be a valid value. Note that multiple importers may respond to the same file extension - assimp calls all importers in the order in which they are registered and each importer gets the opportunity to load the file until one importer \char`\"{}claims\char`\"{} the file. Apart from file extension checks, importers typically use other methods to quickly reject files (i.e. magic words) so this does not mean that common or generic file extensions such as XML would be tediously slow. 
 
+Definition at line 134 of file importerdesc.h.
+
 The documentation for this struct was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{importerdesc_8h}{importerdesc.h}\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/\hyperlink{importerdesc_8h}{importerdesc.h}\end{CompactItemize}

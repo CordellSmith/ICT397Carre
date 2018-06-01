@@ -45,6 +45,8 @@ This class uses a singleton to calculate the framerate and provide time calculat
 \item[Date:]29/03/2018 \end{Desc}
 
 
+Definition at line 16 of file TimeManager.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{class_time_manager_9bb9e5390526b32783b94adb728604fa}{
 \index{TimeManager@{TimeManager}!Instance@{Instance}}
@@ -59,6 +61,19 @@ This function returns a singleton instance of the time class so that there is on
 
 \begin{Desc}
 \item[Returns:]static \hyperlink{class_time_manager}{TimeManager}\& \end{Desc}
+
+
+Definition at line 28 of file TimeManager.h.
+
+\begin{Code}\begin{verbatim}29         {
+30                 static TimeManager instance;
+31                 
+32                 return instance;
+33         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{class_time_manager_95782501e884a42904e2e726246701d5}{
 \index{TimeManager@{TimeManager}!CalculateFrameRate@{CalculateFrameRate}}
 \index{CalculateFrameRate@{CalculateFrameRate}!TimeManager@{TimeManager}}
@@ -77,7 +92,49 @@ This function calculates the framerate per second and prints it to the console.
 \end{Desc}
 \begin{Desc}
 \item[Returns:]double \end{Desc}
-\hypertarget{class_time_manager_7ba98f4d4ea9a0519007d127a460b259}{
+
+
+Definition at line 3 of file TimeManager.cpp.
+
+References CurrentTime, DeltaTime, and GetTime().
+
+\begin{Code}\begin{verbatim}4 {
+5         static double framesPerSecond = 0.0f;                                                           
+6         static double startTime = GetTime();                                                            
+7         static double lastTime = GetTime();                                                                     
+8         static char strFrameRate[50] = { 0 };                                                           
+9         static double currentFPS = 0.0f;                                                                        
+10 
+11         CurrentTime = GetTime();
+12 
+13         // Calculate delta time
+14         DeltaTime = CurrentTime - lastTime;
+15         lastTime = CurrentTime;
+16 
+17         // Increase frame counter
+18         ++framesPerSecond;
+19         
+20         if ( CurrentTime - startTime > 0.5f )
+21         {
+22                 startTime = CurrentTime;
+23 
+24                 // Display fps in console
+25                 if (writeToConsole)
+26                         std::cout << "Current Frames Per Second: " << (int)framesPerSecond << std::endl;
+27         
+28                 currentFPS = framesPerSecond;
+29                 framesPerSecond = 0;
+30         }
+31 
+32         return currentFPS;
+33 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{class_time_manager_7ba98f4d4ea9a0519007d127a460b259}{
 \index{TimeManager@{TimeManager}!GetTime@{GetTime}}
 \index{GetTime@{GetTime}!TimeManager@{TimeManager}}
 \subsubsection[GetTime]{\setlength{\rightskip}{0pt plus 5cm}double TimeManager::GetTime ()}}
@@ -90,7 +147,26 @@ This function returns the real time in seconds.
 
 \begin{Desc}
 \item[Returns:]double \end{Desc}
-\hypertarget{class_time_manager_a2273e7e9e31462ae81b2331fe8e7ac6}{
+
+
+Definition at line 35 of file TimeManager.cpp.
+
+Referenced by CalculateFrameRate().
+
+\begin{Code}\begin{verbatim}36 {
+37         auto beginningOfTime = std::chrono::system_clock::now().time_since_epoch();
+38 
+39         auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(beginningOfTime).count();
+40 
+41         return ms * 0.001;
+42 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{class_time_manager_a2273e7e9e31462ae81b2331fe8e7ac6}{
 \index{TimeManager@{TimeManager}!Sleep@{Sleep}}
 \index{Sleep@{Sleep}!TimeManager@{TimeManager}}
 \subsubsection[Sleep]{\setlength{\rightskip}{0pt plus 5cm}void TimeManager::Sleep (int {\em milliseconds})}}
@@ -110,7 +186,17 @@ This function sleeps the current thread for an amount of time given by the param
 \item[Returns:]void \end{Desc}
 
 
+Definition at line 44 of file TimeManager.cpp.
+
+\begin{Code}\begin{verbatim}45 {
+46         std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+47 }\end{verbatim}
+\end{Code}
+
+
+
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/TimeManager.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/CarreGameEngine/src/TimeManager.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/headers/TimeManager.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/CarreGameEngine/src/TimeManager.cpp\end{CompactItemize}

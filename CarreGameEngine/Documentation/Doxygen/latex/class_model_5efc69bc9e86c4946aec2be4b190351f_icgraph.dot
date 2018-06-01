@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="Model::SetCamera",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="Terrain::SetCamera",height=0.2,width=0.4,color="black",URL="$class_terrain.html#d24a0b962c0bff2328d45c716a4b2788",tooltip="Sets the camera object."];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="Player::SetCamera",height=0.2,width=0.4,color="black",URL="$class_player.html#4747c299dc385f1aeb6ade65d67962bf",tooltip="Sets the camera object."];
+}

@@ -46,7 +46,47 @@ Return the distance in the number of ULP between 2 vectors. \begin{Desc}
 
 Return the distance in the number of ULP between 2 scalars. \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__ulp}{GLM\_\-GTC\_\-ulp} \end{Desc}
-\hypertarget{group__gtc__ulp_g686013928fd7c76c5f100b84483b1f51}{
+
+
+Definition at line 300 of file ulp.inl.
+
+References glm::next\_\-float().
+
+\begin{Code}\begin{verbatim}301         {
+302                 uint ulp = 0;
+303 
+304                 if(x < y)
+305                 {
+306                         T temp = x;
+307                         while(temp != y)// && ulp < std::numeric_limits<std::size_t>::max())
+308                         {
+309                                 ++ulp;
+310                                 temp = next_float(temp);
+311                         }
+312                 }
+313                 else if(y < x)
+314                 {
+315                         T temp = y;
+316                         while(temp != x)// && ulp < std::numeric_limits<std::size_t>::max())
+317                         {
+318                                 ++ulp;
+319                                 temp = next_float(temp);
+320                         }
+321                 }
+322                 else // ==
+323                 {
+324 
+325                 }
+326 
+327                 return ulp;
+328         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtc__ulp_g686013928fd7c76c5f100b84483b1f51}{
 \index{gtc\_\-ulp@{gtc\_\-ulp}!next\_\-float@{next\_\-float}}
 \index{next\_\-float@{next\_\-float}!gtc_ulp@{gtc\_\-ulp}}
 \subsubsection[next\_\-float]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::next\_\-float (genType const \& {\em x}, \/  uint const \& {\em Distance})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -64,7 +104,11 @@ Return the value(s) ULP distance after the input value(s). \begin{Desc}
 
 Return the next ULP value(s) after the input value(s). \begin{Desc}
 \item[See also:]\hyperlink{group__gtc__ulp}{GLM\_\-GTC\_\-ulp} \end{Desc}
-\hypertarget{group__gtc__ulp_ge55d449df292398361ccecad1cc5ead4}{
+
+
+Referenced by glm::float\_\-distance().
+
+Here is the caller graph for this function:\hypertarget{group__gtc__ulp_ge55d449df292398361ccecad1cc5ead4}{
 \index{gtc\_\-ulp@{gtc\_\-ulp}!prev\_\-float@{prev\_\-float}}
 \index{prev\_\-float@{prev\_\-float}!gtc_ulp@{gtc\_\-ulp}}
 \subsubsection[prev\_\-float]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename genType$>$ GLM\_\-FUNC\_\-DECL genType glm::prev\_\-float (genType const \& {\em x}, \/  uint const \& {\em Distance})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}

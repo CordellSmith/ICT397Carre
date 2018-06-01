@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: aiMesh Struct Reference</title>
+<title>Assignment2 - OOber Taxi: aiMesh Struct Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>aiMesh Struct Reference</h1><!-- doxytag: class="aiMesh" -->enum aiMorphingMethod  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;mesh.h&gt;</code>
+<code>#include &lt;<a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for aiMesh:</div>
@@ -82,9 +82,11 @@ Collaboration diagram for aiMesh:</div>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 enum aiMorphingMethod 
 <p>
-A mesh represents a geometry or model with a single material. It usually consists of a number of vertices and a series of primitives/faces referencing the vertices. In addition there might be a series of bones, each of them addressing a number of vertices with a certain weight. <a class="el" href="struct_vertex.html" title="Basic vertex struct.">Vertex</a> data is presented in channels with each channel containing a single per-vertex information such as a set of texture coords or a normal vector. If a data pointer is non-null, the corresponding data stream is present. From C++-programs you can also use the comfort functions Has*() to test for the presence of various data streams.<p>
-A Mesh uses only a single material which is referenced by a material ID. <dl class="note" compact><dt><b>Note:</b></dt><dd>The mPositions member is usually not optional. However, vertex positions *could* be missing if the <a class="el" href="scene_8h.html#64c3b662e066126207bb842fc406a745">AI_SCENE_FLAGS_INCOMPLETE</a> flag is set in <div class="fragment"><pre class="fragment"> <a class="code" href="structai_scene.html#4091f10bb81e05db00ebc34f40c48f38">aiScene::mFlags</a>
+A mesh represents a geometry or model with a single material. It usually consists of a number of vertices and a series of primitives/faces referencing the vertices. In addition there might be a series of bones, each of them addressing a number of vertices with a certain weight. <a class="el" href="class_vertex.html">Vertex</a> data is presented in channels with each channel containing a single per-vertex information such as a set of texture coords or a normal vector. If a data pointer is non-null, the corresponding data stream is present. From C++-programs you can also use the comfort functions Has*() to test for the presence of various data streams.<p>
+A <a class="el" href="class_mesh.html" title="Used to store mesh data.">Mesh</a> uses only a single material which is referenced by a material ID. <dl class="note" compact><dt><b>Note:</b></dt><dd>The mPositions member is usually not optional. However, vertex positions *could* be missing if the <a class="el" href="scene_8h.html#64c3b662e066126207bb842fc406a745">AI_SCENE_FLAGS_INCOMPLETE</a> flag is set in <div class="fragment"><pre class="fragment"> <a class="code" href="structai_scene.html#4091f10bb81e05db00ebc34f40c48f38">aiScene::mFlags</a>
 </pre></div> </dd></dl>
+
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00496">496</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
 <hr><h2>Member Data Documentation</h2>
 <a class="anchor" name="99d66ac0a444068c1b252b30265cbf53"></a><!-- doxytag: member="aiMesh::mPrimitiveTypes" ref="99d66ac0a444068c1b252b30265cbf53" args="" -->
 <div class="memitem">
@@ -99,6 +101,8 @@ A Mesh uses only a single material which is referenced by a material ID. <dl cla
 
 <p>
 Bitwise combination of the members of the aiPrimitiveType enum. This specifies which types of primitives are present in the mesh. The "SortByPrimitiveType"-Step can be used to make sure the output meshes consist of one primitive type each. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00503">503</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="b34b7b5941e6636f1c08f615cbb072ef"></a><!-- doxytag: member="aiMesh::mNumVertices" ref="b34b7b5941e6636f1c08f615cbb072ef" args="" -->
@@ -114,6 +118,8 @@ Bitwise combination of the members of the aiPrimitiveType enum. This specifies w
 
 <p>
 The number of vertices in this mesh. This is also the size of all of the per-vertex data arrays. The maximum value for this member is AI_MAX_VERTICES. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00509">509</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="eed22ee6963b79548f3877b3c905518e"></a><!-- doxytag: member="aiMesh::mNumFaces" ref="eed22ee6963b79548f3877b3c905518e" args="" -->
@@ -129,6 +135,10 @@ The number of vertices in this mesh. This is also the size of all of the per-ver
 
 <p>
 The number of primitives (triangles, polygons, lines) in this mesh. This is also the size of the mFaces array. The maximum value for this member is AI_MAX_FACES. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00515">515</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00048">Model::ProcessMesh()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="fd4588abb3e1c72821ae0234a3850662"></a><!-- doxytag: member="aiMesh::mVertices" ref="fd4588abb3e1c72821ae0234a3850662" args="" -->
@@ -143,7 +153,11 @@ The number of primitives (triangles, polygons, lines) in this mesh. This is also
 <div class="memdoc">
 
 <p>
-<a class="el" href="struct_vertex.html" title="Basic vertex struct.">Vertex</a> positions. This array is always present in a mesh. The array is mNumVertices in size. 
+<a class="el" href="class_vertex.html">Vertex</a> positions. This array is always present in a mesh. The array is mNumVertices in size. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00521">521</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00048">Model::ProcessMesh()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="ec81b496b4d93838cef038933dabe9b9"></a><!-- doxytag: member="aiMesh::mNormals" ref="ec81b496b4d93838cef038933dabe9b9" args="" -->
@@ -158,8 +172,12 @@ The number of primitives (triangles, polygons, lines) in this mesh. This is also
 <div class="memdoc">
 
 <p>
-<a class="el" href="struct_vertex.html" title="Basic vertex struct.">Vertex</a> normals. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. Normals are undefined for point and line primitives. A mesh consisting of points and lines only may not have normal vectors. Meshes with mixed primitive types (i.e. lines and triangles) may have normals, but the normals for vertices that are only referenced by point or line primitives are undefined and set to QNaN (WARN: qNaN compares to inequal to *everything*, even to qNaN itself. Using code like this to check whether a field is qnan is: <div class="fragment"><pre class="fragment"><span class="preprocessor"> #define IS_QNAN(f) (f != f)</span>
+<a class="el" href="class_vertex.html">Vertex</a> normals. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. Normals are undefined for point and line primitives. A mesh consisting of points and lines only may not have normal vectors. Meshes with mixed primitive types (i.e. lines and triangles) may have normals, but the normals for vertices that are only referenced by point or line primitives are undefined and set to QNaN (WARN: qNaN compares to inequal to *everything*, even to qNaN itself. Using code like this to check whether a field is qnan is: <div class="fragment"><pre class="fragment"><span class="preprocessor"> #define IS_QNAN(f) (f != f)</span>
 </pre></div> still dangerous because even 1.f == 1.f could evaluate to false! ( remember the subtleties of IEEE754 artithmetics). Use stuff like <code>fpclassify</code> instead. <dl class="note" compact><dt><b>Note:</b></dt><dd>Normal vectors computed by <a class="el" href="namespace_assimp.html">Assimp</a> are always unit-length. However, this needn't apply for normals that have been taken directly from the model file. </dd></dl>
+
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00543">543</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00048">Model::ProcessMesh()</a>.</p>
 
 </div>
 </div><p>
@@ -175,7 +193,9 @@ The number of primitives (triangles, polygons, lines) in this mesh. This is also
 <div class="memdoc">
 
 <p>
-<a class="el" href="struct_vertex.html" title="Basic vertex struct.">Vertex</a> tangents. The tangent of a vertex points in the direction of the positive X texture axis. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. A mesh consisting of points and lines only may not have normal vectors. Meshes with mixed primitive types (i.e. lines and triangles) may have normals, but the normals for vertices that are only referenced by point or line primitives are undefined and set to qNaN. See the <a class="el" href="structai_mesh.html#ec81b496b4d93838cef038933dabe9b9">mNormals</a> member for a detailed discussion of qNaNs. <dl class="note" compact><dt><b>Note:</b></dt><dd>If the mesh contains tangents, it automatically also contains bitangents. </dd></dl>
+<a class="el" href="class_vertex.html">Vertex</a> tangents. The tangent of a vertex points in the direction of the positive X texture axis. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. A mesh consisting of points and lines only may not have normal vectors. Meshes with mixed primitive types (i.e. lines and triangles) may have normals, but the normals for vertices that are only referenced by point or line primitives are undefined and set to qNaN. See the <a class="el" href="structai_mesh.html#ec81b496b4d93838cef038933dabe9b9">mNormals</a> member for a detailed discussion of qNaNs. <dl class="note" compact><dt><b>Note:</b></dt><dd>If the mesh contains tangents, it automatically also contains bitangents. </dd></dl>
+
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00557">557</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
 
 </div>
 </div><p>
@@ -191,7 +211,9 @@ The number of primitives (triangles, polygons, lines) in this mesh. This is also
 <div class="memdoc">
 
 <p>
-<a class="el" href="struct_vertex.html" title="Basic vertex struct.">Vertex</a> bitangents. The bitangent of a vertex points in the direction of the positive Y texture axis. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. <dl class="note" compact><dt><b>Note:</b></dt><dd>If the mesh contains tangents, it automatically also contains bitangents. </dd></dl>
+<a class="el" href="class_vertex.html">Vertex</a> bitangents. The bitangent of a vertex points in the direction of the positive Y texture axis. The array contains normalized vectors, NULL if not present. The array is mNumVertices in size. <dl class="note" compact><dt><b>Note:</b></dt><dd>If the mesh contains tangents, it automatically also contains bitangents. </dd></dl>
+
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00566">566</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
 
 </div>
 </div><p>
@@ -207,7 +229,9 @@ The number of primitives (triangles, polygons, lines) in this mesh. This is also
 <div class="memdoc">
 
 <p>
-<a class="el" href="struct_vertex.html" title="Basic vertex struct.">Vertex</a> color sets. A mesh may contain 0 to AI_MAX_NUMBER_OF_COLOR_SETS vertex colors per vertex. NULL if not present. Each array is mNumVertices in size if present. 
+<a class="el" href="class_vertex.html">Vertex</a> color sets. A mesh may contain 0 to AI_MAX_NUMBER_OF_COLOR_SETS vertex colors per vertex. NULL if not present. Each array is mNumVertices in size if present. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00573">573</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="4a50b11d00ef50f419c75cab0f6bddd6"></a><!-- doxytag: member="aiMesh::mTextureCoords" ref="4a50b11d00ef50f419c75cab0f6bddd6" args="[AI_MAX_NUMBER_OF_TEXTURECOORDS]" -->
@@ -222,7 +246,11 @@ The number of primitives (triangles, polygons, lines) in this mesh. This is also
 <div class="memdoc">
 
 <p>
-<a class="el" href="struct_vertex.html" title="Basic vertex struct.">Vertex</a> texture coords, also known as UV channels. A mesh may contain 0 to AI_MAX_NUMBER_OF_TEXTURECOORDS per vertex. NULL if not present. The array is mNumVertices in size. 
+<a class="el" href="class_vertex.html">Vertex</a> texture coords, also known as UV channels. A mesh may contain 0 to AI_MAX_NUMBER_OF_TEXTURECOORDS per vertex. NULL if not present. The array is mNumVertices in size. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00579">579</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00048">Model::ProcessMesh()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="635c631a6e66d32989d6b25b2a892d86"></a><!-- doxytag: member="aiMesh::mNumUVComponents" ref="635c631a6e66d32989d6b25b2a892d86" args="[AI_MAX_NUMBER_OF_TEXTURECOORDS]" -->
@@ -239,6 +267,8 @@ The number of primitives (triangles, polygons, lines) in this mesh. This is also
 <p>
 Specifies the number of components for a given UV channel. Up to three channels are supported (UVW, for accessing volume or cube maps). If the value is 2 for a given channel n, the component p.z of mTextureCoords[n][p] is set to 0.0f. If the value is 1 for a given channel, p.y is set to 0.0f, too. <dl class="note" compact><dt><b>Note:</b></dt><dd>4D coords are not supported </dd></dl>
 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00588">588</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="5a65fbc7fdea7f8d36f39047425ece07"></a><!-- doxytag: member="aiMesh::mFaces" ref="5a65fbc7fdea7f8d36f39047425ece07" args="" -->
@@ -254,6 +284,10 @@ Specifies the number of components for a given UV channel. Up to three channels 
 
 <p>
 The faces the mesh is constructed from. Each face refers to a number of vertices by their indices. This array is always present in a mesh, its size is given in mNumFaces. If the <a class="el" href="scene_8h.html#e17f4a0adb51e554db9575cc4e1126f9">AI_SCENE_FLAGS_NON_VERBOSE_FORMAT</a> is NOT set each face references an unique set of vertices. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00596">596</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00048">Model::ProcessMesh()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="0f9d5425b6300e32a842a94f943fd79e"></a><!-- doxytag: member="aiMesh::mNumBones" ref="0f9d5425b6300e32a842a94f943fd79e" args="" -->
@@ -269,6 +303,8 @@ The faces the mesh is constructed from. Each face refers to a number of vertices
 
 <p>
 The number of bones this mesh contains. Can be 0, in which case the mBones array is NULL. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00601">601</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="0c0582a7f45b340b6a33552c53232539"></a><!-- doxytag: member="aiMesh::mBones" ref="0c0582a7f45b340b6a33552c53232539" args="" -->
@@ -284,6 +320,8 @@ The number of bones this mesh contains. Can be 0, in which case the mBones array
 
 <p>
 The bones of this mesh. A bone consists of a name by which it can be found in the frame hierarchy and a set of vertex weights. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00607">607</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="a2807c7ba172115203ed16047ad65f9e"></a><!-- doxytag: member="aiMesh::mMaterialIndex" ref="a2807c7ba172115203ed16047ad65f9e" args="" -->
@@ -299,6 +337,10 @@ The bones of this mesh. A bone consists of a name by which it can be found in th
 
 <p>
 The material used by this mesh. A mesh uses only a single material. If an imported model uses multiple materials, the import splits up the mesh. Use this value as index into the scene's material list. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00614">614</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_model_8cpp-source.html#l00048">Model::ProcessMesh()</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="8dd9433e0c5b008e3e5aee6c801d3b74"></a><!-- doxytag: member="aiMesh::mName" ref="8dd9433e0c5b008e3e5aee6c801d3b74" args="" -->
@@ -314,7 +356,9 @@ The material used by this mesh. A mesh uses only a single material. If an import
 
 <p>
 Name of the mesh. Meshes can be named, but this is not a requirement and leaving this field empty is totally fine. There are mainly three uses for mesh names:<ul>
-<li>some formats name nodes and meshes independently.</li><li>importers tend to split meshes up to meet the one-material-per-mesh requirement. Assigning the same (dummy) name to each of the result meshes aids the caller at recovering the original mesh partitioning.</li><li><a class="el" href="struct_vertex.html" title="Basic vertex struct.">Vertex</a> animations refer to meshes by their names. </li></ul>
+<li>some formats name nodes and meshes independently.</li><li>importers tend to split meshes up to meet the one-material-per-mesh requirement. Assigning the same (dummy) name to each of the result meshes aids the caller at recovering the original mesh partitioning.</li><li><a class="el" href="class_vertex.html">Vertex</a> animations refer to meshes by their names. </li></ul>
+
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00627">627</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
 
 </div>
 </div><p>
@@ -331,6 +375,8 @@ Name of the mesh. Meshes can be named, but this is not a requirement and leaving
 
 <p>
 The number of attachment meshes. Note! Currently only works with Collada loader. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00631">631</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="5078f7db7e99ed05db89dfa412f0e990"></a><!-- doxytag: member="aiMesh::mAnimMeshes" ref="5078f7db7e99ed05db89dfa412f0e990" args="" -->
@@ -346,6 +392,8 @@ The number of attachment meshes. Note! Currently only works with Collada loader.
 
 <p>
 Attachment meshes for this mesh, for vertex-based animation. Attachment meshes carry replacement data for some of the mesh'es vertex components (usually positions, normals). Note! Currently only works with Collada loader. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00637">637</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="3a6c8c5f1d6543bfdd930f6b07467665"></a><!-- doxytag: member="aiMesh::mMethod" ref="3a6c8c5f1d6543bfdd930f6b07467665" args="" -->
@@ -361,12 +409,14 @@ Attachment meshes for this mesh, for vertex-based animation. Attachment meshes c
 
 <p>
 Method of morphing when animeshes are specified. 
+<p>Definition at line <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html#l00642">642</a> of file <a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/mesh.h</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/assimp-4.1.0/include/assimp/<a class="el" href="_dependencies_2assimp-4_81_80_2include_2assimp_2_mesh_8h-source.html">mesh.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:03:50 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:12 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

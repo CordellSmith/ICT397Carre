@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: GIM_AABB Class Reference</title>
+<title>Assignment2 - OOber Taxi: GIM_AABB Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>GIM_AABB Class Reference</h1><!-- doxytag: class="GIM_AABB" -->Axis aligned box.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;gim_box_collision.h&gt;</code>
+<code>#include &lt;<a class="el" href="gim__box__collision_8h-source.html">gim_box_collision.h</a>&gt;</code>
 <p>
 
 <p>
@@ -73,7 +73,9 @@ SIMD_FORCE_INLINE bool&nbsp;</td><td class="memItemRight" valign="bottom"><a cla
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">test for a triangle, with edges <br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Axis aligned box. <hr><h2>Member Function Documentation</h2>
+Axis aligned box. 
+<p>Definition at line <a class="el" href="gim__box__collision_8h-source.html#l00201">201</a> of file <a class="el" href="gim__box__collision_8h-source.html">gim_box_collision.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="1fafc37703d288fd0fe862b861829287"></a><!-- doxytag: member="GIM_AABB::collide_ray" ref="1fafc37703d288fd0fe862b861829287" args="(const btVector3 &amp;vorigin, const btVector3 &amp;vdir)" -->
 <div class="memitem">
 <div class="memproto">
@@ -110,12 +112,47 @@ Finds the Ray intersection parameter.
   </table>
 </dl>
 
+<p>Definition at line <a class="el" href="gim__box__collision_8h-source.html#l00409">409</a> of file <a class="el" href="gim__box__collision_8h-source.html">gim_box_collision.h</a>.</p>
+
+<p>Referenced by <a class="el" href="gim__box__set_8h-source.html#l00348">GIM_BOX_TREE_TEMPLATE_SET&lt; _GIM_PRIMITIVE_MANAGER_PROTOTYPE, GIM_BOX_TREE &gt;::rayQuery()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00410"></a>00410         {
+<a name="l00411"></a>00411                 btVector3 extents,center;
+<a name="l00412"></a>00412                 this-&gt;<a class="code" href="class_g_i_m___a_a_b_b.html#75140c87ffca65c98ae0391161768ecf" title="Gets the extend and center.">get_center_extend</a>(center,extents);;
+<a name="l00413"></a>00413 
+<a name="l00414"></a>00414                 btScalar Dx = vorigin[0] - center[0];
+<a name="l00415"></a>00415                 <span class="keywordflow">if</span>(GIM_GREATER(Dx, extents[0]) &amp;&amp; Dx*vdir[0]&gt;=0.0f)     <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00416"></a>00416                 btScalar Dy = vorigin[1] - center[1];
+<a name="l00417"></a>00417                 <span class="keywordflow">if</span>(GIM_GREATER(Dy, extents[1]) &amp;&amp; Dy*vdir[1]&gt;=0.0f)     <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00418"></a>00418                 btScalar Dz = vorigin[2] - center[2];
+<a name="l00419"></a>00419                 <span class="keywordflow">if</span>(GIM_GREATER(Dz, extents[2]) &amp;&amp; Dz*vdir[2]&gt;=0.0f)     <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00420"></a>00420 
+<a name="l00421"></a>00421 
+<a name="l00422"></a>00422                 btScalar f = vdir[1] * Dz - vdir[2] * Dy;
+<a name="l00423"></a>00423                 <span class="keywordflow">if</span>(btFabs(f) &gt; extents[1]*btFabs(vdir[2]) + extents[2]*btFabs(vdir[1])) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00424"></a>00424                 f = vdir[2] * Dx - vdir[0] * Dz;
+<a name="l00425"></a>00425                 <span class="keywordflow">if</span>(btFabs(f) &gt; extents[0]*btFabs(vdir[2]) + extents[2]*btFabs(vdir[0]))<span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00426"></a>00426                 f = vdir[0] * Dy - vdir[1] * Dx;
+<a name="l00427"></a>00427                 <span class="keywordflow">if</span>(btFabs(f) &gt; extents[0]*btFabs(vdir[1]) + extents[1]*btFabs(vdir[0]))<span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00428"></a>00428                 <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00429"></a>00429         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="class_g_i_m___a_a_b_b_1fafc37703d288fd0fe862b861829287_icgraph.png" border="0" usemap="#class_g_i_m___a_a_b_b_1fafc37703d288fd0fe862b861829287_icgraph_map" alt=""></center>
+<map name="class_g_i_m___a_a_b_b_1fafc37703d288fd0fe862b861829287_icgraph_map">
+<area shape="rect" href="class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t.html#41bdfb53e019a173fbfb157029db11b4" title="returns the indices of the primitives in the m_primitive_manager" alt="" coords="213,5,891,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="gim__box__collision_8h.html">gim_box_collision.h</a></ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="gim__box__collision_8h-source.html">gim_box_collision.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:05:03 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:02:15 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

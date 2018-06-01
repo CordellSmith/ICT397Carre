@@ -17,6 +17,8 @@ virtual void \hyperlink{classbt_soft_body_triangle_callback_0f8b46eba213eb55a451
 \subsection{Detailed Description}
 For each triangle in the concave mesh that overlaps with the AABB of a soft body (m\_\-softBody), processTriangle is called. 
 
+Definition at line 65 of file btSoftBodyConcaveCollisionAlgorithm.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_soft_body_triangle_callback_0f8b46eba213eb55a451e182d2f6a9be}{
 \index{btSoftBodyTriangleCallback@{btSoftBodyTriangleCallback}!processTriangle@{processTriangle}}
@@ -31,7 +33,110 @@ debug drawing of the overlapping triangles
 
 Implements \hyperlink{classbt_triangle_callback}{btTriangleCallback}.
 
+Definition at line 89 of file btSoftBodyConcaveCollisionAlgorithm.cpp.
+
+References glm::cross(), btHashMap$<$ Key, Value $>$::insert(), btManifoldResult::m\_\-closestPointDistanceThreshold, btCollisionAlgorithm::processCollision(), and btCollisionAlgorithm::$\sim$btCollisionAlgorithm().
+
+\begin{Code}\begin{verbatim}90 {
+91         //just for debugging purposes
+92         //printf("triangle %d",m_triangleCount++);
+93         
+94         btCollisionAlgorithmConstructionInfo ci;
+95         ci.m_dispatcher1 = m_dispatcher;
+96 
+98         if (m_dispatchInfoPtr && m_dispatchInfoPtr->m_debugDraw && (m_dispatchInfoPtr->m_debugDraw->getDebugMode() &btIDebugDraw::DBG_DrawWireframe))
+99         {
+100                 btVector3 color(1,1,0);
+101                 const btTransform& tr = m_triBody->getWorldTransform();
+102                 m_dispatchInfoPtr->m_debugDraw->drawLine(tr(triangle[0]),tr(triangle[1]),color);
+103                 m_dispatchInfoPtr->m_debugDraw->drawLine(tr(triangle[1]),tr(triangle[2]),color);
+104                 m_dispatchInfoPtr->m_debugDraw->drawLine(tr(triangle[2]),tr(triangle[0]),color);
+105         }
+106 
+107         btTriIndex      triIndex(partId,triangleIndex,0);
+108         btHashKey<btTriIndex> triKey(triIndex.getUid());
+109 
+110 
+111         btTriIndex* shapeIndex = m_shapeCache[triKey];
+112         if (shapeIndex)
+113         {
+114                 btCollisionShape* tm = shapeIndex->m_childShape;
+115                 btAssert(tm);
+116 
+117                 //copy over user pointers to temporary shape
+118                 tm->setUserPointer(m_triBody->getCollisionShape()->getUserPointer());
+119 
+120                 btCollisionObjectWrapper softBody(0,m_softBody->getCollisionShape(),m_softBody,m_softBody->getWorldTransform(),-1,-1);
+121                 //btCollisionObjectWrapper triBody(0,tm, ob, btTransform::getIdentity());//ob->getWorldTransform());//??
+122                 btCollisionObjectWrapper triBody(0,tm, m_triBody, m_triBody->getWorldTransform(),partId, triangleIndex);
+123                 ebtDispatcherQueryType algoType = m_resultOut->m_closestPointDistanceThreshold > 0 ? BT_CLOSEST_POINT_ALGORITHMS : BT_CONTACT_POINT_ALGORITHMS;
+124                 btCollisionAlgorithm* colAlgo = ci.m_dispatcher1->findAlgorithm(&softBody,&triBody,0, algoType);//m_manifoldPtr);
+125 
+126                 colAlgo->processCollision(&softBody,&triBody,*m_dispatchInfoPtr,m_resultOut);
+127                 colAlgo->~btCollisionAlgorithm();
+128                 ci.m_dispatcher1->freeCollisionAlgorithm(colAlgo);
+129                 
+130                 return;
+131         }
+132 
+133         //aabb filter is already applied!       
+134 
+135         //btCollisionObject* colObj = static_cast<btCollisionObject*>(m_convexProxy->m_clientObject);
+136 
+137         //      if (m_softBody->getCollisionShape()->getShapeType()==
+138         {
+139                 //              btVector3 other;
+140                 btVector3 normal = (triangle[1]-triangle[0]).cross(triangle[2]-triangle[0]);
+141                 normal.normalize();
+142                 normal*= BT_SOFTBODY_TRIANGLE_EXTRUSION;
+143                 //              other=(triangle[0]+triangle[1]+triangle[2])*0.333333f;
+144                 //              other+=normal*22.f;
+145                 btVector3       pts[6] = {triangle[0]+normal,
+146                         triangle[1]+normal,
+147                         triangle[2]+normal,
+148                         triangle[0]-normal,
+149                         triangle[1]-normal,
+150                         triangle[2]-normal};
+151 
+152                 btConvexHullShape* tm = new btConvexHullShape(&pts[0].getX(),6);
+153 
+154 
+155                 //              btBU_Simplex1to4 tm(triangle[0],triangle[1],triangle[2],other);
+156 
+157                 //btTriangleShape tm(triangle[0],triangle[1],triangle[2]);      
+158                 //      tm.setMargin(m_collisionMarginTriangle);
+159 
+160                 //copy over user pointers to temporary shape
+161                 tm->setUserPointer(m_triBody->getCollisionShape()->getUserPointer());
+162 
+163                 
+164                 btCollisionObjectWrapper softBody(0,m_softBody->getCollisionShape(),m_softBody,m_softBody->getWorldTransform(),-1,-1);
+165                 btCollisionObjectWrapper triBody(0,tm, m_triBody, m_triBody->getWorldTransform(),partId, triangleIndex);//btTransform::getIdentity());//??
+166 
+167                 ebtDispatcherQueryType algoType = m_resultOut->m_closestPointDistanceThreshold > 0 ? BT_CLOSEST_POINT_ALGORITHMS : BT_CONTACT_POINT_ALGORITHMS;
+168                 btCollisionAlgorithm* colAlgo = ci.m_dispatcher1->findAlgorithm(&softBody,&triBody,0, algoType);//m_manifoldPtr);
+169 
+170                 colAlgo->processCollision(&softBody,&triBody,*m_dispatchInfoPtr,m_resultOut);
+171                 colAlgo->~btCollisionAlgorithm();
+172                 ci.m_dispatcher1->freeCollisionAlgorithm(colAlgo);
+173 
+174                 triIndex.m_childShape = tm;
+175                 m_shapeCache.insert(triKey,triIndex);
+176 
+177         }
+178 
+179 
+180 
+181 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following files:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyConcaveCollisionAlgorithm.h\item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyConcaveCollisionAlgorithm.cpp\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyConcaveCollisionAlgorithm.h\item 
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletSoftBody/btSoftBodyConcaveCollisionAlgorithm.cpp\end{CompactItemize}

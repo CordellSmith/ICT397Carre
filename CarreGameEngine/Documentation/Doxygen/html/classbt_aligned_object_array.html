@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: btAlignedObjectArray&lt; T &gt; Class Template Reference</title>
+<title>Assignment2 - OOber Taxi: btAlignedObjectArray&lt; T &gt; Class Template Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -25,14 +25,14 @@
   </div>
 </div>
 <div class="contents">
-<h1>btAlignedObjectArray&lt; T &gt; Class Template Reference</h1><!-- doxytag: class="btAlignedObjectArray" --><code>#include &lt;btAlignedObjectArray.h&gt;</code>
+<h1>btAlignedObjectArray&lt; T &gt; Class Template Reference</h1><!-- doxytag: class="btAlignedObjectArray" --><code>#include &lt;<a class="el" href="bt_aligned_object_array_8h-source.html">btAlignedObjectArray.h</a>&gt;</code>
 <p>
 <div class="dynheader">
 Collaboration diagram for btAlignedObjectArray&lt; T &gt;:</div>
 <div class="dynsection">
 <p><center><img src="classbt_aligned_object_array__coll__graph.png" border="0" usemap="#bt_aligned_object_array_3_01_t_01_4__coll__map" alt="Collaboration graph"></center>
 <map name="bt_aligned_object_array_3_01_t_01_4__coll__map">
-<area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="5,5,184,32"></map>
+<area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, 16 \&gt;" alt="" coords="28,96,207,123"><area shape="rect" href="classbt_aligned_allocator.html" title="btAlignedAllocator\&lt; T, Alignment \&gt;" alt="" coords="5,5,229,32"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -71,7 +71,9 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <h3>template&lt;typename T&gt;<br>
  class btAlignedObjectArray&lt; T &gt;</h3>
 
-The <a class="el" href="classbt_aligned_object_array.html">btAlignedObjectArray</a> template class uses a subset of the stl::vector interface for its methods It is developed to replace stl::vector to avoid portability issues, including STL alignment issues to add SIMD/SSE data <hr><h2>Member Function Documentation</h2>
+The <a class="el" href="classbt_aligned_object_array.html">btAlignedObjectArray</a> template class uses a subset of the stl::vector interface for its methods It is developed to replace stl::vector to avoid portability issues, including STL alignment issues to add SIMD/SSE data 
+<p>Definition at line <a class="el" href="bt_aligned_object_array_8h-source.html#l00053">53</a> of file <a class="el" href="bt_aligned_object_array_8h-source.html">btAlignedObjectArray.h</a>.</p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="2cc58c74534181a7a10e5c6ab8b21227"></a><!-- doxytag: member="btAlignedObjectArray::resizeNoInitialize" ref="2cc58c74534181a7a10e5c6ab8b21227" args="(int newsize)" -->
 <div class="memitem">
 <div class="memproto">
@@ -92,12 +94,34 @@ template&lt;typename T&gt; </div>
 
 <p>
 resize changes the number of elements in the array. If the new size is larger, the new elements will be constructed using the optional second argument. when the new number of elements is smaller, the destructor will be called, but memory will not be freed, to reduce performance overhead of run-time memory (de)allocations. 
+<p>Definition at line <a class="el" href="bt_aligned_object_array_8h-source.html#l00209">209</a> of file <a class="el" href="bt_aligned_object_array_8h-source.html">btAlignedObjectArray.h</a>.</p>
+
+<p>Referenced by <a class="el" href="bt_m_l_c_p_solver_8cpp-source.html#l00154">btMLCPSolver::createMLCPFast()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00210"></a>00210                 {
+<a name="l00211"></a>00211                         <span class="keywordflow">if</span> (newsize &gt; <a class="code" href="classbt_aligned_object_array.html#6bdd14c7599ecb95e8d83dd5a715f9b7" title="return the number of elements in the array">size</a>())
+<a name="l00212"></a>00212                         {
+<a name="l00213"></a>00213                                 reserve(newsize);
+<a name="l00214"></a>00214                         }
+<a name="l00215"></a>00215                         m_size = newsize;
+<a name="l00216"></a>00216                 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classbt_aligned_object_array_2cc58c74534181a7a10e5c6ab8b21227_icgraph.png" border="0" usemap="#classbt_aligned_object_array_2cc58c74534181a7a10e5c6ab8b21227_icgraph_map" alt=""></center>
+<map name="classbt_aligned_object_array_2cc58c74534181a7a10e5c6ab8b21227_icgraph_map">
+<area shape="rect" href="classbt_m_l_c_p_solver.html#b36b9b3bf2bbbd1de7db27ba109e0a8a" title="btMLCPSolver::createMLCPFast" alt="" coords="305,5,513,32"><area shape="rect" href="classbt_m_l_c_p_solver.html#a465e167537eceb89f7125d3bb2d5321" title="btMLCPSolver::solveGroupCacheFriendlySetup" alt="" coords="564,5,855,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btAlignedObjectArray.h</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/<a class="el" href="bt_aligned_object_array_8h-source.html">btAlignedObjectArray.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:04:02 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:00:35 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

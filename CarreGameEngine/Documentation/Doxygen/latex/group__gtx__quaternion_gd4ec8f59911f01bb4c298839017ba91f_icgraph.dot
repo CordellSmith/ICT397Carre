@@ -1,0 +1,16 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::exp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::exp",height=0.2,width=0.4,color="black",URL="$group__core__func__exponential.html#g0e7e69c5497cbbfe4afe08ee5449c553"];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::fastPow",height=0.2,width=0.4,color="black",URL="$group__gtx__fast__exponential.html#g399b134d7015729817135440eb047d5a"];
+  Node2 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node4 [label="glm::intermediate",height=0.2,width=0.4,color="black",URL="$group__gtx__quaternion.html#ge94a070898e8be560a5dcf8e15854b2d"];
+  Node1 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node5 [label="glm::exp2",height=0.2,width=0.4,color="black",URL="$group__core__func__exponential.html#g85f6efedaa47799e8f406481baca2171"];
+}

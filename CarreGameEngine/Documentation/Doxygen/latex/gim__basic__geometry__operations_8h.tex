@@ -1,6 +1,6 @@
 \hypertarget{gim__basic__geometry__operations_8h}{
-\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-basic\_\-geometry\_\-operations.h File Reference}
-\label{gim__basic__geometry__operations_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-basic\_\-geometry\_\-operations.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-basic\_\-geometry\_\-operations.h}}
+\section{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-basic\_\-geometry\_\-operations.h File Reference}
+\label{gim__basic__geometry__operations_8h}\index{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-basic\_\-geometry\_\-operations.h@{C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim\_\-basic\_\-geometry\_\-operations.h}}
 }
 {\tt \#include \char`\"{}gim\_\-linear\_\-math.h\char`\"{}}\par
 
@@ -71,6 +71,8 @@ This graph shows which files directly or indirectly include this file:\subsectio
 \item[Author:]Francisco Leon Najera type independant geometry routines \end{Desc}
 
 
+Definition in file \hyperlink{gim__basic__geometry__operations_8h-source}{gim\_\-basic\_\-geometry\_\-operations.h}.
+
 \subsection{Function Documentation}
 \hypertarget{gim__basic__geometry__operations_8h_263c8b6948964b535bc3ea3e095a7bdf}{
 \index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!BOX\_\-AXIS\_\-INTERSECT@{BOX\_\-AXIS\_\-INTERSECT}}
@@ -88,6 +90,29 @@ Line box intersection in one dimension.
 \end{Desc}
 \begin{Desc}
 \item[Returns:]true if there is an intersection. \end{Desc}
+
+
+Definition at line 501 of file gim\_\-basic\_\-geometry\_\-operations.h.
+
+References GIM\_\-SWAP\_\-NUMBERS.
+
+\begin{Code}\begin{verbatim}502 {
+503         if(GIM_IS_ZERO(dir))
+504         {
+505         return !(pos < bmin || pos > bmax);
+506         }
+507         GREAL a0 = (bmin - pos) / dir;
+508         GREAL a1 = (bmax - pos) / dir;
+509         if(a0 > a1)   GIM_SWAP_NUMBERS(a0, a1);
+510         tfirst = GIM_MAX(a0, tfirst);
+511         tlast = GIM_MIN(a1, tlast);
+512         if (tlast < tfirst) return false;
+513         return true;
+514 }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{gim__basic__geometry__operations_8h_b66e93d424a6170788e539099622709d}{
 \index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!CLOSEST\_\-POINT\_\-ON\_\-SEGMENT@{CLOSEST\_\-POINT\_\-ON\_\-SEGMENT}}
 \index{CLOSEST\_\-POINT\_\-ON\_\-SEGMENT@{CLOSEST\_\-POINT\_\-ON\_\-SEGMENT}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
@@ -95,7 +120,41 @@ Line box intersection in one dimension.
 \label{gim__basic__geometry__operations_8h_b66e93d424a6170788e539099622709d}
 
 
-Finds the closest point(cp) to (v) on a segment (e1,e2) \hypertarget{gim__basic__geometry__operations_8h_27491c62dc80b8efd8be348f6b41f5cb}{
+Finds the closest point(cp) to (v) on a segment (e1,e2) 
+
+Definition at line 341 of file gim\_\-basic\_\-geometry\_\-operations.h.
+
+References VEC\_\-COPY, VEC\_\-DIFF, VEC\_\-DOT, VEC\_\-SCALE, and VEC\_\-SUM.
+
+Referenced by SEGMENT\_\-COLLISION().
+
+\begin{Code}\begin{verbatim}344 {
+345     vec3f _n;
+346     VEC_DIFF(_n,e2,e1);
+347     VEC_DIFF(cp,v,e1);
+348         GREAL _scalar = VEC_DOT(cp, _n);
+349         _scalar/= VEC_DOT(_n, _n);
+350         if(_scalar <0.0f)
+351         {
+352             VEC_COPY(cp,e1);
+353         }
+354         else if(_scalar >1.0f)
+355         {
+356             VEC_COPY(cp,e2);
+357         }
+358         else
+359         {
+360         VEC_SCALE(cp,_scalar,_n);
+361         VEC_SUM(cp,cp,e1);
+362         }
+363 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{gim__basic__geometry__operations_8h_27491c62dc80b8efd8be348f6b41f5cb}{
 \index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!INTERSECT\_\-PLANES@{INTERSECT\_\-PLANES}}
 \index{INTERSECT\_\-PLANES@{INTERSECT\_\-PLANES}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
 \subsubsection[INTERSECT\_\-PLANES]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ SIMD\_\-FORCE\_\-INLINE bool INTERSECT\_\-PLANES (const CLASS\_\-PLANE \& {\em p1}, \/  const CLASS\_\-PLANE \& {\em p2}, \/  CLASS\_\-POINT \& {\em p}, \/  CLASS\_\-POINT \& {\em d})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -111,6 +170,30 @@ Returns the Ray on which 2 planes intersect if they do. Written by Rodrigo Herna
 \end{Desc}
 \begin{Desc}
 \item[Returns:]true if the planes intersect, 0 if paralell. \end{Desc}
+
+
+Definition at line 316 of file gim\_\-basic\_\-geometry\_\-operations.h.
+
+References VEC\_\-CROSS, and VEC\_\-DOT.
+
+\begin{Code}\begin{verbatim}321 {
+322         VEC_CROSS(d,p1,p2);
+323         GREAL denom = VEC_DOT(d, d);
+324         if(GIM_IS_ZERO(denom)) return false;
+325         vec3f _n;
+326         _n[0]=p1[3]*p2[0] - p2[3]*p1[0];
+327         _n[1]=p1[3]*p2[1] - p2[3]*p1[1];
+328         _n[2]=p1[3]*p2[2] - p2[3]*p1[2];
+329         VEC_CROSS(p,_n,d);
+330         p[0]/=denom;
+331         p[1]/=denom;
+332         p[2]/=denom;
+333         return true;
+334 }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{gim__basic__geometry__operations_8h_1e7d4f2ec752876cb69dbfc273aa808b}{
 \index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!LINE\_\-INTERSECTION\_\-PARAMS@{LINE\_\-INTERSECTION\_\-PARAMS}}
 \index{LINE\_\-INTERSECTION\_\-PARAMS@{LINE\_\-INTERSECTION\_\-PARAMS}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
@@ -125,6 +208,31 @@ Finds the line params where these lines intersect.
 \begin{description}
 \item[{\em dir1}]Direction of line 1 \item[{\em point1}]Point of line 1 \item[{\em dir2}]Direction of line 2 \item[{\em point2}]Point of line 2 \item[{\em t1}]Result Parameter for line 1 \item[{\em t2}]Result Parameter for line 2 \item[{\em dointersect}]0 if the lines won't intersect, else 1 \end{description}
 \end{Desc}
+
+
+Definition at line 378 of file gim\_\-basic\_\-geometry\_\-operations.h.
+
+References VEC\_\-DIFF, and VEC\_\-DOT.
+
+\begin{Code}\begin{verbatim}384 {
+385     GREAL det;
+386         GREAL e1e1 = VEC_DOT(dir1,dir1);
+387         GREAL e1e2 = VEC_DOT(dir1,dir2);
+388         GREAL e2e2 = VEC_DOT(dir2,dir2);
+389         vec3f p1p2;
+390     VEC_DIFF(p1p2,point1,point2);
+391     GREAL p1p2e1 = VEC_DOT(p1p2,dir1);
+392         GREAL p1p2e2 = VEC_DOT(p1p2,dir2);
+393         det = e1e2*e1e2 - e1e1*e2e2;
+394         if(GIM_IS_ZERO(det)) return false;
+395         t1 = (e1e2*p1p2e2 - e2e2*p1p2e1)/det;
+396         t2 = (e1e1*p1p2e2 - e1e2*p1p2e1)/det;
+397         return true;
+398 }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{gim__basic__geometry__operations_8h_e039e4c642dd58adc8e99d774db9342d}{
 \index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!LINE\_\-PLANE\_\-COLLISION@{LINE\_\-PLANE\_\-COLLISION}}
 \index{LINE\_\-PLANE\_\-COLLISION@{LINE\_\-PLANE\_\-COLLISION}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
@@ -136,7 +244,48 @@ line collision
 
 \begin{Desc}
 \item[Returns:]-0 if the ray never intersects -1 if the ray collides in front -2 if the ray collides in back \end{Desc}
-\hypertarget{gim__basic__geometry__operations_8h_c1357f9a99f5709463c3c11874c993c4}{
+
+
+Definition at line 270 of file gim\_\-basic\_\-geometry\_\-operations.h.
+
+References VEC\_\-DOT, VEC\_\-SCALE, and VEC\_\-SUM.
+
+Referenced by GIM\_\-TRIANGLE::ray\_\-collision(), GIM\_\-TRIANGLE::ray\_\-collision\_\-front\_\-side(), and SEGMENT\_\-COLLISION().
+
+\begin{Code}\begin{verbatim}277 {
+278         GREAL _dis,_dotdir;
+279         _dotdir = VEC_DOT(plane,vDir);
+280         if(btFabs(_dotdir)<PLANEDIREPSILON)
+281         {
+282                 tparam = tmax;
+283             return 0;
+284         }
+285         _dis = DISTANCE_PLANE_POINT(plane,vPoint);
+286         char returnvalue = _dis<0.0f?2:1;
+287         tparam = -_dis/_dotdir;
+288 
+289         if(tparam<tmin)
+290         {
+291                 returnvalue = 0;
+292                 tparam = tmin;
+293         }
+294         else if(tparam>tmax)
+295         {
+296                 returnvalue = 0;
+297                 tparam = tmax;
+298         }
+299 
+300         VEC_SCALE(pout,tparam,vDir);
+301         VEC_SUM(pout,vPoint,pout);
+302         return returnvalue;
+303 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{gim__basic__geometry__operations_8h_c1357f9a99f5709463c3c11874c993c4}{
 \index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!PLANE\_\-CLIP\_\-SEGMENT2@{PLANE\_\-CLIP\_\-SEGMENT2}}
 \index{PLANE\_\-CLIP\_\-SEGMENT2@{PLANE\_\-CLIP\_\-SEGMENT2}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
 \subsubsection[PLANE\_\-CLIP\_\-SEGMENT2]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ SIMD\_\-FORCE\_\-INLINE eLINE\_\-PLANE\_\-INTERSECTION\_\-TYPE PLANE\_\-CLIP\_\-SEGMENT2 (const CLASS\_\-POINT \& {\em s1}, \/  const CLASS\_\-POINT \& {\em s2}, \/  const CLASS\_\-PLANE \& {\em plane}, \/  CLASS\_\-POINT \& {\em clipped})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -147,7 +296,42 @@ Confirms if the plane intersect the edge or nor.
 
 intersection type must have the following values \begin{itemize}
 \item 0 : Segment in front of plane, s1 closest \item 1 : Segment in front of plane, s2 closest \item 2 : Segment in back of plane, s1 closest \item 3 : Segment in back of plane, s2 closest \item 4 : Segment collides plane, s1 in back \item 5 : Segment collides plane, s2 in back \end{itemize}
-\hypertarget{gim__basic__geometry__operations_8h_a931e17a661df001eaa717335ae537ec}{
+
+
+Definition at line 156 of file gim\_\-basic\_\-geometry\_\-operations.h.
+
+References VEC\_\-DIFF, VEC\_\-DOT, VEC\_\-SCALE, and VEC\_\-SUM.
+
+Referenced by PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST().
+
+\begin{Code}\begin{verbatim}160 {
+161         GREAL _dis1 = DISTANCE_PLANE_POINT(plane,s1);
+162         GREAL _dis2 = DISTANCE_PLANE_POINT(plane,s2);
+163         if(_dis1 >-G_EPSILON && _dis2 >-G_EPSILON)
+164         {
+165             if(_dis1<_dis2) return G_FRONT_PLANE_S1;
+166             return G_FRONT_PLANE_S2;
+167         }
+168         else if(_dis1 <G_EPSILON && _dis2 <G_EPSILON)
+169         {
+170             if(_dis1>_dis2) return G_BACK_PLANE_S1;
+171             return G_BACK_PLANE_S2;
+172         }
+173 
+174         VEC_DIFF(clipped,s2,s1);
+175         _dis2 = VEC_DOT(clipped,plane);
+176         VEC_SCALE(clipped,-_dis1/_dis2,clipped);
+177         VEC_SUM(clipped,clipped,s1);
+178         if(_dis1<_dis2) return G_COLLIDE_PLANE_S1;
+179         return G_COLLIDE_PLANE_S2;
+180 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the caller graph for this function:\hypertarget{gim__basic__geometry__operations_8h_a931e17a661df001eaa717335ae537ec}{
 \index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST@{PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST}}
 \index{PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST@{PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
 \subsubsection[PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ SIMD\_\-FORCE\_\-INLINE eLINE\_\-PLANE\_\-INTERSECTION\_\-TYPE PLANE\_\-CLIP\_\-SEGMENT\_\-CLOSEST (const CLASS\_\-POINT \& {\em s1}, \/  const CLASS\_\-POINT \& {\em s2}, \/  const CLASS\_\-PLANE \& {\em plane}, \/  CLASS\_\-POINT \& {\em clipped1}, \/  CLASS\_\-POINT \& {\em clipped2})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -160,7 +344,48 @@ clipped1 and clipped2 are the vertices behind the plane. clipped1 is the closest
 
 intersection\_\-type must have the following values \begin{itemize}
 \item 0 : Segment in front of plane, s1 closest \item 1 : Segment in front of plane, s2 closest \item 2 : Segment in back of plane, s1 closest \item 3 : Segment in back of plane, s2 closest \item 4 : Segment collides plane, s1 in back \item 5 : Segment collides plane, s2 in back \end{itemize}
-\hypertarget{gim__basic__geometry__operations_8h_76424e5fa2f0f7697652e0088e296397}{
+
+
+Definition at line 198 of file gim\_\-basic\_\-geometry\_\-operations.h.
+
+References PLANE\_\-CLIP\_\-SEGMENT2(), and VEC\_\-COPY.
+
+\begin{Code}\begin{verbatim}203 {
+204         eLINE_PLANE_INTERSECTION_TYPE intersection_type = PLANE_CLIP_SEGMENT2(s1,s2,plane,clipped1);
+205         switch(intersection_type)
+206         {
+207         case G_FRONT_PLANE_S1:
+208                 VEC_COPY(clipped1,s1);
+209             VEC_COPY(clipped2,s2);
+210                 break;
+211         case G_FRONT_PLANE_S2:
+212                 VEC_COPY(clipped1,s2);
+213             VEC_COPY(clipped2,s1);
+214                 break;
+215         case G_BACK_PLANE_S1:
+216                 VEC_COPY(clipped1,s1);
+217             VEC_COPY(clipped2,s2);
+218                 break;
+219         case G_BACK_PLANE_S2:
+220                 VEC_COPY(clipped1,s2);
+221             VEC_COPY(clipped2,s1);
+222                 break;
+223         case G_COLLIDE_PLANE_S1:
+224                 VEC_COPY(clipped2,s1);
+225                 break;
+226         case G_COLLIDE_PLANE_S2:
+227                 VEC_COPY(clipped2,s2);
+228                 break;
+229         }
+230         return intersection_type;
+231 }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{gim__basic__geometry__operations_8h_76424e5fa2f0f7697652e0088e296397}{
 \index{gim\_\-basic\_\-geometry\_\-operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}!RAY\_\-PLANE\_\-COLLISION@{RAY\_\-PLANE\_\-COLLISION}}
 \index{RAY\_\-PLANE\_\-COLLISION@{RAY\_\-PLANE\_\-COLLISION}!gim_basic_geometry_operations.h@{gim\_\-basic\_\-geometry\_\-operations.h}}
 \subsubsection[RAY\_\-PLANE\_\-COLLISION]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename CLASS\_\-POINT, typename CLASS\_\-PLANE$>$ SIMD\_\-FORCE\_\-INLINE bool RAY\_\-PLANE\_\-COLLISION (const CLASS\_\-PLANE \& {\em plane}, \/  const CLASS\_\-POINT \& {\em vDir}, \/  const CLASS\_\-POINT \& {\em vPoint}, \/  CLASS\_\-POINT \& {\em pout}, \/  T \& {\em tparam})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -171,3 +396,25 @@ Ray plane collision in one way.
 
 Intersects plane in one way only. The ray must face the plane (normals must be in opossite directions).\par
  It uses the PLANEDIREPSILON constant. 
+
+Definition at line 243 of file gim\_\-basic\_\-geometry\_\-operations.h.
+
+References VEC\_\-DOT, VEC\_\-SCALE, and VEC\_\-SUM.
+
+\begin{Code}\begin{verbatim}248 {
+249         GREAL _dis,_dotdir;
+250         _dotdir = VEC_DOT(plane,vDir);
+251         if(_dotdir<PLANEDIREPSILON)
+252         {
+253             return false;
+254         }
+255         _dis = DISTANCE_PLANE_POINT(plane,vPoint);
+256         tparam = -_dis/_dotdir;
+257         VEC_SCALE(pout,tparam,vDir);
+258         VEC_SUM(pout,vPoint,pout);
+259         return true;
+260 }
+\end{verbatim}
+\end{Code}
+
+

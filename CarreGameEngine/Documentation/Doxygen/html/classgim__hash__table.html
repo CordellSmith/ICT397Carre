@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Assignment1 - OOber Taxi: gim_hash_table&lt; T &gt; Class Template Reference</title>
+<title>Assignment2 - OOber Taxi: gim_hash_table&lt; T &gt; Class Template Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -28,7 +28,7 @@
 <h1>gim_hash_table&lt; T &gt; Class Template Reference</h1><!-- doxytag: class="gim_hash_table" -->A compact hash table implementation.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;gim_hash_table.h&gt;</code>
+<code>#include &lt;<a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a>&gt;</code>
 <p>
 
 <p>
@@ -157,6 +157,8 @@ if node_size = 0, then this container becomes a simple sorted array allocator. r
 <li>
 If node_size != 0, then this container becomes a hash table for ever </li>
 </ul>
+
+<p>Definition at line <a class="el" href="gim__hash__table_8h-source.html#l00191">191</a> of file <a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="efe21c907c69c8077ec0886aaa778f6f"></a><!-- doxytag: member="gim_hash_table::gim_hash_table" ref="efe21c907c69c8077ec0886aaa778f6f" args="(GUINT reserve_size=GIM_DEFAULT_HASH_TABLE_SIZE, GUINT node_size=GIM_DEFAULT_HASH_TABLE_NODE_SIZE, GUINT min_hash_table_size=GIM_INVALID_HASH)" -->
 <div class="memitem">
@@ -193,6 +195,49 @@ template&lt;class T&gt; </div>
 
 <p>
 if node_size = 0, then this container becomes a simple sorted array allocator. reserve_size is used for reserve memory in m_nodes. When the array size reaches the size equivalent to 'min_hash_table_size', then it becomes a hash table by calling check_for_switching_to_hashtable.  If node_size != 0, then this container becomes a hash table for ever  
+<p>Definition at line <a class="el" href="gim__hash__table_8h-source.html#l00573">573</a> of file <a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a>.</p>
+
+<p>References <a class="el" href="gim__hash__table_8h-source.html#l00263">gim_hash_table&lt; T &gt;::_reserve_table_memory()</a>, <a class="el" href="gim__hash__table_8h-source.html#l00203">gim_hash_table&lt; T &gt;::m_hash_table</a>, and <a class="el" href="gim__hash__table_8h-source.html#l00198">gim_hash_table&lt; T &gt;::m_nodes</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00576"></a>00576     {
+<a name="l00577"></a>00577         <a class="code" href="classgim__hash__table.html#35f6b0d640222067b9c76e61887e0354" title="Hash table data management. The hash table has the indices to the corresponding m_nodes...">m_hash_table</a> = NULL;
+<a name="l00578"></a>00578         m_table_size = 0;
+<a name="l00579"></a>00579         m_sorted = <span class="keyword">false</span>;
+<a name="l00580"></a>00580         m_node_size = node_size;
+<a name="l00581"></a>00581         m_min_hash_table_size = min_hash_table_size;
+<a name="l00582"></a>00582 
+<a name="l00583"></a>00583         <span class="keywordflow">if</span>(m_node_size!=0)
+<a name="l00584"></a>00584         {
+<a name="l00585"></a>00585             <span class="keywordflow">if</span>(reserve_size!=0)
+<a name="l00586"></a>00586             {
+<a name="l00587"></a>00587                 <a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>.reserve(reserve_size);
+<a name="l00588"></a>00588                 <a class="code" href="classgim__hash__table.html#4d9347e131c0e17ac2d4966c092817f8" title="reserves the memory for the hash table.">_reserve_table_memory</a>(reserve_size);
+<a name="l00589"></a>00589                 _invalidate_keys();
+<a name="l00590"></a>00590             }
+<a name="l00591"></a>00591             <span class="keywordflow">else</span>
+<a name="l00592"></a>00592             {
+<a name="l00593"></a>00593                 <a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>.reserve(GIM_DEFAULT_HASH_TABLE_SIZE);
+<a name="l00594"></a>00594                 <a class="code" href="classgim__hash__table.html#4d9347e131c0e17ac2d4966c092817f8" title="reserves the memory for the hash table.">_reserve_table_memory</a>(GIM_DEFAULT_HASH_TABLE_SIZE);
+<a name="l00595"></a>00595                 _invalidate_keys();
+<a name="l00596"></a>00596             }
+<a name="l00597"></a>00597         }
+<a name="l00598"></a>00598         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(reserve_size!=0)
+<a name="l00599"></a>00599         {
+<a name="l00600"></a>00600             <a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>.reserve(reserve_size);
+<a name="l00601"></a>00601         }
+<a name="l00602"></a>00602 
+<a name="l00603"></a>00603     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_efe21c907c69c8077ec0886aaa778f6f_cgraph.png" border="0" usemap="#classgim__hash__table_efe21c907c69c8077ec0886aaa778f6f_cgraph_map" alt=""></center>
+<map name="classgim__hash__table_efe21c907c69c8077ec0886aaa778f6f_cgraph_map">
+<area shape="rect" href="classgim__hash__table.html#4d9347e131c0e17ac2d4966c092817f8" title="reserves the memory for the hash table." alt="" coords="268,5,524,32"></map>
+</div>
+
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -219,6 +264,35 @@ reserves the memory for the hash table.
 <p>
 <dl class="pre" compact><dt><b>Precondition:</b></dt><dd>hash table must be empty </dd></dl>
 <dl class="post" compact><dt><b>Postcondition:</b></dt><dd>reserves the memory for the hash table, an initializes all elements to GIM_INVALID_HASH. </dd></dl>
+
+<p>Definition at line <a class="el" href="gim__hash__table_8h-source.html#l00263">263</a> of file <a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a>.</p>
+
+<p>References <a class="el" href="gim__hash__table_8h-source.html#l00203">gim_hash_table&lt; T &gt;::m_hash_table</a>.</p>
+
+<p>Referenced by <a class="el" href="gim__hash__table_8h-source.html#l00326">gim_hash_table&lt; T &gt;::_resize_table()</a>, and <a class="el" href="gim__hash__table_8h-source.html#l00573">gim_hash_table&lt; T &gt;::gim_hash_table()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00264"></a>00264     {
+<a name="l00265"></a>00265         <span class="keywordflow">if</span>(newtablesize==0) <span class="keywordflow">return</span>;
+<a name="l00266"></a>00266         <span class="keywordflow">if</span>(m_node_size==0) <span class="keywordflow">return</span>;
+<a name="l00267"></a>00267 
+<a name="l00268"></a>00268         <span class="comment">//Get a Prime size</span>
+<a name="l00269"></a>00269 
+<a name="l00270"></a>00270         m_table_size = gim_next_prime(newtablesize);
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272         GUINT datasize = m_table_size*m_node_size;
+<a name="l00273"></a>00273         <span class="comment">//Alloc the data buffer</span>
+<a name="l00274"></a>00274         <a class="code" href="classgim__hash__table.html#35f6b0d640222067b9c76e61887e0354" title="Hash table data management. The hash table has the indices to the corresponding m_nodes...">m_hash_table</a> =  (GUINT *)gim_alloc(datasize*<span class="keyword">sizeof</span>(GUINT));
+<a name="l00275"></a>00275     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_4d9347e131c0e17ac2d4966c092817f8_icgraph.png" border="0" usemap="#classgim__hash__table_4d9347e131c0e17ac2d4966c092817f8_icgraph_map" alt=""></center>
+<map name="classgim__hash__table_4d9347e131c0e17ac2d4966c092817f8_icgraph_map">
+<area shape="rect" href="classgim__hash__table.html#51905040dee4c41954f5de1634c090dd" title="Resize hash table indices." alt="" coords="320,107,517,133"><area shape="rect" href="classgim__hash__table.html#efe21c907c69c8077ec0886aaa778f6f" title="gim_hash_table::gim_hash_table" alt="" coords="313,157,524,184"><area shape="rect" href="classgim__hash__table.html#93e5bf5c573a39e21e9bd0a4aec38e1a" title="Finds an avaliable hash table cell, and resizes the table if there isn&#39;t space..." alt="" coords="603,81,864,108"><area shape="rect" href="classgim__hash__table.html#ba33eeb9b5aa00b0d8a002c549b71ed3" title="If the container reaches the." alt="" coords="575,132,892,159"><area shape="rect" href="classgim__hash__table.html#4339a279d721d1e687b8d8063332bac8" title="insert an element in hash table" alt="" coords="967,31,1196,57"><area shape="rect" href="classgim__hash__table.html#6ebfb7415bd946855ec5730651f7c191" title="insert an element in hash table." alt="" coords="943,81,1220,108"><area shape="rect" href="classgim__hash__table.html#ff0e9bdb5bd6aacf9272db6789c514f7" title="Insert an element into the hash." alt="" coords="1528,56,1680,83"><area shape="rect" href="classgim__hash__table.html#be9a629ec7dfe612065ed9d161adc7e8" title="Insert an element into the hash,But if this container is a sorted array, this inserts..." alt="" coords="1271,31,1479,57"><area shape="rect" href="classgim__hash__table.html#83987136757654921c71b183de8ec55e" title="Insert an element into the hash, and could overrite an existing object with the same..." alt="" coords="1273,81,1476,108"><area shape="rect" href="classgim__hash__table.html#3eacaf88e1b18815c0b89d368d77a93a" title="Insert in position ordered." alt="" coords="980,132,1183,159"><area shape="rect" href="classgim__hash__table.html#66d18cb60b0628a9aa759304395f4825" title="Insert an element in an ordered array." alt="" coords="1273,132,1476,159"></map>
+</div>
 
 </div>
 </div><p>
@@ -254,6 +328,51 @@ insert an element in hash table
 <p>
 If the element exists, this won't insert the element <dl class="return" compact><dt><b>Returns:</b></dt><dd>the index in the array of the existing element,or GIM_INVALID_HASH if the element has been inserted If so, the element has been inserted at the last position of the array. </dd></dl>
 
+<p>Definition at line <a class="el" href="gim__hash__table_8h-source.html#l00399">399</a> of file <a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a>.</p>
+
+<p>References <a class="el" href="gim__hash__table_8h-source.html#l00344">gim_hash_table&lt; T &gt;::_assign_hash_table_cell()</a>, <a class="el" href="gim__hash__table_8h-source.html#l00556">gim_hash_table&lt; T &gt;::_insert_unsorted()</a>, <a class="el" href="gim__hash__table_8h-source.html#l00203">gim_hash_table&lt; T &gt;::m_hash_table</a>, and <a class="el" href="gim__hash__table_8h-source.html#l00198">gim_hash_table&lt; T &gt;::m_nodes</a>.</p>
+
+<p>Referenced by <a class="el" href="gim__hash__table_8h-source.html#l00851">gim_hash_table&lt; T &gt;::insert()</a>, and <a class="el" href="gim__hash__table_8h-source.html#l00888">gim_hash_table&lt; T &gt;::insert_unsorted()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00400"></a>00400     {
+<a name="l00401"></a>00401         <span class="keywordflow">if</span>(hashkey==GIM_INVALID_HASH)
+<a name="l00402"></a>00402         {
+<a name="l00403"></a>00403             <span class="comment">//Insert anyway</span>
+<a name="l00404"></a>00404             <a class="code" href="classgim__hash__table.html#95f93f63d75663f494388dc03423332f" title="Fast insertion in m_nodes array.">_insert_unsorted</a>(hashkey,value);
+<a name="l00405"></a>00405             <span class="keywordflow">return</span> GIM_INVALID_HASH;
+<a name="l00406"></a>00406         }
+<a name="l00407"></a>00407 
+<a name="l00408"></a>00408         GUINT cell_index = <a class="code" href="classgim__hash__table.html#93e5bf5c573a39e21e9bd0a4aec38e1a" title="Finds an avaliable hash table cell, and resizes the table if there isn&amp;#39;t space...">_assign_hash_table_cell</a>(hashkey);
+<a name="l00409"></a>00409 
+<a name="l00410"></a>00410         GUINT value_key = <a class="code" href="classgim__hash__table.html#35f6b0d640222067b9c76e61887e0354" title="Hash table data management. The hash table has the indices to the corresponding m_nodes...">m_hash_table</a>[cell_index];
+<a name="l00411"></a>00411 
+<a name="l00412"></a>00412         <span class="keywordflow">if</span>(value_key!= GIM_INVALID_HASH) <span class="keywordflow">return</span> value_key;<span class="comment">// Not overrited</span>
+<a name="l00413"></a>00413 
+<a name="l00414"></a>00414         <a class="code" href="classgim__hash__table.html#35f6b0d640222067b9c76e61887e0354" title="Hash table data management. The hash table has the indices to the corresponding m_nodes...">m_hash_table</a>[cell_index] = <a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>.size();
+<a name="l00415"></a>00415 
+<a name="l00416"></a>00416         <a class="code" href="classgim__hash__table.html#95f93f63d75663f494388dc03423332f" title="Fast insertion in m_nodes array.">_insert_unsorted</a>(hashkey,value);
+<a name="l00417"></a>00417         <span class="keywordflow">return</span> GIM_INVALID_HASH;
+<a name="l00418"></a>00418     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_4339a279d721d1e687b8d8063332bac8_cgraph.png" border="0" usemap="#classgim__hash__table_4339a279d721d1e687b8d8063332bac8_cgraph_map" alt=""></center>
+<map name="classgim__hash__table_4339a279d721d1e687b8d8063332bac8_cgraph_map">
+<area shape="rect" href="classgim__hash__table.html#93e5bf5c573a39e21e9bd0a4aec38e1a" title="Finds an avaliable hash table cell, and resizes the table if there isn&#39;t space..." alt="" coords="284,24,545,51"><area shape="rect" href="classgim__hash__table.html#95f93f63d75663f494388dc03423332f" title="Fast insertion in m_nodes array." alt="" coords="307,75,523,101"><area shape="rect" href="classgim__hash__table.html#cc2d3d29a0190232386fb155ec9e5d8f" title="Find the avaliable cell for the hashkey, and return an existing cell if it has the..." alt="" coords="1148,24,1377,51"><area shape="rect" href="classgim__hash__table.html#51905040dee4c41954f5de1634c090dd" title="Resize hash table indices." alt="" coords="595,49,792,76"><area shape="rect" href="classgim__hash__table.html#06933fdb198971dcd753564d1d6e9424" title="Clear all memory for the hash table." alt="" coords="848,24,1091,51"><area shape="rect" href="classgim__hash__table.html#a33115e75d8cc5c489fa6ce8b1a23654" title="Invalidates the keys (Assigning GIM_INVALID_HASH to all) Reorders the hash keys." alt="" coords="887,75,1052,101"><area shape="rect" href="classgim__hash__table.html#4d9347e131c0e17ac2d4966c092817f8" title="reserves the memory for the hash table." alt="" coords="841,125,1097,152"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_4339a279d721d1e687b8d8063332bac8_icgraph.png" border="0" usemap="#classgim__hash__table_4339a279d721d1e687b8d8063332bac8_icgraph_map" alt=""></center>
+<map name="classgim__hash__table_4339a279d721d1e687b8d8063332bac8_icgraph_map">
+<area shape="rect" href="classgim__hash__table.html#ff0e9bdb5bd6aacf9272db6789c514f7" title="Insert an element into the hash." alt="" coords="312,5,464,32"><area shape="rect" href="classgim__hash__table.html#be9a629ec7dfe612065ed9d161adc7e8" title="Insert an element into the hash,But if this container is a sorted array, this inserts..." alt="" coords="284,56,492,83"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="6ebfb7415bd946855ec5730651f7c191"></a><!-- doxytag: member="gim_hash_table::_insert_hash_table_replace" ref="6ebfb7415bd946855ec5730651f7c191" args="(GUINT hashkey, const T &amp;value)" -->
@@ -287,6 +406,56 @@ template&lt;class T&gt; </div>
 insert an element in hash table. 
 <p>
 If the element exists, this replaces the element. <dl class="return" compact><dt><b>Returns:</b></dt><dd>the index in the array of the existing element,or GIM_INVALID_HASH if the element has been inserted If so, the element has been inserted at the last position of the array. </dd></dl>
+
+<p>Definition at line <a class="el" href="gim__hash__table_8h-source.html#l00426">426</a> of file <a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a>.</p>
+
+<p>References <a class="el" href="gim__hash__table_8h-source.html#l00344">gim_hash_table&lt; T &gt;::_assign_hash_table_cell()</a>, <a class="el" href="gim__hash__table_8h-source.html#l00556">gim_hash_table&lt; T &gt;::_insert_unsorted()</a>, <a class="el" href="gim__hash__table_8h-source.html#l00203">gim_hash_table&lt; T &gt;::m_hash_table</a>, and <a class="el" href="gim__hash__table_8h-source.html#l00198">gim_hash_table&lt; T &gt;::m_nodes</a>.</p>
+
+<p>Referenced by <a class="el" href="gim__hash__table_8h-source.html#l00869">gim_hash_table&lt; T &gt;::insert_override()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00427"></a>00427     {
+<a name="l00428"></a>00428         <span class="keywordflow">if</span>(hashkey==GIM_INVALID_HASH)
+<a name="l00429"></a>00429         {
+<a name="l00430"></a>00430             <span class="comment">//Insert anyway</span>
+<a name="l00431"></a>00431             <a class="code" href="classgim__hash__table.html#95f93f63d75663f494388dc03423332f" title="Fast insertion in m_nodes array.">_insert_unsorted</a>(hashkey,value);
+<a name="l00432"></a>00432             <span class="keywordflow">return</span> GIM_INVALID_HASH;
+<a name="l00433"></a>00433         }
+<a name="l00434"></a>00434 
+<a name="l00435"></a>00435         GUINT cell_index = <a class="code" href="classgim__hash__table.html#93e5bf5c573a39e21e9bd0a4aec38e1a" title="Finds an avaliable hash table cell, and resizes the table if there isn&amp;#39;t space...">_assign_hash_table_cell</a>(hashkey);
+<a name="l00436"></a>00436 
+<a name="l00437"></a>00437         GUINT value_key = <a class="code" href="classgim__hash__table.html#35f6b0d640222067b9c76e61887e0354" title="Hash table data management. The hash table has the indices to the corresponding m_nodes...">m_hash_table</a>[cell_index];
+<a name="l00438"></a>00438 
+<a name="l00439"></a>00439         <span class="keywordflow">if</span>(value_key!= GIM_INVALID_HASH)
+<a name="l00440"></a>00440         {<span class="comment">//replaces the existing</span>
+<a name="l00441"></a>00441             <a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>[value_key] = _node_type(hashkey,value);
+<a name="l00442"></a>00442             <span class="keywordflow">return</span> value_key;<span class="comment">// index of the replaced element</span>
+<a name="l00443"></a>00443         }
+<a name="l00444"></a>00444 
+<a name="l00445"></a>00445         <a class="code" href="classgim__hash__table.html#35f6b0d640222067b9c76e61887e0354" title="Hash table data management. The hash table has the indices to the corresponding m_nodes...">m_hash_table</a>[cell_index] = <a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>.size();
+<a name="l00446"></a>00446 
+<a name="l00447"></a>00447         <a class="code" href="classgim__hash__table.html#95f93f63d75663f494388dc03423332f" title="Fast insertion in m_nodes array.">_insert_unsorted</a>(hashkey,value);
+<a name="l00448"></a>00448         <span class="keywordflow">return</span> GIM_INVALID_HASH;
+<a name="l00449"></a>00449 
+<a name="l00450"></a>00450     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_6ebfb7415bd946855ec5730651f7c191_cgraph.png" border="0" usemap="#classgim__hash__table_6ebfb7415bd946855ec5730651f7c191_cgraph_map" alt=""></center>
+<map name="classgim__hash__table_6ebfb7415bd946855ec5730651f7c191_cgraph_map">
+<area shape="rect" href="classgim__hash__table.html#93e5bf5c573a39e21e9bd0a4aec38e1a" title="Finds an avaliable hash table cell, and resizes the table if there isn&#39;t space..." alt="" coords="335,24,596,51"><area shape="rect" href="classgim__hash__table.html#95f93f63d75663f494388dc03423332f" title="Fast insertion in m_nodes array." alt="" coords="357,75,573,101"><area shape="rect" href="classgim__hash__table.html#cc2d3d29a0190232386fb155ec9e5d8f" title="Find the avaliable cell for the hashkey, and return an existing cell if it has the..." alt="" coords="1199,24,1428,51"><area shape="rect" href="classgim__hash__table.html#51905040dee4c41954f5de1634c090dd" title="Resize hash table indices." alt="" coords="645,49,843,76"><area shape="rect" href="classgim__hash__table.html#06933fdb198971dcd753564d1d6e9424" title="Clear all memory for the hash table." alt="" coords="899,24,1141,51"><area shape="rect" href="classgim__hash__table.html#a33115e75d8cc5c489fa6ce8b1a23654" title="Invalidates the keys (Assigning GIM_INVALID_HASH to all) Reorders the hash keys." alt="" coords="937,75,1103,101"><area shape="rect" href="classgim__hash__table.html#4d9347e131c0e17ac2d4966c092817f8" title="reserves the memory for the hash table." alt="" coords="892,125,1148,152"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_6ebfb7415bd946855ec5730651f7c191_icgraph.png" border="0" usemap="#classgim__hash__table_6ebfb7415bd946855ec5730651f7c191_icgraph_map" alt=""></center>
+<map name="classgim__hash__table_6ebfb7415bd946855ec5730651f7c191_icgraph_map">
+<area shape="rect" href="classgim__hash__table.html#83987136757654921c71b183de8ec55e" title="Insert an element into the hash, and could overrite an existing object with the same..." alt="" coords="335,5,537,32"></map>
+</div>
 
 </div>
 </div><p>
@@ -327,6 +496,36 @@ template&lt;class T&gt; </div>
 Insert in position ordered. 
 <p>
 Also checks if it is needed to transform this container to a hash table, by calling check_for_switching_to_hashtable 
+<p>Definition at line <a class="el" href="gim__hash__table_8h-source.html#l00489">489</a> of file <a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a>.</p>
+
+<p>References <a class="el" href="gim__hash__table_8h-source.html#l00666">gim_hash_table&lt; T &gt;::check_for_switching_to_hashtable()</a>, and <a class="el" href="gim__hash__table_8h-source.html#l00198">gim_hash_table&lt; T &gt;::m_nodes</a>.</p>
+
+<p>Referenced by <a class="el" href="gim__hash__table_8h-source.html#l00496">gim_hash_table&lt; T &gt;::_insert_sorted()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00490"></a>00490     {
+<a name="l00491"></a>00491         <a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>.insert(_node_type(hashkey,value),pos);
+<a name="l00492"></a>00492         this-&gt;<a class="code" href="classgim__hash__table.html#ba33eeb9b5aa00b0d8a002c549b71ed3" title="If the container reaches the.">check_for_switching_to_hashtable</a>();
+<a name="l00493"></a>00493     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_3eacaf88e1b18815c0b89d368d77a93a_cgraph.png" border="0" usemap="#classgim__hash__table_3eacaf88e1b18815c0b89d368d77a93a_cgraph_map" alt=""></center>
+<map name="classgim__hash__table_3eacaf88e1b18815c0b89d368d77a93a_cgraph_map">
+<area shape="rect" href="classgim__hash__table.html#ba33eeb9b5aa00b0d8a002c549b71ed3" title="If the container reaches the." alt="" coords="260,56,577,83"><area shape="rect" href="classgim__hash__table.html#51905040dee4c41954f5de1634c090dd" title="Resize hash table indices." alt="" coords="627,56,824,83"><area shape="rect" href="classgim__hash__table.html#06933fdb198971dcd753564d1d6e9424" title="Clear all memory for the hash table." alt="" coords="880,5,1123,32"><area shape="rect" href="classgim__hash__table.html#a33115e75d8cc5c489fa6ce8b1a23654" title="Invalidates the keys (Assigning GIM_INVALID_HASH to all) Reorders the hash keys." alt="" coords="919,56,1084,83"><area shape="rect" href="classgim__hash__table.html#4d9347e131c0e17ac2d4966c092817f8" title="reserves the memory for the hash table." alt="" coords="873,107,1129,133"><area shape="rect" href="classgim__hash__table.html#cc2d3d29a0190232386fb155ec9e5d8f" title="Find the avaliable cell for the hashkey, and return an existing cell if it has the..." alt="" coords="1180,56,1409,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_3eacaf88e1b18815c0b89d368d77a93a_icgraph.png" border="0" usemap="#classgim__hash__table_3eacaf88e1b18815c0b89d368d77a93a_icgraph_map" alt=""></center>
+<map name="classgim__hash__table_3eacaf88e1b18815c0b89d368d77a93a_icgraph_map">
+<area shape="rect" href="classgim__hash__table.html#66d18cb60b0628a9aa759304395f4825" title="Insert an element in an ordered array." alt="" coords="259,5,461,32"><area shape="rect" href="classgim__hash__table.html#ff0e9bdb5bd6aacf9272db6789c514f7" title="Insert an element into the hash." alt="" coords="509,5,661,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="14261b2d7de34188f8bc5179e4d60760"></a><!-- doxytag: member="gim_hash_table::find" ref="14261b2d7de34188f8bc5179e4d60760" args="(GUINT hashkey)" -->
@@ -352,6 +551,60 @@ Finds the index of the element with the key.
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>the index in the array of the existing element,or GIM_INVALID_HASH if the element has been inserted If so, the element has been inserted at the last position of the array. </dd></dl>
 
+<p>Definition at line <a class="el" href="gim__hash__table_8h-source.html#l00723">723</a> of file <a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a>.</p>
+
+<p>References <a class="el" href="gim__hash__table_8h-source.html#l00211">gim_hash_table&lt; T &gt;::_find_cell()</a>, <a class="el" href="gim__radixsort_8h-source.html#l00273">gim_binary_search_ex()</a>, <a class="el" href="gim__hash__table_8h-source.html#l00203">gim_hash_table&lt; T &gt;::m_hash_table</a>, and <a class="el" href="gim__hash__table_8h-source.html#l00198">gim_hash_table&lt; T &gt;::m_nodes</a>.</p>
+
+<p>Referenced by <a class="el" href="gim__hash__table_8h-source.html#l00757">gim_hash_table&lt; T &gt;::get_value()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00724"></a>00724     {
+<a name="l00725"></a>00725         <span class="keywordflow">if</span>(<a class="code" href="classgim__hash__table.html#35f6b0d640222067b9c76e61887e0354" title="Hash table data management. The hash table has the indices to the corresponding m_nodes...">m_hash_table</a>)
+<a name="l00726"></a>00726         {
+<a name="l00727"></a>00727             GUINT cell_index = <a class="code" href="classgim__hash__table.html#aaff4cea9e6b86276d364041e651605f" title="Returns the cell index.">_find_cell</a>(hashkey);
+<a name="l00728"></a>00728             <span class="keywordflow">if</span>(cell_index==GIM_INVALID_HASH) <span class="keywordflow">return</span> GIM_INVALID_HASH;
+<a name="l00729"></a>00729             <span class="keywordflow">return</span> <a class="code" href="classgim__hash__table.html#35f6b0d640222067b9c76e61887e0354" title="Hash table data management. The hash table has the indices to the corresponding m_nodes...">m_hash_table</a>[cell_index];
+<a name="l00730"></a>00730         }
+<a name="l00731"></a>00731                 GUINT last_index = <a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>.size();
+<a name="l00732"></a>00732         <span class="keywordflow">if</span>(last_index&lt;2)
+<a name="l00733"></a>00733         {
+<a name="l00734"></a>00734                         <span class="keywordflow">if</span>(last_index==0) <span class="keywordflow">return</span> GIM_INVALID_HASH;
+<a name="l00735"></a>00735             <span class="keywordflow">if</span>(<a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>[0].m_key == hashkey) <span class="keywordflow">return</span> 0;
+<a name="l00736"></a>00736             <span class="keywordflow">return</span> GIM_INVALID_HASH;
+<a name="l00737"></a>00737         }
+<a name="l00738"></a>00738         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(m_sorted)
+<a name="l00739"></a>00739         {
+<a name="l00740"></a>00740             <span class="comment">//Binary search</span>
+<a name="l00741"></a>00741             GUINT result_ind = 0;
+<a name="l00742"></a>00742                         last_index--;
+<a name="l00743"></a>00743             _node_type *  ptr =  <a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>.pointer();
+<a name="l00744"></a>00744 
+<a name="l00745"></a>00745             <span class="keywordtype">bool</span> found = <a class="code" href="gim__radixsort_8h.html#7be883eaa7e11dab454089d654537e35" title="Failsafe Iterative binary search,.">gim_binary_search_ex</a>(ptr,0,last_index,result_ind,hashkey,<a class="code" href="class_g_i_m___h_a_s_h___n_o_d_e___c_m_p___k_e_y___m_a_c_r_o.html" title="Macro for comparing the key and the element.">GIM_HASH_NODE_CMP_KEY_MACRO</a>());
+<a name="l00746"></a>00746 
+<a name="l00747"></a>00747 
+<a name="l00748"></a>00748             <span class="keywordflow">if</span>(found) <span class="keywordflow">return</span> result_ind;
+<a name="l00749"></a>00749         }
+<a name="l00750"></a>00750         <span class="keywordflow">return</span> GIM_INVALID_HASH;
+<a name="l00751"></a>00751     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_14261b2d7de34188f8bc5179e4d60760_cgraph.png" border="0" usemap="#classgim__hash__table_14261b2d7de34188f8bc5179e4d60760_cgraph_map" alt=""></center>
+<map name="classgim__hash__table_14261b2d7de34188f8bc5179e4d60760_cgraph_map">
+<area shape="rect" href="classgim__hash__table.html#aaff4cea9e6b86276d364041e651605f" title="Returns the cell index." alt="" coords="196,5,369,32"><area shape="rect" href="gim__radixsort_8h.html#7be883eaa7e11dab454089d654537e35" title="Failsafe Iterative binary search,." alt="" coords="207,56,359,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_14261b2d7de34188f8bc5179e4d60760_icgraph.png" border="0" usemap="#classgim__hash__table_14261b2d7de34188f8bc5179e4d60760_icgraph_map" alt=""></center>
+<map name="classgim__hash__table_14261b2d7de34188f8bc5179e4d60760_icgraph_map">
+<area shape="rect" href="classgim__hash__table.html#40b5c46a0117da3948cd1b093f185321" title="Retrieves the value associated with the index." alt="" coords="196,5,369,32"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="40b5c46a0117da3948cd1b093f185321"></a><!-- doxytag: member="gim_hash_table::get_value" ref="40b5c46a0117da3948cd1b093f185321" args="(GUINT hashkey)" -->
@@ -376,6 +629,26 @@ template&lt;class T&gt; </div>
 Retrieves the value associated with the index. 
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>the found element, or null </dd></dl>
+
+<p>Definition at line <a class="el" href="gim__hash__table_8h-source.html#l00757">757</a> of file <a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a>.</p>
+
+<p>References <a class="el" href="gim__hash__table_8h-source.html#l00723">gim_hash_table&lt; T &gt;::find()</a>, and <a class="el" href="gim__hash__table_8h-source.html#l00198">gim_hash_table&lt; T &gt;::m_nodes</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00758"></a>00758     {
+<a name="l00759"></a>00759         GUINT index = <a class="code" href="classgim__hash__table.html#14261b2d7de34188f8bc5179e4d60760" title="Finds the index of the element with the key.">find</a>(hashkey);
+<a name="l00760"></a>00760         <span class="keywordflow">if</span>(index == GIM_INVALID_HASH) <span class="keywordflow">return</span> NULL;
+<a name="l00761"></a>00761         <span class="keywordflow">return</span> &amp;<a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>[index].m_data;
+<a name="l00762"></a>00762     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_40b5c46a0117da3948cd1b093f185321_cgraph.png" border="0" usemap="#classgim__hash__table_40b5c46a0117da3948cd1b093f185321_cgraph_map" alt=""></center>
+<map name="classgim__hash__table_40b5c46a0117da3948cd1b093f185321_cgraph_map">
+<area shape="rect" href="classgim__hash__table.html#14261b2d7de34188f8bc5179e4d60760" title="Finds the index of the element with the key." alt="" coords="231,31,369,57"><area shape="rect" href="classgim__hash__table.html#aaff4cea9e6b86276d364041e651605f" title="Returns the cell index." alt="" coords="420,5,593,32"><area shape="rect" href="gim__radixsort_8h.html#7be883eaa7e11dab454089d654537e35" title="Failsafe Iterative binary search,." alt="" coords="431,56,583,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -411,6 +684,32 @@ Insert an element into the hash.
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If GIM_INVALID_HASH, the object has been inserted succesfully. Else it returns the position of the existing element. </dd></dl>
 
+<p>Definition at line <a class="el" href="gim__hash__table_8h-source.html#l00851">851</a> of file <a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a>.</p>
+
+<p>References <a class="el" href="gim__hash__table_8h-source.html#l00399">gim_hash_table&lt; T &gt;::_insert_hash_table()</a>, <a class="el" href="gim__hash__table_8h-source.html#l00496">gim_hash_table&lt; T &gt;::_insert_sorted()</a>, <a class="el" href="gim__hash__table_8h-source.html#l00556">gim_hash_table&lt; T &gt;::_insert_unsorted()</a>, and <a class="el" href="gim__hash__table_8h-source.html#l00203">gim_hash_table&lt; T &gt;::m_hash_table</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00852"></a>00852     {
+<a name="l00853"></a>00853         <span class="keywordflow">if</span>(<a class="code" href="classgim__hash__table.html#35f6b0d640222067b9c76e61887e0354" title="Hash table data management. The hash table has the indices to the corresponding m_nodes...">m_hash_table</a>)
+<a name="l00854"></a>00854         {
+<a name="l00855"></a>00855             <span class="keywordflow">return</span> this-&gt;<a class="code" href="classgim__hash__table.html#4339a279d721d1e687b8d8063332bac8" title="insert an element in hash table">_insert_hash_table</a>(hashkey,element);
+<a name="l00856"></a>00856         }
+<a name="l00857"></a>00857         <span class="keywordflow">if</span>(this-&gt;is_sorted())
+<a name="l00858"></a>00858         {
+<a name="l00859"></a>00859             <span class="keywordflow">return</span> this-&gt;<a class="code" href="classgim__hash__table.html#66d18cb60b0628a9aa759304395f4825" title="Insert an element in an ordered array.">_insert_sorted</a>(hashkey,element);
+<a name="l00860"></a>00860         }
+<a name="l00861"></a>00861         <span class="keywordflow">return</span> this-&gt;<a class="code" href="classgim__hash__table.html#95f93f63d75663f494388dc03423332f" title="Fast insertion in m_nodes array.">_insert_unsorted</a>(hashkey,element);
+<a name="l00862"></a>00862     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_ff0e9bdb5bd6aacf9272db6789c514f7_cgraph.png" border="0" usemap="#classgim__hash__table_ff0e9bdb5bd6aacf9272db6789c514f7_cgraph_map" alt=""></center>
+<map name="classgim__hash__table_ff0e9bdb5bd6aacf9272db6789c514f7_cgraph_map">
+<area shape="rect" href="classgim__hash__table.html#4339a279d721d1e687b8d8063332bac8" title="insert an element in hash table" alt="" coords="205,31,435,57"><area shape="rect" href="classgim__hash__table.html#95f93f63d75663f494388dc03423332f" title="Fast insertion in m_nodes array." alt="" coords="483,56,699,83"><area shape="rect" href="classgim__hash__table.html#66d18cb60b0628a9aa759304395f4825" title="Insert an element in an ordered array." alt="" coords="219,144,421,171"><area shape="rect" href="classgim__hash__table.html#93e5bf5c573a39e21e9bd0a4aec38e1a" title="Finds an avaliable hash table cell, and resizes the table if there isn&#39;t space..." alt="" coords="776,5,1037,32"><area shape="rect" href="classgim__hash__table.html#cc2d3d29a0190232386fb155ec9e5d8f" title="Find the avaliable cell for the hashkey, and return an existing cell if it has the..." alt="" coords="1668,56,1897,83"><area shape="rect" href="classgim__hash__table.html#51905040dee4c41954f5de1634c090dd" title="Resize hash table indices." alt="" coords="1115,107,1312,133"><area shape="rect" href="classgim__hash__table.html#06933fdb198971dcd753564d1d6e9424" title="Clear all memory for the hash table." alt="" coords="1368,56,1611,83"><area shape="rect" href="classgim__hash__table.html#a33115e75d8cc5c489fa6ce8b1a23654" title="Invalidates the keys (Assigning GIM_INVALID_HASH to all) Reorders the hash keys." alt="" coords="1407,107,1572,133"><area shape="rect" href="classgim__hash__table.html#4d9347e131c0e17ac2d4966c092817f8" title="reserves the memory for the hash table." alt="" coords="1361,157,1617,184"><area shape="rect" href="classgim__hash__table.html#3eacaf88e1b18815c0b89d368d77a93a" title="Insert in position ordered." alt="" coords="489,107,692,133"><area shape="rect" href="gim__radixsort_8h.html#7be883eaa7e11dab454089d654537e35" title="Failsafe Iterative binary search,." alt="" coords="515,157,667,184"><area shape="rect" href="classgim__hash__table.html#a24edf41f1a5f7ee28f6d1f12e3922c3" title="Retrieves the amount of keys." alt="" coords="519,208,663,235"><area shape="rect" href="classgim__hash__table.html#ba33eeb9b5aa00b0d8a002c549b71ed3" title="If the container reaches the." alt="" coords="748,107,1065,133"></map>
+</div>
+
 </div>
 </div><p>
 <a class="anchor" name="83987136757654921c71b183de8ec55e"></a><!-- doxytag: member="gim_hash_table::insert_override" ref="83987136757654921c71b183de8ec55e" args="(GUINT hashkey, const T &amp;element)" -->
@@ -445,12 +744,39 @@ Insert an element into the hash, and could overrite an existing object with the 
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If GIM_INVALID_HASH, the object has been inserted succesfully. Else it returns the position of the replaced element. </dd></dl>
 
+<p>Definition at line <a class="el" href="gim__hash__table_8h-source.html#l00869">869</a> of file <a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a>.</p>
+
+<p>References <a class="el" href="gim__hash__table_8h-source.html#l00426">gim_hash_table&lt; T &gt;::_insert_hash_table_replace()</a>, <a class="el" href="gim__hash__table_8h-source.html#l00556">gim_hash_table&lt; T &gt;::_insert_unsorted()</a>, <a class="el" href="gim__hash__table_8h-source.html#l00203">gim_hash_table&lt; T &gt;::m_hash_table</a>, and <a class="el" href="gim__hash__table_8h-source.html#l00198">gim_hash_table&lt; T &gt;::m_nodes</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00870"></a>00870     {
+<a name="l00871"></a>00871         <span class="keywordflow">if</span>(<a class="code" href="classgim__hash__table.html#35f6b0d640222067b9c76e61887e0354" title="Hash table data management. The hash table has the indices to the corresponding m_nodes...">m_hash_table</a>)
+<a name="l00872"></a>00872         {
+<a name="l00873"></a>00873             <span class="keywordflow">return</span> this-&gt;<a class="code" href="classgim__hash__table.html#6ebfb7415bd946855ec5730651f7c191" title="insert an element in hash table.">_insert_hash_table_replace</a>(hashkey,element);
+<a name="l00874"></a>00874         }
+<a name="l00875"></a>00875         <span class="keywordflow">if</span>(this-&gt;is_sorted())
+<a name="l00876"></a>00876         {
+<a name="l00877"></a>00877             <span class="keywordflow">return</span> this-&gt;_insert_sorted_replace(hashkey,element);
+<a name="l00878"></a>00878         }
+<a name="l00879"></a>00879         this-&gt;<a class="code" href="classgim__hash__table.html#95f93f63d75663f494388dc03423332f" title="Fast insertion in m_nodes array.">_insert_unsorted</a>(hashkey,element);
+<a name="l00880"></a>00880         <span class="keywordflow">return</span> <a class="code" href="classgim__hash__table.html#da83cac38bcf3fd282287f463def04e4" title="The nodes.">m_nodes</a>.size();
+<a name="l00881"></a>00881     }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="classgim__hash__table_83987136757654921c71b183de8ec55e_cgraph.png" border="0" usemap="#classgim__hash__table_83987136757654921c71b183de8ec55e_cgraph_map" alt=""></center>
+<map name="classgim__hash__table_83987136757654921c71b183de8ec55e_cgraph_map">
+<area shape="rect" href="classgim__hash__table.html#6ebfb7415bd946855ec5730651f7c191" title="insert an element in hash table." alt="" coords="260,24,537,51"><area shape="rect" href="classgim__hash__table.html#95f93f63d75663f494388dc03423332f" title="Fast insertion in m_nodes array." alt="" coords="611,75,827,101"><area shape="rect" href="classgim__hash__table.html#93e5bf5c573a39e21e9bd0a4aec38e1a" title="Finds an avaliable hash table cell, and resizes the table if there isn&#39;t space..." alt="" coords="588,24,849,51"><area shape="rect" href="classgim__hash__table.html#cc2d3d29a0190232386fb155ec9e5d8f" title="Find the avaliable cell for the hashkey, and return an existing cell if it has the..." alt="" coords="1452,24,1681,51"><area shape="rect" href="classgim__hash__table.html#51905040dee4c41954f5de1634c090dd" title="Resize hash table indices." alt="" coords="899,49,1096,76"><area shape="rect" href="classgim__hash__table.html#06933fdb198971dcd753564d1d6e9424" title="Clear all memory for the hash table." alt="" coords="1152,24,1395,51"><area shape="rect" href="classgim__hash__table.html#a33115e75d8cc5c489fa6ce8b1a23654" title="Invalidates the keys (Assigning GIM_INVALID_HASH to all) Reorders the hash keys." alt="" coords="1191,75,1356,101"><area shape="rect" href="classgim__hash__table.html#4d9347e131c0e17ac2d4966c092817f8" title="reserves the memory for the hash table." alt="" coords="1145,125,1401,152"></map>
+</div>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/gim_hash_table.h</ul>
+<li>C:/Users/New/Documents/Games_Technology/Year4_Semester1/ICT397/~My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/BulletCollision/Gimpact/<a class="el" href="gim__hash__table_8h-source.html">gim_hash_table.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Apr 21 14:05:05 2018 for Assignment1 - OOber Taxi by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 1 13:02:23 2018 for Assignment2 - OOber Taxi by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

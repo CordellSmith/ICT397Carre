@@ -40,7 +40,34 @@ Builds a rotation 3 $\ast$ 3 matrix created from an angle.
 \begin{description}
 \item[{\em m}]Input matrix multiplied by this translation matrix. \item[{\em angle}]Rotation angle expressed in radians if GLM\_\-FORCE\_\-RADIANS is defined or degrees otherwise. \end{description}
 \end{Desc}
-\hypertarget{group__gtx__matrix__transform__2d_g275b188a11797f386aeda153a17afcdc}{
+
+
+Definition at line 46 of file matrix\_\-transform\_\-2d.inl.
+
+References glm::cos(), glm::radians(), and glm::sin().
+
+\begin{Code}\begin{verbatim}49         {
+50         #ifdef GLM_FORCE_RADIANS
+51                 T a = angle;
+52         #else
+53                 T a = radians(angle);           
+54         #endif
+55                 T c = cos(a);
+56                 T s = sin(a);
+57 
+58                 detail::tmat3x3<T, P> Result(detail::tmat3x3<T, P>::_null);
+59                 Result[0] = m[0] * c + m[1] * s;
+60                 Result[1] = m[0] * -s + m[1] * c;
+61                 Result[2] = m[2];
+62                 return Result;
+63         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:\hypertarget{group__gtx__matrix__transform__2d_g275b188a11797f386aeda153a17afcdc}{
 \index{gtx\_\-matrix\_\-transform\_\-2d@{gtx\_\-matrix\_\-transform\_\-2d}!scale@{scale}}
 \index{scale@{scale}!gtx_matrix_transform_2d@{gtx\_\-matrix\_\-transform\_\-2d}}
 \subsubsection[scale]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, precision P$>$ GLM\_\-FUNC\_\-QUALIFIER detail::tmat3x3$<$ T, P $>$ glm::scale (detail::tmat3x3$<$ T, P $>$ const \& {\em m}, \/  detail::tvec2$<$ T, P $>$ const \& {\em v})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
@@ -54,6 +81,21 @@ Builds a scale 3 $\ast$ 3 matrix created from a vector of 2 components.
 \begin{description}
 \item[{\em m}]Input matrix multiplied by this translation matrix. \item[{\em v}]Coordinates of a scale vector. \end{description}
 \end{Desc}
+
+
+Definition at line 66 of file matrix\_\-transform\_\-2d.inl.
+
+\begin{Code}\begin{verbatim}69         {
+70                 detail::tmat3x3<T, P> Result(detail::tmat3x3<T, P>::_null);
+71                 Result[0] = m[0] * v[0];
+72                 Result[1] = m[1] * v[1];
+73                 Result[2] = m[2];
+74                 return Result;
+75         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__matrix__transform__2d_g921a7ae4b10ba6cc7422be200cf3afd5}{
 \index{gtx\_\-matrix\_\-transform\_\-2d@{gtx\_\-matrix\_\-transform\_\-2d}!shearX@{shearX}}
 \index{shearX@{shearX}!gtx_matrix_transform_2d@{gtx\_\-matrix\_\-transform\_\-2d}}
@@ -68,6 +110,19 @@ Builds an horizontal (parallel to the x axis) shear 3 $\ast$ 3 matrix.
 \begin{description}
 \item[{\em m}]Input matrix multiplied by this translation matrix. \item[{\em y}]Shear factor. \end{description}
 \end{Desc}
+
+
+Definition at line 78 of file matrix\_\-transform\_\-2d.inl.
+
+\begin{Code}\begin{verbatim}81         {
+82                 detail::tmat3x3<T, P> Result();
+83                 Result[0][1] = y;
+84                 return m * Result;
+85         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__matrix__transform__2d_g5f6d0ef99f6be6ff1151ca174261004d}{
 \index{gtx\_\-matrix\_\-transform\_\-2d@{gtx\_\-matrix\_\-transform\_\-2d}!shearY@{shearY}}
 \index{shearY@{shearY}!gtx_matrix_transform_2d@{gtx\_\-matrix\_\-transform\_\-2d}}
@@ -82,6 +137,19 @@ Builds a vertical (parallel to the y axis) shear 3 $\ast$ 3 matrix.
 \begin{description}
 \item[{\em m}]Input matrix multiplied by this translation matrix. \item[{\em x}]Shear factor. \end{description}
 \end{Desc}
+
+
+Definition at line 88 of file matrix\_\-transform\_\-2d.inl.
+
+\begin{Code}\begin{verbatim}91         {
+92                 detail::tmat3x3<T, P> Result();
+93                 Result[1][0] = x;
+94                 return m * Result;
+95         }
+\end{verbatim}
+\end{Code}
+
+
 \hypertarget{group__gtx__matrix__transform__2d_g307934204fead7ff8ec86bd4499c0adc}{
 \index{gtx\_\-matrix\_\-transform\_\-2d@{gtx\_\-matrix\_\-transform\_\-2d}!translate@{translate}}
 \index{translate@{translate}!gtx_matrix_transform_2d@{gtx\_\-matrix\_\-transform\_\-2d}}
@@ -96,3 +164,16 @@ Builds a translation 3 $\ast$ 3 matrix created from a vector of 2 components.
 \begin{description}
 \item[{\em m}]Input matrix multiplied by this translation matrix. \item[{\em v}]Coordinates of a translation vector. \end{description}
 \end{Desc}
+
+
+Definition at line 35 of file matrix\_\-transform\_\-2d.inl.
+
+\begin{Code}\begin{verbatim}38         {
+39                 detail::tmat3x3<T, P> Result(m);
+40                 Result[2] = m[0] * v[0] + m[1] * v[1] + m[2];
+41                 return Result;
+42         }
+\end{verbatim}
+\end{Code}
+
+

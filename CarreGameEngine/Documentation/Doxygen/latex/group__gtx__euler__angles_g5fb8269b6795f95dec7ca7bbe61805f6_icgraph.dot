@@ -1,0 +1,12 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="glm::eulerAngleX",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node2 [label="glm::eulerAngleXZ",height=0.2,width=0.4,color="black",URL="$group__gtx__euler__angles.html#g9b63e52fda0b7773c50bbf3c310bdcf2"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid"];
+  Node3 [label="glm::eulerAngleZX",height=0.2,width=0.4,color="black",URL="$group__gtx__euler__angles.html#g3709f9eb45b49ecf41d42bec91c031fa"];
+}

@@ -17,6 +17,8 @@ static void \hyperlink{classbt_transform_util_39f53b05940a57082053067bd5e337ec}{
 \subsection{Detailed Description}
 Utils related to temporal transforms. 
 
+Definition at line 38 of file btTransformUtil.h.
+
 \subsection{Member Function Documentation}
 \hypertarget{classbt_transform_util_39f53b05940a57082053067bd5e337ec}{
 \index{btTransformUtil@{btTransformUtil}!calculateDiffAxisAngle@{calculateDiffAxisAngle}}
@@ -29,6 +31,35 @@ Utils related to temporal transforms.
 
 floating point inaccuracy can lead to w component $>$ 1..., which breaks 
 
+Definition at line 134 of file btTransformUtil.h.
+
+References btQuaternion::getAngle(), and btQuaternion::normalize().
+
+\begin{Code}\begin{verbatim}135         {
+136                 btMatrix3x3 dmat = transform1.getBasis() * transform0.getBasis().inverse();
+137                 btQuaternion dorn;
+138                 dmat.getRotation(dorn);
+139 
+141                 dorn.normalize();
+142                 
+143                 angle = dorn.getAngle();
+144                 axis = btVector3(dorn.x(),dorn.y(),dorn.z());
+145                 axis[3] = btScalar(0.);
+146                 //check for axis length
+147                 btScalar len = axis.length2();
+148                 if (len < SIMD_EPSILON*SIMD_EPSILON)
+149                         axis = btVector3(btScalar(1.),btScalar(0.),btScalar(0.));
+150                 else
+151                         axis /= btSqrt(len);
+152         }
+\end{verbatim}
+\end{Code}
+
+
+
+
+Here is the call graph for this function:
+
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
-C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment1/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btTransformUtil.h\end{CompactItemize}
+C:/Users/New/Documents/Games\_\-Technology/Year4\_\-Semester1/ICT397/$\sim$My Work/Assignment2/ICT397Carre/CarreGameEngine/Dependencies/BulletPhysicsEngine/include/LinearMath/btTransformUtil.h\end{CompactItemize}

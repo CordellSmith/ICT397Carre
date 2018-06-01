@@ -1,0 +1,24 @@
+<area shape="rect" href="$group__gtx__wrap.html#g18e81aeb796ba941505bb883f1efd586" title="glm::clamp" alt="" coords="189,5,275,32">
+<area shape="rect" href="$group__gtx__vector__angle.html#gfd969749b953f7a58da4a2563d06ea36" title="glm::orientedAngle" alt="" coords="168,56,296,83">
+<area shape="rect" href="$group__gtc__packing.html#gc29411d6c0f6ed0fe9f0396dfe92e0e8" title="glm::packSnorm1x16" alt="" coords="160,107,304,133">
+<area shape="rect" href="$group__gtc__packing.html#g26b6cd7a35c46c4b6a342f3b97b47423" title="glm::packSnorm1x8" alt="" coords="164,157,300,184">
+<area shape="rect" href="$group__core__func__packing.html#g0c8005de240d6c4ca3d16c7bee25c622" title="glm::packSnorm2x16" alt="" coords="160,208,304,235">
+<area shape="rect" href="$group__gtc__packing.html#g05d08a82923166ec7cd5d0e6154c9953" title="glm::packSnorm2x8" alt="" coords="164,259,300,285">
+<area shape="rect" href="$group__gtc__packing.html#g0d4157cec37c0312216a7be1cc92df54" title="glm::packSnorm3x10_1x2" alt="" coords="147,309,317,336">
+<area shape="rect" href="$group__gtc__packing.html#g9b237d7c66b7a71964e6d1f4dc06539f" title="glm::packSnorm4x16" alt="" coords="160,360,304,387">
+<area shape="rect" href="$group__core__func__packing.html#gfcf25acc0d361c6c696a433aa5dfd16b" title="glm::packSnorm4x8" alt="" coords="164,411,300,437">
+<area shape="rect" href="$group__gtc__packing.html#g60c7d915f5653559ae02c2f79a8c5c1d" title="glm::packUnorm1x16" alt="" coords="160,461,304,488">
+<area shape="rect" href="$group__gtc__packing.html#g2f9963e5d762b10085b280d3662017ba" title="glm::packUnorm1x8" alt="" coords="164,512,300,539">
+<area shape="rect" href="$group__core__func__packing.html#g0659ddaf09727551c7bf51655d2a65cf" title="glm::packUnorm2x16" alt="" coords="160,563,304,589">
+<area shape="rect" href="$group__gtc__packing.html#g833288fc0d4a79f19d0db75a6843bfe6" title="glm::packUnorm2x8" alt="" coords="164,613,300,640">
+<area shape="rect" href="$group__gtc__packing.html#g2cf2d11b40bd48639110456fd74c2e33" title="glm::packUnorm3x10_1x2" alt="" coords="147,664,317,691">
+<area shape="rect" href="$group__gtc__packing.html#gc561f06c908b7302537a8ef29fcb409e" title="glm::packUnorm4x16" alt="" coords="160,715,304,741">
+<area shape="rect" href="$group__core__func__packing.html#g834ee9a9e73dcb0a7c1fc88143f3edb8" title="glm::packUnorm4x8" alt="" coords="164,765,300,792">
+<area shape="rect" href="$group__gtx__compatibility.html#g3f1e08f6c126c7e3585c36c32c108284" title="Returns clamp(x, 0, 1) for each component in x. (From GLM_GTX_compatibility)." alt="" coords="184,816,280,843">
+<area shape="rect" href="$group__core__func__common.html#gcd449790122dcacf69b7e8a53f97fdd8" title="glm::smoothstep" alt="" coords="173,867,291,893">
+<area shape="rect" href="$group__gtc__packing.html#g246f451cebf590726324f7a283e3d65e" title="glm::unpackSnorm1x16" alt="" coords="153,917,311,944">
+<area shape="rect" href="$group__gtc__packing.html#g6f2bebf536fbf7c8b97d4b306bb3354e" title="glm::unpackSnorm1x8" alt="" coords="156,968,308,995">
+<area shape="rect" href="$group__core__func__packing.html#ga3f9bd6a71d7bdfab090b9626f2466aa" title="glm::unpackSnorm2x16" alt="" coords="153,1019,311,1045">
+<area shape="rect" href="$group__gtc__packing.html#g27f30f0281b88e152b0895f5e2ead878" title="glm::unpackSnorm2x8" alt="" coords="156,1069,308,1096">
+<area shape="rect" href="$group__gtc__packing.html#g8b8bb827a3743ca553d8702d3e337101" title="glm::unpackSnorm3x10_1x2" alt="" coords="139,1120,325,1147">
+<area shape="rect" href="$group__core__func__packing.html#g126a0deffef1f2d10dd67237981a870b" title="glm::unpackSnorm4x8" alt="" coords="156,1171,308,1197">
